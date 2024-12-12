@@ -2062,7 +2062,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ## 创建函数
 
-### `def` 语句
+### `def` 语句
 
 - **语法**
 
@@ -3014,107 +3014,35 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   c2.deposit()
   ```
 
-## 面向对象三大特性
-
-### 类的封装
-
-- 封装
-
-  ```
-  - 封装就是把对象的某个属性，只能通过类内部的方法访问，而不能从外部直接调用。
-  - 方法：在定义类属性时，把“self.属性”改成“self.__属性”，然后把该属性的操作创建到一个方法内。
-  ```
-
-- 将数据封装到对象
-
-  ```python
-  class Foo:
-      def __init__(self, name, age):
-          self.name = name
-          self.age = age
-  obj = Foo("Jerry", 30)
-  ```
-
-- 将同一类方法封装到类
-
-  ```py
-  class Message:
-      def email(self):
-          pass
-      def wechat(self):
-          pass
-      def sms(self):
-          pass
-  
-  class FileHandler:
-      def txt(self):
-          pass
-      def excel(self):
-          pass
-      def word(self):
-          pass
-  ```
-
-### 类的继承
-
-- 子类自动拥有父类的属性和方法。
-
-- 语法
-
-  ```python
-  class Base:
-      def func1(self):
-          pass
-  
-  class Son(Base):
-      def func2(self):
-          pass
-  
-  obj = Son()  # 创建子类对象
-  obj.func1()  # 子类自动拥有父类的属性和方法
-  ```
-
-  ```
-  - 子类必须自动拥有父类属性和方法，但父类不拥有子类的属性和方法。
-  - 当子类和父类拥有相同属性和方法时，子类只调用自己，而不调用父类。
-  - 创建子类对象时，要填写父类的各个属性。
-  - 在python中，一个父类可以有多个子类，一个子类也可以有多个父类。
-  - 所有类的最终父类是object，如果不填写父类，系统默认为父类就是object。
-  ```
-
-### 类的多态
-
-​	支持传入多种类型参数
-
 ## 类的特殊成员
 
 - **\__new__构造对象**
 
-  ```
-  - 构造对象，实际就是创建对象省略的那两步。
-  - 用在想让初始化对象之前做一点操作，可以使用此方法。
-  ```
+	```
+	- 构造对象，实际就是创建对象省略的那两步。
+	- 用在想让初始化对象之前做一点操作，可以使用此方法。
+	```
 
-  ```python
-  class Foo:
-      def __new__(self,*args,**kwargs):
-          object=object.__new__(self) # 创建的空对象
-          return object
-  ```
+	```python
+	class Foo:
+	    def __new__(self,*args,**kwargs):
+	        object=object.__new__(self) # 创建的空对象
+	        return object
+	```
 
 - **\__call__对象执行方法**
 
-  ```
-  普通对象自身没有方法，不能使用“对象名()”执行方法，只能通过“对象名.方法名()”调用类的方法，但此种模式可以让对象直接通过“对象名()”去执行一个定义好的自己的方法。
-  ```
+	```
+	普通对象自身没有方法，不能使用“对象名()”执行方法，只能通过“对象名.方法名()”调用类的方法，但此种模式可以让对象直接通过“对象名()”去执行一个定义好的自己的方法。
+	```
 
-  ```python
-  class Foo:
-      def __call__(self,*args,**kwargs):
-          print("1111")
-  obj = Foo()
-  obj() #获取结果为：1111。
-  ```
+	```python
+	class Foo:
+	    def __call__(self,*args,**kwargs):
+	        print("1111")
+	obj = Foo()
+	obj() #获取结果为：1111。
+	```
 
 # 异常处理
 
@@ -3122,7 +3050,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ## Syntax
 
-- SQL syntax in Python
+- **语法**：`sql = "SQL_SYNTAX`
 
   ```python
   sql = "show databases;"
@@ -3583,7 +3511,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 # Flask 框架
 
-Flask 是一个轻量级的 Python Web 框架，适用于构建小型到中型规模的 Web 应用程序和 API。它由 Armin Ronacher 创建，基于 Werkzeug 和 Jinja2。Flask 的设计目标是简单而灵活，使得开发者能够快速地构建 Web 应用。
+**Flask** 是一个轻量级的 Python Web 框架，适用于构建小型到中型规模的 Web 应用程序和 API。它由 Armin Ronacher 创建，基于 Werkzeug 和 Jinja2。Flask 的设计目标是简单而灵活，使得开发者能够快速地构建 Web 应用。
 
 ## 环境搭建
 

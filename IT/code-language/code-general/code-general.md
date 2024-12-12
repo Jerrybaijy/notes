@@ -1152,7 +1152,7 @@
 - 装饰器
 
 	- 应用：自定义一个新功能，在不修改源函数内部代码的前提下，可以在源函数执行前后扩展自定义功能。
-	- 把 `func()` 的函数名作为 `a` 传给 `outer()`，把 `inner()` 的函数名作为返回值，赋给 `func` 的函数名。
+	- 把 `func()` 的函数名作为 `a` 传给 `outer()`，把 `inner()` 的函数名作为返回值，赋给 `func` 的函数名。
 	
 	```python
 	def outer(a):
@@ -1399,3 +1399,75 @@
 
 - **类（Class）**：定义对象的模板，规定对象的属性和方法。
 - **对象（Object）**：类的具体实例，拥有类的属性和方法。
+
+## 面向对象三大特性
+
+### 类的封装
+
+- 封装
+
+	```
+	- 封装就是把对象的某个属性，只能通过类内部的方法访问，而不能从外部直接调用。
+	- 方法：在定义类属性时，把“self.属性”改成“self.__属性”，然后把该属性的操作创建到一个方法内。
+	```
+
+- 将数据封装到对象
+
+	```python
+	class Foo:
+	    def __init__(self, name, age):
+	        self.name = name
+	        self.age = age
+	obj = Foo("Jerry", 30)
+	```
+
+- 将同一类方法封装到类
+
+	```py
+	class Message:
+	    def email(self):
+	        pass
+	    def wechat(self):
+	        pass
+	    def sms(self):
+	        pass
+	
+	class FileHandler:
+	    def txt(self):
+	        pass
+	    def excel(self):
+	        pass
+	    def word(self):
+	        pass
+	```
+
+### 类的继承
+
+- 子类自动拥有父类的属性和方法。
+
+- 语法
+
+	```python
+	class Base:
+	    def func1(self):
+	        pass
+	
+	class Son(Base):
+	    def func2(self):
+	        pass
+	
+	obj = Son()  # 创建子类对象
+	obj.func1()  # 子类自动拥有父类的属性和方法
+	```
+
+	```
+	- 子类必须自动拥有父类属性和方法，但父类不拥有子类的属性和方法。
+	- 当子类和父类拥有相同属性和方法时，子类只调用自己，而不调用父类。
+	- 创建子类对象时，要填写父类的各个属性。
+	- 在python中，一个父类可以有多个子类，一个子类也可以有多个父类。
+	- 所有类的最终父类是object，如果不填写父类，系统默认为父类就是object。
+	```
+
+### 类的多态
+
+​	支持传入多种类型参数
