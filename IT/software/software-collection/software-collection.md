@@ -217,7 +217,7 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
    sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
    ```
 
-### [卸载 Google Cloud CLI](https://cloud.google.com/sdk/docs/uninstall-cloud-sdk?hl=zh-cn)
+### [卸载 Google Cloud CLI](https://cloud.google.com/sdk/docs/uninstall-cloud-sdk?hl=zh-cn)
 
 1. 运行以下命令查找您的安装目录；
 
@@ -225,7 +225,7 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
 	gcloud info --format='value(installation.sdk_root)'
 	```
 
-2. 手动打开安装目录，点击 `unistall` 卸载；
+2. 手动打开安装目录，点击 `unistall` 卸载；
 
 3. 运行以下命令查找您的用户配置目录；
 
@@ -1344,18 +1344,43 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 # Shell Script
 
-## Script Basics
+## Script 基础
 
-​	A shell script is a computer program designed to be run by a Unix/Linux shell, such as Bash.It consists of a sequence of shell commands and constructs, just like you would type them at the command line prompt.
+**Shell 脚本**（Shell Script） 用于通过 `Unix/Linux shell` 自动运行程序，例如 `Bash`。它包含了一系列 `shell命令`，就像你在命令行里输入它们一样。
+
+### 创建脚本
+
+1. 使用记事本创建一个 `.txt` 文件；
+
+2. 在记事本中输入想要的命令，以 `Git push` 为例；
+
+	```bash
+	git add .
+	git commit -m "Daily preservation"
+	git push
+	exec $SHELL
+	```
+
+3. 保存文件并关闭；
+
+4. 将文件后缀名改为 `.sh`，例如 `git-push.sh`；
+
+5. 双击文件就会依次执行上述命令。
+
+### 常用命令
+
+- **`#`**：注释，例如 `exec $SHELL  # 执行完毕保持窗口`；
+- **`exec $SHELL`**：执行完毕保持窗口；
 
 ## Scripts
 
-- Git push
+- **Git push**
 
   ```bash
   git add .
   git commit -m "Daily preservation"
   git push
+  exec $SHELL  # 执行完毕保持窗口
   ```
 
 # SSH
@@ -1473,7 +1498,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 2. `创建虚拟机` > `典型` > `稍后安装操作系统` > `更改虚拟系统显示名称和存储位置` > 一直到完成
 3. 添加 U 盘
    1. `编辑虚拟机` > `添加硬盘` > 选 `NVMe` > 使用物理磁盘 > 设备选最后一个
-   2. 如果使用物理磁盘报错，找到 VMware 安装目录，右键属性，在 `兼容` 窗口勾选 `以管理员身份运行此程序`
+   2. 如果使用物理磁盘报错，找到 VMware 安装目录，右键属性，在 `兼容` 窗口勾选 `以管理员身份运行此程序`
    3. `新添加的 U 盘` > `高级` > 勾选 `独立`，这样 U 盘不会被快照还原
    4. 注意，待做完系统应该把新添加的硬盘删除，否则会影响其它虚拟机
 4. 进入 BIOS 选择 PE
