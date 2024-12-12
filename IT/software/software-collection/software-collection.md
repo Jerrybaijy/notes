@@ -156,7 +156,7 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
 
 4. 使用本地 SDK Shell 代替网页版的 Cloud Shell 
 
-5. 安装 gke-gcloud-auth-plugin 插件，否则无法使用 kubectl 命令来管理您的集群
+5. 安装 `gke-gcloud-auth-plugin` 插件，否则无法使用 `kubectl` 命令来管理您的集群
 
    ```bash
    gcloud components install gke-gcloud-auth-plugin
@@ -216,6 +216,24 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
    # 安装插件
    sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
    ```
+
+### [卸载 Google Cloud CLI](https://cloud.google.com/sdk/docs/uninstall-cloud-sdk?hl=zh-cn)
+
+1. 运行以下命令查找您的安装目录；
+
+	```bash
+	gcloud info --format='value(installation.sdk_root)'
+	```
+
+2. 手动打开安装目录，点击 `unistall` 卸载；
+
+3. 运行以下命令查找您的用户配置目录；
+
+	```bash
+	 gcloud info --format='value(config.paths.global_config_dir)'
+	```
+
+4. 手动删除用户配置目录。
 
 ## 常用命令
 
@@ -288,7 +306,6 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
   gcloud compute instances list --project=$PROJECT_ID
   ```
 
-  
 
 ## [Bare Metal](https://cloud.google.com/bare-metal/docs/bms-setup?hl=zh-cn)
 
@@ -408,7 +425,7 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
 
 ## [GKE](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview?hl=zh-cn)
 
-GKE (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服务，可以使用 Google 的基础架构大规模部署和运营容器化应用。
+**GKE** (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服务，可以使用 Google 的基础架构大规模部署和运营容器化应用。
 
 ### 手动部署
 
@@ -753,11 +770,11 @@ GKE (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服
 
 # MongoDB
 
-​	MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是一种文档型数据库，以 BSON（Binary JSON，二进制 JSON）格式展示数据。Collection 类似于 MySQL 中的 table, document 类似于 MySQL 中的 row。
+MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是一种文档型数据库，以 BSON（Binary JSON，二进制 JSON）格式展示数据。`Collection` 类似于 MySQL 中的 `table`, `document` 类似于 MySQL 中的 `row`。
 
-## Build ENV
+## 环境搭建
 
-### Install
+### 安装 MongoDB
 
 1. 此步骤为在 Ubuntu 中安装
 
@@ -816,9 +833,9 @@ GKE (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服
 - **MongoDB Manage**
 
   ```bash
-  # show MongoDB version
+  # 查看 mongod 版本
   mongod --version
-  # show MongoDB Shell version
+  # 查看 MongoDB Shell 版本
   mongo --version
   # show status
   sudo systemctl status mongod
@@ -1257,13 +1274,13 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 
   ![image-20240321193038122](assets/image-20240321193038122.png)
 
-- **请求方法**：例 PUT，对应前端的 method
+- **请求方法**：例 `PUT`，对应前端的 `method`；
 
-- **请求地址**：对应后端的接口，例子中 /student 是类，/update/{studentId} 由 controller 定义
+- **请求地址**：对应后端的接口，例子中 `/student` 是类，`/update/{studentId}` 由 `controller` 定义；
 
-- **Body**：即用户要发送的请求内容，以 JSON 格式发送
+- **Body**：即用户要发送的请求内容，以 JSON 格式发送；
 
-- 最后一行是反馈结果，类似于 console
+- 最后一行是反馈结果，类似于 `console`。
 
 # Prometheus
 
@@ -1325,10 +1342,6 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
    docker start grafana prometheus twas_metrics
    ```
 
-# Regex
-
-​	**正则表达式**（Regular Expression，在代码中常简写为regex、regexp或RE），是一种[文本模式](https://baike.baidu.com/item/文本模式/7355156?fromModule=lemma_inlink)，包括普通字符（例如，a 到 z 之间的字母）和特殊字符（[元字符](https://baike.baidu.com/item/元字符/6062776?fromModule=lemma_inlink)）。正则表达式使用范式（pattern）来匹配（match）字符串，通常被用来检索、替换那些符合某个模式的文本。
-
 # Shell Script
 
 ## Script Basics
@@ -1363,11 +1376,11 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
   - 新生成的密钥存储在`C:\Users\39331\.ssh\`
 
-  - 一个是私钥，另一个是同名的公钥（.pub）
+  - 一个是私钥，另一个是同名的公钥（`.pub`）
 
 3. **发送 SSH 密钥对**
 
-  1. 创建 Google 实例时，在 `高级选项` → `安全` → `管理访问权限` 手动添加本地 `Windows公钥` 内容
+  1. 创建 Google 实例时，在 `高级选项` > `安全` > `管理访问权限` 手动添加本地 `Windows公钥` 内容
   2. 记事本打开新生成的公钥，复制内容，粘贴至 Google
 
 4. **连接虚机**
@@ -1387,10 +1400,10 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 ### 环境搭建
 
 1. 百度搜索 `Vmware workstation` 下载官方安装包，正常安装 VMware，从网上找秘钥激活。
-2. VMware Workstation Pro 17秘钥：MC60H-DWHD5-H80U9-6V85M-8280D
-3. 15.5秘钥：YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8
+2. VMware Workstation Pro 17秘钥：`MC60H-DWHD5-H80U9-6V85M-8280D`
+3. 15.5秘钥：`YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8`
 4. 设置客户机存储位置
-  - 编辑 > 首选项 > 虚拟机默认存储位置
+  - `编辑` > `首选项` > `虚拟机默认存储位置`
 
 
 ### 名词解释
@@ -1423,10 +1436,10 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 5. 刚进入时显示黑屏正常，等几分钟
 
-   - 或者单击客户机屏幕，按一下 ESC 键选择
+   - 或者单击客户机屏幕，按一下 `ESC` 键选择
    - 注意这个时间很短，要迅速
 
-6. 选择从哪进系统，这里选择从 CD，回车确认
+6. 选择从哪进系统，这里选择从 `CD`，回车确认
 
    ![image-20231215172305532](assets/image-20231215172305532.png)
 
@@ -1434,7 +1447,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 8. 具体安装过程详见《Windows 笔记》
 
-9. 系统安装完毕以后需要把 CD 切换至物理驱动器的“自动选择”
+9. 系统安装完毕以后需要把 `CD` 切换至物理驱动器的“自动选择”
 
 10. 安装 VM Tools
 
@@ -1450,34 +1463,34 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 3. 修改CD路径
 
-  ![image-20231213000425649](assets/image-20231213000425649.png)
+	<img src="assets/image-20231213000425649.png" alt="image-20231213000425649" style="zoom:67%;" />
 
 4. 其余同先安装
 
 #### U 盘创建
 
 1. 尽量不要使用 U 盘做系统，因为启动 U 盘会捆绑大量垃圾软件
-2. 创建虚拟机 > 典型 > 稍后安装操作系统 > 更改虚拟系统显示名称和存储位置 > 一直到完成
+2. `创建虚拟机` > `典型` > `稍后安装操作系统` > `更改虚拟系统显示名称和存储位置` > 一直到完成
 3. 添加 U 盘
-   1. 编辑虚拟机 > 添加硬盘 > 选“NVMe” > 使用物理磁盘 > 设备选最后一个
-   2. 如果使用物理磁盘报错，找到 VMware 安装目录，右键属性，在“兼容”窗口勾选“以管理员身份运行此程序”
-   3. 新添加的 U 盘 > 高级 > 勾选“独立”，这样 U 盘不会被快照还原
+   1. `编辑虚拟机` > `添加硬盘` > 选 `NVMe` > 使用物理磁盘 > 设备选最后一个
+   2. 如果使用物理磁盘报错，找到 VMware 安装目录，右键属性，在 `兼容` 窗口勾选 `以管理员身份运行此程序`
+   3. `新添加的 U 盘` > `高级` > 勾选 `独立`，这样 U 盘不会被快照还原
    4. 注意，待做完系统应该把新添加的硬盘删除，否则会影响其它虚拟机
 4. 进入 BIOS 选择 PE
-   1. 菜单栏 > 虚拟机 > 电源 > 打开电源时进入固件
+   1. `菜单栏` > `虚拟机` > `电源` > 打开电源时进入固件
    2. 选择代表 U 盘的选项启动进入 PE
 5. 分区
    1. 进入 PE 以后，使用分区软件分区
 6. 做系统
-   1. 使用“老毛桃一键装机”
+   1. 使用 `老毛桃一键装机`
    2. 注意选择目标系统盘和系统 ISO 镜像
 
 ### VMware Tools
 
-1. 安装VMware Tools，客户机可以调分辨率，可以全屏幕
+1. 安装 `VMware Tools`，客户机可以调分辨率，可以全屏幕
 2. Windows 系统安装 VMware Tools
    1. 必须在安装好虚拟系统以后
-   2. 点击虚拟机界面的“虚拟机”，安装VMware Tools，下方有提示
+   2. 点击虚拟机界面的 `虚拟机`，安装 VMware Tools，下方有提示
    3. 然后进客户机，我的电脑，光盘那个磁盘就是，双击安装
    4. 安装完成弹出 CD
 
@@ -1610,7 +1623,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
   	> 注意与搜狗输入法冲突！
   	>
-  	> `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
+  	> `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
   - `F1 | Ctrl + Shift + P`：打开命令面板
 

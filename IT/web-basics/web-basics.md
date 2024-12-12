@@ -46,8 +46,8 @@
 	- 显示当前工作目录的绝对路径：`pwd` 
 - **引用文件**
 	- 上级：`../my-image.jpg`
-	- 同级：`./my-image.jpg` 或 `my-image.jpg`（基于当前目录的相对路径可省略 `./`）
-	- 子目录：`./subdirectory/my-image.jpg` 或 `subdirectory/my-image.jpg`
+	- 同级：`./my-image.jpg` 或 `my-image.jpg`（基于当前目录的相对路径可省略 `./`）
+	- 子目录：`./subdirectory/my-image.jpg` 或 `subdirectory/my-image.jpg`
 
 # 文件名
 
@@ -256,7 +256,6 @@
   $1年—
   ```
 
-  
 
 # 通配符
 
