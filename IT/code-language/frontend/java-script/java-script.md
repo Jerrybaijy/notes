@@ -2097,311 +2097,283 @@ JS提前设置好的对象，自带一些属性和方法。
 
 ### 获取元素
 
-- 
+JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元素对象组成的数组。
 
-### 获取元素（旧）
+#### 获取第一个元素
 
-- **根据选择器获取标签**
+- **语法**：`document.querySelector("选择器")`
 
-  ```
-  - 语法
-  	- 类似CSS中style的样式层级
-  		document.querySelector("样式层级")
-              - 返回值  第一个符合要求的元素对象
-              - 返回类型  object
-          document.querySelectorAll("样式层级")
-              - 返回值  所有符合要求元素的节点列表集合
-              - 返回类型  object  原型为NodeList  是个伪数组        
-      - 不支持提前调用
-      - 兼容性问题
-          - 不支持IE8及以下浏览器
-  ```
+	```html
+	<body>
+	  <div id="demo">
+	    <p class="text">text1</p>
+	    <p class="text">text2</p>
+	    <p>text3</p>
+	  </div>
+	  <script src="script.js"></script>
+	</body>
+	```
 
-  ```html
-  <body>
-      <div id="demo">
-          <p class="text">text1</p>
-          <p class="text">text2</p>
-          <p>text3</p>
-      </div>
-      <script>
-          let elements = document.querySelector("#demo  .text");
-          console.log(elements);  // <p class="text">text1</p>
-          console.log(typeof elements);  // object
-          console.log(elements[0]);  // undefined
-      </script>
-  </body>
-  ```
+	```javascript
+	let elements = document.querySelector("#demo  .text");
+	console.log(elements);  // <p class="text">text1</p>
+	console.log(typeof elements);  // object
+	console.log(elements[0]);  // undefined
+	```
 
-  ```html
-  <body>
-      <div id="demo">
-          <p class="text">text1</p>
-          <p class="text">text2</p>
-          <p>text3</p>
-      </div>
-      <script>
-          let elements = document.querySelectorAll("#demo  .text");
-          console.log(elements);  // NodeList(2) [p.text, p.text]
-          console.log(typeof elements);  // object
-          console.log(elements[0]);  // <p class="text">text1</p>
-      </script>
-  </body>
-  ```
+#### 获取全部元素
 
-- **根据id获取元素**
+- **语法**：`document.querySelectorAll("选择器")`
 
-  ```
-  - 语法
-  	- 类似CSS中的ID选择器
-  		document.getElementById("元素id")
-  	- 返回值  元素对象
-  	- 返回类型  object
-  ```
+	```html
+	<body>
+	  <div id="demo">
+	    <p class="text">text1</p>
+	    <p class="text">text2</p>
+	    <p>text3</p>
+	  </div>
+	  <script src="script.js"></script>
+	</body>
+	```
 
-  ```html
-  <body>
-      <p id="demo">text1</p>
-      <script>
-          let element = document.getElementById("demo");
-          console.log(element);  // <p id="demo">text1</p>
-          console.log(typeof element);  // object
-      </script>
-  </body>
-  ```
+	```javascript
+	let elements = document.querySelectorAll("#demo  .text");
+	console.log(elements);  // NodeList(2) [p.text, p.text]
+	console.log(typeof elements);  // object
+	console.log(elements[0]);  // <p class="text">text1</p>
+	```
 
-- **根据标签名获取元素**
+#### 通过元素名
 
-  ```
-  - 语法
-  	- 类似CSS中的标签选择器
-  		document.getElementByTagName("元素名")
-  	- 返回值  元素名相同的标签组成的元素集合
-  	- 返回类型  object  原型为HTMLCollection  是个伪数组
-  ```
+- **语法**：`document.getElementsByTagName("元素名")`
 
-  ```html
-  <body>
-      <p>text1</p>
-      <p>text2</p>
-      <p>text3</p>
-      <div>text4</div>
-      <script>
-          let elements = document.getElementsByTagName("p");
-          console.log(elements);  // HTMLCollection(3) [p, p, p]
-          console.log(typeof elements);  // object
-          console.log(elements[0]);  // <p>text1</p>
-      </script>
-  </body>
-  ```
+	```html
+	<body>
+	  <p>text1</p>
+	  <p>text2</p>
+	  <p>text3</p>
+	  <div>text4</div>
+	  <script src="script.js"></script>
+	</body>
+	```
 
-- **根据层级获取元素**
+	```javascript
+	let elements = document.getElementsByTagName("p");
+	console.log(elements);  // HTMLCollection(3) [p, p, p]
+	console.log(typeof elements);  // object
+	console.log(elements[0]);  // <p>text1</p>
+	```
 
-  ```
-  - 语法
-  	- 类似CSS中的层级选择器
-  		父元素.getElementsByTagName("子元素名")
-  	- 返回值  父元素下所有符合要求的元素集合
-  	- 返回类型  object  原型为HTMLCollection  是个伪数组
-  ```
+	**解释**：
 
-  ```html
-  <body>
-      <div id="demo">
-          <p>text1</p>
-          <p>text2</p>
-          <p>text3</p>
-      </div>
-      <script>
-          let element1 = document.getElementById("demo");
-          let element2 = element1.getElementsByTagName("p");
-          console.log(element2);  // HTMLCollection(3) [p, p, p]
-          console.log(typeof element2);  // object
-          console.log(element2[0]);  // <p>text1</p>
-      </script>
-  </body>
-  ```
+	1. `console.log(divElements);`：打印一个伪数组
+	2. `console.log(divElements[0]);`：通过索引数组，打印元素
 
-- **根据类名获取标签**
+- **其它选择器**
+	- **`document.getElementsByTagName("元素名")`**：获取所有 `标签名 = "元素名"` 的元素；
+	- **`document.getElementsByClassName("类名")`**：获取所有 `class = "类名"` 的元素；
+	- **`document.getElementsByName("name属性值")`**：获取所有 `name = "name属性值"` 的元素；
+	- **`document.getElementsById("id值")`**：获取所有 `id = "id值"` 的元素；
+- **元素数量**
+	- **`document.querySelector("选择器")`**：获取第一个匹配 `选择器` 的元素；
+	- **`document.querySelectorAll("选择器")`**：获取所有匹配 `选择器` 的元素；
 
-  ```
-  - 语法
-  	- 类似CSS中的class选择器
-          document.getElementsByClassName("类名")
-          父标签.getElementsByClassName("类名")
-  	- 返回值  class属性值相同的元素组成的节点列表集合
-  	- 返回类型  object  原型为原型为HTMLCollection  是个伪数组
-  - 兼容性问题
-  	- 不支持IE8及以下浏览器
-  ```
+#### 通过类名
 
-  ```html
-  <body>
-      <div id="demo">
-          <p class="text">text1</p>
-          <p class="text">text2</p>
-          <p>text3</p>
-      </div>
-      <script>
-          let elements = document.getElementsByClassName("text");
-          console.log(elements);  // HTMLCollection(2) [p.text, p.text]
-          console.log(typeof elements);  // object
-          console.log(elements[0]);  // <p class="text">text1</p>
-      </script>
-  </body>
-  ```
+- **语法**：`document.getElementsByClassName("类名");`
 
-- **根据name属性获取元素**
+	```html
+	<body>
+	  <div id="demo">
+	    <p class="text">text1</p>
+	    <p class="text">text2</p>
+	    <p>text3</p>
+	  </div>
+	  <script src="script.js"></script>
+	</body>
+	```
 
-  ```
-  - 语法
-  	类似CSS中的属性选择器
-  	父元素.getElementsByTagName("子元素名")
-  	- 返回值  name属性值相同的元素组成的节点列表集合
-  	- 返回类型  object  原型为原型为 NodeList  是个伪数组
-  - 不建议使用
-  	- 在IE、Opera浏览器中有兼容问题，会同时获取id与name属性值相同的元素
-  ```
+	```javascript
+	let elements = document.getElementsByClassName("text");
+	console.log(elements);  // HTMLCollection(2) [p.text, p.text]
+	console.log(typeof elements);  // object
+	console.log(elements[0]);  // <p class="text">text1</p>
+	```
 
-  ```html
-  <body>
-      <form>
-          <input type="radio" name="age">20<br>
-          <input type="radio" name="age">21<br>
-          <input type="radio" name="age">22<br>
-      </form>
-      <h1></h1>
-      
-      <script>
-          let elements = document.getElementsByName("age");
-          console.log(elements);  // NodeList(3) [input, input, input]
-          console.log(typeof elements);  // object
-          console.log(elements[0]);  // <input type="radio" name="age">
-      </script>
-  </body>
-  ```
+#### 通过 name 属性值
 
-### 标签其它操作
+- **语法**：`document.getElementsByName("name属性值")`
 
-- **其它操作**
+	```html
+	<body>
+	  <form>
+	    <input type="radio" name="age">20<br>
+	    <input type="radio" name="age">21<br>
+	    <input type="radio" name="age">22<br>
+	  </form>
+	  <script src="script.js"></script>
+	</body>
+	```
 
-  此项为早期学习内容
+	```javascript
+	let elements = document.getElementsByName("age");
+	console.log(elements);  // NodeList(3) [input, input, input]
+	console.log(typeof elements);  // object
+	console.log(elements[0]);  // <input type="radio" name="age">
+	```
 
-  ```javascript
-  // 以下tag均为JS创建/获取的标签的变量
-  
-  // 创建标签
-  let tag = document.createElement("div");  // li为标签形式
-  
-  // 获取标签
-  let tag = document.getElementById("city");  // city为原标签id
-  
-  // 添加标签
-  tagFather.append(tag);  // 添加至尾部
-  tagFarher.prepend(tag);  // 添加至顶部
-  
-  // 获取标签内容
-  let data = tag.innerText
-  
-  // 更改标签内容
-  tag.innerText = data;  // tag 标签变量  data 更改内容的变量
-  
-  // 获取输入框内容text/password
-  let data = tag.value
-  ```
+#### 通过 id 值
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>案例</title>
-  </head>
-  <body>
-  <ul id="city">
-      <li>北京</li>
-  </ul>
-  
-  <script>
-      let cityList = ["上海", "广州", "深圳"];
-  
-      // 循环数组
-      for(let idx in cityList){
-          // 获取到cityList的元素
-          let text = cityList[idx];
-  
-          // 创建li标签
-          let tag = document.createElement("li");
-          // 更改标签内容
-          tag.innerText = text;
-  
-          // 获取ul标签
-          let parent = document.getElementById("city");
-  
-          // 将li标签添加到ul标签
-          parent.append(tag)
-      }
-  </script>
-  </body>
-  </html>
-  ```
+- **语法**：`document.getElementById("id值")`
+
+	```html
+	<body>
+	  <p id="demo">text1</p>
+	  <script src="script.js"></script>
+	</body>
+	```
+
+	```javascript
+	let element = document.getElementById("demo");
+	console.log(element);  // <p id="demo">text1</p>
+	console.log(typeof element);  // object
+	```
+
+### 创建元素
+
+- **语法**：`document.createElement("元素名");`
+
+	```javascript
+	let tag = document.createElement("div");
+	```
+
+### 添加元素
+
+- **语法**：`父元素.append(子元素);`，添加至父元素尾部；
+
+	```javascript
+	tagFather.append(tag);
+	```
+
+- **语法**：`父元素.prepend(子元素);`，添加至父元素顶部；
+
+	```javascript
+	tagFarher.prepend(tag);
+	```
+
+- **语法**：`新元素.insertBefore(旧元素);`，将新元素添加至旧元素之前；
+
+	```javascript
+	tagNew.insertBefore(tagOld);
+	```
+
+### 删除元素
+
+- **语法**：`TAG.remove;`
+
+	```javascript
+	tag.remove();
+	```
+
+### 获取元素内容
+
+- **语法**：`TAG.innerText;`
+
+	```javascript
+	let data = tag.innerText;
+	```
+
+### 更改元素内容
+
+- **语法**：`TAG.innerText = DATA;`
+
+	```javascript
+	tag.innerText = data;
+	```
+
+### 获取输入框内容
+
+- **语法**：`TAG.value;`
+
+	```javascript
+	let data = tag.value;
+	```
+
+### 示例
+
+- **示例**
+
+	```html
+	<body>
+	  <ul id="city">
+	    <li>北京</li>
+	  </ul>
+	  <script src="script.js"></script>
+	</body>
+	```
+
+	```javascript
+	let cityList = ["上海", "广州", "深圳"];
+	
+	// 循环数组
+	for (let i in cityList) {
+	  // 获取到cityList的元素
+	  let city = cityList[i];
+	
+	  // 创建li标签
+	  let liTag = document.createElement("li");
+	  // 更改标签内容
+	  liTag.innerText = city;
+	
+	  // 获取ul标签
+	  let ulTag = document.getElementById("city");
+	
+	  // 将li标签添加到ul标签
+	  ulTag.append(liTag)
+	}
+	```
 
 ## 事件
 
-### 事件简介
+JS 解释器会给有绑定事件的元素添加一个监听，解释器会一直监测这个元素，只要触发对应的绑定事件，会立刻执行事件函数。
 
-​	JS解释器会给有绑定事件的元素添加一个监听，解释器会一直监测这个元素，只要触发对应的绑定事件，会立刻执行事件函数。
+### 绑定方法
 
-- **绑定事件（注册事件）三要素**
+- **语法**：HTML 元素有绑定事件的属性。
 
-  ```
-  - 事件源，给谁绑定事件，即元素对象
-  - 事件类型：绑定什么类型的事件，如click单击
-  - 事件函数：函数体就是事件发生后执行的内容
-  ```
+- **内联绑定**
 
-- **绑定方法**
+	```html
+	<body>
+	  <input type="button" id="btn" value="点我" onclick="alert('点我干嘛？')">
+	</body>
+	```
 
-  - 绑定在HTML元素属性中
+- **DOM 对象绑定**
 
-  ```html
-  <body>
-      <input type="button" id="btn" value="点我" onclick="alert('点我干嘛？')">
-  </body>
-  ```
+	```html
+	<body>
+	  <input type="button" id="btn" value="点我">
+	  <script src="script.js"></script>
+	</body>
+	```
 
-  - 绑定在DOM对象属性上*
+	```javascript
+	let btn = document.getElementById("btn");
+	btn.onclick = function () {
+	  alert("点我干嘛");
+	};
+	```
 
-  ```
-  - 语法
-  	事件源.事件类型 = 事件函数
-  ```
+### 常用鼠标事件
 
-  ```html
-  <body>
-      <input type="button" id="btn" value="点我">
-      <script>
-          let btn = document.getElementById("btn");
-          btn.onclick = function () {
-              alert("点我干嘛");
-          };
-      </script>
-  </body>
-  ```
-
-### 鼠标事件
-
-- **常见鼠标事件**
-
-  ```
-  - onclick         单击触发
-  - ondblclick      双击触发
-  - onmousedown     按下触发
-  - onmouseup       松开触发
-  - onmousemove     在元素上移动触发
-  - onmouseover     移动到元素上触发
-  - onmouseout      移出元素边界触发
-  ```
+- onclick         单击触发
+- ondblclick      双击触发
+- onmousedown     按下触发
+- onmouseup       松开触发
+- onmousemove     在元素上移动触发
+- onmouseover     移动到元素上触发
+- onmouseout      移出元素边界触发
 
 ## DOM对象属性的操作
 
@@ -2435,119 +2407,111 @@ JS提前设置好的对象，自带一些属性和方法。
 
   ```html
   <body>
-      <a href="https://www.baidu.com/" title="跳转至百度首页" id="link">跳转</a>
-      <img src="images/a.jpg" alt="手机" class="pic" id="pic">
-      <script>
-          // 获取元素
-          let link = document.getElementById("link");
-          let pic = document.getElementById("pic");
-  
-          console.log(link.href);  // https://www.baidu.com/
-          console.log(link.title);  // 跳转至百度首页
-          console.log(link.id);  // link
-          console.log(pic.src);  // "图片的绝对路径"
-          console.log(pic.alt);  // 手机
-          console.log(pic.id);  // pic
-  		
-          // 改变元素属性
-          pic.src = "images/b.jpg";
-      </script>
+    <a href="https://www.baidu.com/" title="跳转至百度首页" id="link">跳转</a>
+    <img src="images/dog.jpg" alt="狗" class="pic" id="pic">
+    <script src="script.js"></script>
   </body>
   ```
 
-- **事件与元素属性结合案例**
+  ```javascript
+  // 获取元素
+  let link = document.getElementById("link");
+  let pic = document.getElementById("pic");
+  
+  console.log(link.href);  // https://www.baidu.com/
+  console.log(link.title);  // 跳转至百度首页
+  console.log(link.id);  // link
+  console.log(pic.src);  // "图片的绝对路径"
+  console.log(pic.alt);  // 狗
+  console.log(pic.id);  // pic
+  
+  // 改变元素属性
+  pic.src = "images/elephant.jpg";
+  ```
 
-  ```
-  - 案例：点击按钮，循环切换图片
-  ```
+- **案例：点击按钮，循环切换图片**
 
   ```html
   <body>
-      <input type="button" value="点击" id="btn"><br>
-      <img src="images/a.jpg" id="pic">
-      <script>
-          let btn = document.getElementById("btn");
-          let pic = document.getElementById("pic");
-          
-          // 因为获取src属性值会得到绝对路径，所以不能做相等判断，所以引入msg
-          let msg = 1;
-  
-          // 给按钮添加事件
-          btn.onclick = function () {
-              if (msg == 1) {
-                  pic.src = "images/a.jpg";
-                  msg = 2
-              } else {
-                  pic.src = "images/b.jpg";
-                  msg = 1;
-              }
-          };
-      </script>
+    <input type="button" value="点击" id="btn"><br>
+    <img src="images/dog.jpg" id="pic">
+    <script src="script.js"></script>
   </body>
   ```
 
-  ```
-  - 案例：点击按钮，循环显示和隐藏图片
-  ```
-
-  ```html
-  <head>
-      <meta charset="UTF-8">
-      <title>草稿</title>
-      <style>
-          * {
-              margin: 0;
-              padding: 0;
-          }
+  ```javascript
+  let btn = document.getElementById("btn");
+  let pic = document.getElementById("pic");
   
-          div {
-              width: 200px;
-              height: 200px;
-              background-color: pink;
-          }
+  // 因为获取src属性值会得到绝对路径，所以不能做相等判断，所以引入msg
+  let msg = 1;
   
-          .hide {
-              display: none;
-          }
-  
-          .show {
-              display: block;
-          }
-      </style>
-  
-  </head>
-  
-  <body>
-      <input type="button" value="点击隐藏" id="btn"><br>
-      <div id="box"></div>
-      <script>
-          let btn = document.getElementById("btn");
-          let box = document.getElementById("box");
-  
-          // 给按钮添加事件
-          btn.onclick = function () {
-              if (this.value == "点击隐藏") {
-                  // 通过类名改变元素的display属性值
-                  box.className = "hide";
-                  // 使用this指代当前事件源btn
-                  this.value = "点击显示";
-              } else {
-                  box.className = "show";
-                  this.value = "点击隐藏";
-              }
-          };
-      </script>
-  </body>
+  // 给按钮添加事件
+  btn.onclick = function () {
+    if (msg == 1) {
+      pic.src = "images/dog.jpg";
+      msg = 2
+    } else {
+      pic.src = "images/elephant.jpg";
+      msg = 1;
+    }
+  };
   ```
 
-  ```
-  - 案例：画廊
-  ```
-  
-  ```html
-  ```
-  
-  
+- **案例：点击按钮，循环显示和隐藏图片**
+
+	```html
+	<head>
+	  <link rel="stylesheet" href="styles.css">
+	</head>
+	
+	<body>
+	  <input type="button" value="点击隐藏" id="btn"><br>
+	  <div id="box"></div>
+	  <script src="script.js"></script>
+	</body>
+	```
+
+	```css
+	* {
+	  margin: 0;
+	  padding: 0;
+	}
+	
+	div {
+	  width: 200px;
+	  height: 200px;
+	  background-color: pink;
+	}
+	
+	.hide {
+	  display: none;
+	}
+	
+	.show {
+	  display: block;
+	}
+	```
+
+	```javascript
+	let btn = document.getElementById("btn");
+	let box = document.getElementById("box");
+	
+	// 给按钮添加事件
+	btn.onclick = function () {
+	  if (this.value == "点击隐藏") {
+	    // 通过类名改变元素的display属性值
+	    box.className = "hide";
+	    // 使用this指代当前事件源btn
+	    this.value = "点击显示";
+	  } else {
+	    box.className = "show";
+	    this.value = "点击隐藏";
+	  }
+	};
+	```
+
+	
 
 # BOM
 

@@ -48,63 +48,44 @@
   <p style="color: red; font-size: 24px;">这是一段红色的文本。</p>
   ```
 
-- **内部样式表**：将 CSS 规则集放到 HTML 文档 `<head>` 的 `<style>` 元素中。
+- **内部样式表**：将 CSS 规则集放到 HTML 文档 `<head>` 中的 `<style>` 元素中。
 
   ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>内部样式表</title>
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f8fa;
-      }
-  
-      h1 {
-        color: #333;
-      }
-  
       p {
-        font-size: 16px;
-        line-height: 1.5;
+        color: red;
+        font-size: 24px;
       }
     </style>
   </head>
   
   <body>
-    <h1>这是一个标题</h1>
-    <p>这是一个段落文本。</p>
+    <p>这是一段红色的文本。</p>
+    <style>
+      p {
+        color: red;
+        font-size: 24px;
+      }
+    </style>
   </body>
-  
-  </html>
   ```
-
+  
 - **外部样式表**：在 HTML 文档的 `<head>` 中使用 `<link>` 元素引入外部 **CSS 文档**。
 
   ```html
   <head>
-  	<link href="../css/style.css" rel="stylesheet">
+  	<link rel="stylesheet" href="styles.css">
   </head>
+  <body>
+    <p>这是一段红色的文本。</p>
+  </body>
   ```
-
+  
   ```css
-  /* style.css */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f7f8fa;
-  }
-  
-  h1 {
-    color: #333;
-  }
-  
   p {
-    font-size: 16px;
-    line-height: 1.5;
+    color: red;
+    font-size: 24px;
   }
   ```
 
@@ -230,9 +211,9 @@
   | 选择器列表             | div,p      | 选择所有 `<div>` 元素和 `<p>` 元素                           | 1    |
   | 组合选择器             | p.class#id | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1    |
 
-## [类型选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
+## [标签选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
 
-- **类型选择器**：通过**元素名**选择元素；也称标签选择器。
+- **标签选择器**：通过**元素名**选择元素；也称类型选择器。
 
 - **语法**：`元素名 {样式声明}`
 
@@ -1921,7 +1902,7 @@
 	- 继承
 	- 其它...
 
-## [`display` 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+## [`display` 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
 
 - **定义**：**`display`** 属性会影响元素两个方面的布局表现
 	- **外部表现**：元素本身在常规流布局中的表现
@@ -2702,7 +2683,7 @@
 ## 内容不靠边
 
 - 网页中，内容和屏幕边缘往往都有一定距离，而不是紧贴屏幕边缘
-- 这可以通过设置 `<body>` 的 `padding` 实现
+- 这可以通过设置 `<body>` 的 `padding` 实现
 
 
 
