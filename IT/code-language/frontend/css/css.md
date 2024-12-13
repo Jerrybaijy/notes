@@ -1474,7 +1474,7 @@
 
 ### [背景平铺 `background-repeat`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-repeat)
 
-- **语法**：**`background-repeat`** 设置如何平铺对象的 background-image 属性。
+- **语法**：**`background-repeat`** 设置如何平铺对象的 `background-image` 属性。
 - **属性值**
 	-  **`repeat-x`**：水平
 	-  **`repeat-y`**：垂直

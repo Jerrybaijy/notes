@@ -135,7 +135,8 @@
   - **常量名**：大蛇形，例 `MAX_LENGTH`。
   - **类名**：大驼峰，例 `MyFirstJavaClass`。
   - **普通函数名**：小驼峰，例 `maxLength`。
-  - **构造函数名**：首字母大写，例 `Person`
+  - **构造函数名**：首字母大写，例 `Person`。
+  - **对象名**：小驼峰，例 `maxLength`。
 
 ## 注释
 
@@ -217,6 +218,22 @@
 
 	- 弹窗：`alert("哈哈哈");`
 	- 网页输出：`document.write("你猜我在哪");`，注意此种方法在引入脚本时不能使用 `defer`。
+
+## [`this`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)
+
+`this` 是 JavaScript 中的一个特殊关键字，用于引用当前上下文中的对象。`this` 的值在不同的场景中会有所不同，其行为依赖于**函数调用的方式**。
+
+关于 `this` 的指向如下所述：
+
+- **全局上下文**：指向全局对象
+	- 浏览器中是 `window` 对象
+	- Node.js 中是 `global` 对象
+- **普通函数**：指向 `window` 对象
+- **方法**：指向调用该方法的对象
+- **箭头函数**：箭头函数不会绑定自己的 `this`，而是继承自外层作用域的 `this`。
+- **构造函数**：当使用 `new` 关键字调用构造函数时，`this` 指向新创建的对象。
+- **类**：指向该类的实例
+- **DOM 事件**：指向绑定事件的 DOM 元素
 
 # [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)
 
@@ -2014,82 +2031,51 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 	person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
 	```
 
-## 调用属性
+## 操作属性
 
-- **对象外部调用**
+### 读取属性
 
-	```javascript
-	let obj = {
-	    name: "张三",
-	    age: 20,
-	    gender: "男",
-	    sayHi: function () {
-	        console.log("你好");
-	    }
-	};
-	
-	console.log(obj.name);  // 张三
-	console.log(obj["name"]);  // 张三
-	obj.sayHi();  // 你好
-	obj["sayHi"]();  // 你好
-	```
-	
-- **对象内部调用**
+- **语法**：可以通过 **点操作符** (`.`) 或 **方括号** (`[]`) 来访问对象的属性。
 
 	```javascript
-	let obj = {
-	    name: "张三",
-	    age: 20,
-	    gender: "男",
-	    sayHi: function () {
-	        console.log(`${this.name}你好`);  // 对象内部调用自己的属性
-	    }
-	};
+	const obj = { name: "Alice", age: 25 };
 	
-	obj.sayHi();  // 张三你好
+	// 使用点操作符
+	console.log(obj.name); // "Alice"
+	
+	// 使用方括号
+	console.log(obj["age"]); // 25
 	```
 
-## 增删改查
+### 增删改查属性
 
-- **增删改查**
+- **以 `.` 为例，`[]` 同理**
 
 	```javascript
-	// 创建对象
-	let obj1 = {};  // 字面量方式创建，可以直接写属性
-	let obj2 = Object();  // 函数方式创建
-	console.log(typeof obj1);  // object
+	const obj = { name: "Alice" };
 	
-	// 增加属性
-	// 对象.属性名 = 属性值
-	obj.name = "张三";
-	obj.age = 18;
-	obj.gender = "男";
+	// 更新已有属性
+	obj.name = "Bob";
+	
+	// 添加新属性
+	obj.age = 25;
 	
 	// 删除属性
-	// delete 对象.属性名
-	delete obj.name
-	
-	// 修改属性值
-	// 对象.属性名 = 属性值
-	obj.name = "李四"
+	delete obj.age;
 	
 	// 检查属性是否存在
-	console.log("name" in obj);  // true 返回布尔值
+	console.log("name" in obj); // false
 	```
 
-## 遍历对象
+### 遍历对象
 
 - 详见 [`for-in` 语句](#`for-in` 语句)
 
-## 内置对象
+# [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 
-JS提前设置好的对象，自带一些属性和方法。
+**文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。
 
-# DOM
-
-文档对象模型（**D**ocument **O**bject **M**odel，简称 DOM），是一套操作页面元素的 API。
-
-- DOM又称文档树模型
+- DOM 又称文档树模型
 
 ![image-20231119172421918](assets/image-20231119172421918.png)
 
@@ -2169,15 +2155,6 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 	1. `console.log(divElements);`：打印一个伪数组
 	2. `console.log(divElements[0]);`：通过索引数组，打印元素
 
-- **其它选择器**
-	- **`document.getElementsByTagName("元素名")`**：获取所有 `标签名 = "元素名"` 的元素；
-	- **`document.getElementsByClassName("类名")`**：获取所有 `class = "类名"` 的元素；
-	- **`document.getElementsByName("name属性值")`**：获取所有 `name = "name属性值"` 的元素；
-	- **`document.getElementsById("id值")`**：获取所有 `id = "id值"` 的元素；
-- **元素数量**
-	- **`document.querySelector("选择器")`**：获取第一个匹配 `选择器` 的元素；
-	- **`document.querySelectorAll("选择器")`**：获取所有匹配 `选择器` 的元素；
-
 #### 通过类名
 
 - **语法**：`document.getElementsByClassName("类名");`
@@ -2249,31 +2226,83 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 
 ### 添加元素
 
-- **语法**：`父元素.append(子元素);`，添加至父元素尾部；
+- **语法**
 
 	```javascript
-	tagFather.append(tag);
+	// 添加至父节点顶部
+	父节点.prepend(子节点);
+	
+	// 添加至父节点尾部
+	父节点.append(子节点);
+	
+	// 将新节点插入至父节点的某个子节点之前
+	父节点.insertBefore(新节点, 参考节点);
 	```
 
-- **语法**：`父元素.prepend(子元素);`，添加至父元素顶部；
-
-	```javascript
-	tagFarher.prepend(tag);
+	```html
+	<body>
+	  <ul id="parent">
+	    <li id="child1">1</li>
+	    <li id="child2">2</li>
+	    <li id="child3">3</li>
+	  </ul>
+	  <script src="script.js"></script>
+	</body>
 	```
 
-- **语法**：`新元素.insertBefore(旧元素);`，将新元素添加至旧元素之前；
-
 	```javascript
-	tagNew.insertBefore(tagOld);
+	let parentTag = document.getElementById("parent");
+	let childTag1 = document.getElementById("child1");
+	let childTag2 = document.getElementById("child2");
+	let childTag3 = document.getElementById("child3");
+	let childTagx = document.createElement("li");
+	childTagx.innerText = "x";
+	
+	// 添加至父节点顶部
+	parentTag.prepend(childTagx);
+	
+	// 添加至父节点尾部
+	parentTag.append(childTagx);
+	
+	// 将新节点插入至父节点的某个子节点之前
+	parentTag.insertBefore(childTagx, childTag2);
 	```
 
 ### 删除元素
 
-- **语法**：`TAG.remove;`
+- **语法**：
 
-	```javascript
-	tag.remove();
-	```
+  ```javascript
+  // 删除节点本身
+  节点.remove;
+  
+  // 删除父节点的子节点
+  父节点.removeChild(子节点)
+  ```
+
+  ```html
+  <body>
+    <ul id="parent">
+      <li id="child1">1</li>
+      <li id="child2">2</li>
+      <li id="child3">3</li>
+    </ul>
+    <script src="script.js"></script>
+  </body>
+  ```
+
+  ```javascript
+  let parentTag = document.getElementById("parent");
+  let childTag1 = document.getElementById("child1");
+  let childTag2 = document.getElementById("child2");
+  let childTag3 = document.getElementById("child3");
+  
+  // 删除节点本身
+  childTag1.remove();
+  
+  // 删除父节点的子节点
+  parentTag.removeChild(childTag3)
+  ```
 
 ### 获取元素内容
 
@@ -2337,11 +2366,11 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 
 JS 解释器会给有绑定事件的元素添加一个监听，解释器会一直监测这个元素，只要触发对应的绑定事件，会立刻执行事件函数。
 
-### 绑定方法
+### 绑定事件属性方法
 
 - **语法**：HTML 元素有绑定事件的属性。
 
-- **内联绑定**
+- **内联绑定**：HTML 元素的属性
 
 	```html
 	<body>
@@ -2349,7 +2378,31 @@ JS 解释器会给有绑定事件的元素添加一个监听，解释器会一�
 	</body>
 	```
 
-- **DOM 对象绑定**
+- **外部绑定**：DOM 对象的属性
+
+	```javascript
+	对象.事件属性 = 执行函数;
+	```
+	
+	```html
+	<body>
+	  <input type="button" id="btn" value="点我">
+	  <script src="script.js"></script>
+	</body>
+	```
+	
+	```javascript
+	let btn = document.getElementById("btn");
+	btn.onclick = function () {
+	  alert("点我干嘛");
+	};
+	```
+
+- **外部绑定**：监听事件类型，推荐。
+
+	```javascript
+	对象.addEventListener("事件类型", 执行函数名)
+	```
 
 	```html
 	<body>
@@ -2360,74 +2413,51 @@ JS 解释器会给有绑定事件的元素添加一个监听，解释器会一�
 
 	```javascript
 	let btn = document.getElementById("btn");
-	btn.onclick = function () {
+	btn.addEventListener("click", function () {
 	  alert("点我干嘛");
-	};
+	});
 	```
 
-### 常用鼠标事件
+### 事件类型
 
-- onclick         单击触发
-- ondblclick      双击触发
-- onmousedown     按下触发
-- onmouseup       松开触发
-- onmousemove     在元素上移动触发
-- onmouseover     移动到元素上触发
-- onmouseout      移出元素边界触发
+- 鼠标
+	- **`click`**：点击
+	- **`click `**：单击
+	- **`dblclick `**：双击
+	- **`mousedown`**：按下
+	- **`mouseup`**：松开
+	- **`mousemove`**：在元素上移动
+	- **`mouseover`**：移动到元素上
+	- **`mouseout`**：移出元素边界
+- 键盘
+	- **`keydown`**：按下键盘
 
-## DOM对象属性的操作
+### 事件属性
 
-### 非表单元素属性
+- 事件属性在书写形式上，在事件类型前面加 `on`，比如单击的事件类型 `click`，对应的事件属性 `onclick`。
 
-- **语法**
+### 事件案例
 
-  ```html
-  - 例如：href、title、id、src等
-  - 获取元素
-  	元素对象.属性名
-  - 属性赋值
-  	元素对象.属性名 = 新属性值
-  		- 事件函数内部的事件源可以用this替代，指代当前事件源
-  - 注意
-  	- 部分属性名与关键字或保留字冲突，会更换写法
-          class >>> className
-          for >>> htmlFor
-          rowspan >>> rowSpan
-          ...
-  	- 尽量不给id属性赋值
-  ```
+#### 鼠标和键盘
 
-  ```
-  - 不同函数内部 this 的指向
-  	- 普通函数    指向 window 对象
-  	- 构造函数    指向生成的实例对象
-  	- 对象的方法  指向对象本身
-  	- 事件函数    指向事件源
-  ```
+```javascript
+// 点击按钮触发搜索
+searchButton.addEventListener('click', performSearch);
 
-  ```html
-  <body>
-    <a href="https://www.baidu.com/" title="跳转至百度首页" id="link">跳转</a>
-    <img src="images/dog.jpg" alt="狗" class="pic" id="pic">
-    <script src="script.js"></script>
-  </body>
-  ```
+// 按下回车键触发搜索
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    performSearch();
+  }
+});
+```
 
-  ```javascript
-  // 获取元素
-  let link = document.getElementById("link");
-  let pic = document.getElementById("pic");
-  
-  console.log(link.href);  // https://www.baidu.com/
-  console.log(link.title);  // 跳转至百度首页
-  console.log(link.id);  // link
-  console.log(pic.src);  // "图片的绝对路径"
-  console.log(pic.alt);  // 狗
-  console.log(pic.id);  // pic
-  
-  // 改变元素属性
-  pic.src = "images/elephant.jpg";
-  ```
+**在以上代码中**：
+
+1. **`searchInput`**：之前自定义的搜索框对象；
+2. **`performSearch()`**：之前自定义的搜索函数。
+
+### 案例
 
 - **案例：点击按钮，循环切换图片**
 
@@ -2460,73 +2490,104 @@ JS 解释器会给有绑定事件的元素添加一个监听，解释器会一�
 
 - **案例：点击按钮，循环显示和隐藏图片**
 
-	```html
-	<head>
-	  <link rel="stylesheet" href="styles.css">
-	</head>
-	
-	<body>
-	  <input type="button" value="点击隐藏" id="btn"><br>
-	  <div id="box"></div>
-	  <script src="script.js"></script>
-	</body>
-	```
+  ```html
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  
+  <body>
+    <input type="button" value="点击隐藏" id="btn"><br>
+    <div id="box"></div>
+    <script src="script.js"></script>
+  </body>
+  ```
 
-	```css
-	* {
-	  margin: 0;
-	  padding: 0;
-	}
-	
-	div {
-	  width: 200px;
-	  height: 200px;
-	  background-color: pink;
-	}
-	
-	.hide {
-	  display: none;
-	}
-	
-	.show {
-	  display: block;
-	}
-	```
+  ```css
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  
+  div {
+    width: 200px;
+    height: 200px;
+    background-color: pink;
+  }
+  
+  .hide {
+    display: none;
+  }
+  
+  .show {
+    display: block;
+  }
+  ```
 
-	```javascript
-	let btn = document.getElementById("btn");
-	let box = document.getElementById("box");
-	
-	// 给按钮添加事件
-	btn.onclick = function () {
-	  if (this.value == "点击隐藏") {
-	    // 通过类名改变元素的display属性值
-	    box.className = "hide";
-	    // 使用this指代当前事件源btn
-	    this.value = "点击显示";
-	  } else {
-	    box.className = "show";
-	    this.value = "点击隐藏";
-	  }
-	};
-	```
+  ```javascript
+  let btn = document.getElementById("btn");
+  let box = document.getElementById("box");
+  
+  // 给按钮添加事件
+  btn.onclick = function () {
+    if (this.value == "点击隐藏") {
+      // 通过类名改变元素的display属性值
+      box.className = "hide";
+      // 使用this指代当前事件源btn
+      this.value = "点击显示";
+    } else {
+      box.className = "show";
+      this.value = "点击隐藏";
+    }
+  };
+  ```
 
-	
 
 # BOM
 
-​	BOM（Browser Object Model），浏览器对象模型，是一套操作浏览器功能的API
+## BOM 基础
 
-- BOM是浏览器提供的功能
-  - console.log() 输出
-  - alert() 弹窗输出
-  - setinterval() 时间间隔
-  - location.reload()
-  - confirm() 弹窗是否
+**BOM**（**B**rowser **O**bject **M**odel），即浏览器对象模型，是一套操作浏览器功能的 API。
+
+BOM 的核心对象：
+
+- `window` 对象
+- `navigator` 对象
+- `screen` 对象
+- `history` 对象
+- `location` 对象
+
+## [window](https://developer.mozilla.org/zh-CN/docs/Web/API/Window)
+
+`window` 对象是 BOM 的顶层对象，表示整个浏览器窗口；所有其他 BOM 对象都是 `window` 的属性或方法。
+
+- [**`alert()`**](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/alert)：弹窗输出
+- [**`setinterval()`**](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/setInterval)：时间间隔
+- [**`confirm()`**](https://developer.mozilla.org/zh-CN/docs/Web/API/Window/confirm)：弹窗确认
+
+### `addEventListener()`
+
+- `addEventListener` 是 JavaScript 中的一个方法，用于为指定的 DOM 元素添加事件监听器。
+
+- **语法**：`对象.addEventListener("事件类型", 函数)`
+
+	```javascript
+	// 单击按钮执行func函数
+	button.addEventListener("click", func)
+	```
+
+## [console](https://developer.mozilla.org/zh-CN/docs/Web/API/console)
+
+**`console`** 对象提供了浏览器控制台调试的接口；
+
+- [**`console.log()`**](https://developer.mozilla.org/zh-CN/docs/Web/API/console/log_static)：控制台输出
+
+## [location](https://developer.mozilla.org/zh-CN/docs/Web/API/Location)
+
+- [**`location.reload()`**](https://developer.mozilla.org/zh-CN/docs/Web/API/Location/reload)：跨域调用
 
 # jQuery
 
-​	jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化了 DOM 操作、事件处理、动画效果等任务。
+jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化了 DOM 操作、事件处理、动画效果等任务。
 
 ## 版本选择
 
@@ -2545,13 +2606,13 @@ JS 解释器会给有绑定事件的元素添加一个监听，解释器会一�
    - 文件名通常以 `.slim.min.js` 结尾，例如：`jquery-3.6.4.slim.min.js`。
    - 这是 Slim 版本的压缩版，经过了精简和压缩处理，适用于生产环境。
 
-## 引入jQuery
+## 引入 jQuery
 
 ​	有两种引入方式：使用 CDN（内容分发网络）和本地引入jQuery文件
 
-### 使用 CDN *
+### 使用 CDN
 
-- **使用 CDN方式特性**
+- **使用 CDN 方式特性**
 
   - **速度快：** 使用 CDN 可以加速页面加载速度，因为用户可能已经在访问其他网站时加载了相同的 jQuery 版本，从而在访问你的网站时可以从浏览器缓存中获取该文件，而不需要再次下载。
   - **省去本地存储空间：** 不需要将 jQuery 文件存储在本地项目中，可以减少项目大小。
@@ -2918,3 +2979,990 @@ JS 解释器会给有绑定事件的元素添加一个监听，解释器会一�
 # Vue.js
 
 用于构建用户界面的渐进式 JavaScript 框架。
+
+# 练习
+
+## 第一版
+
+![image-20241213230903107](assets/image-20241213230903107.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerry's Time</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="search-container">
+    <select id="searchEngine" class="search-select">
+      <option value="google">谷歌</option>
+      <option value="baidu">百度</option>
+    </select>
+    <input type="text" id="searchInput" class="search-box" placeholder="请输入关键字...">
+    <button id="searchButton" class="search-button">搜索</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
+```
+
+```css
+/* 全局样式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 搜索框容器样式 */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  appearance: none;
+}
+
+.search-box {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 15px;
+  font-size: 16px;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+```
+
+```javascript
+// 获取 DOM 元素
+const searchInput = document.getElementById('searchInput');
+const searchEngine = document.getElementById('searchEngine');
+const searchButton = document.getElementById('searchButton');
+
+// 定义搜索函数
+function performSearch() {
+  const query = searchInput.value.trim(); // 获取用户输入的关键字
+  const engine = searchEngine.value; // 获取选择的搜索引擎
+
+  if (query) {
+    let url = '';
+    if (engine === 'google') {
+      url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    } else if (engine === 'baidu') {
+      url = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+    }
+
+    // 跳转到新窗口
+    window.open(url, '_blank');
+  } else {
+    alert('请输入搜索内容！');
+  }
+}
+
+// 点击按钮触发搜索
+searchButton.addEventListener('click', performSearch);
+
+// 按下回车键触发搜索
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    performSearch();
+  }
+});
+```
+
+## 第二版
+
+去掉搜索按钮
+
+![image-20241213231113739](assets/image-20241213231113739.png)
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jerry's Time</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="search-container">
+    <select id="searchEngine" class="search-select">
+      <option value="google">谷歌</option>
+      <option value="baidu">百度</option>
+    </select>
+    <input type="text" id="searchInput" class="search-box" placeholder="请输入关键字...">  </div>
+  <script src="script.js"></script>
+</body>
+
+</html>
+```
+
+```css
+/* 全局样式 */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* 搜索框容器样式 */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  appearance: none;
+}
+
+.search-box {
+  width: 300px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+```
+
+```javascript
+// 获取 DOM 元素
+const searchInput = document.getElementById('searchInput');
+const searchEngine = document.getElementById('searchEngine');
+const searchButton = document.getElementById('searchButton');
+
+// 定义搜索函数
+function performSearch() {
+  const query = searchInput.value.trim(); // 获取用户输入的关键字
+  const engine = searchEngine.value; // 获取选择的搜索引擎
+
+  if (query) {
+    let url = '';
+    if (engine === 'google') {
+      url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    } else if (engine === 'baidu') {
+      url = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+    }
+
+    // 跳转到新窗口
+    window.open(url, '_blank');
+  } else {
+    alert('请输入搜索内容！');
+  }
+}
+
+// 按下回车键触发搜索
+searchInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    performSearch();
+  }
+});
+```
+
+## 第三版
+
+![image-20241214003733863](assets/image-20241214003733863.png)
+
+```html
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简洁首页</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="search-box">
+      
+      <div class="select-wrapper">
+        <select id="search-engine" class="search-engine">
+          <option value="google" data-icon="google">Google</option>
+          <option value="baidu" data-icon="baidu">百度</option>
+        </select>
+      </div>
+
+      <input type="text" placeholder="输入并搜索" id="search-input">
+    </div>
+
+    <div class="buttons">
+      <div class="button">媒体浏览</div>
+      <div class="button">视频</div>
+      <div class="button">科技浏览</div>
+    </div>
+  </div>
+
+  <!-- 引入外部 JavaScript 文件 -->
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  /* padding: 10px; */
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.search-engine {
+  width: 80px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.5);
+  /* border: 2px solid #ddd; */
+  /* border-radius: 20px; */
+  border: none;
+  /* padding: 5px; */
+  appearance: none;
+  background-position: center left 10px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.search-engine option {
+  padding-left: 30px;
+  /* 留出空间容纳图标 */
+}
+
+#search-input {
+  width: 300px;
+  height: 40px;
+  /* padding: 0 15px; */
+  font-size: 18px;
+  /* border: 2px solid #ddd; */
+  /* border-radius: 20px; */
+  border: none;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+#search-input:focus,
+.search-engine:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.button {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: black;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+```
+
+```javascript
+// 监听回车键，进行搜索
+document.getElementById('search-input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    var query = this.value;
+    var engine = document.getElementById('search-engine').value;
+    var url = '';
+    
+    // 根据选择的搜索引擎跳转
+    if (engine === 'google') {
+      url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    } else if (engine === 'baidu') {
+      url = 'https://www.baidu.com/s?wd=' + encodeURIComponent(query);
+    }
+
+    // 在新窗口打开搜索页面
+    window.open(url, '_blank');
+  }
+});
+```
+
+## 第四版
+
+```html
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简洁首页</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="search-box">
+      
+      <!-- 自定义下拉菜单 -->
+      <div class="select-wrapper">
+        <div class="dropdown" id="search-engine">
+          <div class="selected-option">
+            <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">
+            <span class="arrow">&#9660;</span>
+          </div>
+          <div class="dropdown-menu">
+            <div class="dropdown-item" data-value="google">
+              <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">Google
+            </div>
+            <div class="dropdown-item" data-value="baidu">
+              <img src="./images/baidu-icon-logo.svg" alt="Baidu" class="search-icon">Baidu
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input type="text" placeholder="输入并搜索" id="search-input">
+    </div>
+
+    <div class="buttons">
+      <div class="button">媒体浏览</div>
+      <div class="button">视频</div>
+      <div class="button">科技浏览</div>
+    </div>
+  </div>
+
+  <!-- 引入外部 JavaScript 文件 -->
+  <script src="script.js"></script>
+</body>
+</html>
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.selected-option {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+.search-icon {
+  width: 20px;
+  height: auto;
+  /* margin-right: 10px; */
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 10px;
+  color:#6b6a6a;
+}
+
+#search-input {
+  width: 300px;
+  height: 40px;
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#search-input:focus,
+.search-engine:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.button {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: black;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+```
+
+```javascript
+// 处理下拉菜单显示与隐藏
+document.querySelector('.selected-option').addEventListener('click', function (event) {
+  // 防止点击时触发文档点击事件
+  event.stopPropagation();
+
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+});
+
+// 选择搜索引擎
+document.querySelectorAll('.dropdown-item').forEach(function (item) {
+  item.addEventListener('click', function () {
+    var selectedValue = item.getAttribute('data-value');
+    var selectedText = item.querySelector('img').alt; // 获取图标的alt属性（如Google或Baidu）
+    document.querySelector('.selected-option').innerHTML = `<img src="./images/${selectedValue}-icon-logo.svg" alt="${selectedText}" class="search-icon">`;
+    document.querySelector('.dropdown-menu').style.display = 'none';
+  });
+});
+
+// 监听回车键，进行搜索
+document.getElementById('search-input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    var query = this.value;
+    var selectedOption = document.querySelector('.selected-option img').alt; // 获取当前选中的搜索引擎的名称（Google 或 Baidu）
+    var url = '';
+    
+    // 根据选择的搜索引擎跳转
+    if (selectedOption === 'Google') {
+      url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    } else if (selectedOption === 'Baidu') {
+      url = 'https://www.baidu.com/s?wd=' + encodeURIComponent(query);
+    }
+
+    // 在新窗口打开搜索页面
+    window.open(url, '_blank');
+  }
+});
+
+// 点击空白处收回下拉菜单
+document.addEventListener('click', function (event) {
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+  var dropdown = document.querySelector('.dropdown');
+  
+  if (!dropdown.contains(event.target)) {
+    dropdownMenu.style.display = 'none';
+  }
+});
+```
+
+## 第五版
+
+![image-20241214041041573](assets/image-20241214041041573.png)
+
+```html
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简洁首页</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div class="container">
+    <!-- -----------------------------------加密货币-------------------------------- -->
+    <div class="crypto">
+      <div id="btc-price" class="crypto-price">
+        <p id="btc-price-text">
+          <a id="btc-price-link" href="https://www.binance.me/zh-CN/futures/BTCUSDT" target="_blank"><span
+              id="btc-price-value">BTC：加载中...</span></a>
+        </p>
+      </div>
+      <div id="sui-price" class="crypto-price">
+        <p id="sui-price-text">
+          <a id="sui-price-link" href="https://www.binance.me/zh-CN/futures/SUIUSDT" target="_blank"><span
+              id="sui-price-value">SUI：加载中...</span></a>
+        </p>
+      </div>
+      <div id="turbo-price" class="crypto-price">
+        <p id="turbo-price-text">
+          <a id="turbo-price-link" href="https://www.binance.me/zh-CN/futures/TURBOUSDT" target="_blank"><span
+              id="turbo-price-value">TURBO：加载中...</span></a>
+        </p>
+      </div>
+    </div>
+
+    <!-- -----------------------------搜索框----------------------------------- -->
+
+    <div class="search-box">
+      <div class="select-wrapper">
+        <div class="dropdown" id="search-engine">
+          <div class="selected-option">
+            <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">
+            <span class="arrow">&#9660;</span>
+          </div>
+          <div class="dropdown-menu">
+            <div class="dropdown-item" data-value="google">
+              <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">
+            </div>
+            <div class="dropdown-item" data-value="baidu">
+              <img src="./images/baidu-icon-logo.svg" alt="Baidu" class="search-icon">
+            </div>
+          </div>
+        </div>
+      </div>
+      <input type="text" placeholder="输入并搜索" id="search-input" autocomplete="off">
+    </div>
+
+    <!-- -----------------------------图标区----------------------------------- -->
+
+    <div class="buttons">
+      <div class="button">媒体浏览</div>
+      <div class="button">视频</div>
+      <div class="button">科技浏览</div>
+    </div>
+  </div>
+
+  <!-- 引入外部 JavaScript 文件 -->
+  <script src="script.js"></script>
+</body>
+
+</html>
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+/* --------------------------------------加密货币--------------------------------------- */
+a {
+  text-decoration-line: none;
+  color:white;
+}
+
+.crypto {
+  display: flex;
+  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  font-size: large;
+}
+
+a:hover {
+  color: aqua;
+}
+
+/* --------------------------------------搜索框--------------------------------------- */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.selected-option {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+.search-icon {
+  width: 30px;
+  height: auto;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 10px;
+  color:#6b6a6a;
+}
+
+#search-input {
+  width: 500px;
+  height: 40px;
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* --------------------------------------图标区--------------------------------------- */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.button {
+  width: 100px;
+  height: 100px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 14px;
+  color: black;
+}
+
+.button:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+```
+
+```javascript
+// ------------------------------加密货币-------------------------------------
+
+// 获取比特币价格
+function fetchBtcPrice() {
+  fetch('https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT')
+    .then(response => response.json())
+    .then(data => {
+      const price = data.price;
+      const btcPriceSpan = document.getElementById('btc-price-value');
+      btcPriceSpan.innerText = `BTC：${price}`;
+    })
+    .catch(error => {
+      console.error('Error fetching BTC price:', error);
+      document.getElementById('btc-price-value').innerText = '获取失败';
+    });
+}
+
+// 获取SUI价格
+function fetchSuiPrice() {
+  fetch('https://api.binance.com/api/v3/ticker/price?symbol=SUIUSDT')
+    .then(response => response.json())
+    .then(data => {
+      const price = data.price;
+      const suiPriceSpan = document.getElementById('sui-price-value');
+      suiPriceSpan.innerText = `SUI：${price}`;
+    })
+    .catch(error => {
+      console.error('Error fetching SUI price:', error);
+      document.getElementById('sui-price-value').innerText = '获取失败';
+    });
+}
+
+// 获取TURBO价格
+function fetchTurboPrice() {
+  fetch('https://api.binance.com/api/v3/ticker/price?symbol=TURBOUSDT')
+    .then(response => response.json())
+    .then(data => {
+      const price = data.price;
+      const turboPriceSpan = document.getElementById('turbo-price-value');
+      turboPriceSpan.innerText = `TURBO：${price}`;
+    })
+    .catch(error => {
+      console.error('Error fetching TURBO price:', error);
+      document.getElementById('turbo-price-value').innerText = '获取失败';
+    });
+}
+
+// 每10秒更新一次价格
+setInterval(fetchBtcPrice, 10000);
+setInterval(fetchSuiPrice, 10000);
+setInterval(fetchTurboPrice, 10000);
+
+// 页面加载时先获取一次价格
+fetchBtcPrice();
+fetchSuiPrice();
+fetchTurboPrice();
+
+// ------------------------------搜索框-------------------------------------
+
+// 处理下拉菜单显示与隐藏
+document.querySelector('.selected-option').addEventListener('click', function (event) {
+  // 防止点击时触发文档点击事件
+  event.stopPropagation();
+
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+  dropdownMenu.style.display = (dropdownMenu.style.display === 'block') ? 'none' : 'block';
+});
+
+// 选择搜索引擎
+document.querySelectorAll('.dropdown-item').forEach(function (item) {
+  item.addEventListener('click', function () {
+    var selectedValue = item.getAttribute('data-value');
+    var selectedText = item.querySelector('img').alt; // 获取图标的alt属性（如Google或Baidu）
+    document.querySelector('.selected-option').innerHTML = `<img src="./images/${selectedValue}-icon-logo.svg" alt="${selectedText}" class="search-icon">`;
+    document.querySelector('.dropdown-menu').style.display = 'none';
+  });
+});
+
+// 监听回车键，进行搜索
+document.getElementById('search-input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    var query = this.value;
+    var selectedOption = document.querySelector('.selected-option img').alt; // 获取当前选中的搜索引擎的名称（Google 或 Baidu）
+    var url = '';
+
+    // 根据选择的搜索引擎跳转
+    if (selectedOption === 'Google') {
+      url = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+    } else if (selectedOption === 'Baidu') {
+      url = 'https://www.baidu.com/s?wd=' + encodeURIComponent(query);
+    }
+
+    // 在新窗口打开搜索页面
+    window.open(url, '_blank');
+  }
+});
+
+// 点击空白处收回下拉菜单
+document.addEventListener('click', function (event) {
+  var dropdownMenu = document.querySelector('.dropdown-menu');
+  var dropdown = document.querySelector('.dropdown');
+
+  if (!dropdown.contains(event.target)) {
+    dropdownMenu.style.display = 'none';
+  }
+});
+```
+
+## 第六版
+
+```html
+
+```
+
+```css
+
+```
+
+```javascript
+
+```
+
+## 第七版
+
+```html
+
+```
+
+```css
+
+```
+
+```javascript
+
+```
+
+## 第版
+
+```html
+
+```
+
+```css
+
+```
+
+```javascript
+
+```
+
+1
