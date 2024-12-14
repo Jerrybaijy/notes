@@ -3248,4 +3248,221 @@ jerrybaijy/student-springboot-react-frontend:v1.0
   --set secondary.replicaCount=2
   ```
 
-  
+
+# Personal Page
+
+## 项目概述
+
+这是一个个人练习项目，目的是建立一个个人主页，逐步往进填充内容。
+
+## 搜索框
+
+![image-20241214182142003](assets/image-20241214182142003.png)
+
+```html
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>简洁首页</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+
+  <!-- -----------------------------搜索框----------------------------------- -->
+
+  <div class="search-box">
+    <div class="select-wrapper">
+      <div class="dropdown" id="search-engine">
+        <div class="selected-option">
+          <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">
+          <span class="arrow">&#9660;</span>
+        </div>
+        <div class="dropdown-menu">
+          <div class="dropdown-item" data-value="google">
+            <img src="./images/google-icon-logo.svg" alt="Google" class="search-icon">
+          </div>
+          <div class="dropdown-item" data-value="baidu">
+            <img src="./images/baidu-icon-logo.svg" alt="Baidu" class="search-icon">
+          </div>
+        </div>
+      </div>
+    </div>
+    <input type="text" placeholder="输入并搜索" id="search-input" autocomplete="off">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
+```
+
+```css
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --------------------------------------搜索框--------------------------------------- */
+.search-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 25px;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.select-wrapper {
+  position: relative;
+}
+
+.selected-option {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  border-radius: 5px;
+}
+
+.search-icon {
+  width: 30px;
+  height: auto;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 70%;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dropdown-menu.visible {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.arrow {
+  margin-left: 10px;
+  font-size: 10px;
+  color:#6b6a6a;
+}
+
+#search-input {
+  width: 500px;
+  height: 40px;
+  font-size: 18px;
+  border: none;
+  margin-left: 10px;
+  background-color: rgba(255, 255, 255, 0);
+}
+
+#search-input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+```
+
+```javascript
+// ------------------------------搜索框-------------------------------------
+
+// 获取 DOM 元素
+let dropdownMenu = document.querySelector('.dropdown-menu');
+let selectedOption = document.querySelector('.selected-option');
+
+// 点击选项框显示或隐藏下拉菜单
+selectedOption.addEventListener('click', function (event) {
+  event.stopPropagation();  // 防止点击冒泡到 document
+  dropdownMenu.classList.toggle('visible'); // 仅通过类名控制显示状态
+});
+
+// 点击空白处收回下拉菜单
+document.addEventListener('click', function () {
+  dropdownMenu.classList.remove('visible'); // 移除可见类
+});
+
+// 选择搜索引擎
+document.querySelectorAll('.dropdown-item').forEach(function (item) {
+  item.addEventListener('click', function () {
+    let selectedValue = item.getAttribute('data-value');
+    let selectedText = item.querySelector('img').alt; // 获取图标的 alt 属性
+
+    // 更新选中的图标
+    let selectedImg = document.querySelector('.selected-option img');
+    selectedImg.src = `./images/${selectedValue}-icon-logo.svg`;
+    selectedImg.alt = selectedText;
+
+    // 隐藏菜单
+    dropdownMenu.classList.remove('visible');
+  });
+});
+
+// 监听回车键，进行搜索
+document.getElementById('search-input').addEventListener('keydown', function (event) {
+  if (event.key === 'Enter') {
+    let query = this.value.trim();
+    if (!query) {
+      alert('请输入搜索内容！');
+      return;
+    }
+
+    let selectedOptionImg = document.querySelector('.selected-option img');
+    let selectedEngine = selectedOptionImg.alt || 'Google'; // 默认使用 Google
+    let url = '';
+
+    // 根据选中的搜索引擎生成搜索链接
+    if (selectedEngine === 'Google') {
+      url = `https://www.google.com/search?q=${encodeURIComponent(query)}`;
+    } else if (selectedEngine === 'Baidu') {
+      url = `https://www.baidu.com/s?wd=${encodeURIComponent(query)}`;
+    }
+
+    // 在新窗口打开搜索页面
+    window.open(url, '_blank');
+  }
+});
+```
+
+## 第二版
+
+
+

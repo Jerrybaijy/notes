@@ -9,7 +9,7 @@
 
 #### Windows
 
-- 官网下载安装包：**[64-bit Git for Windows Setup](https://github.com/git-for-windows/git/releases/download/v2.44.0.windows.1/Git-2.44.0-64-bit.exe)**
+- 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
 - 安装时注意选择 `main` 分支
 
 #### Debian
@@ -154,7 +154,7 @@
 	origin  https://github.com/Jerrybaijy/notes.git (push)
 	```
 
-9. 向文件夹 `FOLDER_NAME` 添加任何文件，否则接下来无法 `commit`；
+9. 向文件夹 `FOLDER_NAME` 添加任何文件，否则接下来无法 `commit`；
 
 10. 添加两个 Remote Repo 的默认分支并关联，同时完成第一次推送；
 
