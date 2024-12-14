@@ -298,6 +298,31 @@
   curl -O https://raw.githubusercontent.com/Jerrybaijy/it-notes/main/devops/docker/docker.md
   ```
 
+### GitHub 经常推送失败
+
+1. 由于网络原因，在执行 `git push` 时，经常推送失败；
+
+2. 应设置网络代理代理
+
+	```bash
+	git config --global http.proxy http://proxy.example.com:8080
+	git config --global https.proxy https://proxy.example.com:8080
+	```
+
+	**说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。
+
+	![image-20241214215306498](assets/image-20241214215306498.png)
+
+3. 如果之后不需要代理了，可以通过以下命令取消代理设置：
+
+	```bash
+	git config --global --unset http.proxy
+	git config --global --unset https.proxy
+	```
+
+	
+
+	
 
 # GitLab
 
