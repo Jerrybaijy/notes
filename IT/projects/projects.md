@@ -3255,6 +3255,8 @@ jerrybaijy/student-springboot-react-frontend:v1.0
 
 这是一个个人练习项目，目的是建立一个个人主页，逐步往进填充内容。
 
+- 这个项目作为保存，没有存储在托管平台
+
 ## 搜索框
 
 ![image-20241214182142003](assets/image-20241214182142003.png)
@@ -3271,7 +3273,6 @@ jerrybaijy/student-springboot-react-frontend:v1.0
 </head>
 
 <body>
-
 
   <!-- -----------------------------搜索框----------------------------------- -->
 

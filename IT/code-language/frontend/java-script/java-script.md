@@ -59,7 +59,7 @@
   npm install axios
   ```
 
-## 代码位置
+## JS 位置
 
 - **内联事件处理**： HTML 元素内部直接使用 JavaScript 代码添加事件。
 

@@ -1,4 +1,4 @@
-# Web 基础
+# 前端基础
 
 ## 概述
 
@@ -23,57 +23,55 @@
 
 # BootStrap 框架
 
-​	Bootstrap 是一个流行的开源前端框架，由 Twitter 团队开发和维护。它基于 HTML、CSS 和 JavaScript，提供了一系列的样式、组件和工具，以帮助开发者更容易地创建响应式、移动设备友好的网站和Web应用。
+Bootstrap 是一个流行的开源前端框架，用于快速开发响应式和移动优先的网站及应用程序。它由 Twitter 团队开发和维护，提供了一系列预制的 HTML、CSS 和 JavaScript 代码，帮助开发者构建具有一致外观和交互功能的网页界面，而无需从头开始编写大量的样式和脚本。
 
-## 引入及使用
+## BootStrap 基础
 
-### 使用 CDN 
+### BootStrap 位置
 
-1. [进入 Bootstrap 官网](https://v5.bootcss.com/)，点击 `中文文档`
+#### 使用 CDN 引入
+
+1. [进入 Bootstrap 官网](https://v5.bootcss.com/) > `中文文档` > `简介` > [CDN links](https://v5.bootcss.com/docs/getting-started/introduction/#cdn-links)
 2. 在 `CDN links` 中复制 Bootstrap 的 CDN 地址，在 HTML 文件 `<head>` 元素中引入 Bootstrap 的 CSS 样式，在 `<body>` 底部引入 JS 组件。
 
-    > CSS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+    > CSS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
     > 
     > JS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js
 
     ```html
     <head>
-        <!-- 其它 head 元素 -->
-    
-        <!-- 使用 CDN 引入 Bootstrap 的样式表 -->
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+      <!-- 使用 CDN 引入 Bootstrap 的样式表 -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
     </head>
-    <body>
-        <!-- 使用 Bootstrap 的样式 -->
-        <a class="btn btn-primary">点击</a>
-        <!-- 其它 body 元素 -->
     
-        <!-- 使用 CDN 引入 Bootstrap 的JS组件 -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <body>
+      <!-- 内嵌 Bootstrap 的样式，类名就是 Bootstrap 提供好的 -->
+      <a class="btn btn-primary">点击</a>
+      <!-- 其它 body 元素 -->
+    
+      <!-- 使用 CDN 引入 Bootstrap 的JS组件 -->
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </body>
     ```
+    
 
-    - 在上述示例中，`rel="stylesheet"` 是 HTML 中 `<link>` 标签的一个属性，用于指定关联的文档是一个样式表。
-
-### 本地引入
+#### 本地引入
 
 1. [官网下载 Bootstrap](https://github.com/twbs/bootstrap/releases/download/v5.3.0-alpha1/bootstrap-5.3.0-alpha1-dist.zip)
-2. 下载 BootStrap 文件并解压，文件夹名字改为 bootStrap，与 HTML 文件放入同级目录。
+2. 下载 BootStrap 文件并解压，文件夹名字改为 `bootStrap`，与 HTML 文件放入同级目录。
 
     ```html
     <head>
-        <!-- 其它 head 元素 -->
-    
-        <!-- 本地引入 Bootstrap 的样式表-->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+      <!-- 本地引入 Bootstrap 的样式表-->
+      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
     </head>
     <body>
-        <!-- 使用 Bootstrap 的样式 -->
-        <a class="btn btn-primary">点击</a>
-        <!-- 其它 body 元素 -->
+      <!-- 内嵌 Bootstrap 的样式，类名就是 Bootstrap 提供好的 -->
+      <a class="btn btn-primary">点击</a>
+      <!-- 其它 body 元素 -->
     
-        <!-- 本地引入 Bootstrap 的JS组件 -->
-        <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
+      <!-- 本地引入 Bootstrap 的JS组件 -->
+      <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
     </body>
     ```
 
@@ -93,187 +91,59 @@
   </body>
   ```
 
-# BootStrap
+### 基本语法
 
-本章节是之前学习的留本，待再次学习时应归纳到第二章
+1. 实际就是去 Bootstrap 官网找喜欢的样式，然后把它们的 HTML 粘贴到自己的代码中；
 
-## BootStrap
+2. 首先引入 Bootstrap 的 `CSS 样式表` 和 `JS 组件`；
 
-BootStrap 对于 CSS 而言，就是把 style 存于文件中。
+3. 比如想做一个按钮，就去 Bootstrap 官网中文文档找 [Buttons](https://v5.bootcss.com/docs/components/buttons/)；
 
-### 安装及语法
+4. 然后把喜欢的图标的 HTML 代码复制到自己的代码中；
 
-- 下载 BootStrap 文件并解压，文件夹名字改为 bootStrap，与 HTML 文件放入同级目录。
-- 应该在 `<head>` 中引入：`<link rel="stylesheet" href="bootstrap/css/bootstrap.css">`
+	```html
+	<head>
+	  <!-- 使用 CDN 引入 Bootstrap 的样式表 -->
+	  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+	</head>
+	
+	<body>
+	  <!-- 这是从 Bootstrap 复制过来的 -->
+	  <button type="button" class="btn btn-primary">Primary</button>
+	  
+	  <!-- 其它 body 元素 -->
+	
+	  <!-- 使用 CDN 引入 Bootstrap 的JS组件 -->
+	  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+	</body>
+	```
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>测试</title>
-      
-      <!--引入BootStrap-->
-      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-  </head>
-  <body>
-      <!--使用style-->
-      <a class="btn btn-primary">点击</a>
-      <a class="btn btn-danger">点击</a>
-  </body>
-  </html>
-  ```
+5. 这样无需自己设置 CSS 和 JavaScript，也能达到 BootStrap 所展示的效果。
 
 
-### 栅格系统
+## 栅格系统
 
-- **语法**：将父级标签（整行/整块）分成12份，针对12份布局，所有栅格自带 float 属性  
-	以分成3块为例
-
-  ``` html
+- **语法**：将父级标签（整行/整块）分成12份，针对12份布局，所有栅格自带 float 属性，以分成3块为例
+	
+	``` html
   <!--将一整行分3份-->
-  <div class="col-sm-4">左</div>
-  <div class="col-sm-4">中</div>
-  <div class="col-sm-4">右</div>
+  <div class="container">
+    <div class="row">
+      <div class="col - sm - 4">左</div>
+      <div class="col - sm - 4">中</div>
+      <div class="col - sm - 4">右</div>
+    </div>
+  </div>
   
   <!--将500px宽度分3份-->
-  <div style="width: 500px">
-      <div class="col-sm-4">左</div>
-      <div class="col-sm-4">中</div>
-      <div class="col-sm-4">右</div>
-  </div>
-  ```
-
-- **响应式布局**
-  - .col-xs-   None （自动）
-  - .col-sm-  750px
-  - .col-md-  970px
-  - .col-lg-  1170px
-
-### container
-
-- **container**
-  - .container  用于固定宽度（非整行）并支持响应式布局的容器，容器居中。
-  - .container-fluid  用于 100% 宽度（整行），占据全部视口（viewport）的容器，容器不居中。
-
-### clearfix
-
-- 清除浮动，详见 float
-
-### 面板
-
-### 导航
-
-### 表格
-
-### 媒体对象
-
-### 分页
-
-<img src="assets/image-20231029215210752-1701881946812-1.png" alt="image-20231029215210752" />
-
-### 按钮
-
-### 图标
-
-除了 BootStrap 以外，还有 Font Awesome 插件
-
-### 模态框
-
-- 模态框为动态 JavaScript 插件，需引入 jQuery
-
-  ``` html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>模态框</title>
-  
-      <!--引入bootstrap和jquery-->
-      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-      <script src="js/jquery-3.7.1.min.js"></script>
-      <script src="bootstrap/js/bootstrap.js"></script>
-  </head>
-  <body>
-  
-  <!-- Button trigger modal -->
-  <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-      Launch demo modal
-  </button>
-  
-  <!-- Modal -->
-  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                  </button>
-                  <h4 class="modal-title" id="myModalLabel">新建管理员</h4>
-              </div>
-              <div class="modal-body">
-  
-                  <!--将...换成表单-->
-                  <form>
-                      <div class="form-group">
-                          <label for="exampleInputEmail1">Email address</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                      </div>
-                      <div class="form-group">
-                          <label for="exampleInputPassword1">Password</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-                      </div>
-                  </form>
-  
-              </div>
-              <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-          </div>
-      </div>
-  </div>
-  
-  
-  </body>
-  </html>
-  ```
-
-  ![image-20231030114821497](assets/image-20231030114821497-1701881946812-2.png)
-
-### 工具提示
-
-- 类似于悬停展示
-
-  ![image-20231030123745363](assets/image-20231030123745363.png)
-
-  ``` html
-  <!DOCTYPE html>
-  <html lang="en">
-  <head>
-      <meta charset="UTF-8">
-      <title>其它html</title>
-  
-      <!--引入bootstrap和jquery-->
-      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-      <script src="js/jquery-3.7.1.min.js"></script>
-      <script src="bootstrap/js/bootstrap.js"></script>
-  </head>
-  <body>
-  <div style="margin: 300px">
-      <button type="button" class="btn btn-default" data-toggle="tooltip" data-placement="left" title="Tooltip on left">
-          Tooltip on left
-      </button>
-  </div>
-  
-  <!--添加如下代码才能显示动态效果-->
-  <script>
-      $(function () {
-          $('[data-toggle="tooltip"]').tooltip()
-      })
-  </script>
-  </body>
-  </html>
-  ```
+  <div style="width:500px;margin:0 auto;">
+    <div class="d-flex" style="flex-basis:100%;">
+      <div class="flex-grow-1" style="flex-basis:0;">左</div>
+	    <div class="flex-grow-1" style="flex-basis:0;">中</div>
+	    <div class="flex-grow-1" style="flex-basis:0;">右</div>
+	  </div>
+	</div>
+	```
 
 
 # 员工管理系统（web）
@@ -283,9 +153,9 @@ BootStrap 对于 CSS 而言，就是把 style 存于文件中。
 
 ## 创建数据库和表结构
 
-- 使用 cmd
-  - 创建数据库：unicom
-  - 创建数据表：admin
+- 使用终端创建
+  - 创建数据库：`unicom`
+  - 创建数据表：`admin`
   - 按格式先添加几条数据
 
   ```
@@ -311,9 +181,9 @@ BootStrap 对于 CSS 而言，就是把 style 存于文件中。
   
   ```
 
-## 创建 flask 框架
+## 创建 Flask 框架
 
-- flask 框架和 HTML 文件
+- Flask 框架和 HTML 文件
 
   ```python
   from flask import Flask, render_template
@@ -347,11 +217,11 @@ BootStrap 对于 CSS 而言，就是把 style 存于文件中。
   return render_template('home.html',n2 = user_list)
   ```
 
-- 同时在 render_template 里添加 `n2 = user_list`
+- 同时在 `render_template` 里添加 `n2 = user_list`
 
 ## HTML接收数据并渲染
 
-- 使用 for 循环接收数据
+- 使用 `for 循环` 接收数据
 
   ```html
   <table border="1">
@@ -398,7 +268,7 @@ BootStrap 对于 CSS 而言，就是把 style 存于文件中。
 
 ## 获取 id 并删除数据行
 
-- 获取 id 并删除数据行
+- 获取 `id` 并删除数据行
 
   ```html
   <td>
