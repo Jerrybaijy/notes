@@ -23,31 +23,36 @@
 ## 配置
 
 - **关于安装目录**
-  - `Lib`：存放模块
+  - `Lib`：存放内置模块
   - `site-packages`：存放第三方模块
   
 - **帮助**
 
-  - Python 已加入环境变量
-  - 进入终端
-  - **列出模块中的函数**
-
-    ```python
-    > python
-    > import urllib
-    > dir(urllib)
-    ```
+  - 确保 Python 已加入环境变量；
   
-  - **查看完整的python内置函数清单**
+  - 终端进入 Python 交互环境；
 
+  	```bash
+  	pyhton
+  	```
+  
+  - **列出模块中的函数**
+  
     ```python
-    > dir(__builtins__)
+    >>> import urllib
+    >>> dir(urllib)
+    ```
+    
+  - **查看完整的python内置函数清单**
+  
+    ```python
+    >>> dir(__builtins__)
     ```
   
   - **查看某个函数的文档帮助信息**
-
+  
     ```python
-    > help(sum)
+    >>> help(sum)
     ```
   
 
@@ -76,6 +81,70 @@
   # 显示模块信息
   pip show $MODULE_NAME
   ```
+
+- **安装目录**：使用 pip 安装模块时，会被安装到 Python 环境中，而不是当前目录。
+
+	- 全局环境
+	- 虚拟环境
+
+
+## 虚拟环境
+
+1. 确认 Python 已安装；
+
+2. 终端进入项目目录；
+
+3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
+
+	```bash
+	python -m venv venv
+	```
+
+4. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+
+5. 激活虚拟环境；
+
+	```bash
+	# Windows
+	source venv/Scripts/activate
+	
+	# Mac/Linux
+	source venv/bin/activate
+	```
+
+6. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
+
+	```bash
+	where python
+	```
+
+7. 在编辑器中选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+
+8. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
+	1. 安装你项目所需的所有包
+
+		```bash
+		pip install PACKAGE_NAME
+		```
+
+	2. 生成 `requirements.txt`
+
+		```bash
+		pip freeze > requirements.txt
+		```
+
+	3. 其他开发者可以通过以下命令来安装依赖
+
+		```bash
+		pip install -r requirements.txt
+		```
+
+9. 退出虚拟环境
+
+	```bash
+	deactivate
+	```
 
 ## 编辑器
 
@@ -3531,15 +3600,13 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 </div>
 
 1. [**来源**：B 站武沛齐《精品 Python 全套课程》P19 10-1 前端开发 - 01:05:36](https://www.bilibili.com/video/BV1zd4y1y7px?p=19&vd_source=02dd98cfbf740b256dca0ec3e66776e6)
-
 2. **说明**
 
-   1. 这是一个没有前端框架和数据库的 Flask 简介项目
-   2. 此项目没有整理至《projects》，没有存储至 Git 托管平台
+   1. 这是一个没有前端框架和数据库的 Flask 简介项目；
+   2. 此项目没有整理至《projects》，没有存储至 Git 托管平台；
 
-3. Pycharm 创建 Flask 项目
-
-4. 在项目根目录创建后端主程序文件 app.py
+3. Pycharm 创建 Flask 项目；
+4. 在项目根目录创建后端主程序文件 `app.py`；
 
    ```python
    from flask import Flask, render_template, request
@@ -3577,64 +3644,66 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
        app.run()
    ```
 
-5. 在 templates 文件夹创建前端文件 register.html, login.html
+5. 在 `templates` 文件夹创建前端文件 `register.html`，`login.html`；
 
-   - register.html
+   - **`register.html`**
+
+   	```html
+   	<!DOCTYPE html>
+   	<html lang="en">
+   	<head>
+   	    <meta charset="UTF-8">
+   	    <title>Title</title>
+   	</head>
+   	<body>
+   	<!--定义submit路由和HTTP协议-->
+   	<form action="/register_ok" method="POST">
+   	    <div>
+   	        <!--"user"作为接收用户输入内容的变量-->
+   	        用户名：<input type="text" placeholder="请输入用户名" name="user">
+   	    </div>
+   	
+   	    <div>
+   	        密码：<input type="text" placeholder="请输入密码" name="pwd">
+   	    </div>
+   	
+   	    <div>
+   	        角色：
+   	        <!--"role"作为接收用户选择内容的变量-->
+   	        <select name="role">
+   	            <option value="teacher">老师</option>
+   	            <option value="student">学生</option>
+   	        </select>
+   	    </div>
+   	
+   	    <div>
+   	        性别：
+   	        男<input type="radio" name="gender" value="male"/>
+   	        女<input type="radio" name="gender" value="female"/>
+   	    </div>
+   	
+   	    <div>
+   	        爱好：
+   	        篮球<input type="checkbox" name="hobby" value="basketball"/>
+   	        足球<input type="checkbox" name="hobby" value="football"/>
+   	        游泳<input type="checkbox" name="hobby" value="swim"/>
+   	    </div>
+   	
+   	    <div>
+   	        其它：<textarea name="others"></textarea>
+   	    </div>
+   	
+   	    <input type="submit" value="注册">
+   	</form>
+   	</body>
+   	</html>
+   	```
+
+   - **`login.html`**
 
      ```html
-     <!DOCTYPE html>
-     <html lang="en">
-     <head>
-         <meta charset="UTF-8">
-         <title>Title</title>
-     </head>
-     <body>
-     <!--定义submit路由和HTTP协议-->
-     <form action="/register_ok" method="POST">
-         <div>
-             <!--"user"作为接收用户输入内容的变量-->
-             用户名：<input type="text" placeholder="请输入用户名" name="user">
-         </div>
-     
-         <div>
-             密码：<input type="text" placeholder="请输入密码" name="pwd">
-         </div>
-     
-         <div>
-             角色：
-             <!--"role"作为接收用户选择内容的变量-->
-             <select name="role">
-                 <option value="teacher">老师</option>
-                 <option value="student">学生</option>
-             </select>
-         </div>
-     
-         <div>
-             性别：
-             男<input type="radio" name="gender" value="male"/>
-             女<input type="radio" name="gender" value="female"/>
-         </div>
-     
-         <div>
-             爱好：
-             篮球<input type="checkbox" name="hobby" value="basketball"/>
-             足球<input type="checkbox" name="hobby" value="football"/>
-             游泳<input type="checkbox" name="hobby" value="swim"/>
-         </div>
-     
-         <div>
-             其它：<textarea name="others"></textarea>
-         </div>
-     
-         <input type="submit" value="注册">
-     </form>
-     </body>
-     </html>
-     ```
-
-   - login.html
-
-     ```html
+     <!-- login.html -->
+    
      <!DOCTYPE html>
      <html lang="en">
      <head>
@@ -3647,20 +3716,19 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
      </html>
      ```
 
-6. 运行项目，手动进入 register 页面：http://127.0.0.1:5000/register
-
+6. 运行项目，手动进入 register 页面：http://127.0.0.1:5000/register；
 7. 输入信息，点击注册
 
-   1. 程序会自动在项目根目录创建一个 users.txt 文件，并将用户提交信息存储在文件中。
+   1. 程序会自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
    2. 页面自动跳转至 login 页面。
 
 ## 项目
 
-- Login Flask React
+- [Login Flask React](../../projects/projects.md#Login Flask React)
 
 # Django 框架
 
-​	Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它由 Adrian Holovaty 和 Simon Willison 创建，遵循了“Don't repeat yourself”（不要重复你自己）和“Convention over Configuration”（约定大于配置）等软件设计原则。Django 提供了一套功能强大而完整的工具，使得开发者能够更快速地构建复杂的 Web 应用。
+Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它由 Adrian Holovaty 和 Simon Willison 创建，遵循了“Don't repeat yourself”（不要重复你自己）和“Convention over Configuration”（约定大于配置）等软件设计原则。Django 提供了一套功能强大而完整的工具，使得开发者能够更快速地构建复杂的 Web 应用。
 
 ## 创建项目-cmd
 
@@ -4505,7 +4573,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 - 手动创建 2 个管理员
 - 为了赶进度，停止本案例的学习。B 站
 
-# Python Scripts
+# Python 脚本
 
 ## Music Crawler
 
@@ -4535,17 +4603,4 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
    with open(r"E:\labs\以后的以后.mp4", "wb") as f:
        f.write(data)
    ```
-
-
-# 实验
-
-```python
-a=3
-if a==5:
-  c=6
-c=7
-if a==6:
-  if c==7:
-    e=8
-```
 

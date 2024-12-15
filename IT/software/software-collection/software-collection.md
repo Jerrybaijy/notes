@@ -1663,44 +1663,71 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
               "name": "JavaSE-17",
               "path": "/path/to/jdk-17",
               "default": true
-          },
+          }
       ],
-      "editor.tabSize": 2,  // 制表符的宽度为 2 个空格
+      "editor.tabSize": 2, // 制表符的宽度为 2 个空格
       "[python]": {
-          "editor.tabSize": 4  // 针对 Python 文件，设置制表符的宽度为 4 个空格
+          "editor.tabSize": 4 // 针对 Python 文件，设置制表符的宽度为 4 个空格
       },
       "window.confirmSaveUntitledWorkspace": false,
       "liveServer.settings.donotShowInfoMsg": true,
-      "editor.indentSize": "tabSize"
+      "editor.indentSize": "tabSize",
+      "editor.codeActionsOnSave": {},
+      "editor.linkedEditing": true,
+      
+      // 默认终端为 Git Bash
+      "terminal.integrated.defaultProfile.windows": "Git Bash",
+      "terminal.integrated.profiles.windows": {
+          "Git Bash": {
+              "path": "D:\\Program Files\\Git\\bin\\bash.exe",
+          }
+      },
+      
+      // 光标样式
+      "terminal.integrated.cursorStyleInactive": "line",
+      "terminal.integrated.cursorStyle": "line"  
   }
   ```
 
 ## 快捷键
 
 - **设置快捷键**
-  
+
   - 左下角 `管理` - `键盘快捷方式`
-  
+
 - **软件配置**
 
-  - `Ctrl + ,`：设置
+  - **`Ctrl + ,`**：设置
 
   	> 注意与搜狗输入法冲突！
   	>
   	> `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
-  - `F1 | Ctrl + Shift + P`：打开命令面板
+  - **`F1 | Ctrl + Shift + P`**：打开命令面板
 
 - **光标**
 
-  - `Ctrl + D`：选择下一个匹配项，并添加多光标
-  - `Ctrl + U`：取消最近添加的匹配项和多光标
-  - `Alt + 单击`：添加多光标
+  - **`Ctrl + D`**：选择下一个匹配项，并添加多光标
+  - **`Ctrl + U`**：取消最近添加的匹配项和多光标
+  - **`Alt + 单击`**：添加多光标
 
 - **代码**
 
-  - `Ctrl + Alt + Z`：代码格式化（自己修改）
-  - `Ctrl + Shift + A`：使用 Emmet 缩写包围 （自己修改）
+  - **`Ctrl + Alt + Z`**：代码格式化（自己修改）
+  - **`Ctrl + Shift + A`**：使用 Emmet 缩写包围 （自己修改）
+
+- **终端**
+
+	- **`Ctrl + ~`**：选择下一
+
+
+## 选择解释器虚拟环境
+
+1. 以 Python 为例；
+2. 按 `Ctrl + Shift + P` 打开命令面板；
+3. 输入并选择 `Python: Select Interpreter`；
+4. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
+5. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
 
 # Windows Terminal
 
