@@ -124,7 +124,7 @@
 	- `Visibility Level` 选 `Public`；
 	- 不要在这里创建 `README.md`，否则本地无法直接 `push`；
 
-5. GitHub 网页创建 Remote Repo
+5. GitLab 网页创建 Remote Repo
 
 	- 仓库名填写文件夹名称 `FOLDER_NAME`，保证本地文件夹和远程仓库同名，便于管理；
 	- `Visibility Level` 选 `Public`；
@@ -273,20 +273,30 @@
 
 ## 登录
 
-1. GitHub 不再支持密码登录，以下是使用令牌登录方法。
-2. 网页登录到你的 GitHub 帐户
-3. 点击你的头像，在下拉菜单中选择 "Settings"
-4. 在左侧导航栏中，选择 "Developer settings"
-5. 在左侧导航栏中，选择 "Generate new token"
-6. 点击 "Tokens (classic)"
-7. 在下拉菜单中选择 "Generate new token (classic)"
-   1. "Note" 随便填，只是用于标记这个令牌想在哪用
-   2. "Expiration" 使用期限
-   3. 如果自己用，所有选项都打勾（实际经验只勾选 "repo" 大类也没影响目前使用）
-   4. 创建令牌，会得到令牌，注意令牌内容只能看见这一次
-8. 当在 Bash 中要求输入用户名密码时
-   1. 用户名依然是原来的用户名
-   2. 密码用令牌代替
+1. GitHub 不再支持密码登录，以下是使用令牌登录方法；
+	- 后来，在使用验证器二次验证登录以后， GitHub 又支持网页登录了。
+2. 网页登录到你的 GitHub 帐户；
+3. 点击你的头像，在下拉菜单中选择 `Settings`；
+4. 在左侧导航栏中，选择 `Developer settings`；
+5. 在左侧导航栏中，选择 `Generate new token`；
+6. 点击 `Tokens (classic)`；
+7. 在下拉菜单中选择 `Generate new token (classic)`；
+   1. `Note` 随便填，只是用于标记这个令牌想在哪用；
+   2. `Expiration` 使用期限；
+   3. 如果自己用，所有选项都打勾（实际经验只勾选 `repo` 大类也没影响目前使用）；
+   4. 创建令牌，会得到令牌，注意令牌内容只能看见这一次；
+8. 当在 Bash 中要求输入用户名密码时；
+   1. 用户名依然是原来的用户名；
+   2. 密码用令牌代替；
+
+## 创建远程 GitHub 仓库
+
+GitHub 网页创建 Remote Repo：
+
+- 仓库名填写本地文件夹名称 `FOLDER_NAME`，保证本地文件夹和远程仓库同名，便于管理；
+- `Repository name` 填写小写连字符文件名；
+- `Visibility Level` 选 `Public`；
+- 不要在这里创建 `README.md`，否则本地无法直接 `push`；
 
 ## 解决办法
 
@@ -327,6 +337,15 @@
 # GitLab
 
 ## GitLab Basics
+
+## 创建远程 GitLab 仓库
+
+GitLab 网页创建 Remote Repo
+
+- 仓库名填写本地文件夹名称 `FOLDER_NAME`，保证本地文件夹和远程仓库同名，便于管理；
+- `Project name` 和 `Project slug` 都填写小写连字符文件名；
+- `Visibility Level` 选 `Public`；
+- 不要在这里创建 `README.md`，否则本地无法直接 `push`；
 
 ## GitLab CI
 

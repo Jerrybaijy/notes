@@ -1723,11 +1723,13 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 ## 选择解释器虚拟环境
 
-1. 以 Python 为例；
-2. 按 `Ctrl + Shift + P` 打开命令面板；
-3. 输入并选择 `Python: Select Interpreter`；
-4. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
-5. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
+1. 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
+2. 每次进入项目目录都应该检查；
+3. 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
+4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
+	- 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
+5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
+6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
 
 # Windows Terminal
 

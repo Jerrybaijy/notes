@@ -100,9 +100,7 @@
 	python -m venv venv
 	```
 
-4. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
-
-5. 激活虚拟环境；
+4. 激活虚拟环境；
 
 	```bash
 	# Windows
@@ -112,39 +110,43 @@
 	source venv/bin/activate
 	```
 
-6. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
+5. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
+
+  ```bash
+  where python
+  ```
+
+  1. 如果没有，参照以下办法激活：
+  2. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+
+6. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+
+7. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
+8. 安装你项目所需的所有包
+
+9. 生成 `requirements.txt`
 
 	```bash
-	where python
+	pip freeze > requirements.txt
 	```
 
-7. 在编辑器中选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+10. 其他开发者可以通过以下命令来安装依赖
 
-8. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+	```bash
+	pip install -r requirements.txt
+	```
 
-	1. 安装你项目所需的所有包
-
-		```bash
-		pip install PACKAGE_NAME
-		```
-
-	2. 生成 `requirements.txt`
-
-		```bash
-		pip freeze > requirements.txt
-		```
-
-	3. 其他开发者可以通过以下命令来安装依赖
-
-		```bash
-		pip install -r requirements.txt
-		```
-
-9. 退出虚拟环境
+11. 退出虚拟环境
 
 	```bash
 	deactivate
 	```
+
+12. **注意**：
+
+	- 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
+	- VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
 
 ## 编辑器
 
@@ -3593,34 +3595,40 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   pip install Flask
   ```
 
-## 基本项目
+## Flask 基础
 
-<div style="display: flex; justify-content: left;">
-    <img src="assets/image-20240322141019074.png" alt="图片1" style="width: 40%;">
-</div>
+<img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
 
-1. [**来源**：B 站武沛齐《精品 Python 全套课程》P19 10-1 前端开发 - 01:05:36](https://www.bilibili.com/video/BV1zd4y1y7px?p=19&vd_source=02dd98cfbf740b256dca0ec3e66776e6)
-2. **说明**
 
-   1. 这是一个没有前端框架和数据库的 Flask 简介项目；
-   2. 此项目没有整理至《projects》，没有存储至 Git 托管平台；
+1. **说明**
 
-3. Pycharm 创建 Flask 项目；
+   1. 这是一个没有前端框架和数据库的 Flask 项目，旨在练习 Flask 最基本的用法；
+   2. 使用记事本模拟数据库接收数据；
+   3. 此项目已整理至 [`Projects` > `Login Flask Txt HTML`](../../projects/projects.md#Login Flask Txt HTML)，已存储至 Git 托管平台，前后端合并存储 `login-flask-txt-html`；
+
+2. 创建 Python 虚拟环境；
+
+3. 安装 Flask 框架；
+
 4. 在项目根目录创建后端主程序文件 `app.py`；
 
    ```python
-   from flask import Flask, render_template, request
+   from flask import Flask, render_template, request, redirect, url_for
    
    app = Flask(__name__)
    
+   # 定义主页路由，返回至 index.html 页面
+   @app.route("/")
+   def home():
+       return render_template("index.html")
    
-   # 定义初始页面路由，返回至 register.html 页面
+   # 定义注册页面路由，返回至 register.html 页面
    @app.route("/register")
    def register():
        return render_template("register.html")
    
    
-   # 定义 submit 路由，返回至 login.html 页面
+   # 定义 submit 路由和HTTP协议，接收前端提交数据，写入数据库后，返回至主页
    @app.route("/register_ok", methods=["POST"])
    def register_ok():
        # 1.接收用户提交数据
@@ -3635,92 +3643,145 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
    
        # 2.保存数据
        with open("users.txt", "a", encoding="utf-8") as f:
-           line = "{}|{}|{}|{}|{}|{}\n".format(user, pwd, role, gender, hobby, others)
+           line = f"{user}|{pwd}|{role}|{gender}|{hobby}|{others}\n"
            f.write(line)
-       return render_template("login.html")
+       
+       # 重定向到主页
+       return redirect(url_for("home"))  # 此处 home 是主页视图函数
    
+   # 定义登录页面路由，返回至 login.html 页面
+   @app.route("/login")
+   def login():
+       return render_template("login.html")
    
    if __name__ == '__main__':
        app.run()
    ```
 
-5. 在 `templates` 文件夹创建前端文件 `register.html`，`login.html`；
+5. 在 `templates` 文件夹创建前端文件 `index.html`、`register.html` 和 `login.html`；
+
+   - **`index.html`**
+
+     ```html
+     <!DOCTYPE html>
+     <html lang="en">
+     
+     <head>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>主页</title>
+     </head>
+     
+     <body>
+       <h1>主页</h1>
+     
+       <!-- 注册按钮，点击后跳转到注册页面 -->
+       <form action="/register" method="GET">
+         <button type="submit">注册</button>
+       </form>
+     
+       <!-- 登录按钮，点击后跳转到登录页面 -->
+       <form action="/login" method="GET">
+         <button type="submit">登录</button>
+       </form>
+     </body>
+     
+     </html>
+     ```
 
    - **`register.html`**
 
-   	```html
-   	<!DOCTYPE html>
-   	<html lang="en">
-   	<head>
-   	    <meta charset="UTF-8">
-   	    <title>Title</title>
-   	</head>
-   	<body>
-   	<!--定义submit路由和HTTP协议-->
-   	<form action="/register_ok" method="POST">
-   	    <div>
-   	        <!--"user"作为接收用户输入内容的变量-->
-   	        用户名：<input type="text" placeholder="请输入用户名" name="user">
-   	    </div>
-   	
-   	    <div>
-   	        密码：<input type="text" placeholder="请输入密码" name="pwd">
-   	    </div>
-   	
-   	    <div>
-   	        角色：
-   	        <!--"role"作为接收用户选择内容的变量-->
-   	        <select name="role">
-   	            <option value="teacher">老师</option>
-   	            <option value="student">学生</option>
-   	        </select>
-   	    </div>
-   	
-   	    <div>
-   	        性别：
-   	        男<input type="radio" name="gender" value="male"/>
-   	        女<input type="radio" name="gender" value="female"/>
-   	    </div>
-   	
-   	    <div>
-   	        爱好：
-   	        篮球<input type="checkbox" name="hobby" value="basketball"/>
-   	        足球<input type="checkbox" name="hobby" value="football"/>
-   	        游泳<input type="checkbox" name="hobby" value="swim"/>
-   	    </div>
-   	
-   	    <div>
-   	        其它：<textarea name="others"></textarea>
-   	    </div>
-   	
-   	    <input type="submit" value="注册">
-   	</form>
-   	</body>
-   	</html>
-   	```
+     ```html
+     <!DOCTYPE html>
+     <html lang="en">
+     
+     <head>
+       <meta charset="UTF-8">
+       <title>注册</title>
+     </head>
+     
+     <body>
+       <h1>注册页面</h1>
+     
+       <!-- 定义submit路由和HTTP协议，向后端提交数据 -->
+       <form action="/register_ok" method="POST">
+         <label for="user">用户名:</label>
+         <!-- name 的属性值 user 作为接收用户输入内容的变量 -->
+         <input type="text" id="user" name="user" required><br><br>
+     
+         <label for="pwd">密码:</label>
+         <input type="password" id="pwd" name="pwd" required><br><br>
+     
+         <label for="role">角色:</label>
+         <!-- name 的属性值 role 作为接收用户选择内容的变量 -->
+         <select id="role" name="role">
+           <option value="admin">管理员</option>
+           <option value="user">普通用户</option>
+         </select><br><br>
+     
+         <label for="gender">性别:</label>
+         <input type="radio" id="male" name="gender" value="male">
+         <label for="male">男</label>
+         <input type="radio" id="female" name="gender" value="female">
+         <label for="female">女</label><br><br>
+     
+         <label for="hobby">爱好:</label>
+         <input type="checkbox" name="hobby" value="reading"> 阅读
+         <input type="checkbox" name="hobby" value="sports"> 体育
+         <input type="checkbox" name="hobby" value="music"> 音乐<br><br>
+     
+         <label for="others">其他:</label>
+         <textarea id="others" name="others"></textarea><br><br>
+     
+         <button type="submit">提交注册</button>
+       </form>
+     
+       <a href="/">返回首页</a>
+     </body>
+     
+     </html>
+     ```
 
    - **`login.html`**
 
      ```html
-     <!-- login.html -->
-    
      <!DOCTYPE html>
      <html lang="en">
+     
      <head>
-         <meta charset="UTF-8">
-         <title>login</title>
+       <meta charset="UTF-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1.0">
+       <title>登录</title>
      </head>
+     
      <body>
-     <h1>注册完成，请登录</h1>
+       <h1>登录页面</h1>
+     
+       <!-- 登录表单 -->
+       <form action="#" method="POST">
+         <label for="user">用户名:</label>
+         <input type="text" id="user" name="user" required><br><br>
+     
+         <label for="pwd">密码:</label>
+         <input type="password" id="pwd" name="pwd" required><br><br>
+     
+         <button type="submit">登录</button>
+       </form>
+     
+       <a href="/">返回首页</a>
      </body>
+     
      </html>
      ```
 
-6. 运行项目，手动进入 register 页面：http://127.0.0.1:5000/register；
-7. 输入信息，点击注册
+6. 运行项目，手动进入主页：http://127.0.0.1:5000；
 
-   1. 程序会自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
-   2. 页面自动跳转至 login 页面。
+7. 注册页面，提交信息以后：
+
+   1. 程序自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
+   2. 页面自动跳转至登录页面。
+
+8. 登录页面，点击登录后会返回错误，因为没定义路由。
 
 ## 项目
 

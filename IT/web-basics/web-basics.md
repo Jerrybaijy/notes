@@ -25,6 +25,12 @@
 	- **`↑`**：向上翻一条命令
 	- **`↓`**：向上翻一条命令
 
+# [路由 `Router`](https://developer.mozilla.org/zh-CN/docs/Learn/Server-side/Express_Nodejs/routes)
+
+路由是一段 Express 代码，它将 HTTP 动词（`GET`、`POST`、`PUT`、`DELETE` 等）、URL 路径/模式和处理函数三者关联起来。
+
+前后端是通过路由建立起的联系。
+
 # 端口 `Port`
 
 **端口**（Port）是计算机网络中用于标识数据传输终点的一种逻辑概念，它在传输层协议（如 TCP 或 UDP）中用来区分同一 IP 地址上的不同服务或应用程序。端口可以看作是一种“门”，每个端口对应一个特定的服务，比如 Web 服务、邮件服务等。

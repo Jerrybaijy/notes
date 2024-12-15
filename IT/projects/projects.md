@@ -2327,6 +2327,209 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 - 访问 http://localhost:3000/
 
+# Login Flask Txt HTML
+
+## 项目概述
+
+- **项目效果**
+
+	<img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
+
+- **来源**：[`Python` > `Flask 框架`](../code-language/python/python.md#Flask 框架)；
+
+- **文件**：
+
+	- **后端**：`app.py`
+	- **数据库**：使用 `.txt` 记事本代替
+	- **前端**：`index.html` `login.html` `register.html`
+
+- **概述**：这是一个没有前端框架和数据库的 Flask 项目，旨在练习 Flask 最基本的用法；
+
+- **存储**
+
+	- 代码存储在 Git 托管平台：前后端合并存储`login-flask-txt-html`
+	- 无镜像存储在 DockerHub
+
+## 创建过程
+
+
+1. 创建 Python 虚拟环境；
+
+2. 安装 Flask 框架；
+
+3. 在项目根目录创建后端主程序文件 `app.py`；
+
+	```python
+	from flask import Flask, render_template, request, redirect, url_for
+	
+	app = Flask(__name__)
+	
+	# 定义主页路由，返回至 index.html 页面
+	@app.route("/")
+	def home():
+	    return render_template("index.html")
+	
+	# 定义注册页面路由，返回至 register.html 页面
+	@app.route("/register")
+	def register():
+	    return render_template("register.html")
+	
+	
+	# 定义 submit 路由和HTTP协议，接收前端提交数据，写入数据库后，返回至主页
+	@app.route("/register_ok", methods=["POST"])
+	def register_ok():
+	    # 1.接收用户提交数据
+	    # 左侧 user 为要存入数据库的变量名，右侧 user 为 form 表单提交数据的变量名
+	    user = request.form.get("user")
+	    pwd = request.form.get("pwd")
+	    role = request.form.get("role")
+	    gender = request.form.get("gender")
+	    others = request.form.get("others")
+	    # 接收复选框  request.args.getlist()
+	    hobby = request.form.getlist("hobby")
+	
+	    # 2.保存数据
+	    with open("users.txt", "a", encoding="utf-8") as f:
+	        line = f"{user}|{pwd}|{role}|{gender}|{hobby}|{others}\n"
+	        f.write(line)
+	    
+	    # 重定向到主页
+	    return redirect(url_for("home"))  # 此处 home 是主页视图函数
+	
+	# 定义登录页面路由，返回至 login.html 页面
+	@app.route("/login")
+	def login():
+	    return render_template("login.html")
+	
+	if __name__ == '__main__':
+	    app.run()
+	```
+
+4. 在 `templates` 文件夹创建前端文件 `index.html`、`register.html` 和 `login.html`；
+
+	- **`index.html`**
+
+		```html
+		<!DOCTYPE html>
+		<html lang="en">
+		
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  <title>主页</title>
+		</head>
+		
+		<body>
+		  <h1>主页</h1>
+		
+		  <!-- 注册按钮，点击后跳转到注册页面 -->
+		  <form action="/register" method="GET">
+		    <button type="submit">注册</button>
+		  </form>
+		
+		  <!-- 登录按钮，点击后跳转到登录页面 -->
+		  <form action="/login" method="GET">
+		    <button type="submit">登录</button>
+		  </form>
+		</body>
+		
+		</html>
+		```
+
+	- **`register.html`**
+
+		```html
+		<!DOCTYPE html>
+		<html lang="en">
+		
+		<head>
+		  <meta charset="UTF-8">
+		  <title>注册</title>
+		</head>
+		
+		<body>
+		  <h1>注册页面</h1>
+		
+		  <!-- 定义submit路由和HTTP协议，向后端提交数据 -->
+		  <form action="/register_ok" method="POST">
+		    <label for="user">用户名:</label>
+		    <!-- name 的属性值 user 作为接收用户输入内容的变量 -->
+		    <input type="text" id="user" name="user" required><br><br>
+		
+		    <label for="pwd">密码:</label>
+		    <input type="password" id="pwd" name="pwd" required><br><br>
+		
+		    <label for="role">角色:</label>
+		    <!-- name 的属性值 role 作为接收用户选择内容的变量 -->
+		    <select id="role" name="role">
+		      <option value="admin">管理员</option>
+		      <option value="user">普通用户</option>
+		    </select><br><br>
+		
+		    <label for="gender">性别:</label>
+		    <input type="radio" id="male" name="gender" value="male">
+		    <label for="male">男</label>
+		    <input type="radio" id="female" name="gender" value="female">
+		    <label for="female">女</label><br><br>
+		
+		    <label for="hobby">爱好:</label>
+		    <input type="checkbox" name="hobby" value="reading"> 阅读
+		    <input type="checkbox" name="hobby" value="sports"> 体育
+		    <input type="checkbox" name="hobby" value="music"> 音乐<br><br>
+		
+		    <label for="others">其他:</label>
+		    <textarea id="others" name="others"></textarea><br><br>
+		
+		    <button type="submit">提交注册</button>
+		  </form>
+		
+		  <a href="/">返回首页</a>
+		</body>
+		
+		</html>
+		```
+
+	- **`login.html`**
+
+		```html
+		<!DOCTYPE html>
+		<html lang="en">
+		
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  <title>登录</title>
+		</head>
+		
+		<body>
+		  <h1>登录页面</h1>
+		
+		  <!-- 登录表单 -->
+		  <form action="#" method="POST">
+		    <label for="user">用户名:</label>
+		    <input type="text" id="user" name="user" required><br><br>
+		
+		    <label for="pwd">密码:</label>
+		    <input type="password" id="pwd" name="pwd" required><br><br>
+		
+		    <button type="submit">登录</button>
+		  </form>
+		
+		  <a href="/">返回首页</a>
+		</body>
+		
+		</html>
+		```
+
+5. 运行项目，手动进入主页：http://127.0.0.1:5000；
+
+6. 注册页面，提交信息以后：
+
+	1. 程序自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
+	2. 页面自动跳转至登录页面。
+
+7. 登录页面，点击登录后会返回错误，因为没定义路由。
+
 # Student Spring Boot React Full Stack
 
 ![image](assets/image.png)
