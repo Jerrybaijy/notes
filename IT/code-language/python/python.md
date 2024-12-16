@@ -3586,21 +3586,8 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ## 环境搭建
 
-- 安装 Flask
-
-  ```bash
-  # 查看 flask
-  pip show flask
-  # 安装 flask
-  pip install Flask
-  ```
-
-## Flask 基础
-
-### 初始化脚本
-
 - 此初始化脚本是自己创建的，用于自动创建虚拟化环境和 Flask 框架目录结构。
-- 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成 Flask 框架的目录结构和虚拟环境。
+- 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成 Flask 框架的目录结构和虚拟环境。
 
 - **目录结构**
 
@@ -3681,7 +3668,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	            "</head>\n\n"
 	            "<body>\n"
 	            "  <h1>Welcome to Flask</h1>\n"
-	            "  <script src=\"{{ url_for('static', filename='script.js') }}\"></script>\n"
+	            "  <script src=\"{{ url_for('static', filename='scripts.js') }}\"></script>\n"
 	            "</body>\n\n"
 	            "</html>"
 	        ),
@@ -3723,11 +3710,93 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    main()
 	```
 
-### Flask 基础
+## Flask 基础
+
+- **目录结构**
+
+	```
+	my_project/
+	│
+	├── app.py            # 主程序文件
+	│
+	├── templates/        # 存放 HTML 模板文件
+	│   └── index.html
+	│
+	└── static/           # 存放静态文件（如 CSS、JS、图片等）
+	    ├── img/          # 存放图片等
+	    ├── styles.css
+	    └── script.js
+	```
+
+- **主程序文件**：`app.py`
+
+	```python
+	# 导入 Flask 类和 render_template 函数
+	from flask import Flask, render_template
+	
+	# 创建 Flask 应用实例
+	app = Flask(__name__)
+	
+	# 定义初始页面
+	@app.route('/')  # 路由装饰器
+	def home():  # 视图函数
+	    return render_template('index.html')
+	
+	# 运行主程序
+	if __name__ == '__main__':
+	    app.run(debug=True)
+	```
+
+	**在以上代码中**：
+
+	1. **`Flask`**：类，用于创建应用实例。
+	2. **`render_template`**：用于渲染 HTML 模板。
+	3. **`__name__`**：用于确定应用的根路径；Flask 使用这个路径来查找资源和模板。
+	4. **`@app.route('/')`**：路由装饰器，用于定义访问路径。
+	5. 当用户访问应用的根路径 `/` 时，调用 `home()` 函数。
+	6. **`home()`** 函数通过 **`render_template('index.html')`** 渲染并返回名为 `index.html` 的模板文件。
+	7. **`if __name__ == '__main__':`**：这部分代码保证了当脚本作为主程序运行时启动 Flask 应用。
+	8. **`app.run(debug=True)`**：启动 Flask 服务器。
+	9. **`debug=True`**：开启 **调试模式**，即 **热重载**，这样可以实时查看更改并调试错误。
+
+- **模板文件**：`index.html`
+
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Home</title>
+	  <!-- 动态引入 CSS 样式表 -->
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	
+	<body>
+	  <h1>Welcome to Flask</h1>
+	  <!-- 动态引入 JavaScript 脚本 -->
+	  <script src="{{ url_for('static', filename='script.js') }}"></script>
+	</body>
+	
+	</html>
+	```
+
+	**在以上代码中**：
+
+	1. **`{{ url_for('static', filename='script.js') }}`**：动态引用静态文件，详见[动态路径 `url_for`](#动态路径 `url_for`)。
+
+## 动态路径 `url_for`
+
+`url_for()` 函数是 Flask 框架中定义 URL 的方式，用于生成 URL（统一资源定位符），主要的优势在于它能够根据定义的路由视图函数名动态地构建 URL，而不是在代码中硬编码 URL 字符串。这样做的好处是，如果路由规则发生变化（例如，路由路径被修改或者添加了新的参数），`url_for` 函数调用的地方不需要手动修改 URL，从而提高了代码的可维护性。
+
+- **Python 语法**：
 
 
 
-## Flask 练习项目
+## Flask 项目
+
+### Flask 练习项目
 
 <img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
 
@@ -3915,9 +3984,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 8. 登录页面，点击登录后会返回错误，因为没定义路由。
 
-## 项目
-
-- [Login Flask React](../../projects/projects.md#Login Flask React)
+### [Login Flask React](../../projects/projects.md#Login Flask React)
 
 # Django 框架
 
