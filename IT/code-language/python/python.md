@@ -3597,6 +3597,138 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ## Flask 基础
 
+### 初始化脚本
+
+- 此初始化脚本是自己创建的，用于自动创建虚拟化环境和 Flask 框架目录结构。
+- 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成 Flask 框架的目录结构和虚拟环境。
+
+- **目录结构**
+
+	```
+	my_project/
+	├── templates/
+	│    ├── index.html
+	├── static/
+	│    ├── img/
+	│    ├── styles.css
+	│    ├── script.js
+	│
+	├── app.py
+	```
+
+- **初始化脚本**
+
+	```python
+	import os
+	import subprocess
+	import sys
+	
+	# 创建并定义激活虚拟环境
+	def create_and_activate_virtual_environment():
+	    # 虚拟环境目录名称
+	    venv_dir = "venv"
+	
+	    # 检查虚拟环境是否已存在
+	    if os.path.exists(venv_dir):
+	        print(f"虚拟环境 '{venv_dir}' 已存在。")
+	    else:
+	        # 创建虚拟环境
+	        subprocess.run([sys.executable, "-m", "venv", venv_dir], check=True)
+	        print(f"虚拟环境 '{venv_dir}' 已创建")
+	
+	    # 定义激活虚拟环境
+	    activate_script = os.path.join(venv_dir, "Scripts", "activate") if os.name == "nt" else os.path.join(venv_dir, "bin", "activate")
+	    return activate_script
+	
+	# 安装 Flask
+	def install_flask(activate_script):
+	    if os.name == "nt":
+	        # 定义命令：激活虚拟环境，并安装 Flask
+	        # Windows
+	        command = f"{activate_script} && pip install flask"
+	    else:
+	        # Linux/Mac
+	        command = f"source {activate_script} && pip install flask"
+	    
+	    
+	    # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
+	    # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
+	    # 为了在 Python 脚本中使用虚拟环境，可以通过执行一个子进程，同时激活虚拟环境并安装所需的包。
+	
+	    # 使用命令：激活虚拟环境，并安装 Flask
+	    subprocess.run(command, shell=True, check=True)
+	    print("激活虚拟环境，并安装 Flask！")
+	
+	# 创建目录结构
+	def create_project_structure():
+	    # 定义目录结构
+	    folders = [
+	        "templates",
+	        "static",
+	        "static/img"
+	    ]
+	    
+	    # 定义文件
+	    files = {
+	        "templates/index.html": (
+	            "<!DOCTYPE html>\n"
+	            "<html lang=\"en\">\n\n"
+	            "<head>\n"
+	            "  <meta charset=\"UTF-8\">\n"
+	            "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+	            "  <title>Home</title>\n"
+	            "  <link rel=\"stylesheet\" href=\"{{ url_for('static', filename='styles.css') }}\">\n"
+	            "</head>\n\n"
+	            "<body>\n"
+	            "  <h1>Welcome to Flask</h1>\n"
+	            "  <script src=\"{{ url_for('static', filename='script.js') }}\"></script>\n"
+	            "</body>\n\n"
+	            "</html>"
+	        ),
+	        "static/styles.css": "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 0;\n}",
+	        "static/script.js": "console.log('Hello, Flask!');",
+	        "app.py": (
+	            "from flask import Flask, render_template\n\n"
+	            "app = Flask(__name__)\n\n"
+	            "@app.route('/')\n"
+	            "def home():\n"
+	            "    return render_template('index.html')\n\n"
+	            "if __name__ == '__main__':\n"
+	            "    app.run(debug=True)\n"
+	        ),
+	    }
+	
+	    # 创建目录
+	    for folder in folders:
+	        os.makedirs(folder, exist_ok=True)
+	
+	    # 创建文件并写入内容
+	    for file_path, content in files.items():
+	        with open(file_path, "w", encoding="utf-8") as file:
+	            file.write(content)
+	
+	    print("目录结构已生成！")
+	
+	def main():
+	    # 第一步：创建并定义激活虚拟环境
+	    activate_script = create_and_activate_virtual_environment()
+	    
+	    # 第二步：激活虚拟环境，并安装 Flask
+	    install_flask(activate_script)
+	    
+	    # 第三步：创建目录和文件
+	    create_project_structure()
+	
+	if __name__ == "__main__":
+	    main()
+	```
+
+### Flask 基础
+
+
+
+## Flask 练习项目
+
 <img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
 
 
