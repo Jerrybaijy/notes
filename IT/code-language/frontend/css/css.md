@@ -2164,6 +2164,43 @@
 
   <img src="assets/image-20241203205719165.png" alt="image-20241203205719165" style="zoom: 50%;" />
 
+### [`flex-grow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow)
+
+- **定义**：`flex-grow` 属性用于定义弹性容器中子元素在剩余空间中的分配比例（改变元素的默认尺寸）。
+
+- **语法**：`flex-grow: <number>`
+
+	```html
+	<div class="container">
+	  <div class="left">左侧占2份</div>
+	  <div class="right">右侧占1份</div>
+	</div>
+	```
+
+	```css
+	.container {
+	  background-color: gray;
+	  border: 1px solid red;
+	  display: flex;
+	  width: 500px;
+	  padding: 10px;
+	}
+	
+	.left {
+	  background-color: red;
+	  flex-grow: 2;  /* 左侧占2份 */
+	  text-align: center;
+	}
+	
+	.right {
+	  background-color: aqua;
+	  flex-grow: 1;  /* 右侧占1份 */
+	  text-align: center;
+	}
+	```
+
+	<img src="assets/image-20241217160045045.png" alt="image-20241217160045045" style="zoom: 80%;" />
+
 ## [网格布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
 
 ### [网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
@@ -2678,7 +2715,10 @@
 
 # CSS 技巧
 
-## 弹性布局间隙
+## CSS 技巧汇总
+
+- **光标样式**：`cursor: pointer;`
+- **颜色过渡**：`transition: background-color 0.3s;`
 
 ## 内容不靠边
 

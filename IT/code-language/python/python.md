@@ -3792,7 +3792,13 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 - **Python 语法**：
 
+## `flask_sqlalchemy`
 
+`flask_sqlalchemy` 是 Flask 框架的一个扩展，它为 Flask 应用提供了对 SQLAlchemy 的便捷集成。它允许你使用 Python 代码操作关系型数据库，如 MySQL、PostgreSQL、SQLite 等。Flask - SQLAlchemy 简化了在 Flask 应用中配置和使用 SQLAlchemy 的过程。
+
+### `flask_sqlalchemy` 基础
+
+#### 
 
 ## Flask 项目
 
