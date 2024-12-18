@@ -2,25 +2,16 @@
 
 ## 说明
 
-- 这是一个软件学习笔记的合集
-- 不是特别多的笔记内容都集中在这一个笔记中
-- 每个1级标题都是一个软件，以首字母排序
+- 这是一个软件学习笔记的合集。
+- 不是特别多的笔记内容都集中在这一个笔记中。
+- 每个1级标题都是一个软件，以首字母排序。
 
 ## Task list
 
 - **Daily**
   - [ ] 正则表达式，slack dev-misc
 
-- **AI**
-  - [ ] 区块链，以太坊，web3
 
-
-- **Database**
-  - [ ] Databricks
-  - [ ] Vector search
-
-- **运维**
-  - [ ] Ansible是一个服务器运维工具，terraform（需要云账户）是一个云计算资源管理语言工具
 - **Shell Script**
   - [ ] Windows
   - [ ] Linux
@@ -42,11 +33,6 @@
 - **configmap**
 
   - [ ] 
-- **Questions**
-  - [ ] Git 版本回退之后无法 push，即使 --force 也不行
-- **MySQL**
-  - [ ] Use `stateset`
-  - [ ] stateful app
 
 # Blockchain
 
@@ -809,7 +795,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 # MongoDB
 
-MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是一种文档型数据库，以 BSON（Binary JSON，二进制 JSON）格式展示数据。`Collection` 类似于 MySQL 中的 `table`, `document` 类似于 MySQL 中的 `row`。
+MongoDB 是一种非关系型数据库管理系统（NoSQL），使用的是 **文档导向模型**，以 BSON（Binary JSON，二进制 JSON）格式展示数据。
 
 ## 环境搭建
 
@@ -865,26 +851,18 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
    sudo systemctl status mongod
    ```
 
-### Uninstall
+## MongoDB 基础
 
-## MongoDB Manage
-
-- **MongoDB Manage**
+- **MongoDB 管理**
 
   ```bash
   # 查看 mongod 版本
   mongod --version
   # 查看 MongoDB Shell 版本
   mongo --version
-  # show status
+  # 查看 status
   sudo systemctl status mongod
-  ```
-
-## Basics
-
-- **Operate**
-
-  ```bash
+  
   # 启动
   sudo systemctl start mongod
   # 停止
@@ -895,13 +873,18 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
   mongosh
   # 退出 MongoDB Shell
   exit
-  # 清屏
-  cls
   ```
+
+- **其它命令**
+
+	```bash
+	# 清屏
+	cls
+	```
 
 ## Database
 
-- **Basic command**
+- **基础命令**
 
   ```sh
   # 查看所有
@@ -914,9 +897,9 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
 
 ## Collection
 
-​	MongoDB 中的 collection 类似于 MySQL 中的 table
+MongoDB 中的 `collection` 类似于 MySQL 中的 `table`。
 
-- **Basic command**
+- **基础命令**
 
   ```sh
   # 查看 collection
@@ -925,20 +908,21 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"}[,{$KEY2:"$VALUE2"},...])
   # 删除 Collection
   db.$COLLECTION_NAME.drop()
+  ```
 
 ## Document
 
-​	MongoDB 中的 document 类似于 MySQL 中的 row，所有数据以 document 形式，按照 BSON 格式存储。不同 document 无需有相同的结构和字段
+MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `document` 形式，按照 BSON 格式存储。不同 `document` **不需要**有相同的结构和字段。
 
-- **Basic command**
+- **基础命令**
 
-  ```sh
+  ```bash
   # 查看 document
   db.$COLLECTION_NAME.find()
-  
+    
   # 操作第一个 document 用'~One'
   # 操作所有 document 用'~Many'
-  
+    
   # 创建 Collection / document
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
   # 修改 document
@@ -948,28 +932,29 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
   db.$COLLECTION_NAME.updateOne({KEY:"VALUE"})
   db.$COLLECTION_NAME.updateMany({KEY:"VALUE"})
   ```
+  
 
 # MusicBee
 
 ## 环境搭建
 
-- [**官网下载 MusicBee**](https://getmusicbee.com/downloads/)，或者从网盘下载
+1. [官网下载 MusicBee](https://getmusicbee.com/downloads/)，或者从网盘下载。
 
-- 选择 Portable Edition 版本可以安装在非系统盘
+2. 选择 `Portable Edition` 版本可以安装在非系统盘
 
-  ![image-20231214184713408](assets/image-20231214184713408.png)
+	![image-20231214184713408](assets/image-20231214184713408.png)
 
-- 安装之后需手动加入开始菜单，详见《Windows 笔记》
+3. 安装之后需手动加入开始菜单，详见《Windows 笔记》。
 
-- 先建立本地音乐库，并持续监控
+4. 先建立本地音乐库，并持续监控。
 
-  - MusicBee > 文件 > 库 > 建立新的音乐库
+  - `MusicBee` > `文件` > `库` > `建立新的音乐库`
 
-    ![image-20231214210941173](assets/image-20231214210941173.png)
+    <img src="assets/image-20231214210941173.png" alt="image-20231214210941173" style="zoom:50%;" />
 
-  - 主菜单 > 首选项 > 库 > 监控的文件夹
+  - `主菜单` > `首选项` > `库` > `监控的文件夹`
 
-    ![image-20231214211310959](assets/image-20231214211310959.png)
+    <img src="assets/image-20231214211310959.png" alt="image-20231214211310959" style="zoom:50%;" />
 
 ## 布局与配置
 
@@ -990,7 +975,7 @@ MongoDB 是一种非关系型数据库管理系统，是 NoSQL 的一种，是�
 
 # MySQL
 
-MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 是最流行的关系型数据库管理系统之一。MySQL 使用  C 和 C++ 编写，使用标准的 SQL 数据语言形式是用于访问数据库的最常用标准化语言。MySQL 支持多线程。
+MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 使用  C 和 C++ 编写，使用标准的 SQL 语言操作数据库，支持多线程，是最流行的关系型数据库管理系统之一。
 
 ## 环境搭建
 
@@ -1006,7 +991,7 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 5. 开始安装，安装方式选择 `custom`；
 
-   ![image-20240317172713492](assets/image-20240317172713492.png)
+   <img src="assets/image-20240317172713492.png" alt="image-20240317172713492" style="zoom:50%;" />
 
 6. 安装完成之后会出现 MySQL 配置的引导界面；
 
@@ -1014,26 +999,26 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 8. Type and Networking：`Config Type` 选择 `DeveloperMachine`；
 
-   ![image-20240317173419078](assets/image-20240317173419078.png)
+   <img src="assets/image-20240317173419078.png" alt="image-20240317173419078" style="zoom:50%;" />
 
 9. 创建 root 账户
 
-   ![image-20240317174252087](assets/image-20240317174252087.png)
+   <img src="assets/image-20240317174252087.png" alt="image-20240317174252087" style="zoom:50%;" />
 
 10. Apply Configuration：`Execute`
 
-   ![image-20240317174816106](assets/image-20240317174816106.png)
+	<img src="assets/image-20240317174816106.png" alt="image-20240317174816106" style="zoom: 80%;" />
 
 11. 将 MySQL 加入系统环境变量，详见《Windows 笔记》。
 
 12. 安装完成，检查
 
-   ```bash
-   # 查看版本
-   mysql --version
-   # 登录
-   mysql -u root -p
-   ```
+	```bash
+	# 查看版本
+	mysql --version
+	# 登录
+	mysql -u root -p
+	```
 
 ### 卸载
 
@@ -1061,7 +1046,13 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 ## MySQL 基础
 
-- **MySQL Manage**
+- **语法规范**
+
+  - MySQL 遵循 [SQL](../../code-language/sql/sql.md) 标准语法。
+
+  - **连字符**：应使用 `_` 而不是 `-`；例如：`db_test` 和 `tb_test`。
+
+- **MySQL 管理**
 
   ```bash
   # 查看版本
@@ -1070,162 +1061,45 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
   mysql -u $USER -p
   ```
 
-- **SQL Manage**
+  ```sql
+  -- 退出 MySQL server
+  EXIT;
+  
+  -- 设置 MySQL server 密码
+  SET PASSWORD = PASSWORD('$PASSWORD');
+  
+  -- 查看所有用户
+  SELECT USER, HOST FROM MYSQL.USER;
+  -- 使用 root 登录，并授权 jerry，否则 jerry 不能操作数据库
+  GRANT ALL PRIVILEGES ON `$DATABASE`.`$TABLE` TO 'jerry'@'%';
+  ```
+
+- **其它问题**
 
   ```sql
-  # 一条命令必须以 ; 或 \g 结尾
-  # Show all users
-  select user, host from mysql.user;
-  # Login with root, and authorize jerry, or jerry can't operate database
-  grant all privileges on $DATABASE/TABLE.* to 'jerry'@'%';
-  
-  # Exit MySQL server
-  exit;
-  # Set MySQL server password
-  set password = password('$PASSWORD');
-  # Show database characters
+  -- 查看 database 字符集
   show variables like 'character_set_database';
-  # Set characters between client and server
+  -- 设置客户端和服务端之间的字符集
   set names 'utf8';
   ```
-  
-- Others
 
-  - Name should use `_` instead of `-`. EG: `db_test` and `tb_test`.
+## MySQL 命令样板
 
+```sql
+-- 创建数据库
+CREATE DATABASE $DATABASE default charset=utf8;
 
-## Database
+-- 创建数据表
+create table tb_test(
+	id int primary key auto_increment not null,  -- 主键，自增，不准为空
+	username varchar(16),  -- 最长16个字符
+  password varchar(16),
+)default charset=utf8;
+```
 
-- **Basic Command**
+## 解决办法
 
-  ```sql
-  # 查看所有
-  show databases; 
-  # 进入
-  use $DATABASE;
-  # 创建
-  create database $DATABASE [default charset=utf8];
-  # 删除
-  drop database $DATABASE;
-  ```
-
-- **Other Command**
-
-  ```sql
-  
-  ```
-
-## Table
-
-- **Basic command**
-
-  ```sql
-  # show all tables in the database
-  show tables;
-  # show table head
-  desc $TABLE
-  # del table
-  drop table $TABLE
-  # clear table
-  delete from $TABLE
-  ```
-
-- **Create table**
-
-  ```
-  create table $TABLE(
-  	$COLUMN $CONDITION,
-  	$COLUMN $CONDITION,
-  	$COLUMN $CONDITION,
-  	$COLUMN $CONDITION
-  )default charset=utf8;
-  ```
-
-  ``` sql
-  create table tb_test(
-  	id int primary key auto_increment not null,  # 主键，自增，不准为空
-  	username varchar(16),  # 最长16个字符
-    password varchar(16),
-  	age int [default 3]  # 选项：不填默认为3
-  )default charset=utf8;
-  ```
-  
-  ```sql
-  create table test_test(
-  	id int primary key auto_increment not null,
-  	username varchar(16),
-  	password varchar(16)
-  )default charset=utf8;
-  ```
-  
-  ```sql
-  create table test_test(
-  	id int primary key auto_increment not null,
-  	address varchar(16),
-  	name varchar(16)
-  )default charset=utf8;
-  ```
-  
-
-## Row
-
-- **Basic command**
-
-  ```sql
-  # show row
-  select * from $TABLE [where id=1];
-  # del row
-  delete from $TABLE [where $CONDITION];
-  # add row
-  insert into $TABLE[($COLUMN1, $COLUMN2)] values("$VALUE1", "$VALUE2");
-
-- **Add many rows**
-
-  ``` sql
-  # 增加多行数据行
-  insert into tb1(name, mobile, email, salary, ctime) values
-  	('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-  	('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-  	('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30');
-  ```
-
-## Column
-
-- **Basic command**
-
-  ```sql
-  # del column
-  alter table $TABLE drop column $COLUMN
-  ```
-
-## Data
-
-- **Update data**
-
-  ``` sql
-  update $TABLE set $COLUMN = $VALUE[, $COLUMN2 = $VALUE2...] [where $CONDITION];
-  ```
-
-  ``` sql
-  update tb1 set mobile = '1999999999' where name = 'zhangsan';
-  
-  update tb1 set 
-  	name = 'zhangsan', 
-  	mobile = '1999999999' 
-  where name = 'zhaoliu';
-  ```
-
-- **Show data**
-
-  ``` sql
-  select * from $TABLE [where $CONDITION];
-  select $COLUMN[, $COLUMN2...] from $TABLE [where $CONDITION];
-  ```
-  
-
-## Solutions
-
-### Forget PWD
+### 忘记密码
 
 - 关于忘记密码，需先进入无授权模式，改完之后再切换回正常模式。
 
@@ -1278,7 +1152,7 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
   pandoc 实验.md -o 实验.docx --extract-media=./assets
   ```
   
-  - **--extract-media**：可以提取媒体文件并存储到指定路径
+  - **`--extract-media`**：可以提取媒体文件并存储到指定路径。
 
 # Podman
 
@@ -1421,6 +1295,32 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
   git push
   exec $SHELL  # 执行完毕保持窗口
   ```
+
+# SQLite
+
+**SQLite** 是一个轻量级的关系型数据库管理系统（RDBMS），它的主要特点是：
+
+- **嵌入式**：直接内嵌在应用里，无需安装。
+- **无需安装**：因为 SQLite 是一个库而非服务器，它直接访问数据库文件，所以无需额外的安装配置。
+- **服务器独立**：数据存储在一个 `.db` 文件中，如果数据库文件不存在，SQLite 会自动创建它。
+
+## SQLite 基础
+
+- 无需安装。
+- 在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
+
+## SQLite 可视化
+
+### VSCode 插件查看
+
+- VSCode 安装 `SQLite Viewer` 插件；
+- 双击 `SQLite` 的 `.db` 文件；
+- 此插件只支持查看，不支持修改。
+
+### DB Browser for SQLite
+
+- [安装 DB Browser for SQLite 桌面软件](https://sqlitebrowser.org/dl/)；
+- 支持修改。
 
 # SSH
 
@@ -1612,13 +1512,13 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 # VS Code
 
-## 安装
+## 环境搭建
+
+### 安装文件 
 
 1. [下载安装文件，这个版本允许安装到 D 盘 ](https://code.visualstudio.com/Download)
 
    ![image-20240403064749602](assets/image-20240403064749602.png)
-
-## 配置
 
 ### 配置文件
 
@@ -1689,6 +1589,17 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
   }
   ```
 
+## 插件
+
+- **`Auto Rename Tag`**：自动同步更改 HTML 或 XML 标签对的标签名
+- **`Chinese (Simplified)`**：汉化
+- **`IntelliCode`**：智能代码补全
+- **`IntelliCode API Usage Examples`**：比 `IntelliCode` 更厉害
+- **`Jinja`**：为 Jinja2 模板语言提供语法高亮和自动完成支持
+- **`Live Server`**：实时预览前端网页
+- **`Python`**：支持 Python
+- **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
+
 ## 快捷键
 
 - **设置快捷键**
@@ -1718,7 +1629,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 - **终端**
 
-	- **`Ctrl + ~`**：选择下一
+	- **`Ctrl + ~`**：打开内置终端
 
 
 ## 选择解释器虚拟环境
@@ -1726,7 +1637,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 1. 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
 2. 每次进入项目目录都应该检查；
 3. 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
-4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
+4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
 	- 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
 5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。

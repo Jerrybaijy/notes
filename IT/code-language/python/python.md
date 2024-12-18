@@ -1899,7 +1899,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
   ```python
   data = "Hello world!"  # 确认要写入的内容并用data接收
-  data = data.encode(utf-8)  # 将“青海联通”编码，转为字节型数据
+  data = data.encode(utf-8)  # 将“Hello world!”编码，转为字节型数据
   f = open (r"demo.txt", "a")  # 获取文件对象
   f.write(data)  # 写入
   # f.flush()  # 将数据强刷进硬盘，防止关闭文件前电脑死机数据不保存
@@ -3115,40 +3115,72 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	obj() #获取结果为：1111。
 	```
 
-# 异常处理
+# 交互 SQLite
 
-# 操作 MySQL
+在 Python 中，使用内置模块 `sqlite3` 与 SQLite 数据库进行交互，交互方法与 MySQL 完全相同。
 
-## Syntax
+- **语法**
 
-- **语法**：`sql = "SQL_SYNTAX`
+	```python
+	# 1.引入 sqlite3
+	import sqlite3
+	
+	# 2.连接 SQLite 数据库
+	conn = sqlite3.connect('example.db')
+	
+	# 3.创建游标对象
+	conn.row_factory = sqlite3.Row  # 相当于 MySQL 里的cursor=DictCursor
+	cursor = conn.cursor()
+	
+	# 其余同交互 MySQL
+	```
 
-  ```python
-  sql = "show databases;"
-  ```
+- **说明**：在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
 
-  解释：
+# 交互 MySQL
 
-  - 结尾不加分号也行
-  - 整个 sql 语句用双引号包围
-  - 当作为数据的值时，应该使用单引号
+在 Python 中，使用第三方模块 `PyMySQL` 与 MySQL 数据库进行交互。
 
-- Commit SQL syntax template
+## SQL 语句
 
-  ```python
-  cursor.execute("$SQL_SYNTAX")
-  
-  # 1. 如果是查询业务，则执行 fetchall
-  result = cursor.fetchall()
-  print(result)
-  
-  # 2. 如果是增删改业务，则执行 commit
-  conn.commit()
-  ```
+- **语法**：`cursor.execute("$SQL_SYNTAX")`，SQL 语句遵循 [SQL 语法](../sql/sql.md)。
 
-## About DictCursor
+	- 单行单句 SQL 语句应用双引号包围。
 
-- 引入 DictCursor
+		```python
+		cursor.execute("SELECT * FROM tb_test;")
+		```
+
+	- 多行或者多句 SQL 语句应用三重引号包围。
+
+		```python
+		# 多行单句
+		cursor.execute('''
+		    SELECT id, username, email
+		    FROM users
+		    WHERE username = ?
+		''', ('alice',))
+		```
+
+		```python
+		# 多行多句
+		cursor.execute('''
+		    UPDATE users
+		    SET password = ?
+		    WHERE username = ?
+		''', ('newpassword123', 'alice'))
+		```
+
+- **扩展**：为了代码的可读性，可使用变量接收。
+
+	```python
+	sql = "SELECT * FROM tb_test;"
+	cursor.execute(sql)
+	```
+
+## `DictCursor`
+
+- **语法**：
 
   ```python
   import pymysql
@@ -3158,281 +3190,171 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   cursor = conn.cursor(cursor=DictCursor)
   ```
 
-  ```
-  # 查询结果：每行数据都放在各自字典中，所有行都放在一个列表中，即列表嵌套字典，列名为字典的键，数据为字典的值。
-  [{'id': 8, 'username': 'zhangsansan', 'password': '123', 'mobile': '19999999999'}, {'id': 9, 'username': 'lisisi', 'password': '123', 'mobile': '18888888888'}, {'id': 10, 'username': 'wangwuwu', 'password': '123', 'mobile': '16666666666'}]
-  ```
+- **说明**
 
-- 不引入 DictCursor
-
-  ```python
-  import pymysql
-  
-  # 连接方式
-  cursor = conn.cursor()
-  ```
-
-  ```
-  # 查询结果：每行数据都放在各自元组中，所有行都放在一个大元组中，即元组嵌套元组。
-  ((8, 'zhangsansan', '123', '19999999999'), (9, 'lisisi', '123', '18888888888'), (10, 'wangwuwu', '123', '16666666666'))
-  ```
-
-## Operate MySQL
-
-### An operation
-
-- 此例作为 Python 操作 MySQL 的样板文件，可以替换中间 `文件处理` 和 `执行sql` 部分。
-
-  ```python
-  # 1.引入 pymysql 和 DictCursor
-  # 确保第三方模块 pymysql、DictCursor 已安装
-  import pymysql
-  from pymysql.cursors import DictCursor  # 引入 DictCursor，查询结果为列表嵌套字典
-  
-  # 2.连接 MySQL 服务器
-  # 将连接部分写在循环以外，防止频繁连接
-  # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
-  conn = pymysql.Connect(
-      host="localhost",  # 主机地址，如果要连接远程数据库，需填写对应数据库地址
-      port=3306,  # 端口号，注意数字是整型
-      user="root",
-      password="123456",
-      charset="utf8",  # 文件编码
-      database="db_test"  # 可提前连接某个特定数据库，以减少后期进入数据库的步骤
-  )
-  print("MySQL已连接.....")
-  cursor = conn.cursor(cursor=DictCursor)  # 创建游标对象（连接方式 DictCursor，查询结果为列表嵌套字典）
-  
-  # 3.增删改查（以导入数据为例）
-  # 3.文件处理
-  # 确保已创建 users.txt 文件（zhangsan,123,19999999999...）
-  # 关于文件处理，详见：处理 TXT 文件
-  with open('users.txt', 'r', encoding='utf-8') as f:
-      data = f.read().strip()
-  lst = data.split("\n")
-  for line in lst:
-      if not line:
-          continue
-      list_new = line.split(",")  # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
-  
-      # 4.执行sql
-      # 不要直接将用户输入的值直接写入 sql 语句，防止 SQL 注入攻击。
-      sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"  # %s 占位符
-      cursor.execute(sql, list_new)  # 将用户输入的值以列表的形式传递给 cursor.execute() 方法
-      conn.commit()
-      print("导入数据成功！")
-  
-  # 5.关闭游标对象和连接
-  # 将关闭连接部分写在循环以外，防止频繁连接
-  cursor.close()
-  conn.close()
-  print("MySQL 已断开连接！")
-  ```
-
-### Multiple operations
-
-- 当需要多次连接 MySQL 时，可以将连接和断开连接封装成函数，以免冗余。
-
-  ```python
-  import pymysql
-  from pymysql.cursors import DictCursor
-  
-  
-  # 连接 MySQL
-  def conn_mysql():
-      return pymysql.Connect(
-          host="localhost",
-          port=3306,
-          user="root",
-          password="123456",
-          charset="utf8",
-          database="db_test"
-      )
-  
-  
-  # 断开 MySQL
-  def close_conn_mysql(conn, cursor):
-      cursor.close()
-      conn.close()
-  
-  # 以查询数据为例
-  conn = conn_mysql()  # 调用连接 MySQL 函数
-  cursor = conn.cursor(cursor=DictCursor)
-  cursor.execute("select * from tb_test")
-  result = cursor.fetchall()
-  close_conn_mysql(conn, cursor)  # 调用断开 MySQL 函数
-  ```
-
-## Database
-
-- **查询所有数据库**
-
-  ``` python
-  cursor.execute("show databases;")
-  result = cursor.fetchall()  # 接收查询结果
-  print(result)
-  ```
-
-- **进入数据库**
-
-  ``` python
-  cursor.execute("use $DATABASE;")
-  ```
-
-- **创建数据库**
-
-  ``` python
-  cursor.execute("create database $DATABASE default charset=utf8;")
-  conn.commit()  # 执行conn，提交数据
-  print("创建数据库成功！")
-  ```
-
-- **删除数据库**
-
-  ``` python
-  cursor.execute("drop database $DATABASE;")
-  conn.commit()
-  print("删除成功！")
-  ```
+	- 引入 `DictCursor` 之后，更容易处理数据。
+	- **引入 `DictCursor`**：列表嵌套字典，所有行都放在一个列表中，每行数据都放在各自字典中，列名为字典的键，数据为字典的值。`[{'id': 8, 'username': 'zhangsansan', 'password': '123', 'mobile': '19999999999'}, {'id': 9, 'username': 'lisisi', 'password': '123', 'mobile': '18888888888'}, {'id': 10, 'username': 'wangwuwu', 'password': '123', 'mobile': '16666666666'}]`
+	- **不引入 `DictCursor`**：元组嵌套元组，所有行都放在一个大元组中，每行数据都放在各自元组中。
 
 
-## Table
+## 交互 MySQL 语法
 
-- **查询所有数据表**
+- **基础语法**
 
-  ``` python
-  cursor.execute("show tables;")
-  result = cursor.fetchall()
-  print(result)
-  ```
+	```python
+	# 1.引入 pymysql 和 DictCursor
+	import pymysql
+	from pymysql.cursors import DictCursor
+	
+	# 2.连接 MySQL 服务器
+	conn = pymysql.Connect(
+	    host="localhost",  # 主机地址
+	    port=3306,  # 端口号
+	    user="jerry",  # 用户名
+	    password="123456",  # 密码
+	    charset="utf8",  # 字符集
+	    database="db_test"  # 数据库名称
+	)
+	
+	# 3.创建游标对象
+	cursor = conn.cursor(cursor=DictCursor)
+	
+	# 4.交互 MySQL
+	sql = "$SQL_SYNTAX"
+	cursor.execute(sql)  # 增删改查
+	conn.commit()  # 如果是增删改业务，则执行 commit()
+	res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+	res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+	
+	# 5.关闭游标对象和连接
+	cursor.close()
+	conn.close()
+	```
 
-- **创建数据表**
+	**在以上代码中**：
 
-  ``` python
-  # 一般以id作为主键
-  sql = """
-  create table tb2(
-    	id bigint unsigned primary key auto_increment not null,
-      name varchar(16),
-      mobile char(11),
-      email varchar(128),
-      salary decimal(10, 2),
-      ctime datetime
-  )default charset=utf8;"""
-  cursor.execute(sql)
-  conn.commit()
-  print("创建数据表成功！")
-  ```
+	1. `host="localhost"`：主机地址，如果要连接远程数据库，需填写对应数据库地址。
+	2. **`port=3306`**：端口号，注意数字是整型。
+	3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
 
-- **删除数据表**
+- **函数语法**
 
-  ``` python
-  cursor.execute("drop table $TABLE")
-  conn.commit()
-  print("删除数据表成功！")
-  ```
+	```python
+	# 1.引入 pymysql 和 DictCursor
+	import pymysql
+	from pymysql.cursors import DictCursor
+	
+	# 2.定义连接 MySQL 函数
+	def conn_mysql():
+	    return pymysql.Connect(
+	        host="localhost",
+	        port=3306,
+	        user="root",
+	        password="123456",
+	        charset="utf8",
+	        database="db_test"
+	    )
+	
+	# 3.定义断开 MySQL 函数
+	def close_conn_mysql(conn, cursor):
+	    cursor.close()
+	    conn.close()
+	
+	# 4.交互 MySQL
+	conn = conn_mysql()  # 连接 MySQL
+	cursor = conn.cursor(cursor=DictCursor)  # 创建游标对象
+	
+	cursor.execute("$SQL_SYNTAX")  # 增删改查
+	conn.commit()  # 如果是增删改业务，则执行 commit()
+	res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+	res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+	
+	close_conn_mysql(conn, cursor)  # 断开 MySQL
+	```
 
-## Row
+- **说明**
 
-- **增加数据行**
+	- 如果在循环中交互数据库，应将连接部分、游标对象和关闭部分写在循环以外，防止频繁连接。
 
-  ``` python
-  sql = "insert into tb_test(name, mobile, email, salary, ctime) values('zhaoliu', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30');"
-  cursor.execute(sql)
-  conn.commit()
-  print("增加数据行成功！")
-  ```
+	- 不要直接将用户输入的值直接写入 sql 语句，防止 SQL 注入攻击。
 
-  ``` python
-  # 增加多行数据行
-  
-  sql = """insert into tb_test(name, mobile, email, salary, ctime) values
-      ('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-      ('zhangsan', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-      ('lisi', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30');"""
-  cursor.execute(sql)
-  conn.commit()
-  print("增加数据行成功！")
-  ```
+		```python
+		# 假设 username 和 password 是用户从表单提交的输入
+		username = request.form['username']
+		password = request.form['password']
+		
+		# 使用参数化查询来避免 SQL 注入
+		cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
+		```
 
-- **删除数据行**
+## 交互 MySQL 样板
 
-  ``` python
-  sql = "delete from tb_test where name='zhangsan';"
-  cursor.execute(sql)
-  conn.commit()
-  print("删除数据行成功！")
-  ```
+### 函数样板文件
 
-  - 删除所有数据行
+```python
+import pymysql
+from pymysql.cursors import DictCursor
 
-  ``` python
-  cursor.execute("delete from tb_test;")
-  conn.commit()
-  print("删除所有数据行成功！")
-  ```
+# 定义连接 MySQL
+def conn_mysql():
+    return pymysql.Connect(
+        host="localhost",
+        port=3306,
+        user="root",
+        password="123456",
+        charset="utf8",
+        database="db_test"
+    )
 
-## Data
+# 3.定义断开 MySQL
+def close_conn_mysql(conn, cursor):
+    cursor.close()
+    conn.close()
 
-- **查询所有数据**
+# 4.交互 MySQL
+conn = conn_mysql()
+cursor = conn.cursor(cursor=DictCursor)
 
-  ``` python
-  cursor.execute("select * from tb_test;")
-  result = cursor.fetchall()
-  print(result)
-  ```
+cursor.execute("$SQL_SYNTAX")
+conn.commit()  # 如果是增删改业务，则执行 commit()
+res = cursor.fetchall()  # 如果是查询业务，则执行 fetchall
 
-- **查询特定数据**
+close_conn_mysql(conn, cursor)
+```
 
-  ``` python
-  sql = "select id from tb_test where name = 'zhaoliu';"
-  cursor.execute(sql)
-  result = cursor.fetchall()
-  print(result)
-  ```
+### 创建 `TABLE` 样板
 
-- **查询第一行数据**
+```python
+# 一般以id作为主键
+sql = """
+create table tb2(
+  	id bigint unsigned primary key auto_increment not null,
+    name varchar(16),
+    mobile char(11),
+    email varchar(128),
+    salary decimal(10, 2),
+    ctime datetime
+)default charset=utf8;"""
+cursor.execute(sql)
+conn.commit()
+```
 
-  ``` python
-  # fetchone在Python中查询结果是一个字典
-  sql = "select * from tb_test where name = 'lisi';"
-  cursor.execute(sql)
-  result = cursor.fetchone()
-  print(result)
-  ```
+### 增加多个数据行样板
 
-- **修改数据**
+```python
+sql = """insert into tb_test(name, mobile, email, salary, ctime) values
+    ('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
+    ('zhangsan', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
+    ('lisi', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30');"""
+cursor.execute(sql)
+conn.commit()
+```
 
-  ``` python
-  sql = "update tb_test set mobile = '1999998888' where name = 'zhangsan';"
-  cursor.execute(sql)
-  conn.commit()
-  print("修改数据成功！")
-  ```
+## 交互 MySQL 实例
 
-  - **修改多个数据（某行）**
+### 手动添加数据
 
-  ``` python
-  sql = "update tb_test set name = 'zhaoliu',mobile = '1999999999' where name = 'zhangsan';"
-  cursor.execute(sql)
-  conn.commit()
-  print("修改某行数据成功！")
-  ```
-  
-  - **修改多个数据（某列）**
-  
-  ``` python
-  sql = "update tb_test set mobile = '1999998888';"
-  cursor.execute(sql)
-  conn.commit()
-  print("修改某列数据成功！")
-  ```
-
-## Instance
-
-### Add Data Manually
-
-- 在程序中循环手动输入数据，添加至数据库
+- 在程序中循环手动输入数据，添加至数据库。
 
   ```python
   # 1.引入 pymysql 和 DictCursor
@@ -3474,9 +3396,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   print("MySQL 已断开连接！")
   ```
 
-### Import Data
+### 导入数据
 
-- 在程序中从文件获取数据，导入至数据库
+- 在程序中从文件获取数据，导入至数据库。
 
   ```
   # users.txt
@@ -3533,9 +3455,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   print("MySQL 已断开连接！")
   ```
 
-### Export Data
+### 导出数据
 
-- 在程序中从数据库获取数据（列表嵌套字典），导出至文件
+- 在程序中从数据库获取数据（列表嵌套字典），导出至文件。
 
   ```python
   # 1.引入 pymysql 和 DictCursor
@@ -3574,11 +3496,6 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
           f.write(line)
   print("导出数据成功！")
   ```
-
-
-# 了解网络编程
-
-# 了解多线程
 
 # Flask 框架
 
@@ -3796,7 +3713,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 `flask_sqlalchemy` 是 Flask 框架的一个扩展，它为 Flask 应用提供了对 SQLAlchemy 的便捷集成。它允许你使用 Python 代码操作关系型数据库，如 MySQL、PostgreSQL、SQLite 等。Flask - SQLAlchemy 简化了在 Flask 应用中配置和使用 SQLAlchemy 的过程。
 
-### `flask_sqlalchemy` 基础
+### `flask_sqlalchemy` 基础
 
 #### 
 
@@ -4463,7 +4380,7 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
 
 - sqlite 驱动
 
-  - 下载驱动https://github.com/xerial/sqlite-jdbc/releases
+  - [下载驱动](https://github.com/xerial/sqlite-jdbc/releases)
 
     <div style="display: flex; justify-content: left;">
         <img src="assets/image-20231104193510562.png" alt="图片1" style="width: 80%;">
@@ -4473,7 +4390,7 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
         <img src="assets/image-20231104193729867.png" alt="图片1" style="width: 80%;">
     </div>	
 
-  - 将下载好的sqlite-jdbc-3.43.0.0.jar文件放入如下路径C:\Users\39331\AppData\Roaming\JetBrains\PyCharm2023.2\jdbc-drivers\Xerial SQLiteJDBC\3.43.0\org\xerial\sqlite-jdbc\3.43.0.0
+  - 将下载的`sqlite-jdbc-3.43.0.0.jar`文件放入如下路径`C:\Users\39331\AppData\Roaming\JetBrains\PyCharm2023.2\jdbc-drivers\Xerial SQLiteJDBC\3.43.0\org\xerial\sqlite-jdbc\3.43.0.0`
   - 配置
 
     ![image-20231104194439218](assets/image-20231104194439218.png)

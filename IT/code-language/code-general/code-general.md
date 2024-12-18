@@ -1477,3 +1477,58 @@
 ### 类的多态
 
 ​	支持传入多种类型参数
+
+# 模版语法
+
+## 模板语法基础
+
+- **模版语法**：是一种将后端逻辑嵌入到模板文件中（如 HTML ）的规则，用于在模版文件动态显示从后端视图函数传递过来的变量值。
+
+- **模板引擎**：是一种软件工具，用于将数据与模板（通常是文本格式，如 HTML）结合起来，生成最终的文档。
+	- 模板引擎首先会解析模板文件，识别其中的模板语法。
+	- 后端程序将数据传递给模板引擎，模板引擎会根据模板语法将数据绑定到模板中的相应位置。
+	- 在完成数据绑定后，模板引擎会生成最终的输出文档，通常是一个完整的 HTML 页面。
+	- **常用引擎**：Jinja2 模板引擎，Django 模板引擎等。
+- **缩进**：模板语法和 HTML 元素之间的缩进不是必须的，但为了代码的可读性，建议使用缩进，而且此缩进会被编辑器代码格式化功能破坏掉。
+- **标识**
+	- `{% 逻辑语句 %}`
+	- `{{ 变量 }}`
+
+## 模板语法示例
+
+- Flask 框架使用模板语法示例
+
+- `app.py`
+
+	```python
+	from flask import Flask, render_template, session
+	
+	app = Flask(__name__)
+	app.config['SECRET_KEY'] = 'your_secret_key'  
+	
+	@app.route('/')
+	def index():
+	    # 模拟用户登录状态和用户姓名
+	    session['logged_in'] = True
+	    session['user_name'] = '张三'
+	    return render_template('index.html', user_name=session['user_name'])
+	
+	if __name__ == '__main__':
+	    app.run(debug=True)
+	```
+
+- `templates/index.html`
+
+	```html
+	<body>
+	  {% if session.logged_in %}
+	    <h1>欢迎，{{ user_name }}！</h1>
+	    <p>您正在浏览我们的专属页面内容。</p>
+	  {% else %}
+	    <h1>欢迎，访客！</h1>
+	    <p>请登录以获取更多功能和专属内容。</p>
+	  {% endif %}
+	</body>
+	```
+
+	
