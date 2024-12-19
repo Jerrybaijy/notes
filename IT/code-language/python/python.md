@@ -2017,7 +2017,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ### 处理 TXT 文件
 
-- 要求：得到一个 TXT 文件，把文件名和网址作为键值对放入一个字典中
+- 要求：得到一个 TXT 文件，把文件名和网址作为键值对放入一个字典中。
 
   ```
   # file.txt
@@ -3196,7 +3196,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    session.commit()  # 如果是增删改交互，则执行 commit()；查询交互不执行。
 	```
 
-### `sqlalchemy` 连接
+### `sqlalchemy` 连接
 
 - **连接 SQLite**
 
@@ -3235,7 +3235,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 在 Python 中，使用第三方模块 `pymysql` 与 MySQL 数据库进行交互。
 
 
-###  `pymysql` 语法
+###  `pymysql` 语法
 
 - **基础语法**
 
