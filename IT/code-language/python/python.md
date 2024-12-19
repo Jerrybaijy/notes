@@ -351,6 +351,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
   - **类名**：大驼峰，例 `MyFirstJavaClass`。
   - **文件名**：Python 文件名不要使用 `-`，因为将文件作为模块引入时，如果模块名中包含破折号，可能会导致一些问题。
   - **环境变量**：大蛇形，例 `MAX_LENGTH`。
+  - **模块名**：小蛇形，例 `max_length`。
 
 ## 注释
 
@@ -3115,127 +3116,167 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	obj() #获取结果为：1111。
 	```
 
-# 交互 SQLite
-
-在 Python 中，使用内置模块 `sqlite3` 与 SQLite 数据库进行交互，交互方法与 MySQL 完全相同。
-
-- **语法**
-
-	```python
-	# 1.引入 sqlite3
-	import sqlite3
-	
-	# 2.连接 SQLite 数据库
-	conn = sqlite3.connect('example.db')
-	
-	# 3.创建游标对象
-	conn.row_factory = sqlite3.Row  # 相当于 MySQL 里的cursor=DictCursor
-	cursor = conn.cursor()
-	
-	# 其余同交互 MySQL
-	```
-
-- **说明**：在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
-
-# 交互 MySQL
-
-在 Python 中，使用第三方模块 `PyMySQL` 与 MySQL 数据库进行交互。
+# 交互数据库
 
 ## SQL 语句
 
-- **语法**：`cursor.execute("$SQL_SYNTAX")`，SQL 语句遵循 [SQL 语法](../sql/sql.md)。
-
-	- 单行单句 SQL 语句应用双引号包围。
-
-		```python
-		cursor.execute("SELECT * FROM tb_test;")
-		```
-
-	- 多行或者多句 SQL 语句应用三重引号包围。
-
-		```python
-		# 多行单句
-		cursor.execute('''
-		    SELECT id, username, email
-		    FROM users
-		    WHERE username = ?
-		''', ('alice',))
-		```
-
-		```python
-		# 多行多句
-		cursor.execute('''
-		    UPDATE users
-		    SET password = ?
-		    WHERE username = ?
-		''', ('newpassword123', 'alice'))
-		```
-
-- **扩展**：为了代码的可读性，可使用变量接收。
-
-	```python
-	sql = "SELECT * FROM tb_test;"
-	cursor.execute(sql)
-	```
-
-## `DictCursor`
-
-- **语法**：
+- **语法**：`cursor.execute('$SQL_SYNTAX')`，SQL 语句遵循 [SQL 语法](../sql/sql.md)。
 
   ```python
-  import pymysql
-  from pymysql.cursors import DictCursor  # 引入 DictCursor
-  
-  # 连接方式
-  cursor = conn.cursor(cursor=DictCursor)
+  cursor.execute('SELECT * FROM tb_test;')
   ```
 
-- **说明**
+  ```python
+  # 为了代码的可读性，可使用变量接收。
+  sql = 'SELECT * FROM tb_test;'
+  cursor.execute(sql)
+  ```
 
-	- 引入 `DictCursor` 之后，更容易处理数据。
-	- **引入 `DictCursor`**：列表嵌套字典，所有行都放在一个列表中，每行数据都放在各自字典中，列名为字典的键，数据为字典的值。`[{'id': 8, 'username': 'zhangsansan', 'password': '123', 'mobile': '19999999999'}, {'id': 9, 'username': 'lisisi', 'password': '123', 'mobile': '18888888888'}, {'id': 10, 'username': 'wangwuwu', 'password': '123', 'mobile': '16666666666'}]`
-	- **不引入 `DictCursor`**：元组嵌套元组，所有行都放在一个大元组中，每行数据都放在各自元组中。
+- **标记边界**：使用字符串表示一个 SQL 语句，其边界标记与[字符串边界标记](../code-general/code-general.md#string-boundary-marking)语法相同。
+
+  - **单行单句 SQL 语句**：通常用单引号 `'` 作为边界标记。
+
+    ```python
+    cursor.execute('SELECT * FROM tb_test;')
+    ```
+
+  - **多行或者多句 SQL 语句**：通常用三重单引号 `'''` 作为边界标记。
+
+    ```python
+    # 多行单句
+    cursor.execute('''
+        SELECT id, username, email
+        FROM users
+        WHERE username = ?
+    ''', ('alice',))
+    ```
+
+    ```python
+    # 多行多句
+    cursor.execute('''
+        UPDATE users
+        SET password = ?
+        WHERE username = ?
+    ''', ('newpassword123', 'alice'))
+    ```
+
+## `sqlalchemy` 交互关系型数据库
+
+**SQLAlchemy** 是一个功能强大的 Python 数据库工具包和对象关系映射（ORM）框架。在交互**关系型数据库**方面，它提供了一个统一的操作接口，屏蔽了不同数据库之间的差异。无论交互哪种关系型数据库，都可以用相似的代码逻辑去操作，大大提高了代码的复用性和可移植性。
+
+在 Python 中，可以使用第三方模块 `sqlalchemy` 与任意关系型数据库（如 MySQL 和 SQLite）进行交互。
+
+### `sqlalchemy` 语法
+
+- **基础语法（以 MySQL 为例）**
+
+	```python
+	from sqlalchemy import create_engine
+	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy.ext.declarative import declarative_base
+	from sqlalchemy import Column, String
+	
+	# 1.创建连接MySQL数据库的引擎
+	engine = create_engine('''
+	    mysql+mysql-connector-python://
+	    username:password
+	    @localhost:3306/my_database
+	''')
+	
+	# 2.创建会话工厂
+	Session = sessionmaker(bind=engine)
+	
+	# 3.创建基础类
+	Base = declarative_base()
+	
+	# 4.使用with语句创建会话对象，交互数据库
+	with Session() as session:
+	    # 增删改查
+	    session.query(User).FUNC()  # FUNC() 为具体的增删改查
+	    session.commit()  # 如果是增删改交互，则执行 commit()；查询交互不执行。
+	```
+
+### `sqlalchemy` 连接
+
+- **连接 SQLite**
+
+	```python
+	from sqlalchemy import create_engine, Column, String
+	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy.ext.declarative import declarative_base
+	from argon2 import PasswordHasher
+	
+	# 创建连接 SQLite 数据库的引擎
+	engine = create_engine('sqlite:///test.db')
+	```
+
+- **连接 MySQL**
+
+	```python
+	from sqlalchemy import create_engine, Column, String
+	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy.ext.declarative import declarative_base
+	from argon2 import PasswordHasher
+	
+	# 创建连接 MySQL 数据库的引擎
+	engine = create_engine('''
+	    mysql+mysql-connector-python://
+	    username:password
+	    @localhost:3306/my_database
+	''')
+	```
+
+### `sqlalchemy` 样板
+
+### `sqlalchemy` 实例
+
+##  `pymysql` 交互 MySQL
+
+在 Python 中，使用第三方模块 `pymysql` 与 MySQL 数据库进行交互。
 
 
-## 交互 MySQL 语法
+###  `pymysql` 语法
 
 - **基础语法**
 
-	```python
-	# 1.引入 pymysql 和 DictCursor
-	import pymysql
-	from pymysql.cursors import DictCursor
-	
-	# 2.连接 MySQL 服务器
-	conn = pymysql.Connect(
-	    host="localhost",  # 主机地址
-	    port=3306,  # 端口号
-	    user="jerry",  # 用户名
-	    password="123456",  # 密码
-	    charset="utf8",  # 字符集
-	    database="db_test"  # 数据库名称
-	)
-	
-	# 3.创建游标对象
-	cursor = conn.cursor(cursor=DictCursor)
-	
-	# 4.交互 MySQL
-	sql = "$SQL_SYNTAX"
-	cursor.execute(sql)  # 增删改查
-	conn.commit()  # 如果是增删改业务，则执行 commit()
-	res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
-	res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-	
-	# 5.关闭游标对象和连接
-	cursor.close()
-	conn.close()
-	```
+  ```python
+  # 1.引入 pymysql 和 DictCursor
+  import pymysql
+  from pymysql.cursors import DictCursor
+  
+  # 2.连接 MySQL 服务器
+  conn = pymysql.Connect(
+      host="localhost",  # 主机地址
+      port=3306,  # 端口号
+      user="jerry",  # 用户名
+      password="123456",  # 密码
+      charset="utf8",  # 字符集
+      database="db_test"  # 数据库名称
+  )
+  
+  # 3.创建游标对象
+  cursor = conn.cursor(cursor=DictCursor)
+  
+  # 4.交互 MySQL
+  sql = "$SQL_SYNTAX"
+  cursor.execute(sql)  # 增删改查
+  conn.commit()  # 如果是增删改业务，则执行 commit()
+  res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+  res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+  
+  # 5.关闭游标对象和连接
+  cursor.close()
+  conn.close()
+  ```
 
-	**在以上代码中**：
+  **在以上代码中**：
 
-	1. `host="localhost"`：主机地址，如果要连接远程数据库，需填写对应数据库地址。
-	2. **`port=3306`**：端口号，注意数字是整型。
-	3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
+  1. `host="localhost"`：主机地址，如果要连接远程数据库，需填写对应数据库地址。
+  2. **`port=3306`**：端口号，注意数字是整型。
+  3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
+  4. **`cursor=DictCursor`**：查询结果为列表嵌套字典，否则为元祖嵌套元祖。
+  	- 用户名和密码应优先使用元祖，详见[元祖特性](../code-general/code-general.md#元祖)。
+  	- 用户资料（如性别、年龄、邮箱、电话号码等）优先使用列表，可用键索引值。
 
 - **函数语法**
 
@@ -3255,23 +3296,15 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	        database="db_test"
 	    )
 	
-	# 3.定义断开 MySQL 函数
-	def close_conn_mysql(conn, cursor):
-	    cursor.close()
-	    conn.close()
-	
-	# 4.交互 MySQL
-	conn = conn_mysql()  # 连接 MySQL
-	cursor = conn.cursor(cursor=DictCursor)  # 创建游标对象
-	
-	cursor.execute("$SQL_SYNTAX")  # 增删改查
-	conn.commit()  # 如果是增删改业务，则执行 commit()
-	res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
-	res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-	
-	close_conn_mysql(conn, cursor)  # 断开 MySQL
+	# 3.使用 with 语句管理连接和游标
+	with conn_mysql() as conn:
+	    with conn.cursor(cursor=DictCursor) as cursor:
+	        cursor.execute("$SQL_SYNTAX")  # 增删改查
+	        conn.commit()  # 如果是增删改业务，则执行 commit()
+	        res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+	        res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
 	```
-
+	
 - **说明**
 
 	- 如果在循环中交互数据库，应将连接部分、游标对象和关闭部分写在循环以外，防止频繁连接。
@@ -3287,9 +3320,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 		cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
 		```
 
-## 交互 MySQL 样板
+###  `pymysql` 样板
 
-### 函数样板文件
+#### 函数样板文件
 
 ```python
 import pymysql
@@ -3322,7 +3355,7 @@ res = cursor.fetchall()  # 如果是查询业务，则执行 fetchall
 close_conn_mysql(conn, cursor)
 ```
 
-### 创建 `TABLE` 样板
+#### 创建 `TABLE` 样板
 
 ```python
 # 一般以id作为主键
@@ -3339,7 +3372,7 @@ cursor.execute(sql)
 conn.commit()
 ```
 
-### 增加多个数据行样板
+#### 增加多个数据行样板
 
 ```python
 sql = """insert into tb_test(name, mobile, email, salary, ctime) values
@@ -3350,9 +3383,9 @@ cursor.execute(sql)
 conn.commit()
 ```
 
-## 交互 MySQL 实例
+###  `pymysql` 实例
 
-### 手动添加数据
+#### 手动添加数据
 
 - 在程序中循环手动输入数据，添加至数据库。
 
@@ -3396,7 +3429,7 @@ conn.commit()
   print("MySQL 已断开连接！")
   ```
 
-### 导入数据
+#### 导入数据
 
 - 在程序中从文件获取数据，导入至数据库。
 
@@ -3455,7 +3488,7 @@ conn.commit()
   print("MySQL 已断开连接！")
   ```
 
-### 导出数据
+#### 导出数据
 
 - 在程序中从数据库获取数据（列表嵌套字典），导出至文件。
 
@@ -3496,6 +3529,38 @@ conn.commit()
           f.write(line)
   print("导出数据成功！")
   ```
+
+## `sqlite3` 交互 SQLite
+
+在 Python 中，使用内置模块 `sqlite3` 与 SQLite 数据库进行交互，交互方法与 MySQL 完全相同。
+
+- **语法**
+
+	```python
+	# 1.引入 sqlite3
+	import sqlite3
+	
+	# 2.连接 SQLite 数据库
+	conn = sqlite3.connect('example.db')
+	
+	# 3.创建游标对象
+	conn.row_factory = sqlite3.Row  # 相当于 MySQL 里的cursor=DictCursor，获取结果为列表嵌套字典。
+	cursor = conn.cursor()
+	
+	# 以下交互与 pymysql 相同，但 sqlite3 不支持使用 with 进行上下文自动管理。
+	# 4.交互 MySQL
+	sql = "$SQL_SYNTAX"
+	cursor.execute(sql)  # 增删改查
+	conn.commit()  # 如果是增删改业务，则执行 commit()
+	res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+	res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+	
+	# 5.关闭游标对象和连接
+	cursor.close()
+	conn.close()
+	```
+
+- **说明**：在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
 
 # Flask 框架
 

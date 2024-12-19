@@ -981,37 +981,39 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 ### 安装
 
-1. 详见《我要自学网Python课程》软件安装包说明；
+1. 尽量使用容器化的 MySQL；
 
-2. 安装之前创建一个系统还原点，以防不测；
+2. 以下步骤详见《我要自学网Python课程》软件安装包说明；
 
-3. 安装之前，要先彻底卸载之前残留的版本；
+3. 安装之前创建一个系统还原点，以防不测；
 
-4. [官网下载 MySQL：**Windows (x86, 64-bit), MSI Installer**](https://dev.mysql.com/downloads/mysql/)；
+4. 安装之前，要先彻底卸载之前残留的版本；
 
-5. 开始安装，安装方式选择 `custom`；
+5. [官网下载 MySQL：**Windows (x86, 64-bit), MSI Installer**](https://dev.mysql.com/downloads/mysql/)；
+
+6. 开始安装，安装方式选择 `custom`；
 
    <img src="assets/image-20240317172713492.png" alt="image-20240317172713492" style="zoom:50%;" />
 
-6. 安装完成之后会出现 MySQL 配置的引导界面；
+7. 安装完成之后会出现 MySQL 配置的引导界面；
 
-7. Data Directory：`D:\ProgramData\MySQL\MySQL Server 8.3\`；
+8. Data Directory：`D:\ProgramData\MySQL\MySQL Server 8.3\`；
 
-8. Type and Networking：`Config Type` 选择 `DeveloperMachine`；
+9. Type and Networking：`Config Type` 选择 `DeveloperMachine`；
 
    <img src="assets/image-20240317173419078.png" alt="image-20240317173419078" style="zoom:50%;" />
 
-9. 创建 root 账户
+10. 创建 root 账户
 
    <img src="assets/image-20240317174252087.png" alt="image-20240317174252087" style="zoom:50%;" />
 
-10. Apply Configuration：`Execute`
+11. Apply Configuration：`Execute`
 
 	<img src="assets/image-20240317174816106.png" alt="image-20240317174816106" style="zoom: 80%;" />
 
-11. 将 MySQL 加入系统环境变量，详见《Windows 笔记》。
+12. 将 MySQL 加入系统环境变量，详见《Windows 笔记》。
 
-12. 安装完成，检查
+13. 安装完成，检查
 
 	```bash
 	# 查看版本
