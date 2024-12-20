@@ -2379,11 +2379,40 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 # 模块
 
-模块是 Python 中最高级别组织单元，它将程序代码和数据封装起来以便重复使用。
+在 Python 中，**模块**是一个以 `.py` 文件形式保存的代码文件，用于组织和复用代码。模块也称包或者库。Python 模块根据来源或功能划分为以下几种：
 
-模块中包含了某一类业务中多个函数和属性。模块也称包或者库。
+- 标准库模块
+	- 内置模块
+- 第三方库模块
+- 自定义模块
 
-## 自定义模块
+## 模块基础
+
+### 标准库模块
+
+### 内置模块
+
+- 内置模块就是 Python 自带的模块。
+
+- 内置模块存放路径：`C:\Users\39331\AppData\Local\Programs\Python\Python311\Lib`
+
+### 第三方库模块
+
+第三方模块是由第三方个人或者组织使用 Python 开发，需要先下载安装才能使用的工具包。
+
+第三方模块安装的失败率很高，应该多试几次。
+
+#### 第三方库模块的安装
+
+第三方模块存放路径：C:\Users\39331\AppData\Local\Programs\Python\Python311\Lib \site-packages
+
+- **pip 安装**
+
+	```bash
+	pip install $MODULE_NAME
+	```
+
+### 自定义模块
 
 - **创建模块**
 
@@ -2450,13 +2479,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
       run()
   ```
 
-## 内置模块
-
-- 内置模块就是 Python 自带的模块。
-
-- 内置模块存放路径：C:\Users\39331\AppData\Local\Programs\Python\Python311\Lib
-
-### random 生成随机数
+## `random` 生成随机数
 
 - **抽取**
 
@@ -2502,14 +2525,15 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   print(num_list)  # [1, 43, 32, 132, 454, 43]
   ```
 
+## 日期时间
+
 ### time 时间处理
 
 - Basic func
 
   ```python
+  
   ```
-  
-  
   
 - **获取时间戳**
 
@@ -2655,9 +2679,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   print(type(time_date))  # <class 'datetime.datetime'>
   ```
 
-### os 路径/创建文件夹
+## os 路径/创建文件夹
 
-#### 获取路径
+### 获取路径
 
 - **路径拼接**
 
@@ -2707,7 +2731,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   file_path = os.path.join(base_dir, "a1.txt")  # 获取到当前具体文件的绝对路径
   ```
 
-#### 判断路径是否存在
+### 判断路径是否存在
 
 - 语法
 
@@ -2727,7 +2751,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
       pass
   ```
 
-#### 创建文件夹
+### 创建文件夹
 
 - 语法
 
@@ -2740,7 +2764,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
       os.makedirs(folder_path)
   ```
 
-### urllib 爬虫
+## urllib 爬虫
 
 - **`request.urlopen($URL)`**
 
@@ -2758,9 +2782,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   ```
 
 
-### JSON 数据
+## JSON 数据
 
-#### JSON 语法
+### JSON 语法
 
 ​	在 Python 中 JSON 数据本质上是一个固定格式的字符串。使用键值对的方式表示一个业务对象（类似于字典）。
 
@@ -2806,7 +2830,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   '[{"键1": 值1, "键2": 值2}, {"键1": 值1, "键2": 值2}, …]'
   ```
 
-#### Python 转 JSON
+### Python 转 JSON
 
 - 即序列化，实际就是将字典或者列表嵌套字典转成字符串。
 
@@ -2827,7 +2851,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   - `ensure_ascii=False` 表示禁止 Ascii 转换，就是禁止将中文的“张三”转换成字节。
 
 
-#### JSON 转 Python
+### JSON 转 Python
 
 - 即反序列化，实际就是将字符串转成字典或者列表嵌套字典。
 
@@ -2842,14 +2866,14 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   print(type(data_python))  # <class 'dict'>
   ```
 
-#### JSON 模拟数据库
+### JSON 模拟数据库
 
 - 详见 Projects > Login And Sign Up
 
 
-### hashlib 加密
+## `hashlib` 加密
 
-​	hashlib 模块可实现 md5 加密，md5 无法解密。
+`hashlib` 模块可实现加密，适用于数据完整性校验或一般哈希功能；如果是密码存储则使用 `argon2`。
 
 - **语法**
 
@@ -2883,7 +2907,33 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
       f.write(line)
   ```
 
-### socket 网络传输
+## `argon2-cffi` 加密
+
+- **定义**：`argon2-cffi` 是一个 Python 第三方库模块，用于实现 **Argon2** 密码哈希算法。适用于密码存储；如果是数据完整性校验或一般哈希功能则使用 `hashlib`。
+
+- **语法**
+
+	```python
+	from argon2 import PasswordHasher
+	
+	# 1.定义密码
+	password = "my_secure_password"
+	
+	# 2.创建密码哈希器对象
+	ph = PasswordHasher()
+	
+	# 3.哈希密码
+	hash = ph.hash(password)
+	
+	# 4.验证密码
+	try:
+	    ph.verify(hash, "my_secure_password")  # 验证密码
+	    print("密码正确！")
+	except:
+	    print("密码错误!")
+	```
+
+## socket 网络传输
 
 ​	socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API），方便程序员用 socket 使用 TCP/IP 协议簇，实现网络通信。
 
@@ -2913,50 +2963,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 - **服务端**
 
-## 第三方模块
-
-​	第三方模块是由第三方个人或者组织使用 Python 开发，需要先下载安装才能使用的工具包。
-
-​	第三方模块安装的失败率很高，应该多试几次。
-
-### 第三方模块的安装
-
-​	第三方模块存放路径：C:\Users\39331\AppData\Local\Programs\Python\Python311\Lib \site-packages
-
-- **pip 安装**
-
-  ```bash
-  pip install $MODULE_NAME
-  ```
-  
-- **网上下载**
-
-  ```
-  - 在网上https://pypi.python.org，下载下来
-      - cp311代表Python的版本3.11
-      - win_amd64代表Windows 64位系统
-      - 下载.whl文件或者压缩包.tar.gz文件，选择其中一个安装
-  - .whl文件的安装方法
-      - cmd进入whl文件所在目录
-      - 在.whl文件所在文件夹空白处，Shift+右键—在此处打开powershell窗口
-      - 在powershell中执行： pip install 文件名（包含后缀）
-  - 压缩包的安装方法
-      - 解压安装包
-      - cmd进入setup.py文件所在目录
-      - 在setup.py文件所在文件夹空白处，Shift+右键—在此处打开powershell窗口
-      - 在powershell中输入： python setup.py install，回车
-  ```
-
-- **在 Pycharm 中安装**
-
-  ```
-  - 在创建项目时，需要选择系统环境，否则通过其它方式安装的模块，可能无法使用。
-  - Settings—Project:Pycharm Project—Python Interpreter—点加号，搜索模块
-  - 选中要安装的模块
-  - 点方框——Install Packge
-  ```
-
-### flask-cors 允许跨域
+## flask-cors 允许跨域
 
 ​	在默认情况下，浏览器会阻止跨源的 HTTP 请求，以保护用户的安全和隐私。因此，当你在 localhost 的端口 3000 上运行的前端应用尝试向 localhost 的端口 5000 上运行的后端应用发送请求时，由于跨域限制，浏览器会拒绝这些请求。要解决这个问题，你需要在后端应用中配置 CORS，允许来自前端应用的跨源请求。在 Flask 中，你可以使用 flask_cors 库来处理跨域请求。请注意，这样配置会允许来自任何域的跨源请求，因此在生产环境中应谨慎使用，最好限制允许的来源。
 
@@ -3168,7 +3175,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ### `sqlalchemy` 语法
 
-- **基础语法（以 MySQL 为例）**
+- **基础语法（以 SQLite 为例）**
 
 	```python
 	from sqlalchemy import create_engine
@@ -3176,12 +3183,8 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	from sqlalchemy.ext.declarative import declarative_base
 	from sqlalchemy import Column, String
 	
-	# 1.创建连接MySQL数据库的引擎
-	engine = create_engine('''
-	    mysql+mysql-connector-python://
-	    username:password
-	    @localhost:3306/my_database
-	''')
+	# 1.创建数据库引擎，连接 SQLite 数据库
+	engine = create_engine('sqlite:///test.db')
 	
 	# 2.创建会话工厂
 	Session = sessionmaker(bind=engine)
@@ -3189,9 +3192,19 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	# 3.创建基础类
 	Base = declarative_base()
 	
-	# 4.使用with语句创建会话对象，交互数据库
+	# 4.映射到已存在的表
+	class User(Base):
+	    __tablename__ = 'user'  # 映射到数据库中的 user 表
+	    id = Column(Integer, primary_key=True)  # 映射到 id 列
+	    name = Column(String)  # 映射到 name 列
+	    password = Column(String)  # 映射到 password 列
+	
+	# 5.创建数据库表（如果表已存在，则不会创建）
+	Base.metadata.create_all(engine)
+	
+	# 6.使用 with 语句创建会话对象
 	with Session() as session:
-	    # 增删改查
+	    # 交互数据库
 	    session.query(User).FUNC()  # FUNC() 为具体的增删改查
 	    session.commit()  # 如果是增删改交互，则执行 commit()；查询交互不执行。
 	```
@@ -3225,6 +3238,15 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    @localhost:3306/my_database
 	''')
 	```
+	
+	**在以上代码中**：
+	
+	1. **`create_engine`**：用于创建一个数据库引擎，它接收一个表示数据库连接字符串的参数。
+	2. **`mysql+mysql-connector-python`**：这部分指定了数据库的类型以及要使用的 Python 驱动。这里表明使用的是 MySQL 数据库，并且通过 `mysql-connector-python` 驱动（需要 pip 安装）来和数据库建立连接。
+	3. **`username:password`**：实际使用中替换成自己的 MySQL 数据库登录用户名和密码。
+	4. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
+	5. **`3306`**：端口号
+	6. **`my_database`**：数据库名称
 
 ### `sqlalchemy` 样板
 
@@ -3271,7 +3293,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
   **在以上代码中**：
 
-  1. `host="localhost"`：主机地址，如果要连接远程数据库，需填写对应数据库地址。
+  1. `host="localhost"`：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
   2. **`port=3306`**：端口号，注意数字是整型。
   3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
   4. **`cursor=DictCursor`**：查询结果为列表嵌套字典，否则为元祖嵌套元祖。
