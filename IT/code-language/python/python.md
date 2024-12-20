@@ -2871,7 +2871,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 - 详见 Projects > Login And Sign Up
 
 
-## `hashlib` 加密
+## `hashlib` 加密
 
 `hashlib` 模块可实现加密，适用于数据完整性校验或一般哈希功能；如果是密码存储则使用 `argon2`。
 
@@ -3242,7 +3242,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	**在以上代码中**：
 	
 	1. **`create_engine`**：用于创建一个数据库引擎，它接收一个表示数据库连接字符串的参数。
-	2. **`mysql+mysql-connector-python`**：这部分指定了数据库的类型以及要使用的 Python 驱动。这里表明使用的是 MySQL 数据库，并且通过 `mysql-connector-python` 驱动（需要 pip 安装）来和数据库建立连接。
+	2. **`mysql+mysql-connector-python`**：这部分指定了数据库的类型以及要使用的 Python 驱动。这里表明使用的是 MySQL 数据库，并且通过 `mysql-connector-python` 驱动（需要 pip 安装）来和数据库建立连接。
 	3. **`username:password`**：实际使用中替换成自己的 MySQL 数据库登录用户名和密码。
 	4. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
 	5. **`3306`**：端口号
@@ -3677,7 +3677,7 @@ conn.commit()
 	            "</html>"
 	        ),
 	        "static/styles.css": "body {\n    font-family: Arial, sans-serif;\n    margin: 0;\n    padding: 0;\n}",
-	        "static/script.js": "console.log('Hello, Flask!');",
+	        "static/scripts.js": "console.log('Hello, Flask!');",
 	        "app.py": (
 	            "from flask import Flask, render_template\n\n"
 	            "app = Flask(__name__)\n\n"
@@ -3799,10 +3799,6 @@ conn.commit()
 ## `flask_sqlalchemy`
 
 `flask_sqlalchemy` 是 Flask 框架的一个扩展，它为 Flask 应用提供了对 SQLAlchemy 的便捷集成。它允许你使用 Python 代码操作关系型数据库，如 MySQL、PostgreSQL、SQLite 等。Flask - SQLAlchemy 简化了在 Flask 应用中配置和使用 SQLAlchemy 的过程。
-
-### `flask_sqlalchemy` 基础
-
-#### 
 
 ## Flask 项目
 
