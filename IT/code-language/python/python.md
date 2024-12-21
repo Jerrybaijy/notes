@@ -2870,10 +2870,11 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 - 详见 Projects > Login And Sign Up
 
+## 加密
 
-## `hashlib` 加密
+### `hashlib` 加密
 
-`hashlib` 模块可实现加密，适用于数据完整性校验或一般哈希功能；如果是密码存储则使用 `argon2`。
+- **定义**：`hashlib` 模块可实现加密，适用于数据完整性校验或一般哈希功能；如果是密码存储则使用 `argon2`。
 
 - **语法**
 
@@ -2907,7 +2908,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
       f.write(line)
   ```
 
-## `argon2-cffi` 加密
+### `argon2-cffi` 加密
 
 - **定义**：`argon2-cffi` 是一个 Python 第三方库模块，用于实现 **Argon2** 密码哈希算法。适用于密码存储；如果是数据完整性校验或一般哈希功能则使用 `hashlib`。
 
@@ -2919,18 +2920,20 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	# 1.定义密码
 	password = "my_secure_password"
 	
-	# 2.创建密码哈希器对象
-	ph = PasswordHasher()
+	# 2.加密
+	ph = PasswordHasher()  # 创建密码哈希器对象
+	hashed_password = ph.hash(password)  # 哈希密码
 	
-	# 3.哈希密码
-	hash = ph.hash(password)
+	# 3.验证密码
 	
-	# 4.验证密码
-	try:
-	    ph.verify(hash, "my_secure_password")  # 验证密码
-	    print("密码正确！")
+	# 从数据库获取用户数据 user，密码的字段为 password
+	# 假设前端 POST 的密码为 password
+	
+	try:  # 使用 try...except...finally 进行异常处理
+	    ph = PasswordHasher()  # 创建密码哈希器对象
+	    ph.verify(user['password'], password)  # 验证密码
 	except:
-	    print("密码错误!")
+	    login_error = "密码错误！"
 	```
 
 ## socket 网络传输
@@ -3257,9 +3260,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 在 Python 中，使用第三方模块 `pymysql` 与 MySQL 数据库进行交互。
 
 
-###  `pymysql` 语法
+###  `pymysql` 基础
 
-- **基础语法**
+- **语法**
 
   ```python
   # 1.引入 pymysql 和 DictCursor
@@ -3300,7 +3303,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   	- 用户名和密码应优先使用元祖，详见[元祖特性](../code-general/code-general.md#元祖)。
   	- 用户资料（如性别、年龄、邮箱、电话号码等）优先使用列表，可用键索引值。
 
-- **函数语法**
+- **函数模板**
 
 	```python
 	# 1.引入 pymysql 和 DictCursor
@@ -3570,7 +3573,7 @@ conn.commit()
 	cursor = conn.cursor()
 	
 	# 以下交互与 pymysql 相同，但 sqlite3 不支持使用 with 进行上下文自动管理。
-	# 4.交互 MySQL
+	# 4.交互 SQLite
 	sql = "$SQL_SYNTAX"
 	cursor.execute(sql)  # 增删改查
 	conn.commit()  # 如果是增删改业务，则执行 commit()
@@ -3582,7 +3585,88 @@ conn.commit()
 	conn.close()
 	```
 
-- **说明**：在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
+- **函数模板**
+
+	```python
+	# 1.---------------引入 sqlite3----------------------
+	
+	import sqlite3
+	
+	# 2.---------------定义 SQLite 相关函数---------------
+	
+	# 2.1.连接 SQLite
+	def conn_db():
+	    conn = sqlite3.connect('users.db')
+	    conn.row_factory = sqlite3.Row
+	    print("数据库连接成功！")
+	    return conn
+	
+	# 2.2.创建用户表（如果表不存在）
+	def create_table():
+	    conn = conn_db()
+	    cursor = conn.cursor()
+	    cursor.execute('''
+	        CREATE TABLE IF NOT EXISTS users (
+	            id INTEGER PRIMARY KEY AUTOINCREMENT,
+	            username TEXT UNIQUE NOT NULL,
+	            password TEXT NOT NULL
+	        )
+	    ''')
+	    conn.commit()
+	    close_db(conn, cursor)
+	
+	
+	# 2.3.断开 SQLite
+	def close_db(conn, cursor):
+	    cursor.close()
+	    conn.close()
+	
+	
+	# 3.---------------使用 SQLite 函数---------------
+	try:  # 使用 try...except...finally 进行异常处理
+	    sql = "$SQL_SYNTAX"
+	    cursor.execute(sql)  # 增删改查
+	    conn.commit()  # 如果是增删改业务，则执行 commit()
+	    res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
+	    res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+	    # 这里还有其它操作
+	except sqlite3.Error as e:
+	        return f"数据库错误: {str(e)}", 500
+	finally:
+	    close_db(conn, cursor)
+	```
+
+# 异常处理
+
+## `try...except...finally`
+
+在 Python 中，`try...except...finally` 用于捕获和处理异常，并确保一些重要操作（如资源释放、清理工作等）无论是否发生异常都能执行。
+
+- **语法**
+
+	```python
+	try:
+	    # 尝试执行这段代码
+	    # 如果发生异常，跳转到 except 块
+	except SpecificError as e:
+	    # 处理异常
+	finally:
+	    # 无论是否发生异常，这里的代码总会执行
+	```
+
+	```python
+	try:
+	    1 / 0  # 这里抛出 ZeroDivisionError
+	    print("尝试执行代码")
+	except Exception as e:
+	    print(f"捕获异常：{e}")
+	finally:
+	    print("清理操作")
+	# -----------------------
+	# 运行结果：
+	# 捕获异常：division by zero
+	# 清理操作
+	```
 
 # Flask 框架
 

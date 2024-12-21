@@ -881,7 +881,7 @@
 
 - **`continue`**：跳过本次循环的剩余部分，程序继续执行下一次该循环。
 - **`break`**：用于跳出当前循环或 `switch` 语句，程序向下执行当前循环或 `switch` 语句以外内容。
-- **`return`**：结束函数的执行并返回值。
+- **`return`**：结束函数的执行并返回值。（Python 中的 [`try...except...finally`](../python/python.md#`try...except...finally`) 异常处理除外）
 - **`goto`**：无条件跳转到程序的指定位置。
 
 # 函数
