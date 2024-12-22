@@ -2327,6 +2327,470 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 - 访问 http://localhost:3000/
 
+# Login Flask Sqlite HTML
+
+## 项目概述
+
+- **项目效果**
+
+	![image-20241222175836420](assets/image-20241222175836420.png)
+
+- **来源**：独立项目
+
+- **文件**：
+
+	- **后端**：`app.py`
+	- **数据库**：SQLite
+	- **前端**：`index.html` `header.html` `login.html` `register.html` `user-profile.html`
+
+- **概述**：这是一个练习项目，后端采用 Flask 框架，数据库使用 SQLite，前端没有使用框架。
+
+- **功能**：
+
+	- 每个页面都有公共的页眉。
+
+	- 真实注册和登录。
+
+	- 登录以后记录登录状态，原登录按钮显示为用户名。
+
+	- 可以退出登录，切换登录状态。
+
+- **存储**
+
+	- 代码存储在 Git 托管平台：前后端合并存储 `login-flask-sqlite-html`
+	- 无镜像存储在 DockerHub
+
+## 创建过程
+
+
+1. 使用模板文件构建项目目录；
+
+
+	1. 自动创建虚拟环境
+	2. 自动在虚拟环境安装 flask
+	3. 自动构建项目目录
+
+2. pip 安装 `argon2-cffi`
+
+3. `templates/index.html`
+
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Jerry's Time</title>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	
+	<body>
+	  <!-- 页眉 -->
+	  {% include 'header.html' %}
+	
+	  <!-- 主内容 -->
+	  <main>
+	    <!-- 音乐播放器 -->
+	    <div class="music-player">
+	      <audio id="background-music" controls autoplay loop>
+	        <source id="music-source" src="{{ url_for('static', filename='music/手嶌葵 (てしま あおい) - The Rose (extra ver.).mp3') }}"
+	          type="audio/mpeg">
+	        Your browser does not support the audio element.
+	      </audio>
+	    </div>
+	  </main>
+	
+	  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+	</body>
+	
+	</html>
+	```
+
+4. `templates/header.html`
+
+	```html
+	<header>
+	  <div class="left">
+	    <h1>Welcome to Jerry's Time</h1>
+	  </div>
+	  <div class="right">
+	    <!-- 不处于主页时，隐藏返回主页按钮 -->
+	    {% if request.path != '/' %}
+	    <button onclick="window.location.href='/';">返回主页</button>
+	    {% endif %}
+	    
+	    <!-- 动态渲染登录或用户信息 -->
+	    {% if 'username' in session %}
+	    <div class="dropdown">
+	      <button class="dropdown-toggle">{{ session['username'] }}</button>
+	      <div class="dropdown-menu">
+	        <a href="/user-profile">查看资料</a>
+	        <a href="/logout">退出登录</a>
+	      </div>
+	    </div>
+	    
+	    <!-- 未登录，显示登录按钮 -->
+	    {% else %}
+	    <button onclick="window.location.href='/login';">登录</button>
+	    {% endif %}
+	  </div>
+	</header>
+	```
+
+5. `templates/register.html`
+
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Register</title>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+	  <!-- 页眉 -->
+	  {% include 'header.html' %}
+	  
+	  <!-- 注册框 -->
+	  <div id="registerBox" class="login-box">
+	    <div class="login-content">
+	      <h2>注册</h2>
+	      <form action="/register" method="POST">
+	        <input type="text" id="newUsername" name="username" placeholder="请输入用户名" required>
+	        <input type="password" id="newPassword" name="password" placeholder="请输入密码" required>
+	        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请确认密码" required>
+	        {% if register_error %}
+	        <p class="login-box-message">{{ register_error }}</p>
+	        {% endif %}
+	        <button type="submit">注册</button>
+	      </form>
+	      <p>已有账户？<a href="/login">点击这里登录</a></p>
+	      <button class="close" onclick="closeRegisterBox()">×</button>
+	    </div>
+	  </div>
+	  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+	</body>
+	</html>
+	```
+
+6. `templates/login.html`
+
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Login</title>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	<body>
+	  <!-- 页眉 -->
+	  {% include 'header.html' %}
+	  
+	  <!-- 登录框 -->
+	  <div id="loginBox" class="login-box">
+	    <div class="login-content">
+	      <h2>登录</h2>
+	      <form action="/login" method="POST">
+	        <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+	        <input type="password" id="password" name="password" placeholder="请输入密码" required>
+	        {% if login_error %}
+	        <p class="login-box-message">{{ login_error }}</p>
+	        {% endif %}
+	        {% if register_success %}
+	        <p class="login-box-message">{{ register_success }}</p>
+	        {% endif %}
+	        <button type="submit">登录</button>
+	      </form>
+	      <p>没有账户？<a href="/register">点击这里注册</a></p>
+	      <button class="close" onclick="closeLoginBox()">×</button>
+	    </div>
+	  </div>
+	  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+	</body>
+	</html>
+	```
+
+7. `templates/user-profile.html`
+
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Jerry's Time</title>
+	  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+	</head>
+	
+	<body>
+	  <!-- 页眉 -->
+	  {% include 'header.html' %}
+	  
+	  <h1>这里是用户资料</h1>
+	  <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+	</body>
+	
+	</html>
+	```
+
+8. `static/styles.css`
+
+	```css
+	* {
+	    margin: 0;
+	    padding: 0;
+	    box-sizing: border-box;
+	}
+	
+	body {
+	    font-family: Arial, sans-serif;
+	    background-color: rgb(200, 200, 200);
+	    padding: 10px;
+	    /* position: relative; */
+	}
+	
+	/* ---------------------1.页眉------------------------------- */
+	
+	header {
+	    display: flex;
+	    justify-content: space-between;
+	    align-items: center;
+	    padding: 10px 0;
+	
+	    /* border: 1px solid red; */
+	}
+	
+	/* 1.1.页眉-左侧 */
+	header .left {
+	    flex-grow: 1;
+	    text-align: center;
+	
+	    /* border: 1px solid red; */
+	}
+	
+	/* 1.2.页眉-右侧 */
+	header .right {
+	
+	    /* border: 1px solid red; */
+	}
+	
+	/* 1.2.1.页眉右侧按钮 */
+	header button {
+	    background-color: rgb(200, 200, 200);
+	    padding: 10px 20px;
+	    font-size: 16px;
+	    cursor: pointer;
+	    border: none;
+	    border-radius: 5px;
+	    transition: background-color 0.3s;  /* 颜色过渡 */
+	}
+	
+	header button:hover {
+	    background-color: #e7e7e7;
+	}
+	
+	/* ---------------------2.登录盒子------------------------------- */
+	
+	.login-box {
+	    display: flex;
+	    justify-content: center;
+	    align-items: center;
+	    position: fixed;
+	    top: 0;
+	    left: 0;
+	    background-color: rgba(0, 0, 0, 0.5);  /* 遮罩层 */
+	    width: 100%;
+	    height: 100%;
+	
+	    /* border: 1px solid red; */
+	}
+	
+	/* 2.1.登录盒子-内容 */
+	.login-content {
+	    position: relative;  /* 确保关闭按钮相对定位 */
+	    background-color: rgb(200, 200, 200);
+	    width: 300px;
+	    border-radius: 10px;
+	    padding: 30px;
+	
+	    /* border: 1px solid red; */
+	}
+	
+	/* 2.1.1.登录盒子-内容-标题 */
+	.login-content h2 {
+	    text-align: center;
+	    margin-bottom: 20px;
+	}
+	
+	/* 2.1.1.登录盒子-内容-表单 */
+	.login-content form {
+	    display: flex;
+	    flex-direction: column;
+	}
+	
+	/* 2.1.1.1.登录盒子-内容-表单-输入框 */
+	.login-content input {
+	    padding: 10px;
+	    margin-bottom: 15px;
+	    background-color: rgba(0, 0, 0, 0.2);
+	    border: 1px solid #ccc;
+	    border-radius: 5px;
+	}
+	
+	/* 2.1.1.2.登录盒子-内容-表单-登录按钮 */
+	.login-content button {
+	    padding: 10px;
+	    background-color: #0066CC;
+	    border: none;
+	    color: white;
+	    border-radius: 5px;
+	    cursor: pointer;
+	}
+	
+	.login-content button:hover {
+	    background-color: #0a80f5;
+	}
+	
+	/* 2.1.1.3.登录盒子-内容-表单-提示 */
+	.login-content p {
+	    text-align: center;
+	}
+	
+	/* 2.1.1.3.1.登录盒子-内容-表单-提示-链接 */
+	.login-content a {
+	    color: #0066CC;
+	    text-decoration: none;
+	}
+	
+	.login-content a:hover {
+	    text-decoration: underline;
+	}
+	
+	/* 2.1.1.4.登录盒子-内容-表单-关闭按钮 */
+	.login-content .close {
+	    position: absolute;
+	    top: 10px;
+	    right: 10px;
+	    font-size: 30px;
+	    font-weight: bold;
+	    background: none;
+	    color: #0066CC;
+	    cursor: pointer;
+	}
+	
+	.login-content .close:hover {
+	    background: none;
+	    color: red;
+	}
+	
+	/* 下拉菜单样式 */
+	.dropdown {
+	    position: relative;
+	    display: inline-block;
+	  }
+	  
+	  .dropdown-toggle {
+	    /* background-color: rgb(200, 200, 200);
+	    padding: 10px 20px;
+	    font-size: 16px;
+	    cursor: pointer;
+	    border: none;
+	    border-radius: 5px;
+	    transition: background-color 0.3s; */
+	  }
+	  
+	  .dropdown-menu {
+	    display: none;
+	    position: absolute;
+	    background-color: white;
+	    min-width: 150px;
+	    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	    z-index: 1;
+	  }
+	  
+	  .dropdown-menu a {
+	    display: block;
+	    padding: 10px 20px;
+	    text-decoration: none;
+	    color: black;
+	  }
+	  
+	  .dropdown-menu a:hover {
+	    background-color: #f1f1f1;
+	  }
+	  
+	  /* 显示下拉菜单 */
+	  .dropdown:hover .dropdown-menu {
+	    display: block;
+	  }  
+	
+	/* ---------------------主内容------------------------------- */
+	
+	main {
+	    padding: 20px;
+	    text-align: center;
+	}
+	
+	/* ---------------------音乐播放器------------------------------- */
+	
+	.music-player {
+	    text-align: center;
+	    margin: 20px 0;
+	  }
+	  
+	  audio {
+	    width: 100%;
+	    max-width: 300px;
+	  }
+	```
+
+9. `static/scripts.css`
+
+	```javascript
+	// -----------------------------------登录盒子--------------------------------------
+	
+	// 关闭登录框
+	function closeLoginBox() {
+	  var loginBox = document.getElementById('loginBox');
+	  if (loginBox) {
+	    loginBox.style.display = 'none';
+	  } else {
+	    console.error('找不到登录框元素！');
+	  }
+	}
+	
+	// 关闭注册框
+	function closeRegisterBox() {
+	  var registerBox = document.getElementById('registerBox');
+	  if (registerBox) {
+	    registerBox.style.display = 'none';  // 隐藏注册框
+	  } else {
+	    console.error('找不到注册框元素！');
+	  }
+	}
+	
+	// -----------------------------------音乐--------------------------------------
+	```
+
+10. 启动项目，进入主页：http://127.0.0.1:5000；
+
+11. 启动项目以后，会在项目根目录自动创建 SQLite 数据库文件 `users.db`；
+
+12. 可以进行注册和登录的操作；
+
+13. 在项目根目录生成依赖包文件 `requirements.txt`；
+
+	```bash
+	pip freeze > requirements.txt
+	```
+
+14. 推送至 Git 仓库。
+
 # Login Flask Txt HTML
 
 ## 项目概述
@@ -2335,7 +2799,7 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 	<img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
 
-- **来源**：[`Python` > `Flask 框架`](../code-language/python/python.md#Flask 框架)；
+- **来源**：[`Python` > `Flask 框架`](../code-language/python/python.md#Flask 框架)；
 
 - **文件**：
 
@@ -2347,7 +2811,7 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 - **存储**
 
-	- 代码存储在 Git 托管平台：前后端合并存储`login-flask-txt-html`
+	- 代码存储在 Git 托管平台：前后端合并存储 `login-flask-txt-html`
 	- 无镜像存储在 DockerHub
 
 ## 创建过程

@@ -96,54 +96,55 @@
 
 3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
-	```bash
-	python -m venv venv
-	```
+  ```bash
+  python -m venv venv
+  ```
 
 4. 激活虚拟环境；
 
-	```bash
-	# Windows
-	source venv/Scripts/activate
-	
-	# Mac/Linux
-	source venv/bin/activate
-	```
+  ```bash
+  # Windows
+  source venv/Scripts/activate
+  
+  # Mac/Linux
+  source venv/bin/activate
+  ```
 
 5. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
 
-  ```bash
-  where python
-  ```
-
-  1. 如果没有，参照以下办法激活：
-  2. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
-
-6. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
-
-7. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
-
-8. 安装你项目所需的所有包
-
-9. 生成 `requirements.txt`
-
 	```bash
-	pip freeze > requirements.txt
+	where python
 	```
 
-10. 其他开发者可以通过以下命令来安装依赖
+6. 如果没有，参照以下办法激活：
+
+7. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+
+8. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+
+9. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
+10. 安装你项目所需的所有包
+
+11. 生成 `requirements.txt`
+
+   ```bash
+   pip freeze > requirements.txt
+   ```
+
+12. 其他开发者可以通过以下命令来安装依赖
 
 	```bash
 	pip install -r requirements.txt
 	```
 
-11. 退出虚拟环境
+13. 退出虚拟环境
 
 	```bash
 	deactivate
 	```
 
-12. **注意**：
+14. **注意**：
 
 	- 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
 	- VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
