@@ -4,67 +4,14 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ## 环境搭建
 
-### 在Windows中搭建
+### 在 Windows 中搭建
 
-- 在Windows中搭建Linux有以下方法：虚拟机、WSL、Live CD/USB、远程服务器
-
-#### WSL
-
-​	WSL提供了与 Windows 集成较好的 Linux 子系统，可以在 Windows 上直接运行 Linux 命令。
-
-- **启用 WSL**
-
-1. 打开 PowerShell 作为管理员
-
-   右键点击开始菜单，选择 "Windows PowerShell（管理员）" 或 "命令提示符（管理员）"。
-
-2. 启用 WSL
-
-   ```powershell
-   dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-   ```
-
-3. 启用虚拟机平台功能
-
-   ```powershell
-   dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-   ```
-
-4. 重启计算机
-
-   ```powershell
-   restart-computer
-   ```
-
-- **安装 WSL 2**
-
-1. 下载并安装 WSL 2 Linux 内核更新包：[WSL 2 Linux 内核更新包](https://aka.ms/wsl2kernel)
-
-2. 设置 WSL 默认版本为 2
-
-   ```powershell
-   wsl --set-default-version 2
-   ```
-
-- **安装 Linux 发行版**
-
-1. 打开 Microsoft Store。
-2. 在搜索栏中输入你想要安装的 Linux 发行版的名称，例如 "Ubuntu"。
-3. 选择并下载你选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
-4. 安装完成后，点击启动，设置用户名和密码。
-   1. 注意：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
-
-
-- **使用 WSL**
-
-1. 打开 PowerShell 或者命令提示符，输入`wsl -l`。
-2. 或者可以直接运行 `wsl.exe`。
-
-- **维护 WSL**
-  - 打开 PowerShell 或者命令提示符
-  - 升级 WSL  `wsl.exe --update`
-  - 查看已安装的 Linux 版本  `wsl -l`
-  - 升级Linux  `sudo apt update`     `sudo apt upgrade`
+1. 在 Windows 中搭建 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
+2. 接下来使用 WSL 方法。
+3. 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
+4. 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
+5. 安装完成后，点击启动，设置用户名和密码。
+	1. **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
 ## Zsh
 

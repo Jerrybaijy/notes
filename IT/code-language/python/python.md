@@ -6,6 +6,8 @@
 
 # Python 基础
 
+Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Python 的早期版本，这是一个较大的升级。为了不带入过多的累赘，Python 3.0 在设计的时候没有考虑向下兼容。
+
 ## 环境搭建
 
 1. 以 Python3.9.2 为例
@@ -19,6 +21,12 @@
 4. 安装成功，点击 `Close`
 
    <img src="assets/image-20231026224550908.png" alt="图片1" style="zoom: 33%;" />
+
+5. 终端查看 Python 版本
+
+	```bash
+	python --version
+	```
 
 ## 配置
 

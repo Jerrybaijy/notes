@@ -355,12 +355,65 @@
 ## 其它快捷键 
 
 - `Delete` 右删除 / 删除文件
-- `Back Space` 左删除 
+- `Back Space` 左删除
 - `Shift + Delete` 直接删除文件，而不是送入回收站
 - `Insert` 插入 / 取消插入
   - 输入文本会逐渐覆盖光标右边文本
 
+# WSL
 
+**WSL（Windows Subsystem for Linux）** 是微软为 Windows 系统提供的一种工具，使用户可以在 Windows 上直接运行 Linux 的用户空间环境。
+
+## WSL 环境搭建
+
+### 启用 WSL
+
+1. 右键点击开始菜单，选择 `Windows PowerShell（管理员）` 或 `命令提示符（管理员）`。
+
+2. 启用 WSL
+
+	```powershell
+	dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+	```
+
+3. 启用虚拟机平台功能
+
+	```powershell
+	dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+	```
+
+4. 重启计算机
+
+	```powershell
+	restart-computer
+	```
+
+### 安装 WSL 2
+
+1. 下载并安装 WSL 2 Linux 内核更新包：[WSL 2 Linux 内核更新包](https://aka.ms/wsl2kernel)
+
+2. 设置 WSL 默认版本为 2
+
+	```powershell
+	wsl --set-default-version 2
+	```
+
+3. 至此，WSL 搭建完毕，接下来可以继续安装 Linux 应用或 Linux 发行版。
+
+## WSL 基础
+
+- **基础命令**
+
+	```bash
+	# 运行 WSL
+	wsl.exe
+	
+	# 升级 WSL
+	wsl.exe --update
+	
+	# 查看已安装的 Linux 应用或分发版本
+	wsl -l
+	```
 
 # Windows解决方法
 
@@ -409,7 +462,7 @@
 - 具体方法如下：
 
 - 右键 `此电脑` > `属性` > `高级系统设置` > `高级` > `环境变量`；
-- 在 `用户变量` 中选中 `Path`，点击 `编辑` > `新建` > 在输入框填入软件执行文件（.exe）所在文件夹路径 `C:\...Programs\Python\Python311`；
+- 在 `用户变量` 中选中 `Path`，点击 `编辑` > `新建` > 在输入框填入软件执行文件（.exe）所在文件夹路径 `C:\...Programs\Python\Python311`；
 - 所有窗口点击确定。
 
 ## Windows10性能优化
