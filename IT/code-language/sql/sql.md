@@ -18,7 +18,7 @@
 	*/
 	```
 
-### SQL 语法规范
+### 语法规范
 
 - **大小写不敏感**：SQL 中的关键字（如 SELECT、FROM 等）通常不区分大小写，但都习惯大写。
 - **缩进与空格**：虽然语法上没有严格要求，但合理使用缩进和空格可以提高 SQL 语句的可读性。
@@ -26,7 +26,7 @@
 - **占位符**：由于习惯大写关键字，所以个人笔记占位符前缀加 `$`。
 - **字符串**：字符串使用单引号 `'` 包围；双引号有其它用途，各个语言不一样。
 
-### SQL 关键字
+### 关键字
 
 - **`*`**：表示所有。
 	- `SELECT * FROM tb_test;`：查看 `tb_test` 数据表中所有 ROW。
@@ -69,12 +69,14 @@
 	-- 进入
 	USE $DATABASE;
 	# 创建
-	CREATE DATABASE $DATABASE [default charset=utf8];
+	CREATE DATABASE $DATABASE [DEFAULT CHARSET=utf8];
 	-- 删除
 	DROP DATABASE $DATABASE;
 	```
 
 ## 数据表 `TABLE`
+
+### TABLE 基础
 
 - **基础命令**
 
@@ -89,7 +91,7 @@
 	DELETE FROM $TABLE
 	```
 
-- **创建数据表**
+- **创建数据表**（以 MySQL 为例）
 
 	```sql
 	CREATE TABLE $TABLE(
@@ -97,16 +99,55 @@
 		$COLUMN $CONDITION,
 		$COLUMN $CONDITION,
 		$COLUMN $CONDITION
-	)DEFAULT CHARSET=utf8;  -- 以 MySQL 为例，其它数据库字符集关键字不同
+	)DEFAULT CHARSET=utf8;
 	```
 
 	```sql
-	CREATE TABLE tb_test (
-	    id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,  -- 自动递增的主键
-	    address VARCHAR(16),                         -- 存储地址，最大16个字符
-	    name VARCHAR(16)                             -- 存储名字，最大16个字符
-	) DEFAULT CHARSET=utf8;                          -- 设置表的字符集为 UTF-8
+	CREATE TABLE tb_users (
+	    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	    username VARCHAR(16) NOT NULL UNIQUE,
+	    password VARCHAR(255) NOT NULL
+	) DEFAULT CHARSET=utf8;
 	```
+	
+	**在以上代码中**：
+	
+	1. **`INT`**：整型
+	2. **`NOT NULL`**：非空
+	3. **`AUTO_INCREMENT`**：
+	4. **`PRIMARY KEY`**：主键
+
+### 字段
+
+**字段**（Field）是数据库中表的一个组成部分，代表了表中的一个列，用于存储数据。
+
+字段由不同属性组成，每种实例表示属性的方式也不相同。
+
+**常用的字段属性**：
+
+- **名称**：字段的标识符，用于区分字段。**命名习惯**：小蛇形，例 `tb_users`。
+- **数据类型**：字段中存储数据的类型（如整数、字符串、日期等）。
+- **约束**：字段的限制条件（如 `NOT NULL`、`PRIMARY KEY`、`UNIQUE` 等）。
+- [`自增`](https://www.w3cschool.cn/sql/2phntfpq.html)：`AUTO_INCREMENT`，在新记录插入表中时生成一个唯一的数字。
+
+**常用数据类型**：
+
+- `INT`：整型
+- `VARCHAR`：可变长度字符串
+
+**常用的约束**：
+
+- [PRIMARY KEY](https://www.w3cschool.cn/sql/vle8zfpd.html)：主键
+	- 主键必须包含唯一的值。
+	- 主键列不能包含 NULL 值。
+	- 每个表都应该有一个主键，并且只能有一个主键。
+- [FOREIGN KEY](https://www.w3cschool.cn/sql/5dycsfpf.html)：外键
+	- 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
+- [NOT NULL](https://www.w3cschool.cn/sql/6tlpzfpb.html)：非空
+- [DEFAULT](https://www.w3cschool.cn/sql/jm8e9fpj.html)：默认
+- [UNIQUE](https://www.w3cschool.cn/sql/wxzqsfpc.html)：确保唯一
+- [CHECK ](https://www.w3cschool.cn/sql/fsq7hfph.html)：保证列中的所有值满足某一条件
+- [INDEX](https://www.w3cschool.cn/sql/cuj91oz2.html)：索引，用于在数据库中快速创建或检索数据
 
 ## 数据行 `ROW`
 

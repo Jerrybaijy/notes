@@ -66,7 +66,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 ## Pip
 
-- Pip 是 Python 的包管理工具
+- **pip**（package installer for python）是 Python 包管理工具，该工具提供了对 Python 包的查找、下载、安装、卸载的功能。
 - **常用命令**
 
   ```bash
@@ -82,12 +82,20 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
   
   # 查看已经安装的第三方模块
   pip list
+  # 查看需要升级的库
+  pip list -o
+  
   # 安装模块（选项为指定下载源）
-  pip install [-i https://pypi.tuna.tsinghua.edu.cn/simple] $MODULE_NAME
+  pip install $MODULE_NAME
   # 卸载第三方模块
   pip uninstall $MODULE_NAME
   # 显示模块信息
   pip show $MODULE_NAME
+  
+  # 将库列表保存到指定文件中
+  pip freeze > requirements.txt
+  # 从指定文件中安装库
+  pip install -r e:\requirements.txt
   ```
 
 - **安装目录**：使用 pip 安装模块时，会被安装到 Python 环境中，而不是当前目录。
@@ -105,7 +113,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
   ```bash
-  python -m venv venv
+  python -m venv ven
   ```
 
 4. 激活虚拟环境；
@@ -136,9 +144,9 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 11. 生成 `requirements.txt`
 
-   ```bash
-   pip freeze > requirements.txt
-   ```
+	```bash
+	pip freeze > requirements.txt
+	```
 
 12. 其他开发者可以通过以下命令来安装依赖
 
@@ -327,8 +335,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 	2. 下面会有提示，直接点击或者输入后回车。
 
 - **创建文件**
+	
 	- 右下角单击选择 `Python`；
-
+	
 	- 编写代码，保存：`文件名.py`；
 	- 运行：`Ctrl + B`（第一次选择 `Python`）。
 
@@ -348,10 +357,12 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - 除以下规范，其余同编程语言通用规范。
 - **规范**
+  - 第一个字符必须是字母表中字母或下划线 `_`。
+
   - 只能含有字母、数字、下划线，且不能以数字开头
 
   - 大小写敏感
-
+  
   - 不能是关键字和保留字
   
 - **命名习惯**
@@ -401,10 +412,45 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
   print("a")  # a
   ```
   
-  - **说明**
-  	- 如果输出内容为字符串，加 `双/单引号`。
-  	- `a` 可以是拼接数据
-  	- `print("内容", end = "")`：多行 `print` 显示结果不换行
+  **说明**：
+  
+  1. 如果输出内容为字符串，加 `双/单引号`。
+  2. `a` 可以是拼接数据
+  3. `print("内容", end = "")`：多行 `print` 显示结果不换行
+
+## 运行 Python
+
+### 交互式解释器
+
+1. 在命令行中进入 Python 交互环境
+
+	```bash
+	python
+	```
+
+2. 编写 Python 代码
+
+	```python
+	print("Hello word!")
+	```
+
+3. 退出交互环境
+
+	```bash
+	exit()
+	```
+
+### 命令行脚本
+
+- 可以在命令行里运行 Python 脚本
+
+	```python
+	python script.py
+	```
+
+### IDE
+
+使用各种 IDE 编辑运行 Python。
 
 ## 其它基础
 
@@ -3278,14 +3324,14 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
   import pymysql
   from pymysql.cursors import DictCursor
   
-  # 2.连接 MySQL 服务器
+  # 2.连接 MySQL 服务器（事先已创建好 Database）
   conn = pymysql.Connect(
       host="localhost",  # 主机地址
       port=3306,  # 端口号
-      user="jerry",  # 用户名
+      user="root",  # 用户名
       password="123456",  # 密码
       charset="utf8",  # 字符集
-      database="db_test"  # 数据库名称
+      database="db_users"  # 数据库名称
   )
   
   # 3.创建游标对象
@@ -3315,28 +3361,68 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 - **函数模板**
 
 	```python
-	# 1.引入 pymysql 和 DictCursor
 	import pymysql
 	from pymysql.cursors import DictCursor
 	
-	# 2.定义连接 MySQL 函数
-	def conn_mysql():
+	# 连接数据库（事先已创建好 Database）
+	def conn_db():
 	    return pymysql.Connect(
 	        host="localhost",
 	        port=3306,
 	        user="root",
 	        password="123456",
 	        charset="utf8",
-	        database="db_test"
+	        database="db_users"
 	    )
 	
-	# 3.使用 with 语句管理连接和游标
-	with conn_mysql() as conn:
-	    with conn.cursor(cursor=DictCursor) as cursor:
-	        cursor.execute("$SQL_SYNTAX")  # 增删改查
-	        conn.commit()  # 如果是增删改业务，则执行 commit()
-	        res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
-	        res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
+	# 断开数据库
+	def close_db(conn, cursor):
+	    cursor.close()
+	    conn.close()
+	
+	
+	# 创建 Table
+	def create_table():
+	    conn = conn_db()
+	    cursor = conn.cursor()
+	    try:
+	        cursor.execute('''
+	            CREATE TABLE IF NOT EXISTS tb_users (
+	                id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	                username VARCHAR(16) NOT NULL UNIQUE,
+	                password VARCHAR(255) NOT NULL
+	            ) DEFAULT CHARSET=utf8;
+	        ''')
+	        conn.commit()
+	        print("表 tb_users 创建成功或已存在！")
+	    except pymysql.MySQLError as e:
+	        print(f"创建表失败，错误信息: {e}")
+	    finally:
+	        close_db(conn, cursor)
+	
+	# 以插入数据为例
+	def insert_user(username, password):
+	    conn = conn_db()
+	    cursor = conn.cursor()
+	    
+	    try:
+	        cursor.execute('''
+	            INSERT INTO tb_users (username, password)
+	            VALUES (%s, %s)
+	        ''', (username, password))
+	        
+	        conn.commit()
+	        print(f"用户 {username} 插入成功！")
+	    
+	    except pymysql.MySQLError as e:
+	        print(f"插入失败，错误信息: {e}")
+	    
+	    finally:
+	        close_db(conn, cursor)
+	
+	# 使用函数------------------------------------------------------
+	create_table()
+	insert_user('jerry', '123456')
 	```
 	
 - **说明**
@@ -3353,69 +3439,6 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 		# 使用参数化查询来避免 SQL 注入
 		cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
 		```
-
-###  `pymysql` 样板
-
-#### 函数样板文件
-
-```python
-import pymysql
-from pymysql.cursors import DictCursor
-
-# 定义连接 MySQL
-def conn_mysql():
-    return pymysql.Connect(
-        host="localhost",
-        port=3306,
-        user="root",
-        password="123456",
-        charset="utf8",
-        database="db_test"
-    )
-
-# 3.定义断开 MySQL
-def close_conn_mysql(conn, cursor):
-    cursor.close()
-    conn.close()
-
-# 4.交互 MySQL
-conn = conn_mysql()
-cursor = conn.cursor(cursor=DictCursor)
-
-cursor.execute("$SQL_SYNTAX")
-conn.commit()  # 如果是增删改业务，则执行 commit()
-res = cursor.fetchall()  # 如果是查询业务，则执行 fetchall
-
-close_conn_mysql(conn, cursor)
-```
-
-#### 创建 `TABLE` 样板
-
-```python
-# 一般以id作为主键
-sql = """
-create table tb2(
-  	id bigint unsigned primary key auto_increment not null,
-    name varchar(16),
-    mobile char(11),
-    email varchar(128),
-    salary decimal(10, 2),
-    ctime datetime
-)default charset=utf8;"""
-cursor.execute(sql)
-conn.commit()
-```
-
-#### 增加多个数据行样板
-
-```python
-sql = """insert into tb_test(name, mobile, email, salary, ctime) values
-    ('mayun', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-    ('zhangsan', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30'),
-    ('lisi', '18888888888', 'x@qq.com', 1000, '2023-11-01 12:30:30');"""
-cursor.execute(sql)
-conn.commit()
-```
 
 ###  `pymysql` 实例
 
@@ -3575,7 +3598,7 @@ conn.commit()
 	import sqlite3
 	
 	# 2.连接 SQLite 数据库
-	conn = sqlite3.connect('example.db')
+	conn = sqlite3.connect('users.db')
 	
 	# 3.创建游标对象
 	conn.row_factory = sqlite3.Row  # 相当于 MySQL 里的cursor=DictCursor，获取结果为列表嵌套字典。
@@ -3597,52 +3620,60 @@ conn.commit()
 - **函数模板**
 
 	```python
-	# 1.---------------引入 sqlite3----------------------
-	
 	import sqlite3
 	
-	# 2.---------------定义 SQLite 相关函数---------------
-	
-	# 2.1.连接 SQLite
+	# 连接数据库，创建 Database
 	def conn_db():
 	    conn = sqlite3.connect('users.db')
 	    conn.row_factory = sqlite3.Row
 	    print("数据库连接成功！")
 	    return conn
 	
-	# 2.2.创建用户表（如果表不存在）
-	def create_table():
-	    conn = conn_db()
-	    cursor = conn.cursor()
-	    cursor.execute('''
-	        CREATE TABLE IF NOT EXISTS users (
-	            id INTEGER PRIMARY KEY AUTOINCREMENT,
-	            username TEXT UNIQUE NOT NULL,
-	            password TEXT NOT NULL
-	        )
-	    ''')
-	    conn.commit()
-	    close_db(conn, cursor)
-	
-	
-	# 2.3.断开 SQLite
+	# 断开数据库
 	def close_db(conn, cursor):
 	    cursor.close()
 	    conn.close()
 	
+	# 创建 Table
+	def create_table():
+	    conn = conn_db()
+	    cursor = conn.cursor()
+	    try:
+	        cursor.execute('''
+	            CREATE TABLE IF NOT EXISTS tb_users (
+	                id INTEGER PRIMARY KEY AUTOINCREMENT,
+	                username VARCHAR(16) NOT NULL UNIQUE,
+	                password VARCHAR(255) NOT NULL
+	            );
+	        ''')
+	        conn.commit()
+	        print("表 tb_users 创建成功或已存在！")
+	    except sqlite3.IntegrityError as e:
+	        print(f"创建表失败，错误信息: {e}")
+	    finally:
+	        close_db(conn, cursor)
 	
-	# 3.---------------使用 SQLite 函数---------------
-	try:  # 使用 try...except...finally 进行异常处理
-	    sql = "$SQL_SYNTAX"
-	    cursor.execute(sql)  # 增删改查
-	    conn.commit()  # 如果是增删改业务，则执行 commit()
-	    res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
-	    res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-	    # 这里还有其它操作
-	except sqlite3.Error as e:
-	        return f"数据库错误: {str(e)}", 500
-	finally:
-	    close_db(conn, cursor)
+	# 以插入数据为例
+	def insert_user(username, password):
+	    conn = conn_db()
+	    cursor = conn.cursor()
+	    
+	    try:
+	        cursor.execute('''
+	            INSERT INTO tb_users (username, password)
+	            VALUES (?, ?)
+	        ''', (username, password))
+	        
+	        conn.commit()
+	        print(f"用户 {username} 插入成功！")
+	    except sqlite3.IntegrityError as e:
+	        print(f"插入失败，错误信息: {e}")
+	    finally:
+	        close_db(conn, cursor)
+	
+	# 使用函数------------------------------------------------------
+	create_table()
+	insert_user('jerry', '123456')
 	```
 
 # 异常处理

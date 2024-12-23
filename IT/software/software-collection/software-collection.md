@@ -1080,7 +1080,7 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 	2. **`mysql-container`**：容器名
 
-	3. **`-uroot -p`**：以 root 用户登录 MySQL，并输入密码，输入密码以后就会进入 MySQL 命令行界面，进而使用 SQL 语言操作 MySQL。
+	3. **`mysql -uroot -p`**：以 root 用户登录 MySQL，并输入密码，输入密码以后就会进入 MySQL 命令行界面，进而使用 SQL 语言操作 MySQL。
 
 		```bash
 		mysql>
@@ -1091,8 +1091,6 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 - **语法规范**
 
   - MySQL 遵循 [SQL](../../code-language/sql/sql.md) 标准语法。
-
-  - **连字符**：应使用 `_` 而不是 `-`；例如：`db_test` 和 `tb_test`。
 
 - **MySQL 管理**
 
@@ -1127,17 +1125,21 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 ## MySQL 命令样板
 
-```sql
--- 创建数据库
-CREATE DATABASE $DATABASE default charset=utf8;
+- **创建 Database**
 
--- 创建数据表
-create table tb_test(
-	id int primary key auto_increment not null,  -- 主键，自增，不准为空
-	username varchar(16),  -- 最长16个字符
-  password varchar(16),
-)default charset=utf8;
-```
+	```sql
+	CREATE DATABASE IF NOT EXISTS db_users DEFAULT CHARACTER SET utf8;
+	```
+
+- **创建 Table**
+
+	```sql
+	CREATE TABLE IF NOT EXISTS tb_users (
+	    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	    username VARCHAR(16) NOT NULL UNIQUE,
+	    password VARCHAR(255) NOT NULL
+	) DEFAULT CHARSET=utf8;
+	```
 
 ## 解决办法
 
@@ -1162,7 +1164,7 @@ create table tb_test(
 	- **字符集**：`utf8mb4`
 	- **排序规则**：`utf8mb4_general_ci`
 - **创建 Table**
-	- 在已创建的 Database 目录下，右键点击 `表` > `新建表`
+	- 在已创建的 Database 目录下，右键点击 `表` > `新建表`
 
 # Pandoc
 
@@ -1370,6 +1372,30 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 - 无需安装。
 - 在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
 
+## SQLite 命令样板
+
+- **直接创建 Database**
+
+	```sql
+	sqlite3 db_users.db
+	```
+
+- **在程序中创建 Database（如果数据库文件不存在，会直接创建）**
+
+	```sql
+	conn = sqlite3.connect('db_users.db')
+	```
+
+- **创建 Table**
+
+	```sql
+	CREATE TABLE IF NOT EXISTS tb_users (
+	    id INTEGER PRIMARY KEY AUTOINCREMENT,
+	    username VARCHAR(16) NOT NULL UNIQUE,
+	    password VARCHAR(255) NOT NULL
+	);
+	```
+
 ## SQLite 可视化
 
 ### VSCode 插件查看
@@ -1378,10 +1404,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 - 双击 `SQLite` 的 `.db` 文件；
 - 此插件只支持查看，不支持修改。
 
-### DB Browser for SQLite
-
-- [安装 DB Browser for SQLite 桌面软件](https://sqlitebrowser.org/dl/)；
-- 支持修改。
+### [Navicat Premium Lite](#Navicat Premium Lite)
 
 # SSH
 
