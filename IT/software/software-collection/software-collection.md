@@ -977,7 +977,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 使用  C 和 C++ 编写，使用标准的 SQL 语言操作数据库，支持多线程，是最流行的关系型数据库管理系统之一。
 
-## 环境搭建
+## MySQL 环境搭建
 
 ### Windows MySQL
 
@@ -1068,7 +1068,7 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 3. 接下来可使用 Navicat 操作 MySQL。
 
-4. 如果想在命令行中操作 MySQL，可进入容器命令行。
+4. 如果想在命令行中操作 MySQL，可进入容器内 MySQL 交互界面。
 
 	```bash
 	docker exec -it mysql-container mysql -uroot -p
@@ -1085,6 +1085,13 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 		```bash
 		mysql>
 		```
+
+## MySQL 交互方式
+
+- **命令行客户端**：`mysql`
+- **编程语言客户端**：如 Python 的 `pymysql`
+- **ORM**：如 Python 的 `sqlalchemy`
+- **GUI工具**：如 `Navicat`
 
 ## MySQL 基础
 
@@ -1367,10 +1374,79 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 - **无需安装**：因为 SQLite 是一个库而非服务器，它直接访问数据库文件，所以无需额外的安装配置。
 - **服务器独立**：数据存储在一个 `.db` 文件中，如果数据库文件不存在，SQLite 会自动创建它。
 
+## SQLite 环境搭建
+
+### 容器化 SQLite
+
+1. Docker 已成功搭建，详见 [Docker > 环境搭建](../devops/docker/docker.md#环境搭建)。
+
+2. 运行容器
+
+	```bash
+	docker run -d -v $(pwd):/tmp --name sqlite-container -it jitesoft/sqlite:latest /tmp/test.db
+	```
+
+	**在以上代码中**：
+
+	1. **`--name sqlite-container`**：指定容器的名字
+	2. **`-v $(pwd):/tmp`**：挂载到本地当前文件夹下的 `tmp`，但是本次实验没有挂载成功。
+	3. **`/tmp/test.db`**：容器中 `test.db` 的位置
+	4. **`-d`**：让容器在后台运行
+	5. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+	6. **`jitesoft/sqlite:latest`**：镜像
+
+3. 如果想在命令行中操作 SQLite，可进入容器内 SQLite 交互界面。
+
+	```bash
+	docker exec -it sqlite-container sqlite3
+	```
+
+	**在以上代码中**：
+
+	1. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+
+	2. **`sqlite-container`**：容器名
+
+	3. **`sqlite3`**：SQLite 命令行客户端
+
+		```bash
+		sqlite>
+		```
+
+4. 退出 SQLite 交互界面
+
+	```bash
+	sqlite> .exit
+	```
+
 ## SQLite 基础
 
 - 无需安装。
+
 - 在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
+
+- **常用命令**
+
+	```sql
+	-- 退出 SQLite 交互界面
+	.exit
+	
+	-- 查看所有数据库
+	.database
+	
+	-- 查看数据库中的所有表
+	.tables
+	
+	-- 查看某个表的结构
+	.schema tbl1
+	```
+
+## SQLite 交互方式
+
+- **命令行客户端**：`sqlite3`
+- **编程语言客户端**：如 Python 的 `pymysql`
+- **ORM**：如 Python 的 `sqlalchemy`
+- **GUI工具**：如 `Navicat`
 
 ## SQLite 命令样板
 

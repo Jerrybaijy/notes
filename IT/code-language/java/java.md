@@ -11,12 +11,12 @@
 ### JDK
 
 1. JDK 是 Java 语言的软件开发工具包。
-2. 安装 Java 开发工具包 JDK17，JDK中已集成运行环境 JRE。
+2. 安装 Java 开发工具包 JDK17，JDK 中已集成运行环境 JRE。
 3. 安装其它 IDE
 
 ### Eclipse
 
-​	Eclipse 是一款 IDE，主要用于 Java 开发。
+Eclipse 是一款 IDE，主要用于 Java 开发。
 
 #### Eclipse 安装
 
@@ -30,12 +30,12 @@
 
 ### IntelliJ IDEA
 
-​	IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
+IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 #### IntelliJ IDEA 安装
 
-- 安装时选择 `添加环境变量` 和 `关联Java`
-- 破解教程见《Python笔记 - Pycharm》
+1. 安装时选择 `添加环境变量` 和 `关联Java`
+2. 破解教程见 [`Python` > `Pycharm`](../python/python.md#Pycharm)
 
 #### IntelliJ IDEA 配置
 
@@ -314,7 +314,7 @@ Java 中也支持嵌套循环、死循环、break和continue关键字，用法�
 
 ## Spring Boot 基础
 
-​	Spring Boot 是一个 Java 语言的框架。它是基于 Spring Framework 构建的，用于简化和加速 Java 应用程序的开发和部署。
+Spring Boot 是一个 Java 语言的框架。它是基于 Spring Framework 构建的，用于简化和加速 Java 应用程序的开发和部署。
 
 ## 基本流程
 
@@ -397,8 +397,6 @@ Java 中也支持嵌套循环、死循环、break和continue关键字，用法�
   spring.datasource.password=
   spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
   ```
-
-
 
 
 ## 项目

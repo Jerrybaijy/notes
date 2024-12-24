@@ -3227,59 +3227,118 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 ## `sqlalchemy` 交互关系型数据库
 
-**SQLAlchemy** 是一个功能强大的 Python 数据库工具包和对象关系映射（ORM）框架。在交互**关系型数据库**方面，它提供了一个统一的操作接口，屏蔽了不同数据库之间的差异。无论交互哪种关系型数据库，都可以用相似的代码逻辑去操作，大大提高了代码的复用性和可移植性。
-
-在 Python 中，可以使用第三方模块 `sqlalchemy` 与任意关系型数据库（如 MySQL 和 SQLite）进行交互。
+在 Python 中，可以使用第三方模块 `sqlalchemy` 通过 ORM 与任意关系型数据库（如 MySQL 和 SQLite）进行交互。
 
 ### `sqlalchemy` 语法
 
 - **基础语法（以 SQLite 为例）**
 
+  ```python
+  from sqlalchemy import create_engine
+  from sqlalchemy.orm import sessionmaker
+  from sqlalchemy.ext.declarative import declarative_base
+  from sqlalchemy import Column, String
+  
+  # 1.创建数据库引擎，连接数据库
+  DATABASE_URL = 'sqlite:///users.db'
+  engine = create_engine('DATABASE_URL', echo=True)
+  
+  # 2.创建基类
+  Base = declarative_base()
+  
+  # 3.创建 Session 类
+  Session = sessionmaker(bind=engine)
+  
+  # 4.定义模型类，映射到数据库中的表
+  class User(Base):
+      __tablename__ = 'tb_users'  # 映射到表 tb_users
+      id = Column(Integer, primary_key=True, autoincrement=True)  # 映射到 id 列
+      username = Column(String(16), nullable=False, unique=True)  # 映射到 username 列
+      password = Column(String(255), nullable=False)  # 映射到 password 列
+  
+  # 5.创建 Table
+  Base.metadata.create_all(engine)
+  
+  # 6.使用 session 交互数据库
+  session = Session()
+  new_user = User(username="johndoe", password="secret")
+  session.FUNC()  # FUNC() 为具体的增删改查
+  session.commit()  # 如果是增删改交互，则执行 commit()；查询交互不执行。
+  session.close()   # 关闭会话，在 sqlalchemy 中，只需要关闭会话即可，无需关闭数据库连接。
+  ```
+
+  **在以上代码中**：
+
+  1. **`create_engine()`**：创建数据库引擎，用于连接到数据库。
+  2. **`declarative_base()`**：用于创建基础类，所有的映射类都应该继承自这个基类。
+  3. **`sessionmaker()`**：创建会话工厂，生成用于与数据库交互的会话对象（`Session`）。
+  4. **`class User(Base)`**：定义模型类（映射到数据库表）
+  5. **`Session()`**：创建一个会话对象（类似于游标），用于后续与数据库的交互。
+
+- **函数模板（以 SQLite 为例）**
+
 	```python
-	from sqlalchemy import create_engine
-	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy import create_engine, Column, Integer, String
 	from sqlalchemy.ext.declarative import declarative_base
-	from sqlalchemy import Column, String
+	from sqlalchemy.orm import sessionmaker
+	from sqlalchemy.exc import IntegrityError
 	
-	# 1.创建数据库引擎，连接 SQLite 数据库
-	engine = create_engine('sqlite:///test.db')
+	# 连接数据库
+	DATABASE_URL = 'sqlite:///users.db'
+	engine = create_engine(DATABASE_URL, echo=True)
 	
-	# 2.创建会话工厂
-	Session = sessionmaker(bind=engine)
-	
-	# 3.创建基础类
+	# 创建基类
 	Base = declarative_base()
 	
-	# 4.映射到已存在的表
+	# 创建 Session 类
+	Session = sessionmaker(bind=engine)
+	
+	# 定义模型类，映射到数据库中的表
 	class User(Base):
-	    __tablename__ = 'user'  # 映射到数据库中的 user 表
-	    id = Column(Integer, primary_key=True)  # 映射到 id 列
-	    name = Column(String)  # 映射到 name 列
-	    password = Column(String)  # 映射到 password 列
+	    __tablename__ = 'tb_users'
+	    id = Column(Integer, primary_key=True, autoincrement=True)
+	    username = Column(String(16), nullable=False, unique=True)
+	    password = Column(String(255), nullable=False)
 	
-	# 5.创建数据库表（如果表已存在，则不会创建）
-	Base.metadata.create_all(engine)
+	# 创建 Table
+	def create_tb():
+	    Base.metadata.create_all(engine)
+	    print("表 tb_users 创建成功或已存在！")
 	
-	# 6.使用 with 语句创建会话对象
-	with Session() as session:
-	    # 交互数据库
-	    session.query(User).FUNC()  # FUNC() 为具体的增删改查
-	    session.commit()  # 如果是增删改交互，则执行 commit()；查询交互不执行。
+	# 插入用户
+	def insert_user(username, password):
+	    with Session() as session:  # 使用 with 语句管理会话
+	        try:
+	            new_user = User(username=username, password=password)
+	            session.add(new_user)
+	            session.commit()
+	            print(f"用户 {username} 插入成功！")
+	        except IntegrityError as e:
+	            session.rollback()  # 回滚事务
+	            print(f"插入失败，错误信息: {e}")
+	
+	# 运行主程序
+	if __name__ == '__main__':
+	    create_tb()
+	    insert_user('222', '123456')
 	```
 
 ### `sqlalchemy` 连接
 
 - **连接 SQLite**
 
-	```python
-	from sqlalchemy import create_engine, Column, String
-	from sqlalchemy.orm import sessionmaker
-	from sqlalchemy.ext.declarative import declarative_base
-	from argon2 import PasswordHasher
-	
-	# 创建连接 SQLite 数据库的引擎
-	engine = create_engine('sqlite:///test.db')
-	```
+  ```python
+  from sqlalchemy import create_engine, Column, String
+  from sqlalchemy.orm import sessionmaker
+  from sqlalchemy.ext.declarative import declarative_base
+  from argon2 import PasswordHasher
+  
+  # 创建数据库引擎，连接 SQLite 数据库，如果不存在，则会自动创建
+  DATABASE_URL = 'sqlite:///users.db'
+  engine = create_engine(DATABASE_URL, echo=True)
+  
+  # 其余同基础函数模板
+  ```
 
 - **连接 MySQL**
 
@@ -3289,26 +3348,22 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	from sqlalchemy.ext.declarative import declarative_base
 	from argon2 import PasswordHasher
 	
-	# 创建连接 MySQL 数据库的引擎
-	engine = create_engine('''
-	    mysql+mysql-connector-python://
-	    username:password
-	    @localhost:3306/my_database
-	''')
+	# 创建数据库引擎，连接 MySQL 数据库
+	DATABASE_URL = 'mysql+pymysql://username:password@localhost:3306/my_database'
+	engine = create_engine(DATABASE_URL, echo=True)
+	
+	# 其余同基础函数模板
 	```
 	
 	**在以上代码中**：
 	
-	1. **`create_engine`**：用于创建一个数据库引擎，它接收一个表示数据库连接字符串的参数。
-	2. **`mysql+mysql-connector-python`**：这部分指定了数据库的类型以及要使用的 Python 驱动。这里表明使用的是 MySQL 数据库，并且通过 `mysql-connector-python` 驱动（需要 pip 安装）来和数据库建立连接。
-	3. **`username:password`**：实际使用中替换成自己的 MySQL 数据库登录用户名和密码。
-	4. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
-	5. **`3306`**：端口号
-	6. **`my_database`**：数据库名称
-
-### `sqlalchemy` 样板
-
-### `sqlalchemy` 实例
+	1. **`DATABASE_URL`**：连接地址
+		- **`mysql`**：数据库的类型
+		- **`pymysql`**：数据库驱动，需 pip 安装 `pymysql`。
+	2. **`username:password`**：MySQL 数据库登录用户名和密码。
+	3. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
+	4. **`3306`**：端口号
+	5. **`my_database`**：数据库名称
 
 ##  `pymysql` 交互 MySQL
 
@@ -3364,7 +3419,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	import pymysql
 	from pymysql.cursors import DictCursor
 	
-	# 连接数据库（事先已创建好 Database）
+	# 连接数据库
 	def conn_db():
 	    return pymysql.Connect(
 	        host="localhost",
@@ -3380,9 +3435,8 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    cursor.close()
 	    conn.close()
 	
-	
 	# 创建 Table
-	def create_table():
+	def create_tb():
 	    conn = conn_db()
 	    cursor = conn.cursor()
 	    try:
@@ -3400,7 +3454,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    finally:
 	        close_db(conn, cursor)
 	
-	# 以插入数据为例
+	# 插入用户
 	def insert_user(username, password):
 	    conn = conn_db()
 	    cursor = conn.cursor()
@@ -3420,9 +3474,10 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    finally:
 	        close_db(conn, cursor)
 	
-	# 使用函数------------------------------------------------------
-	create_table()
-	insert_user('jerry', '123456')
+	# 运行主程序
+	if __name__ == '__main__':
+	    create_tb()
+	    insert_user('222', '123456')
 	```
 	
 - **说明**
@@ -3597,7 +3652,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	# 1.引入 sqlite3
 	import sqlite3
 	
-	# 2.连接 SQLite 数据库
+	# 2.连接 SQLite 数据库，如果不存在，则会自动创建
 	conn = sqlite3.connect('users.db')
 	
 	# 3.创建游标对象
@@ -3622,7 +3677,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	```python
 	import sqlite3
 	
-	# 连接数据库，创建 Database
+	# 连接数据库
 	def conn_db():
 	    conn = sqlite3.connect('users.db')
 	    conn.row_factory = sqlite3.Row
@@ -3635,7 +3690,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    conn.close()
 	
 	# 创建 Table
-	def create_table():
+	def create_tb():
 	    conn = conn_db()
 	    cursor = conn.cursor()
 	    try:
@@ -3653,7 +3708,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    finally:
 	        close_db(conn, cursor)
 	
-	# 以插入数据为例
+	# 插入用户
 	def insert_user(username, password):
 	    conn = conn_db()
 	    cursor = conn.cursor()
@@ -3671,9 +3726,10 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	    finally:
 	        close_db(conn, cursor)
 	
-	# 使用函数------------------------------------------------------
-	create_table()
-	insert_user('jerry', '123456')
+	# 运行主程序
+	if __name__ == '__main__':
+	    create_tb()
+	    insert_user('111', '123456')
 	```
 
 # 异常处理
