@@ -112,25 +112,25 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
-  ```bash
-  python -m venv ven
-  ```
+	```bash
+	python -m venv ven
+	```
 
 4. 激活虚拟环境；
 
-  ```bash
-  # Windows
-  source venv/Scripts/activate
-  
-  # Mac/Linux
-  source venv/bin/activate
-  ```
+	```bash
+	# Windows
+	source venv/Scripts/activate
+	
+	# Mac/Linux
+	source venv/bin/activate
+	```
 
 5. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
 
-	```bash
-	where python
-	```
+  ```bash
+  where python
+  ```
 
 6. 如果没有，参照以下办法激活：
 
@@ -3764,13 +3764,145 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 	# 清理操作
 	```
 
+# Jinja2
+
+## Jinja2 基础
+
+**Jinja2** 是一个流行的 Python 模板引擎，主要用于将数据传递到 HTML、XML 或其他标记语言中，从而生成动态内容。它通常用于 Web 框架中，比如 Flask 和 Django（Django 使用的是自己的模板引擎，但与 Jinja2 类似）。
+
+**Jinja2 的核心特性**：
+
+1. **变量替换**：使用 `{{ ... }}` 输出变量值。
+2. **控制结构**：支持循环、条件语句等逻辑控制结构。
+3. **过滤器**：对变量进行操作，比如格式化、转换等。
+4. **宏与模板继承**：可以创建可重用的模板块和继承模板。
+5. **上下文操作**：可以传递数据到模板，并在模板中动态处理。
+
+## Jinja2 变量
+
+- **语法**：`{{ VARIABLE_NAME }}`
+
+	```jinja2
+	<p>Welcome, {{ username }}!</p>
+	```
+
+## Jinja2 控制结构
+
+- **条件语句**
+
+	```jinja2
+	{% if user.is_admin %}
+	  Welcome, Admin!
+	{% else %}
+	  Welcome, User!
+	{% endif %}
+	```
+
+- **循环语句**
+
+	```jinja2
+	<ul>
+	  {% for item in items %}
+	    <li>{{ item }}</li>
+	  {% endfor %}
+	</ul>
+	```
+
+## Jinja2 过滤器
+
+- **语法**
+
+	```jinja2
+	{{ "hello world" | capitalize }}  # Hello world
+	```
+
+## Jinja2 模板继承
+
+**模板继承**允许创建一个基础模板（也称为 “父模板”），其中包含网站的通用布局，如头部、导航栏和底部。然后，可以创建多个子模板，这些子模板继承自父模板，并可以重写或扩展父模板中的特定块。
+
+- 在父模板 `base.html` 中可以定义这样的结构：
+
+	```jinja2
+	<html>
+	
+	<head>
+	  <title>{% block title %}{% endblock %}</title>
+	</head>
+	
+	<body>
+	  <header>
+	    <h1>My Website</h1>
+	  </header>
+	  <nav>
+	    <ul>
+	      <li><a href="/">Home</a></li>
+	      <li><a href="/about">About</a></li>
+	    </ul>
+	  </nav>
+	  <main>
+	    {% block content %}{% endblock %}
+	  </main>
+	  <footer>
+	    &copy; 2024 My Company
+	  </footer>
+	</body>
+	
+	</html>
+	```
+
+- 在子模板 `home.html` 中，可以继承 `base.html` 并填充 `title` 和 `content` 块：
+
+	```jinja2
+	{% extends "base.html" %}
+	{% block title %}Home Page{% endblock %}
+	{% block content %}
+	  <p>Welcome to the home page!</p>
+	{% endblock %}
+	```
+
+## Jinja2 Flask 示例
+
+- `app.py`
+
+	```python
+	from flask import Flask, render_template
+	
+	app = Flask(__name__)
+	
+	@app.route("/")
+	def index():
+	    return render_template("index.html", name="Alice", items=["Apple", "Banana", "Cherry"])
+	
+	if __name__ == "__main__":
+	    app.run(debug=True)
+	```
+
+- `templates/index.html`
+
+	```html
+	<body>
+	  <h1>Hello, {{ name }}!</h1>
+	  <ul>
+	    {% for item in items %}
+	    <li>{{ item }}</li>
+	    {% endfor %}
+	  </ul>
+	</body>
+	```
+
 # Flask 框架
 
-**Flask** 是一个轻量级的 Python Web 框架，适用于构建小型到中型规模的 Web 应用程序和 API。它由 Armin Ronacher 创建，基于 Werkzeug 和 Jinja2。Flask 的设计目标是简单而灵活，使得开发者能够快速地构建 Web 应用。
+**Flask** 是一个轻量级的 Python Web 框架，适用于构建小型到中型规模的 Web 应用程序和 API。
+
+**Flask 核心功能**：
+
+1. **模板引擎**：通常使用 Jinja2。
+2. **URL 路由**：在视图中直接定义路由。
+3. **ORM（对象关系映射）**：使用 SQLAlchemy（可选）。
 
 ## 环境搭建
 
-- 此初始化脚本是自己创建的，用于自动创建虚拟化环境和 Flask 框架目录结构。
+- 此初始化脚本是自己创建的，用于自动创建虚拟环境和 Flask 框架目录结构。
 - 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成 Flask 框架的目录结构和虚拟环境。
 
 - **目录结构**
@@ -3974,205 +4106,192 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 `url_for()` 函数是 Flask 框架中定义 URL 的方式，用于生成 URL（统一资源定位符），主要的优势在于它能够根据定义的路由视图函数名动态地构建 URL，而不是在代码中硬编码 URL 字符串。这样做的好处是，如果路由规则发生变化（例如，路由路径被修改或者添加了新的参数），`url_for` 函数调用的地方不需要手动修改 URL，从而提高了代码的可维护性。
 
-- **Python 语法**：
-
-## `flask_sqlalchemy`
-
-`flask_sqlalchemy` 是 Flask 框架的一个扩展，它为 Flask 应用提供了对 SQLAlchemy 的便捷集成。它允许你使用 Python 代码操作关系型数据库，如 MySQL、PostgreSQL、SQLite 等。Flask - SQLAlchemy 简化了在 Flask 应用中配置和使用 SQLAlchemy 的过程。
-
 ## Flask 项目
 
-### Flask 练习项目
+###  [Login Flask Txt HTML](../../projects/projects.md#Login Flask Txt HTML)
 
 <img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
 
-
-1. **说明**
-
-   1. 这是一个没有前端框架和数据库的 Flask 项目，旨在练习 Flask 最基本的用法；
-   2. 使用记事本模拟数据库接收数据；
-   3. 此项目已整理至 [`Projects` > `Login Flask Txt HTML`](../../projects/projects.md#Login Flask Txt HTML)，已存储至 Git 托管平台，前后端合并存储 `login-flask-txt-html`；
-
-2. 创建 Python 虚拟环境；
-
-3. 安装 Flask 框架；
-
-4. 在项目根目录创建后端主程序文件 `app.py`；
-
-   ```python
-   from flask import Flask, render_template, request, redirect, url_for
-   
-   app = Flask(__name__)
-   
-   # 定义主页路由，返回至 index.html 页面
-   @app.route("/")
-   def home():
-       return render_template("index.html")
-   
-   # 定义注册页面路由，返回至 register.html 页面
-   @app.route("/register")
-   def register():
-       return render_template("register.html")
-   
-   
-   # 定义 submit 路由和HTTP协议，接收前端提交数据，写入数据库后，返回至主页
-   @app.route("/register_ok", methods=["POST"])
-   def register_ok():
-       # 1.接收用户提交数据
-       # 左侧 user 为要存入数据库的变量名，右侧 user 为 form 表单提交数据的变量名
-       user = request.form.get("user")
-       pwd = request.form.get("pwd")
-       role = request.form.get("role")
-       gender = request.form.get("gender")
-       others = request.form.get("others")
-       # 接收复选框  request.args.getlist()
-       hobby = request.form.getlist("hobby")
-   
-       # 2.保存数据
-       with open("users.txt", "a", encoding="utf-8") as f:
-           line = f"{user}|{pwd}|{role}|{gender}|{hobby}|{others}\n"
-           f.write(line)
-       
-       # 重定向到主页
-       return redirect(url_for("home"))  # 此处 home 是主页视图函数
-   
-   # 定义登录页面路由，返回至 login.html 页面
-   @app.route("/login")
-   def login():
-       return render_template("login.html")
-   
-   if __name__ == '__main__':
-       app.run()
-   ```
-
-5. 在 `templates` 文件夹创建前端文件 `index.html`、`register.html` 和 `login.html`；
-
-   - **`index.html`**
-
-     ```html
-     <!DOCTYPE html>
-     <html lang="en">
-     
-     <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>主页</title>
-     </head>
-     
-     <body>
-       <h1>主页</h1>
-     
-       <!-- 注册按钮，点击后跳转到注册页面 -->
-       <form action="/register" method="GET">
-         <button type="submit">注册</button>
-       </form>
-     
-       <!-- 登录按钮，点击后跳转到登录页面 -->
-       <form action="/login" method="GET">
-         <button type="submit">登录</button>
-       </form>
-     </body>
-     
-     </html>
-     ```
-
-   - **`register.html`**
-
-     ```html
-     <!DOCTYPE html>
-     <html lang="en">
-     
-     <head>
-       <meta charset="UTF-8">
-       <title>注册</title>
-     </head>
-     
-     <body>
-       <h1>注册页面</h1>
-     
-       <!-- 定义submit路由和HTTP协议，向后端提交数据 -->
-       <form action="/register_ok" method="POST">
-         <label for="user">用户名:</label>
-         <!-- name 的属性值 user 作为接收用户输入内容的变量 -->
-         <input type="text" id="user" name="user" required><br><br>
-     
-         <label for="pwd">密码:</label>
-         <input type="password" id="pwd" name="pwd" required><br><br>
-     
-         <label for="role">角色:</label>
-         <!-- name 的属性值 role 作为接收用户选择内容的变量 -->
-         <select id="role" name="role">
-           <option value="admin">管理员</option>
-           <option value="user">普通用户</option>
-         </select><br><br>
-     
-         <label for="gender">性别:</label>
-         <input type="radio" id="male" name="gender" value="male">
-         <label for="male">男</label>
-         <input type="radio" id="female" name="gender" value="female">
-         <label for="female">女</label><br><br>
-     
-         <label for="hobby">爱好:</label>
-         <input type="checkbox" name="hobby" value="reading"> 阅读
-         <input type="checkbox" name="hobby" value="sports"> 体育
-         <input type="checkbox" name="hobby" value="music"> 音乐<br><br>
-     
-         <label for="others">其他:</label>
-         <textarea id="others" name="others"></textarea><br><br>
-     
-         <button type="submit">提交注册</button>
-       </form>
-     
-       <a href="/">返回首页</a>
-     </body>
-     
-     </html>
-     ```
-
-   - **`login.html`**
-
-     ```html
-     <!DOCTYPE html>
-     <html lang="en">
-     
-     <head>
-       <meta charset="UTF-8">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>登录</title>
-     </head>
-     
-     <body>
-       <h1>登录页面</h1>
-     
-       <!-- 登录表单 -->
-       <form action="#" method="POST">
-         <label for="user">用户名:</label>
-         <input type="text" id="user" name="user" required><br><br>
-     
-         <label for="pwd">密码:</label>
-         <input type="password" id="pwd" name="pwd" required><br><br>
-     
-         <button type="submit">登录</button>
-       </form>
-     
-       <a href="/">返回首页</a>
-     </body>
-     
-     </html>
-     ```
-
-6. 运行项目，手动进入主页：http://127.0.0.1:5000；
-
-7. 注册页面，提交信息以后：
-
-   1. 程序自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
-   2. 页面自动跳转至登录页面。
-
-8. 登录页面，点击登录后会返回错误，因为没定义路由。
-
 ### [Login Flask React](../../projects/projects.md#Login Flask React)
 
+<img src="assets/image-20241225231722788.png" alt="image-20241225231722788" style="zoom:33%;" />
+
 # Django 框架
+
+Django 是一个强大的 Python Web 框架，适用于开发复杂和可扩展的 Web 应用。
+
+**Django 核心功能**：
+
+1. **模板引擎**：`Django 模板引擎`，支持模板继承和动态数据渲染。
+2. **URL 路由**：使用 `urls.py`，集中管理。
+3. **ORM（对象关系映射）**：内置，强大。
+4. **认证和权限系统**：内置用户认证、登录、注册和权限控制功能。
+5. **Admin 后台**：自动生成的管理页面，方便管理数据。
+6. **中间件**：处理请求和响应的钩子，用于添加自定义逻辑。
+
+## Django 基础
+
+### Django 目录结构
+
+```
+myproject/                   # 项目根目录
+├── manage.py                # 项目管理脚本，用于运行开发服务器、迁移数据库等命令。
+├── myproject/               # 项目核心目录，名称与项目名一致，存放全局配置。
+│   ├── __init__.py          # 标记这是一个 Python 包。
+│   ├── asgi.py              # 配置 ASGI 服务器，接收浏览器发送的请求。
+│   ├── settings.py          # 项目配置文件，包括数据库、静态文件、应用程序等配置。
+│   ├── urls.py              # URL 路由配置，定义全局 URL 和视图的映射。
+│   ├── wsgi.py              # 配置 WSGI 服务器，用于部署。
+├── myapp/                   # 应用目录
+│   ├── migrations/          # 管理数据库迁移文件，__init__.py 是初始化文件。
+│   ├── __init__.py
+│   ├── admin.py             # 配置 Django 管理后台的模型。
+│   ├── apps.py              # 配置应用信息。
+│   ├── models.py            # 定义数据库模型（ORM 类）。
+│   ├── tests.py             # 定义单元测试。
+│   ├── views.py             # 定义视图函数或类，处理用户请求并返回响应。
+│   ├── forms.py             # 定义表单（Form）类，用于用户输入处理。
+│   ├── serializers.py       # 如果使用 Django REST Framework，可以在这里定义数据序列化器。
+│   ├── templates/           # 存放 HTML 模板。通常按应用名（如 myapp）分类存储，避免文件名冲突。
+│   │   ├── myapp/
+│   │       ├── index.html
+│   ├── static/              # 存放静态资源，比如 CSS、JS 和图片。
+│       ├── css/
+│       ├── js/
+│       ├── images/
+├── media/                   # 用于存放用户上传的文件（如图片）。
+│   ├── uploads/
+├── static/                  # 项目级的静态资源目录，与应用内的 static/ 配合使用。
+│   ├── global_css/
+│   ├── global_js/
+```
+
+### 创建 Django 项目
+
+1. **安装 Django**
+
+	```bash
+	pip install django
+	```
+
+2. **创建项目**：在想存放项目的目录中执行以下命令
+
+	```bash
+	django-admin startproject myproject
+	```
+
+	```
+	# 这会生成以下目录结构：
+	
+	myproject/
+	├── manage.py
+	└── myproject/
+	    ├── __init__.py
+	    ├── settings.py
+	    ├── urls.py
+	    └── wsgi.py
+	```
+
+3. 将项目文件夹 `myproject` 加入 VSCode 工作区。
+
+4. 创建并激活虚拟环境
+
+5. 在虚拟环境中安装 `django`
+
+6. **创建应用**
+
+	```bash
+	python manage.py startapp myapp
+	```
+
+	```
+	# 目录结构更新为：
+	
+	myproject/
+	└── myapp/
+	    ├── migrations/
+	    ├── __init__.py
+	    ├── admin.py
+	    ├── apps.py
+	    ├── models.py
+	    ├── tests.py
+	    └── views.py
+	```
+
+7. **配置应用**：在 `settings.py` 中添加应用
+
+	```python
+	INSTALLED_APPS = [
+	    # 默认应用
+	    'django.contrib.admin',
+	    'django.contrib.auth',
+	    ...
+	    # 自定义应用
+	    'myapp',
+	]
+	```
+
+8. **创建视图和模板**
+
+	1. **配置 URL**：`myproject/urls.py`
+
+		```python
+		from django.contrib import admin
+		from django.urls import path
+		from myapp import views
+		
+		urlpatterns = [
+		    path('admin/', admin.site.urls),
+		    path('', views.index, name='index'),  # 首页路由
+		]
+		```
+
+	2. **编写视图**：`myapp/views.py`
+
+		```python
+		from django.shortcuts import render
+		
+		def index(request):
+		    context = {
+		        'name': 'Alice',
+		        'items': ['Apple', 'Banana', 'Cherry']
+		    }
+		    return render(request, 'index.html', context)
+		```
+
+	3. **创建模板**：`myapp/templates/index.html`
+
+		```html
+		<!DOCTYPE html>
+		<html lang="en">
+		
+		<head>
+		  <meta charset="UTF-8">
+		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		  <title>Django Example</title>
+		</head>
+		
+		<body>
+		  <h1>Hello, {{ name }}!</h1>
+		  <ul>
+		    {% for item in items %}
+		    <li>{{ item }}</li>
+		    {% endfor %}
+		  </ul>
+		</body>
+		
+		</html>
+		```
+
+9. **启动服务器**
+
+	```bash
+	python manage.py runserver
+	```
+
+10. **访问应用**：http://127.0.0.1:8000/
+
+# Django 框架（旧）
 
 Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它由 Adrian Holovaty 和 Simon Willison 创建，遵循了“Don't repeat yourself”（不要重复你自己）和“Convention over Configuration”（约定大于配置）等软件设计原则。Django 提供了一套功能强大而完整的工具，使得开发者能够更快速地构建复杂的 Web 应用。
 

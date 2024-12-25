@@ -1957,7 +1957,7 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 # Login Flask React
 
-![image-20240411011108035](assets/image-20240411011108035.png)
+<img src="assets/image-20240411011108035.png" alt="image-20240411011108035" style="zoom: 33%;" />
 
 ## 项目概述
 

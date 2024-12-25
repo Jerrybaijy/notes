@@ -204,8 +204,6 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
   ```
 
-## 其它
-
 # [容器](https://docs.docker.com/reference/cli/docker/container/)
 
 ## 容器基础
@@ -278,7 +276,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - [**-f (--force)**](https://docs.docker.com/reference/cli/docker/container/rm/#force)：强制删除运行中的容器
 
-- **-it**：(-i 和 -t 的组合)
+- **-it**：(`-i` 和 `-t` 的组合)
 
   - [**-t (--tty)**](https://docs.docker.com/reference/cli/docker/container/run/#tty)：分配一个伪终端 (TTY) 给容器，这样可以在容器中执行交互式的命令
   - [**-i (--interactive)**](https://docs.docker.com/reference/cli/docker/container/run/#interactive)：让容器的标准输入保持打开，以便我们可以与容器进行交互
@@ -297,7 +295,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 # [Dockerfile](https://docs.docker.com/reference/dockerfile/#dockerfile-reference)
 
-​	Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种配置信息。
+Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种配置信息。
 
 ## 命令说明
 
@@ -342,7 +340,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 1. 这个训练用于手动模拟 Dockerfile 文件创建一个容器化应用的过程。
 
-2. 下载 main.go 至本地 hello 文件夹
+2. 下载 `main.go` 至本地 `hello` 文件夹
 
    - **文件来源**：[GoogleCloudPlatform/kubernetes-engine-samples/quickstarts/hello-app/](https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/da3e2c22c727e3b6d72d4eea04c19335db0727cb/quickstarts/hello-app)
 
