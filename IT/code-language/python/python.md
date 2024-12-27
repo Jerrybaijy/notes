@@ -10,34 +10,31 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 ## 环境搭建
 
-1. 以 Python3.9.2 为例
+1. 双击解压包 python-3.9.2-amd64 运行
+2. 勾选 `Add Python 3.9 to PATH`
 
-2. 双击解压包 python-3.9.2-amd64 运行
+	<img src="assets/image-20231026224146549.png" alt="图片1" style="zoom:33%;" />
 
-3. 勾选 `Add Python 3.9 to PATH`
+3. 安装成功，点击 `Close`
 
-   <img src="assets/image-20231026224146549.png" alt="图片1" style="zoom:33%;" />
+	<img src="assets/image-20231026224550908.png" alt="图片1" style="zoom: 33%;" />
 
-4. 安装成功，点击 `Close`
+4. 终端查看 Python 版本
 
-   <img src="assets/image-20231026224550908.png" alt="图片1" style="zoom: 33%;" />
-
-5. 终端查看 Python 版本
-
-	```bash
-	python --version
-	```
+  ```bash
+  python --version
+  ```
 
 ## 配置
 
 - **关于安装目录**
+
   - `Lib`：存放内置模块
   - `site-packages`：存放第三方模块
   
 - **帮助**
 
   - 确保 Python 已加入环境变量；
-  
   - 终端进入 Python 交互环境；
 
   	```bash
@@ -62,108 +59,98 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
     ```python
     >>> help(sum)
     ```
-  
 
 ## Pip
 
 - **pip**（package installer for python）是 Python 包管理工具，该工具提供了对 Python 包的查找、下载、安装、卸载的功能。
 - **常用命令**
 
-  ```bash
-  # 查看 pip 版本
-  pip --version
-  # 升级 pip
-  python -m pip install --upgrade pip
-  
-  # 查看 pip 下载源
-  pip config get global.index-url
-  # 设置 pip 下载源
-  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
-  
-  # 查看已经安装的第三方模块
-  pip list
-  # 查看需要升级的库
-  pip list -o
-  
-  # 安装模块（选项为指定下载源）
-  pip install $MODULE_NAME
-  # 卸载第三方模块
-  pip uninstall $MODULE_NAME
-  # 显示模块信息
-  pip show $MODULE_NAME
-  
-  # 将库列表保存到指定文件中
-  pip freeze > requirements.txt
-  # 从指定文件中安装库
-  pip install -r e:\requirements.txt
-  ```
+    ```bash
+    # 查看 pip 版本
+    pip --version
+    # 升级 pip
+    python -m pip install --upgrade pip
+
+    # 查看 pip 下载源
+    pip config get global.index-url
+    # 设置 pip 下载源
+    pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
+
+    # 查看已经安装的第三方模块
+    pip list
+    # 查看需要升级的库
+    pip list -o
+
+    # 安装模块（选项为指定下载源）
+    pip install $MODULE_NAME
+    # 卸载第三方模块
+    pip uninstall $MODULE_NAME
+    # 显示模块信息
+    pip show $MODULE_NAME
+
+    # 将库列表保存到指定文件中
+    pip freeze > requirements.txt
+    # 从指定文件中安装库
+    pip install -r e:\requirements.txt
+    ```
 
 - **安装目录**：使用 pip 安装模块时，会被安装到 Python 环境中，而不是当前目录。
 
 	- 全局环境
 	- 虚拟环境
 
-
 ## 虚拟环境
 
 1. 确认 Python 已安装；
-
 2. 终端进入项目目录；
-
 3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
-	```bash
-	python -m venv ven
-	```
-
+    ```python
+    python -m venv ven
+    ```
 4. 激活虚拟环境；
 
-	```bash
-	# Windows
-	source venv/Scripts/activate
-	
-	# Mac/Linux
-	source venv/bin/activate
-	```
+    ```bash
+    # Windows
+    source venv/Scripts/activate
+    
+    # Mac/Linux
+    source venv/bin/activate
+    ```
 
 5. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
 
-  ```bash
-  where python
-  ```
+    ```bash
+    where python
+    ```
 
 6. 如果没有，参照以下办法激活：
-
 7. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
-
 8. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
-
 9. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
-
 10. 安装你项目所需的所有包
-
 11. 生成 `requirements.txt`
 
-	```bash
-	pip freeze > requirements.txt
-	```
+     ```bash
+     pip freeze > requirements.txt
+     ```
 
 12. 其他开发者可以通过以下命令来安装依赖
 
-	```bash
-	pip install -r requirements.txt
-	```
+    ```bash
+    pip install -r requirements.txt
+    ```
 
 13. 退出虚拟环境
 
-	```bash
-	deactivate
-	```
+    ```bash
+    deactivate
+    ```
 
 14. **注意**：
 
-	- 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
-	- VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
+    - 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
+    - VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
 
 ## 编辑器
 
@@ -171,9 +158,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 - **IDLE**（Integrated Development and Learning Environment，集成开发和学习环境），是一款 Python 自带的 IDE，稳定但界面不好；
 - 打开 `IDME`，新建文件，新窗口编写代码，原窗口运行代码；
-
 - 保存代码为文件，文件后缀名 `.py`，注意先保存后执行；
-
 - 光标在“编写代码”窗口，按 `F5` 运行代码，“运行代码”窗口有显示运行结果。
 
 ### Pycharm
@@ -185,13 +170,10 @@ PyCharm 有商业版和社区版两个版本。
 #### 安装
 
 1. [官网下载社区免费版 `PyCharm Community Edition`](https://www.jetbrains.com/pycharm/download/?section=windows)
-
 2. 勾选如图 2 项
-
 3. 继续安装直到 `Finish`
 
    <img src="assets/image-20231026230614766.png" alt="图片1" style="zoom:50%;" />
-
 
 ####  破解
 
@@ -231,22 +213,24 @@ PyCharm 有商业版和社区版两个版本。
 - **自动保存**：`Ctrl + Alt + S` > `Appearance & Behavior` > `System Settings` > `Autosave`
 
 - **缩进**
+
   1. `Main menu` > `Settings` > `Editor` > `Code Style` > `Python`
   2. 设置 `Tab size` `Indent` `Continuation indent` 三项为 `2`
   
 - **鼠标滚轮**
+
   1. `Main menu` > `Settings` > `Editor` > `General` > `Mouse Control` 选项
   2. `Change font size with Ctrl + Mouse Wheel` 打上对勾
   3. `All editors` 打勾
 
 - **设置代码字体大小**
+
   1. `Main menu` > `Settings` > `Editor` > `Font`
-  
   2. `Size = 24`，`Line Height = 1.2`
-  
   3. 如果设置不生效，`Main menu` > `Settings` > `Editor` > `Color Scheme` > `Color Scheme Font` > 取消勾选  `Use color scheme font instead of the default`
   
 - **汉化**
+
   1. `Main menu` > `Settings` > `Plugins`，搜索 `Chinese`，`Install` 安装汉化包。软件重启即汉化版
   
 - **代码格式化**
@@ -256,7 +240,6 @@ PyCharm 有商业版和社区版两个版本。
   3. 编辑完代码按 `Ctrl + Shift + L`，可实现自动更正空格格式。注意注释部分不会被更正
 
 - **安装主题**：`主菜单` > `设置` > `外观与行为` > `外观` > `获取更多主题`
-
 - **创建文件**
 
   1. `项目路径右键` > `New` > `Python Fire` > 给文件命名 > `Enter`；
@@ -269,6 +252,7 @@ PyCharm 有商业版和社区版两个版本。
   2. 右侧 `Add Content Root` > `选择要添加的文件夹` > `OK`
 
 - **将 Terminal 默认项切换至 cmd**
+
   1. Terminal 可以模拟 cmd
   2. `Settings` > `Tools` > `Terminal` > `Shell path` 下拉菜单，`切换至 cmd`
   
@@ -277,17 +261,14 @@ PyCharm 有商业版和社区版两个版本。
   1. `Settings` > `Project：当前文件名` > `Python Interpreter` > `右侧Add Interpreter` > `Existing` > `右侧…`
   2. 找到 `python.exe/` 将 `python.exe` 拖入窗口 > `OK`
 
-
 #### 创建项目
 
 - 项目环境
 
   - **`Previously configured interpreter`**：已存在环境，使用全局的 Python 解释器，正常无法使用虚拟环境的依赖。
-  
   - **`Viutualenv`**：虚拟环境，与全局环境隔离，不影响全局，可以使用全局环境依赖。
   
     <img src="assets/image-20240322004048261.png" alt="图片1" style="zoom:50%;" />
-  
 
 ### Sublime
 
@@ -301,54 +282,46 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 - **安装 SublimeREPL 插件**
   
   1. `Ctrl+shift+P` 打开命令面板，输入 `install`，选择 `Package Control：Install Package`
+  2. 程序包控件，安装程序包，需要等待一下，看左下角有 `=` 左右动；
+  3. 注意，如果没有这个选项，需要先安装 `Package Control`，点击 `Install Package Control`，等待安装，提示安装成功后再重新按 `Ctrl+shift+P` 选择 `Package Control：Install Package`；
+  4. 过一会 `=` 消失，弹出窗口，搜索 `SublimeREPL`，点击下载；
+  5. 安装成功后，在 `Tools` 选项里出现 `SublimeREPL`，表明安装成功；
+  6. 设置快捷键
+
+    - 首先点击首选项 `preference`
+    - 其次打开快捷键设置 `key bindings`
+    - 在两个中括号之间那行，粘贴输入下面代码
   
-    - 程序包控件，安装程序包，需要等待一下，看左下角有 `=` 左右动；
-    - 注意，如果没有这个选项，需要先安装 `Package Control`，点击 `Install Package Control`，等待安装，提示安装成功后再重新按 `Ctrl+shift+P` 选择 `Package Control：Install Package`；
+        ```json
+        {"keys": ["f5"],
+        "caption": "SublimeREPL: Python - RUN current file",
+        "command": "run_existing_window_command",
+        "args": {
+        "id": "repl_python_run",
+        "file": "config/Python/Main.sublime-menu"}}
+        ```
+
+  7. 关闭快捷键设置页面，重启 `Sublime` 软件。
   
-  2. 过一会 `=` 消失，弹出窗口，搜索 `SublimeREPL`，点击下载；
-  
-  3. 安装成功后，在 `Tools` 选项里出现 `SublimeREPL`，表明安装成功；
-  
-  4. 设置快捷键
-  
-  	- 首先点击首选项 `preference`
-  
-  	- 其次打开快捷键设置 `key bindings`
-  
-  	- 在两个中括号之间那行，粘贴输入下面代码
-  
-  		```json
-  		{"keys": ["f5"],
-  		"caption": "SublimeREPL: Python - RUN current file",
-  		"command": "run_existing_window_command",
-  		"args": {
-  		"id": "repl_python_run",
-  		"file": "config/Python/Main.sublime-menu"}}
-  		```
-  
-  	- 关闭快捷键设置页面，重启 `Sublime` 软件。
-  
-  	  - 需要注意，`input` 语句在 Sublime 中执行，需要按快捷键 `F5`，并且新跳出一个窗口显示。
+      - 需要注意，`input` 语句在 Sublime 中执行，需要按快捷键 `F5`，并且新跳出一个窗口显示。
   
 - **卸载 SublimeREPL 插件**
+  
 	1. `Ctrl+shift + p`，输入框中输入`remove package`；
 	2. 下面会有提示，直接点击或者输入后回车。
 
 - **创建文件**
 	
 	- 右下角单击选择 `Python`；
-	
 	- 编写代码，保存：`文件名.py`；
 	- 运行：`Ctrl + B`（第一次选择 `Python`）。
 
 ## 代码规范
 
 - 除以下规范，其余同编程语言通用规范。
-
 - **缩进**：敏感
 
   - Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 **`{}`** 。
-
   - 缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
 
 - **分号**：每行代码结束不使用分号
@@ -357,15 +330,14 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - 除以下规范，其余同编程语言通用规范。
 - **规范**
+
   - 第一个字符必须是字母表中字母或下划线 `_`。
-
   - 只能含有字母、数字、下划线，且不能以数字开头
-
   - 大小写敏感
-  
   - 不能是关键字和保留字
   
 - **命名习惯**
+
   - **变量名**：小蛇形，例 `max_length`。
   - **函数名**：小蛇形，例 `max_length`；Python 中可以使用中文作为变量名。
   - **类名**：大驼峰，例 `MyFirstJavaClass`。
@@ -377,17 +349,17 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - **单行注释**：`Ctrl + /`
 
-  ``` python
-  # 这是一个单行注释
-  a = 5
-  b = 6
-  print(a + b)
-  '''
-  多行注释第一行
-  多行注释第二行
-  多行注释第三行
-  '''
-  ```
+    ``` python
+    # 这是一个单行注释
+    a = 5
+    b = 6
+    print(a + b)
+    '''
+    多行注释第一行
+    多行注释第二行
+    多行注释第三行
+    '''
+    ```
 
 ## 变量
 
@@ -397,26 +369,26 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - **input() 输入**：`input()` 的返回结果为 `字符串`
 
-  ```python
-  uname = input("请输入用户名")  # 提示并输入
-  print("你的用户名：" + uname)  # 返回结果
-  ```
+    ```python
+    uname = input("请输入用户名")  # 提示并输入
+    print("你的用户名：" + uname)  # 返回结果
+    ```
 
-  ```python
-  input("按回车继续")  # 程序停顿，按回车继续
-  ```
+    ```python
+    input("按回车继续")  # 程序停顿，按回车继续
+    ```
 
 - **print() 输出**
 
-  ```python
-  print("a")  # a
-  ```
+    ```python
+    print("a")  # a
+    ```
   
-  **说明**：
+    **说明**：
   
-  1. 如果输出内容为字符串，加 `双/单引号`。
-  2. `a` 可以是拼接数据
-  3. `print("内容", end = "")`：多行 `print` 显示结果不换行
+    1. 如果输出内容为字符串，加 `双/单引号`。
+    2. `a` 可以是拼接数据
+    3. `print("内容", end = "")`：多行 `print` 显示结果不换行
 
 ## 运行 Python
 
@@ -424,21 +396,21 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 1. 在命令行中进入 Python 交互环境
 
-	```bash
-	python
-	```
+    ```bash
+    python
+    ```
 
 2. 编写 Python 代码
 
-	```python
-	print("Hello word!")
-	```
+    ```python
+    print("Hello word!")
+    ```
 
 3. 退出交互环境
 
-	```bash
-	exit()
-	```
+    ```bash
+    exit()
+    ```
 
 ### 命令行脚本
 
@@ -514,33 +486,49 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 ## 内置数据类型
 
 - **数字类型**
+
 	- **`int`**：整型
 	- **`float`**：浮点型
 	- **`complex`**：复数
+
 - **布尔类型**
+
 	- **`bool`**：布尔型
+
 - **序列类型**
+
 	- **`str`**：字符串
 	- **`list`**：列表
 	- **`tuple`**：元组
 	- **`range`**：范围
+
 - **集合类型**
+
 	- **`set`**：集合
 	- **`frozenset`**：冻结集合
+
 - **映射类型**
+
 	- **`dict`**：字典
+
 - **二进制类型**
+
 	- **`bytes`**：字节
 	- **`bytearray`**：字节数组
 	- **`memoryview`**：内存视图
+
 - **空值类型**
+
 	- **`NoneType`**：空值，只有一个值 `None`。
+
 - **函数和对象类型**
+
   - **`object`**：对象
   - **`function`**：函数（属于特殊的对象）
   - **`module`**：模块（属于特殊的对象）
 
 - **自定义类型**
+
   - 使用类（`class`）可以定义自定义数据类型。
 
 ## 整型 `int`
@@ -3820,7 +3808,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
 **模板继承**允许创建一个基础模板（也称为 “父模板”），其中包含网站的通用布局，如头部、导航栏和底部。然后，可以创建多个子模板，这些子模板继承自父模板，并可以重写或扩展父模板中的特定块。
 
-- 在父模板 `base.html` 中可以定义这样的结构：
+- 在父模板 `base.html` 中可以定义这样的结构：
 
 	```jinja2
 	<html>
@@ -5155,17 +5143,16 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
 
 2. Script
 
-   ```python
-   import requests
-   
-   # 抓包获取音乐的链接
-   url = "$URL"
-   
-   # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
-   data = requests.get(url).content
-   
-   # 写入到本地
-   with open(r"E:\labs\以后的以后.mp4", "wb") as f:
+    ```python
+    import requests
+    
+    # 抓包获取音乐的链接
+    url = "$URL"
+    
+    # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
+    data = requests.get(url).content
+    
+    # 写入到本地
+    with open(r"E:\labs\以后的以后.mp4", "wb") as f:
        f.write(data)
-   ```
-
+    ```
