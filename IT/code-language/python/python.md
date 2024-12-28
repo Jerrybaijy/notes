@@ -37,9 +37,9 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
   - 确保 Python 已加入环境变量；
   - 终端进入 Python 交互环境；
 
-  	```bash
-  	pyhton
-  	```
+    ```bash
+    pyhton
+    ```
   
   - **列出模块中的函数**
   
@@ -102,12 +102,15 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 ## 虚拟环境
 
 1. 确认 Python 已安装；
+
 2. 终端进入项目目录；
+
 3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
     ```python
     python -m venv ven
     ```
+
 4. 激活虚拟环境；
 
     ```bash
@@ -125,10 +128,15 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
     ```
 
 6. 如果没有，参照以下办法激活：
+
 7. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+
 8. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+
 9. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
 10. 安装你项目所需的所有包
+
 11. 生成 `requirements.txt`
 
      ```bash
@@ -137,20 +145,20 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 12. 其他开发者可以通过以下命令来安装依赖
 
-    ```bash
-    pip install -r requirements.txt
-    ```
+     ```bash
+     pip install -r requirements.txt
+     ```
 
 13. 退出虚拟环境
 
-    ```bash
-    deactivate
-    ```
+     ```bash
+     deactivate
+     ```
 
 14. **注意**：
 
-    - 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
-    - VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
+     - 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
+     - VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
 
 ## 编辑器
 
