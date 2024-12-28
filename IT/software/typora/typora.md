@@ -27,19 +27,19 @@
 - `文件` - `偏好设置`
 - **文件**
 
-  <img src="assets/image-20231213201958533.png" style="width: 100%; height: 100%;">
+    <img src="assets/image-20231213201958533.png" style="width: 100%; height: 100%;">
 
 - **编辑器**
 
-  <img src="assets/image-20241122152847148.png" style="width: 100%; height: 100%;">
+    <img src="assets/image-20241122152847148.png" style="width: 100%; height: 100%;">
 
 - **图像**
 
-  <img src="assets/image-20241122153133932.png" style="width: 100%; height: 100%;">
+    <img src="assets/image-20241122153133932.png" style="width: 100%; height: 100%;">
 
 - **Markdown**
 
-  <img src="assets/image-20241122153632737.png" style="width: 100%; height: 100%;">
+    <img src="assets/image-20241122153632737.png" style="width: 100%; height: 100%;">
 
 ### 其它设置
 
@@ -52,8 +52,8 @@
 1. [官网下载主题文件并解压](https://theme.typoraio.cn/)
 2. 复制基本文件夹和 CSS 文件到 Typora 主题文件夹
 
-   1. `文件` - `偏好设置` - `外观` - `打开主题文件夹`
-   2. 不要自己尝试在 Typora 安装目录找主题文件夹，因为二者不同。
+    1. `文件` - `偏好设置` - `外观` - `打开主题文件夹`
+    2. 不要自己尝试在 Typora 安装目录找主题文件夹，因为二者不同。
 
 3. 重启 Typora
 4. `主题` - `选择主题`
@@ -62,422 +62,421 @@
 
 - **工作区域**
 
-  <img src="assets/typora-area1.png" style="width: 100%; height: 100%;">
+    <img src="assets/typora-area1.png" style="width: 100%; height: 100%;">
 
 - **各种可修改的部分**
 
-  ```css
-  /* ---------------------- sidebar ---------------- */
-  /* sidebar 区背景色 */
-  #typora-sidebar {
+    ```css
+    /* ---------------------- sidebar ---------------- */
+    /* sidebar 区背景色 */
+    #typora-sidebar {
     background-color: #fff;
-  }
-  /* ---------------------- content ---------------- */
-  /* content 区背景色 */
-  content {
+    }
+    /* ---------------------- content ---------------- */
+    /* content 区背景色 */
+    content {
     background-color: #f7f8fa;
-  }
-  /* ---------------------- write ---------------- */
-  /* write 区背景色 */
-  #write {
+    }
+    /* ---------------------- write ---------------- */
+    /* write 区背景色 */
+    #write {
     background-color: #fff;
-  }
-  
-  /* write 区加宽 */
-  #write {
+    }
+    
+    /* write 区加宽 */
+    #write {
       max-width: 1500px;
-    	margin: 0 auto;
-    	padding: 30px;
+      margin: 0 auto;
+      padding: 30px;
       padding-bottom: 100px;
-  }
-  /* ---------------------- 标题 ---------------- */
-  /* 一级标题居中 */
-  h1 {
+    }
+    /* ---------------------- 标题 ---------------- */
+    /* 一级标题居中 */
+    h1 {
     text-align: center; 
-  }
-  /* ---------------------- 代码块 ---------------- */
-  /* 行内代码高亮颜色 */
-  code {
+    }
+    /* ---------------------- 代码块 ---------------- */
+    /* 行内代码高亮颜色 */
+    code {
     color: #f50059;
-  }
-  
-  /* 代码块背景色 */
-  pre {
+    }
+    
+    /* 代码块背景色 */
+    pre {
       background-color: #dcdcdc !important;
-  }
-  
-  /* 语言选择器 */
-  .auto-suggest-container {
+    }
+    
+    /* 语言选择器 */
+    .auto-suggest-container {
       /* 此处为自己手动注释，
       为了解决 github-night-dimmed 主题语言选择器背景颜色冲突 ;
       需要在 github-night.css 中注释以下样式*/
       /* background-color: var(--item-hover-bg-color); */
-  }
-  /* ---------------------- 超链接 ---------------- */
-  /* 超链接取消下划线 */
-  a:link {
+    }
+    /* ---------------------- 超链接 ---------------- */
+    /* 超链接取消下划线 */
+    a:link {
       text-decoration: none !important;
-  }
-  
-  /* 超链接悬停显示下划线 */
-  a:hover {
+    }
+    
+    /* 超链接悬停显示下划线 */
+    a:hover {
     text-decoration: underline !important;
-  }
-  
-  /* 超链接颜色 */
-  a:link {
+    }
+    
+    /* 超链接颜色 */
+    a:link {
       color: black !important;
-  }
-  
-  /* 超链接悬停变色 */
-  a:hover {
+    }
+    
+    /* 超链接悬停变色 */
+    a:hover {
       color: #4183C4 !important;
-  }
-  /* ---------------------- 图片 ---------------- */
-  /* 图片样式 */
-  #write img {
+    }
+    /* ---------------------- 图片 ---------------- */
+    /* 图片样式 */
+    #write img {
     border: 1px solid rgb(229, 229, 229);
-  }
-  
-  /* 图片靠左 */
-  p .md-image:only-child{
+    }
+    
+    /* 图片靠左 */
+    p .md-image:only-child{
       width: auto;
       text-align: left;
-  }
-  /* ---------------------- 其它 ---------------- */
-  /* 删除线颜色 */
-  del {
+    }
+    /* ---------------------- 其它 ---------------- */
+    /* 删除线颜色 */
+    del {
       text-decoration-color: red;
-  }
-  
-  /* 未知代码继承 */
-  .md-heading code, #typora-sidebar code {
+    }
+    
+    /* 未知代码继承 */
+    .md-heading code, #typora-sidebar code {
     color: inherit;
-  }
-  
-  /* kbd标签 */
-  kbd {
+    }
+    
+    /* kbd标签 */
+    kbd {
       color: #000000;  /* 文本颜色 */
       font-size: 1.1em;  /* 字体大小变大 */
       padding: 7px 12px;  /* 增加内边距，使元素更大 */
-  }
-  
-  /* 去除图片黑边 */
-  .md-image>img {
+    }
+    
+    /* 去除图片黑边 */
+    .md-image>img {
       margin: 0;
       padding: 0;
-  }
-  
-  /* 设置加粗文本粗细 */
-  strong {
+    }
+    
+    /* 设置加粗文本粗细 */
+    strong {
       font-weight: 1000 !important; /* 使用更高的字体粗细 */
-  }
-  ```
+    }
+    ```
 
 ### Base
 
 - **关于自动编号的说明**：
 
-  1. Typora 默认不支持标题自动编号，但官方给出了解决方案，但是不理想；
-  2. 1级标题有编号，通篇都是1点几
-  3. 大纲没有编号
-  4. 大纲有编号的方案需要禁止大纲自动折叠
+    1. Typora 默认不支持标题自动编号，但官方给出了解决方案，但是不理想；
+    2. 1级标题有编号，通篇都是1点几
+    3. 大纲没有编号
+    4. 大纲有编号的方案需要禁止大纲自动折叠
 
 - **关于 `base.user.css` 的说明**：
 
-  - [`base.user.css` 是一个 GitHub 网友制作的基础自定义主题](https://github.com/lipengzhou/typora-theme-auto-numbering)
-  - **优点**：它解决了自动编号的问题，而且具有如下优点：
+    - [`base.user.css` 是一个 GitHub 网友制作的基础自定义主题](https://github.com/lipengzhou/typora-theme-auto-numbering)
+    - **优点**：它解决了自动编号的问题，而且具有如下优点：
 
-  	- 1级标题没有编号
-  	- 大纲和正文都有自动编号，而且支持删除某个编号，其余编号自动更正
-  	- 不需要禁止大纲自动折叠
-  	- 导出至PDF时，保留编号
-
-  - **注意**：会作用于所有主题，所以**不要**在这个文件**修改颜色**。
-
+        - 1级标题没有编号
+        - 大纲和正文都有自动编号，而且支持删除某个编号，其余编号自动更正
+        - 不需要禁止大纲自动折叠
+        - 导出至PDF时，保留编号
+    
+    - **注意**：会作用于所有主题，所以**不要**在这个文件**修改颜色**。
+  
 - **安装 `base.user.css`**
 
-  - 网盘下载 `base.user.css`，并复制到主题文件夹  
+    - 网盘下载 `base.user.css`，并复制到主题文件夹  
     `文件` - `偏好设置` - `外观` - `打开主题文件夹`
-  - 重启 Typora
+    - 重启 Typora
 
 - **base.user.css 文件留存**
 
-  ```css
-  /**
-   * author: LPZ
-   * email: lpzmail@163.com
-   */
-  
-  /* 这是标题样式1修改版 */
-  
-  h1, h2, h3, h4, strong {
-    font-weight: 600;
-  }
-  
-  /* 添加自动序号样式 */
-  #write {
-    counter-reset: h2;
-  }
-  
-  h1 {
-    counter-reset: h2;
-  }
-  
-  h2 {
-    counter-reset: h3;
-  }
-  
-  h3 {
-    counter-reset: h4;
-  }
-  
-  h4 {
-    counter-reset: h5;
-  }
-  
-  h5 {
-    counter-reset: h6;
-  }
-  
-  #write h2:before {
-    counter-increment: h2;
-    content: counter(h2) ". ";
-  }
-  
-  #write h3:before,
-  h3.md-focus.md-heading:before { /** override the default style for focused headings */
-    counter-increment: h3;
-    content: counter(h2) "."counter(h3) ". ";
-  }
-  
-  #write h4:before,
-  h4.md-focus.md-heading:before {
-    counter-increment: h4;
-    content: counter(h2) "."counter(h3) "."counter(h4) ". ";
-  }
-  
-  #write h5:before,
-  h5.md-focus.md-heading:before {
-    counter-increment: h5;
-    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) ". "
-  }
-  
-  #write h6:before,
-  h6.md-focus.md-heading:before {
-    counter-increment: h6;
-    content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) ". "
-  }
-  
-  /** override the default style for focused headings */
-  #write>h3.md-focus:before,
-  #write>h4.md-focus:before,
-  #write>h5.md-focus:before,
-  #write>h6.md-focus:before,
-  h3.md-focus:before,
-  h4.md-focus:before,
-  h5.md-focus:before,
-  h6.md-focus:before {
-    color: inherit;
-    border: inherit;
-    border-radius: inherit;
-    position: inherit;
-    left: initial;
-    float: none;
-    top: initial;
-    font-size: inherit;
-    padding-left: inherit;
-    padding-right: inherit;
-    vertical-align: inherit;
-    font-weight: inherit;
-    line-height: inherit;
-  }
-  
-  /* 自定义强制换号符，使得在导出PDF 或打印时强制换行 */
-  @media print {
-  
-    /* 这是自定义标签, 在需要换行的地方插入：<pb> */
-    pb {
-      display: block;
-      page-break-after: always;
+    ```css
+    /**
+     * author: LPZ
+     * email: lpzmail@163.com
+     */
+    
+    /* 这是标题样式1修改版 */
+    
+    h1, h2, h3, h4, strong {
+      font-weight: 600;
     }
-  
+    
+    /* 添加自动序号样式 */
+    #write {
+      counter-reset: h2;
+    }
+    
     h1 {
-      page-break-before: always;
+      counter-reset: h2;
     }
-  
-    h1:first-of-type {
-      page-break-before: avoid;
+    
+    h2 {
+      counter-reset: h3;
     }
-  }
-  
-  /* 完成的 Task 添加删除线 */
-  .task-list-done {
-    text-decoration: line-through;
-    color: #777;
-  }
-  
-  .task-list-not-done {}
-  
-  /* 添加键盘样式 */
-  kbd {
-    box-shadow: inset 0 -2px 0 #c6cbd1;
-    background-color: white;
-  }
-  
-  /* TOC 中隐藏 H1 和 H6 */
-  .md-toc-h1, .md-toc-h6 {
-    display: none;
-  }
-  
-  /* 添加 TOC 自动序号样式 */
-  .md-toc-content {
-    counter-reset: toc-h2;
-  }
-  
-  .md-toc-h1 {
-    counter-reset: toc-h2;
-  }
-  
-  .md-toc-h2 {
-    counter-reset: toc-h3;
-  }
-  
-  .md-toc-h3 {
-    counter-reset: toc-h4;
-  }
-  
-  .md-toc-h4 {
-    counter-reset: toc-h5;
-  }
-  
-  .md-toc-h5 {
-    counter-reset: toc-h6;
-  }
-  
-  .md-toc-content .md-toc-h2 a:before {
-    counter-increment: toc-h2;
-    content: counter(toc-h2) ". ";
-  }
-  
-  .md-toc-content .md-toc-h3 a:before {
-    counter-increment: toc-h3;
-    content: counter(toc-h2) "."counter(toc-h3) ". ";
-  }
-  
-  .md-toc-content .md-toc-h4 a:before {
-    counter-increment: toc-h4;
-    content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) ". ";
-  }
-  
-  .md-toc-content .md-toc-h5 a:before {
-    counter-increment: toc-h5;
-    content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) "."counter(toc-h5) ". ";
-  }
-  
-  .md-toc-content .md-toc-h6 a:before {
-    counter-increment: toc-h6;
-    content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) "."counter(toc-h5) "."counter(toc-h6) ". ";
-  }
-  
-  /* 侧边栏自动编号 */
-  .outline-content {
-    counter-reset: outline-h2;
-  }
-  
-  .outline-h1 {
-    counter-reset: outline-h2;
-  }
-  
-  .outline-h2 {
-    counter-reset: outline-h3;
-  }
-  
-  .outline-h3 {
-    counter-reset: outline-h4;
-  }
-  
-  .outline-h4 {
-    counter-reset: outline-h5;
-  }
-  
-  .outline-h5 {
-    counter-reset: outline-h6;
-  }
-  
-  .outline-content .outline-h2 .outline-label:before {
-    counter-increment: outline-h2;
-    content: counter(outline-h2) ". ";
-  }
-  
-  .outline-content .outline-h3 .outline-label:before {
-    counter-increment: outline-h3;
-    content: counter(outline-h2) "."counter(outline-h3) ". ";
-  }
-  
-  .outline-content .outline-h4 .outline-label:before {
-    counter-increment: outline-h4;
-    content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) ". ";
-  }
-  
-  .outline-content .outline-h5 .outline-label:before {
-    counter-increment: outline-h5;
-    content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) "."counter(outline-h5) ". ";
-  }
-  
-  .outline-content .outline-h6 .outline-label:before {
-    counter-increment: outline-h6;
-    content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) "."counter(outline-h5) "."counter(outline-h6) ". ";
-  }
-  
-  /* -----------------------以下为修改区域----------------- */
-  
-  /* write 区加宽 */
-  #write {
+    
+    h3 {
+      counter-reset: h4;
+    }
+    
+    h4 {
+      counter-reset: h5;
+    }
+    
+    h5 {
+      counter-reset: h6;
+    }
+    
+    #write h2:before {
+      counter-increment: h2;
+      content: counter(h2) ". ";
+    }
+    
+    #write h3:before,
+    h3.md-focus.md-heading:before { /** override the default style for focused headings */
+      counter-increment: h3;
+      content: counter(h2) "."counter(h3) ". ";
+    }
+    
+    #write h4:before,
+    h4.md-focus.md-heading:before {
+      counter-increment: h4;
+      content: counter(h2) "."counter(h3) "."counter(h4) ". ";
+    }
+    
+    #write h5:before,
+    h5.md-focus.md-heading:before {
+      counter-increment: h5;
+      content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) ". "
+    }
+    
+    #write h6:before,
+    h6.md-focus.md-heading:before {
+      counter-increment: h6;
+      content: counter(h2) "."counter(h3) "."counter(h4) "."counter(h5) "."counter(h6) ". "
+    }
+    
+    /** override the default style for focused headings */
+    #write>h3.md-focus:before,
+    #write>h4.md-focus:before,
+    #write>h5.md-focus:before,
+    #write>h6.md-focus:before,
+    h3.md-focus:before,
+    h4.md-focus:before,
+    h5.md-focus:before,
+    h6.md-focus:before {
+      color: inherit;
+      border: inherit;
+      border-radius: inherit;
+      position: inherit;
+      left: initial;
+      float: none;
+      top: initial;
+      font-size: inherit;
+      padding-left: inherit;
+      padding-right: inherit;
+      vertical-align: inherit;
+      font-weight: inherit;
+      line-height: inherit;
+    }
+    
+    /* 自定义强制换号符，使得在导出PDF 或打印时强制换行 */
+    @media print {
+    
+      /* 这是自定义标签, 在需要换行的地方插入：<pb> */
+      pb {
+        display: block;
+        page-break-after: always;
+      }
+    
+      h1 {
+        page-break-before: always;
+      }
+    
+      h1:first-of-type {
+        page-break-before: avoid;
+      }
+    }
+    
+    /* 完成的 Task 添加删除线 */
+    .task-list-done {
+      text-decoration: line-through;
+      color: #777;
+    }
+    
+    .task-list-not-done {}
+    
+    /* 添加键盘样式 */
+    kbd {
+      box-shadow: inset 0 -2px 0 #c6cbd1;
+      background-color: white;
+    }
+    
+    /* TOC 中隐藏 H1 和 H6 */
+    .md-toc-h1, .md-toc-h6 {
+      display: none;
+    }
+    
+    /* 添加 TOC 自动序号样式 */
+    .md-toc-content {
+      counter-reset: toc-h2;
+    }
+    
+    .md-toc-h1 {
+      counter-reset: toc-h2;
+    }
+    
+    .md-toc-h2 {
+      counter-reset: toc-h3;
+    }
+    
+    .md-toc-h3 {
+      counter-reset: toc-h4;
+    }
+    
+    .md-toc-h4 {
+      counter-reset: toc-h5;
+    }
+    
+    .md-toc-h5 {
+      counter-reset: toc-h6;
+    }
+    
+    .md-toc-content .md-toc-h2 a:before {
+      counter-increment: toc-h2;
+      content: counter(toc-h2) ". ";
+    }
+    
+    .md-toc-content .md-toc-h3 a:before {
+      counter-increment: toc-h3;
+      content: counter(toc-h2) "."counter(toc-h3) ". ";
+    }
+    
+    .md-toc-content .md-toc-h4 a:before {
+      counter-increment: toc-h4;
+      content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) ". ";
+    }
+    
+    .md-toc-content .md-toc-h5 a:before {
+      counter-increment: toc-h5;
+      content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) "."counter(toc-h5) ". ";
+    }
+    
+    .md-toc-content .md-toc-h6 a:before {
+      counter-increment: toc-h6;
+      content: counter(toc-h2) "."counter(toc-h3) "."counter(toc-h4) "."counter(toc-h5) "."counter(toc-h6) ". ";
+    }
+    
+    /* 侧边栏自动编号 */
+    .outline-content {
+      counter-reset: outline-h2;
+    }
+    
+    .outline-h1 {
+      counter-reset: outline-h2;
+    }
+    
+    .outline-h2 {
+      counter-reset: outline-h3;
+    }
+    
+    .outline-h3 {
+      counter-reset: outline-h4;
+    }
+    
+    .outline-h4 {
+      counter-reset: outline-h5;
+    }
+    
+    .outline-h5 {
+      counter-reset: outline-h6;
+    }
+    
+    .outline-content .outline-h2 .outline-label:before {
+      counter-increment: outline-h2;
+      content: counter(outline-h2) ". ";
+    }
+    
+    .outline-content .outline-h3 .outline-label:before {
+      counter-increment: outline-h3;
+      content: counter(outline-h2) "."counter(outline-h3) ". ";
+    }
+    
+    .outline-content .outline-h4 .outline-label:before {
+      counter-increment: outline-h4;
+      content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) ". ";
+    }
+    
+    .outline-content .outline-h5 .outline-label:before {
+      counter-increment: outline-h5;
+      content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) "."counter(outline-h5) ". ";
+    }
+    
+    .outline-content .outline-h6 .outline-label:before {
+      counter-increment: outline-h6;
+      content: counter(outline-h2) "."counter(outline-h3) "."counter(outline-h4) "."counter(outline-h5) "."counter(outline-h6) ". ";
+    }
+    
+    /* -----------------------以下为修改区域----------------- */
+    
+    /* write 区加宽 */
+    #write {
       max-width: 1500px;
       margin: 0 auto;
       padding: 30px;
       padding-bottom: 100px;
-  }
-  
-  /* 未知代码继承 */
-  .md-heading code, #typora-sidebar code {
-    color: inherit;
-  }
-  
-  /* 一级标题居中 */
-  h1 {
-    text-align: center; 
-  }
-  
-  /* 图片样式 */
-  #write img {
-    border: 1px solid rgb(229, 229, 229);
-  }
-  
-  /* 图片靠左 */
-  p .md-image:only-child{
+    }
+    
+    /* 未知代码继承 */
+    .md-heading code, #typora-sidebar code {
+      color: inherit;
+    }
+    
+    /* 一级标题居中 */
+    h1 {
+      text-align: center; 
+    }
+    
+    /* 图片样式 */
+    #write img {
+      border: 1px solid rgb(229, 229, 229);
+    }
+    
+    /* 图片靠左 */
+    p .md-image:only-child{
       width: auto;
       text-align: left;
-  }
-  
-  img {
-    display: block; /* 将图片设为块级元素 */
-    margin: 0;      /* 清除默认外边距 */
-    float: left;    /* 图片靠左对齐 */
-  }
-  
-  /* 超链接取消下划线 */
-  a:link {
+    }
+    
+    img {
+      display: block; /* 将图片设为块级元素 */
+      margin: 0;      /* 清除默认外边距 */
+      float: left;    /* 图片靠左对齐 */
+    }
+    
+    /* 超链接取消下划线 */
+    a:link {
       text-decoration: none !important;
-      color: black !important;
-  }
-  
-  /* 超链接悬停显示下划线 */
-  a:hover {
-    text-decoration: underline !important;
-  }
-  ```
+    }
+    
+    /* 超链接悬停显示下划线 */
+    a:hover {
+      text-decoration: underline !important;
+    }
+    ```
 
 ### Github
 
@@ -485,87 +484,97 @@
 
 - **Github.css  文件留存**：
 
-  ```css
-  /* -----------------------以下为修改区域----------------- */
-  /* sidebar 区背景色 */
-  #typora-sidebar {
-    background-color: #fff;
-  }
-  
-  /* content 区背景色 */
-  content {
-    background-color: #f7f8fa;
-  }
-  
-  /* write 区背景色 */
-  #write {
-    background-color: #fff;
-  }
-  
-  /* 代码块背景色 */
-  pre {
+    ```css
+    /* -----------------------以下为修改区域----------------- */
+    /* sidebar 区背景色 */
+    #typora-sidebar {
+      background-color: #fff;
+    }
+    
+    /* content 区背景色 */
+    content {
+      background-color: #f7f8fa;
+    }
+    
+    /* write 区背景色 */
+    #write {
+      background-color: #fff;
+    }
+    
+    /* 代码块背景色 */
+    pre {
       background-color: #dcdcdc !important;
-  }
-  
-  /* 删除线颜色 */
-  del {
+    }
+    
+    /* 删除线颜色 */
+    del {
       text-decoration-color: red;
-  }
-  
-  /* 修改<kbd> */
-  kbd {
-      color: #000000;  /* 文本颜色 */
-      font-size: 1.1em;  /* 字体大小变大 */
-      padding: 7px 12px;  /* 增加内边距，使元素更大 */
-  }
-  ```
+    }
+    
+    /* 修改<kbd> */
+    kbd {
+      /* 文本颜色 */
+      color: #000000;
+      
+      /* 字体大小变大 */
+      font-size: 1.1em;
+    
+      /* 增加内边距，使元素更大 */
+      padding: 7px 12px;
+    }
+    ```
 
 ### github-night-dimmed
 
 - [github-night-dimmed 是网上下载的暗黑主题。](https://github.com/kinoute/typora-github-night-theme/releases/tag/v0.6.2)
-
 - **安装**：把以下所有文件复制到 `主题文件夹`
-	- github-night
-	- github-night.css
-	- github-night-dimmed.css
-	- github-night-high-contrast.css
+
+    - github-night
+    - github-night.css
+    - github-night-dimmed.css
+    - github-night-high-contrast.css
+
 - **注意**：github-night-dimmed.css 引入了 github-night.css 的样式
 - **github-night-dimmed.css  文件留存**：
 
-  ```css
-  /* -----------------------以下为修改区域----------------- */
-  
-  /* 删除线颜色 */
-  del {
+    ```css
+    /* -----------------------以下为修改区域----------------- */
+    
+    /* 删除线颜色 */
+    del {
       text-decoration-color: red;
-  }
-  
-  /* 修改<kbd> */
-  kbd {
-      color: #000000;  /* 文本颜色 */
-      font-size: 1.1em;  /* 字体大小变大 */
-      padding: 7px 12px;  /* 增加内边距，使元素更大 */
-  }
-  
-  /* 去除图片黑边 */
-  .md-image>img {
+    }
+    
+    /* 修改<kbd> */
+    kbd {
+      /* 文本颜色 */
+      color: #000000;
+      /* 字体大小变大 */
+      font-size: 1.1em;
+      /* 增加内边距，使元素更大 */
+      padding: 7px 12px;
+    }
+    
+    /* 去除图片黑边 */
+    .md-image>img {
       margin: 0;
       padding: 0;
-  }
-  
-  /* 设置加粗文本粗细 */
-  strong {
-      font-weight: 1000 !important; /* 使用更高的字体粗细 */
-  }
-  
-  /* 语言选择器 */
-  .auto-suggest-container {
+    }
+    
+    /* 设置加粗文本粗细 */
+    strong {
+      /* 使用更高的字体粗细 */
+      font-weight: 1000 !important;
+    }
+    
+    /* 语言选择器 */
+    .auto-suggest-container {
       /* 此处为自己手动注释，
-      为了解决 github-night-dimmed 主题语言选择器背景颜色冲突 ;
-      需要在 github-night.css 中注释以下样式*/
+        为了解决 github-night-dimmed 主题语言选择器背景颜色冲突 ;
+        需要在 github-night.css 中注释以下样式*/
       /* background-color: var(--item-hover-bg-color); */
-  }
-  ```
+    }
+    ```
 
 ## 快捷键
 
@@ -644,9 +653,9 @@
 
 - **MD 语法**：
 
-	- 手动编写：`![alt](SRC/URL)`
-	- 拖放图片，自动转换为 MD 语法
-	- 从剪贴板粘贴图片，自动转换为 MD 语法
+    - 手动编写：`![alt](SRC/URL)`
+    - 拖放图片，自动转换为 MD 语法
+    - 从剪贴板粘贴图片，自动转换为 MD 语法
 
 - **HTML 语法**：`<img src="SRC/URL" alt="alt">`
 - **转换语法**：`右键图片` - `转换图片语法` - `HTML`
@@ -655,23 +664,22 @@
 
 - **本地存储**：
 
-	- 目前本地引用使用相对路径
-	- 无论何种方式插入以后，都自动将图片保存至同级文件夹下的  `assets文件夹` 中。
-	- `文件` - `偏好设置` - `图像`
+    - 目前本地引用使用相对路径
+    - 无论何种方式插入以后，都自动将图片保存至同级文件夹下的  `assets文件夹` 中。
+    - `文件` - `偏好设置` - `图像`
 
-	  <div style="display: flex; justify-content: left;">
-	    <img src="assets/image-20241122153133932.png" alt="图片1" style="width: 100%; height: 100%;">
-	  </div>
+        <img src="assets/image-20241122153133932.png" alt="图片1" style="width: 100%; height: 100%;">
 
 - **云存储**：可将图片上传至云服务器
 - **更改存储**
 
-	- 将所有引用的本地图片移动到指定文件夹，同时自动修改引用路径。
-	- `格式` - `图像` - `移动所有图片到...`
+    - 将所有引用的本地图片移动到指定文件夹，同时自动修改引用路径。
+    - `格式` - `图像` - `移动所有图片到...`
 
 - **复制时的存储**
-	- 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**
-	- 如果是剪切，并且原文件没有其它引用，在复制完以后，记得删除原文件夹中的图片
+
+    - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**
+    - 如果是剪切，并且原文件没有其它引用，在复制完以后，记得删除原文件夹中的图片
 
 ## 删除图片
 
@@ -682,8 +690,8 @@
 
 - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**，而是以绝对路径引用原来的图片。
 
-  - 如果目标文件夹有图片与复制的图片同名，则会自动改名创建一个新图片。
-  - 如果没有同名图片，则会将图片复制到新文件的 **assets 文件夹**。
+    - 如果目标文件夹有图片与复制的图片同名，则会自动改名创建一个新图片。
+    - 如果没有同名图片，则会将图片复制到新文件的 **assets 文件夹**。
 
 - 如果是剪切，并且原文件没有其它引用，在粘贴完以后，记得删除原文件夹中的图片。
 
@@ -691,9 +699,9 @@
 
 - Typora 默认的是 Markdown 格式的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
 
-  ```html
-  <!-- 全文居中 -->
-  <table style="text-align: center;">
+    ```html
+    <!-- 全文居中 -->
+    <table style="text-align: center;">
     <tr>
       <!-- 该单元格占2列 -->
       <th colspan="2">表头1</th>
@@ -718,33 +726,35 @@
       <td>内容</td>
       <td>内容</td>
     </tr>
-  </table>
-  ```
+    </table>
+    ```
 
 - **HTML 表格模板**：
 
-  <table style="text-align: center;">
-    <tr>
-      <th>表头1</th>
-      <th>表头2</th>
-      <th>表头3</th>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-  </table>
+    ```html
+    <table style="text-align: center;">
+      <tr>
+        <th>表头1</th>
+        <th>表头2</th>
+        <th>表头3</th>
+      </tr>
+      <tr>
+        <td>内容</td>
+        <td>内容</td>
+        <td>内容</td>
+      </tr>
+      <tr>
+        <td>内容</td>
+        <td>内容</td>
+        <td>内容</td>
+      </tr>
+      <tr>
+        <td>内容</td>
+        <td>内容</td>
+        <td>内容</td>
+      </tr>
+    </table>
+    ```
 
 # 公式
 
@@ -835,14 +845,15 @@ graph TD
 
 ## 格式转换
 
-- 安装 `Pandoc` 以后，可以增强 Typora 的导出功能
+- 安装 `Pandoc` 以后，可以增强 Typora 的导出功能。
 
 ## 锚点
 
-- Typora 标题自带锚点，id 值为 `标题名`
+- Typora 标题自带锚点，id 值为 `标题名`。
 
-## 列表项操作
+## 列表嵌套
 
-- 删除列表项时，要在源码中进行，否则会自动在所有列表项之间添加空格
-- 列表嵌套其它时，在列表项行尾，`右键` > `插入`，否则会自动在所有列表项之间添加空格
+- 列表嵌套时，要在源码中进行。
 
+    - 防止产生多余空行。
+    - 防止有序列表序号中断。
