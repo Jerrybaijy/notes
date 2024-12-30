@@ -11,3 +11,12 @@
   - 在 HTML4 之后，有难以理解的语义，显示粗体/斜体文本，不推荐使用。
 
 - 以下是 `<strong>`、`<em>`、`<b>`、`<i>` 的对比
+
+```
+<head>
+    <meta charset="UTF-8">
+</head>
+```
+
+
+python, java, json, markdown

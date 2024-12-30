@@ -6,6 +6,28 @@
 - **路径分隔符**：默认`\`，绝大多数时候都支持正斜杠 `/`
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
 
+## Chocolatey
+
+Chocolatey 是一个功能强大的 Windows 包管理工具。
+
+- **安装**：应该在 PowerShell 中安装，但可以在 Bash 中使用。
+
+    ```shell
+    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+    ```
+
+- **验证安装**
+
+    ```bash
+    choco --version
+    ```
+
+- **使用**
+
+    ```bash
+    choco install APPLICATION
+    ```
+
 # 环境搭建
 
 ## Win 10 系统
@@ -368,7 +390,7 @@
 
 ### 启用 WSL
 
-1. 右键点击开始菜单，选择 `Windows PowerShell（管理员）` 或 `命令提示符（管理员）`。
+1. 右键点击开始菜单，选择 `Windows PowerShell（管理员）` 或 `命令提示符（管理员）`。
 
 2. 启用 WSL
 

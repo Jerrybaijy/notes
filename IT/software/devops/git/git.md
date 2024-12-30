@@ -378,3 +378,19 @@ GitLab 网页创建 Remote Repo
 ### 项目
 
 - GitLab CI Image
+
+# 解决办法
+
+## 远程仓库改名
+
+- **GitLab**
+
+    - **改名**：右上角三个点 > `Project settings` > `Project name`
+    - **改地址**：`Advanced` > `Change path`
+
+- **GitHub**
+
+    - **改名**：导航栏 > `Settings` > `Repository name`
+    - **改地址**：GitHub 改完项目名称后，仓库地址自动更改。
+
+- **本地仓库**：移除旧仓库，重新添加远程地址，重新关联 `main` 分支。

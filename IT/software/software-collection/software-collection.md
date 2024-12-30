@@ -1678,76 +1678,117 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 1. [下载安装文件，这个版本允许安装到 D 盘 ](https://code.visualstudio.com/Download)
 
-   ![image-20240403064749602](assets/image-20240403064749602.png)
+    ![image-20240403064749602](assets/image-20240403064749602.png)
 
 ### 配置文件
 
 - `设置` > 右上角点击 `打开设置 (JSON)`
-
 - **settings.json**
 
-  ```json
-  {
-      "editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮 对编辑器字体大小缩放
-      "open-in-browser.default": "chrome", // 默认浏览器
-      "files.autoSave": "afterDelay", // 实时自动保存
-      // 编辑器颜色
-      "workbench.colorCustomizations": {
-          // "editor.background": "#3B4352", // 编辑器背景色
-          // "editorGutter.background": "#3B4352", // 导航线背景色
-          // "editor.selectionHighlightBackground": "#4C4A48", // 选中代码高亮背景色
-          "editor.selectionBackground": "#000000", // 选中区域背景色
-      },
-      "editor.tokenColorCustomizations": {
-          // "comments": "#519657",  // 注释
-          // "strings": "#7e3648",  // 字符串
-          // "functions": "#1c7887",  // 函数
-          "keywords": "#a207fc", // 关键字
-          // "variables": "#0720fc",  // 变量
-          // "numbers": "#e21d1d"   // 数字
-      },
-      "editor.fontFamily": "Consolas, '微软雅黑'",
-      "editor.fontSize": 24, // 编辑器字体大小
-      "workbench.iconTheme": "vscode-icons",
-      "editor.guides.bracketPairs": true,
-      "editor.semanticTokenColorCustomizations": {},
-      "liveServer.settings.CustomBrowser": "chrome",
-      "workbench.colorTheme": "One Dark Pro",
-      "workbench.startupEditor": "none",
-      "vsicons.dontShowNewVersionMessage": true,
-      "liveServer.settings.donotVerifyTags": true,
-      "git.autofetch": true,
-      "redhat.telemetry.enabled": true,
-      "java.configuration.runtimes": [
-          {
-              "name": "JavaSE-17",
-              "path": "/path/to/jdk-17",
-              "default": true
-          }
-      ],
-      "editor.tabSize": 2, // 制表符的宽度为 2 个空格
-      "[python]": {
-          "editor.tabSize": 4 // 针对 Python 文件，设置制表符的宽度为 4 个空格
-      },
-      "window.confirmSaveUntitledWorkspace": false,
-      "liveServer.settings.donotShowInfoMsg": true,
-      "editor.indentSize": "tabSize",
-      "editor.codeActionsOnSave": {},
-      "editor.linkedEditing": true,
-      
-      // 默认终端为 Git Bash
-      "terminal.integrated.defaultProfile.windows": "Git Bash",
-      "terminal.integrated.profiles.windows": {
-          "Git Bash": {
-              "path": "D:\\Program Files\\Git\\bin\\bash.exe",
-          }
-      },
-      
-      // 光标样式
-      "terminal.integrated.cursorStyleInactive": "line",
-      "terminal.integrated.cursorStyle": "line"  
-  }
-  ```
+    ```json
+    {
+        "editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮 对编辑器字体大小缩放
+        "open-in-browser.default": "chrome", // 默认浏览器
+        "files.autoSave": "afterDelay", // 实时自动保存
+        // 编辑器颜色
+        "workbench.colorCustomizations": {
+            // "editor.background": "#3B4352", // 编辑器背景色
+            // "editorGutter.background": "#3B4352", // 导航线背景色
+            // "editor.selectionHighlightBackground": "#4C4A48", // 选中代码高亮背景色
+            // "editor.selectionBackground": "#000000", // 选中区域背景色
+        },
+        "editor.tokenColorCustomizations": {
+            // "comments": "#519657",  // 注释
+            // "strings": "#7e3648",  // 字符串
+            // "functions": "#1c7887",  // 函数
+            // "keywords": "#a207fc", // 关键字
+            // "variables": "#0720fc",  // 变量
+            // "numbers": "#e21d1d"   // 数字
+        },
+        "editor.fontFamily": "Consolas, '微软雅黑'",
+        "editor.fontSize": 24, // 编辑器字体大小
+        "workbench.iconTheme": "vscode-icons",
+        "editor.guides.bracketPairs": true,
+        "editor.semanticTokenColorCustomizations": {},
+        "liveServer.settings.CustomBrowser": "chrome",
+        "workbench.startupEditor": "none",
+        "vsicons.dontShowNewVersionMessage": true,
+        "liveServer.settings.donotVerifyTags": true,
+        "git.autofetch": true,
+        "redhat.telemetry.enabled": true,
+        "java.configuration.runtimes": [
+            {
+                "name": "JavaSE-17",
+                "path": "/path/to/jdk-17",
+                "default": true
+            }
+        ],
+        
+        // 缩进设置
+        "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
+        "editor.insertSpaces": true,  // 输入 Tab 时，使用空格替代制表符
+        "editor.indentSize": "tabSize",  // 使用 tabSize 的值来确定每次缩进使用多少个空格
+        "editor.tabSize": 2, // 1 个 Tab 的宽度为 2 个空格
+        "[python]": {
+            "editor.tabSize": 4            // Python 文件，Tab 宽度设置为 4 个空格
+        },
+        "[java]": {
+            "editor.tabSize": 4            // Java 文件，Tab 宽度设置为 4 个空格
+        },
+        "[json]": {
+            "editor.tabSize": 4            // JSON 文件，Tab 宽度设置为 4 个空格
+        },
+        "[markdown]": {
+            "editor.tabSize": 4,            // Markdown 文件，Tab 宽度设置为 4 个空格  
+            "editor.unicodeHighlight.ambiguousCharacters": false,  // 禁用 Unicode 模糊字符的高亮
+            "editor.unicodeHighlight.invisibleCharacters": false,  // 禁用不可见字符的 Unicode 高亮
+            "diffEditor.ignoreTrimWhitespace": false,  // 在 diff 比较时，不忽略尾部空白字符
+            "editor.wordWrap": "on",  // 自动换行，文本过长时自动换行
+            "editor.quickSuggestions": {
+                "comments": "off",
+                "strings": "off",
+                "other": "off"
+            }
+        },
+    
+    
+        "window.confirmSaveUntitledWorkspace": false,
+        "liveServer.settings.donotShowInfoMsg": true,
+        "editor.codeActionsOnSave": {},
+        "editor.linkedEditing": true,
+        // 默认终端为 Git Bash
+        "terminal.integrated.defaultProfile.windows": "Git Bash",
+        "terminal.integrated.profiles.windows": {
+            "Git Bash": {
+                "path": "D:\\Program Files\\Git\\bin\\bash.exe",
+            }
+        },
+        // 光标样式
+        "terminal.integrated.cursorStyleInactive": "line",
+        "terminal.integrated.cursorStyle": "line",
+        "explorer.fileNesting.patterns": {
+            "*.ts": "${capture}.js",
+            "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+            "*.jsx": "${capture}.js",
+            "*.tsx": "${capture}.ts",
+            "tsconfig.json": "tsconfig.*.json",
+            "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+            "*.sqlite": "${capture}.${extname}-*",
+            "*.db": "${capture}.${extname}-*",
+            "*.sqlite3": "${capture}.${extname}-*",
+            "*.db3": "${capture}.${extname}-*",
+            "*.sdb": "${capture}.${extname}-*",
+            "*.s3db": "${capture}.${extname}-*"
+        },
+        "workbench.editorAssociations": {
+            "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+        },
+        "vscode-office.openOutline": true,
+        "vscode-office.editorTheme": "Light",
+        
+        "workbench.colorTheme": "GitHub Dark Dimmed"
+    }
+    ```
 
 ## 插件
 
@@ -1758,39 +1799,39 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 - **`Jinja`**：为 Jinja2 模板语言提供语法高亮和自动完成支持
 - **`Live Server`**：实时预览前端网页
 - **`Python`**：支持 Python
+- **`autopep8`**：Python 格式化
 - **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
 
 ## 快捷键
 
 - **设置快捷键**
 
-  - 左下角 `管理` - `键盘快捷方式`
+    - 左下角 `管理` - `键盘快捷方式`
 
 - **软件配置**
 
-  - **`Ctrl + ,`**：设置
+    - **`Ctrl + ,`**：设置
 
-  	> 注意与搜狗输入法冲突！
-  	>
-  	> `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
+        > 注意与搜狗输入法冲突！
+        >
+        > `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
-  - **`F1 | Ctrl + Shift + P`**：打开命令面板
+    - **`F1 | Ctrl + Shift + P`**：打开命令面板
 
 - **光标**
 
-  - **`Ctrl + D`**：选择下一个匹配项，并添加多光标
-  - **`Ctrl + U`**：取消最近添加的匹配项和多光标
-  - **`Alt + 单击`**：添加多光标
+    - **`Ctrl + D`**：选择下一个匹配项，并添加多光标
+    - **`Ctrl + U`**：取消最近添加的匹配项和多光标
+    - **`Alt + 单击`**：添加多光标
 
 - **代码**
 
-  - **`Ctrl + Alt + Z`**：代码格式化（自己修改）
-  - **`Ctrl + Shift + A`**：使用 Emmet 缩写包围 （自己修改）
+    - **`Ctrl + Alt + Z`**：代码格式化（自己修改）
+    - **`Ctrl + Shift + A`**：使用 Emmet 缩写包围 （自己修改）
 
 - **终端**
 
-	- **`Ctrl + ~`**：打开内置终端
-
+    - **`Ctrl + ~`**：打开内置终端
 
 ## 选择解释器虚拟环境
 
@@ -1798,7 +1839,9 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 2. 每次进入项目目录都应该检查；
 3. 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
 4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
-	- 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
+   
+    - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
+
 5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
 
@@ -1813,61 +1856,81 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 ## 添加终端
 
 1. 以 Git Bash 为例
-
 2. 电脑中安装好 Git
-
 3. 在 Microsoft Store 中安装 Windows Terminal 并运行
-
 4. 下拉菜单中进入设置
-
 5. 左下角打开 JSON 文件，用 VS Code 编辑
-
 6. 将以下内容加入到 `profiles` 的 `list` 中添加一项
 
-	- **如果只添加 Git Bash**
+    - **如果只添加 Git Bash**
 
-		```json
-		{
-		    "guid": "{96E6AB7F-8963-20F8-5068-014DFAA8C12A}",
-		    "name": "Git Bash",
-		    "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i -c 'cd ~ && exec bash'",
-		    "startingDirectory": "C:/Users/39331",
-		    "icon": "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico"
-		}
-		```
+        ```json
+        {
+            "guid": "{96E6AB7F-8963-20F8-5068-014DFAA8C12A}",
+            "name": "Git Bash",
+            "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i",
+            "startingDirectory": "C:/Users/39331",
+            "icon": "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico"
+        }
+        ```
 
-		**在以上代码中**：
+        **在以上代码中**：
 
-		1. **`guid`**：唯一标识本命令行配置，可以使用[在线guid工具](http://tool.pfan.cn/guidgen)随机生成一个和 `list` 中其他配置不一样的 `guid` 即可；
-		2. **`name`**：本命令行配置的名字，会显示在菜单中；
-		3. **`commandline`**：表示如何启动一个命令行，前面是 Git Bash 的安装目录；
-			1. **`- l`**：表示以登录模式启动 Bash shell；
-			2. **`- i`**：表示以交互模式启动 Bash shell；
+        1. **`guid`**：唯一标识本命令行配置，可以使用[在线guid工具](http://tool.pfan.cn/guidgen)随机生成一个和 `list` 中其他配置不一样的 `guid` 即可；
+        2. **`name`**：本命令行配置的名字，会显示在菜单中；
+        3. **`commandline`**：表示如何启动一个命令行，前面是 Git Bash 的安装目录；
+            1. **`- l`**：表示以登录模式启动 Bash shell；
+            2. **`- i`**：表示以交互模式启动 Bash shell；
+	    
+        4. **`startingDirectory`**：启动时默认进入的目录；
+        5. **`icon`**：显示在菜单中的图标；
 
-		4. **`startingDirectory`**：启动时默认进入的目录；
-		5. **`icon`**：显示在菜单中的图标；
-
-	- **如果添加并配置 Git Bash**
-
-		```json
-		{
-		    "backgroundImage": null,
-		    "colorScheme": "One Half Dark",
-		    "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i",
-		    "startingDirectory": "C:/Users/39331",
-		    "cursorShape": "bar",
-		    "font": {
-		        "face": "\u65b0\u5b8b\u4f53"
-		    },
-		    "guid": "{96e6ab7f-8963-20f8-5068-014dfaa8c12a}",
-		    "historySize": 9999,
-		    "icon": "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
-		    "name": "Git Bash",
-		    "useAcrylic": false
-		}
-		```
+    - **如果添加并配置 Git Bash**
+	
+        ```json
+        {
+            "backgroundImage": null,
+            "colorScheme": "One Half Dark",
+            "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i",
+            "startingDirectory": "C:/Users/39331",
+            "cursorShape": "bar",
+            "font": {
+                "face": "\u65b0\u5b8b\u4f53"
+            },
+            "guid": "{96e6ab7f-8963-20f8-5068-014dfaa8c12a}",
+            "historySize": 9999,
+            "icon": "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico",
+            "name": "Git Bash",
+            "useAcrylic": false
+        }
+        ```
 
 7. 保存以后直接在下拉菜单打开 Git Bash。
+
+## 解决办法
+
+### 无法读取历史命令
+
+当再次进入 Git Bash，向上翻命令时，无法读取历史命令，可用如下方法解决：
+
+1. 进入用户目录。
+2. 记事本创建文件，在文件中添加以下内容。
+
+    ```bash
+    # 设置历史文件位置和大小
+    export HISTFILE=~/.bash_history
+    export HISTFILESIZE=1000
+    export HISTSIZE=1000
+       
+    # 追加历史记录而不是覆盖
+    shopt -s histappend
+       
+    # 实时更新历史记录
+    PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
+    ```
+
+3. 保存以后，将文件名改为 `.bashrc`。
+4. 重启终端生效。
 
 # XAMPP
 
