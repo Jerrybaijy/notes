@@ -323,6 +323,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     - Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 **`{}`** 。
     - 缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
+    - 最佳4个空格。
 
 - **分号**：每行代码结束不使用分号
 
@@ -656,7 +657,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     
     # use
     if "中国" in strr:
-      pass
+        pass
     ```
 
 ### 切片
@@ -1204,7 +1205,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     ```python
     dict_a = {"name": "ZhangSan", "age": 18, "hobby": "playBall"}
     for key, value in dict_a.items():
-      print(key, value)  # name ZhangSan  age 18  hobby playBall
+        print(key, value)  # name ZhangSan  age 18  hobby playBall
 
     # value = dict_a.items()
     # print(value)  # dict_items([('name', 'ZhangSan'), ('age', 18), ('hobby', 'playBall')])
@@ -1374,9 +1375,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     for chicken in range(0, 36):
-      rabbit = 35 - chicken
-      if chicken * 2 + rabbit * 4 == 94:
-        print(chicken, rabbit)  # 23 12
+        rabbit = 35 - chicken
+        if chicken * 2 + rabbit * 4 == 94:
+            print(chicken, rabbit)  # 23 12
     ```
 
 ### 百钱买百鸡
@@ -1385,10 +1386,10 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     for g in range(0, 21):
-      for m in range(0, 34):
-        c = 100 - g - m
-        if g + m + c == 100 and g * 5 + m * 3 + c / 3 == 100:
-          print(g, m, c)  # 0 25 75 / 4 18 78 / 8 11 81 / 12 4 84
+        for m in range(0, 34):
+            c = 100 - g - m
+            if g + m + c == 100 and g * 5 + m * 3 + c / 3 == 100:
+                print(g, m, c)  # 0 25 75 / 4 18 78 / 8 11 81 / 12 4 84
     ```
 
 ## 赋值运算符
@@ -1426,7 +1427,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     def greet(name="Guest"):
-      print(f"Hello, {name}")
+        print(f"Hello, {name}")
     
     greet()  # 输出: Hello, Guest
     greet("Alice")  # 输出: Hello, Alice
@@ -1442,26 +1443,28 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```java
     public class Main {
-      public static void main(String[] args) {
-        int a = 11;
-        a++; // 相当于 a = a + 1
-        System.out.println(a); // 12
-      }
+        public static void main(String[] args) {
+            int a = 11
+            a++
+            // 相当于 a = a + 1
+            System.out.println(a)
+            // 12
+        }
     }
     ```
-
+    
     ``` python
     a = 11
     a %= 3  # a=a/3之后再求余
     print(a)  # 2
     ```
-
+    
     ``` python
     a = 11
     a //= 3  # a=a/3之后再取整
     print(a)  # 3
     ```
-
+    
     ```python
     a = 11
     a **= 3  # a = a的3次方 
@@ -1542,8 +1545,8 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     ```python
     money = int(input("请输入你的存款："))
     if money >= 100:
-      print("恭喜你！可以买宝马了！")  # print 前默认有一个缩进，表示与 if 的从属关系
-      print("真开心！")  # 同一条件下的所有 print 缩进要统一
+        print("恭喜你！可以买宝马了！")  # print 前默认有一个缩进，表示与 if 的从属关系
+        print("真开心！")  # 同一条件下的所有 print 缩进要统一
     ```
 
 - **说明**
@@ -1557,17 +1560,18 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     if 条件表达式:
-      执行语句A
+        执行语句A
     else:
-      执行语句B
+        执行语句B
     ```
 
     ```python
     money = int(input("请输入你的存款："))
     if money >= 100:
-      print("恭喜你！可以买宝马了！")
-    else: # else 与 if 缩进相同
-      print("继续上班！")
+        print("恭喜你！可以买宝马了！")
+    else:  # else 与 if 缩进相同
+        print("继续上班！")
+    
     ```
 
 - **说明**：`else` 缩进与 `if` 相同，表示与 `if` 的并列关系。
@@ -1578,25 +1582,25 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     if 条件表达式1:
-      执行语句A
+        执行语句A
     elif 条件表达式2:
-      执行语句B
+        执行语句B
     elif 条件表达式3:
-      执行语句C
+        执行语句C
     else:
-      执行语句D
+        执行语句D
     ```
   
     ```python
     money = int(input("请输入你的存款："))
     if money >= 100:
-      print("恭喜你！可以买宝马了！")
+        print("恭喜你！可以买宝马了！")
     elif money >= 50:  # elif 缩进与 if 相同
-      print("买丰田！")
+        print("买丰田！")
     elif money >= 20:
-      print("买二手车！")
+        print("买二手车！")
     else:
-      print("继续上班！")
+        print("继续上班！")
     ```
 
 ### 选择结构嵌套
@@ -1605,28 +1609,28 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     if 条件表达式1:
-      执行语句A
-      if 条件表达式2:
-          执行语句A
+        执行语句A
+        if 条件表达式2:
+            执行语句A
     else:
-      执行语句C
+        执行语句C
     ```
   
     ```python
     money = int(input("请输入存款金额（万）？"))
     day = int(input("今天是星期几（1-7）？"))
     if money >= 100:
-      print("恭喜你！可以买宝马了！")
-      if day <= 5:  # 此处的 if 在第一个 if 的基础下，所以缩进要降一个等级
-          print("周末去提车！")
-      else:  # 此处的 else 在第一个 if 的基础下，与第二个 if 同级
-          print("今天下午就去提车！")
+        print("恭喜你！可以买宝马了！")
+        if day <= 5:  # 此处的 if 在第一个 if 的基础下，所以缩进要降一个等级
+            print("周末去提车！")
+        else:  # 此处的 else 在第一个 if 的基础下，与第二个 if 同级
+            print("今天下午就去提车！")
     elif money >= 50:
-      print("买丰田！")
+        print("买丰田！")
     elif money >= 20:
-      print("买二手车！")
+        print("买二手车！")
     else:
-      print("继续上班！")
+        print("继续上班！")
     ```
 
 ### 三元表达式
@@ -1746,24 +1750,25 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     name = ""
     
     if num == num1:
-      price = price1
-      name = name1
+        price = price1
+        name = name1
     elif num == num2:
-      price = price2
-      name = name2
+        price = price2
+        name = name2
     elif num == num3:
-      price = price3
-      name = name3
+        price = price3
+        name = name3
     else:
-      print("没有此商品！")
+        print("没有此商品！")
     if price != 0:
-      amount = price * count
-      print("您当前购买的是：", name, ",单价：", price, "元,数量：", count, "件,金额：", amount, "元！")
-      money = float(input("请输入付款金额："))
-      if money < amount:
-          print("金额不足！")
-      else:
-          print("付款：", money, "元！找零：", money - amount, "元！")
+        amount = price * count
+        print("您当前购买的是：", name, ",单价：", price,
+              "元,数量：", count, "件,金额：", amount, "元！")
+        money = float(input("请输入付款金额："))
+        if money < amount:
+            print("金额不足！")
+        else:
+            print("付款：", money, "元！找零：", money - amount, "元！")
     ```
 
 ## 循环结构
@@ -1781,13 +1786,13 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     for 变量 in 可迭代对象:
-    循环体
+        循环体
     ```
 
     ```python
     lst = ["中国", "上海", 123]
     for data in lst:
-    print(data)
+        print(data)
     ```
 
 - **说明**：遍历字典获取到的是 `键`，再利用索引可获取到 `值`。
@@ -1795,7 +1800,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     ```python
     dict_a = {"name": "Jerry", "age": 18, "hobby": "football"}
     for key in dict_a:
-      print(key)  # 依次输出name  age  hobby
+        print(key)  # 依次输出name  age  hobby
     print(key, dict_a[key])  # 依次输出name Jerry  age 18  hobby football
     ```
 
@@ -1820,7 +1825,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     ```python
     lst = ["中国", "上海", 123]
     for i in range(len(lst)):
-      print(lst[i])
+        print(lst[i])
     ```
 
 #### 遍历嵌套容器
@@ -1829,15 +1834,15 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     reward_list = [
-      ("三等奖", 5, "ipad"),
-      ("二等奖", 3, "iPhone"),
-      ("一等奖", 1, "马尔代夫"),
-      ("特等奖", 1, "一套房")
+        ("三等奖", 5, "ipad"),
+        ("二等奖", 3, "iPhone"),
+        ("一等奖", 1, "马尔代夫"),
+        ("特等奖", 1, "一套房")
     ]
     
     for title, count, detail in reward_list:  # 元素可写成 (title, count, detail)
-      print(title)  # 三等奖  二等奖  一等奖  特等奖
-      print(title, count)  # 三等奖 5  二等奖 3  一等奖 1  特等奖 1
+        print(title)  # 三等奖  二等奖  一等奖  特等奖
+        print(title, count)  # 三等奖 5  二等奖 3  一等奖 1  特等奖 1
     ```
 
 #### 冒泡排序
@@ -1887,9 +1892,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
     ```python
     for year in range(1, 11):
-      print("----------第", year, "年到了！")
-      for month in range(1, 13):
-          print("第", year, "年，第", month, "月，还款1000元！")
+        print("----------第", year, "年到了！")
+        for month in range(1, 13):
+            print("第", year, "年，第", month, "月，还款1000元！")
     ```
   
 - **遍历多维容器**
@@ -1901,8 +1906,8 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     lst4 = [lst1, lst2, lst3]
     
     for lstx in lst4:
-      for a in lstx:
-          print(a)  # 获取结果为：前3个列表的各个值
+        for a in lstx:
+            print(a)  # 获取结果为：前3个列表的各个值
     ```
 
 ### 跳转结构
@@ -1913,17 +1918,17 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
     ```python
     for year in range(1, 11):
-      if year == 5:
-          print("第5年疫情原因，今年不用还款了！")
-          # 此处如果没有continue，会同时正常显示：第五年到了，还款1.2万
-          continue  # 第5年不用还，本次循环结束，进入下一次该循环，第6年。
-      if year == 6:
-          print("第", year, "年到了！还款2.4万！")
-          continue  # 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
-      if year == 8:
-          print("第8年，提前还清，以后都不用还了！")
-          break  # 从第9年不用再还款了，当前循环结束
-      print("第", year, "年到了！还款1.2万！")
+        if year == 5:
+            print("第5年疫情原因，今年不用还款了！")
+            # 此处如果没有continue，会同时正常显示：第五年到了，还款1.2万
+            continue  # 第5年不用还，本次循环结束，进入下一次该循环，第6年。
+        if year == 6:
+            print("第", year, "年到了！还款2.4万！")
+            continue  # 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
+        if year == 8:
+            print("第8年，提前还清，以后都不用还了！")
+            break  # 从第9年不用再还款了，当前循环结束
+        print("第", year, "年到了！还款1.2万！")
     ```
 
 - `return`：详见[返回值](#返回值)
@@ -1976,7 +1981,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     ```python
     f = open(r"demo.txt", "r", encoding = "utf-8")
     for line in f:  # 防止一次性读完，内存不够，所以逐行读
-      data = line
+        data = line
     f.close()
     ```
   
@@ -1989,9 +1994,9 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     f = open(r"英雄.mp4", "rb")
     has_read_size = 0
     while has_read_size < total_size:
-      chunk = f.read(3)  # 每次读3个字节，防止一次性读完，内存不够
-      print(chunk)
-      has_read_size += len(chunk)
+        chunk = f.read(3)  # 每次读3个字节，防止一次性读完，内存不够
+        print(chunk)
+        has_read_size += len(chunk)
     f.close()
     ```
 
@@ -2096,14 +2101,14 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     ```python
     # 读取文件内容
     with open(r'hanchi_original.txt', 'r', encoding='utf-8') as file:
-      lines = file.readlines()
+        lines = file.readlines()
     
     # 提取“}”后面的内容
     extracted_lines = [line.split('}', 1)[1].strip() if '}' in line else '' for line in lines]
     
     # 写入新文件
     with open(r'hanchi_new.txt', 'w', encoding='utf-8') as output_file:
-      output_file.write('\n'.join(extracted_lines))
+        output_file.write('\n'.join(extracted_lines))
     ```
 
 
@@ -2128,7 +2133,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     image = data.content
 
     with open("Benz.png", "wb") as f:
-      f.write(image)
+        f.write(image)
     ```
 
 - **批量下载图片示例**
@@ -2147,21 +2152,21 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     
     # 处理文件，详见处理 txt 文件
     with open(r"file.txt", "r", encoding="utf-8") as f:
-      data = f.read()
+        data = f.read()
     data = data.strip()
     lst = data.split("\n")
     dict_a = {}
     for row in lst:
-      list_new = row.split(",")
-      dict_a[list_new[0]] = list_new[2]
+        list_new = row.split(",")
+        dict_a[list_new[0]] = list_new[2]
     
-      # 详见下载图片
-      # 批量下载，list_new[2]为之前获取到的 url
-      data = requests.get(list_new[2])
-      image = data.content
-      # list_new[0]为之前获取到的文件名
-      with open(list_new[0], "wb") as f:
-          f.write(image)
+        # 详见下载图片
+        # 批量下载，list_new[2]为之前获取到的 url
+        data = requests.get(list_new[2])
+        image = data.content
+        # list_new[0]为之前获取到的文件名
+        with open(list_new[0], "wb") as f:
+            f.write(image)
     ```
 
 # 函数
@@ -2244,19 +2249,19 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     v1 = 1  # 全局变量
     v2 = 2  # 全局变量
     v3 = 3  # 全局变量
-
-
+    
+    
     def func():
-      v2 = 3  # 与全局变量同名的局部变量
-      global v3  # 通过global，将局部变量 v3 改为全局变量
-      v3 = 4  # 通过global，将全局变量 v3 的值改为 4
-      v4 = 4  # 局部变量
-      print(v1)  # 1  获取全局变量 v1 的值
-      print(v2)  # 3  优先获取局部变量 v2 的值
-      print(v3)  # 4  获取全局变量 v3 的新值
-      print(v4)  # 4  取局部变量 v4 的值
-
-
+        v2 = 3  # 与全局变量同名的局部变量
+        global v3  # 通过global，将局部变量 v3 改为全局变量
+        v3 = 4  # 通过global，将全局变量 v3 的值改为 4
+        v4 = 4  # 局部变量
+        print(v1)  # 1  获取全局变量 v1 的值
+        print(v2)  # 3  优先获取局部变量 v2 的值
+        print(v3)  # 4  获取全局变量 v3 的新值
+        print(v4)  # 4  取局部变量 v4 的值
+    
+    
     func()  # 1 3 4 4
     print(v1)  # 1  获取全局变量 v1 的值
     print(v2)  # 2  获取全局变量 v2 的值
@@ -2319,7 +2324,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     lista=[21, 21, 31, 32, 33, 5454, 46, 65, 6]
     new_list = reversed(lista)
     for x in new_list:
-      print(x)  # 依次打印反转后的各个元素  如果直接print(new_list)会得到迭代器
+        print(x)  # 依次打印反转后的各个元素  如果直接print(new_list)会得到迭代器
     ```
 
 - **enumerate() 枚举**：将元素加编号逐一列举
@@ -2327,7 +2332,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     ```python
     goods = ["电脑", "手机", "汽车"]
     for index, item in enumerate(goods, 1):  # index序号  1：从1号开始
-      print(index, item)  # 依次打印1 电脑  2 手机  3 汽车
+        print(index, item)  # 依次打印1 电脑  2 手机  3 汽车
     ```
 
 ### 数据类型函数
@@ -2500,10 +2505,10 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
     ```python
     def run():
-      print("程序启动")
+        print("程序启动")
     
     if __name__ == 'main':
-      run()
+        run()
     ```
 
 ## `random` 生成随机数
@@ -2743,7 +2748,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
     ```python
     if not os.path.exists("path"):
-      pass
+        pass
     ```
 
 ### 创建文件夹
@@ -2756,7 +2761,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     base_dir = os.path.dirname(os.path.abspath(__file__))
     folder_path = os.path.join(base_dir, " xx/xx/xx ")
     if not os.path.exists(folder_path):
-      os.makedirs(folder_path)
+        os.makedirs(folder_path)
     ```
 
 ## urllib 爬虫
@@ -2773,7 +2778,7 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     print(data.decode())  # decode()解码：将二进制转换成字符，此行可以没有
     
     with open(r"8888.html", "wb") as f:  # f 为变量，创建一个文件，等待写入
-      f.write(data)  # 将 data 获取到的数据写到 f 中
+        f.write(data)  # 将 data 获取到的数据写到 f 中
     ```
 
 ## JSON 数据
@@ -2786,8 +2791,8 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
 
     ```python
     with open(r"users.txt", "w") as f:
-      users = '[{"name":"zhangsan","pwd":"123"},{"name":"lisi","pwd":"123"},{"name":"wangwu","pwd":"123"}]'
-      f.write(users)
+        users = '[{"name":"zhangsan","pwd":"123"},{"name":"lisi","pwd":"123"},{"name":"wangwu","pwd":"123"}]'
+        f.write(users)
     ```
   
     ```
@@ -2894,8 +2899,8 @@ Python 中有 `continue`、`break`、`return` 三种跳转结构。
     
     # 写入文件
     with open("db.txt", 'a', encoding = 'utf-8') as f:
-      line = "{}|{}\n".format(user, pwd_md5)
-      f.write(line)
+        line = "{}|{}\n".format(user, pwd_md5)
+        f.write(line)
     ```
 
 ### `argon2-cffi` 加密
@@ -3014,19 +3019,20 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     ```python
     # 定义类
     class Person:
-      # 构造函数
-      def __init__(self, name, age):
-          self.name = name  # 初始化 name 属性
-          self.age = age    # 初始化 age 属性
-
-      # 定义方法
-      def introduce(self):
-          print(f"My name is {self.name}, and I am {self.age} years old.")
-
+        # 构造函数
+        def __init__(self, name, age):
+            self.name = name  # 初始化 name 属性
+            self.age = age    # 初始化 age 属性
+    
+        # 定义方法
+        def introduce(self):
+            print(f"My name is {self.name}, and I am {self.age} years old.")
+    
+    
     # 创建对象
     person1 = Person("Alice", 25)
     person2 = Person("Bob", 30)
-
+    
     # 调用方法
     person1.introduce()  # 输出: My name is Alice, and I am 25 years old.
     person2.introduce()  # 输出: My name is Bob, and I am 30 years old.
@@ -3041,30 +3047,31 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     
     # 定义类
     class Card():
-      # 构造函数
-      def __init__(self, num, pwd, user, balance):
-          self.bank_name = "Python Bank"  # 初始化 bank_name 属性
-          self.num = num  # 初始化 num 属性
-          self.pwd = pwd  # 初始化 pwd 属性
-          self.user = user  # 初始化 user 属性
-          self.balance = balance  # 初始化 balance 属性
+        # 构造函数
+        def __init__(self, num, pwd, user, balance):
+            self.bank_name = "Python Bank"  # 初始化 bank_name 属性
+            self.num = num  # 初始化 num 属性
+            self.pwd = pwd  # 初始化 pwd 属性
+            self.user = user  # 初始化 user 属性
+            self.balance = balance  # 初始化 balance 属性
     
-      # 定义方法
-      def longin(self):
-          unum = input("请输入卡号：")
-          upwd = input("请输入密码：")
-          if unum == self.num and upwd == self.pwd:
-              print("验证成功！")
-              return unum
-          else:
-              print("验证失败！")
-              return None
+        # 定义方法
+        def longin(self):
+            unum = input("请输入卡号：")
+            upwd = input("请输入密码：")
+            if unum == self.num and upwd == self.pwd:
+                print("验证成功！")
+                return unum
+            else:
+                print("验证失败！")
+                return None
     
-      def deposit(self):
-          if self.longin():  # 类的内部可以调用其它函数
-              money = float(input("请输入存款金额："))
-              self.balance += money
-              print("存款成功！存入", money, "元！余额", self.balance, "元！")
+        def deposit(self):
+            if self.longin():  # 类的内部可以调用其它函数
+                money = float(input("请输入存款金额："))
+                self.balance += money
+                print("存款成功！存入", money, "元！余额", self.balance, "元！")
+    
     
     # 创建对象
     c1 = Card("1001", "123", "张三", 0)
@@ -3162,27 +3169,30 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy.ext.declarative import declarative_base
     from sqlalchemy import Column, String
-
+    
     # 1.创建数据库引擎，连接数据库
     DATABASE_URL = 'sqlite:///users.db'
     engine = create_engine('DATABASE_URL', echo=True)
-
+    
     # 2.创建基类
     Base = declarative_base()
-
+    
     # 3.创建 Session 类
     Session = sessionmaker(bind=engine)
-
+    
     # 4.定义模型类，映射到数据库中的表
+    
+    
     class User(Base):
-      __tablename__ = 'tb_users'  # 映射到表 tb_users
-      id = Column(Integer, primary_key=True, autoincrement=True)  # 映射到 id 列
-      username = Column(String(16), nullable=False, unique=True)  # 映射到 username 列
-      password = Column(String(255), nullable=False)  # 映射到 password 列
-
+        __tablename__ = 'tb_users'  # 映射到表 tb_users
+        id = Column(Integer, primary_key=True, autoincrement=True)  # 映射到 id 列
+        username = Column(String(16), nullable=False, unique=True)  # 映射到 username 列
+        password = Column(String(255), nullable=False)  # 映射到 password 列
+    
+    
     # 5.创建 Table
     Base.metadata.create_all(engine)
-
+    
     # 6.使用 session 交互数据库
     session = Session()
     new_user = User(username="johndoe", password="secret")
@@ -3301,27 +3311,27 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 1.引入 pymysql 和 DictCursor
     import pymysql
     from pymysql.cursors import DictCursor
-
+    
     # 2.连接 MySQL 服务器（事先已创建好 Database）
     conn = pymysql.Connect(
-      host="localhost",  # 主机地址
-      port=3306,  # 端口号
-      user="root",  # 用户名
-      password="123456",  # 密码
-      charset="utf8",  # 字符集
-      database="db_users"  # 数据库名称
+        host="localhost",  # 主机地址
+        port=3306,  # 端口号
+        user="root",  # 用户名
+        password="123456",  # 密码
+        charset="utf8",  # 字符集
+        database="db_users"  # 数据库名称
     )
-
+    
     # 3.创建游标对象
     cursor = conn.cursor(cursor=DictCursor)
-
+    
     # 4.交互 MySQL
     sql = "$SQL_SYNTAX"
     cursor.execute(sql)  # 增删改查
     conn.commit()  # 如果是增删改业务，则执行 commit()
     res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
     res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-
+    
     # 5.关闭游标对象和连接
     cursor.close()
     conn.close()
@@ -3431,12 +3441,12 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 2.连接 MySQL 服务器
     # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
     conn = pymysql.Connect(
-      host="localhost",
-      port=3306,
-      user="root",
-      password="123456",
-      charset="utf8",
-      database="db_test"
+        host="localhost",
+        port=3306,
+        user="root",
+        password="123456",
+        charset="utf8",
+        database="db_test"
     )
     print("MySQL 已连接.....")
     cursor = conn.cursor(cursor=DictCursor)
@@ -3444,18 +3454,18 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 3.文件处理
     # 关于文件处理，详见：处理 TXT 文件
     while True:
-      username = input("请输入用户名：")
-      if username.upper() == "Q":
-          break
-      password = input("请输入密码：")
-      phone = input("请输入手机号：")
+        username = input("请输入用户名：")
+        if username.upper() == "Q":
+            break
+        password = input("请输入密码：")
+        phone = input("请输入手机号：")
     
-      # 4.执行 sql
-      # 关于执行 sql，详见 Operate MySQL
-      sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
-      cursor.execute(sql, [username, password, phone])
-      conn.commit()
-      print("添加数据成功！")
+        # 4.执行 sql
+        # 关于执行 sql，详见 Operate MySQL
+        sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
+        cursor.execute(sql, [username, password, phone])
+        conn.commit()
+        print("添加数据成功！")
     
     # 5.关闭游标对象和连接
     cursor.close()
@@ -3487,12 +3497,12 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
     # 确保已创建 users.txt 文件（zhangsan,123,19999999999...）
     conn = pymysql.Connect(
-      host="localhost",
-      port=3306,
-      user="root",
-      password="123456",
-      charset="utf8",
-      database="db_test"
+        host="localhost",
+        port=3306,
+        user="root",
+        password="123456",
+        charset="utf8",
+        database="db_test"
     )
     print("MySQL 已连接.....")
     cursor = conn.cursor(cursor=DictCursor)
@@ -3501,20 +3511,21 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 确保已创建 users.txt 文件（zhangsan,123,19999999999...）
     # 关于文件处理，详见：处理 TXT 文件
     with open('users.txt', 'r', encoding='utf-8') as f:
-      data = f.read().strip()
+        data = f.read().strip()
     
     lst = data.split("\n")
     for line in lst:
-      if not line:
-          continue
-      list_new = line.split(",")  # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
+        if not line:
+            continue
+        # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
+        list_new = line.split(",")
     
-      # 4.执行sql
-      # 关于执行 sql，详见操作 MySQL
-      sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
-      cursor.execute(sql, list_new)
-      conn.commit()
-      print("导入数据成功！")
+        # 4.执行sql
+        # 关于执行 sql，详见操作 MySQL
+        sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
+        cursor.execute(sql, list_new)
+        conn.commit()
+        print("导入数据成功！")
     
     # 5.关闭游标对象和连接
     cursor.close()
@@ -3534,12 +3545,12 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 2.连接 MySQL 服务器
     # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
     conn = pymysql.Connect(
-      host="localhost",
-      port=3306,
-      user="root",
-      password="123456",
-      charset="utf8",
-      database="db_test"
+        host="localhost",
+        port=3306,
+        user="root",
+        password="123456",
+        charset="utf8",
+        database="db_test"
     )
     print("MySQL 已连接.....")
     cursor = conn.cursor(cursor=DictCursor)
@@ -3558,9 +3569,10 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     
     # 5.文件处理
     for user in user_list:
-      line = "{}, {}, {}\n".format(user['username'], user['password'], user['mobile'])
-      with open('users.txt', 'a', encoding='utf-8') as f:
-          f.write(line)
+        line = "{}, {}, {}\n".format(
+            user['username'], user['password'], user['mobile'])
+        with open('users.txt', 'a', encoding='utf-8') as f:
+            f.write(line)
     print("导出数据成功！")
     ```
 
@@ -4614,7 +4626,7 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
     from django.shortcuts import HttpResponse
 
     def home(request):
-      return HttpResponse("成功")
+        return HttpResponse("成功")
     ```
 
 - **urls**：存放路径的文件
@@ -4626,8 +4638,8 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
     from app01 import views
     
     urlpatterns = [
-      # 访问xxx/xxx/路径，执行home函数
-      path('xxx/xxx/', views.home),
+        # 访问xxx/xxx/路径，执行home函数
+        path('xxx/xxx/', views.home),
     ]
     ```
 
@@ -4645,8 +4657,8 @@ html 模板就是存放 html 文件的文件夹
     from app01 import views
 
     urlpatterns = [
-      path('xxx/xxx/', views.home),
-      path('admin/', admin.site.urls),
+        path('xxx/xxx/', views.home),
+        path('admin/', admin.site.urls),
     ]
     ```
 
@@ -4656,7 +4668,7 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import render
 
     def home(request):
-      return render(request, 'home.html')
+        return render(request, 'home.html')
     ```
 
 - 位置1，推荐
@@ -4688,7 +4700,7 @@ html 模板就是存放 html 文件的文件夹
         from app01 import views
 
         urlpatterns = [
-          path('index/', views.index),
+            path('index/', views.index),
         ]
         ```
 
@@ -4697,8 +4709,8 @@ html 模板就是存放 html 文件的文件夹
         ```python
         from django.shortcuts import render
         def index(request):
-          data = "中国联通"
-          return render(request, 'index.html', {"v1": data})
+            data = "中国联通"
+            return render(request, 'index.html', {"v1": data})
         ```
 
     - index.html
@@ -4718,8 +4730,8 @@ html 模板就是存放 html 文件的文件夹
 
         ```python
         def index(request):
-          lst = ["张三", "李四", "王五"]
-          return render(request, 'index.html', {"v1": data, "v2": lst})
+            lst = ["张三", "李四", "王五"]
+            return render(request, 'index.html', {"v1": data, "v2": lst})
         ```
 
     - index.html
@@ -5345,5 +5357,5 @@ html 模板就是存放 html 文件的文件夹
     
     # 写入到本地
     with open(r"E:\labs\以后的以后.mp4", "wb") as f:
-       f.write(data)
+        f.write(data)
     ```
