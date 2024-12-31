@@ -213,9 +213,9 @@
 
 ## Symbol
 
-- **#**: explanation
-- **\***: style files
-- **!**: negation
+- **`#`**：注释
+- **`*`**：所有
+- **`!`**：否定
 
 ## Template
 
@@ -313,6 +313,18 @@ GitHub 网页创建 Remote Repo：
     git config --global --unset https.proxy
     ```
 
+### 使用 Web VSCode 查看代码
+
+- 在 GitHub 中查看代码时，可通过将 URL 中的 `.com` 修改为 `.dev`，使用 Web VSCode 查看代码：
+
+    ```
+    # 原地址
+    https://github.com/Jerrybaijy/blog-flak-sqlite-html
+    
+    # 原地址
+    https://github.dev/Jerrybaijy/blog-flak-sqlite-html
+    ```
+
 # GitLab
 
 ## GitLab 基础
@@ -393,4 +405,4 @@ GitLab 网页创建 Remote Repo
     - **改名**：导航栏 > `Settings` > `Repository name`
     - **改地址**：GitHub 改完项目名称后，仓库地址自动更改。
 
-- **本地仓库**：移除旧仓库，重新添加远程地址，重新关联 `main` 分支。
+- **本地仓库**：移除旧仓库，重新添加远程地址，重新关联 `main` 分支。
