@@ -1873,6 +1873,21 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
 
+# Wallpaper Engine
+
+**Wallpaper Engine** 是一款非常流行的桌面壁纸管理工具。
+
+## 环境搭建
+
+- Steam 已安装
+- 在 Steam 中购买安装 Wallpaper Engine
+
+## 使用方式
+
+- 在选择 Wallpaper Engine 中选择 `创意工坊`
+- 选中喜欢的壁纸，点击 `订阅`。
+- 待下载完成，点击 `确认` 即可。
+
 # Windows Terminal
 
 Windows Terminal 是 Windows 系统下的终端集合工具。

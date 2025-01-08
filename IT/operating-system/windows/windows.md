@@ -103,11 +103,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 ### win 10 激活
 
-- 此方法在虚拟机试验，安装的是官方Win10专业版
-- Win10专业版，运行Power Shell(管理员)，依次输入
-  - slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
-  - slmgr /skms kms.03k.org
-  - slmgr /ato
+- 详见 Windows 激活
 
 ### Win 10 配置
 
@@ -217,6 +213,31 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 - 执行命令以后会打开安装向导
 - 正常安装 win11
+
+## Windows 激活
+
+### 激活方式
+
+<img src="assets/image-20250108192657094.png" alt="image-20250108192657094" style="zoom:50%;" />
+
+### KMS 激活
+
+- 此方法在虚拟机试验，安装的是官方 Win10 专业版
+- 以管理员身份运行 PowerShell，依次输入
+
+    ```shell
+    slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
+    slmgr /skms kms.03k.org
+    slmgr /ato
+    ```
+
+### 验证激活
+
+- 以管理员身份运行 PowerShell
+
+    ```shell
+    slmgr /dli
+    ```
 
 # 还原点
 
@@ -384,6 +405,8 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - **TranslucentTB**：任务栏透明
 - **Nexus**：Dock 栏
 - **Rainmeter**：桌面
+- **Steam**：Wallpaper Engine 依赖
+- **Wallpaper Engine**：动态壁纸
 
 # 快捷键
 
