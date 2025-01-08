@@ -18,27 +18,55 @@
 
 #### 配置
 
-1. 配置用户名和邮箱，此处的用户名和邮箱并不是登录用的
+- 配置用户名和邮箱，此处的用户名和邮箱并不是登录用的
 
     ```bash
     # 配置用户名，如果有空格，要用引号包含
     git config --global user.name jerrybaijy
-
+    
     # 配置email
     git config --global user.email jerry.baijy@hotmail.com
-
+    
     # 保存配置，这样就不用每次都配置
     git config --global credential.helper store
-
+    
     # 查看配置信息
     git config --global --list
     ```
 
-2. 登录
+- 登录
 
-    1. 第一次 push，系统会要求输入平台用户名和密码。
-    2. GitLab 可以用户名密码登录。
-    3. GitHub 需使用令牌登录，详见 GitHub。
+    - 第一次 push，系统会要求输入平台用户名和密码。
+    - GitLab 可以用户名密码登录。
+    - GitHub 需使用令牌登录，详见 GitHub。
+
+
+#### 网络代理
+
+- 由于网络原因，在执行 `git push` 时，经常推送失败；
+- 应设置网络代理代理
+
+    ```bash
+    git config --global http.proxy http://127.0.0.1:9300
+    git config --global https.proxy https://127.0.0.1:9300
+    ```
+
+    **说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。
+
+    ![image-20241214215306498](assets/image-20241214215306498.png)
+
+- 查看配置
+
+    ```bash
+    git config --list
+    ```
+
+- 如果之后不需要代理了，可以通过以下命令取消代理设置：
+
+    ```bash
+    git config --global --unset http.proxy
+    git config --global --unset https.proxy
+    ```
 
 ### 其它基础
 
@@ -290,27 +318,6 @@ GitHub 网页创建 Remote Repo：
     curl -O https://raw.githubusercontent.com/$USER/$REPO/$BRANCH/$PATH_TO_FILE
     # eg：同时下载两个，可同时使用两个 -O 下载两个文件
     curl -O https://raw.githubusercontent.com/Jerrybaijy/it-notes/main/devops/docker/docker.md
-    ```
-
-### GitHub 经常推送失败
-
-1. 由于网络原因，在执行 `git push` 时，经常推送失败；
-2. 应设置网络代理代理
-
-    ```bash
-    git config --global http.proxy http://proxy.example.com:8080
-    git config --global https.proxy https://proxy.example.com:8080
-    ```
-
-    **说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。
-
-    ![image-20241214215306498](assets/image-20241214215306498.png)
-
-3. 如果之后不需要代理了，可以通过以下命令取消代理设置：
-
-    ```bash
-    git config --global --unset http.proxy
-    git config --global --unset https.proxy
     ```
 
 ### 使用 Web VSCode 查看代码
