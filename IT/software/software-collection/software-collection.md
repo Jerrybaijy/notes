@@ -38,7 +38,7 @@
 
 - 2925邮箱是一个可以无限接收的邮箱，用于反复注册。
 - 比如注册的邮箱账号是 example@2925.com。
-- 那么任何发送到 `example + 任意字符@2925.com` （如 example001@2925.com）的邮件，都会发送到 example@2925.com 邮箱里。
+- 那么任何发送到 `example + 任意字符@2925.com` （如 example001@2925.com）的邮件，都会发送到 example@2925.com 邮箱里。
 
 # Blockchain
 
@@ -978,6 +978,17 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 - 右边栏
 - 底部面板
 - 浮动窗口
+
+# MyDockFinder
+
+MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyFinder 和 MyDock。
+
+![image-20250111184147133](assets/image-20250111184147133.png)
+
+## 环境搭建
+
+- Steam 已安装
+- 在 Steam 中购买安装 MyDockFinder
 
 # MySQL
 

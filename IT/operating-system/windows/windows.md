@@ -404,6 +404,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 - **TranslucentTB**：任务栏透明
 - **Nexus**：Dock 栏
+- **MyDockFinder**：更强大的 
 - **Rainmeter**：桌面
 - **Steam**：Wallpaper Engine 依赖
 - **Wallpaper Engine**：动态壁纸
