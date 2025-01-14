@@ -276,6 +276,40 @@
     secrets.json
     ```
 
+# Git LFS
+
+Git LFS（Large File Storage）是 Git 的扩展，用于版本控制大文件（如图片、视频、音频等）或二进制文件。Git LFS 将大文件存储在外部的专用存储服务器上，而不是将它们存储在 Git 仓库中。这样可以显著减少 Git 仓库的体积，并提高克隆和拉取操作的速度。
+
+## 环境搭建
+
+- [官网下载并安装 Git LFS](https://git-lfs.com/)
+- 初始化
+
+    ```bash
+    git lfs install
+    ```
+
+## 使用
+
+- 跟踪大文件
+
+    ```bash
+    git lfs track "Various Artists - 风舞九天现场 三 (Remix).mp3"
+    ```
+
+- 这会在 `.gitattributes` 文件（如果没有回自动创建）中添加一行，具体到这个文件：
+
+    ```
+    Various Artists - 风舞九天现场 三 (Remix).mp3 filter=lfs diff=lfs merge=lfs -text
+    ```
+
+- 接下来正常添加提交推送即可。
+
+## 注意
+
+- 单个 LFS 文件：限制1GB
+- 每月 LFS 带宽限制：GitHub 1GB，GitLab 10GB。
+
 # GitHub
 
 ## 登录
