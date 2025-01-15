@@ -297,7 +297,7 @@ Git LFS（Large File Storage）是 Git 的扩展，用于版本控制大文件�
     git lfs track "Various Artists - 风舞九天现场 三 (Remix).mp3"
     ```
 
-- 这会在 `.gitattributes` 文件（如果没有回自动创建）中添加一行，具体到这个文件：
+- 这会在 `.gitattributes` 文件（如果没有会自动创建）中添加一行，具体到这个文件：
 
     ```
     Various Artists - 风舞九天现场 三 (Remix).mp3 filter=lfs diff=lfs merge=lfs -text
@@ -344,6 +344,24 @@ GitHub 网页创建 Remote Repo：
 - `Visibility Level` 选 `Public`；
 - 不要在这里创建 `README.md`，否则本地无法直接 `push`；
 
+## 存储库限制
+
+- [GitHub 官方关于存储库大小的限制](https://docs.github.com/zh/repositories/working-with-files/managing-large-files/about-large-files-on-github)
+
+### 单个文件
+
+- 推荐小于50MB，阻止超过100MB的单个文件。
+- 超过100MB的单个文件应使用 LFS。
+- 通过浏览器将文件添加到存储库，该文件不得大于 25 MiB。
+
+### 存储库
+
+- 理想情况下小于 1 GB，强烈建议小于 5 GB。
+
+### 历史经验
+
+- 单次推送总大小达到1.17GB
+
 ## 解决办法
 
 - 在 Linux 中从 GitHub 上下载特定文件
@@ -378,6 +396,10 @@ GitLab 网页创建 Remote Repo
 - `Project name` 和 `Project slug` 都填写小写连字符文件名；
 - `Visibility Level` 选 `Public`；
 - 不要在这里创建 `README.md`，否则本地无法直接 `push`；
+
+## 存储库限制
+
+- [GitLab 官方关于存储库大小的限制](https://docs.gitlab.com/ee/user/gitlab_com/#account-and-limit-settings)
 
 ## GitLab CI
 
