@@ -214,13 +214,13 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - 执行命令以后会打开安装向导
 - 正常安装 win11
 
-## Windows 激活
+# Windows 激活
 
-### 激活方式
+## 激活方式
 
 <img src="assets/image-20250108192657094.png" alt="image-20250108192657094" style="zoom:50%;" />
 
-### KMS 激活
+## KMS 激活
 
 - 此方法在虚拟机试验，安装的是官方 Win10 专业版
 - 以管理员身份运行 PowerShell，依次输入
@@ -231,12 +231,24 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     slmgr /ato
     ```
 
-### 验证激活
+## 验证激活
 
 - 以管理员身份运行 PowerShell
 
     ```shell
     slmgr /dli
+    ```
+
+## 查看当前系统密钥
+
+- 注册表查看以下目录：`计算机\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\SoftwareProtectionPlatform`
+
+- 右侧找到 `BackupProductKeyDefault`，在其后面的值就是当前系统的激活密钥。
+
+- 当前台式机 Win11 系统的密钥是：
+
+    ```
+    VK7JG-NPHTM-C97JM-9MPGT-3V66T
     ```
 
 # 还原点
@@ -417,23 +429,27 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Win + E `：打开 **快速访问**
 - `Win + I `：打开 **系统设置**
 - **窗口**
-  - `Win + D `：最小化所有窗口 / 恢复所有窗口
-  - `Win + ↑/↓ `：最大化 / 缩小窗口 
-  - `Win + ←/→` ：最大化到窗口左 / 右侧的屏幕上 
-  - `Alt + Tap`：显示当前桌面所有运行程序
+
+    - `Win + D `：最小化所有窗口 / 恢复所有窗口
+    - `Win + ↑/↓ `：最大化 / 缩小窗口 
+    - `Win + ←/→` ：最大化到窗口左 / 右侧的屏幕上 
+    - `Alt + Tap`：显示当前桌面所有运行程序
 
 - **桌面**
-  - `Win + Tab`：显示所有桌面
-  - `Win + Ctrl + D`：创建新桌面
-  - `Win + Ctrl + ←/→`：向左/右切换桌面
+
+    - `Win + Tab`：显示所有桌面
+    - `Win + Ctrl + D`：创建新桌面
+    - `Win + Ctrl + ←/→`：向左/右切换桌面
 
 - `Win + 加号或减号`：放大镜
 
 ## Ctrl 快捷键
 
 - **鼠标**
-  - `Ctrl + 鼠标滚轮` 改变文件和文件夹图标的大小和外观 
-  - `Ctrl + 单击` 点击超链接
+
+    - `Ctrl + 鼠标滚轮` 改变文件和文件夹图标的大小和外观 
+    - `Ctrl + 单击` 点击超链接
+
 - `Ctrl + N` 新建一个文档
 - `Ctrl + C` 复制
 - `Ctrl + X` 剪切
@@ -448,6 +464,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Ctrl + B` 将所选文本改为粗体
 - `Ctrl + I` 将所选文本改为斜体
 - `Ctrl + U` 为所选文本添加下划线
+- `Ctrl + Shift + Esc` 打开任务管理器
 
 ## 其它快捷键 
 
@@ -455,7 +472,8 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Back Space` 左删除
 - `Shift + Delete` 直接删除文件，而不是送入回收站
 - `Insert` 插入 / 取消插入
-  - 输入文本会逐渐覆盖光标右边文本
+
+    - 输入文本会逐渐覆盖光标右边文本
 
 # WSL
 
