@@ -132,6 +132,24 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
 	2. 选中包围内容，按 `Ctrl + Shift + A`
 	3. 在弹出的输入框中，输入想要使用的 Emmet 缩写，按 `Enter` 确认。
 
+# Google Browser
+
+## 管理搜索引擎
+
+- `设置` > `搜索引擎` > `管理搜索引擎和网站搜索`
+
+- 可以在浏览器地址栏输入关键词配合快捷键，实现在特定网站搜索
+
+    ```
+    g chrome使用技巧
+    ```
+
+## 快捷键
+
+- **`Cctl + Shift + B`**：显示 / 隐藏书签栏
+- **`F11`**：全屏
+- **`Ctrl + D`**：添加书签
+
 # Google Cloud
 
 ## 环境搭建
@@ -747,6 +765,18 @@ Web3（Web 3.0）是下一代互联网的愿景，旨在创建一个更加去中
    ```bash
    gcloud artifacts repositories delete hello-repo --location=us-central1 --project=opportune-study-413101
    ```
+
+# Google Search Engine
+
+Google 搜索引擎是全球最大的搜索引擎。
+
+## 其它技巧
+
+- 搜索特定网站的特定内容
+
+    ```
+    intitle:"google使用教程" site:youtube.com
+    ```
 
 # JSON
 
@@ -2050,3 +2080,46 @@ YAML 是 `YAML Ain't a Markup Language`（YAML 不是一种标记语言）的递
   - 字符（如冒号）后缩进 1 个空格；
 - `#` 表示注释
 - `-` 表示列表项
+
+# YouTube
+
+YouTube 是 Google 旗下的全球最大的视频网站。
+
+## 快捷键
+
+- **`Shift + ?`**：快捷键查询
+- **`F`**：全屏模式
+- **`I`**：迷你模式
+- **`C`**：字幕
+- **`M`**：静音
+- **``**：
+- **``**：
+
+## 插件
+
+### YouTube Summary with ChatGPT & Claude
+
+<img src="assets/image-20250118173655140.png" alt="image-20250118173655140" style="zoom:50%;" />
+
+- 获取逐字稿
+- 获取视频摘要并让 GPT 提取
+
+### Picture-in-Picture Extension (by Google)
+
+- 画中画：`Alt + P`
+
+### Screenshot YouTube
+
+- 截屏
+
+### PocketTube: Youtube Subscription Manager
+
+- 订阅分组
+
+## 其它技巧
+
+- 内容区域
+
+    <img src="assets/image-20250118170730363.png" alt="image-20250118170730363" style="zoom:50%;" />
+
+- 
