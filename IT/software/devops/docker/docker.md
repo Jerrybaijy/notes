@@ -188,7 +188,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   # 从容器提交创建镜像
   docker commit $CONTAINER_NAME $IMAGE_NAME[:$TAG]
   # 删除镜像
-  docke rmi $IMAGE_NAME[:$TAG]
+  docker rmi $IMAGE_NAME[:$TAG]
   # 删除全部镜像
   docker rmi -f $(docker images -aq)
   # 拉取镜像

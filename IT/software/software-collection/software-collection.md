@@ -40,6 +40,34 @@
 - 比如注册的邮箱账号是 example@2925.com。
 - 那么任何发送到 `example + 任意字符@2925.com` （如 example001@2925.com）的邮件，都会发送到 example@2925.com 邮箱里。
 
+# AnythingLLM
+
+**AnythingLLM** 是一个 **本地部署的知识库管理和 AI 助手**，可以让大语言模型（LLM）与本地文件、笔记、文档等数据进行交互。它支持 **Ollama、GPT-4、Claude** 等多个 LLM 作为后端，可以用来搭建一个 **私人 AI 助手**，从本地知识库中查找信息并回答问题。
+
+## 环境搭建
+
+- [官网下载并安装 AnythingLLM](https://anythingllm.com/desktop)
+
+- 确保 Ollama 和 Deepseek 已安装，添加模型（以 Deepseek 为例）
+
+    ![image-20250205161230183](assets/image-20250205161230183.png)
+
+- 拉倒最底部，点击 `Update Workspace`。
+
+# Deepseek
+
+## 环境搭建
+
+- 确保 Ollama 已安装
+
+- 安装 Deepseek
+
+    ```bash
+    ollama run deepseek-r1:1.5b
+    ```
+
+- 在 UI 界面添加 Deepseek 大模型，如 AnythingLLM 和 Page Assist。
+
 # [Emmet](https://emmet.io/)
 
 **Emmet** 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的标配工具。
@@ -1193,6 +1221,44 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 **Winstep Nexus** 是一款功能强大的桌面增强工具，主要用于创建和管理**动态桌面工具栏**（Dock）。相比传统的 RocketDock，Nexus 更允许被高度定制。
 
 - 不支持拖放图标
+
+# Ollama
+
+Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑或服务器上高效地运行**开源大语言模型（LLM）**，而无需依赖云计算。它支持**模型下载、运行、管理**，并提供了简洁的 API 供开发者集成。
+
+## 环境搭建
+
+[官网下载 Ollama 并安装](https://ollama.com)
+
+## 常用命令
+
+- **运行模型**
+
+    ```bash
+    # 运行模型
+    ollama run LLM
+    
+    # 列出已安装的模型
+    ollama list
+    
+    # 列出正在运行模型
+    ollama ps
+    
+    # 删除模型
+    ollama rm LLM
+    ```
+
+- **列出已下载的模型**
+
+    ```bash
+    ollama list
+    ```
+
+- **删除模型**
+
+    ```bash
+    ollama rm LLM
+    ```
 
 # Pandoc
 
