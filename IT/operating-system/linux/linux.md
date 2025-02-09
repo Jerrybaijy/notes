@@ -6,12 +6,34 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ### 在 Windows 中搭建
 
-1. 在 Windows 中搭建 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
-2. 接下来使用 WSL 方法。
-3. 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
-4. 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
-5. 安装完成后，点击启动，设置用户名和密码。
-	1. **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
+- 在 Windows 中搭建 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
+- 接下来使用 WSL 方法。
+- 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
+- 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
+- 安装完成后，点击启动，设置用户名和密码。
+  - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
+
+### 在裸机上安装
+
+- 以 Ubuntu 为例，并且抹掉整个硬盘。
+
+- [官网下载 Ubuntu Desktop 的 ISO 文件](https://ubuntu.com/download/desktop)。
+
+- [下载 Rufus，制作启动 U 盘](https://rufus.ie/zh/)。
+
+    <img src="assets/image-20250208202758425.png" alt="image-20250208202758425" style="zoom:50%;" />
+
+- 重启电脑，进入 U 盘启动。
+
+- 选择 `Try Or Install Ubuntu`，进入类似 PE 的 Ubuntu 系统。
+
+- 右下角双击 `Install Ubuntu` 图标。
+
+- 安装过程中会询问如何分区，如果想把整个磁盘作为 Ubantu 的运行磁盘，选择擦掉即可，安装程序会自动分区。
+
+- 安装完成后，手动重启，根据提示，应先拔掉 U 盘，然后按 `Enter` 重启。
+
+- 重启后即可进行初始设置。
 
 ## Zsh
 
@@ -284,11 +306,9 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ## 安装软件
 
-1. 下载 `deb` 安装包
+- 官网下载软件的 `.deb` 安装包
 
-2. 进入安装包目录
-
-3. 命令行安装
+- 终端进入 `下载` 目录
 
    ```bash
    sudo dpkg -i [软件名]
@@ -296,7 +316,22 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
    sudo dpkg -i google-chrome-stable_current_amd64.deb
    ```
 
-   
 
+## 更新下载源
 
+- 当执行 `sudo apt update` 时，提示以下信息
+
+    ```bash
+    E: 仓库 “file:/cdrom noble Release” 不再含有 Release 文件。
+    N: 无法安全地用该源进行更新，所以默认禁用该源。
+    N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。
+    ```
+
+- 错误信息表明，系统无法从指定的仓库（`file:/cdrom noble Release`）获取 `Release` 文件，因此该源被禁用。这通常发生在你尝试从一个无效或不可用的源更新软件包时。
+
+- 右键打开 `/etc/apt/sources.list` 文件，检查是否有指向 `file:/cdrom` 的源。
+
+- 如果发现 `file:/cdrom` 相关的行，可以将其注释掉（在行首添加 `#`）或删除，然后保存。
+
+- 重新更新。
 

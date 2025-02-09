@@ -6,117 +6,127 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 ### Windows 环境
 
-1. 确保 WSL 已安装，详见 [`Windows` > `WSL`](../../../operating-system/windows/windows.md#WSL)。
+- 确保 WSL 已安装，详见 [`Windows` > `WSL`](../../../operating-system/windows/windows.md#WSL)。
+- [官网下载 Docker Desktop](https://www.docker.com/products/docker-desktop/) 并安装。
+- 运行 Docker Desktop。
+- 验证安装。
 
-2. [官网下载 Docker Desktop](https://www.docker.com/products/docker-desktop/) 并安装。
+    ```bash
+    docker -v
+    ```
 
-3. 查看安装版本。
-
-	```bash
-	docker -v
-	```
-
-4. 运行 Docker Desktop。
-
-5. 接下来可以在终端中操作 Docker。
-
+- 接下来可以在终端中操作 Docker。
 
 ### Linux 环境
 
-1. 下载 Docker 安装脚本并执行：
+- 在 Linux 中，有两种方法安装 Docker
+    - 官方脚本自动安装
+    - 手动安装
+- 其中，官方脚本自动安装比较简单
 
-   ```bash
-   curl -fsSL https://get.docker.com -o get-docker.sh
-   sudo sh get-docker.sh
-   ```
+#### 官方脚本自动安装
 
-2. 将用户添加到 `docker` 用户组：
+- 下载 Docker 安装脚本并执行脚本
 
-   ```bash
-   sudo usermod -aG docker $USER
-   ```
+    ```bash
+    curl -fsSL https://get.docker.com -o get-docker.sh
+    sudo sh get-docker.sh
+    ```
 
-3. 退出当前终端并重新登录，或者执行下面的命令使用户组更改生效：
+- 验证安装
 
-   ```bash
-   newgrp docker
-   ```
+    ```bash
+    docker -v
+    ```
 
-4. 验证 Docker 安装：
+- 初始配置
 
-   ```bash
-   docker -v
-   ```
+#### 手动安装
 
-5. 启动 Docker
+- 这是除了官方脚本自动安装的手动安装方式
 
-   ```bash
-   sudo systemctl start docker
-   ```
+- 更新软件包列表
 
-6. 验证 Docker 服务状态
+    ```bash
+    sudo apt update
+    sudo apt upgrade -y
+    ```
 
-   ```bash
-   sudo systemctl status docker
-   ```
+- 安装依赖
 
-7. 将 Docker 添加到开机启动
+    ```bash
+    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+    ```
 
-   ```bash
-   sudo systemctl enable docker
-   ```
+- 添加 Docker 官方 GPG 密钥
 
-8. 登录
+    ```bash
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    ```
 
-   ```bash
-   docker login
-   ```
+- 添加 Docker 软件源
 
-### WSL Ubuntu
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    ```
 
-1. 更新软件包列表
+- 再次更新软件包列表，以确保新添加的软件源已经包含在软件包列表中
 
-   ```bash
-   sudo apt update
-   ```
+    ```bash
+    sudo apt update
+    ```
 
-2. 安装必要的软件包
+- 安装 Docker Engine
 
-   ```bash
-   sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-   ```
+    ```bash
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
+    ```
 
-3. 添加 Docker 的官方 GPG 密钥
+- 验证安装
 
-   ```bash
-   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-   ```
+    ```bash
+    docker -v
+    ```
 
-4. 添加 Docker APT 仓库
+- 初始配置
 
-   ```bash
-   echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-   ```
+#### 初始配置
 
-5. 再次更新软件包列表，以确保新添加的仓库已经包含在软件包列表中
+- 默认情况下，只有 `root` 用户或使用 `sudo` 才能运行 Docker 命令。如果你希望普通用户也能运行 Docker 命令，可以将当前用户加入 `docker` 组
 
-   ```bash
-   sudo apt update
-   ```
+    ```bash
+    sudo usermod -aG docker $USER
+    ```
 
-6. 安装 Docker Engine
+- 退出当前终端并重新登录，或者执行下面的命令使用户组更改生效
 
-   ```bash
-   sudo apt install -y docker-ce docker-ce-cli containerd.io
-   ```
+    ```bash
+    newgrp docker
+    ```
 
-7. 启动 Docker 服务
+- 安装完成后，Docker 服务会自动启动。如果没有启动，可以手动启动
 
-   ```bash
-   sudo systemctl status docker
-   ```
+    ```bash
+    sudo systemctl start docker
+    ```
 
-8. 其它同 Linux 安装
+- 查看 Docker 服务状态
+
+    ```bash
+    sudo systemctl status docker
+    ```
+
+- 将 Docker 添加到开机启动
+
+    ```bash
+    sudo systemctl enable docker
+    ```
+
+- 登录
+
+    ```bash
+    docker login
+    ```
 
 ## Docker Compose
 
