@@ -89,46 +89,6 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
   p10k configure
   ```
 
-## 系统管理
-
-- **用户**
-
-  ```bash
-  # 查看当前用户
-  whoami
-  # 创建用户
-  sudo adduser $NEW_USER
-  # 将用户添加到 sudo 组
-  sudo usermod -aG sudo $USER
-  # 切换用户
-  su - $USER
-  ```
-
-- **包管理器**
-
-  ```bash
-  # 升级默认包管理器 apt
-  sudo apt update
-  # 安装snap
-  sudo apt install snapd
-  ```
-
-- **命令行工具**
-
-  ```bash
-  # 安装 curl
-  sudo snap install curl
-  ```
-
-- **其它命令**
-
-  ```bash
-  # 添加到开机启动
-  sudo systemctl enable $APPICATION
-  # 以超级权限执行命令（让普通用户变成root用户）
-  sudo $COMMAND
-  ```
-
 ## 路径
 
 - **目录结构**：`/Home/USER_NAME/...`
@@ -139,6 +99,125 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
 
+# 包管理工具
+
+Linux 包管理工具用于简化和管理软件包的安装、更新、卸载和依赖管理。不同的 Linux 发行版采用不同的包管理工具和格式，但它们的目标是相同的，即简化系统和应用软件的管理。
+
+## apt
+
+**`apt`** 是基于 Debian 的包管理工具，用于管理 `.deb` 格式的包（如 Ubuntu、Debian 等系统）。
+
+Ubuntu 默认使用 `apt` 作为包管理工具。
+
+`apt` 常用命令包括：
+
+- `sudo apt update`：更新软件包列表。
+- `sudo apt upgrade`：升级已安装的包。
+- `sudo apt install <package>`：安装软件包。
+- `sudo apt remove <package>`：卸载软件包。
+
+## snap
+
+**`snap`** 也是一种包管理系统，专门用于管理和安装 **Snap 包**，它是一个跨发行版的包管理工具。
+
+## dpkg
+
+`dpkg` 是一个较底层的工具，`apt` 会调用 `dpkg` 来安装 `.deb` 包文件，`dpkg` 通常用来手动安装单个 `.deb` 包，但不管理依赖关系。
+
+## 其它
+
+# 系统管理
+
+## 服务管理 systemctl
+
+- 开机启动
+
+    ```bash
+    # 设置开机启动
+    sudo systemctl enable $APP
+    
+    # 禁用开机启动
+    sudo systemctl disable $APP
+    
+    # 查看开机启动
+    sudo systemctl is-enabled $APP
+    ```
+
+- 运行和停止
+
+    ```bash
+    # 运行应用
+    sudo systemctl start $APP
+    
+    # 停止应用
+    sudo systemctl stop $APP
+    
+    # 查看应用状态
+    sudo systemctl status $APP
+    ```
+
+- 其它服务管理
+
+    ```bash
+    # 以超级权限执行命令（让普通用户变成root用户）
+    sudo $COMMAND
+    ```
+
+## 用户管理 usermod
+
+- 修改用户组
+
+    ```bash
+    sudo usermod -aG docker jerry
+    ```
+
+    - 默认情况下，只有 `root` 用户或使用 `sudo` 前缀才能运行某些命令，如 `docker`。将当前用户加入 `docker` 组以后，可以不使用 `sudo` 来执行 Docker 命令。
+    - 修改用户组以后，需退出当前终端并注销系统重新登录，使用户组生效。如果不想注销，可以直接在终端中使用 `newgrp docker` 命令，这个命令会让你切换到新的组，并使更改立即生效。但关闭当前终端再进入时，还是会失效，除非注销重新登录。
+
+- 其它用户管理命令
+
+    ```bash
+    # 查看当前用户
+    whoami
+    
+    # 创建用户
+    sudo adduser $NEW_USER
+    
+    # 切换用户
+    su - $USER
+    ```
+
+# Curl
+
+`curl` 是一个用于与网络服务器进行数据交换的命令行工具。
+
+## 下载文件
+
+- 下载并显示文件内容
+
+    ```bash
+    curl http://example.com/file.txt
+    ```
+
+- 下载的文件，并按原文件名保存
+
+    ```bash
+    curl -O http://example.com/file.txt
+    ```
+
+- 下载的文件，并按指定路径和文件名保存
+
+    ```bash
+    curl -o myfile.txt http://example.com/file.txt
+    ```
+
+## 上传文件
+
+- 上传文件
+
+    ```bash
+    curl -X POST -F "file=@myfile.txt" http://example.com/upload
+    ```
 
 # 文件
 
@@ -295,7 +374,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 打开 sudoers 文件：`sudo visudo`
 
-- 找到`Defaults   env_reset`行，添加`pwfeedback`，如下
+- 找到 `Defaults   env_reset` 行，添加 `pwfeedback`，如下
 
   ```bash
   Defaults env_reset,pwfeedback
