@@ -35,6 +35,15 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 重启后即可进行初始设置。
 
+### 新系统配置
+
+- Vmware Tools
+- 系统更新
+- 系统设置
+    - Dock 栏：图标，底部，最小化
+    - 终端光标
+- VPN，Chrome
+
 ## Zsh
 
 - Zsh（Z Shell）是一种命令行解释器，也是一种交互式的 Unix shell，它是 Bash 的替代品。
@@ -89,6 +98,55 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
   p10k configure
   ```
 
+## 安装软件
+
+- 优先使用 `apt` 或 `snap` 在线安装
+
+- 其次官网下载 `.deb` 包至本地，使用 `apt` 安装
+
+- 再次官网下载官方脚本至本地，使用 `sh` 运行安装脚本
+
+- 再次，手动安装，以 Docke 为例
+
+    - 更新软件包列表
+
+        ```bash
+        sudo apt update
+        sudo apt upgrade -y
+        ```
+
+    - 安装依赖
+
+        ```bash
+        sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+        ```
+
+    - 添加 Docker 官方 GPG 密钥
+
+        ```bash
+        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+        ```
+
+    - 添加 Docker 软件源
+
+        ```bash
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+        ```
+
+    - 再次更新软件包列表，以确保新添加的 Docker 软件源已经包含在软件包列表中
+
+        ```bash
+        sudo apt update
+        ```
+
+    - 安装 Docker Engine
+
+        ```bash
+        sudo apt install -y docker-ce docker-ce-cli containerd.io
+        ```
+
+- 最后，使用 ``dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
+
 ## 路径
 
 - **目录结构**：`/Home/USER_NAME/...`
@@ -99,32 +157,111 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
 
+# 发行版
+
+
+
 # 包管理工具
 
 Linux 包管理工具用于简化和管理软件包的安装、更新、卸载和依赖管理。不同的 Linux 发行版采用不同的包管理工具和格式，但它们的目标是相同的，即简化系统和应用软件的管理。
 
+- 包管理工具
+    - 分发行版默认包管理工具，如 Ubuntu 的 `apt`
+    - 跨发行版包管理工具，如 `snap`
+
 ## apt
 
-**`apt`** 是基于 Debian 的包管理工具，用于管理 `.deb` 格式的包（如 Ubuntu、Debian 等系统）。
+`apt` 是一个用于在 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的上层工具，它是 `dpkg` 的前端工具，简化了软件包的安装、升级、删除等操作。
 
-Ubuntu 默认使用 `apt` 作为包管理工具。
+- **特点**：
 
-`apt` 常用命令包括：
+    - **自动处理依赖**：安装本地 `.deb` 包时，`apt` 会从系统已配置的软件源（包括 `.deb` 包内自动添加的源）下载并安装缺失的依赖。
+    - **触发软件源更新**：如果 `.deb` 包内嵌了软件源配置（如 Chrome 的包），`apt` 会识别并更新源信息。
 
-- `sudo apt update`：更新软件包列表。
-- `sudo apt upgrade`：升级已安装的包。
-- `sudo apt install <package>`：安装软件包。
-- `sudo apt remove <package>`：卸载软件包。
+- **命令**
 
-## snap
-
-**`snap`** 也是一种包管理系统，专门用于管理和安装 **Snap 包**，它是一个跨发行版的包管理工具。
+    ```bash
+    # 更新软件包列表
+    sudo apt update
+    
+    # 升级所有软件包
+    sudo apt upgrade
+    # 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
+    sudo apt full-upgrade
+    
+    # 安装新软件包
+    sudo apt install <package_name>
+    # 安装本地软件包
+    sudo apt install path/to/package/<package_name>
+    
+    # 删除已安装的软件包（保留配置文件）
+    sudo apt remove <package_name>
+    # 删除已安装的软件包（包括配置文件）
+    sudo apt purge <package_name>
+    # 删除不再需要的依赖包
+    sudo apt autoremove
+    
+    # 查看已安装的软件包
+    apt list --installed
+    
+    # 搜索软件包
+    apt search <package_name>
+    
+    # 查看软件包信息
+    apt show <package_name>
+    ```
 
 ## dpkg
 
-`dpkg` 是一个较底层的工具，`apt` 会调用 `dpkg` 来安装 `.deb` 包文件，`dpkg` 通常用来手动安装单个 `.deb` 包，但不管理依赖关系。
+`dpkg` 是 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的底层工具。它用于安装、卸载、查询和管理 `.deb` 格式的包文件。`dpkg` 是一种更直接、低层次的工具，通常在没有网络连接的情况下使用，因为它不处理软件包的依赖关系（与 `apt` 不同，`apt` 会自动解决依赖问题）。
 
-## 其它
+- **特点**
+
+    - **不处理依赖**：仅安装当前 `.deb` 包，如果缺少依赖会报错，并提示需要运行 `sudo apt install -f` 修复依赖，但不会自动安装依赖。
+    - **不修改软件源**：即使 `.deb` 包内嵌了软件源配置（如 Chrome 的 `.deb` 包），`dpkg` 不会主动触发 `apt` 更新。
+
+- **适合场景**
+
+    - 手动调试依赖或需要直接操作包文件时
+
+- **命令**
+
+    ```bash
+    # 安装 .deb 包（不处理依赖和软件源）
+    sudo dpkg -i <package_name.deb>
+    ```
+
+## apt-get
+
+
+- `apt-get` 是 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的命令行工具，是 `apt` 系列命令中的一个较为传统的工具。设计目标是**稳定性和脚本兼容性**，语法较为严格。它用于从软件源安装、升级、删除和管理 `.deb` 包，并且能够处理包的依赖关系，通常与 `dpkg` 配合使用。
+- `apt-get` 的输出格式稳定，适合脚本解析（如 CI/CD 流水线）。
+- `apt-get` vs `apt`
+    - **`apt-get`** 提供更强的控制，适合脚本和系统管理员使用。
+    - **`apt`** 是更现代化、更面向用户的工具，语法更简洁，通常在日常操作中推荐使用。
+
+## snap
+
+`Snap` 是由 Canonical（Ubuntu 的开发公司）开发的一种包管理系统，它使得软件可以以一种独立于发行版的格式进行分发和安装。`Snap` 包含所有运行该应用所需的依赖，因此它的优势之一是跨发行版的兼容性。无论你使用的是 Ubuntu、Debian、Fedora 还是其他 Linux 发行版，都可以使用 `snap` 安装同样的软件。
+
+### `Snap` 的特点
+
+- **跨平台兼容性**：`Snap` 包可以在多种 Linux 发行版上运行，避免了不同 Linux 系统之间依赖版本差异的兼容性问题。
+- **封装依赖**：`Snap` 包包括了所有必需的依赖库，这意味着你不必担心缺少依赖库或版本冲突的问题。应用和它所需的所有资源被打包在一起，简化了安装过程。
+- **自动更新**：Snap 包会自动更新，不需要用户干预。每次启动应用时，Snap 会检查是否有新版本，并自动安装更新。
+- **沙箱隔离**：`Snap` 包在沙箱环境中运行，相较于传统的 `.deb` 包或 `.rpm` 包，它为应用提供了更多的安全性和隔离性。应用无法直接访问系统的其他部分，除非明确获得权限。
+
+### Snap 的缺点
+
+- **性能问题**：由于 Snap 包是封装了所有依赖的，这可能导致比传统包（如 `.deb` 或 `.rpm`）更大的磁盘占用，并且启动时间可能稍慢。
+- **沙箱限制**：虽然沙箱环境提供了安全性，但它也可能对某些应用功能产生限制，例如无法与系统的其他部分完全交互。
+- **自动更新**：虽然自动更新是方便的，但有些用户可能不喜欢不受控制的自动更新，尤其是在带宽有限的情况下。
+- **支持度不如传统包**：尽管 Snap 得到了广泛的支持，但一些发行版的用户并不完全接受 Snap，尤其是那些有自定义软件包管理系统的发行版，如 Fedora 或 Arch Linux。
+
+### Snap 与传统包管理工具的比较
+
+- **APT / DPKG (Debian / Ubuntu)**：这些传统的包管理工具更依赖于操作系统的软件仓库和软件源，包通常不包含依赖，依赖库必须单独处理。
+- **Snap**：相比之下，Snap 包包含所有必需的依赖，并且是跨发行版的兼容格式。Snap 的安装、更新和沙箱化提供了更高的便捷性和安全性，但可能在性能上有所牺牲。
 
 # 系统管理
 
@@ -186,6 +323,10 @@ Ubuntu 默认使用 `apt` 作为包管理工具。
     # 切换用户
     su - $USER
     ```
+
+# Ubuntu
+
+## Ubuntu 包管理工
 
 # Curl
 
@@ -366,6 +507,29 @@ Ubuntu 默认使用 `apt` 作为包管理工具。
   cat /tmp/html.py | grep jquery-1.11.3.min.js
   ```
 
+## tldr
+
+`tldr` 是一个简化的命令行工具，名字来源于 "Too Long; Didn't Read"，旨在提供比传统 `man` 页面更简洁、更实用的命令帮助信息。
+
+- 安装
+
+    ```bash
+    sudo apt update && sudo apt full-upgrade
+    sudo apt install tldr
+    ```
+
+- 升级
+
+    ```bash
+    tldr --update
+    ```
+
+- 使用（以 `apt` 为例）
+
+    ```bash
+    tldr apt
+    ```
+
 # 解决方法
 
 ## 密码反馈
@@ -374,7 +538,7 @@ Ubuntu 默认使用 `apt` 作为包管理工具。
 
 - 打开 sudoers 文件：`sudo visudo`
 
-- 找到 `Defaults   env_reset` 行，添加 `pwfeedback`，如下
+- 找到 `Defaults   env_reset` 行，添加 `pwfeedback`，如下
 
   ```bash
   Defaults env_reset,pwfeedback
@@ -414,3 +578,14 @@ Ubuntu 默认使用 `apt` 作为包管理工具。
 
 - 重新更新。
 
+## Ubuntu Dock 栏最小化
+
+- 使用 Ubuntu LTS 时，点击 Dock 栏上已打开的应用图标时，无法最小化
+
+- 终端运行如下代码
+
+    ```bash
+    gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+    ```
+
+    

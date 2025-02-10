@@ -87,47 +87,6 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - 初始配置详见包管理器安装
 
-#### 手动安装
-
-- 更新软件包列表
-
-    ```bash
-    sudo apt update
-    sudo apt upgrade -y
-    ```
-
-- 安装依赖
-
-    ```bash
-    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-    ```
-
-- 添加 Docker 官方 GPG 密钥
-
-    ```bash
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-    ```
-
-- 添加 Docker 软件源
-
-    ```bash
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-    ```
-
-- 再次更新软件包列表，以确保新添加的软件源已经包含在软件包列表中
-
-    ```bash
-    sudo apt update
-    ```
-
-- 安装 Docker Engine
-
-    ```bash
-    sudo apt install -y docker-ce docker-ce-cli containerd.io
-    ```
-
-- 初始配置详见包管理器安装
-
 ## Docker Compose
 
 - Docker Compose 是一个用于管理 Docker 容器的工具。
