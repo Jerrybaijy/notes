@@ -145,7 +145,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
         sudo apt install -y docker-ce docker-ce-cli containerd.io
         ```
 
-- 最后，使用 ``dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
+- 最后，使用 ``dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
 
 ## 路径
 
@@ -156,6 +156,13 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
   - 上一次的工作目录：`cd -`
 
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
+
+## 快捷键
+
+- `Win`：显示所有任务窗口
+- `双击 Win`：显示所有程序
+- `Ctrl + Alt + T`：打开终端
+- `Win + Space`：切换输入法
 
 # 发行版
 
