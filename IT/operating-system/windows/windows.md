@@ -143,7 +143,8 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - Windows10家庭版升级到Windows10专业版
 
   - 开始开始—设置—更新和安全—激活—更改产品秘钥—输入：
-  - TPYNC-4J6KF-4B4GP-2HD89-7XMP6/W269N-WFGWX-YVC9B-4J6C9-T83GX
+  - TPYNC-4J6KF-4B4GP-2HD89-7XMP6
+  - W269N-WFGWX-YVC9B-4J6C9-T83GX
   - 更新至专业版
   - 然后使用激活工具激活
 
@@ -151,7 +152,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
   此种方法为官方升级方案，新Windows10系统为正版Windows10系统。
 
-  新系统想用什么版本（比如旗舰版），原Windows7系统九必须为哪个版本，并且激活期限与原系统相同。
+  新系统想用什么版本（比如旗舰版），原Windows7系统就必须为哪个版本，并且激活期限与原系统相同。
 
   微软官网下载“Windows10更新助手”，按照引导更新系统即可。
 
@@ -247,7 +248,11 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 ## Win 11 系统
 
-- 当 win 10 想升级 win 11 时，由于主板不支持 TPM 2.0，不符合安装 win 11 最低要求。
+当主板不支持 TPM 2.0时，不符合安装 win 11 最低要求，有两种方法解决。
+
+### 命令法
+
+- 当 Win 10 想升级 Win 11 时，使用此种方法。
 - 进入[下载 Windows 11](https://www.microsoft.com/zh-cn/software-download/windows11?774b232c-a48d-452a-a8fb-3906dc168d5c=True&4cd9df4f-deef-4431-9497-a04303f34986=True&9d47a9e1-e53b-49a1-92ca-a647d62dc410=True)。
 - 下载 Windows 11 安装媒体
 
@@ -267,6 +272,16 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 - 执行命令以后会打开安装向导
 - 正常安装 win11
+
+### Rufus 法
+
+- 当想全新安装 Win 11 时，使用此种方法。
+
+- 使用 Rufus 工具制作启动 U 盘时，绕过 TPM 2.0 检查，详见 Rufus。
+
+    <img src="assets/image-20250213133918190.png" alt="image-20250213133918190" style="zoom:50%;" />
+
+- 使用启动 U 盘安装全新 Win 11。
 
 # Windows 激活
 
@@ -648,3 +663,8 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     ```shell
     sfc /scannow
     ```
+
+## 查看系统引导方式
+
+- `Win + R` 输入 `msinfo32` 按 `Enter` 打开系统信息。
+- `BIOS 模式`：`UEFI` / `传统`
