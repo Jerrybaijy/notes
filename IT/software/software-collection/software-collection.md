@@ -68,6 +68,15 @@
 
 - 在 UI 界面添加 Deepseek 大模型，如 AnythingLLM 和 Page Assist。
 
+# DiskGenius
+
+DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
+
+- 磁盘分区
+- 数据恢复
+- 磁盘修复
+- 磁盘克隆与恢复
+
 # [Emmet](https://emmet.io/)
 
 **Emmet** 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的标配工具。
@@ -1460,13 +1469,12 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 # Rufus
 
-Rufus 是一款轻量级、开源的工具，主要用于制作启动 U 盘。它可以帮助用户将ISO镜像文件（例如操作系统安装盘镜像）写入 U 盘，创建可启动的 USB 驱动器。
+Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像文件（例如操作系统安装盘镜像）写入 U 盘，制作启动 U 盘，类似与 Windows 的 U 盘介质。
 
 ## 特点
 
-- 个性定制启动 U 盘
 - 按选项安装 Windows
-- 无 PE 系统
+- 无 PE 启动 U 盘
 
 ## 功能说明
 
@@ -1501,7 +1509,7 @@ Rufus 是一款轻量级、开源的工具，主要用于制作启动 U 盘。�
 
         <img src="assets/image-20250213133434262.png" alt="image-20250213133434262" style="zoom:50%;" />
 
-    - 如果不是老电脑，`分区类型` 和 `目标系统类型` 按工具默认选择即可
+    - 如果不是老电脑，`分区类型` 和 `目标系统类型` 按工具默认选择即可
 
     - 点击 `开始`
 
@@ -1511,7 +1519,7 @@ Rufus 是一款轻量级、开源的工具，主要用于制作启动 U 盘。�
 
 - Rufus 会将 ISO 镜像文件写入 U 盘并创建启动盘。
 
-- 将 U 盘插入待做系统的电脑，从 U 盘启动做系统（注意此工具不是 PE，只能像官网安装介质那样做系统）。
+- 将 U 盘插入待做系统的电脑，从 U 盘启动做系统（注意此工具不是 PE，只能像 Windows 官网安装介质那样做系统）。
 
 # Shell Script
 
@@ -1709,11 +1717,32 @@ Rufus 是一款轻量级、开源的工具，主要用于制作启动 U 盘。�
 
 **TranslucentTB** 是一款免费的 Windows 桌面工具，主要用于自定义 Windows 任务栏的外观，特别是实现任务栏的透明效果。
 
+# Ventoy
+
+## Ventoy 启动菜单
+
+在使用 **Ventoy** 时，选择了一个启动项后进入了如下的菜单：
+
+- **Boot in normal mode**：标准启动模式，适用于大多数操作系统和工具。
+- **Boot in wimboot mode**：wimboot 模式，用于从 Windows WIM 文件启动，适用于 Windows PE 或安装镜像。
+- **Boot in memdisk mode**：memdisk 模式，将 ISO 文件加载到内存中启动，适用于旧版操作系统或某些特殊工具。
+- **File checksum**：文件校验，用于验证 ISO 文件的完整性，确保文件没有损坏。
+- **Return to previous menu**：返回到主菜单或前一个菜单，供你重新选择启动选项。
+
 # VMware
 
 ## VMware 基础
 
-### 环境搭建
+
+### 名词解释
+
+- 宿主机：指电脑正常的系统
+
+- 客户机：指虚拟的系统
+
+- 虚拟机：指 `Vmware workstation`
+
+## 环境搭建
 
 - 官网下载 `Vmware workstation` 
 - 以下是从网上找的 VMware Workstation Pro 密钥
@@ -1723,86 +1752,81 @@ Rufus 是一款轻量级、开源的工具，主要用于制作启动 U 盘。�
 
 - 设置客户机存储位置：`编辑` > `首选项` > `虚拟机默认存储位置`
 
-
-### 名词解释
-
-- 主机：指电脑正常的系统
-
-- 客户机：指虚拟的系统
-
-- 虚拟机：指 `Vmware workstation`
+## 创建虚拟机
 
 ### 创建虚拟机
 
-#### CD 创建
+- `创建虚拟机` > `典型` > `稍后安装操作系统`
 
-- 创建虚拟机 > 典型 > 安装程序光盘映像文件
+    <img src="assets/image-20250215041011255.png" alt="image-20250215041011255" style="zoom: 50%;" />
 
-    ![image-20231215171316269](assets/image-20231215171316269.png)
+- 这里即使是 Win 11 也不要选择 Win 11，会给 U 盘的使用造成麻烦。
+
+    <img src="assets/image-20250215041254403.png" alt="image-20250215041254403" style="zoom: 50%;" />
 
 - 更改虚拟系统显示名称和存储位置
 
-    ![image-20231215171623920](assets/image-20231215171623920.png)
+    <img src="assets/image-20231215171623920.png" alt="image-20231215171623920" style="zoom:50%;" />
 
-- 配置磁盘
+- 配置磁盘空间（后期可增容）
 
-    ![image-20231215171802761](assets/image-20231215171802761.png)
+    <img src="assets/image-20231215171802761.png" alt="image-20231215171802761" style="zoom: 67%;" />
 
-- 运行已创建的客户机安装系统
-- 刚进入时显示黑屏正常，等几分钟
+- 如果最初选择了 `安装程序光盘映像文件`，在此处先取消勾选 `创建后开启此虚拟机`。
 
-    - 或者单击客户机屏幕，按一下 `ESC` 键选择
-    - 注意这个时间很短，要迅速
+    <img src="assets/image-20250215035158300.png" alt="image-20250215035158300" style="zoom:50%;" />
 
-- 选择从哪进系统，这里选择从 `CD`，回车确认
+- 点击 `完成`，至此完成客户机的创建。
 
-    ![image-20231215172305532](assets/image-20231215172305532.png)
+- 使用 CD 或启动 U 盘安装系统。
 
-- 确认以后还会进入黑屏，有提示字符，按任意键继续安装
-- 具体安装过程详见《Windows 笔记》
-- 系统安装完毕以后需要把 `CD` 切换至物理驱动器的“自动选择”
-- 安装 VMware Tools
-- 共享主机文件夹
+- 安装 VMware Tools，重启客户机生效。
 
-#### CD创建（后安装）
+### CD 安装系统
 
-- 此方法是后配置 ISO 文件
+- **挂载 ISO 镜像文件**：`编辑虚拟机设置` > `硬件` > `CD/DVD`
 
-    - 不配置 SCSI 的方式还没验证
+    <img src="assets/image-20250215043201031.png" alt="image-20250215043201031" style="zoom:50%;" />
 
-- 创建虚拟机 > 典型 > 稍后安装操作系统 > 更改虚拟系统显示名称和存储位置 > 直到完成
-- 修改CD路径
+- 进入固件选择 CD 启动
 
-    <img src="assets/image-20231213000425649.png" alt="image-20231213000425649" style="zoom:67%;" />
+    - 下拉 `电源` 图标 > `打开电源时进入固件`
 
-- 其余同先安装
+    - 选择代表 CD 的选项启动进入 CD 启动
 
-#### U 盘创建
+        ![image-20231215172305532](assets/image-20231215172305532.png)
 
-- 尽量不要使用 U 盘做系统，因为启动 U 盘会捆绑大量垃圾软件
-- `创建虚拟机` > `典型` > `稍后安装操作系统` > `更改虚拟系统显示名称和存储位置` > 一直到完成
-- 添加 U 盘
+- 进入 CD 启动后，需要按任意键确认，否则会返回固件页面。
 
-    - `编辑虚拟机` > `添加硬盘` > 选 `NVMe` > 使用物理磁盘 > 设备选最后一个
-    - 如果使用物理磁盘报错，找到 VMware 安装目录，右键属性，在 `兼容` 窗口勾选 `以管理员身份运行此程序`
+    <img src="assets/image-20250215035649268.png" alt="image-20250215035649268" style="zoom:50%;" />
+
+- 正常分区、安装系统
+
+- 系统安装完毕以后，需要关闭客户机，然后在设置里把 `CD` 切换至 `使用物理驱动器` > `自动选择`。
+
+### U 盘安装系统
+
+- **挂载 U 盘**
+
+    - `编辑虚拟机设置` > `添加硬盘` > `NVMe` > `使用物理磁盘` > 设备选最后一个
+
+        <img src="assets/image-20250215044323641.png" alt="image-20250215044323641" style="zoom:50%;" />
+
+    - 如果使用物理磁盘报错，找到 `VMware.exe` 文件，右键属性，在 `兼容` 窗口勾选 `以管理员身份运行此程序`
+
     - `新添加的 U 盘` > `高级` > 勾选 `独立`，这样 U 盘不会被快照还原
-    - 注意，待做完系统应该把新添加的硬盘删除，否则会影响其它虚拟机
 
-- 进入 BIOS 选择 PE
+- 进入 BIOS 选择 U 盘启动
 
     - `菜单栏` > `虚拟机` > `电源` > 打开电源时进入固件
-    - 选择代表 U 盘的选项启动进入 PE
+    - 选择代表 U 盘的选项启动进入 U 盘启动
 
-- 分区
+- 正常分区、安装系统
 
-    - 进入 PE 以后，使用分区软件分区
+- 系统安装完毕以后，需要关闭客户机，然后在设置里把新添加的硬盘移除。
 
-- 做系统
 
-    - 使用 `老毛桃一键装机`
-    - 注意选择目标系统盘和系统 ISO 镜像
-
-### VMware Tools
+## VMware Tools
 
 VMware Tools 是 Vmware workstation 的一组实用程序：
 
@@ -1813,14 +1837,14 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 - **性能增强**：包括磁盘和网络性能优化，提升虚拟机的整体运行效率。
 - **虚拟机管理**：提供关机、重启和自动恢复等操作的改进，使虚拟机管理更加便捷。
 
-#### Windows 客户机安装 VMware Tools
+### 在 Windows 中安装
 
 - Windows 客户机系统已安装完成
-- 点击虚拟机界面的 `虚拟机`，安装 VMware Tools，下方有提示
+- **挂载光驱**：点击虚拟机界面的 `虚拟机`，安装 VMware Tools，下方有提示
 - 然后进客户机，我的电脑，光盘那个磁盘就是，双击安装
 - 安装完成弹出 CD
 
-#### Mac 客户机安装 VMware Tools
+### 在 Mac OS 中安装
 
 - Mac 客户机系统已安装完成
 
@@ -1836,7 +1860,57 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
     <img src="assets/image-20250114175502021.png" alt="image-20250114175502021" style="zoom:50%;" />
 
-### 共享主机文件
+### 在 Ubuntu 中安装
+
+#### open-vm-tools
+
+- 此种方法通过 apt 安装 open-vm-tools，方法简单，但功能受限。
+
+- 安装 VMware 推荐的 `open-vm-tools`
+
+    ```bash
+    sudo apt update
+    sudo apt install open-vm-tools open-vm-tools-desktop -y
+    ```
+
+- 重启系统生效
+
+#### Tar 包
+
+- 此种方法类似在 Windows 客户机中安装，方法复杂，但功能更完整。
+
+- **挂载光驱**：点击虚拟机界面的 `虚拟机`，安装 VMware Tools
+
+- **安装依赖**
+
+    ```bash
+    sudo apt update
+    sudo apt install build-essential open-vm-tools-desktop linux-headers-$(uname -r)
+    ```
+
+- **解压 VMware Tools 安装包**
+
+    ```bash
+    cd /media/jerry/VMware\ Tools
+    
+    # 注意此处的 -C 为大写
+    tar -zxvf VMwareTools-10.3.23-16594550.tar.gz -C /tmp
+    ```
+
+- **运行安装脚本**
+
+    ```bash
+    cd /tmp/vmware-tools-distrib
+    sudo ./vmware-install.pl -d
+    ```
+
+- **重启系统**
+
+    ```bash
+    sudo reboot
+    ```
+
+## 共享宿主机文件
 
 - 步骤如图
 
@@ -1846,12 +1920,12 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
     <img src="assets/image-20231124132638232.png" alt="image-20231124132638232" style="zoom:50%;" />
 
-- 确定直到完成，最后启动虚拟机在我的电脑里能看见（前提是必须安装vm tools）。
-- 设置完以后，为了防止客户机污染主机，应该在虚拟机将共享权限设为只读
+- 确定直到完成，最后启动虚拟机在我的电脑里能看见（前提是必须安装 VMware Tools）。
+- 设置完以后，为了防止客户机污染主机，应该在虚拟机将共享权限设为只读。
 
     <img src="assets/image-20231212235628124.png" alt="image-20231212235628124" style="zoom:50%;" />
 
-## Mac OS 虚拟系统
+## 安装 Mac OS
 
 - 由于 VMware 不自带 Mac OS 系统选项，所以先要添加 `unlocker.exe` 文件。
 
@@ -1886,7 +1960,7 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 - 如果网络配置成功，则系统可以继续配置，直到进入系统正式界面。
 
-- 安装 VMware Tools，详见 [`Mac 客户机安装 VMware Tools`](#Mac 客户机安装 VMware Tools)。
+- 安装 VMware Tools。
 
 
 # VS Code

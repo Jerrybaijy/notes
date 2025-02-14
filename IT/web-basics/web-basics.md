@@ -451,6 +451,16 @@
 
 **GUI工具**（Graphical User Interface Tools）指的是图形用户界面工具，如 `Navicat`。
 
+# 分区类型
+
+# 安装系统
+
+## BIOS 设置
+
+## 硬盘分区
+
+## 启动 U 盘安装系统
+
 # 解决办法
 
 ## 复制网页

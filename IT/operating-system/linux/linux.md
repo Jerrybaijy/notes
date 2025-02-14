@@ -4,7 +4,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ## 环境搭建
 
-### 在 Windows 中搭建
+### 在 Windows 中安装
 
 - 在 Windows 中搭建 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
 - 接下来使用 WSL 方法。
@@ -13,27 +13,42 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 安装完成后，点击启动，设置用户名和密码。
   - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
-### 在裸机上安装
+### 在物理机上安装
 
-- 以 Ubuntu 为例，并且抹掉整个硬盘。
+- [官网下载 Ubuntu Desktop 的 ISO 文件](https://ubuntu.com/download/desktop)，存入 Ventoy 启动 U 盘。
 
-- [官网下载 Ubuntu Desktop 的 ISO 文件](https://ubuntu.com/download/desktop)。
-
-- [下载 Rufus，制作启动 U 盘](https://rufus.ie/zh/)。
-
-    <img src="assets/image-20250208202758425.png" alt="image-20250208202758425" style="zoom:50%;" />
-
-- 重启电脑，进入 U 盘启动。
+- 从 BIOS 进入 U 盘启动，选择 Ubuntu。
 
 - 选择 `Try Or Install Ubuntu`，进入类似 PE 的 Ubuntu 系统。
 
-- 右下角双击 `Install Ubuntu` 图标。
+- 右下角双击 `Install Ubuntu` 图标开始安装。
 
-- 安装过程中会询问如何分区，如果想把整个磁盘作为 Ubantu 的运行磁盘，选择擦掉即可，安装程序会自动分区。
+- 安装过程中会询问如何分区
+
+    - 如果想把整个磁盘作为 Ubuntu 的运行磁盘，选择 `擦除磁盘并安装 Ubuntu` 即可，安装程序会自动修改分区类型和重新分区。
+
+        <img src="assets/image-20250214220744413.png" alt="image-20250214220744413" style="zoom:50%;" />
+
+    - 如果是双系统
+
+        - 提前使用 `磁盘管理工具` 或 `DiskGenius` 准备一个空分区供 Ubuntu 使用
+        - 选择 `在 Windows Boot Manager 中安装 Ubuntu`
+
+            <img src="assets/image-20250214220639232.png" alt="image-20250214220639232" style="zoom:50%;" />
+
+        - 根据磁盘容量选择分区，并将分区拉满
+
+            <img src="assets/image-20250214221137495.png" alt="image-20250214221137495" style="zoom:50%;" />
+
+- 正常下一步设置其他项，直到安装
+
+    <img src="assets/image-20250214221957424.png" alt="image-20250214221957424" style="zoom:50%;" />
 
 - 安装完成后，手动重启，根据提示，应先拔掉 U 盘，然后按 `Enter` 重启。
 
 - 重启后即可进行初始设置。
+
+- 如果是双系统，可以在 Ubuntu 安装完成后，进行引导设置，详见 `Linux > 系统引导`。
 
 ### 新系统配置
 
@@ -149,6 +164,8 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ## 路径
 
+### 常用路径
+
 - **目录结构**：`/Home/USER_NAME/...`
 - **路径分隔符**：正斜杠 `/`
 - **Linux 特有路径（区别于 Windows）**
@@ -156,6 +173,33 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
   - 上一次的工作目录：`cd -`
 
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
+
+### 路径转义
+
+- 在 Linux 中，空格是一个特殊字符，通常用来分隔不同的命令或参数。如果路径中包含空格，你需要使用转义字符 `\` 或者引号来避免错误。例如进入 `VMware Tools` 目录。
+
+- 使用 `\` 转义
+
+    ```bash
+    cd /media/jerry/VMware\ Tools
+    ```
+
+- 使用 `'` 转义
+
+    ```bash
+    cd '/media/jerry/VMware Tools'
+    ```
+
+- 使用 `"` 转义
+
+    ```bash
+    cd "/media/jerry/VMware Tools"
+    ```
+
+- 关于 `'` 和 `"` 的区别
+
+    - `'` 会**完全保留**其中的字符，不进行任何特殊的处理或扩展（例如，变量不会被展开）。
+    - `"`  会允许其中的变量进行扩展和某些特殊字符的处理（例如 `$HOME` 会被展开为实际路径）。
 
 ## 快捷键
 
@@ -331,9 +375,74 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
     su - $USER
     ```
 
-# Ubuntu
+# GRUB 引导加载程序
 
-## Ubuntu 包管理工
+## 基础
+
+**GRUB**（Grand Unified Bootloader）是一个强大的引导加载程序，主要用于 Linux 系统中，但它也支持其他操作系统（如 Windows）。它的主要作用是启动操作系统，在计算机开机时加载操作系统的内核。GRUB 是一种多重引导加载程序，允许计算机在启动时选择加载哪个操作系统。
+
+GRUB 负责在计算机启动时加载操作系统，它是计算机启动过程中的第一步。
+
+- **加载操作系统**：当计算机开机时，GRUB 会被加载，它会读取配置文件，显示操作系统的选择菜单，并将控制权转交给选择的操作系统。
+- **多重启动支持**：GRUB 允许计算机上安装多个操作系统（例如，Windows 和 Ubuntu），并在启动时让用户选择要启动哪个操作系统。
+- **内核加载**：GRUB 可以加载 Linux 内核，并将内核与根文件系统（root filesystem）一起加载到内存中。
+- **修复和恢复功能**：GRUB 提供了一些功能，例如进入恢复模式、进行修复等。
+
+## 引导菜单
+
+- 默认引导菜单
+
+    ```
+    # 启动 Ubuntu
+    Ubuntu
+    
+    # 选择 Ubuntu 其它内核
+    Advanced options for Ubuntu
+    
+    # 启动内存检测
+    Memory test (memtest86+x64.efi)
+    Memory test (memtest86+x64.efi, serial console)
+    
+    # 启动 Windows 引导加载程序
+    Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
+    
+    # 进入固件
+    UEFI Firmware Settings
+    ```
+
+## 引导设置
+
+- 打开 GRUB 配置文件
+
+    ```bash
+    sudo nano /etc/defualt/grub
+    ```
+
+- 修改
+
+    ![image-20250215022232841](assets/image-20250215022232841.png)
+
+    ```bash
+    # 默认启动项为 Windows（第一项为0）
+    GRUB_DEFAULT=4
+    
+    # GRUB 菜单倒计时
+    GRUB_TIMEOUT=3
+    ```
+
+- 更新配置
+
+    ```bash
+    sudo update-grub
+    ```
+
+- 重启
+
+    ```bash
+    sudo reboot
+    ```
+
+- 系统倒计时3秒后自动进入 Windows系统。
 
 # Curl
 
