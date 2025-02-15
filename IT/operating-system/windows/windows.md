@@ -306,6 +306,14 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     slmgr /ato
     ```
 
+- [微软官方产品密钥（半年）](https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81)
+
+    ```bash
+    slmgr /ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J
+    slmgr /skms kms.0t.net.cn
+    slmgr /ato
+    ```
+
 ## 验证激活
 
 - 以管理员身份运行 PowerShell
@@ -646,7 +654,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - **前提**：只能在同一个物理磁盘内部转移，两个不同物理磁盘之间无法转移。
 - **目标**：想要把 C 盘的空间分配一点给 D 盘
 
-### 使用 DiskGenius 分区工具
+### 使用 DiskGenius 分区工具
 
 - PE 中运行 DiskGenius 分区工具
 
@@ -662,17 +670,17 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
     <img src="assets/image-20250214123947584.png" alt="image-20250214123947584" style="zoom: 80%;" />
 
-- 点击 `开始` 后，工具会自动从 C 盘分配 5G 的空间给 D 盘
+- 点击 `开始` 后，工具会自动从 C 盘分配 5G 的空间给 D 盘
 
 ### 使用 Windows 磁盘管理工具
 
 - **获得未分配空间**
     - 磁盘中未使用的  `未分配空间`
-    - 通过 `压缩卷` 获得
+    - 通过 `压缩卷` 获得
 - **未分配空间作用**
     - 扩展给紧邻它左侧的分区
     - 与相邻的 `未分配空间` 自动合并
-    - 通过 `新建简单卷` 新建一个分区
+    - 通过 `新建简单卷` 新建一个分区
 - 如果想用系统自带磁盘工具在分区之间转移空间，就是合理利用 `未分配空间` 的三个作用。
 - 下面以 C 盘分配空间给 D 盘为例
 - **打开磁盘管理工具**：右键点击 `开始菜单`，选择 `磁盘管理`。
