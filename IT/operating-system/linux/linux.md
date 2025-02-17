@@ -377,7 +377,7 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 # GRUB 引导加载程序
 
-## 基础
+## GRUB 基础
 
 GRUB（GRand Unified Bootloader）是一个多重引导程序，通常用于 Linux 系统，它的主要功能是引导操作系统的启动。GRUB 支持多种操作系统的启动，因此它常常被用于在同一台计算机上安装多个操作系统的场景。它的工作方式是先加载引导程序到内存，然后让用户选择需要启动的操作系统或内核。
 
@@ -400,13 +400,77 @@ GRUB 的工作过程大致如下：
 - 用户从菜单中选择一个操作系统或内核进行启动。
 - GRUB 将控制权交给选定的操作系统或内核，完成引导过程。
 
-## 修复 Linux 引导
+## GRUB 修复
 
+- U 盘启动，进入 Live USB 环境。
 
+- 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
 
-## 引导菜单
+    ```bash
+    lsblk -f
+    ```
 
-- 默认引导菜单
+    <img src="assets/image-20250217041113536.png" alt="image-20250217041113536" style="zoom:50%;" />
+
+- **挂载分区并修复 GRUB**
+
+    ```bash
+    # 挂载 Linux 根分区（文件类型为 EXT4）
+    sudo mount /dev/nvme0n1p6 /mnt
+    
+    # 挂载 EFI 分区（文件类型为 FAT32）
+    sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+    
+    # 挂载虚拟文件系统
+    sudo mount --bind /dev /mnt/dev
+    sudo mount --bind /proc /mnt/proc
+    sudo mount --bind /sys /mnt/sys
+    
+    # 使用 chroot 进入已经挂载的 Linux 系统
+    sudo chroot /mnt
+    
+    # 手动挂载 EFI 变量文件系统
+    mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+    
+    # 重新安装 GRUB 并更新（nvme0n1 为 NVMe 硬盘，就是系统所在的硬盘）
+    grub-install /dev/nvme0n1
+    update-grub
+    
+    # 退出 chroot 并重启
+    exit
+    sudo reboot
+    
+    # 重启后即可进入 Ubuntu 系统，但没有 Windows Boot Manager
+    ```
+
+- 修复 GRUB 后，Windows 的引导程序 `Windows Boot Manager` 会消失
+
+- Ubuntu 默认禁用 `os-prober`（用于探测其他操作系统），需手动启用
+
+    ```bash
+    # 编辑 GRUB 配置文件
+    sudo nano /etc/default/grub
+    
+    # 添加如下，取消禁用
+    GRUB_DISABLE_OS_PROBER=false
+    
+    # 修改如下，显示启动菜单
+    GRUB_TIMEOUT_STYLE=menu
+    
+    # 更新并重启
+    sudo update-grub
+    sudo reboot
+    ```
+
+- 重启后可在启动菜单里看见 `Windows Boot Manager`
+
+- 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
+
+## GRUB 菜单
+
+### GRUB 默认菜单
+
+- GRUB 默认说明
 
     ```
     # 启动 Ubuntu
@@ -426,7 +490,7 @@ GRUB 的工作过程大致如下：
     UEFI Firmware Settings
     ```
 
-## 引导设置
+### GRUB 设置
 
 - 打开 GRUB 配置文件
 
@@ -446,19 +510,14 @@ GRUB 的工作过程大致如下：
     GRUB_TIMEOUT=3
     ```
 
-- 更新配置
+- 更新 GRUB 配置并重启
 
     ```bash
     sudo update-grub
-    ```
-
-- 重启
-
-    ```bash
     sudo reboot
     ```
 
-- 系统倒计时3秒后自动进入 Windows系统。
+- 系统倒计时3秒后自动进入 Windows 系统。
 
 # Curl
 

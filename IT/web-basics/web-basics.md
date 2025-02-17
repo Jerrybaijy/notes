@@ -451,7 +451,13 @@
 
 **GUI工具**（Graphical User Interface Tools）指的是图形用户界面工具，如 `Navicat`。
 
-# 分区类型
+# 磁盘分区表类型
+
+MBR，GPT
+
+# 文件类型
+
+NTFS，EXT4，FAT32 等
 
 # 安装系统
 
