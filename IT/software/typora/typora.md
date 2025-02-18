@@ -39,7 +39,7 @@
 
 - **Markdown**
 
-    <img src="assets/image-20241122153632737.png" style="width: 100%; height: 100%;">
+    ![image-20250218194804233](assets/image-20250218194804233.png)
 
 ### 其它设置
 
