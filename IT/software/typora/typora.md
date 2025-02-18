@@ -31,7 +31,7 @@
 
 - **编辑器**
 
-    <img src="assets/image-20241122152847148.png" style="width: 100%; height: 100%;">
+    ![image-20250219060254386](assets/image-20250219060254386.png)
 
 - **图像**
 
