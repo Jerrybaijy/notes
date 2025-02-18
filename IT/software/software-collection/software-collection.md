@@ -1970,9 +1970,7 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 ### 安装文件 
 
-1. [下载安装文件，这个版本允许安装到 D 盘 ](https://code.visualstudio.com/Download)
-
-    ![image-20240403064749602](assets/image-20240403064749602.png)
+- [官网下载 VS Code ](https://code.visualstudio.com/Download)
 
 ### 配置文件
 
