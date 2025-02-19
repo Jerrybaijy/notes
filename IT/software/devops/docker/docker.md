@@ -6,9 +6,26 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 ### Windows 环境
 
-- 确保 WSL 已安装，详见 [`Windows` > `WSL`](../../../operating-system/windows/windows.md#WSL)。
-- [官网下载 Docker Desktop](https://www.docker.com/products/docker-desktop/) 并安装。
+- [官网下载 Docker Desktop 安装包](https://www.docker.com/products/docker-desktop/) 并安装。
+
+- **WSL**：
+
+    - Docker Desktop 安装过程中会引导安装 WSL 2，然后重启。
+
+
+    ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
+
+    - 重启以后会自动弹出命令行窗口，安装 WSL 2。
+
+    - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
+
+- **Linux**
+
+    - Microsoft Store 安装 Ubuntu。
+    - 运行 Ubuntu 直到正常使用。
+
 - 运行 Docker Desktop。
+
 - 验证安装。
 
     ```bash
@@ -16,16 +33,6 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
     ```
 
 - 接下来可以在终端中操作 Docker。
-
-### Windows 环境
-
-- [官网下载 Docker Desktop](https://www.docker.com/products/docker-desktop/) 并安装。
-
-- **WSL**：安装过程中会引导安装 WSL 2，然后重启。
-
-    ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
-
-- 重启以后会自动弹出命令行窗口，安装 WSL 2。
 
 ### Linux 环境
 
