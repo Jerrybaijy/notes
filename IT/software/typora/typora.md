@@ -695,6 +695,15 @@
 
 - 如果是剪切，并且原文件没有其它引用，在粘贴完以后，记得删除原文件夹中的图片。
 
+## 多张并排图片
+
+- 使用 HTML 语法
+
+    <div style="display: flex; justify-content: center;">
+        <img src="assets/image-20240919002526861.png" alt="图片1" style="width: 50%; height: 400px;">
+        <img src="assets/image-20240919002232569.png" alt="图片2" style="width: 50%; height: 400px;">
+    </div>
+
 # 表格
 
 - Typora 默认的是 Markdown 格式的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
