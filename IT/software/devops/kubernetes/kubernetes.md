@@ -70,7 +70,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 ## Deployment 基础
 
-​	Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控制器。它定义了您希望部署的应用程序的期望状态，并负责确保集群中的实际状态与所定义的状态匹配。
+Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控制器。它定义了您希望部署的应用程序的期望状态，并负责确保集群中的实际状态与所定义的状态匹配。
 
 ![module_02_first_app](assets/module_02_first_app.svg)
 
@@ -178,7 +178,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 # [Kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
 
-​	kubectl 命令行工具用于与集群交互
+kubectl 命令行工具用于与集群交互
 
 ## Install
 
@@ -223,7 +223,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 # [Minikube](https://minikube.sigs.k8s.io/docs/)
 
-​	Minikube 用于创建本地集群，供学习使用，不能用于生产环境。
+Minikube 用于创建本地集群，供学习使用，不能用于生产环境。
 
 - **Install**
 
@@ -254,7 +254,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 ## Namespace 基础
 
-​	Namespace（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
+Namespace（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
 
 - **基础命令**
 
@@ -369,7 +369,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 ## Argo CD 基础
 
-​	Argo CD 是一个持续部署工具，可以通过修改 yaml 文件，改变应用的运行。
+Argo CD 是一个持续部署工具，可以通过修改 yaml 文件，改变应用的运行。
 
 ​	![argo-cd](assets/argo-cd.png)
 

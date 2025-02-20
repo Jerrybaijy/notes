@@ -456,7 +456,7 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 - [网上下载](https://www.123pan.com/s/XYTUVv-4ejLH.html) Office的 ISO 文件，或者网盘下载
   - cn_office_professional_plus_2019_x86_x64_dvd_5e5be643.iso（Office 专业增强版2019）
 - 直接双击安装 Office
-- 安装完成以后，在开始菜单里打开一个word，输入激活码即可激活
+- 安装完成以后，在开始菜单里打开一个word，输入激活码即可激活。
   - Office 专业增强版2019 秘钥：XT9KH-CNYTP-MGJXH-3B7GW-RYBCT，拼多多12元购买，本台式机无限重装
 - 如果激活没成功，出现以前激活的版本，比如2016，应 Office Tool Plus 工具卸载清理，然后电话激活
 

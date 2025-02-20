@@ -985,7 +985,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 	![image-20231214184713408](assets/image-20231214184713408.png)
 
-3. 安装之后需手动加入开始菜单，详见《Windows 笔记》。
+3. 安装之后需手动加入开始菜单，详见 `Windows` > `加入开始菜单`。
 
 4. 先建立本地音乐库，并持续监控。
 
@@ -996,6 +996,58 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   - `主菜单` > `首选项` > `库` > `监控的文件夹`
 
     <img src="assets/image-20231214211310959.png" alt="image-20231214211310959" style="zoom:50%;" />
+
+## 布局备忘
+
+- 面板布局设计
+
+    <img src="assets/image-20250220151450808.png" alt="image-20250220151450808" style="zoom: 50%;" />
+
+- `首选项` > `布局1`
+
+    <div style="display: flex; justify-content: center;">
+        <img src="assets/image-20250220151933459.png" alt="图片1" style="width: 50%; height: 400px;">
+        <img src="assets/image-20250220152621792.png" alt="图片2" style="width: 50%; height: 400px;">
+    </div>
+
+- `首选项` > `布局2`
+
+    <img src="assets/image-20250220152835209.png" alt="image-20250220152835209" style="zoom:50%;" />
+
+- `首选项` > `标签1`
+
+    <img src="assets/image-20250220153219643.png" alt="image-20250220153219643" style="zoom:50%;" />
+
+- 字段
+
+    ![image-20250220153957977](assets/image-20250220153957977.png)
+
+- 工具栏自定义按钮
+
+    <img src="assets/image-20250220154419210.png" alt="image-20250220154419210" style="zoom:50%;" />
+
+- 编辑工具在主面板显示
+
+    <div style="display: flex; justify-content: center;">
+        <img src="assets/image-20250220154557110.png" alt="图片1" style="width: 50%; height: 400px;">
+        <img src="assets/image-20250220154652212.png" alt="图片2" style="width: 50%; height: 400px;">
+    </div>
+
+- 曲目信息
+
+    <img src="assets/image-20250220155511027.png" alt="image-20250220155511027" style="zoom:50%;" />
+
+- 双排演出者显示：右键 > `面板布局` > `自订`
+
+    ![image-20250220160602913](assets/image-20250220160602913.png)
+
+    ```
+    # 第一行
+    <演出者 & 标题> - <年份 (yyyy)>
+    
+    # 第二行
+    <原演出者> - <原本年份>
+    ```
 
 ## 布局与配置
 
@@ -1899,7 +1951,7 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 #### open-vm-tools
 
-- 此种方法通过 apt 安装 open-vm-tools，方法简单，但功能受限。
+- 此种方法通过 apt 安装 open-vm-tools，方法简单，但功能可能受限。
 
 - 安装 VMware 推荐的 `open-vm-tools`
 
