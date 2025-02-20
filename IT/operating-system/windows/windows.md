@@ -304,14 +304,14 @@ KMS 是一种通过本地服务器管理激活的方式，通常用于企业环�
 - **激活方法**：以管理员身份运行 PowerShell
 
     ```shell
-    slmgr /ipk NRG8B-VKK3Q-CXVCJ-9G2XF-6Q84J
+    slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
     slmgr /skms kms.0t.net.cn
     slmgr /ato
     ```
 
     **在以上代码中**：
 
-    - 密钥为：[微软官方产品密钥（半年）专业工作站版](https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81)
+    - 密钥为：[微软官方产品密钥（半年）专业版](https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81)
     - KMS 服务器为非官方
 
 - **时效**：每台计算机在初次安装Windows后，会尝试联系公司内部的KMS服务器进行激活。激活成功后，计算机会获得一个激活授权，通常有效期为180天。为了继续保持激活状态，设备需要每180天重新向KMS服务器进行“续期”。
