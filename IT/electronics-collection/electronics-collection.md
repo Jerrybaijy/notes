@@ -25,9 +25,20 @@
 
 # 新台式机
 
+- **处理器**
+    - 型号：AMD Ryzen 9 7950X 16-Core Processor
+    - 16核32线程
+
 - **主板**
-    - 型号
+    - 型号：华硕 ROG STRIX X870E-E GAMING WIFI
     - 序列号：T1M0CS017899WYL
+- **内存**：金士顿 64GB DDR5 4800MHz(32GB + 32GB )
+- **显卡**：华硕 DUAL GeForce RTX 3060-O12G-V2
+- **固态硬盘**：Samsung SSD 990 PRO 2TB
+- **机械硬盘**：WDC WD20EZBX-00AYRA0 2TB
+- **电源**：海韵 ATX3 FOCUS  GX1000
+- **CPU散热器**：利民 FC140 风冷
+- **机箱**：联力 L216
 
 # MateBook 14
 
