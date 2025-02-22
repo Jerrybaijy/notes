@@ -630,15 +630,15 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 
 ### 安装 WSL 2
 
-1. 下载并安装 WSL 2 Linux 内核更新包：[WSL 2 Linux 内核更新包](https://aka.ms/wsl2kernel)
+- 下载并安装 WSL 2 Linux 内核更新包：[WSL 2 Linux 内核更新包](https://aka.ms/wsl2kernel)
 
-2. 设置 WSL 默认版本为 2
+- 设置 WSL 默认版本为 2
 
-	```powershell
-	wsl --set-default-version 2
-	```
+  ```powershell
+  wsl --set-default-version 2
+  ```
 
-3. 至此，WSL 搭建完毕，接下来可以继续安装 Linux 应用或 Linux 发行版。
+- 至此，WSL 搭建完毕，接下来可以继续安装 Linux 应用或 Linux 发行版。
 
 ## WSL 基础
 

@@ -137,7 +137,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 	2. 选中包围内容，按 `Ctrl + Shift + A`
 	3. 在弹出的输入框中，输入想要使用的 Emmet 缩写，按 `Enter` 确认。
 
-# Google Browser
+# Google Chrome
 
 ## 管理搜索引擎
 
@@ -154,6 +154,16 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 - **`Cctl + Shift + B`**：显示 / 隐藏书签栏
 - **`F11`**：全屏
 - **`Ctrl + D`**：添加书签
+
+## Google Search Engine
+
+- Google 搜索引擎是全球最大的搜索引擎。
+
+- 搜索特定网站的特定内容
+
+    ```
+    intitle:"google使用教程" site:youtube.com
+    ```
 
 # Google Cloud
 
@@ -771,18 +781,6 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
    gcloud artifacts repositories delete hello-repo --location=us-central1 --project=opportune-study-413101
    ```
 
-# Google Search Engine
-
-Google 搜索引擎是全球最大的搜索引擎。
-
-## 其它技巧
-
-- 搜索特定网站的特定内容
-
-    ```
-    intitle:"google使用教程" site:youtube.com
-    ```
-
 # JSON
 
 **JSON**（**J**ava**S**cript **O**bject **N**otation，）即 JavaScript 对象简谱，是一种轻量级的数据交换格式。JSON 可以实现不同平台的数据交换，也可以使用它保存业务数据。
@@ -831,8 +829,6 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
     "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
 }
 ```
-
-
 
 # MongoDB
 
