@@ -25,6 +25,8 @@
 
 # 新台式机
 
+## 配置
+
 - **处理器**
     - 型号：AMD Ryzen 9 7950X 16-Core Processor
     - 16核32线程
@@ -39,6 +41,49 @@
 - **电源**：海韵 ATX3 FOCUS  GX1000
 - **CPU散热器**：利民 FC140 风冷
 - **机箱**：联力 L216
+
+## 做系统
+
+### BIOS
+
+- **TPM**
+
+    ![image-20250223122015061](assets/image-20250223122015061.png)
+
+- **SVM 虚拟**
+
+    ![image-20250223122053509](assets/image-20250223122053509.png)
+
+- **SATA 模式**
+
+    ![image-20250223122119224](assets/image-20250223122119224.png)
+
+- **CSM 兼容**
+
+    ![image-20250223122136921](assets/image-20250223122136921.png)
+
+- **安全启动**
+
+    ![image-20250223122154113](assets/image-20250223122154113.png)
+
+- **ASUS DriverHub 驱动管理**
+
+    ![image-20250223122214519](assets/image-20250223122214519.png)
+
+### 其他
+
+- VMware 备份
+- 机箱只连接一个显示器，防止误认为黑屏。
+
+- **分区**
+
+    <img src="assets/image-20250223123320181.png" alt="image-20250223123320181" style="zoom: 80%;" />
+
+- **Windows 安装器**
+
+    <img src="assets/image-20250223123939323.png" alt="image-20250223123939323" style="zoom:80%;" />
+
+- 做完系统后先安装 `ASUS DriveHub` 安装驱动，然后再系统更新。
 
 # MateBook 14
 

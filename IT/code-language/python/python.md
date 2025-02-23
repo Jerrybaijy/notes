@@ -10,16 +10,25 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 ## 环境搭建
 
-1. 双击解压包 python-3.9.2-amd64 运行
-2. 勾选 `Add Python 3.9 to PATH`
+- [Python 官网下载安装包](https://www.python.org/downloads/)
 
-    <img src="assets/image-20231026224146549.png" alt="图片1" style="zoom:33%;" />
+- 勾选 `管理员权限` 和 `添加系统变量`，自定义安装
 
-3. 安装成功，点击 `Close`
+    <img src="assets/image-20250223141439176.png" alt="image-20250223141439176" style="zoom:50%;" />
 
-    <img src="assets/image-20231026224550908.png" alt="图片1" style="zoom: 33%;" />
-    
-4. 终端查看 Python 版本
+- 全部勾选
+
+    <img src="assets/image-20250223141633793.png" alt="image-20250223141633793" style="zoom:50%;" />
+
+- 自定义安装路径
+
+    <img src="assets/image-20250223141946726.png" alt="image-20250223141946726" style="zoom:50%;" />
+
+- 禁用长路径限制
+
+    <img src="assets/image-20250223142206941.png" alt="image-20250223142206941" style="zoom:50%;" />
+
+- 终端查看 Python 版本
 
     ```bash
     python --version

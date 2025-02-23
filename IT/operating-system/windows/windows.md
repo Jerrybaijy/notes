@@ -254,9 +254,11 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 ## Win 11 系统
 
+### 不满足系统要求
+
 当主板不支持 TPM 2.0时，不符合安装 win 11 最低要求，有两种方法解决。
 
-### 命令法
+#### 命令法
 
 - 当 Win 10 想升级 Win 11 时，使用此种方法。
 - 进入[下载 Windows 11](https://www.microsoft.com/zh-cn/software-download/windows11?774b232c-a48d-452a-a8fb-3906dc168d5c=True&4cd9df4f-deef-4431-9497-a04303f34986=True&9d47a9e1-e53b-49a1-92ca-a647d62dc410=True)。
@@ -279,7 +281,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - 执行命令以后会打开安装向导
 - 正常安装 win11
 
-### Rufus 法
+#### Rufus 法
 
 - 当想全新安装 Win 11 时，使用此种方法。
 
@@ -288,6 +290,11 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     <img src="assets/image-20250213133918190.png" alt="image-20250213133918190" style="zoom:50%;" />
 
 - 使用启动 U 盘安装全新 Win 11。
+
+#### 安装时无法联网
+
+- 提前将主板网卡驱动在 U 盘中解压
+- 提示无法联网时，选择驱动程序文件夹，让系统自己安装。
 
 # Windows 激活
 
@@ -458,7 +465,19 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 
 # 安装Office
 
-## 正常激活
+## 正常安装
+
+- `设置` > `账户` > `查看产品详细信息` > 跳转到网页 `Windows 账户` > `订阅`
+
+    <img src="assets/image-20250223133617559.png" alt="image-20250223133617559" style="zoom:50%;" />
+
+- 下载 `Office 安装器` 并运行，系统会自动安装。
+
+- 安装成功后登录 `Windows 账户` 可自动激活。
+
+- 验证激活：`任一 Office 软件` > `文件` > `更多` > `账户`。
+
+## 激活码激活
 
 - [网上下载](https://www.123pan.com/s/XYTUVv-4ejLH.html) Office的 ISO 文件，或者网盘下载
   - cn_office_professional_plus_2019_x86_x64_dvd_5e5be643.iso（Office 专业增强版2019）
