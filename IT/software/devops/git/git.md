@@ -10,7 +10,11 @@
 #### Windows
 
 - 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
-- 安装时注意选择 `main` 分支
+- 安装时注意
+    - 选择 `main` 分支
+    - 将 `Open Git UI Here` 从上下文菜单中取消勾选
+    - 可以将 Git Bash 添加到 Windows Terminal（添加后需在 Windows Terminal 配置中添加样式，详见 Windows Terminal）
+
 
 #### Debian
 
@@ -25,7 +29,7 @@
     git config --global user.name jerrybaijy
     
     # 配置email
-    git config --global user.email jerry.baijy@hotmail.com
+    git config --global user.email jerry.baijy@outlook.com
     
     # 保存配置，这样就不用每次都配置
     git config --global credential.helper store

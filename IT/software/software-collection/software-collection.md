@@ -1983,12 +1983,29 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 
 ## 添加终端
 
-1. 以 Git Bash 为例
+1. 以 Git Bash 为例（Git Bash 可以在安装时勾选添加到 Windows Terminal）
+
 2. 电脑中安装好 Git
+
 3. 在 Microsoft Store 中安装 Windows Terminal 并运行
+
 4. 下拉菜单中进入设置
+
 5. 左下角打开 JSON 文件，用 VS Code 编辑
+
 6. 将以下内容加入到 `profiles` 的 `list` 中添加一项
+
+    - **如果在安装 Git 时已添加 Git Bash，在原有配置中添加如下，原文最后一行加逗号**
+
+        ```json
+        {
+            "backgroundImage": null,
+            "colorScheme": "One Half Dark",
+            "font": {
+                "face": "\u65b0\u5b8b\u4f53"
+            }
+        }
+        ```
 
     - **如果只添加 Git Bash**
 
@@ -1997,7 +2014,7 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
             "guid": "{96E6AB7F-8963-20F8-5068-014DFAA8C12A}",
             "name": "Git Bash",
             "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i",
-            "startingDirectory": "C:/Users/39331",
+            "startingDirectory": "C:/Users/jerry",
             "icon": "D:\\Program Files\\Git\\mingw64\\share\\git\\git-for-windows.ico"
         }
         ```
@@ -2009,18 +2026,18 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
         3. **`commandline`**：表示如何启动一个命令行，前面是 Git Bash 的安装目录；
             1. **`- l`**：表示以登录模式启动 Bash shell；
             2. **`- i`**：表示以交互模式启动 Bash shell；
-	    
+        
         4. **`startingDirectory`**：启动时默认进入的目录；
         5. **`icon`**：显示在菜单中的图标；
 
     - **如果添加并配置 Git Bash**
-	
+
         ```json
         {
             "backgroundImage": null,
             "colorScheme": "One Half Dark",
             "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i",
-            "startingDirectory": "C:/Users/39331",
+            "startingDirectory": "C:/Users/jerry",
             "cursorShape": "bar",
             "font": {
                 "face": "\u65b0\u5b8b\u4f53"
@@ -2041,8 +2058,8 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 
 当再次进入 Git Bash，向上翻命令时，无法读取历史命令，可用如下方法解决：
 
-1. 进入用户目录。
-2. 记事本创建文件，在文件中添加以下内容。
+- 进入用户目录。
+- 记事本创建文件，在文件中添加以下内容。
 
     ```bash
     # 设置历史文件位置和大小
@@ -2057,8 +2074,8 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
     PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
     ```
 
-3. 保存以后，将文件名改为 `.bashrc`。
-4. 重启终端生效。
+- 保存以后，将文件名改为 `.bashrc`。
+- 重启终端生效。
 
 # XAMPP
 
