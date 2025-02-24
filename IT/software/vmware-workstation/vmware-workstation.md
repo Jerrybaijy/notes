@@ -245,6 +245,8 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
     <img src="assets/image-20250219190817621.png" alt="image-20250219190817621" style="zoom: 67%;" />
 
+- 开启 `网卡模式` 之后需要重启 `VMware`。
+
 # 移动虚拟机
 
 ## 移动方式
