@@ -975,13 +975,13 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 ## 环境搭建
 
-1. [官网下载 MusicBee](https://getmusicbee.com/downloads/)，或者从网盘下载。
+1. [官网下载 MusicBee](https://getmusicbee.com/downloads/)（网盘里有便携版安装包）。
 
-2. 选择 `Portable Edition` 版本可以安装在非系统盘
+2. 选择 `Installer Edition` 版本可以集成到系统中。
 
-	![image-20231214184713408](assets/image-20231214184713408.png)
+	![image-20250225125339882](assets/image-20250225125339882.png)
 
-3. 安装之后需手动加入开始菜单，详见 `Windows` > `加入开始菜单`。
+3. 如果安装便携版安装之后需手动加入开始菜单，详见 `Windows` > `加入开始菜单`。
 
 4. 先建立本地音乐库，并持续监控。
 
@@ -1799,7 +1799,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 ## 配置 Ventoy U 盘
 
-- 运行 `VentoyPlugson.exe` 配置制作好的 Ventoy U 盘。
+- 运行 `VentoyPlugson.exe` 配置制作好的 Ventoy U 盘。
 
 ## Ventoy 启动菜单
 

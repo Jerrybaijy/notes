@@ -245,7 +245,7 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
     <img src="assets/image-20250219190817621.png" alt="image-20250219190817621" style="zoom: 67%;" />
 
-- 开启 `网卡模式` 之后需要重启 `VMware`。
+- 开启 `网卡模式` 之后需要重启 `VMware`。
 
 # 移动虚拟机
 
@@ -265,3 +265,27 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
     <img src="assets/image-20250221210406682.png" alt="image-20250221210406682" style="zoom:50%;" />
 
 - 得到和原来一模一样的虚拟机。
+
+# 虚拟嵌套
+
+- 当想在虚拟机 Windows 11 中运行 Docker 时，即涉及到虚拟嵌套。
+
+- `编辑虚拟机设置` > `处理器` > 开启 `虚拟化 Interl VT-x/EPT 或 AMD-V/RVI(V)`
+
+    <img src="assets/image-20250225120444161.png" alt="image-20250225120444161" style="zoom:50%;" />
+
+- 如果主机未关闭 `基于虚拟化的安全性`，VMware 会报错。
+
+    <img src="assets/image-20250225115608956.png" alt="image-20250225115608956" style="zoom:50%;" />
+
+- **查看状态**：主机 `Win + R` 运行 `msinfo32.exe`，打开 `系统信息`，发现主机 `基于虚拟化的安全性` 的状态为 `正在运行`，与虚拟化嵌套冲突。
+
+    <img src="assets/image-20250225115044208.png" alt="image-20250225115044208" style="zoom:50%;" />
+
+- 安装 `雷电模拟器` 并运行，程序会提示与系统冲突，弹出修复工具，点击修复，然后重启系统。
+
+- 主机 `Win + R` 运行 `msinfo32.exe`，打开 `系统信息`，主机 `基于虚拟化的安全性` 的状态为 `未启用`
+
+    <img src="assets/image-20250225120118795.png" alt="image-20250225120118795" style="zoom:50%;" />
+
+- 正常开启 CPU 虚拟化即可。
