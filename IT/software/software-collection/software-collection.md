@@ -1775,6 +1775,32 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 
 # Ventoy
 
+## Ventoy 基础
+
+Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘。与传统的方式不同，Ventoy 不需要你为每个操作系统或工具单独创建启动盘，而是只需将 ISO 文件复制到 USB 驱动器，然后通过 Ventoy 启动这些 ISO 文件。
+
+## 制作 Ventoy U 盘
+
+- 下载并解压 Ventoy。
+
+- 将 USB 驱动器插入电脑，运行 `Ventoy2Disk.exe` 安装到 USB 上。
+
+    - **安全启动**：选中。
+
+    - **分区类型**：GPT。
+
+    - **分区文件系统类型**：Ventoy U 盘的分区类型；为了保证新台式机安装系统成功，选 NTFS。
+
+        <img src="assets/1f24a424ec08957d283e32508eba9ab.png" alt="1f24a424ec08957d283e32508eba9ab" style="zoom:50%;" />
+
+- 将你需要的 ISO 镜像文件直接复制到 USB 驱动器中。
+
+- 重启电脑，选择从 USB 启动，Ventoy 会显示一个菜单让你选择要启动的 ISO 文件。
+
+## 配置 Ventoy U 盘
+
+- 运行 `VentoyPlugson.exe` 配置制作好的 Ventoy U 盘。
+
 ## Ventoy 启动菜单
 
 在使用 **Ventoy** 时，选择了一个启动项后进入了如下的菜单：

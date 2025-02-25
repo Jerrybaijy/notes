@@ -48,10 +48,6 @@
 
 # [接口 `API`](https://developer.mozilla.org/zh-CN/docs/Web/API)
 
-
-
-
-
 # 二进制
 
 - **二进制**
@@ -451,21 +447,136 @@
 
 **GUI工具**（Graphical User Interface Tools）指的是图形用户界面工具，如 `Navicat`。
 
-# 磁盘分区表类型
+# 固件类型
 
-MBR，GPT
+现代计算机的固件主要有以下两种类型：`传统 BIOS` 和 `UEFI`
 
-# 文件类型
+## BIOS
 
-NTFS，EXT4，FAT32 等
+**BIOS**（Basic Input/Output System）也常被称为 **传统BIOS** 或 **Legacy BIOS**，是计算机系统中最早的固件之一。
 
-# 安装系统
+**BIOS的局限性：**
 
-## BIOS 设置
+- **启动速度慢**：由于 BIOS 是基于16位代码，并且采用了传统的启动流程，启动速度相对较慢。
+- **容量有限**：BIOS 固件存储空间有限，通常只能存储少量的配置选项和引导程序。
+- **硬件支持有限**：BIOS 的设计较早，不能支持现代硬件（如大容量硬盘、复杂的设备接口等），且不支持较大的硬盘（2TB以上）。
 
-## 硬盘分区
+## UEFI
 
-## 启动 U 盘安装系统
+**UEFI**（Unified Extensible Firmware Interface）是 BIOS 的现代替代品。
+
+**UEFI的优势：**
+
+- **更强的扩展性**：UEFI 使用模块化设计，支持更多的驱动程序和扩展功能。它允许操作系统开发者和硬件厂商定制固件，提供更多特性和功能。
+- **更好的兼容性**：UEFI 能够兼容旧版BIOS模式（通过“兼容性支持模块”CSM），因此支持使用旧版操作系统（如Windows 7）启动。
+- **更好的安全性**：通过安全启动和其他安全机制，UEFI 能够保护系统免受恶意软件的攻击。
+
+## CSM
+
+**CSM**（Compatibility Support Module），即兼容模式，允许计算机在 UEFI 和 BIOS 之间切换，从而使得支持旧操作系统和硬件的同时，仍然能享受 UEFI 带来的新特性。
+
+# 磁盘分区
+
+## 磁盘分区表类型
+
+硬盘的分区表类型主要有两种：**MBR（Master Boot Record）**和**GPT（GUID Partition Table）**。
+
+### MBR
+
+**MBR（Master Boot Record）**，即**主引导记录**，是一种传统的分区表格式。
+
+- 与**Legacy BIOS**（基本输入输出系统）固件配合使用。
+- 传统的分区表格式，最多支持4个主分区或3个主分区加1个扩展分区。
+- 每个分区最大支持2TB的容量。
+- 不支持大于2TB的硬盘和更多的分区数。
+- 兼容性较好，尤其是在较老的系统中，许多老旧的BIOS系统使用MBR。
+
+### GPT
+
+**GPT（GUID Partition Table）** ，即**GUID分区表**，是一种现代的硬盘分区表格式，是对传统MBR（Master Boot Record）分区表的一种改进和替代。
+
+- 与**UEFI**固件配合使用
+- 是现代硬盘的分区方式，支持更多分区，最多支持128个主分区。
+- 支持更大的硬盘（单个分区最大可支持9.4ZB的容量，实际硬盘通常限制在几TB或几十TB）。
+- 对硬盘的备份和恢复有更好的支持，具有冗余分区表。
+
+一个典型的 Windows 系统 GPT 磁盘的分区布局如下：
+
+```
+| ESP分区（FAT32）|  MSR分区（MSR）|  主操作系统分区（NTFS）  |   恢复分区    |
+|  100MB-300MB  |  16MB-128MB   |     数十GB-几百GB      |  500MB-几GB  |
+```
+
+在**Windows系统**中，当磁盘使用**GPT**（GUID Partition Table）类型时，通常会有几个与系统相关的重要分区。
+
+-  **EFI系统分区（EFI System Partition，ESP）**
+    - **大小**：通常为100MB到300MB之间，具体取决于系统和配置。
+    - **类型**：**FAT32**文件系统。
+    - **作用**：这个分区包含了计算机启动所需的引导加载程序（Bootloader），以及其他与启动相关的文件（如UEFI固件的启动文件）。它是UEFI启动方式所必需的分区，Windows操作系统和其他操作系统（如Linux）在此分区中放置自己的引导文件。
+
+- **微软保留分区（Microsoft Reserved Partition，MSR）**
+
+    - **大小**：通常为16MB到128MB。
+
+    - **类型**：没有文件系统，不可直接访问。
+
+    - **作用**：MSR分区是一个保留分区，用于Windows操作系统在GPT磁盘上管理和维护其他分区。它并不存储任何用户数据，也不包含操作系统文件，而是为未来的分区调整、配置和一些系统功能（如动态磁盘）保留空间。一般情况下，用户无需关心这个分区。
+
+    - **默认名称**：**Microsoft Reserved Partition**。
+
+- **主操作系统分区（Windows 主分区）**
+
+    - **大小**：根据系统安装大小不同，通常为数十GB到几百GB。
+
+    - **类型**：**NTFS**文件系统。
+
+    - **作用**：这是安装了Windows操作系统的主分区，包含所有操作系统文件、用户数据、程序等。一般来说，这是用户访问和操作的分区，它存储着Windows的核心文件和大多数应用程序。
+
+- **恢复分区（Recovery Partition）**
+
+    - **大小**：通常为500MB到几GB。
+
+    - **类型**：**NTFS**或**FAT32**文件系统。
+
+    - **作用**：恢复分区包含了Windows恢复环境（Windows RE）的文件，用于在系统崩溃或出现严重问题时进行修复。它可以帮助用户重置或恢复系统，或者使用系统修复工具进行恢复操作。
+
+    - **默认名称**：**恢复分区**（在Windows中显示为**恢复**或**恢复工具**）。
+
+## 文件系统类型
+
+文件系统类型是操作系统用于组织和存储数据的一种方法。
+
+### NTFS
+
+**NTFS (New Technology File System)**：主要用于 Windows 操作系统，支持大文件、高效的存储管理、权限控制等特性。
+
+### FAT32
+
+**FAT32 (File Allocation Table 32)**：一种较老的文件系统，兼容性较强，但不支持超过4GB的文件。
+
+### exFAT 
+
+**exFAT (Extended File Allocation Table)**：适用于大文件，特别是在USB驱动器和存储卡中使用。
+
+### ext4
+
+**ext4 (Fourth Extended File System)**：常见于Linux操作系统，具有高效的性能和稳定性，支持大文件和日志功能。
+
+### HFS+
+
+**HFS+ (Hierarchical File System Plus)**：用于苹果操作系统（macOS），支持元数据和文件权限。
+
+### APFS
+
+**APFS (Apple File System)**：苹果的下一代文件系统，设计用于SSD和其他闪存驱动器，支持更高的效率和更好的安全性。
+
+### Btrfs
+
+**Btrfs (B-tree File System)**：Linux中的一种现代文件系统，提供快照、压缩和去重等功能。
+
+### ReFS
+
+**ReFS (Resilient File System)**：微软开发的一个用于Windows Server的文件系统，设计上注重数据完整性和修复能力。
 
 # 解决办法
 
