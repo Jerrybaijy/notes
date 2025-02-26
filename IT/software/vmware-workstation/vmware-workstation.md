@@ -10,6 +10,7 @@
 # 环境搭建
 
 -  [官网下载 `Vmware workstation`](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
+-  主板最好开启 `CSM` 功能，否则 `Linux` 可能进不去系统。
 -  以下是从网上找的 VMware Workstation Pro 密钥
 
     - 17秘钥：`MC60H-DWHD5-H80U9-6V85M-8280D`
@@ -278,6 +279,6 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
     <img src="assets/image-20250225115608956.png" alt="image-20250225115608956" style="zoom:50%;" />
 
-- 此时应在主机中关闭 `基于虚拟化的安全性`，详见 `Windows` > `基于虚拟化的安全性`。
+- 此时应在主机中关闭 `基于虚拟化的安全性`，详见 `Windows` > `基于虚拟化的安全性`。
 
 - 正常开启 CPU 虚拟化即可。
