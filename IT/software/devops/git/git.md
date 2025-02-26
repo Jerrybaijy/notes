@@ -51,8 +51,8 @@
 - 应设置网络代理代理
 
     ```bash
-    git config --global http.proxy http://127.0.0.1:9300
-    git config --global https.proxy https://127.0.0.1:9300
+    git config --global http.proxy http://127.0.0.1:9788
+    git config --global https.proxy https://127.0.0.1:9788
     ```
 
     **说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。
