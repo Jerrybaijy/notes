@@ -840,3 +840,36 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 
 - `Win + R` 输入 `msinfo32` 按 `Enter` 打开系统信息。
 - `BIOS 模式`：`UEFI` / `传统`
+
+## [基于虚拟化的安全性（VBS）](https://learn.microsoft.com/zh-cn/windows-hardware/design/device-experiences/oem-vbs?view=windows-11)
+
+`基于虚拟化的安全性（VBS）` 使用硬件虚拟化和 Windows 虚拟机监控程序来创建独立的虚拟环境，与虚拟机相关。不同虚拟机关于是否开启 `基于虚拟化的安全性` 要求不同，有多种方法可以关闭该功能。
+
+### 查看状态
+
+- `Win + R` 运行 `msinfo32`，打开 `系统信息`。
+
+- 找到 `基于虚拟化的安全性`（值为“正在运行”表示该功能已打开， “未启用”表示该功能已关闭）。
+
+    <img src="assets/image-20250225115044208.png" alt="image-20250225115044208" style="zoom:50%;" />
+
+    <img src="assets/image-20250225120118795.png" alt="image-20250225120118795" style="zoom:50%;" />
+
+### 华为工具
+
+- 此方法是使用 `Tool.bat` 关闭 `基于虚拟化的安全性`。
+
+- 从[华为页面](https://consumer.huawei.com/cn/support/content/zh-cn16012808/)或网盘下载 `Tool.bat`，并以管理员身份运行。
+
+- 工具完成自动操作后，手动重启。
+
+    <img src="assets/image-20250226145534766.png" alt="image-20250226145534766" style="zoom:50%;" />
+
+- 重启出现英文页面后，按界面提示点按4次F3键则表示同意关闭，等待电脑启动后完成操作。
+
+    <img src="assets/image-20250226145656773.png" alt="image-20250226145656773" style="zoom:50%;" />
+
+### 雷电模拟器
+
+- 此方法是使用 `雷电模拟器` 关闭 `基于虚拟化的安全性`。
+- 安装 `雷电模拟器` 并运行，程序会提示与系统冲突，弹出修复工具，点击修复，然后重启系统。

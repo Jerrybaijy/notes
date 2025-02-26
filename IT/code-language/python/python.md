@@ -12,7 +12,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 - [Python 官网下载安装包](https://www.python.org/downloads/)
 
-- 勾选 `管理员权限` 和 `添加系统变量`，自定义安装
+- 勾选 `管理员权限` 和 `添加系统变量`，自定义安装（新台式机选择 `Install Now`）
 
     <img src="assets/image-20250223141439176.png" alt="image-20250223141439176" style="zoom:50%;" />
 
