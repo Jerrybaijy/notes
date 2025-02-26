@@ -12,12 +12,11 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
     - Docker Desktop 安装过程中会引导安装 WSL 2，然后重启。
 
-
-    ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
-
+        ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
+    
     - 重启以后会自动弹出命令行窗口，安装 WSL 2。
-
-    - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
+    
+    - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
 
 - **Linux**
 
@@ -41,7 +40,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 - 直接使用包管理器 apt 进行安装
 
     ```bash
-    sudo apt install docker.io
+    sudo apt install docker.io -y
     ```
 
 - 以下是安装之后的初始配置
@@ -83,7 +82,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 - 验证安装；如果以下容器能正常运行返回，说明安装正确。
 
     ```bash
-    docker run hello-world
+    sudo docker run hello-world
     ```
 
 - 登录
