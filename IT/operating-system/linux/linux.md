@@ -52,12 +52,13 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 ### 新系统配置
 
-- Vmware Tools
+- VMware Tools
 - 系统更新
 - 系统设置
     - Dock 栏：图标，底部，最小化
     - 终端光标
-- VPN，Chrome
+    - 密码反馈
+- VPN，Chrome，VSCode，Git，python，docker
 
 ## Zsh
 
@@ -118,6 +119,12 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 优先使用 `apt` 或 `snap` 在线安装
 
 - 其次官网下载 `.deb` 包至本地，使用 `apt` 安装
+
+- 如果官网只有 `.tar.xz` 包
+
+    - 解压安装包 `tar -xf <package_name>`
+
+    - 根据 `README` 文件说明安装。
 
 - 再次官网下载官方脚本至本地，使用 `sh` 运行安装脚本
 
@@ -404,7 +411,7 @@ GRUB 的工作过程大致如下：
 
 - U 盘启动，进入 Live USB 环境。
 
-- 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
+- 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
 
     ```bash
     lsblk -f
@@ -464,7 +471,7 @@ GRUB 的工作过程大致如下：
 
 - 重启后可在启动菜单里看见 `Windows Boot Manager`
 
-- 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
+- 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
 
 ## GRUB 菜单
 
