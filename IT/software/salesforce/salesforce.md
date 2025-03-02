@@ -1,10 +1,10 @@
 # Salesforce 基础
 
-## 运行环境
+## 组织
 
-Salesforce 提供多种环境，适用于不同的开发、测试、培训和生产需求。以下是 Salesforce 的主要环境分类：
+在 Salesforce 中，**组织**（Organization，简称 **Org**）一套完整的 Salesforce 环境，可以是生产环境，也可以是非生产环境。Salesforce 提供多种组织，以下是 Salesforce 的主要组织分类：
 
-- **正式业务运行**：使用 **Production**
+- **生产环境**：Production
 - **开发和测试**：
     - **轻量开发**：Developer Edition
     - **生产数据测试**：Sandbox（Partial/Full Copy）
@@ -34,12 +34,12 @@ Salesforce 提供多种环境，适用于不同的开发、测试、培训和生
 - **以下是在 Trailhead 的个人简档中创建**
 - Trailhead > 右上角图标 > `Hands-On Orgs` > `Create Playground`
 - 等待几分钟，系统自动创建 TP。
-- 之后可以点击 **"Launch"** 进入。
+- 之后可以点击 `Launch` 进入。
 - 如果您使用英语以外的语言的 Trailhead，请确保您的 Playground 设置为与动手挑战相同的语言。否则，您可能会遇到通过挑战的问题。
-- 需要密码才能从 Trailhead 外部访问组织，例如从 Salesforce CLI 和 VS Code 等开发人员工具访问组织。
-    - 单击启动 App Launcher，然后搜索并单击 **Playground Starter**。
-    - 单击 **Get Your Login Credentials** 选项卡。在这里，您可以看到您的 Trailhead Playground 用户名。
-    - 点击 **Reset My Password**，然后点击 **Ok**，这会将一封电子邮件发送到与您的用户名关联的地址。
+- 如果从 Trailhead 外部访问组织，例如从 Salesforce CLI 和 VS Code 等开发人员工具访问组织，需要密码。
+    - 单击启动 `App Launcher`，然后搜索并单击 `Playground Starter`。
+    - 单击 `Get Your Login Credentials` 选项卡。在这里，您可以看到 `当前 TP 用户名`。
+    - 点击 `Reset My Password`，然后点击 `Ok`，这会将一封电子邮件发送到与您的用户名关联的地址。
     - 单击电子邮件中的链接。输入新密码，确认，然后单击 **更改密码**。
 
 #### TP 和 DE 的区别
@@ -82,75 +82,95 @@ Salesforce 提供多种环境，适用于不同的开发、测试、培训和生
 
 Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插件等）的核心组件，并且支持 **Salesforce DX（Developer Experience）** 模型。
 
-### Windows
+### 安装 Salesforce CLI
 
-- [官网下载 Salesforce CLI 并安装](https://developer.salesforce.com/tools/salesforcecli)
+- **Windows**
 
-- 确认 CLI 已正确安装并处于最新版本
+    - [官网下载 Salesforce CLI 并安装](https://developer.salesforce.com/tools/salesforcecli)
+
+
+    - 确认 CLI 已正确安装并处于最新版本
+
+        ```bash
+        sf update
+        ```
+
+
+    - 查看版本
+
+        ```bash
+        sf -v
+        ```
+
+
+- **Linux**
+
+    - 安装 `npm` 包管理器。
+
+        ```bash
+        sudo apt update
+        sudo apt install npm -y
+        ```
+
+
+    - 从 `npm` 安装 `Salesforce CLI`
+
+        ```bash
+        sudo npm install -g @salesforce/cli
+        ```
+
+
+    - 验证安装
+
+        ```bash
+        sf -v
+        ```
+
+- 更新 CLI
 
     ```bash
     sf update
     ```
 
-- 查看版本
+- VS Code 扩展
 
-    ```bash
-    sf -v
-    ```
+    - 在 `VS Code` 中安装 `Salesforce Extension Pack (Expanded)` 扩展。
+    - 在 VS Code 中按 **Ctrl+Shift+P** 打开命令面板，输入 `SFDX`，即可选择 Salesforce 扩展提供的命令。
 
-- 在 `VS Code` 中安装 `Salesforce Extension Pack (Expanded)` 扩展。
+    - 如果扩展在命令面板中找不到命令，先禁用再启用扩展。
 
-- 扩展的某些功能需要 JDK 支持，所以要安装 JDK，详见 `Java笔记`。
 
-### Linux
+    - 扩展的某些功能需要 JDK 支持，所以要安装 JDK，详见 `Java笔记`。
 
-- 安装 `npm` 包管理器。
-
-    ```bash
-    sudo apt update
-    sudo apt install npm -y
-    ```
-
-- 从 `npm` 安装 `Salesforce CLI`
-
-    ```bash
-    sudo npm install -g @salesforce/cli
-    ```
-
-- 验证安装
-
-    ```bash
-    sf -v
-    ```
-
-- 在 `VS Code` 中安装 `Salesforce Extension Pack (Expanded)` 扩展。
-
-- 扩展的某些功能需要 JDK 支持，所以要安装 JDK，详见 `Java笔记`。
 
 
 ## [创建项目](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
 
-- 创建一个全新的 TP。
+- **前置**
+
+    - 创建一个全新的 TP
+
+    - Salesforce CLI 已安装
+
+    - Node.js 已安装
 
 - VS Code 中按 **Ctrl+Shift+P** 打开命令面板，输入 `SFDX`。
 
-- 选择 `SFDX: Create Project` （SFDX：创建项目）。
+- 选择 `SFDX: Create Project` 。
 
-- 选择 **Standard（标准）**。
+- 选择 `Standard`。
 
 - 键入项目名称 `Dreamhouse` 并按 **Enter** 键。
 
-- 选择桌面作为创建项目的位置，方便以后查找。
+- 确认项目位置。
 
 - 授权
 
     - 按 **Ctrl+Shift+P** 打开命令面板，输入 `SFDX: Authorize an Org`。
     - 选择 `Production`，输入组织别名 `myDevOrg`。
-    - 弹出浏览器登录授权。
+    - 弹出浏览器登录授权。这里要输入之前创建 TP 时候的用户名和密码。
 
-- 安装 `Node.js(LTS)`，详见 `JavaScript`。
-
-- 打开组织
+- 打开组织的方式
 
     - 命令行：在项目根目录终端运行命令
 
@@ -162,22 +182,17 @@ Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插�
 
         <img src="assets/image-20250302212052512.png" alt="image-20250302212052512" style="zoom:50%;" />
 
+- 终端进入项目根目录，执行下面命令完成工具设置
+
+    ```bash
+    npm install
+    ```
 
 ## 搜索文件
 
 - 按 **Ctrl+P** 搜索文件 `project-scratch-def.json` 并打开。
 - 将 `orgName` 项的值更改为 `Learning VS Code` 并保存。
 
-# Playground
-
-## Playground 验证
-
-- 按 **Ctrl+Shift+P** 打开命令面板，输入 `SFDX:Authorize an Org`（SFDX：授权一个组织）。
-- 选择 **SFDX: Authorize an Org（SFDX：授权一个组织）**。
-- 要接受默认登录 URL，输入别名 `VSCodePlayground`，按 **Enter** 键。
-- 浏览器将打开新的 Salesforce 登录窗口。使用上一步中检索到的 Playground 用户名和密码登录 Playground。
-- 当要求您向连接的应用授予访问权限时，单击 **Allow（允许）**。
-- 关闭浏览器窗口。
-    事务完成时，命令行终端窗口会返回一条成功消息。
+# 数据
 
 # 编程语言

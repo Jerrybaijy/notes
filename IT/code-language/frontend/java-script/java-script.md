@@ -77,7 +77,6 @@
     pnpm list -g --depth=0
     ```
 
-    
 
 ## http-server
 

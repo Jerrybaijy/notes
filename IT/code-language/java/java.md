@@ -10,7 +10,7 @@
 
 ### JDK
 
-JDK（Java Development Kit）是一个用于开发Java应用程序的工具包。它包含了运行Java程序所需的所有组件和开发工具。JDK是Java开发的基础，任何想要开发Java应用的开发者都必须安装它。
+JDK（Java Development Kit）是一个用于开发 Java 应用程序的工具包。它包含了运行 Java 程序所需的所有组件和开发工具。JDK 是 Java 开发的基础，任何想要开发 Java 应用的开发者都必须安装它。
 
 #### Windows
 
