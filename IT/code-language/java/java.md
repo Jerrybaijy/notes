@@ -10,9 +10,21 @@
 
 ### JDK
 
-1. JDK 是 Java 语言的软件开发工具包。
-2. 安装 Java 开发工具包 JDK17，JDK 中已集成运行环境 JRE。
-3. 安装其它 IDE
+JDK（Java Development Kit）是一个用于开发Java应用程序的工具包。它包含了运行Java程序所需的所有组件和开发工具。JDK是Java开发的基础，任何想要开发Java应用的开发者都必须安装它。
+
+#### Windows
+
+- [官网下载并安装 JDK x64 Installer](https://www.oracle.com/java/technologies/downloads/#jdk21-windows)
+
+#### Linux
+
+- 使用 apt 安装
+
+    ```bash
+    sudo apt update
+    sudo apt install openjdk-21-jdk
+    java -version
+    ```
 
 ### Eclipse
 

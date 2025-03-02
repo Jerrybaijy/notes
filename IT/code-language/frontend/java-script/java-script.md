@@ -63,7 +63,7 @@
 - 安装
 
     ```bash
-    npm install -g pnpm
+    pnpm install -g pnpm
     ```
 
 - 命令
@@ -72,7 +72,7 @@
     # 查看 pnpm 版本
     pnpm -v
     # 更新 pnpm 包管理工具到最新版
-    npm install -g pnpm
+    pnpm install -g pnpm
     # 查看安装过的包
     pnpm list -g --depth=0
     ```
