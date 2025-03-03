@@ -87,21 +87,17 @@ Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插�
 - **Windows**
 
     - [官网下载 Salesforce CLI 并安装](https://developer.salesforce.com/tools/salesforcecli)
-
-
     - 确认 CLI 已正确安装并处于最新版本
 
         ```bash
         sf update
         ```
 
-
     - 查看版本
 
         ```bash
         sf -v
         ```
-
 
 - **Linux**
 
@@ -112,13 +108,11 @@ Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插�
         sudo apt install npm -y
         ```
 
-
     - 从 `npm` 安装 `Salesforce CLI`
 
         ```bash
         sudo npm install -g @salesforce/cli
         ```
-
 
     - 验证安装
 
@@ -136,13 +130,19 @@ Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插�
 
     - 在 `VS Code` 中安装 `Salesforce Extension Pack (Expanded)` 扩展。
     - 在 VS Code 中按 **Ctrl+Shift+P** 打开命令面板，输入 `SFDX`，即可选择 Salesforce 扩展提供的命令。
-
     - 如果扩展在命令面板中找不到命令，先禁用再启用扩展。
 
+- JDK
 
     - 扩展的某些功能需要 JDK 支持，所以要安装 JDK，详见 `Java笔记`。
 
+    -  [设置 Apex 服务器的 Java 运行时的完整路径名：](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/java-setup.html)
 
+    - 设置 > 搜索 `apex` > `Salesforcedx-vscode-apex › Java: Home`
+
+        ```
+        C:\\Program Files\\Java\\jdk-21
+        ```
 
 ## [创建项目](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
 
@@ -193,6 +193,140 @@ Salesforce CLI 是 Salesforce 开发者工具链（DevOps Center、VS Code 插�
 - 按 **Ctrl+P** 搜索文件 `project-scratch-def.json` 并打开。
 - 将 `orgName` 项的值更改为 `Learning VS Code` 并保存。
 
-# 数据
+# Objects 对象
 
-# 编程语言
+在 Salesforce CRM 中，将数据表称为**对象（Object）**，它们用于存储和管理数据。将列称为**字段（Fields）**，将行称为**记录（Records）**。
+
+Salesforce 支持多种不同类型的对象。有：
+
+- 标准对象（Standard Objects）
+- 自定义对象（Custom Objects）
+- 外部对象
+- 平台事件
+- BigObjects
+
+## 对象的主要组成部分
+
+无论是标准对象还是自定义对象，都包含以下主要元素：
+
+| 组成部分                           | 说明                                         |
+| ---------------------------------- | -------------------------------------------- |
+| **字段（Fields）**                 | 定义对象中的数据列，如姓名、邮箱、电话号码。 |
+| **记录（Records）**                | 存储具体的数据行，如一个客户的详细信息。     |
+| **页面布局（Page Layout）**        | 控制用户界面上字段的显示方式。               |
+| **关系（Relationships）**          | 连接不同对象（如账户与联系人之间的关系）。   |
+| **对象权限（Object Permissions）** | 控制用户是否可以查看、编辑、删除对象的数据。 |
+
+## Standard Objects
+
+**标准对象**是 Salesforce 附带的对象，例如：
+
+- **Account（账户）**：存储公司或个人的业务信息，如客户或合作伙伴。
+- **Contact（联系人）**：存储与账户关联的个人信息，如客户联系人。
+- **Opportunity（商机）**：存储销售机会及其状态。
+- **Lead（潜在客户）**：存储未转化的销售机会，如营销活动获取的潜在客户。
+- **Case（案例）**：存储客户的支持请求或问题报告。
+- **User（用户）**：存储 Salesforce 系统中的用户信息。
+- **Task & Event（任务 & 事件）**：管理待办事项和日程安排。
+
+## Custom Objects
+
+**自定义对象**是您创建的用于存储特定于您的公司或行业的信息的对象。例如：
+
+- **Project（项目）**：如果你的公司管理多个项目，可以创建一个 Project 对象来存储项目信息。
+- **Invoice（发票）**：如果需要管理财务数据，可以创建 Invoice 对象存储发票信息。
+
+### Create Custom Objects
+
+- Select an Org.
+- **Setup** > **Object Manager**
+- **Create** > **Custom Object**
+    - For **Label**, enter `<label_name>`. Notice that the **Object Name** and **Record Name** fields auto-fill.
+    - For **Plural Label**, enter `<label_names>`.
+    - Select the checkbox **Launch New Custom Tab Wizard after saving this custom object**.
+    - Leave the rest of the values as default and click **Save**.
+
+- **New Custom Object Tab**
+    - Click the **Tab Style** field and select a style you like.
+    - Click **Next**, **Next**, and **Save**.
+
+
+## [Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+There are two main types of object relationships: **lookup** and **master-detail**.
+
+Salesforce 支持不同对象之间建立关系，主要有两种：
+
+1. Lookup Relationship（查找关系）
+    - 类似外键，允许对象之间建立非严格依赖关系。例如，一个 Contact 可以关联到一个 Account，但 Contact 仍可独立存在。
+2. Master-Detail Relationship（主从关系）
+    - 主对象（Master）控制从对象（Detail），如果删除 Master 记录，相关 Detail 记录也会被删除。
+
+### Lookup Relationship
+
+#### Create a Lookup Relationship
+
+- Select an org and create a custom object.
+- From **Setup**, go to **Object Manager** | **<object_name>**.
+- In the sidebar, click **Fields & Relationships**. 
+- Click **New** in the top right.
+    - For **data type**, Choose **Lookup Relationship** and click **Next**.
+    - For **Related To**, choose a right one, and click **Next**.
+    - For **Field Name**, enter Contact, then click **Next**.
+    - Click **Next**, **Next**, **Next**, and **Save**.
+
+### Master-Detail Relationship
+
+#### Create a Master-Detail Relationship
+
+- Select an org.
+- Create the 1st custom object **<1st_object_name>**.
+    - Create a field.
+    - Create a record.
+- Create the 2nd custom object **<2nd_object_name>**.
+- Create a **lookup relationship**.
+- Create a **Master-Detail Relationship**.
+    - From **Setup**, go to **Object Manager** | **<object_name>**.
+    - In the sidebar, click **Fields & Relationships**. 
+    - Click **New** in the top right.
+    - For **data type**, Choose **Master-Detail Relationship** and click **Next**.
+    - For **Related To**, choose **<1st_object_name>**, and click **Next**.
+    - For Field Name, enter `Property` and click **Next**.
+    - Click **Next**, **Next**, and **Save**.
+- Contact **<2nd_object_name>** with **<1st_object_name>**.
+    - From the **App Launcher** find and select **Sales**.
+    - Click the **<1st_object_name>** tab in the navigation bar. 
+    - Click **Related**. You’ll see **<2nd_object_name>** (0) in the Related tab.
+    - Click **New**. Enter a name for **Favorite Name**, then click **Save**.
+
+# Fields 字段
+
+每个标准和自定义对象都有附加的字段，即**自定义字段**。
+
+在 Field Name （字段名称） 列中，例如 `Price__c`，`__c` 是判断自定义字段的一种简单方法。
+
+## Create Fields
+
+- Select an org and create a custom object.
+- From **Setup**, go to **Object Manager** | **<object_name>**.
+- In the sidebar, click **Fields & Relationships**. 
+- Click **New** in the top right.
+    - For **data type**, select the right one, Then click **Next**.
+    - Fill out **Field Label** field, and **Field Name** field auto-fill.
+    - Check the **Required** box.
+    - Click **Next**, **Next** again, and then **Save**.
+- Create Records
+    - From the **App Launcher** find and select **Sales**.
+    - Click the **<object_name>** tab in the navigation bar. 
+    - Click **New** in the top corner.
+    - Enter a name and price for the Object and click **Save**.
+
+## **通过 SOQL 查询对象数据**
+
+Salesforce 提供 SOQL（Salesforce Object Query Language）来查询对象数据，例如：
+
+```sql
+SELECT Name, Email FROM Contact WHERE Account.Name = 'Acme Corp'
+```
+
+此查询获取所有属于 **Acme Corp** 公司的联系人姓名和邮箱。
