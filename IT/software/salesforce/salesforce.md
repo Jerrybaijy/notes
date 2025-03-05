@@ -232,6 +232,8 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
     - Click **New** in the top corner.
     - Enter a name and price for the Object and click **Save**.
 
+## [Formula](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
+
 # Records
 
 # [Lightning Apps](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
@@ -281,6 +283,10 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 - Click **Save**.
 
 # [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
+
+#  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
+
+# [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics?trail_id=force_com_dev_beginner)
 
 # Others
 
