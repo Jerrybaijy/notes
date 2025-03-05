@@ -200,6 +200,10 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
     - Click **Related**. You’ll see **<2nd_object_name>** (0) in the Related tab.
     - Click **New**. Enter a name for **Favorite Name**, then click **Save**.
 
+# Tabs
+
+## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+
 # Fields
 
 ## Fields Basics
@@ -230,6 +234,54 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 
 # Records
 
+# [Lightning Apps](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
+# [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+
+## Create a List View
+
+- **App Launcher** > **Sales** > **Accounts** > **New**
+
+    ![image-20250305183252478](assets/image-20250305183252478.png)
+
+- Name the list `Channel Customers`.
+
+- Select **All users can see this list view**.
+
+- Click **Save**.
+
+- Set up some filters.
+
+    - Click **Add Filter**.
+    - From the **Field** dropdown menu, select **Type**.
+    - Select the **equals** operator.
+    - For Value, select **Customer - Channel**, then click **Done** and **Save**.
+    - Add another filter where **Billing State/Province** equals **WA,OR,CA**.
+
+## Create a List View Chart
+
+- From the **Sales** app, click the **Opportunities** tab.
+
+- Use the dropdown menu (![img](assets/fdb2f0c6d4ef6479100d7f00ac06136f_i.27.jpg)) to select the **All Opportunities** list view.
+
+- Click ![list view charts icon](assets/6ca3d60bc72bc7d3f259dd3320c64cdf_i.28.jpg). 
+
+- In the Charts panel that appears, click ![list view charts gear icon](assets/22d51ae434c5c03addbc4f8853f34cfb_i.29.jpg) and select **New Chart**.
+
+- Name the chart `Pipeline Total Value` and give it these parameters.
+
+    - Chart Type: **Donut Chart**
+
+    - Aggregate Type: **Sum**
+
+    - Aggregate Field: **Amount**
+
+    - Grouping Field: **Account Name**
+
+- Click **Save**.
+
+# [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
+
 # Others
 
 ## [Create a Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
@@ -242,7 +294,7 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 
     - Install Node.js.
 
-- Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
+- Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
 
     - Select **SFDX: Create Project**.
     - Select **Standard**.
