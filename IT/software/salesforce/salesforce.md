@@ -288,7 +288,7 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 
 # [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics?trail_id=force_com_dev_beginner)
 
-# Others
+# Project
 
 ## [Create a Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
 
@@ -331,3 +331,8 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
     ```bash
     npm install
     ```
+
+# Package
+
+## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
+
