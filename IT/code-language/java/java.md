@@ -53,14 +53,12 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 ## 代码规范
 
-- 除以下规范，其余同编程语言通用规范
+- 除以下规范，其余同编程语言通用规范。
 - **主方法入口**：所有的 Java 程序由 **public static void main(String[] args)** 方法开始执行。
 
 ## 标识符
 
 - 除以下规范，其余同编程语言通用规范。
-- **变量名**：可以使用汉字作为变量名。
-
 - **源文件名**：源文件名必须和类名相同。
 
 ## 注释
@@ -68,30 +66,25 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 - **单行注释**：Ctrl + /    **多行注释**：Ctrl + Shift + /
 
   ```java
+  /**
+   * 这是一个文档注释示例。
+   * 它通常包含有关类、方法或字段的详细信息。
+   * 例如，描述类的作用或方法的功能。
+   */
   public class HelloWorld {
-  	// 这是一个单行注释
-      public static void main(String[] args){
-  		/*
+      
+      // 这是一个单行注释，描述下面的方法。
+      public static void main(String[] args) {
+          
+          /*
            * 多行注释第一行
            * 多行注释第二行
            * 多行注释第三行
+           * 这里是对下面的输出代码块的解释。
            */
-         System.out.println("Hello World"); 
+          
+          System.out.println("Hello World"); 
       }
-  }
-  ```
-
-- **文档注释**
-
-  文档注释以 **/\**** 开始，以 ***/** 结束，通常出现在类、方法、字段等的声明前面，通常包含一些特定的标签，如 **@param** 用于描述方法参数，**@return** 用于描述返回值，**@throws** 用于描述可能抛出的异常等等。文档注释的格式这些标签有助于生成清晰的API文档，以便其他开发者能够更好地理解和使用你的代码。
-
-  ```java
-  /**
-   * 这是一个文档注释示例
-   * 它通常包含有关类、方法或字段的详细信息
-   */
-  public class MyClass {
-      // 类的成员和方法
   }
   ```
 
@@ -140,7 +133,7 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 - **输出**
 
   ```java
-  System.out.println();
+  System.out.println("这是要输出的信息");
   ```
 
 
@@ -203,70 +196,278 @@ Java 语言提供了八种基本类型。六种数字类型（四个整数型，
   (int)data;
   ```
 
+# 选择结构
 
-# 控制结构
+Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
-## 选择结构
+## if 语句
 
-Java 中有if、switch和三元表达式三种选择结构，用法同 JS。
-
-- if
-  - if
-  - if-else
-  - if-else if-else
-- 三元表达式
-- switch语句
-
-## 循环结构
-
-Java 中有 for 循环、while 循环、do-while 循环和 for-each 循环四种循环结构，前三种用法同 JS。
-
-Java 中也支持嵌套循环、死循环、break和continue关键字，用法同 JS。
-
-### for循环
+### if
 
 - **语法**
 
-  ```
-  - 语法
-  	for (初始化表达式; 条件表达式; 更新表达式){
-  		循环体
-  	}
-  	
-  - 执行流程
-  	- 1.初始化表达式，初始化变量
-      - 2.判断条件表达式（true执行，false终止）
-      - 3.如果结果为true，则执行循环体
-      	- 如果结果为false，则循环结束
-      - 4.更新表达式，对初始化变量修改，继续判断条件表达式，直到判断结果为false
-  ```
+    ```javascript
+    if (条件表达式) {
+      执行语句;
+    }
+    ```
+
+    ```javascript
+    import java.util.Scanner;
+    
+    public class CarPurchase {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("请输入你的存款：");
+            
+            double money = scanner.nextDouble();
+            
+            if (money >= 100) {
+                System.out.println("恭喜你！可以买宝马了！");
+                System.out.println("真开心！");
+            }
+            
+            scanner.close();
+        }
+    }
+    ```
+
+
+### if-else
+
+- **语法**
+
+    ```javascript
+    if (条件表达式) {
+      执行语句A;
+    } else {
+      执行语句B;
+    }
+    ```
+
+    ```javascript
+    import java.util.Scanner;
+    
+    public class CarPurchase {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("请输入你的存款：");
+            
+            if (scanner.hasNextDouble()) {
+                double money = scanner.nextDouble();
+                
+                if (money >= 100) {
+                    System.out.println("恭喜你！可以买宝马了！");
+                } else {
+                    System.out.println("继续上班！");
+                }
+            } else {
+                System.out.println("请输入有效的数字！");
+            }
+            
+            scanner.close();
+        }
+    }
+    ```
+
+
+### if-else if-else
+
+- **语法**
+
+    ```javascript
+    if (条件表达式1) {
+      执行语句A;
+    } else if (条件表达式2) {
+      执行语句B;
+    } else if (条件表达式3) {
+      执行语句c;
+    } else {
+      执行语句D;
+    }
+    ```
+
+    ```javascript
+    import java.util.Scanner;
+    
+    public class CarPurchase {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("请输入你的存款：");
+            
+            if (scanner.hasNextDouble()) {
+                double money = scanner.nextDouble();
+                
+                if (money >= 100) {
+                    System.out.println("恭喜你！可以买宝马了！");
+                } else if (money >= 50) {
+                    System.out.println("买丰田！");
+                } else if (money >= 20) {
+                    System.out.println("买二手车！");
+                } else {
+                    System.out.println("继续上班！");
+                }
+            } else {
+                System.out.println("请输入有效的数字！");
+            }
+            
+            scanner.close();
+        }
+    }
+    ```
+
+- **综合练习**
+
+    ```
+    从键盘输入分数
+    分数100，奖励汽车
+    分数80-99，奖励手机
+    分数60-79，奖励参考书
+    分数0-59，继续努力
+    ```
+
+    ```javascript
+    import java.util.InputMismatchException;
+    import java.util.Scanner;
+    
+    public class ScoreReward {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.print("请输入分数：");
+            try {
+                int score = scanner.nextInt();
+                if (score < 0 || score > 100) {
+                    System.out.println("请输入正确分数！");
+                } else {
+                    if (score == 100) {
+                        System.out.println("奖励汽车");
+                    } else if (score >= 80) {
+                        System.out.println("奖励手机");
+                    } else if (score >= 60) {
+                        System.out.println("奖励参考书");
+                    } else {
+                        System.out.println("请继续努力");
+                    }
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("请输入正确分数！");
+            } finally {
+                scanner.close();
+            }
+        }
+    }
+    ```
+
+## switch 语句
+
+- **语法**
+
+    ```java
+    switch (条件值) {
+        case 值1:
+            执行语句1;
+            break;
+        case 值2:
+            执行语句2;
+            break;
+        default:
+            执行语句3;
+    }
+    ```
+
+    ```java
+    import java.util.Scanner;
+    
+    public class NumberToChinese {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+    
+            System.out.print("请输入数字：");
+            int num = scanner.nextInt();  // 获取用户输入的数字
+    
+            // switch 语句
+            switch (num) {
+                case 1:
+                    System.out.println("壹");
+                    break;
+                case 2:
+                    System.out.println("贰");
+                    break;
+                case 3:
+                    System.out.println("叁");
+                    break;
+                default:
+                    System.out.println("没有这个数");
+                    break;
+            }
+    
+            scanner.close();  // 关闭 Scanner
+        }
+    }
+    ```
+
+## 三元表达式
+
+- **语法**
+
+    ```java
+    条件表达式 ? 真值 : 假值
+    ```
+
+    ```java
+    import java.util.Scanner;
+    
+    public class BankBalance {
+        public static void main(String[] args) {
+            Scanner scanner = new Scanner(System.in);
+    
+            System.out.print("请输入你的存款：");
+            double money = scanner.nextDouble();  // 获取用户输入的存款金额
+    
+            // 使用三元运算符判断存款金额
+            System.out.println(money >= 100 ? "恭喜你！可以买宝马了！" : "继续上班！");
+    
+            scanner.close();  // 关闭 Scanner
+        }
+    }
+    ```
+
+# 循环结构
+
+- Java 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构。
+
+## for 循环
+
+- **语法**
 
   ```java
-  for(int i=0;i<=5;i++) {
-      System.out.println(i);// 0 1 2 3 4 5
+  for (初始化表达式; 条件表达式; 更新表达式){
+      循环体
+  }
+  ```
+  
+  ```java
+  for (int i=0; i<=5; i++) {
+      System.out.println(i);  // 0 1 2 3 4 5
   }
   ```
 
-### for-each循环
+## for-each 循环
 
-- Java 中没有 for-in 语句，for-each 循环就是其它语言中的 for-in 语句，用于直接遍历。
+- **语法**：Java 中没有 for-in 语句，for-each 循环就是其它语言中的 for-in 语句，用于直接遍历。
 
+  ```java
+  for (数据类型 变量名 : 数组或集合){
+      循环体
+  }
   ```
-  - 语法
-  	for (数据类型 变量名 : 数组){
-  		循环体
-  	}
-  - 执行流程
-  	- 数组有几个元素，就会执行几次循环体
-      - 每次循环都会将相应元素赋值给变量
-  ```
-
+  
   ```java
   String[] arr = {"中国", "上海", "北京" };
   for (String data : arr) {
       System.out.println(data);// 中国 上海 北京
   ```
-
+  
 - 还可用索引思想遍历
 
   ```java
@@ -275,6 +476,151 @@ Java 中也支持嵌套循环、死循环、break和continue关键字，用法�
       System.out.println(data[i]);// 45 67 89
   }
   ```
+
+## while 循环
+
+- **语法**
+
+    ```java
+    while (条件表达式){
+        循环体;
+    }
+    ```
+
+    ```java
+    public class HelloWorld {
+        public static void main(String[] args) {
+            int i = 1;
+            while (i <= 3) {
+                System.out.println("第" + i + "次打印：Hello World!");
+                i += 1;  // 条件迭代
+            }
+        }
+    }
+    ```
+
+## do-while 循环
+
+- **语法**
+
+    ```javascript
+    do {
+        循环体
+    } while (条件表达式);
+    ```
+
+    ```javascript
+    public class HelloWorld {
+        public static void main(String[] args) {
+            int i = 1;
+            do {
+                System.out.println("第" + i + "次打印：Hello World!");
+                i += 1;  // 条件迭代
+            } while (i <= 3);
+        }
+    }
+    ```
+
+## 无限循环
+
+- **语法**
+
+    ```java
+    while (true) {
+        循环体;
+    }
+    ```
+
+    ```java
+    do {
+        循环体;
+    } while (true);
+    ```
+
+    ```java
+    for (;;){
+        循环体;
+    }
+    ```
+
+## 循环结构嵌套
+
+- **示例**
+
+    ```java
+    public class LoanRepayment {
+        public static void main(String[] args) {
+            for (int year = 1; year <= 10; year++) {
+                System.out.println("第" + year + "年到了！");
+                for (int month = 1; month <= 12; month++) {
+                    System.out.println("第" + year + "年，第" + month + "月，还款1000元！");
+                }
+            }
+        }
+    }
+    ```
+
+- **遍历多维容器**
+
+    ```java
+    import java.util.ArrayList;
+    import java.util.Arrays;
+    import java.util.List;
+    
+    public class NestedArrays {
+        public static void main(String[] args) {
+            // 创建各个数组
+            List<Integer> arr1 = Arrays.asList(1, 213, 13, 232, 3, 43, 3, 3);
+            List<Integer> arr2 = Arrays.asList(21, 13, 243, 4, 54, 6);
+            List<Integer> arr3 = Arrays.asList(23, 545, 465, 65, 6565, 76);
+    
+            // 创建包含这些数组的二维 List
+            List<List<Integer>> arr4 = new ArrayList<>();
+            arr4.add(arr1);
+            arr4.add(arr2);
+            arr4.add(arr3);
+    
+            // 遍历 arr4 中的每个 List
+            for (List<Integer> arrx : arr4) {
+                // 遍历每个 List 中的元素
+                for (int a : arrx) {
+                    System.out.println(a);  // 输出各个值
+                }
+            }
+        }
+    }
+    ```
+
+# 跳转结构
+
+Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构。
+
+- **`continue` 和 `break` 示例**
+
+    ```java
+    public class LoanRepayment {
+        public static void main(String[] args) {
+            for (int year = 1; year < 11; year++) {
+                if (year == 5) {
+                    System.out.println("第5年疫情原因，今年不用还款了！");
+                    // 此处如果没有 continue，会同时正常显示：第五年到了，还款1.2万
+                    continue;  // 第5年不用还，本次循环结束，进入下一次该循环，第6年。
+                }
+                if (year == 6) {
+                    System.out.println("第" + year + "年到了！还款2.4万！");
+                    continue;  // 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
+                }
+                if (year == 8) {
+                    System.out.println("第8年，提前还清，以后都不用还了！");
+                    break;  // 从第9年不用再还款了，当前循环结束。
+                }
+                System.out.println("第" + year + "年到了！还款1.2万！");
+            }
+        }
+    }
+    ```
+
+- `return`：详见[返回值](#返回值)
 
 # 数组
 

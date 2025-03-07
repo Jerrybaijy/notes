@@ -1,6 +1,6 @@
 # [JavaScript 基础](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
 
-**JavaScript**（简称 JS）是一种基于对象和事件驱动的**脚本语言**；JavaScript 文件的扩展名为 `.js`。Ecma 国际以 JavaScript 为基础制定了 ECMAScript 标准。
+**JavaScript**（JS）是一种基于对象和事件驱动的**脚本语言**；JavaScript 文件的扩展名为 `.js`。Ecma 国际以 JavaScript 为基础制定了 ECMAScript 标准。
 
 <img src="assets/image-20231111155734150.png" alt="image-20231111155734150" style="zoom:50%;" />
 
@@ -157,38 +157,39 @@
 
 ## 代码规范
 
-- **符号**：必须使用英文状态
-- **缩进**：不敏感
-- **分号**：每行结束加 `;`
-- **空白行**：不敏感
-- **换行**：不敏感
+- 除以下规范，其余同编程语言通用规范。
+- **缩进**：一般缩进2个空格
 
 ## 标识符
 
-- **规范**
-  - 只能含有字母、数字、下划线、$，且不能以数字开头
-  - 大小写敏感
+- 除以下规范，其余同编程语言通用规范。
   
-  - 不能是 JavaScript 里的关键字和保留字
-  
-- **命名习惯**
-  - **变量名**：小驼峰，例 `maxLength`。
-  - **常量名**：大蛇形，例 `MAX_LENGTH`。
-  - **类名**：大驼峰，例 `MyFirstJavaClass`。
-  - **普通函数名**：小驼峰，例 `maxLength`。
-  - **构造函数名**：首字母大写，例 `Person`。
-  - **对象名**：小驼峰，例 `maxLength`。
 
 ## 注释
 
-- 单行注释：`Ctrl + /`    多行注释：`Ctrl + Shift + /`
+- 同 Java；单行注释：`Ctrl + /`，多行注释：`Ctrl + Shift + /`
 
 	``` javascript
-	alert(123);  // 这是一个单行注释
+	/**
+	 * 这是一个文档注释示例。
+	 * 它通常包含有关类、方法或字段的详细信息。
+	 * 例如，描述类的作用或方法的功能。
+	 */
 	
-	/* 多行注释第一行
-	多行注释第二行
-	多行注释第三行 */
+	// 这是一个单行注释，描述下面的方法。
+	function main() {
+	    /*
+	     * 多行注释第一行
+	     * 多行注释第二行
+	     * 多行注释第三行
+	     * 这里是对下面的输出代码块的解释。
+	     */
+	    
+	    console.log("Hello World");
+	}
+	
+	// 调用 main 方法
+	main();
 	```
 
 ## 变量声明
@@ -287,7 +288,7 @@
 
 ## [原始值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E5%8E%9F%E5%A7%8B%E5%80%BC)
 
-- **原始值**，除了 `Object` 以外，所有的类型都定义了不可变的、在语言最底层直接表示的值。我们将这些类型的值称为*原始值*，一共7种。
+- **原始值**，除了 `Object` 以外，所有的类型都定义了不可变的、在语言最底层直接表示的值。我们将这些类型的值称为**原始值**，一共7种。
   - **`number`**：数字
   - **`bigInt`**：大整数
   - **`boolean`**：布尔值
@@ -1020,7 +1021,7 @@ console.log(typeof res)  // string
 
 ## 数据的可变性
 
-- 关于数据的可变性，详见[`code-general` - 数据的可变性](../code-general/code-general.md#数据的可变性)
+- 关于数据的可变性，详见 **code-general | 数据的可变性**
 - **不可变数据类型：**
 	- **`Number`**：数字
 	- **`String`**：字符串
@@ -1396,172 +1397,37 @@ console.log(typeof res)  // string
 7. **赋值运算符** `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
 8. **逗号运算符** `,`
 
-# 控制结构
+# [选择结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
 
-## [选择结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
+JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 Java。
 
-- JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
+# [循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
-### `if` 语句
+- JS 中有 `for`、`for-in`、`for-of`、`while` 和 `do-while` 五种循环结构。
+    - 其中 `for`、`while` 和 `do-while` 循环，用法同 Java。
+    - 其中 `for-of` 的作用类似于 Java 的 `for-each`，用于遍历可迭代对象。
+    - 其中 `for-in` 为 JS 特有，用于遍历对象的 **可枚举属性名**（包括继承的属性）。它也可以用于遍历数组，但它返回的是数组的索引（键名），而不是数组的值。。
 
-- **`if`**
+- JS 中支持**无限循环**和**循环嵌套**，用法同 Java。
 
-  ```javascript
-  if (条件表达式) {
-    执行语句;
-  }
-  ```
-  
-  ```javascript
-  let money = +prompt("请输入你的存款：");
-  if (money >= 100) {
-    console.log("恭喜你！可以买宝马了！");
-    console.log("真开心！");
-  }
-  ```
-  
-- **`if-else`**
+## for-of 循环
 
-  ```javascript
-  if (条件表达式) {
-    执行语句A;
-  } else {
-    执行语句B;
-  }
-  ```
-  
-  ```javascript
-  let money = +prompt("请输入你的存款：");
-  if (money >= 100) {
-    console.log("恭喜你！可以买宝马了！");
-  } else {
-    console.log("继续上班！");
-  }
-  ```
-  
-- **`if- else if -else`**
+- **语法**
 
-  ```javascript
-  if (条件表达式1) {
-    执行语句A;
-  } else if (条件表达式2) {
-    执行语句B;
-  } else if (条件表达式3) {
-    执行语句c;
-  } else {
-    执行语句D;
-  }
-  ```
-
-  ```javascript
-  let money = +prompt("请输入你的存款：");
-  if (money >= 100) {
-    console.log("恭喜你！可以买宝马了！");
-  } else if (money >= 50) {
-    console.log("买丰田！");
-  } else if (money >= 20) {
-    console.log("买二手车！");
-  } else {
-    console.log("继续上班！");
-  }
-  ```
-
-- **综合练习**
-
-  ```
-  从键盘输入分数
-  分数100，奖励汽车
-  分数80-99，奖励手机
-  分数60-79，奖励参考书
-  分数0-59，继续努力
-  ```
-
-  ```javascript
-  let score = +prompt("请输入分数：")
-  if (isNaN(score) || score < 0 || score > 100) {
-    console.log("请输入正确分数！")
-  } else {
-    if (score == 100) {
-      console.log("奖励汽车")
-    } else if (score >= 80) {
-      console.log("奖励手机")
-    } else if (score >= 60) {
-      console.log("奖励参考书")
-    } else {
-      console.log("请继续努力")
+    ```javascript
+    for (let 变量名 of 可迭代对象){
+      循环体;
     }
-  }
-  ```
+    ```
 
-### `switch` 语句
+    ```javascript
+    let arr = ["中国", "上海", 123]
+    for (let data of arr) {
+      console.log(data);
+    }
+    ```
 
-- **语法**
-
-  ```javascript
-  switch (条件值) {
-    case 值1:
-      执行语句1;
-      break;
-    case 值2:
-      执行语句2;
-      break;
-    default:
-      执行语句3;
-  }
-  ```
-  
-  ```javascript
-  let num = +prompt("请输入数字")
-  switch (num) {
-    case 1:
-      console.log("壹");
-      break;
-    case 2:
-      console.log("贰");
-      break;
-    case 3:
-      console.log("叁");
-      break;
-    default:
-      console.log("没有这个数");
-      break;
-  }
-  ```
-
-### 三元表达式
-
-- **语法**：`条件表达式 ? 真值 : 假值`
-
-  ```javascript
-  let money = +prompt("请输入你的存款：");
-  console.log(money >= 100 ? "恭喜你！可以买宝马了！" : "继续上班！")
-  ```
-
-## [循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)
-
-- JS 中有 `for`、`while` 和 `do-while` 三种循环结构。
-
-### `for`
-
-#### `for` 语句
-
-- **语法**
-
-  ```javascript
-  for (初始化变量; 条件表达式; 更新表达式){
-    循环体;
-  }
-  ```
-
-  ```javascript
-  for (let i = 0; i <= 5; i++){
-    console.log(i);  // 0 1 2 3 4 5
-  }
-  ```
-
-- **说明**：初始化变量中使用 `let` 声明的变量是**局部变量**，只能在本次 `for循环` 内部访问。
-
-#### `for-in` 语句
+## for-in 循环
 
 - **语法**
 
@@ -1579,127 +1445,9 @@ console.log(typeof res)  // string
   }
   ```
 
-#### `for-of` 语句
+# 跳转结构
 
-- **语法**
-
-  ```javascript
-  for (let 变量名 of 可迭代对象){
-    循环体;
-  }
-  ```
-
-  ```javascript
-  let arr = ["中国", "上海", 123]
-  for (let data of arr) {
-    console.log(data);
-  }
-  ```
-
-### `while`
-
-- **语法**
-
-  ```javascript
-  while (条件表达式){
-    循环体;
-  }
-  ```
-
-  ```javascript
-  let i = 1;
-  while (i <= 3) {
-    console.log("第", i, "次打印：Hello World!");
-    i += 1;  // 条件迭代
-  }
-  ```
-
-- **死循环**
-
-	```javascript
-	while (true) {
-		循环体;
-	}
-	```
-
-	```javascript
-	for (;;){
-		循环体;
-	}
-	```
-
-### `do-while`
-
-- **语法**
-
-  ```javascript
-  do {
-    循环体
-  } while (条件表达式);
-  ```
-
-  ```javascript
-  let i = 1;
-  do {
-    console.log("第", i, "次打印：Hello World!");
-    i += 1;  // 条件迭代
-  } while (i <= 3);
-  ```
-
-### 循环结构嵌套
-
-- **示例**
-
-  ```javascript
-  for (let year = 1; year <= 10; year++) {
-    console.log("第", year, "年到了！")
-    for (let month = 1; month <= 12; month++) {
-      console.log("第", year, "年，第", month, "月，还款1000元！")
-    }
-  }
-  ```
-
-- **遍历多维容器**
-
-	```javascript
-	arr1 = [1, 213, 13, 232, 3, 43, 3, 3]
-	arr2 = [21, 13, 243, 4, 54, 6]
-	arr3 = [23, 545, 465, 65, 6565, 76]
-	arr4 = [arr1, arr2, arr3]
-	
-	for (let arrx of arr4) {
-	  for (let a of arrx) {
-	    console.log(a);  // 获取结果为：前3个列表的各个值
-	  }
-	}
-	```
-
-## 跳转结构
-
-JS 中有 `continue`、`break`、`return` 三种跳转结构。
-
-- **`continue` 和 `break` 示例**
-
-  ```javascript
-  for (let year = 1; year < 11; year++) {
-    if (year == 5) {
-      console.log("第5年疫情原因，今年不用还款了！");
-      // 此处如果没有continue，会同时正常显示：第五年到了，还款1.2万
-      continue;  // 第5年不用还，本次循环结束，进入下一次该循环，第6年。
-    }
-    if (year == 6) {
-      console.log("第", year, "年到了！还款2.4万！");
-      continue;  // 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
-    }
-    if (year == 8) {
-      console.log("第8年，提前还清，以后都不用还了！");
-      break;  // 从第9年不用再还款了，当前循环结束。
-    }
-    console.log("第", year, "年到了！还款1.2万！")
-  }
-  ```
-
-- `return`：详见[返回值](#返回值)
+- JS 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
 
 # 函数 `function`
 
