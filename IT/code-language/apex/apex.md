@@ -177,7 +177,6 @@ Apex 中有10种原始数据类型。
     acct.NumberOfEmployees = 100;
     ```
 
-    
 
 ### 数组类型
 
@@ -285,7 +284,7 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - Apex 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
 
-# DML
+# [DML](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
 在 Salesforce 中，**DML**（数据操作语言，Data Manipulation Language）用于操作 Salesforce 数据库中的记录。
 
@@ -296,4 +295,10 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     insert newAccount;
     ```
 
-    
+
+- `insert`：插入新记录
+- `update`：更新已有记录
+- `upsert`：有记录则更新，无记录
+- `delete`：删除
+- `undelete`：还原
+- `merge`：合并至多三个记录到其中一个记录
