@@ -6,6 +6,8 @@ The key features of Apex:
 - **Object oriented**: Apex supports classes, interfaces, and inheritance.
 - **Strongly typed**: Apex validates references to objects at compile time.
 
+Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台 上进行后端逻辑开发，它的语法类似于 Java。
+
 # Apex 基础
 
 ## 运行环境
@@ -112,33 +114,41 @@ The key features of Apex:
 
 Apex 中有10种原始数据类型。
 
-- **整数类型**
+### 整数类型
 
-    - **`Integer`**：32 位有符号整数，取值范围：-2^31 到 2^31 - 1（大约 -21 亿 到 21 亿）。
+- **`Integer`**：32 位有符号整数，取值范围：-2^31 到 2^31 - 1（大约 -21 亿 到 21 亿）。
 
-    - **`Long`**：64 位有符号整数，适用于大数字。
+- **`Long`**：64 位有符号整数，适用于大数字。
 
-    - **`Decimal`**：用于高精度计算，常用于处理货币和财务数据。
+- **`Decimal`**：用于高精度计算，常用于处理货币和财务数据。
 
-- **浮点数类型**
-    - **`Double`**：64 位双精度浮点数，适用于存储较大的浮动数值。
+### 浮点数类型
 
-- **字符类型**
-    - **`Char`**：用于存储单个字符，只有一个字符的 Unicode 编码。
+- **`Double`**：64 位双精度浮点数，适用于存储较大的浮动数值。
 
-- **字符串类型**
-    - **`String`**：用于存储一串字符，类似于 Java 中的 `String` 类型。
-- **布尔类型**
-    - **`Boolean`**：用于表示逻辑值，可以是 `true` 或 `false`。
+### 字符类型
 
-- **日期和时间类型**
+- **`Char`**：用于存储单个字符，只有一个字符的 Unicode 编码。
+- 使用单引号 `'` 标记字符。
 
-    - **`Date`**：只包含日期（年月日）。
+### 字符串类型
 
-    - **`Datetime`**：包含日期和时间（年月日 时分秒）。
+- **`String`**：用于存储一串字符，类似于 Java 中的 `String` 类型。
+- Apex 中使用单引号 `'` 标记字符串。
 
-- **ID 类型**
-    - **`ID`**：用于存储 Salesforce 中的记录的唯一标识符，例如 `Account`、`Contact`、`Opportunity` 等对象的记录 ID。
+### 布尔类型
+
+- **`Boolean`**：用于表示逻辑值，可以是 `true` 或 `false`。
+
+### 日期和时间类型
+
+- **`Date`**：只包含日期（年月日）。
+
+- **`Datetime`**：包含日期和时间（年月日 时分秒）。
+
+### ID 类型
+
+- **`ID`**：用于存储 Salesforce 中的记录的唯一标识符，例如 `Account`、`Contact`、`Opportunity` 等对象的记录 ID。
 
 ## 引用数据类型
 
@@ -189,13 +199,10 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
     ```javascript
-    public class CarPurchase {
-        public static void checkMoney(Decimal money) {
-            if (money >= 100) {
-                System.debug('恭喜你！可以买宝马了！');
-                System.debug('真开心！');
-            }
-        }
+    Integer score = 85;
+    
+    if (score >= 60) {
+        System.debug('及格！');
     }
     ```
 
@@ -212,14 +219,12 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
     ```javascript
-    public class CarPurchase {
-        public static void checkMoney(Decimal money) {
-            if (money >= 100) {
-                System.debug('恭喜你！可以买宝马了！');
-            } else {
-                System.debug('继续上班！');
-            }
-        }
+    Integer score = 85;
+    
+    if (score >= 60) {
+        System.debug('及格！');
+    } else {
+        System.debug('不及格！');
     }
     ```
 
@@ -240,53 +245,96 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
     ```javascript
-    public class CarPurchase {
-        public static void checkMoney(Decimal money) {
-            if (money >= 100) {
-                System.debug('恭喜你！可以买宝马了！');
-            } else if (money >= 50) {
-                System.debug('买丰田！');
-            } else if (money >= 20) {
-                System.debug('买二手车！');
-            } else {
-                System.debug('继续上班！');
-            }
+    Integer score = 85;
+    
+    if (score >= 90) {
+        System.debug('优秀！');
+    } else if (score >= 80) {
+        System.debug('良好！');
+    } else if (score >= 60) {
+        System.debug('及格！');
+    } else {
+        System.debug('不及格！');
+    }
+    ```
+
+## switch 语句
+
+### 基本语法
+
+- Apex 的 `switch` 语句类似于 Java，但语法稍有不同。
+    - Apex 使用 `switch on` 进行变量匹配.
+    - Apex 使用 `when` 关键字代替 Java 的 `case`。
+    - Apex 的 `switch` 不会发生 Java 中的 Fall-through（贯穿），每个 `when` 代码块都是独立的，不需要 `break`。
+    - Apex 使用 `when else` 关键字代替 Java 的 `default`。
+
+- **语法**
+
+    ```java
+    switch on 条件值 {
+        when 值1 {
+            // 执行代码
+        }
+        when 值2 {
+            // 执行代码
+        }
+        when else {
+            // 处理默认情况（类似 Java 的 default）
         }
     }
     ```
 
-- **综合练习**
-
-    ```
-    从键盘输入分数
-    分数100，奖励汽车
-    分数80-99，奖励手机
-    分数60-79，奖励参考书
-    分数0-59，继续努力
-    ```
-
-    ```javascript
-    public class ScoreReward {
-        public static void checkScore(Integer score) {
-            if (score == null) {
-                System.debug('请输入正确分数！');
-                return;
-            }
-            if (score < 0 || score > 100) {
-                System.debug('请输入正确分数！');
-            } else {
-                if (score == 100) {
-                    System.debug('奖励汽车');
-                } else if (score >= 80) {
-                    System.debug('奖励手机');
-                } else if (score >= 60) {
-                    System.debug('奖励参考书');
-                } else {
-                    System.debug('请继续努力');
-                }
-            }
+    ```java
+    String status = 'Processing';
+    
+    switch on status {
+        when 'New' {
+            System.debug('订单是新的');
+        }
+        when 'Processing' {
+            System.debug('订单正在处理中');
+        }
+        when 'Completed' {
+            System.debug('订单已完成');
+        }
+        when else {
+            System.debug('未知订单状态');
         }
     }
+    ```
+
+- **多值匹配**
+
+    ```java
+    Integer day = 6;
+    
+    switch on day {
+        when 1, 2, 3, 4, 5 {
+            System.debug('工作日');
+        }
+        when 6, 7 {
+            System.debug('周末');
+        }
+        when else {
+            System.debug('未知');
+        }
+    }
+    ```
+
+## 三元表达式
+
+- Apex 的三元表达式语法和 Java 相同，但 **适用范围** 和 **类型推导** 上有一些不同。
+
+- **语法**
+
+    ```java
+    条件表达式 ? 真值 : 假值
+    ```
+
+    ```java
+    Integer score = 85;
+    String result = (score >= 60) ? '及格' : '不及格';
+    System.debug(result);  // 输出：及格
     ```
 
 # 循环结构

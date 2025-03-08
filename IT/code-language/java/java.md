@@ -172,11 +172,12 @@ Java 语言提供了八种基本类型。六种数字类型（四个整数型，
 
 ## 字符型char
 
-- Java 中字符使用**单**引号
+- 使用单引号 `'` 标记字符。
 
 ### 字符串String
 
-- Java 中字符串用 `String` 表示，使用**双**引号
+- 字符串用 `String` 表示
+- 使用双引号 `"` 标记字符串。
 
 ## 布尔型boolean
 
@@ -208,27 +209,15 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
     ```javascript
     if (条件表达式) {
-      执行语句;
+        执行语句;
     }
     ```
 
     ```javascript
-    import java.util.Scanner;
+    int score = 85;
     
-    public class CarPurchase {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("请输入你的存款：");
-            
-            double money = scanner.nextDouble();
-            
-            if (money >= 100) {
-                System.out.println("恭喜你！可以买宝马了！");
-                System.out.println("真开心！");
-            }
-            
-            scanner.close();
-        }
+    if (score >= 60) {
+        System.out.println("及格！");
     }
     ```
 
@@ -239,34 +228,19 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
     ```javascript
     if (条件表达式) {
-      执行语句A;
+        执行语句A;
     } else {
-      执行语句B;
+        执行语句B;
     }
     ```
 
     ```javascript
-    import java.util.Scanner;
+    int score = 85;
     
-    public class CarPurchase {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("请输入你的存款：");
-            
-            if (scanner.hasNextDouble()) {
-                double money = scanner.nextDouble();
-                
-                if (money >= 100) {
-                    System.out.println("恭喜你！可以买宝马了！");
-                } else {
-                    System.out.println("继续上班！");
-                }
-            } else {
-                System.out.println("请输入有效的数字！");
-            }
-            
-            scanner.close();
-        }
+    if (score >= 60) {
+        System.out.println("及格！");
+    } else {
+        System.out.println("不及格！");
     }
     ```
 
@@ -277,85 +251,27 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
     ```javascript
     if (条件表达式1) {
-      执行语句A;
+        执行语句A;
     } else if (条件表达式2) {
-      执行语句B;
+        执行语句B;
     } else if (条件表达式3) {
-      执行语句c;
+        执行语句c;
     } else {
-      执行语句D;
+        执行语句D;
     }
     ```
 
     ```javascript
-    import java.util.Scanner;
+    int score = 85;
     
-    public class CarPurchase {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("请输入你的存款：");
-            
-            if (scanner.hasNextDouble()) {
-                double money = scanner.nextDouble();
-                
-                if (money >= 100) {
-                    System.out.println("恭喜你！可以买宝马了！");
-                } else if (money >= 50) {
-                    System.out.println("买丰田！");
-                } else if (money >= 20) {
-                    System.out.println("买二手车！");
-                } else {
-                    System.out.println("继续上班！");
-                }
-            } else {
-                System.out.println("请输入有效的数字！");
-            }
-            
-            scanner.close();
-        }
-    }
-    ```
-
-- **综合练习**
-
-    ```
-    从键盘输入分数
-    分数100，奖励汽车
-    分数80-99，奖励手机
-    分数60-79，奖励参考书
-    分数0-59，继续努力
-    ```
-
-    ```javascript
-    import java.util.InputMismatchException;
-    import java.util.Scanner;
-    
-    public class ScoreReward {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            System.out.print("请输入分数：");
-            try {
-                int score = scanner.nextInt();
-                if (score < 0 || score > 100) {
-                    System.out.println("请输入正确分数！");
-                } else {
-                    if (score == 100) {
-                        System.out.println("奖励汽车");
-                    } else if (score >= 80) {
-                        System.out.println("奖励手机");
-                    } else if (score >= 60) {
-                        System.out.println("奖励参考书");
-                    } else {
-                        System.out.println("请继续努力");
-                    }
-                }
-            } catch (InputMismatchException e) {
-                System.out.println("请输入正确分数！");
-            } finally {
-                scanner.close();
-            }
-        }
-    }
+    if (score >= 90) {
+        System.out.println("优秀！");
+    } else if (score >= 80) {
+        System.out.println("良好！");
+    } else if (score >= 60) {
+        System.out.println("及格！");
+    } else {
+        System.out.println("不及格！");
     ```
 
 ## switch 语句
@@ -376,33 +292,37 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
     ```java
-    import java.util.Scanner;
+    String status = "Processing";
     
-    public class NumberToChinese {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
+    switch (status) {
+        case "New":
+            System.out.println("订单是新的");
+            break;
+        case "Processing":
+            System.out.println("订单正在处理中");
+            break;
+        case "Completed":
+            System.out.println("订单已完成");
+            break;
+        default:
+            System.out.println("未知订单状态");
+    }
+    ```
+
+- **多值匹配**
+
+    ```java
+    int day = 6;
     
-            System.out.print("请输入数字：");
-            int num = scanner.nextInt();  // 获取用户输入的数字
-    
-            // switch 语句
-            switch (num) {
-                case 1:
-                    System.out.println("壹");
-                    break;
-                case 2:
-                    System.out.println("贰");
-                    break;
-                case 3:
-                    System.out.println("叁");
-                    break;
-                default:
-                    System.out.println("没有这个数");
-                    break;
-            }
-    
-            scanner.close();  // 关闭 Scanner
-        }
+    switch (day) {
+        case 1, 2, 3, 4, 5:
+            System.out.println("工作日");
+            break;
+        case 6, 7:
+            System.out.println("周末");
+            break;
+        default:
+            System.out.println("未知");
     }
     ```
 
@@ -415,26 +335,14 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
     ```java
-    import java.util.Scanner;
-    
-    public class BankBalance {
-        public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-    
-            System.out.print("请输入你的存款：");
-            double money = scanner.nextDouble();  // 获取用户输入的存款金额
-    
-            // 使用三元运算符判断存款金额
-            System.out.println(money >= 100 ? "恭喜你！可以买宝马了！" : "继续上班！");
-    
-            scanner.close();  // 关闭 Scanner
-        }
-    }
+    Integer score = 80;
+    String result = (score >= 60) ? "及格" : "不及格";
+    System.out.println(result);  // 输出：及格
     ```
 
 # 循环结构
 
-- Java 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构。
+- Java 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构。
 
 ## for 循环
 
@@ -593,7 +501,7 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 # 跳转结构
 
-Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构。
+Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构。
 
 - **`continue` 和 `break` 示例**
 

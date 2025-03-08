@@ -196,7 +196,7 @@
 
 - `无关键字` 声明的变量，具有全局级作用域，考略到代码可维护性和可读性，不推荐。
 - `var` 声明的变量，具有函数级作用域；存在变量提升现象。
-- `let` 用于声明**变量**，具有块级作用域。
+- `let` 用于声明**变量**，具有块级作用域。优先使用 **let** 声明变量。
 - `const` 用于声明**常量**，具有块级作用域；不能被重新赋值。
 
 - **变量提升**：JS 代码的执行是由浏览器中的 JS 解析器执行的，分为两个过程：预解析和代码执行。
@@ -1401,12 +1401,157 @@ console.log(typeof res)  // string
 
 JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 Java。
 
+## if 语句
+
+### if
+
+- **语法**
+
+    ```javascript
+    if (条件表达式) {
+      执行语句;
+    }
+    ```
+
+    ```javascript
+    let score = 85;
+    
+    if (score >= 60) {
+      console.log("及格！");
+    }
+    ```
+
+
+### if-else
+
+- **语法**
+
+    ```javascript
+    if (条件表达式) {
+      执行语句A;
+    } else {
+      执行语句B;
+    }
+    ```
+
+    ```javascript
+    let score = 85;
+    
+    if (score >= 60) {
+      console.log("及格！");
+    } else {
+      console.log("不及格！");
+    }
+    ```
+
+
+### if-else if-else
+
+- **语法**
+
+    ```javascript
+    if (条件表达式1) {
+      执行语句A;
+    } else if (条件表达式2) {
+      执行语句B;
+    } else if (条件表达式3) {
+      执行语句c;
+    } else {
+      执行语句D;
+    }
+    ```
+
+    ```javascript
+    let score = 85;
+    
+    if (score >= 90) {
+      console.log("优秀！");
+    } else if (score >= 80) {
+      console.log("良好！");
+    } else if (score >= 60) {
+      console.log("及格！");
+    } else {
+      console.log("不及格！");
+    }
+    ```
+
+## switch 语句
+
+- **语法**
+
+    ```java
+    switch (条件值) {
+      case 值1:
+        执行语句1;
+        break;
+      case 值2:
+        执行语句2;
+        break;
+      default:
+        执行语句3;
+    }
+    ```
+
+    ```java
+    let status = "Processing";
+    
+    switch (status) {
+      case "New":
+        console.log("订单是新的");
+        break;
+      case "Processing":
+        console.log("订单正在处理中");
+        break;
+      case "Completed":
+        console.log("订单已完成");
+        break;
+      default:
+        console.log("未知订单状态");
+    }
+    ```
+
+- **多值匹配**
+
+    ```java
+    let day = 6;
+    
+    switch (day) {
+      case 1:
+      case 2:
+      case 3:
+      case 4:
+      case 5:
+        console.log("工作日");
+        break;
+      case 6:
+      case 7:
+        console.log("周末");
+        break;
+      default:
+        console.log("未知");
+    }
+    ```
+
+## 三元表达式
+
+- **语法**
+
+    ```java
+    条件表达式 ? 真值 : 假值
+    ```
+
+    ```java
+    let score = 85;
+    let result = score >= 60 ? "及格" : "不及格";
+    console.log(result);  // 输出：及格
+    ```
+
 # [循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)
 
 - JS 中有 `for`、`for-in`、`for-of`、`while` 和 `do-while` 五种循环结构。
     - 其中 `for`、`while` 和 `do-while` 循环，用法同 Java。
     - 其中 `for-of` 的作用类似于 Java 的 `for-each`，用于遍历可迭代对象。
-    - 其中 `for-in` 为 JS 特有，用于遍历对象的 **可枚举属性名**（包括继承的属性）。它也可以用于遍历数组，但它返回的是数组的索引（键名），而不是数组的值。。
+    - 其中 `for-in` 为 JS 特有，用于遍历对象的 **可枚举属性名**（包括继承的属性）。它也可以用于遍历数组，但它返回的是数组的索引（键名），而不是数组的值。。
 
 - JS 中支持**无限循环**和**循环嵌套**，用法同 Java。
 
