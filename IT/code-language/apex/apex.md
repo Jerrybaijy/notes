@@ -129,7 +129,7 @@ Apex 中有10种原始数据类型。
 ### 字符类型
 
 - **`Char`**：用于存储单个字符，只有一个字符的 Unicode 编码。
-- 使用单引号 `'` 标记字符。
+- 使用单引号 `'` 标记字符。
 
 ### 字符串类型
 
@@ -156,7 +156,28 @@ Apex 中有10种原始数据类型。
 
 ### SObject 类型
 
-`SObject` 类型代表 Salesforce 数据模型中的记录，例如 `Account`、`Contact` 等。你可以使用 `SObject` 类型来存储 Salesforce 对象的数据。
+`sObject` 是一种通用对象类型，它可以是标准对象（如 `Account`, `Contact`, `Opportunity`）或自定义对象（通过 Salesforce 的自定义对象功能创建）。在 Apex 中，所有的对象（无论是标准对象还是自定义对象）都是从 `sObject` 类派生出来的。
+
+- 创建 sObject
+
+    ```java
+    Account acct = new Account(Name='Acme');
+    ```
+
+- 添加 field
+
+    ```java
+    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+    ```
+
+    ```java
+    Account acct = new Account();
+    acct.Name = 'Acme';
+    acct.Phone = '(415)555-1212';
+    acct.NumberOfEmployees = 100;
+    ```
+
+    
 
 ### 数组类型
 
@@ -188,79 +209,9 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ## if 语句
 
-### if
-
-- **语法**
-
-    ```javascript
-    if (条件表达式) {
-        执行语句;
-    }
-    ```
-
-    ```javascript
-    Integer score = 85;
-    
-    if (score >= 60) {
-        System.debug('及格！');
-    }
-    ```
-
-### if-else
-
-- **语法**
-
-    ```javascript
-    if (条件表达式) {
-        执行语句A;
-    } else {
-        执行语句B;
-    }
-    ```
-
-    ```javascript
-    Integer score = 85;
-    
-    if (score >= 60) {
-        System.debug('及格！');
-    } else {
-        System.debug('不及格！');
-    }
-    ```
-
-### if-else if-else
-
-- **语法**
-
-    ```javascript
-    if (条件表达式1) {
-        执行语句A;
-    } else if (条件表达式2) {
-        执行语句B;
-    } else if (条件表达式3) {
-        执行语句c;
-    } else {
-        执行语句D;
-    }
-    ```
-
-    ```javascript
-    Integer score = 85;
-    
-    if (score >= 90) {
-        System.debug('优秀！');
-    } else if (score >= 80) {
-        System.debug('良好！');
-    } else if (score >= 60) {
-        System.debug('及格！');
-    } else {
-        System.debug('不及格！');
-    }
-    ```
+- Apex 中 `if` 语句的语法格式与 Java 相同。
 
 ## switch 语句
-
-### 基本语法
 
 - Apex 的 `switch` 语句类似于 Java，但语法稍有不同。
     - Apex 使用 `switch on` 进行变量匹配.
@@ -325,18 +276,6 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - Apex 的三元表达式语法和 Java 相同，但 **适用范围** 和 **类型推导** 上有一些不同。
 
-- **语法**
-
-    ```java
-    条件表达式 ? 真值 : 假值
-    ```
-
-    ```java
-    Integer score = 85;
-    String result = (score >= 60) ? '及格' : '不及格';
-    System.debug(result);  // 输出：及格
-    ```
-
 # 循环结构
 
 - Apex 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构，用法同 Java。
@@ -345,3 +284,16 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 # 跳转结构
 
 - Apex 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
+
+# DML
+
+在 Salesforce 中，**DML**（数据操作语言，Data Manipulation Language）用于操作 Salesforce 数据库中的记录。
+
+- 插入数据
+
+    ```java
+    Account newAccount = new Account(Name = 'New Account');
+    insert newAccount;
+    ```
+
+    

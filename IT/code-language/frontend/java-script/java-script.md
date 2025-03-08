@@ -1403,116 +1403,13 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
 ## if 语句
 
-### if
-
-- **语法**
-
-    ```javascript
-    if (条件表达式) {
-      执行语句;
-    }
-    ```
-
-    ```javascript
-    let score = 85;
-    
-    if (score >= 60) {
-      console.log("及格！");
-    }
-    ```
-
-
-### if-else
-
-- **语法**
-
-    ```javascript
-    if (条件表达式) {
-      执行语句A;
-    } else {
-      执行语句B;
-    }
-    ```
-
-    ```javascript
-    let score = 85;
-    
-    if (score >= 60) {
-      console.log("及格！");
-    } else {
-      console.log("不及格！");
-    }
-    ```
-
-
-### if-else if-else
-
-- **语法**
-
-    ```javascript
-    if (条件表达式1) {
-      执行语句A;
-    } else if (条件表达式2) {
-      执行语句B;
-    } else if (条件表达式3) {
-      执行语句c;
-    } else {
-      执行语句D;
-    }
-    ```
-
-    ```javascript
-    let score = 85;
-    
-    if (score >= 90) {
-      console.log("优秀！");
-    } else if (score >= 80) {
-      console.log("良好！");
-    } else if (score >= 60) {
-      console.log("及格！");
-    } else {
-      console.log("不及格！");
-    }
-    ```
+- JS 中 `if` 语句的语法格式与 Java 相同。
 
 ## switch 语句
 
-- **语法**
+- 在 JavaScript 中，`switch` 语句的 `case` 标签不能直接用逗号分隔多个值，因此需要将多个 `case` 分开写。
 
-    ```java
-    switch (条件值) {
-      case 值1:
-        执行语句1;
-        break;
-      case 值2:
-        执行语句2;
-        break;
-      default:
-        执行语句3;
-    }
-    ```
-
-    ```java
-    let status = "Processing";
-    
-    switch (status) {
-      case "New":
-        console.log("订单是新的");
-        break;
-      case "Processing":
-        console.log("订单正在处理中");
-        break;
-      case "Completed":
-        console.log("订单已完成");
-        break;
-      default:
-        console.log("未知订单状态");
-    }
-    ```
-
-- **多值匹配**
-
-    ```java
+    ```javascript
     let day = 6;
     
     switch (day) {
@@ -1530,20 +1427,6 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
       default:
         console.log("未知");
     }
-    ```
-
-## 三元表达式
-
-- **语法**
-
-    ```java
-    条件表达式 ? 真值 : 假值
-    ```
-
-    ```java
-    let score = 85;
-    let result = score >= 60 ? "及格" : "不及格";
-    console.log(result);  // 输出：及格
     ```
 
 # [循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)

@@ -139,7 +139,7 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 ## Maven
 
-​	Maven 是一个用于构建和管理 Java 项目的工具
+Maven 是一个用于构建和管理 Java 项目的工具
 
 ### 安装
 
