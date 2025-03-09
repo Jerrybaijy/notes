@@ -1,10 +1,8 @@
-# SQL
+# SQL 基础
 
 **SQL**（**S**tructured **Q**uery **L**anguage）即结构化查询语言，是用于与**关系型**数据库管理系统（RDBMS）交互的标准编程语言。
 
-## SQL 基础
-
-### 注释
+## 注释
 
 - **语法**：单行注释 `--`；多行注释 `/* */`
 
@@ -18,22 +16,22 @@
 	*/
 	```
 
-### 语法规范
+## 语法规范
 
-- **大小写不敏感**：SQL 中的关键字（如 SELECT、FROM 等）通常不区分大小写，但都习惯大写。
+- **大小写不敏感**：SQL 中的关键字（如 SELECT、FROM 等）通常不区分大小写，但都习惯大写；大部分数据库默认对字符串的大小写也不敏感。
 - **缩进与空格**：虽然语法上没有严格要求，但合理使用缩进和空格可以提高 SQL 语句的可读性。
 - **语句结束符**：以 `;` 作为 SQL 语句的结束标志，但有些系统也允许不写分号。
 - **占位符**：由于习惯大写关键字，所以个人笔记占位符前缀加 `$`。
 - **字符串**：字符串使用单引号 `'` 包围；双引号有其它用途，各个语言不一样。
 
-### 关键字
+## 关键字
 
 - **`*`**：表示所有。
 	- `SELECT * FROM tb_test;`：查看 `tb_test` 数据表中所有 ROW。
 - **`WHERE`**：`$COMMAND WHERE $CONDITION;`，用于添加查询条件。
 	- `DELETE FROM tb_test WHERE id=1;`：从 `tb_test` 数据表中删除 `id=1` 的 ROW。
 
-### SQL 标准和数据库实现
+## SQL 标准和数据库实现
 
 虽然 SQL 是一个标准语言，但不同的数据库管理系统在 SQL 语言的实现上会有一些差异。常见的差异包括：
 
@@ -41,7 +39,7 @@
 - **SQL 方言**：某些 SQL 语法可能只在特定的数据库中有效。
 - **扩展功能**：如特定的函数、存储过程、触发器等。
 
-### 多行输入
+## 多行输入
 
 - **Linux**：未完成行的行尾使用反斜杠 `\` 作为续行符。
 
@@ -59,7 +57,7 @@
 	WHERE age > 20;
 	```
 
-## 数据库 `DATABASE`
+# Database 数据库
 
 - **基础命令**
 
@@ -74,9 +72,9 @@
 	DROP DATABASE $DATABASE;
 	```
 
-## 数据表 `TABLE`
+# Table 数据表
 
-### TABLE 基础
+## TABLE 基础
 
 - **基础命令**
 
@@ -117,7 +115,7 @@
 	3. **`AUTO_INCREMENT`**：
 	4. **`PRIMARY KEY`**：主键
 
-### 字段
+# Field 字段
 
 **字段**（Field）是数据库中表的一个组成部分，代表了表中的一个列，用于存储数据。
 
@@ -149,7 +147,7 @@
 - [CHECK ](https://www.w3cschool.cn/sql/fsq7hfph.html)：保证列中的所有值满足某一条件
 - [INDEX](https://www.w3cschool.cn/sql/cuj91oz2.html)：索引，用于在数据库中快速创建或检索数据
 
-## 数据行 `ROW`
+# Row 数据行
 
 - **基础命令**
 
@@ -162,7 +160,7 @@
 	INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
 	```
 
-## 数据列 `COLUMN`
+# Column 数据列
 
 - **基础命令**
 
@@ -171,7 +169,7 @@
 	ALTER TABLE $TABLE DROP COLUMN $COLUMN
 	```
 
-## 数据 `DATA`
+# Data 数据
 
 - **查看数据**
 
@@ -197,3 +195,62 @@
 		mobile = '1999999999' 
 	WHERE name = 'zhaoliu';
 	```
+
+# SELECT
+
+- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据
+
+## Where
+
+- 使用 `WHERE 子句` 添加查询条件
+
+- WHERE 子句可以包含一个或多个查询条件。
+
+    - **一个条件**
+
+        ```sql
+        SELECT Name,Phone FROM Account WHERE Name='SFDC Computing'
+        ```
+
+    - **多个条件**：使用逻辑运算符 （AND、OR）和圆括号 `()` 对所有条件进行分组，类似数学运算。
+
+        ```sql
+        SELECT Name,Phone FROM Account
+           WHERE (Name='SFDC Computing' OR (NumberOfEmployees>25 AND BillingCity='Los Angeles'))
+        ```
+
+- **通配符**
+
+    - `%` 匹配任何字符匹配或不匹配任何字符。
+    - `_` 匹配一个字符。
+
+## Order
+
+- 使用 `ORDER BY $FIELD_NAME` 对查询结果排序
+
+- **语法**
+
+    ```sql
+    // 按字母顺序升序排列
+    SELECT * FROM Contact ORDER BY Name [ASC];
+    
+    // 按字母顺序降序排列
+    SELECT * FROM Contact ORDER BY Name DESC;
+    ```
+
+- **升序和降序**
+
+    - **ASC**：默认为升序 (ascending)，可省略；
+    - **DESC**: 降序 (descending)。
+
+## Limit
+
+- 使用 `LIMIT n` 限制查询结果的返回的记录数量。
+
+    ```sql
+    SELECT Name FROM Account LIMIT 1;
+    ```
+
+# 其它
+
+- **引用变量**：在 SQL 语句中可以引用其它语言声明的变量，不同语言的引用方式不同。

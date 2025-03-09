@@ -284,6 +284,10 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - Apex 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
 
+# [Contact](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_contact.htm?_ga=2.145375476.1561775477.1741324952-529724583.1741324952)
+
+Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/compound_fields.htm)。它是 Contact 的 FirstName、LastName、MiddleName 和 Suffix 字段的串联。
+
 # [DML](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
 在 Salesforce 中，**DML**（数据操作语言，Data Manipulation Language）用于操作 Salesforce 数据库中的记录。
@@ -298,7 +302,300 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - `insert`：插入新记录
 - `update`：更新已有记录
-- `upsert`：有记录则更新，无记录
+- `upsert`：有记录则更新，无记录则创建
 - `delete`：删除
 - `undelete`：还原
 - `merge`：合并至多三个记录到其中一个记录
+
+## [Insert](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- **语法**
+
+    ```java
+    // Create the account sObject
+    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+    // Insert the account by using DML
+    insert acct;
+    ```
+
+## [Upsert](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- **语法**
+
+    ```java
+    upsert $SOBJECT Account.Fields.$FIELD_NAME;
+    ```
+    
+    ```java
+    Contact jane = new Contact(FirstName='Jane',
+                             LastName='Smith',
+                             Email='jane.smith@example.com',
+                             Description='Contact of the day');
+    insert jane;
+    
+    Contact jane2 = new Contact(FirstName='Jane',
+                             LastName='Smith',
+                             Email='jane.smith@example.com',
+                             Description='Prefers to be contacted by email.');
+    
+    upsert jane2 Contact.fields.Email;
+    // Verify that the contact has been updated
+    System.assertEquals('Prefers to be contacted by email.',
+                       [SELECT Description FROM Contact WHERE Id=:jane.Id].Description);
+    ```
+
+## [Delete](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- **语法**
+
+    ```java
+    Contact[] contactsDel = [SELECT Id FROM Contact WHERE LastName='Smith'];
+    delete contactsDel;
+    ```
+
+## [获取 ID](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+插入记录时，系统会为每条记录分配一个 ID。除了在数据库中保留 ID 值外，ID 值还会自动填充到您在 DML 调用中用作参数的 sObject 变量上。
+
+- **语法**
+
+    ```java
+    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+    insert acct;
+    
+    // Get the new ID on the inserted sObject argument
+    ID acctID = acct.Id;
+    // Display this ID in the debug log
+    System.debug('ID = ' + acctID);
+    // Debug log result (the ID will be different in your case)
+    // DEBUG|ID = 001D000000JmKkeIAF
+    ```
+
+## [批量处理](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- 批量处理有助于节约资源。
+
+- **语法**
+
+    ```java
+    List<Contact> conList = new List<Contact> {
+        new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+            new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+            new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
+            new Contact(FirstName='Kim',LastName='Shain',Department='Education')};
+    // Bulk insert all contacts with one DML call
+    insert conList;
+    // List to hold the new contacts to update
+    List<Contact> listToUpdate = new List<Contact>();
+    // Iterate through the list and add a title only
+    //   if the department is Finance
+    for(Contact con : conList) {
+        if (con.Department == 'Finance') {
+            con.Title = 'Financial analyst';
+            // Add updated contact sObject to the list.
+            listToUpdate.add(con);
+        }
+    }
+    // Bulk update all contacts with one DML call
+    update listToUpdate;
+    ```
+
+## [异常处理](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- **语法**
+
+    ```java
+    try {
+        // This causes an exception because
+        //   the required Name field is not provided.
+        Account acct = new Account();
+        // Insert the account
+        insert acct;
+    } catch (DmlException e) {
+        System.debug('A DML exception has occurred: ' +
+                    e.getMessage());
+    }
+    ```
+
+## [Database Methods](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+- Apex 包含内置的 Database 类，该类提供的方法可代替对应的 DML 语句。
+
+    - `Database.insert()`
+
+    - `Database.update()`
+
+    - `Database.upsert()`
+
+    - `Database.delete()`
+
+    - `Database.undelete()`
+
+    - `Database.merge()`
+
+    - 例如，以下方法等效于 `insert recordList;` 语句。
+
+        ```java
+        Database.insert(recordList);
+        ```
+
+- **allOrNone**
+
+    - Database 方法具有可选的 allOrNone 参数，该参数允许您指定操作是否可以部分成功。
+    - 该参数默认为 `true`，即**不提交**成功的记录，并且任何记录发生错误时，立即返回失败记录的错误；等同于正常流程的 DML 语句。
+    - 当该参数设置为 `false` 时，**提交**成功的记录，并且如果部分记录发生错误，则返回失败记录的错误；这是 Database 方法和 DML 语句的区别。
+    - 此外，partial success 选项不会引发异常。
+    - 以下是调用 `insert` 方法，并将 allOrNone 设置为 `false`。
+
+        ```java
+        Database.insert(recordList, false);
+        ```
+
+- database 的返回值
+
+    - Database 方法会返回一个对象，这个对象包含每条记录的成功或失败的信息。
+    - Insert 返回 `Database.SaveResult` 对象；
+    - Upsert 返回 `Database.UpsertResult` 对象；
+    - Delete 返回 `Database.DeleteResult` 对象。
+    - 例如，insert 返回 `Database.SaveResult` 对象的数组。
+
+        ```java
+        Database.SaveResult[] results = Database.insert(recordList, false);
+        ```
+
+- **综合示例**：使用 Database 方法，并且有一条记录会返回错误信息。
+
+    ```java
+    // Create a list of contacts
+    List<Contact> conList = new List<Contact> {
+            new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+            new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+            new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
+            new Contact()};
+    
+    // Bulk insert all contacts with one DML call
+    Database.SaveResult[] srList = Database.insert(conList, false);
+    
+    // Debug logs: Iterate through each returned result
+    for (Database.SaveResult sr : srList) {
+        if (sr.isSuccess()) {
+            // Operation was successful, so get the ID of the record that was processed
+            System.debug('Successfully inserted contact. Contact ID: ' + sr.getId());
+        } else {
+            // Operation failed, so get all errors
+            for(Database.Error err : sr.getErrors()) {
+                System.debug('The following error has occurred.');
+                System.debug(err.getStatusCode() + ': ' + err.getMessage());
+                System.debug('Contact fields that affected this error: ' + err.getFields());
+    	 }
+        }
+    }
+    ```
+
+## [使用相关记录](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+
+### Insert Related Records
+
+- **示例**
+
+    ```java
+    Account acct = new Account(Name='SFDC Account');
+    insert acct;
+    // Once the account is inserted, the sObject will be populated with an ID.
+    // Get this ID.
+    ID acctID = acct.ID;
+    // Add a contact to this account.
+    Contact mario = new Contact(
+        FirstName='Mario',
+        LastName='Ruiz',
+        Phone='415.555.1212',
+        AccountId=acctID);
+    insert mario;
+    ```
+
+### Update Related Records
+
+- **示例**
+
+    ```java
+    // Query for the contact, which has been associated with an account.
+    Contact queriedContact = [SELECT Account.Name
+                              FROM Contact
+                              WHERE FirstName = 'Mario' AND LastName='Ruiz'
+                              LIMIT 1];
+    // Update the contact's phone number
+    queriedContact.Phone = '(415)555-1213';
+    // Update the related account industry
+    queriedContact.Account.Industry = 'Technology';
+    // Make two separate calls
+    // 1. This call is to update the contact's phone.
+    update queriedContact;
+    // 2. This call is to update the related account's Industry field.
+    update queriedContact.Account;
+    ```
+
+### Delete Related Records
+
+- 该操作会串联删除父记录以下的所有子记录。
+
+- **示例**：此示例会删除该 Account 和其相关的 Contact。
+
+    ```java
+    Account[] queriedAccounts = [SELECT Id FROM Account WHERE Name='SFDC Account'];
+    delete queriedAccounts;
+    ```
+
+    
+
+# SOQL
+
+**SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) 是 Salesforce 专有的查询语言，用于从 Salesforce 数据库中检索数据。它类似于 SQL，但专门用于 Salesforce 平台的数据结构。SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
+
+## 注释
+
+- SOQL 不支持 SQL 中的注释。
+
+- SOQL **本身不支持注释**，在 Apex 代码中用 `//` 或 `/* ... */` 记录注释。
+
+    ```sql
+    // 这是一个 Apex 代码中的 SOQL 查询
+    List<Account> accounts = [ 
+        SELECT Id, Name FROM Account
+        // WHERE Name = 'Acme'  -- 这里不能直接使用 SOQL 注释
+    ];
+    ```
+
+## 运行环境
+
+- **Setup Menu** > **Developer Console** > **Query Editor**
+
+    ![image-20250309231432076](assets/image-20250309231432076.png)
+
+## SOQL 基础
+
+- SOQL 绝大部分语法与 SQL 相同。
+    - WHERE
+    - ORDER
+    - LIMIT
+- **不同点**
+    - SOQL 不能为所有字段指定 `*`。
+
+- **基本内联 SOQL 示例**：即将 SOQL 语句内嵌在 Apex 语法中。将 SOQL 语句括在方括号中，并使用 sObject 数组接收返回值。
+
+    ```java
+    Account[] accts = [SELECT Name,Phone FROM Account];
+    ```
+
+## 引用变量
+
+- Apex 中的 SOQL 语句可以引用 Apex 代码变量和表达式；
+
+- **语法**：在变量前加冒号 `:`
+
+    ```java
+    String targetDepartment = 'Wingo';
+    Contact[] techContacts = [SELECT FirstName,LastName
+                              FROM Contact WHERE Department=:targetDepartment];
+    ```
+
+    

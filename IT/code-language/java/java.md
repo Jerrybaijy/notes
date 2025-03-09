@@ -362,7 +362,7 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ## for-each 循环
 
-- **语法**：Java 中没有 for-in 语句，for-each 循环就是其它语言中的 for-in 语句，用于直接遍历。
+- **语法**：用于直接遍历。
 
   ```java
   for (数据类型 变量名 : 数组或集合){
@@ -373,7 +373,7 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
   ```java
   String[] arr = {"中国", "上海", "北京" };
   for (String data : arr) {
-      System.out.println(data);// 中国 上海 北京
+      System.out.println(data);  // 中国 上海 北京
   ```
   
 - 还可用索引思想遍历
@@ -381,7 +381,7 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
   ```java
   int[] data = { 45, 67, 89 };
   for (int i = 0; i < data.length; i++) {
-      System.out.println(data[i]);// 45 67 89
+      System.out.println(data[i]);  // 45 67 89
   }
   ```
 
