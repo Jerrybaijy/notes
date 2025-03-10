@@ -198,7 +198,7 @@
 
 # SELECT
 
-- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据
+- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据
 
 ## Where
 
@@ -222,7 +222,14 @@
 - **通配符**
 
     - `%` 匹配任何字符匹配或不匹配任何字符。
+    
     - `_` 匹配一个字符。
+    
+    - 使用 **like** 代替 **=** 匹配通配符
+    
+        ```sql
+        SELECT * FROM books WHERE title LIKE 'The _e%';
+        ```
 
 ## Order
 

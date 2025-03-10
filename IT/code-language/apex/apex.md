@@ -547,7 +547,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
     
 
-# SOQL
+# [SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
 **SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) 是 Salesforce 专有的查询语言，用于从 Salesforce 数据库中检索数据。它类似于 SQL，但专门用于 Salesforce 平台的数据结构。SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
@@ -598,4 +598,132 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
                               FROM Contact WHERE Department=:targetDepartment];
     ```
 
-    
+
+## 查询相关记录
+
+### 根据 Account Name 查询 Contact 姓名
+
+- **示例**
+
+    ```java
+    Account[] acctsWithContacts = [SELECT Name, (SELECT FirstName,LastName FROM Contacts)
+                                   FROM Account
+                                   WHERE Name = 'SFDC Computing'];
+    // Get child records
+    Contact[] cts = acctsWithContacts[0].Contacts;
+    System.debug('Name of first associated contact: '
+                 + cts[0].FirstName + ', ' + cts[0].LastName);
+    ```
+
+- **查询目的**：从 `Account` 对象中筛选出 `Name` 为 **SFDC Computing** 的 Account 对象，同时获取与这些 Account 关联的 `Contact` 的 `FirstName` 和 `LastName`。
+
+- `(SELECT FirstName,LastName FROM Contacts)`
+
+    - 括号里的 SELECT 是一个内部子查询，子查询在父查询的结果基础上运行。
+    - 内部子查询的 `FROM Contacts` 子句针对关系名称运行，而不是针对 Salesforce 对象名称运行。
+    - 也就是说，内部子查询的 Contacts 只是 Name 为 **SFDC Computing** 的 Account 关联的所有 Contact 对象，而不是整个 Salesforce 的 Contact 对象。
+
+- **结果存储**：查询结果存储在 `acctsWithContacts` 数组中，数组中的每个元素都是一个 `Account` 对象，每个 `Account` 对象包含一个 `Contacts` 集合，该集合包含了与该账户关联的所有联系人记录。
+
+### 根据 Contact 姓名查询 Account Name
+
+- **示例**
+
+    ```java
+    Contact[] cts = [SELECT Account.Name FROM Contact
+                     WHERE FirstName = 'Carol' AND LastName='Ruiz'];
+    Contact carol = cts[0];
+    String acctName = carol.Account.Name;
+    System.debug('Carol\'s account name is ' + acctName);
+    ```
+
+- **查询目的**：从 `Contact` 对象中筛选出 `FirstName` 为 **Carol** 且 `LastName` 为 **Ruiz** 的 Contact 对象，同时获取这些 Contact  对象关联的 `Account` 对象的 `Name` 字段值。
+
+- `SELECT Account.Name`，这里的 Account 是 Contact 的一个字段，这个字段会关联到 Contact 对应的 Account。
+
+- 整个第一条语句返回的是一个包含多个 Contact 对象的数组，每个对象里包含了 Account 字段，Account 字段又有 Name 字段。
+
+    ```
+    [
+        {
+            "Id": "003000000123456",
+            "Account": {
+                "Name": "ABC 公司"
+            }
+        },
+        {
+            "Id": "003000000789012",
+            "Account": {
+                "Name": "XYZ 企业"
+            }
+        }
+    ]
+    ```
+
+# [SOSL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner)
+
+**SOSL**（**S**alesforce **O**bject **S**earch **L**anguage）是 Salesforce 平台提供的一种强大的搜索语言，用于在多个对象中进行跨对象的全文搜索。SOSL 类似于 Apache Lucene。
+
+- SOSL 则用于在**多个**对象和字段中快速搜索特定的文本字符串，而SOQL 主要用于查询**单个**对象或对象之间的关系。
+- SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种精准搜索。比如搜索 Digital：
+    - SOSL：Digital | The Digital Company
+    - SOQL：Digital
+
+## 运行环境
+
+- 同 SOQL：**Setup Menu** > **Developer Console** > **Query Editor**
+
+## 语法结构
+
+SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有不同
+
+```sql
+// 在 Query Editor 中
+FIND {SearchQuery} [IN SearchGroup] [RETURNING ObjectsAndFields]
+```
+
+```sql
+// 在 API 中
+FIND 'SearchQuery' [IN SearchGroup] [RETURNING ObjectsAndFields]
+```
+
+SOSL 内嵌在 Apex 的示例如下：
+
+```java
+List<List<SObject>> searchList = [FIND 'SFDC' IN ALL FIELDS
+                                      RETURNING Account(Name), Contact(FirstName,LastName)];
+```
+
+## SearchQue
+
+- 如果搜索的是两个单词，字段中包含这两个单词即可。
+    - 例如搜索 `The Query`，可以搜索到 `Account: The SFDC Query Man`
+- 可以使用逻辑运算符（AND、OR）和括号进行分组。
+- 文本搜索不区分大小写。
+- 通配符
+    - `*`：匹配搜索词中间或末尾的**任意个**字符
+    - `?`：匹配搜索词中间或末尾的**一个**字符
+
+## SearchGroup
+
+- SearchGroup 是要搜索的字段的范围。
+- 它是可选的，如果未指定，则默认搜索范围为 all fields。
+- 可以采用以下值之一
+    - `ALL FIELDS` `所有字段`
+    - `NAME FIELDS` `名称字段`
+    - `EMAIL FIELDS` `电子邮件字段`
+    - `PHONE FIELDS` `电话字段`
+    - `SIDEBAR FIELDS` `侧边栏字段`
+
+## ObjectsAndFields
+
+- ObjectsAndFields 是要在搜索结果中返回的信息，一个或多个 sObject 的列表，以及每个 sObject 中一个或多个字段的列表，其中包含要筛选的可选值。
+- 它是可选的，如果未指定，则搜索结果包含找到的所有对象的 ID。
+
+## 其它
+
+- SOSL 同样具有 SQL 的如下功能。
+    - WHERE
+    - ORDER
+    - LIMIT
+    - 引用变量（详见 SOQL）
