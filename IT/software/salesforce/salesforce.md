@@ -63,6 +63,19 @@
             C:\\Program Files\\Java\\jdk-21
             ```
 
+# [Developer Console](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+
+The **Developer Console** is a web-based IDE provided by Salesforce.
+
+- Workspace
+
+[What you can do with Developer Console:](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_source_code)
+
+- Execute an Apex Class
+- Create an Aura Component
+- Create Visualforce Pages and Components
+- Create a Visualforce Page
+
 # Organization
 
 ## Org Basics
@@ -232,11 +245,15 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
     - Click **New** in the top corner.
     - Enter a name and price for the Object and click **Save**.
 
-## [Formula](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
-
 # Records
 
-# [Lightning Apps](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+# [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
+
+**Lightning Components** is a framework for developing mobile and desktop apps.
+
+# [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
+# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
 # [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 
@@ -284,9 +301,139 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 
 # [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
 
-#  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
+# [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
 
-# [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics?trail_id=force_com_dev_beginner)
+## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
+
+### Standard
+
+- Case sensitive.
+- Whitespace and line breaks don’t matter.
+
+### Creat Formulas
+
+- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New** > **Formula**
+- In **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
+- Select the type of data you expect your formula to return.
+- Click **Next** until arrive at the formula editor!
+- Edit your formula, then click the check button.
+-  **Put your new formula field in a report.** 
+    - From the **App Launcher**, find and open **Reports** and click **New Report**.
+    - Enter **Opportunities** in the Search Report Types... field. Select **Opportunities** and click **Start Report**. Your opportunity appears in the Report Preview panel.
+    - Make sure **Update Preview Automatically** is enabled.
+    - In the Add column... field on the left side of the page, enter `Days to Close`. 
+- Find the field `Days to Close`: **App Launcher** > **Opportunities** > **Details**
+
+## [Roll-Up Summary Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
+
+Roll-up summary fields calculate values from a set of related records.
+
+Roll-up summary fields are based on the master side of a master-detail relationship. 
+
+### Creating the Summary Field
+
+- From Setup, open **Object Manager** and click **Account**.
+- On the left sidebar, click **Fields & Relationships**.
+- Click **New**.
+- Choose the **Roll-Up Summary** field type, and click **Next**.
+- For Field Label, enter `Sum of Opportunities` and click **Next**.
+- The Summarized Object is the detail object that you want to summarize. Choose **Opportunities**.
+- Choose the **SUM** Roll-up type and choose **Amount** as the Field to Aggregate. If you're unable to see Amount in Field to Aggregate, disable the Advanced Currency Management in your Currency Setup.
+- Click **Next**, **Next**, and **Save**.
+
+##  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
+
+Validation rules verify that data entered by users in records meets the standards you specify before they can save it. 
+
+When the validation rule returns a value of "True", this confirms that the data entered by the user contains an invalid value. 
+
+### Creating a Validation Rule
+
+1. From Setup, go to **Object Manager** and click **Account**.
+2. In the left sidebar, click **Validation Rules**.
+3. Click **New**.
+4. Enter the following properties for your validation rule:
+    1. Rule Name: `Account_Number_8_Characters`
+    2. Error Condition Formula: `LEN( AccountNumber) <> 8`
+5. Error Message: `Account number must be 8 characters long.`
+6. To check your formula for errors, click **Check Syntax**.
+7. Click **Save** to finish.
+
+# [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner)
+
+## Creat a Flow Builder
+
+- To get to Flow Builder, go to Setup, enter `Flows` in the Quick Find box, and select **Flows**. 
+- To create a flow, click **New Flow**. Then select **Start from Scratch** and click **Next**.
+- Select a flow type, click **Create**.
+
+## Layout
+
+<img src="assets/image-20250311220230555.png" alt="image-20250311220230555" style="zoom:50%;" />
+
+- **Toolbox (1)** : The toolbox lists the elements and resources you’ve built in your flow. You can also create resources such as variables, formulas, and choices to use in your flow.
+- **Canvas (2)** : The canvas is the working area.
+- **Button Bar (3)**: Provide some tools.
+
+## Building Blocks
+
+- Flows use three building blocks: elements, connectors, and resources.
+
+    <img src="assets/image-20250311221030163.png" alt="image-20250311221030163" style="zoom:50%;" />
+
+### Elements
+
+- **Elements** are nodes on the canvas that make things happen. To add an element to the canvas, click ![Add element](assets/13f5207391f198a601856fce8a8a6280_kix.10ac7o3ovpkx.jpeg).
+- Each element is a step that tells the flow what to do, and each type of element does something different. 
+- Think of flow elements as three types.
+    - Interaction
+    - Data
+    - Logic
+
+### Connectors
+
+- **Connectors** are lines on the canvas that define the path the flow takes when it runs.
+
+### Resources
+
+- **Resources** are containers that don’t appear on the canvas, but are referenced by the flow’s elements. Each resource contains a value or a formula that resolves to a value.
+
+## [Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables)
+
+- **Variable** is a kind of **Resources**.
+
+- **Text**: A string of letters, numbers, and characters.
+- **Number, Currency:** A numerical value.
+- **Boolean**: A true or false value.
+- **Date, Date/Time**: A specially formatted value that indicates a specific date, or a specific time on a specific date. 
+- **Record**: All of the values in a Salesforce record, stored together in a single variable.
+- ...
+
+### Create a Variable
+
+- From Setup, enter `Flows` in the Quick Find box and then click **Flows**.
+
+- Click **New Flow**.
+
+- Make sure **Start from Scratch** is selected, and click **Next**.
+
+- Select **Screen Flow** and click **Create**.
+
+- Click ![Toggle Toolbox](assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg) to display the Toolbox.
+
+- Click **New Resource**. 
+
+- For Resource Type, select **Variable**.
+
+- Enter an API name and description for your variable.
+
+    <img src="assets/image-20250311224935231.png" alt="image-20250311224935231" style="zoom:50%;" />
+
+- For Data Type, select **Text**.
+
+## [Constants](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables)
+
+- **Constant** is a kind of **Resources**.
 
 # Project
 
