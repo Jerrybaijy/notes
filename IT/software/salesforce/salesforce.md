@@ -76,6 +76,8 @@ The **Developer Console** is a web-based IDE provided by Salesforce.
 - Create Visualforce Pages and Components
 - Create a Visualforce Page
 
+## [Debug Logs](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_logs)
+
 # Organization
 
 ## Org Basics
@@ -253,7 +255,7 @@ In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an ea
 
 # [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
 
-# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
 # [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 

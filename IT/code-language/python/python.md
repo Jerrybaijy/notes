@@ -171,54 +171,59 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 ## 虚拟环境
 
-1. 确认 Python 已安装；
-2. 终端进入项目目录；
-3. 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
+- 确认 Python 已安装；
+
+- 终端进入项目目录；
+
+- 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
     ```python
     python -m venv venv
     ```
 
-4. 激活虚拟环境；
+- 激活虚拟环境；
 
     ```bash
     # Windows
     source venv/Scripts/activate
-
+    
     # Mac/Linux
     source venv/bin/activate
     ```
 
-5. 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
+- 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
 
     ```bash
     where python
     ```
 
-6. 如果没有，参照以下办法激活：
-7. 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
-8. 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
-9. 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
-10. 安装你项目所需的所有包
-11. 生成 `requirements.txt`
+- 如果没有，参照以下办法激活：
+
+- 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+
+- 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
+
+- 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
+- 生成 `requirements.txt`
 
     ```bash
     pip freeze > requirements.txt
     ```
 
-12. 其他开发者可以通过以下命令来安装依赖
+- 其他开发者可以通过以下命令来安装依赖
 
     ```bash
     pip install -r requirements.txt
     ```
 
-13. 退出虚拟环境
+- 退出虚拟环境
 
     ```bash
     deactivate
     ```
 
-14. **注意**：
+- **注意**：
 
     - 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
     - VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
@@ -390,11 +395,10 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - 除以下规范，其余同编程语言通用规范。
 - **缩进**：敏感
-
     - Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 **`{}`** 。
     - 缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
     - 最佳4个空格。
-
+    
 - **分号**：每行代码结束不使用分号
 
 ## 标识符
@@ -402,11 +406,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 - 除以下规范，其余同编程语言通用规范。
 - **规范**
 
-    - 第一个字符必须是字母表中字母或下划线 `_`。
+    - 第一个字符必须是字母或下划线 `_`。
     - 只能含有字母、数字、下划线，且不能以数字开头
     - 大小写敏感
-    - 不能是关键字和保留字
-  
 - **命名习惯**
 
     - **变量名**：小蛇形，例 `max_length`。
@@ -567,22 +569,19 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 ## 内置数据类型
 
 - **数字类型**
-
     - **`int`**：整型
     - **`float`**：浮点型
     - **`complex`**：复数
-
+    
 - **布尔类型**
-
     - **`bool`**：布尔型
-
+    
 - **序列类型**
-
     - **`str`**：字符串
     - **`list`**：列表
     - **`tuple`**：元组
     - **`range`**：范围
-
+    
 - **集合类型**
 
     - **`set`**：集合
@@ -715,15 +714,15 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     strr = "中国江西联通"
     index = 0  # index为索引号
     while index < len(strr):
-      data = strr[index]
-      print(data)
-      index += 1
+        data = strr[index]
+        print(data)
+        index += 1
     # 依次打印“中国江西联通”
     ```
 
 ### 遍历
 
-详见 [for 循环](#for 循环)
+详见 **for-in 循环**
 
 ### `in` 包含
 
@@ -742,7 +741,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 ### 切片
 
-- **语法**：`STR[INDEX_START:INDEX_END:STEP_VALUE]`，返回 `str`。
+- **语法**：`STR[起始索引:终止索引:步长值]`，返回 `str`。
 
     ``` python
     #      0 1 2 3 4 5，正向索引号
@@ -755,7 +754,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 ### 切割 `split`
 
-- `STR.split("SEPARATOR"[, MAX_SPLIT])`，返回 `list`。
+- `STR.split("切割符"[, MAX_SPLIT])`，返回 `list`。
 
     ``` python
     # 切割后会得到一个列表
@@ -817,7 +816,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 ### 替换 `replace`
 
-- **语法**：`STR.replace("STR_OLD", "STR_NEW")`，返回 `str`。
+- **语法**：`STR.replace("旧字符串", "新字符串")`，返回 `str`。
 
     ``` python
     strr = " 中国 联通 联通 "
