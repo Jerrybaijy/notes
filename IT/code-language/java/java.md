@@ -1,10 +1,6 @@
-- 参考
-
-```
-- 我要自学网：燎原《JAVA语言入门教程2022版》
-```
-
 # Java 基础
+
+- [Java 官方文档](https://dev.java/learn/)
 
 ## 环境搭建
 
@@ -90,10 +86,14 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 ## 变量
 
-- Java 中声明变量时要使用相应数据类型的关键字。
+- 由于 Java 中声明变量时要使用相应数据类型的关键字。
 
   ```java
+  // 声明原始数据类型的变量时，不使用 new 关键字。
   int age = 19;
+  
+  // 声明非原始数据类型的变量时，使用 new 关键字。
+  List<String> myList = new ArrayList<>();
   ```
 
 ## 运算符
@@ -160,42 +160,183 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 # 数据类型
 
-Java 语言提供了八种基本类型。六种数字类型（四个整数型，两个浮点型），一种字符型，还有一种布尔型。
+## 数据类型分类
 
-## 整型
+- [Primitive Data Types (8)](https://dev.java/learn/language-basics/primitive-types/)
+    - **整型**：byte，short，int，long
+    - **浮点型**：float，double
+    - **布尔型**：boolean
+    - **字符型**：char
+- **引用数据类型**
+    - **类**：class
+    - **接口**：interface
+    - **数组**：array
+    - **枚举**：enum
+    - **字符串**：String
+    - **包装类**
+    - ...
 
-- Java 语言提供了四种整型：**int**、byte、short、long
+## char
 
-## 浮点型
-
-- Java 语言提供了两种浮点型：float、**double**
-
-## 字符型char
-
+- **char**：16 位无符号整数，用于表示单个字符，采用 Unicode 编码，能表示世界上大部分语言的字符，值用单引号括起来。
 - 使用单引号 `'` 标记字符。
 
-### 字符串String
+## boolean
 
-- 字符串用 `String` 表示
-- 使用双引号 `"` 标记字符串。
+- **boolean**：只有两个取值 `true` 和 `false`，用于表示逻辑上的真和假，常用于条件判断和循环控制。
 
-## 布尔型boolean
+## class
 
-- Java 中布尔值 true 和 false 首字母小写。
+- **自定义类**是最常见的引用数据类型。
+
+## interface
+
+- **接口**定义了一组方法的签名，但不包含方法的实现。实现接口的类必须实现接口中定义的所有方法。
+
+## [array](https://dev.java/learn/language-basics/arrays/)
+
+### 声明数组
+
+- **语法**
+
+    ```java
+    // 声明空数组
+    数据类型[] 变量名 = new 数据类型[数组长度];
+    int[] myArray = new int[5];
+    
+    // 声明非空数组
+    数据类型[] 变量名 = [元素];
+    int[] myArray = [1, 2, 3, 4, 5];
+    ```
+
+### [数组方法](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Arrays.html)
+
+- 索引，嵌套，获取长度
+
+## enum
+
+- 枚举是一种特殊的数据类型，用于定义一组固定的常量。
+
+## [String](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html)
+
+- 在 Java 里，字符串是 `java.lang.String` 类的实例，属于不可变类型，它具有原始数据类型的特质。
+
+### 边界标记
+
+- **普通字符串**：只能使用双引号 `"` 作为边界标记。
+
+    ```java
+    String str = "Hello world!";
+    System.out.println(str);  // Hello world!
+    ```
+
+- **子字符串**：使用 `\` 转义
+
+    ```java
+    String str = "Hello \"world\"!";
+    System.out.println(str); // Hello "world"!
+    ```
+
+- **多行字符串**：即文本块，使用三重双引号 `"""` 作为边界标记。
+
+    ```java
+    String multiLineText = """
+            这是一个\
+            多行字符串示例，\
+            无需使用转义字符来换行。
+            """;
+    System.out.println(multiLineText);  // 这是一个多行字符串示例，无需使用转义字符来换行。
+    ```
 
 ## 数据类型转换
 
-- 不要尝试将数字字符串转换为数值型
+- Java 是一种**静态**、**强类型**编程语言。
 
-- **自动转换**
+- 虽然 Java 是强类型语言，但支持 `字符串 + 数值` 的隐式跨类型操作。
 
-  byte，short，char—> int —> long—> float —> double 
+    ```java
+    System.out.println("hello" + 5); // 输出：hello5
+    ```
 
-- **强制转换**
+### 隐式转换
 
-  ```java
-  (int)data;
-  ```
+- **语法**
+
+    ```
+    byte → short → int → long → float → double
+             ↑
+           char
+    ```
+
+    ```java
+    int a = 10;
+    double b = a;  // int 自动转换为 double
+    System.out.println(b);  // 输出：10.0
+    
+    char ch = 'A';
+    int c = ch;  // char 自动转换为 int（ASCII 值）
+    System.out.println(c);  // 输出：65
+    
+    long l = a;  // int 自动转换为 long
+    System.out.println(l);  // 输出：10
+    ```
+
+### 显式转换
+
+- **语法**
+
+    ```java
+    targetType variable = (targetType) sourceVariable;
+    ```
+
+    ```java
+    (int)data;
+    ```
+
+    ```java
+    double a = 10.5;
+    int b = (int) a;  // 强制类型转换，丢失小数部分
+    System.out.println(b);  // 输出：10
+    
+    int c = 130;
+    byte d = (byte) c;  // 溢出，byte 取值范围 -128~127
+    System.out.println(d);  // 输出：-126 (超出范围，数据溢出)
+    
+    char ch = (char) 66;
+    System.out.println(ch);  // 输出：B
+    ```
+
+### 字符串与基本数据类型
+
+- 字符串 → 基本数据类型：使用 Java 提供的包装类的 `parseXxx()` 方法
+
+    ```java
+    String s1 = "100";
+    Double a = Double.parseDouble(s1);
+    System.out.println(a);  // 100.0
+    ```
+
+- 基本数据类型 → 字符串：使用 `String.valueOf()` 或直接拼接：
+
+    ```java
+    int a = 100;
+    String s1 = String.valueOf(a);
+    String s2 = a + "";  // 拼接方式
+    
+    System.out.println(s1);  // "100"
+    System.out.println(s2);  // "100"
+    ```
+
+## 数据的可变性
+
+- **不可变数据类型**
+    - Java 的 基本数据类型是不可变的。
+    - 字符串
+    - ...
+
+- **可变数据类型**
+    - ...
+
 
 # 选择结构
 

@@ -17,43 +17,16 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ## 代码规范
 
-- 同编程语言通用规范
+- 同 java
 
 ## 标识符
 
-- 同编程语言通用规范
+- 同 java
 
 ## 注释
 
-- **单行注释**：Ctrl + /    **多行注释**：Ctrl + Shift + /
+- 同 java
 
-    ```java
-    public class HelloWorld {
-        // 这是一个单行注释
-        public static void main(String[] args) {
-            /*
-             * 多行注释第一行
-             * 多行注释第二行
-             * 多行注释第三行
-             */
-            System.debug('Hello World'); 
-        }
-    }
-    ```
-
-- **文档注释**
-
-    文档注释以 **/\**** 开始，以 ***/** 结束，通常出现在类、方法、字段等的声明前面，通常包含一些特定的标签，如 **@param** 用于描述方法参数，**@return** 用于描述返回值，**@throws** 用于描述可能抛出的异常等等。文档注释的格式这些标签有助于生成清晰的API文档，以便其他开发者能够更好地理解和使用你的代码。
-
-    ```java
-    /**
-     * 这是一个文档注释示例
-     * 它通常包含有关类、方法或字段的详细信息
-     */
-    public class MyClass {
-        // 类的成员和方法
-    }
-    ```
 
 ## 声明变量
 
@@ -103,52 +76,87 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
     System.debug('这是要输出的信息');
     ```
 
-# 数据类型
+# [数据类型](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_data_types.htm)
 
-在 Apex 中，数据类型可以分为两大类：
+## 数据类型分类
 
-- **原始数据类型**（Primitive Data Types）
-- **引用数据类型**（Reference Data Types）
+- [Primitive Data Types (14)](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_primitives.htm)
+    - **整型**：Integer，Long，Decimal
+    - **浮点型**：Double
+    - **字符串**：String
+    - **布尔型**：Boolean
+    - **日期和时间**：Date，Datetime，Time
+    - **对象**：Object
+    - **ID**：ID
+    - **二进制**：Blob
+    - **非标准原始数据类型**：AnyType，Currency
+- [Collections](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_collections.htm)
+    - **列表**：List
+    - **集合**：Set
+    - **映射**：Map
+- [**枚举**：Enum](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_enums.htm)
 
-## 原始数据类型
+## String
 
-Apex 中有10种原始数据类型。
+- 与 Java 不同，Apex 字符串支持使用比较运算符 == 、 != 、 < 、 <= > 和 >= 。由于 Apex 使用 SOQL 比较语义，因此字符串的结果根据上下文用户的区域设置进行整理，并且不区分大小写。有关更多信息，请参阅[表达式运算符](https://developer.salesforce.com/docs/atlas.en-us.254.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)。
 
-### 整数类型
+### 字符串方法
 
-- **`Integer`**：32 位有符号整数，取值范围：-2^31 到 2^31 - 1（大约 -21 亿 到 21 亿）。
+- [字符串的方法](https://developer.salesforce.com/docs/atlas.en-us.254.0.apexref.meta/apexref/apex_methods_system_string.htm)
 
-- **`Long`**：64 位有符号整数，适用于大数字。
+## List
 
-- **`Decimal`**：用于高精度计算，常用于处理货币和财务数据。
+- 在 Apex 中，一个 List 只能包含 **相同的数据类型**。（List\<Object> 除外）
 
-### 浮点数类型
+### 声明 List
 
-- **`Double`**：64 位双精度浮点数，适用于存储较大的浮动数值。
+```java
+// 列表式声明
+List<String> myList = new List<String>();
 
-### 字符类型
+// 数组式声明
+String[] myList = new List<String>();
 
-- **`Char`**：用于存储单个字符，只有一个字符的 Unicode 编码。
-- 使用单引号 `'` 标记字符。
+// 限制列表长度
+new List<String>[长度值];
+```
 
-### 字符串类型
+### [List 方法](https://developer.salesforce.com/docs/atlas.en-us.254.0.apexref.meta/apexref/apex_methods_system_list.htm)
 
-- **`String`**：用于存储一串字符，类似于 Java 中的 `String` 类型。
-- Apex 中使用单引号 `'` 标记字符串。
+```java
+myList.get(索引);  // 获取元素
+myList.add(元素);  // 追加（可突破列表长度限制）
+myList.set(索引, 元素);  // 根据索引替换（不可突破列表长度限制）
+myList[索引] = 元素;  // 根据索引替换（不可突破列表长度限制）
+myList.clear();  // 清空
+myList.sort();  // 排序
+```
 
-### 布尔类型
+### [排序](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_collections_lists_sorting.htm)
 
-- **`Boolean`**：用于表示逻辑值，可以是 `true` 或 `false`。
+- 语法
 
-### 日期和时间类型
+    ```java
+    myList.sort();
+    ```
 
-- **`Date`**：只包含日期（年月日）。
+- 对 SelectOption 元素进行排序时，优先使用 value 字段，如果相同，则再使用 label 字段。
 
-- **`Datetime`**：包含日期和时间（年月日 时分秒）。
+    ```java
+    List<SelectOption> options = new List<SelectOption>();
+    options.add(new SelectOption('A','United States'));
+    options.add(new SelectOption('C','Canada'));
+    options.add(new SelectOption('A','Mexico'));
+    System.debug('Before sorting: ' + options);
+    options.sort();
+    System.debug('After sorting: ' + options);
+    ```
 
-### ID 类型
+## Boolean
 
-- **`ID`**：用于存储 Salesforce 中的记录的唯一标识符，例如 `Account`、`Contact`、`Opportunity` 等对象的记录 ID。
+
+
+
 
 ## 引用数据类型
 
@@ -181,14 +189,6 @@ Apex 中有10种原始数据类型。
 ### 数组类型
 
 数组用于存储一组不同类型的元素。Apex 中的数组可以存储对象、基本数据类型等。
-
-### 集合类型
-
-Apex 中的集合类型包括 **`List`**、**`Set`** 和 **`Map`**。这些集合类型用于存储多个数据项。
-
-- **`List`**：有序集合，允许存储重复元素。
-- **`Set`**：无序集合，不允许重复元素。
-- **`Map`**：键值对集合，通过键来快速查找值。
 
 ### 类和对象
 
