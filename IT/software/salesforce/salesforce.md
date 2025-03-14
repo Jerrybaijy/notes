@@ -1,14 +1,14 @@
-# [Salesforce CLI](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
+# Salesforce CLI
 
 **Salesforce CLI** (Command Line Interface) is a command-line tool provided by Salesforce.
 
-## Install Salesforce CLI
+## [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
-- **Windows**
+- [**Windows**](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_windows)
 
     - [Download and install **Salesforce CLI** from the official website.](https://developer.salesforce.com/tools/salesforcecli)
 
-    - Confirm that the CLI is correctly installed and up to date.
+    - Confirm that the Salesforce CLI is correctly installed and up to date.
 
         ```bash
         sf update
@@ -40,6 +40,10 @@
     ```bash
     sf update
     ```
+
+- After the installation completes, restart your terminal tool or IDE to make sure Salesforce CLI is available.
+
+- **Warning**: Salesforce CLI works best within the native Windows command prompt (cmd.exe) and the Microsoft Windows PowerShell. 
 
 - VS Code Extension
 
@@ -156,17 +160,44 @@ Salesforce supports various types of objects, including:
 
 ### Create a Custom Object
 
-- Select an Org.
-- **Setup** > **Object Manager**
-- **Create** > **Custom Object**
-    - For **Label**, enter `<label_name>`. Notice that the **Object Name** and **Record Name** fields auto-fill.
-    - For **Plural Label**, enter `<label_names>`.
-    - Select the checkbox **Launch New Custom Tab Wizard after saving this custom object**.
-    - Leave the rest of the values as default and click **Save**.
+#### Custom Object
 
+- Select an Org.
+- **Setup** > **Object Manager** > **Create** > **Custom Object**
+- For **Label**, enter `<label_name>`. Notice that the **Object Name** and **Record Name** fields auto-fill.
+- For **Plural Label**, enter `<label_names>`.
+- Select the checkbox **Launch New Custom Tab Wizard after saving this custom object**.
+- Leave the rest of the values as default and click **Save**.
 - **New Custom Object Tab**
     - Click the **Tab Style** field and select a style you like.
     - Click **Next**, **Next**, and **Save**.
+
+#### [For the option **Custom Object from Spreadsheet**.](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
+
+- Download and open [this spreadsheet](https://developer.salesforce.com/files/House.csv) and save it as **House.csv**.
+- Click **Login With Salesforce**.
+- Login with your username and password of your **org**.
+- Click **Allow**. Then upload the **House.csv** file you downloaded.
+- Salesforce automatically detects the fields and populates all its record data.
+- Choose **House Name** as the Record Name field in the top right.
+- Click **Next** and enter the following settings.
+    - Label: `House`
+
+    - Plural Label: `Houses`
+    - API Name: `House`
+- Click **Finish**. The House object is successfully created and data imported, all within minutes.
+- View in the **Object Manager**.
+- To work with the House object you just created, you need to create an **App** to allow easy navigation.
+    - In your Trailhead Playground, click ![Setup](assets/fadf743598a32c5b142d48ee6c4f3e9a_kix.2sljokcbtm3t.jpg) and then select **Setup**.
+    - In the Quick Find box, type `App Manager`, then select **App Manager**.
+    - Click **New Lightning App**. 
+    - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it. Click **Next**.
+    - On the **App Options** screen, select **Standard navigation**, then click **Next**.
+    - On the **Utility Items** screen, click **Next**.
+    - On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
+    - On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
+    - Select **Dreamhouse** from **App Launcher** to check the new App.
+
 
 
 ## [Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
@@ -236,7 +267,7 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
 - In the sidebar, click **Fields & Relationships**. 
 - Click **New** in the top right.
     - For **data type**, select **Checkbox** and click **Next**.
-    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
+    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
     - Click **Next**, **Next** again to accept the default field-level security.
     - Check the checkboxes to add the new field to all the Contact Page Layouts.
     - Click **Save**.
@@ -277,14 +308,19 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 2. Locate to **Playground Starter** from **App Launcher**.
 3. Click the **Get Your Login Credentials** tab and reset your password.
 4. Click the **Install a Package** tab. 
-5. Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
+5. Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
 6. Select **Install for All Users**, then click **Install**.
 7. When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
 8. When the installation completes, click **Done**.
 9. Locate to **Dreamhouse** from **App Launcher**.
 10. Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
 
-# Tabs
+## [Creat an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
+
+- This example is based on the front example **Create a House Custom Object** of this page.
+- Refer to [For the option **Custom Object from Spreadsheet**](#[For the option **Custom Object from Spreadsheet**.](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner))
+
+# Tab
 
 ## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
 
@@ -495,8 +531,9 @@ When the validation rule returns a value of "True", this confirms that the data 
 
     - Install Node.js.
 
-- Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
+- **Create a Project**
 
+    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
     - Select **SFDX: Create Project**.
     - Select **Standard**.
     - Type the project name and press **Enter**.
@@ -506,10 +543,10 @@ When the validation rule returns a value of "True", this confirms that the data 
 
     - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX: Authorize an Org**.
     - Select **Production** and type the organization alias **myDevOrg**. Then press **Enter**.
-    - A Webpage will pop up for login.
-    - **Notice**: Type the username and password of **TP**.
+    - A webpage will pop up for login.
+    - **Notice**: Type the username and password of your **org**.
 
-- Ways to open the a organization
+- Ways to open an organization.
 
     - **Command Line**：Run the command in the terminal at the project's root directory.
 
@@ -526,6 +563,8 @@ When the validation rule returns a value of "True", this confirms that the data 
     ```bash
     npm install
     ```
+
+- Reload VS Code.
 
 # Package
 
