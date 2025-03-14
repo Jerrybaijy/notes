@@ -82,7 +82,7 @@ The **Developer Console** is a web-based IDE provided by Salesforce.
 
 ## Org Basics
 
-In Salesforce, an **Organization** (**Org**) refers to a **complete Salesforce environment**. An Org can be either a **production environment** or a **non-production environment**, and it includes its own **data, users, features, configurations, and customizations**.
+In Salesforce, an **Organization** (**Org**) refers to a specific instance of Salesforce. An Org can be either a **production environment** or a **non-production environment**, and it includes its own **data, users, features, configurations, and customizations**.
 
 Salesforce provides different types of Orgs, including:
 
@@ -113,6 +113,7 @@ Salesforce provides different types of Orgs, including:
 - Click the **profile icon** in the top-right corner.
 - Select **Hands-On Orgs**.
 - Click **Create Playground**.
+- You‘ll receive an email when your new playground is ready. It may take a few minutes for your new playground to be created.
 
 ### [Get TP Username and Password](https://trailhead.salesforce.com/content/learn/modules/trailhead_playground_management/get-your-trailhead-playground-username-and-password)
 
@@ -215,45 +216,90 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
     - Click **Related**. You’ll see **<2nd_object_name>** (0) in the Related tab.
     - Click **New**. Enter a name for **Favorite Name**, then click **Save**.
 
-# Tabs
-
-## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
-
 # Fields
 
 ## Fields Basics
 
-In Salesforce, **Fields** (columns) are the individual pieces of data that make up a record in an object.  Each field represents a specific type of information, such as text, numbers, dates, or relationships with other objects. Fields are used to store and display data, and they define the structure of an object.
+**Fields** are columns in object database tables. There are **Standard Fields** and **Custom Fields**
 
 **Standard Fields**: These are pre-defined fields provided by Salesforce for standard objects like **Account**, **Contact**, and **Opportunity**. Examples include **Name**, **Created Date**, and **Phone**.
 
 **Custom Fields**: Users can create custom fields for both standard and custom objects to capture specific information that the out-of-the-box fields do not cover.
 
-In the **Field Name** column, for example, `Price__c`, the `__c` suffix is an easy way to identify a custom field.
+- **Field Name**: `Price__c`, the `__c` suffix is an easy way to identify a custom field.
+- **Field Label**: The Field Label is what you see on the \<Object> page.
 
-## Create a Field
+## [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
 
-- Select an org and create a custom object.
-- From **Setup**, go to **Object Manager** | **<object_name>**.
+- Install the APP **Dreamhouse**.
+- From **Setup**, locate to **Object Manager** > **Contact**.
 - In the sidebar, click **Fields & Relationships**. 
 - Click **New** in the top right.
-    - For **data type**, select the right one, Then click **Next**.
-    - Fill out **Field Label** field, and **Field Name** field auto-fill.
-    - Check the **Required** box.
-    - Click **Next**, **Next** again, and then **Save**.
-- Create Records
-    - From the **App Launcher** find and select **Sales**.
-    - Click the **<object_name>** tab in the navigation bar. 
-    - Click **New** in the top corner.
-    - Enter a name and price for the Object and click **Save**.
+    - For **data type**, select **Checkbox** and click **Next**.
+    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
+    - Click **Next**, **Next** again to accept the default field-level security.
+    - Check the checkboxes to add the new field to all the Contact Page Layouts.
+    - Click **Save**.
+- Check the new field:
+    - Locate to **Dreamhouse** from **App Launcher**.
+    - Click the **Contacts** tab, then click a contact name.
+    - Under the **Details** tab, you can see your new field **Prequalified?**.
+
 
 # Records
+
+## Create a Record
+
+- From the **App Launcher** find and select **Sales**.
+- Click the **<object_name>** tab in the navigation bar. 
+- Click **New** in the top corner.
+- Enter a name and price for the Object and click **Save**.
+
+# [Setup](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_tour?trail_id=force_com_dev_beginner)
+
+You can get to Setup from any page in your Salesforce org. From the gear menu at the top of the screen ( ![Setup.](assets/d93a5f7ff918ea4432fe8e82dd562ee2_kix.t14uhi7bi2ft.jpeg)), click **Setup**.
+
+<img src="assets/image-20250314202204041.png" alt="image-20250314202204041" style="zoom:50%;" />
+
+- **Object Manager:** Object Manager is where you can view and customize standard and custom objects in your org.
+- **Setup Menu:** The menu gives you quick links to a collection of pages that let you do everything from managing your users to modifying security settings.
+- **Main Window:** We’re showing you the Setup home page, but this is where you can see whatever it is you’re trying to work on.
+
+# App
+
+An **App** in Salesforce is a set of objects, fields, and other functionality that supports a business process. You can see which app you’re using and switch between apps using the **App Launcher** ( ![App Launcher icon](assets/5d99d1d8a695b58d917d32c5829d8465_kix.27w3grnp6f4v.jpeg)).
+
+<img src="assets/image-20250314180439712.png" alt="image-20250314180439712" style="zoom:50%;" />
+
+## [Install an App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+
+1. Launch a Trailhead Playground.
+2. Locate to **Playground Starter** from **App Launcher**.
+3. Click the **Get Your Login Credentials** tab and reset your password.
+4. Click the **Install a Package** tab. 
+5. Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
+6. Select **Install for All Users**, then click **Install**.
+7. When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
+8. When the installation completes, click **Done**.
+9. Locate to **Dreamhouse** from **App Launcher**.
+10. Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
+
+# Tabs
+
+## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+
+# Schema Builder
+
+- [A sample.](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
+
+# [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
+- [A sample.](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
+- 
 
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
 **Lightning Components** is a framework for developing mobile and desktop apps.
-
-# [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
 
 # [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
