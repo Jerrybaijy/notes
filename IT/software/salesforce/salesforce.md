@@ -196,7 +196,7 @@ Salesforce supports various types of objects, including:
     - On the **Utility Items** screen, click **Next**.
     - On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
     - On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
-    - Select **Dreamhouse** from **App Launcher** to check the new App.
+    - Select **Dreamhouse** from **App Launcher** to check the new App.
 
 
 
@@ -335,7 +335,7 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
-**Lightning Components** is a framework for developing mobile and desktop apps.
+**Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
 
 # [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
@@ -519,54 +519,39 @@ When the validation rule returns a value of "True", this confirms that the data 
 
 - **Constant** is a kind of **Resources**.
 
-# Project
-
-## [Create a Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
-
-- **Precondition**
-
-    - Create a new TP.
-
-    - Install Salesforce CLI.
-
-    - Install Node.js.
-
-- **Create a Project**
-
-    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
-    - Select **SFDX: Create Project**.
-    - Select **Standard**.
-    - Type the project name and press **Enter**.
-    - Set the project location.
-
-- **Authorize**
-
-    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX: Authorize an Org**.
-    - Select **Production** and type the organization alias **myDevOrg**. Then press **Enter**.
-    - A webpage will pop up for login.
-    - **Notice**: Type the username and password of your **org**.
-
-- Ways to open an organization.
-
-    - **Command Line**：Run the command in the terminal at the project's root directory.
-
-        ```bash
-        sf org open
-        ```
-
-    - **VS Code**
-
-        <img src="assets/image-20250302212052512.png" alt="image-20250302212052512" style="zoom:50%;" />
-
-- Navigate to the project's root directory in the terminal and run the command below to install the project dependencies.
-
-    ```bash
-    npm install
-    ```
-
-- Reload VS Code.
-
 # Package
 
 ## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
+
+# Metadata
+
+Any configuration done in the admin UI can be retrieved as **XML** formatted data (also known as **metadata**) and checked into version control.
+
+[Metadata API](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_intro.htm)
+
+## [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks)
+
+### With VS Code
+
+- **Precondition**: This example is based on the custom object **House**.
+
+- In VS Code, in the Activity Bar, click **Org Browser** <img src="assets/a8f26bcea3309c7490124fbbde76218e_kix.p03d27ihoxp4.jpg" alt="Org Browser." style="zoom: 50%;" />.
+
+    <img src="assets/image-20250315185254353.png" alt="image-20250315185254353" style="zoom:50%;" />
+
+- Locate **Custom Objects** > **House__c folder**.
+
+- Click <img src="assets/cd2226227c13f749ce4defb219e7d4f3_kix.7smvyxr29llr.jpg" alt="Retrieve source from org." style="zoom:50%;" /> to retrieve the org metadata for the **House__c object**.
+
+    <img src="assets/image-20250315185630681.png" alt="image-20250315185630681" style="zoom:50%;" />
+
+- Notice that the XML files are under the **force-app/main/default/objects** folder.
+
+    <img src="assets/image-20250315190408658.png" alt="image-20250315190408658" style="zoom:50%;" />
+
+### With Salesforce CLI
+
+```bash
+sf project retrieve start --metadata CustomApplication:Dreamhouse CustomTab:House__c "Layout:House__c-House Layout"
+```
 
