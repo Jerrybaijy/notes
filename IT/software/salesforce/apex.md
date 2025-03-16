@@ -80,7 +80,9 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ### [Creat a Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex)
 
-- This example is based on a project.
+- This's a sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex?trail_id=force_com_dev_beginner).
+
+- This sample is based on the project: [Create a Project](salesforce.md#Create a Project)
 
 - In VS Code, under the folder **force-app/main/default**, right-click **classes** and select **SFDX: Create Apex Class**.
 

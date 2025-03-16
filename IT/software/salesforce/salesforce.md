@@ -1,8 +1,12 @@
-# Salesforce CLI
+# Salesforce Tools
+
+## Salesforce CLI
 
 **Salesforce CLI** (Command Line Interface) is a command-line tool provided by Salesforce.
 
-## [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
+**Salesforce CLI command** should be executed in the root directory of project with **PowerShell**.
+
+### [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
 - [**Windows**](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_windows)
 
@@ -45,13 +49,18 @@
 
 - **Warning**: Salesforce CLI works best within the native Windows command prompt (cmd.exe) and the Microsoft Windows PowerShell. 
 
-- VS Code Extension
+
+## Salesforce Extension Pack
+
+**Salesforce Extension Pack** is a VS Code Extension.
+
+- **Install Salesforce Extension Pack (Expanded)**
 
     - Install the **Salesforce Extension Pack (Expanded)** extension in **VS Code**.
     - Press **Ctrl+Shift+P** in VS Code to open the command palette, type `SFDX`, and you can select commands provided by the Salesforce extensions.
     - If you can't find the command in the command palette, try to disable and then re-enable the extension.
 
-- JDK
+- **JDK**
 
     - Some features of the extension require JDK support, so you need to install JDK. For details, refer to the **Java Notes**.
 
@@ -67,7 +76,7 @@
             C:\\Program Files\\Java\\jdk-21
             ```
 
-# [Developer Console](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+## [Developer Console](https://trailhead.salesforce.com/content/learn/modules/developer_console)
 
 The **Developer Console** is a web-based IDE provided by Salesforce.
 
@@ -80,7 +89,7 @@ The **Developer Console** is a web-based IDE provided by Salesforce.
 - Create Visualforce Pages and Components
 - Create a Visualforce Page
 
-## [Debug Logs](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_logs)
+### [Debug Logs](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_logs)
 
 # Organization
 
@@ -174,9 +183,11 @@ Salesforce supports various types of objects, including:
     - Click the **Tab Style** field and select a style you like.
     - Click **Next**, **Next**, and **Save**.
 
-#### [For the option **Custom Object from Spreadsheet**.](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
+#### Custom Object from Spreadsheet
 
+- This's a sample in Trailhead: [Create a House Custom Object](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
 - Download and open [this spreadsheet](https://developer.salesforce.com/files/House.csv) and save it as **House.csv**.
+- **Setup** > **Object Manager** > **Create** > **Custom Object from Spreadsheet**
 - Click **Login With Salesforce**.
 - Login with your username and password of your **org**.
 - Click **Allow**. Then upload the **House.csv** file you downloaded.
@@ -188,19 +199,19 @@ Salesforce supports various types of objects, including:
     - Plural Label: `Houses`
     - API Name: `House`
 - Click **Finish**. The House object is successfully created and data imported, all within minutes.
-- View in the **Object Manager**.
-- To work with the House object you just created, you need to create an **App** to allow easy navigation.
-    - In your Trailhead Playground, click ![Setup](assets/fadf743598a32c5b142d48ee6c4f3e9a_kix.2sljokcbtm3t.jpg) and then select **Setup**.
-    - In the Quick Find box, type `App Manager`, then select **App Manager**.
-    - Click **New Lightning App**. 
-    - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it. Click **Next**.
-    - On the **App Options** screen, select **Standard navigation**, then click **Next**.
-    - On the **Utility Items** screen, click **Next**.
-    - On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
-    - On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
-    - Select **Dreamhouse** from **App Launcher** to check the new App.
+- Check the new object in the **Object Manager**.
+- Check the records:
+    - Select **Houses** From **App Launcher**.
+    - Click **Recently Viewed**, then select **All Records** to view all of the records in the House object.
 
+- There're some other fertures in the Trailhead sample:
+    -  [Data Security](https://trailhead.salesforce.com/content/learn/modules/data_security)
+    - REST API
+    - [Salesforce APIs Postman collection](https://github.com/forcedotcom/postman-salesforce-apis)
+    - [Salesforce Mobile app](https://www.salesforce.com/solutions/mobile/overview/)
 
+- To work with the **House** object you just created, you need to create an **App** to allow easy navigation.
+    - Refer to the sample of Trailhead: [Create an App](#Create an App)
 
 ## [Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
@@ -264,7 +275,20 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
 
 ## Create a Field
 
-- Refer to [Create a Field](./trailhead-sample-beginner.md)
+- This's a sample in Trailhead: [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+- Install the APP **Dreamhouse**.
+- From **Setup**, locate to **Object Manager** > **Contact**.
+- In the sidebar, click **Fields & Relationships**. 
+- Click **New** in the top right.
+    - For **data type**, select **Checkbox** and click **Next**.
+    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
+    - Click **Next**, **Next** again to accept the default field-level security.
+    - Check the checkboxes to add the new field to all the Contact Page Layouts.
+    - Click **Save**.
+- Check the new field:
+    - Locate to **Dreamhouse** from **App Launcher**.
+    - Click the **Contacts** tab, then click a contact name.
+    - Under the **Details** tab, you can see your new field **Prequalified?**.
 
 
 # Records
@@ -294,142 +318,57 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 ## Install an App
 
-- Refer to [Install the Dreamhouse App](trailhead-sample-beginner.md).
+- This's a sample in Trailhead: [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+- Launch a Trailhead Playground.
+- Locate to **Playground Starter** from **App Launcher**.
+- Click the **Get Your Login Credentials** tab and reset your password.
+- Click the **Install a Package** tab. 
+- Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
+- Select **Install for All Users**, then click **Install**.
+- When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
+- When the installation completes, click **Done**.
+- Locate to **Dreamhouse** from **App Launcher**.
+- Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
 
-## [Creat an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
+## Create an App
 
-- This sample is based on the front sample **Create a House Custom Object** of this page.
-- Refer to [For the option **Custom Object from Spreadsheet**](#[For the option **Custom Object from Spreadsheet**.](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner))
-
-# Tab
-
-## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
-
-# Schema Builder
-
-- Refer to the sample [Schema Builder](./trailhead-sample-beginner.md).
-
-# Lightning Apps Builder
-
-- Refer to the sample [Lightning Apps Builder](./trailhead-sample-beginner.md)
-
-# [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
-
-**Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
-
-# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-
-# [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
-
-## Create a List View
-
-- **App Launcher** > **Sales** > **Accounts** > **New**
-
-    ![image-20250305183252478](assets/image-20250305183252478.png)
-
-- Name the list `Channel Customers`.
-
-- Select **All users can see this list view**.
-
-- Click **Save**.
-
-- Set up some filters.
-
-    - Click **Add Filter**.
-    - From the **Field** dropdown menu, select **Type**.
-    - Select the **equals** operator.
-    - For Value, select **Customer - Channel**, then click **Done** and **Save**.
-    - Add another filter where **Billing State/Province** equals **WA,OR,CA**.
-
-## Create a List View Chart
-
-- From the **Sales** app, click the **Opportunities** tab.
-
-- Use the dropdown menu (![img](assets/fdb2f0c6d4ef6479100d7f00ac06136f_i.27.jpg)) to select the **All Opportunities** list view.
-
-- Click ![list view charts icon](assets/6ca3d60bc72bc7d3f259dd3320c64cdf_i.28.jpg). 
-
-- In the Charts panel that appears, click ![list view charts gear icon](assets/22d51ae434c5c03addbc4f8853f34cfb_i.29.jpg) and select **New Chart**.
-
-- Name the chart `Pipeline Total Value` and give it these parameters.
-
-    - Chart Type: **Donut Chart**
-
-    - Aggregate Type: **Sum**
-
-    - Aggregate Field: **Amount**
-
-    - Grouping Field: **Account Name**
-
-- Click **Save**.
+- This's a sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
+- This sample is based on the sample: [Custom Object from Spreadsheet](#Custom Object from Spreadsheet)
+- From **Setup**, select `App Manager` in the **Quick Find**.
+- Click **New Lightning App**.
+- In the **App Details & Branding** window, enter these details.
+    - For App Name, type `Dreamhouse`.
+    - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it.
+    - Click **Next**.
+- On the **App Options** screen, select **Standard navigation**, then click **Next**.
+- On the **Utility Items** screen, click **Next**.
+- On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
+- On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
+- Select **Dreamhouse** from **App Launcher** to check the new App.
 
 # [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
-
-# [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
-
-## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
-
-### Standard
-
-- Case sensitive.
-- Whitespace and line breaks don’t matter.
-
-### Creat Formulas
-
-- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New** > **Formula**
-- In **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
-- Select the type of data you expect your formula to return.
-- Click **Next** until arrive at the formula editor!
-- Edit your formula, then click the check button.
--  **Put your new formula field in a report.** 
-    - From the **App Launcher**, find and open **Reports** and click **New Report**.
-    - Enter **Opportunities** in the Search Report Types... field. Select **Opportunities** and click **Start Report**. Your opportunity appears in the Report Preview panel.
-    - Make sure **Update Preview Automatically** is enabled.
-    - In the Add column... field on the left side of the page, enter `Days to Close`. 
-- Find the field `Days to Close`: **App Launcher** > **Opportunities** > **Details**
-
-## [Roll-Up Summary Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
-
-Roll-up summary fields calculate values from a set of related records.
-
-Roll-up summary fields are based on the master side of a master-detail relationship. 
-
-### Creating the Summary Field
-
-- From Setup, open **Object Manager** and click **Account**.
-- On the left sidebar, click **Fields & Relationships**.
-- Click **New**.
-- Choose the **Roll-Up Summary** field type, and click **Next**.
-- For Field Label, enter `Sum of Opportunities` and click **Next**.
-- The Summarized Object is the detail object that you want to summarize. Choose **Opportunities**.
-- Choose the **SUM** Roll-up type and choose **Amount** as the Field to Aggregate. If you're unable to see Amount in Field to Aggregate, disable the Advanced Currency Management in your Currency Setup.
-- Click **Next**, **Next**, and **Save**.
-
-##  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
-
-Validation rules verify that data entered by users in records meets the standards you specify before they can save it. 
-
-When the validation rule returns a value of "True", this confirms that the data entered by the user contains an invalid value. 
-
-### Creating a Validation Rule
-
-1. From Setup, go to **Object Manager** and click **Account**.
-2. In the left sidebar, click **Validation Rules**.
-3. Click **New**.
-4. Enter the following properties for your validation rule:
-    1. Rule Name: `Account_Number_8_Characters`
-    2. Error Condition Formula: `LEN( AccountNumber) <> 8`
-5. Error Message: `Account number must be 8 characters long.`
-6. To check your formula for errors, click **Check Syntax**.
-7. Click **Save** to finish.
 
 # [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner)
 
 ## Creat a Flow Builder
 
-- To get to Flow Builder, go to Setup, enter `Flows` in the Quick Find box, and select **Flows**. 
+- From **Setup**, select `Flows` in the **Quick Find**.
 - To create a flow, click **New Flow**. Then select **Start from Scratch** and click **Next**.
 - Select a flow type, click **Create**.
+
+## Build a flow with Flow Builder
+
+- This's a sample in Trailhead: [Low-code Tools & Automation](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner).
+- From **Setup**, select `Flows` in the **Quick Find**.
+- Click the **Create Property** flow.
+- Click ![Toolbox](assets/fa9fe34c482cca646a9b444e500a4d3c_kix.9by05x8kzn4r.jpg) to open the Toolbox menu.
+- Click ![Resize and center](assets/bb02275e478118bc1f4ee474fb2b24e2_kix.jrjheih9gfgy.jpg) to resize the flow so you can see it all.
+- Click **Run**. A **Create Property** form appears to collect details for a new property record.
+- Fill out any details you like. Click **Next**, **Next**, and **Finish**.
+- Click ![Exit](assets/4b049ec5ccc16bf4d97052b60f31f63f_kix.w2qp1uytpfbx.jpg) to exit Flow Builder.
+- Select **Dreamhouse** from **App Launcher**.
+- Click the **Properties** tab.
+- Click the property you just created in Flow Builder.
 
 ## Layout
 
@@ -499,9 +438,63 @@ When the validation rule returns a value of "True", this confirms that the data 
 
 - **Constant** is a kind of **Resources**.
 
-# Package
+# [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
 
-## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
+## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
+
+### Standard
+
+- Case sensitive.
+- Whitespace and line breaks don’t matter.
+
+### Creat Formulas
+
+- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New** > **Formula**
+- In **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
+- Select the type of data you expect your formula to return.
+- Click **Next** until arrive at the formula editor!
+- Edit your formula, then click the check button.
+- **Put your new formula field in a report.** 
+    - From the **App Launcher**, find and open **Reports** and click **New Report**.
+    - Enter **Opportunities** in the Search Report Types... field. Select **Opportunities** and click **Start Report**. Your opportunity appears in the Report Preview panel.
+    - Make sure **Update Preview Automatically** is enabled.
+    - In the Add column... field on the left side of the page, enter `Days to Close`. 
+- Find the field `Days to Close`: **App Launcher** > **Opportunities** > **Details**
+
+## [Roll-Up Summary Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
+
+Roll-up summary fields calculate values from a set of related records.
+
+Roll-up summary fields are based on the master side of a master-detail relationship. 
+
+### Creating the Summary Field
+
+- From Setup, open **Object Manager** and click **Account**.
+- On the left sidebar, click **Fields & Relationships**.
+- Click **New**.
+- Choose the **Roll-Up Summary** field type, and click **Next**.
+- For Field Label, enter `Sum of Opportunities` and click **Next**.
+- The Summarized Object is the detail object that you want to summarize. Choose **Opportunities**.
+- Choose the **SUM** Roll-up type and choose **Amount** as the Field to Aggregate. If you're unable to see Amount in Field to Aggregate, disable the Advanced Currency Management in your Currency Setup.
+- Click **Next**, **Next**, and **Save**.
+
+##  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
+
+Validation rules verify that data entered by users in records meets the standards you specify before they can save it. 
+
+When the validation rule returns a value of "True", this confirms that the data entered by the user contains an invalid value. 
+
+### Creating a Validation Rule
+
+1. From Setup, go to **Object Manager** and click **Account**.
+2. In the left sidebar, click **Validation Rules**.
+3. Click **New**.
+4. Enter the following properties for your validation rule:
+    1. Rule Name: `Account_Number_8_Characters`
+    2. Error Condition Formula: `LEN( AccountNumber) <> 8`
+5. Error Message: `Account number must be 8 characters long.`
+6. To check your formula for errors, click **Check Syntax**.
+7. Click **Save** to finish.
 
 # Metadata
 
@@ -509,17 +502,18 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 [Metadata API](https://developer.salesforce.com/docs/atlas.en-us.api_meta.meta/api_meta/meta_intro.htm)
 
-## [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks)
+## Retrieve Metadata from Salesforce to the Local Project
+
+- This's sample in Trailhead: [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks).
+- This sample is based on the sample: [Custom Object from Spreadsheet](#Custom Object from Spreadsheet)
 
 ### With VS Code
 
-- **Precondition**: This sample is based on the custom object **House**.
-
-- In VS Code, in the Activity Bar, click **Org Browser** <img src="assets/a8f26bcea3309c7490124fbbde76218e_kix.p03d27ihoxp4.jpg" alt="Org Browser." style="zoom: 50%;" />.
+- In the Activity Bar of VS Code, click **Org Browser** <img src="assets/a8f26bcea3309c7490124fbbde76218e_kix.p03d27ihoxp4.jpg" alt="Org Browser." style="zoom: 50%;" />.
 
     <img src="assets/image-20250315185254353.png" alt="image-20250315185254353" style="zoom:50%;" />
 
-- Locate **Custom Objects** > **House__c folder**.
+- Locate **Custom Objects** > **House__c**.
 
 - Click <img src="assets/cd2226227c13f749ce4defb219e7d4f3_kix.7smvyxr29llr.jpg" alt="Retrieve source from org." style="zoom:50%;" /> to retrieve the org metadata for the **House__c object**.
 
@@ -531,7 +525,137 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 ### With Salesforce CLI
 
-```bash
-sf project retrieve start --metadata CustomApplication:Dreamhouse CustomTab:House__c "Layout:House__c-House Layout"
-```
+- Execute the following command in the root directory of the project with **PowerShell**.
 
+    ```bash
+    sf project retrieve start --metadata CustomApplication:Dreamhouse CustomTab:House__c "Layout:House__c-House Layout"
+    ```
+
+# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+# Lightning Apps Builder
+
+Maybe the sample is going to creat an app.
+
+- This's a sample in Trailhead: [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+- From **Setup**, select `Lightning App Builder` in the **Quick Find**.
+- From the **Lightning Pages** list, select **Property Record Page**.
+- Click **Edit**.
+- Drag the any custom and drop them in the canvas in the center.
+
+# [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
+
+**Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
+
+# [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+
+## Create a List View
+
+- **App Launcher** > **Sales** > **Accounts** > **New**
+
+    ![image-20250305183252478](assets/image-20250305183252478.png)
+
+- Name the list `Channel Customers`.
+
+- Select **All users can see this list view**.
+
+- Click **Save**.
+
+- Set up some filters.
+
+    - Click **Add Filter**.
+    - From the **Field** dropdown menu, select **Type**.
+    - Select the **equals** operator.
+    - For Value, select **Customer - Channel**, then click **Done** and **Save**.
+    - Add another filter where **Billing State/Province** equals **WA,OR,CA**.
+
+## Create a List View Chart
+
+- From the **Sales** app, click the **Opportunities** tab.
+
+- Use the dropdown menu (![img](assets/fdb2f0c6d4ef6479100d7f00ac06136f_i.27.jpg)) to select the **All Opportunities** list view.
+
+- Click ![list view charts icon](assets/6ca3d60bc72bc7d3f259dd3320c64cdf_i.28.jpg). 
+
+- In the Charts panel that appears, click ![list view charts gear icon](assets/22d51ae434c5c03addbc4f8853f34cfb_i.29.jpg) and select **New Chart**.
+
+- Name the chart `Pipeline Total Value` and give it these parameters.
+
+    - Chart Type: **Donut Chart**
+
+    - Aggregate Type: **Sum**
+
+    - Aggregate Field: **Amount**
+
+    - Grouping Field: **Account Name**
+
+- Click **Save**.
+
+# Package
+
+## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
+
+# Project
+
+## Create a Project
+
+- This's a sample in Trailhead: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner)
+
+- **Precondition**
+
+    - Create a new TP.
+
+    - Install Salesforce CLI.
+
+    - Install VS Code and the Salesforce Extension Pack.
+
+    - Install Node.js.
+
+- **Create a Project**
+
+    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type `SFDX`.
+    - Select **SFDX: Create Project**.
+    - Select **Standard**.
+    - Type the project name and press **Enter**.
+    - Set the project location.
+
+- **Authorize**
+
+    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type `SFDX: Authorize an Org`.
+    - Select **Production** and type the organization alias `myDevOrg`. Then press **Enter**.
+    - A webpage will pop up for login.
+    - **Notice**: Type the username and password of your **org**.
+
+- Ways to open an org.
+
+    - **Command Line**：Run the command in the terminal at the project's root directory.
+
+        ```bash
+        sf org open
+        ```
+
+    - **VS Code**
+
+        <img src="assets/image-20250302212052512.png" alt="image-20250302212052512" style="zoom:50%;" />
+
+- Navigate to the project's root directory in the terminal and run the command below to install the project dependencies.
+
+    ```bash
+    npm install
+    ```
+
+- Reload VS Code.
+
+# Schema Builder
+
+- This's a sample in Trailhead: [Schema Builder](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
+- Click **Setup**.
+- Locate **Schema Builder** from **Quick Find** box.
+- From the **Objects** tab, click **Clear All**.
+- Select **Custom Objects** from the picklist.
+- Select **Broker** and **Property** in the bottom left. Then you can see the legend.
+- Click **Auto-Layout** to bring the **Broker** and **Property** custom object schemas into view.
+
+# Tab
+
+## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
