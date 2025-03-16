@@ -82,7 +82,7 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 - This's a sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex?trail_id=force_com_dev_beginner).
 
-- This sample is based on the project: [Create a Project](salesforce.md#Create a Project)
+- This sample is based on the project : [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
 - In VS Code, under the folder **force-app/main/default**, right-click **classes** and select **SFDX: Create Apex Class**.
 
@@ -129,6 +129,8 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
     }
     ```
 
+- Right-click **HouseService.cls** and select **SFDX: Deploy This Source to Org**. You see a confirmation message that the Apex class successfully deployed to the org.
+
 - Create an anonymous script to test **getRecords()**.
 
     - Create a new file named **dreamhouseapp.apex** in the **scripts/apex** folder.
@@ -140,6 +142,10 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
         ```
 
     - Click **Execute**.
+    
+    - Check the query results in the **output panel** shown below. 
+    
+        ![image-20250317020059440](assets/image-20250317020059440.png)
 
 # [数据类型](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_data_types.htm)
 

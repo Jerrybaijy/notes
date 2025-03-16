@@ -333,7 +333,7 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 ## Create an App
 
 - This's a sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
-- This sample is based on the sample: [Custom Object from Spreadsheet](#Custom Object from Spreadsheet)
+- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 - From **Setup**, select `App Manager` in the **Quick Find**.
 - Click **New Lightning App**.
 - In the **App Details & Branding** window, enter these details.
@@ -505,7 +505,7 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 ## Retrieve Metadata from Salesforce to the Local Project
 
 - This's sample in Trailhead: [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks).
-- This sample is based on the sample: [Custom Object from Spreadsheet](#Custom Object from Spreadsheet)
+- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
 ### With VS Code
 
@@ -546,6 +546,118 @@ Maybe the sample is going to creat an app.
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
 **Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
+
+## Build a Reusable UI Component with Lightning Web Components
+
+- This's a sample in Trailhead: [Build a Reusable UI Component with Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/build-reusable-ui-component-with-lightning-web-components?trail_id=force_com_dev_beginner).
+- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+
+### Create and Deploy a Lightning Web Component
+
+- Under the **force-app/main/default** folder, right-click the **lwc** folder and select **SFDX: Create Lightning Web Component**.
+
+- Name the Lightning web component `housingMap` and select the **main/default/lwc** directory.
+
+- You see these files: an HTML file, a JavaScript file, a metadata XML file, and a test.js file.
+
+    ![image-20250317022341519](assets/image-20250317022341519.png)
+
+- In the HTML file, **housingMap.html**, copy and paste the following code.
+
+    ```html
+    <template>
+      <lightning-card title="Housing Map">
+        <!-- Explore all the base components via Base component library
+        (https://developer.salesforce.com/docs/component-library/overview/components)-->
+          <lightning-map map-markers={mapMarkers}> </lightning-map>
+      </lightning-card>
+    </template>
+    ```
+
+- In the JavaScript file, **housingMap.js**, copy and paste the following code.
+
+    ```javascript
+    import { LightningElement, wire } from "lwc";
+    import getHouses from "@salesforce/apex/HouseService.getRecords";
+    export default class HousingMap extends LightningElement {
+        mapMarkers;
+        error;
+        @wire(getHouses)
+        wiredHouses({ error, data }) {
+            if (data) {
+            console.log(data);
+        }
+      }
+    }
+    ```
+
+    **Notice**: The Lightning web component invokes the Apex class **HouseService** you wrote in the previous section to fetch the data.
+
+- Next, let's add code to transform the data as needed by the [lightning-map](https://developer.salesforce.com/docs/component-library/bundle/lightning-map/documentation) Base component. Replace the code with the following lines.
+
+    ```javascript
+    import { LightningElement, wire } from "lwc";
+    import getHouses from "@salesforce/apex/HouseService.getRecords";
+    export default class HousingMap extends LightningElement {
+        mapMarkers;
+        error;
+        @wire(getHouses)
+        wiredHouses({ error, data }) {
+            if (data) {
+             // Use JavaScript Map function to transform the Apex method response wired to the component into the format required by lightning-map
+              this.mapMarkers = data.map((element) => {
+                    return {
+                        location: {
+                            Street: element.Address__c,
+                            City: element.City__c,
+                            State: element.State__c
+                        },
+                        title: element.Name
+                    };
+                });
+                this.error = undefined;
+            } else if (error) {
+                this.error = error;
+                this.mapMarkers = undefined;
+            }
+        }
+    }
+    ```
+
+- In the XML file, **housingMap.js-meta.xml**, Replace the code with the following lines.
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8" ?>
+    <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+        <apiVersion>63.0</apiVersion>
+        <isExposed>true</isExposed>
+        <targets>
+          <target>lightning__HomePage</target>
+        </targets>
+    </LightningComponentBundle>
+    ```
+
+- Right click and select **SFDX: Deploy This Source to Org**.
+
+### Add the Component to the App Home
+
+- Select **Dreamhouse** from **App Launcher**.
+
+- Click **Home** tab in the top navigation menu.
+
+- Select **Edit Page** from **Setup**.
+
+- Drag the **housingMap** Lightning web component from the **Custom** area of the Lightning Components list to the top of the **Page Canvas**.
+
+    ![image-20250317025743959](assets/image-20250317025743959.png)
+
+- Click **Save** > **Activate** > **Assign as Org Default** > **Save** > **Save**.
+
+- Click <img src="assets/75efa403f72272b560fc21f87d2ec625_kix.bnc114cd4e6.jpg" alt="Back" style="zoom: 33%;" /> to return to the page.
+
+- Refresh the page to view your new component.
+
+    <img src="assets/image-20250317030231300.png" alt="image-20250317030231300" style="zoom: 33%;" />
 
 # [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 

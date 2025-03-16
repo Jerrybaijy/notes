@@ -10,7 +10,7 @@
 
 ### [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/get-started-with-the-salesforce-platform-01?trail_id=force_com_dev_beginner)
 
-- Install the **Dreamhouse** App again with the new Packge ID `04t3h000004bhxlAAA` in a new TP.
+- Install the **Dreamhouse** App again with the new Packge ID `04t3h000004bhxlAAA` in a new TP.
 
 ## [Develop Without Code](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
 
@@ -55,26 +55,18 @@ Introduce how to Extend the Salesforce Platform:
 ## [Write Business Logic in Apex](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex?trail_id=force_com_dev_beginner)
 
 - Create and Deploy the Apex Class
-- 
+
+## [Build a Reusable UI Component with Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/build-reusable-ui-component-with-lightning-web-components?trail_id=force_com_dev_beginner)
+
+- Create and Deploy a Lightning Web Component
+- Add the Component to the App Home
+
+# Quick Start: Tour the Sample App Gallery
+
+## [Get to Know the Sample Gallery](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/get-to-know-the-sample-gallery?trail_id=force_com_dev_beginner)
+
+## [Learn About Sample App Tooling](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-1111
-
-1111
