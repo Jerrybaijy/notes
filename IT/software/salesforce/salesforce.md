@@ -6,7 +6,7 @@
 
 - [**Windows**](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_windows)
 
-    - [Download and install **Salesforce CLI** from the official website.](https://developer.salesforce.com/tools/salesforcecli)
+    - Download and install [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) from the official website.
 
     - Confirm that the Salesforce CLI is correctly installed and up to date.
 
@@ -105,8 +105,10 @@ Salesforce provides different types of Orgs, including:
 
 - **Purpose**: Primarily used for Trailhead courses, challenges, and experiments.
 - **Pre-configured**: Some components required by Trailhead courses are pre-installed.
+- **Free**
+    - Free, with no time limits.
+    - Up to 10 TPs at a time.
 
-- **Free**: Multiple TP instances can be created for free, with no time limits.
 - **Limitations**: Some advanced features (e.g., API access) may be restricted.
 
 ### [Create a TP](https://trailhead.salesforce.com/content/learn/modules/trailhead_playground_management/create-a-trailhead-playground)
@@ -260,21 +262,9 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
 - **Field Name**: `Price__c`, the `__c` suffix is an easy way to identify a custom field.
 - **Field Label**: The Field Label is what you see on the \<Object> page.
 
-## [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+## Create a Field
 
-- Install the APP **Dreamhouse**.
-- From **Setup**, locate to **Object Manager** > **Contact**.
-- In the sidebar, click **Fields & Relationships**. 
-- Click **New** in the top right.
-    - For **data type**, select **Checkbox** and click **Next**.
-    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
-    - Click **Next**, **Next** again to accept the default field-level security.
-    - Check the checkboxes to add the new field to all the Contact Page Layouts.
-    - Click **Save**.
-- Check the new field:
-    - Locate to **Dreamhouse** from **App Launcher**.
-    - Click the **Contacts** tab, then click a contact name.
-    - Under the **Details** tab, you can see your new field **Prequalified?**.
+- Refer to [Create a Field](./trailhead-sample-beginner.md)
 
 
 # Records
@@ -302,22 +292,13 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 <img src="assets/image-20250314180439712.png" alt="image-20250314180439712" style="zoom:50%;" />
 
-## [Install an App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+## Install an App
 
-1. Launch a Trailhead Playground.
-2. Locate to **Playground Starter** from **App Launcher**.
-3. Click the **Get Your Login Credentials** tab and reset your password.
-4. Click the **Install a Package** tab. 
-5. Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
-6. Select **Install for All Users**, then click **Install**.
-7. When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
-8. When the installation completes, click **Done**.
-9. Locate to **Dreamhouse** from **App Launcher**.
-10. Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
+- Refer to [Install the Dreamhouse App](trailhead-sample-beginner.md).
 
 ## [Creat an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
 
-- This example is based on the front example **Create a House Custom Object** of this page.
+- This sample is based on the front sample **Create a House Custom Object** of this page.
 - Refer to [For the option **Custom Object from Spreadsheet**](#[For the option **Custom Object from Spreadsheet**.](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner))
 
 # Tab
@@ -326,12 +307,11 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 # Schema Builder
 
-- [A sample.](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
+- Refer to the sample [Schema Builder](./trailhead-sample-beginner.md).
 
-# [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+# Lightning Apps Builder
 
-- [A sample.](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
-- 
+- Refer to the sample [Lightning Apps Builder](./trailhead-sample-beginner.md)
 
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
@@ -533,7 +513,7 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 ### With VS Code
 
-- **Precondition**: This example is based on the custom object **House**.
+- **Precondition**: This sample is based on the custom object **House**.
 
 - In VS Code, in the Activity Bar, click **Org Browser** <img src="assets/a8f26bcea3309c7490124fbbde76218e_kix.p03d27ihoxp4.jpg" alt="Org Browser." style="zoom: 50%;" />.
 

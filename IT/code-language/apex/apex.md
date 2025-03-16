@@ -76,53 +76,6 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
     System.debug('这是要输出的信息');
     ```
 
-## Project
-
-### [Create a Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop)
-
-- **Precondition**
-
-    - Create a new TP.
-
-    - Install Salesforce CLI.
-
-    - Install Node.js.
-
-- **Create a Project**
-
-    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX**.
-    - Select **SFDX: Create Project**.
-    - Select **Standard**.
-    - Type the project name and press **Enter**.
-    - Set the project location.
-
-- **Authorize**
-
-    - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type **SFDX: Authorize an Org**.
-    - Select **Production** and type the organization alias **myDevOrg**. Then press **Enter**.
-    - A webpage will pop up for login.
-    - **Notice**: Type the username and password of your **org**.
-
-- Ways to open an organization.
-
-    - **Command Line**：Run the command in the terminal at the project's root directory.
-
-        ```bash
-        sf org open
-        ```
-
-    - **VS Code**
-
-        <img src="assets/image-20250302212052512.png" alt="image-20250302212052512" style="zoom:50%;" />
-
-- Navigate to the project's root directory in the terminal and run the command below to install the project dependencies.
-
-    ```bash
-    npm install
-    ```
-
-- Reload VS Code.
-
 ## Class
 
 ### [Creat a Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex)
