@@ -65,8 +65,15 @@ Introduce how to Extend the Salesforce Platform:
 
 ## [Get to Know the Sample Gallery](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/get-to-know-the-sample-gallery?trail_id=force_com_dev_beginner)
 
+- Sample Apps in GitHub
+
 ## [Learn About Sample App Tooling](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 
-
-
+- Project Configurations: sfdx-project.json
+- Code Quality Tool Setup: npm
+- Unit Testing Configuration
+- Automated Code Formatting Configuration
+- Ignore files
+- GitHub Actions: CI/CD
+- Open Source at Salesforce: [Code Samples and SDKs](https://developer.salesforce.com/code-samples-and-sdks)
 

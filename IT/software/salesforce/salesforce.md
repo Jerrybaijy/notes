@@ -185,7 +185,7 @@ Salesforce supports various types of objects, including:
 
 #### Custom Object from Spreadsheet
 
-- This's a sample in Trailhead: [Create a House Custom Object](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Create a House Custom Object](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner)
 - Download and open [this spreadsheet](https://developer.salesforce.com/files/House.csv) and save it as **House.csv**.
 - **Setup** > **Object Manager** > **Create** > **Custom Object from Spreadsheet**
 - Click **Login With Salesforce**.
@@ -275,7 +275,7 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
 
 ## Create a Field
 
-- This's a sample in Trailhead: [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
 - Install the APP **Dreamhouse**.
 - From **Setup**, locate to **Object Manager** > **Contact**.
 - In the sidebar, click **Fields & Relationships**. 
@@ -318,7 +318,7 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 ## Install an App
 
-- This's a sample in Trailhead: [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
 - Launch a Trailhead Playground.
 - Locate to **Playground Starter** from **App Launcher**.
 - Click the **Get Your Login Credentials** tab and reset your password.
@@ -332,8 +332,8 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 ## Create an App
 
-- This's a sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
-- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+- Sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
+- Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 - From **Setup**, select `App Manager` in the **Quick Find**.
 - Click **New Lightning App**.
 - In the **App Details & Branding** window, enter these details.
@@ -345,6 +345,15 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 - On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
 - On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
 - Select **Dreamhouse** from **App Launcher** to check the new App.
+
+## Sample Apps
+
+- Sample Apps in GitHub: https://github.com/trailheadapps
+
+# CI
+
+- CI in Salesforce Document: [Continuous Integration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ci.htm?_ga=2.255431115.2113438160.1742049829-1363362869.1742049829)
+- Sample in Trailhead: [GitHub Actions](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 
 # [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
 
@@ -358,7 +367,7 @@ An **App** in Salesforce is a set of objects, fields, and other functionality th
 
 ## Build a flow with Flow Builder
 
-- This's a sample in Trailhead: [Low-code Tools & Automation](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner).
+- Sample in Trailhead: [Low-code Tools & Automation](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner).
 - From **Setup**, select `Flows` in the **Quick Find**.
 - Click the **Create Property** flow.
 - Click ![Toolbox](assets/fa9fe34c482cca646a9b444e500a4d3c_kix.9by05x8kzn4r.jpg) to open the Toolbox menu.
@@ -504,8 +513,8 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 ## Retrieve Metadata from Salesforce to the Local Project
 
-- This's sample in Trailhead: [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks).
-- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+- Sample in Trailhead: [Retrieve Metadata from Salesforce to the Local Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks).
+- Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
 ### With VS Code
 
@@ -537,7 +546,7 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 Maybe the sample is going to creat an app.
 
-- This's a sample in Trailhead: [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Lightning Apps Builder](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
 - From **Setup**, select `Lightning App Builder` in the **Quick Find**.
 - From the **Lightning Pages** list, select **Property Record Page**.
 - Click **Edit**.
@@ -549,8 +558,8 @@ Maybe the sample is going to creat an app.
 
 ## Build a Reusable UI Component with Lightning Web Components
 
-- This's a sample in Trailhead: [Build a Reusable UI Component with Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/build-reusable-ui-component-with-lightning-web-components?trail_id=force_com_dev_beginner).
-- This sample is based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+- Sample in Trailhead: [Build a Reusable UI Component with Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/build-reusable-ui-component-with-lightning-web-components?trail_id=force_com_dev_beginner).
+- Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
 ### Create and Deploy a Lightning Web Component
 
@@ -711,7 +720,7 @@ Maybe the sample is going to creat an app.
 
 ## Create a Project
 
-- This's a sample in Trailhead: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner)
 
 - **Precondition**
 
@@ -757,6 +766,57 @@ Maybe the sample is going to creat an app.
     ```
 
 - Reload VS Code.
+
+## Project Configurations
+
+- Sample in Trailhead: [Salesforce Project Configurations](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
+
+- Based on the project on GitHub: [lwc-recipes](https://github.com/trailheadapps/lwc-recipes)
+
+- Get to know the Salesforce project setup in the `sfdx-project.json` config file.
+
+- **sfdx-project.json**
+
+    ```json
+    {
+      "packageDirectories": [
+        {
+          "path": "force-app",
+          "default": true,
+          "package": "LWCRecipes",
+          "versionName": "Spring '24",
+          "versionNumber": "62.0.0.NEXT"
+        }
+      ],
+      "namespace": "",
+      "sourceApiVersion": "62.0",
+      "sfdcLoginUrl": "https://login.salesforce.com",
+      "packageAliases": {
+        "LWCRecipes": "0Ho3t000000KywNCAS",
+        "LWCRecipes@59.0.0-20": "04t3t000002YSCcAAO",
+        "LWCRecipes@60.0.0-1": "04t3t000002YSCrAAO",
+        "LWCRecipes@60.0.0-4": "04t3t000002lhjcAAA",
+        "LWCRecipes@60.0.0-7": "04t3t000002lhk1AAA",
+        "LWCRecipes@60.0.0-9": "04t3t000002lhkaAAA",
+        "LWCRecipes@60.0.0-10": "04t3t000002lhkfAAA",
+        "LWCRecipes@60.0.0-12": "04t3t000002lhkpAAA",
+        "LWCRecipes@61.0.0-1": "04t3t000002lhpRAAQ",
+        "LWCRecipes@61.0.0-6": "04t3t000002lhucAAA",
+        "LWCRecipes@61.0.0-7": "04t3t000002lhvLAAQ",
+        "LWCRecipes@61.0.0-11": "04t3t000002li3GAAQ",
+        "LWCRecipes@61.0.0-13": "04t3t000002li3QAAQ",
+        "LWCRecipes@62.0.0-1": "04t3t000002li7xAAA"
+      }
+    }
+    ```
+
+- More explanations in Trailhead: [Salesforce Project Configurations](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
+
+## npm
+
+- Even though most projects don’t use Node.js in any runtime Salesforce code, we still have a `package.json` to import and configure the developer tools with npm.  
+- Sample in Trailhead: [Code Quality Tool Setup](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
+- Based on the project on GitHub: [lwc-recipes](https://github.com/trailheadapps/lwc-recipes)
 
 # Schema Builder
 
