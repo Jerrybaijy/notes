@@ -241,13 +241,12 @@
 
 # Git Ignore
 
-`.gitignore` 文件是一个用来告诉 Git 哪些文件或目录不需要被版本控制的配置文件。通常，这些文件包括编译生成的文件、临时文件、日志文件、依赖库等，因为它们不应该被提交到版本库中，或者它们可以通过其他途径重新生成。创建一个 `.gitignore` 文件可以帮助确保你的代码仓库保持整洁，只包含必要的文件。
+`.gitignore` 文件是版本控制中的 Ignore 配置文件。通常，这些文件包括编译生成的文件、临时文件、日志文件、依赖库等，因为它们不应该被提交到版本库中，或者它们可以通过其他途径重新生成。创建一个 `.gitignore` 文件可以帮助确保你的代码仓库保持整洁，只包含必要的文件。
 
-## Symbol
+## 语法
 
-- **`#`**：注释
-- **`*`**：所有
-- **`!`**：否定
+- 大致语法同 ignore 语法，详见：code-general.md > 忽略规则
+- `.gitignore` 有一些默认的忽略规则，比如会自动忽略一些与版本控制相关的临时文件和目录，如 `.git` 目录本身
 
 ## Template
 
@@ -366,6 +365,94 @@ GitHub 网页创建 Remote Repo：
 
 - 单次推送总大小达到1.17GB
 
+## GitHub Actions
+
+**GitHub Actions** 是 GitHub 内置的 **CI/CD** 工具。
+
+### GitHub Actions 基础示例
+
+```yaml
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  # 构建阶段
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Upload Build Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-dist
+          path: dist/
+
+  # 测试阶段
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-dist
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm test
+
+  # 部署阶段
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - name: Download Build Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: build-dist
+
+      - name: Deploy to Server
+        run: scp -r dist/ user@server:/var/www/html
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Clean Up Artifacts
+        run: rm -rf dist/
+```
+
+
+
 ## 解决办法
 
 - 在 Linux 中从 GitHub 上下载特定文件
@@ -405,11 +492,104 @@ GitLab 网页创建 Remote Repo
 
 - [GitLab 官方关于存储库大小的限制](https://docs.gitlab.com/ee/user/gitlab_com/#account-and-limit-settings)
 
-## GitLab CI
+## GitLab CI/CD
+
+**GitLab CI/CD** 是 GitLab 内置的 **CI/CD** 工具。
+
+### `.gitlab-ci.yml`
+
+- 核心配置文件，位于项目的根目录。
+- 用于定义 CI/CD 流程，包括构建、测试、部署等步骤。
+
+### Pipeline
+
+- 一个完整的 CI/CD 流程，包含多个 **阶段（stages）**，如 `build`、`test`、`deploy`。
+- 每次代码提交或合并请求时，GitLab 会自动触发 Pipeline。
+
+#### Pipeline 运行流程
+
+1. 代码提交
+2. GitLab 触发 Pipeline
+3. Runner 拉取代码并执行 Job
+4. 每个阶段按顺序执行
+5. 生成构建产物或部署代码
+
+### Stages
+
+- Pipeline 中的阶段，按顺序依次执行。常见的阶段有：
+    - `build`：代码构建。
+    - `test`：运行测试。
+    - `deploy`：部署到指定环境。
+
+### Jobs
+
+- 每个阶段包含多个 Job，代表具体的任务。
+- 每个 Job 都在独立的环境中执行（如 Docker 容器）。
+
+### Runner
+
+- 执行 CI/CD 任务的代理。
+- 两种类型
+    - **Shared Runner**：由 GitLab 提供，适合公共项目。
+    - **Specific Runner**：自建 Runner，适合私有项目或自定义环境。
+
+### 常见最佳实践
+
+- 使用 Docker 容器作为执行环境，确保一致性。
+- 将敏感信息存储为 CI/CD 变量，避免硬编码。
+- 配置 `only` 和 `except` 规则，避免不必要的 Pipeline 运行。
+- 使用 `artifacts` 和 `caching` 提升效率。
+- 在 `deploy` 阶段加入手动审批，确保安全性。
+
+### 基本 `.gitlab-ci.yml` 示例
+
+```yaml
+stages:
+  - build
+  - test
+  - deploy
+
+# 构建阶段
+build-job:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/  # 将构建产物保存下来，供后续阶段使用
+
+# 测试阶段
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm test
+
+# 部署阶段
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - scp -r dist/ user@server:/var/www/html
+  only:
+    - main  # 仅当推送到 main 分支时才部署
+```
+
+**关键配置说明**
+
+- `stages`：定义 Pipeline 的执行顺序。
+- `script`：每个 Job 执行的具体命令。
+- `artifacts`：保存构建产物，用于下一个阶段。
+- `only`：指定在哪些分支或条件下执行 Job。
+- `before_script` / `after_script`：在 Job 运行前后自动执行的命令。
+
+### 自己的示例
 
 目的是根据用户自己编写的应用文件 `main.go`、`Dockerfile`、 `.gitlab-ci.yml`，在将文件 push 到 Gitlab 时，通过 Pipeline 自动生成 Docker image 并推送到 Dockerhub。
 
-### 配置文件
+#### 配置文件
 
 - .gitlab-ci.yml
 
@@ -435,7 +615,7 @@ GitLab 网页创建 Remote Repo
         - docker push $IMAGE_NAME:$IMAGE_TAG
     ```
 
-### 基本流程
+#### 基本流程
 
 1. 远程创建仓库 clone 至本地
 2. 项目目录创建  `main.go`, `Dockerfile` 和 `.gitlab-ci.yml` 文件

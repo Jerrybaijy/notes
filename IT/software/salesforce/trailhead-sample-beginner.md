@@ -65,7 +65,7 @@ Introduce how to Extend the Salesforce Platform:
 
 ## [Get to Know the Sample Gallery](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/get-to-know-the-sample-gallery?trail_id=force_com_dev_beginner)
 
-- Sample Apps in GitHub
+- Sample Apps in GitHub: [github.com/trailheadapps](https://github.com/trailheadapps)
 
 ## [Learn About Sample App Tooling](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 

@@ -1826,15 +1826,20 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
     ```json
     {
+        // ---------------编辑器基本设置--------------------------------
+        "files.autoSave": "afterDelay", // 实时自动保存
+        "editor.fontFamily": "Consolas, '微软雅黑'",
+        "editor.fontSize": 24, // 编辑器字体大小
         "editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮 对编辑器字体大小缩放
         "open-in-browser.default": "chrome", // 默认浏览器
-        "files.autoSave": "afterDelay", // 实时自动保存
-        // 编辑器颜色
+        // 颜色和主题设置
+        "workbench.colorTheme": "GitHub Dark Dimmed", // 主题
+        "workbench.iconTheme": "vscode-icons", // 图标主题
         "workbench.colorCustomizations": {
-            // "editor.background": "#3B4352", // 编辑器背景色
-            // "editorGutter.background": "#3B4352", // 导航线背景色
-            // "editor.selectionHighlightBackground": "#4C4A48", // 选中代码高亮背景色
-            // "editor.selectionBackground": "#000000", // 选中区域背景色
+            // "editor.background": "#3B4352",  // 编辑器背景色
+            // "editorGutter.background": "#3B4352",  // 导航线背景色
+            // "editor.selectionHighlightBackground": "#4C4A48",  // 选中代码高亮背景色
+            // "editor.selectionBackground": "#000000",  // 选中区域背景色
         },
         "editor.tokenColorCustomizations": {
             // "comments": "#519657",  // 注释
@@ -1844,67 +1849,10 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
             // "variables": "#0720fc",  // 变量
             // "numbers": "#e21d1d"   // 数字
         },
-        "editor.fontFamily": "Consolas, '微软雅黑'",
-        "editor.fontSize": 24, // 编辑器字体大小
-        "workbench.iconTheme": "vscode-icons",
-        "editor.guides.bracketPairs": true,
-        "editor.semanticTokenColorCustomizations": {},
-        "liveServer.settings.CustomBrowser": "chrome",
+        // 启动和工作区设置
         "workbench.startupEditor": "none",
-        "vsicons.dontShowNewVersionMessage": true,
-        "liveServer.settings.donotVerifyTags": true,
-        "git.autofetch": true,
-        "redhat.telemetry.enabled": true,
-        "java.configuration.runtimes": [
-            {
-                "name": "JavaSE-17",
-                "path": "/path/to/jdk-17",
-                "default": true
-            }
-        ],
-        
-        // 缩进设置
-        "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
-        "editor.insertSpaces": true,  // 输入 Tab 时，使用空格替代制表符
-        "editor.indentSize": "tabSize",  // 使用 tabSize 的值来确定每次缩进使用多少个空格
-        "editor.tabSize": 2, // 1 个 Tab 的宽度为 2 个空格
-        "[python]": {
-            "editor.tabSize": 4            // Python 文件，Tab 宽度设置为 4 个空格
-        },
-        "[java]": {
-            "editor.tabSize": 4            // Java 文件，Tab 宽度设置为 4 个空格
-        },
-        "[json]": {
-            "editor.tabSize": 4            // JSON 文件，Tab 宽度设置为 4 个空格
-        },
-        "[markdown]": {
-            "editor.tabSize": 4,            // Markdown 文件，Tab 宽度设置为 4 个空格  
-            "editor.unicodeHighlight.ambiguousCharacters": false,  // 禁用 Unicode 模糊字符的高亮
-            "editor.unicodeHighlight.invisibleCharacters": false,  // 禁用不可见字符的 Unicode 高亮
-            "diffEditor.ignoreTrimWhitespace": false,  // 在 diff 比较时，不忽略尾部空白字符
-            "editor.wordWrap": "on",  // 自动换行，文本过长时自动换行
-            "editor.quickSuggestions": {
-                "comments": "off",
-                "strings": "off",
-                "other": "off"
-            }
-        },
-    
-    
         "window.confirmSaveUntitledWorkspace": false,
-        "liveServer.settings.donotShowInfoMsg": true,
-        "editor.codeActionsOnSave": {},
-        "editor.linkedEditing": true,
-        // 默认终端为 Git Bash
-        "terminal.integrated.defaultProfile.windows": "Git Bash",
-        "terminal.integrated.profiles.windows": {
-            "Git Bash": {
-                "path": "D:\\Program Files\\Git\\bin\\bash.exe",
-            }
-        },
-        // 光标样式
-        "terminal.integrated.cursorStyleInactive": "line",
-        "terminal.integrated.cursorStyle": "line",
+        // 文件嵌套和关联设置
         "explorer.fileNesting.patterns": {
             "*.ts": "${capture}.js",
             "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
@@ -1922,10 +1870,72 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
         "workbench.editorAssociations": {
             "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
         },
+        // 其他设置
+        "vsicons.dontShowNewVersionMessage": true,
+        "redhat.telemetry.enabled": true,
+        "editor.codeActionsOnSave": {},
+        "editor.guides.bracketPairs": true,
+        "editor.semanticTokenColorCustomizations": {},
+        "editor.linkedEditing": true,
+        // -------------------------缩进设置-----------------------------------
+        "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
+        "editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
+        "editor.indentSize": "tabSize", // 使用 tabSize 的值来确定每次缩进使用多少个空格
+        "editor.tabSize": 4, // 1 个 Tab 的宽度为 2 个空格
+        "[markdown]": {
+            "editor.tabSize": 4, // Markdown 文件，Tab 宽度设置为 4 个空格
+            "editor.unicodeHighlight.ambiguousCharacters": false, // 禁用 Unicode 模糊字符的高亮
+            "editor.unicodeHighlight.invisibleCharacters": false, // 禁用不可见字符的 Unicode 高亮
+            "diffEditor.ignoreTrimWhitespace": false, // 在 diff 比较时，不忽略尾部空白字符
+            "editor.wordWrap": "on", // 自动换行，文本过长时自动换行
+            "editor.quickSuggestions": {
+                "comments": "off",
+                "strings": "off",
+                "other": "off"
+            }
+        },
+        // --------------各个语言格式化方式---------------------
+        "[html]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[xml]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[css]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[python]": {
+            "editor.defaultFormatter": "mikoz.black-py"
+        },
+        "[jsonc]": {
+            "editor.defaultFormatter": "vscode.json-language-features"
+        },
+        // ----------------------终端设置---------------------------
+        // 终端光标样式
+        "terminal.integrated.cursorStyle": "line",
+        "terminal.integrated.cursorStyleInactive": "line",
+        // 默认终端
+        "terminal.integrated.defaultProfile.windows": "Git Bash",
+        "terminal.integrated.profiles.windows": {
+            "Git Bash": {
+                "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+            }
+        },
+        // --------------------Git 相关设置-------------------------------------
+        "git.autofetch": true,
+        // --------------------Live Server 相关设置-----------------------------
+        "liveServer.settings.donotVerifyTags": true,
+        "liveServer.settings.donotShowInfoMsg": true,
+        "liveServer.settings.CustomBrowser": "chrome", // liveserver 默认浏览器
+        
+        // vscode-office 相关设置
         "vscode-office.openOutline": true,
         "vscode-office.editorTheme": "Light",
-        
-        "workbench.colorTheme": "GitHub Dark Dimmed"
+        // --------------Salesforce 相关设置-----------------------------------
+        "salesforcedx-vscode-apex.java.home": "C:\\\\Program Files\\\\Java\\\\jdk-21",
     }
     ```
 
@@ -1938,7 +1948,8 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 - **`Jinja`**：为 Jinja2 模板语言提供语法高亮和自动完成支持
 - **`Live Server`**：实时预览前端网页
 - **`Python`**：支持 Python
-- **`autopep8`**：Python 格式化
+- **`Black`**：Python 格式化（首选）
+- **`autopep8`**：Python 格式化（备用）
 - **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
 
 ## 快捷键

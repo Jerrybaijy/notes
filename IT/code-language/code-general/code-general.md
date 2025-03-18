@@ -231,6 +231,181 @@
 | **依赖性**   | 不依赖编译器，直接运行可执行文件 | 依赖解释器                    |
 | **示例语言** | C、C++、Go、Rust                 | Python、JavaScript、PHP、Ruby |
 
+# 代码格式化
+
+**代码格式化**（Code Formatting）是指按照统一规范对代码的排版、缩进、空格、换行等进行自动整理，使代码更加整洁、易读、易维护。
+
+## 目的
+
+- **提升可读性**：规范的代码风格，方便自己和团队成员阅读。
+- **减少代码冲突**：多人协作时，统一格式减少冲突。
+- **提升开发效率**：不再纠结格式细节，专注于业务逻辑。
+- **自动化检查**：CI/CD 流程中自动校验，确保一致性。
+
+## 实现方式
+
+- **使用 IDE 的格式化功能**：许多 IDE 都内置了代码格式化工具，可通过快捷键或菜单操作对选定代码或整个文件进行格式化。
+- **使用专门的代码格式化工具**：如 JavaScript 中的 Prettier、Python 中的 Black 等，这些工具可根据特定语言的规则对代码进行格式化，还可与版本控制系统集成，在提交代码时自动检查和格式化。
+
+## 格式化规则
+
+不同的编程语言有各自的代码格式化规则，一般包括以下方面：
+
+- **缩进**：规定代码块的缩进方式和空格数或制表符使用，如 Python 中通常使用 4 个空格作为缩进。
+- **空格**：在运算符、函数参数、语句之间等合理添加空格，增强代码的可读性，如 `if (a == 10)`。
+- **换行**：根据代码的逻辑结构和长度，合理进行换行，使代码更易阅读，如长表达式可在适当位置换行。
+- **命名规范**：规定变量、函数、类等的命名方式，如采用驼峰命名法或下划线命名法。
+
+## 常见工具
+
+- **Prettier**：HTML 、CSS、JavaScript、TypeScript、JSON、YAML ...
+- **Black**：Python
+- **ClangFormat**：C、C++、Java
+
+## Prettier
+
+Prettier 是一款流行的代码格式化工具，主要对如下语言进行格式化：
+
+- HTML 、CSS、JavaScript、TypeScript
+- JSON、YAML
+
+### 在命令行中使用
+
+- 安装 
+
+    ```bash
+    npm install -g prettier
+    ```
+
+- 使用
+
+    ```bash
+    # 对 example.js 文件格式化
+    prettier --write example.js
+    
+    # 对 src 目录下的所有 JS 文件格式化
+    prettier --write src/**/*.js
+    
+    # npm 会去 package.json 文件的 scripts 字段里查找名为 prettier 的脚本，然后执行该脚本对应的命令
+    npm run prettier
+    ```
+
+### 在 VS Code 中使用
+
+- 在 `settings.json` 中进行设置
+
+    ```json
+    {
+        // 启用保存文件时自动格式化
+        "editor.formatOnSave": true,
+        // 指定默认的格式化程序为 Prettier
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    
+        // Prettier 相关配置
+        "prettier.printWidth": 80, // 每行代码的最大字符数，默认为 80
+        "prettier.tabWidth": 2, // 缩进的空格数，默认为 2
+        "prettier.useTabs": false, // 是否使用制表符代替空格进行缩进，默认为 false
+        "prettier.singleQuote": true, // 是否使用单引号，默认为 false
+        "prettier.trailingComma": "es5", // 尾随逗号的风格，可选值有 "es5"、"all"、"none"，默认为 "es5"
+        "prettier.semi": true, // 是否在语句末尾添加分号，默认为 true
+        "prettier.bracketSpacing": true, // 对象字面量中括号之间是否有空格，默认为 true
+        "prettier.jsxBracketSameLine": false, // JSX 标签的右括号是否放在同一行，默认为 false
+        "prettier.arrowParens": "always", // 箭头函数参数是否使用括号，可选值有 "always"、"avoid"，默认为 "always"
+    
+        // 针对特定语言的格式化配置
+        "[javascript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[typescript]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        },
+        "[css]": {
+            "editor.defaultFormatter": "esbenp.prettier-vscode"
+        }
+    }
+    ```
+
+### 在构建脚本中使用
+
+- 以 `package.json` 为例：当执行 `package.json` 时，会根据 `.prettierrc` 的规则进行格式化。
+
+- `.prettierrc`
+
+    ```json
+    {
+        "trailingComma": "none",
+        "singleQuote": true,
+        "tabWidth": 4,
+        "overrides": [
+            {
+                "files": "**/*.html",
+                "options": { "parser": "lwc" }
+            }
+        ]
+    }
+    ```
+
+- `package.json`
+
+    ```json
+    {
+        // 其他配置
+        
+        "devDependencies": {
+            // 安装 prettier 依赖
+            "prettier": "^3.4.2",
+            
+            // 其他依赖
+        },
+        "scripts": {
+            // 指定对哪些文件执行格式化
+            "prettier": "prettier --write \"**/*.{css,html,js,mjs,json,md,yaml,yml}\"",
+            // 验证格式化
+            "prettier:verify": "prettier --check \"**/*.{css,html,js,mjs,json,md,yaml,yml}\"",
+            
+            // 其他脚本命令
+        },
+        
+        // 其他配置
+    }
+    ```
+
+### .prettierrc
+
+**.prettierrc** 是 Prettier 的配置文件。
+
+- **格式**：JSON 或 YAML
+- **位置**：项目根目录
+
+```json
+{
+    "trailingComma": "none", // 在多行对象或数组的最后一个元素后面不添加逗号
+    "singleQuote": true, // 使用单引号标记字符串
+    "tabWidth": 4, // 缩进的空格数为 4
+    // overrides 为特定类型的文件覆盖全局配置
+    "overrides": [
+        {
+            "files": "**/*.html", // 指定该覆盖规则适用于所有 HTML 文件
+            "options": { "parser": "lwc" } // 对于 HTML 文件，使用 lwc 解析器进行处理
+        }
+    ]
+}
+```
+
+# 忽略规则
+
+在构建脚本或版本控制中，通常会涉及到多种类型的 `ignore` 文件，比如 `npmignore`、`yarnignore` 等，用于在项目构建过程中排除特定的文件或目录。
+
+- **基本语法**：每行指定一个要忽略的文件或目录模式。
+
+- **注释**：`#`
+
+- **通配符**：支持使用通配符。
+    - **所有**：`*`
+- **文件夹**：`<folder_name>/`
+
+- **排除例外**：`!`
+
 # 数据类型
 
 ## 数据类型分类
