@@ -173,10 +173,11 @@ Salesforce supports various types of objects, including:
 
 #### Custom Object
 
-- Select an Org.
+- Sample in Trailhead: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+- Create an Org.
 - **Setup** > **Object Manager** > **Create** > **Custom Object**
-- For **Label**, enter `<label_name>`. Notice that the **Object Name** and **Record Name** fields auto-fill.
-- For **Plural Label**, enter `<label_names>`.
+- For **Label**, enter `Property`. Notice that the **Object Name** and **Record Name** fields auto-fill.
+- For **Plural Label**, enter `Properties`.
 - Select the checkbox **Launch New Custom Tab Wizard after saving this custom object**.
 - Leave the rest of the values as default and click **Save**.
 - **New Custom Object Tab**
@@ -215,50 +216,94 @@ Salesforce supports various types of objects, including:
 
 ## [Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
+**Object Relationships** are a special field type that connects two objects together.
+
 There are two main types of object relationships: **lookup** and **master-detail**.
 
 ### Lookup Relationship
 
-A **Lookup Relationship** in Salesforce is a type of relationship where one object can be linked to another object, but it does not require the dependent object to be strictly tied to the primary object. 
+A **Lookup Relationship** in Salesforce is a type of relationship where one object can be linked to another object, but it doesn't require the dependent object to be strictly tied to the primary object. 
 
 Similar to a **foreign key**, it allows a non-strict relationship between objects. For example, a **Contact** can be related to an **Account**, but the **Contact** can still exist independently.
 
 #### Create a Lookup Relationship
 
-- Select an org and create a custom object.
-- From **Setup**, go to **Object Manager** | **<object_name>**.
+- Sample in Trailhead: [Create a Lookup Relationship](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+- Based on:
+
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Custom Object **Favorite**: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+- From **Setup**, go to **Object Manager** > **Favorite**.
+
 - In the sidebar, click **Fields & Relationships**. 
+
 - Click **New** in the top right.
     - For **data type**, Choose **Lookup Relationship** and click **Next**.
-    - For **Related To**, choose a right one, and click **Next**.
-    - For **Field Name**, enter Contact, then click **Next**.
+    - For **Related To**, choose **Contact**, then click **Next**.
+    - For **Field Name**, enter `Contact`, then click **Next**.
     - Click **Next**, **Next**, **Next**, and **Save**.
+
+- Check the new relationship field **Contact**.
+
+    <img src="assets/image-20250319011834081.png" alt="image-20250319011834081" style="zoom:50%;" />
 
 ### Master-Detail Relationship
 
-A **Master-Detail Relationship** in Salesforce is a type of relationship where one object (the **Master**) controls another object (the **Detail**). The **Detail** object is highly dependent on the **Master** object, and its existence is tied to the **Master**. If a **Master** record is deleted, the associated **Detail** records are also deleted automatically.
+A **Master-Detail Relationship** in Salesforce is a type of relationship. The **Detail Record** is highly dependent on the **Master Record** , and its existence is tied to the **Master**. If a **Master record** is deleted, the associated **Detail records** are also deleted automatically.
 
 #### Create a Master-Detail Relationship
 
-- Select an org.
-- Create the 1st custom object **<1st_object_name>**.
-    - Create a field.
-    - Create a record.
-- Create the 2nd custom object **<2nd_object_name>**.
-- Create a **lookup relationship**.
-- Create a **Master-Detail Relationship**.
-    - From **Setup**, go to **Object Manager** | **<object_name>**.
-    - In the sidebar, click **Fields & Relationships**. 
-    - Click **New** in the top right.
+- Sample in Trailhead: [Create a Master-Detail Relationship](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+- Based on:
+
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+        - Custom Object: **Property**
+        - Custom Field: **Price**
+        - Custom Record: **Jerry's house**
+    - Custom Object **Favorite**: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+- **Property** is the master and **Favorite** is the detail.
+
+- From **Setup**, select **Object Manager**.
+
+- Select the **detail** object **Favorite**.
+
+- In the sidebar, click **Fields & Relationships**. 
+
+- Click **New** in the top right.
+
     - For **data type**, Choose **Master-Detail Relationship** and click **Next**.
-    - For **Related To**, choose **<1st_object_name>**, and click **Next**.
-    - For Field Name, enter `Property` and click **Next**.
+    - For **Related To**, choose the **master** object **Property**, then click **Next**.
     - Click **Next**, **Next**, and **Save**.
-- Contact **<2nd_object_name>** with **<1st_object_name>**.
-    - From the **App Launcher** find and select **Sales**.
-    - Click the **<1st_object_name>** tab in the navigation bar. 
-    - Click **Related**. You’ll see **<2nd_object_name>** (0) in the Related tab.
-    - Click **New**. Enter a name for **Favorite Name**, then click **Save**.
+
+- Check the new relationship field **Property**.
+
+    <img src="assets/image-20250319012633694.png" alt="image-20250319012633694" style="zoom:50%;" />
+
+- Add a **Detail Record**
+
+    - From the **App Launcher** select **Sales**.
+
+    - Click the **Properties** tab in the navigation bar.
+
+    - Click the name of a Property record: **Jerry's house**.
+
+    - Click **Related** > **New**.
+
+    - For **Favorite Name**, enter `Jerry's house - Related`, then click **Save**.
+
+        <img src="assets/image-20250319022154054.png" alt="image-20250319022154054" style="zoom: 67%;" />
+
+    - The detail record named **Jerry's house - Related** has been related to the master record **Jerry's house** of **Property**.
+
+        <img src="assets/image-20250319023143015.png" alt="image-20250319023143015" style="zoom:50%;" />
+
+    - The record **Jerry's house - Related** is showed in the object **Favorite**.
+
+        <img src="assets/image-20250319023337761.png" alt="image-20250319023337761" style="zoom:67%;" />
 
 # Fields
 
@@ -266,39 +311,53 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship where o
 
 **Fields** are columns in object database tables. There are **Standard Fields** and **Custom Fields**
 
-**Standard Fields**: These are pre-defined fields provided by Salesforce for standard objects like **Account**, **Contact**, and **Opportunity**. Examples include **Name**, **Created Date**, and **Phone**.
+**Standard Fields**: These are **pre-defined** fields for standard objects, for example **Name**, **Created Date**, and **Phone**.
 
-**Custom Fields**: Users can create custom fields for both standard and custom objects to capture specific information that the out-of-the-box fields do not cover.
+**Custom Fields**: Users can create custom fields for both standard and custom objects to capture specific information that the out-of-the-box fields don't cover.
 
 - **Field Name**: `Price__c`, the `__c` suffix is an easy way to identify a custom field.
 - **Field Label**: The Field Label is what you see on the \<Object> page.
 
 ## Create a Field
 
-- Sample in Trailhead: [Create a Field](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
-- Install the APP **Dreamhouse**.
-- From **Setup**, locate to **Object Manager** > **Contact**.
+- Sample in Trailhead: [Create a Custom Field](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+- Based on the sample: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+- From **Setup**, locate to **Object Manager** > **Property**.
 - In the sidebar, click **Fields & Relationships**. 
 - Click **New** in the top right.
-    - For **data type**, select **Checkbox** and click **Next**.
-    - Type `Prequalified?` in the **Field Label** field, and **Field Name** field auto-fill.
-    - Click **Next**, **Next** again to accept the default field-level security.
-    - Check the checkboxes to add the new field to all the Contact Page Layouts.
-    - Click **Save**.
-- Check the new field:
-    - Locate to **Dreamhouse** from **App Launcher**.
-    - Click the **Contacts** tab, then click a contact name.
-    - Under the **Details** tab, you can see your new field **Prequalified?**.
-
+- For **data type**, select **Currency** and click **Next**.
+- Fill out the following:
+    - Type `Price` in the **Field Label** field, and **Field Name** field auto-fill.
+    - Type `The listed sale price of the home.` in the **Description** field.
+    - Check the **Required** box.
+- Click **Next**, **Next** again, and then **Save**.
+- You’ll see your new **Price** field in the list of **Property** fields.
+- Notice that it says **Price\__c**. The “__c” part is an easy way to tell that a particular field is a custom field.
 
 # Records
 
+**Records** are the information the fields store.
+
 ## Create a Record
 
+- Sample in Trailhead: [Create a Custom Record](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+
+- Based on the sample:
+
+    - [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - [Create a Custom Field](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+
 - From the **App Launcher** find and select **Sales**.
-- Click the **<object_name>** tab in the navigation bar. 
+
+- Click the **Properties** tab in the navigation bar. 
+
 - Click **New** in the top corner.
-- Enter a name and price for the Object and click **Save**.
+
+- Enter a name (**Jerry's house**) and price for the Object and click **Save**.
+
+- You’ll see something like the following.
+
+    <img src="assets/image-20250318231700387.png" alt="image-20250318231700387" style="zoom:50%;" />
 
 # [Setup](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_tour?trail_id=force_com_dev_beginner)
 
@@ -310,11 +369,16 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - **Setup Menu:** The menu gives you quick links to a collection of pages that let you do everything from managing your users to modifying security settings.
 - **Main Window:** We’re showing you the Setup home page, but this is where you can see whatever it is you’re trying to work on.
 
-# App
+# Lightning Apps
 
-An **App** in Salesforce is a set of objects, fields, and other functionality that supports a business process. You can see which app you’re using and switch between apps using the **App Launcher** ( ![App Launcher icon](assets/5d99d1d8a695b58d917d32c5829d8465_kix.27w3grnp6f4v.jpeg)).
+## [Lightning Apps Basics](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
 
-<img src="assets/image-20250314180439712.png" alt="image-20250314180439712" style="zoom:50%;" />
+An **app** is a collection of items that work together to serve a particular function. In Lightning Experience, **Lightning apps** give your users access to sets of objects, tabs, and other items all in one convenient bundle in the navigation bar.
+
+![image-20250319063650568](assets/image-20250319063650568.png)
+
+- The app name (1) displays on the left side of the navigation bar and custom colors.
+- You can access other items and apps by clicking the **App Launcher** icon (3).
 
 ## Install an App
 
@@ -820,14 +884,47 @@ Maybe the sample is going to creat an app.
 
 # Schema Builder
 
-- This's a sample in Trailhead: [Schema Builder](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner)
-- Click **Setup**.
-- Locate **Schema Builder** from **Quick Find** box.
-- From the **Objects** tab, click **Clear All**.
-- Select **Custom Objects** from the picklist.
-- Select **Broker** and **Property** in the bottom left. Then you can see the legend.
-- Click **Auto-Layout** to bring the **Broker** and **Property** custom object schemas into view.
+## Visualize data model with Schema Builder
+
+- Sample in Trailhead: [See Your Data Model in Action](https://trailhead.salesforce.com/content/learn/modules/data_modeling/schema_builder?trail_id=force_com_dev_beginner)
+- Based on TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Custom Object: **Property**
+    - Custom Object **Favorite**: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+    - Challenge
+        - Custom Object: **Offer**
+- From **Setup**, select **Schema Builder** in the **Quick Find** box. 
+- In the left panel, click **Clear All**.
+- Check **Contact**, **Favorite**, **Offer**, and **Property**.
+- Click **Auto-Layout**.
+
+## Create an Object with Schema Builder
+
+- Sample in Trailhead: [Create an Object with Schema Builder](https://trailhead.salesforce.com/content/learn/modules/data_modeling/schema_builder?trail_id=force_com_dev_beginner)
+- From **Setup**, select **Schema Builder** in the **Quick Find** box. 
+- In the left sidebar, click the **Elements** tab.
+- Click **Object** and drag it onto the canvas.
+- Enter information about your object. You can make it whatever you want! **Object - Schema Builder**
+- Click **Save**.
+- Check the new object **Object - Schema Builder** as usual.
+
+## Create a Field with Schema Builder
+
+- Sample in Trailhead: [Create a Field with Schema Builder](https://trailhead.salesforce.com/content/learn/modules/data_modeling/schema_builder?trail_id=force_com_dev_beginner)
+- From **Setup**, select **Schema Builder** in the **Quick Find** box. 
+- In the left sidebar, click the **Elements** tab.
+- From the **Elements** tab, choose a field type and drag it onto the object you just created.
+- Fill out the details about your new field. **Email - Schema Builder**
+- Click **Save**.
+- Check the new field **Email - Schema Builder** as usual.
 
 # Tab
 
-## [Create a Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+## Create a Custom Object Tab
+
+- Sample in Trailhead: [Create a Custom Object Tab](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+- Based on the sample: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+- For **Tab Style**, select the **Sun** color scheme and icon.
+- For **Description**, type `Tab for the Energy Audit object.`.
+- Click **Next**, then **Next** again.
+- For the **Add to Custom Apps** screen, deselect **Include Tab**, and select only **Sales (standard__LightningSales)**. This is to make the tab visible for just the Sales users.
+- Click **Save**.

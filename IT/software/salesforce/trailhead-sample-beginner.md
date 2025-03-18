@@ -77,3 +77,89 @@ Introduce how to Extend the Salesforce Platform:
 - GitHub Actions: CI/CD
 - Open Source at Salesforce: [Code Samples and SDKs](https://developer.salesforce.com/code-samples-and-sdks)
 
+# Data Modeling
+
+## [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+
+- Get to Know Objects
+- Creat a new TP: **Optimize Customer Data with Standard and Custom Objects**
+- Create a Custom Object: **Property**
+- Get to Know Fields
+- Create a Custom Field: **Price**
+- Create a Record: **Jerry's house**
+
+**Challenge**: 
+
+- Create a custom object
+    - Label: **Offer**
+    - Object Name: `Offer`
+    - Record Name: **Offer Name**
+    - Data Type: **Auto Number**
+    - Display Format: **OF-{0000}**
+    - Starting Number: **1**
+- Create a custom currency field on the Offer object
+    - Data Type: **Currency**
+    - Field Label: **Offer Amount**
+    - Field Name: `Offer_Amount`
+- Create a custom date field on the Offer object
+    - Data Type: **Date**
+    - Field Label: **Target Close Date**
+    - Field Name: `Target_Close_Date`
+
+## [Create Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
+
+- Create a Custom Object: **Favorite**
+    - Use the TP you created in the previous unit: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+- Create a Lookup Relationship: **Contact**
+- Create a Master-Detail Relationship: **Property**
+- Add a Favorite Property: Add a detail record **Jerry's house - Related**.
+
+**Challenge**:
+
+Create relationships for the Offer object
+
+The object you created for the previous challenge is pretty handy. Imagine how much more useful it would be if brokers could specify which client made an offer and which property the client wants to buy. Add two relationships to the Offer object so brokers can capture this data in Salesforce. Create a Master-Detail relationship with the Property object and a Lookup relationship with the Contact object.
+
+Even if you're completing this module as part of the Admin Beginner trail, be sure you use the new Trailhead Playground you created in the previous unit.
+**Before You Start:**
+
+- Create the **Property** object as described in the previous unit.
+
+**Challenge Requirements:**
+
+- Create a custom Master-Detail field on the Offer object
+    - Data Type: **Master-Detail**
+    - Related To: **Property**
+    - Field Label: **Property**
+    - Field Name: `Property`
+- Create a custom Lookup Relationship field on the Offer object
+    - Data Type: **Lookup Relationship**
+    - Related To: **Contact**
+    - Field Label: **Contact**
+    - Field Name: `Contact`
+
+## [Work with Schema Builder](https://trailhead.salesforce.com/content/learn/modules/data_modeling/schema_builder?trail_id=force_com_dev_beginner)
+
+- Based on the previous unit.
+    - Learning
+    - Challenge: the object **Offer**
+- See Your Data Model in Action: **Schema Builder**
+- Create an Object with Schema Builder. Any Name: **Object - Schema Builder**
+- Create Fields with Schema Builder. Any Name: **Email - Schema Builder**
+
+# Lightning Experience Customization
+
+## [Set Up Your Org](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_custom_objects?trail_id=force_com_dev_beginner)
+
+- Continue the TP in previous unit: **Optimize Customer Data with Standard and Custom Objects**
+- Create a Custom Object: **Energy Audit**
+- Create a Custom Object Tab
+- Create many Custom Fields
+- Create many Energy Audit Records
+- Enable Feed Tracking
+- Challenge: The challenge is the same as the learning.
+
+## [Create and Customize Lightning Apps](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
+- What Is a Lightning App?
+- Meet the Lightning Experience App Manager
