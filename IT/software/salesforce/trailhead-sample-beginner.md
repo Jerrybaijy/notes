@@ -163,3 +163,32 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 - What Is a Lightning App?
 - Meet the Lightning Experience App Manager
+- What’s the Visible in Lightning Column About?
+- Create a Lightning App: **Energy Consultations**
+- Tips for Creating Apps in Lightning Experience
+
+## [Create and Customize List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+
+- Create a List View: **Channel Customers**
+    - Set up some filters.
+- Create a List View Chart: **Pipeline Total Value**
+- Challenge
+    - Create a List View: **High Probability Opportunities**
+
+## [Customize Record Highlights with Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
+
+- Create a Compact Layout: **Energy Audit Compact Layout**
+- **Challenge**: Create a Compact Layout: **New Oppty Compact Layout**
+
+## [Customize Record Page Components and Fields](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Create a Custom Lightning Record Page
+- Customize Related Lists
+- Activate the Page
+- View the Customized Page
+
+## [Create Custom Buttons and Links](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+- Introduce Buttons and Links
+- Create a Custom List Button
+- 

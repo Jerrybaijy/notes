@@ -338,6 +338,13 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 
 **Records** are the information the fields store.
 
+<img src="assets/image-20250320013718967.png" alt="image-20250320013718967" style="zoom:50%;" />
+
+- **record highlights** (1)
+- **buttons and actions** (2)
+- **Related** tab (3)
+- **Details** tab (4)
+
 ## Create a Record
 
 - Sample in Trailhead: [Create a Custom Record](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
@@ -359,6 +366,176 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 
     <img src="assets/image-20250318231700387.png" alt="image-20250318231700387" style="zoom:50%;" />
 
+## Check a Record
+
+- From **App Launcher**, select the app the object showed on.
+- Click the object tab.
+- Open the All list view.
+- Check the record.
+- Detail refer to the sample: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+## Compact Layouts
+
+- Sample in Trailhead: [Create a Compact Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
+
+## Customize Record Page Components and Fields
+
+- When the **Energy Audit** custom object was created, a system default **Energy Audit** record page was created too. You can customiz it with **Lightning App Builder**.
+
+- Samples in Trailhead: [Customize Record Page Components and Fields](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Based on
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: All above in Trailhead.
+
+### Customiz Record Details
+
+- Sample in Trailhead: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- From **App Launcher**, select the **Energy Consultations** app, then click the **Energy Audits** tab.
+- Open the **All** list view.
+- Select any record, for example **Burlington evaluation**.
+- From **Setup**, select **Edit Page**. The page will open in the **Lightning App Builder**.
+- In the **Page** properties on the rihgt:
+    - Change the **Label** to `Energy Audit Record Page for Sales`.
+    - Change the **API Name** to `Energy_Audit_Record_Page_for_Sales`.
+    - Click the **Details** tab on the canvas, then click the **Record Detail** component (where the fields are).
+    - In the properties pane, click **Upgrade Now** to start the **Dynamic Forms** migration wizard.
+- In the **Dynamic Forms** properties:
+    - Step through the wizard, select **Energy Audit Layout**, then click **Finish**.
+    - Drag the **Audit Notes** field to the right column, above **Owner**.
+    - Drag the **Type of Installation** field above **Audit Notes**.
+    - Click **Save**, then **Not Yet**. 
+    - Activating the page makes it available to your users. However, this page isn’t quite ready for users. Maria wants to add a related list.
+- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.40.jpg" alt="Back" style="zoom: 50%;" /> in the App Builder header.
+
+### Customiz Record Lists
+
+- Sample in Trailhead: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Based on the sample: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- **Setup** > **Object Manager**
+
+- Select the **Energy Audit** object.
+
+- Click **Page Layouts** in the side bar, then **Energy Audit Layout**.
+
+- Scroll down to the **Related Lists** section.
+
+- In the palette, click **Related Lists**, and drag the **Files** element down to the **Related Lists** section. With the Files related list, Ursa Major Solar sales reps can add files to a record and see a list of files associated with the record.
+
+    <img src="assets/image-20250320030637411.png" alt="image-20250320030637411" style="zoom:50%;" />
+
+- Click **Quick Save**, then click **Yes**.
+
+### Activate the Page
+
+- Sample in Trailhead: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Based on the sample: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- From **Setup**, select **Lightning App Builder**.
+- Click **Edit** next to the **Energy Audit Record Page for Sales**.
+- Click **Activation** icon in the top righy corner.
+    - More activation options refer to: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Click the **App, Record Type, and Profile** tab.
+- Click **Assign to Apps, Record Types, and Profiles**.
+- Step through the wizard, and select: **Energy Consultations** > **Desktop and phone** > **Master** > **Custom: Sales Profile** and **System Administrator**.
+    - Normally, select only **Custom: Sales Profile**, but since you’re logged in as a System Administrator, we select **System Administrator** too so that you can see how the new page layout looks.
+- Review the page assignments. Then click **Save**.
+
+### View the Customized Page
+
+- Sample in Trailhead: [View the Customized Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Based on the sample: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.43.jpg" alt="Back" style="zoom:50%;" /> in the App Builder header.
+
+- From **App Launcher**, select **Energy Audits**.
+
+- Open any record, for example **Burlington evaluation**. The **Details** and **Related** have been changed.
+
+- **Details**
+
+    <img src="assets/image-20250320035929784.png" alt="image-20250320035929784" style="zoom: 50%;" />
+
+- **Related**
+
+    <img src="assets/image-20250320040021483.png" alt="image-20250320040021483" style="zoom:50%;" />
+
+    
+
+## Create Custom Buttons and Links
+
+- Samples in Trailhead: [Create Custom Buttons and Links](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+- Based on
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: All above in Trailhead.
+
+### Create a Custom List Button
+
+- Samples in Trailhead: [Create a Custom List Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+- From the **App Launcher**, select the **Sales** app.
+
+- Click the **Files** tab. Here, Maria can see the guidelines PDF she uploaded.
+
+- Upload a new PDF file of your own so you can follow along with the rest of these steps.
+
+- Click ![Action dropdown](assets/03ba3588c34c126bfc752714a836a39f_i.48.png) for the file you just uploaded and select **Share**.
+
+- Click **Who Can Access** to expand that section.
+
+    - In the **Create Public Link** area, set the **Password** button to **Off**.
+    - Click **Create Link**, then click **Create**. This generates a public URL for the file that you can share with others, or in this case, add as a URL to a custom button or link.
+    - Click **Copy Link**, then click **Done**.
+
+- From Setup, click **Object Manager**, then select the **Energy Audit** object.
+
+- Select **Buttons, Links, and Actions** in the side bar, then **New Button or Link**.
+
+- Name the button `Audit Guidelines`.
+
+- Select **List Button**.
+
+- Paste the file URL into the large text box.
+
+    - Because the file is local to your org, use everything after the domain portion of the URL to create the custom link.
+
+        <img src="assets/image-20250320052545576.png" alt="image-20250320052545576" style="zoom:50%;" />
+
+- Click **Save**, then **OK**.
+
+- Click **Object Manager**, then click **Account**.
+
+- Click **Page Layouts**, then click **Account Layout**.
+
+- Scroll all the way down the end of the layout, to the **Energy Audits** related list.
+
+- Click the wrench icon (<img src="assets/01A47D43.png" alt="01A47D43" style="zoom:50%;" />) to edit it. 
+
+- Click the plus icon (+) to expand the **Buttons** section header. 
+
+- Add the **Audit Guidelines** button to the **Selected Buttons** list, then click **OK**.
+
+- Click **Save**.
+
+- From **App Launcher** select the **Sales** app.
+
+- Click **Accounts** tab and select the **GenePoint** account.
+
+- Click the **Related** tab, scroll to the bottom, and you see the new **Audit Guidelines** button on the **Energy Audits** related list. 
+
+    ![image-20250320054452296](assets/image-20250320054452296.png)
+
+### Create a Custom Detail Page Link
+
+- Samples in Trailhead: [Create a Custom Detail Page Link](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+### Create a Custom Detail Page Button
+
+- Samples in Trailhead: [Create a Custom Detail Page Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+
+
 # [Setup](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_tour?trail_id=force_com_dev_beginner)
 
 You can get to Setup from any page in your Salesforce org. From the gear menu at the top of the screen ( ![Setup.](assets/d93a5f7ff918ea4432fe8e82dd562ee2_kix.t14uhi7bi2ft.jpeg)), click **Setup**.
@@ -368,51 +545,6 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - **Object Manager:** Object Manager is where you can view and customize standard and custom objects in your org.
 - **Setup Menu:** The menu gives you quick links to a collection of pages that let you do everything from managing your users to modifying security settings.
 - **Main Window:** We’re showing you the Setup home page, but this is where you can see whatever it is you’re trying to work on.
-
-# Lightning Apps
-
-## [Lightning Apps Basics](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
-
-An **app** is a collection of items that work together to serve a particular function. In Lightning Experience, **Lightning apps** give your users access to sets of objects, tabs, and other items all in one convenient bundle in the navigation bar.
-
-![image-20250319063650568](assets/image-20250319063650568.png)
-
-- The app name (1) displays on the left side of the navigation bar and custom colors.
-- You can access other items and apps by clicking the **App Launcher** icon (3).
-
-## Install an App
-
-- Sample in Trailhead: [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
-- Launch a Trailhead Playground.
-- Locate to **Playground Starter** from **App Launcher**.
-- Click the **Get Your Login Credentials** tab and reset your password.
-- Click the **Install a Package** tab. 
-- Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
-- Select **Install for All Users**, then click **Install**.
-- When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
-- When the installation completes, click **Done**.
-- Locate to **Dreamhouse** from **App Launcher**.
-- Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
-
-## Create an App
-
-- Sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
-- Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
-- From **Setup**, select `App Manager` in the **Quick Find**.
-- Click **New Lightning App**.
-- In the **App Details & Branding** window, enter these details.
-    - For App Name, type `Dreamhouse`.
-    - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it.
-    - Click **Next**.
-- On the **App Options** screen, select **Standard navigation**, then click **Next**.
-- On the **Utility Items** screen, click **Next**.
-- On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
-- On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
-- Select **Dreamhouse** from **App Launcher** to check the new App.
-
-## Sample Apps
-
-- Sample Apps in GitHub: https://github.com/trailheadapps
 
 # CI
 
@@ -606,6 +738,51 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 # [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
+# Lightning Apps
+
+## [Lightning Apps Basics](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
+An **app** is a collection of items that work together to serve a particular function. In Lightning Experience, **Lightning apps** give your users access to sets of objects, tabs, and other items all in one convenient bundle in the navigation bar.
+
+![image-20250319063650568](assets/image-20250319063650568.png)
+
+- The app name (1) displays on the left side of the navigation bar and custom colors.
+- You can access other items and apps by clicking the **App Launcher** icon (3).
+
+## Install an App
+
+- Sample in Trailhead: [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
+- Launch a Trailhead Playground.
+- Locate to **Playground Starter** from **App Launcher**.
+- Click the **Get Your Login Credentials** tab and reset your password.
+- Click the **Install a Package** tab. 
+- Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
+- Select **Install for All Users**, then click **Install**.
+- When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
+- When the installation completes, click **Done**.
+- Locate to **Dreamhouse** from **App Launcher**.
+- Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
+
+## Create an App
+
+- Sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
+- Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+- From **Setup**, select `App Manager` in the **Quick Find**.
+- Click **New Lightning App**.
+- In the **App Details & Branding** window, enter these details.
+    - For App Name, type `Dreamhouse`.
+    - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it.
+    - Click **Next**.
+- On the **App Options** screen, select **Standard navigation**, then click **Next**.
+- On the **Utility Items** screen, click **Next**.
+- On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
+- On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
+- Select **Dreamhouse** from **App Launcher** to check the new App.
+
+## Sample Apps
+
+- Sample Apps in GitHub: https://github.com/trailheadapps
+
 # Lightning Apps Builder
 
 Maybe the sample is going to creat an app.
@@ -736,6 +913,13 @@ Maybe the sample is going to creat an app.
 
 ## Create a List View
 
+- Sample in Trailhead: [Create a List View](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+
+- Based on:
+
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: [Create a Lightning App](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
+
 - **App Launcher** > **Sales** > **Accounts** > **New**
 
     ![image-20250305183252478](assets/image-20250305183252478.png)
@@ -746,7 +930,7 @@ Maybe the sample is going to creat an app.
 
 - Click **Save**.
 
-- Set up some filters.
+- **Add Filter**
 
     - Click **Add Filter**.
     - From the **Field** dropdown menu, select **Type**.
@@ -754,8 +938,18 @@ Maybe the sample is going to creat an app.
     - For Value, select **Customer - Channel**, then click **Done** and **Save**.
     - Add another filter where **Billing State/Province** equals **WA,OR,CA**.
 
+- Customize a List View
+
+    - From the list view controls <img src="assets/0ce868631cd88aaf9e2ddfdac636fcee_i.20.png" alt="List View Controls" style="zoom: 25%;" />, you can custom your list view again.
+
+
 ## Create a List View Chart
 
+- Sample in Trailhead: [Create a List View Chart](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+
+- Based on:
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: [Create a List View](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 - From the **Sales** app, click the **Opportunities** tab.
 
 - Use the dropdown menu (![img](assets/fdb2f0c6d4ef6479100d7f00ac06136f_i.27.jpg)) to select the **All Opportunities** list view.
@@ -905,7 +1099,7 @@ Maybe the sample is going to creat an app.
 - Click **Object** and drag it onto the canvas.
 - Enter information about your object. You can make it whatever you want! **Object - Schema Builder**
 - Click **Save**.
-- Check the new object **Object - Schema Builder** as usual.
+- Check the new object **Object - Schema Builder** as usual.
 
 ## Create a Field with Schema Builder
 
@@ -915,7 +1109,7 @@ Maybe the sample is going to creat an app.
 - From the **Elements** tab, choose a field type and drag it onto the object you just created.
 - Fill out the details about your new field. **Email - Schema Builder**
 - Click **Save**.
-- Check the new field **Email - Schema Builder** as usual.
+- Check the new field **Email - Schema Builder** as usual.
 
 # Tab
 
