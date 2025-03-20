@@ -191,4 +191,20 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 - Introduce Buttons and Links
 - Create a Custom List Button
+- Create a Custom Detail Page Link
+- Create a Custom Detail Page Button
+
+## [Empower Your Users with Quick Actions](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner)
+
+- Quick Actions
+- Create an Object-Specific Action
+- Add an Object-Specific Action to a Page Layout
+- Create a Global Action
+- Add a Global Action to the Global Actions Menu
+
+# Formulas and Validations
+
+## [Use Formula Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
+
+- Create a new TP: **Use Formula Fields - learning**
 - 

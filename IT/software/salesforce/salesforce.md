@@ -374,168 +374,6 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 - Check the record.
 - Detail refer to the sample: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
-## Compact Layouts
-
-- Sample in Trailhead: [Create a Compact Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
-
-## Customize Record Page Components and Fields
-
-- When the **Energy Audit** custom object was created, a system default **Energy Audit** record page was created too. You can customiz it with **Lightning App Builder**.
-
-- Samples in Trailhead: [Customize Record Page Components and Fields](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-- Based on
-    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
-    - Sample: All above in Trailhead.
-
-### Customiz Record Details
-
-- Sample in Trailhead: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-- From **App Launcher**, select the **Energy Consultations** app, then click the **Energy Audits** tab.
-- Open the **All** list view.
-- Select any record, for example **Burlington evaluation**.
-- From **Setup**, select **Edit Page**. The page will open in the **Lightning App Builder**.
-- In the **Page** properties on the rihgt:
-    - Change the **Label** to `Energy Audit Record Page for Sales`.
-    - Change the **API Name** to `Energy_Audit_Record_Page_for_Sales`.
-    - Click the **Details** tab on the canvas, then click the **Record Detail** component (where the fields are).
-    - In the properties pane, click **Upgrade Now** to start the **Dynamic Forms** migration wizard.
-- In the **Dynamic Forms** properties:
-    - Step through the wizard, select **Energy Audit Layout**, then click **Finish**.
-    - Drag the **Audit Notes** field to the right column, above **Owner**.
-    - Drag the **Type of Installation** field above **Audit Notes**.
-    - Click **Save**, then **Not Yet**. 
-    - Activating the page makes it available to your users. However, this page isn’t quite ready for users. Maria wants to add a related list.
-- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.40.jpg" alt="Back" style="zoom: 50%;" /> in the App Builder header.
-
-### Customiz Record Lists
-
-- Sample in Trailhead: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-
-- Based on the sample: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-
-- **Setup** > **Object Manager**
-
-- Select the **Energy Audit** object.
-
-- Click **Page Layouts** in the side bar, then **Energy Audit Layout**.
-
-- Scroll down to the **Related Lists** section.
-
-- In the palette, click **Related Lists**, and drag the **Files** element down to the **Related Lists** section. With the Files related list, Ursa Major Solar sales reps can add files to a record and see a list of files associated with the record.
-
-    <img src="assets/image-20250320030637411.png" alt="image-20250320030637411" style="zoom:50%;" />
-
-- Click **Quick Save**, then click **Yes**.
-
-### Activate the Page
-
-- Sample in Trailhead: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-- Based on the sample: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-- From **Setup**, select **Lightning App Builder**.
-- Click **Edit** next to the **Energy Audit Record Page for Sales**.
-- Click **Activation** icon in the top righy corner.
-    - More activation options refer to: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-- Click the **App, Record Type, and Profile** tab.
-- Click **Assign to Apps, Record Types, and Profiles**.
-- Step through the wizard, and select: **Energy Consultations** > **Desktop and phone** > **Master** > **Custom: Sales Profile** and **System Administrator**.
-    - Normally, select only **Custom: Sales Profile**, but since you’re logged in as a System Administrator, we select **System Administrator** too so that you can see how the new page layout looks.
-- Review the page assignments. Then click **Save**.
-
-### View the Customized Page
-
-- Sample in Trailhead: [View the Customized Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-
-- Based on the sample: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
-
-- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.43.jpg" alt="Back" style="zoom:50%;" /> in the App Builder header.
-
-- From **App Launcher**, select **Energy Audits**.
-
-- Open any record, for example **Burlington evaluation**. The **Details** and **Related** have been changed.
-
-- **Details**
-
-    <img src="assets/image-20250320035929784.png" alt="image-20250320035929784" style="zoom: 50%;" />
-
-- **Related**
-
-    <img src="assets/image-20250320040021483.png" alt="image-20250320040021483" style="zoom:50%;" />
-
-    
-
-## Create Custom Buttons and Links
-
-- Samples in Trailhead: [Create Custom Buttons and Links](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
-- Based on
-    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
-    - Sample: All above in Trailhead.
-
-### Create a Custom List Button
-
-- Samples in Trailhead: [Create a Custom List Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
-
-- From the **App Launcher**, select the **Sales** app.
-
-- Click the **Files** tab. Here, Maria can see the guidelines PDF she uploaded.
-
-- Upload a new PDF file of your own so you can follow along with the rest of these steps.
-
-- Click ![Action dropdown](assets/03ba3588c34c126bfc752714a836a39f_i.48.png) for the file you just uploaded and select **Share**.
-
-- Click **Who Can Access** to expand that section.
-
-    - In the **Create Public Link** area, set the **Password** button to **Off**.
-    - Click **Create Link**, then click **Create**. This generates a public URL for the file that you can share with others, or in this case, add as a URL to a custom button or link.
-    - Click **Copy Link**, then click **Done**.
-
-- From Setup, click **Object Manager**, then select the **Energy Audit** object.
-
-- Select **Buttons, Links, and Actions** in the side bar, then **New Button or Link**.
-
-- Name the button `Audit Guidelines`.
-
-- Select **List Button**.
-
-- Paste the file URL into the large text box.
-
-    - Because the file is local to your org, use everything after the domain portion of the URL to create the custom link.
-
-        <img src="assets/image-20250320052545576.png" alt="image-20250320052545576" style="zoom:50%;" />
-
-- Click **Save**, then **OK**.
-
-- Click **Object Manager**, then click **Account**.
-
-- Click **Page Layouts**, then click **Account Layout**.
-
-- Scroll all the way down the end of the layout, to the **Energy Audits** related list.
-
-- Click the wrench icon (<img src="assets/01A47D43.png" alt="01A47D43" style="zoom:50%;" />) to edit it. 
-
-- Click the plus icon (+) to expand the **Buttons** section header. 
-
-- Add the **Audit Guidelines** button to the **Selected Buttons** list, then click **OK**.
-
-- Click **Save**.
-
-- From **App Launcher** select the **Sales** app.
-
-- Click **Accounts** tab and select the **GenePoint** account.
-
-- Click the **Related** tab, scroll to the bottom, and you see the new **Audit Guidelines** button on the **Energy Audits** related list. 
-
-    ![image-20250320054452296](assets/image-20250320054452296.png)
-
-### Create a Custom Detail Page Link
-
-- Samples in Trailhead: [Create a Custom Detail Page Link](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
-
-### Create a Custom Detail Page Button
-
-- Samples in Trailhead: [Create a Custom Detail Page Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
-
-
-
 # [Setup](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_tour?trail_id=force_com_dev_beginner)
 
 You can get to Setup from any page in your Salesforce org. From the gear menu at the top of the screen ( ![Setup.](assets/d93a5f7ff918ea4432fe8e82dd562ee2_kix.t14uhi7bi2ft.jpeg)), click **Setup**.
@@ -546,12 +384,79 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - **Setup Menu:** The menu gives you quick links to a collection of pages that let you do everything from managing your users to modifying security settings.
 - **Main Window:** We’re showing you the Setup home page, but this is where you can see whatever it is you’re trying to work on.
 
+# Action
+
+Action is a kind of shortcuts.
+
+## Create an Object-Specific Action
+
+**Create an Object-Specific Action:**
+
+- Sample in Trailhead: [Create an Object-Specific Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-an-object-specific-action)
+- From **Setup**, click **Object Manager**, then select the **Account** object.
+- Select **Buttons, Links, and Actions** in the side bar, then **New Action**.
+- For **Action Type**, select **Create a Record**.
+- For **Target Object**, select **Energy Audit**.
+- For **Label**, enter `New Energy Audit`.
+- Click **Save**.
+
+**Add an Object-Specific Action to a Page Layout:**
+
+- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-an-object-specific-action-to-a-page-layout)
+- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.61.png) to override the defaults.
+- Then you'll see a combination of the default actions and custom and standard buttons on the page layout.
+- Select **Mobile & Lightning Actions** in the palette and then drag the **New Energy Audit** action to the **Salesforce Mobile and Lightning Experience Actions** section.
+
+    ![image-20250321040427699](assets/image-20250321040427699.png)
+
+- You can adjust the order of the actions by dragging them around.
+- Click **Save**.
+
+Check the **New Energy Audit** action
+
+![image-20250321042358442](assets/image-20250321042358442.png)
+
+## Create a Global Action
+
+**Create a Global Action:**
+
+- Sample in Trailhead: [Create a Global Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-a-global-action)
+- From **Setup**, click the **Home** tab.
+- Select **Global Actions** from **Quick Find** box.
+- Click **New Action**.
+- For **Action Type**, select **Create a Record**.
+- For **Target Object**, select **Campaign**.
+- For **Label**, enter `New Campaign`.
+- Click **Save**.
+- On the action layout, remove the **Parent Campaign** field and add the **Expected Revenue in Campaign** and **Campaign Owner** fields.
+
+    ![image-20250321044043109](assets/image-20250321044043109.png)
+
+- Click **Save**.
+
+**Add a Global Action to the Global Actions Menu:**
+
+- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-a-global-action-to-the-global-actions-menu)
+- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+- From **Setup**, click the **Home** tab.
+- Select **Publisher Layouts** from **Quick Find** box.
+- Click **Edit** next to **Global Layout**.
+- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.67.png) to override the defaults.
+- Click the **Mobile & Lightning Actions** category in the palette.
+- Drag **New Campaign** from the palette into the **Salesforce Mobile and Lightning Experience Actions** section.
+
+    ![image-20250321045200333](assets/image-20250321045200333.png)
+
+- Click **Save**.
+- Check the **New Campaign** action
+
+    ![image-20250321045414480](assets/image-20250321045414480.png)
+
 # CI
 
 - CI in Salesforce Document: [Continuous Integration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ci.htm?_ga=2.255431115.2113438160.1742049829-1363362869.1742049829)
 - Sample in Trailhead: [GitHub Actions](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
-
-# [Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
 
 # [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner)
 
@@ -647,15 +552,32 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 
 ## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
 
-### Standard
+### Code Formatting
 
 - Case sensitive.
 - Whitespace and line breaks don’t matter.
 
+### Formula Basics
+
+**Find the Formula Editor:**
+
+- Sample in Trailhead: [Find the Formula Editor](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#find-the-formula-editor)
+- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
+- For **Data Tyjpe**, select **Formula**.
+- For **Field Label**, type `My Formula Field`. Notice that **Field Name** populates automatically.
+- For **Formula Return Type**, select the type of data you expect your formula to return. For example, **Text**.
+- Click **Next**. You’ve arrived at the **Formula Editor**.
+
+**Use the Formula Editor:**
+
+- Sample in Trailhead: [Use the Formula Editor](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#use-the-formula-editor)
+
 ### Creat Formulas
 
-- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New** > **Formula**
-- In **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
+- Based on a new TP: **Use Formula Fields - learning**
+- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
+- For **Data Tyjpe**, select **Formula**.
+- For **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
 - Select the type of data you expect your formula to return.
 - Click **Next** until arrive at the formula editor!
 - Edit your formula, then click the check button.
@@ -691,7 +613,7 @@ When the validation rule returns a value of "True", this confirms that the data 
 
 ### Creating a Validation Rule
 
-1. From Setup, go to **Object Manager** and click **Account**.
+1. From **Setup**, go to **Object Manager** and click **Account**.
 2. In the left sidebar, click **Validation Rules**.
 3. Click **New**.
 4. Enter the following properties for your validation rule:
@@ -735,8 +657,6 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
     ```bash
     sf project retrieve start --metadata CustomApplication:Dreamhouse CustomTab:House__c "Layout:House__c-House Layout"
     ```
-
-# [Layout Editor](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
 
 # Lightning Apps
 
@@ -792,6 +712,227 @@ Maybe the sample is going to creat an app.
 - From the **Lightning Pages** list, select **Property Record Page**.
 - Click **Edit**.
 - Drag the any custom and drop them in the canvas in the center.
+
+# [Lightning Experience Customization](https://trailhead.salesforce.com/content/learn/modules/lex_customization?trail_id=force_com_dev_beginner)
+
+## Compact Layouts
+
+- Sample in Trailhead: [Create a Compact Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
+
+## Customize Record Page Components and Fields
+
+- When the **Energy Audit** custom object was created, a system default **Energy Audit** record page was created too. You can customiz it with **Lightning App Builder**.
+
+- Samples in Trailhead: [Customize Record Page Components and Fields](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Based on
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: All above in Trailhead.
+
+### Customiz Record Details
+
+- Sample in Trailhead: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- From **App Launcher**, select the **Energy Consultations** app, then click the **Energy Audits** tab.
+- Open the **All** list view.
+- Select any record, for example **Burlington evaluation**.
+- From **Setup**, select **Edit Page**. The page will open in the **Lightning App Builder**.
+- In the **Page** properties on the rihgt:
+    - Change the **Label** to `Energy Audit Record Page for Sales`.
+    - Change the **API Name** to `Energy_Audit_Record_Page_for_Sales`.
+    - Click the **Details** tab on the canvas, then click the **Record Detail** component (where the fields are).
+    - In the properties pane, click **Upgrade Now** to start the **Dynamic Forms** migration wizard.
+- In the **Dynamic Forms** properties:
+    - Step through the wizard, select **Energy Audit Layout**, then click **Finish**.
+    - Drag the **Audit Notes** field to the right column, above **Owner**.
+    - Drag the **Type of Installation** field above **Audit Notes**.
+    - Click **Save**, then **Not Yet**. 
+    - Activating the page makes it available to your users. However, this page isn’t quite ready for users. Maria wants to add a related list.
+- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.40.jpg" alt="Back" style="zoom: 50%;" /> in the App Builder header.
+
+### Customiz Record Lists
+
+- Sample in Trailhead: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Based on the sample: [Create a Custom Lightning Record Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- **Setup** > **Object Manager**
+
+- Select the **Energy Audit** object.
+
+- Click **Page Layouts** in the side bar, then **Energy Audit Layout**.
+
+- Scroll down to the **Related Lists** section.
+
+- In the palette, click **Related Lists**, and drag the **Files** element down to the **Related Lists** section. With the Files related list, Ursa Major Solar sales reps can add files to a record and see a list of files associated with the record.
+
+    <img src="assets/image-20250320030637411.png" alt="image-20250320030637411" style="zoom:50%;" />
+
+- Click **Quick Save**, then click **Yes**.
+
+### Activate the Page
+
+- Sample in Trailhead: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Based on the sample: [Customize Related Lists](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- From **Setup**, select **Lightning App Builder**.
+- Click **Edit** next to the **Energy Audit Record Page for Sales**.
+- Click **Activation** icon in the top righy corner.
+    - More activation options refer to: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+- Click the **App, Record Type, and Profile** tab.
+- Click **Assign to Apps, Record Types, and Profiles**.
+- Step through the wizard, and select: **Energy Consultations** > **Desktop and phone** > **Master** > **Custom: Sales Profile** and **System Administrator**.
+    - Normally, select only **Custom: Sales Profile**, but since you’re logged in as a System Administrator, we select **System Administrator** too so that you can see how the new page layout looks.
+- Review the page assignments. Then click **Save**.
+
+### View the Customized Page
+
+- Sample in Trailhead: [View the Customized Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Based on the sample: [Activate the Page](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_page_layouts?trail_id=force_com_dev_beginner)
+
+- Click **Back** <img src="assets/0ede54fde552b239f646b0947605d914_i.43.jpg" alt="Back" style="zoom:50%;" /> in the App Builder header.
+
+- From **App Launcher**, select **Energy Audits**.
+
+- Open any record, for example **Burlington evaluation**. The **Details** and **Related** have been changed.
+
+- **Details**
+
+    <img src="assets/image-20250320035929784.png" alt="image-20250320035929784" style="zoom: 50%;" />
+
+- **Related**
+
+    <img src="assets/image-20250320040021483.png" alt="image-20250320040021483" style="zoom:50%;" />
+
+    
+
+## Create Custom Buttons and Links
+
+- Samples in Trailhead: [Create Custom Buttons and Links](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+- Based on
+    - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+    - Sample: All above in Trailhead.
+
+### Create a Custom List Button
+
+- Samples in Trailhead: [Create a Custom List Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+- From the **App Launcher**, select the **Sales** app.
+
+- Click the **Files** tab. Here, Maria can see the guidelines PDF she uploaded.
+
+- Upload a new PDF file of your own so you can follow along with the rest of these steps.
+
+- Click ![Action dropdown](assets/03ba3588c34c126bfc752714a836a39f_i.48.png) for the file you just uploaded and select **Share**.
+
+- Click **Who Can Access** to expand that section.
+
+    - In the **Create Public Link** area, set the **Password** button to **Off**.
+    - Click **Create Link**, then click **Create**. This generates a public URL for the file that you can share with others, or in this case, add as a URL to a custom button or link.
+    - Click **Copy Link**, then click **Done**.
+
+- From **Setup**, click **Object Manager**, then select the **Energy Audit** object.
+
+- Select **Buttons, Links, and Actions** in the side bar, then **New Button or Link**.
+
+- Name the button `Audit Guidelines`.
+
+- Select **List Button**.
+
+- Paste the file URL into the large text box.
+
+    - Because the file is local to your org, use everything after the domain portion of the URL to create the custom link.
+
+        <img src="assets/image-20250320052545576.png" alt="image-20250320052545576" style="zoom:50%;" />
+
+- Click **Save**, then **OK**.
+
+- Click **Object Manager**, then click **Account**.
+
+- Click **Page Layouts**, then click **Account Layout**.
+
+- Scroll all the way down the end of the layout, to the **Energy Audits** related list.
+
+- Click the wrench icon (<img src="assets/01A47D43.png" alt="01A47D43" style="zoom:50%;" />) to edit it. 
+
+- Click the plus icon (+) to expand the **Buttons** section header. 
+
+- Add the **Audit Guidelines** button to the **Selected Buttons** list, then click **OK**.
+
+- Click **Save**.
+
+- From **App Launcher** select the **Sales** app.
+
+- Click **Accounts** tab and select the **GenePoint** account.
+
+- Click the **Related** tab, scroll to the bottom, and you see the new **Audit Guidelines** button on the **Energy Audits** related list. 
+
+    ![image-20250320054452296](assets/image-20250320054452296.png)
+
+### Create a Custom Detail Page Link
+
+- Samples in Trailhead: [Create a Custom Detail Page Link](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+- From **Setup**, click **Object Manager**, then select the **Account** object.
+
+- Select **Buttons, Links, and Actions** in the side bar, then **New Button or Link**.
+
+- Name the link `Google This Account`.
+
+- For **Display Type**, select **Detail Page Link**.
+
+- In the formula editor, enter `https://www.google.com/search?q={!Account.Name}`.
+
+- Click **Save**, then click **OK**.
+
+- Add the link to **Account** page layout.
+
+    - From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+
+    - From the **Custom Links** category in the palette, drag **Google This Account** into the **Custom Links** section of the layout.
+
+        <img src="assets/image-20250321002955639.png" alt="image-20250321002955639" style="zoom:50%;" />
+
+    - Hover over the **Custom Links** section and click the wrench icon (<img src="assets/002E4FE5.png" alt="002E4FE5" style="zoom:50%;" />) that appears on the right of the screen.
+
+    - In the **Section Properties** window, select **Detail Page**, then click **OK**.
+
+- Check the link
+
+    - From **App Launcher**, select **Accounts**.
+    - Open an account record.
+    - Click the **Details** tab and scroll to the bottom to find the **Custom Link**.
+
+
+### Create a Custom Detail Page Button
+
+- Samples in Trailhead: [Create a Custom Detail Page Button](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
+
+- From **Setup**, click **Object Manager**, then select the **Account** object.
+
+- Select **Buttons, Links, and Actions** in the side bar, then **New Button or Link**.
+
+- Name the button `Map Location`.
+
+- For **Display Type**, select **Detail Page Button**.
+
+- In the formula editor, enter `http://maps.google.com/maps?q={!Account_BillingStreet}%20{!Account_BillingCity}%20{!Account_BillingState}%20{!Account_BillingPostalCode} `
+
+- Click **Save**, then click **OK**.
+
+- Add the button to **Account** page layout.
+
+    - From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+
+    - From the **Buttons** category in the palette, drag **Map Location** into the **Custom Buttons** section of the layout.
+
+        ![image-20250321005751460](assets/image-20250321005751460.png)
+
+- Check the button
+
+    - From **App Launcher**, select **Accounts**.
+
+    - Open an account record.
+
+        ![image-20250321011906704](assets/image-20250321011906704.png)
 
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
@@ -945,7 +1086,7 @@ Maybe the sample is going to creat an app.
 
 ## Create a List View Chart
 
-- Sample in Trailhead: [Create a List View Chart](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
+- Sample in Trailhead: [Create a List View Chart](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 
 - Based on:
     - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
@@ -973,6 +1114,14 @@ Maybe the sample is going to creat an app.
 # Package
 
 ## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
+
+# Page Laouts
+
+**Setup** > **Object manager** > object > side bar > **Page Laouts**
+
+There are two action sections on a page layout. The Quick Actions in the Salesforce Classic Publisher section controls which actions appear on record pages in the Salesforce Classic UI. The Salesforce Mobile and Lightning Experience Actions section controls which actions appear on record pages in both Lightning Experience and in the Salesforce mobile app. If you don’t customize the action sections of a page layout, then the actions you see in the Salesforce app and in Lightning Experience come from a set of default actions defined by Salesforce.
+
+![image-20250321035135437](assets/image-20250321035135437.png)
 
 # Project
 
