@@ -393,13 +393,16 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 
 **Flows** is a tool without codes.
 
+More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.salesforce.com/content/learn/trails/build-flows-with-flow-builder)
+
 ## Flows Basics
 
 ### Get to Flow Builder
 
 - From **Setup**, select **Flows** in the **Quick Find** box.
-- Click **New Flow**. Then select **Start from Scratch** and click **Next**.
-- Select a flow type, click **Create**.
+- Click **New Flow**.
+- Select **Start from Scratch** and click **Next**.
+- Select **Screen Flow** and click **Create**.
 
 ### Interface
 
@@ -432,12 +435,10 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 
 - **Resources** are containers that don’t appear on the canvas, but are referenced by the flow’s elements. Each resource contains a value or a formula that resolves to a value.
 
-# Flow Builder (old)
-
 ## Build a flow with Flow Builder
 
 - Sample in Trailhead: [Low-code Tools & Automation](https://trailhead.salesforce.com/content/learn/modules/platform-development-basics/develop-without-code-01?trail_id=force_com_dev_beginner).
-- From **Setup**, select `Flows` in the **Quick Find**.
+- From **Setup**, select **Flows** in the **Quick Find**.
 - Click the **Create Property** flow.
 - Click ![Toolbox](assets/fa9fe34c482cca646a9b444e500a4d3c_kix.9by05x8kzn4r.jpg) to open the Toolbox menu.
 - Click ![Resize and center](assets/bb02275e478118bc1f4ee474fb2b24e2_kix.jrjheih9gfgy.jpg) to resize the flow so you can see it all.
@@ -450,42 +451,38 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 
 ## [Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables)
 
-- **Variable** is a kind of **Resources**.
+-  A **variable** is a container that holds a piece of information. It's a kind of **Resources**.
 
-- **Text**: A string of letters, numbers, and characters.
-- **Number, Currency:** A numerical value.
-- **Boolean**: A true or false value.
-- **Date, Date/Time**: A specially formatted value that indicates a specific date, or a specific time on a specific date. 
-- **Record**: All of the values in a Salesforce record, stored together in a single variable.
-- ...
+- Variable types:
+    - **Text**: A string of letters, numbers, and characters.
+    - **Number, Currency:** A numerical value.
+    - **Boolean**: A true or false value.
+    - **Date, Date/Time**: A specially formatted value that indicates a specific date, or a specific time on a specific date. 
+    - **Record**: All of the values in a Salesforce record, stored together in a single variable.
+    - ...
+
 
 ### Create a Variable
 
-- From Setup, enter `Flows` in the Quick Find box and then click **Flows**.
-
+- Sample in Trailhead: [Learn About Flow Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables?trail_id=force_com_dev_beginner)
+- From **Setup**, select **Flows** in the **Quick Find** box.
 - Click **New Flow**.
-
-- Make sure **Start from Scratch** is selected, and click **Next**.
-
+- Select **Start from Scratch** and click **Next**.
 - Select **Screen Flow** and click **Create**.
-
-- Click ![Toggle Toolbox](assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg) to display the Toolbox.
-
+- Click ![Toggle Toolbox](assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg) to display the **Toolbox**.
 - Click **New Resource**. 
-
-- For Resource Type, select **Variable**.
-
-- Enter an API name and description for your variable.
-
-    <img src="assets/image-20250311224935231.png" alt="image-20250311224935231" style="zoom:50%;" />
-
-- For Data Type, select **Text**.
+- For **Resource Type**, select **Variable**.
+- For **API Name**, enter `contactID`.
+- For **Description**, enter `The Salesforce ID of the primary contact.`
+- For **Data Type**, select **Text**.
+- Click **Done**.
+- Check the new variable in the **Toolbox**.
 
 ## [Constants](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables)
 
 - **Constant** is a kind of **Resources**.
 
-# [Formulas and Validation](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
+# [Formulas and Validation](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
 
 ## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
 
@@ -541,7 +538,7 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - Create a formula
 
     - **Setup** > **Object Manager** > **Contact** > **Fields & Relationships** > **New**
-    - For **Data Tyjpe**, select **Formula** and click **Next**.
+    - For **Data Tyjpe**, select **Formula** and click **Next**.
     - For **Field Label**, type `Account Number`.
     - For **Formula Return Type**, select **Text**.
     - Click **Next** to open the **Formula Editor**.
@@ -584,10 +581,10 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - Edit your formula, then click the check button.
 - **Put your new formula field in a report.** 
     - **App Launcher > Reports** > **New Report**
-    - Select **Opportunities** from **Search Report Types...** and click **Start Report**. Your opportunity appears in the **Report Preview** panel.
+    - Select **Opportunities** from **Search Report Types...** and click **Start Report**. Your opportunity appears in the **Report Preview** panel.
     - Make sure **Update Preview Automatically** is enabled.
-    - Select **Days to Close** from **Add column...** field on the left side of the page.
-- Check the **Days to Close ** field: **App Launcher** > **Opportunities** > **Details**
+    - Select **Days to Close** from **Add column...** field on the left side of the page.
+- Check the **Days to Close ** field: **App Launcher** > **Opportunities** > **Details**
 
 ## [Roll-Up Summary](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
 
@@ -606,7 +603,7 @@ Roll-up summary fields are based on the master side of a master-detail relations
 - For **Data Tyjpe**, select **Formula**.
 - For **Field Label**, type `Sum of Opportunities`.
 - For **Summarized Object**, select **Opportunities**.
-- For **Select Roll-Up Type**, select **SUM** and for **Field to Aggregate** select **Amount**.
+- For **Select Roll-Up Type**, select **SUM** and for **Field to Aggregate** select **Amount**.
 - Click **Next**, **Next**, and **Save**.
 
 ##  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)

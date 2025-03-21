@@ -1,19 +1,16 @@
-Apex is a **strongly-typed**, **object-oriented** programming language developed by Salesforce for building applications on the Salesforce platform. It is similar to Java and C# in syntax.
-
-The key features of Apex:
-
-- **Hosted**: Apex is saved, compiled, and executed on the server—the Lightning Platform.
-- **Object oriented**: Apex supports classes, interfaces, and inheritance.
-- **Strongly typed**: Apex validates references to objects at compile time.
+Apex is a **strongly-typed**, **object-oriented** programming language developed by Salesforce for building applications on the Salesforce platform. It is similar to Java and C# in syntax. Apex is saved, compiled, and executed on the server—the Lightning Platform.
 
 Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台 上进行后端逻辑开发，它的语法类似于 Java。
+
+- [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm)
+- [Quick Start: Apex](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex)
 
 # Apex 基础
 
 ## 运行环境
 
 - **Developer Console**: **Quick access menu (![Setup gear icon](assets/e0d3e5a9b64c98ba5ac2c14623e36609_kix.zbyh4h1n9tpc.jpeg))** > **Developer Console**
-- **IDE**
+- **VS Code**
 
 ## 代码规范
 
@@ -76,13 +73,72 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
     System.debug('这是要输出的信息');
     ```
 
+## Quick Start
+
+- Sample in Trailhead: [Create an Apex Class](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex/quickstart-apex-1#create-an-apex-class).
+- Create a new TP : **Quick Start: Apex - learning**
+
+### Create an Apex Class with Developer Console
+
+- Click the **setup gear** ![Gear icon to access Setup in Lightning Experience.](assets/8edeaa88035e90a5b5390fea7536fe3d_image-1.jpeg) and select **Developer Console**.
+
+- Click **File | New | Apex Class**.
+
+- For **Class Name**, enter `OlderAccountsUtility` and then click **OK**.
+
+- The code in your editor looks like this:
+
+    ```java
+    public class OlderAccountsUtility {
+    }
+    ```
+
+### Add a Method to the Class
+
+- In the body of the **OlderAccountsUtility** class (the information between the curly brackets), copy and paste the following method.
+
+    ```java
+    public class OlderAccountsUtility {
+        public static void updateOlderAccounts() {
+          // Get the 5 oldest accounts
+          Account[] oldAccounts = [SELECT Id, Description FROM Account ORDER BY CreatedDate ASC LIMIT 5];
+          // loop through them and update the Description field
+          for (Account acct : oldAccounts) {
+              acct.Description = 'Heritage Account';
+          }
+          // save the change you made
+          update oldAccounts;
+        }
+    }
+    ```
+
+- Click **File | Save**.
+
+### Invoke and Test the Code
+
+- An anonymous block is Apex code that does **not get stored**, but can be compiled and executed on demand right from the Developer Console. This is a great way to test your Apex Classes or run sample code.
+
+- In the **Developer Console**, Click **Debug | Open Execute Anonymous Window**.
+
+- In the **Enter Apex Code** window, enter the following:
+
+    ```java
+    OlderAccountsUtility.updateOlderAccounts();
+    ```
+
+- At the bottom right, click **Execute**.
+
+### Verify the Updated Accounts
+
+- 
+
 ## Class
 
-### [Creat a Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex)
+### Create and Deploy an Apex Class with VS Code
 
-- This's a sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex?trail_id=force_com_dev_beginner).
+- Sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex).
 
-- This sample is based on the project : [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+- Based on the project : [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
 - In VS Code, under the folder **force-app/main/default**, right-click **classes** and select **SFDX: Create Apex Class**.
 

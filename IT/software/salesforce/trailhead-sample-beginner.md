@@ -247,4 +247,27 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 ## [Learn About Flow Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables?trail_id=force_com_dev_beginner)
 
-- 
+- What Can I Store in a Variable?
+- Create a Variable
+- Things Similar to Variables
+    - Constants
+    - Formulas
+    - Text Templates
+- Challenge: Create some variables and a formular.
+- Continue learning: [Build Flows with Flow Builder](https://trailhead.salesforce.com/content/learn/trails/build-flows-with-flow-builder) trail.
+
+# Quick Start: Apex
+
+- This's a inserted badge: [Quick Start: Apex](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex)
+
+## [Create an Apex Class](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex/quickstart-apex-1)
+
+- Creat a new TP: **Quick Start: Apex - learning**
+- Create a Class: **OlderAccountsUtility**
+- Add a Method: **updateOlderAccounts**
+- Invoke and Test the Code
+- Verify the Updated Accounts
+
+# Apex Basics & Database
+
+## [Get Started with Apex](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_intro?trail_id=force_com_dev_beginner)
