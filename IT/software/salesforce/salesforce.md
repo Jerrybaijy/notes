@@ -384,87 +384,55 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - **Setup Menu:** The menu gives you quick links to a collection of pages that let you do everything from managing your users to modifying security settings.
 - **Main Window:** We’re showing you the Setup home page, but this is where you can see whatever it is you’re trying to work on.
 
-# Action
-
-Action is a kind of shortcuts.
-
-## Create an Object-Specific Action
-
-**Create an Object-Specific Action:**
-
-- Sample in Trailhead: [Create an Object-Specific Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-an-object-specific-action)
-- From **Setup**, click **Object Manager**, then select the **Account** object.
-- Select **Buttons, Links, and Actions** in the side bar, then **New Action**.
-- For **Action Type**, select **Create a Record**.
-- For **Target Object**, select **Energy Audit**.
-- For **Label**, enter `New Energy Audit`.
-- Click **Save**.
-
-**Add an Object-Specific Action to a Page Layout:**
-
-- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-an-object-specific-action-to-a-page-layout)
-- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
-- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.61.png) to override the defaults.
-- Then you'll see a combination of the default actions and custom and standard buttons on the page layout.
-- Select **Mobile & Lightning Actions** in the palette and then drag the **New Energy Audit** action to the **Salesforce Mobile and Lightning Experience Actions** section.
-
-    ![image-20250321040427699](assets/image-20250321040427699.png)
-
-- You can adjust the order of the actions by dragging them around.
-- Click **Save**.
-
-Check the **New Energy Audit** action
-
-![image-20250321042358442](assets/image-20250321042358442.png)
-
-## Create a Global Action
-
-**Create a Global Action:**
-
-- Sample in Trailhead: [Create a Global Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-a-global-action)
-- From **Setup**, click the **Home** tab.
-- Select **Global Actions** from **Quick Find** box.
-- Click **New Action**.
-- For **Action Type**, select **Create a Record**.
-- For **Target Object**, select **Campaign**.
-- For **Label**, enter `New Campaign`.
-- Click **Save**.
-- On the action layout, remove the **Parent Campaign** field and add the **Expected Revenue in Campaign** and **Campaign Owner** fields.
-
-    ![image-20250321044043109](assets/image-20250321044043109.png)
-
-- Click **Save**.
-
-**Add a Global Action to the Global Actions Menu:**
-
-- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-a-global-action-to-the-global-actions-menu)
-- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
-- From **Setup**, click the **Home** tab.
-- Select **Publisher Layouts** from **Quick Find** box.
-- Click **Edit** next to **Global Layout**.
-- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.67.png) to override the defaults.
-- Click the **Mobile & Lightning Actions** category in the palette.
-- Drag **New Campaign** from the palette into the **Salesforce Mobile and Lightning Experience Actions** section.
-
-    ![image-20250321045200333](assets/image-20250321045200333.png)
-
-- Click **Save**.
-- Check the **New Campaign** action
-
-    ![image-20250321045414480](assets/image-20250321045414480.png)
-
 # CI
 
 - CI in Salesforce Document: [Continuous Integration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ci.htm?_ga=2.255431115.2113438160.1742049829-1363362869.1742049829)
 - Sample in Trailhead: [GitHub Actions](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 
-# [Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner)
+# Flows
 
-## Creat a Flow Builder
+**Flows** is a tool without codes.
 
-- From **Setup**, select `Flows` in the **Quick Find**.
-- To create a flow, click **New Flow**. Then select **Start from Scratch** and click **Next**.
+## Flows Basics
+
+### Get to Flow Builder
+
+- From **Setup**, select **Flows** in the **Quick Find** box.
+- Click **New Flow**. Then select **Start from Scratch** and click **Next**.
 - Select a flow type, click **Create**.
+
+### Interface
+
+<img src="assets/image-20250311220230555.png" alt="image-20250311220230555" style="zoom:50%;" />
+
+- **Toolbox (1)** : The toolbox lists the elements and resources you’ve built in your flow.
+- **Canvas (2)** : The canvas is the working area.
+- **Button Bar (3)**: Provide some tools.
+    - More refer to: [Button Bar](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner#button-bar-3)
+
+### Building Blocks
+
+- Flows use three building blocks: elements, connectors, and resources.
+
+    <img src="assets/image-20250311221030163.png" alt="image-20250311221030163" style="zoom:50%;" />
+
+### Elements
+
+- **Elements** are nodes on the canvas that make things happen. To add an element to the canvas, click ![Add element](assets/13f5207391f198a601856fce8a8a6280_kix.10ac7o3ovpkx.jpeg).
+- There're three types of elements.
+    - Interaction
+    - Data
+    - Logic
+
+### Connectors
+
+- **Connectors** are lines on the canvas that define the path the flow takes when it runs.
+
+### Resources
+
+- **Resources** are containers that don’t appear on the canvas, but are referenced by the flow’s elements. Each resource contains a value or a formula that resolves to a value.
+
+# Flow Builder (old)
 
 ## Build a flow with Flow Builder
 
@@ -479,37 +447,6 @@ Check the **New Energy Audit** action
 - Select **Dreamhouse** from **App Launcher**.
 - Click the **Properties** tab.
 - Click the property you just created in Flow Builder.
-
-## Layout
-
-<img src="assets/image-20250311220230555.png" alt="image-20250311220230555" style="zoom:50%;" />
-
-- **Toolbox (1)** : The toolbox lists the elements and resources you’ve built in your flow. You can also create resources such as variables, formulas, and choices to use in your flow.
-- **Canvas (2)** : The canvas is the working area.
-- **Button Bar (3)**: Provide some tools.
-
-## Building Blocks
-
-- Flows use three building blocks: elements, connectors, and resources.
-
-    <img src="assets/image-20250311221030163.png" alt="image-20250311221030163" style="zoom:50%;" />
-
-### Elements
-
-- **Elements** are nodes on the canvas that make things happen. To add an element to the canvas, click ![Add element](assets/13f5207391f198a601856fce8a8a6280_kix.10ac7o3ovpkx.jpeg).
-- Each element is a step that tells the flow what to do, and each type of element does something different. 
-- Think of flow elements as three types.
-    - Interaction
-    - Data
-    - Logic
-
-### Connectors
-
-- **Connectors** are lines on the canvas that define the path the flow takes when it runs.
-
-### Resources
-
-- **Resources** are containers that don’t appear on the canvas, but are referenced by the flow’s elements. Each resource contains a value or a formula that resolves to a value.
 
 ## [Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables)
 
@@ -548,7 +485,7 @@ Check the **New Energy Audit** action
 
 - **Constant** is a kind of **Resources**.
 
-# [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
+# [Formulas and Validation](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic?trail_id=force_com_dev_beginner)
 
 ## [Formulas](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
 
@@ -563,8 +500,8 @@ Check the **New Energy Audit** action
 
 - Sample in Trailhead: [Find the Formula Editor](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#find-the-formula-editor)
 - **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
-- For **Data Tyjpe**, select **Formula**.
-- For **Field Label**, type `My Formula Field`. Notice that **Field Name** populates automatically.
+- For **Data Tyjpe**, select **Formula** and click **Next**.
+- For **Field Label**, type `My Formula Field`.
 - For **Formula Return Type**, select the type of data you expect your formula to return. For example, **Text**.
 - Click **Next**. You’ve arrived at the **Formula Editor**.
 
@@ -572,37 +509,104 @@ Check the **New Energy Audit** action
 
 - Sample in Trailhead: [Use the Formula Editor](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#use-the-formula-editor)
 
+    <img src="assets/image-20250321055847682.png" alt="image-20250321055847682" style="zoom: 67%;" />
+
+- (1) The formula editor comes in two flavors: **Simple** and **Advanced**. There're more tools in **Advance**.
+
+- (2) **Insert Field** button opens a dropdown list that allows you to select fields to use in your formula.
+
+- (3) **Insert Operator** button opens a dropdown list of the available mathematical and logical operators.
+
+- (4) **Functions** menu is where you insert formula functions.
+
+- (5) Formula area.
+
+- (6) Check your formula before saving.
+
 ### Creat Formulas
 
+#### Sample 1
+
+- Sample in Trailhead: [Example 1: Display an Account Field on the Contact Detail Page](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#example-1-display-an-account-field-on-the-contact-detail-page)
+
 - Based on a new TP: **Use Formula Fields - learning**
-- **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
-- For **Data Tyjpe**, select **Formula**.
-- For **Field Label**, type `Days to Close`. Notice that **Field Name** populates automatically.
-- Select the type of data you expect your formula to return.
-- Click **Next** until arrive at the formula editor!
+
+- Create a new **Contact** record.
+
+    - Select  **Contacts** from **App Launcher**.
+    - For **Last Name**, enter any: **Bai**
+    - For **Account Name**, enter an existing account such as `United Oil & Gas Corp`.
+    - Click **Save**.
+
+- Create a formula
+
+    - **Setup** > **Object Manager** > **Contact** > **Fields & Relationships** > **New**
+    - For **Data Tyjpe**, select **Formula** and click **Next**.
+    - For **Field Label**, type `Account Number`.
+    - For **Formula Return Type**, select **Text**.
+    - Click **Next** to open the **Formula Editor**.
+    - In the **Advanced Formula** editor, click **Insert Field**.
+    - Select **Contact** | **Account** | **Account Number** and then click **Insert**.
+    - Click **Check Syntax**. If there are no syntax errors, click **Next**, **Next**, and **Save**.
+
+- Check the formular
+
+    - Select **Contacts** from **App Launcher**.
+
+    - Select the contact **Jerry Bai** from the contact list.
+
+    - Click **Details** to check the formula **Account Number**.
+
+        <img src="assets/image-20250321074106056.png" alt="image-20250321074106056" style="zoom:50%;" />
+
+#### Sample 2
+
+- Sample in Trailhead: [Example 2: Display the Number of Days Until an Opportunity Closes on a Report](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#example-2-display-the-number-of-days-until-an-opportunity-closes-on-a-report)
+- Based on a new TP: **Use Formula Fields - learning**
+- Creat a opptunity: **Opportunity-Jerry**
+    - **App Launcher** > **Opportunities** > **New**
+    - For **Opportunity Name**, enter any value: **Opportunity-Jerry**
+    - For **Stage**, select any: **Prospecting**
+    - For **Close Date**, at least 3 days.
+    - Click **Save**.
+
+- Creat a formula: **Days to Close**
+    - **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
+    - For **Data Tyjpe**, select **Formula**.
+    - For **Field Label**, type `Days to Close`.
+    - For **Formula Return Type**, select **Number**.
+    - Click **Next** to open the **Formula Editor**.
+    - Click **Insert Field** and select **Opportunity | Close Date** and click **Insert**.
+    - Select **Subtract** from **Insert Operator**.
+    - Select **TODAY** from **Functions** menu on the right side of the editor, then click **Insert Selected Function**. 
+    - Click **Check Syntax**. If there are no syntax errors, click **Next**, **Next**, and **Save**.
+
 - Edit your formula, then click the check button.
 - **Put your new formula field in a report.** 
-    - From the **App Launcher**, find and open **Reports** and click **New Report**.
-    - Enter **Opportunities** in the Search Report Types... field. Select **Opportunities** and click **Start Report**. Your opportunity appears in the Report Preview panel.
+    - **App Launcher > Reports** > **New Report**
+    - Select **Opportunities** from **Search Report Types...** and click **Start Report**. Your opportunity appears in the **Report Preview** panel.
     - Make sure **Update Preview Automatically** is enabled.
-    - In the Add column... field on the left side of the page, enter `Days to Close`. 
-- Find the field `Days to Close`: **App Launcher** > **Opportunities** > **Details**
+    - Select **Days to Close** from **Add column...** field on the left side of the page.
+- Check the **Days to Close ** field: **App Launcher** > **Opportunities** > **Details**
 
-## [Roll-Up Summary Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
+## [Roll-Up Summary](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
 
-Roll-up summary fields calculate values from a set of related records.
+**Formula** fields calculate values using fields within **a single record**.
+
+**Roll-up Summary** fields calculate values from **a set of related records**.
 
 Roll-up summary fields are based on the master side of a master-detail relationship. 
 
 ### Creating the Summary Field
 
+- Sample in Trailhead: [Creating the Summary Field](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner#creating-the-summary-field)
+- Based on the TP: **Use Formula Fields - learning**
 - From Setup, open **Object Manager** and click **Account**.
-- On the left sidebar, click **Fields & Relationships**.
-- Click **New**.
-- Choose the **Roll-Up Summary** field type, and click **Next**.
-- For Field Label, enter `Sum of Opportunities` and click **Next**.
-- The Summarized Object is the detail object that you want to summarize. Choose **Opportunities**.
-- Choose the **SUM** Roll-up type and choose **Amount** as the Field to Aggregate. If you're unable to see Amount in Field to Aggregate, disable the Advanced Currency Management in your Currency Setup.
+- **Setup** > **Object Manager** > **Account** > **Fields & Relationships** > **New**
+- For **Data Tyjpe**, select **Formula**.
+- For **Field Label**, type `Sum of Opportunities`.
+- For **Summarized Object**, select **Opportunities**.
+- For **Select Roll-Up Type**, select **SUM** and for **Field to Aggregate** select **Amount**.
 - Click **Next**, **Next**, and **Save**.
 
 ##  [Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
@@ -611,17 +615,24 @@ Validation rules verify that data entered by users in records meets the standard
 
 When the validation rule returns a value of "True", this confirms that the data entered by the user contains an invalid value. 
 
-### Creating a Validation Rule
+### Creat a Validation Rule
 
-1. From **Setup**, go to **Object Manager** and click **Account**.
-2. In the left sidebar, click **Validation Rules**.
-3. Click **New**.
-4. Enter the following properties for your validation rule:
+1. Sample in Trailhead: [Creatinging a Validation Rule](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner#creating-a-validation-rule)
+2. Based on the TP: **Use Formula Fields - learning**
+3. **Setup** > **Object Manager** > **Account**
+4. In the left sidebar, click **Validation Rules**.
+5. Click **New**.
+6. Enter the following properties for your validation rule:
     1. Rule Name: `Account_Number_8_Characters`
     2. Error Condition Formula: `LEN( AccountNumber) <> 8`
-5. Error Message: `Account number must be 8 characters long.`
-6. To check your formula for errors, click **Check Syntax**.
-7. Click **Save** to finish.
+7. Error Message: `Account number must be 8 characters long.`
+8. To check your formula for errors, click **Check Syntax**.
+9. Click **Save** to finish.
+10. Check the **Account_Number_8_Characters** rule
+    1. **App Launcher** > **Accounts** > **New**
+    2. For **Account Name**, type a name without the lenth equaling 8.
+    3. An error message appears: **Account number must be 8 characters long.**
+
 
 # Metadata
 
@@ -719,7 +730,15 @@ Maybe the sample is going to creat an app.
 
 - Sample in Trailhead: [Create a Compact Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
 
-## Customize Record Page Components and Fields
+## Page Laouts
+
+**Setup** > **Object manager** > object > side bar > **Page Laouts**
+
+There are two action sections on a page layout. The Quick Actions in the Salesforce Classic Publisher section controls which actions appear on record pages in the Salesforce Classic UI. The Salesforce Mobile and Lightning Experience Actions section controls which actions appear on record pages in both Lightning Experience and in the Salesforce mobile app. If you don’t customize the action sections of a page layout, then the actions you see in the Salesforce app and in Lightning Experience come from a set of default actions defined by Salesforce.
+
+![image-20250321035135437](assets/image-20250321035135437.png)
+
+## Component and Field
 
 - When the **Energy Audit** custom object was created, a system default **Energy Audit** record page was created too. You can customiz it with **Lightning App Builder**.
 
@@ -804,7 +823,7 @@ Maybe the sample is going to creat an app.
 
     
 
-## Create Custom Buttons and Links
+## Button and Link
 
 - Samples in Trailhead: [Create Custom Buttons and Links](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_buttons_links?trail_id=force_com_dev_beginner)
 - Based on
@@ -933,6 +952,96 @@ Maybe the sample is going to creat an app.
     - Open an account record.
 
         ![image-20250321011906704](assets/image-20250321011906704.png)
+
+## Action
+
+Action is a kind of shortcuts.
+
+### Create an Object-Specific Action
+
+**Create an Object-Specific Action:**
+
+- Sample in Trailhead: [Create an Object-Specific Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-an-object-specific-action)
+- From **Setup**, click **Object Manager**, then select the **Account** object.
+- Select **Buttons, Links, and Actions** in the side bar, then **New Action**.
+- For **Action Type**, select **Create a Record**.
+- For **Target Object**, select **Energy Audit**.
+- For **Label**, enter `New Energy Audit`.
+- Click **Save**.
+
+**Add an Object-Specific Action to a Page Layout:**
+
+- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-an-object-specific-action-to-a-page-layout)
+
+- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+
+- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.61.png) to override the defaults.
+
+- Then you'll see a combination of the default actions and custom and standard buttons on the page layout.
+
+- Select **Mobile & Lightning Actions** in the palette and then drag the **New Energy Audit** action to the **Salesforce Mobile and Lightning Experience Actions** section.
+
+    ![image-20250321040427699](assets/image-20250321040427699.png)
+
+- You can adjust the order of the actions by dragging them around.
+
+- Click **Save**.
+
+Check the **New Energy Audit** action
+
+![image-20250321042358442](assets/image-20250321042358442.png)
+
+### Create a Global Action
+
+**Create a Global Action:**
+
+- Sample in Trailhead: [Create a Global Action](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#create-a-global-action)
+
+- From **Setup**, click the **Home** tab.
+
+- Select **Global Actions** from **Quick Find** box.
+
+- Click **New Action**.
+
+- For **Action Type**, select **Create a Record**.
+
+- For **Target Object**, select **Campaign**.
+
+- For **Label**, enter `New Campaign`.
+
+- Click **Save**.
+
+- On the action layout, remove the **Parent Campaign** field and add the **Expected Revenue in Campaign** and **Campaign Owner** fields.
+
+    ![image-20250321044043109](assets/image-20250321044043109.png)
+
+- Click **Save**.
+
+**Add a Global Action to the Global Actions Menu:**
+
+- Sample in Trailhead: [Add an Object-Specific Action to a Page Layout](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_actions?trail_id=force_com_dev_beginner#add-a-global-action-to-the-global-actions-menu)
+
+- From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
+
+- From **Setup**, click the **Home** tab.
+
+- Select **Publisher Layouts** from **Quick Find** box.
+
+- Click **Edit** next to **Global Layout**.
+
+- In the **Salesforce Mobile and Lightning Experience Actions** section, click ![override global publisher layout](assets/14c540eae50648ed30fab2df74caa6d2_i.67.png) to override the defaults.
+
+- Click the **Mobile & Lightning Actions** category in the palette.
+
+- Drag **New Campaign** from the palette into the **Salesforce Mobile and Lightning Experience Actions** section.
+
+    ![image-20250321045200333](assets/image-20250321045200333.png)
+
+- Click **Save**.
+
+- Check the **New Campaign** action
+
+    ![image-20250321045414480](assets/image-20250321045414480.png)
 
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
@@ -1115,14 +1224,6 @@ Maybe the sample is going to creat an app.
 
 ## [Install a Package](https://trailhead.salesforce.com/help?article=Installing-a-package-or-app-to-complete-a-Trailhead-challenge)
 
-# Page Laouts
-
-**Setup** > **Object manager** > object > side bar > **Page Laouts**
-
-There are two action sections on a page layout. The Quick Actions in the Salesforce Classic Publisher section controls which actions appear on record pages in the Salesforce Classic UI. The Salesforce Mobile and Lightning Experience Actions section controls which actions appear on record pages in both Lightning Experience and in the Salesforce mobile app. If you don’t customize the action sections of a page layout, then the actions you see in the Salesforce app and in Lightning Experience come from a set of default actions defined by Salesforce.
-
-![image-20250321035135437](assets/image-20250321035135437.png)
-
 # Project
 
 ## Create a Project
@@ -1259,6 +1360,14 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
 - Fill out the details about your new field. **Email - Schema Builder**
 - Click **Save**.
 - Check the new field **Email - Schema Builder** as usual.
+
+# Solution
+
+| Solution            | Form | Conditional logic and actions | Requires Code |
+| :------------------ | :--- | :---------------------------- | :------------ |
+| Quick action        | Yes  | No                            | No            |
+| Flow                | Yes  | Yes                           | No            |
+| Lightning component | Yes  | Yes                           | Yes           |
 
 # Tab
 

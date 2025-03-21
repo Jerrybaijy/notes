@@ -207,4 +207,44 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Use Formula Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner)
 
 - Create a new TP: **Use Formula Fields - learning**
+- Example 1: Display an Account Field on the Contact Detail Page
+- Example 2: Display the Number of Days Until an Opportunity Closes on a Report
+- Debug Formulas
+- More Examples
+
+## [Implement Roll-Up Summary Fields](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/roll_up_summary_fields?trail_id=force_com_dev_beginner)
+
+- Introduction to Roll-Up Summary Fields
+
+- Creating the Summary Field
+
+## [Create Validation Rules](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/validation_rules?trail_id=force_com_dev_beginner)
+
+- Introduction to Validation Rules
+- Creating a Validation Rule
+- More samples
+
+# Flow Builder Basics
+
+## [Get Started with Business Process Automation](https://trailhead.salesforce.com/content/learn/modules/flow-basics/get-started-with-flows?trail_id=force_com_dev_beginner)
+
+- [Two categories of automation](https://trailhead.salesforce.com/content/learn/modules/flow-basics/get-started-with-flows?trail_id=force_com_dev_beginner#the-power-of-automation)
+
+## [Go with the Flow](https://trailhead.salesforce.com/content/learn/modules/flow-basics/go-with-the-flow-th?trail_id=force_com_dev_beginner)
+
+- Some Important Flowcabulary
+- Talking about when to use Flow
+
+## [Meet Flow Builder](https://trailhead.salesforce.com/content/learn/modules/flow-basics/meet-flow-builder?trail_id=force_com_dev_beginner)
+
+- The Flow Builder User Interface
+- Continue the previous TP: **Use Formula Fields - learning**
+- Flow Building Blocks
+    - Elements
+    - Connectors
+    - Resources
+- Keyboard Shortcuts
+
+## [Learn About Flow Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables?trail_id=force_com_dev_beginner)
+
 - 
