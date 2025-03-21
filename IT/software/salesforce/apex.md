@@ -3,7 +3,6 @@ Apex is a **strongly-typed**, **object-oriented** programming language developed
 Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台 上进行后端逻辑开发，它的语法类似于 Java。
 
 - [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm)
-- [Quick Start: Apex](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex)
 
 # Apex 基础
 
@@ -75,7 +74,7 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ## Quick Start
 
-- Sample in Trailhead: [Create an Apex Class](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex/quickstart-apex-1#create-an-apex-class).
+- Sample in Trailhead: [Quick Start: Apex](https://trailhead.salesforce.com/content/learn/projects/quickstart-apex).
 - Create a new TP : **Quick Start: Apex - learning**
 
 ### Create an Apex Class with Developer Console
@@ -130,7 +129,13 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ### Verify the Updated Accounts
 
-- 
+- Select **Sales** from **App Launcher**.
+- Click the **Accounts** tab.
+- Select **All Accounts**.
+- Click the **gear icon** ![List Settings icon](assets/47389bdcef232e05c2fb1ccff7758953_image-4.jpeg) and select **Select Fields to Display**. Move **Last Modified Date** to the **Visible Fields** column, and then click **Save**.
+- Click one of the five most recently modified account records (use the **Last Modified Date** to find these accounts).
+- Click **Details**.
+- Look for the **Description** field. The value should be: **Heritage Account**.
 
 ## Class
 
@@ -203,6 +208,50 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
     
         ![image-20250317020059440](assets/image-20250317020059440.png)
 
+### Call a Static Method
+
+- 使用 static 声明方法
+
+    ```java
+    public class EmailManager {
+        // 使用 static 声明方法
+        public static void sendMail(String address, String subject, String body) {
+            // Create an email message object
+        }
+    }
+    ```
+
+    ```java
+    // 直接使用类名调用方法
+    EmailManager.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+    ```
+
+- 不使用 static 声明方法
+
+    ```java
+    public class EmailManager {
+        // 不使用 static 声明方法
+        public void sendMail(String address, String subject, String body) {
+            // Create an email message object
+        }
+    }
+    ```
+
+    ```java
+    EmailManager em = new EmailManager();
+    em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+    ```
+
+# Debug
+
+## Excute Anonymous Window
+
+- **Setup | Developer Console** > **Debug | Open Excute Anonymous Window**
+
+## Excute Logs
+
+- **Debug Only**: Only for `System.debug()` statements.
+
 # [数据类型](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_data_types.htm)
 
 ## 数据类型分类
@@ -233,9 +282,9 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ## List
 
-- 在 Apex 中，一个 List 只能包含 **相同的数据类型**。（List\<Object> 除外）
+- In Apex, **lists** hold an **ordered collection** of data of the **same type**.
 
-### 声明 List
+### Declare List
 
 ```java
 // 列表式声明
@@ -246,6 +295,10 @@ String[] myList = new List<String>();
 
 // 限制列表长度
 new List<String>[长度值];
+```
+
+```java
+List<String> colors = new List<String> { 'red', 'green', 'blue' };
 ```
 
 ### [List 方法](https://developer.salesforce.com/docs/atlas.en-us.254.0.apexref.meta/apexref/apex_methods_system_list.htm)
@@ -281,17 +334,13 @@ myList.sort();  // 排序
 
 ## Boolean
 
-
-
-
-
 ## 引用数据类型
 
 引用数据类型是指存储对象的引用而不是数据本身。Apex 的引用数据类型包括类、接口、数组、集合以及 Salesforce 特有的 SObject 类型。
 
 ### SObject 类型
 
-`sObject` 是一种通用对象类型，它可以是标准对象（如 `Account`, `Contact`, `Opportunity`）或自定义对象（通过 Salesforce 的自定义对象功能创建）。在 Apex 中，所有的对象（无论是标准对象还是自定义对象）都是从 `sObject` 类派生出来的。
+**sObject** 是一种通用对象类型，它可以是标准对象（如 `Account`, `Contact`, `Opportunity`）或自定义对象（通过 Salesforce 的自定义对象功能创建）。在 Apex 中，所有的对象（无论是标准对象还是自定义对象）都是从 `sObject` 类派生出来的。
 
 - 创建 sObject
 

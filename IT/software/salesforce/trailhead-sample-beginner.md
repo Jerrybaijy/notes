@@ -271,3 +271,12 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 # Apex Basics & Database
 
 ## [Get Started with Apex](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_intro?trail_id=force_com_dev_beginner)
+
+- What is Apex?
+- Development Tools
+- Data Types Overview
+- Apex Collections: List
+- Apex Classes
+    - Continue the previous TP: **Use Formula Fields -learning**
+    - Save an Apex Class: **EmailManager**
+    - 
