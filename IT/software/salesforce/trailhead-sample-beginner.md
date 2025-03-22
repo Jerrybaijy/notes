@@ -279,4 +279,8 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 - Apex Classes
     - Continue the previous TP: **Use Formula Fields -learning**
     - Save an Apex Class: **EmailManager**
-    - 
+    - Call a Method to Send an Email
+    - Inspect Debug Logs
+    - Call a Static Method
+
+## [Use sObjects](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sobjects?trail_id=force_com_dev_beginner)

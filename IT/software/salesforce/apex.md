@@ -4,6 +4,8 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 - [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm)
 
+- [Apex Reference Guide](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_ref_guide.htm)
+
 # Apex 基础
 
 ## 运行环境
@@ -336,31 +338,77 @@ myList.sort();  // 排序
 
 ## 引用数据类型
 
-引用数据类型是指存储对象的引用而不是数据本身。Apex 的引用数据类型包括类、接口、数组、集合以及 Salesforce 特有的 SObject 类型。
+引用数据类型是指存储对象的引用而不是数据本身。Apex 的引用数据类型包括类、接口、数组、集合以及 Salesforce 特有的 sObject 类型。
 
-### SObject 类型
+### sObject 类型
 
-**sObject** 是一种通用对象类型，它可以是标准对象（如 `Account`, `Contact`, `Opportunity`）或自定义对象（通过 Salesforce 的自定义对象功能创建）。在 Apex 中，所有的对象（无论是标准对象还是自定义对象）都是从 `sObject` 类派生出来的。
+Each Salesforce record is represented as an **sObject** before it is inserted into Salesforce.
 
-- 创建 sObject
+**Create sObject Variables**
+
+- To create an sObject, you need to declare a variable and assign an sObject instance to it. The data type of the variable is sObject.
 
     ```java
     Account acct = new Account(Name='Acme');
     ```
 
-- 添加 field
+**sObject and Field Names**
+
+- Apex references standard or custom sObjects and their fields using their unique **API names**.
+- API names of object and fields can **differ** from their labels. For example, the Employees field has a label of **Employees** and appears on the account record page as **Employees** but its API name is **NumberOfEmployees**. To access this field in Apex, you’ll need to use the API name for the field: **NumberOfEmployees**.
+- **Find API Name**: **Setup** > **Object Manager** > Click object's name
+
+- **API Name Suffix**
+    - For **custom objects** and **custom fields**, the API name always ends with **__c**.
+
+    - For **custom relationship fields**, the API name ends with **__r**.
+
+**Create sObjects and Add Fields**
+
+- Create sObjects
 
     ```java
-    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+    Account acct = new Account();
     ```
 
+- Two ways to add fields: **constructor** or **dot notation**.
+
     ```java
+    // 1. Add fields with constructor.
+    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+    
+    // 2. Add fields with dot notation.
     Account acct = new Account();
     acct.Name = 'Acme';
     acct.Phone = '(415)555-1212';
     acct.NumberOfEmployees = 100;
     ```
 
+
+**Generic sObject Data Type**
+
+- You can use the **generic sObject data type** when you don’t know the type of sObject your method is handling.
+
+- Variables that are declared with the generic sObject data type can reference **any** Salesforce record.
+
+    <img src="assets/image-20250322122513211.png" alt="image-20250322122513211" style="zoom:80%;" />
+
+    ```java
+    sObject sobj1 = new Account(Name='Trailhead');
+    sObject sobj2 = new Book__c(Name='Workbook 1');
+    ```
+
+- The generic sObject is **not** able to access fields using dot notation. Need to **cast** your generic sObject variable to a specific sObject type.
+
+    ```java
+    // Cast a generic sObject to an Account
+    Account acct = (Account)myGenericSObject;
+    // Now, you can use the dot notation to access fields on Account
+    String name = acct.Name;
+    String phone = acct.Phone;
+    ```
+
+- The fields of a generic sObject can be accessed only through the `put()` and `get()` methods.
 
 ### 数组类型
 
@@ -464,9 +512,11 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/compound_fields.htm)。它是 Contact 的 FirstName、LastName、MiddleName 和 Suffix 字段的串联。
 
-# [DML](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
+# DML
 
-在 Salesforce 中，**DML**（数据操作语言，Data Manipulation Language）用于操作 Salesforce 数据库中的记录。
+**DML** (Data Manipulation Language) is used to manipulate the data in Salesforce.
+
+- [Apex DML Statements](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
 
 - 插入数据
 
