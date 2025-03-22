@@ -516,43 +516,107 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
 **DML** (Data Manipulation Language) is used to manipulate the data in Salesforce.
 
-- [Apex DML Statements](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
+- [Apex DML Statements](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
 
-- 插入数据
+    - `insert`：Adds sObjects
+    - `update`：Modify the existing sObject
+    - `upsert`：Insert or update
+    - `delete`：Delete the existing sObject
+    - `undelete`：Restore the existing sObject
+    - `merge`：合并至多三个记录到其中一个记录
 
-    ```java
-    Account newAccount = new Account(Name = 'New Account');
-    insert newAccount;
-    ```
+- The DML statements are analogous to the statement in SQL.
 
+## [Insert](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_insert)
 
-- `insert`：插入新记录
-- `update`：更新已有记录
-- `upsert`：有记录则更新，无记录则创建
-- `delete`：删除
-- `undelete`：还原
-- `merge`：合并至多三个记录到其中一个记录
+- The **insert** DML operation adds one or more sObjects.
 
-## [Insert](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
-
-- **语法**
+- **Syntax**
 
     ```java
-    // Create the account sObject
-    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
-    // Insert the account by using DML
-    insert acct;
+    insert sObject
+    insert sObject[]
     ```
-
-## [Upsert](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
-
-- **语法**
 
     ```java
-    upsert $SOBJECT Account.Fields.$FIELD_NAME;
+    Account newAcct = new Account(name = 'Acme');
+    try {
+       insert newAcct;
+    } catch (DmlException e) {
+    // Process exception here
+    }
     ```
+
+## [Update](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_update)
+
+- The **update** DML operation modifies one or more existing sObject records.
+
+- **Syntax**
+
+    ```java
+    update sObject
+    update sObject[]
+    ```
+
+    ```java
+    Account a = new Account(Name='Acme2');
+    insert(a);
     
+    Account myAcct = [SELECT Id, Name, BillingCity FROM Account WHERE Id = :a.Id];
+    myAcct.BillingCity = 'San Francisco'; 
+    
+    try {
+        update myAcct;
+    } catch (DmlException e) {
+        // Process exception here
+    }
+    ```
+
+## [Upsert](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_upsert)
+
+- The **upsert** DML operation **creates** new records or **updates** sObject records, using the ID field if no field is specified, or a specified field to determine the presence of existing objects.
+
+- How Upsert Chooses to Insert or Update
+
+    - Upsert uses the sObject record's primary key (the ID), an idLookup field, or an external ID field to determine whether it should create a record or update an existing one:
+    - If the key isn’t matched, a new object record is created.
+    - If the key is matched once, the existing object record is updated.
+    - If the key is matched multiple times, an error is generated and the object record isn’t inserted or updated.
+
+- **Syntax**
+
     ```java
+    upsert sObject[opt_field]
+    upsert sObject[][opt_field]
+    ```
+
+    ```java
+    // -------------Upsert based on ID-------------
+    List<Account> acctList = new List<Account>();
+    // Fill the accounts list with some accounts
+    
+    try {
+        upsert acctList;
+    } catch (DmlException e) {
+       
+    }
+    ```
+
+    ```java
+    // -------------Upsert based on custom fields-------------
+    // 1. Upsert with external foreign key
+    List<Account> acctList = new List<Account>();
+    // Fill the accounts list with some accounts
+    
+    try {
+        // Upsert using an external ID field
+        upsert acctList myExtIDField__c;
+    } catch (DmlException e) {
+       
+    }
+    
+    
+    // 2. Upsert based on Email
     Contact jane = new Contact(FirstName='Jane',
                              LastName='Smith',
                              Email='jane.smith@example.com',
@@ -565,18 +629,73 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
                              Description='Prefers to be contacted by email.');
     
     upsert jane2 Contact.fields.Email;
-    // Verify that the contact has been updated
-    System.assertEquals('Prefers to be contacted by email.',
-                       [SELECT Description FROM Contact WHERE Id=:jane.Id].Description);
     ```
 
-## [Delete](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+## [Delete](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_delete)
 
-- **语法**
+- The **delete** DML operation deletes one or more existing sObject records.
+
+- **Syntax**
 
     ```java
-    Contact[] contactsDel = [SELECT Id FROM Contact WHERE LastName='Smith'];
-    delete contactsDel;
+    delete sObject
+    delete sObject[]
+    ```
+
+    ```java
+    Account[] doomedAccts = [SELECT Id, Name FROM Account 
+                             WHERE Name = 'DotCom']; 
+    try {
+        delete doomedAccts;
+    } catch (DmlException e) {
+        // Process exception here
+    }
+    ```
+
+## [Undelete](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_undelete)
+
+- The **undelete** DML operation restores one or more existing sObject records.
+
+- **Syntax**
+
+    ```java
+    undelete sObject | ID
+    undelete sObject[] | ID[]
+    ```
+
+    ```java
+    Account[] savedAccts = [SELECT Id, Name FROM Account WHERE Name = 'Universal Containers' ALL ROWS]; 
+    try {
+        undelete savedAccts;
+    } catch (DmlException e) {
+        // Process exception here
+    }
+    ```
+
+## [Merge](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_merge)
+
+- The **merge** statement merges up to three records of the same sObject type into one of the records, deleting the others, and re-parenting any related records.
+
+- **Syntax**
+
+    ```java
+    // The first parameter represents the master record into which the other records are to be merged.
+    merge sObject sObject
+    merge sObject sObject[]
+    merge sObject ID
+    merge sObject ID[]
+    ```
+    
+    ```java
+    List<Account> ls = new List<Account>{new Account(name='Acme Inc.'),new Account(name='Acme')};
+    insert ls;
+    Account masterAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme Inc.' LIMIT 1];
+    Account mergeAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme' LIMIT 1];
+    try {
+        merge masterAcct mergeAcct;
+    } catch (DmlException e) {
+        // Process exception here
+    }
     ```
 
 ## [获取 ID](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
@@ -597,7 +716,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     // DEBUG|ID = 001D000000JmKkeIAF
     ```
 
-## [批量处理](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+## [Bulk](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
 - 批量处理有助于节约资源。
 

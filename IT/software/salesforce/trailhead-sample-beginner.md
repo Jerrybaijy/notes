@@ -284,3 +284,9 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
     - Call a Static Method
 
 ## [Use sObjects](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sobjects?trail_id=force_com_dev_beginner)
+
+## [Manipulate Records with DML](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
+
+- Manipulate Records with DML
+- 
+
