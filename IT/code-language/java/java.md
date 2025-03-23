@@ -715,7 +715,34 @@ Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结
   System.out.println(data.length);// 3
   ```
 
-  
+
+# Method
+
+## 方法声明结构
+
+```java
+<访问修饰符> <静态或实例指示符> <返回类型> <方法名>(<参数列表>) {
+    // 方法体
+}
+```
+
+```java
+public static Account updateAccountName(Account accountToUpdate, String newName) {
+    accountToUpdate.Name = newName;
+    update accountToUpdate;
+    return accountToUpdate;
+}
+```
+
+- **访问修饰符**：规定了方法的访问权限，像`public`（公共的，任何地方都能访问）、`private`（私有的，只有在同一个类里能访问）、`protected`（受保护的，在同一个类及其子类里能访问）等。
+- **静态或实例指示符**
+    - `static`：表明该方法是静态方法，能够直接通过类名调用，无需创建类的实例。
+    - 无 `static`：表明该方法是实例方法，需要先创建类的实例，再通过实例来调用。
+- **返回类型**：
+    - 指定方法返回值的类型，例如`List<Contact>`、`Integer`、`String`等。
+    - 若方法不返回任何值，就使用`void`。
+- **方法名**：方法的标识符，要遵循 Apex 的命名规则。
+- **参数列表**：包含零个或多个参数，参数之间用逗号分隔，每个参数由类型和名称组成。
 
 # Spring Boot
 

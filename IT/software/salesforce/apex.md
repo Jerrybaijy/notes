@@ -1003,7 +1003,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
 **SOSL**（**S**alesforce **O**bject **S**earch **L**anguage）是 Salesforce 平台提供的一种强大的搜索语言，用于在多个对象中进行跨对象的全文搜索。SOSL 类似于 Apache Lucene。
 
-- SOSL 则用于在**多个**对象和字段中快速搜索特定的文本字符串，而SOQL 主要用于查询**单个**对象或对象之间的关系。
+- SOSL 用于在**多个**对象和字段中快速搜索特定的文本字符串，而 SOQL 主要用于查询**单个**对象或对象之间的关系。
 - SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种精准搜索。比如搜索 Digital：
     - SOSL：Digital | The Digital Company
     - SOQL：Digital

@@ -293,5 +293,8 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Write SOQL Queries](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
 - Create a new TP: **Write SOQL Queries**
-- 
+
+## [Write SOSL Queries](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner)
+
+
 
