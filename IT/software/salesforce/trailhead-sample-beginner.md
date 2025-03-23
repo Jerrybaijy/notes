@@ -288,5 +288,10 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Manipulate Records with DML](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
 - Manipulate Records with DML
+- Database Methods
+
+## [Write SOQL Queries](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
+
+- Create a new TP: **Write SOQL Queries**
 - 
 

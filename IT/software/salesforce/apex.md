@@ -1,6 +1,6 @@
 Apex is a **strongly-typed**, **object-oriented** programming language developed by Salesforce for building applications on the Salesforce platform. It is similar to Java and C# in syntax. Apex is saved, compiled, and executed on the server—the Lightning Platform.
 
-Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台 上进行后端逻辑开发，它的语法类似于 Java。
+Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台上进行后端逻辑开发，它的语法类似于 Java。
 
 - [Apex Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/apex_dev_guide.htm)
 
@@ -604,25 +604,19 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
     ```java
     // -------------Upsert based on custom fields-------------
-    // 1. Upsert with external foreign key
+    // 1. Upsert based on an external ID field
     List<Account> acctList = new List<Account>();
     // Fill the accounts list with some accounts
     
     try {
-        // Upsert using an external ID field
+        // Upsert based on an external ID field
         upsert acctList myExtIDField__c;
     } catch (DmlException e) {
        
     }
     
     
-    // 2. Upsert based on Email
-    Contact jane = new Contact(FirstName='Jane',
-                             LastName='Smith',
-                             Email='jane.smith@example.com',
-                             Description='Contact of the day');
-    insert jane;
-    
+    // 2. Upsert based on the custom field Email
     Contact jane2 = new Contact(FirstName='Jane',
                              LastName='Smith',
                              Email='jane.smith@example.com',
@@ -716,7 +710,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     // DEBUG|ID = 001D000000JmKkeIAF
     ```
 
-## [Bulk](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
+## [DML Bulk](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
 - 批量处理有助于节约资源。
 
@@ -745,7 +739,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     update listToUpdate;
     ```
 
-## [异常处理](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+## [DML Exceptions](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
 
 - **语法**
 
@@ -837,7 +831,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     }
     ```
 
-## [使用相关记录](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
+## [Work with Related Records](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml#work-with-related-records)
 
 ### Insert Related Records
 
@@ -890,7 +884,6 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     delete queriedAccounts;
     ```
 
-    
 
 # [SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
@@ -923,8 +916,9 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     - ORDER
     - LIMIT
 - **不同点**
+  
     - SOQL 不能为所有字段指定 `*`。
-
+    
 - **基本内联 SOQL 示例**：即将 SOQL 语句内嵌在 Apex 语法中。将 SOQL 语句括在方括号中，并使用 sObject 数组接收返回值。
 
     ```java
@@ -944,7 +938,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     ```
 
 
-## 查询相关记录
+## Query Related Records
 
 ### 根据 Account Name 查询 Contact 姓名
 
@@ -960,7 +954,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
                  + cts[0].FirstName + ', ' + cts[0].LastName);
     ```
 
-- **查询目的**：从 `Account` 对象中筛选出 `Name` 为 **SFDC Computing** 的 Account 对象，同时获取与这些 Account 关联的 `Contact` 的 `FirstName` 和 `LastName`。
+- **查询目的**：从 **Account** 对象中筛选出 **Name** 为 **SFDC Computing** 的 Account 记录，同时获取与这些 Account 记录关联的 **Contact** 的 **FirstName** 和 **LastName**。
 
 - `(SELECT FirstName,LastName FROM Contacts)`
 
@@ -982,11 +976,11 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
     System.debug('Carol\'s account name is ' + acctName);
     ```
 
-- **查询目的**：从 `Contact` 对象中筛选出 `FirstName` 为 **Carol** 且 `LastName` 为 **Ruiz** 的 Contact 对象，同时获取这些 Contact  对象关联的 `Account` 对象的 `Name` 字段值。
+- **查询目的**：从 `Contact` 对象中筛选出 `FirstName` 为 **Carol** 且 `LastName` 为 **Ruiz** 的 Contact 记录，同时获取这些 Contact  记录关联的 `Account` 对象的 `Name` 字段值。
 
-- `SELECT Account.Name`，这里的 Account 是 Contact 的一个字段，这个字段会关联到 Contact 对应的 Account。
+- `SELECT Account.Name`，这里的 Account 是 Contact 记录的一个字段，这个字段会关联到 Contact 记录对应的 Account 对象。
 
-- 整个第一条语句返回的是一个包含多个 Contact 对象的数组，每个对象里包含了 Account 字段，Account 字段又有 Name 字段。
+- 整个第一条语句返回的是一个包含多个 Contact 记录的数组，每个记录里包含了 Account 字段，Account 字段又有 Name 字段。
 
     ```
     [
