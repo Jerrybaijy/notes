@@ -1,6 +1,6 @@
 # SQL 基础
 
-**SQL**（**S**tructured **Q**uery **L**anguage）即结构化查询语言，是用于与**关系型**数据库管理系统（RDBMS）交互的标准编程语言。
+**SQL**（**S**tructured **Q**uery **L**anguage）即结构化查询语言，是用于与**关系型**数据库管理系统（RDBMS）交互的标准操作语言。
 
 ## 注释
 
@@ -20,16 +20,9 @@
 
 - **大小写不敏感**：SQL 中的关键字（如 SELECT、FROM 等）通常不区分大小写，但都习惯大写；大部分数据库默认对字符串的大小写也不敏感。
 - **缩进与空格**：虽然语法上没有严格要求，但合理使用缩进和空格可以提高 SQL 语句的可读性。
-- **语句结束符**：以 `;` 作为 SQL 语句的结束标志，但有些系统也允许不写分号。
+- **语句尾缀**：以 `;` 作为 SQL 语句的结束标志，但有些系统也允许不写分号。
 - **占位符**：由于习惯大写关键字，所以个人笔记占位符前缀加 `$`。
 - **字符串**：字符串使用单引号 `'` 包围；双引号有其它用途，各个语言不一样。
-
-## 关键字
-
-- **`*`**：表示所有。
-	- `SELECT * FROM tb_test;`：查看 `tb_test` 数据表中所有 ROW。
-- **`WHERE`**：`$COMMAND WHERE $CONDITION;`，用于添加查询条件。
-	- `DELETE FROM tb_test WHERE id=1;`：从 `tb_test` 数据表中删除 `id=1` 的 ROW。
 
 ## SQL 标准和数据库实现
 
@@ -56,6 +49,239 @@
 	FROM users
 	WHERE age > 20;
 	```
+
+# SELECT Clause(old)
+
+- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据。
+- **`*`**：表示所有。
+
+    - `SELECT * FROM tb_test;`：查看 `tb_test` 数据表中所有 ROW。
+
+# SELECT Clause
+
+- **SELECT** clause is used to specify which field to query.
+
+## Basic Example
+
+```sql
+SELECT 列名
+FROM 表名
+[WHERE condition]
+[GROUP BY column1, column2, ...]
+[HAVING condition]
+[ORDER BY 列名]
+[LIMIT 行数];
+```
+
+```sql
+SELECT name FROM students
+```
+
+```sql
+-- 可用 * 表示所有列
+SELECT * FROM students
+```
+
+# FROM Clause
+
+# WHERE Clause
+
+- **WHERE** clause is used to add query conditions.
+
+## Basic Example
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名
+    FROM 表名
+    WHERE 条件;
+    ```
+
+    ```sql
+    SELECT name
+    FROM students
+    WHERE age = 18;
+    ```
+
+## Operator
+
+- 在 sql 中，**操作符**用于对条件进行分组和限定。
+
+- Example
+
+    ```sql
+    SELECT name
+    FROM students
+    WHERE (age = 18 OR (score > 60 AND gender = 'male'));
+    ```
+
+### AND
+
+- `AND` 与条件。
+
+    ```sql
+    WHERE 条件1 AND 条件2;
+    ```
+
+    ```sql
+    WHERE age = 18 AND score > 60 AND gender = 'male';
+    ```
+
+### OR
+
+- `OR` 或条件。
+
+    ```sql
+    WHERE 条件1 OR 条件2;
+    ```
+
+    ```sql
+    WHERE age = 18 OR score > 60 OR gender = 'male';
+    ```
+
+### IN
+
+- `IN` 操作符用于判断某个字段的值是否在指定的一组值中。替代使用多个 `OR` 条件的复杂写法。
+
+- IN 的基本用法
+
+    ```sql
+    WHERE 列名 IN (值1, 值2, ...);
+    ```
+
+    ```sql
+    WHERE age IN (15, 16, 17);
+    ```
+
+- 搭配子查询
+
+    ```sql
+    WHERE 列名 IN (SELECT 其它列名 FROM 其他表名);
+    ```
+
+    ```sql
+    -- 子查询，从 valid_ages 表获取有效年龄
+    WHERE age IN (SELECT age FROM valid_ages);
+    ```
+
+### BETWEEN
+
+- `BETWEEN` 操作符用于判断某个字段的值是否在指定的范围之内，这个范围包含边界值。
+
+    ```sql
+    WHERE 列名 BETWEEN 值1 AND 值2;
+    ```
+
+    ```sql
+    WHERE age BETWEEN 18 AND 20;
+    ```
+
+### LIKE
+
+- `LIKE` 用于对文本字段进行模糊查询。
+
+    ```sql
+    WHERE 列名 LIKE 匹配模式;
+    ```
+
+    ```sql
+    WHERE note LIKE '%先生';
+    ```
+
+- **Wildcard**
+
+    - `%`：匹配任意数量（包含零个）字符。
+
+    - `_`：匹配任意单个字符。
+
+    - `[]`：用于指定一个字符范围或一组字符，只要匹配其中一个字符就算匹配成功。
+
+        ```sql
+        -- 匹配第二个字符为 “a”、“b” 或者 “c” 的客户
+        SELECT * FROM customers WHERE customer_name LIKE '_[abc]%';
+        ```
+
+    - `^` 或 `!`：在使用方括号时，`^`（SQL Server）或 `!`（Access）用于表示取反，即匹配不在指定范围内的字符。
+
+        ```sql
+        -- 匹配第二个字符不是 “a”、“b” 或者 “c” 的客户
+        SELECT * FROM customers WHERE customer_name LIKE '_[^abc]%';
+        ```
+
+### NOT
+
+- `NOT` 用于对条件取反。
+
+    ```sql
+    -- 对逻辑取反
+    WHERE NOT (age = 18 OR (score > 60 AND gender = 'male'));
+    
+    -- 对 IN 取反
+    WHERE age IN (15, 16, 17);
+    
+    -- 对 LIKE 取反
+    WHERE note NOT NLIKE '%先生';
+    ```
+
+# ORDER Clause
+
+- **ORDER** clause is used to order the query result.
+
+## Basic Example
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名
+    FROM 表名
+    ORDER BY 列名 [ASC|DESC];
+    ```
+
+    ```sql
+    SELECT *
+    FROM students
+    ORDER BY name;
+    ```
+
+## Order Condition
+
+- 排序条件用于指定排序方式
+
+- **Example**
+
+    ```sql
+    // 按字母顺序升序排列
+    SELECT * FROM students ORDER BY name [ASC];
+    
+    // 按字母顺序降序排列
+    SELECT * FROM students ORDER BY name DESC;
+    ```
+
+    - **ASC**：默认为升序 (ascending)，可省略；
+    - **DESC**: 降序 (descending)。
+
+- Ordered by multiple columns.
+
+    ```sql
+    SELECT * FROM students ORDER BY name, id;
+    ```
+
+# LIMIT Clause
+
+- **LIMIT** clause is used to limit the number of query results.
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名
+    FROM 表名
+    LIMIT [开始行号] 行数;
+    ```
+
+    ```sql
+    SELECT * FROM students LIMIT 5;
+    ```
 
 # Database 数据库
 
@@ -195,68 +421,6 @@
 		mobile = '1999999999' 
 	WHERE name = 'zhaoliu';
 	```
-
-# SELECT
-
-- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据
-
-## Where
-
-- 使用 `WHERE 子句` 添加查询条件
-
-- WHERE 子句可以包含一个或多个查询条件。
-
-    - **一个条件**
-
-        ```sql
-        SELECT Name,Phone FROM Account WHERE Name='SFDC Computing'
-        ```
-
-    - **多个条件**：使用逻辑运算符 （AND、OR）和圆括号 `()` 对所有条件进行分组，类似数学运算。
-
-        ```sql
-        SELECT Name,Phone FROM Account
-           WHERE (Name='SFDC Computing' OR (NumberOfEmployees>25 AND BillingCity='Los Angeles'))
-        ```
-
-- **通配符**
-
-    - `%` 匹配任何字符匹配或不匹配任何字符。
-    
-    - `_` 匹配一个字符。
-    
-    - 使用 **like** 代替 **=** 匹配通配符
-    
-        ```sql
-        SELECT * FROM books WHERE title LIKE 'The _e%';
-        ```
-
-## Order
-
-- 使用 `ORDER BY $FIELD_NAME` 对查询结果排序
-
-- **语法**
-
-    ```sql
-    // 按字母顺序升序排列
-    SELECT * FROM Contact ORDER BY Name [ASC];
-    
-    // 按字母顺序降序排列
-    SELECT * FROM Contact ORDER BY Name DESC;
-    ```
-
-- **升序和降序**
-
-    - **ASC**：默认为升序 (ascending)，可省略；
-    - **DESC**: 降序 (descending)。
-
-## Limit
-
-- 使用 `LIMIT n` 限制查询结果的返回的记录数量。
-
-    ```sql
-    SELECT Name FROM Account LIMIT 1;
-    ```
 
 # 其它
 

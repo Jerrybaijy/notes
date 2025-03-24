@@ -139,121 +139,6 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 - Click **Details**.
 - Look for the **Description** field. The value should be: **Heritage Account**.
 
-## Class
-
-### Create and Deploy an Apex Class with VS Code
-
-- Sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex).
-
-- Based on the project : [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
-
-- In VS Code, under the folder **force-app/main/default**, right-click **classes** and select **SFDX: Create Apex Class**.
-
-- Name the class `HouseService`. Click **Enter**.
-
-- The initial code is as follows:
-
-    ```java
-    public with sharing class HouseService {
-        public HouseService() {
-    
-        }
-    }
-    ```
-
-- Replace with the following and save:
-
-    ```java
-    public with sharing class HouseService {
-        @AuraEnabled(cacheable=true)
-        public static List<House__c> getRecords() {
-            try {
-                // Create a list of House records from a SOQL query
-                List<House__c> lstHouses = [
-                    SELECT
-                       Id,
-                       Name,
-                       Address__c,
-                       State__c,
-                       City__c,
-                       Zip__c
-                       FROM House__c
-                       WITH USER_MODE
-                       ORDER BY CreatedDate
-                       LIMIT 10
-                    ];
-                      return lstHouses;
-            }
-            // Code to handle exception
-            catch (Exception e) {
-               throw new AuraHandledException(e.getMessage());
-            }
-        }
-    }
-    ```
-
-- Right-click **HouseService.cls** and select **SFDX: Deploy This Source to Org**. You see a confirmation message that the Apex class successfully deployed to the org.
-
-- Create an anonymous script to test **getRecords()**.
-
-    - Create a new file named **dreamhouseapp.apex** in the **scripts/apex** folder.
-
-    - Tyoe the following:
-
-        ```java
-        System.debug(HouseService.getRecords());
-        ```
-
-    - Click **Execute**.
-    
-    - Check the query results in the **output panel** shown below. 
-    
-        ![image-20250317020059440](assets/image-20250317020059440.png)
-
-### Call a Static Method
-
-- 使用 static 声明方法
-
-    ```java
-    public class EmailManager {
-        // 使用 static 声明方法
-        public static void sendMail(String address, String subject, String body) {
-            // Create an email message object
-        }
-    }
-    ```
-
-    ```java
-    // 直接使用类名调用方法
-    EmailManager.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
-    ```
-
-- 不使用 static 声明方法
-
-    ```java
-    public class EmailManager {
-        // 不使用 static 声明方法
-        public void sendMail(String address, String subject, String body) {
-            // Create an email message object
-        }
-    }
-    ```
-
-    ```java
-    EmailManager em = new EmailManager();
-    em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
-    ```
-
-# Debug
-
-## Excute Anonymous Window
-
-- **Setup | Developer Console** > **Debug | Open Excute Anonymous Window**
-
-## Excute Logs
-
-- **Debug Only**: Only for `System.debug()` statements.
-
 # [数据类型](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_data_types.htm)
 
 ## 数据类型分类
@@ -277,6 +162,7 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 ## String
 
 - 与 Java 不同，Apex 字符串支持使用比较运算符 == 、 != 、 < 、 <= > 和 >= 。由于 Apex 使用 SOQL 比较语义，因此字符串的结果根据上下文用户的区域设置进行整理，并且不区分大小写。有关更多信息，请参阅[表达式运算符](https://developer.salesforce.com/docs/atlas.en-us.254.0.apexcode.meta/apexcode/langCon_apex_expressions_operators_understanding.htm)。
+- **边界标记**：使用单引号 `'` 标记字符串。
 
 ### 字符串方法
 
@@ -508,9 +394,136 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - Apex 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
 
-# [Contact](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/sforce_api_objects_contact.htm?_ga=2.145375476.1561775477.1741324952-529724583.1741324952)
+# Class
 
-Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesforce.com/docs/atlas.en-us.object_reference.meta/object_reference/compound_fields.htm)。它是 Contact 的 FirstName、LastName、MiddleName 和 Suffix 字段的串联。
+## Create and Deploy an Apex Class with VS Code
+
+- Sample in Trailhead: [Create and Deploy the Apex Class](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/write-business-logic-in-apex).
+
+- Based on the project : [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
+
+- In VS Code, under the folder **force-app/main/default**, right-click **classes** and select **SFDX: Create Apex Class**.
+
+- Name the class `HouseService`. Click **Enter**.
+
+- The initial code is as follows:
+
+    ```java
+    public with sharing class HouseService {
+        public HouseService() {
+    
+        }
+    }
+    ```
+
+- Replace with the following and save:
+
+    ```java
+    public with sharing class HouseService {
+        @AuraEnabled(cacheable=true)
+        public static List<House__c> getRecords() {
+            try {
+                // Create a list of House records from a SOQL query
+                List<House__c> lstHouses = [
+                    SELECT
+                       Id,
+                       Name,
+                       Address__c,
+                       State__c,
+                       City__c,
+                       Zip__c
+                       FROM House__c
+                       WITH USER_MODE
+                       ORDER BY CreatedDate
+                       LIMIT 10
+                    ];
+                      return lstHouses;
+            }
+            // Code to handle exception
+            catch (Exception e) {
+               throw new AuraHandledException(e.getMessage());
+            }
+        }
+    }
+    ```
+
+- Right-click **HouseService.cls** and select **SFDX: Deploy This Source to Org**. You see a confirmation message that the Apex class successfully deployed to the org.
+
+- Create an anonymous script to test **getRecords()**.
+
+    - Create a new file named **dreamhouseapp.apex** in the **scripts/apex** folder.
+
+    - Tyoe the following:
+
+        ```java
+        System.debug(HouseService.getRecords());
+        ```
+
+    - Click **Execute**.
+
+    - Check the query results in the **output panel** shown below. 
+
+        ![image-20250317020059440](assets/image-20250317020059440.png)
+
+## Call a Static Method
+
+- 使用 static 声明方法
+
+    ```java
+    public class EmailManager {
+        // 使用 static 声明方法
+        public static void sendMail(String address, String subject, String body) {
+            // Create an email message object
+        }
+    }
+    ```
+
+    ```java
+    // 直接使用类名调用方法
+    EmailManager.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+    ```
+
+- 不使用 static 声明方法
+
+    ```java
+    public class EmailManager {
+        // 不使用 static 声明方法
+        public void sendMail(String address, String subject, String body) {
+            // Create an email message object
+        }
+    }
+    ```
+
+    ```java
+    EmailManager em = new EmailManager();
+    em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+    ```
+
+# Developer Console
+
+## Excute
+
+### Excute Anonymous Window
+
+- **Setup | Developer Console** > **Debug | Open Excute Anonymous Window**
+
+### Excute Logs
+
+- **Debug Only**: Only for `System.debug()` statements.
+
+## Query Editor
+
+- **Query Editor** is a tool to edit SOQL and SOSL.
+
+- **Setup | Developer Console** > **Query Editor**
+
+    ![image-20250324132328847](assets/image-20250324132328847.png)
+
+- **Setup | Developer Console** > **File | Open** > **Objects | Contact**
+
+    <img src="assets/image-20250324133307537.png" alt="image-20250324133307537" style="zoom:67%;" />
+    
+    <img src="assets/image-20250324133428849.png" alt="image-20250324133428849" style="zoom: 67%;" />
 
 # DML
 
@@ -887,7 +900,9 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
 # [SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
-**SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) 是 Salesforce 专有的查询语言，用于从 Salesforce 数据库中检索数据。它类似于 SQL，但专门用于 Salesforce 平台的数据结构。SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
+**SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) 是 Salesforce 专有的查询语言，用于从 Salesforce 数据库中检索数据，语法结构类似于 SQL。SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
+
+- [Get Started with SOQL Queries](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins/get-started-with-soql-queries)
 
 ## 注释
 
@@ -912,17 +927,24 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 ## SOQL 基础
 
 - SOQL 绝大部分语法与 SQL 相同。
-    - WHERE
-    - ORDER
-    - LIMIT
 - **不同点**
   
+    - 尾缀不加分号 `;`。
     - SOQL 不能为所有字段指定 `*`。
-    
-- **基本内联 SOQL 示例**：即将 SOQL 语句内嵌在 Apex 语法中。将 SOQL 语句括在方括号中，并使用 sObject 数组接收返回值。
+    - ...
+
+## 基本示例
+
+- Query Editor
+
+    ```sql
+    SELECT Name,Phone FROM Account
+    ```
+
+- Embedded in Apex
 
     ```java
-    Account[] accts = [SELECT Name,Phone FROM Account];
+    List<Account> accounts = [SELECT Name, Phone FROM Account];
     ```
 
 ## 引用变量
@@ -1001,7 +1023,7 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
 # [SOSL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner)
 
-**SOSL**（**S**alesforce **O**bject **S**earch **L**anguage）是 Salesforce 平台提供的一种强大的搜索语言，用于在多个对象中进行跨对象的全文搜索。SOSL 类似于 Apache Lucene。
+**SOSL**（**S**alesforce **O**bject **S**earch **L**anguage）is used to perform **text searches** in records provided by Salesforce. Use SOSL to search fields across **multiple** standard and custom object records in Salesforce. SOSL is similar to Apache Lucene.
 
 - SOSL 用于在**多个**对象和字段中快速搜索特定的文本字符串，而 SOQL 主要用于查询**单个**对象或对象之间的关系。
 - SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种精准搜索。比如搜索 Digital：
@@ -1010,43 +1032,55 @@ Contact sObject 的 Name 字段是一个[复合字段](https://developer.salesfo
 
 ## 运行环境
 
-- 同 SOQL：**Setup Menu** > **Developer Console** > **Query Editor**
+- **Query Editor**：**Setup Menu** > **Developer Console** > **Query Editor**
+- **Inline SOSL**: Embedded in Apex.
 
 ## 语法结构
 
-SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有不同
+SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有不同。
 
-```sql
-// 在 Query Editor 中
-FIND {SearchQuery} [IN SearchGroup] [RETURNING ObjectsAndFields]
-```
+- 在 Query Editor 中，**SearchQuery** 使用花括号 `{}` 包围，且没有尾缀分号。
 
-```sql
-// 在 API 中
-FIND 'SearchQuery' [IN SearchGroup] [RETURNING ObjectsAndFields]
-```
+    ```sql
+    FIND {SearchQuery} [IN SearchGroup] [RETURNING ObjectsAndFields]
+    ```
 
-SOSL 内嵌在 Apex 的示例如下：
+- 内嵌在 Apex 中，**SearchQuery** 使用单引号 `‘` 包围
 
-```java
-List<List<SObject>> searchList = [FIND 'SFDC' IN ALL FIELDS
-                                      RETURNING Account(Name), Contact(FirstName,LastName)];
-```
+    ```sql
+    FIND 'SearchQuery' [IN SearchGroup] [RETURNING ObjectsAndFields]
+    ```
 
-## SearchQue
+    ```java
+    String searchQuery = 'SFDC'
+    List<List<SObject>> searchList = [FIND :searchQuery IN ALL FIELDS
+                                          RETURNING Account(Name), Contact(FirstName,LastName)];
+    ```
 
-- 如果搜索的是两个单词，字段中包含这两个单词即可。
+## SearchQuery
+
+- SearchQuery 是要搜索的文本。
+- 必须是一个或多个**完整**的单词，否则不识别。
+    - `Hello`：可以搜索到 **Hello world**
+    - `Hell`：不可以搜索到 **Hello world**
+    - `-` 可分隔多个单词，例如 `1234-5678` 中，`1234` 和 `5678` 被认为是两个单词。
+
+- 如果搜索的是两个单词，字段中包含这两个单词即可，与位置无关。
     - 例如搜索 `The Query`，可以搜索到 `Account: The SFDC Query Man`
 - 可以使用逻辑运算符（AND、OR）和括号进行分组。
-- 文本搜索不区分大小写。
+    - 例如：`FIND {wingo OR man} IN ALL FIELDS RETURNING Account(Name)`
+
+- 搜索文本不区分大小写。
+    - 例如：`FIND {wingo} IN ALL FIELDS RETURNING Account(Name)` 等效于 例如：`FIND {WINGO} IN ALL FIELDS RETURNING Account(Name)`
+
 - 通配符
-    - `*`：匹配搜索词中间或末尾的**任意个**字符
-    - `?`：匹配搜索词中间或末尾的**一个**字符
+    - `*`：匹配搜索文本中间或末尾的**任意个**字符
+    - `?`：匹配搜索文本中间或末尾的**一个**字符
 
 ## SearchGroup
 
 - SearchGroup 是要搜索的字段的范围。
-- 它是可选的，如果未指定，则默认搜索范围为 all fields。
+- 它是可选的，如果未指定，则默认搜索范围为 **ALL FIELDS**。
 - 可以采用以下值之一
     - `ALL FIELDS` `所有字段`
     - `NAME FIELDS` `名称字段`
@@ -1062,7 +1096,70 @@ List<List<SObject>> searchList = [FIND 'SFDC' IN ALL FIELDS
 ## 其它
 
 - SOSL 同样具有 SQL 的如下功能。
-    - WHERE
-    - ORDER
-    - LIMIT
+    - **WHERE**: `RETURNING Account(Name, Industry WHERE Industry='Apparel')`
+    - **ORDER**: `RETURNING Account(Name, Industry ORDER BY Name)`
+    - **LIMIT**: `RETURNING Account(Name, Industry LIMIT 10)`
     - 引用变量（详见 SOQL）
+
+## SOSL Sample
+
+- Sample in Trailhead: [SOSL Apex Example](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner#sosl-apex-example)
+
+- Based on
+
+    - TP: **Write SOQL Queries**
+
+    - Sample: **Prerequisites**
+
+        ```java
+        // Add account and related contact
+        Account acct = new Account(
+            Name='SFDC Computing',
+            Phone='(415)555-1212',
+            NumberOfEmployees=50,
+            BillingCity='San Francisco');
+        insert acct;
+        // Once the account is inserted, the sObject will be
+        // populated with an ID.
+        // Get this ID.
+        ID acctID = acct.ID;
+        // Add a contact to this account.
+        Contact con = new Contact(
+            FirstName='Carol',
+            LastName='Ruiz',
+            Phone='(415)555-1212',
+            Department='Wingo',
+            AccountId=acctID);
+        insert con;
+        // Add account with no contact
+        Account acct2 = new Account(
+            Name='The SFDC Query Man',
+            Phone='(310)555-1213',
+            NumberOfEmployees=50,
+            BillingCity='Los Angeles',
+            Description='Expert in wing technologies.');
+        insert acct2;
+        ```
+
+- Sample
+
+    ```java
+    String soslFindClause = 'Wingo OR SFDC';
+    List<List<sObject>> searchList = [FIND :soslFindClause IN ALL FIELDS
+                        RETURNING Account(Name),Contact(FirstName,LastName,Department)];
+    Account[] searchAccounts = (Account[])searchList[0];
+    Contact[] searchContacts = (Contact[])searchList[1];
+    System.debug('Found the following accounts.');
+    for (Account acct : searchAccounts) {
+        System.debug(acct.Name);
+    }
+    System.debug('Found the following contacts.');
+    for (Contact cont : searchContacts) {
+        System.debug(cont.LastName + ', ' + cont.FirstName);
+    }
+    ```
+
+
+# Trigger
+
+## 

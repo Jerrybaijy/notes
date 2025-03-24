@@ -296,5 +296,16 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 ## [Write SOSL Queries](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner)
 
+- **Prerequisites**: Insert something.
+- Use the Query Editor
 
+# Apex Triggers
 
+## [Get Started with Apex Triggers](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner)
+
+- Insert the previous modules
+    - [SOQL for Admins](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins)
+        - Get Started with SOQL Queries
+        - Create SOQL Queries in Apex Classes
+    - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+- 
