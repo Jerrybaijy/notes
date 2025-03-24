@@ -307,5 +307,8 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
     - [SOQL for Admins](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins)
         - Get Started with SOQL Queries
         - Create SOQL Queries in Apex Classes
+        - Create Relationship Queries with Standard Objects
+        - Create Relationship Queries with Custom Objects
+            - Install a Package: **DreamHouse** `04t3h000004mBpiAAE`
     - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
 - 

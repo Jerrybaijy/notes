@@ -930,7 +930,7 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 - **不同点**
   
     - 尾缀不加分号 `;`。
-    - SOQL 不能为所有字段指定 `*`。
+    - SOQL 不能使用 `*` 表示所有字段。
     - ...
 
 ## 基本示例
@@ -959,10 +959,37 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
                               FROM Contact WHERE Department=:targetDepartment];
     ```
 
+## Using For Loops to Iterate Through a List
+
+- Sample in Trailhead: [Using For Loops to Iterate Through a List](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins/create-soql-queries-in-apex-classes#using-for-loops-to-iterate-through-a-list)
+
+- **Setup | Developer Console** > **File | New | Apex Class**.
+
+    ```java
+    public class ContactUtility {
+        public static void viewContacts() {
+            List<Contact> listOfContacts = [SELECT FirstName, LastName FROM Contact];
+            for(Contact con : listOfContacts) {
+                String fullName = 'First Name: ' + con.FirstName + ', Last Name: ' + con.LastName;
+                System.debug(fullName);
+            }
+        }
+    }
+    ```
+
+- **Setup | Developer Console** > **Debug | Open Execute Anonymous window**
+
+    ```java
+    ContactUtility.viewContacts();
+    ```
 
 ## Query Related Records
 
-### 根据 Account Name 查询 Contact 姓名
+![image-20250325060302102](assets/image-20250325060302102.png)
+
+![image-20250325060315766](assets/image-20250325060315766.png)
+
+### Parent-to-Child Query
 
 - **示例**
 
@@ -986,7 +1013,7 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **结果存储**：查询结果存储在 `acctsWithContacts` 数组中，数组中的每个元素都是一个 `Account` 对象，每个 `Account` 对象包含一个 `Contacts` 集合，该集合包含了与该账户关联的所有联系人记录。
 
-### 根据 Contact 姓名查询 Account Name
+### Child-to-Parent Query
 
 - **示例**
 
@@ -1020,6 +1047,18 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
         }
     ]
     ```
+
+## Filtered Query
+
+- Sample
+
+    ```sql
+    SELECT Name, (SELECT Name FROM Contacts)
+    FROM Account
+    WHERE Id IN (SELECT AccountId FROM Contact WHERE LastName = 'Forbes')
+    ```
+
+- **查询目的**：从 **Account** 对象中筛选出 **Account** 和 **Contact** 的 **Name**，这个 **Contact** 的 **LastName** 为 **Forbes**。
 
 # [SOSL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sosl?trail_id=force_com_dev_beginner)
 

@@ -473,7 +473,7 @@ More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.sal
 - Click **New Resource**. 
 - For **Resource Type**, select **Variable**.
 - For **API Name**, enter `contactID`.
-- For **Description**, enter `The Salesforce ID of the primary contact.`
+- For **Description**, enter `The Salesforce ID of the primary contact.`
 - For **Data Type**, select **Text**.
 - Click **Done**.
 - Check the new variable in the **Toolbox**.
@@ -687,7 +687,7 @@ An **app** is a collection of items that work together to serve a particular fun
 - Paste `04tKY000000LOv6YAG` into the **Package ID** field and click **Install**.
 - Select **Install for All Users**, then click **Install**.
 - When it prompts you to Approve Third-party access, click **Yes** and click **Continue**. This provides updated information to the map in the Dreamhouse App.
-- When the installation completes, click **Done**.
+- When the installation completes, click **Done**. It'll spend about 10 minutes.
 - Locate to **Dreamhouse** from **App Launcher**.
 - Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
 
