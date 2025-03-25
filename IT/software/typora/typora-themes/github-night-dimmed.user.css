@@ -1,0 +1,24 @@
+/* 删除线颜色 */
+del {
+  text-decoration-color: red;
+}
+
+/* <kbd>样式 */
+kbd {
+  color: #000000;
+  font-size: 1.1em;
+  /* 增加内边距，使元素更大 */
+  padding: 7px 12px;
+}
+
+/* 使用更高的加粗文本粗细 */
+strong {
+  font-weight: 1000 !important;
+}
+
+/* 语言选择器 */
+/*
+为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
+需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
+  background-color: var(--item-hover-bg-color);
+*/

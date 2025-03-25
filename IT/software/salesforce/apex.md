@@ -1060,7 +1060,7 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 - 那么字段名称应该由 **Broker__c** 改成 **Broker__r**
 - 否则使用 **Broker__c.Name** 调用时，无法获取到 Name
 - 因为 `SELECT Broker_c FROM Property__c` 获取到的是 Broker 的 ID
-- 所以正确的写法应该是： `SELECT Broker_r FROM Property__c`
+- 所以正确的写法应该是： `SELECT Broker_r. FROM Property__c`
 - 其它用法同 Srandard Object
 
 ## Filtered Query
