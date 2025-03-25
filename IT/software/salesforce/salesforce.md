@@ -315,8 +315,9 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 
 **Custom Fields**: Users can create custom fields for both standard and custom objects to capture specific information that the out-of-the-box fields don't cover.
 
-- **Field Name**: `Price__c`, the `__c` suffix is an easy way to identify a custom field.
-- **Field Label**: The Field Label is what you see on the \<Object> page.
+- **Field Label**: Used on displays, page layouts, reports, and list views.
+- **Field Name**: Used on custom links, custom s-controls, and the API.
+    - For **custom object**, there's a `__c` suffix at the end of the field name. For example, `Price__c`.
 
 ## Create a Field
 

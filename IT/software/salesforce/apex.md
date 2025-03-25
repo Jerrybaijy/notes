@@ -947,6 +947,9 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     List<Account> accounts = [SELECT Name, Phone FROM Account];
     ```
 
+- **Notice**: **Name** and **Phone** is the **Field Name**. If the sObject is a custom object, a **__c** suffix should be the end of the **Field Name**.
+
+
 ## 引用变量
 
 - Apex 中的 SOQL 语句可以引用 Apex 代码变量和表达式；
@@ -1047,6 +1050,18 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
         }
     ]
     ```
+
+
+### Child-to-Parent Query of Custom Object
+
+- Sample in Trailhead: [Create a Child-to-Parent Query](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins/create-relationship-queries-with-custom-objects#create-a-child-to-parent-query)
+- 对于 Custom Object 的 Query Related Records，有如下特殊说明。
+- 如果 **Property__c** 中有一个指向 **Broker__c** 的 Lookup 类型字段
+- 那么字段名称应该由 **Broker__c** 改成 **Broker__r**
+- 否则使用 **Broker__c.Name** 调用时，无法获取到 Name
+- 因为 `SELECT Broker_c FROM Property__c` 获取到的是 Broker 的 ID
+- 所以正确的写法应该是： `SELECT Broker_r FROM Property__c`
+- 其它用法同 Srandard Object
 
 ## Filtered Query
 
