@@ -226,6 +226,16 @@ A **Lookup Relationship** in Salesforce is a type of relationship where one obje
 
 Similar to a **foreign key**, it allows a non-strict relationship between objects. For example, a **Contact** can be related to an **Account**, but the **Contact** can still exist independently.
 
+- Lookup Relationship from **Contact** to **Account** means: From **child** to **parent**.
+
+    <img src="assets/image-20250326094031982.png" alt="image-20250326094031982" style="zoom: 67%;" />
+
+- The relationship name is typically the plural form of the child object name.
+
+- **Setup** > **Object Manager** > **Contact** > **Field & Relationships** > **Account Name**
+
+    <img src="assets/image-20250326093815869.png" alt="image-20250326093815869" style="zoom:50%;" />
+
 #### Create a Lookup Relationship
 
 - Sample in Trailhead: [Create a Lookup Relationship](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)

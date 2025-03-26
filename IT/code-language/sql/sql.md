@@ -50,13 +50,6 @@
 	WHERE age > 20;
 	```
 
-# SELECT Clause(old)
-
-- 使用 `SELECT $FIELD FROM $TABLE` 用于查询某个字段的数据。
-- **`*`**：表示所有。
-
-    - `SELECT * FROM tb_test;`：查看 `tb_test` 数据表中所有 ROW。
-
 # SELECT Clause
 
 - **SELECT** clause is used to specify which field to query.
@@ -86,7 +79,7 @@ SELECT * FROM students
 
 # WHERE Clause
 
-- **WHERE** clause is used to add query conditions.
+- **WHERE** clause is used to filter the query results without aggregating. Different from HAVING.
 
 ## Basic Example
 
@@ -283,7 +276,176 @@ SELECT * FROM students
     SELECT * FROM students LIMIT 5;
     ```
 
-# Database 数据库
+# JOIN Clause
+
+- **JOIN** clause is used to join the data from multiple tables.
+
+## INER JOIN
+
+- **INER JOIN** only returns the combinations of all rows in two tables that meet the join condition.
+
+- **INER JOIN** equals to **JOIN**.
+
+- **Syntax**
+
+    ```sql
+    SELECT field1, field2
+    FROM table1
+    INNER JOIN table2
+    ON table1.field3 = table2.field3;
+    ```
+
+    ```sql
+    SELECT students.student_name, courses.course_name
+    FROM students
+    INNER JOIN courses
+    ON students.student_id = courses.student_id;
+    ```
+
+    - `students` table
+
+        | student_id | student_name |
+        | ---------- | ------------ |
+        | 1          | Alice        |
+        | 2          | Bob          |
+        | 3          | Charlie      |
+
+    - `courses` table
+
+        | course_id | course_name | student_id |
+        | --------- | ----------- | ---------- |
+        | 101       | Math        | 1          |
+        | 102       | English     | 2          |
+        | 103       | Science     | 1          |
+
+    - Result table
+
+        | student_name | course_name |
+        | ------------ | ----------- |
+        | Alice        | Math        |
+        | Alice        | Science     |
+        | Bob          | English     |
+
+## Other JOIN
+
+- LEFT OUTER JOIN
+- RIGHT OUTER JOIN
+- FULL OUTER JOIN
+- CROSS JOIN
+- SELF JOIN
+
+# AS Clause
+
+- **AS** clause is used to specify a alias (similar to variables) for a field.
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名 AS 别名
+    FROM 表名;
+    ```
+
+    ```sql
+    SELECT gender, name AS student_name FROM students;
+    ```
+    
+    | gender | student_name |
+    | ------ | ------------ |
+    | male   | Jerry        |
+
+- **Notice**
+
+    - Execution order: **FROM** > ... > **SELECT** > **ORDER BY**
+
+    - So, the alias declared last in the behind clause shouldn't be used in the front ones.
+
+        ```sql
+        -- Error Example
+        SELECT gender, COUNT(name) AS student_count
+        FROM students
+        GROUP BY gender
+        HAVING student_count > 2; -- student_count is declared in SELECT clause
+        
+        -- Correct Example
+        SELECT e.employee_id, d.department_name
+        FROM employees AS e
+        JOIN departments AS d ON e.department_id = d.department_id;
+        ```
+
+# Aggregate Functions
+
+- **Aggregate Functions** are functions that calculate the values of a specified field.
+
+- **Syntax**
+
+    ```sql
+    SELECT {Function}(列名)
+    FROM 表名;
+    ```
+
+    ```sql
+    SELECT COUNT(gender) FROM students;
+    ```
+
+- Common Aggregate Function
+
+    - **`COUNT()`**: Include the repeative values. Exclude NULL.
+    - **`COUNT(DISTINCT {Field})`**: Exclude the repeative values. Exclude NULL.
+    - **`MIN()`**: Also can handle date and time.
+    - **`MAX()`**: Also handle date and time.
+    - **`AVG()`**
+    - **`SUM()`**
+
+# GROUP Clause
+
+- **GROUP** Clause is used to group query results. Usually used together with Aggregate Functions.
+
+- Query results are grouped by fields.
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名1, {Function}(列名2) AS 别名
+    FROM 表名
+    GROUP BY 列名1;
+    ```
+
+    ```sql
+    SELECT gender, COUNT(name) AS student_count
+    FROM students
+    GROUP BY gender;
+    ```
+
+    | gender | student_count |
+    | ------ | ------------- |
+    | male   | 3             |
+    | female | 2             |
+
+# HAVING Clause
+
+- **HAVING** clause is used to filter the results returned by an aggregate function. Different from WHERE.
+
+- **Syntax**
+
+    ```sql
+    SELECT 列名1, {Function}(列名2) AS 别名
+    FROM 表名
+    GROUP BY 列名1
+    HAVING 条件;
+    ```
+
+    ```sql
+    SELECT gender, COUNT(name) AS student_count
+    FROM students
+    GROUP BY gender
+    HAVING COUNT(name) > 2;
+    ```
+
+    | gender | student_count |
+    | ------ | ------------- |
+    | male   | 3             |
+
+# Database
 
 - **基础命令**
 
@@ -298,7 +460,7 @@ SELECT * FROM students
 	DROP DATABASE $DATABASE;
 	```
 
-# Table 数据表
+# Table
 
 ## TABLE 基础
 
@@ -341,7 +503,7 @@ SELECT * FROM students
 	3. **`AUTO_INCREMENT`**：
 	4. **`PRIMARY KEY`**：主键
 
-# Field 字段
+# Field
 
 **字段**（Field）是数据库中表的一个组成部分，代表了表中的一个列，用于存储数据。
 
@@ -373,7 +535,7 @@ SELECT * FROM students
 - [CHECK ](https://www.w3cschool.cn/sql/fsq7hfph.html)：保证列中的所有值满足某一条件
 - [INDEX](https://www.w3cschool.cn/sql/cuj91oz2.html)：索引，用于在数据库中快速创建或检索数据
 
-# Row 数据行
+# Row
 
 - **基础命令**
 
@@ -386,7 +548,7 @@ SELECT * FROM students
 	INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
 	```
 
-# Column 数据列
+# Column
 
 - **基础命令**
 
@@ -395,7 +557,7 @@ SELECT * FROM students
 	ALTER TABLE $TABLE DROP COLUMN $COLUMN
 	```
 
-# Data 数据
+# Data
 
 - **查看数据**
 

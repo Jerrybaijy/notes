@@ -309,6 +309,12 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
         - Create SOQL Queries in Apex Classes
         - Create Relationship Queries with Standard Objects
         - Create Relationship Queries with Custom Objects
+            - Creat a new TP: **Create Relationship Queries with Custom Objects - challenge**
             - Install a Package: **DreamHouse** `04t3h000004mBpiAAE`
+        - Use Bind Variables and Aggregate Functions
+            - Bind Variables
+            - Aggregate Functions
+            - Group the Results of Aggregate Functions
+            - Filter the Results of Aggregate Functions
     - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
 - 

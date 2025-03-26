@@ -947,10 +947,13 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     List<Account> accounts = [SELECT Name, Phone FROM Account];
     ```
 
-- **Notice**: **Name** and **Phone** is the **Field Name**. If the sObject is a custom object, a **__c** suffix should be the end of the **Field Name**.
+- **Notice**
 
+    - **Name** and **Phone** is the **Field Name**.
+    - To specify a custom field, a `__c` suffix should be the end of the **Field Name**. For example, **Price__c**.
+    - To specify a custom object (not a field) in SELECT clause, a `__r` suffix should be the end of the **Object Name**. For example, **Price__r**.
 
-## 引用变量
+## Bind Variables
 
 - Apex 中的 SOQL 语句可以引用 Apex 代码变量和表达式；
 
@@ -961,6 +964,13 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     Contact[] techContacts = [SELECT FirstName,LastName
                               FROM Contact WHERE Department=:targetDepartment];
     ```
+
+## Aggregate Functions
+
+- Similar to SQL.
+- `COUNT_DISTINCT({Field})` equals to `COUNT(DISTINCT {Field})`
+
+
 
 ## Using For Loops to Iterate Through a List
 
@@ -1052,16 +1062,35 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     ```
 
 
-### Child-to-Parent Query of Custom Object
+### Query Related Records for Custom Object
 
 - Sample in Trailhead: [Create a Child-to-Parent Query](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins/create-relationship-queries-with-custom-objects#create-a-child-to-parent-query)
+
 - 对于 Custom Object 的 Query Related Records，有如下特殊说明。
-- 如果 **Property__c** 中有一个指向 **Broker__c** 的 Lookup 类型字段
-- 那么字段名称应该由 **Broker__c** 改成 **Broker__r**
-- 否则使用 **Broker__c.Name** 调用时，无法获取到 Name
-- 因为 `SELECT Broker_c FROM Property__c` 获取到的是 Broker 的 ID
-- 所以正确的写法应该是： `SELECT Broker_r. FROM Property__c`
-- 其它用法同 Srandard Object
+
+- 本示例中有两个**自定义对象**，**Property** to **Broker** 有 **child-to-parent** 的 Lookup Relationship。
+
+- `SELECT Address__c, Picture__c, Broker__c FROM Property__c`，`Brocker__c` 代表的是 Brocker **ID**，而不是 Brocker **Object**。
+
+  <img src="assets/image-20250326095717539.png" alt="image-20250326095717539" style="zoom:50%;" />
+
+- 如果想在 SELECT 子句中使用 Brocker **Object**，应该将 `Brocker__c` 改成 `Brocker__r`。其它用法同 Srandard Object。
+
+- **Child-to-Parent Query**
+
+    - `SELECT Address__c, Picture__c, Broker__r.Name FROM Property__c`
+    - `Broker__r` 代表的是 Brocker **Object**
+
+        <img src="assets/image-20250326100857190.png" alt="image-20250326100857190" style="zoom:50%;" />
+
+- **Parent-to-Child Query**
+
+    - `SELECT Name, (SELECT Address__c, Price__c FROM Properties__r) FROM Broker__c`
+    
+    - `Broker__r` 代表的是 Brocker **Object**
+    
+        <img src="assets/image-20250326103731909.png" alt="image-20250326103731909" style="zoom:50%;" />
+    
 
 ## Filtered Query
 
