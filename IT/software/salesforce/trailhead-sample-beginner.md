@@ -317,4 +317,18 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
             - Group the Results of Aggregate Functions
             - Filter the Results of Aggregate Functions
     - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+        - Get Started with the Developer Console
+        - Navigate and Edit Source Code
+            - Create an Apex Class
+            - Execute an Apex Class
+            - What Are Lightning Components?
+            - Create an Aura Component
+            - Create Visualforce Pages and Components
+        - Generate and Analyze Logs
+            - View Logs in the Text Editor
+            - Use the Log Inspector
+            - Perspective Manager
+            - Log Levels
+        - Inspect Objects at Checkpoints
+            - 
 - 

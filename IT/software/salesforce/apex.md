@@ -10,7 +10,7 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 ## 运行环境
 
-- **Developer Console**: **Quick access menu (![Setup gear icon](assets/e0d3e5a9b64c98ba5ac2c14623e36609_kix.zbyh4h1n9tpc.jpeg))** > **Developer Console**
+- **Developer Console**
 - **VS Code**
 
 ## 代码规范
@@ -499,32 +499,6 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
     em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
     ```
 
-# Developer Console
-
-## Excute
-
-### Excute Anonymous Window
-
-- **Setup | Developer Console** > **Debug | Open Excute Anonymous Window**
-
-### Excute Logs
-
-- **Debug Only**: Only for `System.debug()` statements.
-
-## Query Editor
-
-- **Query Editor** is a tool to edit SOQL and SOSL.
-
-- **Setup | Developer Console** > **Query Editor**
-
-    ![image-20250324132328847](assets/image-20250324132328847.png)
-
-- **Setup | Developer Console** > **File | Open** > **Objects | Contact**
-
-    <img src="assets/image-20250324133307537.png" alt="image-20250324133307537" style="zoom:67%;" />
-    
-    <img src="assets/image-20250324133428849.png" alt="image-20250324133428849" style="zoom: 67%;" />
-
 # DML
 
 **DML** (Data Manipulation Language) is used to manipulate the data in Salesforce.
@@ -900,7 +874,9 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 # [SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
-**SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) 是 Salesforce 专有的查询语言，用于从 Salesforce 数据库中检索数据，语法结构类似于 SQL。SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
+**SOQL** (**S**alesforce **O**bject **Q**uery **L**anguage) is used to read information stored in your org’s database. SOQL is syntactically similar to SQL.
+
+SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - [Get Started with SOQL Queries](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins/get-started-with-soql-queries)
 

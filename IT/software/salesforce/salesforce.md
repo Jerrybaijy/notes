@@ -400,6 +400,46 @@ You can get to Setup from any page in your Salesforce org. From the gear menu at
 - CI in Salesforce Document: [Continuous Integration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ci.htm?_ga=2.255431115.2113438160.1742049829-1363362869.1742049829)
 - Sample in Trailhead: [GitHub Actions](https://trailhead.salesforce.com/content/learn/projects/quick-start-tour-the-sample-app-gallery/learn-about-sample-app-tooling?trail_id=force_com_dev_beginner)
 
+# Developer Console
+
+The Developer Console is an IDE provided by Salesforce performing on the cloud.
+
+- **Setup Menu | Developer Console**
+- [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+
+## Workspace
+
+- **Workspace** | **Switch Workspace**
+
+## Excute Anonymous Window
+
+- Use **Excute Anonymous Window** to execute an Apex Class.
+- **Setup | Developer Console** > **Debug | Open Excute Anonymous Window**
+- **Notice**: All code that you run using this feature affects your org.
+
+## Logs
+
+- [Generate and Analyze Logs](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_logs)
+    - **Debug Only**: Only for `System.debug()` statements.
+    - **Debug | View Log Panels**: Log Panel
+    - **Debug | Save Perspective As**: Save the current log panel group
+    -  **Debug** | **Change Log Levels**
+
+
+## Query Editor
+
+- **Query Editor** is a tool to edit SOQL and SOSL.
+
+- **Setup | Developer Console** > **Query Editor**
+
+    ![image-20250324132328847](assets/image-20250324132328847.png)
+
+- **Setup | Developer Console** > **File | Open** > **Objects | Contact**
+
+    <img src="assets/image-20250324133307537.png" alt="image-20250324133307537" style="zoom:67%;" />
+
+    <img src="assets/image-20250324133428849.png" alt="image-20250324133428849" style="zoom: 67%;" />
+
 # Flows
 
 **Flows** is a tool without codes.
@@ -1051,9 +1091,21 @@ Check the **New Energy Audit** action
 
     ![image-20250321045414480](assets/image-20250321045414480.png)
 
+# Lightning Components
+
+Lightning Components is a framework for developing mobile and desktop apps.
+
+You can build Lightning components using two programming models: the **Lightning Web Components** model and the original **Aura Components** model.
+
+## Create an Aura Component
+
+- Sample in Trailhead: [Developer Console Basics | Navigate and Edit Source Code | Create an Aura Component](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_source_code#create-an-aura-component)
+
 # [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
 **Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
+
+- [Lightning Web Components for Visualforce Developers](https://trailhead.salesforce.com/content/learn/modules/lwc-for-visualforce-developers)
 
 ## Build a Reusable UI Component with Lightning Web Components
 
@@ -1388,3 +1440,13 @@ Check the **New Energy Audit** action
 - Click **Next**, then **Next** again.
 - For the **Add to Custom Apps** screen, deselect **Include Tab**, and select only **Sales (standard__LightningSales)**. This is to make the tab visible for just the Sales users.
 - Click **Save**.
+
+# Visualforce
+
+**Visualforce** is a web development framework for building sophisticated user interfaces (UI).
+
+- [Visualforce Basics](https://trailhead.salesforce.com/content/learn/modules/visualforce_fundamentals)
+
+## Create a Visualforce Page
+
+- Sample in Trailhead: [Create a Visualforce Page](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_source_code#create-a-visualforce-page)
