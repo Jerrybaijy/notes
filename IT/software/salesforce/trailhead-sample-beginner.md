@@ -349,3 +349,19 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 - Performing Bulk SOQL
 - Performing Bulk DML
+
+# Lightning Web Components Basics
+
+## [Discover Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/discover-lightning-web-components?trail_id=force_com_dev_beginner)
+
+- Insert the previous modules: [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components)
+    - Set Up Your Salesforce DX Environment
+        - Create a new TP: **Quick Start: Lightning Web Components**
+        - Set Up Your Trailhead Playground
+        - Get Your Trailhead Playground Username and Password
+        - Install the Command Line Interface (CLI)
+    - Set Up Visual Studio Code
+    - Create a Hello World Lightning Web Component
+        - Create a Salesforce DX Project
+        - Authorize Your Trailhead Playground
+        - Create a Lightning Web Component

@@ -2,9 +2,10 @@
 
 ## Salesforce CLI
 
-**Salesforce CLI** (Command Line Interface) is a command-line tool provided by Salesforce.
+**Salesforce CLI** is a CLI tool provided by Salesforce.
 
-**Salesforce CLI command** should be executed in the root directory of project with **PowerShell**.
+- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
+- **Salesforce CLI command** should be executed in the root directory of project with **PowerShell**.
 
 ### [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
@@ -1117,6 +1118,7 @@ You can build Lightning components using two programming models: the **Lightning
 **Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
 
 - [Lightning Web Components for Visualforce Developers](https://trailhead.salesforce.com/content/learn/modules/lwc-for-visualforce-developers)
+- [Component Reference](https://developer.salesforce.com/docs/component-library/overview/components)
 
 ## Build a Reusable UI Component with Lightning Web Components
 
@@ -1129,7 +1131,7 @@ You can build Lightning components using two programming models: the **Lightning
 
 - Name the Lightning web component `housingMap` and select the **main/default/lwc** directory.
 
-- You see these files: an HTML file, a JavaScript file, a metadata XML file, and a test.js file.
+- You see these files: a HTML file, a JavaScript file, a metadata XML file, and a test.js file.
 
     ![image-20250317022341519](assets/image-20250317022341519.png)
 
@@ -1229,6 +1231,111 @@ You can build Lightning components using two programming models: the **Lightning
 - Refresh the page to view your new component.
 
     <img src="assets/image-20250317030231300.png" alt="image-20250317030231300" style="zoom: 33%;" />
+
+## Create a Hello World Lightning Web Component
+
+- Sample in Trailhead: [Create a Hello World Lightning Web Component](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/create-a-hello-world-lightning-web-component)
+- A new TP: **Quick Start: Lightning Web Components**
+
+### Create a Salesforce DX Project
+
+- Preconditions
+    - Salesforce CLI
+    - Salesforce Extension Pack
+
+### Authorize Your Trailhead Playground
+
+- In VS Code, open the Command Palette by pressing **Ctrl+Shift+P**.
+- Type `SFDX` and select **SFDX: Authorize an Org**.
+- Press **Enter** to accept the Project Default login URL option.
+- Press **Enter** to accept the default alias.
+- Log in using your Trailhead Playground credentials.
+
+### Create a Lightning Web Component
+
+- In VS Code, open the Command Palette by pressing **Ctrl+Shift+P**.
+
+- Type `SFDX` and select **SFDX: Create Lightning Web Component**.
+
+- Enter `helloWorld` for the name of the new component.
+
+- Press **Enter** to accept the default `force-app/main/default/lwc.`.
+
+- Press **Enter**.
+
+- View the newly created files in VS Code: a HTML file, a JavaScript file, a metadata XML file.
+
+    ![image-20250327172236641](assets/image-20250327172236641.png)
+
+- In the HTML file, `helloWorld.html`, copy and paste the following code.
+
+    ```html
+    <template>
+      <lightning-card title="HelloWorld" icon-name="custom:custom14">
+        <div class="slds-m-around_medium">
+          <p>Hello, {greeting}!</p>
+          <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
+        </div>
+      </lightning-card>
+    </template>
+    ```
+
+- In the JavaScript file, `helloWorld.js`, copy and paste the following code.
+
+    ```javascript
+    import { LightningElement } from 'lwc';
+    export default class HelloWorld extends LightningElement {
+            greeting = 'World';
+            changeHandler(event) {
+            this.greeting = event.target.value;
+            }
+    }
+    ```
+
+- In the XML file `helloWorld.js-meta.xml`, copy and paste the following code.
+
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
+    <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="helloWorld">
+        <apiVersion>58.0</apiVersion>
+        <isExposed>true</isExposed>
+        <targets>
+        <target>lightning__AppPage</target>
+        <target>lightning__RecordPage</target>
+        <target>lightning__HomePage</target>
+        </targets>
+    </LightningComponentBundle>
+    ```
+
+### Deploy to Your Trailhead Playground
+
+- Right-click the `default` folder under `force-app/main`.
+- Click **SFDX: Deploy Source to Org**.
+
+### Add Component to App in Lightning Experience
+
+- In VS Code, open the Command Palette by pressing **Ctrl+Shift+P**.
+
+- Type `SFDX` and select **SFDX: Open Default Org**.  
+  This opens your Trailhead Playground in a separate browser.
+
+- **Setup** > **Quick Find**, select **Home** in the **Feature Settings** section.
+
+- For **Advanced Seller Home**, toggle the setting to **Inactive**.
+
+- Select **Sales** from **App Laucher**.
+
+- Click <img src="assets/48e17b3a1603568290c0e46ff264b243_kix.7nhx167q4m1r.jpg" alt="Setup" style="zoom: 50%;" />then select **Edit Page**.
+
+- Drag the `helloWorld` Lightning web component from the **Custom** area of the Lightning Components list to the top of the Page Canvas. 
+
+  ![image-20250327175115990](assets/image-20250327175115990.png)
+
+- Click **Save** | **Activate** | **Assign as Org Default** | **Save**
+
+- Click **Save** again, then click <img src="assets/942d17cf9c1b241674d6ac5ec31a7679_kix.h20bu8i5pfwm.jpg" alt="Back" style="zoom:50%;" /> to return to the page.
+
+- Refresh the page to view your new component.
 
 # [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 
