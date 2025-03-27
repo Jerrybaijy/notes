@@ -330,5 +330,22 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
             - Perspective Manager
             - Log Levels
         - Inspect Objects at Checkpoints
-            - 
-- 
+            - Set Checkpoints in Your Apex Code
+            - Checkpoints Tab
+        - Execute SOQL and SOSL Queries
+            - What Is a SOQL Query?
+            - What Is a SOSL Search?
+- Trigger Syntax
+- Creat a Trigger
+- Trigger Events
+- Context Variables
+- Calling a Class Method in a Trigger
+- Adding Related Records
+- Using Trigger Exceptions
+
+## [Bulk Apex Triggers](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_bulk?trail_id=force_com_dev_beginner)
+
+- Operating on Record Sets
+
+- Performing Bulk SOQL
+- Performing Bulk DML

@@ -421,10 +421,21 @@ The Developer Console is an IDE provided by Salesforce performing on the cloud.
 
 - [Generate and Analyze Logs](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_logs)
     - **Debug Only**: Only for `System.debug()` statements.
-    - **Debug | View Log Panels**: Log Panel
-    - **Debug | Save Perspective As**: Save the current log panel group
+    - **Debug** | **View Log Panels**: Log Panel
+    - **Debug** | **Save Perspective As**: Save the current log panel group
     -  **Debug** | **Change Log Levels**
 
+## Checkpoints
+
+**Checkpoints** show you snapshots of what’s happening in your Apex code at particular points during execution.
+
+- You can set up to five checkpoints in your Apex code. Checkpoints aren’t available for Visualforce markup.
+
+- [Inspect Objects at Checkpoints](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_checkpoints)
+
+    <img src="assets/image-20250327111156186.png" alt="image-20250327111156186" style="zoom:50%;" />
+
+    <img src="assets/image-20250327122209388.png" alt="image-20250327122209388" style="zoom:50%;" />
 
 ## Query Editor
 

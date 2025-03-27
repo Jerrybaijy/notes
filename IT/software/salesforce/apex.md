@@ -1085,7 +1085,7 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 **SOSL**（**S**alesforce **O**bject **S**earch **L**anguage）is used to perform **text searches** in records provided by Salesforce. Use SOSL to search fields across **multiple** standard and custom object records in Salesforce. SOSL is similar to Apache Lucene.
 
 - SOSL 用于在**多个**对象和字段中快速搜索特定的文本字符串，而 SOQL 主要用于查询**单个**对象或对象之间的关系。
-- SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种精准搜索。比如搜索 Digital：
+- SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种**精准**搜索。比如搜索 Digital：
     - SOSL：Digital | The Digital Company
     - SOQL：Digital
 
@@ -1221,4 +1221,193 @@ SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有�
 
 # Trigger
 
-## 
+## Trigger Syntax
+
+```java
+trigger 触发器名称 on 关联对象 (触发事件) {
+    执行体
+}
+```
+
+```java
+trigger HelloWorldTrigger on Account (before insert) {
+	System.debug('Hello World!');
+}
+```
+
+## Creat a Trigger
+
+- Sample in Trailhead: [Trigger Example](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#trigger-example)
+
+- **Developer Console** > **File** | **New** | **Apex Trigger**
+
+- For **Trigger Name**, enter `HelloWorldTrigger`.
+
+- For **sObject**, select **Account**. Click **Submit**.
+
+- Replace the default code with the following and save.
+
+    ```java
+    trigger HelloWorldTrigger on Account (before insert) {
+    	System.debug('Hello World!');
+    }
+    ```
+
+- Test the trigger:
+
+    - **Debug** | **Open Execute Anonymous Window**
+
+    - Add the following and then click **Execute**.
+
+        ```java
+        Account a = new Account(Name='Test Trigger');
+        insert a;
+        ```
+
+    - In the debug log, find the `Hello World!` statement. The log also shows that the trigger has been executed.
+
+## Trigger Events
+
+- `before insert`
+- `before update`
+- `before delete`
+- `after insert`
+- `after update`
+- `after delete`
+- `after undelete`
+
+## Context Variables
+
+**Context Variables** is similar to that the trigger calls a keyword. For example, `Trigger.new`.
+
+- [All Context Variables](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#using-context-variables)
+- `Trigger.new`: Returns a list of the new versions of the sObject records.
+- `Trigger.new`: Returns a list of the old versions of the sObject records.
+
+### Using Context Variables
+
+```java
+trigger HelloWorldTrigger on Account (before insert) {
+    for(Account a : Trigger.new) {
+        a.Description = 'New description';
+    }
+}
+```
+
+```java
+trigger ContextExampleTrigger on Account (before insert, after insert, after delete) {
+    if (Trigger.isInsert) {
+        if (Trigger.isBefore) {
+            // Process before insert
+        } else if (Trigger.isAfter) {
+            // Process after insert
+        }
+    }
+    else if (Trigger.isDelete) {
+        // Process after delete
+    }
+}
+```
+
+## Calling a Class Method in a Trigger
+
+- Sample in Trailhead: [Calling a Class Method from a Trigger](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#calling-a-class-method-from-a-trigger)
+
+    ```java
+    trigger 触发器名称 on 关联对象 (触发事件) {
+        // Call a class method in a trigger.
+        类名.方法名(参数)
+    }
+    ```
+
+## Adding Related Records
+
+- Sample in Trailhead: [Adding Related Records](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#adding-related-records)
+
+## Using Trigger Exceptions
+
+You sometimes need to add restrictions on certain database operations, such as preventing records from being saved when certain conditions are met.
+
+### Creat a Trigger Exceptions
+
+- Sample in Trailhead: [Using Trigger Exceptions](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#using-trigger-exceptions)
+
+    ```java
+    trigger AccountDeletion on Account (before delete) {
+        for (Account a : [SELECT Id FROM Account
+                         WHERE Id IN (SELECT AccountId FROM Opportunity) AND
+                         Id IN :Trigger.old]) {
+            // Prevent the deletion of accounts if they have related opportunities.
+            Trigger.oldMap.get(a.Id).addError(
+                'Cannot delete account with related opportunities.');
+        }
+    }
+    ```
+
+### Disable a Trigger Exceptions
+
+- Select **Apex Trigger** from **Setup**.
+- Click **Edit** next to the trigger you want to disable.
+- Deselect **Is Active**.
+- lick **Save**.
+
+### Triggers and Callouts
+
+- Sample in Trailhead: [Triggers and Callouts](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#triggers-and-callouts)
+
+## Bulk Apex Triggers
+
+### Operating on Record Sets
+
+Sample in Trailhead: [Operating on Record Sets](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_bulk?trail_id=force_com_dev_beginner#operating-on-record-sets)
+
+```java
+trigger MyTriggerBulk on Account(before insert) {
+    for(Account a : Trigger.new) {
+        a.Description = 'New description';
+    }
+}
+```
+
+### Performing Bulk SOQL
+
+Sample in Trailhead: [Performing Bulk SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_bulk?trail_id=force_com_dev_beginner#performing-bulk-soql)
+
+```java
+trigger SoqlTriggerBulk on Account(after update) {
+    // Perform SOQL query once.
+    List<Account> acctsWithOpps =
+        [SELECT Id,(SELECT Id,Name,CloseDate FROM Opportunities)
+         FROM Account WHERE Id IN :Trigger.new];
+    // Iterate over the returned accounts
+    for(Account a : acctsWithOpps) {
+        Opportunity[] relatedOpps = a.Opportunities;
+        // Do some other processing
+    }
+}
+```
+
+### Performing Bulk DML
+
+Sample in Trailhead: [Performing Bulk DML](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_bulk?trail_id=force_com_dev_beginner#performing-bulk-dml)
+
+```java
+trigger DmlTriggerBulk on Account(after update) {
+    // Get the related opportunities for the accounts in this trigger.
+    List<Opportunity> relatedOpps = [SELECT Id,Name,Probability FROM Opportunity
+        WHERE AccountId IN :Trigger.new];
+    List<Opportunity> oppsToUpdate = new List<Opportunity>();
+    // Iterate over the related opportunities
+    for(Opportunity opp : relatedOpps) {
+        // Update the description when probability is greater
+        // than 50% but less than 100%
+        if ((opp.Probability >= 50) && (opp.Probability < 100)) {
+            opp.Description = 'New description for opportunity.';
+            oppsToUpdate.add(opp);
+        }
+    }
+    // Perform DML on a collection
+    update oppsToUpdate;
+}
+```
+
