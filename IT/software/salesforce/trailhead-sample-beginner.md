@@ -1,3 +1,5 @@
+- Summary for Trailhead: [Developer Beginner](https://trailhead.salesforce.com/content/learn/trails/force_com_dev_beginner)
+
 # Salesforce Platform Basics
 
 ## [Install the Dreamhouse App](https://trailhead.salesforce.com/content/learn/modules/starting_force_com/starting_intro?trail_id=force_com_dev_beginner)
@@ -365,3 +367,9 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
         - Create a Salesforce DX Project
         - Authorize Your Trailhead Playground
         - Create a Lightning Web Component
+
+## [Create Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/create-lightning-web-components?trail_id=force_com_dev_beginner)
+
+## [Deploy Lightning Web Component Files](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/push-lightning-web-component-files?trail_id=force_com_dev_beginner)
+
+- The Component Configuration File: **XML**

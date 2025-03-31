@@ -1403,7 +1403,7 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
 ## if 语句
 
-- JS 中 `if` 语句的语法格式与 Java 相同。
+- JS 中 `if` 语句的语法格式与 Java 相同。
 
 ## switch 语句
 
@@ -1556,36 +1556,36 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
 ### 箭头函数
 
-- **语法**
+箭头函数的语法形式较为灵活，根据 **参数数量** 和 **函数体语句数量** 有不同的写法。
 
-	```javascript
-	const 函数名 = (参数列表) => 函数体;
-	```
+```javascript
+// 无参数、单行函数体
+const 函数名 = () => 函数体;
+```
 
-	```javascript
-	const getSum = (a, b) => console.log(a + b);
-	
-	getSum(1, 1);  // 2
-	console.log(typeof getSum);  // function
-	```
+```javascript
+// 当没有参数时，需要使用空括号 () 表示。
+const greet = () => 'Hello!';
 
-- **扩展**
+// 如果只有一个参数，可以省略括号。
+const square1 = num => num * num;
 
-	```javascript
-	// 如果只有一个参数，还可以省略参数的括号
-	const hello = 参数 => 函数体;
-	
-	// 如果函数体不是一个单行表达式，不可以省略大括号和 `return`。这是箭头函数的标准形式。
-	const 函数名 = (参数列表) => {
-		函数体
-		return 返回值;
-	};
-	```
+// 当有多个参数时，需要用括号将参数括起来。
+const square2 = (num1, num2) => num1 * num2;
 
-- **说明**
+// 当函数体包含多条语句，需要使用花括号 {} 包裹，并且使用 return 关键字返回值。
+const calculate = num => {
+    const result = num * 2 + 3;
+    return result;
+};
+```
 
-	- 箭头函数没有自己的 `this` 和 `arguments`，`this` 继承自外层作用域。
-	- 箭头函数适合用作回调函数。
+**说明**
+
+- 箭头函数没有自己的 `this`，`this` 继承自外层作用域。
+- 箭头函数没有自己的 `arguments`，它会使用外层函数的 `arguments` 对象。
+- 箭头函数不能使用 `yield` 关键字，因此不能用作生成器函数。
+- 箭头函数适合用作回调函数。
 
 ### 构造函数
 

@@ -754,14 +754,14 @@ An **app** is a collection of items that work together to serve a particular fun
 - Locate to **Dreamhouse** from **App Launcher**.
 - Click the **Settings** tab, then click the **Import Data** button. This populates the app with sample data, including properties, contacts, and brokers.
 
-## Create an App
+## Create an App with App Manager
 
 - Sample in Trailhead: [Create an App](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/create-a-data-model-using-clicks?trail_id=force_com_dev_beginner).
 - Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 - From **Setup**, select `App Manager` in the **Quick Find**.
 - Click **New Lightning App**.
 - In the **App Details & Branding** window, enter these details.
-    - For App Name, type `Dreamhouse`.
+    - For **App Name**, type `Dreamhouse`.
     - For the Image, download [dreamhouse-logo.png](https://github.com/trailheadapps/dreamhouse-lwc/blob/main/dreamhouse-logo.png) as **dreamhouse-logo.png** and upload it.
     - Click **Next**.
 - On the **App Options** screen, select **Standard navigation**, then click **Next**.
@@ -769,6 +769,26 @@ An **app** is a collection of items that work together to serve a particular fun
 - On the **Navigation Items** screen, select **Home**, **Houses**, **Reports**, and **Dashboards** from the **Available Items** list, and move them to the **Selected Items** list using the arrow. Ensure you choose the pink **Home** tab. Then click **Next**.
 - On the **User Profiles** screen, select **System Administrator**, add it to **Selected Profiles**, and then click **Save & Finish**.
 - Select **Dreamhouse** from **App Launcher** to check the new App.
+
+## Create an App with Lightning App Builder
+
+- Sample in Trailhead: [Create a New Page for Your Component](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/push-lightning-web-component-files?trail_id=force_com_dev_beginner)
+- Based on preconditions:
+    - Create a project **bikeCard** with VS Code.
+    - Create a LWC **bikeCard** and edit the components files.
+    - Deploy the component files to your org.
+- From **Setup**, select **Lightning App Builder**  in the **Quick Find** box.
+- Click **New**.
+- Select **App Page** and click **Next**.
+- For **Label** type **Bike Card**, and click **Next**.
+- Select **One Region** and click **Done**.
+- Drag the **Bike Card** component from the **Custom** area of the Lightning Components list to **Page Canvas**.
+- Click **Save** | **Activate**.
+- Keep **Activate for all users** selected. And, optionally, change the name or icon for your app.
+- Click **Save**. You're asked to add your page to navigation menus, but you don't need to. You can still get to your page in this environment.
+- Click **Skip and Save**.
+- Click <img src="assets/6efb72a74446f4fb9cd8d855b48421bb_kix.rnnn66i6r94q.jpeg" alt="Back" style="zoom:50%;" /> to exit the Lightning App Builder.
+- Open it and see your component working in the UI.
 
 ## Sample Apps
 
@@ -1113,19 +1133,503 @@ You can build Lightning components using two programming models: the **Lightning
 
 - Sample in Trailhead: [Developer Console Basics | Navigate and Edit Source Code | Create an Aura Component](https://trailhead.salesforce.com/content/learn/modules/developer_console/developer_console_source_code#create-an-aura-component)
 
-# [Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
+# [LWC](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics)
 
 **Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
 
 - [Lightning Web Components for Visualforce Developers](https://trailhead.salesforce.com/content/learn/modules/lwc-for-visualforce-developers)
-- [Component Reference](https://developer.salesforce.com/docs/component-library/overview/components)
+- [Component Reference](https://developer.salesforce.com/docs/component-library/overview/components)
+- https://www.lightningdesignsystem.com/2e1ef8501/p/355656-patterns
+- https://developer.salesforce.com/docs/component-library/overview/components
 
-## Build a Reusable UI Component with Lightning Web Components
+## HTML
+
+在 **LWC** 中，HTML 负责定义组件的结构和内容。LWC 的 HTML 采用标准的 Web 组件技术，并结合 Salesforce 提供的 **Lightning Base Components**，确保与 Salesforce 平台的无缝集成。
+
+### 基本结构
+
+LWC 组件的 HTML 代码必须放在 `<template>` 根标签内。例如：
+
+```html
+<template>
+  <div class="container">
+    <h1>Hello, LWC!</h1>
+    <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+  </div>
+</template>
+```
+
+### 数据绑定
+
+LWC 使用 **大括号 `{}`** 语法来绑定 JavaScript 中的变量：
+
+```html
+<template>
+  <p>Hello, {name}!</p>
+</template>
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  name = 'Salesforce';
+}
+```
+
+### 条件渲染
+
+#### 静态条件
+
+LWC 提供 `if-else` 和 `lwc:else-if` 和 `lwc:else` 进行静态条件渲染：
+
+```html
+<template lwc:if={isAdmin}>
+  <p>You are an administrator!</p>
+</template>
+<template lwc:else-if={isUser}>
+  <p>You are a regular user.</p>
+</template>
+<template lwc:else>
+  <p>Please log in first.</p>
+</template>
+```
+
+```java
+import { LightningElement } from 'lwc';
+
+export default class ConditionalRendering extends LightningElement {
+  isAdmin = false;
+  isUser = true;
+}
+```
+
+#### 动态条件
+
+LWC 提供 `if:true` 和 `if:false` 进行动态条件渲染：
+
+```html
+<template>
+  <template if:true={isVisible}>
+    <p>This text is visible!</p>
+  </template>
+  <template if:false={isVisible}>
+    <p>This text is hidden.</p>
+  </template>
+</template>
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  isVisible = true;
+}
+```
+
+### 列表渲染
+
+LWC 允许使用 `for:each` 遍历数组：
+
+```html
+<template>
+  <ul>
+    <template for:each={items} for:item="item">
+      <li key={item.id}>{item.name}</li>
+    </template>
+  </ul>
+</template>
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  items = [
+    { id: 1, name: 'Item A' },
+    { id: 2, name: 'Item B' },
+    { id: 3, name: 'Item C' }
+  ];
+}
+```
+
+### 事件绑定
+
+LWC 通过标准的 `on` 事件前缀绑定事件处理函数：
+
+```html
+<template>
+  <button onclick={handleClick}>Click Me</button>
+</template>
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  handleClick() {
+    alert('Button clicked!');
+  }
+}
+```
+
+### 插槽
+
+LWC 支持 `slot`，允许父组件向子组件传递内容：
+
+**子组件** (`childComponent.html`)
+
+```html
+<template>
+  <div>
+    <h2>Child Component</h2>
+    <slot></slot> <!-- 这里是插槽 -->
+  </div>
+</template>
+```
+
+**父组件** (`parentComponent.html`)
+
+```html
+<template>
+  <c-child-component>
+    <p>This content is passed to the child component.</p>
+  </c-child-component>
+</template>
+```
+
+### 引用 HTML 元素
+
+可以通过 `template.querySelector()` 访问 HTML 元素：
+
+```html
+<template>
+  <input type="text" class="my-input" />
+  <button onclick={handleClick}>Get Value</button>
+</template>
+```
+
+```javascript
+export default class MyComponent extends LightningElement {
+  handleClick() {
+    const inputElement = this.template.querySelector('.my-input');
+    alert(inputElement.value);
+  }
+}
+```
+
+## Java Script
+
+在 **LWC** 中，JavaScript 负责 **组件逻辑**、**数据管理** 和 **事件处理**，并与 HTML 进行交互。
+
+### 基本结构
+
+```javascript
+import { LightningElement } from 'lwc'; // 导入 LightningElement 基类
+
+export default class MyComponent extends LightningElement { // 定义组件类
+  // 具体功能
+  message = 'Hello, LWC!'; // 组件的属性
+
+  handleClick() {
+    this.message = 'Button Clicked!'; // 修改属性值
+  }
+}
+
+```
+
+#### 导入基类
+
+每个 LWC 组件都需要从 `lwc` 模块导入**基类** `LightningElement`，所有组件都必须继承它：
+
+```javascript
+import { LightningElement } from 'lwc';
+```
+
+#### 定义组件类
+
+```javascript
+export default class MyComponent extends LightningElement {
+}
+```
+
+- `export default class`：导出 LWC 组件，使其可以被 Salesforce 识别并使用。
+- `extends LightningElement`：继承 `LightningElement` 以获得 LWC 的功能。
+
+#### 组件的属性
+
+在 LWC 中，组件的数据通常通过类的 **属性** 存储：
+
+```java
+message = 'Hello, LWC!';
+```
+
+然后可以在 HTML 文件中使用 **数据绑定**：
+
+```html
+<template>
+  <p>{message}</p>  <!-- 绑定 message 变量 -->
+</template>
+```
+
+当 `message` 发生变化时，LWC 会自动更新 UI。
+
+#### 事件处理
+
+LWC 组件中的按钮、输入框等可以触发事件，并通过 JS 处理：
+
+```javascript
+handleClick() {
+  this.message = 'Button Clicked!';
+}
+```
+
+HTML 绑定 `onclick` 事件：
+
+```html
+<template>
+  <p>{message}</p>
+  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+</template>
+```
+
+点击按钮后，`handleClick()` 方法会执行，`message` 更新，页面上的文本自动变化。
+
+### 装饰器
+
+#### `@api`
+
+在 LWC 中，`@api` 装饰器的作用是使 **子组件类的属性** 变成 **公开属性（public property）**，从而允许 **父组件访问和修改** 这些属性。
+
+**在子组件中：**
+
+- 在子组件 `childComponent.js` 中，使用 `@api` 让 `name` 变成一个 **可被父组件访问的公开属性**：
+
+    ```javascript
+    import { LightningElement, api } from 'lwc';
+    
+    export default class ChildComponent extends LightningElement {
+      @api name = 'Default Name'; // 公开属性，可被父组件访问和赋值
+    }
+    ```
+
+- 在子组件 HTML 模板中使用 `{name}` 绑定 `name` 变量：
+
+    ```html
+    <template>
+      <p>Child Component Name: {name}</p>
+    </template>
+    ```
+
+**在父组件中：**
+
+- 在父组件的 HTML 中使用 `<c-child-component>`，并给 `name` 传递一个值：
+
+    ```html
+    <template>
+      <c-child-component name="Custom Name"></c-child-component>
+    </template>
+    ```
+
+- **说明：**
+
+    - `name="Custom Name"` 这一行表示 **父组件** 在 **HTML 中设置子组件的 `name` 值**。
+    - LWC 会自动**将 `"Custom Name"` 传递到子组件的 `name` 变量**。
+
+**渲染结果：**
+
+- 当 LWC 渲染 `parentComponent.html` 时，`childComponent.html` 会显示：
+
+    ```html
+    <p>Child Component Name: Custom Name</p>
+    ```
+
+#### `@wire`
+
+`@wire` 用于 **调用 Salesforce 数据** 或 **Apex 方法**：
+
+```javascript
+import { LightningElement, wire } from 'lwc';
+import { getRecord } from 'lightning/uiRecordApi';
+
+export default class MyComponent extends LightningElement {
+  @wire(getRecord, { recordId: '001XXXXXXXXXXXXXXX', fields: ['Account.Name'] })
+  account;
+}
+```
+
+- `@wire` 自动调用 Salesforce API，并把数据存入 `account` 变量。
+
+##### 调用 Salesforce 数据
+
+LWC 提供 `lightning/uiRecordApi`，可以使用 `getRecord()` 来获取 Salesforce 对象（如 Account、Contact 等）的数据。
+
+- **获取 Account 记录**
+
+    ```javascript
+    import { LightningElement, wire } from 'lwc';
+    import { getRecord } from 'lightning/uiRecordApi';
+    
+    export default class MyComponent extends LightningElement {
+      recordId = '001XXXXXXXXXXXXXXX'; // 假设的 Account 记录 ID
+    
+      @wire(getRecord, { recordId: '$recordId', fields: ['Account.Name', 'Account.Industry'] })
+      account;
+    }
+    ```
+
+- **说明**
+
+    | 代码                                                         | 作用                                                         |
+    | ------------------------------------------------------------ | ------------------------------------------------------------ |
+    | `@wire(getRecord, { recordId: '$recordId', fields: [...] })` | 通过 `@wire` **调用 Salesforce API** 并获取 `recordId` 对应的 Account 记录 |
+    | `recordId: '$recordId'`                                      | `recordId` 以 `$` 开头，表示它是 **动态绑定的变量**          |
+    | `fields: ['Account.Name', 'Account.Industry']`               | 指定要获取的字段                                             |
+    | `account`                                                    | **自动存储 API 返回的数据**                                  |
+
+- **使用 `account` 数据**：在 **HTML 文件** 里，可以用 `{account.data}` 访问数据：
+
+    ```html
+    <template>
+      <template if:true={account.data}>
+        <p>Account Name: {account.data.fields.Name.value}</p>
+        <p>Industry: {account.data.fields.Industry.value}</p>
+      </template>
+      <template if:true={account.error}>
+        <p>Error fetching record!</p>
+      </template>
+    </template>
+    ```
+
+##### 调用 Apex 方法
+
+**编写 Apex 方法**：
+
+```java
+public with sharing class AccountController {
+    @AuraEnabled(cacheable=true) // 开启缓存，提高性能
+    public static List<Account> getAccounts() {
+        return [SELECT Id, Name, Industry FROM Account LIMIT 5];
+    }
+}
+```
+
+**在 LWC 中调用 Apex**：
+
+```javascript
+import { LightningElement, wire } from 'lwc';
+import getAccounts from '@salesforce/apex/AccountController.getAccounts';
+
+export default class MyComponent extends LightningElement {
+  @wire(getAccounts)
+  accounts;
+}
+```
+
+**在 HTML 中显示数据**：
+
+```html
+<template>
+  <template if:true={accounts.data}>
+    <template for:each={accounts.data} for:item="acc">
+      <p key={acc.Id}>{acc.Name} - {acc.Industry}</p>
+    </template>
+  </template>
+  <template if:true={accounts.error}>
+    <p>Error fetching accounts!</p>
+  </template>
+</template>
+
+```
+
+### Getter 和 Setter
+
+### 生命周期方法
+
+LWC 组件有多个生命周期钩子，例如：
+
+```javascript
+connectedCallback() {
+  console.log('组件已加载！');
+}
+```
+
+**常见生命周期方法**
+
+| 方法                     | 触发时机            |
+| ------------------------ | ------------------- |
+| `constructor()`          | 组件实例被创建时    |
+| `connectedCallback()`    | 组件插入 DOM 时     |
+| `renderedCallback()`     | 组件渲染完成后      |
+| `disconnectedCallback()` | 组件从 DOM 中移除时 |
+
+### 监听事件
+
+### 组件间通信
+
+## XML
+
+在 LWC 中，XML 为 Salesforce 提供元数据。
+
+- [XML Configuration File Elements](https://developer.salesforce.com/docs/platform/lwc/guide/reference-configuration-tags?-ga=2.133572430.1746469108.1743066462-502386947.1743066462.html)
+
+## LBC
+
+**Lightning Base Components (LBC)** 是 Salesforce 提供的一组 **标准 UI 组件**，用于在 **LWC** 中构建和增强用户界面。
+
+- **官方文档**：Salesforce 提供了 [Lightning Base Components 官方文档](https://developer.salesforce.com/docs/component-library/overview/components)，其中列出了所有可用的组件、属性、方法及示例。
+- **Lightning Design System**：可以参考 Salesforce 的 [Lightning Design System](https://www.lightningdesignsystem.com/) 来查看所有组件的设计规范和样式。
+
+### LBC 基础
+
+- 使用驼峰式命名您的组件，例如 `myComponent`。驼峰式组件文件夹名称在标记中映射为短横线分隔式。在标记中，要引用名为 myComponent 的组件，请使用 `<c-my-component>` 。
+
+### LBC 用法
+
+这些组件可以通过 **LWC** 或 **Aura 组件** 中使用，通常以 HTML 标签的形式进行调用。
+
+示例：使用 `lightning-button`
+
+```html
+<template>
+  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+</template>
+
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  handleClick() {
+    alert('Button clicked!');
+  }
+}
+```
+
+### LBC 结构
+
+组件只需要一个文件夹和与其同名的文件。它们会根据名称和位置自动链接。
+
+## Displaying a Component in an Org
+
+[Displaying a Component in an Org](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/push-lightning-web-component-files?trail_id=force_com_dev_beginner)
+
+You have two options for displaying a Lightning web component in the UI.
+
+1. Set the component to support various flexipage types (home, record home, and so on) then add it to a flexipage using the Lightning App Builder. This is the simplest approach and the one you follow in this unit.
+2. You can also create a tab which points to an Aura component containing your Lightning web component. You can see the required pieces in the repo.
+    - [Wrapper Components](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/aura)
+    - [Tabs](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/tabs)
+    - [Visibility Settings](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/permissionsets/recipes.permissionset-meta.xml)
+    - [Default application configuration file](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/applications/LWC_Recipes.app-meta.xml)
+
+## Build a Reusable UI Component with LWC
 
 - Sample in Trailhead: [Build a Reusable UI Component with Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/build-reusable-ui-component-with-lightning-web-components?trail_id=force_com_dev_beginner).
 - Based on the project **Dreamhouse**: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner).
 
-### Create and Deploy a Lightning Web Component
+### Create and Deploy a LWC
 
 - Under the **force-app/main/default** folder, right-click the **lwc** folder and select **SFDX: Create Lightning Web Component**.
 
@@ -1232,7 +1736,7 @@ You can build Lightning components using two programming models: the **Lightning
 
     <img src="assets/image-20250317030231300.png" alt="image-20250317030231300" style="zoom: 33%;" />
 
-## Create a Hello World Lightning Web Component
+## Create a Hello World LWC
 
 - Sample in Trailhead: [Create a Hello World Lightning Web Component](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components/create-a-hello-world-lightning-web-component)
 - A new TP: **Quick Start: Lightning Web Components**
@@ -1251,7 +1755,7 @@ You can build Lightning components using two programming models: the **Lightning
 - Press **Enter** to accept the default alias.
 - Log in using your Trailhead Playground credentials.
 
-### Create a Lightning Web Component
+### Create a LWC
 
 - In VS Code, open the Command Palette by pressing **Ctrl+Shift+P**.
 
@@ -1335,7 +1839,7 @@ You can build Lightning components using two programming models: the **Lightning
 
 - Click **Save** again, then click <img src="assets/942d17cf9c1b241674d6ac5ec31a7679_kix.h20bu8i5pfwm.jpg" alt="Back" style="zoom:50%;" /> to return to the page.
 
-- Refresh the page to view your new component.
+- Click **Home** again to view your new component.
 
 # [List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 

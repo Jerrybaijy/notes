@@ -857,7 +857,7 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 
 ### 华为工具
 
-- 此方法是使用 `Tool.bat` 关闭 `基于虚拟化的安全性`。
+- 此方法是使用 `Tool.bat` 关闭 `基于虚拟化的安全性`。
 
 - 从[华为页面](https://consumer.huawei.com/cn/support/content/zh-cn16012808/)或网盘下载 `Tool.bat`，并以管理员身份运行。
 
