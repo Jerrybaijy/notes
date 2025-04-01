@@ -56,7 +56,7 @@ export default class MyComponent extends LightningElement {
 
 ### 静态条件
 
-LWC 提供 `if-else` 和 `lwc:else-if` 和 `lwc:else` 进行静态条件渲染：
+LWC 提供 `lwc:if` 和 `lwc:else-if` 和 `lwc:else` 进行静态条件渲染：
 
 ```html
 <template lwc:if={isAdmin}>
@@ -274,7 +274,10 @@ HTML 绑定 `onclick` 事件：
 
 ### `@api`
 
-在 LWC 中，`@api` 装饰器的作用是使 **子组件类的属性** 变成 **公开属性（public property）**，从而允许 **父组件访问和修改** 这些属性。
+在 LWC 中，`@api` 装饰器的作用是使 **子组件类的属性或方法** 变成 **公开属性或方法**，从而允许 **其它组件访问和修改** 这些属性或方法。
+
+- **属性暴露**：使用 `@api` 装饰的属性可以从父组件传递数据到子组件。父组件可以通过在模板中绑定属性的方式，将数据传递给子组件中使用 `@api` 声明的属性，实现组件间的数据通信。
+- **方法暴露**：被 `@api` 装饰的方法可以在其他组件中被调用，这使得子组件可以向父组件或其他兄弟组件暴露一些公共的行为或功能，方便在不同组件之间进行交互和协作。
 
 **在子组件中：**
 
@@ -485,6 +488,196 @@ export default class MyComponent extends LightningElement {
 ## LBC 结构
 
 组件只需要一个文件夹和与其同名的文件。它们会根据名称和位置自动链接。
+
+# Components Communication
+
+在 **Lightning Web Components (LWC)** 中，**向上** 和 **向下** 传递数据主要涉及 **父子组件通信**。LWC 遵循 **单向数据流** 原则，即 **数据通常从父组件流向子组件，而事件则从子组件传递到父组件**。
+
+## **向下传递属性**
+
+父组件可以通过 **属性** 将数据传递给子组件。
+
+**关键点**：**`@api`** 修饰符让子组件的 `message` 变量成为公开属性，父组件可以设置它的值。
+
+```html
+<!-- parentComponent.html -->
+<template>
+  <c-child-component message="Hello from Parent"></c-child-component>
+</template>
+```
+
+```javascript
+// childComponent.js
+import { LightningElement, api } from 'lwc';
+
+export default class ChildComponent extends LightningElement {
+  @api message; // 通过 @api 公开属性以接收数据
+}
+```
+
+```html
+<!-- childComponent.html -->
+<template>
+  <p>Message from Parent: {message}</p>
+</template>
+```
+
+## 向下传递方法 
+
+如果子组件需要执行 **父组件提供的方法**，可以使用 `@api` 暴露子组件的方法，供父组件调用。
+
+**关键点**：子组件用 `@api` 公开 `childMethod()`，父组件通过 `this.template.querySelector()` 调用它。
+
+```html
+<!-- parentComponent.html -->
+<template>
+  <c-child-component></c-child-component>
+  <button onclick={callChildMethod}>Call Child Method</button>
+</template>
+```
+
+```javascript
+// parentComponent.js
+import { LightningElement, api } from 'lwc';
+
+export default class ParentComponent extends LightningElement {
+  callChildMethod() {
+    this.template.querySelector('c-child-component').childMethod();
+  }
+}
+```
+
+```javascript
+// childComponent.js
+import { LightningElement, api } from 'lwc';
+
+export default class ChildComponent extends LightningElement {
+  @api childMethod() {
+    alert('Child method called by Parent!');
+  }
+}
+```
+
+## **向上传递事件**
+
+子组件可以通过 **事件** 向父组件传递数据。
+
+**关键点**：
+
+- 使用 `CustomEvent` 创建事件，`detail` 属性包含传递的数据。
+- 通过 `dispatchEvent()` 触发事件，父组件监听 `onmessageevent` 处理数据。
+
+```html
+<!-- parentComponent.html -->
+<template>
+  <c-child-component onmessageevent={handleMessage}></c-child-component>
+  <p>Received Message: {receivedMessage}</p>
+</template>
+```
+
+```javascript
+// parentComponent.js
+import { LightningElement } from 'lwc';
+
+export default class ParentComponent extends LightningElement {
+  receivedMessage = '';
+
+  handleMessage(event) {
+    this.receivedMessage = event.detail; // 获取子组件传递的数据
+  }
+}
+```
+
+```javascript
+// childComponent.js
+import { LightningElement } from 'lwc';
+
+export default class ChildComponent extends LightningElement {
+  sendMessage() {
+    const event = new CustomEvent('messageevent', {
+      detail: 'Hello from Child' // 传递的数据
+    });
+    this.dispatchEvent(event); // 触发事件
+  }
+}
+```
+
+```javascript
+<!-- childComponent.html -->
+<template>
+  <button onclick={sendMessage}>Send Message</button>
+</template>
+```
+
+## 兄弟传递
+
+如果两个 **无直接关系的组件**（兄弟组件）需要通信，可以使用 **发布-订阅 (Pub-Sub) 模式**。
+
+使用 `pubsub.js` 作为事件总线
+
+```javascript
+// pubsub.js
+const callbacks = {};
+
+export const subscribe = (event, callback) => {
+  if (!callbacks[event]) {
+    callbacks[event] = [];
+  }
+  callbacks[event].push(callback);
+};
+
+export const publish = (event, data) => {
+  if (callbacks[event]) {
+    callbacks[event].forEach(callback => callback(data));
+  }
+};
+```
+
+兄弟组件 A 触发事件
+
+```javascript
+// componentA.js
+import { LightningElement } from 'lwc';
+import { publish } from 'c/pubsub';
+
+export default class ComponentA extends LightningElement {
+  handleClick() {
+    publish('eventName', 'Hello from Component A');
+  }
+}
+```
+
+```html
+<!-- componentA.html -->
+<template>
+  <button onclick={handleClick}>Send to B</button>
+</template>
+```
+
+兄弟组件 B 监听事件
+
+```javascript
+// componentB.js
+import { LightningElement } from 'lwc';
+import { subscribe } from 'c/pubsub';
+
+export default class ComponentB extends LightningElement {
+  message = '';
+
+  connectedCallback() {
+    subscribe('eventName', (data) => {
+      this.message = data;
+    });
+  }
+}
+```
+
+```html
+<!-- componentB.html -->
+<template>
+  <p>Message from A: {message}</p>
+</template>
+```
 
 # Displaying a Component in an Org
 
