@@ -12,6 +12,7 @@ You can build Lightning components using two programming models: the **Lightning
 
 **Lightning web components (LWC)** are custom HTML elements that use the [Web Components](https://developer.mozilla.org/en-US/docs/Web/Web_Components) standards and are built with HTML and JavaScript. A LWC runs in the browser natively and allows developers to customize the out-of-the-box user interface.
 
+- [Lightning Web Components Developer Guide](https://developer.salesforce.com/docs/platform/lwc/guide/get-started-introduction.html)
 - [Lightning Web Components for Visualforce Developers](https://trailhead.salesforce.com/content/learn/modules/lwc-for-visualforce-developers)
 - [Component Reference](https://developer.salesforce.com/docs/component-library/overview/components)
 - https://www.lightningdesignsystem.com/2e1ef8501/p/355656-patterns
@@ -443,61 +444,18 @@ connectedCallback() {
 
 ## 监听事件
 
-## 组件间通信
+## 组件通信
 
-# XML
+在 LWC 中，组件通信方式主要包括 **父组件与子组件通信、兄弟组件通信、非直接关联组件通信**。
 
-在 LWC 中，XML 为 Salesforce 提供元数据。
+### 传递属性
 
-- [XML Configuration File Elements](https://developer.salesforce.com/docs/platform/lwc/guide/reference-configuration-tags?-ga=2.133572430.1746469108.1743066462-502386947.1743066462.html)
+**适用于**：父组件向子组件传递数据。
 
-# LBC
+**实现方式**：
 
-**Lightning Base Components (LBC)** 是 Salesforce 提供的一组 **标准 UI 组件**，用于在 **LWC** 中构建和增强用户界面。
-
-- **官方文档**：Salesforce 提供了 [Lightning Base Components 官方文档](https://developer.salesforce.com/docs/component-library/overview/components)，其中列出了所有可用的组件、属性、方法及示例。
-- **Lightning Design System**：可以参考 Salesforce 的 [Lightning Design System](https://www.lightningdesignsystem.com/) 来查看所有组件的设计规范和样式。
-
-## LBC 基础
-
-- 使用驼峰式命名您的组件，例如 `myComponent`。驼峰式组件文件夹名称在标记中映射为短横线分隔式。在标记中，要引用名为 myComponent 的组件，请使用 `<c-my-component>` 。
-
-## LBC 用法
-
-这些组件可以通过 **LWC** 或 **Aura 组件** 中使用，通常以 HTML 标签的形式进行调用。
-
-示例：使用 `lightning-button`
-
-```html
-<template>
-  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
-</template>
-
-```
-
-```javascript
-import { LightningElement } from 'lwc';
-
-export default class MyComponent extends LightningElement {
-  handleClick() {
-    alert('Button clicked!');
-  }
-}
-```
-
-## LBC 结构
-
-组件只需要一个文件夹和与其同名的文件。它们会根据名称和位置自动链接。
-
-# Components Communication
-
-在 **Lightning Web Components (LWC)** 中，**向上** 和 **向下** 传递数据主要涉及 **父子组件通信**。LWC 遵循 **单向数据流** 原则，即 **数据通常从父组件流向子组件，而事件则从子组件传递到父组件**。
-
-## **向下传递属性**
-
-父组件可以通过 **属性** 将数据传递给子组件。
-
-**关键点**：**`@api`** 修饰符让子组件的 `message` 变量成为公开属性，父组件可以设置它的值。
+- 在子组件的 **JavaScript** 中使用装饰器 `@api` 公开一个属性。
+- 在子组件 **HTML** 里，使用数据绑定（`{}`）接收父组件的传值。
 
 ```html
 <!-- parentComponent.html -->
@@ -522,11 +480,14 @@ export default class ChildComponent extends LightningElement {
 </template>
 ```
 
-## 向下传递方法 
+### 传递方法 
 
-如果子组件需要执行 **父组件提供的方法**，可以使用 `@api` 暴露子组件的方法，供父组件调用。
+**适用于**：父组件调用子组件的方法。
 
-**关键点**：子组件用 `@api` 公开 `childMethod()`，父组件通过 `this.template.querySelector()` 调用它。
+**实现方式**：
+
+- 在子组件中，用 `@api` 公开一个方法。
+- 在父组件中，用 `querySelector()` 获取子组件实例并调用该方法。
 
 ```html
 <!-- parentComponent.html -->
@@ -558,58 +519,70 @@ export default class ChildComponent extends LightningElement {
 }
 ```
 
-## **向上传递事件**
+**关键点**：子组件用 `@api` 公开 `childMethod()`，父组件通过 `this.template.querySelector()` 调用它。
 
-子组件可以通过 **事件** 向父组件传递数据。
+1. **`this.template.querySelector('c-child-component')`**
+    - `this` 指的是 `ParentComponent` 这个 LWC 组件的实例。
+    - `this.template` 代表当前组件的模板 (`parentComponent.html` 的 `<template>` 部分)。
+    - `querySelector('c-child-component')` 通过 CSS 选择器的方式，在当前组件的 HTML 模板中查找 `<c-child-component>` 这个子组件的实例。
+2. **`.childMethod();`**
+    - `querySelector` 返回 `<c-child-component>` 这个子组件的 JavaScript 实例。
+    - `childMethod()` 是 `ChildComponent` 组件暴露的 `@api` 方法。
+    - 由于 `childMethod` 是用 `@api` 标记的，它是**公开方法**，可以被父组件调用。
 
-**关键点**：
+**代码流程**：
 
-- 使用 `CustomEvent` 创建事件，`detail` 属性包含传递的数据。
-- 通过 `dispatchEvent()` 触发事件，父组件监听 `onmessageevent` 处理数据。
+1. `ParentComponent` 组件包含一个 `ChildComponent` (`<c-child-component>`)。
+2. 用户点击 `<button>` 时，触发 `callChildMethod()` 方法。
+3. `callChildMethod()` 通过 `querySelector` 获取 `ChildComponent` 的实例，并调用其 `childMethod()`。
+4. `ChildComponent` 的 `childMethod()` 触发 `alert('Child method called by Parent!');` 弹出对话框。
+
+### 传递事件
+
+在 LWC 中，`dispatchEvent` 的作用是 **在子组件中触发一个自定义事件**，然后让 **父组件监听并做出反应**。
+
+**适用于**：子组件向父组件传递**触发事件**。
+
+**实现方式**：
+
+- 在子组件中，使用 `new CustomEvent("事件名")` 创建事件，并使用 `dispatchEvent` 触发事件。
+- 在父组件中，通过 `on事件名={事件处理函数}` 监听子组件中的**触发事件**并做出反应。
 
 ```html
-<!-- parentComponent.html -->
+<!-- childComponent.html -->
 <template>
-  <c-child-component onmessageevent={handleMessage}></c-child-component>
-  <p>Received Message: {receivedMessage}</p>
+  <button onclick={sendMessage}>发送消息</button>
 </template>
-```
-
-```javascript
-// parentComponent.js
-import { LightningElement } from 'lwc';
-
-export default class ParentComponent extends LightningElement {
-  receivedMessage = '';
-
-  handleMessage(event) {
-    this.receivedMessage = event.detail; // 获取子组件传递的数据
-  }
-}
 ```
 
 ```javascript
 // childComponent.js
 import { LightningElement } from 'lwc';
-
-export default class ChildComponent extends LightningElement {
+export default class Child extends LightningElement {
   sendMessage() {
-    const event = new CustomEvent('messageevent', {
-      detail: 'Hello from Child' // 传递的数据
-    });
-    this.dispatchEvent(event); // 触发事件
+    this.dispatchEvent(new CustomEvent('hello'));
   }
 }
 ```
 
 ```javascript
-<!-- childComponent.html -->
+// parentComponent.js
+import { LightningElement } from 'lwc';
+export default class Parent extends LightningElement {
+  handleHello() {
+    alert('收到子组件的消息！');
+  }
+}
+```
+
+```html
+<!-- parentComponent.html -->
 <template>
-  <button onclick={sendMessage}>Send Message</button>
+  <c-child-component onhello={handleHello}></c-child-component>
 </template>
 ```
 
-## 兄弟传递
+### 兄弟传递
 
 如果两个 **无直接关系的组件**（兄弟组件）需要通信，可以使用 **发布-订阅 (Pub-Sub) 模式**。
 
@@ -678,6 +651,50 @@ export default class ComponentB extends LightningElement {
   <p>Message from A: {message}</p>
 </template>
 ```
+
+# XML
+
+在 LWC 中，XML 为 Salesforce 提供元数据。
+
+- [XML Configuration File Elements](https://developer.salesforce.com/docs/platform/lwc/guide/reference-configuration-tags?-ga=2.133572430.1746469108.1743066462-502386947.1743066462.html)
+
+# LBC
+
+**Lightning Base Components (LBC)** 是 Salesforce 提供的一组 **标准 UI 组件**，用于在 **LWC** 中构建和增强用户界面。
+
+- **官方文档**：Salesforce 提供了 [Lightning Base Components 官方文档](https://developer.salesforce.com/docs/component-library/overview/components)，其中列出了所有可用的组件、属性、方法及示例。
+- **Lightning Design System**：可以参考 Salesforce 的 [Lightning Design System](https://www.lightningdesignsystem.com/) 来查看所有组件的设计规范和样式。
+
+## LBC 基础
+
+- 使用驼峰式命名您的组件，例如 `myComponent`。驼峰式组件文件夹名称在标记中映射为短横线分隔式。在标记中，要引用名为 myComponent 的组件，请使用 `<c-my-component>` 。
+
+## LBC 用法
+
+这些组件可以通过 **LWC** 或 **Aura 组件** 中使用，通常以 HTML 标签的形式进行调用。
+
+示例：使用 `lightning-button`
+
+```html
+<template>
+  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+</template>
+
+```
+
+```javascript
+import { LightningElement } from 'lwc';
+
+export default class MyComponent extends LightningElement {
+  handleClick() {
+    alert('Button clicked!');
+  }
+}
+```
+
+## LBC 结构
+
+组件只需要一个文件夹和与其同名的文件。它们会根据名称和位置自动链接。
 
 # Displaying a Component in an Org
 
