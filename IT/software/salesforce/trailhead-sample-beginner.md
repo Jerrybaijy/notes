@@ -1,4 +1,5 @@
 - Summary for Trailhead: [Developer Beginner](https://trailhead.salesforce.com/content/learn/trails/force_com_dev_beginner)
+- Summary for Trailhead: [Build an Event Registration App](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app)
 
 # Salesforce Platform Basics
 
@@ -373,3 +374,26 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Deploy Lightning Web Component Files](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/push-lightning-web-component-files?trail_id=force_com_dev_beginner)
 
 - The Component Configuration File: **XML**
+
+## [Handle Events in Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/handle-events-in-lightning-web-components?trail_id=force_com_dev_beginner)
+
+## [Add Styles and Data to a Lightning Web Component](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/add-styles-and-data-to-a-lightning-web-component?trail_id=force_com_dev_beginner)
+
+- CSS and Component Styling
+- Applying Lightning Design System Styles
+
+# Build an Event Registration App
+
+## [Install the Package](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app/install-the-package)
+
+- Create a new TP: **Build an Event Registration App**
+
+## [Update the Data Model and Import Data](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app/update-the-data-model-and-import-data)
+
+- Add a Custom Object: **Event Registration**
+- Add Custom Fields for **Event Registration**
+    - **Registration ID**
+    - **Master-Detail Relationship**
+
+## [Add Automation to Your App](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app/add-automation-to-your-app)
+

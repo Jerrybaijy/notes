@@ -194,6 +194,27 @@ export default class MyComponent extends LightningElement {
 }
 ```
 
+# Style
+
+可以使用 **CSS** 和 **SLDS** 改变 LWC 的样式。
+
+## CSS
+
+直接在组件文件夹下创建 CSS 文件，无需在 HTML 中引用，它会自动应用于相应的 HTML 文件。
+
+## SLDS
+
+Salesforce Lightning Design System （SLDS） 是一个 CSS 框架。
+
+用法类似于 Bootstrap，可以直接内嵌在 HTML 元素中，但无需引入。
+
+```html
+<template>
+  <!-- 使用 slds-text-heading_small 样式 -->
+  <p class="slds-text-heading_small">样式文本</p>
+</template>
+```
+
 # Java Script
 
 在 **LWC** 中，JavaScript 负责 **组件逻辑**、**数据管理** 和 **事件处理**，并与 HTML 进行交互。
