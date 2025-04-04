@@ -197,17 +197,33 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 ### 声明数组
 
-- **语法**
+**动态初始化**
 
-    ```java
-    // 声明空数组
-    数据类型[] 变量名 = new 数据类型[数组长度];
-    int[] myArray = new int[5];
-    
-    // 声明非空数组
-    数据类型[] 变量名 = [元素];
-    int[] myArray = [1, 2, 3, 4, 5];
-    ```
+```java
+数据类型[] 变量名 = new 数据类型[数组长度];
+```
+
+```java
+// 初始化
+int[] myArray = new int[5];
+
+// 赋值
+myArray[0] = 1;
+myArray[1] = 2;
+myArray[2] = 3;
+myArray[3] = 4;
+myArray[4] = 5;
+```
+
+**静态初始化**
+
+```java
+数据类型[] 变量名 = {元素};
+```
+
+```java
+int[] myArray = {1, 2, 3, 4, 5};
+```
 
 ### [数组方法](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Arrays.html)
 
