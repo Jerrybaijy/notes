@@ -47,6 +47,12 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 #### IntelliJ IDEA 配置
 
+### VS Code
+
+1. 确认 Java 开发工具包 **JDK** 已安装
+2. VS Code 已安装，扩展 **Extension Pack for Java** 已安装
+3. **Ctrl + Shift + P** 打开命令面板 | 输入 `Java: Create Java Project` | **Enter** | 选择 **No build tools** | 选择项目目录 | 输入**项目名称** | **Enter**
+
 ## 代码规范
 
 - 除以下规范，其余同编程语言通用规范。
@@ -193,76 +199,9 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 - **接口**定义了一组方法的签名，但不包含方法的实现。实现接口的类必须实现接口中定义的所有方法。
 
-## [array](https://dev.java/learn/language-basics/arrays/)
-
-### 声明数组
-
-**动态初始化**
-
-```java
-数据类型[] 变量名 = new 数据类型[数组长度];
-```
-
-```java
-// 初始化
-int[] myArray = new int[5];
-
-// 赋值
-myArray[0] = 1;
-myArray[1] = 2;
-myArray[2] = 3;
-myArray[3] = 4;
-myArray[4] = 5;
-```
-
-**静态初始化**
-
-```java
-数据类型[] 变量名 = {元素};
-```
-
-```java
-int[] myArray = {1, 2, 3, 4, 5};
-```
-
-### [数组方法](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Arrays.html)
-
-- 索引，嵌套，获取长度
-
 ## enum
 
 - 枚举是一种特殊的数据类型，用于定义一组固定的常量。
-
-## [String](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html)
-
-- 在 Java 里，字符串是 `java.lang.String` 类的实例，属于不可变类型，它具有原始数据类型的特质。
-
-### 边界标记
-
-- **普通字符串**：只能使用双引号 `"` 作为边界标记。
-
-    ```java
-    String str = "Hello world!";
-    System.out.println(str);  // Hello world!
-    ```
-
-- **子字符串**：使用 `\` 转义
-
-    ```java
-    String str = "Hello \"world\"!";
-    System.out.println(str); // Hello "world"!
-    ```
-
-- **多行字符串**：即文本块，使用三重双引号 `"""` 作为边界标记。
-
-    ```java
-    String multiLineText = """
-            这是一个\
-            多行字符串示例，\
-            无需使用转义字符来换行。
-            """;
-    System.out.println(multiLineText);  // 这是一个多行字符串示例，无需使用转义字符来换行。
-    ```
 
 ## 数据类型转换
 
@@ -687,50 +626,232 @@ Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结
 
 - `return`：详见[返回值](#返回值)
 
-# 数组
+# [array](https://dev.java/learn/language-basics/arrays/)
 
-- 语法
+## 声明数组
 
-  ```
-  - 语法
-  	数据类型[] 数组名 = {元素1, 元素2, 元素3...}
-  - 特性：类似于Python中的列表
-  	- 元素可重复；有序索引（下标）；元素支持修改。
-  	- 只能存放一种数据类型
-  	- 长度不可改变
-  	- 使用for-each代替in包含
-  ```
+**动态初始化：**
 
-  ```java
-  int[] data = { 45, 67, 89 };// 创建数组
-  Class<?> componentType = data.getClass().getComponentType();// 获取数据类型
-  System.out.println(componentType.getName());// int
-  ```
+```java
+数据类型[] 变量名 = new 数据类型[数组长度];
+```
 
-- **获取元素**
+```java
+// 初始化
+int[] myArray = new int[5];
 
-  ```
-  - 语法
-  	数组名[索引号]
-  ```
+// 赋值
+myArray[0] = 1;
+myArray[1] = 2;
+myArray[2] = 3;
+myArray[3] = 4;
+myArray[4] = 5;
+```
 
-  ```java
-  int[] data = { 45, 67, 89 };
-  System.out.println(data[0]);// 45
-  ```
+**静态初始化：**
 
-- **获取长度**
+```java
+数据类型[] 变量名 = {元素1, 元素2, 元素3...};
+```
 
-  ```
-  - 语法
-  	数组名.length
-  ```
+```java
+int[] myArray = {1, 2, 3, 4, 5};
+```
 
-  ```java
-  int[] data = { 45, 67, 89 };
-  System.out.println(data.length);// 3
-  ```
+## [数组方法](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/util/Arrays.html)
 
+- 索引，获取元素，修改元素，遍历，获取长度，多维数组
+
+### 获取元素
+
+```java
+String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
+System.out.println(address[0]); // 北京
+```
+
+### 修改元素
+
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+System.out.println(address[0]); // 北京
+address[0] = "西安"; // 修改索引号为 0 的元素
+System.out.println(address[0]); // 西安
+```
+
+### 遍历数组
+
+**for-each 思想遍历：**
+
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+for (String city : address) {
+    System.out.println(city); // 依次输出每个城市
+}
+```
+
+**索引思想遍历：**
+
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+for (int i = 0; i < address.length; i++) {
+    System.out.println(address[i]); // 依次输出每个城市
+}
+```
+
+### 获取长度
+
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+int length = address.length; // 数组的长度
+System.out.println(length); // 5
+```
+
+### 多维数组
+
+```java
+String[][] addressArray = {
+    { "北京", "上海", "广州" },
+    { "深圳", "杭州" }
+};
+System.out.println(addressArray[0][0]); // 北京
+```
+
+# [String](https://docs.oracle.com/en/java/javase/23/docs/api/java.base/java/lang/String.html)
+
+- 在 Java 里，字符串是 `java.lang.String` 类的实例，属于不可变类型，它具有原始数据类型的特质。
+
+## 声明字符串
+
+在 Java 中，`String` 类用于表示字符串，创建字符串主要有以下两种方式：
+
+**直接使用字符串字面量：**
+
+```java
+String str1 = "Hello, World!";
+String str2 = "Hello, World!";
+```
+
+当使用字符串字面量创建字符串时，Java 会先在字符串常量池中查找是否存在相同内容的字符串。若存在，直接返回该字符串的引用；若不存在，则在字符串常量池中创建一个新的字符串对象。这里 `str1` 和 `str2` 指向字符串常量池中的同一个 `"Hello, World!"` 对象，**不会重复创建**。
+
+**使用 `new` 关键字：**
+
+```java
+String str3 = new String("Hello, World!");
+String str4 = new String("Hello, World!");
+```
+
+使用 `new` 关键字创建字符串时，会在堆内存中创建一个新的字符串对象，无论字符串常量池中是否已有相同内容的字符串。`str3` 和 `str4` 是两个不同的对象，尽管它们的值相同。
+
+## 边界标记
+
+- **普通字符串**：只能使用双引号 `"` 作为边界标记。
+
+    ```java
+    String str = "Hello world!";
+    System.out.println(str);  // Hello world!
+    ```
+
+- **子字符串**：使用 `\` 转义
+
+    ```java
+    String str = "Hello \"world\"!";
+    System.out.println(str); // Hello "world"!
+    ```
+
+- **多行字符串**：即文本块，使用三重双引号 `"""` 作为边界标记。
+
+    ```java
+    String multiLineText = """
+            这是一个\
+            多行字符串示例，\
+            无需使用转义字符来换行。
+            """;
+    System.out.println(multiLineText);  // 这是一个多行字符串示例，无需使用转义字符来换行。
+    ```
+
+## 字符串拼接
+
+```java
+String str1 = "Hello";
+String str2 = " World!";
+// 使用 + 运算符
+String result1 = str1 + str2; 
+// 使用 concat() 方法
+String result2 = str1.concat(str2); 
+```
+
+## 字符串索引
+
+Java 中的字符串不支持 `str[index]` 这种索引方法。
+
+**获取元素：**
+
+```java
+String str = "Hello";
+char ch = str.charAt(1); // 获取索引1的字符
+System.out.println(ch);  // 输出: e
+```
+
+**找下标：**
+
+```java
+String str = "Hello World";
+int index = str.indexOf('o'); 
+System.out.println(index); // 输出: 4（"Hello" 中 'o' 第一次出现的位置）
+
+int lastIndex = str.lastIndexOf('o');
+System.out.println(lastIndex); // 输出: 7（"World" 中 'o' 位置）
+```
+
+## 获取长度
+
+```java
+String str = "Hello, World!";
+int length = str.length();
+System.out.println(length); // 13
+```
+
+## 遍历字符串
+
+**索引思想遍历：**
+
+```java
+String str = "Hello";
+for (int i = 0; i < str.length(); i++) {
+    char ch = str.charAt(i);
+    System.out.println(ch);
+}
+```
+
+**for-each 思想遍历：**Java 的 `String` 不能直接用于 `for-each` 遍历。
+
+```java
+String str = "Hello";
+for (char ch : str.toCharArray()) {
+    System.out.println(ch);
+}
+```
+
+## 字符串的比较
+
+### 比较引用地址
+
+```java
+String a = "Hello";
+String b = "Hello";
+System.out.println(a == b); // true（指向同一常量池对象）
+
+String c = new String("Hello");
+System.out.println(a == c); // false（c 指向堆中的新对象）
+```
+
+### 比较内容
+
+```java
+String a = new String("Hello");
+String b = new String("Hello");
+System.out.println(a.equals(b)); // true（值相同）
+```
 
 # Method
 
