@@ -1477,7 +1477,7 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
 - JS 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
 
-# 函数 `function`
+# Function
 
 在 JS 中，函数是一个特殊的对象，使用 `typeof` 获取到的数据类型为 `function`。
 
@@ -1560,7 +1560,7 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
 ```javascript
 // 无参数、单行函数体
-const 函数名 = () => 函数体;
+const 函数名 = (参数列表) => 函数体;
 ```
 
 ```javascript
@@ -1721,7 +1721,7 @@ const calculate = num => {
 	console.log(fun(3))
 	```
 
-# [对象 `object`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+# [Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 **对象**是 JS 中一种复合数据类型 `object`；它用于存储各种键值集合（形式类似于 Python 中的字典）。
 

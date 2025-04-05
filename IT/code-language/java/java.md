@@ -823,7 +823,9 @@ for (int i = 0; i < str.length(); i++) {
 }
 ```
 
-**for-each 思想遍历：**Java 的 `String` 不能直接用于 `for-each` 遍历。
+**for-each 思想遍历：**
+
+Java 的 `String` 不能直接使用 `for-each` 遍历。需要先利用 `toCharArray` 将字符串转换成数组，再使用 `for-each` 遍历。
 
 ```java
 String str = "Hello";
@@ -855,31 +857,332 @@ System.out.println(a.equals(b)); // true（值相同）
 
 # Method
 
-## 方法声明结构
+## 基本结构
+
+方法的定义包含方法头与方法体两部分，其基本语法如下：
 
 ```java
-<访问修饰符> <静态或实例指示符> <返回类型> <方法名>(<参数列表>) {
+访问修饰符 静态或实例指示符 返回值类型 方法名(参数列表) {
     // 方法体
+    return 返回值; // 如果返回值类型不是 void，则需要有返回语句
 }
 ```
 
 ```java
-public static Account updateAccountName(Account accountToUpdate, String newName) {
-    accountToUpdate.Name = newName;
-    update accountToUpdate;
-    return accountToUpdate;
+public class MethodExample {
+
+    // 无参数、无返回值的方法
+    public static void printHello() {
+        System.out.println("Hello!");
+    }
+
+    // 带参数、无返回值的方法
+    public static void printNumber(int num) {
+        System.out.println("The number is: " + num);
+    }
+
+    // 带参数、有返回值的方法
+    public static int add(int a, int b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        // 调用无参数、无返回值的方法
+        printHello();
+
+        // 调用带参数、无返回值的方法
+        printNumber(10);
+
+        // 调用带参数、有返回值的方法
+        int result = add(3, 5);
+        System.out.println("The result of addition is: " + result);
+    }
 }
 ```
 
-- **访问修饰符**：规定了方法的访问权限，像`public`（公共的，任何地方都能访问）、`private`（私有的，只有在同一个类里能访问）、`protected`（受保护的，在同一个类及其子类里能访问）等。
+- **访问修饰符**：规定了方法的访问权限
+    - `public`：任何地方都能访问
+    - `private`：只有在同一个类里能访问
+    - `protected`：在同一个类及其子类里能访问
 - **静态或实例指示符**
-    - `static`：表明该方法是静态方法，能够直接通过类名调用，无需创建类的实例。
+    - 有 `static`：表明该方法是静态方法，能够直接通过类名调用，无需创建类的实例。
     - 无 `static`：表明该方法是实例方法，需要先创建类的实例，再通过实例来调用。
 - **返回类型**：
-    - 指定方法返回值的类型，例如`List<Contact>`、`Integer`、`String`等。
-    - 若方法不返回任何值，就使用`void`。
-- **方法名**：方法的标识符，要遵循 Apex 的命名规则。
-- **参数列表**：包含零个或多个参数，参数之间用逗号分隔，每个参数由类型和名称组成。
+    - 指定方法返回值的类型，例如 `List<Contact>`、`Integer`、`String` 等。
+    - 若方法不返回任何值，返回值类型需设为 `void`。
+- **方法名**：方法的标识符，要遵循 Java 的命名规范。
+- **参数列表**：包含零个或多个参数，参数之间用逗号分隔，每个参数由**类型**和**名称**组成。
+
+# Object Oriented
+
+## 类和对象
+
+```java
+// 定义一个 Animal 类
+public class Animal {
+    // 成员变量（属性）
+    String name;
+    int age;
+
+    // 构造方法
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // 成员方法（行为）
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+// 定义一个 Dog 类，继承自 Animal 类
+public class Dog extends Animal {
+
+    // 构造方法
+    public Dog(String name, int age) {
+        // 调用父类的构造方法
+        super(name, age);
+    }
+
+    // 重写父类的方法
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks.");
+    }
+
+    // 添加 Dog 特有的行为
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 创建 Animal 类的对象
+        Animal animal = new Animal("Generic Animal", 5);
+        animal.makeSound();  // 输出：Animal makes a sound.
+
+        // 创建 Dog 类的对象
+        Dog dog = new Dog("Buddy", 3);
+        dog.makeSound();  // 输出：Dog barks.
+        dog.wagTail();    // 输出：Dog wags its tail.
+    }
+}
+```
+
+## 封装
+
+```java
+class Animal {
+    // 私有成员变量，外部无法直接访问
+    private String name;
+
+    // 公共的访问方法（getter 和 setter）
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return this.name;
+    }
+
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+}
+```
+
+## 继承
+
+```java
+// 父类
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating.");
+    }
+}
+
+// 子类
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // 调用父类的方法
+        dog.bark(); // 调用子类自己的方法
+    }
+}
+```
+
+## 多态
+
+### 方法重载
+
+在同一个类中，定义多个同名方法，但这些方法的参数列表（参数的类型、个数或顺序）不同。
+
+```java
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+class Dog extends Animal {
+
+    // 方法重载：带字符串参数
+    public void makeSound(String sound) {
+        System.out.println("Dog makes this sound: " + sound);
+    }
+
+    // 方法重载：带整数参数
+    public void makeSound(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Dog barks.");
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+
+        dog.makeSound("Woof woof!");    // 调用重载方法，带字符串参数
+        dog.makeSound(3);               // 调用重载方法，带整数参数
+    }
+}
+```
+
+### 方法重写
+
+子类重写父类的方法，方法名、参数列表和返回值类型都要相同，但方法的实现可以不同。
+
+```java
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+class Dog extends Animal {
+    // 子类重写方法
+    @Override
+    public void makeSound() {
+        System.out.println("Dog makes a sound.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        // 调用子类重写的方法
+        dog.makeSound(); // Dog makes a sound.
+    }
+}
+```
+
+## 抽象
+
+**抽象**是指把共有的特征提取出来，形成一个**抽象类**或**接口**，而具体的实现留给子类来完成。
+
+### 抽象类
+
+**抽象类的特点：**
+
+- 用 `abstract` 关键字声明。
+- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
+- 不能被实例化（不能直接用 `new` 来创建对象）。
+- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
+
+```java
+// 抽象类
+abstract class Animal {
+    // 抽象方法：没有方法体
+    public abstract void makeSound();
+
+    // 普通方法
+    public void eat() {
+        System.out.println("Animal eats food.");
+    }
+}
+
+// 子类
+class Dog extends Animal {
+    // 必须实现抽象方法
+    public void makeSound() {
+        System.out.println("Dog barks.");
+    }
+
+    // 也可以添加自己的方法
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+
+        dog.makeSound();         // 调用的是 Dog 的实现
+        dog.eat();               // 调用的是 Animal 的实现
+
+        // dog.wagTail();       // ❌ 无法直接调用，因为引用类型是 Animal
+    }
+}
+```
+
+### 接口
+
+接口是一种特殊的抽象类型，它只包含抽象方法和常量。接口中的方法默认是 `public abstract` 的，常量默认是 `public static final` 的。一个类可以实现多个接口。
+
+**接口的特点：**
+
+- 用 `interface` 关键字声明。
+- 类必须通过 `implements` 关键字来实现接口。
+- 只能有常量字段，不能有实例字段。
+- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
+- 不能被实例化（不能直接用 `new` 来创建对象）。
+- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
+
+```java
+// 接口
+interface Animal {
+    // 接口中的方法默认是 public abstract
+    void makeSound();
+
+    // Java 8+ 允许有 default 方法
+    default void eat() {
+        System.out.println("Animal eats food.");
+    }
+}
+
+// 子类实现接口
+class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks.");
+    }
+
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+
+        dog.makeSound();         // 调用的是 Dog 的实现
+        dog.eat();               // 调用的是接口中的 default 方法
+
+        // dog.wagTail();       // ❌ 无法调用，除非类型是 Dog
+    }
+}
+```
 
 # Spring Boot
 

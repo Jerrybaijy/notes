@@ -1570,238 +1570,233 @@ System.out.println(address[0]); // 北京
 - 面向对象方式
 - 工厂函数方式：将对象创建过程封装在一个函数中，如果需要创建多个相似的对象，只需调用该函数即可。
 
-# 面向对象
+# Object Oriented
 
 **面向对象**（Object Oriented）是软件开发方法，一种编程范式，面向对象是相对于面向过程来讲的。面向对象方法，把相关的数据属性和方法组织为一个整体来看待，从更高的层次来进行系统建模，更贴近事物的自然运行模式。
 
-## 类
+## 类和对象
 
-从通用编程语言的角度来看，**类（Class）** 是面向对象编程（OOP）中的一个核心概念，它定义了一个对象的模板，描述了对象的**属性**（数据）和**方法**（行为）。类将数据和操作数据的方法封装在一起，是程序的基本构建块。
+- **类（Class）**：类是对象的模板，规定对象的**属性**（成员变量）和**方法**（行为）。
+- **对象（Object）**：对象是类的实例，拥有类的属性和方法。
 
-### **类的基本定义**
+## 封装
 
-**类** 是 **对象** 的模板。它包含：
+封装是指将对象的属性和方法封装在一个类中，并对外提供公共的访问接口。通过封装，可以隐藏对象的内部实现细节，只暴露必要的信息，提高代码的安全性和可维护性。
 
-- **属性（或字段）**：描述类的状态或特征，通常以变量形式存在。
-- **方法（或函数）**：描述类的行为，通常以函数形式存在。
+```java
+class Animal {
+    // 私有成员变量，外部无法直接访问
+    private String name;
 
-###  类的特性
+    // 公共的访问方法（getter 和 setter）
+    public void setName(String name) {
+        this.name = name;
+    }
 
-#### 封装
+    public String getName() {
+        return this.name;
+    }
 
-- **封装（Encapsulation）**：类将数据和方法封装在一起，外部无法直接访问对象的内部状态，必须通过方法来操作数据。
+    public void eat() {
+        System.out.println(name + " is eating.");
+    }
+}
+```
 
-#### 继承
+## 继承
 
-- **继承（Inheritance）**：子类可以继承父类的属性和方法，从而重用代码，并且可以在子类中重写父类的方法。
+继承是指一个类可以继承另一个类的属性和方法，被继承的类称为父类（基类、超类），继承的类称为子类（派生类）。继承可以实现代码的复用和扩展，子类可以拥有父类的所有非私有属性和方法，还可以添加自己的属性和方法。
 
-	```python
-	class Animal:
-	    def speak(self):
-	        print("Animal makes a sound.")
-	
-	class Dog(Animal):
-	    def speak(self):
-	        print("Dog barks.")
-	
-	dog = Dog()
-	dog.speak()  # 输出：Dog barks.
-	```
+```java
+// 父类
+class Animal {
+    void eat() {
+        System.out.println("Animal is eating.");
+    }
+}
 
-#### 多态
+// 子类
+class Dog extends Animal {
+    void bark() {
+        System.out.println("Dog is barking.");
+    }
+}
 
-- **多态（Polymorphism）**：允许同一个方法名表现出不同的行为。多态使得子类可以替换父类实现的方法。
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
+        dog.eat(); // 调用父类的方法
+        dog.bark(); // 调用子类自己的方法
+    }
+}
+```
 
-	```python
-	class Animal:
-	    def speak(self):
-	        print("Animal makes a sound.")
-	
-	class Dog(Animal):
-	    def speak(self):
-	        print("Dog barks.")
-	
-	class Cat(Animal):
-	    def speak(self):
-	        print("Cat meows.")
-	
-	animals = [Dog(), Cat()]
-	for animal in animals:
-	    animal.speak()  # 输出：Dog barks.  Cat meows.
-	```
+## 多态
 
-## 对象
+多态是指**同一个方法**调用可以根据对象的不同类型而表现出不同的行为。多态的实现方式主要有两种：**方法重载**和**方法重写**。
 
-在通用编程语言的语境下，**对象** 是面向对象编程（Object-Oriented Programming, OOP）的核心概念之一，是类的实体。对象抽象了现实世界中的事物，既可以存储数据（属性/状态），也可以定义操作数据的行为（方法）。
+### 方法重载
 
-### **对象的基本定义**
+在同一个类中，定义多个同名方法，但这些方法的参数列表（参数的类型、个数或顺序）不同。
 
-**对象** 是 **类** 的实例。它包含：
+```java
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
 
-- **属性（Attributes）**：描述对象状态的数据，通常以变量形式存在。
-- **方法（Methods）**：描述对象行为的功能，通常以函数形式存在。
+class Dog extends Animal {
 
-在现实中，**对象** 就是对事物的抽象建模：
+    // 方法重载：带字符串参数
+    public void makeSound(String sound) {
+        System.out.println("Dog makes this sound: " + sound);
+    }
 
-- 现实中的事物 → **编程中的对象**
-- 事物的特征 → **对象的属性**
-- 事物的行为 → **对象的方法**
+    // 方法重载：带整数参数
+    public void makeSound(int times) {
+        for (int i = 0; i < times; i++) {
+            System.out.println("Dog barks.");
+        }
+    }
+}
 
-### 对象的特性
+public class Main {
+    public static void main(String[] args) {
+        Dog dog = new Dog();
 
-#### 封装
+        dog.makeSound("Woof woof!");    // 调用重载方法，带字符串参数
+        dog.makeSound(3);               // 调用重载方法，带整数参数
+    }
+}
+```
 
-- **封装（Encapsulation）**：对象将属性和方法封装在一起，对外提供特定的接口，隐藏内部实现细节。
+### 方法重写
 
-	```python
-	class Dog:
-	    def __init__(self, name, age):
-	        self.name = name  # 属性
-	        self.age = age
-	
-	    def bark(self):       # 方法
-	        print(f"{self.name} is barking!")
-	
-	dog = Dog("Buddy", 3)
-	dog.bark()  # 输出：Buddy is barking!
-	```
+子类重写父类的方法，方法名、参数列表和返回值类型都要相同，但方法的实现可以不同。
 
-#### 继承
+```java
+class Animal {
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
 
-- **继承（Inheritance）**：对象可以通过继承从其他对象获得属性和方法，从而实现代码重用和扩展。
+class Dog extends Animal {
+    // 子类重写方法
+    @Override
+    public void makeSound() {
+        System.out.println("Dog makes a sound.");
+    }
+}
 
-	```python
-	class Animal:
-	    def eat(self):
-	        print("This animal eats food.")
-	
-	class Dog(Animal):  # Dog 继承自 Animal
-	    def bark(self):
-	        print("Dog barks!")
-	
-	dog = Dog()
-	dog.eat()  # 输出：This animal eats food.
-	dog.bark() # 输出：Dog barks!
-	```
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
+        // 调用子类重写的方法
+        dog.makeSound(); // Dog makes a sound.
+    }
+}
+```
 
-#### 多态
+## 抽象
 
-- **多态（Polymorphism）**：不同的对象可以通过相同的接口表现出不同的行为。
+**抽象**是指把共有的特征提取出来，形成一个**抽象类**或**接口**，而具体的实现留给子类来完成。
 
-	```python
-	class Cat:
-	    def sound(self):
-	        print("Meow")
-	
-	class Dog:
-	    def sound(self):
-	        print("Bark")
-	
-	def make_sound(animal):
-	    animal.sound()
-	
-	make_sound(Cat())  # 输出：Meow
-	make_sound(Dog())  # 输出：Bark
-	
-	```
+### 抽象类
 
-#### 动态性
+**抽象类的特点：**
 
-- **动态性（Dynamic Behavior）**：对象的属性和方法可以在运行时动态添加、修改或删除（在动态语言中更为常见，如 Python）。
+- 用 `abstract` 关键字声明。
+- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
+- 不能被实例化（不能直接用 `new` 来创建对象）。
+- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
 
-	```python
-	class Empty:
-	    pass
-	
-	obj = Empty()
-	obj.name = "Dynamic Object"  # 动态添加属性
-	print(obj.name)  # 输出：Dynamic Object
-	```
+```java
+// 抽象类
+abstract class Animal {
+    // 抽象方法：没有方法体
+    public abstract void makeSound();
 
-###  对象的生命周期
+    // 普通方法
+    public void eat() {
+        System.out.println("Animal eats food.");
+    }
+}
 
-对象的生命周期包括以下阶段：
+// 子类
+class Dog extends Animal {
+    // 必须实现抽象方法
+    public void makeSound() {
+        System.out.println("Dog barks.");
+    }
 
-1. **创建（Creation）**：通过类实例化对象。
-2. **使用（Usage）**：通过访问属性或调用方法使用对象。
-3. **销毁（Destruction）**：当对象不再被引用时，内存会被释放（例如 Python 中的垃圾回收）。
+    // 也可以添加自己的方法
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
 
-### 对象与类的关系
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
 
-- **类（Class）**：定义对象的模板，规定对象的属性和方法。
-- **对象（Object）**：类的具体实例，拥有类的属性和方法。
+        dog.makeSound();         // 调用的是 Dog 的实现
+        dog.eat();               // 调用的是 Animal 的实现
 
-## 面向对象三大特性
+        // dog.wagTail();       // ❌ 无法直接调用，因为引用类型是 Animal
+    }
+}
+```
 
-### 类的封装
+### 接口
 
-- 封装
+接口是一种特殊的抽象类型，它只包含抽象方法和常量。接口中的方法默认是 `public abstract` 的，常量默认是 `public static final` 的。一个类可以实现多个接口。
 
-	```
-	- 封装就是把对象的某个属性，只能通过类内部的方法访问，而不能从外部直接调用。
-	- 方法：在定义类属性时，把“self.属性”改成“self.__属性”，然后把该属性的操作创建到一个方法内。
-	```
+**接口的特点：**
 
-- 将数据封装到对象
+- 用 `interface` 关键字声明。
+- 类必须通过 `implements` 关键字来实现接口。
+- 只能有常量字段，不能有实例字段。
+- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
+- 不能被实例化（不能直接用 `new` 来创建对象）。
+- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
 
-	```python
-	class Foo:
-	    def __init__(self, name, age):
-	        self.name = name
-	        self.age = age
-	obj = Foo("Jerry", 30)
-	```
+```java
+// 接口
+interface Animal {
+    // 接口中的方法默认是 public abstract
+    void makeSound();
 
-- 将同一类方法封装到类
+    // Java 8+ 允许有 default 方法
+    default void eat() {
+        System.out.println("Animal eats food.");
+    }
+}
 
-	```py
-	class Message:
-	    def email(self):
-	        pass
-	    def wechat(self):
-	        pass
-	    def sms(self):
-	        pass
-	
-	class FileHandler:
-	    def txt(self):
-	        pass
-	    def excel(self):
-	        pass
-	    def word(self):
-	        pass
-	```
+// 子类实现接口
+class Dog implements Animal {
+    @Override
+    public void makeSound() {
+        System.out.println("Dog barks.");
+    }
 
-### 类的继承
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
 
-- 子类自动拥有父类的属性和方法。
+public class Main {
+    public static void main(String[] args) {
+        Animal dog = new Dog();
 
-- 语法
+        dog.makeSound();         // 调用的是 Dog 的实现
+        dog.eat();               // 调用的是接口中的 default 方法
 
-	```python
-	class Base:
-	    def func1(self):
-	        pass
-	
-	class Son(Base):
-	    def func2(self):
-	        pass
-	
-	obj = Son()  # 创建子类对象
-	obj.func1()  # 子类自动拥有父类的属性和方法
-	```
-
-	```
-	- 子类必须自动拥有父类属性和方法，但父类不拥有子类的属性和方法。
-	- 当子类和父类拥有相同属性和方法时，子类只调用自己，而不调用父类。
-	- 创建子类对象时，要填写父类的各个属性。
-	- 在python中，一个父类可以有多个子类，一个子类也可以有多个父类。
-	- 所有类的最终父类是object，如果不填写父类，系统默认为父类就是object。
-	```
-
-### 类的多态
-
-​	支持传入多种类型参数
+        // dog.wagTail();       // ❌ 无法调用，除非类型是 Dog
+    }
+}
+```
 
 # 模版语法
 
