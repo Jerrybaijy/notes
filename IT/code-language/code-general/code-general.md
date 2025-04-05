@@ -986,7 +986,7 @@ System.out.println(address[0]); // 北京
 
 ## 选择结构
 
-选择结构通过条件判断哪些代码执行，哪些不执行。选择结构又称分支结构或判断结构。
+**选择结构**通过条件判断哪些代码执行，哪些不执行。选择结构又称**分支结构**或**判断结构**。
 
 - `if`
 - `switch`
@@ -1579,224 +1579,23 @@ System.out.println(address[0]); // 北京
 - **类（Class）**：类是对象的模板，规定对象的**属性**（成员变量）和**方法**（行为）。
 - **对象（Object）**：对象是类的实例，拥有类的属性和方法。
 
-## 封装
+## 面相对象四大特性
+
+### 封装
 
 封装是指将对象的属性和方法封装在一个类中，并对外提供公共的访问接口。通过封装，可以隐藏对象的内部实现细节，只暴露必要的信息，提高代码的安全性和可维护性。
 
-```java
-class Animal {
-    // 私有成员变量，外部无法直接访问
-    private String name;
-
-    // 公共的访问方法（getter 和 setter）
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public void eat() {
-        System.out.println(name + " is eating.");
-    }
-}
-```
-
-## 继承
+### 继承
 
 继承是指一个类可以继承另一个类的属性和方法，被继承的类称为父类（基类、超类），继承的类称为子类（派生类）。继承可以实现代码的复用和扩展，子类可以拥有父类的所有非私有属性和方法，还可以添加自己的属性和方法。
 
-```java
-// 父类
-class Animal {
-    void eat() {
-        System.out.println("Animal is eating.");
-    }
-}
+### 多态
 
-// 子类
-class Dog extends Animal {
-    void bark() {
-        System.out.println("Dog is barking.");
-    }
-}
+多态是指**同一个方法**调用可以根据对象的不同类型而表现出不同的行为。
 
-public class Main {
-    public static void main(String[] args) {
-        Dog dog = new Dog();
-        dog.eat(); // 调用父类的方法
-        dog.bark(); // 调用子类自己的方法
-    }
-}
-```
-
-## 多态
-
-多态是指**同一个方法**调用可以根据对象的不同类型而表现出不同的行为。多态的实现方式主要有两种：**方法重载**和**方法重写**。
-
-### 方法重载
-
-在同一个类中，定义多个同名方法，但这些方法的参数列表（参数的类型、个数或顺序）不同。
-
-```java
-class Animal {
-    public void makeSound() {
-        System.out.println("Animal makes a sound.");
-    }
-}
-
-class Dog extends Animal {
-
-    // 方法重载：带字符串参数
-    public void makeSound(String sound) {
-        System.out.println("Dog makes this sound: " + sound);
-    }
-
-    // 方法重载：带整数参数
-    public void makeSound(int times) {
-        for (int i = 0; i < times; i++) {
-            System.out.println("Dog barks.");
-        }
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Dog dog = new Dog();
-
-        dog.makeSound("Woof woof!");    // 调用重载方法，带字符串参数
-        dog.makeSound(3);               // 调用重载方法，带整数参数
-    }
-}
-```
-
-### 方法重写
-
-子类重写父类的方法，方法名、参数列表和返回值类型都要相同，但方法的实现可以不同。
-
-```java
-class Animal {
-    public void makeSound() {
-        System.out.println("Animal makes a sound.");
-    }
-}
-
-class Dog extends Animal {
-    // 子类重写方法
-    @Override
-    public void makeSound() {
-        System.out.println("Dog makes a sound.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Animal dog = new Dog();
-        // 调用子类重写的方法
-        dog.makeSound(); // Dog makes a sound.
-    }
-}
-```
-
-## 抽象
+### 抽象
 
 **抽象**是指把共有的特征提取出来，形成一个**抽象类**或**接口**，而具体的实现留给子类来完成。
-
-### 抽象类
-
-**抽象类的特点：**
-
-- 用 `abstract` 关键字声明。
-- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
-- 不能被实例化（不能直接用 `new` 来创建对象）。
-- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
-
-```java
-// 抽象类
-abstract class Animal {
-    // 抽象方法：没有方法体
-    public abstract void makeSound();
-
-    // 普通方法
-    public void eat() {
-        System.out.println("Animal eats food.");
-    }
-}
-
-// 子类
-class Dog extends Animal {
-    // 必须实现抽象方法
-    public void makeSound() {
-        System.out.println("Dog barks.");
-    }
-
-    // 也可以添加自己的方法
-    public void wagTail() {
-        System.out.println("Dog wags its tail.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Animal dog = new Dog();
-
-        dog.makeSound();         // 调用的是 Dog 的实现
-        dog.eat();               // 调用的是 Animal 的实现
-
-        // dog.wagTail();       // ❌ 无法直接调用，因为引用类型是 Animal
-    }
-}
-```
-
-### 接口
-
-接口是一种特殊的抽象类型，它只包含抽象方法和常量。接口中的方法默认是 `public abstract` 的，常量默认是 `public static final` 的。一个类可以实现多个接口。
-
-**接口的特点：**
-
-- 用 `interface` 关键字声明。
-- 类必须通过 `implements` 关键字来实现接口。
-- 只能有常量字段，不能有实例字段。
-- 可以有**抽象方法**（没有方法体，需要子类去实现），也可以有普通方法。
-- 不能被实例化（不能直接用 `new` 来创建对象）。
-- 子类必须**实现抽象方法**，除非子类本身也是抽象类。
-
-```java
-// 接口
-interface Animal {
-    // 接口中的方法默认是 public abstract
-    void makeSound();
-
-    // Java 8+ 允许有 default 方法
-    default void eat() {
-        System.out.println("Animal eats food.");
-    }
-}
-
-// 子类实现接口
-class Dog implements Animal {
-    @Override
-    public void makeSound() {
-        System.out.println("Dog barks.");
-    }
-
-    public void wagTail() {
-        System.out.println("Dog wags its tail.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Animal dog = new Dog();
-
-        dog.makeSound();         // 调用的是 Dog 的实现
-        dog.eat();               // 调用的是接口中的 default 方法
-
-        // dog.wagTail();       // ❌ 无法调用，除非类型是 Dog
-    }
-}
-```
 
 # 模版语法
 

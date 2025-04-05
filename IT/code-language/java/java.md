@@ -6,7 +6,7 @@
 
 ### JDK
 
-JDK（Java Development Kit）是一个用于开发 Java 应用程序的工具包。它包含了运行 Java 程序所需的所有组件和开发工具。JDK 是 Java 开发的基础，任何想要开发 Java 应用的开发者都必须安装它。
+JDK（Java Development Kit）是一个用于开发 Java 应用程序的工具包。它包含了**Java 编译器（javac）**、**Java 虚拟机（JVM）**、**Java 运行时环境（JRE）**和 **其他工具和类库** 等。
 
 #### Windows
 
@@ -191,14 +191,6 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 - **boolean**：只有两个取值 `true` 和 `false`，用于表示逻辑上的真和假，常用于条件判断和循环控制。
 
-## class
-
-- **自定义类**是最常见的引用数据类型。
-
-## interface
-
-- **接口**定义了一组方法的签名，但不包含方法的实现。实现接口的类必须实现接口中定义的所有方法。
-
 ## enum
 
 - 枚举是一种特殊的数据类型，用于定义一组固定的常量。
@@ -301,74 +293,68 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ### if
 
-- **语法**
+```javascript
+if (条件表达式) {
+    执行语句;
+}
+```
 
-    ```javascript
-    if (条件表达式) {
-        执行语句;
-    }
-    ```
+```javascript
+int score = 85;
 
-    ```javascript
-    int score = 85;
-    
-    if (score >= 60) {
-        System.out.println("及格！");
-    }
-    ```
+if (score >= 60) {
+    System.out.println("及格！");
+}
+```
 
 
 ### if-else
 
-- **语法**
+```javascript
+if (条件表达式) {
+    执行语句A;
+} else {
+    执行语句B;
+}
+```
 
-    ```javascript
-    if (条件表达式) {
-        执行语句A;
-    } else {
-        执行语句B;
-    }
-    ```
+```javascript
+int score = 85;
 
-    ```javascript
-    int score = 85;
-    
-    if (score >= 60) {
-        System.out.println("及格！");
-    } else {
-        System.out.println("不及格！");
-    }
-    ```
+if (score >= 60) {
+    System.out.println("及格！");
+} else {
+    System.out.println("不及格！");
+}
+```
 
 
 ### if-else if-else
 
-- **语法**
+```javascript
+if (条件表达式1) {
+    执行语句A;
+} else if (条件表达式2) {
+    执行语句B;
+} else if (条件表达式3) {
+    执行语句c;
+} else {
+    执行语句D;
+}
+```
 
-    ```javascript
-    if (条件表达式1) {
-        执行语句A;
-    } else if (条件表达式2) {
-        执行语句B;
-    } else if (条件表达式3) {
-        执行语句c;
-    } else {
-        执行语句D;
-    }
-    ```
+```javascript
+int score = 85;
 
-    ```javascript
-    int score = 85;
-    
-    if (score >= 90) {
-        System.out.println("优秀！");
-    } else if (score >= 80) {
-        System.out.println("良好！");
-    } else if (score >= 60) {
-        System.out.println("及格！");
-    } else {
-        System.out.println("不及格！");
-    ```
+if (score >= 90) {
+    System.out.println("优秀！");
+} else if (score >= 80) {
+    System.out.println("良好！");
+} else if (score >= 60) {
+    System.out.println("及格！");
+} else {
+    System.out.println("不及格！");
+```
 
 ## switch 语句
 
@@ -424,17 +410,15 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ## 三元表达式
 
-- **语法**
+```java
+条件表达式 ? 真值 : 假值
+```
 
-    ```java
-    条件表达式 ? 真值 : 假值
-    ```
-
-    ```java
-    Integer score = 80;
-    String result = (score >= 60) ? "及格" : "不及格";
-    System.out.println(result);  // 输出：及格
-    ```
+```java
+Integer score = 80;
+String result = (score >= 60) ? "及格" : "不及格";
+System.out.println(result);  // 输出：及格
+```
 
 # 循环结构
 
@@ -442,44 +426,43 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ## for 循环
 
-- **语法**
+```java
+for (初始化表达式; 条件表达式; 更新表达式){
+    循环体
+}
+```
 
-  ```java
-  for (初始化表达式; 条件表达式; 更新表达式){
-      循环体
-  }
-  ```
-  
-  ```java
-  for (int i=0; i<=5; i++) {
-      System.out.println(i);  // 0 1 2 3 4 5
-  }
-  ```
+```java
+for (int i=0; i<=5; i++) {
+    System.out.println(i);  // 0 1 2 3 4 5
+}
+```
 
 ## for-each 循环
 
-- **语法**：用于直接遍历。
+for-each 循环用于直接遍历
 
-  ```java
-  for (数据类型 变量名 : 数组或集合){
-      循环体
-  }
-  ```
-  
-  ```java
-  String[] arr = {"中国", "上海", "北京" };
-  for (String data : arr) {
-      System.out.println(data);  // 中国 上海 北京
-  ```
-  
-- 还可用索引思想遍历
+```java
+for (数据类型 变量名 : 数组或集合){
+    循环体
+}
+```
 
-  ```java
-  int[] data = { 45, 67, 89 };
-  for (int i = 0; i < data.length; i++) {
-      System.out.println(data[i]);  // 45 67 89
-  }
-  ```
+```java
+String[] arr = { "中国", "上海", "北京" };
+for (String data : arr) {
+    System.out.println(data); // 中国 上海 北京
+}
+```
+
+还可用索引思想遍历
+
+```java
+String[] arr = {"中国", "上海", "北京" };
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);  // 中国 上海 北京
+}
+```
 
 ## while 循环
 
@@ -626,7 +609,7 @@ Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结
 
 - `return`：详见[返回值](#返回值)
 
-# [array](https://dev.java/learn/language-basics/arrays/)
+# [Array](https://dev.java/learn/language-basics/arrays/)
 
 ## 声明数组
 
@@ -825,7 +808,7 @@ for (int i = 0; i < str.length(); i++) {
 
 **for-each 思想遍历：**
 
-Java 的 `String` 不能直接使用 `for-each` 遍历。需要先利用 `toCharArray` 将字符串转换成数组，再使用 `for-each` 遍历。
+Java 的 `String` 不能直接使用 `for-each` 遍历。需要先利用 `toCharArray` 将字符串转换成数组，再使用 `for-each` 遍历。
 
 ```java
 String str = "Hello";
@@ -855,9 +838,208 @@ String b = new String("Hello");
 System.out.println(a.equals(b)); // true（值相同）
 ```
 
-# Method
+# 集合框架
 
-## 基本结构
+Java 集合框架主要由两大接口派生而出：`Collection` 和 `Map`。`Collection` 接口存储一组不唯一、无序（部分有序）的对象，它又有三个主要的子接口：`List`、`Set` 和 `Queue`；`Map` 接口存储键值对，键是唯一的，值可以重复。
+
+**常用接口：**
+
+- **`Collection` 接口**：是集合框架的根接口，定义了集合的基本操作，如添加、删除、判断元素是否存在等。
+    - **`List` 接口**：继承自 `Collection` 接口，存储有序且可重复的元素。用户可以通过索引访问和操作列表中的元素。
+    - **`Set` 接口**：继承自 `Collection` 接口，存储唯一且无序的元素，不允许有重复元素。
+    - **`Queue` 接口**：继承自 `Collection` 接口，用于模拟队列这种数据结构，遵循先进先出（FIFO）的原则。
+- **`Map` 接口**：存储键值对，键是唯一的，每个键对应一个值。通过键可以快速查找对应的值。
+
+**以下是一些使用 Java 集合框架的示例代码：**
+
+```java
+import java.util.*;
+
+public class CollectionExample {
+    public static void main(String[] args) {
+        // ArrayList 示例
+        List<String> arrayList = new ArrayList<>();
+        arrayList.add("apple");
+        arrayList.add("banana");
+        arrayList.add("cherry");
+        System.out.println("ArrayList: " + arrayList);
+
+        // HashSet 示例
+        Set<Integer> hashSet = new HashSet<>();
+        hashSet.add(1);
+        hashSet.add(2);
+        hashSet.add(3);
+        System.out.println("HashSet: " + hashSet);
+
+        // HashMap 示例
+        Map<String, Integer> hashMap = new HashMap<>();
+        hashMap.put("one", 1);
+        hashMap.put("two", 2);
+        hashMap.put("three", 3);
+        System.out.println("HashMap: " + hashMap);
+    }
+}
+```
+
+# 文件操作
+
+在 Java 里，文件操作主要涵盖文件的创建、读取、写入以及删除等操作。Java 为文件操作提供了多个类和接口，常见的有 `File`、`FileInputStream`、`FileOutputStream`、`FileReader`、`FileWriter`、`BufferedReader`、`BufferedWriter` 等。
+
+## 创建文件
+
+使用 `File` 类检查/创建文件：
+
+```java
+import java.io.File;
+import java.io.IOException;
+
+public class FileDemo {
+    public static void main(String[] args) {
+        File file = new File("example.txt");
+
+        // 检查文件是否存在
+        if (file.exists()) {
+            System.out.println("文件已存在: " + file.getAbsolutePath());
+        } else {
+            try {
+                if (file.createNewFile()) {
+                    System.out.println("文件已创建: " + file.getAbsolutePath());
+                }
+            } catch (IOException e) {
+                System.out.println("创建文件时发生错误");
+                e.printStackTrace();
+            }
+        }
+    }
+}
+
+```
+
+## 写入文件
+
+使用 `FileWriter` 类写入文件：
+
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteFileDemo {
+    public static void main(String[] args) {
+        try {
+            FileWriter writer = new FileWriter("example.txt");
+            writer.write("Hello, this is a test.\nThis is the second line.");
+            writer.close();
+            System.out.println("写入成功");
+        } catch (IOException e) {
+            System.out.println("写入文件时发生错误");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## 读取文件
+
+使用 `BufferedReader` 类读取文件：
+
+```java
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class ReadFileDemo {
+    public static void main(String[] args) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader("example.txt"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+            reader.close();
+        } catch (IOException e) {
+            System.out.println("读取文件时发生错误");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+## 删除文件
+
+```java
+import java.io.File;
+
+public class DeleteFileDemo {
+    public static void main(String[] args) {
+        File file = new File("example.txt");
+        if (file.delete()) {
+            System.out.println("文件已删除: " + file.getName());
+        } else {
+            System.out.println("删除失败");
+        }
+    }
+}
+```
+
+# Object Oriented
+
+## Class and Method
+
+```java
+// 定义一个 Animal 类
+public class Animal {
+    // 成员变量（属性）
+    String name;
+    int age;
+
+    // 构造方法
+    public Animal(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    // 成员方法（行为）
+    public void makeSound() {
+        System.out.println("Animal makes a sound.");
+    }
+}
+
+// 定义一个 Dog 类，继承自 Animal 类
+public class Dog extends Animal {
+
+    // 构造方法
+    public Dog(String name, int age) {
+        // 调用父类的构造方法
+        super(name, age);
+    }
+
+    // 重写父类的方法
+    @Override
+    public void makeSound() {
+        System.out.println("Dog makes a sound.");
+    }
+
+    // 添加 Dog 特有的行为
+    public void wagTail() {
+        System.out.println("Dog wags its tail.");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // 创建 Animal 类的对象
+        Animal animal = new Animal("Generic Animal", 5);
+        animal.makeSound();  // 输出：Animal makes a sound.
+
+        // 创建 Dog 类的对象
+        Dog dog = new Dog("Buddy", 3);
+        dog.makeSound();  // 输出：Dog makes a sound.
+        dog.wagTail();    // 输出：Dog wags its tail.
+    }
+}
+```
+
+## Method
 
 方法的定义包含方法头与方法体两部分，其基本语法如下：
 
@@ -908,68 +1090,10 @@ public class MethodExample {
     - 有 `static`：表明该方法是静态方法，能够直接通过类名调用，无需创建类的实例。
     - 无 `static`：表明该方法是实例方法，需要先创建类的实例，再通过实例来调用。
 - **返回类型**：
-    - 指定方法返回值的类型，例如 `List<Contact>`、`Integer`、`String` 等。
+    - 指定方法返回值的类型，例如 `List<Contact>`、`Integer`、`String` 等。
     - 若方法不返回任何值，返回值类型需设为 `void`。
 - **方法名**：方法的标识符，要遵循 Java 的命名规范。
 - **参数列表**：包含零个或多个参数，参数之间用逗号分隔，每个参数由**类型**和**名称**组成。
-
-# Object Oriented
-
-## 类和对象
-
-```java
-// 定义一个 Animal 类
-public class Animal {
-    // 成员变量（属性）
-    String name;
-    int age;
-
-    // 构造方法
-    public Animal(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
-
-    // 成员方法（行为）
-    public void makeSound() {
-        System.out.println("Animal makes a sound.");
-    }
-}
-
-// 定义一个 Dog 类，继承自 Animal 类
-public class Dog extends Animal {
-
-    // 构造方法
-    public Dog(String name, int age) {
-        // 调用父类的构造方法
-        super(name, age);
-    }
-
-    // 重写父类的方法
-    @Override
-    public void makeSound() {
-        System.out.println("Dog barks.");
-    }
-
-    // 添加 Dog 特有的行为
-    public void wagTail() {
-        System.out.println("Dog wags its tail.");
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        // 创建 Animal 类的对象
-        Animal animal = new Animal("Generic Animal", 5);
-        animal.makeSound();  // 输出：Animal makes a sound.
-
-        // 创建 Dog 类的对象
-        Dog dog = new Dog("Buddy", 3);
-        dog.makeSound();  // 输出：Dog barks.
-        dog.wagTail();    // 输出：Dog wags its tail.
-    }
-}
-```
 
 ## 封装
 
@@ -1087,8 +1211,6 @@ public class Main {
 
 ## 抽象
 
-**抽象**是指把共有的特征提取出来，形成一个**抽象类**或**接口**，而具体的实现留给子类来完成。
-
 ### 抽象类
 
 **抽象类的特点：**
@@ -1180,6 +1302,148 @@ public class Main {
         dog.eat();               // 调用的是接口中的 default 方法
 
         // dog.wagTail();       // ❌ 无法调用，除非类型是 Dog
+    }
+}
+```
+
+# 异常处理
+
+## 异常分类
+
+在 Java 中，异常类都继承自 `Throwable` 类，`Throwable` 有两个重要的子类：`Error` 和 `Exception`。
+
+- **`Error`**：表示系统级的错误，通常是由 Java 虚拟机（JVM）本身的问题引起的，如内存溢出（`OutOfMemoryError`）、栈溢出（`StackOverflowError`）等。这类错误一般无法通过程序代码进行处理，开发者通常只能尽量避免。
+- `Exception`：表示程序可以处理的异常，它又可以分为两类：
+    - **受检查异常（Checked Exception）**：编译器会检查这类异常，要求程序员在代码中进行显式的处理，否则编译不通过。例如，`IOException`、`SQLException` 等。
+    - **非受检查异常（Unchecked Exception）**：也称为运行时异常（`RuntimeException`），编译器不会检查这类异常，它们通常是由程序逻辑错误引起的，如 `NullPointerException`、`ArrayIndexOutOfBoundsException` 等。
+
+## 异常处理机制
+
+Java 提供了 `try`、`catch`、`finally` 和 `throw`、`throws` 关键字来实现异常处理。
+
+### try-catch
+
+用于捕获和处理异常。`try` 块中放置可能会抛出异常的代码，`catch` 块用于捕获并处理特定类型的异常。示例如下：
+
+```java
+public class TryCatchExample {
+    public static void main(String[] args) {
+        try {
+            int result = 10 / 0; // 可能会抛出 ArithmeticException 异常
+            System.out.println(result);
+        } catch (ArithmeticException e) {
+            System.out.println("发生除零异常：" + e.getMessage());
+        }
+    }
+}
+```
+
+在上述代码中，`try` 块中的 `10 / 0` 操作可能会抛出 `ArithmeticException` 异常，当异常发生时，程序会跳转到对应的 `catch` 块中进行处理。
+
+### finally
+
+`finally` 块中的代码无论是否发生异常都会被执行，通常用于释放资源，如关闭文件、数据库连接等。示例如下：
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class FinallyExample {
+    public static void main(String[] args) {
+        FileInputStream fis = null;
+        try {
+            fis = new FileInputStream("test.txt");
+            // 读取文件内容
+        } catch (IOException e) {
+            System.out.println("发生 IO 异常：" + e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close(); // 关闭文件流
+                }
+            } catch (IOException e) {
+                System.out.println("关闭文件流时发生异常：" + e.getMessage());
+            }
+        }
+    }
+}
+```
+
+### throw
+
+用于手动抛出一个异常对象。示例如下：
+
+```java
+public class ThrowExample {
+    public static void checkAge(int age) {
+        if (age < 0) {
+            throw new IllegalArgumentException("年龄不能为负数");
+        }
+        System.out.println("年龄合法：" + age);
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("捕获到异常：" + e.getMessage());
+        }
+    }
+}
+```
+
+### throws
+
+用于声明一个方法可能会抛出的异常，将异常处理的责任交给调用该方法的代码。示例如下：
+
+```java
+import java.io.FileInputStream;
+import java.io.IOException;
+
+public class ThrowsExample {
+    public static void readFile() throws IOException {
+        FileInputStream fis = new FileInputStream("test.txt");
+        // 读取文件内容
+        fis.close();
+    }
+
+    public static void main(String[] args) {
+        try {
+            readFile();
+        } catch (IOException e) {
+            System.out.println("发生 IO 异常：" + e.getMessage());
+        }
+    }
+}
+```
+
+### 自定义异常
+
+在某些情况下，你可能需要自定义异常类来表示特定的业务逻辑错误。自定义异常类通常继承自 `Exception` 或 `RuntimeException`。示例如下：
+
+```java
+// 自定义异常类
+class MyException extends Exception {
+    public MyException(String message) {
+        super(message);
+    }
+}
+
+// 使用自定义异常的类
+public class CustomExceptionExample {
+    public static void validate(int num) throws MyException {
+        if (num < 0) {
+            throw new MyException("数字不能为负数");
+        }
+        System.out.println("数字合法：" + num);
+    }
+
+    public static void main(String[] args) {
+        try {
+            validate(-5);
+        } catch (MyException e) {
+            System.out.println("捕获到自定义异常：" + e.getMessage());
+        }
     }
 }
 ```
