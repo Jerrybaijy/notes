@@ -16,7 +16,7 @@
 
 - **defin.**
 
-  above **prep.** （水平位置）在...之上，和 below 相反
+  above **prep.** （水平位置）在...之上，和 below 相反
 
   above **prep.** （年龄、数量等）在...之上
 
@@ -562,19 +562,19 @@
 
 ## used
 
-- **defin.**
+- **词义**
 
-  adj.   习惯于...的；用过的（动词 use 的被动式）
+  adj. 用过的（动词 use 的被动式）
 
-  vt.     动词 use 的过去式和过去分词
+  adj. 习惯于...的
 
-- **syntax**
+- **句型**
 
   **be /get used to (doing) sth.  习惯于（做）...**
 
   We're used to the noise from the traffic now.
 
-  **used to do sth.  曾经做过...**
+  **used to do sth.  过去做...，现在不做了**
 
   She used to work in a bank.  她曾经在银行工作过。
 
