@@ -560,25 +560,29 @@
 
 # U
 
+## use
+
+- **词义**
+
+    
+
 ## used
 
-- **词义**  
+- **词义**
+
   adj. 用过的（动词 use 的被动式）  
   adj. 习惯于...的
 
 - **句型**
 
     - **be used to do sth. 被用来做某事**  
-      Water is used to produce electitity.  
-      水被用来发电。
+      Water is used to produce electitity. 水被用来发电。
 
     - **be /get used to (doing) sth.  习惯于（做）某事**  
-      We're used to the noise from the traffic now.  
-      我们习惯了交通噪音。
+      We're used to the noise from the traffic now. 我们习惯了交通噪音。
 
     - **used to do sth.  过去做某事，现在不做了**  
-      She used to work in a bank.  
-      她曾经在银行工作过。
+      She used to work in a bank. 她曾经在银行工作过。
 
 # V
 
