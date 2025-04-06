@@ -1,3 +1,5 @@
+# A
+
 ## abbreviate
 
 - **defin.**
@@ -30,17 +32,22 @@
 
 ## abroad
 
-- **defin.**
+- **词义**
 
-  adv. 在国外
+    abroad  adv. 在国外
 
-  n.      国外
+    abroad  n. 国外
 
-- **syntax.**
+- **助记**
+
+    broad  adj. 宽的
+
+- **句型**
 
   go abroad 出国
 
   from abroad 从国外
+
   at home and broad 在国内外
 
 - **辨析**
@@ -51,9 +58,9 @@
 
 - **defin.**
 
-  adj. 缺席的（与 present 相反）
+  absent  adj. 缺席的（与 present 相反）
 
-  vt. 缺席（与 attend 相反）
+  absent  vt. 缺席（与 attend 相反）
 
 - **deriv.**
 
@@ -135,6 +142,22 @@
 
   breath  n. 呼吸的空气
 
+# B
+
+## benefit
+
+- benefit  n.益处
+
+    a benefit to someone
+
+- benefit  v.获益；对...有益
+
+    **benefit from**：从…中受益
+
+    **benefit someone**：对…有好处
+
+# C
+
 ## certain
 
 - **defin.**
@@ -160,6 +183,11 @@
   clipper  n. 剪刀
 
   nail clipper  n. 指甲刀
+
+## comfort
+
+- comfort  vt.安慰
+- comfortable  adj.舒适的
 
 ## contact
 
@@ -194,6 +222,8 @@
   across the street  在街道对面
 
   作为位置介词的辨析，详见 Position prep.
+
+# D
 
 ## decrease
 
@@ -269,6 +299,8 @@
 
   have difficulty (in) doing sth. 做...有困难
 
+# F
+
 ## far
 
 - **syntax**
@@ -282,6 +314,8 @@
   **remember / forget to do sth. 记得 / 忘记去做...**
 
   **remember / forget doing sth. 记得 / 忘记做过...**
+
+# I
 
 ## increase
 
@@ -297,9 +331,21 @@
 
 - **increase from 10 to 20    从 10 增长到 20**
 
+## inform
+
+- inform  v.  告知；通知  
+  inform sb. of sth.  
+  inform sb. that + clause
+- information  n.  信息
+- informer  n. 通知者；告密者
+
+# N
+
 ## near
 
 - **be near to sp. 离...近**
+
+# P
 
 ## present
 
@@ -314,14 +360,20 @@
 - **deriv.**
 
   presently                 adv. 目前
+
   presence                 n. 在场；存在
+
   presentation          n. 展示，展示会
+
   represent                v. 代表，描绘
+
   representative       adj. 典型的，代表性的
 
 - **syntax**
 
   in the present = at present = presently    adv. 当前，现在
+
+# R
 
 ## remember
 
@@ -374,6 +426,8 @@
 - **syntax**
 
   The river has risen (by) several metres. 河水上升了好几米。
+
+# S
 
 ## same
 
@@ -484,6 +538,8 @@
 
   synonymous  adj. 同义的；等同于...的
 
+# T
+
 ## think
 
 - **syntax**
@@ -506,6 +562,8 @@
 
   作为位置介词的辨析，详见 Position prep.
 
+# U
+
 ## used
 
 - **defin.**
@@ -523,6 +581,8 @@
   **used to do sth.  曾经做过...**
 
   She used to work in a bank.  她曾经在银行工作过。
+
+# V
 
 ## visualise
 

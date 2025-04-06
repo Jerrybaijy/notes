@@ -52,8 +52,9 @@
 - [z]：不是汉语拼音里的 'z'，类似于 [ð] 但不咬舌
 
 - **字母矫正**
+  
   - N [en] 
-
+  
   - Z [zi:] / [zed]
 
 ## 知识扫盲
@@ -530,8 +531,6 @@ reduce  vt. 减少
   - **25%** twenty five percent
 - **decimal** 小数
   - **0.3** (zero) point three
-
-# Time
 
 - **1997年** nineteen ninety seven
 
