@@ -264,6 +264,35 @@ I need a new pair of trousers for work. 我需要一条上班穿的裤子。
     - 词尾的 -man 变 -men，如 Frenchman——Frenchmen；但“德国人（German——Germans）”除外。
     - 词尾直接加 -s，如 American——Americans。
 
+## 不可数名词
+
+### 雷打不动的不可数名词
+
+某些不可数名词，即使前面有形容词修饰，也不能使用定冠词 a/an。
+
+news 新闻，information 信息，work 工作，advice 建议，progress 进步，weather 天气，fun 乐趣，equipment 设备，jewellery 珠宝，luck 运气，music，health 健康，furniture 家具  
+  We have so much bad luck. 我们有太多的厄运。  
+  I have good news to tell you. 我有好消息告诉你。  
+  He made such rapid progress. 他进步如此快。
+
+### 同词不同义
+
+某些不可数名词转可数名词后，意义发生变化。
+
+glass 玻璃——a glass 一个玻璃杯  
+paper 纸——a paper 一份论文/报纸/试卷
+
+### 抽象名词具体化  
+
+honour 尊重——an honour 一件荣幸的事  
+pleasure 愉快——a pleasuer 一件乐事  
+success 成功——a success 一个成功的人或事
+
+I feel it a great honour to stand here to deliver a speech.  
+站在这里演讲我感到非常荣幸。
+
+Being able to afford a drink would be a comfort in tough times.  
+在困难时期能买得起已被饮料是一件令人感到欣慰的事。
 
 ## 单数名词
 
