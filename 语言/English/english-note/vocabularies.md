@@ -4,31 +4,31 @@
 
 - **defin.**
 
-  abbreviate      vt. 使缩短
+  abbreviate **vt.** 使缩短
 
 - **deriv.**
 
-  abbreviated                  adj. 简短的，缩略的
+  abbreviated **adj.** 简短的，缩略的
 
-  abbreviation (abbr.)    n. 缩写
+  abbreviation (abbr.) n. 缩写
 
 ## above
 
 - **defin.**
 
-  above      prep. （水平位置）在...之上，和 below 相反
+  above **prep.** （水平位置）在...之上，和 below 相反
 
-  above      prep. （年龄、数量等）在...之上
+  above **prep.** （年龄、数量等）在...之上
 
 - **syntax.**
 
-  above sth.  （水平位置；年龄、数量等）在...之上
+  above sth. （水平位置；年龄、数量等）在...之上
 
-  above all       首先，最重要的是
+  above all 首先，最重要的是
 
 - **辨析**
 
-  详见  在...之上
+  详见 **在...上面**
 
 ## abroad
 
@@ -49,10 +49,6 @@
   from abroad 从国外
 
   at home and broad 在国内外
-
-- **辨析**
-
-  详见  在...之上
 
 ## absent
 

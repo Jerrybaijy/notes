@@ -151,22 +151,96 @@
 
 - 特例
 
-# Noun
+# 名词
 
-## Singular noun
+## 名词分类
+
+- 普通名词
+    - 可数名词
+        - 个体名词：表示作为个体而存在的人或事物：boy book week dream
+        - 集体名词：表示若干个人和事物的总称：family committee police   data
+    - 不可数名词
+        - 物质名词：表示物质、材料的总称：air sand
+        - 抽象名词：表示性质、行为、状态、情感等抽象概念的名称：peace freedom  fun
+- 专有名词
+
+## 可数名词复数
+
+### 规则变化
+
+- 一般情况，词尾加 -s，parent——parents 父母
+- 以 -s，-x，-ch，-sh 结尾，加 -es，glass——glasses 玻璃
+    - 特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach——stomachs 胃
+
+- 以 -y 结尾
+    - 以辅音字母加 -y 结尾，把 -y 变 -i 加 -es，factory——factories 工厂
+    - 以元音字母加 -y 结尾，加 -s，boy——boys 男孩
+
+- 以 -o 结尾
+    - 以辅音字母加 -o 结尾，加 -es，potato——potatoes 土豆
+    - 以元音字母加 -o 结尾，加 -s，zoo——zoos 动物园
+
+- 以 -f，-fe 结尾，把 -f，-fe 变 -v 再加 -es，wolf——wolves 狼，knife——knives 刀
+    - 特例：以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。
+
+
+### 不规则变化
+
+- 改变内部元音
+
+    - man——men 男人
+    - woman——women 女人
+    - foot——feet 脚
+    - tooth——teeth 牙齿
+    - goose——geese 鹅
+    - mouse——mice 老鼠（注意此处 s 变 c）
+
+- 单复数同形
+
+    - sheep 绵羊
+    - deer 鹿
+    - Chinese 中国人
+    - Japanese 日本人
+    - Swiss 瑞士人
+    - means 方法
+    - crossroads 十字路口
+    - series 一系列
+    - species 种类
+    - works 工厂
+    - head 头（牲畜数量）
+
+- 同一名词，不同意义
+
+    - work 
+
+      a work by Mark 一部马克的作品  
+      two works by Mark 两部马克的作品  
+      a chemical works 一家化工厂  
+      two chemical works 两家化工厂
+
+    - fish
+
+      two fish 两条鱼  
+      two fishes 两种鱼
+
+    - people
+
+        
+
+## 单数名词
 
 - 一般名词，在前面加 a
 - 元音开头的名词，在前面加 an
 - 例外：an hour，a university
 
-## Plural noun
+## 复数名词
 
 - **Regular**
 
-  |           情况           |      规则       |          示例           |
-  | :----------------------: | :-------------: | :---------------------: |
-  |         一般情况         |      加 s       |          cats           |
-  | o / s / x / ch / sh 结尾 |      加 es      |        potatoes         |
+  |           情况           |      规则       |          示例      |
+  | :---------------------: | :-------------: | :--------------: |
+  |         一般情况         |      加 s       |   friend → friends|
+  | 以 s / x / ch / sh 结尾 |      加 es      |        glass → glasses<br>box → boxes<br>watch → watches<br>brash → brashes        |
   |    辅音字母加 y 结尾     | 把 y 变 i 加 es | butterfly → butterflies |
   |    元音字母加 y 结尾     |      加 s       |          boys           |
   |       f / fe 结尾        |     变 ves      |     knife → knives      |
@@ -239,8 +313,8 @@
 
 ### 在...下面
 
-- **bebeath**：在 ... 下面
-- **above**：指水平位置在某物之下，和 above 相反；
+- **beneath**：在 ... 下面
+- **below**：指水平位置在某物之下，和 above 相反；
 - **under**：指在某物正上方，和 over 相反；
 
 ### 在 ... 之间
