@@ -12,6 +12,26 @@
 
   abbreviation (abbr.) n. 缩写
 
+## able
+
+- **词义**
+
+    adj. 能够的
+
+- **句型**
+
+    - **be able to do sth. 有能力做某事**  
+        You must be able to speak French for this job.  
+        干这项工作你得会说法语。
+
+    - **ability to do sth. 做某事的能力**
+
+- **相关词汇**
+
+    ability n. 能力  
+    disability n. 残疾；无能  
+    disabled adj. 残疾的
+
 ## above
 
 - **defin.**
@@ -78,21 +98,36 @@
 
 ## advise
 
-- **defin.**
+- **词义**
 
-  advise  vt. 建议
+  vt. 建议
 
-- **deriv.**
+- **句型**
 
-  advice  n. 建议
+    - **advise 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**  
+      I advise that you (should) get a haircut before your interview.  
+      我建议你面试前应该先理个发。
 
-- **syntax**
+    - **advise sb. (not) to do sth.  建议某人（不）做某事**  
+      The teacher adcised his students to choose proper major.  
+      那位老师建议他的学生选择合适的专业。
 
-  advise sb to do sth.  建议某人做...
+    - **advise doing sth. 建议做某事**  
+      I advise starting early. 我建议早点开始。
 
-  advise sb on sth.  关于...向某人提建议
+    - **advise sb. on sth.  关于某事向某人提建议**
+    
+    - **advice on sth.  关于...的建议**
 
-  advice on sth.  关于...的建议
+    - **ask for advice 征询意见**
+
+    - **give/offer some advice 提建议**
+
+    - **take/follow noe's advice 采纳某人的建议**
+
+- **相关词汇**
+
+  advice n. 建议
 
 ## along
 
@@ -523,6 +558,25 @@
 
 - **deriv.**
 
+## suggest
+
+- **词义**
+
+    vt. 建议
+
+- **句型**
+
+    - **suggest 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**  
+      I suggest they (should) repeat the experiments and see for themselves.  
+      我建议他们重复实验亲自看看。
+      
+    - **suggest sth./doing**  
+      Could you suggest some low-priced hotels?  
+      你能介绍几个便宜些的旅馆么？
+
+- **相关词汇**
+
+  suggestion n. 建议
 
 ## synonym
 
@@ -564,7 +618,19 @@
 
 - **词义**
 
-    
+  n/vt. 使用
+
+- **句型**
+
+  **make (better/the best) use of 充分利用**  
+  **come into use 开始投入使用**  
+  **use up 用光**
+
+- **相关词汇**
+
+  useful adj. 有用的  
+  useless adj. 无用的  
+  user n. 用户
 
 ## used
 
@@ -594,6 +660,5 @@
 
 - **deriv.**
 
-  visualized  adj. 可视化的
-
+  visualized  adj. 可视化的  
   visualization  n. 可视化
