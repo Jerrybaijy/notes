@@ -294,33 +294,84 @@ I feel it a great honour to stand here to deliver a speech.
 Being able to afford a drink would be a comfort in tough times.  
 在困难时期能买得起已被饮料是一件令人感到欣慰的事。
 
-## 单数名词
+## 名词所有格
 
-- 一般名词，在前面加 a
-- 元音开头的名词，在前面加 an
-- 例外：an hour，a university
+名词的所有格（Possessive form）用于表示某物或某人属于谁。
 
-## 复数名词
+### 在词尾加 -s 构成所有格
 
-- **Regular**
+- 一般单数名词，在词尾加 `'s`  
+  today's newspaper 今天的报纸  
+  China's population 中国的人口
 
-  |           情况           |      规则       |          示例      |
-  | :---------------------: | :-------------: | :--------------: |
-  |         一般情况         |      加 s       |   friend → friends|
-  | 以 s / x / ch / sh 结尾 |      加 es      |        glass → glasses<br>box → boxes<br>watch → watches<br>brash → brashes        |
-  |    辅音字母加 y 结尾     | 把 y 变 i 加 es | butterfly → butterflies |
-  |    元音字母加 y 结尾     |      加 s       |          boys           |
-  |       f / fe 结尾        |     变 ves      |     knife → knives      |
+- 以 -s 结尾的单数名词或专有名词，在结尾加 `'` 或 `'s`，读作 / ɪｚ/。  
+  Dicken‘（s) novels 狄更斯的小说  
+  the boss'(s) order 老板的命令
 
-- **Irregular**
+- 以 -s 或 -es 结尾的复数名词，结尾只加 `'`。  
+  two hours' walk 步行两小时的路程  
+  the masses' advice 群众的意见
 
-  |     情况     |            示例            |
-  | :----------: | :------------------------: |
-  |   改变元音   |   foot → feet，man → men   |
-  | 词尾发生变化 |      child → children      |
-  |  单复数同形  | sheep → sheep，fish → fish |
+- 不以 -s 或 -es 结尾的复数名词，结尾加 `'s`。  
+  women’s clothes 女装
 
-## 人称代词
+- 复合名词，在最后一个词的词尾加 `'s`  
+  his son-in-law's car 他女婿的轿车
+
+### 由“of + 名词”构成所有格
+
+- 用于无生命的东西  
+  the top of the hill 山顶
+
+- 表示“有关，关于”  
+  a story of love and hartred 一个关于爱与恨的故事
+
+- 表示同位关系  
+  the city of Pisa 比萨市
+
+- 表示部分与整体关系  
+  the majority of people 大多数人
+
+- 表示抽象概念  
+  the cost of living 生活费
+
+### 双重所有格
+
+双重所有格（Double possessive）是指在同一句话中同时使用 "of" 和 "possessive 's"，用于表示某人/某物是某个更大范围的一部分。
+
+Some friends of my brother's will join us.  
+我哥哥的一些朋友将加入我们。
+
+## 名词的句法功能
+
+名词（短语）在句子中可以作主语、宾语、补足语、表语、同位语、状语、定语等。
+
+- 作主语  
+  Honesty is the best policy. 诚信为本。
+
+- 作宾语  
+  Teenagers today are facing lots of pressure. 现在的青少年面临很多压力。
+
+- 作补足语  
+  We're sparing no effort to make our country a developed country.  
+  我们正不遗余力地使我们的国家成为一个发达国家。
+
+- 作表语  
+  Water shortages are still the biggest problem in western China.  
+  用水短缺依然是中国西部最大的问题。
+
+- 作同位语  
+  There is no cure for influenza, a common disease.  
+  流行感冒是一种常见的疾病，无特效药。
+
+- 作状语  
+  Come this way! 到这来！
+
+- 作定语  
+  In the south of China, there are many banana trees.  
+  在中国南方有很多香蕉树。
+
+# 代词
 
 |       | 主格  | 宾格  |    自己    | 名词性物主代词 | 形容词性物主代词 |
 | :---: | :---: | :---: | :--------: | :------------: | :--------------: |
