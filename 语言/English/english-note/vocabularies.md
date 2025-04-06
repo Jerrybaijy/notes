@@ -572,11 +572,13 @@
 
   **be /get used to (doing) sth.  习惯于（做）...**
 
-  We're used to the noise from the traffic now.
+  We're used to the noise from the traffic now.  
+  我们习惯了交通噪音。
 
   **used to do sth.  过去做...，现在不做了**
 
-  She used to work in a bank.  她曾经在银行工作过。
+  She used to work in a bank.  
+  她曾经在银行工作过。
 
 # V
 
