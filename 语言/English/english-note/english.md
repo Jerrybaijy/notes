@@ -220,12 +220,45 @@
 
     - fish
 
-      two fish 两条鱼
+      two fish 两条鱼  
       two fishes 两种鱼
 
     - people
 
-        
+      two people 两个人  
+      two peoples 两个民族
+
+### 由两部分构成的物体
+
+trousers，shorts 等名词不能用基数词修饰，其前也不能直接加不定冠词 a/an，但可以用 a pair of，two pairs of，many 等词修饰。
+
+I need a new pair of trousers for work. 我需要一条上班穿的裤子。
+
+### 复合名词
+
+- 没有连字符，最后一个名词变复数。  
+  housewife——housewives 家庭主妇
+- 组成复合名词的单词中没有名词，在最后加 -s。  
+  grow-up——grow-ups 成年人
+- 有连字符，将复合名词中主要的名词变复数。  
+  passer-by——passers-by 路人  
+  daughter-in-law——daughters-in-law 儿媳妇
+- man，woman 为复合名词的第一部分时，复合名词的各个部分皆变为复数  
+  a man cook——men cooks 男厨师  
+  a woman teacher——women teachers
+
+### 注意
+
+- 某些表示学科的名词，虽然结尾以 -s 结尾，但并非复数形式。作主语时，谓语动词要用单数形式。如 maths 数学，physics 物理学，economics 经济学。  
+  Physics is difficult for me. 对于我来说物理很难。
+- 单复数同形的名词在使用时要注意其谓语动词的单复数形式变化。  
+  Every means has been tried. 每种方法都试过了。  
+  All means have been tried. 所有方法都试过了。
+- 表示“某国人”的名词变复数的三种形式
+    - “中日瑞不变”
+    - 词尾的 -man 变 -men，如 Frenchman——Frenchmen；但“德国人（German——Germans）”除外。
+    - 词尾直接加 -s，如 American——Americans。
+
 
 ## 单数名词
 
