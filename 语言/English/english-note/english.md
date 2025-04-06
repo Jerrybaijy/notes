@@ -220,7 +220,7 @@
 
     - fish
 
-      two fish 两条鱼  
+      two fish 两条鱼
       two fishes 两种鱼
 
     - people
