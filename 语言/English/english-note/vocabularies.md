@@ -1,3 +1,7 @@
+- **词义**
+- **句型**
+- **相关词汇**
+
 # A
 
 ## abbreviate
@@ -24,7 +28,9 @@
         You must be able to speak French for this job.  
         干这项工作你得会说法语。
 
-    - **ability to do sth. 做某事的能力**
+    - **ability to do sth. 做某事的能力**  
+        I don't doubt your ability to do the work.  
+        我不怀疑你担任这项工作的能力。
 
 - **相关词汇**
 
@@ -72,19 +78,156 @@
 
 ## absent
 
-- **defin.**
+- **词义**
 
-  absent  adj. 缺席的（与 present 相反）
+    adj. 缺席的（与 present 相反）  
+    vi. 缺席（与 attend 相反）
 
-  absent  vt. 缺席（与 attend 相反）
+- **句型**
 
-- **deriv.**
+    - **be absent from 从...缺席**  
+        He had been absent 95 times from class and had six failing grades for the year.  
+        今年他逃了95次课，6门功课不及格。
 
-  absence    n. 缺席
+    - **absent oneself from 缺席**  
+        He absent himself from the meeting.  
+        他故意缺席会议。
 
-- **syntax**
+- **相关词汇**
 
-  be absent from  从...缺席
+    absence n. 缺席  
+    present adj. 出席的  
+    attend v. 出席
+
+## absorb
+
+- **词义**
+
+    vt. 吸收；吸引
+
+- **句型**
+
+    I used a sponge to absord the spilled milk.  
+    我用海绵吸干了溢出来的牛奶。
+
+    **be absorbed in doing sth. 专心做某事**  
+    He is absorbed in reading.  
+    他在专心看书。  
+
+- **相关词汇**
+
+    absorbed adj. 专心致志的  
+    absorber n. 吸收器；减震器
+
+## accept
+
+- **词义**
+
+    v. 接受
+
+- **句型**
+
+    Please accept my apologies.  
+    请接受我的道歉
+
+    She received a birthday present from a boy but didn't accept it.  
+    她收到一个男孩的生日礼物，但没有接受。
+
+- **相关词汇**
+
+    accepted adj. 被广泛接受的  
+    acceptable adj. 可以接受的  
+    acception n. 接受
+
+## access
+
+- **词义**
+
+    n. 入口  
+    vt. 接近；使用
+
+- **句型**
+
+    **have access to... 有（使用/接近）...的权利**  
+    The students have access to these books.  
+    学生可以自由使用这些图书。
+
+    The tower is not accessible to the public.  
+    这座灯塔不对公众开放。
+
+- **相关词汇**
+
+    accessible adj. 可使用的，可进入的  
+    inaccessible adj. 无法使用的，无法进入的
+
+## account
+
+- **词义**
+
+    n. 账户；账目；存款  
+    v. 占比；解释
+
+- **句型**
+
+    **account for = make up 占比**  
+    Online sales account for 30% of total revenue.  
+    在线销售占总收入的30%。
+
+    **account for = explain 解释**  
+    Can you account for your absence yesterday?  
+    你能解释一下你昨天缺席的原因吗？
+
+- **相关词汇**
+
+    cout v. 计数  
+    accountant  n. 会计
+
+## accurate
+
+- **词义**
+
+    adj. 精确的
+
+- **句型**
+
+    This thermometer gives very accurate readings.  
+    这只温度计读数非常精确。
+
+- **相关词汇**
+
+    inaccurate adj. 不精确的  
+    accuracy n. 精确性
+
+## achieve
+
+- **词义**
+
+    vt. 取得（胜利，成就）
+
+- **句型**
+
+    The team achieved victory fater losts of hard work.  
+    经过艰苦的训练以后，这支队伍取得了胜利。
+
+- **相关词汇**
+
+    achievement n. 成就，功绩  
+    achiever n. 成功者
+
+## acquire
+
+- **词义**
+
+    vt. 获得
+
+- **句型**
+
+    Tom acquired a famous painting from an art dealer.  
+    汤姆从一个艺术品经销商那里得到一幅名画。
+
+- **相关词汇**
+
+    acquisition n. 获得物
 
 ## adjective
 
@@ -236,23 +379,29 @@
 
 ## cross
 
-- **defin.**
+- **词义**
 
-  cross  vt. 从表面穿过（马路，桥，河...）,尤其表示横穿
+    vt. 从表面穿过（马路，桥，河...），尤其表示横穿
 
-- **deriv.**
+- **句型**
 
-  across  prep. 在...另一边
+    - **cross sp. = go across sp. 穿过...**  
+        The cat crossed the road.  
+        The cat went across the road.  
+        猫跑过了马路。（介词用法）
 
-  across  adv. 穿过
+    - **go across 穿过**  
+        The cat ran across quickly.  
+        猫快速地跑过了。
 
-- **syntax**
+    - **come across 偶然遇到**  
+        I came across an old book while cleaning the attic.  
+        我在打扫阁楼时偶然发现了一本旧书。
 
-  cross sp. = go across sp.  穿过...
+- **相关词汇**
 
-  across the street  在街道对面
-
-  作为位置介词的辨析，详见 Position prep.
+    across  prep. 在...另一边  
+    across  adv. 穿过
 
 # D
 

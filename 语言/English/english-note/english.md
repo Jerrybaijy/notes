@@ -428,6 +428,7 @@ Some friends of my brother's will join us.
   - A bridge over the river
 - **aboard**：在(船、飞机、公共汽车、火车等)上
   - aboard the plane
+  - go aboard 上船
 
 ### 在...下面
 
