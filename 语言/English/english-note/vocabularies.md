@@ -229,6 +229,90 @@
 
     acquisition n. 获得物
 
+## act
+
+- **词义**
+
+    vi. 扮演  
+    vt. 行动  
+    n. 法令，条例
+
+- **句型**
+
+    - **take action 采取行动**  
+        Immediate action should be taken to stop the spreading of the fire.  
+        必须采取紧急措施，以阻止火势蔓延。
+
+    - **in actual fact = actually 实际上**  
+        In actual fact, he never received the email.  
+        实际上，他根本没收到那封邮件。
+
+- **相关词汇**
+
+    action n. 行动  
+    active adj. 积极的，主动的  
+    activity n. 活动  
+    actor n. 演员  
+    actress n. 女演员  
+    actual adj. 实际的  
+    actually adv. 实际上
+
+## adapt
+
+- **词义**
+
+    v. （使）适应；改编
+
+- **句型**
+
+    **adapt to... 适应...**  
+    Many plants and animals have adapted to life in the desert.  
+    许多动植物已经适应了沙漠里的生存。
+
+- **相关词汇**
+
+    adaptation n. 适应；改编
+
+## add
+
+- **词义**
+
+    v. 增加
+
+- **句型**
+
+    - **add...to... 把...加到...里**  
+        Many new words are added to the new edition of the dictionary.  
+        这个新版本的词典里增加了许多新单词。
+
+    - **add to... 增加某物**  
+        The bed weather added to our difficulties.  
+        坏天气增加了我们的困难。
+
+    - **add up 把...加起来**  
+        Please add up all the money I should pay.  
+        请把我要付的钱加起来。
+
+    - **add up to... 加起来达到...**  
+        The income adds up to 10,000 dollars.  
+        收入达到一万美元。
+
+    - **in addition = also / furthermore 另外**  
+        The hotel is close to the beach. In addition, it has a great restaurant.  
+        这家酒店靠近海滩，此外还有一家很棒的餐厅。
+
+    - **in addition to + 名词**  
+
+        In addition to English, she speaks French and Spanish.  
+        除了英语之外，她还会说法语和西班牙语。
+
+        In addition to working full-time, he also studies at night.  
+        除了全职工作，他晚上还学习。
+
+- **相关词汇**
+
+    addition n. 增加；加法
+
 ## adjective
 
 - **defin.**
