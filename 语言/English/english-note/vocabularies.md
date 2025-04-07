@@ -2,6 +2,20 @@
 - **句型**
 - **相关词汇**
 
+## 待总结
+
+- **after all 毕竟**
+
+    I think you should help him. After all, he is your friend.  
+    我想你应该帮助他。毕竟，他是你的朋友。
+    
+- **soon after 不久以后**
+
+- **afterward adv. 后来**
+
+    Mary went to work, and afterward she went to dinner.  
+    玛丽去上班，然后再去吃饭。
+
 # A
 
 ## abbreviate
@@ -22,21 +36,23 @@
 
     adj. 能够的
 
-- **句型**
-
-    - **be able to do sth. 有能力做某事**  
-        You must be able to speak French for this job.  
-        干这项工作你得会说法语。
-
-    - **ability to do sth. 做某事的能力**  
-        I don't doubt your ability to do the work.  
-        我不怀疑你担任这项工作的能力。
-
 - **相关词汇**
 
     ability n. 能力  
     disability n. 残疾；无能  
     disabled adj. 残疾的
+
+- **句型**
+
+    - **be able to do sth. 有能力做某事**
+
+        You must be able to speak French for this job.  
+        干这项工作你得会说法语。
+
+    - **ability to do sth. 做某事的能力**
+
+        I don't doubt your ability to do the work.  
+        我不怀疑你担任这项工作的能力。
 
 ## above
 
@@ -83,6 +99,12 @@
     adj. 缺席的（与 present 相反）  
     vi. 缺席（与 attend 相反）
 
+- **相关词汇**
+
+    absence n. 缺席  
+    present adj. 出席的  
+    attend v. 出席
+
 - **句型**
 
     - **be absent from 从...缺席**  
@@ -93,17 +115,16 @@
         He absent himself from the meeting.  
         他故意缺席会议。
 
-- **相关词汇**
-
-    absence n. 缺席  
-    present adj. 出席的  
-    attend v. 出席
-
 ## absorb
 
 - **词义**
 
     vt. 吸收；吸引
+
+- **相关词汇**
+
+    absorbed adj. 专心致志的  
+    absorber n. 吸收器；减震器
 
 - **句型**
 
@@ -114,16 +135,17 @@
     He is absorbed in reading.  
     他在专心看书。  
 
-- **相关词汇**
-
-    absorbed adj. 专心致志的  
-    absorber n. 吸收器；减震器
-
 ## accept
 
 - **词义**
 
     v. 接受
+
+- **相关词汇**
+
+    accepted adj. 被广泛接受的  
+    acceptable adj. 可以接受的  
+    acception n. 接受
 
 - **句型**
 
@@ -133,18 +155,17 @@
     She received a birthday present from a boy but didn't accept it.  
     她收到一个男孩的生日礼物，但没有接受。
 
-- **相关词汇**
-
-    accepted adj. 被广泛接受的  
-    acceptable adj. 可以接受的  
-    acception n. 接受
-
 ## access
 
 - **词义**
 
     n. 入口  
     vt. 接近；使用
+
+- **相关词汇**
+
+    accessible adj. 可使用的，可进入的  
+    inaccessible adj. 无法使用的，无法进入的
 
 - **句型**
 
@@ -155,17 +176,17 @@
     The tower is not accessible to the public.  
     这座灯塔不对公众开放。
 
-- **相关词汇**
-
-    accessible adj. 可使用的，可进入的  
-    inaccessible adj. 无法使用的，无法进入的
-
 ## account
 
 - **词义**
 
     n. 账户；账目；存款  
     v. 占比；解释
+
+- **相关词汇**
+
+    cout v. 计数  
+    accountant  n. 会计
 
 - **句型**
 
@@ -177,26 +198,21 @@
     Can you account for your absence yesterday?  
     你能解释一下你昨天缺席的原因吗？
 
-- **相关词汇**
-
-    cout v. 计数  
-    accountant  n. 会计
-
 ## accurate
 
 - **词义**
 
     adj. 精确的
 
-- **句型**
-
-    This thermometer gives very accurate readings.  
-    这只温度计读数非常精确。
-
 - **相关词汇**
 
     inaccurate adj. 不精确的  
     accuracy n. 精确性
+
+- **句型**
+
+    This thermometer gives very accurate readings.  
+    这只温度计读数非常精确。
 
 ## achieve
 
@@ -220,14 +236,14 @@
 
     vt. 获得
 
+- **相关词汇**
+
+    acquisition n. 获得物
+
 - **句型**
 
     Tom acquired a famous painting from an art dealer.  
     汤姆从一个艺术品经销商那里得到一幅名画。
-
-- **相关词汇**
-
-    acquisition n. 获得物
 
 ## act
 
@@ -236,16 +252,6 @@
     vi. 扮演  
     vt. 行动  
     n. 法令，条例
-
-- **句型**
-
-    - **take action 采取行动**  
-        Immediate action should be taken to stop the spreading of the fire.  
-        必须采取紧急措施，以阻止火势蔓延。
-
-    - **in actual fact = actually 实际上**  
-        In actual fact, he never received the email.  
-        实际上，他根本没收到那封邮件。
 
 - **相关词汇**
 
@@ -257,11 +263,25 @@
     actual adj. 实际的  
     actually adv. 实际上
 
+- **句型**
+
+    - **take action 采取行动**  
+        Immediate action should be taken to stop the spreading of the fire.  
+        必须采取紧急措施，以阻止火势蔓延。
+
+    - **in actual fact = actually 实际上**  
+        In actual fact, he never received the email.  
+        实际上，他根本没收到那封邮件。
+
 ## adapt
 
 - **词义**
 
     v. （使）适应；改编
+
+- **相关词汇**
+
+    adaptation n. 适应；改编
 
 - **句型**
 
@@ -269,15 +289,15 @@
     Many plants and animals have adapted to life in the desert.  
     许多动植物已经适应了沙漠里的生存。
 
-- **相关词汇**
-
-    adaptation n. 适应；改编
-
 ## add
 
 - **词义**
 
     v. 增加
+
+- **相关词汇**
+
+    addition n. 增加；加法
 
 - **句型**
 
@@ -309,10 +329,6 @@
         In addition to working full-time, he also studies at night.  
         除了全职工作，他晚上还学习。
 
-- **相关词汇**
-
-    addition n. 增加；加法
-
 ## adjective
 
 - **defin.**
@@ -328,6 +344,10 @@
 - **词义**
 
   vt. 建议
+
+- **相关词汇**
+
+  advice n. 建议
 
 - **句型**
 
@@ -352,9 +372,101 @@
 
     - **take/follow noe's advice 采纳某人的建议**
 
+## affect
+
+- **词义**
+
+    vt. 影响
+
 - **相关词汇**
 
-  advice n. 建议
+    effect n. 作用，影响
+
+- **句型**
+
+    - **affect**  
+        The bad weather affected her health.  
+        恶劣天气影响了她的健康。
+
+    - **hava effects on sth. 对某事有影响，起作用**  
+        That game have an important effect on children.  
+        那种游戏对孩子影响很大。
+
+    - **take effect 生效**
+
+    - **put into effect 使生效**
+
+## afford
+
+- **词义**
+
+    vt. “花费得起”（费用/时间）或“承担得起”（某种代价）  
+    vt. 提供
+
+- **句型**
+
+    - 常用于 be able to 或 can 之后
+
+    - **can afford sth.**  
+        They can’t afford the medical fee.  
+        他们承担不起医药费。
+
+    - **can afford to do sth.**  
+        I can’t afford to quit my job right now.  
+        我现在辞不起职。
+
+    - **当意为“提供”时**  
+        The hotel affords a beautiful view of the ocean.  
+        酒店提供海景享受。
+
+## afraid
+
+- **词义**
+
+    adj. 害怕的，恐惧的
+
+- **相关词汇**
+
+    frightened adj. 害怕的，受惊的  
+    scared adj. 恐惧的
+
+- **句型**
+
+    - **be afraid to do sth. 因为害怕而不敢做某事**  
+        She’s afraid to jump.  
+        她不敢跳下去。
+
+    - **be afraid of (doing) sth. 害怕某事可能导致的后果**  
+        She’s afraid of falling.  
+        她怕掉下来。
+
+    - **be afraid that + 从句，恐怕...**  
+        I’m afraid I can’t help you.  
+        我恐怕帮不了你。
+
+    - **I'm afraid so/not. 恐怕（不）是这样**
+
+## agent
+
+- **词义**
+
+    n. 代理商
+
+- **相关词汇**
+
+    agency n. 代理处  
+    agenda n. 议程
+
+- **句型**
+
+    David served as an agent for the shipping company.  
+    大卫给航运公司做代理。
+
+    My father operates an insurance angency.  
+    我父亲开了一家保险代理公司
+
+    How many items are on the agenda?  
+    这份议程有多少项？
 
 ## along
 
@@ -390,16 +502,6 @@
 
   attendee  n. 出席者
 
-## attend
-
-- **defin.**
-
-  breathe  v. 呼吸
-
-- **deriv.**
-
-  breath  n. 呼吸的空气
-
 # B
 
 ## benefit
@@ -413,6 +515,16 @@
     **benefit from**：从…中受益
 
     **benefit someone**：对…有好处
+
+## breathe
+
+- **词义**
+
+    v. 呼吸
+
+- **相关词汇**
+
+    breath  n. 呼吸的空气
 
 # C
 
@@ -467,6 +579,11 @@
 
     vt. 从表面穿过（马路，桥，河...），尤其表示横穿
 
+- **相关词汇**
+
+    across  prep. 在...另一边  
+    across  adv. 穿过
+
 - **句型**
 
     - **cross sp. = go across sp. 穿过...**  
@@ -481,11 +598,6 @@
     - **come across 偶然遇到**  
         I came across an old book while cleaning the attic.  
         我在打扫阁楼时偶然发现了一本旧书。
-
-- **相关词汇**
-
-    across  prep. 在...另一边  
-    across  adv. 穿过
 
 # D
 
@@ -797,6 +909,10 @@
 
     vt. 建议
 
+- **相关词汇**
+
+  suggestion n. 建议
+
 - **句型**
 
     - **suggest 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**  
@@ -806,10 +922,6 @@
     - **suggest sth./doing**  
       Could you suggest some low-priced hotels?  
       你能介绍几个便宜些的旅馆么？
-
-- **相关词汇**
-
-  suggestion n. 建议
 
 ## synonym
 
@@ -853,17 +965,17 @@
 
   n/vt. 使用
 
-- **句型**
-
-  **make (better/the best) use of 充分利用**  
-  **come into use 开始投入使用**  
-  **use up 用光**
-
 - **相关词汇**
 
   useful adj. 有用的  
   useless adj. 无用的  
   user n. 用户
+
+- **句型**
+
+  **make (better/the best) use of 充分利用**  
+  **come into use 开始投入使用**  
+  **use up 用光**
 
 ## used
 
