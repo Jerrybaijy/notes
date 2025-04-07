@@ -506,12 +506,6 @@
     go along with ...  服从；遵守  
     作为位置介词的辨析，详见位置介词
 
-## antonym
-
-- **词义**
-
-    antonym (anton.)  n. 反义词（与 synonym 相反）
-
 ## attend
 
 - **词义**
@@ -707,7 +701,7 @@
     different adj. 不同的  
     difference n. 差异
 
-- **syntax**
+- **句型**
 
     - **differ from = be different from  与...不同**
 
@@ -715,10 +709,13 @@
         This product is different from the old version.  
         这个产品和旧版不同。
 
-    - **differ in + 某方面**
+    - **differ in = a difference in 在某方面有差异**
 
         People differ in their tastes.  
         人们的品味各不相同。
+
+        There’s a difference in price.  
+        价格上有差异。
 
     - **differ on/over/about + 话题**
 
@@ -730,43 +727,97 @@
         There is a big difference between cats and dogs.  
         猫和狗之间有很大差异。
 
+    - **make a difference 起作用、有影响**
 
-
-
-
-
+        A kind word can make a big difference.  
+        一句善意的话可能会带来巨大改变。
 
 ## difficult
 
-- **defin.**
+- **词义**
 
-  adj. 困难的
+    adj. 困难的
 
-- **deriv.**
+- **相关词汇**
 
-  difficulty      n.  困难
+    difficulty n.  困难  
+    difficultly adv.  困难地
 
-  difficultly     adv.  困难地
+- **句型**
 
-- **syntax**
+    - **It is difficult to do sth. 做某事很难**
 
-  have difficulty (in) doing sth. 做...有困难
+        It is difficult to learn a new language.  
+        学习一门新语言很难。
+
+    - **have difficulty (in) doing sth.**
+
+        I have difficulty understanding the instructions.  
+        我理解这些说明时有困难。
+
+    - **have a difficulty with sth.**
+
+        He had a difficulty with the new software.  
+        他在使用新软件时遇到困难。
 
 # F
 
 ## far
 
-- **syntax**
+- **词义**
 
-  be far from sp. 离...远
+    adj. 远的  
+    adv. 远地  
+    与 near 相反
+
+- **比较级和最高级**
+
+    比较级：farther  
+    最高级：farthest
+
+- **相关词汇**
+
+    near adj. adv. 近
+
+- **句型**
+
+    - **be far from sp. 离...远**
+
+    - **as/so far as I know 据我所知**
+
+    - **as/so far as I am concerned 我认为**
+
+    - **so far 到目前为止**
 
 ## forget
 
-- **syntax**
+- **词义**
 
-  **remember / forget to do sth. 记得 / 忘记去做...**
+    v. 忘记  
+    与 remember 相反
 
-  **remember / forget doing sth. 记得 / 忘记做过...**
+- 动词时态
+
+    过去时：forgot  
+    现在完成时：forgetting  
+    过去完成时：forgotten
+
+- **相关词汇**
+
+    forgetful adj. 健忘的  
+    remember v. 记得（用法同 forget）
+
+- **句型**
+
+    - **forget to do sth. 忘记去做...**
+
+        I'll never forget meeting my school headmaster for the first time.  
+        我永远无法忘记和小学校长初次见面时的情景。
+
+    - **forget doing sth. 忘记做过...**
+
+        She forgot to post the letter.  
+        她忘记去寄信了。
 
 # I
 
@@ -807,199 +858,226 @@
 
 ## inform
 
-- inform  v.  告知；通知  
-  inform sb. of sth.  
-  inform sb. that + clause
-- information  n.  信息
-- informer  n. 通知者；告密者
+- **词义**
+
+    v. 告知；通知
+
+- **相关词汇**
+
+    information n. 信息  
+    informer n. 通知者；告密者
+
+- **句型**
+
+    - **inform sb. of sth. 通知某人某事**
+
+        I informed my boss of the change of schedule.  
+        我通知了老板计划有变。
+
+    - **inform sb. that + 从句**
 
 # N
 
 ## near
 
-- **be near to sp. 离...近**
+- **词义**
+
+    adj. 近的  
+    adv. 附近  
+    prep. 在...附近  
+    与 far 相反
+
+- **相关词汇**
+
+    nearby adj. 附近的 adv. 在附近  
+    nearly adv. 将近，几乎
+
+- **句型**
+
+    - **be near to sp. 离...近**
+
+        The park is near to our school.  
+        公园离我们学校很近。
+
+    - **near sp.**
+
+        The missing boys were last seen playing near the river.  
+        人们最后一次看见那些走失的男孩时，他们在河边玩耍。
+
+    - **in the near future 在不久的将来**
+
+    - **nearby 作为副词时**
+
+        There was an old man sitting quitely on a bench nearby.  
+        有位老人静静地坐在附近的长凳上。
+
+    - **nearly adv. 几乎**
+
+        This blue srar sapphire is worth nearly six hundred thousand dollars.  
+        这颗蓝宝石的价值将近60万美元。
 
 # P
 
 ## present
 
-- **defin.**
+- **词义**
 
-  present    n. 礼物
+    present n. 礼物  
+    present adj. 当前的；出席的（与 absent 相反）  
+    present v. 提出
 
-  present    adj. 当前的；出席的（与 absent 相反）
+- **相关词汇**
 
-  present    v. 提出
+    presently adv. 目前  
+    presence n. 在场；存在  
+    presentation n. 展示，展示会  
+    represent v. 代表，描绘  
+    representative adj. 典型的，代表性的
 
-- **deriv.**
+- **句型**
 
-  presently                 adv. 目前
-
-  presence                 n. 在场；存在
-
-  presentation          n. 展示，展示会
-
-  represent                v. 代表，描绘
-
-  representative       adj. 典型的，代表性的
-
-- **syntax**
-
-  in the present = at present = presently    adv. 当前，现在
+    in the present = at present = presently adv. 当前，现在
 
 # R
 
-## remember
-
-- **syntax**
-
-  remember / forget to do sth. 记得 / 忘记去做...
-
-  remember / forget doing sth. 记得 / 忘记做过...
-
 ## raise
 
-- **defin.**
+- **词义**
 
-  **raise  vt. 举起，提升**
+    vt. 举起，提升
 
-  Raise up your hands.
+- **相关词汇**
 
-- **区分**
+    rise vi. 上升
 
-  rise  vi. 上升
+- **句型**
 
-## reduce
+    - **raise vt. 举起**
 
-- **defin.**
+        Raise your hands.  
+        举起手来。
 
-  reduce  vt.  减少
+    - **rise vi. 上升**
+
+        The river has risen (by) several metres.  
+        河水上升了好几米。
 
 ## request
 
-- **defin.**
+- **词义**
 
-  request  v.  n.  要求，请求
+    v. 要求，请求  
+    n. 要求，请求
 
-- **syntax**
+- **句型**
 
-  **be available upon request  应要求提供**
+    **be available upon request  应要求提供**
 
-  Napkins are only available upon request. 吸管仅在有要求时提供。
-
-## rise
-
-- **defin.**
-
-  rise  vi. 上升；增加
-
-- **区分**
-
-  raise (vt.) 举起
-
-- **syntax**
-
-  The river has risen (by) several metres. 河水上升了好几米。
+    Napkins are only available upon request. 吸管仅在有要求时提供。
 
 # S
 
 ## same
 
-- **defin.**
+- **词义**
 
-  same  adj. 相同的
+    adj. 相同的  
+    与 different 相反
 
-- **antonym**
+- **句型**
 
-  different  adj. 不同的
+    - **be the same as  与...相同**
 
-- **syntax**
+        His trousers are the same as mine.  
+        他的裤子和我的一样。
 
-  **be the same as  与...相同**
+    - **all the same  尽管如此**
 
-  His trousers are the same as mine.
+        All the same, there's some truth in what she says.  
+        尽管如此，她说的还是有些道理的。
 
-  **all the same  尽管如此**
+    - **all the same  都一样**
 
-  All the same, there's some truth in what she says.
-
-  尽管如此，她说的还是有些道理的。
-
-  **all the same  都一样**
-
-  It's all the same to me whether we eat now or later.
-
-  现在吃还是过一会吃，对于我都一样。
+        It's all the same to me whether we eat now or later.  
+        现在吃还是过一会吃，对于我都一样。
 
 ## schedule
 
-- **defin.**
+- **词义**
 
-  vt. 安排（会议）
+    vt. 安排（会议）
 
-- **syntax**
+- **句型**
 
-  schedule a meeting  安排会议（书面语）
-
-  set up a meeting       安排会议（口语）
+    schedule a meeting  安排会议（书面语）  
+    set up a meeting       安排会议（口语）
 
 ## similar
 
-- **defin.**
+- **词义**
 
-  similar  adj. 相似的
-  
-- **syntax**
+    adj. 相似的
 
-  **be similar to  与...相似**
-  
-  My story is similar to yours. 我的经历跟你们的类似。
+- **相关词汇**
+
+    similarly adv. 类似地  
+    similarity n. 相似处
+
+- **句型**
+
+    - **be similar to  与...相似**
+
+        My story is similar to yours.  
+        我的经历跟你们的类似。
 
 ## sleep
 
-- **defin.**
+- **词义**
 
-  v. 睡觉
+    v. 睡觉  
+    n. 睡觉  
+    与 wake 相反
 
-  n. 睡觉
+- **相关词汇**
 
-- **deriv.**
+    sleepy  adj. 困倦的；不热闹的  
+    sleeping  adj. 睡着的  
+    asleep adj. 睡着的（不能作定语）
 
-  sleepy  adj. 困倦的；不热闹的
+- **句型**
 
-  sleeping  adj. 睡着的
-
-- **syntax**
-
-  go to sleep  去睡觉
-
-  have a sleep  去睡觉
+    go to sleep  去睡觉  
+    have a sleep  去睡觉  
+    fall asleep 睡着
 
 ## social
 
-- **defin.**
+- **词义**
 
-  social    adj. 社会的；社交的
+    social  adj. 社会的；社交的  
+    social  n. 联谊会
 
-  social    n. 联谊会
+- **相关词汇**
 
-- **deriv.**
-
-  socially    adv. 在社会上；在社交场合
-
-  sociaty    n. 社会
-
-  society    n. 社会；协会，社团
+    socially adv. 在社会上；在社交场合  
+    sociaty n. 社会  
+    society n. 社会；协会，社团
 
 ## stress
 
-- **defin.**
+- **词义**
 
-  v. 强调；重读
+    n. 压力  
+    v. 强调；重读
 
-  n. 压力
+- **相关词汇**
 
-- **deriv.**
+    strength n. 力量  
+    strengthen v. 增强
+
+- **辨析**
+
+    关于“力量”的辨析，详见 **辨析词 | 力量**
 
 ## suggest
 
@@ -1023,39 +1101,47 @@
         Could you suggest some low-priced hotels?  
         你能介绍几个便宜些的旅馆么？
 
-## synonym
-
-- **defin.**
-
-  synonym  n. 同义词（与 antonym 相反）
-
-- **deriv.**
-
-  synonymous  adj. 同义的；等同于...的
-
 # T
 
 ## think
 
-- **syntax**
+- **词义**
 
-  think of 想
+    v. 想；认为
 
-  What do you think about / of sth. 认为...怎么样
+- **相关词汇**
+
+    thinking n. 思索；见解，想法
+
+- **句型**
+
+    - **宾语从句**
+
+        如果接否定形式的宾语从句，否定形式转移到 think 上，类似的动词还有 suppose，believe，hope，expect 等。  
+        I don't think it is necessary to call him.  
+        我认为没必要给他打电话。
+
+    - **think of 想**
+
+    - **think about 考略，认为**
+
+    - **think over 仔细琢磨**
+
+        What do you think about / of sth. 认为...怎么样
 
 ## through
 
-- **defin.**
+- **词义**
 
-  prep. 通过；从内部穿过（森林，隧道，人群，门窗...）
+    prep. 通过；从内部穿过（森林，隧道，人群，门窗...）
 
-- **deriv.**
+- **相关词汇**
 
-  throughly  adv. 彻底地
+    throughly  adv. 彻底地
 
-- **syntax**
+- **句型**
 
-  作为位置介词的辨析，详见 Position prep.
+    作为位置介词的辨析，详见位置介词。
 
 # U
 
