@@ -388,9 +388,9 @@ Some friends of my brother's will join us.
 | 这些  | these | these |     -      |       -        |      these       |
 | 那些  | those | those |     -      |       -        |      those       |
 
-# Preposition
+# 介词
 
-## Time prep.
+## 时间介词
 
 <img src="assets/image-20240418211404250.png" alt="image-20240418211404250" style="zoom:200%;" />
 
@@ -412,7 +412,7 @@ Some friends of my brother's will join us.
   - in June
   - in the morning / afternoon / evening
 
-## Position prep.
+## 位置介词
 
 ![image-20240418190331041](assets/image-20240418190331041.png)
 
@@ -459,11 +459,11 @@ Some friends of my brother's will join us.
 
 - **past**：从旁边经过
 
-## 动向 prep.
+## 动向介词
 
-## Method prep.
+## 方式介词
 
-# Verb
+# 动词
 
 ## Verb 单三
 

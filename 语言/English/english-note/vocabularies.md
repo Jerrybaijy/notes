@@ -1,6 +1,6 @@
 - **词义**
-- **句型**
 - **相关词汇**
+- **句型**
 
 ## 待总结
 
@@ -20,15 +20,14 @@
 
 ## abbreviate
 
-- **defin.**
+- **词义**
 
-  abbreviate **vt.** 使缩短
+    vt. 使缩短
 
-- **deriv.**
+- **相关词汇**
 
-  abbreviated **adj.** 简短的，缩略的
-
-  abbreviation (abbr.) n. 缩写
+    abbreviated **adj.** 简短的，缩略的  
+    abbreviation (abbr.) n. 缩写
 
 ## able
 
@@ -68,7 +67,7 @@
 
 - **辨析**
 
-  详见 **在...上面**
+    详见 **在...上面**
 
 ## abroad
 
@@ -495,51 +494,69 @@
 
 ## along
 
-- **defin.**
+- **词义**
 
-  adv. 沿着
+    adv. 沿着  
+    prep. 沿着
 
-  prep. 沿着
+- **句型**
 
-- **syntax**
-
-  along the street
-
-  go along the street
-
-  go along with ...  服从；遵守
-
-  作为位置介词的辨析，详见 Position prep.
+    along the street  
+    go along the street  
+    go along with ...  服从；遵守  
+    作为位置介词的辨析，详见位置介词
 
 ## antonym
 
-- **defin.**
+- **词义**
 
-  antonym (anton.)  n. 反义词（与 synonym 相反）
+    antonym (anton.)  n. 反义词（与 synonym 相反）
 
 ## attend
 
-- **defin.**
+- **词义**
 
-  attend  v. 出席（与 absent 相反）
+    v. 出席（与 absent 相反）
 
-- **deriv.**
+- **相关词汇**
 
-  attendee  n. 出席者
+    attendee  n. 出席者  
+    attender n. 出席者
 
 # B
 
 ## benefit
 
-- benefit  n.益处
+- **词义**
 
-    a benefit to someone
+    n. 益处  
+    v. （使）获益；对...有益
 
-- benefit  v.获益；对...有益
+- **相关词汇**
 
-    **benefit from**：从…中受益
+    beneficial adj. 有益的
 
-    **benefit someone**：对…有好处
+- **句型**
+
+    - **benefit sb./sth. 对…有益**
+
+        The changes will benefit everyone.  
+        这些改变将对每个人都有好处。
+
+    - **be beneficial to... 对...有益**
+
+        A temperate climate is beneficial to the health.  
+        温和的气候有利于健康。
+
+    - **benefit from sth. 从…中受益**
+
+        Students benefit from small class sizes.  
+        学生从小班教学中受益。
+
+    - **benefit of sth：……的好处**
+
+        One benefit of exercise is better sleep.  
+        锻炼的一个好处是睡得更好。
 
 ## breathe
 
@@ -549,7 +566,7 @@
 
 - **相关词汇**
 
-    breath  n. 呼吸的空气
+    breath n. 呼吸的空气
 
 # C
 
@@ -568,34 +585,60 @@
 
 ## clip
 
-- **defin.**
+- **词义**
 
-  v. 修剪
+    v. 修剪
 
-- **deriv.**
+- **相关词汇**
 
-  clipper  n. 剪刀
-
-  nail clipper  n. 指甲刀
+    clipper n. 剪刀  
+    nail clipper 指甲刀
 
 ## comfort
 
-- comfort  vt.安慰
-- comfortable  adj.舒适的
+- **词义**
+
+    vt. 安慰
+
+- **相关词汇**
+
+    comfortable adj. 舒适的
+
+- **句型**
+
+    I tried my best to comfort Tom after his mother's death.  
+    汤姆的母亲去世后，我尽力去安慰他。
 
 ## contact
 
-- **defin.**
+- **词义**
 
-  contact  v.  n.  联系
+    v. 联系；接触  
+    n. 联系；联系人
 
-- **syntax**
+- **句型**
 
-  **come into contact with  与...接触**
+    - **contact sb. 联系某人**
 
-  The products available at this location may have come into contact with peanuts, nuts or other allergens.
+        Please contact me tomorrow.  
+        请明日联系我。
 
-  该地点提供的产品可能接触到花生、坚果或其他过敏原。
+    - **keep/stay in contact 保持联系**
+
+        We’re still in contact.  
+        我们还有联系。
+
+    - **make contact with sb. 与某人取得联系**
+
+    - **lost contact with sb. 和某人失去联系**
+
+        I lost contact with her years ago.  
+        我多年前就和她失联了。
+
+    - **come into contact with  与...接触**
+
+        The products available at this location may have come into contact with peanuts, nuts or other allergens.  
+        该地点提供的产品可能接触到花生、坚果或其他过敏原。
 
 ## cross
 
@@ -628,63 +671,70 @@
 
 # D
 
-## decrease
-
-- **defin.**
-
-  decrease   vi.  下降（大小、数量等数字的下降）（与 increase 相反）
-
-- **syntax**
-
-  用法同 increase
-
 ## define
 
-- **defin.**
+- **词义**
 
-  define  vt. 定义；明确
+    define  vt. 定义；明确
 
-- **deriv.**
+- **相关词汇**
 
-  defined                  adj. 轮廓清晰的
-
-  definite                  adj. （信心）明确的，有把握的
-
-  definitely               adv. （信心）明确地，有把握地
-
-  definiton (dein.)   n. 定义；规定；清晰度
+    defined adj. 轮廓清晰的  
+    definite adj. （信心）明确的，有把握的  
+    definitely adv. （信心）明确地，有把握地  
+    definiton (dein.)   n. 定义；规定；清晰度
 
 ## derivate
 
-- **defin.**
+- **词义**
 
-  derivate                   adj. 引出的
+    derivate adj. 引出的
 
-- **deriv.**
+- **相关词汇**
 
-  derivable                 adj. 可引出的
-
-  derivation                n. 引出；衍生物
-
-  derivative (deriv.)   n. 派生词；导数；衍生物
+    derivable adj. 可引出的  
+    derivation n. 引出；衍生物  
+    derivative (deriv.) n. 派生词；导数；衍生物
 
 ## differ
 
-- **defin.**
+- **词义**
 
-   vi. 不同于
+    vi. 不同于
 
-- **deriv.**
+- **相关词汇**
 
-  different       adj. 不同的
-
-  difference    n. 差异
+    different adj. 不同的  
+    difference n. 差异
 
 - **syntax**
 
-  **differ from = be different from  与...不同**
-  
-  The weather is different from that of Nanjing.
+    - **differ from = be different from  与...不同**
+
+        This product differs from the old version.  
+        This product is different from the old version.  
+        这个产品和旧版不同。
+
+    - **differ in + 某方面**
+
+        People differ in their tastes.  
+        人们的品味各不相同。
+
+    - **differ on/over/about + 话题**
+
+        We differ on how to solve the problem.  
+        我们在如何解决这个问题上有分歧。
+
+    - **a difference between A and B，A 和 B 之间的不同**
+
+        There is a big difference between cats and dogs.  
+        猫和狗之间有很大差异。
+
+
+
+
+
+
 
 ## difficult
 
@@ -722,17 +772,38 @@
 
 ## increase
 
-- **defin.**
+- **词义**
 
-  increase    vi.   增长（大小、数量等数字的增长）
+    下降（大小、数量等数字的增长）（与 decrease 相反）  
+    v. 增加；增长  
+    n. 增加；增长
 
-  decrease   vi.  下降（大小、数量等数字的下降）
+- **相关词汇**
 
-- **increase in    在...方面增长**
+    decrease v. n. 减少；减小（decrease 用法同 increase）
 
-- **increase by 20%    增长了20%**
+- **句型**
 
-- **increase from 10 to 20    从 10 增长到 20**
+    - **increase in... 在某方面增长**
+
+        There has been an increase in sales this year.  
+        今年销售额有所增加。
+
+        We need to stop the increase in crime.  
+        我们要阻止犯罪率上升。
+
+    - **increase to + 数值，增加到多少**
+
+        The temperature increased to 40°C.  
+        温度升高到了40度。
+
+        The temperature increased from 10℃ to 40°C.  
+        温度从10度升高到40度。
+
+    - **increase by + 数值，增加了多少**
+
+        The price increased by 10%.  
+        价格上涨了10%。
 
 ## inform
 
@@ -938,17 +1009,19 @@
 
 - **相关词汇**
 
-  suggestion n. 建议
+    suggestion n. 建议
 
 - **句型**
 
-    - **suggest 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**  
-      I suggest they (should) repeat the experiments and see for themselves.  
-      我建议他们重复实验亲自看看。
+    - **suggest 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**
+
+        I suggest they (should) repeat the experiments and see for themselves.  
+        我建议他们重复实验亲自看看。
       
-    - **suggest sth./doing**  
-      Could you suggest some low-priced hotels?  
-      你能介绍几个便宜些的旅馆么？
+    - **suggest sth./doing**
+
+        Could you suggest some low-priced hotels?  
+        你能介绍几个便宜些的旅馆么？
 
 ## synonym
 
