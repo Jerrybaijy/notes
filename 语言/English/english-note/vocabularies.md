@@ -125,15 +125,15 @@
 
 - **句型**
 
+    - **be absorbed in doing sth. 专心做某事**
+
+        He is absorbed in reading.  
+        他在专心看书。  
+
     - **vt. 吸收**
 
         I used a sponge to absord the spilled milk.  
         我用海绵吸干了溢出来的牛奶。
-
-    - **be absorbed in doing sth. 专心做某事**  
-
-        He is absorbed in reading.  
-        他在专心看书。  
 
 ## accept
 
@@ -169,12 +169,15 @@
 
 - **句型**
 
-    **have access to... 有（使用/接近）...的权利**  
-    The students have access to these books.  
-    学生可以自由使用这些图书。
+    - **have access to... 有（使用/接近）...的权利**
 
-    The tower is not accessible to the public.  
-    这座灯塔不对公众开放。
+        The students have access to these books.  
+        学生可以自由使用这些图书。
+
+    - **accessible adj. 可使用的，可进入的**
+
+        The tower is not accessible to the public.  
+        这座灯塔不对公众开放。
 
 ## account
 
@@ -190,13 +193,15 @@
 
 - **句型**
 
-    **account for = make up 占比**  
-    Online sales account for 30% of total revenue.  
-    在线销售占总收入的30%。
+    - **account for = make up 占比**
 
-    **account for = explain 解释**  
-    Can you account for your absence yesterday?  
-    你能解释一下你昨天缺席的原因吗？
+        Online sales account for 30% of total revenue.  
+        在线销售占总收入的30%。
+
+    - **account for = explain 解释**
+
+        Can you account for your absence yesterday?  
+        你能解释一下你昨天缺席的原因吗？
 
 ## accurate
 
@@ -265,11 +270,13 @@
 
 - **句型**
 
-    - **take action 采取行动**  
+    - **take action 采取行动**
+
         Immediate action should be taken to stop the spreading of the fire.  
         必须采取紧急措施，以阻止火势蔓延。
 
-    - **in actual fact = actually 实际上**  
+    - **in actual fact = actually 实际上**
+
         In actual fact, he never received the email.  
         实际上，他根本没收到那封邮件。
 
@@ -285,7 +292,8 @@
 
 - **句型**
 
-    **adapt to... 适应...**  
+    **adapt to... 适应...**
+
     Many plants and animals have adapted to life in the desert.  
     许多动植物已经适应了沙漠里的生存。
 
@@ -301,27 +309,32 @@
 
 - **句型**
 
-    - **add...to... 把...加到...里**  
+    - **add...to... 把...加到...里**
+
         Many new words are added to the new edition of the dictionary.  
         这个新版本的词典里增加了许多新单词。
 
-    - **add to... 增加某物**  
+    - **add to... 增加某物**
+
         The bed weather added to our difficulties.  
         坏天气增加了我们的困难。
 
-    - **add up 把...加起来**  
+    - **add up 把...加起来**
+
         Please add up all the money I should pay.  
         请把我要付的钱加起来。
 
-    - **add up to... 加起来达到...**  
+    - **add up to... 加起来达到...**
+
         The income adds up to 10,000 dollars.  
         收入达到一万美元。
 
-    - **in addition = also / furthermore 另外**  
+    - **in addition = also / furthermore 另外**
+
         The hotel is close to the beach. In addition, it has a great restaurant.  
         这家酒店靠近海滩，此外还有一家很棒的餐厅。
 
-    - **in addition to + 名词**  
+    - **in addition to + 名词**
 
         In addition to English, she speaks French and Spanish.  
         除了英语之外，她还会说法语和西班牙语。
@@ -331,39 +344,43 @@
 
 ## adjective
 
-- **defin.**
+- **词义**
 
-   adjective (adj.)     n. 形容词
+    n. 形容词（adj. ）
 
-- **deriv.**
+- **相关词汇**
 
-  adjectival               adj. 形容词的
+    adjectival adj. 形容词的
 
 ## advise
 
 - **词义**
 
-  vt. 建议
+    vt. 建议
 
 - **相关词汇**
 
-  advice n. 建议
+    advice n. 建议
 
 - **句型**
 
-    - **advise 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**  
-      I advise that you (should) get a haircut before your interview.  
-      我建议你面试前应该先理个发。
+    - **advise 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**
 
-    - **advise sb. (not) to do sth.  建议某人（不）做某事**  
-      The teacher adcised his students to choose proper major.  
-      那位老师建议他的学生选择合适的专业。
+        I advise that you (should) get a haircut before your interview.  
+        我建议你面试前应该先理个发。
 
-    - **advise doing sth. 建议做某事**  
-      I advise starting early. 我建议早点开始。
+    - **advise sb. (not) to do sth.  建议某人（不）做某事**
+
+        The teacher adcised his students to choose proper major.  
+        那位老师建议他的学生选择合适的专业。
+
+    - **advise doing sth. 建议做某事**
+
+        I advise starting early.  
+        我建议早点开始。
 
     - **advise sb. on sth.  关于某事向某人提建议**
-    
+
     - **advice on sth.  关于...的建议**
 
     - **ask for advice 征询意见**
@@ -384,11 +401,13 @@
 
 - **句型**
 
-    - **affect**  
+    - **affect**
+
         The bad weather affected her health.  
         恶劣天气影响了她的健康。
 
-    - **hava effects on sth. 对某事有影响，起作用**  
+    - **hava effects on sth. 对某事有影响，起作用**
+
         That game have an important effect on children.  
         那种游戏对孩子影响很大。
 
@@ -407,15 +426,18 @@
 
     - 常用于 be able to 或 can 之后
 
-    - **can afford sth.**  
+    - **can afford sth.**
+
         They can’t afford the medical fee.  
         他们承担不起医药费。
 
-    - **can afford to do sth.**  
+    - **can afford to do sth.**
+
         I can’t afford to quit my job right now.  
         我现在辞不起职。
 
-    - **当意为“提供”时**  
+    - **当意为“提供”时**
+
         The hotel affords a beautiful view of the ocean.  
         酒店提供海景享受。
 
@@ -432,15 +454,18 @@
 
 - **句型**
 
-    - **be afraid to do sth. 因为害怕而不敢做某事**  
+    - **be afraid to do sth. 因为害怕而不敢做某事**
+
         She’s afraid to jump.  
         她不敢跳下去。
 
-    - **be afraid of (doing) sth. 害怕某事可能导致的后果**  
+    - **be afraid of (doing) sth. 害怕某事可能导致的后果**
+
         She’s afraid of falling.  
         她怕掉下来。
 
-    - **be afraid that + 从句，恐怕...**  
+    - **be afraid that + 从句，恐怕...**
+
         I’m afraid I can’t help you.  
         我恐怕帮不了你。
 
@@ -530,17 +555,16 @@
 
 ## certain
 
-- **defin.**
+- **词义**
 
-  adj.  某个的；确定的
+    adj. 某个的；确定的
 
-- **syntax**
+- **句型**
 
-  **a certain sth.  确定的 ...；某种 ...**
+    **a certain sth.  确定的 ...；某种 ...**
 
-  The work must be completed within a certain time limit.
-
-  这项工作必须在一定期限内完成。
+    The work must be completed within a certain time limit.  
+    这项工作必须在一定期限内完成。
 
 ## clip
 
@@ -586,16 +610,19 @@
 
 - **句型**
 
-    - **cross sp. = go across sp. 穿过...**  
+    - **cross sp. = go across sp. 穿过...**
+
         The cat crossed the road.  
         The cat went across the road.  
         猫跑过了马路。（介词用法）
 
-    - **go across 穿过**  
+    - **go across 穿过**
+
         The cat ran across quickly.  
         猫快速地跑过了。
 
-    - **come across 偶然遇到**  
+    - **come across 偶然遇到**
+
         I came across an old book while cleaning the attic.  
         我在打扫阁楼时偶然发现了一本旧书。
 
@@ -963,47 +990,53 @@
 
 - **词义**
 
-  n/vt. 使用
+    n/vt. 使用
 
 - **相关词汇**
 
-  useful adj. 有用的  
-  useless adj. 无用的  
-  user n. 用户
+    useful adj. 有用的  
+    useless adj. 无用的  
+    user n. 用户
 
 - **句型**
 
-  **make (better/the best) use of 充分利用**  
-  **come into use 开始投入使用**  
-  **use up 用光**
+    **make (better/the best) use of 充分利用**  
+    **come into use 开始投入使用**  
+    **use up 用光**
 
 ## used
 
 - **词义**
 
-  adj. 用过的（动词 use 的被动式）  
-  adj. 习惯于...的
+    adj. 用过的（动词 use 的被动式）  
+    adj. 习惯于...的
 
 - **句型**
 
-    - **be used to do sth. 被用来做某事**  
-      Water is used to produce electitity. 水被用来发电。
+    - **be used to do sth. 被用来做某事**
 
-    - **be /get used to (doing) sth.  习惯于（做）某事**  
-      We're used to the noise from the traffic now. 我们习惯了交通噪音。
+        Water is used to produce electitity.  
+        水被用来发电。
 
-    - **used to do sth.  过去做某事，现在不做了**  
-      She used to work in a bank. 她曾经在银行工作过。
+    - **be /get used to (doing) sth.  习惯于（做）某事**
+
+        We're used to the noise from the traffic now.  
+        我们习惯了交通噪音。
+
+    - **used to do sth.  过去做某事，现在不做了**
+
+        She used to work in a bank.  
+        她曾经在银行工作过。
 
 # V
 
 ## visualise
 
-- **defin.**
+- **词义**
 
-  v. 使可视化
+    v. 使可视化
 
-- **deriv.**
+- **相关词汇**
 
-  visualized  adj. 可视化的  
-  visualization  n. 可视化
+    visualized adj. 可视化的  
+    visualization n. 可视化
