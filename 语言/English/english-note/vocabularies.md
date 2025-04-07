@@ -56,17 +56,15 @@
 
 ## above
 
-- **defin.**
+- **词义**
 
-  above **prep.** （水平位置）在...之上，和 below 相反
+    prep. （水平位置）在...之上，和 below 相反  
+    prep. （年龄、数量等）在...之上
 
-  above **prep.** （年龄、数量等）在...之上
+- **句型**
 
-- **syntax.**
-
-  above sth. （水平位置；年龄、数量等）在...之上
-
-  above all 首先，最重要的是
+    above sth. （水平位置；年龄、数量等）在...之上  
+    above all 首先，最重要的是
 
 - **辨析**
 
@@ -76,8 +74,7 @@
 
 - **词义**
 
-    abroad  adv. 在国外
-
+    abroad  adv. 在国外  
     abroad  n. 国外
 
 - **助记**
@@ -86,11 +83,9 @@
 
 - **句型**
 
-  go abroad 出国
-
-  from abroad 从国外
-
-  at home and broad 在国内外
+    go abroad 出国  
+    from abroad 从国外  
+    at home and broad 在国内外
 
 ## absent
 
@@ -107,11 +102,13 @@
 
 - **句型**
 
-    - **be absent from 从...缺席**  
+    - **be absent from 从...缺席**
+
         He had been absent 95 times from class and had six failing grades for the year.  
         今年他逃了95次课，6门功课不及格。
 
-    - **absent oneself from 缺席**  
+    - **absent oneself from 缺席**
+
         He absent himself from the meeting.  
         他故意缺席会议。
 
@@ -128,12 +125,15 @@
 
 - **句型**
 
-    I used a sponge to absord the spilled milk.  
-    我用海绵吸干了溢出来的牛奶。
+    - **vt. 吸收**
 
-    **be absorbed in doing sth. 专心做某事**  
-    He is absorbed in reading.  
-    他在专心看书。  
+        I used a sponge to absord the spilled milk.  
+        我用海绵吸干了溢出来的牛奶。
+
+    - **be absorbed in doing sth. 专心做某事**  
+
+        He is absorbed in reading.  
+        他在专心看书。  
 
 ## accept
 
