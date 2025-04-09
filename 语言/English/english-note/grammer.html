@@ -1,0 +1,2384 @@
+<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>&#x8bed;&#x6cd5;&#x4f53;&#x7cfb;</title>
+            <style>
+/* From extension vscode.github */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+.vscode-dark img[src$=\#gh-light-mode-only],
+.vscode-light img[src$=\#gh-dark-mode-only],
+.vscode-high-contrast:not(.vscode-high-contrast-light) img[src$=\#gh-light-mode-only],
+.vscode-high-contrast-light img[src$=\#gh-dark-mode-only] {
+	display: none;
+}
+
+/* From extension zhuangtongfa.material-theme */
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  background-color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  color: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  color: initial;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code > div, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code > div {
+  background: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  border: 1px solid rgba(171, 178, 191, 0.5) !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-active-line:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-active-line:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body.showEditorSelection .code-line .code-line:hover:before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body.showEditorSelection .code-line .code-line:hover:before {
+  border-left: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Generated from 'node_modules/github-markdown-css/github-markdown.css' */
+@font-face {
+  font-family: octicons-link;
+  src: url(data:font/woff;charset=utf-8;base64,d09GRgABAAAAAAZwABAAAAAACFQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABEU0lHAAAGaAAAAAgAAAAIAAAAAUdTVUIAAAZcAAAACgAAAAoAAQAAT1MvMgAAAyQAAABJAAAAYFYEU3RjbWFwAAADcAAAAEUAAACAAJThvmN2dCAAAATkAAAABAAAAAQAAAAAZnBnbQAAA7gAAACyAAABCUM+8IhnYXNwAAAGTAAAABAAAAAQABoAI2dseWYAAAFsAAABPAAAAZwcEq9taGVhZAAAAsgAAAA0AAAANgh4a91oaGVhAAADCAAAABoAAAAkCA8DRGhtdHgAAAL8AAAADAAAAAwGAACfbG9jYQAAAsAAAAAIAAAACABiATBtYXhwAAACqAAAABgAAAAgAA8ASm5hbWUAAAToAAABQgAAAlXu73sOcG9zdAAABiwAAAAeAAAAME3QpOBwcmVwAAAEbAAAAHYAAAB/aFGpk3jaTY6xa8JAGMW/O62BDi0tJLYQincXEypYIiGJjSgHniQ6umTsUEyLm5BV6NDBP8Tpts6F0v+k/0an2i+itHDw3v2+9+DBKTzsJNnWJNTgHEy4BgG3EMI9DCEDOGEXzDADU5hBKMIgNPZqoD3SilVaXZCER3/I7AtxEJLtzzuZfI+VVkprxTlXShWKb3TBecG11rwoNlmmn1P2WYcJczl32etSpKnziC7lQyWe1smVPy/Lt7Kc+0vWY/gAgIIEqAN9we0pwKXreiMasxvabDQMM4riO+qxM2ogwDGOZTXxwxDiycQIcoYFBLj5K3EIaSctAq2kTYiw+ymhce7vwM9jSqO8JyVd5RH9gyTt2+J/yUmYlIR0s04n6+7Vm1ozezUeLEaUjhaDSuXHwVRgvLJn1tQ7xiuVv/ocTRF42mNgZGBgYGbwZOBiAAFGJBIMAAizAFoAAABiAGIAznjaY2BkYGAA4in8zwXi+W2+MjCzMIDApSwvXzC97Z4Ig8N/BxYGZgcgl52BCSQKAA3jCV8CAABfAAAAAAQAAEB42mNgZGBg4f3vACQZQABIMjKgAmYAKEgBXgAAeNpjYGY6wTiBgZWBg2kmUxoDA4MPhGZMYzBi1AHygVLYQUCaawqDA4PChxhmh/8ODDEsvAwHgMKMIDnGL0x7gJQCAwMAJd4MFwAAAHjaY2BgYGaA4DAGRgYQkAHyGMF8NgYrIM3JIAGVYYDT+AEjAwuDFpBmA9KMDEwMCh9i/v8H8sH0/4dQc1iAmAkALaUKLgAAAHjaTY9LDsIgEIbtgqHUPpDi3gPoBVyRTmTddOmqTXThEXqrob2gQ1FjwpDvfwCBdmdXC5AVKFu3e5MfNFJ29KTQT48Ob9/lqYwOGZxeUelN2U2R6+cArgtCJpauW7UQBqnFkUsjAY/kOU1cP+DAgvxwn1chZDwUbd6CFimGXwzwF6tPbFIcjEl+vvmM/byA48e6tWrKArm4ZJlCbdsrxksL1AwWn/yBSJKpYbq8AXaaTb8AAHja28jAwOC00ZrBeQNDQOWO//sdBBgYGRiYWYAEELEwMTE4uzo5Zzo5b2BxdnFOcALxNjA6b2ByTswC8jYwg0VlNuoCTWAMqNzMzsoK1rEhNqByEyerg5PMJlYuVueETKcd/89uBpnpvIEVomeHLoMsAAe1Id4AAAAAAAB42oWQT07CQBTGv0JBhagk7HQzKxca2sJCE1hDt4QF+9JOS0nbaaYDCQfwCJ7Au3AHj+LO13FMmm6cl7785vven0kBjHCBhfpYuNa5Ph1c0e2Xu3jEvWG7UdPDLZ4N92nOm+EBXuAbHmIMSRMs+4aUEd4Nd3CHD8NdvOLTsA2GL8M9PODbcL+hD7C1xoaHeLJSEao0FEW14ckxC+TU8TxvsY6X0eLPmRhry2WVioLpkrbp84LLQPGI7c6sOiUzpWIWS5GzlSgUzzLBSikOPFTOXqly7rqx0Z1Q5BAIoZBSFihQYQOOBEdkCOgXTOHA07HAGjGWiIjaPZNW13/+lm6S9FT7rLHFJ6fQbkATOG1j2OFMucKJJsxIVfQORl+9Jyda6Sl1dUYhSCm1dyClfoeDve4qMYdLEbfqHf3O/AdDumsjAAB42mNgYoAAZQYjBmyAGYQZmdhL8zLdDEydARfoAqIAAAABAAMABwAKABMAB///AA8AAQAAAAAAAAAAAAAAAAABAAAAAA==) format("woff");
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+  color: rgb(171, 178, 191);
+  line-height: 1.5;
+  word-wrap: break-word;
+  background: #282c34;
+  padding-top: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-v {
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-e, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-en {
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-s1 {
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ent, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ent {
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-k, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-k {
+  color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-sra, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-pds, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-s .pl-pse .pl-s1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-sra {
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-smw, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-v, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-smw {
+  color: #e36209;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-bu, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-bu {
+  color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ii, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ii {
+  color: #fafbfc;
+  background-color: #b31d28;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2 {
+  color: #fafbfc;
+  background-color: #d73a49;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-c2::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-c2::before {
+  content: "^M";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sr .pl-cce, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sr .pl-cce {
+  font-weight: bold;
+  color: #22863a;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ml, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ml {
+  color: #735c0f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ms, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mh .pl-en, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ms {
+  font-weight: bold;
+  color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi {
+  font-style: italic;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mb, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mb {
+  font-weight: bold;
+  color: #24292e;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-md, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-md {
+  color: #b31d28;
+  background-color: #ffeef0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi1 {
+  color: #22863a;
+  background-color: #f0fff4;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mc, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mc {
+  color: #e36209;
+  background-color: #ffebda;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mi2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mi2 {
+  color: #f6f8fa;
+  background-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-mdr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-mdr {
+  font-weight: bold;
+  color: #6f42c1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-ba, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-ba {
+  color: #586069;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-sg, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-sg {
+  color: #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-corl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-corl {
+  text-decoration: underline;
+  color: #032f62;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  background-color: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:active, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  outline-width: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: bolder;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  margin: 0.67em 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  border-style: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font: inherit;
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  overflow: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body [type=checkbox], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body [type=checkbox] {
+  box-sizing: border-box;
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body *, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body * {
+  box-sizing: border-box;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body input {
+  font-family: inherit;
+  line-height: inherit;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a {
+  color: #528bff;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:hover {
+  text-decoration: underline;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body strong {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #dfe2e5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr::after, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body th {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  margin: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol {
+  list-style-type: lower-roman;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dd {
+  margin-left: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .octicon, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .octicon {
+  vertical-align: text-bottom;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-0, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-0 {
+  padding-left: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-1 {
+  padding-left: 4px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-2 {
+  padding-left: 8px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-3 {
+  padding-left: 16px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-4 {
+  padding-left: 24px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-5 {
+  padding-left: 32px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .pl-6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .pl-6 {
+  padding-left: 40px !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body::before, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::before {
+  display: table;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body::after, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body::after {
+  display: table;
+  clear: both;
+  content: "";
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body > *:first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:first-child {
+  margin-top: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body > *:last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body > *:last-child {
+  margin-bottom: 0 !important;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body a:not([href]), .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor {
+  float: left;
+  padding-right: 4px;
+  margin-left: -20px;
+  line-height: 1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .anchor:focus, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .anchor:focus {
+  outline: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  height: 0.25em;
+  padding: 0;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote {
+  /* padding: 0 1em;
+  color: #6a737d;
+  border-left: 0.25em solid #dfe2e5; */
+  padding: 8.5px 17px;
+  margin: 1.5em 0;
+  color: #7c879c;
+  border-color: #4b5362;
+  border-width: 4px;
+  border-left: 5px solid #4b5362;
+  background: transparent;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote > :first-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :first-child {
+  margin-top: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body blockquote > :last-child, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body blockquote > :last-child {
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #c6cbd1;
+  border-bottom-color: #959da5;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #959da5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: rgb(240, 240, 240);
+  border-bottom: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5 .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 .octicon-link {
+  color: #1b1f23;
+  vertical-align: middle;
+  visibility: hidden;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor {
+  text-decoration: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h3:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h4:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h5:hover .anchor .octicon-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6:hover .anchor .octicon-link {
+  visibility: visible;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h1, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h1 {
+  padding-bottom: 0.3em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h2, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h2 {
+  padding-bottom: 0.3em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body h6, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body h6 {
+  color: #6a737d;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol {
+  padding-left: 2em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body ol ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ul, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ul ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ol, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li {
+  word-wrap: break-all;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li > p, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li > p {
+  margin-top: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body li + li, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body li + li {
+  margin-top: 0.25em;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl {
+  padding: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl dt, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-style: italic;
+  font-weight: 600;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body dl dd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th {
+  font-weight: 700;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body table td, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table th, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body table td {
+  padding: 6px 13px;
+  /* border: 1px solid #dfe2e5; */
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img {
+  max-width: 100%;
+  box-sizing: content-box;
+  display: inline-block;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img[align=right], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=right] {
+  padding-left: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body img[align=left], .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body img[align=left] {
+  padding-right: 20px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body code {
+  padding: 0.2em 0.4em;
+  margin: 0;
+  background-color: #3a3f4b;
+  border-radius: 3px;
+  color: white;
+  margin: 0 1px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  word-wrap: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre > code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre > code {
+  padding: 0;
+  margin: 0;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight {
+  margin-bottom: 16px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .highlight pre, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre {
+  padding: 16px;
+  overflow: auto;
+  line-height: 1.45;
+  /* background-color: #f6f8fa; */
+  border-radius: 3px;
+  background-color: #31363f;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body pre code, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body pre code {
+  display: inline;
+  max-width: auto;
+  padding: 0;
+  margin: 0;
+  overflow: visible;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+  color: rgb(171, 178, 191);
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .full-commit .btn-outline:not(:disabled):hover, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .full-commit .btn-outline:not(:disabled):hover {
+  color: #005cc5;
+  border-color: #005cc5;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body kbd, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body kbd {
+  display: inline-block;
+  padding: 3px 5px;
+  line-height: 10px;
+  color: #444d56;
+  vertical-align: middle;
+  background-color: #fafbfc;
+  border: solid 1px #d1d5da;
+  border-bottom-color: #c6cbd1;
+  border-radius: 3px;
+  box-shadow: inset 0 -1px 0 #c6cbd1;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body :checked + .radio-label, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body :checked + .radio-label {
+  position: relative;
+  z-index: 1;
+  border-color: #0366d6;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item {
+  list-style-type: none;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item + .task-list-item, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item + .task-list-item {
+  margin-top: 3px;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body .task-list-item input, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body .task-list-item input {
+  margin: 0 0.2em 0.25em -1.6em;
+  vertical-align: middle;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"].vscode-body hr, .vscode-dark[data-vscode-theme-name="One Dark Pro"].vscode-body hr {
+  border-bottom-color: #eee;
+}
+
+/*
+
+Atom One Dark by Daniel Gamage
+Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
+
+base:    #282c34
+mono-1:  #abb2bf
+mono-2:  #818896
+mono-3:  #5c6370
+hue-1:   #56b6c2
+hue-2:   #61aeee
+hue-3:   #c678dd
+hue-4:   #98c379
+hue-5:   #e06c75
+hue-5-2: #be5046
+hue-6:   #d19a66
+hue-6-2: #e6c07b
+
+*/
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #abb2bf;
+  background: #282c34;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-quote, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-comment,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-formula, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-doctag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-keyword,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-formula {
+  color: #c678dd;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-subst, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-section,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-name,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-tag,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-deletion,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-subst {
+  color: #e06c75;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-literal, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-literal {
+  color: #56b6c2;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-meta-string, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-string,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-regexp,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-addition,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attribute,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta-string {
+  color: #98c379;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-class .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-built_in,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-class .hljs-title {
+  color: #e6c07b;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-number, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-template-variable,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-type,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-class,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-attr,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-pseudo,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-number {
+  color: #d19a66;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-title, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-symbol,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-bullet,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-meta,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-selector-id,
+.vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-title {
+  color: #61aeee;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-emphasis, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-emphasis {
+  font-style: italic;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-strong, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-strong {
+  font-weight: bold;
+}
+.vscode-dark[data-vscode-theme-name="One Dark Pro Mix"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Flat"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro Darker"] .hljs-link, .vscode-dark[data-vscode-theme-name="One Dark Pro"] .hljs-link {
+  text-decoration: underline;
+}
+
+</style>
+            
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/markdown.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Microsoft/vscode/extensions/markdown-language-features/media/highlight.css">
+<style>
+            body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe WPC', 'Segoe UI', system-ui, 'Ubuntu', 'Droid Sans', sans-serif;
+                font-size: 14px;
+                line-height: 1.6;
+            }
+        </style>
+        <style>
+.task-list-item {
+    list-style-type: none;
+}
+
+.task-list-item-checkbox {
+    margin-left: -20px;
+    vertical-align: middle;
+    pointer-events: none;
+}
+</style>
+<style>
+:root {
+  --color-note: #0969da;
+  --color-tip: #1a7f37;
+  --color-warning: #9a6700;
+  --color-severe: #bc4c00;
+  --color-caution: #d1242f;
+  --color-important: #8250df;
+}
+
+</style>
+<style>
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-note: #2f81f7;
+    --color-tip: #3fb950;
+    --color-warning: #d29922;
+    --color-severe: #db6d28;
+    --color-caution: #f85149;
+    --color-important: #a371f7;
+  }
+}
+
+</style>
+<style>
+.markdown-alert {
+  padding: 0.5rem 1rem;
+  margin-bottom: 16px;
+  color: inherit;
+  border-left: .25em solid #888;
+}
+
+.markdown-alert>:first-child {
+  margin-top: 0
+}
+
+.markdown-alert>:last-child {
+  margin-bottom: 0
+}
+
+.markdown-alert .markdown-alert-title {
+  display: flex;
+  font-weight: 500;
+  align-items: center;
+  line-height: 1
+}
+
+.markdown-alert .markdown-alert-title .octicon {
+  margin-right: 0.5rem;
+  display: inline-block;
+  overflow: visible !important;
+  vertical-align: text-bottom;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-note .markdown-alert-title {
+  color: var(--color-note);
+}
+
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-important .markdown-alert-title {
+  color: var(--color-important);
+}
+
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-warning .markdown-alert-title {
+  color: var(--color-warning);
+}
+
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-tip .markdown-alert-title {
+  color: var(--color-tip);
+}
+
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--color-caution);
+}
+
+.markdown-alert.markdown-alert-caution .markdown-alert-title {
+  color: var(--color-caution);
+}
+
+</style>
+        
+        </head>
+        <body class="vscode-body vscode-light">
+            <h1 id="语法体系">语法体系</h1>
+<h2 id="语法体系-1">语法体系</h2>
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418191144047.png" alt="image-20240418191144047" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418202955788.png" alt="image-20240418202955788" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418203026666.png" alt="image-20240418203026666" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418203058466.png" alt="image-20240418203058466" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418203122098.png" alt="image-20240418203122098" style="zoom:200%;" />
+<h2 id="句子成分">句子成分</h2>
+<p><img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418183033391.png" alt="image-20240418183033391"></p>
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418235345354.png" alt="image-20240418235345354" style="zoom:200%;" />
+<h1 id="名词">名词</h1>
+<h2 id="名词分类">名词分类</h2>
+<ul>
+<li>普通名词
+<ul>
+<li>可数名词
+<ul>
+<li>个体名词：表示作为个体而存在的人或事物：boy book week dream</li>
+<li>集体名词：表示若干个人和事物的总称：family committee police   data</li>
+</ul>
+</li>
+<li>不可数名词
+<ul>
+<li>物质名词：表示物质、材料的总称：air sand</li>
+<li>抽象名词：表示性质、行为、状态、情感等抽象概念的名称：peace freedom  fun</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>专有名词</li>
+</ul>
+<h2 id="可数名词复数">可数名词复数</h2>
+<h3 id="规则变化">规则变化</h3>
+<ul>
+<li>
+<p>一般情况，词尾加 -s，parent——parents 父母</p>
+</li>
+<li>
+<p>以 -s，-x，-ch，-sh 结尾，加 -es，glass——glasses 玻璃</p>
+<ul>
+<li>特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach——stomachs 胃</li>
+</ul>
+</li>
+<li>
+<p>以 -y 结尾</p>
+<ul>
+<li>以辅音字母加 -y 结尾，把 -y 变 -i 加 -es，factory——factories 工厂</li>
+<li>以元音字母加 -y 结尾，加 -s，boy——boys 男孩</li>
+</ul>
+</li>
+<li>
+<p>以 -o 结尾</p>
+<ul>
+<li>以辅音字母加 -o 结尾，加 -es，potato——potatoes 土豆</li>
+<li>以元音字母加 -o 结尾，加 -s，zoo——zoos 动物园</li>
+</ul>
+</li>
+<li>
+<p>以 -f，-fe 结尾，把 -f，-fe 变 -v 再加 -es，wolf——wolves 狼，knife——knives 刀</p>
+<ul>
+<li>特例：以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。</li>
+</ul>
+</li>
+</ul>
+<h3 id="不规则变化">不规则变化</h3>
+<ul>
+<li>
+<p>改变内部元音</p>
+<ul>
+<li>man——men 男人</li>
+<li>woman——women 女人</li>
+<li>foot——feet 脚</li>
+<li>tooth——teeth 牙齿</li>
+<li>goose——geese 鹅</li>
+<li>mouse——mice 老鼠（注意此处 s 变 c）</li>
+</ul>
+</li>
+<li>
+<p>单复数同形</p>
+<ul>
+<li>sheep 绵羊</li>
+<li>deer 鹿</li>
+<li>Chinese 中国人</li>
+<li>Japanese 日本人</li>
+<li>Swiss 瑞士人</li>
+<li>means 方法</li>
+<li>crossroads 十字路口</li>
+<li>series 一系列</li>
+<li>species 种类</li>
+<li>works 工厂</li>
+<li>head 头（牲畜数量）</li>
+</ul>
+</li>
+<li>
+<p>同一名词，不同意义</p>
+<ul>
+<li>
+<p>work</p>
+<p>a work by Mark 一部马克的作品<br>
+two works by Mark 两部马克的作品<br>
+a chemical works 一家化工厂<br>
+two chemical works 两家化工厂</p>
+</li>
+<li>
+<p>fish</p>
+<p>two fish 两条鱼<br>
+two fishes 两种鱼</p>
+</li>
+<li>
+<p>people</p>
+<p>two people 两个人<br>
+two peoples 两个民族</p>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="由两部分构成的物体">由两部分构成的物体</h3>
+<p>trousers，shorts 等名词不能用基数词修饰，其前也不能直接加不定冠词 a/an，但可以用 a pair of，two pairs of，many 等词修饰。</p>
+<p>I need a new pair of trousers for work. 我需要一条上班穿的裤子。</p>
+<h3 id="复合名词">复合名词</h3>
+<ul>
+<li>
+<p>没有连字符，最后一个名词变复数。<br>
+housewife——housewives 家庭主妇</p>
+</li>
+<li>
+<p>组成复合名词的单词中没有名词，在最后加 -s。<br>
+grow-up——grow-ups 成年人</p>
+</li>
+<li>
+<p>有连字符，将复合名词中主要的名词变复数。<br>
+passer-by——passers-by 路人<br>
+daughter-in-law——daughters-in-law 儿媳妇</p>
+</li>
+<li>
+<p>man，woman 为复合名词的第一部分时，复合名词的各个部分皆变为复数<br>
+a man cook——men cooks 男厨师<br>
+a woman teacher——women teachers</p>
+</li>
+</ul>
+<h3 id="注意">注意</h3>
+<ul>
+<li>
+<p>某些表示学科的名词，虽然结尾以 -s 结尾，但并非复数形式。作主语时，谓语动词要用单数形式。如 maths 数学，physics 物理学，economics 经济学。<br>
+Physics is difficult for me. 对于我来说物理很难。</p>
+</li>
+<li>
+<p>单复数同形的名词在使用时要注意其谓语动词的单复数形式变化。<br>
+Every means has been tried. 每种方法都试过了。<br>
+All means have been tried. 所有方法都试过了。</p>
+</li>
+<li>
+<p>表示“某国人”的名词变复数的三种形式</p>
+<ul>
+<li>“中日瑞不变”</li>
+<li>词尾的 -man 变 -men，如 Frenchman——Frenchmen；但“德国人（German——Germans）”除外。</li>
+<li>词尾直接加 -s，如 American——Americans。</li>
+</ul>
+</li>
+</ul>
+<h2 id="不可数名词">不可数名词</h2>
+<h3 id="雷打不动的不可数名词">雷打不动的不可数名词</h3>
+<p>某些不可数名词，即使前面有形容词修饰，也不能使用定冠词 a/an。</p>
+<p>news 新闻，information 信息，work 工作，advice 建议，progress 进步，weather 天气，fun 乐趣，equipment 设备，jewellery 珠宝，luck 运气，music，health 健康，furniture 家具<br>
+We have so much bad luck. 我们有太多的厄运。<br>
+I have good news to tell you. 我有好消息告诉你。<br>
+He made such rapid progress. 他进步如此快。</p>
+<h3 id="同词不同义">同词不同义</h3>
+<p>某些不可数名词转可数名词后，意义发生变化。</p>
+<p>glass 玻璃——a glass 一个玻璃杯<br>
+paper 纸——a paper 一份论文/报纸/试卷</p>
+<h3 id="抽象名词具体化">抽象名词具体化</h3>
+<p>honour 尊重——an honour 一件荣幸的事<br>
+pleasure 愉快——a pleasuer 一件乐事<br>
+success 成功——a success 一个成功的人或事</p>
+<p>I feel it a great honour to stand here to deliver a speech.<br>
+站在这里演讲我感到非常荣幸。</p>
+<p>Being able to afford a drink would be a comfort in tough times.<br>
+在困难时期能买得起已被饮料是一件令人感到欣慰的事。</p>
+<h2 id="名词所有格">名词所有格</h2>
+<p>名词的所有格（Possessive form）用于表示某物或某人属于谁。</p>
+<h3 id="在词尾加--s-构成所有格">在词尾加 -s 构成所有格</h3>
+<ul>
+<li>
+<p>一般单数名词，在词尾加 <code>'s</code><br>
+today's newspaper 今天的报纸<br>
+China's population 中国的人口</p>
+</li>
+<li>
+<p>以 -s 结尾的单数名词或专有名词，在结尾加 <code>'</code> 或 <code>'s</code>，读作 / ɪｚ/。<br>
+Dicken‘（s) novels 狄更斯的小说<br>
+the boss'(s) order 老板的命令</p>
+</li>
+<li>
+<p>以 -s 或 -es 结尾的复数名词，结尾只加 <code>'</code>。<br>
+two hours' walk 步行两小时的路程<br>
+the masses' advice 群众的意见</p>
+</li>
+<li>
+<p>不以 -s 或 -es 结尾的复数名词，结尾加 <code>'s</code>。<br>
+women’s clothes 女装</p>
+</li>
+<li>
+<p>复合名词，在最后一个词的词尾加 <code>'s</code><br>
+his son-in-law's car 他女婿的轿车</p>
+</li>
+</ul>
+<h3 id="由of--名词构成所有格">由“of + 名词”构成所有格</h3>
+<ul>
+<li>
+<p>用于无生命的东西<br>
+the top of the hill 山顶</p>
+</li>
+<li>
+<p>表示“有关，关于”<br>
+a story of love and hartred 一个关于爱与恨的故事</p>
+</li>
+<li>
+<p>表示同位关系<br>
+the city of Pisa 比萨市</p>
+</li>
+<li>
+<p>表示部分与整体关系<br>
+the majority of people 大多数人</p>
+</li>
+<li>
+<p>表示抽象概念<br>
+the cost of living 生活费</p>
+</li>
+</ul>
+<h3 id="双重所有格">双重所有格</h3>
+<p>双重所有格（Double possessive）是指在同一句话中同时使用 &quot;of&quot; 和 &quot;possessive 's&quot;，用于表示某人/某物是某个更大范围的一部分。</p>
+<p>Some friends of my brother's will join us.<br>
+我哥哥的一些朋友将加入我们。</p>
+<h2 id="名词的句法功能">名词的句法功能</h2>
+<p>名词（短语）在句子中可以作主语、宾语、补足语、表语、同位语、状语、定语等。</p>
+<ul>
+<li>
+<p>作主语<br>
+Honesty is the best policy. 诚信为本。</p>
+</li>
+<li>
+<p>作宾语<br>
+Teenagers today are facing lots of pressure. 现在的青少年面临很多压力。</p>
+</li>
+<li>
+<p>作补足语<br>
+We're sparing no effort to make our country a developed country.<br>
+我们正不遗余力地使我们的国家成为一个发达国家。</p>
+</li>
+<li>
+<p>作表语<br>
+Water shortages are still the biggest problem in western China.<br>
+用水短缺依然是中国西部最大的问题。</p>
+</li>
+<li>
+<p>作同位语<br>
+There is no cure for influenza, a common disease.<br>
+流行感冒是一种常见的疾病，无特效药。</p>
+</li>
+<li>
+<p>作状语<br>
+Come this way! 到这来！</p>
+</li>
+<li>
+<p>作定语<br>
+In the south of China, there are many banana trees.<br>
+在中国南方有很多香蕉树。</p>
+</li>
+</ul>
+<h1 id="代词">代词</h1>
+<table>
+<thead>
+<tr>
+<th style="text-align:center"></th>
+<th style="text-align:center">主格</th>
+<th style="text-align:center">宾格</th>
+<th style="text-align:center">反身代词</th>
+<th style="text-align:center">名词性物主代词</th>
+<th style="text-align:center">形容词性物主代词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">谁</td>
+<td style="text-align:center">who</td>
+<td style="text-align:center">whom</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">whose</td>
+</tr>
+<tr>
+<td style="text-align:center">我</td>
+<td style="text-align:center">I</td>
+<td style="text-align:center">me</td>
+<td style="text-align:center">myself</td>
+<td style="text-align:center">mine</td>
+<td style="text-align:center">my</td>
+</tr>
+<tr>
+<td style="text-align:center">你</td>
+<td style="text-align:center">you</td>
+<td style="text-align:center">you</td>
+<td style="text-align:center">yourself</td>
+<td style="text-align:center">yours</td>
+<td style="text-align:center">your</td>
+</tr>
+<tr>
+<td style="text-align:center">他</td>
+<td style="text-align:center">he</td>
+<td style="text-align:center">him</td>
+<td style="text-align:center">himself</td>
+<td style="text-align:center">his</td>
+<td style="text-align:center">his</td>
+</tr>
+<tr>
+<td style="text-align:center">她</td>
+<td style="text-align:center">she</td>
+<td style="text-align:center">her</td>
+<td style="text-align:center">herself</td>
+<td style="text-align:center">hers</td>
+<td style="text-align:center">her</td>
+</tr>
+<tr>
+<td style="text-align:center">它</td>
+<td style="text-align:center">it</td>
+<td style="text-align:center">it</td>
+<td style="text-align:center">itself</td>
+<td style="text-align:center">its</td>
+<td style="text-align:center">its</td>
+</tr>
+<tr>
+<td style="text-align:center">我们</td>
+<td style="text-align:center">we</td>
+<td style="text-align:center">us</td>
+<td style="text-align:center">ourselves</td>
+<td style="text-align:center">ours</td>
+<td style="text-align:center">our</td>
+</tr>
+<tr>
+<td style="text-align:center">Ta 们</td>
+<td style="text-align:center">they</td>
+<td style="text-align:center">them</td>
+<td style="text-align:center">themselves</td>
+<td style="text-align:center">theirs</td>
+<td style="text-align:center">their</td>
+</tr>
+<tr>
+<td style="text-align:center">这</td>
+<td style="text-align:center">this</td>
+<td style="text-align:center">this</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">this</td>
+</tr>
+<tr>
+<td style="text-align:center">那</td>
+<td style="text-align:center">that</td>
+<td style="text-align:center">that</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">that</td>
+</tr>
+<tr>
+<td style="text-align:center">这些</td>
+<td style="text-align:center">these</td>
+<td style="text-align:center">these</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">these</td>
+</tr>
+<tr>
+<td style="text-align:center">那些</td>
+<td style="text-align:center">those</td>
+<td style="text-align:center">those</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">those</td>
+</tr>
+</tbody>
+</table>
+<h2 id="人称代词">人称代词</h2>
+<p><strong>人称代词</strong>用来代替人或事物的名字，避免重复使用名词。它有人称、单复数和主宾格的变化。</p>
+<table style="text-align: center;">
+  <tr>
+    <th rowspan="2">人称</th>
+    <th colspan="2">单数</th>
+    <th colspan="2">复数</th>
+  </tr>
+  <tr>
+    <th>主格</th>
+    <th>宾格</th>
+    <th>主格</th>
+    <th>宾格</th>
+  </tr>
+  <tr>
+    <td>第一人称</td>
+    <td>I</td>
+    <td>me</td>
+    <td>we</td>
+    <td>us</td>
+  </tr>
+  <tr>
+    <td>第二人称</td>
+    <td>you</td>
+    <td>you</td>
+    <td>you</td>
+    <td>you</td>
+  </tr>
+  <tr>
+    <td rowspan="3">第三人称</td>
+    <td>he</td>
+    <td>him</td>
+    <td rowspan="3">they</td>
+    <td rowspan="3">them</td>
+  </tr>
+  <tr>
+    <td>she</td>
+    <td>her</td>
+  </tr>
+  <tr>
+    <td>it</td>
+    <td>it</td>
+  </tr>
+</table>
+<h3 id="人称代词的句法功能">人称代词的句法功能</h3>
+<ul>
+<li>
+<p><strong>一般用法</strong></p>
+<p>作主语时用主格<br>
+作宾语时用宾格<br>
+作表语时一般用宾格</p>
+</li>
+<li>
+<p>在电话中交谈时常用主格形式代替宾格形式。</p>
+<p>—Is that Mr. Li?<br>
+—Yes, this is he.</p>
+</li>
+<li>
+<p>在 It is...who... 强调句型中，用主格代替宾格</p>
+<p>It was <strong>I</strong> who did it.</p>
+</li>
+</ul>
+<h3 id="人称代词的排序">人称代词的排序</h3>
+<ul>
+<li>
+<p>单数场合：you + he/she + I</p>
+<p>You, he and I are of the same age.<br>
+你、他和我是同龄人。</p>
+</li>
+<li>
+<p>复数的场合：we + you + they</p>
+<p>We, you and they are all Chinese.<br>
+我们、你们和他们都是中国人。</p>
+</li>
+<li>
+<p>两性并列：he + she</p>
+<p>He and she don't agree with me.<br>
+他和她都不同意我的看法。</p>
+</li>
+<li>
+<p>表示承担责任：把第一人称放在第一位</p>
+<p>I and he are to blame for the accident.<br>
+我和他应为这起事故承担责任</p>
+</li>
+</ul>
+<h2 id="物主代词">物主代词</h2>
+<p>物主代词表示人和物的从属关系。</p>
+<table style="text-align: center;">
+  <tr>
+    <th rowspan="2">人称</th>
+    <th colspan="5">单数</th>
+    <th colspan="3">复数</th>
+  </tr>
+  <tr>
+    <th>我的</th>
+    <th>你的</th>
+    <th>他的</th>
+    <th>她的</th>
+    <th>它的</th>
+    <th>我们的</th>
+    <th>你们的</th>
+    <th>他/她/它们的</th>
+  </tr>
+  <tr>
+    <td>形容词性物主代词</td>
+    <td>my</td>
+    <td>your</td>
+    <td>his</td>
+    <td>her</td>
+    <td>its</td>
+    <td>our</td>
+    <td>your</td>
+    <td>their</td>
+  </tr>
+  <tr>
+    <td>名词性物主代词</td>
+    <td>mine</td>
+    <td>yours</td>
+    <td>his</td>
+    <td>hers</td>
+    <td>its</td>
+    <td>ours</td>
+    <td>yours</td>
+    <td>theirs</td>
+  </tr>
+</table>
+<h3 id="形容词性物主代词">形容词性物主代词</h3>
+<ul>
+<li>
+<p><strong>形容词性物主代词置于名词之前，作定语。</strong></p>
+<p>In the winter of 1891, a certain college had some trouble with <strong>its</strong> boy students.<br>
+在1891年冬季，某所大学的男学生遇到了一些麻烦。</p>
+</li>
+</ul>
+<h3 id="名词性物主代词">名词性物主代词</h3>
+<ul>
+<li>
+<p><strong>名词性物主代词相当于“形容词性物主代词 + 名词”，作主语、表语和宾语。</strong></p>
+<p>This camera is <strong>mine</strong> and that is <strong>yours</strong>.<br>
+这部照相机是我的，那部是你的。</p>
+</li>
+<li>
+<p><strong>“of + 名词性物主代词” 可用作定语</strong></p>
+<p>I am an admirer <strong>of yours</strong>.<br>
+我是你的一名崇拜者。</p>
+</li>
+</ul>
+<h2 id="反身代词">反身代词</h2>
+<p>反身代词用于指代主语，表示“...自己”。可作宾语、表语和同位语，一般不用作主语。</p>
+<table style="text-align: center;">
+  <thead>
+    <tr>
+      <th></th>
+      <th>单数</th>
+      <th>复数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>第一人称</td>
+      <td>myself</td>
+      <td>ourselves</td>
+    </tr>
+    <tr>
+      <td>第二人称</td>
+      <td>yourself</td>
+      <td>yourselves</td>
+    </tr>
+    <tr>
+      <td>第三人称</td>
+      <td>himself, herself, itself</td>
+      <td>themselves</td>
+    </tr>
+  </tbody>
+</table>
+<h2 id="指示代词">指示代词</h2>
+<p>用来指示或标记人或事物的代词，表示“这个/些”“那个/些”。</p>
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+    <tr>
+      <th></th>
+      <th>单数</th>
+      <th>复数</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>这（近）</td>
+      <td>this</td>
+      <td>these</td>
+    </tr>
+    <tr>
+      <td>那（远）</td>
+      <td>that</td>
+      <td>those</td>
+    </tr>
+  </tbody>
+</table>
+### 指示代词句法
+<p>可用作主语、宾语、定语和表语。</p>
+<h3 id="指示代词用法">指示代词用法</h3>
+<ul>
+<li>
+<p><strong>this 和 these 指代时间或空间上较近的人或物；that 和 those 指代时间或空间上较远的人或物。</strong></p>
+<p>This picture was painted by Robert and that one by Bruse.<br>
+这幅画是罗伯特画的，那幅是布鲁斯画的。</p>
+</li>
+<li>
+<p><strong>that 和 those 常用来指代上文已提到的名词，以避免重复。</strong></p>
+<p>The climate of China is quite similar to that of the USA.<br>
+中国的气候和美国的气候很相似。</p>
+</li>
+<li>
+<p><strong>打电话时，this 指自己，that 指别人。</strong></p>
+</li>
+<li>
+<p><strong>将要发生或将要提到的事用 this；刚提到过或已经发生的事用 that。</strong></p>
+<p>This is going to surprise you.<br>
+这件事会让你吃惊的。</p>
+<p>Little George broke the vase, but he didn't admit. That was very annoying.<br>
+小乔治打碎了花瓶，但他不承认。那太令人生气了。</p>
+</li>
+<li>
+<p><strong>this 和 that 还可以用作副词，表示程度，相当于 so。</strong></p>
+<p>The weather isn't that hot.<br>
+天气没那么热。</p>
+</li>
+</ul>
+<h2 id="不定代词">不定代词</h2>
+<p>不明确指代某个人、某个事物、某些人、 某些事物的代词叫不定代词。不定代词可以代替名词或形容词，表示不同的数量 概念。不定代词在句中可作主语、宾语、表语、 定语。</p>
+<table>
+<thead>
+<tr>
+<th>不定代词</th>
+<th>基本用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>all, both, each, neither, either, much, little, many, few, other, another, some, any, one</td>
+<td>可作主语、宾语、表语或定语</td>
+</tr>
+<tr>
+<td>everyone, everybody, everything, someone, somebody, something, anyone, anybody, anything, no one, nobody, nothing, none</td>
+<td>可作主语、宾语或表语</td>
+</tr>
+<tr>
+<td>every, no</td>
+<td>只能作定语</td>
+</tr>
+</tbody>
+</table>
+<h3 id="no-onenothing-和-none">no one、nothing 和 none</h3>
+<ul>
+<li>
+<p>no one = nobody，指代对象为人；nothing 指物；none 可指人或物。</p>
+</li>
+<li>
+<p>一般使用 none 接 of 短语，而不是用 no one。</p>
+</li>
+<li>
+<p>none 一般强调数量，而 no one 强调有没有。</p>
+<p>—How many students are in the class?<br>
+—None.</p>
+<p>—Who is in the class?<br>
+—No one.</p>
+</li>
+</ul>
+<h3 id="every-和-each">every 和 each</h3>
+<ul>
+<li>every 指三个或三个以上中的每个；只能用作定语。</li>
+<li>each 指两个或两个以上中的每个；可作主语、宾语、定语、同位语；作主语的同位语时，谓语动词和主语保持一致。</li>
+</ul>
+<h3 id="other-和-another">other 和 another</h3>
+<ul>
+<li>
+<p>another 强调“再一个/些”</p>
+<p>I need another cup of coffee.<br>
+我需要再来一杯咖啡。</p>
+</li>
+<li>
+<p>other 强调“另外的”</p>
+<p>No matter what other people may say, I'll stick to my plan.<br>
+不管别人可能会说什么，我都会坚持我的计划。</p>
+</li>
+<li>
+<p>others = other + 名词复数</p>
+<p>In some countries, people eat with chopsticks, while in others, knives and forks.<br>
+在一些国家，人们用筷子吃饭，而在另外一些国家，人们用刀叉吃饭。</p>
+</li>
+<li>
+<p>the other：表示两者中的另外一个</p>
+<p>On one side of the river grow willows, and on the other side grow poplars.<br>
+河的一岸长着柳树，另一岸长着杨树。</p>
+</li>
+</ul>
+<h3 id="三三两两">三三两两</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">词义</th>
+<th style="text-align:center">指两个人或物</th>
+<th style="text-align:center">指三个或三个以上的人或物</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">每一个</td>
+<td style="text-align:center">each (也可指两个以上)</td>
+<td style="text-align:center">every</td>
+</tr>
+<tr>
+<td style="text-align:center">任何一个</td>
+<td style="text-align:center">either</td>
+<td style="text-align:center">any</td>
+</tr>
+<tr>
+<td style="text-align:center">另一个</td>
+<td style="text-align:center">the other</td>
+<td style="text-align:center">another</td>
+</tr>
+<tr>
+<td style="text-align:center">都</td>
+<td style="text-align:center">both</td>
+<td style="text-align:center">all</td>
+</tr>
+<tr>
+<td style="text-align:center">都不</td>
+<td style="text-align:center">neither</td>
+<td style="text-align:center">none</td>
+</tr>
+</tbody>
+</table>
+<h1 id="形容词">形容词</h1>
+<p>修饰名词和部分代词，表示人或事物的性质、状态和特征的词叫<strong>形容词</strong>。除修饰名词作定语外，形容词还常作表语和补语。</p>
+<h2 id="比较级和最高级的构成">比较级和最高级的构成</h2>
+<h3 id="规则变化-1">规则变化</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">构成</th>
+<th style="text-align:center">原级</th>
+<th style="text-align:center">比较级</th>
+<th style="text-align:center">最高级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">普通单音节词，在词尾加 -er，-est</td>
+<td style="text-align:center">strong</td>
+<td style="text-align:center">stronger</td>
+<td style="text-align:center">strongest</td>
+</tr>
+<tr>
+<td style="text-align:center">以字母 e 结尾的单音节词，只在词尾加 -r，-st</td>
+<td style="text-align:center">late</td>
+<td style="text-align:center">later</td>
+<td style="text-align:center">latest</td>
+</tr>
+<tr>
+<td style="text-align:center">以一个辅音字母结尾的闭音节单音节词，双写辅音字母后再加 -er，-est</td>
+<td style="text-align:center">hot</td>
+<td style="text-align:center">hotter</td>
+<td style="text-align:center">hottest</td>
+</tr>
+<tr>
+<td style="text-align:center">以“辅音字母 + y”结尾的单词，把 y 变 i ，再加 -er，-est</td>
+<td style="text-align:center">happy</td>
+<td style="text-align:center">happier</td>
+<td style="text-align:center">happiest</td>
+</tr>
+<tr>
+<td style="text-align:center">其他双音节词和多音节词，在词前加 more 和 most</td>
+<td style="text-align:center">enthusiastic</td>
+<td style="text-align:center">more enthusiastic</td>
+<td style="text-align:center">most enthusiastic</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>有少数几个双音节词以及以 -er 及 -le 结尾的词，可以有两种比较级和最高级形式。</p>
+<p>common → commoner / more common → commonest / most common<br>
+clever → cleverer / more clever → cleverest / most clever<br>
+simple → simpler / more simple → simplest / most simple</p>
+</li>
+<li>
+<p>有些复合形容词有两种比较级和最高级形式。</p>
+<p>well-known → bette-known / more well-known → best-known / most well-known</p>
+</li>
+</ul>
+<h3 id="不规则变化-1">不规则变化</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">原级</th>
+<th style="text-align:center">比较级</th>
+<th style="text-align:center">最高级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">good，well（健康的）</td>
+<td style="text-align:center">better</td>
+<td style="text-align:center">best</td>
+</tr>
+<tr>
+<td style="text-align:center">bad</td>
+<td style="text-align:center">worse</td>
+<td style="text-align:center">wost</td>
+</tr>
+<tr>
+<td style="text-align:center">little（少的）</td>
+<td style="text-align:center">less</td>
+<td style="text-align:center">least</td>
+</tr>
+<tr>
+<td style="text-align:center">many，much</td>
+<td style="text-align:center">more</td>
+<td style="text-align:center">most</td>
+</tr>
+<tr>
+<td style="text-align:center">far</td>
+<td style="text-align:center">farther / further</td>
+<td style="text-align:center">farthest / furthest</td>
+</tr>
+<tr>
+<td style="text-align:center">old</td>
+<td style="text-align:center">older / elder</td>
+<td style="text-align:center">oldest / eldest</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p>far 的说明</p>
+<p>farther，farthest 表示<strong>物理</strong>意义上的远<br>
+further，furthest 表示<strong>抽象</strong>意义上的远</p>
+</li>
+<li>
+<p>old 的说明</p>
+<p>older，oldest 更常用于大多数情况，尤其是普通比较。<br>
+Elder 和 Eldest 多用于家庭中，表示“年纪较大的”兄弟姐妹或家庭成员。</p>
+</li>
+</ul>
+<h2 id="比较级">比较级</h2>
+<p>比较级表示在两部分中程度较高者。</p>
+<h3 id="比较级基本用法">比较级基本用法</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">结构</th>
+<th style="text-align:center">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">比较级 + than</td>
+<td style="text-align:center">比...更...</td>
+</tr>
+<tr>
+<td style="text-align:center">not + 比较级 + than</td>
+<td style="text-align:center">不比...更...</td>
+</tr>
+<tr>
+<td style="text-align:center">no + 比较级 + than</td>
+<td style="text-align:center">和...一样不...</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>
+<p><strong>比较级 + than</strong>：比...更...</p>
+<p>He made more mistakes than you (did).<br>
+他犯的错比你多。</p>
+</li>
+<li>
+<p><strong>not + 比较级 + than</strong>：不比...更...</p>
+<p>My English is not better than yours.<br>
+我的英语不比你的英语更好。</p>
+</li>
+<li>
+<p><strong>no + 比较级 + than</strong>：和...一样不...</p>
+<p>He is no taller than his brother.<br>
+他和他的哥哥一样不高。</p>
+</li>
+<li>
+<p><strong>比较级有时可单独使用，其比较的对象暗含于句中。</strong></p>
+<p>Are you feeling better today?（与原来相比）<br>
+你今天感觉好一些了么？</p>
+<p>Further discussion will be held tomorrow.（与现在相比）<br>
+进一步的讨论将于明天进行。</p>
+</li>
+</ul>
+<h3 id="比较级常见错误">比较级常见错误</h3>
+<ul>
+<li>
+<p><strong>修饰词出现错误</strong>：more 不可修饰比较级，但可以用 much 来增强比较级，译为“...得多，更...”。</p>
+<p>She looks <strong>much</strong> younger than me.（不可使用 more）<br>
+她看上去比我年轻得多。</p>
+</li>
+<li>
+<p><strong>比较的对象出现错误</strong></p>
+<p>The weather of Beijing is colder than <strong>that of</strong> Shanghai.（不可去掉 that of）<br>
+北京的天气比上海的冷。</p>
+</li>
+<li>
+<p><strong>比较的范围出现错误</strong></p>
+<p>China is larger than any other country in Asia.（不可去掉 other）<br>
+中国比亚洲其他任何国家都大</p>
+</li>
+</ul>
+<h3 id="比较级特殊用法">比较级特殊用法</h3>
+<ul>
+<li>
+<p><strong>no more than = only</strong>：仅仅，不超过</p>
+<p>The winner is no more than 10 years old.<br>
+这个获胜者年仅10岁。</p>
+</li>
+</ul>
+<h3 id="比较级的修饰语">比较级的修饰语</h3>
+<p>比较级常用修饰语：rather，much，still，ever，far，any，a lot，a little，a great deal，by far，a bit</p>
+<p>Tom works even harder than before.<br>
+汤姆比以往工作更努力了。</p>
+<h2 id="最高级">最高级</h2>
+<p>最高级表示在三者或三者以上中程度最高者。</p>
+<h3 id="最高级用法">最高级用法</h3>
+<ul>
+<li>
+<p><strong>最高级基本用法</strong></p>
+<p><strong>the 形容词最高级（+ 名词）+ 表示范围的短语或从句</strong></p>
+<p>This is the oldest theater in London.<br>
+这是伦敦最古老的剧院。</p>
+<p>Shanghai is one of the largest cities in China.<br>
+上海是中国最大的城市之一。</p>
+</li>
+<li>
+<p><strong>比较级形式表达最高级意义</strong></p>
+<p><strong>比较级 + than + 整体中的其它</strong></p>
+<p>Rose is taller than any other girl in her class.<br>
+Rose is taller than (any of) the other girls in her class.</p>
+</li>
+<li>
+<p><strong>“否定词 + 比较级”表示最高级</strong></p>
+<p>I have never heard a better voice than yours.<br>
+Your voice is the best voice that I have ever heard.<br>
+我从未听过比你的嗓音更好的。</p>
+</li>
+</ul>
+<h3 id="最高级修饰语">最高级修饰语</h3>
+<p><strong>最高级常用修饰语</strong>：序数词，much，by far，nearly，almost</p>
+<p>The Yellow River is the second longest river in China.<br>
+黄河是中国的第二长河。</p>
+<p>Of the three girls, Betty is much the cleverest.<br>
+这三个女孩中，贝蒂是最聪明的。</p>
+<p>This is by far the best book that I've ever read.<br>
+这是我迄今读过的最好的书。</p>
+<h2 id="形容词技巧">形容词技巧</h2>
+<ul>
+<li>
+<p>-ing 形容词描述引起感觉的<strong>事物</strong>，常译为“令人...的”。</p>
+<p>The movie was <strong>boring</strong>.<br>
+这电影很无聊。（电影让人无聊）</p>
+</li>
+<li>
+<p>-ed 形容词描述人或动物对某件事的<strong>感受</strong>，是<strong>被动状态</strong>，常译为“感到...的”。</p>
+<p>I’m <strong>bored</strong>.<br>
+我很无聊。（我被无聊到了）</p>
+</li>
+</ul>
+<h1 id="副词">副词</h1>
+<p>副词是指在句子中表示行为或状态特征的词，用以修饰动词、形容词、其他副词、数词、 介词短语乃至全句，表示时间、地点、程度、方 式等概念。</p>
+<h2 id="简单副词">简单副词</h2>
+<p>here 这儿<br>
+there 那<br>
+quite / rather 相当<br>
+now 现在<br>
+then 那时</p>
+<p><strong>某些副词和形容词形式相同</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">单词</th>
+<th style="text-align:center">形容词词义</th>
+<th style="text-align:center">副词词义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">fast</td>
+<td style="text-align:center">快的</td>
+<td style="text-align:center">快地</td>
+</tr>
+<tr>
+<td style="text-align:center">early</td>
+<td style="text-align:center">早的</td>
+<td style="text-align:center">提早</td>
+</tr>
+<tr>
+<td style="text-align:center">straight</td>
+<td style="text-align:center">直的</td>
+<td style="text-align:center">径直地</td>
+</tr>
+<tr>
+<td style="text-align:center">hard</td>
+<td style="text-align:center">硬的</td>
+<td style="text-align:center">努力地</td>
+</tr>
+<tr>
+<td style="text-align:center">late</td>
+<td style="text-align:center">晚的</td>
+<td style="text-align:center">晚</td>
+</tr>
+<tr>
+<td style="text-align:center">enough</td>
+<td style="text-align:center">足够的</td>
+<td style="text-align:center">足够地</td>
+</tr>
+<tr>
+<td style="text-align:center">long</td>
+<td style="text-align:center">长的</td>
+<td style="text-align:center">长时间地</td>
+</tr>
+<tr>
+<td style="text-align:center">very</td>
+<td style="text-align:center">正是的</td>
+<td style="text-align:center">非常</td>
+</tr>
+</tbody>
+</table>
+<h2 id="复合副词">复合副词</h2>
+<p>somewhere 在某处<br>
+somehow 不知怎么<br>
+somewhat 有点<br>
+therefore 因此<br>
+nowhere 什么地方都不</p>
+<h2 id="派生副词">派生副词</h2>
+<ul>
+<li>
+<p><strong>形容词 + ly</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">情况</th>
+<th style="text-align:center">构成</th>
+<th style="text-align:center">例词</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一般形容词</td>
+<td style="text-align:center">加 -ly</td>
+<td style="text-align:center">quick → quickly</td>
+</tr>
+<tr>
+<td style="text-align:center">以“辅音字母 + y”结尾</td>
+<td style="text-align:center">把 y 变 i，再加 -ly</td>
+<td style="text-align:center">easy → easily</td>
+</tr>
+<tr>
+<td style="text-align:center">以“辅音字母 + le”结尾</td>
+<td style="text-align:center">去 e 加 -y</td>
+<td style="text-align:center">simple → simply</td>
+</tr>
+<tr>
+<td style="text-align:center">以“元音字母 + e”结尾</td>
+<td style="text-align:center">去 e 加 -ly</td>
+<td style="text-align:center">true → truly</td>
+</tr>
+<tr>
+<td style="text-align:center">以 -ll 结尾</td>
+<td style="text-align:center">只加 -y</td>
+<td style="text-align:center">full → fully</td>
+</tr>
+<tr>
+<td style="text-align:center">以 -ic 结尾</td>
+<td style="text-align:center">加 -ally</td>
+<td style="text-align:center">scientific → scientifically</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong>两种副词形式</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">形容词</th>
+<th style="text-align:center">副词（与形容词同形）</th>
+<th style="text-align:center">副词（形容词 + -ly）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">close 近的；亲密的</td>
+<td style="text-align:center">clse 接近（距离）</td>
+<td style="text-align:center">closely 密切地</td>
+</tr>
+<tr>
+<td style="text-align:center">deep 深的</td>
+<td style="text-align:center">deep 深深地</td>
+<td style="text-align:center">deeply 至深；非常</td>
+</tr>
+<tr>
+<td style="text-align:center">high 高的</td>
+<td style="text-align:center">high 在高处</td>
+<td style="text-align:center">highly 高度地</td>
+</tr>
+<tr>
+<td style="text-align:center">free 自由的；免费的</td>
+<td style="text-align:center">free 免费地</td>
+<td style="text-align:center">freely 自由地</td>
+</tr>
+<tr>
+<td style="text-align:center">near 近的</td>
+<td style="text-align:center">near 在附近；几乎；不久以后</td>
+<td style="text-align:center">nearly 几乎；将近</td>
+</tr>
+<tr>
+<td style="text-align:center">hard 硬的</td>
+<td style="text-align:center">hard 努力地</td>
+<td style="text-align:center">hardly 几乎不</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h2 id="副词的比较级和最高级">副词的比较级和最高级</h2>
+<ul>
+<li>副词的比较级和最高级的构成同形容词</li>
+</ul>
+<h1 id="介词">介词</h1>
+<h2 id="时间介词">时间介词</h2>
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418211404250.png" alt="image-20240418211404250" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418212226353.png" alt="image-20240418212226353" style="zoom:200%;" />
+<h3 id="at">at</h3>
+<p>at 表示具体时间、时刻</p>
+<ul>
+<li>at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/晚上/午夜</li>
+<li>at 10 o'clock 在10点</li>
+</ul>
+<h3 id="on">on</h3>
+<p>on 表示具体某一天或特定某一天的上午、下午、晚上</p>
+<ul>
+<li>on May 1st 在5月1日</li>
+<li>on Monday</li>
+<li>on New Year's  Day</li>
+<li>on my birthday</li>
+<li>on Friday morning</li>
+<li>on the weekend</li>
+</ul>
+<h3 id="in">in</h3>
+<p>in 表示较长的时间段（朝代、世纪、年代、年份，季节，月份等）或泛指的上午、下午、晚上</p>
+<ul>
+<li>in the Tang Dynasty 在唐朝</li>
+<li>in the 21st century 在21世纪</li>
+<li>in the 1990s/1990's 在20世纪90年代</li>
+<li>in 2025 在2025年</li>
+<li>in spring 在春季</li>
+<li>in January 在一月</li>
+<li>in the morning/afternoon/evening</li>
+</ul>
+<h3 id="by-和-before">by 和 before</h3>
+<ul>
+<li>by 10 o'clock 表示不迟于10点，<strong>包括10点</strong>。</li>
+<li>berore 10 o'clock 表示在10点之前，<strong>不包括10点</strong></li>
+</ul>
+<h3 id="duringthrough-和-over">during，through 和 over</h3>
+<h3 id="forfrom-和-since">for，from 和 since</h3>
+<h2 id="位置介词">位置介词</h2>
+<p><img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418190331041.png" alt="image-20240418190331041"></p>
+<p><img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418190149298.png" alt="image-20240418190149298"></p>
+<h3 id="在上面">在...上面</h3>
+<ul>
+<li><strong>on</strong>：指在与物体表面相接触的上面。</li>
+<li><strong>above</strong>：指水平位置在某物之上，和 below 相反。
+<ul>
+<li>The sun rose above the horizon.</li>
+<li>The jet flew above the clouds.</li>
+</ul>
+</li>
+<li><strong>over</strong>：指在某物正上方，和 under 相反；
+<ul>
+<li>A bridge over the river</li>
+</ul>
+</li>
+<li><strong>aboard</strong>：在(船、飞机、公共汽车、火车等)上
+<ul>
+<li>aboard the plane</li>
+<li>go aboard 上船</li>
+</ul>
+</li>
+</ul>
+<h3 id="在下面">在...下面</h3>
+<ul>
+<li><strong>beneath</strong>：在 ... 下面</li>
+<li><strong>below</strong>：指水平位置在某物之下，和 above 相反；</li>
+<li><strong>under</strong>：指在某物正上方，和 over 相反；</li>
+</ul>
+<h3 id="在--之间">在 ... 之间</h3>
+<ul>
+<li><strong>between</strong>：在 ... 之间（两个）</li>
+<li><strong>among</strong>：在 ... 之间（三个或以上）</li>
+</ul>
+<h3 id="穿过">穿过</h3>
+<ul>
+<li>
+<p>穿过</p>
+<p><img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240415175515902.png" alt="image-20240415175515902"></p>
+</li>
+<li>
+<p><strong>across</strong>：从表面穿过（马路，桥，河...）</p>
+<ul>
+<li>There's a way across the fields.</li>
+</ul>
+</li>
+<li>
+<p><strong>through</strong>：从内部穿过（森林，隧道，人群，门窗...）</p>
+<ul>
+<li>I usually cycle home through the park.</li>
+</ul>
+</li>
+<li>
+<p><strong>over</strong>：从上方越过（栅栏，墙，山...）</p>
+</li>
+<li>
+<p><strong>past</strong>：从旁边经过</p>
+</li>
+</ul>
+<h2 id="动向介词">动向介词</h2>
+<h2 id="方式介词">方式介词</h2>
+<h1 id="冠词">冠词</h1>
+<h2 id="不定冠词">不定冠词</h2>
+<p>不定冠词表泛指。</p>
+<ul>
+<li>a 用在辅音音素前</li>
+<li>an 用在元音音素前</li>
+</ul>
+<h2 id="定冠词">定冠词</h2>
+<p>定冠词表特指。</p>
+<ul>
+<li>
+<p>表特指</p>
+<p>Do you know the woman standing under the tree?</p>
+</li>
+<li>
+<p>在姓氏复数前表全家人或夫妇俩</p>
+<p>The Whites are watching TV.<br>
+怀特一家人在看电影。</p>
+</li>
+<li>
+<p>演奏西方乐器</p>
+<p>play the piano/violin/guitar</p>
+</li>
+<li>
+<p>普通名词构成的专有名词</p>
+<p>the Summer Palace 颐和园<br>
+the Great Wall 长城<br>
+the Middle East 中东<br>
+the Yellow River 黄河</p>
+</li>
+<li>
+<p>形容词指代一类人或事物</p>
+<p>the young 年轻人<br>
+the unknown 未知的事物</p>
+</li>
+<li>
+<p>用在计量单位前</p>
+<p>by the pound/kilo/dozen/foot/hour<br>
+按磅/千克/打/英尺/小时</p>
+</li>
+<li>
+<p>某些时间</p>
+<p>世纪：the 21st century 21世纪<br>
+年代：the 1990s/1990's 20世纪90年代<br>
+朝代：the Tang Dynasty 唐朝<br>
+中国节日：the Spring Festival</p>
+</li>
+</ul>
+<h2 id="零冠词">零冠词</h2>
+<h1 id="动词">动词</h1>
+<h2 id="时态">时态</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">时态</th>
+<th style="text-align:center">一般</th>
+<th style="text-align:center">进行</th>
+<th style="text-align:center">完成</th>
+<th style="text-align:center">完成进行</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">现在</td>
+<td style="text-align:center">do/does</td>
+<td style="text-align:center">am/is/are doing</td>
+<td style="text-align:center">have/has done</td>
+<td style="text-align:center">have/has been doing</td>
+</tr>
+<tr>
+<td style="text-align:center">过去</td>
+<td style="text-align:center">did</td>
+<td style="text-align:center">was/were doing</td>
+<td style="text-align:center">had done</td>
+<td style="text-align:center">had been doing</td>
+</tr>
+<tr>
+<td style="text-align:center">将来</td>
+<td style="text-align:center">shall/will do</td>
+<td style="text-align:center">shall/will be working</td>
+<td style="text-align:center">will have done</td>
+<td style="text-align:center">will have been doing</td>
+</tr>
+<tr>
+<td style="text-align:center">过去将来</td>
+<td style="text-align:center">should/would do</td>
+<td style="text-align:center">would be doing</td>
+<td style="text-align:center">would have done</td>
+<td style="text-align:center">would have been doing</td>
+</tr>
+</tbody>
+</table>
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418190921101.png" alt="image-20240418190921101" style="zoom:200%;" />
+<img src="file:///d:\文件\notes\语言\English\english-note\assets\image-20240418190941419.png" alt="image-20240418190941419" style="zoom:200%;" />
+<h3 id="一般现在时">一般现在时</h3>
+<h4 id="动词单三">动词单三</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">情况</th>
+<th style="text-align:center">规则</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一般情况</td>
+<td style="text-align:center">加 -s</td>
+<td style="text-align:center">walk → walks</td>
+</tr>
+<tr>
+<td style="text-align:center">o，ch，sh，s，x 结尾</td>
+<td style="text-align:center">加 -es</td>
+<td style="text-align:center">watch → watches</td>
+</tr>
+<tr>
+<td style="text-align:center">辅音字母加 -y 结尾</td>
+<td style="text-align:center">把 y 变 i，再加 -es</td>
+<td style="text-align:center">fly → flies</td>
+</tr>
+<tr>
+<td style="text-align:center">不规则形式</td>
+<td style="text-align:center">-</td>
+<td style="text-align:center">have → has<br/>am/are → is</td>
+</tr>
+</tbody>
+</table>
+<h3 id="一般过去时">一般过去时</h3>
+<h4 id="动词过去式">动词过去式</h4>
+<ul>
+<li>
+<p>规则变化</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">情况</th>
+<th style="text-align:center">规则</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一般情况</td>
+<td style="text-align:center">加 ed</td>
+<td style="text-align:center">walk → walked</td>
+</tr>
+<tr>
+<td style="text-align:center">e 结尾且 e 不发音</td>
+<td style="text-align:center">加 d</td>
+<td style="text-align:center">dance → danced</td>
+</tr>
+<tr>
+<td style="text-align:center">辅音字母加 y 结尾</td>
+<td style="text-align:center">把 y 变 i 加 ed</td>
+<td style="text-align:center">cry → cried</td>
+</tr>
+<tr>
+<td style="text-align:center">元音字母加 y 结尾</td>
+<td style="text-align:center">加 ed</td>
+<td style="text-align:center">play → played</td>
+</tr>
+<tr>
+<td style="text-align:center">结尾是一个元音字母和一个辅音字母</td>
+<td style="text-align:center">双写辅音，加 ed</td>
+<td style="text-align:center">stop → stopped</td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p>不规则变化</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">...</th>
+<th style="text-align:center">...</th>
+<th style="text-align:center">...</th>
+<th style="text-align:center">...</th>
+<th style="text-align:center">...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">am / is → was<br/>are → were<br/>do → did<br/>have → had<br/></td>
+<td style="text-align:center">go → went<br/>come → came<br/></td>
+<td style="text-align:center">eat → ate<br/>drink → drank<br/></td>
+<td style="text-align:center">read → read<br/>write → wrote<br/>sing → sang<br/>say → said<br/>tell → told<br/></td>
+<td style="text-align:center">buy → bought<br/>make → made<br/></td>
+</tr>
+<tr>
+<td style="text-align:center">...</td>
+<td style="text-align:center">...</td>
+<td style="text-align:center">...</td>
+<td style="text-align:center">...</td>
+<td style="text-align:center">...</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<h3 id="一般将来时">一般将来时</h3>
+<h3 id="现在进行时">现在进行时</h3>
+<h4 id="动词-ing">动词-ing</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">情况</th>
+<th style="text-align:center">规则</th>
+<th style="text-align:center">示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">一般情况</td>
+<td style="text-align:center">加 ing</td>
+<td style="text-align:center">walk → walking</td>
+</tr>
+<tr>
+<td style="text-align:center">e 结尾且 e 不发音</td>
+<td style="text-align:center">去 e 加 ing</td>
+<td style="text-align:center">dance → dancing</td>
+</tr>
+<tr>
+<td style="text-align:center">结尾是一个元音字母和一个辅音字母</td>
+<td style="text-align:center">双写辅音，加 ing</td>
+<td style="text-align:center">run → running</td>
+</tr>
+</tbody>
+</table>
+<h2 id="被动语态">被动语态</h2>
+<h2 id="非谓语动词">非谓语动词</h2>
+<h1 id="并列复合句">并列复合句</h1>
+<p>英语中的复合句由<strong>并列复合句</strong>和<strong>主从复合句</strong>组成。</p>
+<p>由<strong>并列连词</strong>把两个或两个以上的简单句连在一起的句子叫<strong>并列复合句</strong>。</p>
+<h2 id="并列关系">并列关系</h2>
+<p>表并列关系的连词：and，not only...，but also... 等</p>
+<p>She dances well and he sings well.</p>
+<p>她舞跳得好，他歌唱得好。</p>
+<h2 id="转折关系">转折关系</h2>
+<p>表转折关系的连词：but，yet, while 等。</p>
+<p>Honey is sweet, but the bee stings.<br>
+蜂蜜是甜的，但蜜蜂会蜇人。</p>
+<p>It's a small car, yet it's surprisingly spacious.<br>
+这辆轿车小，然而宽敞得出奇。</p>
+<p>He likes pop music while I am fond of classical music.<br>
+他喜欢流行音乐，而我喜欢古典音乐。</p>
+<h2 id="因果关系">因果关系</h2>
+<p>表因果关系的连词：far，so 等。</p>
+<p>He didn't attend the meeting, for he was ill.<br>
+他由于病了，没有参会。</p>
+<p>It was still painful so I went to see a doctor.<br>
+那地方还疼，因此我去看了医生。</p>
+<h2 id="选择关系">选择关系</h2>
+<p>表选择关系的连词：or，either...or... 等。</p>
+<p>Either you come to my house or I go to yours.<br>
+或者你到我家来，或者我到你家去。</p>
+<h2 id="when">when</h2>
+<p>when 可用作并列连词。</p>
+<p>We were having a meeting when someone broke in.<br>
+我们正在开会，这时突然有人闯进来。</p>
+<h1 id="定语从句">定语从句</h1>
+<p>在主从复合句中作定语，修饰名词、代词等的从句叫定语从句，定语从句的作用相当于形容词。</p>
+<p>I'll forever cherish the days when I studied abroad.<br>
+我将永远珍视我在国外学习的日子。</p>
+<h2 id="先行词">先行词</h2>
+<p>被定语从句修饰的名词、代词等称为<strong>先行词</strong>，一般出现在定语从句之前。有时先行词是整个主句。</p>
+<ul>
+<li>
+<p><strong>一个词作先行词</strong></p>
+<p>This is the <strong>museum</strong> which was built last year.<br>
+这就是去年建成的那个博物馆。</p>
+</li>
+<li>
+<p><strong>整个主句作先行词</strong></p>
+<p><strong>They sent my child to the school every morning</strong>, which I considered a great help to me.<br>
+他们每天早晨送我的孩子去学校，我认为这对我是极大的帮助。</p>
+</li>
+</ul>
+<h2 id="关系词">关系词</h2>
+<h3 id="关系词-1">关系词</h3>
+<p>引导定语从句的词被称为<strong>关系词</strong>。</p>
+<ul>
+<li>
+<p><strong>关系代词</strong></p>
+<p>who，whom，whose，that，which，as</p>
+</li>
+<li>
+<p><strong>关系副词</strong></p>
+<p>when，where，why</p>
+</li>
+<li>
+<p><strong>省略关系词</strong>：关系词在限制性定语从句中作宾语时，可省略。</p>
+<p>I know the girl (who/that) you met yesterday.<br>
+省略后：I know the girl you met yesterday.</p>
+</li>
+</ul>
+<p>The boys <strong>who/that</strong> are playing football are from Class One.<br>
+正在踢足球的男孩们是一班的。</p>
+<p>I'll cherish the moment <strong>when</strong> I met Lisa.<br>
+我将珍视我和莉萨见面的时刻。</p>
+<p>Is there a shop around <strong>where</strong> we can get fruit?<br>
+附近有没有我们能买到水果的商店？</p>
+<p>We don't know the reason <strong>why</strong> they didn't attend the meeting.<br>
+我们不知道他们没有参会的原因。</p>
+<h3 id="关系代词-as-的用法">关系代词 as 的用法</h3>
+<ul>
+<li>
+<p>引导限制性定语从句时，主要用于 the same...as...，such...as...，so...as... 等结构，既可指人也可指物。</p>
+<p>We have found such materials as are used in their factory.<br>
+我们已经找到了他们工厂里用的那种材料。</p>
+</li>
+<li>
+<p>引导非限制性定语从句，其先行词是整个主句时，常译成“正如，正像”。</p>
+<p>As everybody knows, Shakespeare is a famous writer.<br>
+正如每个人都知道的那样，莎士比亚是一位知名作家。</p>
+</li>
+</ul>
+<h2 id="限制性定语从句">限制性定语从句</h2>
+<p>限制性定语从句起限定作用。</p>
+<ul>
+<li>作用：限定前面的名词，说明是哪一个。</li>
+<li>句子中不可缺少，否则意思就不完整或会改变。</li>
+<li><strong>没有逗号</strong>隔开。</li>
+<li>通常用 <strong>that / who / which</strong> 引导。</li>
+<li>关系词在限制性定语从句中作宾语时，可省略。</li>
+</ul>
+<p>The girl <strong>who is wearing a red dress</strong> is my sister.</p>
+<ul>
+<li>解释：说话时可能有很多女孩，但我说的是那个穿红裙子的女孩。</li>
+<li>“who is wearing a red dress” 是必要的信息，如果去掉，句子信息不完整。</li>
+</ul>
+<h2 id="非限制性定语从句">非限制性定语从句</h2>
+<p>非限制性定语从句起补充说明作用。</p>
+<ul>
+<li>作用：补充说明前面的名词。</li>
+<li>去掉这部分，主句也能独立成句，意思不受影响。</li>
+<li>用逗号隔开</li>
+<li><strong>不能用 that</strong>，只能用 <strong>which / who / whose</strong> 等引导。</li>
+<li>不能省略关系词。</li>
+</ul>
+<p>My sister, <strong>who is wearing a red dress</strong>, is a teacher.</p>
+<ul>
+<li>解释：我只有一个妹妹，她穿着红裙子（补充信息）。</li>
+<li>“who is wearing a red dress” 只是额外描述，不影响主句。即使去掉了，也不影响我的妹妹是一个老师。</li>
+</ul>
+<h1 id="状语从句">状语从句</h1>
+<h1 id="主语从句">主语从句</h1>
+<h1 id="表语从句">表语从句</h1>
+<h1 id="宾语从句">宾语从句</h1>
+<h1 id="同位语从句">同位语从句</h1>
+
+            
+            
+        </body>
+        </html>

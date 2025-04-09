@@ -932,20 +932,12 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 ## 时态
 
-- **16 种时态**
-
-    |     Tense      |          Syntax          |       Tense        |        Syntax         |
-    | :------------: | :----------------------: | :----------------: | :-------------------: |
-    |   一般现在时   |            do            |     现在进行时     |       be doing        |
-    |   一般过去时   |           did            |     过去进行时     |   was / were doing    |
-    |   一般将来时   | be going to do / will do |     将来进行时     |     will be doing     |
-    |   过去将来时   |         would do         |   过去将来进行时   |    would be doing     |
-    |   现在完成时   |     have / has done      |   现在完成进行时   | have / has been doing |
-    |   过去完成时   |         had done         |   过去完成进行时   |    had been doing     |
-    |   将来完成时   |      will have done      |   将来完成进行时   | will have been doing  |
-    | 过去将来完成时 |     would have done      | 过去将来完成进行时 | would have been doing |
-
-
+|  时态  |  一般  | 进行  |  完成  | 完成进行 |
+| :---: | :---: | :---: | :---: | :----: |
+| 现在 | do/does | am/is/are doing | have/has done | have/has been doing |
+| 过去 | did | was/were doing | had done | had been doing |
+| 将来 | shall/will do | shall/will be working | will have done |will have been doing|
+| 过去将来 | should/would do | would be doing | would have done | would have been doing |
 
 <img src="assets/image-20240418190921101.png" alt="image-20240418190921101" style="zoom:200%;" />
 
@@ -955,13 +947,12 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 #### 动词单三
 
-|           情况           |      规则       |             示例             |
-| :----------------------: | :-------------: | :--------------------------: |
-|         一般情况         |      加 s       |         walk → walks         |
-| o / ch / sh / s / x 结尾 |      加 es      |       watch → watches        |
-|    辅音字母加 y 结尾     | 把 y 变 i 加 es |         fly  → flies         |
-|    元音字母加 y 结尾     |      加 es      |         buy  → buys          |
-|        不规则形式        |        -        | have → has<br/>am / are → is |
+| 情况 | 规则 | 示例 |
+|:---:|:---:|:---:|
+| 一般情况 | 加 -s | walk → walks |
+| o，ch，sh，s，x 结尾 | 加 -es | watch → watches |
+| 辅音字母加 -y 结尾 | 把 y 变 i，再加 -es | fly → flies |
+| 不规则形式 | - | have → has<br/>am/are → is |
 
 ### 一般过去时
 
