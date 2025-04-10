@@ -5,7 +5,7 @@
 - 普通名词
     - 可数名词
         - 个体名词：表示作为个体而存在的人或事物：boy book week dream
-        - 集体名词：表示若干个人和事物的总称：family committee police   data
+        - 集体名词：表示若干个人和事物的总称：family committee police data
     - 不可数名词
         - 物质名词：表示物质、材料的总称：air sand
         - 抽象名词：表示性质、行为、状态、情感等抽象概念的名称：peace freedom  fun
@@ -15,32 +15,26 @@
 
 ### 规则变化
 
-- 一般情况，词尾加 -s，parent——parents 父母
-- 以 -s，-x，-ch，-sh 结尾，加 -es，glass——glasses 玻璃
-    - 特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach——stomachs 胃
-
-- 以 -y 结尾
-    - 以辅音字母加 -y 结尾，把 -y 变 -i 加 -es，factory——factories 工厂
-    - 以元音字母加 -y 结尾，加 -s，boy——boys 男孩
-
-- 以 -o 结尾
-    - 以辅音字母加 -o 结尾，加 -es，potato——potatoes 土豆
-    - 以元音字母加 -o 结尾，加 -s，zoo——zoos 动物园
-
-- 以 -f，-fe 结尾，把 -f，-fe 变 -v 再加 -es，wolf——wolves 狼，knife——knives 刀
-    - 特例：以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。
+- 一般情况，词尾加 -s，parent → parents
+- 以 -s，-x，-ch，-sh 结尾，加 -es，glass → glasses
+    - 特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach → stomachs
+- 以辅音字母加 -y 结尾，把 -y 变 -i 加 -es，factory → factories
+- 以辅音字母加 -o 结尾，加 -es，potato → potatoes
+    - 特例：一些外来词、缩写、科学词汇，直接加 -s，piano → pianos，photo → photos
+- 以 -f，-fe 结尾，把 -f，-fe 变 -v 再加 -es，wolf → wolves，knife → knives
+    - 特例：某些以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。
 
 
 ### 不规则变化
 
 - 改变内部元音
 
-    - man——men 男人
-    - woman——women 女人
-    - foot——feet 脚
-    - tooth——teeth 牙齿
-    - goose——geese 鹅
-    - mouse——mice 老鼠（注意此处 s 变 c）
+    - man → men 男人
+    - woman → women 女人
+    - foot → feet 脚
+    - tooth → teeth 牙齿
+    - goose → geese 鹅
+    - mouse → mice 老鼠（注意此处 s 变 c）
 
 - 单复数同形
 
@@ -84,18 +78,18 @@ I need a new pair of trousers for work. 我需要一条上班穿的裤子。
 ### 复合名词
 
 - 没有连字符，最后一个名词变复数。  
-  housewife——housewives 家庭主妇
+  housewife → housewives 家庭主妇
 
 - 组成复合名词的单词中没有名词，在最后加 -s。  
-  grow-up——grow-ups 成年人
+  grow-up → grow-ups 成年人
 
 - 有连字符，将复合名词中主要的名词变复数。  
-  passer-by——passers-by 路人  
-  daughter-in-law——daughters-in-law 儿媳妇
+  passer-by → passers-by 路人  
+  daughter-in-law → daughters-in-law 儿媳妇
 
 - man，woman 为复合名词的第一部分时，复合名词的各个部分皆变为复数  
-  a man cook——men cooks 男厨师  
-  a woman teacher——women teachers
+  a man cook → men cooks 男厨师  
+  a woman teacher → women teachers
 
 ### 注意
 
@@ -108,8 +102,8 @@ I need a new pair of trousers for work. 我需要一条上班穿的裤子。
 
 - 表示“某国人”的名词变复数的三种形式
     - “中日瑞不变”
-    - 词尾的 -man 变 -men，如 Frenchman——Frenchmen；但“德国人（German——Germans）”除外。
-    - 词尾直接加 -s，如 American——Americans。
+    - 词尾的 -man 变 -men，如 Frenchman → Frenchmen；但“德国人（German → Germans）”除外。
+    - 词尾直接加 -s，如 American → Americans。
 
 ## 不可数名词
 
@@ -117,10 +111,11 @@ I need a new pair of trousers for work. 我需要一条上班穿的裤子。
 
 某些不可数名词，即使前面有形容词修饰，也不能使用定冠词 a/an。
 
-news 新闻，information 信息，work 工作，advice 建议，progress 进步，weather 天气，fun 乐趣，equipment 设备，jewellery 珠宝，luck 运气，music，health 健康，furniture 家具  
-  We have so much bad luck. 我们有太多的厄运。  
-  I have good news to tell you. 我有好消息告诉你。  
-  He made such rapid progress. 他进步如此快。
+news 新闻，information 信息，work 工作，advice 建议，progress 进步，weather 天气，fun 乐趣，equipment 设备，jewellery 珠宝，luck 运气，music，health 健康，furniture 家具 
+
+We have so much bad luck. 我们有太多的厄运。  
+I have good news to tell you. 我有好消息告诉你。  
+He made such rapid progress. 他进步如此快。
 
 ### 同词不同义
 
@@ -145,48 +140,31 @@ Being able to afford a drink would be a comfort in tough times.
 
 名词的所有格（Possessive form）用于表示某物或某人属于谁。
 
-### 在词尾加 -s 构成所有格
+### 词尾加 -'s
 
-- 一般单数名词，在词尾加 `'s`  
-  today's newspaper 今天的报纸  
-  China's population 中国的人口
+|  情况  |  规则  | 示例 |
+| :---: | :---: | :---:|
+| 一般单数名词 | 加 `'s` | today's newspaper 今天的报纸 |
+| 以 -s 结尾的单数名词或专有名词 | 加 `'` 或 `'s` | the boss'(s) order 老板的命令<br>Dicken‘（s) novels 狄更斯的小说 |
+| 不以 -s 或 -es 结尾的复数名词 | 加 `'s` | women’s clothes 女装 |
+| 以 -s 或 -es 结尾的复数名词 | 只加 `'` | two hours' walk 步行两小时的路程 |
+| 复合名词 | 在最后一个词的词尾加 `'s` | his son-in-law's car 他女婿的轿车 |
 
-- 以 -s 结尾的单数名词或专有名词，在结尾加 `'` 或 `'s`，读作 / ɪｚ/。  
-  Dicken‘（s) novels 狄更斯的小说  
-  the boss'(s) order 老板的命令
+### of + 名词
 
-- 以 -s 或 -es 结尾的复数名词，结尾只加 `'`。  
-  two hours' walk 步行两小时的路程  
-  the masses' advice 群众的意见
-
-- 不以 -s 或 -es 结尾的复数名词，结尾加 `'s`。  
-  women’s clothes 女装
-
-- 复合名词，在最后一个词的词尾加 `'s`  
-  his son-in-law's car 他女婿的轿车
-
-### 由“of + 名词”构成所有格
-
-- 用于无生命的东西  
-  the top of the hill 山顶
-
-- 表示“有关，关于”  
-  a story of love and hartred 一个关于爱与恨的故事
-
-- 表示同位关系  
-  the city of Pisa 比萨市
-
-- 表示部分与整体关系  
-  the majority of people 大多数人
-
-- 表示抽象概念  
-  the cost of living 生活费
+|  用法  |  示例  |
+| :---: | :---: |
+| 用于无生命的东西 | the top of the hill 山顶 |
+| 表示“有关，关于” | a story of love and hartred 一个关于爱与恨的故事 |
+| 表示同位关系 | the city of Pisa 比萨市 |
+| 表示部分与整体关系 |  the majority of people 大多数人 |
+| 表示抽象概念 |  the cost of living 生活费 |
 
 ### 双重所有格
 
 双重所有格（Double possessive）是指在同一句话中同时使用 "of" 和 "possessive 's"，用于表示某人/某物是某个更大范围的一部分。
 
-Some friends of my brother's will join us.  
+Some friends **of my brother's** will join us.  
 我哥哥的一些朋友将加入我们。
 
 ## 名词的句法功能
@@ -219,6 +197,9 @@ Some friends of my brother's will join us.
   在中国南方有很多香蕉树。
 
 # 代词
+
+代词可分为人称代词、
+物主代词、反身代词、指示代词、不定代词、疑问代词、连接代词、关系代词等。
 
 |       | 主格  | 宾格  |  反身代词  | 名词性物主代词 | 形容词性物主代词 |
 | :---: | :---: | :---: | :--------: | :------------: | :--------------: |
@@ -376,8 +357,8 @@ Some friends of my brother's will join us.
 
 - **名词性物主代词相当于“形容词性物主代词 + 名词”，作主语、表语和宾语。**
 
-    This camera is **mine** and that is **yours**.  
-    这部照相机是我的，那部是你的。
+    This apple is hers (=her apple).  
+    这个苹果是她的。
 
 - **“of + 名词性物主代词” 可用作定语**
 
@@ -415,6 +396,16 @@ Some friends of my brother's will join us.
   </tbody>
 </table>
 
+- **作宾语**
+
+    Let me introduce myself.  
+    让我来介绍一下我自己。
+
+- **作同位语**
+
+    The teacher himself gave her the certificate.  
+    老师亲自给她颁发证书。
+
 ## 指示代词
 
 用来指示或标记人或事物的代词，表示“这个/些”“那个/些”。
@@ -440,6 +431,8 @@ Some friends of my brother's will join us.
     </tr>
   </tbody>
 </table>
+此外还有几个特殊的指示代词：such，same，either，neither，one，ones
+
 ### 指示代词句法
 
 可用作主语、宾语、定语和表语。
@@ -470,6 +463,58 @@ Some friends of my brother's will join us.
 
     The weather isn't that hot.  
     天气没那么热。
+
+### such
+
+such 作为指示代词，表示“这样的人或物”。
+
+- **作主语：**谓语动词的单复数取决于后面所指代的名词。
+
+    Such are the results. 结果就是这样。
+
+- **作限定词**
+
+    such a man 这样的一个人  
+    any such mistake 任何这样的错误  
+    There is no such thing. 没有这样的事。
+
+- **特殊用法：**表示“也...”
+
+    You have been there. So do I. 你去过那，我也是。
+
+## 相互代词
+
+**相互代词**用于表示“彼此之间”的动作或关系，只有两个：each other 和 one another，意思是“互相；彼此”。现代英语中这两个词可以互换。
+
+- **作宾语**
+
+    influence **each other**
+
+- **加 -'s 作定语**
+
+    They looked at **each other's** eyes.  
+    他们看着彼此的眼睛。
+
+## 疑问代词
+
+**标准疑问代词：**
+
+| 疑问代词 | 询问内容 | 用法示例 |
+| :----: | :----: | :-----: |
+| who | 人（主语） | Who is knocking at the door?（谁在敲门？） |
+| whom | 人（宾语） | Whom did you see?（你看到谁了？）👉 口语中常用 who 替代 |
+| whose | 所属关系  | Whose bag is this?（这是谁的包？） |
+| what  | 事物、情况 | What is this?（这是什么？） |
+| which | 限定范围内的选择 | Which is your car?（哪一辆是你的车？） |
+
+**特殊疑问代词：**
+
+| 疑问形式 | 示例句子 |
+| :----: | :-----: |
+| Whoever   | Whoever said that was wrong.（无论是谁说的，那都是错的。） |
+| Whomever  | I'll hire whomever you recommend.（我会雇你推荐的任何人。） |
+| Whatever | Take whatever you need.（拿你需要的任何东西。） |
+| Whichever | Choose whichever you like.（选你喜欢的那个。） |
 
 ## 不定代词
 
@@ -532,7 +577,25 @@ Some friends of my brother's will join us.
 
 # 形容词
 
-修饰名词和部分代词，表示人或事物的性质、状态和特征的词叫**形容词**。除修饰名词作定语外，形容词还常作表语和补语。
+形容词（Adjective，简写 **adj.**）表示人或事物的性质、状态和特征等，主要用来修饰名词和代词。
+
+## 形容词句法
+
+形容词在句中可以充当定语、表语、状语、主语或补语等。
+
+形容词最重要的作用就是作定语修饰名词：
+
+- It is a good experience. （作定语，修饰名词）
+
+**后置定语**：
+
+- **形容词修饰不定代词（如 something）时要求后置**
+
+    **Something** wrong happened. 出了点问题。
+
+- **由前缀 a- 构成的形容词（如 asleep）作定语时要求后置**
+
+    a baby **asleep** in the crib 在婴儿床里睡着的宝宝
 
 ## 比较级和最高级的构成
 
@@ -612,6 +675,13 @@ Some friends of my brother's will join us.
     Further discussion will be held tomorrow.（与现在相比）  
     进一步的讨论将于明天进行。
 
+### 比较级的修饰语
+
+比较级常用修饰语：rather，much，still，ever，far，any，a lot，a little，a great deal，by far，a bit
+
+Tom works even harder than before.  
+汤姆比以往工作更努力了。
+
 ### 比较级常见错误
 
 - **修饰词出现错误**：more 不可修饰比较级，但可以用 much 来增强比较级，译为“...得多，更...”。
@@ -626,7 +696,7 @@ Some friends of my brother's will join us.
 
 - **比较的范围出现错误**
 
-    China is larger than any other country in Asia.（不可去掉 other）  
+    China is larger than any **other** country in Asia.（不可去掉 other）  
     中国比亚洲其他任何国家都大
 
 ### 比较级特殊用法
@@ -636,12 +706,43 @@ Some friends of my brother's will join us.
     The winner is no more than 10 years old.  
     这个获胜者年仅10岁。
 
-### 比较级的修饰语
+- **The + 比较级 ... , the + 比较级 ...**：越...越...
 
-比较级常用修饰语：rather，much，still，ever，far，any，a lot，a little，a great deal，by far，a bit
+    The more carefully you drive, the safer it is.  
+    你开车越小心，就越安全。
 
-Tom works even harder than before.  
-汤姆比以往工作更努力了。
+    The more, the better.  
+    越多越好。
+
+- **more a + 名词 + than a + 名词**：更倾向...而不是...
+
+    She is more a scientist than a teacher.  
+    她更像一个科学家，而不是老师。
+    
+
+### 原级比较
+
+原级比较并非严格意义的比较级，只是拿两者作一个对比，形容词用原级。
+
+- **和...一样**：as...as...
+
+    - 肯定形式：as...as...
+
+        She is **as tall as** her brother. 她和她哥哥一样高。
+
+    - 否定形式：not so...as...
+
+        She is **not so tall as** her brother. 她不如她哥哥高。
+
+- **与其说...不如说...**：not so much A as B
+
+    He is **not so much a teacher as a friend**.  
+    与其说他是老师，不如说是朋友。
+
+- **A 之于 B，就如同 C 之于 D**：A is to B what C is to D
+
+    A password **is to** a computer **what** a key **is to** a lock.  
+    密码之于电脑，就如钥匙之于锁。
 
 ## 最高级
 
@@ -699,7 +800,17 @@ This is by far the best book that I've ever read.
 
 # 副词
 
-副词是指在句子中表示行为或状态特征的词，用以修饰动词、形容词、其他副词、数词、 介词短语乃至全句，表示时间、地点、程度、方 式等概念。
+副词（Adverb，简写 **adv.**）是指在句子中表示行为或状态特征的词；副词用来修饰动词、形容词、其他副词、数词、 介词短语乃至全句，表示时间、地点、程度、方式等概念。
+
+## 副词用法
+
+副词在句中可作状语、表语、定语、介词宾语和宾语补足语等。
+
+副词最基本的作用就是作状语修饰形容词、动词和副词：
+
+- That's a **very** tall building. （作状语，修饰形容词）
+- He runs **fast**. （作状语，修饰动词）
+- She writes **very** carefully. （作状语，修饰副词）
 
 ## 简单副词
 
@@ -760,22 +871,25 @@ nowhere 什么地方都不
 
 # 介词
 
-## 时间介词
+介词（Preposition，简写 **prep.**）表示词语之间的语义关系，不能单独作句子成分，必须与其他词一起使用构成介词短语。
 
 <img src="assets/image-20240418211404250.png" alt="image-20240418211404250" style="zoom:200%;" />
 
 <img src="assets/image-20240418212226353.png" alt="image-20240418212226353" style="zoom:200%;" />
 
+## 时间介词
+
 ### at
 
-at 表示具体时间、时刻
+at 表示具体时间、时刻、年龄
 
-- at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/晚上/午夜
 - at 10 o'clock 在10点
+- at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/晚上/午夜
+- at six / at the age of six 在六岁时
 
 ### on
 
-on 表示具体某一天或特定某一天的上午、下午、晚上
+on 表示具体某一天或特定某一天的早中晚
 
 - on May 1st 在5月1日
 - on Monday
@@ -786,7 +900,7 @@ on 表示具体某一天或特定某一天的上午、下午、晚上
 
 ### in
 
-in 表示较长的时间段（朝代、世纪、年代、年份，季节，月份等）或泛指的上午、下午、晚上
+in 表示较长的时间段（朝代、世纪、年代、年份，季节，月份等）或泛指的早中晚
 
 - in the Tang Dynasty 在唐朝
 - in the 21st century 在21世纪
@@ -803,7 +917,12 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 ### during，through 和 over
 
+- **during**：在某段时间内
+
 ### for，from 和 since
+
+- **for**：维持了多长时间，for six years 六年之久
+- **since**：从什么时候起
 
 ## 位置介词
 
@@ -814,7 +933,7 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 ### 在...上面
 
 - **on**：指在与物体表面相接触的上面。
-- **above**：指水平位置在某物之上，和 below 相反。
+- **above**：指水平位置在某物之上，或者虚拟的上面（如价格，增长率等）；和 below 相反。
   - The sun rose above the horizon.
   - The jet flew above the clouds.
 - **over**：指在某物正上方，和 under 相反；
@@ -834,46 +953,160 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 - **between**：在 ... 之间（两个）
 - **among**：在 ... 之间（三个或以上）
 
-### 穿过
+### 在前面
 
-- 穿过
+- **in front of**：在...前面（外部）
+- **in the front of**：在...前面（内部）
 
-  ![image-20240415175515902](assets/image-20240415175515902.png)
+### 在后面
 
-- **across**：从表面穿过（马路，桥，河...）
+- **behind**：在后面
 
-  - There's a way across the fields. 
+### 相邻；附近
 
-- **through**：从内部穿过（森林，隧道，人群，门窗...）
+- **on**：接壤
 
-  - I usually cycle home through the park.
+    Guangdong Province is on the southeast of Guangxi.  
+    广东省在广西省南面。（广东和广西接壤）
 
-- **over**：从上方越过（栅栏，墙，山...）
+- **to**：在...范围之外，不接壤
 
-- **past**：从旁边经过
+    Japan is to the east of China.  
+    日本在中国东面（日本和中国不接壤）
+
+- **close to**：距离近
+
+    The coffee shop is **close to** my office.
+
+- **next to**：紧挨着
+
+    The supermarket is **next to** the bank.
+
+- **by**：旁边或附近
+
+    The library is just **by** the corner.
+
+- **near**：附近
+
+    The park is **near** my house.
+
+- **beside**：旁边，通常指非常接近的地方。
+
+    She sat **beside** me during the movie.
 
 ## 动向介词
 
+- **to**：表示从某个地方到达另一个地方
+- **towards**：朝着某个方向，不一定到达目的地
+- **into**：强调进入某个地方或空间的过程
+- **onto**：表示方向朝向某个表面
+- **up**：向上
+- **down**：向下
+- **around**：环绕，在周围
+
+- **穿过**
+
+    ![image-20240415175515902](assets/image-20240415175515902.png)
+
+    - **across**：从表面穿过（马路，桥，河...）
+
+        There's a way across the fields. 
+
+    - **through**：从内部穿过（森林，隧道，人群，门窗...）
+
+        I usually cycle home through the park.
+
+    - **over**：从上方越过（栅栏，墙，山...）
+
+    - **past**：从旁边经过
+
 ## 方式介词
+
+- 一般译为“通过...方式”
+
+- **with**：通过工具或设备
+
+     I wrote the letter **with** a pen.  我用钢笔写信。
+
+- **by**
+
+    - **通过某种方式**
+
+        She learned Spanish by practicing every day.  
+        她通过每天练习学会了西班牙语。
+
+    - **动作的施动者**
+
+        The book was written **by** J.K. Rowling. 这本书是J.K.罗琳写的。
+
+        The letter was sent **by** email. 信件通过电子邮件发送。
+
+    - **通过交通工具**
+
+        I prefer to go **by** train. 我更喜欢坐火车。
+
+- **through**：通过某种方式，此时可以与 by 互换
+
+- **via**：通过某种渠道
+
+    The message was sent **via** email. 信息通过电子邮件发送。
+
+    They arrived **via** a different route. 他们通过另一条路线到达。
+
+## 数量介词
+
+- **About**, **around** 表示大约的数量或范围。
+- **Over**, **under** 表示超过或低于某个数量。
+- **Between** 表示在两个数值或数量之间。
+- **More than**, **less than** 表示超过或低于某个数量。
+- **At least**, **up to** 表示最少或最多的数量。
+
+## 其它
+
+- **表示正在进行**
+
+    at work 正在工作  
+    on fire 着火  
+    under construction 正在检修
+
+- **表示原因**
+
+    - Because of 和 due to 最为常用，表示原因时可以互换。
+    - For 表示因果关系，通常用于较简短的表达。
+    - Owing to，In view of 和 on account of 更正式，常用于书面语。
 
 # 冠词
 
 ## 不定冠词
 
-不定冠词表泛指。
+**不定冠词**（Indefinite Article）表泛指。
 
 - a 用在辅音音素前
 - an 用在元音音素前
 
+### 不定冠词的用法
+
+- **基本用法：**泛指一类人或物。
+- **表式“一个”：**a book 一本书
+- **表示“每一”：**five times a week 每周五次
+- **表示“又一”：**I have three books,  and I want to buy a fourth one. 我有三本书，还想再买一本。
+- **用在某些固定词组：**a lot of
+
 ## 定冠词
 
-定冠词表特指。
+**定冠词**（Definite Article）表特指。
 
-- 表特指
+- **基本用法：**特指一类人或物。
 
-    Do you know the woman standing under the tree?
+    Do you know the woman standing under the tree?  
+    你认识站在树下哪个女人么？
 
-- 在姓氏复数前表全家人或夫妇俩
+- **the + 形容词：**指代一类人或事物
+
+    the young 年轻人  
+    the unknown 未知的事物
+
+- **the + 姓氏复数：**表全家人或夫妇俩
 
     The Whites are watching TV.  
     怀特一家人在看电影。
@@ -889,24 +1122,53 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
     the Middle East 中东  
     the Yellow River 黄河
 
-- 形容词指代一类人或事物
-
-    the young 年轻人  
-    the unknown 未知的事物
-
 - 用在计量单位前
 
     by the pound/kilo/dozen/foot/hour  
     按磅/千克/打/英尺/小时
 
-- 某些时间
-
-    世纪：the 21st century 21世纪  
-    年代：the 1990s/1990's 20世纪90年代  
-    朝代：the Tang Dynasty 唐朝  
-    中国节日：the Spring Festival
+- **某些时间：**朝代、世纪、年代、中国节日、早中晚
 
 ## 零冠词
+
+在不使用冠词的场景成为**零冠词**（Zero Article）。
+
+- **某些时间：**年份、季节、月份、星期、日期、非中国节日
+- 三餐、球类运动、交通工具、头衔、独立机构
+
+- 注意某些词组有无冠词的区别：
+
+    in hospital 住院  
+    in the hospital 在医院里
+
+# 数词
+
+**数词**（Number，简写 **num.**）分为两大类：基数词和序数词。基数词表示数目，如 one，two，three；序数词表示顺序，如 first，second，third，序数词前一般要加定冠词 the。
+
+## 倍数
+
+|  倍数  | 英文表达 |
+| :---: | :---: |
+| 一倍 | once        |
+| 两倍 | twice       |
+| 三倍 | three times |
+| 四倍 | four times  |
+| …倍  | … times     |
+
+- **倍数 + as + 原级 + as + 比较者**：最标准、清晰、常见，语法非常严谨
+
+    His house is three times as large as mine.  
+    他的房子是我的三倍大。
+
+- **基数词 + 倍数 + 比较级 + than + 比较者**：更口语，有时略带“比…多三倍”的感觉（稍有歧义）
+
+    His house is three times larger than mine.  
+    他的房子是我的三倍大。
+
+- **A is 倍数 + the size / length / height / number / amount of B**：强调具体**大小/长度/金额**等，用名词，表达更精准。
+
+    His house is three times the size of mine.  
+    他的房子是我的三倍大。
 
 # 动词
 
@@ -950,27 +1212,99 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 ### 情态助动词
 
-情态助动词用于表达说话者的态度、情感或其他语气（如可能性、能力、义务等），它们与动词原形连用。
+情态助动词（modal verb，简写 **modal.**）用于表达说话者的态度、情感或其他语气，后接动词原形，没有人称和单复数的变化。
 
 例如：**can**（能），**could**（能），**will**（将），**would**（愿意），**may**（可能），**might**（可能），**must**（必须），**should**（应该），**shall**（应该）
 
-- **表示能力**：
-    - I **can** swim.（我会游泳。）
-- **表示请求**：
-    - **Could** you help me?（你能帮我吗？）
-- **表示建议**：
-    - You **should** study harder.（你应该更努力学习。）
-- **表示可能性**：
-    - It **might** rain tomorrow.（明天可能会下雨。）
+#### can 和 could
+
+- **意为“可以...”**
+
+- **表示请求和允许**：could 更委婉，但回答时通常用 can。
+
+- **表示能力**：could 是 can 的过去式。
+
+    She can drive now, but she couldn't last year.
+
+- **表示可能性**：can't 表推测，意思是“不可能”。
+
+    He can't know my address because I've moved to another place.
+
+#### may 和 might
+
+- **意为“可以...”**
+
+- **表示请求和允许**
+
+- **表示可能性**
+
+- **may 可表示祝愿**
+
+    May you succeed!
+
+- **may/might as well**：不妨，还是...的好
+
+    You may as well stay here. 你还是呆在这的好。
+
+#### will 和 would
+
+- **意为“可以...”**
+- **表示请求和建议**：用于第二人称疑问句中，would 更委婉。
+- **表示意愿、决心、承诺**
+
+#### shall 和 should
+
+- **意为“应该...”**
+
+- **表示命令、建议**：用于第一、三人称肯定句中。
+
+    You shall pay for it.
+
+- shall 用于第一、三人称疑问句中，表示征求意见。
+
+    Shall we come in?
+
+- should 可用在虚拟语气中。
+
+#### must
+
+- **意为“必须...”**：对于 must 的提问，否定回答用 needn't 或 don't have to，因为否定形式 musn't 表示禁止。
+- **must 和 have to**
+    - must 意为“必须”，侧重说话人的主观意志。
+    - have to 意为“不得不”，侧重客观需要。
+- **表示推测**：must 表示推测只用于肯定句中。
 
 ### 半助动词
 
-在语法上类似情态动词，但后接动词时常需要加上 "to"。
+在语法上类似情态动词，作实义动词接其它动词时常需要加上 "to"。
 
 例如：**ought to**，**have to**，**need to**，**used to**，**dare to** 等
 
 - **ought to**：You **ought to** be more careful.（你应该更加小心。）
 - **have to**：I **have to** go now.（我现在必须走了。）
+
+#### need
+
+- **意为“需要...”**
+- **作为情态动词**：常用于否定句和疑问句中
+    - **否定句**：needn't do
+    - **疑问句**：Need I do...?
+    - 对于 need 引起的提问，肯定回答用 must，否定回答用 needn't。
+- **作为实义动词**
+    - **need sth.**：需要...
+    - **need to do**：需要做...
+    - **didn't need to do**：不需要做...
+    - **need doing = need to be done**：需要被...
+
+#### dare
+
+- **意为“敢...”**
+- **作情态动词**：常用于否定句和疑问句中
+    - **否定句**：daren't do
+    - **疑问句**：Dare he do...?
+- **作为实义动词**
+    - **dare to do**：敢做...
+    - **didn't dare to do**：不敢做...
 
 ## 时态
 
@@ -1241,10 +1575,9 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 ## 非谓语动词
 
-非谓语动词，指不能单独作谓语，但同时仍保留动词某些特征的动词形式。
+**非谓语动词**也叫非限定动词（Non-Finite Verbs），指由动词变化而成，仍具有动词性质和原义，但不能作动词使用的词。非谓语动词不能单独作谓语。
 
-动词的非谓语形式有**动词不定式**、**动词-ing 形式**和**动词-ed 形式**三类。动词的非谓语形式相当于名词、形容词或
- 副词。动词的非谓语形式的功能如下：
+动词的非谓语形式有**动词不定式**、**动词-ing 形式**和**动词-ed 形式**三类。动词的非谓语形式相当于名词、形容词或副词。动词的非谓语形式的功能如下：
 
 |        | 作主语 | 作宾语 | 作表语 | 作定语 | 作状语 | 作补足语 |
 | ------ | ----- | ---- | ----- | ----- | ----- | ------- |
@@ -1449,98 +1782,42 @@ required courses 必修课
 The question mentioned at the meeting has been solved.  
 在会议上提到的问题已经被解决了。(被动)
 
-
-
-
-
-| 区分点   | 动词-ing形式 | 动词-ed形式 |
-| -------- | ------------ | ----------- |
-| 动作状态 | 正在进行     | 已完成      |
-| 意义     | 表示主动     | 表示被动    |
-
 ## 主谓一致
 
 **主谓一致**就是谓语动词的人称及单复数要根据主语确定，与主语保持一致。
 
-**主谓一致原则**：主语是单数形式，谓语动词用单数形式；主语是复数形式，谓语动词也用复数形式。
+**核心原则：**语法一致，意义一致，就近一致。
 
-### 可数名词和不可数名词
+### 从量上判断
 
-可数名词单数或不可数名词作主语，谓语动词使用单数形式；可数名词复数作主语，谓语动词使用复数形式。
+- **可数名词和不可数名词**
 
-Percy has made great progress in Chinese.  
-珀西的汉语取得了很大进步。
+    - **可数名词单数或不可数名词作主语，谓语动词使用单数形式。**
 
-The Greens are very fond of working on the farm.  
-格林一家非常喜欢在农场工作。
+        Percy has made great progress in Chinese.  
+        珀西的汉语取得了很大进步。
 
-### 单数
+    - **可数名词复数作主语，谓语动词使用复数形式。**
 
-- **表示时间、距离、长度、金额、重量等的复数名词作主语时，常被看作整体，谓语动词用单数。**
+        The Greens are very fond of working on the farm.  
+        格林一家非常喜欢在农场工作。
 
-    Twenty years is a long time.  
-    二十年是一段很长的时间。
+- **复合不定代词 everyone、everybody、everything、anyone、anybody、anything、someone、somebody、something、no one、nobody、nothing 等作主语时，谓语动词用单数。**
 
-    A hundred miles is quite a long drive, isn't it?  
-    一百英里是一段很长的车程，不是吗?
+    If anyone sees Lisa, ask her to call me. 如果有人看到莉萨，请她给我打个电话。
+    
+    Nothing is impossible to a willing heart. 世上无难事，只怕有心人。
+    
+- **none，some，any，more，most，all 等代词作主语时，谓语动词的单复数由其指代的词的单复数决定。**
 
-- **复合不定代词 someone、anyone、everyone、nobody/no one、something、anything、everything、nothing 等作主语时，谓语动词用单数。**
+    All is right. 所有的都对。
+    
+    All are saved. 所有人都被救了。
+    
+- **each，every，each and every，one，another，(a) little，much，either，neither作主语或修饰语时，谓语动词用单数形式。**
 
-    If anyone sees Lisa, ask her to call me.  
-    如果有人看到莉萨，请她给我打个电话。
-
-    Nothing is impossible to a willing heart.  
-    世上无难事，只怕有心人。
-
-- **被 every、each、many a、no 等限定的单个主语由 and 连接时，谓语动词仍用单数形式。其中，后一个限定词可省略。**
-
-    Each boy and (each) girl has an apple.  
-    每个男孩和每个女孩都有一个苹果。
-
-- **两个单数名词由 and 连接表示同一个人、同一个物时，谓语动词用单数。**
-
-    The scientist and professor has made a great contribution to the research.  
-    这个科学家兼教授已经对这项研究作出了巨大的贡献。
-
-
-- **不定式、动词-ing 形式和名词性从句作主语，谓语动词一般用单数。**
-
-    Swimming in rivers in summer is a good sport.  
-    夏天在河里游泳是一项很好的运动。
-
-### 复数
-
-### 单复数待定
-
-- **what 引导的主语从句作主语时，谓语动词的单复数取决于作表语的名词的单复数。**
-
-    What we need is more money, but what they need are books.  
-    我们需要的是更多的钱,但是他们需要的是书。
-
-- **如果主语后面带有 as well as、with、along with、together with、rather than、but、except、besides、including、in addition to 等加其他名词时，谓语动词的数要与前面的主语保持一致。**
-
-    Pronunciation, as well as grammar and vocabulary, changes very quickly from one area to another.  
-    发音与语法和词汇一样，因地区差异而变化很快。
-
-- **就近一致**
-
-    - **由or、nor、either...or...、neither...nor...、not only...but also...、not...but... 等连接并列主语时，谓语动词常和离它最近的主语在人称和数上保持一致。**
-
-        Marilyn or you are to blame for the fault.  
-        要么 Marilyn 要么你应为这个过失负责。
-
-    - **there be 句型中，主语是多个并列名词时，be 的形式与最邻近的主语保持一致。**
-
-        There are three chairs, a desk and a computer in my new office.  
-        在我的新办公室里有三把椅子、一张桌子和一台电脑。
-
-- **定语从句中的谓语动词的单复数形式与先行词的单复数保持一致。**
-
-    He is the only one of the students who **has** passed the maths exam.  
-    他是唯一一个通过这次数学考试的学生。（先行词是 the only one）
-
-    He is one of the students who **have** passed the maths exam.  
-    他是通过这次数学考试的学生之一。（先行词是 students）
+    Each of us has a medal.  
+    我们每个人都有一个奖章。
 
 - **more than 的主谓一致**
 
@@ -1556,6 +1833,74 @@ The Greens are very fond of working on the farm.
 
         More than two students were injured in the accident.  
         不止两个学生在这次事故中受伤。
+
+### 其它
+
+- **表示时间、距离、长度、金额、重量等的复数名词作主语时，常被看作整体，谓语动词用单数。**
+
+    Twenty years is a long time.  
+    二十年是一段很长的时间。
+
+    A hundred miles is quite a long drive, isn't it?  
+    一百英里是一段很长的车程，不是吗?
+
+- **由 and 连接的多个主语之前被 every、each、many a、no 等词限定，谓语动词仍用单数形式。其中，后一个限定词可省略。**
+
+    Each boy **and** (each) girl **has** an apple.  
+    每个男孩和每个女孩都有一个苹果。
+
+- **由 and 连接的两个单数名词表示同一个人、同一个物时，谓语动词用单数。**
+
+    The scientist **and** professor **has** made a great contribution to the research.  
+    这个科学家兼教授已经对这项研究作出了巨大的贡献。
+
+
+- **不定式、动词-ing 形式和名词性从句作主语。**
+
+    - **正常情况，谓语动词用单数。**
+
+        Swimming in rivers in summer is a good sport.  
+        夏天在河里游泳是一项很好的运动。
+
+    - **如果主语为 and 连接的两个上述成分，谓语用复数。**
+    
+        Having enough sleep **and** doing ecercises **are** good for your health.  
+        睡眠充足和做运动有益健康。
+
+- **what 引导的主语从句作主语时，谓语动词的单复数取决于作表语的名词的单复数。**
+
+    What we need is more money, but what they need are books.  
+    我们需要的是更多的钱,但是他们需要的是书。
+
+- **就近一致**
+
+    - **由or、nor、either...or...、neither...nor...、not only...but also...、not...but... 等连接并列主语时，谓语动词常和离它最近的主语在人称和数上保持一致。**
+
+        Marilyn or you are to blame for the fault.  
+        要么 Marilyn 要么你应为这个过失负责。
+
+    - **there be 句型中，主语是多个并列名词时，be 的形式与最邻近的主语保持一致。**
+
+        There are three chairs, a desk and a computer in my new office.  
+        在我的新办公室里有三把椅子、一张桌子和一台电脑。
+
+- **如果主语后面带有 as well as、with、along with、together with、rather than、but、except、besides、including、in addition to 等加其他名词时，谓语动词的数要与前面的主语保持一致。**
+
+    Pronunciation, as well as grammar and vocabulary, changes very quickly from one area to another.  
+    发音与语法和词汇一样，因地区差异而变化很快。
+
+- **定语从句中的谓语动词的单复数形式与先行词的单复数保持一致。**
+
+    He is the only one of the students who **has** passed the maths exam.  
+    他是唯一一个通过这次数学考试的学生。（先行词是 the only one）
+
+    He is one of the students who **have** passed the maths exam.  
+    他是通过这次数学考试的学生之一。（先行词是 students）
+
+- **“the + 形容词”如果意义指一类人，谓语动词用复数。**
+
+    The young are energetic.  
+    年轻人有活力。
 
 ## 虚拟语气
 
@@ -1625,6 +1970,50 @@ The Greens are very fond of working on the farm.
 ![image-20240418183033391](assets/image-20240418183033391.png)
 
 <img src="assets/image-20240418235345354.png" alt="image-20240418235345354" style="zoom:200%;" />
+
+- **形式主语**
+
+    **It** is hard to get early. (It 是形式主语)
+
+- **直接/间接宾语**
+
+    宾语有**直接宾语**和**间接宾语**两大类：give **you** (间接宾语) an **apple** (直接宾语)
+
+## 基本句型
+
+- **主 + 谓**
+
+    Things change.
+
+- **主 + 谓 + 宾**
+
+    I love you.
+
+- **主 + 谓 + 间接宾语 + 直接宾语**
+
+    He gave his brother the book.
+
+- **主 + 谓 + 宾 + 补**
+
+    I found the test easy.
+
+- **主 + 系 + 表**
+
+    He is an artist.
+
+## 句子类型
+
+- **简单句：**只有一个主语和一个谓语
+
+    I love you.
+
+- **并列句：**简单句 + 并列连词 + 简单句
+
+    I love you and you love me.
+
+- **复合句：**主句 + 从句
+
+    She is the girl that I saw yesterday.
 
 ## 祈使句
 
