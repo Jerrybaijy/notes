@@ -2230,13 +2230,19 @@ The question mentioned at the meeting has been solved.
 
 ### 完全倒装
 
-- 表示“运动方向的副词”或“位置介词短语”位于句首，且谓语动词为 be、lie、stand、
-     come、go、follow、run 等词
+- 表示“运动方向的副词”或“位置介词短语”位于句首，且谓语动词为 be、lie、stand、come、go、follow、run 等词；但如果主语是代词，则不必倒装。
 
-    **Here** comes the bus.  
-    **Out** rushed the children.  
-    Now comes your turn.   
-    On the top of the mountain stands a temple.  
+     **Here** comes the bus.  
+     **Here** he comes. (主语是代词，不必倒装。)
+     **Out** rushed the children.  
+     Now comes your turn.   
+     On the top of the mountain stands a temple.  
+
+- **其它**
+
+     Seated in the front are the leaders of the school.  
+     Sitting in the front are the leaders of the school.  
+     Gone are the days when women were looked down upon.
 
 ## 强调句
 
@@ -2455,8 +2461,76 @@ My sister, **who is wearing a red dress**, is a teacher.
 
 # 主语从句
 
+**主语从句**（Subject Clause）是指一个完整的句子，作为主句的**主语**来使用。
+
+主语从句的结构通常由“引导词 + 从句”构成，常见引导词有：that，whether，if，连接代词（who，what 等），连接副词（when，where 等）。
+
+**注意**：
+
+- 引导词不能省略。
+- 注意主谓一致。
+
+**结构**：
+
+- 主语从句放在句首
+
+    **What he said** is true. 他所说的是真的。
+
+- 由 it 作形式主语，主语从句放在句尾
+
+    It is a pity **that you didn't attend the lecture yesterday**.  真遗憾，你昨天没参加讲座。
+
 # 表语从句
+
+**表语从句**是指在**主系表结构**中，用一个从句来作**表语**，对主语进行说明或补充说明。
+
+表语从句的结构如下：
+
+> 主语 + 系动词 + 表语从句
+
+其中最常用的系动词是 **be**（如 is、was、are、were），有时也用 become、seem、appear 等。
+
+常见的引导词有：that，whether，连接代词（who，what 等），连接副词（when，where 等）。
+
+**例句**：
+
+The fact is that she didn’t call me.  
+事实是她没有给我打电话。
 
 # 宾语从句
 
+**宾语从句**是指一个从句作为**宾语**，用来说明动词、介词或某些形容词所作用的内容。
+
+宾语从句的结构如下：
+
+> 主语 + 谓语动词 + 宾语从句
+
+常见引导词有：that，whether/if，连接代词（who，what 等），连接副词（when，where 等）。
+
+**例句**：
+
+He said that he was tired.  
+他说他累了。
+
+## 宾语从句的注意事项
+
+- **否定转移**：宾语从句表示否定含义时,常把否定转移至主句。
+
+    I don't think that he is a good child.
+
 # 同位语从句
+
+**同位语从句**是指一个从句作为**同位语**，一般用于解释抽象名词，不能省略引导词。
+
+简单理解，从句就可以充当前面的名词。
+
+**区别于定语从句**：
+
+- 定语从句：限定名词
+- 同位语从句：解释名词
+
+**例句**：
+
+I heard the **news that she got the job.**
+
+They are considering the **question how we should respond.**
