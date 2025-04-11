@@ -1203,7 +1203,9 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 | 助动词 | - | am → is<br>do → does<br>have → has |
 | 情态动词 | - | 情态动词没有单三 |
 
-### 动词过去式
+### 过去式和过去分词
+
+英语中动词的过去式（Past Tense）和过去分词（Past Participle）变化大致可以分为两类：**规则动词**和**不规则动词**。
 
 **规则变化**：
 
@@ -1216,16 +1218,83 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 
 **不规则变化**：
 
-| 助动词原形 | 助动词过去式 | 其它动词原形 | 其它动词过去式 | 不变形 |
-| :------: | :--------: | :-------: | :---------: | :----: |
-| am/is | was | go | went | read |
-| are | were | come | came | ... |
-| do | did | eat | ate | - |
-| have | had | drink | drunk | - |
-| can | could | make | made | -  |
-| will | would | write | wrote | - |
-| may | might | sing | sang | - |
-| shall | should | ... | ... | - |
+|  类型  |  原形  | 过去式 | 过去分词 |
+| :---: | :---: | :---: | :-----: |
+| 三态一样 | put | put | put |
+| 过去式和过去分词相同 | have<br>bring | had<br>brought | had<br>brought |
+| 原形和过去分词相同 | come | came | come |
+| 三态都不一样 | am/is<br>are<br>do<br> | was<br>were<br>did<br> | been<br>been<br>done<br> |
+
+111
+
+<table style="text-align: center;">
+  <tr>
+    <th>类型</th>
+    <th>原形</th>
+    <th>过去式</th>
+    <th>过去分词</th>
+  </tr>
+  <tr>
+    <td>三态一样</td>
+    <td>put</td>
+    <td>put</td>
+    <td>put</td>
+  </tr>
+  <tr>
+    <td>过去式和过去分词相同</td>
+    <td>have</td>
+    <td>had</td>
+    <td>had</td>
+  </tr>
+  <tr>
+    <td>原形和过去分词相同</td>
+    <td>come</td>
+    <td>came</td>
+    <td>come</td>
+  </tr>
+  <tr>
+    <td rowspan="4">三态都不一样</td>
+    <td>am/is</td>
+    <td>was</td>
+    <td rowspan="2">been</td>
+  </tr>
+  <tr>
+    <td>are</td>
+    <td>were</td>
+  </tr>
+  <tr>
+    <td>do</td>
+    <td>did</td>
+    <td>done</td>
+  </tr>
+  <tr>
+    <td>go</td>
+    <td>went</td>
+    <td>gone</td>
+  </tr>
+  <tr>
+    <td rowspan="5">情态动词</td>
+    <td>can</td>
+    <td>could</td>
+    <td rowspan="5">情态动词没有过去分词</td>
+  </tr>
+  <tr>
+    <td>may</td>
+    <td>might</td>
+  </tr>
+  <tr>
+    <td>shall</td>
+    <td>should</td>
+  </tr>
+  <tr>
+    <td>will</td>
+    <td>would</td>
+  </tr>
+  <tr>
+    <td>must</td>
+    <td>用 had to 表示</td>
+  </tr>
+</table>
 
 ### 现在分词
 
@@ -1236,140 +1305,6 @@ in 表示较长的时间段（朝代、世纪、年代、年份，季节，月�
 | 以重读闭音节结尾<br>且末尾只有一个辅音字母的动词 | 双写辅音，再加 -ing |  run → running |
 
 ### 过去分词
-
-## 助动词
-
-助动词在句子中起到辅助作用，通常帮助构成时态、语态、语气等。助动词没有实际含义，不可单独作谓语。
-
-### 主要助动词
-
-这些助动词帮助构成时态、语态或表达疑问句、否定句等。
-
-#### be 动词
-
-- 表示时态、语态、进行时态等
-
-- 例如：**am**，**is**，**are**，**was**，**were**，**being**，**been**
-- 用法：
-    - **进行时态**：She **is** reading.（她在读书。）
-    - **被动语态**：The book **was** read.（这本书被读。）
-
-#### do 动词
-
-- 表示疑问句、否定句、强调等
-
-- 例如：**do**，**does**，**did**
-- 用法：
-    - **构成疑问句**：**Do** you like it?（你喜欢吗？）
-    - **构成否定句**：I **do not** know him.（我不认识他。）
-    - **构成强调句**：I **do** like it!（我真的喜欢它！）
-
-#### have 动词
-
-- 用于构成完成时态
-
-- 例如：**have**，**has**，**had**，**having**
-- 用法：
-    - **现在完成时**：I **have** eaten.（我已经吃过了。）
-    - **过去完成时**：She **had** finished her homework.（她已经做完作业。）
-
-### 情态助动词
-
-情态助动词（modal verb，简写 **modal.**）用于表达说话者的态度、情感或其他语气，一般接动词原形。
-
-情态动词在形式上只有原形和过去式，没有单三、现在分词和过去分词。
-
-例如：**can**（能），**could**（能），**will**（将），**would**（愿意），**may**（可能），**might**（可能），**must**（必须），**should**（应该），**shall**（应该）
-
-#### can 和 could
-
-- **意为“可以...”**
-
-- **表示请求和允许**：could 更委婉，但回答时通常用 can。
-
-- **表示能力**：could 是 can 的过去式。
-
-    She can drive now, but she couldn't last year.
-
-- **表示可能性**：can't 表推测，意思是“不可能”。
-
-    He can't know my address because I've moved to another place.
-
-#### may 和 might
-
-- **意为“可以...”**
-
-- **表示请求和允许**
-
-- **表示可能性**
-
-- **may 可表示祝愿**
-
-    May you succeed!
-
-- **may/might as well**：不妨，还是...的好
-
-    You may as well stay here. 你还是呆在这的好。
-
-#### will 和 would
-
-- **意为“可以...”**
-- **表示请求和建议**：用于第二人称疑问句中，would 更委婉。
-- **表示意愿、决心、承诺**
-
-#### shall 和 should
-
-- **意为“应该...”**
-
-- **表示命令、建议**：用于第一、三人称肯定句中。
-
-    You shall pay for it.
-
-- shall 用于第一、三人称疑问句中，表示征求意见。
-
-    Shall we come in?
-
-- should 可用在虚拟语气中。
-
-#### must
-
-- **意为“必须...”**：对于 must 的提问，否定回答用 needn't 或 don't have to，因为否定形式 musn't 表示禁止。
-- **must 和 have to**
-    - must 意为“必须”，侧重说话人的主观意志。
-    - have to 意为“不得不”，侧重客观需要。
-- **表示推测**：must 表示推测只用于肯定句中。
-
-### 半助动词
-
-在语法上类似情态动词，作实义动词接其它动词时常需要加上 "to"。
-
-例如：**ought to**，**have to**，**need to**，**used to**，**dare to** 等
-
-- **ought to**：You **ought to** be more careful.（你应该更加小心。）
-- **have to**：I **have to** go now.（我现在必须走了。）
-
-#### need
-
-- **意为“需要...”**
-- **作为情态动词**：常用于否定句和疑问句中
-    - **否定句**：needn't do
-    - **疑问句**：Need I do...?
-    - 对于 need 引起的提问，肯定回答用 must，否定回答用 needn't。
-- **作为实义动词**
-    - **need sth.**：需要...
-    - **need to do**：需要做...
-    - **didn't need to do**：不需要做...
-    - **need doing = need to be done**：需要被...
-
-#### dare
-
-- **意为“敢...”**
-- **作情态动词**：常用于否定句和疑问句中
-    - **否定句**：daren't do
-    - **疑问句**：Dare he do...?
-- **作为实义动词**
-    - **dare to do**：敢做...
-    - **didn't dare to do**：不敢做...
 
 ## 时态
 
@@ -1627,6 +1562,140 @@ She is singing now. 她正在唱歌。
 
     Eight hours per day for sleep must be guaranteed.  
     必须保证每天八小时的睡眠。
+
+## 助动词
+
+助动词在句子中起到辅助作用，通常帮助构成时态、语态、语气等。助动词没有实际含义，不可单独作谓语。
+
+### 主要助动词
+
+这些助动词帮助构成时态、语态或表达疑问句、否定句等。
+
+#### be 动词
+
+- 表示时态、语态、进行时态等
+
+- 例如：**am**，**is**，**are**，**was**，**were**，**being**，**been**
+- 用法：
+    - **进行时态**：She **is** reading.（她在读书。）
+    - **被动语态**：The book **was** read.（这本书被读。）
+
+#### do 动词
+
+- 表示疑问句、否定句、强调等
+
+- 例如：**do**，**does**，**did**
+- 用法：
+    - **构成疑问句**：**Do** you like it?（你喜欢吗？）
+    - **构成否定句**：I **do not** know him.（我不认识他。）
+    - **构成强调句**：I **do** like it!（我真的喜欢它！）
+
+#### have 动词
+
+- 用于构成完成时态
+
+- 例如：**have**，**has**，**had**，**having**
+- 用法：
+    - **现在完成时**：I **have** eaten.（我已经吃过了。）
+    - **过去完成时**：She **had** finished her homework.（她已经做完作业。）
+
+### 情态助动词
+
+情态助动词（modal verb，简写 **modal.**）用于表达说话者的态度、情感或其他语气，一般接动词原形。
+
+情态动词在形式上只有原形和过去式，没有单三、现在分词和过去分词。
+
+例如：**can**（能），**could**（能），**will**（将），**would**（愿意），**may**（可能），**might**（可能），**must**（必须），**should**（应该），**shall**（应该）
+
+#### can 和 could
+
+- **意为“可以...”**
+
+- **表示请求和允许**：could 更委婉，但回答时通常用 can。
+
+- **表示能力**：could 是 can 的过去式。
+
+    She can drive now, but she couldn't last year.
+
+- **表示可能性**：can't 表推测，意思是“不可能”。
+
+    He can't know my address because I've moved to another place.
+
+#### may 和 might
+
+- **意为“可以...”**
+
+- **表示请求和允许**
+
+- **表示可能性**
+
+- **may 可表示祝愿**
+
+    May you succeed!
+
+- **may/might as well**：不妨，还是...的好
+
+    You may as well stay here. 你还是呆在这的好。
+
+#### will 和 would
+
+- **意为“可以...”**
+- **表示请求和建议**：用于第二人称疑问句中，would 更委婉。
+- **表示意愿、决心、承诺**
+
+#### shall 和 should
+
+- **意为“应该...”**
+
+- **表示命令、建议**：用于第一、三人称肯定句中。
+
+    You shall pay for it.
+
+- shall 用于第一、三人称疑问句中，表示征求意见。
+
+    Shall we come in?
+
+- should 可用在虚拟语气中。
+
+#### must
+
+- **意为“必须...”**：对于 must 的提问，否定回答用 needn't 或 don't have to，因为否定形式 musn't 表示禁止。
+- **must 和 have to**
+    - must 意为“必须”，侧重说话人的主观意志。
+    - have to 意为“不得不”，侧重客观需要。
+- **表示推测**：must 表示推测只用于肯定句中。
+
+### 半助动词
+
+在语法上类似情态动词，作实义动词接其它动词时常需要加上 "to"。
+
+例如：**ought to**，**have to**，**need to**，**used to**，**dare to** 等
+
+- **ought to**：You **ought to** be more careful.（你应该更加小心。）
+- **have to**：I **have to** go now.（我现在必须走了。）
+
+#### need
+
+- **意为“需要...”**
+- **作为情态动词**：常用于否定句和疑问句中
+    - **否定句**：needn't do
+    - **疑问句**：Need I do...?
+    - 对于 need 引起的提问，肯定回答用 must，否定回答用 needn't。
+- **作为实义动词**
+    - **need sth.**：需要...
+    - **need to do**：需要做...
+    - **didn't need to do**：不需要做...
+    - **need doing = need to be done**：需要被...
+
+#### dare
+
+- **意为“敢...”**
+- **作情态动词**：常用于否定句和疑问句中
+    - **否定句**：daren't do
+    - **疑问句**：Dare he do...?
+- **作为实义动词**
+    - **dare to do**：敢做...
+    - **didn't dare to do**：不敢做...
 
 ## 非谓语动词
 
