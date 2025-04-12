@@ -650,9 +650,9 @@ such 作为指示代词，表示“这样的人或物”。
 
 |    结构   |   意义   |
 | :------: | :-----: |
-| 比较级 + than | 比...更...|
-| not + 比较级 + than | 不比...更...|
-| no + 比较级 + than | 和...一样不...|
+| 比较级 + than | 比...更... |
+| not + 比较级 + than | 不比...更... |
+| no + 比较级 + than | 和...一样不... |
 
 - **比较级 + than**：比...更...
 
@@ -879,7 +879,229 @@ nowhere 什么地方都不
 
 <img src="assets/image-20240418212226353.png" alt="image-20240418212226353" style="zoom:200%;" />
 
-## 
+## 介词分类
+
+**按构成分类**：
+
+|  类别  |  例词 |
+| :---: | :---: |
+| 简单介词 | in, on, at, for, to, against, about, over, by, beyond, between, except |
+| 复合介词 | out of, onto, outside, throughout, upon, without |
+| 二重介词 | from behind, from among |
+| 短语介词 | due to, by means of, on behalf of, in front of, with regard to, in place of, according to |
+| 分词介词 | including, regarding, given, considering, concerning |
+
+**按意义分类**：
+
+| 类别 | 例词 |
+|:---:|:----:|
+| 时间     | in, on, at, around, before, by, after, between, during, for, since, till, until, from, within, past |
+| 地点和方位 | in, on, at, above, over, below, beneath, under, on top of, in front of, between, next to, near, by, before, behind, opposite, among, around |
+| 移动方向 | up, down, out of, into, towards, from, past, over, onto, off, along, across, through, to |
+| 方式或手段 | with, in, by, through, by means of, on |
+| 原因     | for, because of, with, due to, owing to, as a result of, out of |
+| 关于     | on, about, concerning, regarding, with regard to, as for, as to |
+| 让步     | despite, in spite of |
+| 比较     | as, like, to, above |
+| 其他     | besides, but, except, against, of, instead of, apart from |
+
+## about
+
+- **关于（某人或物）**
+
+    - about ab./sth.：表示“关于某事/某人”
+
+        The book is **about** ancient history.  
+        这本书是关于古代历史的。
+
+    - do about doing：表示 do 某事
+
+        We were talking about going to Italy this summer.  
+        我们在讨论关于今年夏天去意大利的计划。
+
+- **询问消息：What/How about sb.?**
+
+- **提建议：What/How about (doing) sth.?**
+
+- **表动向，在...各处**
+
+    He looked about the hall, but saw nobody.  
+    他环顾大厅，可是一个人也没看见。
+
+- **表方位，在...附近**
+
+    She's somewhere about the office.  
+    她在办公室附近。
+
+- **be about doing：为了...**
+
+    Movies are all about making money these days.  
+    当今电影只顾赚钱。
+
+## above
+
+表示“在..之上”，和 below 相反。
+
+- The sun rose above the horizon.
+- The jet flew above the clouds.
+
+- **现实：水平位置在某物之上**
+
+    The sun rose above the horizon.  
+    太阳穿过了地平线。
+
+- **抽象：超过价格，增长率等**
+
+    The stone weighs above one ton.  
+    这块石头重一吨多。
+
+## across
+
+- **across**：从表面穿过（马路，桥，河...）
+
+    There's a way across the fields. 
+
+## after
+
+在...之后（时间）
+
+- **after + 时间点 / 事件 / 从句：表示“在...时间点之后”，与 before 相反**
+
+    I’ll call you **after lunch**. (接事件)  
+    午饭后我给你打电话。
+
+    I went home **after I finished work**. (引导时间状语从句)  
+    我下班后回家了。
+
+- **after + 时间段：表示“在...时间段之后”，通常位于句尾，用于过去时**
+
+    He came back after 10 minutes.  
+    他在10分钟后回来了。
+
+## against
+
+表示反对、对抗
+
+- **现实：倚着，靠着**
+
+    He stood with his back against the wall.  
+    他背靠墙站着。
+
+- **抽象：反对，对抗**
+
+    They have got prepared against flood.  
+    他们已经做好了防洪准备。
+
+## among
+
+- **在 ... 之间（三个或以上）**
+
+    She was the smartest among the five candidates.  
+    她是五个候选人中最聪明的。
+
+## as
+
+表示“作为，当作，像”
+
+Don't treat me as a child.  
+别把我当小孩看待。
+
+They were all dressed as clowns.  
+他们都打扮成小丑。
+
+## at
+
+- **表方位，在较小的地方（大地方用 in）**
+
+    at the village 在那个村庄  
+    at 105 Green Street 在格林大街105号
+
+- **表示具体时间、时刻、年龄**
+
+    at 10 o'clock 在10点  
+    at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/晚上/午夜  
+    at six / at the age of six 在六岁时  
+    at that moment 在那一刻
+
+## before
+
+- **before + 时间点：表示“在...时间点之前”，强调动作，通常用于一般时、过去时和完成时；与 after 相反**
+
+    I went to bed **before 11 p.m.**  
+    我在晚上11点之前上床睡觉了。
+
+    I had never seen her **before last week**.  
+    上周以前我从未见过她。
+
+## behind
+
+- 在...后面（方位），与 in front of 相反。
+
+## between
+
+- **在 ... 之间（两个）**
+
+    The secret was shared between Alice and Bob.  
+    这个秘密是 Alice 和 Bob 两人之间分享的。
+
+## in
+
+- 在...里面（墙上有个洞要用 a hole in the wall）
+
+- 在较大的地方（小地方用 at）：in Beijing 在北京
+
+- **in + 时间段：表示“从现在起，在...时间段之后”，通常位于句尾，用于将来时和完成时；与 within 相反**
+
+    He will be back from abroad in three days.  
+    他3天后从国外回来。
+
+## in front of
+
+- **in front of**：在...前面（外部），与 behind 相反。
+- **in the front of**：在...前面（内部）
+
+## on
+
+- **表方位，在与物体表面相接触的上面**
+
+    on the table
+
+- **表方位，相邻接壤**
+
+    Guangdong Province is on the southeast of Guangxi.  
+    广东省在广西省南面。（广东和广西接壤）
+
+- **表时间，具体某一天或特定某一天的早中晚**
+
+## over
+
+- 表方位，在某物正上方，和 under 相反
+
+    A bridge over the river
+
+- 表动向，从上方越过（栅栏，墙，山...）
+
+    The cat jumped over the wall.
+
+## past
+
+- 表动向，从旁边经过
+
+    The crowd walked past the City Hall to the Centre Square.  
+    这群人走过市政厅到达中心广场。
+
+## through
+
+- 表动向，从内部穿过（森林，隧道，人群，门窗...）
+
+    I usually cycle home through the park.
+
+## to
+
+- **to**：在...范围之外，不接壤
+
+    Japan is to the east of China.  
+    日本在中国东面（日本和中国不接壤）
 
 # 冠词
 
@@ -1296,7 +1518,7 @@ She is singing now. 她正在唱歌。
     By the end of yesterday, we had received over 1,000 letters from all over the world.  
     到昨天为止，我们已经收到了来自世界各地的1,000多封信。
 
-- **had hardly done...when...did...** 和 **no sooner had...done...than...did...**  表示“一……就……”；当 hardly 位于句首时，主句部分倒装。
+- **had hardly done...when...did...** 和 **no sooner had...done...than...did...**  表示“一...就...”；当 hardly 位于句首时，主句部分倒装。
 
     His sister had hardly heard the terrible news when she burst into tears.  
     Hardly had his sister heard the terrible news when she burst into tears.  
@@ -1590,9 +1812,9 @@ She is singing now. 她正在唱歌。
 
     - **作结果状语：**常见结构有：
 
-        so/such...as to do sth. 如此……以至于做某事  
-        enough to do sth. 足够……能做某事  
-        too...to do sth. 太……而不能做某事  
+        so/such...as to do sth. 如此...以至于做某事  
+        enough to do sth. 足够...能做某事  
+        too...to do sth. 太...而不能做某事  
         only to do 不料，竟然
 
         We hurried to the station only to be told that the train had left.  
@@ -1653,25 +1875,25 @@ I'll show you how to install the software.(作宾语)
 
     - 介词宾语。动词-ing 形式常出现在下列词语后：
 
-        devote...to 把……献给  
+        devote...to 把...献给  
         get down to 开始认真注意或对待  
         look forward to 期待  
-        contribute to 为……做贡献  
+        contribute to 为...做贡献  
         object to 反对  
         lead to 导致  
         pay attention to 注意  
         be addicted to 沉溺于  
         be/get/become used to 习惯于  
-        be responsible for 对……负责  
-        when it comes to 当涉及……时
+        be responsible for 对...负责  
+        when it comes to 当涉及...时
 
         Mary is looking forward to going back to Xi'an.  
         玛丽正在盼望回西安。
 
     - 形容词宾语  
 
-        “be worth + 动词-ing 形式”表示“值得……”  
-        “be busy + 动词-ing 形式”表示“忙于……”。
+        “be worth + 动词-ing 形式”表示“值得...”  
+        “be busy + 动词-ing 形式”表示“忙于...”。
 
         He's decided to get a look at the house and see if it was worth buying.  
         他决定去瞧瞧那座房子,看是否值得买下。
