@@ -579,7 +579,7 @@ such 作为指示代词，表示“这样的人或物”。
 
 # 形容词
 
-形容词（Adjective，简写 **adj.**）表示人或事物的性质、状态和特征等，主要用来修饰名词和代词。
+**形容词**（Adjective，简写 **adj.**）表示人或事物的性质、状态和特征等，主要用来修饰名词和代词。
 
 ## 形容词句法
 
@@ -588,16 +588,6 @@ such 作为指示代词，表示“这样的人或物”。
 形容词最重要的作用就是作定语修饰名词：
 
 - It is a good experience. （作定语，修饰名词）
-
-**后置定语**：
-
-- **形容词修饰不定代词（如 something）时要求后置**
-
-    **Something** wrong happened. 出了点问题。
-
-- **由前缀 a- 构成的形容词（如 asleep）作定语时要求后置**
-
-    a baby **asleep** in the crib 在婴儿床里睡着的宝宝
 
 ## 比较级和最高级的构成
 
@@ -2112,9 +2102,164 @@ The question mentioned at the meeting has been solved.
 
 <img src="assets/image-20240418235345354.png" alt="image-20240418235345354" style="zoom:200%;" />
 
-- **形式主语**：**It** is hard to get early. (It 是形式主语)
+### 主语
+
+**主语**（Subject）是句子中动作的执行者，通常放在句首。
+
+**形式主语**：**It** is hard to get early. (It 是形式主语)
+
+**主语常见形式**：
+
+| 形式 | 示例句 | 主语是… |
+|:---:|:-----:|:------:|
+| 名词 | Tom likes apples. | Tom |
+| 代词 | She is happy. | She |
+| 动名词 | Swimming is fun. | Swimming |
+| 不定式 | To travel is exciting. | To travel |
+| 名词短语 | The boy in the red shirt is my friend. | The boy... |
+| 从句 | What he said surprised me. | What he said |
+
+### 谓语
+
+**谓语**（Predicate）就是动作，一个简单句只能有一个谓语。
+
+**谓语常见形式**：
+
+| 形式 | 示例句 | 谓语部分 |
+|:---:|:-----:|:------:|
+| 一般动词 | She runs every morning. | runs |
+| be动词 + 表语 | He is a teacher. | is |
+| 情态动词 + 动词原形 | I can swim. | can swim |
+| 现在进行时 | They are watching a movie. | are watching |
+| 完成时态 | She has finished her homework. | has finished |
+| 被动语态 | The book was written by Jack. | was written |
+
+### 宾语
+
+**宾语**（Object）是动作的承受者。
+
+**宾语常见形式**：
+
+| 形式 | 示例句 | 宾语是… |
+|:---:|:-----:|:------:|
+| 名词 | I saw Tom. | Tom |
+| 代词 | She likes him. | him |
+| 名词短语 | He bought a new car. | a new car |
+| 动名词（V-ing） | They enjoy singing. | singing |
+| 不定式（to do） | We want to leave. | to leave |
+| 宾语从句 | I believe that he is right. | that he is right |
+
+**双宾语**：主语 + 谓语 + 间接宾语 + 直接宾语
+
+He gave me a gift. = He gave a gift to me.  
+gift 是直接宾语，me 是间接宾语。
+
+### 定语
+
+**定语**（Attributive）用来修饰名词性成分。
+
+**定语常见形式**：
+
+| 形式 | 示例句 | 定语是… | 修饰的名词 |
+|:---:|:-----:|:------:|:--------:|
+| 形容词 | She has long hair. | long | hair |
+| 名词 | It's a chicken soup. | chicken | soup |
+| 代词 | My brother is tall. | My | brother |
+| 数词 | I have two cats. | two | cats |
+| 动词-ed | The broken window was fixed. | broken | window |
+| 动词-ing | I saw a sleeping baby. | sleeping | baby |
+| 不定式 | She is the first to arrive.| to arrive | the first (人) |
+| 介词短语 | The girl in red is my cousin. | in red | girl |
+| 定语从句 | The book that you gave me is great. | that you gave me | book |
+
+**后置定语**放在名词后面，常见形式有：
+
+| 形式 | 示例句 | 定语后置 | 修饰的名词 |
+|:---:|:-----:|:------:|:--------:|
+| 不定式 | She is the first **to arrive**. | to arrive | the first |
+| 介词短语 | The girl **in red** is my cousin. | in red | girl |
+| 分词短语 | I saw a baby **sleeping on the bed**. | sleeping on the bed | baby |
+| 定语从句 | The book **that you gave me** is great. | that you gave me | book |
+| 前缀 a- 的形容词 | a baby **asleep** in the crib | asleep | baby |
+| 特殊：修饰不定代词 | **Something wrong** happened. | wrong | something |
+
+### 状语
+
+**状语**（Adverbial）是用来修饰动词、形容词、副词或者整个句子的成分，主要用来表达**时间、地点、条件、原因、目的、结果、方式、让步、比较**等。
+
+**状语常见形式**：
+
+| 形式 | 例句 | 状语部分 | 作用 | 修饰的成分 |
+|:---:|:---:|:-------:|:---:|:--------:|
+| 副词 | She speaks **loudly**. | loudly | 方式状语 | speaks |
+| 介词短语 | He went **to the park**. | to the park | 地点状语 | went |
+| 现在分词 | **Walking in the park**, he met a friend. | Walking in the park | 时间状语 | he |
+| 过去分词 | **Excited by the news**, she jumped up. | Excited by the news | 原因状语 | she |
+| 不定式 | I came **to help you**. | to help you | 目的状语 | came |
+| 时间状语从句 | **When the rain stops**, we'll go out. | When the rain stops | 时间状语 | will go out |
+
+**状语常见类型**：
+
+| 类型 | 示例句 | 状语部分 | 修饰的成分 |
+|:---:|:-----:|:------:|:---------:|
+| 时间状语 | **When the rain stops**, we'll go out. | When the rain stops | will go out |
+| 地点状语 | He went **to the park**. | to the park | went |
+| 条件状语 | **If it rains**, we will stay home. | If it rains | will stay home |
+| 原因状语 | She was tired, **because she worked late**. | because she worked late | was tired |
+| 目的状语 | She left early **so that she could catch the bus**. | so that she could catch the bus | left early |
+| 结果状语 | He worked hard, **so that he passed the exam**. | so that he passed the exam | worked hard |
+| 方式状语 | She sings **as if she were a professional**. | as if she were a professional | sings |
+| 让步状语 | **Although he was tired**, he kept working. | Although he was tired | kept working |
+| 比较状语 | She runs **faster than I do**. | than I do | runs |
+
+### 补语
+
+**宾语补足语**（Object Complement）是用来补充动作没完成的结果，通常出现在及物动词之后。
+
+**补语常见形式**：
+
+| 形式 | 例句 | 宾语 | 补语 |
+|:---:|:---:|:---:|:----:|
+| 名词 | They elected him **president**. | him | president |
+| 形容词 | She painted the wall **blue**. | the wall | blue |
+| 现在分词 | I saw her **dancing**. | her | dancing |
+| 不定式 | She asked him **to leave**. | him | to leave |
+
+### 表语
+
+**表语**（Predicative）用来**说明主语的身份、性质、状态**的成分，常出现在“主系表结构”的 **连系动词（linking verb）** 后，比如：**be、become、seem、appear、look、feel、sound、stay、get、turn、remain** 等。
+
+**表语常见形式**：
+
+| 形式 | 例句 | 主语 | 表语 |
+|:----:|:----:|:----:|:----:|
+| 名词 | He is **a doctor**. | He | a doctor |
+| 形容词 | She looks **happy**. | She | happy |
+| 代词 | The winner is **you**. | The winner | you |
+| 数词 | The total is **ten**. | The total | ten |
+| 动词不定式 | My dream is **to travel the world**. | My dream | to travel the world |
+| 动名词 | His job is **teaching**. | His job | teaching |
+| 介词短语 | The keys are **on the table**. | The keys | on the table |
+| 从句 | The problem is **that we are late**. | The problem | that we are late |
+
+### 同位语
+
+ **同位语**（Appositive）是用来对前面的名词或代词作进一步解释、说明的成分，通常与它所解释的名词**紧挨在一起**，中间可以用逗号隔开（非限定性），也可以不隔开（限定性）。
+
+**同位语常见形式**：
+
+| 形式 | 例句 | 被解释成分 | 同位语 |
+|:----:|:----:|:-----------:|:------:|
+| 名词 | My brother, **a doctor**, works in a hospital. | My brother | a doctor |
+| 名词短语 | I visited Paris, **the capital of France**. | Paris | the capital of France |
+| 名词从句 | I heard the news **that she won the prize**. | the news | that she won the prize |
+| 代词 | Only one person, **you**, can help me. | one person | you |
+| 数词 | We have three pets, **two cats and a dog**. | three pets | two cats and a dog |
+
 
 ## 句子类型
+
+**常见形式**：
 
 ### 按用途分类
 
@@ -2376,11 +2521,53 @@ when 可用作并列连词。
 We were having a meeting when someone broke in.  
 我们正在开会，这时突然有人闯进来。
 
+# 主语从句
+
+**主语从句**（Subject Clause）是指一个完整的句子，作为主句的**主语**来使用。
+
+主语从句的结构通常由“引导词 + 从句”构成，常见引导词有：that，whether，if，连接代词（who，what 等），连接副词（when，where 等）。
+
+**注意**：
+
+- 引导词不能省略。
+- 注意主谓一致。
+
+**结构**：
+
+- 主语从句放在句首
+
+    **What he said** is true. 他所说的是真的。
+
+- 由 it 作形式主语，主语从句放在句尾
+
+    It is a pity **that you didn't attend the lecture yesterday**.  真遗憾，你昨天没参加讲座。
+
+# 宾语从句
+
+**宾语从句**是指一个从句作为**宾语**，用来说明动词、介词或某些形容词所作用的内容。
+
+宾语从句的结构如下：
+
+> 主语 + 谓语动词 + 宾语从句
+
+常见引导词有：that，whether/if，连接代词（who，what 等），连接副词（when，where 等）。
+
+**例句**：
+
+He said that he was tired.  
+他说他累了。
+
+## 宾语从句的注意事项
+
+- **否定转移**：宾语从句表示否定含义时,常把否定转移至主句。
+
+    I don't think that he is a good child.
+
 # 定语从句
 
-在主从复合句中作定语，修饰名词、代词等的从句叫定语从句，定语从句的作用相当于形容词。
+定语从句是指一个从句作为**定语**，用来修饰名词性成分。
 
-I'll forever cherish the days when I studied abroad.  
+I'll forever cherish the days **when I studied abroad**.  
 我将永远珍视我在国外学习的日子。
 
 ## 先行词
@@ -2479,40 +2666,31 @@ My sister, **who is wearing a red dress**, is a teacher.
 
 # 状语从句
 
-**状语从句**（Adverbial Clauses）是在句子中充当**状语**的从句，用来修饰主句中的**动词、形容词、副词或整个句子**，表示时间、原因、条件、目的、结果、让步、比较、方式等。
+**状语从句**（Adverbial Clauses）是在句子中充当**状语**的从句，主要用来表达**时间、地点、条件、原因、目的、结果、方式、让步、比较**等。
 
 状语从句通常由**从属连词**引导，比如：when、because、if、although、as、so that 等。
 
+**状语从句常见形式**：
 
-
+| 类型 | 例句 |
+|:----:|:------------------------------:|
+| 时间状语从句 | I left **when the movie ended**. |
+| 地点状语从句 | He sat **where she had been sitting**. |
+| 条件状语从句 | **If it rains**, we’ll stay home. |
+| 原因状语从句 | He stayed home **because he was sick**. |
+| 目的状语从句 | She studies **so that she can pass**. |
+| 结果状语从句 | It was so cold **that we stayed inside**. |
+| 让步状语从句 | **Although he is tired**, he keeps working. |
+| 方式状语从句 | He talks **as if he knew everything**. |
+| 比较状语从句 | She is taller **than I am**. |
 
 
 - **状语从句中的省略**：当从句和主句的主语一致或者从句的主语是 it，可省略从句的**主语**和 **be 动词**
 
     She always sings while (**she is**) doing her work.  
-    Unless (**the machine is**) repaired, the machine is of no use.  
     I prefer my milk a little sweetened whenever (**it is**) possible.
 
-# 主语从句
-
-**主语从句**（Subject Clause）是指一个完整的句子，作为主句的**主语**来使用。
-
-主语从句的结构通常由“引导词 + 从句”构成，常见引导词有：that，whether，if，连接代词（who，what 等），连接副词（when，where 等）。
-
-**注意**：
-
-- 引导词不能省略。
-- 注意主谓一致。
-
-**结构**：
-
-- 主语从句放在句首
-
-    **What he said** is true. 他所说的是真的。
-
-- 由 it 作形式主语，主语从句放在句尾
-
-    It is a pity **that you didn't attend the lecture yesterday**.  真遗憾，你昨天没参加讲座。
+## 
 
 # 表语从句
 
@@ -2522,8 +2700,6 @@ My sister, **who is wearing a red dress**, is a teacher.
 
 > 主语 + 系动词 + 表语从句
 
-其中最常用的系动词是 **be**（如 is、was、are、were），有时也用 become、seem、appear 等。
-
 常见的引导词有：that，whether，连接代词（who，what 等），连接副词（when，where 等）。
 
 **例句**：
@@ -2531,32 +2707,11 @@ My sister, **who is wearing a red dress**, is a teacher.
 The fact is that she didn’t call me.  
 事实是她没有给我打电话。
 
-# 宾语从句
-
-**宾语从句**是指一个从句作为**宾语**，用来说明动词、介词或某些形容词所作用的内容。
-
-宾语从句的结构如下：
-
-> 主语 + 谓语动词 + 宾语从句
-
-常见引导词有：that，whether/if，连接代词（who，what 等），连接副词（when，where 等）。
-
-**例句**：
-
-He said that he was tired.  
-他说他累了。
-
-## 宾语从句的注意事项
-
-- **否定转移**：宾语从句表示否定含义时,常把否定转移至主句。
-
-    I don't think that he is a good child.
-
 # 同位语从句
 
-**同位语从句**是指一个从句作为**同位语**，一般用于解释抽象名词，不能省略引导词。
+**同位语从句**是指一个从句作为**同位语**，解释前面的名词，不能省略引导词。
 
-简单理解，从句就可以充当前面的名词。
+简单理解，从句就是对前面的名词解释，名词和同位语从句的关系就像是定义和解释的关系。
 
 **区别于定语从句**：
 
@@ -2565,6 +2720,6 @@ He said that he was tired.
 
 **例句**：
 
-I heard the **news that she got the job.**
+I heard the news **that she got the job.**
 
-They are considering the **question how we should respond.**
+They are considering the question **how we should respond.**
