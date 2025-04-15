@@ -2408,8 +2408,7 @@ gift 是直接宾语，me 是间接宾语。
 
 表并列关系的连词：and，not only...，but also... 等
 
-She dances well and he sings well.
-
+She dances well and he sings well.  
 她舞跳得好，他歌唱得好。
 
 ## 转折关系
