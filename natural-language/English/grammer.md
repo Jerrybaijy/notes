@@ -11,23 +11,27 @@
         - 抽象名词：表示性质、行为、状态、情感等抽象概念的名称：peace freedom  fun
 - 专有名词
 
-## 可数名词复数
+## 可数名词
 
-### 规则变化
+### 普通可数名词复数
 
-- 一般情况，词尾加 -s，parent → parents
-- 以 -s，-x，-ch，-sh 结尾，加 -es，glass → glasses
-    - 特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach → stomachs
-- 以辅音字母加 -y 结尾，把 -y 变 -i 加 -es，factory → factories
-- 以辅音字母加 -o 结尾，加 -es，potato → potatoes
-    - 特例：一些外来词、缩写、科学词汇，直接加 -s，piano → pianos，photo → photos
-- 以 -f，-fe 结尾，把 -f，-fe 变 -v 再加 -es，wolf → wolves，knife → knives
-    - 特例：某些以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。
+**规则变化**：
 
+|  情况  |  规则  |  示例  |
+| :---: | :---: | :---: |
+| 一般情况 | 加 -s | parent → parents |
+| 以 -s，-x，-ch，-sh 结尾 | 加 -es | glass → glasses |
+| 以辅音字母加 -y 结尾 | 把 y 变 i，再加 -es | factory → factories |
+| 以辅音字母加 -o 结尾 | 加 -es | potato → potatoes |
+| 以 -f，-fe 结尾 | 把 f，fe 变 v，再加 -es | wolf → wolves<br>knife → knives |
 
-### 不规则变化
+- 以 -ch 结尾的特例：词尾 -ch 发音为 / ｋ /，加 -s，stomach → stomachs
+- 以辅音字母加 -o 结尾的特例：一些外来词、缩写、科学词汇，直接加 -s，piano → pianos，photo → photos
+- 某些以 -f 结尾，直接加 -s 的名词：roof 屋顶，chief 首领，belief 信仰，proof 证据，chef 厨师。
 
-- 改变内部元音
+**不规则变化**：
+
+- **改变内部元音**
 
     - man → men 男人
     - woman → women 女人
@@ -36,7 +40,7 @@
     - goose → geese 鹅
     - mouse → mice 老鼠（注意此处 s 变 c）
 
-- 单复数同形
+- **单复数同形**
 
     - sheep 绵羊
     - deer 鹿
@@ -50,55 +54,61 @@
     - works 工厂
     - head 头（牲畜数量）
 
-- 同一名词，不同意义
+- **同一名词，不同意义**
 
-    - work 
+    - **work** 
 
       a work by Mark 一部马克的作品  
       two works by Mark 两部马克的作品  
       a chemical works 一家化工厂  
       two chemical works 两家化工厂
 
-    - fish
+    - **fish**
 
       two fish 两条鱼  
       two fishes 两种鱼
 
-    - people
+    - **people**
 
       two people 两个人  
       two peoples 两个民族
 
-### 由两部分构成的物体
+### 由两部分构成的物体的复数
 
 trousers，shorts 等名词不能用基数词修饰，其前也不能直接加不定冠词 a/an，但可以用 a pair of，two pairs of，many 等词修饰。
 
 I need a new pair of trousers for work. 我需要一条上班穿的裤子。
 
-### 复合名词
+### 复合名词的复数
 
-- 没有连字符，最后一个名词变复数。  
-  housewife → housewives 家庭主妇
+- 没有连字符，最后一个名词变复数。
 
-- 组成复合名词的单词中没有名词，在最后加 -s。  
-  grow-up → grow-ups 成年人
+    housewife → housewives 家庭主妇
 
-- 有连字符，将复合名词中主要的名词变复数。  
-  passer-by → passers-by 路人  
-  daughter-in-law → daughters-in-law 儿媳妇
+- 组成复合名词的单词中没有名词，在最后加 -s。
 
-- man，woman 为复合名词的第一部分时，复合名词的各个部分皆变为复数  
-  a man cook → men cooks 男厨师  
-  a woman teacher → women teachers
+    grow-up → grow-ups 成年人
+
+- 有连字符，将复合名词中主要的名词变复数。
+
+    passer-by → passers-by 路人  
+    daughter-in-law → daughters-in-law 儿媳妇
+
+- man，woman 为复合名词的第一部分时，复合名词的各个部分皆变为复数。
+
+    a man cook → men cooks 男厨师  
+    a woman teacher → women teachers
 
 ### 注意
 
-- 某些表示学科的名词，虽然结尾以 -s 结尾，但并非复数形式。作主语时，谓语动词要用单数形式。如 maths 数学，physics 物理学，economics 经济学。  
-  Physics is difficult for me. 对于我来说物理很难。
+- 某些表示学科的名词，虽然结尾以 -s 结尾，但并非复数形式。作主语时，谓语动词要用单数形式。如 maths 数学，physics 物理学，economics 经济学。
 
-- 单复数同形的名词在使用时要注意其谓语动词的单复数形式变化。  
-  Every means has been tried. 每种方法都试过了。  
-  All means have been tried. 所有方法都试过了。
+    Physics is difficult for me. 对于我来说物理很难。
+
+- 单复数同形的名词在使用时要注意其谓语动词的单复数形式变化。
+
+    Every means has been tried. 每种方法都试过了。  
+    All means have been tried. 所有方法都试过了。
 
 - 表示“某国人”的名词变复数的三种形式
     - “中日瑞不变”
@@ -145,9 +155,9 @@ Being able to afford a drink would be a comfort in tough times.
 |  情况  |  规则  | 示例 |
 | :---: | :---: | :---:|
 | 一般单数名词 | 加 `'s` | today's newspaper 今天的报纸 |
-| 以 -s 结尾的单数名词或专有名词 | 加 `'` 或 `'s` | the boss'(s) order 老板的命令<br>Dicken‘（s) novels 狄更斯的小说 |
-| 不以 -s 或 -es 结尾的复数名词 | 加 `'s` | women’s clothes 女装 |
-| 以 -s 或 -es 结尾的复数名词 | 只加 `'` | two hours' walk 步行两小时的路程 |
+| 以 s 结尾的单数名词或专有名词 | 加 `'` 或 `'s` | the boss'(s) order 老板的命令<br>Dicken‘（s) novels 狄更斯的小说 |
+| 不以 s 或 es 结尾的复数名词 | 加 `'s` | women’s clothes 女装 |
+| 以 s 或 es 结尾的复数名词 | 只加 `'` | two hours' walk 步行两小时的路程 |
 | 复合名词 | 在最后一个词的词尾加 `'s` | his son-in-law's car 他女婿的轿车 |
 
 ### of + 名词
@@ -169,40 +179,23 @@ Some friends **of my brother's** will join us.
 
 ## 名词的句法功能
 
-名词（短语）在句子中可以作主语、宾语、补足语、表语、同位语、状语、定语等。
-
-- 作主语  
-  Honesty is the best policy. 诚信为本。
-
-- 作宾语  
-  Teenagers today are facing lots of pressure. 现在的青少年面临很多压力。
-
-- 作补足语  
-  We're sparing no effort to make our country a developed country.  
-  我们正不遗余力地使我们的国家成为一个发达国家。
-
-- 作表语  
-  Water shortages are still the biggest problem in western China.  
-  用水短缺依然是中国西部最大的问题。
-
-- 作同位语  
-  There is no cure for influenza, a common disease.  
-  流行感冒是一种常见的疾病，无特效药。
-
-- 作状语  
-  Come this way! 到这来！
-
-- 作定语  
-  In the south of China, there are many banana trees.  
-  在中国南方有很多香蕉树。
+|  成分  |  例句 |
+| :---: | :---: |
+| 作主语 | **Books** are useful. |
+| 作宾语 | I like **music**. |
+| 作定语 | a **car** factory |
+| 作状语（省略介词） | I’ll see you **tomorrow**.（= on tomorrow） |
+| 作补语 | They named her **leader**. |
+| 作表语 | She is a **teacher**. |
+| 作同位语 | She is a **teacher**. |
 
 # 代词
 
 代词可分为人称代词、
 物主代词、反身代词、指示代词、不定代词、疑问代词、连接代词、关系代词等。
 
-|       | 主格  | 宾格  |  反身代词  | 名词性物主代词 | 形容词性物主代词 |
-| :---: | :---: | :---: | :--------: | :------------: | :--------------: |
+|       |  主格  | 宾格  |  反身代词  | 名词性物主代词 | 形容词性物主代词 |
+| :---: | :---: | :---: | :------: | :---------: | :-----------: |
 |  谁   |  who  | whom  |     -      |       -        |      whose       |
 |  我   |   I   |  me   |   myself   |      mine      |        my        |
 |  你   |  you  |  you  |  yourself  |     yours      |       your       |
@@ -579,27 +572,28 @@ such 作为指示代词，表示“这样的人或物”。
 
 # 形容词
 
-**形容词**（Adjective，简写 **adj.**）表示人或事物的性质、状态和特征等，主要用来修饰名词和代词。
+**形容词**（Adjective，简写 **adj.**）表示人或事物的性质、状态和特征等，主要用来修饰名词和名词性代词。
 
-## 形容词句法
+## 形容词的句法功能
 
-形容词在句中可以充当定语、表语、状语、主语或补语等。
-
-形容词最重要的作用就是作定语修饰名词：
-
-- It is a good experience. （作定语，修饰名词）
+|  成分  |  例句 |
+| :---: | :---: |
+| 作定语 | a **beautiful** day |
+| 作状语（表主语的状态） | She sat there, **silent** and alone. |
+| 作补语 | The news made me **angry**. |
+| 作表语 | She is **happy**. |
 
 ## 比较级和最高级的构成
 
 ### 规则变化
 
-|   构成   |   原级   |  比较级  |  最高级  |
-| :-----: | :------: | :-----: | :-----: |
-| 普通单音节词，在词尾加 -er，-est | strong | stronger | strongest |
-| 以字母 e 结尾的单音节词，只在词尾加 -r，-st | late | later | latest |
-| 以一个辅音字母结尾的闭音节单音节词，双写辅音字母后再加 -er，-est | hot | hotter | hottest |
-| 以“辅音字母 + y”结尾的单词，把 y 变 i ，再加 -er，-est | happy | happier | happiest |
-| 其他双音节词和多音节词，在词前加 more 和 most | enthusiastic | more enthusiastic | most enthusiastic |
+|   情况   |   规则   |   原级   |  比较级  |  最高级  |
+| :-----: | :------: | :-----: | :-----: | :-----: |
+| 普通单音节词 | 加 -er，-est | strong | stronger | strongest |
+| 以字母 e 结尾的单音节词 | 加 -r，-st | late | later | latest |
+| 以一个辅音字母结尾的闭音节单音节词 | 双写辅音字母后，再加 -er，-est | hot | hotter | hottest |
+| 以“辅音字母 + y”结尾的单词 | 把 y 变 i ，再加 -er，-est | happy | happier | happiest |
+| 其他双音节词和多音节词 | 在词前加 more 和 most | enthusiastic | more enthusiastic | most enthusiastic |
 
 - 有少数几个双音节词以及以 -er 及 -le 结尾的词，可以有两种比较级和最高级形式。
 
@@ -791,17 +785,26 @@ This is by far the best book that I've ever read.
 
 # 副词
 
-副词（Adverb，简写 **adv.**）是指在句子中表示行为或状态特征的词；副词用来修饰动词、形容词、其他副词、数词、 介词短语乃至全句，表示时间、地点、程度、方式等概念。
+**副词**（Adverb，简写 **adv.**）是指在句子中表示行为或状态特征的词。
 
-## 副词用法
+## 副词的句法功能
 
-副词在句中可作状语、表语、定语、介词宾语和宾语补足语等。
+**副词的句法功能**：
 
-副词最基本的作用就是作状语修饰形容词、动词和副词：
+- 作为状语修饰动词、形容词、副词、数词、介词短语或者整个句子
+- 作强调成分
+- 作连接副词
 
-- That's a **very** tall building. （作状语，修饰形容词）
-- He runs **fast**. （作状语，修饰动词）
-- She writes **very** carefully. （作状语，修饰副词）
+|  成分  |  例句  |  说明  |
+| :---: | :---: | :---: |
+| 作状语修饰动词 | She runs **quickly**. | 修饰“runs”，表示动作方式 |
+| 作状语修饰形容词 | He is **very** tall. | 修饰“tall”，表示程度 |
+| 作状语修饰副词 | She sings **quite** beautifully. | 修饰“beautifully”，表示程度 |
+| 作状语修饰数词 | There are **quite** two apples on the table. | 修饰“two”，表示数量的程度 |
+| 作状语修饰介词短语 | She walked **right** into the room. | 修饰“into the room”，表示方式 |
+| 作状语修饰整个句子 | **Fortunately**, we arrived on time. | 修饰整个句子，表达说话人态度 |
+| 作强调成分 | This is **exactly** what I meant. | 加强语气或语义 |
+| 作连接副词 | **However**, she refused to go. | 起连接作用，连接上下句意思 |
 
 ## 简单副词
 
@@ -1383,8 +1386,6 @@ She went to school yesterday. 她昨天去学校了。
 
 一般将来时由“**will/shall + 动词原形**”表示：**will/shall do**，助动词没有单三变化。
 
-
-
 表示一般将来时的几个句型：
 
 - **基本用法**：will/shall do
@@ -1714,7 +1715,7 @@ She is singing now. 她正在唱歌。
 - **不受主语人称和数的限制**，形式固定不变（例如不定式始终为"to do"，动名词为"doing"）；
 - **保留部分动词特性**，如可带宾语、状语，有时态和语态变化（如完成式"to have done"、被动式"to be done"）。
 
-非谓语动词包括**不定式**、**动名词**、**现在分词**和**过去分词**四种形式。
+非谓语动词包括**不定式**、**动名词**、**现在分词**和**过去分词**四种形式，其中动名词和现在分词合称为**动词-ing形式**。
 
 |  形式  |  示例 |
 | :---: | :---: |
@@ -1736,16 +1737,16 @@ She is singing now. 她正在唱歌。
 
 **动词不定式**（Infinitive）是非谓语动词的一种形式，由“**to + 动词原形**”表示：**to do**；否定形式为 **not to do**。
 
-**不定式（短语）充当的句子成分**：
+**不定式的句法功能**：
 
 |  成分  |  例句 |
 | :---: | :---: |
 | 作主语 | **To learn a language** requires patience.<br>**It** is a great pleasure **to talk with him**. (it 作形式主语) |
 | 作宾语 | She wants **to become a doctor**.<br>We thought **it** better **to start early**. (it 作形式宾语) |
 | 作定语 | I have a book **to read**. |
-| 作状语 | He studied hard **to pass the exam**. |
+| 作状语（副词短语） | He studied hard **to pass the exam**. |
 | 作补语 | They asked me **to leave**. |
-| 作表语 | My goal is **to help others**. |
+| 作表语 | My goal is to run. |
 
 **不定式的时态和语态**：
 
@@ -1763,11 +1764,18 @@ She is singing now. 她正在唱歌。
 
 **疑问词 + 不定式**：I don’t know **what to do**.
 
-### 动名词
+### 动词-ing形式
 
-**动名词**（Gerund）是非谓语动词的一种形式，由“**动词原形 + -ing**”表示：**doing**；否定形式为 **not doing**。
+**动名词**（Gerund）和**现在分词**（Present Participle）合称为**动词-ing形式**，二者都是非谓语动词的一种形式，由“**动词原形 + -ing**”表示：**doing**；否定形式为 **not doing**。
 
-**动名词（短语）充当的句子成分**：充当名词性成分
+**动词-ing形式的时态和语态**：
+
+|        |   主动式    |      被动式      |           意义           |
+| :----: | :---------: | :--------------: | :----------------------: |
+| 一般式 |    doing    |    being done    | 与谓语动词的动作同时发生 |
+| 完成式 | having done | having been done |  先于谓语动词的动作发生  |
+
+**动名词（短语）的句法功能**：充当名词性成分
 
 |  成分  |  例句  |
 | :---: | :---: |
@@ -1776,126 +1784,58 @@ She is singing now. 她正在唱歌。
 | 作定语 | a **swimming** pool（= a pool for swimming） |
 | 作表语 | Her hobby is **collecting stamps**. |
 
-**动名词与现在分词的关系**：
+**动名词的复合结构**
 
-- 动名词的“-ing”变化规律同现在分词
-- 动名词在句子中充当名词性成分
-- 现在分词在句子中充当名词、形容词和副词成分
+- 当动名词的逻辑主语与句子的主语不一致时，要在动名词之前加上形容词性物主代词或名词所有格，这便构成了**动名词的复合结构**。
 
-**动名词的时态和语态**：
+- Would you mind **my/me using** your dictionary?  
+    你介意我用一下你的词典吗?
 
-|       | 主动式 | 被动式 |  意义  |
-| :---: | :---: | :---: | :---: |
-| 一般式 | doing       | being done       | 与谓语动词的动作同时发生 |
-| 完成式 | having done | having been done | 先于谓语动词的动作发生   |
-
-### 现在分词
-
-现代英语中将
-
-现在分词（Present Participle）是非谓语动词的一种形式，由“**动词原形 + -ing**”表示：**doing**；否定形式为 **not doing**。
+- We offered him our congratulations on **his passing** the exams.  
+    我们祝贺他通过了考试。
 
 **现在分词功能**：
 
-- 构成进行时态：He is playing soccer.
-- ‌表示主动或进行中的动作‌：例如，“The running water is refreshing.”（流动的水令人清爽）。
-- 修饰名词‌：作为形容词使用，“a sleeping baby”（一个正在睡觉的婴儿）。
+- 构成进行时态：He **is playing** soccer.
+- 作为形容词，表示主动或正在进行的动作：a **running** stream（流动的小溪）
+- 构成副词短语作状语：**Being tired**, he went to bed early.
 
-**现在分词（短语）充当的句子成分**：充当名词、形容词和副词成分
+**现在分词（短语）的句法功能**：充当名词、形容词和副词成分
 
 |  成分  |  例句  |
 | :---: | :---: |
 | 作主语 | **Swimming** is good for your health.<br>**It** is a waste of time **watching** that movie. (it 作形式主语) |
 | 作宾语 | I enjoy **reading** before bed. |
 | 作定语 | We watched a **flying** bird. |
-| 作状语 | **Hearing the news**, she cried. |
+| 作状语（副词短语） | **Hearing the news**, she cried. |
 | 作补语 | I saw him **running** in the park. |
 | 作表语 | Her favorite activity is **painting**. |
 
-### 现在分词（旧）
+**动名词与现在分词的关系**：
 
-动词-ing 形式，由动词的**现在分词**表示：**doing**，具有名词、形容词和副词特征。
-
-|       | 主动式 | 被动式 |  意义  |
-| :---: | :---: | :---: | :---: |
-| 一般式 | doing       | being done       | 与谓语动词的动作同时发生 |
-| 完成式 | having done | having been done | 先于谓语动词的动作发生   |
-
-#### 动词-ing 形式的句法功能
-
-动词-ing 形式在句中可作主语、宾语、表语、定语、状语和补足语。
-
-- **作主语**
-
-    - 作主语的一般用法
-
-        Studying and doing homework seem much more fun when you are at sea.  
-        当你在海上时, 学习和做作业好像有趣多了。
-
-    - 有时用 it 作形式主语，把动词-ing 短语置于句末。
-
-        It is/was + a waste (of) + doing...  
-        It is/was + no good/use + doing...  
-        It is/was + worth + doing...
-
-- **作宾语**
-
-    - 动词宾语。动词-ing 形式常出现在下列词语后：
-
-        admit，advise，allow，appreciate，avoid，forbid，cannot help，can't stand，consider,delay，deny，enjoy，escape，finish，give up，imagine，keep，mind，miss，practise，quit，risk，suggest
-
-        He was considering taking the chair downstairs.  
-        他正考虑把那把椅子搬到楼下。
-
-    - 介词宾语。动词-ing 形式常出现在下列词语后：
-
-        devote...to 把...献给  
-        get down to 开始认真注意或对待  
-        look forward to 期待  
-        contribute to 为...做贡献  
-        object to 反对  
-        lead to 导致  
-        pay attention to 注意  
-        be addicted to 沉溺于  
-        be/get/become used to 习惯于  
-        be responsible for 对...负责  
-        when it comes to 当涉及...时
-
-        Mary is looking forward to going back to Xi'an.  
-        玛丽正在盼望回西安。
-
-    - 形容词宾语  
-
-        “be worth + 动词-ing 形式”表示“值得...”  
-        “be busy + 动词-ing 形式”表示“忙于...”。
-
-        He's decided to get a look at the house and see if it was worth buying.  
-        他决定去瞧瞧那座房子,看是否值得买下。
-
-#### 动词-ing 形式的复合结构
-
-当动词-ing 形式的逻辑主语与句子的主语不一致时，要在动词-ing 形式之前加上形容词性物主代词或名词所有格，这便构成了动词-ing 形式的复合结构。
-
-Would you mind my/me using your dictionary?  
-你介意我用一下你的词典吗?
-
-We offered him our congratulations on his passing the exams.  
-我们祝贺他通过了考试。
+- 动名词的“-ing”变化规律同现在分词
+- 动名词在句子中只能充当名词性成分
+- 现在分词在句子中充当名词、形容词和副词成分
 
 ### 过去分词
 
-动词-ed 形式由动词的**过去分词**表示：**done**，表示已经完成的或被动的动作，在句子中起形容词或副词的作用，作定语、表语、补足语和状语。
+**过去分词**（Past Participle）是非谓语动词的一种形式，由“**done**”表示，否定形式为 **not done**。
 
-#### 动词-ed 形式的句法功能
+**过去分词功能**：
 
-##### 作定语
+- 构成完成时态：She **has finished** her homework.
+- 作为形容词，表被动或已完成的动作：a **developed** counttry 发达国家
+- **构成副词短语作状语**：**Given** more time, I could finish it.
 
-单个动词-ed 形式作定语时，常放在被修饰词的前面；动词-ed 短语作定语时，则一般放在被修饰词之后。
+**时态和语态**：过去分词只能表示**完成时**和**被动语态**。
 
-required courses 必修课
+**过去分词的句法功能**：充当形容词和副词成分
 
-The question mentioned at the meeting has been solved.  
-在会议上提到的问题已经被解决了。(被动)
+|  成分  |  例句  |
+| :---: | :---: |
+| 作定语 | We found a **forgotten** book on the shelf. |
+| 作状语（副词短语） | **Surprised by the news**, she fainted. |
+| 作补语 | I saw the door **opened**. |
 
 ## 主谓一致
 
@@ -2171,18 +2111,20 @@ gift 是直接宾语，me 是间接宾语。
 
 ### 状语
 
-**状语**（Adverbial）是用来修饰动词、形容词、副词或者整个句子的成分，主要用来表达**时间、地点、条件、原因、目的、结果、方式、让步、比较**等。
+**状语**（Adverbial）是用来修饰动词、形容词、副词、主语或者整个句子，主要用来表达**时间、地点、条件、原因、目的、结果、方式、让步、比较**等。有时也用形容词修饰主语的状态。
 
 **状语常见形式**：
 
-| 形式 | 例句 | 状语部分 | 作用 | 修饰的成分 |
-|:---:|:---:|:-------:|:---:|:--------:|
-| 副词 | She speaks **loudly**. | loudly | 方式状语 | speaks |
-| 介词短语 | He went **to the park**. | to the park | 地点状语 | went |
-| 现在分词 | **Walking in the park**, he met a friend. | Walking in the park | 时间状语 | he |
-| 过去分词 | **Excited by the news**, she jumped up. | Excited by the news | 原因状语 | she |
-| 不定式 | I came **to help you**. | to help you | 目的状语 | came |
-| 时间状语从句 | **When the rain stops**, we'll go out. | When the rain stops | 时间状语 | will go out |
+| 形式 | 例句 | 作用 | 修饰的成分 |
+|:---:|:---:|:---:|:--------:|
+| 副词 | She speaks **loudly**. | 方式状语 | speaks |
+| 介词短语 | He went **to the park**. | 地点状语 | went |
+| 现在分词短语 | **Walking in the park**, he met a friend. | 时间状语 | 主句 |
+| 过去分词短语 | **Excited by the news**, she jumped up. | 原因状语 | 主句 |
+| 不定式短语 | I came **to help you**. | 目的状语 | came |
+| 状语从句 | **When the rain stops**, we'll go out. | 时间状语 | 主句 |
+| 形容词（表主语的状态） | The boy walked away **sad**. | 状态状语 | The boy |
+
 
 **状语常见类型**：
 
@@ -2289,11 +2231,11 @@ gift 是直接宾语，me 是间接宾语。
 
 | 句型结构 | 英文术语 | 构成元素含义 | 示例 |
 |:--------:|:--------:|:------------:|:----:|
-| 主语 + 谓语 | S + V | 动作不涉及宾语 | He runs fast. 他跑得很快。 |
-| 主语 + 谓语 + 宾语 | S + V + O | 动作作用于宾语 | I love you. 我爱你。 |
-| 主语 + 谓语 + 间接宾语 + 直接宾语 | S + V + IO + DO | 表示“给某人某物”的结构 | He told me a story. 他给我讲了个故事。 |
-| 主语 + 谓语 + 宾语 + 宾语补足语 | S + V + O + OC | 宾语补足语说明宾语的状态或结果 | We found him helpful. 我们发现他很有帮助。 |
-| 主语 + 系动词 + 表语 | S + V + P (C) | 描述主语的状态或身份 | She is smart. 她很聪明。 |
+| 主语 + 谓语 | S + V | 动作不涉及宾语 | He runs fast. |
+| 主语 + 谓语 + 宾语 | S + V + O | 动作作用于宾语 | I love you. |
+| 主语 + 谓语 + 间接宾语 + 直接宾语 | S + V + IO + DO | 表示“给某人某物”的结构 | He told me a story. |
+| 主语 + 谓语 + 宾语 + 宾语补足语 | S + V + O + OC | 宾语补足语说明宾语的状态或结果 | We found him helpful. |
+| 主语 + 系动词 + 表语 | S + V + P (C) | 描述主语的状态或身份 | She is smart. |
 
 ## 省略句
 
