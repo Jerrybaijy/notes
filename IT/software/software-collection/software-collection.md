@@ -137,6 +137,13 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 	2. 选中包围内容，按 `Ctrl + Shift + A`
 	3. 在弹出的输入框中，输入想要使用的 Emmet 缩写，按 `Enter` 确认。
 
+# Everything
+
+**Everything** 是一款由 Voidtools 开发的 Windows 文件搜索工具，它最大的特点就是**搜索速度极快**，基本上能做到“输入即结果”。
+
+- [官网下载 Everything](https://www.voidtools.com/zh-cn/)
+- 印象中可用于批量修改文件名，但最后一次不会用了，也许是记错了。
+
 # Google Chrome
 
 ## 管理搜索引擎
@@ -1445,6 +1452,12 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 
 - 最后一行是反馈结果，类似于 `console`。
 
+# PowerToys
+
+PowerToys 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。其中的 PowerRename 可以结合正则表达式批量修改文件名。
+
+- [托管在 GitHub 上](https://github.com/microsoft/PowerToys)
+
 # Prometheus
 
 Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开发。它专为云环境而设计，可以动态发现目标，并收集它们的度量指标，存储这些指标，并提供基于这些指标的警报功能。
@@ -1576,47 +1589,6 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 - Rufus 会将 ISO 镜像文件写入 U 盘并创建启动盘。
 
 - 将 U 盘插入待做系统的电脑，从 U 盘启动做系统（注意此工具不是 PE，只能像 Windows 官网安装介质那样做系统）。
-
-# Shell Script
-
-## Script 基础
-
-**Shell 脚本**（Shell Script） 用于通过 `Unix/Linux shell` 自动运行程序，例如 `Bash`。它包含了一系列 `shell命令`，就像你在命令行里输入它们一样。
-
-### 创建脚本
-
-1. 使用记事本创建一个 `.txt` 文件；
-
-2. 在记事本中输入想要的命令，以 `Git push` 为例；
-
-	```bash
-	git add .
-	git commit -m "Daily preservation"
-	git push
-	exec $SHELL
-	```
-
-3. 保存文件并关闭；
-
-4. 将文件后缀名改为 `.sh`，例如 `git-push.sh`；
-
-5. 双击文件就会依次执行上述命令。
-
-### 常用命令
-
-- **`#`**：注释，例如 `exec $SHELL  # 执行完毕保持窗口`；
-- **`exec $SHELL`**：执行完毕保持窗口；
-
-## Scripts
-
-- **Git push**
-
-  ```bash
-  git add .
-  git commit -m "Daily preservation"
-  git push
-  exec $SHELL  # 执行完毕保持窗口
-  ```
 
 # SQLite
 
