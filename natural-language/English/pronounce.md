@@ -1,34 +1,57 @@
 # Pronounce
 
-由于自己学习的一直都是英音发音，所以会一直以英音为准。
+由于自己学习的一直都是**英音**发音，所以会一直以英音为准。
 
 ## 国际音标
 
-- 元音 20 个
-
-    - 单元音 12 个（5 长 7 短）
-
-        /ʌ/       /ɔ/        /ə/      /ɪ/      /ʊ/      /e/             某些 /ɔ/ 在美音中发 /a:/
-
-        /ɑ:/     /ɔ:/        /ə:/    /i:/     /u:/     /æ/ 
-
-    - 双元音 8 个
-
-        /aɪ/    /ɔɪ/     /eɪ/    /ɪə/      /eə/      /au/     /əu/      /uə/ 
-
-- 辅音 28 个
-
-    - 清辅音：/p/  /t/  /k/  /f/  /θ/  /s/  /ʃ/  /h/  /ts/  /tʃ/   /tr/
-    - 浊辅音：/b/  /d/  /g/  /v/  /ð/  /z/  /ʒ/  /r/  /dz/  /dʒ/  /dr/
-    - 鼻音： /m/  /n/  /ŋ/
-    - 半元音：/j/  /w/
-    - 舌边音：/l/
+<table style="text-align: center;">
+  <tr>
+    <th>元辅音</th>
+    <th>细分</th>
+    <th>音标</th>
+  </tr>
+  <tr>
+    <td rowspan="3">元音（20）</td>
+    <td rowspan="2">单元音（12）</td>
+    <td>长元音（5）</td>
+    <td>/ɑ:/ /ɔ:/ /ə:/ /i:/ /u:/</td>
+  </tr>
+  <tr>
+    <td>短元音（7）</td>
+    <td>/ʌ/ /ɔ/ /ə/ /ɪ/ /ʊ/ /e/ /æ/</td>
+  </tr>
+  <tr>
+    <td colspan="2">双元音（8）</td>
+    <td>/aɪ/ /ɔɪ/ /eɪ/ /ɪə/ /eə/ /au/ /əu/ /uə/ </td>
+  </tr>
+  <tr>
+    <td rowspan="5">辅音（28）</td>
+    <td colspan="2">清辅音（11）</td>
+    <td>/p/ /t/ /k/ /f/ /θ/ /s/ /ʃ/ /h/ /ts/ /tʃ/ /tr/</td>
+  </tr>
+  <tr>
+    <td colspan="2">浊辅音</td>
+    <td>/b/ /d/ /g/ /v/ /ð/ /z/ /ʒ/ /r/ /dz/ /dʒ/ /dr/</td>
+  </tr>
+  <tr>
+    <td colspan="2">鼻音</td>
+    <td>/m/ /n/ /ŋ/</td>
+  </tr>
+  <tr>
+    <td colspan="2">半元音</td>
+    <td>/j/ /w/</td>
+  </tr>
+  <tr>
+    <td colspan="2">舌边音</td>
+    <td>/l/</td>
+  </tr>
+</table>
 
 ## 字母
 
 - **元音字母**：a  e  i  o  u，其余是辅音字母（y 是半元音）
 
-    !/图片/(assets/640.webp)
+    <img src="assets/640.webp" alt="图片" style="zoom:50%;" />
 
 ## 发音矫正
 
