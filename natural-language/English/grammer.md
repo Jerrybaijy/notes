@@ -1165,31 +1165,6 @@ They were all dressed as clowns.
 
 **数词**（Number，简写 **num.**）分为两大类：基数词和序数词。基数词表示数目，如 one，two，three；序数词表示顺序，如 first，second，third，序数词前一般要加定冠词 the。
 
-## 倍数
-
-|  倍数  | 英文表达 |
-| :---: | :---: |
-| 一倍 | once        |
-| 两倍 | twice       |
-| 三倍 | three times |
-| 四倍 | four times  |
-| …倍  | … times     |
-
-- **倍数 + as + 原级 + as + 比较者**：最标准、清晰、常见，语法非常严谨
-
-    His house is three times as large as mine.  
-    他的房子是我的三倍大。
-
-- **基数词 + 倍数 + 比较级 + than + 比较者**：更口语，有时略带“比…多三倍”的感觉（稍有歧义）
-
-    His house is three times larger than mine.  
-    他的房子是我的三倍大。
-
-- **A is 倍数 + the size / length / height / number / amount of B**：强调具体**大小/长度/金额**等，用名词，表达更精准。
-
-    His house is three times the size of mine.  
-    他的房子是我的三倍大。
-
 # 动词
 
 在英语中，动词按语法特征分类，可分为：**实义动词**和**助动词**。
