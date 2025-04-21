@@ -531,6 +531,12 @@
     a:hover {
       text-decoration: underline !important;
     }
+    
+    /* 对标注进行放大 */
+    rt {
+      font-size: 1em; /* 默认太小，设大一点，比如1em或1.2em */
+      color: red; /* 可选，标注更醒目 */
+    }
     ```
 
 ## Github

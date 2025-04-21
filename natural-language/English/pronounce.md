@@ -177,6 +177,52 @@
 
 - 特例
 
+# 语调规律
+
+英语的抑扬顿挫，其实是由以下几个要素组成的：句子重音、语调升降和节奏。
+
+## 句子重音
+
+句子中重要的内容词（如名词、动词、形容词、副词）要重读。
+
+I **bought** a **new** **car** **yesterday**.
+
+## 语调升降
+
+- 陈述句一般是**下降调**：I like it. ↘
+- 一般疑问句是**上升调**：Do you like it? ↗
+- 选择问句则是**先升后降**：Do you want **tea** ↗ or **coffee** ↘?
+
+### 状语
+
+It is **<ruby>on<rp>(</rp><rt>ˇ</rt><rp>)</rp></ruby>** the right. （位于句尾，地点状语中的**介词**上扬）
+
+<ruby>He<rp>(</rp><rt>ˇ</rt><rp>)</rp></ruby> <ruby>always<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> <ruby>shaves<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> <ruby>in<rp>(</rp><rt>ˉ</rt><rp>)</rp></ruby> the morning. （位于句尾，时间状语中的介词和宾语**都不**上扬）
+
+In the **<ruby>evening<rp>(</rp><rt>ˉˊ</rt><rp>)</rp></ruby>**, the <ruby>children<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> <ruby>come<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> <ruby>home<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> <ruby>from<rp>(</rp><rt>ˉ</rt><rp>)</rp></ruby> <ruby>school<rp>(</rp><rt>ˉ</rt><rp>)</rp></ruby>. （位于句首，时间状语中的**宾语**上扬）
+
+#### There be 中的状语
+
+There is a bottle on the **<ruby>table<rp>(</rp><rt>ˉ</rt><rp>)</rp></ruby>**.
+
+There is a bottle on the **<ruby>table<rp>(</rp><rt>ˇˊ</rt><rp>)</rp></ruby>**, **<ruby>too<rp>(</rp><rt>ˋ</rt><rp>)</rp></ruby>**.
+
+There is a bottle in the **<ruby>middle<rp>(</rp><rt>ˊˉ</rt><rp>)</rp></ruby>** **<ruby>of<rp>(</rp><rt>ˇ</rt><rp>)</rp></ruby>** the room.
+
+### 动宾短语
+
+主语后的助动词、动词和宾语，往往都是上扬；但如果宾语直接在句尾时，宾语会下降。
+
+<ruby>He<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> **<ruby>arrives<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby>** **<ruby>home<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby>** late.
+
+<ruby>She<rp>(</rp><rt>ˊ</rt><rp>)</rp></ruby> **<ruby>does<rp>(</rp><rt>ˇ</rt><rp>)</rp></ruby>** the **<ruby>housework<rp>(</rp><rt>ˉ</rt><rp>)</rp></ruby>**.
+
+## 节奏
+
+重读词之间的间隔大致相同，非重读词会变快或弱读。
+
+I want to go.（变成 /I *wanna* go./）
+
 # 口语发音
 
 - 口语发音与单个单词发音的对比

@@ -1590,21 +1590,26 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：用来展示东亚文字注音或字符注释。
 
-	```html
-	<ruby>
-	  汉字
-	  <rp>(</rp>
-	  <rt>hàn zì</rt>
-	  <rp>)</rp>
-	</ruby>
-	
-	<ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
-	```
+  ```html
+  <ruby>
+    汉字
+    <rp>(</rp>
+    <rt>hàn zì</rt>
+    <rp>)</rp>
+  </ruby>
+  
+  <ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
+  ```
 
 - **渲染效果**：<ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
 - **说明**
-	- **`<rp>(</rp>`** 表示在不支持 `ruby` 的浏览器中显示的**备用字符**。
-	- `<rb>` 元素已被弃用，不再使用。
+  - **`<rp>(</rp>`** 表示在不支持 `ruby` 的浏览器中显示的**备用字符**。
+  - `<rb>` 元素已被弃用，不再使用。
+
+- 特殊标注
+
+    - 拼音声调：ˉˊˇˋ
+
 
 ## [文本方向 `<bdo>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo)
 
