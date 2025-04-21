@@ -634,6 +634,40 @@
         The products available at this location may have come into contact with peanuts, nuts or other allergens.  
         该地点提供的产品可能接触到花生、坚果或其他过敏原。
 
+## cost
+
+- **词义**
+
+    表示某物的价格是多少，引申表示某事所付出的代价  
+    vt. 花费（金钱、代价）  
+    n. 花销
+
+- **相关词汇**
+
+    过去式和过去分词：cost
+
+    关于“花费”的辨析详见 **辨析词 | 花费**
+
+- **vt. 花费**
+
+    - **sth. cost sb. 金钱/代价.**
+
+        The meal cost us about £40.  
+        这顿饭花了我们约40英镑。
+
+        That one mistake almost cost him his life.  
+        那一个差错几乎使他丧命。
+
+    - **sth. cost 金钱**
+
+        I didn't get it because it cost too much.  
+        因为那东西太昂贵我没买。
+
+- **n. 花销**
+
+    A new computer system has been installed at a cost of £80 000.  
+    新的计算机系统已安装，费用为8万英镑。
+
 ## cross
 
 - **词义**
@@ -918,6 +952,45 @@
 
 # P
 
+## pay
+
+- **词义**
+
+    v. 支付（金钱）
+
+    n. 薪水
+
+- **相关词汇**
+
+    过去式和过去分词：paid
+
+    关于“花费”的辨析详见 **辨析词 | 花费**
+
+- **v. 支付（金钱）**
+
+    - **sb. pay (钱) for sth.**
+
+        I'll pay for the tickets.  
+        我来买票。
+
+        I paid $10 for the ticket.  
+        我为这张票付了10美元。
+
+    - **sb. pay sb. 钱**
+
+        He paid the waiter $50.  
+        他给服务员50美元。
+
+    - **sb. pay to do sth.**
+
+        She paid to enter the club.  
+        她付钱进了俱乐部。
+
+- **n. 薪水**
+
+    Her job is hard work, but the pay is good.  
+    她工作虽辛苦，但薪水不低。
+
 ## present
 
 - **词义**
@@ -1063,6 +1136,47 @@
     sociaty n. 社会  
     society n. 社会；协会，社团
 
+## spend
+
+- **词义**
+
+    v. 花费（金钱、时间、精力）；（在某处）度过（一段时间）  
+    n. 花销
+
+- **相关词汇**
+
+    过去式和过去分词：spent  
+    关于“花费”的辨析详见 **辨析词 | 花费**
+    
+- **v. 花费（时间、金钱、精力）**
+
+    - **sb. spend 时间/金钱/精力 on sth.**
+
+        She **spent** £100 **on** a new dress.  
+        她花100英镑买了一条新连衣裙。
+
+    - **sb. spend 时间/金钱/精力 (in) doing sth.**
+
+        Engineers **spend** much time and energy **(in) developing** brilliant solutions.  
+        工程师们花费很多时间和精力来开发完美的解决方案。
+
+    - **sb. have spent 时间/金钱/精力**
+
+        By the end of the holiday I had spent all my money.  
+        到假期结束时，我已经花光了自己所有的钱。
+
+- **v. （在某处）度过（一段时间）**
+
+    - **sb. spend 时间 + 地点状语**
+
+        We're going to spend three days in the country.  
+        我们打算去乡下待三天。（新概念1-67）
+
+- **n. 花销**
+
+    The average spend at the cafe is £10 a head.  
+    在咖啡馆的人均消费是10英镑。
+
 ## stress
 
 - **词义**
@@ -1102,6 +1216,42 @@
         你能介绍几个便宜些的旅馆么？
 
 # T
+
+## take
+
+- **词义**
+
+    v. 携带  
+    v. 花费（时间）
+
+- **相关词汇**
+
+    过去式：tooke
+
+    过去分词：token
+
+    关于“携带”的辨析详见 **辨析词 | 携带**
+
+    关于“花费”的辨析详见 **辨析词 | 花费**
+
+- **v. 携带**
+
+    - **take sth. to sp.**：带走
+
+        Take this letter to the post office.  
+        把信带到邮局。
+
+    - **take sth. with sb.**：随身携带
+
+        I forgot to take my bag with me when I got off the bus.  
+        我下公共汽车时忘了拿包。
+
+- **v. 花费（时间）**
+
+    - **It takes sb. 时间 to do sth.**
+
+        It took me 3 hours to finish the report.  
+        我花了3个小时完成报告。
 
 ## think
 
