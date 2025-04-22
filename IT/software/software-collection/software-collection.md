@@ -1454,9 +1454,46 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 
 # PowerToys
 
-PowerToys 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。其中的 PowerRename 可以结合正则表达式批量修改文件名。
+[PowerToys](https://learn.microsoft.com/zh-cn/windows/powertoys/) 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。
 
-- [托管在 GitHub 上](https://github.com/microsoft/PowerToys)
+**安装方法**：
+
+- [在 GitHub 上下载](https://github.com/microsoft/PowerToys)
+- 或通过 Microsoft Store 搜索 “PowerToys” 安装最新版。
+- 安装后，会在系统托盘显示一个 PowerToys 图标。
+
+- [官方文档](https://learn.microsoft.com/zh-cn/windows/powertoys/)
+
+## PowerRename
+
+[PowerRename](https://learn.microsoft.com/zh-cn/windows/powertoys/powerrename) 用于执行批量重命名、搜索和替换文件名称。
+
+- 右键单击 File Explorer 中的一个或多个选定文件，并选择 **使用 PowerRename 重命名**。
+- 可以结合正则表达式批量修改文件名。
+
+## File Locksmith
+
+[File Locksmith](https://learn.microsoft.com/zh-cn/windows/powertoys/file-locksmith) 是一个 Windows shell 扩展，用于检查文件正在被哪些进程使用。 
+
+- 有时候想删除一个文件，系统提示正在使用中，无法删除。
+- 右键单击 File Explorer 中的一个或多个选定文件，并选择 **使用 Locksmith 解锁**。
+- 可结束进程。
+
+## Always On Top
+
+[Always On Top](https://learn.microsoft.com/zh-cn/windows/powertoys/always-on-top) 可将窗口固定在其他窗口之上。可使用 `Win + Ctrl + T` 进行激活。
+
+## 颜色选取器
+
+[颜色选取器](https://learn.microsoft.com/zh-cn/windows/powertoys/color-picker)可以提取屏幕中的颜色色值，可使用 `Win + Shift + C` 进行激活。
+
+## 文本提取器
+
+[文本提取器](https://learn.microsoft.com/zh-cn/windows/powertoys/text-extractor)可复制图片中的文本。 可使用 `Win + Shift + T` 进行激活。
+
+## PowerToys Run
+
+[PowerToys Run](https://learn.microsoft.com/zh-cn/windows/powertoys/run) 可帮助立即搜索和打开应用。 可使用 `Alt + Space` 进行激活。
 
 # Prometheus
 
