@@ -418,14 +418,20 @@
 
 - **词义**
 
-    vt. “花费得起”（费用/时间）或“承担得起”（某种代价）  
+    vt. “花费得起（金钱）”或“承担得起（某种代价）”  
     vt. 提供
 
-- **句型**
+- **相关词汇**
 
-    - 常用于 be able to 或 can 之后
+    affordable  adj. 负担得起的  
+    affordability n. 负担能力  
+    关于“花费”的辨析详见 **辨析词 | 花费**
 
-    - **can afford sth.**
+- **vt. “花费得起（金钱）”或“承担得起（某种代价）”**
+
+    - **常用于 be able to 或 can 之后**
+
+    - **can afford 钱/sth.**
 
         They can’t afford the medical fee.  
         他们承担不起医药费。
@@ -435,10 +441,10 @@
         I can’t afford to quit my job right now.  
         我现在辞不起职。
 
-    - **当意为“提供”时**
+- **vt. 提供**
 
-        The hotel affords a beautiful view of the ocean.  
-        酒店提供海景享受。
+    The hotel affords a beautiful view of the ocean.  
+    酒店提供海景享受。
 
 ## afraid
 
@@ -795,6 +801,41 @@
         他在使用新软件时遇到困难。
 
 # F
+
+## fail
+
+- **词义**
+
+    原意为“失败”，引申表示“未能完成某事”：不及格，衰退，倒闭等。  
+    v. 失败；未完成；不及格  
+    n. 不及格（与 pass 相反）
+
+- **相关词汇**
+
+    failure n. 失败  
+    failing n. 弱点，缺点  
+    succeed v. 成功  
+    pass n. 及格
+
+- **v. 失败；未完成；不及格**
+
+    - **fail to do sth. = fail in (doing) sth.**：失败
+
+        She failed to attend the meeting.  
+        她未能参加会议。
+
+        He failed in business.  
+        他经商失败。
+
+    - **fail sth.**：不及格
+
+        I failed the test.  
+        我考试没及格。
+
+- **n. 不及格**
+
+    I got three passes and one fail.  
+    我考试三门及格，一门不及格。
 
 ## far
 
@@ -1187,11 +1228,27 @@
 - **相关词汇**
 
     strength n. 力量  
-    strengthen v. 增强
-
-- **辨析**
-
+    strengthen v. 增强  
     关于“力量”的辨析，详见 **辨析词 | 力量**
+
+## succeed
+
+- **词义**
+
+    v. 成功
+
+- **相关词汇**
+
+    success n. 成功  
+    successful adj. 成功的  
+    successfully adv. 成功地  
+    unsuccessful adj. 不成功的  
+    unsuccessfully adv. 不成功地  
+
+- **succeed in doing sth. = do sth. successfully**
+
+    He succeeded in solving the problem.  
+    他成功地解决了这个问题。
 
 ## suggest
 
