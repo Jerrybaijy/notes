@@ -894,6 +894,51 @@
         She forgot to post the letter.  
         她忘记去寄信了。
 
+# H
+
+## hurry
+
+- **词义**
+
+    n. 匆忙  
+    v. 匆忙；催促
+
+- **相关词汇**
+
+    hurried adj. 匆忙的  
+    hurriedly adv. 匆忙地
+
+- **in a hurry = hurriedly**：adv. 匆忙地
+
+    He had to leave in a hurry.  
+    他不得不赶快离开了。
+
+- **be in a hurry to do sth.**：急于做某事（状态）
+
+    My daughter is in such a hurry to grow up.  
+    我女儿恨不得一下子就长大。
+
+- **hurry to do sth.**：急于做某事（动作）
+
+    She hurried to catch the last train.  
+    她急着赶上最后一班火车。
+
+- **hurry sb. up**：催促
+
+    Hurry up! We'll be late.  
+    快点！我们要迟到了。
+
+    He hurried me up.  
+    他催我快点。
+
+- **hurry sb. + 状态**：催促
+
+    The teacher hurried the students into the classroom.  
+    老师催学生赶快进教室。
+
+    I was hurried out of the room.  
+    我被催着离开了房间。
+
 # I
 
 ## increase
@@ -1310,6 +1355,19 @@
         It took me 3 hours to finish the report.  
         我花了3个小时完成报告。
 
+## telephone
+
+- **词义**
+
+    n. 电话  
+    vi. vt. 打电话
+
+- **telephone sb. 给某人打电话**
+
+- **telephone sp. 往某地打电话**
+
+- **answer the telephone 接电话**
+
 ## think
 
 - **词义**
@@ -1406,3 +1464,24 @@
 
     visualized adj. 可视化的  
     visualization n. 可视化
+
+# W
+
+## way
+
+- **词义**
+
+    n. 路
+
+    n. 方法
+
+- **相关词汇**
+
+    street n. 街
+
+- **n. 路**
+
+    - **the way to**：通往...的路
+
+        Can you tell me the way to King Street?  
+        您能告诉我到国王街的路怎么走么？
