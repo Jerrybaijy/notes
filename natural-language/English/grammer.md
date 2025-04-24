@@ -1308,9 +1308,9 @@ They were all dressed as clowns.
 
 ### 一般现在时
 
-一般现在时由**动词原形/单三**表示：**do/does**
+一般现在时由**动词原形**表示：**do/does**；否定形式：**don't do** / **doesn't do**
 
-当主语是第三人称单数时，动词应该变为单三形式，其它为动词原形。
+当主语是第三人称单数时，肯定形式的动词应该变为单三形式，其它为动词原形。
 
 - I **am** a student.
 
@@ -1320,7 +1320,9 @@ They were all dressed as clowns.
 
 一般现在时的用法：
 
-- 表示经常性、习惯性的动作或存在的状态。常与 often，always，usually，sometimes，every day，occasionally，never，seldom，generally，rarely，once a week，at weekends，on Sundays 等连用。
+- 表示经常性、习惯性的动作或存在的状态。
+
+- 常与 often，always，usually，sometimes，every day，occasionally，never，seldom，generally，rarely，once a week，at weekends，on Sundays 等连用。
 
     I leave home for school at 7 every morning.  
     我每天早上七点从家出发去学校。
@@ -1353,17 +1355,17 @@ They were all dressed as clowns.
 
 ### 一般过去时
 
-一般过去时由**动词过去式**表示：**did**
+一般过去时由**动词过去式**表示：**did**，过去式没有单三变化；否定形式：**didn't do**
 
 She went to school yesterday. 她昨天去学校了。
 
 ### 一般将来时
 
-一般将来时由“**will/shall + 动词原形**”表示：**will/shall do**，助动词没有单三变化。
+一般将来时由“**will/shall + 动词原形**”表示：**will/shall do**，助动词没有单三变化；否定形式：**won't/shan't do**
 
 表示一般将来时的几个句型：
 
-- **基本用法**：will/shall do
+- **will/shall do**：一般将来时的基本用法
 
     The company will launch a new version of the software in July.  
     该公司将在七月份发行软件的新版本。
@@ -1381,7 +1383,7 @@ She went to school yesterday. 她昨天去学校了。
     The train is arriving soon.  
     火车就要到了。
 
-- **be about to do** 表示客观上马上要发生的事，一般与when连用
+- **be about to do** 表示客观上马上要发生的事，一般与 when 连用
 
     I'm not about to stop when I'm so close to success.  
     成功离我如此近,我不打算停下来。
@@ -1393,7 +1395,7 @@ She went to school yesterday. 她昨天去学校了。
 
 ### 现在进行时
 
-现在进行时由“**be 动词 + 现在分词**”表示：**be doing**；be 动词有单三变化。
+现在进行时由“**be 动词 + 现在分词**”表示：**be doing**，be 动词有单三变化；否定形式：**be not doing**
 
 She is singing now. 她正在唱歌。
 
@@ -1411,10 +1413,9 @@ She is singing now. 她正在唱歌。
 
 ### 现在完成时
 
-现在完成时由“**have/has + 过去分词**”表示：**have/has done**，助动词有单三变化。
+现在完成时由“**have/has + 过去分词**”表示：**have/has done**，助动词有单三变化；否定形式：**havn't/hasn't done**
 
 常与现在完成时连用的状语有 already，yet，recently，lately，never，ever，before，since then，ever since，for a long time，in the past/last few years，up to now，so far 等。
-
 
 **现在完成时的用法：**
 

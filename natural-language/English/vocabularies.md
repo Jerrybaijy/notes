@@ -8,13 +8,6 @@
 
     I think you should help him. After all, he is your friend.  
     我想你应该帮助他。毕竟，他是你的朋友。
-    
-- **soon after 不久以后**
-
-- **afterward adv. 后来**
-
-    Mary went to work, and afterward she went to dinner.  
-    玛丽去上班，然后再去吃饭。
 
 # A
 
@@ -1485,3 +1478,40 @@
 
         Can you tell me the way to King Street?  
         您能告诉我到国王街的路怎么走么？
+
+## worth
+
+- **词义**
+
+    adj. 值得的  
+    n. 价值
+
+- **相关词汇**
+
+    wothy adj. 值得的  n. 重要人物
+    worthiness n. 值得，有价值
+    worthful adj. 有价值的  
+    worthless adj. 没有价值的
+
+- worth 是介词性形容词，不能接 to do
+
+- **be worth + sth./doing sth.**：值得
+
+    The watch is worth 500 dollars.  
+    这块表值500美元。
+
+    This book is worth reading.  
+    这本书值得一读。
+
+- **be worthy of sth./doing sth.**：值得
+
+    He is worthy of praise.  
+    他值得表扬。
+
+    She is worthy of being respected.  
+    她值得被尊敬。
+
+- **It is worthy to do sth.**：值得
+
+    It is worthy to note that...  
+    值得注意的是...
