@@ -1277,11 +1277,14 @@
 
 - **相关词汇**
 
-    success n. 成功  
-    successful adj. 成功的  
-    successfully adv. 成功地  
-    unsuccessful adj. 不成功的  
-    unsuccessfully adv. 不成功地  
+    ```
+    success（n. 成功）
+    ├─ succeed（v. 成功）
+    ├─ successful（adj. 成功的）
+    │  └─ successfully（adv. 成功地）
+    └─ unsuccessful（adj. 不成功的）
+       └─ unsuccessfully（adv. 不成功地）
+    ```
 
 - **succeed in doing sth. = do sth. successfully**
 
