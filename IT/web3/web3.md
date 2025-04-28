@@ -136,6 +136,10 @@ Web3 钱包并不直接存储加密货币（加密货币都存储在区块链中
 - 登录币安
 - 使用二维码或 Google Drive 备份的文件，再加上相应的恢复密码
 
+## MetaMask
+
+- 可在 **设置 > 安全与隐私** 找到私钥助记词。
+
 # BTC
 
 比特币（Bitconin，简称 BTC）是一种去中心化加密货币，由一个化名为中本聪（ Satoshi Nakamoto ）的人或组织在2009年创建，但中本聪的真实身份至今未知。比特币是第一个应用区块链技术的加密货币。
@@ -174,7 +178,7 @@ Web3 钱包并不直接存储加密货币（加密货币都存储在区块链中
 
 ### TVL
 
-总锁仓量（Total Value Locked，简称 TVL）是去中心化金融（DeFi）领域中的一个重要指标，用于衡量某个 DeFi 协议中锁定的总价值。TVL 反映了 DeFi 协议的规模和受欢迎程度。它是通过计算用户存入该协议的所有资产的总价值，包括借贷、流动性提供、质押等。
+总锁仓量（Total Value Locked，简称 TVL）是 DeFi 的一个重要指标，用于衡量某个 DeFi 协议中锁定的总价值。TVL 反映了 DeFi 协议的规模和受欢迎程度。它是通过计算用户存入该协议的所有资产的总价值，包括借贷、流动性提供、质押等。
 
 ## DeFiLlama
 
@@ -230,6 +234,49 @@ DApps（去中心化应用，Decentralized Applications）是基于区块链技�
 
 去中心化身份（ Decentralized Identity，简称 DID ），是一种基于区块链技术的身份认证方式，使得用户无需依赖于任何中心化组织或服务提供商，就能够拥有并控制自己的身份信息。在这个系统中，用户的身份数据被加密并分散存储在区块链网络上，用户可以自主管理其身份证明和相关数据，使用私钥进行安全验证，以此确保身份信息的可靠性和隐私性。ENS（ Ethereum Name Service ）是一个典型的 DID 项目。
 
-元宇宙
+# 元宇宙
 
-供应链管理
+# 供应链管理
+
+# Fantom
+
+## Fantom
+
+Fantom 是一个 Layer-1 区块链平台，致力于克服区块链的“不可能三角”（去中心化、安全性和扩展性）。
+
+- **主网名**：Opera
+- **原生代币**：
+    - FTM 是 Fantom 网络的核心代币
+    - S Token 是 Sonic 链的原生代币
+- **生态优势**：兼容 EVM
+- **产品线**：
+    - Fantom 是区块链平台
+    - Sonic 是技术升级
+    - Sonic Labs 是项目孵化器，基于 Sonic 技术栈开发。
+
+## FeeM
+
+[FeeM](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-81d4-bc3c-ecba462d4c14) (Fee Monetization)  本质上是一种 Gas 费用分润机制，Fantom 中初始分成比例为 **15%**，而在 Sonic 中这一比例将逐步提高到 **90%**。
+
+## Sonic Gateway
+
+[Sonic Gateway](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-81f1-9674-f40503fa22b5) 是 Sonic Labs 推出的去中心化**跨链桥**，旨在实现 Ethereum 与 Sonic 区块链之间的安全资产转移。
+
+## Sonic 的共识机制
+
+[Sonic 的共识机制](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-8161-a6e8-dec9e4a8a90a)是以异步拜占庭容错 (aBFT) 和有向无环图 (DAG) 为基础的一种新型共识设计。
+
+### aBFT
+
+[异步拜占庭容错](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-81c6-ae75-e3502998dfa7)（aBFT）是分布式系统中一种强大的**容错机制**，旨在解决网络延迟和恶意行为对共识的影响。
+
+### DAG
+
+[有向无环图](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-81d4-8953-fedad75099c0)（Directed Acyclic Graphs，简称  DAG）支持多个交易并行执行，而非严格按顺序。
+
+## 部署合约
+
+- [在 Sonic 测试链部署合约](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-8180-9f87-e410c6d883f8)
+- [编译的版本选择](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-816b-8473-ee95220ac535)
+    - **编译器版本**：指的是用于将 Solidity 源代码编译为字节码的编译器版本。
+    - **EVM 版本**指的是合约生成的字节码将针对的以太坊虚拟机版本，即区块链节点运行的程序执行环境。它的作用是执行智能合约代码并确保所有节点就区块链的状态达成共识。

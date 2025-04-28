@@ -1,4 +1,4 @@
-# Java 基础
+# Java
 
 - [Java 官方文档](https://dev.java/learn/)
 
@@ -6,7 +6,7 @@
 
 ### JDK
 
-JDK（Java Development Kit）是一个用于开发 Java 应用程序的工具包。它包含了**Java 编译器（javac）**、**Java 虚拟机（JVM）**、**Java 运行时环境（JRE）**和 **其他工具和类库** 等。
+JDK（Java Development Kit）是一个用于开发 Java 应用程序的工具包。它包含了**Java 编译器（javac）**、**Java 虚拟机（JVM）**、**Java 运行时环境（JRE）**和 **其他工具和类库** 等。
 
 #### Windows
 
@@ -90,9 +90,9 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
   }
   ```
 
-## 变量
+## 声明变量
 
-- 由于 Java 中声明变量时要使用相应数据类型的关键字。
+- 在 Java 中，声明变量时要指定相应的**数据类型**。
 
   ```java
   // 声明原始数据类型的变量时，不使用 new 关键字。
