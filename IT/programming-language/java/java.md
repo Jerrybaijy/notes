@@ -438,6 +438,15 @@ for (int i=0; i<=5; i++) {
 }
 ```
 
+可用“for 循环 + 索引”进行遍历
+
+```java
+String[] arr = {"中国", "上海", "北京" };
+for (int i = 0; i < arr.length; i++) {
+    System.out.println(arr[i]);  // 中国 上海 北京
+}
+```
+
 ## for-each 循环
 
 for-each 循环用于直接遍历
@@ -452,15 +461,6 @@ for (数据类型 变量名 : 数组或集合){
 String[] arr = { "中国", "上海", "北京" };
 for (String data : arr) {
     System.out.println(data); // 中国 上海 北京
-}
-```
-
-还可用索引思想遍历
-
-```java
-String[] arr = {"中国", "上海", "北京" };
-for (int i = 0; i < arr.length; i++) {
-    System.out.println(arr[i]);  // 中国 上海 北京
 }
 ```
 

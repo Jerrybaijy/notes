@@ -28,7 +28,13 @@
 
 - **标识符规范**
 - **命名习惯**
-    - **合约名**：大驼峰
+    - **合约**：大驼峰
+    - **结构体**：大驼峰
+    - **结构体属性**：num_Student
+    - **函数**：小驼峰
+    - **函数参数**：小驼峰
+    - **局部变量和状态变量**：小驼峰
+    - **常量**：大蛇形
 
 ## 注释
 
@@ -169,6 +175,39 @@ address add3 = add2; //隐式转换
 address1.transfer(5);
 ```
 
+## string
+
+```solidity
+string myString = "I will be back!";
+
+//String 作为参数时必须指定其存储的位置，在大多数场景中都使用 memory
+constructor(string memory name_, string memory symbol_) {
+    _name = name_;
+    _symbol = symbol_;
+}
+```
+
+要连接字符串，我们可以使用 string.concat 函数。
+
+```solidity
+//定义两个字符串变量（str_1 和 str_2）
+string memory str_1 = "hello ";
+string memory str_2 = "world";
+
+//将上面的两个字符串变量传递给 concat 函数，
+//该函数将返回这两个字符串的拼接结果"helloworld"
+string memory result = string.concat(str_1, str_2);
+```
+
+在 Solidity 中，字符串的**长度**通常使用 *uint256* 类型来表示。要确定 Solidity 中字符串的长度，可以使用内置的 bytes 类型，该类型表示动态的 bytes 数组。bytes 类型有一个 length 属性，用来返回数组中的 bytes 数量。通过它我们可以得到字符串的长度。
+
+```solidity
+//值为 hello 的字符串变量
+string hi = "hello";
+//我们将字符串转换为 bytes，然后调用 length 函数获取长度
+uint256 len = bytes(hi).length;
+```
+
 ## mapping
 
 映射（mapping）是一种键值对类型。
@@ -180,6 +219,175 @@ mapping(键 => 值) 变量名;
 ```solidity
 mapping(address => uint) balance;
 ```
+
+增删改查
+
+```solidity
+// 增
+balance[address(0x123)] = 10;///这将为地址 0x123 分配一个新值
+
+// 改
+balance[address(0x123)] = 20;//这将把值从 10 更新为 20
+
+// 查
+uint b = balance[address(0x123)];
+
+// 删
+delete balance[address(0x123)];
+```
+
+如果要查询的键不存在，则会返回这个值类型的默认值。 例如 uint 的默认值是0，bool 的默认值是 false 。
+
+删除实际上等同于将该值指定为默认值。因此，在执行删除操作后，仍然可以通过访问相应键的方式来获取该元素的值，只不过该值现在是**默认值**而已。
+
+## struct
+
+在 Solidity 中，结构体（struct）是一种用户自定义的数据类型，其中可以包含多个不同类型的属性。
+
+用 {} 将其属性括起来，{} 里面每个属性用“；”隔开，结构体属性的定义与状态变量的定义相同，只是没有作用域这个概念。
+
+```solidity
+struct Student {
+    string name;
+    uint256 age;
+}
+```
+
+初始化结构体；结构体只能够存储在像 mapping，array 这样的引用类型当中。
+
+```solidity
+Student memory student = Student(1, 18, "Alice");
+```
+
+访问和修改结构体
+
+```solidity
+//访问
+string name = student.name;
+
+//修改
+student.name = "Thomas";
+```
+
+## array
+
+### 定长数组
+
+```solidity
+uint256[3] public numbers; // 定义一个长度为3的定长数组
+
+//我们需要使用[元素，元素，元素]的形式为定长数组赋值。
+//需要特别注意的是，所有元素的类型必须一致。
+//因此在定长数组的定义中，只需要在方括号中指定第一个元素的类型即可（对应下方的[uint256(10), 20, 30]）。
+function setNumbers() public {
+  uint256[3] memory tempArray = [uint256(10), 20, 30]; // 定义一个临时的长度为3的定长数组
+  numbers = tempArray; // 将临时数组赋值给定长数组
+}
+```
+
+### 动态数组
+
+```solidity
+uint256[] arr;
+```
+
+静态数组需要在声明时确定的固定大小，而动态数组的大小可以在运行时进行调整。动态数组只占用实际元素所需内存空间，节省内存。
+
+### 数组方法
+
+追加：只有 **storage** 动态数组有 push() 方法；只允许在数组的末尾添加新的元素，而且注意一次只能 push 一个元素。
+
+```solidity
+arr.push(1);
+```
+
+删除：使用 pop() 方法删除；只允许删除数组的末尾元素，而且注意一次只能 pop 一个元素。
+
+```solidity
+arr.pop();
+```
+
+获取数组长度：数组的长度是用 *uint256* 类型来存储的。
+
+```solidity
+uint256 len = arr.length;
+```
+
+索引
+
+```solidity
+uint256 num = arr[10];
+```
+
+
+
+# 数据位置
+
+每种引用类型都有一个数据位置，指明变量值应该存储在哪里。Solidity 提供3种类型的数据位置：**storage**、**memory** 和 **calldata**。
+
+| 数据位置 | 作用范围 | 是否可变 |
+| :---: | :---: | :---: |
+| storage | contract | yes |
+| memory | function | yes |
+| calldata | function | no |
+
+而 storage 则是作用于合约的存储结构。这个位置用于存储合约的状态变量。存储在此位置的数据被持久化存储在以太坊区块链上，因此消耗的gas更大。状态变量默认存储在 storage ，我们不需要显示指定。
+
+```solidity
+//这个字符串状态变量存储在 storage 中
+string str;
+
+function a() {
+	//函数体
+}
+```
+
+memory 在 Solidity 中表示一个临时数据存储区域。与 storage 不同，存储在 memory 中的数据在函数调用结束时会被清空，不具有持久性。
+
+要在 memory 中声明变量，您需要在函数内部定义它，然后加上关键字 memory。
+
+```solidity
+pragma solidity ^0.8.4;
+
+contract MemoryExample {
+    function example() public pure {
+        // tempStr 是存储在memory中的局部变量
+        string memory tempStr = "Hello, World!";
+    }
+}
+```
+
+# 控制结构
+
+## 选择结构
+
+Solidity 中有 `if`、`三元表达式`、`require` 语句、和 `assert` 语句四种选择结构。其中 `if`、`三元表达式` 的用法同 Java。
+
+### require
+
+**require** 是一种类似于断言的语法，如果 *require* 当中的条件没有满足，此次调用将会失败。
+
+为了检查条件是否成立，我们使用关键字 require，然后跟上条件，如果不满足条件，则报告错误消息。
+
+```solidity
+require(条件表达式, "错误消息")
+```
+
+```solidity
+require(a > 5, "Value must be greater than 5");
+```
+
+Solidity 暂不支持中文编码，错误信息请用英文编写。错误消息为可选参数。
+
+### assert
+
+## 循环结构
+
+Solidity 中有 `for` 、`while`  和 `do-while` 三种循环结构。
+
+Solidity 中没有 `for-each` 循环，可用“for 循环 + 索引”进行遍历，详见 Java。
+
+
 
 # 函数
 
@@ -248,9 +456,7 @@ function sum(int a, int b) public returns(int) {
 }
 ```
 
-## 函数分类
-
-### Pure 函数
+## Pure 函数
 
 纯函数（pure）不会访问以及修改任何状态变量。
 
@@ -264,7 +470,7 @@ function add() public pure {
 
 使用 pure 定义的函数被调用时不用花费 gas，并且可以保证该函数不会改变状态变量，有益于开发时的模块化管理。
 
-### View 函数
+## View 函数
 
 视图函数（view）不会修改状态变量，但可能使用（读取）状态变量。
 
@@ -273,6 +479,21 @@ function add() public view {
 	//function body 
 }
 ```
+
+## constructor 函数
+
+**构造函数**（constructor）是在合约部署时自动调用且只被调用一次的函数。
+
+```solidity
+constructor(int a, bool b) {
+	//函数体
+}
+```
+
+**构造函数没有名称和返回值**：
+
+- 名称，不需要显式命名。由于每个类中只能有一个构造函数，它将在对象创建时被自动调用。
+- 返回值，没有返回值，因为构造函数是用于初始设置的。
 
 # 合约
 
@@ -302,3 +523,22 @@ contract 合约名称 { }
 contract UniswapV2Pair{ }
 ```
 
+# 其它
+
+## msg.sender
+
+**msg.sender** 可以获取本次调用的调用者地址。
+
+要使用 msg.sender，我们不需要定义它。它在函数中处处可用，代表函数的调用者。
+
+```solidity
+function a() {
+    //这里 msg.sender 没有定义为状态变量
+    //也不作为参数传入，我们可以直接使用它
+    address a = msg.sender;
+}
+```
+
+tx.origin 表示最初初始化整个调用链的账户地址。
+
+<img src="assets/image-20250428135238980.png" alt="image-20250428135238980" style="zoom:50%;" />
