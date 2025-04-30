@@ -622,25 +622,7 @@ contract MemoryExample {
 
 ## 选择结构
 
-Solidity 中有 `if`、`三元表达式`、`require` 语句、和 `assert` 语句四种选择结构。其中 `if`、`三元表达式` 的用法同 Java。
-
-### require
-
-**require** 是一种类似于断言的语法，如果 *require* 当中的条件没有满足，此次调用将会失败。
-
-为了检查条件是否成立，我们使用关键字 require，然后跟上条件，如果不满足条件，则报告错误消息。
-
-```solidity
-require(条件表达式, "错误消息")
-```
-
-```solidity
-require(a > 5, "Value must be greater than 5");
-```
-
-Solidity 暂不支持中文编码，错误信息请用英文编写。错误消息为可选参数。
-
-### assert
+Solidity 中有 `if` 和 `三元表达式` 两种选择结构，用法同 Java。
 
 ## 循环结构
 
@@ -817,9 +799,7 @@ contract Owned {
 }
 ```
 
-
-
-# 事件
+# event
 
 **事件**（ *Event* ）是一种用于在智能合约中发布通知和记录信息的机制。它可以在合约执行期间发出消息，允许外部应用程序监听并对这些消息做出响应。事件是合约的可继承成员。
 
@@ -890,6 +870,293 @@ uint256 blockNumber = block.number;
 //通过 block.timestamp 返回当前区块的时间戳，并赋值给了变量 blockTimestamp。
 uint256 blockTimestamp = block.timestamp;
 ```
+
+# library
+
+## library
+
+**库**（library）是一种特殊的合约，主要用于**重用代码**。库包含其他合约可以调用的函数。
+
+库的限制：
+
+- 库不能定义状态变量；
+- 库不能发送接收以太币；
+- 库不可以被销毁，因为它是无状态的；
+- 库不能继承和被继承；
+
+**库的定义和调用**：
+
+```solidity
+//定义一个名为MathLibrary的库。
+library MathLibrary {}
+
+//调用 MathLibrary 库中的 dosome 函数
+MathLibrary.dosome();
+```
+
+## using-for
+
+**using-for** 语句可以将库中的函数附加到某个类型中。
+
+```solidity
+//将 MathLibrary 库附加到 uint256 类型上
+using MathLibrary for uint256;
+
+//uint256 类型的变量 y 直接调用 MathLibrary 库中的 dosome 函数
+y.dosome();
+```
+
+如果库函数有参数的话，变量 a.functionName() 的方式会自动把变量作为函数的第一个参数传入。
+
+## import
+
+**导入**（import）用于在一个 Solidity 合约中导入其他文件中的合约或库。类似 Python。
+
+```solidity
+// 导入 MathLibrary.sol 文件的合约和库
+import "./MathLibrary.sol";
+```
+
+# Inheritance
+
+## Interitance
+
+使用 is 关键字可以继承任意一个合约或接口。功能同面向对象中的继承。
+
+```solidity
+// 合约 ChildContract 继承自合约 ParentContract
+contract ChildContract is ParentContract { }
+```
+
+在继承时，继承合约需要在自己的构造函数中初始化被继承合约的构造函数。
+
+```solidity
+//这里我们继承了ERC20并在构造函数中对ERC20中的构造函数进行了初始化。
+constructor(string name, string symbol) ERC20(name, symbol) { }
+```
+
+**多重继承**：一个合约可以从多个父合约继承功能和属性。
+
+```solidity
+//合约 Child 会继承自合约 Parent1 和 Parent2
+contract Child is Parent1, Parent2 { }
+```
+
+## virtual 和 overide
+
+继承中的**标记**（virtual）是指在父合约中标记一个函数式为可重写的，然后在子合约中使用 override 进行覆盖。
+
+继承中的**函数覆盖**（override）是指在子合约中重写一个函数，以替换掉父合约中原有的同名函数。
+
+```solidity
+//在父合约中，使用 virtual 标记 foo 函数为可重写的。
+function foo() public virtual returns (uint) { }
+
+//在子合约中，使用 override 覆盖父合约中的 foo 函数。
+function foo() public override { }
+```
+
+## super
+
+在子合约函数内使用 `super.functionName` 即可调用父合约中的函数。
+
+```solidity
+//调用父合约中的init函数
+super.init();
+```
+
+```solidity
+//在多重继承中，super 会调用最后一个合约的函数
+contract Child is Parent1, Parent2 {
+    function foo() public {
+        super.foo(); // 这会调用Paren2的foo函数
+    }
+}
+```
+
+# interface
+
+**接口**（interface）定义了一组函数头，但没有函数体。
+
+定义接口
+
+```solidity
+interface 接口名 {
+    function 函数名(参数列表) external;
+}
+```
+
+```solidity
+interface MyInterface {
+    function myFunction(uint256 x) external;
+}
+```
+
+- 接口不能实现任何函数；
+
+- 接口无法继承其它合约，但可以继承其它接口；
+
+- 接口中的所有函数声明必须是 external 的；
+- 参数列表可以只有参数类型而省略参数名；
+
+- 接口不能定义构造函数；
+
+- 接口不能定义状态变量；
+
+调用接口的合约
+
+```solidity
+//接口名(合约地址).函数名()
+MyInterface(contractAddress).myFunction();
+```
+
+
+
+
+
+```solidity
+pragma solidity ^0.8.0;
+
+// 定义接口
+interface MyInterface {
+    //接口中的函数必须定义为external，因为设计接口的目的是提供给外部调用。
+    //函数接口中，参数名可以省略，myFunction(uint256)的写法也是可以的。
+    function myFunction(uint256 x) external returns (uint256);
+}
+
+// 实现接口的合约
+contract MyContract {
+    function myFunction(uint256 x) external returns (uint256) {
+        // 实现函数的具体逻辑
+        return x * 2;
+    }
+}
+
+// 使用接口调用函数的合约
+contract CallerContract {
+    MyInterface public myContract;
+
+    //传入MyContract的地址
+    constructor(address contractAddress) {
+        myContract = MyInterface(contractAddress);
+    }
+    //通过接口调用MyContract中的myFunction函数（接口调用我们会在下一节中详细讲解）
+    function callInterface(uint256 value) public returns (uint256) {
+        uint256 result = myContract.myFunction(value);
+        return result;
+    }
+}
+```
+
+## 存钱罐示例
+
+### 定义接口
+
+```solidity
+// 这个接口就像存钱罐的「遥控器按钮」
+interface IPiggyBank {
+    // 声明两个按钮：存钱和查余额
+    function saveMoney() external payable; // 存钱（需要转账）
+    function checkBalance() external view returns (uint); // 查余额
+}
+```
+
+### 实现接口的合约
+
+```solidity
+contract PiggyBank is IPiggyBank { // 必须实现接口里的所有按钮
+    uint public money; // 存的钱
+
+    // 存钱按钮的具体功能
+    function saveMoney() external payable override {
+        money += msg.value; // 把转账的钱存进去
+    }
+
+    // 查余额按钮的具体功能
+    function checkBalance() external view override returns (uint) {
+        return money; 
+    }
+}
+```
+
+### 调用接口的合约
+
+```solidity
+contract Person {
+    IPiggyBank public myPiggyBank; // 声明自己有一个存钱罐遥控器
+
+    // 设置存钱罐的位置（传入地址）
+    constructor(address _piggyBankAddress) {
+        myPiggyBank = IPiggyBank(_piggyBankAddress); // 绑定到具体的存钱罐
+    }
+
+    // 用遥控器存钱的功能
+    function save() external payable {
+        myPiggyBank.saveMoney{value: msg.value}(); // 调用存钱罐的存钱功能
+    }
+
+    // 用遥控器查余额的功能
+    function check() external view returns (uint) {
+        return myPiggyBank.checkBalance(); // 调用存钱罐的查余额功能
+    }
+}
+```
+
+# 异常处理
+
+## require
+
+**require** 是一种类似于断言的语法，如果 *require* 当中的条件没有满足，此次调用将会失败。
+
+为了检查条件是否成立，我们使用关键字 require，然后跟上条件，如果不满足条件，则报告错误消息。
+
+```solidity
+require(条件表达式, "错误消息")
+```
+
+```solidity
+require(a > 5, "Value must be greater than 5");
+```
+
+Solidity 暂不支持中文编码，错误信息请用英文编写。错误消息为可选参数。
+
+## [revert](https://docs.soliditylang.org/zh-cn/v0.8.24/control-structures.html#revert)
+
+revert() 函数用于终止函数的执行并回滚所有状态变化。如果附带一个字符串参数，则提供自定义的错误消息；否则它会自动返回一个默认的错误消息。
+
+```solidity
+revert("Custom error message");
+revert();
+```
+
+## assert
+
+assert 语句应用于检查一些被认为永远不应该发生的情况（例如除数为0）。
+
+```solidity
+//确认a 和 b在任何情况下都相等
+assert(a == b);
+```
+
+## error
+
+**错误**（error）是一种自定义的**数据类型**。
+
+```solidity
+//使用error关键字定义了一个名为MyCustomError的自定义错误类型
+//并指定错误消息类型为string 和 uint。
+error MyCustomError(string message, uint number);
+
+function process(uint256 value) public pure {
+    //检查value是否超过了100。如果超过了限制，我们使用revert语句抛出自定义错误
+    //并传递错误消息"Value exceeds limit" 和value。
+    if (value > 100) revert MyCustomError("Value exceeds limit", value);
+}
+```
+
+## try-catch
+
+用法同 Java。
 
 # 其它
 
