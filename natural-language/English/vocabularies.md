@@ -5,12 +5,17 @@
 - **句型**
 - **固定搭配**
 
-## 待总结
-
-- **after all 毕竟**
-
-    I think you should help him. After all, he is your friend.  
-    我想你应该帮助他。毕竟，他是你的朋友。
+```
+提示词：将 port 作为核心词，模仿下面 polis 的格式，对与 port 相关的词进行树形图归档；不需要词性分支，但在中文释义前添加词性的缩写；不需要短语词组。最后在代码块中给我源码。
+polis（n. 城邦；政治）
+├─ polity（n. 政体）
+├─ policy（n. 政策）
+├─ politic（adj. 精明的）
+│  ├─ political（adj. 政治的）
+│  ├─ politician（n. 政客）
+│  └─ politics（n. 政治事务）
+└─ police（n. 警察）
+```
 
 # A
 
@@ -1019,6 +1024,10 @@ They were all dressed as clowns.
 
 - **in the front of**：在...前面（内部）
 
+# F
+
+# G
+
 # H
 
 ## hurry
@@ -1148,6 +1157,14 @@ They were all dressed as clowns.
 
     - **inform sb. that + 从句**
 
+# J
+
+# K
+
+# L
+
+# M
+
 # N
 
 ## near
@@ -1254,6 +1271,42 @@ They were all dressed as clowns.
     Her job is hard work, but the pay is good.  
     她工作虽辛苦，但薪水不低。
 
+## port
+
+- **词义**： n. 港口；计算机端口；设备接口（如USB）
+- 来源于拉丁语 “portare”（意为“携带”）或与“港口”有关的“portus”
+
+```
+port（n. 港口；携带）
+├─ airport（n. 机场）
+├─ passport（n. 护照）
+├─ porter（n. 搬运工；乘务员）
+├─ portable（adj. 便携的）
+├─ deport（v. 驱逐；举止）
+│  ├─ deportation（n. 驱逐出境）
+│  └─ deportee（n. 被驱逐者；遭放逐者）
+├─ import（v./n. 进口）
+│  ├─ importer（n. 进口商；输入者）
+│  └─ importable（adj. 可进口的）
+├─ export（v./n. 出口）
+│  ├─ exporter（n. 出口商；输出者）
+│  └─ exportable（adj. 可出口的；可输出的）
+├─ transport（v./n. 运输）
+│  └─ transportation（n. 运输系统）
+├─ support（v./n. 支持）
+│  ├─ supporter（n. 支持者）
+│  ├─ supportive（adj. 支持的）
+│  └─ supporting（adj. 支撑的）
+├─ report（v./n. 报告）
+│  ├─ reporter（n. 记者）
+│  ├─ reportage（n. 新闻报道）
+│  └─ reportedly（adv. 据报道）
+├─ comport（v. 表现）
+├─ important（adj. 重要的）
+│  └─ importance（n. 重要性）
+└─ opportunity（n. 机会）
+```
+
 ## present
 
 - **词义**
@@ -1273,6 +1326,8 @@ They were all dressed as clowns.
 - **句型**
 
     in the present = at present = presently adv. 当前，现在
+
+# Q
 
 # R
 
@@ -1709,3 +1764,9 @@ They were all dressed as clowns.
 
     It is worthy to note that...  
     值得注意的是...
+
+# X
+
+# Y
+
+# Z
