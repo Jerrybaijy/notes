@@ -281,10 +281,19 @@ Fantom 是一个 Layer-1 区块链平台，致力于克服区块链的“不可�
     - **编译器版本**：指的是用于将 Solidity 源代码编译为字节码的编译器版本。
     - **EVM 版本**指的是合约生成的字节码将针对的以太坊虚拟机版本，即区块链节点运行的程序执行环境。它的作用是执行智能合约代码并确保所有节点就区块链的状态达成共识。
 
-## Sonic Airdrop
+## [Sonic Airdrop](https://docs.soniclabs.com/funding/sonic-airdrop)
 
-- [Sonic Points](https://my.soniclabs.com/points)
-- [Whitelisted Assets](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-points?ref=blog.soniclabs.com#whitelisted-assets)
+空投将使用 Sonic Points、Sonic Gems 和 Game Gems 进行分配
+
+### [Sonic Points](https://my.soniclabs.com/points)
+
+- **Passive Points**: Earn passive points by **holding** [whitelisted assets](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-points#whitelisted-assets) directly in their Web3 wallets.
+
+- **Activity Points**: Earn activity points by **deploying** [whitelisted assets](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-points#whitelisted-assets) as liquidity on participating apps.
+
+- **App Points (Gems)**: Earn **S token** on DApp. Similar to [Sonic Gems](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-gems).
+
+- ~~**Sonic Arcade Points**: Earn **airdrop points** by **playing games**. Similar to [Game Gems](https://docs.soniclabs.com/funding/sonic-airdrop/game-gems). **Closed!**~~
 
 # Uniswap
 
