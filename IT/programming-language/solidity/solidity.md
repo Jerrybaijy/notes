@@ -622,7 +622,7 @@ contract MemoryExample {
 
 ## 选择结构
 
-Solidity 中有 `if` 和 `三元表达式` 两种选择结构，用法同 Java。
+Solidity 中有 `if` 和 `三元表达式` 两种选择结构，用法同 Java。
 
 ## 循环结构
 
@@ -855,7 +855,7 @@ event LogChange(uint indexed id);
 
 ## block.number
 
-block.number 是一个全局变量，表示当前区块的编号，数据类型为 uint。
+block.number 是一个全局变量，表示当前区块的**编号**，数据类型为 uint。
 
 ```solidity
 //通过block.number返回当前区块的高度，并赋值给了变量blockNumber。
@@ -864,7 +864,7 @@ uint256 blockNumber = block.number;
 
 ## block.timestamp
 
-**block.timestamp** 是一个全局变量，表示当前区块的时间戳，数据类型为 uint。
+**block.timestamp** 是一个全局变量，表示当前区块的**时间戳**，数据类型为 uint。
 
 ```solidity
 //通过 block.timestamp 返回当前区块的时间戳，并赋值给了变量 blockTimestamp。
@@ -887,7 +887,7 @@ uint256 blockTimestamp = block.timestamp;
 **库的定义和调用**：
 
 ```solidity
-//定义一个名为MathLibrary的库。
+//定义一个名为 MathLibrary 的库。
 library MathLibrary {}
 
 //调用 MathLibrary 库中的 dosome 函数
@@ -917,22 +917,26 @@ y.dosome();
 import "./MathLibrary.sol";
 ```
 
+# abstract
+
+**抽象合约**（abstract）定义了一些函数和状态变量，并且实现了一些通用的功能。它是一种不能被实例化的合约，只能被继承并作为其他合约的基类。抽象合约和普通合约的唯一区别在于抽象合约不能被部署。
+
+定义抽象合约
+
+```solidity
+//定义一个抽象合约 ContractA
+abstract contract ContractA { }
+```
+
 # Inheritance
 
 ## Interitance
 
-使用 is 关键字可以继承任意一个合约或接口。功能同面向对象中的继承。
+使用 **is** 关键字可以继承任意一个合约或接口。功能同面向对象中的继承。
 
 ```solidity
 // 合约 ChildContract 继承自合约 ParentContract
 contract ChildContract is ParentContract { }
-```
-
-在继承时，继承合约需要在自己的构造函数中初始化被继承合约的构造函数。
-
-```solidity
-//这里我们继承了ERC20并在构造函数中对ERC20中的构造函数进行了初始化。
-constructor(string name, string symbol) ERC20(name, symbol) { }
 ```
 
 **多重继承**：一个合约可以从多个父合约继承功能和属性。
@@ -940,6 +944,80 @@ constructor(string name, string symbol) ERC20(name, symbol) { }
 ```solidity
 //合约 Child 会继承自合约 Parent1 和 Parent2
 contract Child is Parent1, Parent2 { }
+```
+
+## 合约继承接口
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 定义一个接口
+interface MyInterface {
+    function interfaceFunction() external;
+}
+
+// 合约继承接口
+contract MyContract is MyInterface {
+    function interfaceFunction() external override {
+        // 实现接口中定义的函数
+    }
+}
+```
+
+## 接口继承接口
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 父接口
+interface ParentInterface {
+    function parentFunction() external;
+}
+
+// 子接口继承父接口
+interface ChildInterface is ParentInterface {
+    function childFunction() external;
+}
+```
+
+## 合约继承合约
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 父合约
+contract ParentContract {
+    uint public value;
+
+    constructor(uint _value) {
+        value = _value;
+    }
+
+    function parentFunction() public {
+        // 函数体
+    }
+}
+
+// 子合约继承父合约
+contract ChildContract is ParentContract {
+    // 在继承时，子合约需要在自己的构造函数中初始化被父合约的构造函数。
+    constructor(uint _parentValue) ParentContract(_parentValue) {
+        // 函数体
+    }
+
+    // 重写父合约函数（可选）
+    function parentFunction() public override {
+        // 重写后的函数体
+    }
+
+    // 子合约独有的函数（可选）
+    function childFunction() public {
+        // 子合约独有的函数体
+    }
+}
 ```
 
 ## virtual 和 overide
@@ -976,18 +1054,14 @@ contract Child is Parent1, Parent2 {
 
 # interface
 
+## 定义接口
+
 **接口**（interface）定义了一组函数头，但没有函数体。
 
-定义接口
-
 ```solidity
-interface 接口名 {
-    function 函数名(参数列表) external;
-}
-```
-
-```solidity
+// 定义一个接口 MyInterface
 interface MyInterface {
+    //定义一个 external 的函数，函数名为 myFunction
     function myFunction(uint256 x) external;
 }
 ```
@@ -1003,47 +1077,76 @@ interface MyInterface {
 
 - 接口不能定义状态变量；
 
-调用接口的合约
+## 实现接口
+
+实现接口就是在一个合约中实现接口的函数体
+
+```solidity
+// 定义一个实现接口的合约 MyContract
+contract MyContract {
+    //实现接口，即定义先前接口的函数体
+    function myFunction(uint256 x) external {
+        //函数体
+    }
+}
+```
+
+## 调用接口
 
 ```solidity
 //接口名(合约地址).函数名()
 MyInterface(contractAddress).myFunction();
 ```
 
+```solidity
+// 定义一个调用接口的合约 CallerContract
+contract CallerContract {
+    //定义实现合约的状态变量 myContract，类型为先前的接口 MyInterface
+    MyInterface public myContract;
 
+    //使用构造函数初始化实现合约，传入实现合约 MyContract 的地址
+    constructor(address contractAddress) {
+        myContract = MyInterface(contractAddress);
+    }
+    
+    function callInterface(uint256 value) public {
+        //调用 MyContract中 的 myFunction 函数，以达到调用接口的目的。
+        uint256 result = myContract.myFunction(value);
+        //其它函数体
+    }
+}
+```
 
+## 接口全过程
 
+此示例是前面定义接口、实现接口和调用接口的合并。
 
 ```solidity
 pragma solidity ^0.8.0;
 
 // 定义接口
 interface MyInterface {
-    //接口中的函数必须定义为external，因为设计接口的目的是提供给外部调用。
-    //函数接口中，参数名可以省略，myFunction(uint256)的写法也是可以的。
-    function myFunction(uint256 x) external returns (uint256);
+    function myFunction(uint256 x) external;
 }
 
-// 实现接口的合约
+// 实现接口
 contract MyContract {
-    function myFunction(uint256 x) external returns (uint256) {
-        // 实现函数的具体逻辑
-        return x * 2;
+    function myFunction(uint256 x) external {
+        //函数体
     }
 }
 
-// 使用接口调用函数的合约
+// 调用接口
 contract CallerContract {
     MyInterface public myContract;
 
-    //传入MyContract的地址
     constructor(address contractAddress) {
         myContract = MyInterface(contractAddress);
     }
-    //通过接口调用MyContract中的myFunction函数（接口调用我们会在下一节中详细讲解）
-    function callInterface(uint256 value) public returns (uint256) {
+    
+    function callInterface(uint256 value) public {
         uint256 result = myContract.myFunction(value);
-        return result;
+        //其它函数体
     }
 }
 ```
@@ -1061,7 +1164,7 @@ interface IPiggyBank {
 }
 ```
 
-### 实现接口的合约
+### 实现接口
 
 ```solidity
 contract PiggyBank is IPiggyBank { // 必须实现接口里的所有按钮
@@ -1079,7 +1182,7 @@ contract PiggyBank is IPiggyBank { // 必须实现接口里的所有按钮
 }
 ```
 
-### 调用接口的合约
+### 调用接口
 
 ```solidity
 contract Person {
@@ -1208,5 +1311,171 @@ function receivePayment() payable public { }
 
 ```solidity
 uint256 value = msg.value;
+```
+
+## 哈希算法
+
+哈希计算是一种将任意长度的数据转换为固定长度哈希值的过程。
+
+Keccak256 和 SHA3 是用于哈希计算的两个算法。SHA3 还处于标准化阶段，所以在合约代码中直接使用 Keccak256 是最清晰和推荐的做法。
+
+**keccak256** 是一个全局函数，可以在函数中直接使用该函数进行哈希计算。
+
+- 输入：只接受 bytes 类型的输入。
+- 输出：bytes32 长度的字节。
+
+```solidity
+//这里我们将字符串”HackQuest"转换成字节数组后，进行哈希的结果赋值给了 res 变量。
+bytes32 res = keccak256(bytes("HackQuest"));
+```
+
+## receive 函数
+
+**receive** 函数只用于处理接收 ETH。
+
+```solidity
+//这里我们定义一个空的 receive 函数。
+receive() external payable { }
+```
+
+- 一个合约最多只有一个；
+- 而且不能有任何的参数；
+- 不能返回任何值；
+- 必须包含 external 和 payable；
+- 并非每个合约都需要 receive 函数。
+
+## fallback 函数
+
+**fallback** 函数充当了合约的默认处理函数，用于处理没有明确定义处理方式的消息。
+
+```solidity
+//这里我们定义了一个空的fallback函数。
+fallback() external { }
+```
+
+- 必须包含 external；
+- 并非每个合约都需要 receive 函数。
+
+fallback 函数会在三种情况下被调用：
+
+- 调用者尝试调用一个合约中不存在的函数时；
+- 用户给合约发 Ether 但是 *receive* 函数不存在；
+- 用户发 Ether，*receive* 存在，但是同时用户还发了别的数据（ msg.data 不为空）。
+
+## selfdestruct 函数
+
+**selfdestruct** 是 solidity 中的一个内置函数，调用该函数后，将触发合约的自毁，自毁将该合约从区块链中删除，在删除前，他还会将合约中存储的剩余 ETH 转移给指定的账户。
+
+```solidity
+//我们调用 selfdestruct 函数，指定将合约中剩余的 ETH 发送给 targetAddress 地址。
+selfdestruct(targetAddress);
+```
+
+## 时间
+
+在 Solidity 中，时间戳以秒为单位表示时间；此外，Solidity 还提供了一些全局变量，如 days，weeks，供开发者使用，以便更方便地表示一段时间。
+
+<img src="assets/image-20250505144508608.png" alt="image-20250505144508608" style="zoom:50%;" />
+
+使用 minutes， hours， days， weeks 这样的时间单位时，需要在前面指定单位的数量。此外，由于月和年的天数不固定，所以不使用 `1 months` 和 `1 years` 这样的数量单位。
+
+```solidity
+uint256 minute = 1 minutes;
+uint256 minute = minutes; // 错误用法
+uint256 hour = 1 hours;
+uint256 day = 1 days;
+uint256 week = 1 weeks;
+```
+
+## ABI
+
+**应用二进制接口**（Application Binary Interface，简称 **ABI**）是与以太坊智能合约交互的标准。在 EVM 处理数据时，所有的数据根据 **ABI** 标准进行编码。
+
+abi 是一个全局变量。
+
+### 编码
+
+#### abi.encode
+
+全局函数 **abi.encode()** 用于对给定的参数进行 **ABI** 编码，返回一个字节数组。
+
+```solidity
+bytes memory encodedData = abi.encode(param1, param2);
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract AbiEncodeExample {
+    function encodeParameters(
+        uint256 param1,
+        string memory param2
+    ) public pure returns (bytes memory) {
+        
+        //编码
+        bytes memory encodedData = abi.encode(param1, param2);
+        return encodedData;
+    }
+}
+```
+
+- **param1** 和 **param2**：这是要编码的参数。根据参数的类型，它们将被编码为**字节数组**。
+- **encodedData**：这是一个 *bytes* 类型的变量，用于存储通过 `abi.encode(param1, param2)` 对参数进行编码后的数据。编码后的数据将按照参数的类型和顺序进行紧凑的编码，形成一个动态字节数组。
+
+#### abi.encodePacked
+
+全局函数 **abi.encodePacked()** 也用于对给定的参数进行 **ABI** 编码，返回一个字节数组；但不会为每个参数添加其类型的长度信息，也不会在参数之间添加分隔符，结果是一个紧密打包的字节数组。
+
+```solidity
+bytes memory encodedData = abi.encodePacked(param1, param2);
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract AbiEncodeExample {
+    function encodeParameters(
+        uint256 param1,
+        string memory param2
+    ) public pure returns (bytes memory) {
+        
+        //编码
+        bytes memory encodedData = abi.encodePacked(param1, param2);
+        return encodedData;
+    }
+}
+
+```
+
+**abi.encodePacked** 不能编码结构体和嵌套数组。
+
+`abi.encode` 和 `abi.encodePack` 主要区别在于数据的压缩。
+
+- **abi.encode** 使用标准的分隔符和填充物进行组织。就像将物品放入不同的袋子，并每个袋子都有标签和规范，以确保物品的结构和类型完整性。尽管可能需要更多的空间，但在解包时更容易处理和识别每个物品。
+- **abi.encodePacked** 将参数紧密打包，就像将物品紧密地放在一起，没有任何额外的填充物或间隔。这种打包方式可以节省空间，但在解包时需要小心处理，因为物品之间没有明确的分隔符。
+
+### 解码
+
+全局函数 **abi.decode()** 用于对编码后的数据进行解码。第一个参数是编码数据的**字节数组**，第二个参数是解码后的**数据类型**。
+
+```solidity
+//对编码数据 encodedData 进行解码，解码后的数据类型为 address
+address decodedAddress = abi.decode(encodedData, (address));
+
+//多个参数
+(uint256 decodedUint, address decodedAddress, string memory decodedString) = abi.decode(encodedData, (uint256, address, string));
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract DecodeExample {
+    function decodeAddress(bytes memory encodedData) public pure returns (address) {
+        
+        //解码
+        address decodedAddress = abi.decode(encodedData, (address));
+        return decodedAddress;
+    }
+} 
 ```
 
