@@ -166,6 +166,8 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 # 数据类型
 
+Java 是一种静态类型语言，在声明变量时，必须先指定其数据类型。
+
 ## 数据类型分类
 
 - [Primitive Data Types (8)](https://dev.java/learn/language-basics/primitive-types/)
@@ -197,9 +199,7 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 ## 数据类型转换
 
-- Java 是一种**静态**、**强类型**编程语言。
-
-- 虽然 Java 是强类型语言，但支持 `字符串 + 数值` 的隐式跨类型操作。
+- 虽然 Java 是**强类型**语言，但支持 `字符串 + 数值` 的隐式跨类型操作。
 
     ```java
     System.out.println("hello" + 5); // 输出：hello5
