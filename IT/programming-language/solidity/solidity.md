@@ -52,7 +52,18 @@ pragma 的作用是确保代码能够在特定版本的编译器下正确编译�
 
 使用关键字 pragma 并不会直接更改编译器的版本。它也不会启用或禁用编译器的功能。它只是指示编译器检查它的版本是否与 *pragma* 要求的版本匹配。如果不匹配，则编译器会报错。
 
+#### [ABI 编译指示](https://docs.soliditylang.org/zh-cn/v0.8.24/layout-of-source-files.html#abi)
+
 ### [导入其它源文件](https://docs.soliditylang.org/zh-cn/v0.8.24/layout-of-source-files.html#import)
+
+Solidity 支持导入语句，以帮助模块化您的代码， 这些语句与 JavaScript 中可用的语句相似（从 ES6 开始）。 然而，Solidity 并不支持 [默认导出](https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export#description) 的概念。
+
+**导入**（import）用于在一个 Solidity 合约中导入其他文件中的合约或库。类似 Python。
+
+```solidity
+// 导入 MathLibrary.sol 文件的合约和库
+import "./MathLibrary.sol";
+```
 
 ### [注释](https://docs.soliditylang.org/zh-cn/v0.8.24/layout-of-source-files.html#index-9)
 
@@ -126,97 +137,6 @@ pragma 的作用是确保代码能够在特定版本的编译器下正确编译�
     - **事件参数**：小驼峰
 - **枚举**：大驼峰
 - **修饰符**：大驼峰
-
-# [可见性和 getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter)
-
-## 可见性说明符
-
-状态变量和函数的可见性通过**[可见性说明符](https://docs.soliditylang.org/zh-cn/v0.8.24/cheatsheet.html#index-10)**表示，可写在如下位置：
-
-- **状态变量**：放在变量名之前
-- **函数**：参数列表和返回参数列表之间
-
-```solidity
-//状态变量的可见性
-变量类型 可见性说明符 变量名;
-
-//函数的可见性
-function 函数名() 可见性说明符 { }
-```
-
-```solidity
-uint public a;
-function aa() public { 
-	//funciton body 
-}
-```
-
-- **public**：合约内、外均可见
-- **private**：仅在内部可见（继承合约不可见）
-- **external**：仅在外部可见（仅可修饰函数）
-- **internal**：仅在内部可见（继承合约可见）（默认可见性）
-
-| 可见性 | 适用对象 | 可访问范围 | Getter生成 | 默认可见性 | 特性与限制 |
-| :---: | :---: | :---: | :---: | :---: | :---: |
-| public | 状态变量、函数 | 合约内外 | 状态变量：是<br>函数：不适用 | 否 | 状态变量自动生成Getter；函数参数复制到内存，Gas消耗较高 |
-| private | 状态变量、函数 | 仅当前合约内部（继承合约不可见） | 否 | 否 | 数据仍存于链上，继承合约不可访问 |
-| external | 函数 | 仅外部调用（内部需`this.func()`） | 不适用 | 否 | 参数用`calldata`存储，Gas优化；不可修饰状态变量 |
-| internal | 状态变量、函数 | 当前合约及继承合约 | 否 | 状态变量：是<br>函数：否 | 状态变量默认可见性；函数需显式声明，常用于继承体系共享逻辑 |
-
-在下面的例子中，合约 `D`, 可以调用 `c.getData()` 来检索状态存储中 `data` 的值， 但不能调用 `f`。 合约 `E` 是从合约 `C` 派生出来的，因此可以调用 `compute`。
-
-```solidity
-// SPDX-License-Identifier: GPL-3.0
-pragma solidity >=0.4.16 <0.9.0;
-
-contract C {
-    uint private data;
-
-    function f(uint a) private pure returns(uint b) { return a + 1; }
-    function setData(uint a) public { data = a; }
-    function getData() public view returns(uint) { return data; }
-    function compute(uint a, uint b) internal pure returns (uint) { return a + b; }
-}
-
-// 这将不会编译
-contract D {
-    function readData() public {
-        C c = new C();
-        uint local = c.f(7); // 错误：成员 `f` 不可见
-        c.setData(3);
-        local = c.getData();
-        local = c.compute(3, 5); // 错误：成员 `compute` 不可见
-    }
-}
-
-contract E is C {
-    function g() public {
-        C c = new C();
-        uint val = compute(3, 5); // 访问内部成员（从继承合约访问父合约成员）
-    }
-}
-```
-
-## [状态变量的可见性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#id3)
-
-| 修饰符 | 可访问范围 | 自动生成 Getter | 典型应用场景 | 特性与限制 |
-| :---: | :---: | :---: | :---: | :---: |
-| public | 合约内外均可读取（通过自动生成的 Getter 函数） | 是 | 需对外公开的状态（如代币总供应量） | 自动生成同名 Getter 函数；存储数据仍可通过事件或链上分析获取 |
-| private | 仅在当前合约内部可访问（继承合约不可见） | 否 | 敏感数据（如管理员地址、内部计算中间值） | 编译后数据仍存于链上，仅限制合约层面的直接访问；继承合约不可见 |
-| internal | 当前合约及继承合约可访问 | 否 | 需在继承体系中共享的数据（如基础合约配置） | 默认可见性（未显式声明时）；与 `private` 类似但允许继承 |
-
-## [函数的可见性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#id4)
-
-Solidity 有两种函数调用：确实创建了实际 EVM 消息调用的**外部函数**和不创建 EVM 消息调用的**内部函数**。 此外，派生合约可能无法访问内部函数。 这就产生了四种类型的函数的可见性。Solidity 0.5 及之后：必须显式指定函数的可见性（之前是 public），否则编译报错！
-
-| 修饰符 | 可访问范围 | 典型应用场景 | 特性与限制 |
-| :---: | :---: | :---: | :---: |
-| public | 合约内外均可调用（包括其他合约、EOA用户、继承合约） | 需对外暴露的接口（如 DApp 前端交互）、状态变量自动生成 getter 函数 | 参数处理需复制到内存，Gas 消耗较高；默认可见性修饰符 |
-| private | 仅在当前合约内部可调用（继承合约不可见） | 内部工具函数、敏感逻辑（如权限校验） | 编译后仍可通过链上数据逆向分析，仅防止其他合约调用 |
-| external | 仅能通过外部调用（合约或用户），内部需通过 `this.func()` 调用 | 面向外部的高频接口（如代币转账）、需节省 Gas 的场景 | 参数以 `calldata` 存储，避免内存复制，Gas 更优；不支持内部直接调用 |
-| internal | 当前合约及其继承合约可调用 | 可复用逻辑封装（如代币铸造）、继承体系中的工具函数 | 参数处理与 `public` 类似 |
-
-## [Getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter-functions)
 
 # 变量
 
@@ -618,7 +538,7 @@ Solidity 中有 `continue`、`break`、`return`、`revert`、`require` 和 `asse
 
 - 关于 continue 和 break：Solidity **不支持标签跳转**（如跳出多层嵌套循环），仅能在单层循环中使用。
 
-# [contract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#contracts)
+# [Contract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#contracts)
 
 **合约**（Contract）类似于面向对象语言中的类。 
 
@@ -675,7 +595,146 @@ contract ContractB {
 
 还有一些特殊种类的合约，叫做**库合约**和**接口合约**。
 
-# 函数
+## [可见性和 getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter)
+
+### 可见性说明符
+
+状态变量和函数的可见性通过**[可见性说明符](https://docs.soliditylang.org/zh-cn/v0.8.24/cheatsheet.html#index-10)**表示，可写在如下位置：
+
+- **状态变量**：放在变量名之前
+- **函数**：参数列表和返回参数列表之间
+
+```solidity
+//状态变量的可见性
+变量类型 可见性说明符 变量名;
+
+//函数的可见性
+function 函数名() 可见性说明符 { }
+```
+
+```solidity
+uint public a;
+function aa() public { 
+	//funciton body 
+}
+```
+
+- **public**：合约内、外均可见
+- **private**：仅在内部可见（继承合约不可见）
+- **external**：仅在外部可见（仅可修饰函数）
+- **internal**：仅在内部可见（继承合约可见）（默认可见性）
+
+| 可见性 | 适用对象 | 可访问范围 | Getter生成 | 默认可见性 | 特性与限制 |
+| :---: | :---: | :---: | :---: | :---: | :---: |
+| public | 状态变量、函数 | 合约内外 | 状态变量：是<br>函数：不适用 | 否 | 状态变量自动生成Getter；函数参数复制到内存，Gas消耗较高 |
+| private | 状态变量、函数 | 仅当前合约内部（继承合约不可见） | 否 | 否 | 数据仍存于链上，继承合约不可访问 |
+| external | 函数 | 仅外部调用（内部需`this.func()`） | 不适用 | 否 | 参数用`calldata`存储，Gas优化；不可修饰状态变量 |
+| internal | 状态变量、函数 | 当前合约及继承合约 | 否 | 状态变量：是<br>函数：否 | 状态变量默认可见性；函数需显式声明，常用于继承体系共享逻辑 |
+
+在下面的例子中，合约 `D`, 可以调用 `c.getData()` 来检索状态存储中 `data` 的值， 但不能调用 `f`。 合约 `E` 是从合约 `C` 派生出来的，因此可以调用 `compute`。
+
+```solidity
+// SPDX-License-Identifier: GPL-3.0
+pragma solidity >=0.4.16 <0.9.0;
+
+contract C {
+    uint private data;
+
+    function f(uint a) private pure returns(uint b) { return a + 1; }
+    function setData(uint a) public { data = a; }
+    function getData() public view returns(uint) { return data; }
+    function compute(uint a, uint b) internal pure returns (uint) { return a + b; }
+}
+
+// 这将不会编译
+contract D {
+    function readData() public {
+        C c = new C();
+        uint local = c.f(7); // 错误：成员 `f` 不可见
+        c.setData(3);
+        local = c.getData();
+        local = c.compute(3, 5); // 错误：成员 `compute` 不可见
+    }
+}
+
+contract E is C {
+    function g() public {
+        C c = new C();
+        uint val = compute(3, 5); // 访问内部成员（从继承合约访问父合约成员）
+    }
+}
+```
+
+### [状态变量的可见性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#id3)
+
+| 修饰符 | 可访问范围 | 自动生成 Getter | 典型应用场景 | 特性与限制 |
+| :---: | :---: | :---: | :---: | :---: |
+| public | 合约内外均可读取（通过自动生成的 Getter 函数） | 是 | 需对外公开的状态（如代币总供应量） | 自动生成同名 Getter 函数；存储数据仍可通过事件或链上分析获取 |
+| private | 仅在当前合约内部可访问（继承合约不可见） | 否 | 敏感数据（如管理员地址、内部计算中间值） | 编译后数据仍存于链上，仅限制合约层面的直接访问；继承合约不可见 |
+| internal | 当前合约及继承合约可访问 | 否 | 需在继承体系中共享的数据（如基础合约配置） | 默认可见性（未显式声明时）；与 `private` 类似但允许继承 |
+
+### [函数的可见性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#id4)
+
+Solidity 有两种函数调用：确实创建了实际 EVM 消息调用的**外部函数**和不创建 EVM 消息调用的**内部函数**。 此外，派生合约可能无法访问内部函数。 这就产生了四种类型的函数的可见性。Solidity 0.5 及之后：必须显式指定函数的可见性（之前是 public），否则编译报错！
+
+| 修饰符 | 可访问范围 | 典型应用场景 | 特性与限制 |
+| :---: | :---: | :---: | :---: |
+| public | 合约内外均可调用（包括其他合约、EOA用户、继承合约） | 需对外暴露的接口（如 DApp 前端交互）、状态变量自动生成 getter 函数 | 参数处理需复制到内存，Gas 消耗较高；默认可见性修饰符 |
+| private | 仅在当前合约内部可调用（继承合约不可见） | 内部工具函数、敏感逻辑（如权限校验） | 编译后仍可通过链上数据逆向分析，仅防止其他合约调用 |
+| external | 仅能通过外部调用（合约或用户），内部需通过 `this.func()` 调用 | 面向外部的高频接口（如代币转账）、需节省 Gas 的场景 | 参数以 `calldata` 存储，避免内存复制，Gas 更优；不支持内部直接调用 |
+| internal | 当前合约及其继承合约可调用 | 可复用逻辑封装（如代币铸造）、继承体系中的工具函数 | 参数处理与 `public` 类似 |
+
+### [Getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter-functions)
+
+# [Abstract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#abstract-contract)
+
+**抽象合约**（abstract）定义了一些函数和状态变量，并且实现了一些通用的功能。它是一种不能被实例化的合约，只能被继承并作为其他合约的基类。抽象合约和普通合约的唯一区别在于抽象合约不能被部署。
+
+定义抽象合约
+
+```solidity
+//定义一个抽象合约 ContractA
+abstract contract ContractA { }
+```
+
+# [Library](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#libraries)
+
+## Library
+
+**库**（library）是一种特殊的合约，主要用于**重用代码**。库包含其他合约可以调用的函数。
+
+库的限制：
+
+- 库不能定义状态变量；
+- 库不能发送接收以太币；
+- 库不可以被销毁，因为它是无状态的；
+- 库不能继承和被继承；
+
+**库的定义和调用**：
+
+```solidity
+//定义一个名为 MathLibrary 的库。
+library MathLibrary {}
+
+//调用 MathLibrary 库中的 dosome 函数
+MathLibrary.dosome();
+```
+
+## using-for
+
+**using-for** 语句可以将库中的函数附加到某个类型中。
+
+```solidity
+//将 MathLibrary 库附加到 uint256 类型上
+using MathLibrary for uint256;
+
+//uint256 类型的变量 y 直接调用 MathLibrary 库中的 dosome 函数
+y.dosome();
+```
+
+如果库函数有参数的话，变量 a.functionName() 的方式会自动把变量作为函数的第一个参数传入。
+
+# [Function](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#functions)
 
 ## 定义函数
 
@@ -692,6 +751,8 @@ function sum() {
 ```
 
 为了保持一致性，我们建议遵循此顺序：函数名称 、参数、作用域、状态可变性、返回值。
+
+通常在合约内定义函数，但它们也可以被定义在合约之外。合约之外的函数，也称为 “自由函数”，总是隐含着 `internal` 的可见性。 它们的代码会包含在所有调用它们的合约中，类似于库函数。自由函数不能直接访问变量 `this`，存储变量和不在其范围内的函数。
 
 ## 传参和返回值
 
@@ -946,63 +1007,6 @@ uint256 blockNumber = block.number;
 uint256 blockTimestamp = block.timestamp;
 ```
 
-# library
-
-## library
-
-**库**（library）是一种特殊的合约，主要用于**重用代码**。库包含其他合约可以调用的函数。
-
-库的限制：
-
-- 库不能定义状态变量；
-- 库不能发送接收以太币；
-- 库不可以被销毁，因为它是无状态的；
-- 库不能继承和被继承；
-
-**库的定义和调用**：
-
-```solidity
-//定义一个名为 MathLibrary 的库。
-library MathLibrary {}
-
-//调用 MathLibrary 库中的 dosome 函数
-MathLibrary.dosome();
-```
-
-## using-for
-
-**using-for** 语句可以将库中的函数附加到某个类型中。
-
-```solidity
-//将 MathLibrary 库附加到 uint256 类型上
-using MathLibrary for uint256;
-
-//uint256 类型的变量 y 直接调用 MathLibrary 库中的 dosome 函数
-y.dosome();
-```
-
-如果库函数有参数的话，变量 a.functionName() 的方式会自动把变量作为函数的第一个参数传入。
-
-## import
-
-**导入**（import）用于在一个 Solidity 合约中导入其他文件中的合约或库。类似 Python。
-
-```solidity
-// 导入 MathLibrary.sol 文件的合约和库
-import "./MathLibrary.sol";
-```
-
-# abstract
-
-**抽象合约**（abstract）定义了一些函数和状态变量，并且实现了一些通用的功能。它是一种不能被实例化的合约，只能被继承并作为其他合约的基类。抽象合约和普通合约的唯一区别在于抽象合约不能被部署。
-
-定义抽象合约
-
-```solidity
-//定义一个抽象合约 ContractA
-abstract contract ContractA { }
-```
-
 # Inheritance
 
 ## Interitance
@@ -1127,7 +1131,7 @@ contract Child is Parent1, Parent2 {
 }
 ```
 
-# interface
+# Interface
 
 ## 定义接口
 
