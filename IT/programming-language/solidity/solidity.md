@@ -822,6 +822,75 @@ contract A {
 }
 ```
 
+### 低级调用
+
+**低级调用**（low-level call）其实是直接和 **EVM** 交互的一种调用方式，因此它具有更高的灵活性。
+
+#### address.call
+
+`address.call` 表示向地址为 address 的目标合约发起一个函数调用。
+
+```solidity
+(bool success, bytes memory data) = targetAddress.call{value: amount}(abiEncodedData);
+```
+
+**`targetAddress.call{value: amount}(abiEncodedData)` 是一次低级调用**：
+
+- `targetAddress`：是目标合约的地址，是一个 *address* 类型变量。
+- `{value: amount}`：表示附带发送 `amount` 个 wei 的以太币，这是一个可选参数。
+- `abiEncodedData`：是目标合约函数的 ABI 编码数据（通过 abi.encodeWithSignature 或者 abi.encodeWithSelector 编码），通过这个数据，决定调用目标合约的哪个函数。
+
+**它返回一个包含两个元素的元组 `(bool, bytes memory)`**：
+
+- 第一个值是 `bool` 类型，表示调用是否成功（例如合约是否存在、调用没有 `revert` 等）；
+- 第二个值是 `bytes memory` 类型，表示被调用函数的返回数据（哪怕是空的）；
+- 这两个值会通过结构化赋值（用括号包裹），赋给 `success` 和 `data`。
+
+```solidity
+pragma solidity ^0.8.0;
+// 目标合约
+contract TargetContract {
+    uint256 public value;
+
+    //被调用的函数
+    function setValue(uint256 newValue) external {
+        value = newValue;
+    }
+}
+
+contract CallerContract {
+    function callTargetContract(
+        address targetAddress,
+        uint256 newValue
+    ) external {
+        //被调用的函数的ABI编码
+        bytes memory payload = abi.encodeWithSignature(
+            "setValue(uint256)",
+            newValue
+        );
+        
+        //调用目标合约的函数
+        //如果不使用 bytes data 返回值，可以不接收该返回值。
+        (bool success, ) = targetAddress.call(payload);
+        
+        //判断调用是否成功。
+        require(success, "Call to target contract failed");
+    }
+}
+```
+
+#### address.delegatecall
+
+由于部署的 Solidity 合约不可更改，那我们希望更新函数功能的话怎么办呢？我们先部署一个代理合约 A，在里面 delegatecall 合约 B 的功能。
+
+更新时，只需要更改合约 B 的地址变成合约 C，这样合约 A 就可以使用新版合约 C 的功能。
+
+delegatecall 会把要调用的函数放在本合约的代码上下文中执行。
+
+```solidity
+(bool success, bytes memory data) = address(targetAddress).delegatecall(abiEncodedData);
+```
+
 ## [状态可变性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#state-mutability)
 
 ### [Pure 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#pure)
@@ -905,7 +974,7 @@ contract Owned {
 
 **函数签名**是*函数名*+*参数字段类型*的字符串。没有空格，不用缩写。
 
-**函数签名**是一个函数的唯一标识符；它由*函数名*和*参数类型*组成，没有空格，不用缩写。在 Solidity 中，所有函数调用都通过*函数签名*作为唯一标识。
+**函数签名**是一个由*函数名*和*参数类型*组成的字符串，没有空格，不用缩写；它是一个函数的唯一标识符；在 Solidity 中，所有函数调用都通过*函数签名*作为唯一标识。
 
 ```solidity
 function hello(uint256 a, address b, bool c) {...}
@@ -1284,214 +1353,6 @@ contract Person {
 }
 ```
 
-# ABI
-
-**应用二进制接口**（Application Binary Interface，简称 **ABI**）是与以太坊智能合约交互的标准。在 EVM 处理数据时，所有的数据根据 **ABI** 标准进行编码。
-
-abi 是一个全局变量。
-
-## 编码
-
-### abi.encode
-
-全局函数 **abi.encode()** 用于对给定的参数进行 **ABI** 编码，返回一个字节数组。
-
-```solidity
-bytes memory encodedData = abi.encode(param1, param2);
-```
-
-```solidity
-pragma solidity ^0.8.0;
-
-contract AbiEncodeExample {
-    function encodeParameters(
-        uint256 param1,
-        string memory param2
-    ) public pure returns (bytes memory) {
-        
-        // 编码
-        bytes memory encodedData = abi.encode(param1, param2);
-        return encodedData;
-    }
-}
-```
-
-- **param1** 和 **param2**：这是要编码的参数。根据参数的类型，它们将被编码为**字节数组**。
-- **encodedData**：这是一个 *bytes* 类型的变量，用于存储通过 `abi.encode(param1, param2)` 对参数进行编码后的数据。编码后的数据将按照参数的类型和顺序进行紧凑的编码，形成一个动态字节数组。
-
-### abi.encodePacked
-
-全局函数 **abi.encodePacked()** 也用于对给定的参数进行 **ABI** 编码，返回一个字节数组；但不会为每个参数添加其类型的长度信息，也不会在参数之间添加分隔符，结果是一个紧密打包的字节数组。
-
-```solidity
-bytes memory encodedData = abi.encodePacked(param1, param2);
-```
-
-```solidity
-pragma solidity ^0.8.0;
-
-contract AbiEncodeExample {
-    function encodeParameters(
-        uint256 param1,
-        string memory param2
-    ) public pure returns (bytes memory) {
-        
-        // 编码
-        bytes memory encodedData = abi.encodePacked(param1, param2);
-        return encodedData;
-    }
-}
-
-```
-
-**abi.encodePacked** 不能编码结构体和嵌套数组。
-
-`abi.encode` 和 `abi.encodePack` 主要区别在于数据的压缩。
-
-- **abi.encode** 使用标准的分隔符和填充物进行组织。就像将物品放入不同的袋子，并每个袋子都有标签和规范，以确保物品的结构和类型完整性。尽管可能需要更多的空间，但在解包时更容易处理和识别每个物品。
-- **abi.encodePacked** 将参数紧密打包，就像将物品紧密地放在一起，没有任何额外的填充物或间隔。这种打包方式可以节省空间，但在解包时需要小心处理，因为物品之间没有明确的分隔符。
-
-### abi.encodeWithSignature
-
-全局函数 **abi.encodeWithSignature()** 用于对给定的*函数签名*和*参数*进行 **ABI** 编码，返回一个字节数组；这种编码方式可以快捷的将调用函数需要的信息打包。
-
-<img src="assets/image-20250505195955106.png" alt="image-20250505195955106" style="zoom:50%;" />
-
-```solidity
-abi.encodeWithSignature("myFunction(uint256,string)", 123, "Hello");
-```
-
-```solidity
-pragma solidity ^0.8.0;
-
-contract SignatureExample {
-    function dosome(uint256 number, string memory message) public pure {
-        // 函数体
-    }
-
-    function getEncodedSignature() public pure returns (bytes memory) {
-        // 使用 abi.encodeWithSignature() 编码dosome函数签名和参数
-        bytes memory encodedData = abi.encodeWithSignature(
-            "dosome(uint256,string)",
-            123,
-            "Hello"
-        );
-        return encodedData;
-    }
-}
-```
-
-### abi.encodeWithSelector
-
-全局函数 **abi.encodeWithSelector()** 用于对给定的*函数选择器*和*参数*进行 **ABI** 编码，返回一个字节数组；
-
-<img src="assets/image-20250505200543225.png" alt="image-20250505200543225" style="zoom:50%;" />
-
-```solidity
-// 根据获取选择器的方法不同，有两种方法对选择器和参数进行编码
-//方法一
-abi.encodeWithSelector(bytes4(keccak256("myFunction(uint256,string)")),123, "Hello");
-
-//方法二
-bytes4 selector = this.myFunction.selector;
-abi.encodeWithSelector(selector, 123, "Hello");
-```
-
-```solidity
-pragma solidity ^0.8.0;
-
-contract EncodeWithSelectorExample {
-    function myFunction(uint256 amount, string memory message) public pure {
-        // 函数体
-    }
-
-    function getEncodedData() public pure returns (bytes memory) {
-        // 获取函数选择器
-        bytes4 selector = this.myFunction.selector;
-
-        // 对选择器和参数进行编码
-        bytes memory encodedData = abi.encodeWithSelector(
-            selector,
-            123,
-            "Hello"
-        );
-        return encodedData;
-    }
-}
-```
-
-## 解码
-
-全局函数 **abi.decode()** 用于对编码后的数据进行解码。第一个参数是编码数据的**字节数组**，第二个参数是解码后的**数据类型**。
-
-```solidity
-//对编码数据 encodedData 进行解码，解码后的数据类型为 address
-address decodedAddress = abi.decode(encodedData, (address));
-
-//多个参数
-(uint256 decodedUint, address decodedAddress, string memory decodedString) = abi.decode(encodedData, (uint256, address, string));
-```
-
-```solidity
-pragma solidity ^0.8.0;
-
-contract DecodeExample {
-    function decodeAddress(bytes memory encodedData) public pure returns (address) {
-        
-        //解码
-        address decodedAddress = abi.decode(encodedData, (address));
-        return decodedAddress;
-    }
-} 
-```
-
-# 低级调用
-
-**低级调用**其实是直接和 **EVM**（以太坊虚拟机）交互的一种调用方式，因此它具有更高的灵活性。
-
-## address.call
-
-```solidity
-(bool success, bytes memory data) = address(targetAddress).call{value: amount}(abiEncodedData);
-```
-
-- **targetAddress**：是目标合约的地址。
-- **value**：是可选参数，用于向目标合约发送以太币。
-- **abiEncodedData**：是目标合约函数的ABI编码数据（通过 abi.encodeWithSignature 或者 abi.encodeWithSelector 编码）。
-
-```solidity
-pragma solidity ^0.8.0;
-//目标合约
-contract TargetContract {
-    uint256 public value;
-
-    function setValue(uint256 newValue) external {
-        value = newValue;
-    }
-}
-
-contract CallerContract {
-    function callTargetContract(
-        address targetAddress,
-        uint256 newValue
-    ) external {
-        //构造函数调用的ABI编码数据字段，
-        bytes memory payload = abi.encodeWithSignature(
-            "setValue(uint256)",
-            newValue
-        );
-        //如果不使用bytes data返回值，可以不接收该返回值。
-        (bool success, ) = targetAddress.call(payload);
-        //判断调用是否成功。
-        require(success, "Call to target contract failed");
-    }
-}
-```
-
-
-
-## 1
-
 # 异常处理
 
 ## require
@@ -1549,6 +1410,34 @@ function process(uint256 value) public pure {
 用法同 Java。
 
 # 其它
+
+## msg.data
+
+**msg.data** 是一个 *bytes* 类型，它包含了函数调用的原始数据。
+
+```solidity
+bytes memory data = msg.data;
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract DataContract {
+    bytes data;
+    function process() public returns (bytes memory) {
+        // 获取函数调用的原始数据
+        data = msg.data;
+
+        // 执行对data的处理逻辑
+        // ...
+
+        // 如果需要，可以将data解析为函数签名和参数
+        // ...
+
+        return data;
+    }
+}
+```
 
 ## msg.sender
 
@@ -1658,7 +1547,13 @@ fallback 函数会在三种情况下被调用：
 selfdestruct(targetAddress);
 ```
 
-## 时间
+# [单位和全局变量](https://docs.soliditylang.org/zh-cn/v0.8.24/units-and-global-variables.html#)
+
+## [单位](https://docs.soliditylang.org/zh-cn/v0.8.24/units-and-global-variables.html#index-0)
+
+### [以太坊单位](https://docs.soliditylang.org/zh-cn/v0.8.24/units-and-global-variables.html#ether)
+
+### [时间单位](https://docs.soliditylang.org/zh-cn/v0.8.24/units-and-global-variables.html#index-2)
 
 在 Solidity 中，时间戳以秒为单位表示时间；此外，Solidity 还提供了一些全局变量，如 days，weeks，供开发者使用，以便更方便地表示一段时间。
 
@@ -1672,4 +1567,165 @@ uint256 minute = minutes; // 错误用法
 uint256 hour = 1 hours;
 uint256 day = 1 days;
 uint256 week = 1 weeks;
+```
+
+## [ABI](https://docs.soliditylang.org/zh-cn/v0.8.24/units-and-global-variables.html#abi)
+
+**应用二进制接口**（Application Binary Interface，简称 **ABI**）是与以太坊智能合约交互的标准。在 EVM 处理数据时，所有的数据根据 **ABI** 标准进行编码。
+
+abi 是一个全局变量。
+
+### 编码
+
+#### abi.encode
+
+全局函数 **abi.encode()** 用于对给定的参数进行 **ABI** 编码，返回一个字节数组。
+
+```solidity
+bytes memory encodedData = abi.encode(param1, param2);
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract AbiEncodeExample {
+    function encodeParameters(
+        uint256 param1,
+        string memory param2
+    ) public pure returns (bytes memory) {
+        
+        // 编码
+        bytes memory encodedData = abi.encode(param1, param2);
+        return encodedData;
+    }
+}
+```
+
+- **param1** 和 **param2**：这是要编码的参数。根据参数的类型，它们将被编码为**字节数组**。
+- **encodedData**：这是一个 *bytes* 类型的变量，用于存储通过 `abi.encode(param1, param2)` 对参数进行编码后的数据。编码后的数据将按照参数的类型和顺序进行紧凑的编码，形成一个动态字节数组。
+
+#### abi.encodePacked
+
+全局函数 **abi.encodePacked()** 也用于对给定的参数进行 **ABI** 编码，返回一个字节数组；但不会为每个参数添加其类型的长度信息，也不会在参数之间添加分隔符，结果是一个紧密打包的字节数组。
+
+```solidity
+bytes memory encodedData = abi.encodePacked(param1, param2);
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract AbiEncodeExample {
+    function encodeParameters(
+        uint256 param1,
+        string memory param2
+    ) public pure returns (bytes memory) {
+        
+        // 编码
+        bytes memory encodedData = abi.encodePacked(param1, param2);
+        return encodedData;
+    }
+}
+
+```
+
+**abi.encodePacked** 不能编码结构体和嵌套数组。
+
+`abi.encode` 和 `abi.encodePack` 主要区别在于数据的压缩。
+
+- **abi.encode** 使用标准的分隔符和填充物进行组织。就像将物品放入不同的袋子，并每个袋子都有标签和规范，以确保物品的结构和类型完整性。尽管可能需要更多的空间，但在解包时更容易处理和识别每个物品。
+- **abi.encodePacked** 将参数紧密打包，就像将物品紧密地放在一起，没有任何额外的填充物或间隔。这种打包方式可以节省空间，但在解包时需要小心处理，因为物品之间没有明确的分隔符。
+
+#### abi.encodeWithSignature
+
+全局函数 **abi.encodeWithSignature()** 用于对给定的*函数签名*和*参数*进行 **ABI** 编码，返回一个字节数组；这种编码方式可以快捷的将调用函数需要的信息打包。
+
+<img src="assets/image-20250505195955106.png" alt="image-20250505195955106" style="zoom:50%;" />
+
+```solidity
+abi.encodeWithSignature("myFunction(uint256,string)", 123, "Hello");
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract SignatureExample {
+    function dosome(uint256 number, string memory message) public pure {
+        // 函数体
+    }
+
+    function getEncodedSignature() public pure returns (bytes memory) {
+        // 使用 abi.encodeWithSignature() 编码dosome函数签名和参数
+        bytes memory encodedData = abi.encodeWithSignature(
+            "dosome(uint256,string)",
+            123,
+            "Hello"
+        );
+        return encodedData;
+    }
+}
+```
+
+#### abi.encodeWithSelector
+
+全局函数 **abi.encodeWithSelector()** 用于对给定的*函数选择器*和*参数*进行 **ABI** 编码，返回一个字节数组；
+
+<img src="assets/image-20250505200543225.png" alt="image-20250505200543225" style="zoom:50%;" />
+
+```solidity
+// 根据获取选择器的方法不同，有两种方法对选择器和参数进行编码
+//方法一
+abi.encodeWithSelector(bytes4(keccak256("myFunction(uint256,string)")),123, "Hello");
+
+//方法二
+bytes4 selector = this.myFunction.selector;
+abi.encodeWithSelector(selector, 123, "Hello");
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract EncodeWithSelectorExample {
+    function myFunction(uint256 amount, string memory message) public pure {
+        // 函数体
+    }
+
+    function getEncodedData() public pure returns (bytes memory) {
+        // 获取函数选择器
+        bytes4 selector = this.myFunction.selector;
+
+        // 对选择器和参数进行编码
+        bytes memory encodedData = abi.encodeWithSelector(
+            selector,
+            123,
+            "Hello"
+        );
+        return encodedData;
+    }
+}
+```
+
+### 解码
+
+全局函数 **abi.decode()** 用于对编码后的数据进行解码。第一个参数是编码数据的**字节数组**，第二个参数是解码后的**数据类型**。
+
+```solidity
+//对编码数据 encodedData 进行解码，解码后的数据类型为 address
+address decodedAddress = abi.decode(encodedData, (address));
+
+//多个参数
+(uint256 decodedUint, address decodedAddress, string memory decodedString) = abi.decode(encodedData, (uint256, address, string));
+```
+
+```solidity
+pragma solidity ^0.8.0;
+
+contract DecodeExample {
+    function decodeAddress(bytes memory encodedData) public pure returns (address) {
+        
+        //解码
+        address decodedAddress = abi.decode(encodedData, (address));
+        return decodedAddress;
+    }
+} 
 ```
