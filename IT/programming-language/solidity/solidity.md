@@ -834,7 +834,7 @@ contract A {
 (bool success, bytes memory data) = targetAddress.call{value: amount}(abiEncodedData);
 ```
 
-**`targetAddress.call{value: amount}(abiEncodedData)` 是一次低级调用**：
+**`targetAddress.call{value: amount}(abiEncodedData)` 是一次低级调用**：
 
 - `targetAddress`：是目标合约的地址，是一个 *address* 类型变量。
 - `{value: amount}`：表示附带发送 `amount` 个 wei 的以太币，这是一个可选参数。
@@ -919,7 +919,7 @@ function add() public view {
 
 ## constructor 函数
 
-**构造函数**（constructor）是在合约部署时自动调用且只被调用一次的函数。
+**构造函数**（constructor）是在合约部署时自动调用且只被调用一次的函数，以确定代币的发行者。
 
 ```solidity
 constructor(int a, bool b) {
@@ -1729,3 +1729,154 @@ contract DecodeExample {
     }
 } 
 ```
+
+# Project
+
+## 创建 Fungible Token
+
+### 创建合约
+
+```solidity
+// 版本编译指示
+pragma solidity 0.8.17;
+
+// 创建合约
+contract MyToken {
+    //address 类型的变量，用于存储此 Token 的发行者。
+    address private owner;
+    
+    //构造函数在合约创建时执行一次
+    // msg.sender 是一个全局变量，表示当前调用合约的地址
+    constructor() {
+        owner = msg.sender;
+    }
+}
+```
+
+### 定义变量
+
+使用 mapping 类型的变量，存储**每个地址对应的余额**，其中键是**地址**（address），值是**代币余额**（uint）。
+
+```solidity
+contract MyToken {
+    //例如这里的 balances 就可以记录每个地址持有的 balance 数量
+    mapping(address => uint256) private balances;
+}
+```
+
+使用 uint256 类型的变量，存储 **Token 的总发行量**。定义为 public，可以被任何人查询。
+
+```solidity
+contract MyToken {
+    //uint256 类型的变量，存储 Token 的总发行量
+    uint256 public totalSupply;
+}
+```
+
+### 铸造函数
+
+**铸造代币**：
+
+- 在铸造代币之前，我们需要检查函数的调用者是否是代币的发行者，以确保只有发行者可以随意铸造代币。
+- 每次我们铸造代币时，我们都要指定接收代币的**账户地址**和**代币数量**。
+- 更新所有与金额有关的变量后，铸币就完成了。
+
+使用函数铸造 Token，并传入两个参数：**账户地址**（address）和**代币数量**（uint256）
+
+```solidity
+contract MyToken {
+     function mint(address recipient, uint256 amount) public { }
+}
+```
+
+**权限控制**：判断函数调用者是否是代币的发行人
+
+```solidity
+function mint(address recipient, uint256 amount) public {
+    // 只有合约的拥有者可以铸造新的 Token
+    require(owner == msg.sender);
+}
+```
+
+**更新 balances**：将代币的数量 amount 加到与 recipient 账户对应的余额中
+
+```solidity
+function mint(address recipient, uint256 amount) public {
+    // 增加 recipient 地址的余额
+    balances[recipient] += amount;
+}
+```
+
+**更新 totalSupply**：将代币的数量 amount 加到总发行量 totalSupply 中
+
+```solidity
+function mint(address recipient, uint256 amount) public {
+    // 增加总发行量
+    totalSupply += amount;
+}
+```
+
+### 查询余额函数
+
+**查询余额**包括这里的几个步骤：
+
+- 首先我们需要接收一个账户地址作为入参。
+- 我们将要在 **balances** 映射中查找该地址对应的余额。
+- 将该余额作为函数返回值返回。
+
+```solidity
+function balanceOf(address account) public view returns (uint256) {
+    // 返回指定地址的余额
+    return balances[account];
+}
+```
+
+### 转账函数
+
+```solidity
+function transfer(address recipient, uint256 amount) public {
+    require(amount <= balances[msg.sender]); // 确保发送者的余额足够
+    balances[msg.sender] -= amount; // 减少发送者的余额
+    balances[recipient] += amount; // 增加接收者的余额
+```
+
+### 全部代码
+
+```solidity
+// 版本编译指示
+pragma solidity 0.8.17;
+
+// 创建合约
+contract MyToken {
+    // 创建变量
+    address private owner; // 定义一个 address 类型的变量 owner，用于存储合约的拥有者地址
+    mapping(address => uint256) private balances; // 定义一个 mapping 类型的变量 balances，存储每个地址的余额
+    uint256 public totalSupply; // 定义一个 uint256 类型的变量 totalSupply，用于存储 Token 的总发行量
+
+    // 构造函数，在合约创建时执行一次
+    constructor() {
+        owner = msg.sender; // msg.sender 表示当前调用合约者的地址
+    }
+
+    // 铸造函数
+    function mint(address recipient, uint256 amount) public {
+        require(owner == msg.sender); // 只有合约的拥有者可以铸造新的 Token
+        balances[recipient] += amount; // 增加 recipient 地址的余额
+        totalSupply += amount; // 增加总发行量
+    }
+
+    // 查询余额函数
+    function balanceOf(address account) public view returns (uint256) {
+        return balances[account]; // 返回指定地址的余额
+    }
+
+// 转账函数
+function transfer(address recipient, uint256 amount) public {
+    require(amount <= balances[msg.sender]); // 确保发送者的余额足够
+    balances[msg.sender] -= amount; // 减少发送者的余额
+    balances[recipient] += amount; // 增加接收者的余额
+}
+```
+
+## 秘密竞拍
+
