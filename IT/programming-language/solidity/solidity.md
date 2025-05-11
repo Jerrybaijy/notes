@@ -254,8 +254,6 @@ uint127 d; //这不是有效的，因为127不是8的倍数。
 
 ## address
 
-### address
-
 地址（address）是以太坊区块链上账户或智能合约的唯一标识符。
 
 地址占20个字节，一个字节有8个 bit ,所以地址共有160个 *bit*，一个字节需要两个十六进制数表示，所以需要40个十六进制数表示一个地址。
@@ -264,32 +262,20 @@ uint127 d; //这不是有效的，因为127不是8的倍数。
 //定义
 address address1 = 0x35701d003AF0e05D539c6c71bF9421728426b8A0;
 
-//在以太坊中，每个地址都有一个成员变量，即地址的余额balance
+//在以太坊中，每个地址都有一个成员变量，即地址的余额 balance
 //余额以 uint 形式存在，因为它永远不可能为负值
 uint balance = address1.balance;
+
+//类型转换
+address add1 = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
+address payable add2 = payable(add1); //使用 payable() 显式转换
+address add3 = add2; //隐式转换
 ```
 
 地址分为两类：账户地址或合约地址。
 
 - **账户地址**：它是由用户创建的用于接收或发送资金的地址，由用户控制，也称为钱包。
 - **合约地址**：与“账户地址”相反，“合约地址”由合约（程序）控制。将合约放在以太坊上时，系统会为它生成一个独特的地址。其他人通过这个地址与合约进行交互。
-
-### payable
-
-在 Solidity 中，只能对申明为 payable 的地址进行转账。
-
-```solidity
-address payable add;
-
-//类型转换
-address add1 = 0x5B38Da6a701c568545dCfcB03FcB875f56beddC4;
-address payable add2 = payable(add1); //使用 payable() 显式转换
-address add3 = add2; //隐式转换
-
-//转账
-//从当前合约向address1转移5 Wei
-address1.transfer(5);
-```
 
 ## string
 
@@ -520,80 +506,15 @@ contract MemoryExample {
 }
 ```
 
-# 控制结构
+# 修饰符
 
-## 选择结构
+**修饰符**（Modifier）是一种用于更改函数和变量行为的结构。
 
-Solidity 中有 `if` 和 `三元表达式` 两种选择结构，用法同 Java。
-
-## 循环结构
-
-Solidity 中有 `for` 、`while`  和 `do-while` 三种循环结构。
-
-Solidity 中没有 `for-each` 循环，可用“for 循环 + 索引”进行遍历，详见 Java。
-
-## 跳转结构
-
-Solidity 中有 `continue`、`break`、`return`、`revert`、`require` 和 `assert` 六种跳转结构。其中前三种用法与 java 几乎相同。
-
-- 关于 continue 和 break：Solidity **不支持标签跳转**（如跳出多层嵌套循环），仅能在单层循环中使用。
-
-# [Contract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#contracts)
-
-**合约**（Contract）类似于面向对象语言中的类。 
-
-## 定义合约
-
-使用 **contract** 关键字声明合约名称，一个 Solidity 的 **.sol** 文件可以包含一个或多个 contract。
-
-```solidity
-contract 合约名称 { }
-contract MyContract{ }
-```
-
-```solidity
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
-
-// 声明一个名称为 ContractA 的合约，相当于面向对象中的类
-contract ContractA {
-    uint256 public data;
-}
-
-// 声明一个名称为 ContractB 的合约，相当于面向对象中的类
-// 这里有两个合约，是为了展示从一个合约可以引入另一个合约。
-contract ContractB {
-    //声明一个合约类型的变量 ContractA，相当于面向对象中的对象
-    ContractA public contractA;
-    ContractA public contractAA;
-
-    constructor(address _contractA) {
-        // 方式一：通过 new 的方式实例化 ContractA，相当于面向对象中的实例化对象
-        contractA = new ContractA();
-
-        // 方式二：通过指定地址的方式实例化 contractAA，相当于面向对象中的实例化对象
-        contractAA = ContractA(_contractA);
-    }
-}
-```
-
-## 合约结构
-
-在 Solidity 中，合约类似于面向对象编程语言中的类。 
-
-每个合约中可以包含如下声明：
-
-- 状态变量
-- 函数
-- 函数修饰器
-- 事件
-- 错误
-- 结构类型
-- 枚举类型
-
-合约可以从其他合约继承。
-
-还有一些特殊种类的合约，叫做**库合约**和**接口合约**。
+- **可见性**：public、private、internal、external
+- **数据位置**：memory、storage、calldata
+- **函数行为**：constant、payable、...
+- **函数状态可变性**：pure、view
+- **函数修饰器**
 
 ## [可见性和 getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter)
 
@@ -686,6 +607,164 @@ Solidity 有两种函数调用：确实创建了实际 EVM 消息调用的**外�
 
 ### [Getter 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#getter-functions)
 
+## [函数状态可变性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#state-mutability)
+
+### [Pure 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#pure)
+
+纯函数（pure）不会访问以及修改任何状态变量。
+
+要将一个*函数*定义为 pure 函数，我们需要在*函数头*中使用关键字 pure。
+
+```solidity
+function add() public pure {
+	//function body 
+}
+```
+
+使用 pure 定义的函数被调用时不用花费 gas，并且可以保证该函数不会改变状态变量，有益于开发时的模块化管理。
+
+### [View 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#view)
+
+视图函数（view）不会修改状态变量，但可能使用（读取）状态变量。
+
+```solidity
+function add() public view {
+	//function body 
+}
+```
+
+## [函数修饰器](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#modifiers)
+
+**函数修饰器**（Function Modifier）允许开发人员在函数执行前后或期间插入代码，以便确保特定的条件得到满足。例如，您可以使用修饰器在执行函数之前自动检查一个条件。
+
+函数修器符内的代码的不能被独立执行。单个“函数”可以有多个“修饰器”， 修饰器按照它们出现的顺序执行。
+
+<img src="assets/image-20250429195435893.png" alt="image-20250429195435893" style="zoom:45%;" />
+
+使用 **modifier** 关键字自定义函数修饰器
+
+```solidity
+modifier 修饰器名称(可选参数) {
+    require(条件, "错误提示"); // 函数执行前执行的代码，这里是条件检查
+    _;                       // 函数主体的占位符，表示执行被修饰函数的代码
+                             // 函数执行后执行的代码（可选）
+}
+```
+
+```solidity
+contract Owned {
+    address owner;
+    constructor() { owner = msg.sender; }
+
+    // 定义仅允许所有者调用的 onlyOwner 修饰符
+    modifier onlyOwner {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
+
+    // 使用 onlyOwner 限制函数调用权限
+    function destroy() public onlyOwner {
+        selfdestruct(payable(owner));
+    }
+}
+```
+
+## payable
+
+`payable` 是一个修饰符，用于表示一个*函数*或*地址*能够 **接收以太币**。
+
+**修饰函数**：允许函数在调用时接收 ETH。只有 public 或 external 的函数支持 payable 修饰。
+
+```solidity
+function deposit() payable public { }
+
+// 在调用一个 payable 函数时，在函数名和参数之间插入 `{value : xx}`
+// 其中 xx 代表你需要附加的 ETH 数量。
+deposit{value: 5}();
+```
+
+**修饰地址**：普通地址（`address`）需转换为 `address payable` 类型才能接收或发送 ETH。
+
+```solidity
+address payable recipient = payable(0x123...);
+recipient.transfer(1 ether); // 转账 1 ETH
+```
+
+# 控制结构
+
+## 选择结构
+
+Solidity 中有 `if` 和 `三元表达式` 两种选择结构，用法同 Java。
+
+## 循环结构
+
+Solidity 中有 `for` 、`while`  和 `do-while` 三种循环结构。
+
+Solidity 中没有 `for-each` 循环，可用“for 循环 + 索引”进行遍历，详见 Java。
+
+## 跳转结构
+
+Solidity 中有 `continue`、`break`、`return`、`revert`、`require` 和 `assert` 六种跳转结构。其中前三种用法与 java 几乎相同。
+
+- 关于 continue 和 break：Solidity **不支持标签跳转**（如跳出多层嵌套循环），仅能在单层循环中使用。
+
+# [Contract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#contracts)
+
+**合约**（Contract）类似于面向对象语言中的类。 
+
+## 定义合约
+
+使用 **contract** 关键字声明合约名称，一个 Solidity 的 **.sol** 文件可以包含一个或多个 contract。
+
+```solidity
+contract 合约名称 { }
+contract MyContract{ }
+```
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 声明一个名称为 ContractA 的合约，相当于面向对象中的类
+contract ContractA {
+    uint256 public data;
+}
+
+// 声明一个名称为 ContractB 的合约，相当于面向对象中的类
+// 这里有两个合约，是为了展示从一个合约可以引入另一个合约。
+contract ContractB {
+    //声明一个合约类型的变量 ContractA，相当于面向对象中的对象
+    ContractA public contractA;
+    ContractA public contractAA;
+
+    constructor(address _contractA) {
+        // 方式一：通过 new 的方式实例化 ContractA，相当于面向对象中的实例化对象
+        contractA = new ContractA();
+
+        // 方式二：通过指定地址的方式实例化 contractAA，相当于面向对象中的实例化对象
+        contractAA = ContractA(_contractA);
+    }
+}
+```
+
+## 合约结构
+
+在 Solidity 中，合约类似于面向对象编程语言中的类。 
+
+每个合约中可以包含如下声明：
+
+- 状态变量
+- 函数
+- 函数修饰器
+- 事件
+- 错误
+- 结构类型
+- 枚举类型
+
+合约可以从其他合约继承。
+
+还有一些特殊种类的合约，叫做**库合约**和**接口合约**。
+
 # [Abstract](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#abstract-contract)
 
 **抽象合约**（abstract）定义了一些函数和状态变量，并且实现了一些通用的功能。它是一种不能被实例化的合约，只能被继承并作为其他合约的基类。抽象合约和普通合约的唯一区别在于抽象合约不能被部署。
@@ -750,7 +829,7 @@ function sum() {
 }
 ```
 
-为了保持一致性，我们建议遵循此顺序：函数名称 、参数、作用域、状态可变性、返回值。
+为了保持一致性，我们建议遵循此顺序：函数名称 、参数、可见性、状态可变性、返回值。
 
 通常在合约内定义函数，但它们也可以被定义在合约之外。合约之外的函数，也称为 “自由函数”，总是隐含着 `internal` 的可见性。 它们的代码会包含在所有调用它们的合约中，类似于库函数。自由函数不能直接访问变量 `this`，存储变量和不在其范围内的函数。
 
@@ -891,33 +970,7 @@ delegatecall 会把要调用的函数放在本合约的代码上下文中执行�
 (bool success, bytes memory data) = address(targetAddress).delegatecall(abiEncodedData);
 ```
 
-## [状态可变性](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#state-mutability)
-
-### [Pure 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#pure)
-
-纯函数（pure）不会访问以及修改任何状态变量。
-
-要将一个*函数*定义为 pure 函数，我们需要在*函数头*中使用关键字 pure。
-
-```solidity
-function add() public pure {
-	//function body 
-}
-```
-
-使用 pure 定义的函数被调用时不用花费 gas，并且可以保证该函数不会改变状态变量，有益于开发时的模块化管理。
-
-### [View 函数](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#view)
-
-视图函数（view）不会修改状态变量，但可能使用（读取）状态变量。
-
-```solidity
-function add() public view {
-	//function body 
-}
-```
-
-## constructor 函数
+## 构造函数
 
 **构造函数**（constructor）是在合约部署时自动调用且只被调用一次的函数，以确定代币的发行者。
 
@@ -931,42 +984,6 @@ constructor(int a, bool b) {
 
 - 名称，不需要显式命名。由于每个类中只能有一个构造函数，它将在对象创建时被自动调用。
 - 返回值，没有返回值，因为构造函数是用于初始设置的。
-
-## [modifier](https://docs.soliditylang.org/zh-cn/v0.8.24/contracts.html#modifiers)
-
-**函数修饰器**（modifier）允许开发人员在函数执行前后或期间插入代码，以便确保特定的条件得到满足。例如，您可以使用修饰器在执行函数之前自动检查一个条件。
-
-函数修器符内的代码的不能被独立执行。单个“函数”可以有多个“修饰器”， 修饰器按照它们出现的顺序执行。
-
-<img src="assets/image-20250429195435893.png" alt="image-20250429195435893" style="zoom:45%;" />
-
-使用 **modifier** 关键字自定义函数修饰器
-
-```solidity
-modifier 修改器名称(可选参数) {
-    require(条件, "错误提示"); // 函数执行前执行的代码，这里是条件检查
-    _;                       // 表示执行被修饰函数的代码
-                             // 函数执行后执行的代码（可选）
-}
-```
-
-```solidity
-contract Owned {
-    address owner;
-    constructor() { owner = msg.sender; }
-
-    // 定义仅允许所有者调用的 onlyOwner 修饰符
-    modifier onlyOwner {
-        require(msg.sender == owner, "Not owner");
-        _;
-    }
-
-    // 使用 onlyOwner 限制函数调用权限
-    function destroy() public onlyOwner {
-        selfdestruct(payable(owner));
-    }
-}
-```
 
 ## 函数签名和选择器
 
@@ -1049,10 +1066,6 @@ envent 事件名(参数类型 indexed 参数名);
 // 定义事件，其中 id 可被搜索
 event LogChange(uint indexed id);
 ```
-
-
-
-
 
 # block
 
@@ -1378,6 +1391,9 @@ revert() 函数用于终止函数的执行并回滚所有状态变化。如果�
 ```solidity
 revert("Custom error message");
 revert();
+
+// 使用
+if (条件表达式) revert 错误类型;
 ```
 
 ## assert
@@ -1394,8 +1410,8 @@ assert(a == b);
 **错误**（error）是一种自定义的**数据类型**。
 
 ```solidity
-//使用error关键字定义了一个名为MyCustomError的自定义错误类型
-//并指定错误消息类型为string 和 uint。
+//使用 error 关键字定义了一个名为 MyCustomError 的自定义错误类型
+//并指定错误消息类型为 string 和 uint。
 error MyCustomError(string message, uint number);
 
 function process(uint256 value) public pure {
@@ -1457,29 +1473,9 @@ function a() {
 
 <img src="assets/image-20250428135238980.png" alt="image-20250428135238980" style="zoom:50%;" />
 
-## 支付 ETH
-
-在调用一个 payable 函数时，只需要在函数名和参数之间插入一个 `{value : xx}` 语法即可，其中 xx 代表你需要附加的 ETH 数量。
-
-```solidity
-deposit{value: 5}();
-```
-
 ## 接收 ETH
 
 ### payable
-
-使用 **payable** 修饰的函数，表示可以接收 ETH。只有 public 和 external 的函数支持 payable 修饰。
-
-在函数参数后，使用 payable 关键字可以使该函数成为一个可支付函数。
-
-```solidity
-function 函数名() payable 外部修饰符 { }
-```
-
-```solidity
-function receivePayment() payable public { }
-```
 
 ### msg.value
 
@@ -1734,6 +1730,8 @@ contract DecodeExample {
 
 ## 创建 Fungible Token
 
+这是 Hackathon 上的教学项目：[创建 Fungible Token](https://www.hackquest.io/zh-cn/learn/151e7446-5ed5-8122-a513-fdd57e889ccd/25e57737-4dc9-4eca-a7a1-0c13fe20e061?phaseId=168e7446-5ed5-81ee-a663-e8cb69331bd1)
+
 ### 创建合约
 
 ```solidity
@@ -1879,4 +1877,180 @@ function transfer(address recipient, uint256 amount) public {
 ```
 
 ## 秘密竞拍
+
+这是 Hackathon 上的教学项目：[秘密竞拍](https://www.hackquest.io/zh-cn/learn/151e7446-5ed5-8151-858b-cec4351668a5/70bbb353-fd54-40b1-8090-7ef33b61da13?phaseId=168e7446-5ed5-81ee-a663-e8cb69331bd1)
+
+```solidity
+// 版本编译指示
+pragma solidity ^0.8.26;
+
+// 定义合约
+contract BlindAuction {
+    // 定义结构体，竞标地址和竞标金额
+    struct Bid {
+        address bidder; // 竞标者地址
+        uint256 amount; // 竞标金额
+    }
+
+    // 定义接收地址
+    address payable public beneficiary;
+
+    // 定义时间管理变量
+    uint256 public biddingEnd; // 竞标结束时间
+    uint256 public revealEnd; // 揭示阶段结束时间：这个时间点之前，参与者必须揭示他们的盲拍。
+    bool public ended; // 竞标结束状态
+
+    // 定义Bids 映射，竞标者地址到竞标金额的映射，一个地址可能有多个竞标金额
+    mapping(address => Bid[]) public bids;
+
+    // 定义竞标结果
+    address public highestBidder; // 最高竞标者地址
+    uint256 public highestBid; // 最高竞标金额
+
+    // 定义退款映射，竞标者地址到退款金额的映射
+    mapping(address => uint) pendingReturns;
+
+    // 定义事件，竞标结束
+    event AuctionEnded(address winner, uint highestBid); // 竞标结束事件
+
+    // 错误类型
+    error TooEarly(uint time); // 竞标时间过早
+    error TooLate(uint time); // 竞标时间过晚
+    error AuctionEndAlreadyCalled(); // 竞标已经结束
+
+    // 定义函数修饰器，用于检查时间是否过晚
+    modifier onlyBefore(uint time) {
+        if (block.timestamp >= time) revert TooLate(time);
+        _;
+    }
+
+    // 定义函数修饰器，用于检查时间是否过早
+    modifier onlyAfter(uint time) {
+        if (block.timestamp <= time) revert TooEarly(time);
+        _;
+    }
+
+    // 构造函数，初始化合约的状态变量
+    constructor(
+        uint256 biddingTime,
+        uint256 revealTime,
+        address payable beneficiaryAddress
+    ) {
+        beneficiary = beneficiaryAddress; // 设置受益人地址
+        biddingEnd = block.timestamp + biddingTime; // 设置竞标结束时间
+        revealEnd = biddingEnd + revealTime; // 设置揭示阶段结束时间
+    }
+
+    // 定义出价函数，允许用户提交竞标
+    function bid() external payable onlyBefore(biddingEnd) {
+        // 记录用户出价，将竞标者的地址和金额添加到映射中
+        bids[msg.sender].push(
+            Bid({blindedBid: blindedBid, deposit: msg.value})
+        );
+    }
+
+    // 定义揭示函数，允许用户揭示他们的竞标
+    function reveal(
+        uint[] calldata values, // 竞标金额数组
+        bool[] calldata fakes, // 是否为虚假竞标数组
+        bytes32[] calldata secrets // 竞标秘密值数组
+    ) external onlyAfter(biddingEnd) onlyBefore(revealEnd) {
+        // 获取用户的出价数量
+        uint length = bids[msg.sender].length;
+
+        // 判断用户提交的出价数量是否与竞标金额数组的长度一致
+        require(values.length == length);
+        require(fakes.length == length);
+        require(secrets.length == length);
+
+        // 定义变量，退款金额
+        uint refund;
+
+        // for循环，遍历用户之前提交的所有出价
+        for (uint i = 0; i < length; i++) {
+            // 获取用户的出价的结构体
+            Bid storage bidToCheck = bids[msg.sender][i];
+            // 获取用户的出价信息
+            (uint value, bool fake, bytes32 secret) = (
+                values[i],
+                fakes[i],
+                secrets[i]
+            );
+            // 检查揭示是否正确
+            if (
+                bidToCheck.blindedBid !=
+                keccak256(abi.encodePacked(value, fake, secret))
+            ) {
+                continue;
+            }
+
+            // 累加退款金额
+            refund += bidToCheck.deposit;
+
+            // 核实出价
+            if (!fake && bidToCheck.deposit >= value) {
+                // 判断是否为最高出价
+                if (placeBid(msg.sender, value)) refund -= value;
+            }
+
+            // 重置出价
+            bidToCheck.blindedBid = bytes32(0);
+        }
+
+        // 退还出价
+        payable(msg.sender).transfer(refund);
+    }
+
+    // 定义提取函数，允许用户提取他们的退款
+    function withdraw() external {
+        // 退还用户的退款
+        uint amount = pendingReturns[msg.sender]; // 获取用户的退款金额
+        if (amount > 0) {
+            pendingReturns[msg.sender] = 0; // 清空用户的退款金额，防止重入攻击
+            payable(msg.sender).transfer(amount); // 退还用户的退款金额
+        }
+    }
+
+    // 定义结束拍卖函数，允许受益人结束竞标
+    function auctionEnd() external onlyAfter(revealEnd) {
+        // 判断拍卖是否已经结束
+        if (ended) revert AuctionEndAlreadyCalled();
+
+        // 触发拍卖结束事件
+        emit AuctionEnded(highestBidder, highestBid);
+
+        // 设置拍卖结束状态
+        ended = true;
+
+        // 转移资金给受益人
+        beneficiary.transfer(highestBid);
+    }
+
+    // 定义 placeBid 函数，用于处理用户的有效出价并判断其是否为最高出价
+    function placeBid(
+        address bidder,
+        uint value
+    ) internal returns (bool success) {
+        // 判断出价是否高于当前最高出价
+        if (value <= highestBid) {
+            return false;
+        }
+
+        // 判断最高出价者是否已存在
+        if (highestBidder != address(0)) {
+            // 退款给之前的最高出价者
+            pendingReturns[highestBidder] += highestBid;
+        }
+
+        // 更新最高出价信息
+        highestBid = value; // 更新最高出价金额
+        highestBidder = bidder; // 更新最高出价者地址
+        return true;
+    }
+}
+```
+
+## 加密行情助手
+
+这是 Hackathon 上的教学项目：[加密行情助手](https://www.hackquest.io/zh-cn/learn/13be7446-5ed5-818e-b804-f270467c01cb/13be7446-5ed5-81ba-8d47-fc54bf94a726?phaseId=168e7446-5ed5-81ee-a663-e8cb69331bd1)
 
