@@ -65,6 +65,8 @@ Solidity 支持导入语句，以帮助模块化您的代码， 这些语句与 
 import "./MathLibrary.sol";
 ```
 
+在 Remix 中，如果导入的合约以 `@` 符号开头，它会自动从 github 上去拉取并加载相关的合约，因此，这里直接导入对应 git 路径的依赖即可。例如：`import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";`
+
 ### [注释](https://docs.soliditylang.org/zh-cn/v0.8.24/layout-of-source-files.html#index-9)
 
 - 单行注释（ `//` ）和多行注释（ `/*...*/` ）
@@ -1021,6 +1023,10 @@ contract FunctionSignature {
 }
 ```
 
+#### 函数选择器冲突
+
+函数选择器冲突时，可使用[透明代理](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-81f8-b2fc-e29e5cd1b88e/149e7446-5ed5-8141-b185-fccf86edc2ec)解决。
+
 # event
 
 **事件**（ *Event* ）是一种用于在智能合约中发布通知和记录信息的机制。它可以在合约执行期间发出消息，允许外部应用程序监听并对这些消息做出响应。事件是合约的可继承成员。
@@ -1726,6 +1732,10 @@ contract DecodeExample {
 } 
 ```
 
+# Foundry
+
+
+
 # Project
 
 ## 创建 Fungible Token
@@ -2053,4 +2063,140 @@ contract BlindAuction {
 ## 加密行情助手
 
 这是 Hackathon 上的教学项目：[加密行情助手](https://www.hackquest.io/zh-cn/learn/13be7446-5ed5-818e-b804-f270467c01cb/13be7446-5ed5-81ba-8d47-fc54bf94a726?phaseId=168e7446-5ed5-81ee-a663-e8cb69331bd1)
+
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+// 导入 Pyth SDK 的合约
+import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
+import "@pythnetwork/pyth-sdk-solidity/PythStructs.sol";
+
+contract MarketAssistant {
+    // 定义 Pyth 合约的接口
+    IPyth pyth;
+
+    // 2.3 定义状态变量
+    struct PriceData {
+        bytes32 priceFeedId; // 每个加密资产在 Pyth 中的唯一标识符
+        int price; // 存储当前资产的价格，以 USDT 作为基准
+        uint timestamp; // 存储价格的时间戳
+    }
+
+    // 定义 Pyth 合约的地址
+    constructor(address pythContract) {
+        pyth = IPyth(pythContract);
+    }
+
+    // 映射
+    mapping(bytes32 => int) public priceThresholds; // 定义价格阈值映射，将 priceFeedId 映射到 price
+    mapping(bytes32 => PriceData) public lastPrices; // 将 priceFeedId 映射到 priceData
+
+    // 事件
+    event ThresholdExceeded(bytes32 indexed priceFeedId, int price);
+    event PriceIncrease(
+        bytes32 indexed priceFeedId,
+        int previousPrice,
+        int currentPrice,
+        int changePercentage
+    );
+    event PriceDecrease(
+        bytes32 indexed priceFeedId,
+        int previousPrice,
+        int currentPrice,
+        int changePercentage
+    );
+
+    // 更新价格函数，即喂价
+    function updatePrice(
+        bytes[] calldata priceUpdate,
+        bytes32 priceFeedId
+    ) public payable returns (int) {
+        uint fee = pyth.getUpdateFee(priceUpdate); // 获取更新费用
+        pyth.updatePriceFeeds{value: fee}(priceUpdate);
+        PythStructs.Price memory currentPrice = pyth.getPriceNoOlderThan(
+            priceFeedId,
+            60
+        ); // 获取价格
+
+        // 价格变化检测
+        if (lastPrices[priceFeedId].price != 0) {
+            int priceChange = calculatePriceChange(
+                lastPrices[priceFeedId].price,
+                currentPrice.price
+            );
+
+            if (priceChange > 0) {
+                emit PriceIncrease(
+                    priceFeedId, // 价格来源的标识符
+                    lastPrices[priceFeedId].price, // 上一次记录的价格
+                    currentPrice.price, // 当前价格
+                    priceChange // 价格变化百分比
+                );
+            } else if (priceChange < 0) {
+                emit PriceDecrease(
+                    priceFeedId,
+                    lastPrices[priceFeedId].price,
+                    currentPrice.price,
+                    priceChange
+                );
+            }
+        }
+
+        // 阈值检测
+        if (
+            priceThresholds[priceFeedId] != 0 && // 检查价格阈值是否设置
+            currentPrice.price >= priceThresholds[priceFeedId] // 检查当前价格是否超过阈值
+        ) {
+            emit ThresholdExceeded(
+                priceFeedId, // 价格来源的标识符
+                currentPrice.price // 当前价格
+            );
+        }
+
+        // 更新上一次价格
+        lastPrices[priceFeedId] = PriceData(
+            priceFeedId,
+            currentPrice.price,
+            block.timestamp
+        );
+
+        // 返回当前价格
+        return currentPrice.price;
+    }
+
+    // 定义价格变化百分比计算函数
+    function calculatePriceChange(
+        int previousPrice, // 上一个价格
+        int currentPrice // 当前价格
+    ) internal pure returns (int) {
+        if (previousPrice == 0) return 0; // 如果上一个价格为零，则返回零
+        return ((currentPrice - previousPrice) * 100) / previousPrice; // 返回价格变化百分比
+    }
+
+    // 设置价格阈值函数
+    function setPriceThreshold(
+        bytes32 priceFeedId, // 价格来源的标识符
+        int threshold // 价格阈值
+    ) public {
+        priceThresholds[priceFeedId] = threshold; // 设置价格阈值
+    }
+}
+```
+
+## DAO 提案
+
+这是 Hackathon 上的教学项目：[DAO 提案](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-81f8-b2fc-e29e5cd1b88e/146e7446-5ed5-81ee-bedc-ca92e6af6963?phaseId=168e7446-5ed5-81ee-a663-e8cb69331bd1)
+
+这个系统主要包含三个重要操作：创建提案、投票和执行提案。
+
+```
+contracts/
+├── DaoProxy.sol                       // 代理合约
+├── DaoV1.sol                          // 逻辑合约 V1
+├── DaoV2.sol                          // 逻辑合约 V2
+└── DaoDeploymentAndInteraction.sol    // 部署和交互合约
+```
+
+
 

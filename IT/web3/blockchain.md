@@ -397,6 +397,21 @@ PoW 在1993年由 Cynthia Dwork 和 Moni Naor 提出，最初用于抵御电子�
 
 Pyth（Pyth Network）是一个专注于提供**高质量链下金融数据**（如价格、汇率、波动率等）到区块链的**去中心化预言机网络**。它的目标是将**真实世界金融市场的数据**引入链上，特别适合**DeFi 应用**。
 
+对于 EVM 链，Pyth 提供了专门的 Solidity SDK，可以让我们迅速从 Pyth 合约中查询指定加密资产的价格。因此，在合约的最开始，我们需要先导入对应的 SDK，以便我们能够直接调用其中的功能和接口。
+
+```solidity
+pragma solidity ^0.8.0;
+
+import "@pythnetwork/pyth-sdk-solidity/IPyth.sol";
+...
+
+contract Demo{
+ ...
+}
+```
+
+
+
 # 挖矿
 
 ## 挖矿
