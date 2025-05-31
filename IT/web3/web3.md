@@ -394,3 +394,9 @@ Fantom 是一个 Layer-1 区块链平台，致力于克服区块链的“不可�
 # Uniswap
 
 Uniswap 是以太坊生态中具有里程碑意义的去中心化交易所（DEX）。
+
+# Tools
+
+## CoinMarketCap
+
+CoinMarketCap（简称CMC）是全球领先的加密货币**数据平台**。
