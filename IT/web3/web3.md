@@ -254,6 +254,13 @@ Fantom 是一个 Layer-1 区块链平台，致力于克服区块链的“不可�
     - Sonic 是技术升级
     - Sonic Labs 是项目孵化器，基于 Sonic 技术栈开发。
 
+Sonic 资源：
+
+- [Sonic Documentation](https://docs.soniclabs.com/)
+- [Sonic Points](https://my.soniclabs.com/points?state=e9vek&code=aURJMXcyS3FOc3FzRWViX3E2ckxjNjlfSmFnaTA2Tk51ZlIyTmcxdlliU2kwOjE3NDYxODQ4MTEzODE6MTowOmFjOjE)
+- [Sonic (S) Blockchain Explorer](https://sonicscan.org/)
+- [Shadow Exchange](https://www.shadow.so/)
+
 ## FeeM
 
 [FeeM](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-81d4-bc3c-ecba462d4c14) (Fee Monetization)  本质上是一种 Gas 费用分润机制，Fantom 中初始分成比例为 **15%**，而在 Sonic 中这一比例将逐步提高到 **90%**。
@@ -399,4 +406,44 @@ Uniswap 是以太坊生态中具有里程碑意义的去中心化交易所（DEX
 
 ## CoinMarketCap
 
-CoinMarketCap（简称CMC）是全球领先的加密货币**数据平台**。
+[CoinMarketCap](https://coinmarketcap.com/)（简称CMC）是全球领先的加密货币**数据聚合平台**，2020 年被币安收购。
+
+- **平台定位**：加密货币市场的“**道琼斯指数**”，提供全球代币价格、市值、交易所数据的综合看板。
+- **独特优势**：交易所储备金证明
+- **中立性**：被币安收购引争议
+- **权威性**：被彭博社、CNBC引用，但被币安收购后部分用户质疑其交易所排名倾向性。
+
+**特色备忘**：
+
+- 待发货币
+
+## CoinGecko
+
+[CoinGecko](https://www.coingecko.com/) 是**独立**的加密货币**数据聚合平台**。
+
+- **平台定位**：长尾代币与社区指标
+- **独特优势**：Trust Score 交易所评级
+- **中立性**：独立运营 + 开源数据
+- **权威性**：数据开源透明，覆盖长尾代币最全，独立运营无收购争议
+
+**特色备忘**：
+
+- 免费版 API 调用频率更高（50次/分钟）
+- 加密货币小工具
+
+## DefiLlama
+
+[DefiLlama](https://defillama.com/) 是全球领先的 **DeFi 数据聚合与分析平台**，专注 **TVL 与协议收入**。
+
+- **平台定位**：DeFi 生态垂直数据中枢，专注跨链TVL与协议收入
+- **独特优势**：空投机会追踪
+- **中立性**：无广告 + 永不发币承诺
+- **权威性**：多链TVL与协议收入
+
+## CoinGlass
+
+[CoinGlass](https://www.coinglass.com/) 是全球领先的加密货币**数据聚合平台**。
+
+**特色备忘**：
+
+- 资金费率监控，捕捉永续合约资金费率异常。
