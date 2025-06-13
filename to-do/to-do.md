@@ -8,18 +8,15 @@
 - [x] [币安最新活动](https://www.binance.com/zh-CN/support/announcement/list/93)
 - [ ] [Air Drop](https://airdrops.io/)
 - [ ] [Alpha Batcher](https://www.binance.com/zh-CN/square/profile/alphabatcher)
-- [ ] 币价竞猜：21:00前
 
 ## Today
 
-- [ ] [X 发言获奖](https://www.mantrachain.io/resources/announcements/mantra-x-kaito)
-- [ ] 币安公开课
 - [ ] 根据钱包地址，在浏览器中查看交易信息
 - [ ] 在浏览器中，查看某个币的交易情况
 - [ ] [Ref 空投](https://medium.com/iost/airdrop-announcement-for-supported-exchanges-f15a57e59929)
 - [ ] [dune：做报表](https://dune.com/home)
 - [ ] [dune 课程](https://www.youtube.com/playlist?list=PLK3b5d4iK10ext4v-GBySekaA8-GP8quD)
 - [ ] B2
-- [ ] Sophon 显示空投进度
 - [ ] [币安现货交易者联盟竞赛](https://www.binance.com/zh-CN/support/announcement/detail/42fff57918a3409db989bef3e4d3e6e7)
-
+- [ ] [币圈工具汇总](https://x.com/Benjieming1Q84/status/1874658038264873176)
+- [ ] 币安流动性，拿出以后对积分的影响
