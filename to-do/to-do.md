@@ -4,9 +4,12 @@
 
 - [x] [Alpha 积分](https://www.binance.com/zh-CN/alpha/bsc/0xc71b5f631354be6853efe9c3ab6b9590f8302e81)
 - [x] [签到](https://www.binance.com/zh-CN/rewards-hub)
-- [ ] [每日一词](https://www.binance.com/zh-CN/activity/word-of-the-day/G1131817886150914048)
+- [x] [每日一词](https://www.binance.com/zh-CN/activity/word-of-the-day/G1131817886150914048)
 - [x] [币安最新活动](https://www.binance.com/zh-CN/support/announcement/list/93)
 - [ ] [Air Drop](https://airdrops.io/)
+- [ ] [Benjieming 的撸毛之旅](https://www.youtube.com/@Benjieming1Q84/videos)
+- [ ] [KAITO](https://yaps.kaito.ai/)
+- [ ] [Cookie.fun](https://www.cookie.fun/)
 - [ ] [Alpha Batcher](https://www.binance.com/zh-CN/square/profile/alphabatcher)
 
 ## Today
@@ -19,4 +22,3 @@
 - [ ] B2
 - [ ] [币安现货交易者联盟竞赛](https://www.binance.com/zh-CN/support/announcement/detail/42fff57918a3409db989bef3e4d3e6e7)
 - [ ] [币圈工具汇总](https://x.com/Benjieming1Q84/status/1874658038264873176)
-- [ ] 币安流动性，拿出以后对积分的影响
