@@ -4,7 +4,7 @@
 
 - [x] [Alpha 积分](https://www.binance.com/zh-CN/alpha/bsc/0xc71b5f631354be6853efe9c3ab6b9590f8302e81)
 - [x] [签到](https://www.binance.com/zh-CN/rewards-hub)
-- [x] [每日一词](https://www.binance.com/zh-CN/activity/word-of-the-day/G1131817886150914048)
+- [x] [每日一词](https://www.binance.com/en/activity/word-of-the-day/entry)
 - [x] [币安最新活动](https://www.binance.com/zh-CN/support/announcement/list/93)
 - [ ] [Air Drop](https://airdrops.io/)
 - [ ] [Benjieming 的撸毛之旅](https://www.youtube.com/@Benjieming1Q84/videos)
