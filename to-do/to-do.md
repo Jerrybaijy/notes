@@ -22,3 +22,9 @@
 - [ ] B2
 - [ ] [币安现货交易者联盟竞赛](https://www.binance.com/zh-CN/support/announcement/detail/42fff57918a3409db989bef3e4d3e6e7)
 - [ ] [币圈工具汇总](https://x.com/Benjieming1Q84/status/1874658038264873176)
+
+## 备忘
+
+- 腾讯会议
+    - 696-927-9960
+    - 588039

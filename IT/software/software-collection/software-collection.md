@@ -2141,6 +2141,10 @@ XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运�
 
 3. 进入 `Admin` 新建一个数据库，其余交给后端；
 
+# Xmind
+
+Xmind 是一个思维导图工具。
+
 # YAML
 
 YAML 是 `YAML Ain't a Markup Language`（YAML 不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：`Yet Another Markup Language`（仍是一种标记语言）。
