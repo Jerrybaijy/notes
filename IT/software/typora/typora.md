@@ -240,6 +240,9 @@
     strong {
       font-weight: 1000 !important; /* 使用更高的字体粗细 */
     }
+    
+    /* 图表左对齐 */
+    .md-diagram-panel-preview {text-align:left;}
     ```
 
 ## 自定义主题
@@ -766,61 +769,25 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 # 图表
 
 - Typora 使用 Mermaid 语言创建图表。
-- **语法**：将代码块语言添加 mermaid 即可。
+- 将代码块语言添加 mermaid 即可。
+- 关于 Mermaid 详见 Mermaid 笔记。
 
-## 流程图
+## 文本颜色
+
+在 Typora 中，使用 Mermaid 对文本颜色的设置会失效，解决办法是使用 HTML
 
 ```
-%% 定义图的方向
-graph TD
-	%% 定义样式类
-	classDef israeliNode fill:#3c78d8,stroke:#333,stroke-width:0px,color:#ffffff;
-	classDef islamNode fill:#5fdd27,stroke:#333,stroke-width:0px,color:#ffffff;
-	classDef judaismNode fill:#FFB900,stroke:#333,stroke-width:0px,color:#ffffff;
-	classDef christNode fill:#F7630C,stroke:#333,stroke-width:0px,color:#ffffff;
-	
-	%% 定义节点和连接线
-	A(亚当&夏娃) --> B(赛特\n第1世孙)
-	B --> C(……)
-	C --> D(挪亚\n第9世孙)
-	D --> E(……)
-	E --> F(亚伯拉罕\n第20世孙)
-	F --> G(以撒)
-	G --> H(雅各)
-	H --> I(犹大)
-	I --> J(大卫\n第33世孙\n以色列联合王国)
-	J --> K(南方犹大)
-	K --> L(……)
-	L --> M(约西亚)
-	M --> N(西底家\n末代犹大君王)
-	N --> O(……)
-	O --> P(现代以色列人)
-	
-	F --> F1(以实玛利)
-	F1 --> F2(……)
-	F2 --> F3(阿拉伯人)
-	F3 --> F4(……)
-	F4 --> F5(穆罕默德)
-	F5 --> F6(伊斯兰教)
-	
-	H --> H1(利未)
-	H1 --> H2(……)
-	H2 --> H3(摩西)
-	H3 --> H4(犹太教)
-	
-	M --> M1(约雅敬\n倒数第3代犹大君王)
-	M1 --> M2(约雅斤\n倒数第2代犹大君王)
-	M2 --> M3(……)
-	M3 --> M4(约瑟)
-	M4 --> M5(耶稣\n第75世孙)
-	M5 --> M6(基督教)
-	
-	%% 应用样式类
-	class A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P israeliNode;
-	class F1,F2,F3,F4,F5,F6 islamNode;
-	class H1,H2,H3,H4 judaismNode;
-	class M1,M2,M3,M4,M5,M6 christNode;
+A("<font color='red'>黄帝</font>")
 ```
+
+```mermaid
+flowchart TD
+    A("<font color='red'>黄帝</font>")
+```
+
+
+
+
 
 # 其它
 
