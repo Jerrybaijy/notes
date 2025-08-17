@@ -1,40 +1,286 @@
-```mermaid
-flowchart TD
-    
-    华胥氏 --> 伏羲 & 女娲 --> 少典 --> 黄帝 & 炎帝("炎帝(神农)")
-    
-    黄帝 --> 玄嚣 & 昌意
-    
-    玄嚣 --> 蟜极 --> 喾
-    昌意 --> 乾荒 --> 颛顼
-    
-    喾 --> 挚 & 尧 & 契("契(商祖)") & 后稷("后稷(周祖)")
-    颛顼 --> 穷蝉 & 颛顼未知1 & 颛顼其它
-    
-    穷蝉 --> 敬康 --> 句望 --> 桥牛 --> 瞽叟 --> 舜
-    颛顼未知1 --> 颛顼未知2 --> 骆明 --> 鲧 --> 禹
-    
-    click 伏羲 "https://zh.wikipedia.org/wiki/伏羲" _blank
-    click 女娲 "https://zh.wikipedia.org/wiki/女娲" _blank
-    click 少典 "https://zh.wikipedia.org/wiki/少典" _blank
-    click 黄帝 "https://zh.wikipedia.org/wiki/黄帝" _blank
-    click 炎帝 "https://zh.wikipedia.org/wiki/炎帝" _blank
-    click 玄嚣 "https://zh.wikipedia.org/wiki/玄嚣" _blank
-    click 昌意 "https://zh.wikipedia.org/wiki/昌意" _blank
-    click 蟜极 "https://zh.wikipedia.org/wiki/蟜极" _blank
-    click 喾 "https://zh.wikipedia.org/wiki/喾" _blank
-    click 乾荒 "https://zh.wikipedia.org/wiki/乾荒" _blank
-    click 颛顼 "https://zh.wikipedia.org/wiki/颛顼" _blank
-    click 挚 "https://zh.wikipedia.org/wiki/挚" _blank
-    click 尧 "https://zh.wikipedia.org/wiki/尧" _blank
-    click 契 "https://zh.wikipedia.org/wiki/契" _blank
-    click 后稷 "https://zh.wikipedia.org/wiki/后稷" _blank
-    click 穷蝉 "https://zh.wikipedia.org/wiki/穷蝉" _blank
-    click 舜 "https://zh.wikipedia.org/wiki/舜" _blank
-    click 禹 "https://zh.wikipedia.org/wiki/禹" _blank
-```
+# 中国历史年表
 
-
-
-
+<table style="text-align: center; margin: 0 auto">
+    <tr>
+    <td colspan="4">
+        <a
+        href="https://zh.wikipedia.org/wiki/Template:中国历史"
+        title="中国历史年表"
+        >中国历史年表</a
+        >&nbsp;
+        <a
+        href="https://zh.wikipedia.org/wiki/Template:Neolithic_cultures_of_China"
+        title="表格说明"
+        ><small style="color: #9d9487">注</small></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="3" style="background-color: #095352">
+        <a href="https://zh.wikipedia.org/wiki/中国史前文化" title="史前时代"
+        >史前时代</a
+        >
+    </td>
+    <td colspan="3" style="background-color: #114500">
+        <a
+        href="https://zh.wikipedia.org/wiki/中国旧石器文化列表"
+        title="旧石器时代"
+        >旧石器时代</a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3" style="background-color: #343400">
+        <a
+        href="https://zh.wikipedia.org/wiki/中国中石器文化列表"
+        title="中石器时代"
+        >中石器时代</a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3" style="background-color: #451900">
+        <a
+        href="http://zh.wikipedia.org/wiki/中国新石器文化列表"
+        title="新石器时代"
+        >新石器时代</a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #450045">
+        <a
+        href="https://zh.wikipedia.org/wiki/%E5%8F%A4%E5%9B%BD%E6%97%B6%E4%BB%A3"
+        title="古国时代"
+        >古国时代<br />（三皇五帝）</a
+        >
+    </td>
+    <td colspan="3" style="background-color: #095352">
+        <a
+        href="https://zh.wikipedia.org/wiki/%E9%93%9C%E7%9F%B3%E5%B9%B6%E7%94%A8%E6%97%B6%E4%BB%A3"
+        title="铜石并用时代"
+        >铜石并用时代</a
+        ><br />
+        <small>
+        （<a href="https://zh.wikipedia.org/wiki/黄河文明" title="黄河文明"
+            >黄河文明</a
+        >、<a href="https://zh.wikipedia.org/wiki/长江文明" title="长江文明"
+            >长江文明</a
+        >、<a href="https://zh.wikipedia.org/wiki/辽河文明" title="辽河文明"
+            >辽河文明</a
+        >、<a
+            href="https://zh.wikipedia.org/wiki/珠江文明"
+            class="mw-redirect"
+            title="珠江文明"
+            >珠江文明</a
+        >）
+        </small>
+    </td>
+    </tr>
+    <tr>
+    <td colspan="4" style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/夏朝" title="夏朝"
+        >夏<br /><span style="color: #9d9487">前21世纪—前17世纪</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="4" style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/商朝" title="商朝"
+        >商<br /><span style="color: #9d9487">前17世纪—前11世纪</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="3" style="background-color: #450045">
+        <a href="https://zh.wikipedia.org/wiki/周朝" title="周朝"
+        >周<br /><span style="color: #9d9487">前11世纪—前256年</span></a
+        >
+    </td>
+    <td colspan="3" style="background-color: #450045">
+        <a href="https://zh.wikipedia.org/wiki/西周" title="西周"
+        >西周&nbsp;<span style="color: #9d9487">前11世纪—前771年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="2" style="background-color: #450045">
+        <a href="https://zh.wikipedia.org/wiki/东周" title="东周"
+        >东周<br /><span style="color: #9d9487">前770年—前256年</span></a
+        >
+    </td>
+    <td colspan="2" style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/春秋" title="春秋"
+        >春秋&nbsp;<span style="color: #9d9487">前770年—前5世纪</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="2" style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/战国" title="战国"
+        >战国&nbsp;<span style="color: #9d9487">前5世纪—前221年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="4" style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/秦朝" title="秦朝"
+        >秦&nbsp;<span style="color: #9d9487">前221年—前207年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="3" style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/汉朝" title="汉朝"
+        >汉<br /><span style="color: #9d9487">前202年—220年</span></a
+        >
+    </td>
+    <td colspan="3" style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/西楚" title="西楚"
+        ><span style="color: #9d9487">西楚&nbsp;前206年—前202年</span></a
+        ><br />
+        <a href="https://zh.wikipedia.org/wiki/西汉" title="西汉"
+        >西汉&nbsp;<span style="color: #9d9487">前202年—9年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3" style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/新朝" title="新朝"
+        >新朝&nbsp;<span style="color: #9d9487">9年—23年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="3" style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/更始政权" title="更始政权"
+        ><span style="color: #9d9487">更始政权&nbsp;23年—25年</span></a
+        ><br />
+        <a href="https://zh.wikipedia.org/wiki/东汉" title="东汉"
+        >东汉&nbsp;<span style="color: #9d9487">25年—220年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #450045">
+        <a href="https://zh.wikipedia.org/wiki/三国" title="三国"
+        >三国<br /><span style="color: #9d9487">220年—280年</span></a
+        >
+    </td>
+    <td style="background-color: #095352">
+        <a href="https://zh.wikipedia.org/wiki/曹魏" title="曹魏"
+        >魏<br /><span style="color: #9d9487">220年—266年</span></a
+        >
+    </td>
+    <td style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/蜀汉" title="蜀汉"
+        >蜀汉<br /><span style="color: #9d9487">221年—263年</span></a
+        >
+    </td>
+    <td style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/孙吴" title="孙吴"
+        >吴<br /><span style="color: #9d9487">222年—280年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="2" style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/晋朝" title="晋朝"
+        >晋朝<br /><span style="color: #9d9487">266年—420年</span></a
+        >
+    </td>
+    <td colspan="3" style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/西晋" title="西晋"
+        >西晋<br /><span style="color: #9d9487">266年—316年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/东晋" title="东晋"
+        >东晋<br /><span style="color: #9d9487">317年—420年</span></a
+        >
+    </td>
+    <td colspan="2" style="background-color: #450045">
+        <a href="https://zh.wikipedia.org/wiki/五胡十六国" title="五胡十六国"
+        >五胡十六国<br /><span style="color: #9d9487">266年—316年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td rowspan="4" style="background-color: #095352">
+        <a href="https://zh.wikipedia.org/wiki/南北朝" title="南北朝"
+        >南北朝<br /><span style="color: #9d9487">420年—589年</span></a
+        >
+    </td>
+    <td style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/刘宋" title="刘宋"
+        >宋<br /><span style="color: #9d9487">420年—479年</span></a
+        >
+    </td>
+    <td colspan="2" rowspan="2" style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/北魏" title="北魏"
+        >北魏<br /><span style="color: #9d9487">386年—534年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/南齐" title="南齐"
+        >齐<br /><span style="color: #9d9487">479年—502年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/梁_(南朝)" title="梁(南朝)"
+        >梁<br /><span style="color: #9d9487">502年—557年</span></a
+        >
+    </td>
+    <td style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/西魏" title="西魏"
+        >西魏<br /><span style="color: #9d9487">535年—557年</span></a
+        >
+    </td>
+    <td style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/东魏" title="东魏"
+        >东魏<br /><span style="color: #9d9487">534年—550年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td style="background-color: #114500">
+        <a href="https://zh.wikipedia.org/wiki/陈_(南朝)" title="陈(南朝)"
+        >陈<br /><span style="color: #9d9487">557年—589年</span></a
+        >
+    </td>
+    <td style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/北周" title="北周"
+        >北周<br /><span style="color: #9d9487">557年—581年</span></a
+        >
+    </td>
+    <td style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/北齐" title="北齐"
+        >北齐<br /><span style="color: #9d9487">534年—550年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="4" style="background-color: #451900">
+        <a href="https://zh.wikipedia.org/wiki/隋朝" title="隋朝"
+        >隋&nbsp;<span style="color: #9d9487">581年—619年</span></a
+        >
+    </td>
+    </tr>
+    <tr>
+    <td colspan="4" style="background-color: #343400">
+        <a href="https://zh.wikipedia.org/wiki/唐朝" title="唐朝"
+        >唐&nbsp;<span style="color: #9d9487">618年—907年</span></a
+        ><br />
+        <a href="https://zh.wikipedia.org/wiki/武周" title="武周"
+        ><span style="color: #9d9487">武周&nbsp;690年—705年</span></a
+        >
+    </td>
+    </tr>
+</table>
 
