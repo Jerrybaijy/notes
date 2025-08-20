@@ -777,12 +777,12 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 在 Typora 中，使用 Mermaid 对文本颜色的设置会失效，解决办法是使用 HTML
 
 ```
-A("<font color='red'>黄帝</font>")
+黄帝("<font color='orange'>黄帝</font>")
 ```
 
 ```mermaid
 flowchart TD
-    A("<font color='red'>黄帝</font>")
+    黄帝("<font color='orange'>黄帝</font>")
 ```
 
 
