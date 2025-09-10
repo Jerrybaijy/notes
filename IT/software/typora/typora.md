@@ -643,6 +643,14 @@
     - 从剪贴板粘贴图片，自动转换为 MD 语法
 
 - **HTML 语法**：`<img src="SRC/URL" alt="alt">`
+
+    ```html
+    <div style="display: flex; flex-direction: column; align-items: left;">
+      <img src="assets/image8.png" alt="阿拉伯国家分布" style="width: 80%; height: 500px;">
+      <p style="text-align: left; font-size: 20px; color: gray;">阿拉伯国家分布示意图</p>
+    </div>
+    ```
+
 - **转换语法**：`右键图片` - `转换图片语法` - `HTML`
 
 ## 存储图片
