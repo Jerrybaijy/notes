@@ -540,6 +540,13 @@
       font-size: 1em; /* 默认太小，设大一点，比如1em或1.2em */
       color: red; /* 可选，标注更醒目 */
     }
+    
+    /* 水平线宽度 */
+    hr {
+      border: none;        /* 首先清除默认边框 */
+      border-top: 2px solid #7a828e; /* 设置上边框为2像素宽的灰色实线 */
+      height: 0;           /* 明确设置高度为0，确保由边框决定视觉厚度 */
+    }
     ```
 
 ## Github
@@ -699,6 +706,14 @@
     <div style="display: flex; justify-content: center;">
         <img src="assets/image-20240919002526861.png" alt="图片1" style="width: 50%; height: 400px;">
         <img src="assets/image-20240919002232569.png" alt="图片2" style="width: 50%; height: 400px;">
+    </div>
+
+# 视频
+
+- Markdown 本身不支持直接插入视频，但可以使用 HTML 实现
+
+    <div style="display: flex; justify-content: flex-start;">
+        <video src="assets/中国历代疆域.MP4" controls style="width: 80%; max-width: 300px; height: auto;">您的浏览器不支持视频标签。</video>
     </div>
 
 # 表格
