@@ -494,7 +494,7 @@
 | － | Full-width Hyphen-Minus<br />全角连字符-减号 | U+FF0D | 汉字宽度 | **全角**模式的**减号键** | **中文排版**的连接符或减号<br /><small title="专业排版使用 U+2212 码减号">[注]</small> | 硫化－催化反应 |
 | − | Minus Sigh<br />减号（专业） | U+2212 |  | — | **专业排版**中的减号或负号 | x − y = 5 |
 | – | En dash<br />短破折号 | U+2013 | N的宽度 | `Alt + 0150`<br /><small title="小键盘">[注]</small> | 英文范围 | 1990–2000 |
-| — | Em dash<br />破折号 | U+2014 | M的宽度 | `Alt + 0150`<br /><small title="传统破折号（Shift + -）的一半">[注]</small> <small title="小键盘">[注]</small> | 中文范围；<br />转折语气、插入语 | 266年—420年 |
+| — | Em dash<br />破折号 | U+2014 | M的宽度 | `Alt + 0150`<br /><small title="小键盘">[注]</small> <small title="传统破折号（Shift + -）的一半">[注]</small> | 中文范围；<br />转折语气、插入语 | 266年—420年 |
 
 # 数据库
 
