@@ -674,23 +674,33 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 
 ### 内联超链接
 
-- **语法**：**链接文本**放在中括号内，**链接地址**放在后面的圆括号中。
+- **语法**：**链接文本**放在方括号内，**链接地址**放在后面的圆括号中。
 
     - **Markdown 格式**：`[超链接显示名](超链接地址)`
 
         ```markdown
-        这是一个链接 [Markdown语法](https://markdown.com.cn)。
+        <!-- 标准链接 -->
+        这是一个标准链接 [Markdown语法](https://markdown.com.cn)。
+        
+        <!-- 悬停带解释的链接 -->
+        这是一个悬停带注释的链接 [Markdown语法](https://markdown.com.cn "关于链接的解释")。
         ```
 
     - **HTML 格式**：`<a href="超链接地址">超链接显示名</a>`
 
         ```html
+        <!-- 标准链接 -->
         这是一个链接 <a href="https://markdown.com.cn">Markdown语法</a>。
+        
+        <!-- 悬停带解释的链接 -->
+        这是一个悬停带注释的链接 <a href="https://markdown.com.cn" title="关于链接的解释">Markdown语法</a>。
         ```
 
 - **渲染效果**
 
     > 这是一个链接 [Markdown语法](https://markdown.com.cn)。
+    >
+    > 这是一个悬停带注释的链接 [Markdown语法](https://markdown.com.cn "关于链接的解释")。
 
 ### 自动超链接
 
