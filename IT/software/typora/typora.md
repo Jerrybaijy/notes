@@ -646,10 +646,26 @@
 - **MD 语法**：
 
     - 手动编写：`![alt](SRC/URL)`
+
+        ```markdown
+        <!-- 标准写法 -->
+        ![alt](SRC/URL)
+        
+        <!-- 带悬停注释 -->
+        ![alt](SRC/URL "悬停注释")
+        ```
+
     - 拖放图片，自动转换为 MD 语法
+
     - 从剪贴板粘贴图片，自动转换为 MD 语法
 
-- **HTML 语法**：`<img src="SRC/URL" alt="alt">`
+- **HTML 语法**：`<img src="SRC/URL" alt="替代文本" title="悬停注释" align="left">`
+
+    ```html
+    <img src="assets/image8.png" alt="替代文本" title="悬停注释" style="width: auto; height: auto;" align="left">
+    ```
+    
+- 使用 HTML 在图片下方加注释（此种方法在复制时，图片文件不会自动复制）
 
     ```html
     <div style="display: flex; flex-direction: column; align-items: left;">
@@ -737,12 +753,47 @@
 
 ## 多张并排图片
 
-- 使用 HTML 语法
+- 使用 HTML 语法（此种方法在复制时，图片文件不会自动复制）
 
     <div style="display: flex; justify-content: center;">
         <img src="assets/image-20240919002526861.png" alt="图片1" style="width: 50%; height: 400px;">
         <img src="assets/image-20240919002232569.png" alt="图片2" style="width: 50%; height: 400px;">
     </div>
+
+## 图片左对齐
+
+- Typora 中有两种方法插入图片
+
+    ```markdown
+    <!-- Markdown 写法 -->
+    ![alt](SRC/URL)
+    
+    <!-- HTML 写法 -->
+    <img src="SRC/URL" alt="替代文本">
+    ```
+
+- 修改主题 CSS 文件，保证 Markdown 写法的图片能左对齐
+
+    ```css
+    /* md图片靠左 */
+    p .md-image:only-child {
+      width: auto;
+      text-align: left;
+    }
+    ```
+
+- 添加 `align="left"` 属性，保证 HTML 写法的图片能左对齐
+
+    ```markdown
+    <img src="SRC/URL" alt="替代文本" title="悬停说明" align="left">
+    ```
+
+- 二者共同作用，保证所有插入图片能左对齐
+
+## 调整图片大小
+
+- 尽量不使用 Typora 自带的 `zoom` 属性调整图片大小，因为很多浏览器不支持（比如 Firefox）。
+- 尽量使用 `<img>` 元素的 `width` 和 `height` 属性调整图片大小。
 
 # 视频
 
