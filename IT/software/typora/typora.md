@@ -684,9 +684,45 @@
 ## 删除图片
 
 - **删除代码**：在删除代码以后，如果此图片无用，应及时在 `assets` 文件夹中手动删除相应图片。
-- **删除文件**：`右键` - `删除图片文件`
+
+- **删除文件**：
+
+    - 此部分内容仅适用于 **Markdown 原生语法**的图片，否则需要手动删除。
+
+        ```markdown
+        <!-- 适用于 Markdown 格式 -->
+        ![Linux](/assets/Linux.png)
+        
+        <!-- 适用于基础的 HTML 格式 -->
+        <img src="/assets/Linux.png" alt="Linux">
+        
+        <!-- 不适用于复杂的 HTML 格式 -->
+        <div style="display: flex; flex-direction: column; align-items: left;">
+          <img src="assets/image-20240708151917101.png" alt="北宋疆域图" style="width: 30%; height: 30%;">
+          <p style="text-align: left; font-size: 18px; color: gray;">辽朝、北宋、西夏三国疆域</p>
+        </div>
+        ```
+
+    - `右键` - `删除图片文件`
+
 
 ## 复制图片
+
+- 此部分内容仅适用于 **Markdown 原生语法**的图片，否则需要手动复制和删除。
+
+    ```markdown
+    <!-- 适用于 Markdown 格式 -->
+    ![Linux](/assets/Linux.png)
+    
+    <!-- 适用于基础的 HTML 格式 -->
+    <img src="/assets/Linux.png" alt="Linux">
+    
+    <!-- 不适用于复杂的 HTML 格式 -->
+    <div style="display: flex; flex-direction: column; align-items: left;">
+      <img src="assets/image-20240708151917101.png" alt="北宋疆域图" style="width: 30%; height: 30%;">
+      <p style="text-align: left; font-size: 18px; color: gray;">辽朝、北宋、西夏三国疆域</p>
+    </div>
+    ```
 
 - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**，而是以绝对路径引用原来的图片。
 

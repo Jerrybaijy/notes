@@ -15,7 +15,7 @@
 	```html
 	<div>
 	  <!-- 这是一个单行注释 -->
-		<h1>Hello, World!</h1>
+	  <h1>Hello, World!</h1>
 	    
 	  <!--
 	  多行注释第一行
@@ -233,13 +233,19 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：当用户将鼠标悬停在带有 `title` 属性的元素上时，浏览器会显示该属性的值。
 
-	```html
-	<a href="https://www.baidu.com/" title="点击跳转至百度">百度</a>
-	```
+  ```html
+  <!-- 用于锚元素 -->
+  <a href="https://www.baidu.com/" title="点击跳转至百度">百度</a>
+  
+  <!-- 用于其它元素 -->
+  <span title="公元前">AD</span>
+  ```
 
 - **渲染效果**
 
 	> <a href="https://www.baidu.com/" title="点击跳转至百度">百度</a>
+	>
+	> <span title="公元前">AD</span>
 
 ## 禁用 `disabled`
 
