@@ -676,7 +676,7 @@
     ![测试图片](assets/测试.png "测试")
     
     <!-- 标准 HTML 写法 -->
-    <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;" align="left">
+    <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
     ```
 
 - 插入图片**嵌套写法**示例
@@ -760,7 +760,7 @@
 
 ## 图片左对齐
 
-- 修改主题 CSS 文件，二者共同作用，保证**标准写法**的图片能左对齐
+- 修改主题 CSS 文件，二者共同作用，保证**标准写法**的图片能左对齐。
 
     ```css
     /* md图片靠左 */
@@ -774,12 +774,6 @@
         display: block;
         margin: 0 auto 0 0 !important;
     }
-    ```
-
-- `<img>` 添加 `align="left"` 属性，保证 HTML 写法的图片能左对齐。
-
-    ```markdown
-    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left">
     ```
 
 ## 调整图片大小
