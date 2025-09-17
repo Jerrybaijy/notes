@@ -247,16 +247,22 @@ h1 {
   border: 1px solid rgb(229, 229, 229);
 }
 
-/* 图片靠左 */
+/* 去除图片黑边 */
+.md-image > img {
+  margin: 0;
+  padding: 0;
+}
+
+/* md图片靠左 */
 p .md-image:only-child {
   width: auto;
   text-align: left;
 }
 
-/* 去除图片黑边 */
-.md-image > img {
-  margin: 0;
-  padding: 0;
+/* img图片靠左 */
+#write img {
+    display: block;
+    margin: 0 auto 0 0 !important;
 }
 
 /* 超链接取消下划线 */

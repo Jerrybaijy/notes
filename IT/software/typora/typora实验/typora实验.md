@@ -1,15 +1,11 @@
+# 实验
 
+## 测试视频
 
-~~1111111111111~~
+<video 
+  controls 
+  src="assets/测试视频.MP4" 
+  style="display: block; margin-left: 0; margin-right: auto; width: 25%;"
+></video>
 
-```ja
-/* img {
-  display: block; /* 将图片设为块级元素 */
-  margin: 0;      /* 清除默认外边距 */
-  float: left;    图片靠左对齐
-} */
-```
-
-![image-20250325165506629](assets/image-20250325165506629.png)
-
-![image-20250325165606786](assets/image-20250325165606786.png)
+1

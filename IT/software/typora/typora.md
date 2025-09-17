@@ -201,17 +201,31 @@
     a:hover {
       color: #4183C4 !important;
     }
+    
     /* ---------------------- 图片 ---------------- */
-    /* 图片样式 */
+    /* 图片边框 */
     #write img {
-    border: 1px solid rgb(229, 229, 229);
+      border: 1px solid rgb(229, 229, 229);
     }
     
-    /* 图片靠左 */
-    p .md-image:only-child{
+    /* 去除图片黑边 */
+    .md-image > img {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* md图片靠左 */
+    p .md-image:only-child {
       width: auto;
       text-align: left;
     }
+    
+    /* img图片靠左 */
+    #write img {
+        display: block;
+        margin: 0 auto 0 0 !important;
+    }
+    
     /* ---------------------- 其它 ---------------- */
     /* 删除线颜色 */
     del {
@@ -513,16 +527,22 @@
       border: 1px solid rgb(229, 229, 229);
     }
     
-    /* 图片靠左 */
+    /* 去除图片黑边 */
+    .md-image > img {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* md图片靠左 */
     p .md-image:only-child {
       width: auto;
       text-align: left;
     }
     
-    /* 去除图片黑边 */
-    .md-image > img {
-      margin: 0;
-      padding: 0;
+    /* img图片靠左 */
+    #write img {
+        display: block;
+        margin: 0 auto 0 0 !important;
     }
     
     /* 超链接取消下划线 */
@@ -643,36 +663,47 @@
 
 以下方法可以插入图片：
 
-- **MD 语法**：
+- 拖放图片，自动转换为 MD 语法。
 
-    - 手动编写：`![alt](SRC/URL)`
+- 从剪贴板粘贴图片，自动转换为 MD 语法。
 
-        ```markdown
-        <!-- 标准写法 -->
-        ![alt](SRC/URL)
-        
-        <!-- 带悬停注释 -->
-        ![alt](SRC/URL "悬停注释")
+- 复制图片到 `assets` 文件夹，手动编写**标准写法**进行引用。
+
+- 插入图片**标准写法**示例
+
+    ```markdown
+    <!-- 标准 Markdown 写法 -->
+    ![测试图片](assets/测试图片.png "测试图片")
+    
+    <!-- 标准 HTML 写法 -->
+    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left"/>
+    ```
+
+- 插入图片**嵌套写法**示例
+
+    - 这两种**嵌套写法**是当初为了在图片下方明文显示注释，在复制时，图片文件不会自动复制，已弃用！
+
+    - 现已更改为使用**标准写法** `<img>` 的 `title` 属性悬停注释。
+
+    - **figure**
+
+        ```html
+        <figure>
+          <img src="assets/战国七雄.png" alt="战国七雄" style="width: 40%; height: auto;">
+          <figcaption style="font-size: 16px; color: gray;">战国七雄</figcaption>
+        </figure>
         ```
 
-    - 拖放图片，自动转换为 MD 语法
+    - **div**
 
-    - 从剪贴板粘贴图片，自动转换为 MD 语法
+        ```html
+        <div style="display: flex; flex-direction: column; align-items: left;">
+          <img src="assets/image8.png" alt="阿拉伯国家分布" style="width: 80%; height: auto;">
+          <p style="text-align: left; font-size: 20px; color: gray;">阿拉伯国家分布示意图</p>
+        </div>
+        ```
 
-- **HTML 语法**：`<img src="SRC/URL" alt="替代文本" title="悬停注释" align="left">`
-
-    ```html
-    <img src="assets/image8.png" alt="替代文本" title="悬停注释" style="width: auto; height: auto;" align="left">
-    ```
-    
-- 使用 HTML 在图片下方加注释（此种方法在复制时，图片文件不会自动复制）
-
-    ```html
-    <div style="display: flex; flex-direction: column; align-items: left;">
-      <img src="assets/image8.png" alt="阿拉伯国家分布" style="width: 80%; height: 500px;">
-      <p style="text-align: left; font-size: 20px; color: gray;">阿拉伯国家分布示意图</p>
-    </div>
-    ```
+- 永远使用**标准写法**！除非需要图片并排显示，否则不要尝试任何复杂的属性，尤其是**嵌套写法**，这样会导致复制内容时无法复制图片。
 
 - **转换语法**：`右键图片` - `转换图片语法` - `HTML`
 
@@ -699,80 +730,37 @@
 
 ## 删除图片
 
-- **删除代码**：在删除代码以后，如果此图片无用，应及时在 `assets` 文件夹中手动删除相应图片。
+- 在删除代码或者移动内容到其它文件以后，如果此图片无用，应及时删除 `assets` 文件夹中相应图片。
+- 如果删除的内容中含有图片，且在本 `.md` 文件中没有其它引用，则先删图片，再删文字。
+    - `右键` | `删除图片文件`
+    - 否则在 `assets` 文件夹中逐一删除很麻烦
 
-- **删除文件**：
-
-    - 此部分内容仅适用于 **Markdown 原生语法**的图片，否则需要手动删除。
-
-        ```markdown
-        <!-- 适用于 Markdown 格式 -->
-        ![Linux](/assets/Linux.png)
-        
-        <!-- 适用于基础的 HTML 格式 -->
-        <img src="/assets/Linux.png" alt="Linux">
-        
-        <!-- 不适用于复杂的 HTML 格式 -->
-        <div style="display: flex; flex-direction: column; align-items: left;">
-          <img src="assets/image-20240708151917101.png" alt="北宋疆域图" style="width: 30%; height: 30%;">
-          <p style="text-align: left; font-size: 18px; color: gray;">辽朝、北宋、西夏三国疆域</p>
-        </div>
-        ```
-
-    - `右键` - `删除图片文件`
-
+- 此种方法仅适用于**标准写法**图片，不适用于**嵌套写法**，否则需要在 `assets` 文件夹中手动查找删除。
 
 ## 复制图片
 
-- 此部分内容仅适用于 **Markdown 原生语法**的图片，否则需要手动复制和删除。
+- 此部分内容仅适用于 **标准写法**的图片，不适用于**嵌套写法**，否则需要手动复制图片到目标 `assets` 文件夹。
 
-    ```markdown
-    <!-- 适用于 Markdown 格式 -->
-    ![Linux](/assets/Linux.png)
-    
-    <!-- 适用于基础的 HTML 格式 -->
-    <img src="/assets/Linux.png" alt="Linux">
-    
-    <!-- 不适用于复杂的 HTML 格式 -->
-    <div style="display: flex; flex-direction: column; align-items: left;">
-      <img src="assets/image-20240708151917101.png" alt="北宋疆域图" style="width: 30%; height: 30%;">
-      <p style="text-align: left; font-size: 18px; color: gray;">辽朝、北宋、西夏三国疆域</p>
-    </div>
-    ```
-
+- 不要剪切，因为原文件图片不会自动删除，后续逐一删除很麻烦。
 - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**，而是以绝对路径引用原来的图片。
-
-    - 如果目标文件夹有图片与复制的图片同名，则会自动改名创建一个新图片。
-    - 如果没有同名图片，则会将图片复制到新文件的 **assets 文件夹**。
-
-- 如果剪切，并且原文件没有其它引用。
-    - 不要剪切，否则原文件图片不会删除。
-    - 要先复制，再粘贴。
-    - 在粘贴完以后，记得删除原文件夹中的图片（右键先删图片，再删文字内容）。
-
+    - 如果**目标 assets 文件夹**有图片与复制的图片同名，则会自动改名创建一个新图片。
+    - 如果**目标 assets 文件夹**没有同名图片，则会将图片复制到该文件夹。
+- 在粘贴完以后，如果原文件没有其它引用，记得删除原文件夹中的图片（右键先删图片，再删文字内容）。
 
 ## 多张并排图片
 
-- 使用 HTML 语法（此种方法在复制时，图片文件不会自动复制）
+- 使用 HTML **嵌套写法**（此种方法在复制时，图片文件不会自动复制）
 
-    <div style="display: flex; justify-content: center;">
-        <img src="assets/image-20240919002526861.png" alt="图片1" style="width: 50%; height: 400px;">
-        <img src="assets/image-20240919002232569.png" alt="图片2" style="width: 50%; height: 400px;">
+    ```html
+    <div style="display: flex; justify-content: left;">
+      <img src="assets/测试图片1.png" alt="测试图片1" title="测试图片1" style="width: 50%;"/>
+      <img src="assets/测试图片2.png" alt="测试图片2" title="测试图片2" style="width: 50%;"/>
     </div>
+    ```
 
 ## 图片左对齐
 
-- Typora 中有两种方法插入图片
-
-    ```markdown
-    <!-- Markdown 写法 -->
-    ![alt](SRC/URL)
-    
-    <!-- HTML 写法 -->
-    <img src="SRC/URL" alt="替代文本">
-    ```
-
-- 修改主题 CSS 文件，保证 Markdown 写法的图片能左对齐
+- 修改主题 CSS 文件，二者共同作用，保证**标准写法**的图片能左对齐
 
     ```css
     /* md图片靠左 */
@@ -780,28 +768,36 @@
       width: auto;
       text-align: left;
     }
+    
+    /* img图片靠左 */
+    #write img {
+        display: block;
+        margin: 0 auto 0 0 !important;
+    }
     ```
 
-- 添加 `align="left"` 属性，保证 HTML 写法的图片能左对齐
+- `<img>` 添加 `align="left"` 属性，保证 HTML 写法的图片能左对齐。
 
     ```markdown
-    <img src="SRC/URL" alt="替代文本" title="悬停说明" align="left">
+    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left"/>
     ```
-
-- 二者共同作用，保证所有插入图片能左对齐
 
 ## 调整图片大小
 
 - 尽量不使用 Typora 自带的 `zoom` 属性调整图片大小，因为很多浏览器不支持（比如 Firefox）。
-- 尽量使用 `<img>` 元素的 `width` 和 `height` 属性调整图片大小。
+- 尽量使用 `<img>` 元素的 `width` 和 `height` 属性调整图片大小。
 
 # 视频
 
-- Markdown 本身不支持直接插入视频，但可以使用 HTML 实现
+Markdown 本身不支持直接插入视频，但可以使用 HTML 实现
 
-    <div style="display: flex; justify-content: flex-start;">
-        <video src="assets/中国历代疆域.MP4" controls style="width: 80%; max-width: 300px; height: auto;">您的浏览器不支持视频标签。</video>
-    </div>
+```markdown
+<video
+  controls
+  src="assets/测试视频.MP4"
+  style="display: block; margin-left: 0; margin-right: auto; width: 25%"
+></video>
+```
 
 # 表格
 
