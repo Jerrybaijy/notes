@@ -165,6 +165,21 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - `style` 属性用于为 HTML 元素添加样式，详见 **[`CSS` - `css 来源`](../css/css.md#CSS 来源)**。
 
+- 关于 `style` 属性最后一个声明结尾 `;` 的说明
+
+    - 保留最后一个分号更规范，而且不易出错
+
+    - 因为代码格式化工具 `Prettier` 会将结尾 `;` 自动格式化删掉，所以暂时保持结尾没有 `;` 的写法。
+
+        ```html
+        <!-- 结尾有分号更规范 -->
+        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px;" />
+        
+        <!-- Prettier 会格式化删掉结尾分号 -->
+        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+        ```
+
+
 ## 路径 `src`
 
 - **语法**：用于指定脚本文件引用的外部资源的路径。可以是本地路径，也可以是网络上的 URL。
@@ -2214,15 +2229,23 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - `<img>` 用于在页面中嵌入图像，是一个空元素，行内元素。
 
+- 关于自闭合的说明
+
+    - 在 HTML5 中，`<img>` 是 void 元素（空元素），**不需要**自闭合标签。这是现代 HTML 的标准写法，简洁且符合规范。
+
+    - 在 XHTML 中要求所有标签必须闭合，但 XHTML 已逐渐被 HTML5 取代。
+
+    - 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
+
 - **语法**
 
-	```html
-	<img src="assets/dog.jpg" alt="dog" />
-	```
+  ```html
+  <img src="assets/dog.jpg" alt="dog" />
+  ```
 
 - **渲染效果**
 
-	> <img src="assets/dog.jpg" alt="dog" style="width: 50%; float: left" />
+  > <img src="assets/dog.jpg" alt="dog" style="width: 50%; float: left" />
 
 - **常用属性**：`src`  `alt`  `title`  `width`  `height`
 

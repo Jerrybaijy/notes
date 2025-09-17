@@ -661,51 +661,57 @@
 
 ## 插入图片
 
-以下方法可以插入图片：
+**以下方法可以插入图片**：
 
-- 拖放图片，自动转换为 MD 语法。
-
-- 从剪贴板粘贴图片，自动转换为 MD 语法。
-
+- 拖放图片，自动转换为**标准 MD 语法**。
+- 从剪贴板粘贴图片，自动转换为**标准 MD 语法**。
 - 复制图片到 `assets` 文件夹，手动编写**标准写法**进行引用。
+- **转换语法**（不适用于嵌套写法）：`右键图片` - `转换图片语法` - `HTML`
 
-- 插入图片**标准写法**示例
+**插入写法示例**：
+
+- 优先使用**标准 Markdown 写法**
 
     ```markdown
-    <!-- 标准 Markdown 写法 -->
     ![测试图片](assets/测试.png "测试")
-    
-    <!-- 标准 HTML 写法 -->
-    <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
     ```
 
-- 插入图片**嵌套写法**示例
+- 需要调整大小但不使用图注时，使用**标准 HTML 写法**
 
-    - 这两种**嵌套写法**是当初为了在图片下方明文显示注释，在复制时，图片文件不会自动复制，已弃用！
+    ```html
+    <img src="assets/测试.png" alt="测试" style="width: 40%" />
+    ```
 
-    - 现已更改为使用**标准写法** `<img>` 的 `title` 属性悬停注释。
+- 需要使用图注时，使用 `<figure>` 嵌套写法，图片文件不支持复制和删除
 
-    - **figure**
+    ```html
+    <figure>
+      <img src="assets/测试.png" alt="测试" style="width: 40%; height: auto" />
+      <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+    </figure>
+    ```
 
-        ```html
-        <figure>
-          <img src="assets/战国七雄.png" alt="战国七雄" style="width: 40%; height: auto;">
-          <figcaption style="font-size: 16px; color: gray;">战国七雄</figcaption>
-        </figure>
-        ```
+- 需要多张图片并排时，使用 `<div>` 嵌套写法，图片文件不支持复制和删除
 
-    - **div**
-
-        ```html
-        <div style="display: flex; flex-direction: column; align-items: left;">
-          <img src="assets/image8.png" alt="阿拉伯国家分布" style="width: 80%; height: auto;">
-          <p style="text-align: left; font-size: 20px; color: gray;">阿拉伯国家分布示意图</p>
-        </div>
-        ```
-
-- 永远使用**标准写法**！除非需要图片并排显示，否则不要尝试任何复杂的属性，尤其是**嵌套写法**，这样会导致复制内容时无法复制图片。
-
-- **转换语法**：`右键图片` - `转换图片语法` - `HTML`
+    ```html
+    <!-- 不需要图注的并排图片 -->
+    <div style="display: flex; justify-content: left;">
+      <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+      <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+    </div>
+    
+    <!-- 需要图注的并排图片 -->
+    <div style="display: flex; justify-content: left">
+      <figure>
+        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+        <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+        <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+      </figure>
+    </div>
+    ```
 
 ## 存储图片
 
@@ -718,15 +724,11 @@
         <img src="assets/image-20241122153133932.png" alt="图片1" style="width: 100%; height: 100%;">
 
 - **云存储**：可将图片上传至云服务器
+
 - **更改存储**
 
     - 将所有引用的本地图片移动到指定文件夹，同时自动修改引用路径。
-    - `格式` - `图像` - `移动所有图片到...`
-
-- **复制时的存储**
-
-    - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**
-    - 如果是剪切，并且原文件没有其它引用，在复制完以后，记得删除原文件夹中的图片
+    - `格式` | `图像` | `移动所有图片到...`
 
 ## 删除图片
 
@@ -746,17 +748,6 @@
     - 如果**目标 assets 文件夹**有图片与复制的图片同名，则会自动改名创建一个新图片。
     - 如果**目标 assets 文件夹**没有同名图片，则会将图片复制到该文件夹。
 - 在粘贴完以后，如果原文件没有其它引用，记得删除原文件夹中的图片（右键先删图片，再删文字内容）。
-
-## 多张并排图片
-
-- 使用 HTML **嵌套写法**（此种方法在复制时，图片文件不会自动复制）
-
-    ```html
-    <div style="display: flex; justify-content: left;">
-      <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
-      <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
-    </div>
-    ```
 
 ## 图片左对齐
 
