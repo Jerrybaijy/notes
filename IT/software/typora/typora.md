@@ -673,10 +673,10 @@
 
     ```markdown
     <!-- 标准 Markdown 写法 -->
-    ![测试图片](assets/测试图片.png "测试图片")
+    ![测试图片](assets/测试.png "测试")
     
     <!-- 标准 HTML 写法 -->
-    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left"/>
+    <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;" align="left">
     ```
 
 - 插入图片**嵌套写法**示例
@@ -753,8 +753,8 @@
 
     ```html
     <div style="display: flex; justify-content: left;">
-      <img src="assets/测试图片1.png" alt="测试图片1" title="测试图片1" style="width: 50%;"/>
-      <img src="assets/测试图片2.png" alt="测试图片2" title="测试图片2" style="width: 50%;"/>
+      <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
+      <img src="assets/测试.png" alt="测试" title="测试" style="width: 50%;">
     </div>
     ```
 
@@ -779,7 +779,7 @@
 - `<img>` 添加 `align="left"` 属性，保证 HTML 写法的图片能左对齐。
 
     ```markdown
-    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left"/>
+    <img src="assets/测试图片.png" alt="测试图片" title="测试图片" style="width: 50%;" align="left">
     ```
 
 ## 调整图片大小
