@@ -686,7 +686,7 @@
 
     ```html
     <figure>
-      <img src="assets/测试.png" alt="测试" style="width: 40%; height: auto" />
+      <img src="assets/测试.png" alt="测试" style="width: 40%" />
       <figcaption style="font-size: 16px; color: gray">测试</figcaption>
     </figure>
     ```
@@ -696,18 +696,18 @@
     ```html
     <!-- 不需要图注的并排图片 -->
     <div style="display: flex; justify-content: left;">
-      <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
-      <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+      <img src="assets/测试.png" alt="测试" style="height: 400px" />
+      <img src="assets/测试.png" alt="测试" style="height: 400px" />
     </div>
     
     <!-- 需要图注的并排图片 -->
     <div style="display: flex; justify-content: left">
       <figure>
-        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+        <img src="assets/测试.png" alt="测试" style="height: 400px" />
         <figcaption style="font-size: 16px; color: gray">测试</figcaption>
       </figure>
       <figure>
-        <img src="assets/测试.png" alt="测试" style="width: auto; height: 400px" />
+        <img src="assets/测试.png" alt="测试" style="height: 400px" />
         <figcaption style="font-size: 16px; color: gray">测试</figcaption>
       </figure>
     </div>
@@ -741,7 +741,7 @@
 
 ## 复制图片
 
-- 此部分内容仅适用于 **标准写法**的图片，不适用于**嵌套写法**，否则需要手动复制图片到目标 `assets` 文件夹。
+- 此部分内容仅适用于**标准写法**的图片，不适用于**嵌套写法**，否则需要手动复制图片到目标 `assets` 文件夹。
 
 - 不要剪切，因为原文件图片不会自动删除，后续逐一删除很麻烦。
 - 在复制内容时，一定要**带着标题复制**，否则图片不会复制到**目标 assets 文件夹**，而是以绝对路径引用原来的图片。
