@@ -1342,7 +1342,7 @@ th {
 ### 表格文字对齐
 
 - 水平 `text-align`  垂直 `vertical-align`
-- 注意 `vertical-align` 不能直接用于 `<table>`元素，而应该用在 `<th>` 和 `<td>` 中
+- 注意 `vertical-align` 不能直接用于 `<table>` 元素，而应该用在 `<th>` 和 `<td>` 中
 
     - `left  center  right`    `top  middle  bottom`
 
@@ -1402,7 +1402,7 @@ th {
 
     ```css
     body {
-        background: #00ff00 url("images/b.jpg") no-repeat fixed center;
+      background: #00ff00 url("images/b.jpg") no-repeat fixed center;
     }
     ```
 
@@ -1902,11 +1902,10 @@ th {
 ## [`display` 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
 
 - **定义**：**`display`** 属性会影响元素两个方面的布局表现
-
     - **外部表现**：元素本身在常规流布局中的表现
     - **内部表现**：元素的子元素在元素内部的布局表现
-
-- **语法**：`display: 外部值  内部值 | 外部值;`
+    
+- **语法**：`display: 外部值  内部值;` | `display: 外部值;`
 - **属性值**
 
     - **外部值**
