@@ -12,19 +12,19 @@
 
 - 单行注释：`Ctrl + / `，多行注释：`Ctrl + Shift + /`
 
-    ```html
-    <div>
-      <!-- 这是一个单行注释 -->
-      <h1>Hello, World!</h1>
-        
-      <!--
-      多行注释第一行
-      多行注释第二行
-      多行注释第三行
-      -->
-      <h1>Hello, World!</h1>
-    </div>
-    ```
+	```html
+	<div>
+	  <!-- 这是一个单行注释 -->
+	  <h1>Hello, World!</h1>
+	    
+	  <!--
+	  多行注释第一行
+	  多行注释第二行
+	  多行注释第三行
+	  -->
+	  <h1>Hello, World!</h1>
+	</div>
+	```
 
 ## [HTML 元素](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_%E5%85%83%E7%B4%A0%E8%AF%A6%E8%A7%A3)
 
@@ -47,17 +47,17 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **有值的属性（Attribute）应包含**：
 
-    -  **空格符**：在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格。
-    -  **属性名称**，并接等号，本例为 `class`。
-    -  **属性值**：由双（单）引号所包围，本例为 `editor-note`。
+	-  **空格符**：在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格。
+	-  **属性名称**，并接等号，本例为 `class`。
+	-  **属性值**：由双（单）引号所包围，本例为 `editor-note`。
 
 - **说明**
 
-    - 属性一般存在于开始标签。
-    - 一个元素可以有多个属性，每个属性之间用 `空格` 分隔。
-    - 一个属性可以有多个属性值，每个属性值之间用 `空格` 分隔。
-    - 属性和属性值对大小写不敏感，但新版本的 (X)HTML 要求使用小写属性。
-    - 不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"` `'` ``` `=` `<` `>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
+	- 属性一般存在于开始标签。
+	- 一个元素可以有多个属性，每个属性之间用 `空格` 分隔。
+	- 一个属性可以有多个属性值，每个属性值之间用 `空格` 分隔。
+	- 属性和属性值对大小写不敏感，但新版本的 (X)HTML 要求使用小写属性。
+	- 不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"` `'` ``` `=` `<` `>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
 
 ### 嵌套元素
 
@@ -71,15 +71,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：空元素只有开始标签，没有结束标签，即没有内容的元素，也称 *自闭合标签*。
 
-    ```html
-    <img src="images/firefox-icon.png" alt="My test image" />
-    ```
+	```html
+	<img src="images/firefox-icon.png" alt="My test image" />
+	```
 
 - **注意**
 
-    -  `<tag>` 和 `<tag />` 都表示空元素
-    -  HTML5 使用 `<tag>`，同时兼容 `<tag />`
-    -  XML 和 XHTML 使用 `<tag />`，但不支持 `<tag>`
+	-  `<tag>` 和 `<tag />` 都表示空元素
+	-  HTML5 使用 `<tag>`，同时兼容 `<tag />`
+	-  XML 和 XHTML 使用 `<tag />`，但不支持 `<tag>`
 
 ## [实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)
 
@@ -89,41 +89,41 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 每个 HTML 实体以符号 `&` 开始，以 `;` 结束。
 
-    |   原义字符   | HTML 实体         |
-    | :----------: | ----------------- |
-    |      <       | `&lt;`            |
-    |      >       | `&gt;`            |
-    |      "       | `&quot;`          |
-    |      '       | `&apos;`          |
-    |      &       | `&amp;`           |
-    |     空格     | `&nbsp;`          |
-    | ............ | ................. |
+	|   原义字符   | HTML 实体         |
+	| :----------: | ----------------- |
+	|      <       | `&lt;`            |
+	|      >       | `&gt;`            |
+	|      "       | `&quot;`          |
+	|      '       | `&apos;`          |
+	|      &       | `&amp;`           |
+	|     空格     | `&nbsp;`          |
+	| ............ | ................. |
 
 - **示例**
 
-    ```html
-    <!-- 错误写法 -->
-    <p>HTML 中用 <p> 来定义段落元素。</p>
-    
-    <!-- 正确写法 -->
-    <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
-    ```
+	```html
+	<!-- 错误写法 -->
+	<p>HTML 中用 <p> 来定义段落元素。</p>
+	
+	<!-- 正确写法 -->
+	<p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
+	```
 
 # [HTML 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes)
 
 ## [标识 `id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id)
 
 - **语法**
-    - `id` 属性用于为元素指定唯一的标识符。
-    - 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
+	- `id` 属性用于为元素指定唯一的标识符。
+	- 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
 - **命名规则**
-    - 必须以字母（a-z，A-Z）开头。
-    - 可以包含字母、数字（0-9）、连字符（-）、下划线（_）和句点（.）。
-    - 区分大小写。
-    - 不应包含空格和其他特殊字符。
+	- 必须以字母（a-z，A-Z）开头。
+	- 可以包含字母、数字（0-9）、连字符（-）、下划线（_）和句点（.）。
+	- 区分大小写。
+	- 不应包含空格和其他特殊字符。
 - **应用**
-    - 在 CSS 中通过 `#id` 方法，访问和操作元素。
-    - 在 JS中 通过 `document.getElementById` 方法，访问和操作元素。
+	- 在 CSS 中通过 `#id` 方法，访问和操作元素。
+	- 在 JS中 通过 `document.getElementById` 方法，访问和操作元素。
 
 ## [类名 `class`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/class)
 
@@ -153,9 +153,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
   ![image-20241205184715619](assets/image-20241205184715619.png)
 
 - **说明**
-    
-    - 一个元素拥有多个类名，即可接受多个类选择器的样式
-    
+	
+	- 一个元素拥有多个类名，即可接受多个类选择器的样式
+	
 - **应用**
 
   - 在 CSS 中通过类选择器 `.类名`，访问和操作元素。
@@ -186,9 +186,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 通常用于元素，如 `<img>`、`<script>`、`<audio>`、`<video>` 等。
 
-    ```html
-    <img src="path/to/image.jpg" alt="Description">
-    ```
+	```html
+	<img src="path/to/image.jpg" alt="Description">
+	```
 
 ## 链接 `href`
 
@@ -196,16 +196,16 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 通常用于 `<a>`、`<link>` 和 `<area>` 元素，一般用于链接资源文件，比如样式表。
 
-    ```html
-    <a href="https://www.example.com">点击这里</a>
-    ```
+	```html
+	<a href="https://www.example.com">点击这里</a>
+	```
 
 - 跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
 
 - **<span id="anchor">锚点</span>**：锚点元素添加属性 `id="锚点"`，跳转元素在 URL/SRC 后添加 `#锚点`（同一地址可省略 URL/SRC）
 
-    ```html
-    <div id="example">百度</div>
+	```html
+	<div id="example">百度</div>
   
   <a href="#example">点击跳转至百度</a>
   ```
@@ -216,9 +216,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：`<a target="_blank"></a>`
 
-    ```html
-    <a href="https://www.example.com" target="_blank">Visit Example.com</a>
-    ```
+	```html
+	<a href="https://www.example.com" target="_blank">Visit Example.com</a>
+	```
 
 - **属性值**
 
@@ -258,17 +258,17 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > <a href="https://www.baidu.com/" title="点击跳转至百度">百度</a>
-    >
-    > <span title="公元前">AD</span>
+	> <a href="https://www.baidu.com/" title="点击跳转至百度">百度</a>
+	>
+	> <span title="公元前">AD</span>
 
 ## 禁用 `disabled`
 
 - **语法**：禁用用户与某个元素进行交互。
 
-    ```html
-    <input type="text" disabled>
-    ```
+	```html
+	<input type="text" disabled>
+	```
 
 # 文档结构
 
@@ -276,27 +276,27 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **文档结构**
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-      </head>
-      <body>
-    
-      </body>
-    </html>
-    ```
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	  <head>
+	      <meta charset="UTF-8">
+	      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	      <title>Document</title>
+	  </head>
+	  <body>
+	
+	  </body>
+	</html>
+	```
 
 - **基本结构包含：**
 
-    1. [**文档类型**](#[文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype))：`<!DOCTYPE html>`
-    2. [**根元素**](#[根元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html))：`<html>`
+	1. [**文档类型**](#[文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype))：`<!DOCTYPE html>`
+	2. [**根元素**](#[根元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html))：`<html>`
 
-    3. [**元数据分区**](#[元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据))：`<head>`
-    4. [**内容分区**](#[内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body))：`<body>`
+	3. [**元数据分区**](#[元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据))：`<head>`
+	4. [**内容分区**](#[内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body))：`<body>`
 
 ## [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
 
@@ -334,7 +334,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 - **作者信息**：`<meta name="author" content="NAME" />`
 - **描述信息**：`<meta name="description" content="content..." />`
 - [**视口**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts)：`<meta name="viewport" content="width=device-width">`  
-    视口可以确保页面以视口宽度进行渲染，避免移动端浏览器上因页面过宽导致缩放。
+	视口可以确保页面以视口宽度进行渲染，避免移动端浏览器上因页面过宽导致缩放。
 
 ## [**文档标题 `<title>`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/title)
 
@@ -360,9 +360,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **说明**
 
-    - **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部CSS样式文件，并应用其中的样式规则。
-    - `<link>` 元素可以出现在 [`<head>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head) 元素或 [`<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body) 元素中，具体取决于它是否有一个 **body-ok** 的[链接类型](https://html.spec.whatwg.org/multipage/links.html#body-ok)，但最好将其放在 `<head>` 中。
-    - 该元素最常用于链接 CSS，此外也可以被用来创建站点图标 。
+	- **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部CSS样式文件，并应用其中的样式规则。
+	- `<link>` 元素可以出现在 [`<head>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head) 元素或 [`<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body) 元素中，具体取决于它是否有一个 **body-ok** 的[链接类型](https://html.spec.whatwg.org/multipage/links.html#body-ok)，但最好将其放在 `<head>` 中。
+	- 该元素最常用于链接 CSS，此外也可以被用来创建站点图标 。
 
 ## [样式信息 `<style>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/style)
 
@@ -383,7 +383,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **说明**
 
-    - `<style>` 元素必须包含在文档的 `<head>` 内。但最好的方式是使用 `<link>` 元素引入 CSS。
+	- `<style>` 元素必须包含在文档的 `<head>` 内。但最好的方式是使用 `<link>` 元素引入 CSS。
 
 ## [文档根 URL `<base>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base)
 
@@ -403,52 +403,52 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 -  **语法**
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <header>
-        <a class="logo" href="#">Cute Puppies Express!</a>
-      </header>
-      
-      <article>
-        <header>
-          <h1>Beagles</h1>
-          <time>08.12.2014</time>
-        </header>
-        <p>I love beagles <em>so</em> much! Like, really, a lot. They’re adorable and their ears are so, so snugly soft!</p>
-      </article>
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <header>
+	    <a class="logo" href="#">Cute Puppies Express!</a>
+	  </header>
+	  
+	  <article>
+	    <header>
+	      <h1>Beagles</h1>
+	      <time>08.12.2014</time>
+	    </header>
+	    <p>I love beagles <em>so</em> much! Like, really, a lot. They’re adorable and their ears are so, so snugly soft!</p>
+	  </article>
+	</body>
+	```
 
-    ```css
-    .logo {
-      background: left / cover url('../images/dog.jpg');
-      display: flex;
-      height: 120px;
-      align-items: center;
-      justify-content: center;
-      font:
-        bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script',
-        fantasy;
-      color: #ff0083;
-      text-shadow: #000 2px 2px 0.2rem;
-    }
-    
-    header > h1 {
-      margin-bottom: 0;
-    }
-    
-    header > time {
-      font: italic 0.7rem sans-serif;
-    }
-    ```
+	```css
+	.logo {
+	  background: left / cover url('../images/dog.jpg');
+	  display: flex;
+	  height: 120px;
+	  align-items: center;
+	  justify-content: center;
+	  font:
+	    bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script',
+	    fantasy;
+	  color: #ff0083;
+	  text-shadow: #000 2px 2px 0.2rem;
+	}
+	
+	header > h1 {
+	  margin-bottom: 0;
+	}
+	
+	header > time {
+	  font: italic 0.7rem sans-serif;
+	}
+	```
 
 -  **渲染效果**
 
-    > ![image-20241128130156849](assets/image-20241128130156849.png)
+	> ![image-20241128130156849](assets/image-20241128130156849.png)
 
 ## [ 页脚`<footer>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer)
 
@@ -485,7 +485,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128131541136](assets/image-20241128131541136.png)
+	> ![image-20241128131541136](assets/image-20241128131541136.png)
 
 ## [ 导航栏`<nav>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
 
@@ -516,7 +516,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128130034228](assets/image-20241128130034228.png)
+	> ![image-20241128130034228](assets/image-20241128130034228.png)
 
 ## [ 主要内容 `<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
 
@@ -552,7 +552,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128132615446](assets/image-20241128132615446.png)
+	> ![image-20241128132615446](assets/image-20241128132615446.png)
 
 - **扩展**
 
@@ -567,67 +567,67 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-    
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <article class="forecast">
-        <h1>Weather forecast for Seattle</h1>
-        <article class="day-forecast">
-          <h2>03 March 2018</h2>
-          <p>Rain.</p>
-        </article>
-        <article class="day-forecast">
-          <h2>04 March 2018</h2>
-          <p>Periods of rain.</p>
-        </article>
-        <article class="day-forecast">
-          <h2>05 March 2018</h2>
-          <p>Heavy rain.</p>
-        </article>
-      </article>  
-    </body>
-    
-    </html>
-    ```
+	```html
+	<!DOCTYPE html>
+	<html lang="en">
+	
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Document</title>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <article class="forecast">
+	    <h1>Weather forecast for Seattle</h1>
+	    <article class="day-forecast">
+	      <h2>03 March 2018</h2>
+	      <p>Rain.</p>
+	    </article>
+	    <article class="day-forecast">
+	      <h2>04 March 2018</h2>
+	      <p>Periods of rain.</p>
+	    </article>
+	    <article class="day-forecast">
+	      <h2>05 March 2018</h2>
+	      <p>Heavy rain.</p>
+	    </article>
+	  </article>  
+	</body>
+	
+	</html>
+	```
 
-    ```css
-    .forecast {
-      margin: 0;
-      padding: 0.3rem;
-      background-color: #eee;
-    }
-    
-    .forecast > h1,
-    .day-forecast {
-      margin: 0.5rem;
-      padding: 0.3rem;
-      font-size: 1.2rem;
-    }
-    
-    .day-forecast {
-      background: right/contain content-box border-box no-repeat
-        url('../images/rain.svg') white;
-    }
-    
-    .day-forecast > h2,
-    .day-forecast > p {
-      margin: 0.2rem;
-      font-size: 1rem;
-    }
-    ```
+	```css
+	.forecast {
+	  margin: 0;
+	  padding: 0.3rem;
+	  background-color: #eee;
+	}
+	
+	.forecast > h1,
+	.day-forecast {
+	  margin: 0.5rem;
+	  padding: 0.3rem;
+	  font-size: 1.2rem;
+	}
+	
+	.day-forecast {
+	  background: right/contain content-box border-box no-repeat
+	    url('../images/rain.svg') white;
+	}
+	
+	.day-forecast > h2,
+	.day-forecast > p {
+	  margin: 0.2rem;
+	  font-size: 1rem;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128130311310](assets/image-20241128130311310.png)
+	> ![image-20241128130311310](assets/image-20241128130311310.png)
 
 1
 
@@ -637,48 +637,48 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <p>
-        Salamanders are a group of amphibians with a lizard-like appearance, including short legs and a tail in both larval
-        and adult forms.
-      </p>
-      
-      <aside>
-        <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
-      </aside>
-      
-      <p>
-        Several species of salamander inhabit the temperate rainforest of the Pacific Northwest, including the Ensatina, the
-        Northwestern Salamander and the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for insects, worms and
-        other small creatures.
-      </p>  
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <p>
+	    Salamanders are a group of amphibians with a lizard-like appearance, including short legs and a tail in both larval
+	    and adult forms.
+	  </p>
+	  
+	  <aside>
+	    <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+	  </aside>
+	  
+	  <p>
+	    Several species of salamander inhabit the temperate rainforest of the Pacific Northwest, including the Ensatina, the
+	    Northwestern Salamander and the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for insects, worms and
+	    other small creatures.
+	  </p>  
+	</body>
+	```
 
-    ```css
-    aside {
-      width: 40%;
-      padding-left: 0.5rem;
-      margin-left: 0.5rem;
-      float: right;
-      box-shadow: inset 5px 0 5px -5px #29627e;
-      font-style: italic;
-      color: #29627e;
-    }
-    
-    aside > p {
-      margin: 0.5rem;
-    }
-    ```
+	```css
+	aside {
+	  width: 40%;
+	  padding-left: 0.5rem;
+	  margin-left: 0.5rem;
+	  float: right;
+	  box-shadow: inset 5px 0 5px -5px #29627e;
+	  font-style: italic;
+	  color: #29627e;
+	}
+	
+	aside > p {
+	  margin: 0.5rem;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128132126937](assets/image-20241128132126937.png)
+	> ![image-20241128132126937](assets/image-20241128132126937.png)
 
 ## [标题 `<h>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Heading_Elements)
 
@@ -695,7 +695,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    ![image-20241128135532190](assets/image-20241128135532190.png)
+	![image-20241128135532190](assets/image-20241128135532190.png)
 
 - **注意**
 
@@ -709,38 +709,38 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <h1>Choosing an Apple</h1>
-      <section>
-        <h2>Introduction</h2>
-        <p>This document provides a guide to help with the important task of choosing the correct Apple.</p>
-      </section>
-      
-      <section>
-        <h2>Criteria</h2>
-        <p>
-          There are many different criteria to be considered when choosing an Apple — size, color, firmness, sweetness,
-          tartness...
-        </p>
-      </section>  
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <h1>Choosing an Apple</h1>
+	  <section>
+	    <h2>Introduction</h2>
+	    <p>This document provides a guide to help with the important task of choosing the correct Apple.</p>
+	  </section>
+	  
+	  <section>
+	    <h2>Criteria</h2>
+	    <p>
+	      There are many different criteria to be considered when choosing an Apple — size, color, firmness, sweetness,
+	      tartness...
+	    </p>
+	  </section>  
+	</body>
+	```
 
-    ```css
-    h1,
-    h2 {
-      margin: 0;
-    }
-    ```
+	```css
+	h1,
+	h2 {
+	  margin: 0;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128132929225](assets/image-20241128132929225.png)
+	> ![image-20241128132929225](assets/image-20241128132929225.png)
 
 ## [地址 `<address>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/address)
 
@@ -773,81 +773,81 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128135927232](assets/image-20241128135927232.png)
+	> ![image-20241128135927232](assets/image-20241128135927232.png)
 
 ## [内容划分 `<div>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div)
 
 - **语法**：无语义，将零散的行内元素组成区块，是行内元素。
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <div class="shadowbox">
-        <p>这是一张非常有趣的说明，陈列在一个可爱的影盒里。</p>
-      </div>
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <div class="shadowbox">
+	    <p>这是一张非常有趣的说明，陈列在一个可爱的影盒里。</p>
+	  </div>
+	</body>
+	```
 
-    ```css
-    .shadowbox {
-      width: 15em;
-      border: 1px solid #333;
-      box-shadow: 8px 8px 5px #444;
-      padding: 8px 12px;
-      background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
-    }
-    ```
+	```css
+	.shadowbox {
+	  width: 15em;
+	  border: 1px solid #333;
+	  box-shadow: 8px 8px 5px #444;
+	  padding: 8px 12px;
+	  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128144407274](assets/image-20241128144407274.png)
+	> ![image-20241128144407274](assets/image-20241128144407274.png)
 
 ## [主题分割 `<hr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr)
 
 - **语法**：语义上表示段落级元素之间的主题转换。
 
-    ```html
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
-    
-      <hr />
-      
-      <p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
-    </body>
-    ```
+	```html
+	<head>
+	  <meta charset="UTF-8">
+	  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	  <title>Document</title>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
+	
+	  <hr />
+	  
+	  <p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
+	</body>
+	```
 
-    ```css
-    hr {
-      border: none;
-      border-top: 3px double #333;
-      color: #333;
-      overflow: visible;
-      text-align: center;
-      height: 5px;
-    }
-    
-    hr::after {
-      background: #fff;
-      content: '§';
-      padding: 0 4px;
-      position: relative;
-      top: -13px;
-    }
-    ```
+	```css
+	hr {
+	  border: none;
+	  border-top: 3px double #333;
+	  color: #333;
+	  overflow: visible;
+	  text-align: center;
+	  height: 5px;
+	}
+	
+	hr::after {
+	  background: #fff;
+	  content: '§';
+	  padding: 0 4px;
+	  position: relative;
+	  top: -13px;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128161540618](assets/image-20241128161540618.png)
+	> ![image-20241128161540618](assets/image-20241128161540618.png)
 
 # [文本内容](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文本内容)
 
@@ -875,7 +875,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128145742800](assets/image-20241128145742800.png)
+	> ![image-20241128145742800](assets/image-20241128145742800.png)
 
 - **说明**：浏览器会自动地在段落的前后添加空行。
 
@@ -883,18 +883,18 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：表示在文本中生成一个换行（回车）符号，将一行文本渲染为两行，是一个空元素。
 
-    ```html
-    <p>这是第一行<br>这是第二行</p>
-    ```
+	```html
+	<p>这是第一行<br>这是第二行</p>
+	```
 
 - **渲染效果**
 
-    > <p>这是第一行<br>这是第二行</p>
+	> <p>这是第一行<br>这是第二行</p>
 
 - **注意**
 
-    - 不要使用 <kbd>Enter</kbd> 进行换行
-    - 不要用 `<br>` 来增加文本之间的行间隔
+	- 不要使用 <kbd>Enter</kbd> 进行换行
+	- 不要用 `<br>` 来增加文本之间的行间隔
 
 ## [内容跨越 `<span>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span)
 
@@ -902,30 +902,30 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <p>
-        Add the <span class="ingredient">basil</span>, <span class="ingredient">pine nuts</span> and
-        <span class="ingredient">garlic</span> to a blender and blend into a paste.
-      </p>
-      
-      <p>Gradually add the <span class="ingredient">olive oil</span> while running the blender slowly.</p>  
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <p>
+	    Add the <span class="ingredient">basil</span>, <span class="ingredient">pine nuts</span> and
+	    <span class="ingredient">garlic</span> to a blender and blend into a paste.
+	  </p>
+	  
+	  <p>Gradually add the <span class="ingredient">olive oil</span> while running the blender slowly.</p>  
+	</body>
+	```
 
-    ```css
-    span.ingredient {
-      color: #f00;
-    }
-    ```
+	```css
+	span.ingredient {
+	  color: #f00;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128170152520](assets/image-20241128170152520.png)
+	> ![image-20241128170152520](assets/image-20241128170152520.png)
 
 - **注意**：该元素仅应在无其他合适语义元素时使用。
 
@@ -937,21 +937,21 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：显示无顺序排列的列表项 `<li>`。
 
-    ```html
-    <ul>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ul>
-    ```
+	```html
+	<ul>
+	  <li>第一列表项</li>
+	  <li>第二列表项</li>
+	  <li>第三列表项</li>
+	</ul>
+	```
 
 - **渲染效果**
 
-    > <ul>
-    >     <li>第一列表项</li>
-    >     <li>第二列表项</li>
-    >     <li>第三列表项</li>
-    > </ul>
+	> <ul>
+	> 	<li>第一列表项</li>
+	> 	<li>第二列表项</li>
+	> 	<li>第三列表项</li>
+	> </ul>
 
 - **说明**：渲染时默认以圆点等符号进行标记，如果想修改，应该在 CSS 中修改。
 
@@ -961,122 +961,122 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：显示按顺序排列的列表项 `<li>`，默认以数字等符号进行标记。
 
-    ```html
-    <ol>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ol>
-    ```
+	```html
+	<ol>
+	  <li>第一列表项</li>
+	  <li>第二列表项</li>
+	  <li>第三列表项</li>
+	</ol>
+	```
 
 - **渲染效果**
 
-    > <ol>
-    > <li>第一列表项</li>
-    > <li>第二列表项</li>
-    > <li>第三列表项</li>
-    > </ol>
+	> <ol>
+	> <li>第一列表项</li>
+	> <li>第二列表项</li>
+	> <li>第三列表项</li>
+	> </ol>
 
 
 #### `type` 属性
 
 - **语法**：用于指定有序列表的计数器类型，即序列号的类型。
 
-    ```html
-    <ol type="A">
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ol>
-    ```
+	```html
+	<ol type="A">
+	  <li>第一列表项</li>
+	  <li>第二列表项</li>
+	  <li>第三列表项</li>
+	</ol>
+	```
 
 - **渲染效果**
 
-    > <ol type="A">
-    > <li>第一列表项</li>
-    > <li>第二列表项</li>
-    > <li>第三列表项</li>
-    > </ol>
+	> <ol type="A">
+	> <li>第一列表项</li>
+	> <li>第二列表项</li>
+	> <li>第三列表项</li>
+	> </ol>
 
 #### `start` 属性
 
 - **语法**：用于指定有序列表的起始值。
 
-    ```html
-    <ol start="5">
-      <li>第五列表项</li>
-      <li>第六列表项</li>
-      <li>第七列表项</li>
-    </ol>
-    ```
+	```html
+	<ol start="5">
+	  <li>第五列表项</li>
+	  <li>第六列表项</li>
+	  <li>第七列表项</li>
+	</ol>
+	```
 
 - **渲染效果**
 
-    > <ol start="5">
-    > <li>第五列表项</li>
-    > <li>第六列表项</li>
-    > <li>第七列表项</li>
-    > </ol>
+	> <ol start="5">
+	> <li>第五列表项</li>
+	> <li>第六列表项</li>
+	> <li>第七列表项</li>
+	> </ol>
 
 #### `value` 属性
 
 - **语法**：用于指定有序列表项的值，这是 `<li>` 的属性。
 
-    ```html
-    <ol>
-      <li value="100">第一百列表项</li>
-      <li value="200">第二百列表项</li>
-      <li value="300">第三百列表项</li>
-    </ol>
-    ```
+	```html
+	<ol>
+	  <li value="100">第一百列表项</li>
+	  <li value="200">第二百列表项</li>
+	  <li value="300">第三百列表项</li>
+	</ol>
+	```
 
 - **渲染效果**
 
-    > <ol>
-    > <li value="100">第一百列表项</li>
-    > <li value="200">第二百列表项</li>
-    > <li value="300">第三百列表项</li>
-    > </ol>
+	> <ol>
+	> <li value="100">第一百列表项</li>
+	> <li value="200">第二百列表项</li>
+	> <li value="300">第三百列表项</li>
+	> </ol>
 
 ### 列表嵌套
 
 - **语法**：在一个列表项 `<li>` 中包含另一个列表。
 
-    ```html
-    <!-- 规范写法 -->
-    <ul>
-        <li>项目1
-            <ol>
-                <li>子项目 1</li>
-                <li>子项目 2</li>
-            </ol>
-        </li>
-        <li>项目2</li>
-    </ul>
-    
-    <!-- 不规范写法 -->
-    <ul>
-        <li>项目1</li>
-        <ol>
-            <li>子项目 1</li>
-            <li>子项目 2</li>
-        </ol>
-    
-        <li>项目2</li>
-    </ul>
-    ```
+	```html
+	<!-- 规范写法 -->
+	<ul>
+	    <li>项目1
+	        <ol>
+	            <li>子项目 1</li>
+	            <li>子项目 2</li>
+	        </ol>
+	    </li>
+	    <li>项目2</li>
+	</ul>
+	
+	<!-- 不规范写法 -->
+	<ul>
+	    <li>项目1</li>
+	    <ol>
+	        <li>子项目 1</li>
+	        <li>子项目 2</li>
+	    </ol>
+	
+	    <li>项目2</li>
+	</ul>
+	```
 
 - **渲染效果**
 
-    > <ul>
-    >  <li>项目1
-    >      <ol>
-    >          <li>子项目 1</li>
-    >          <li>子项目 2</li>
-    >      </ol>
-    >  </li>
-    >  <li>项目2</li>
-    > </ul>
+	> <ul>
+	>  <li>项目1
+	>      <ol>
+	>          <li>子项目 1</li>
+	>          <li>子项目 2</li>
+	>      </ol>
+	>  </li>
+	>  <li>项目2</li>
+	> </ul>
 
 - **注意**：不要将一个列表当成列表项 `<li>` 进行嵌套，而是要把列表放在 `<li>` 的内容中。
 
@@ -1086,21 +1086,21 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <menu>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </menu>
-    ```
+	```html
+	<menu>
+	  <li>第一列表项</li>
+	  <li>第二列表项</li>
+	  <li>第三列表项</li>
+	</menu>
+	```
 
 - **渲染效果**：一个无序列表
 
-    > <menu>
-    >   <li>第一列表项</li>
-    >   <li>第二列表项</li>
-    >   <li>第三列表项</li>
-    > </menu>
+	> <menu>
+	>   <li>第一列表项</li>
+	>   <li>第二列表项</li>
+	>   <li>第三列表项</li>
+	> </menu>
 
 ## [描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)
 
@@ -1147,7 +1147,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**：描述部分有缩进
 
-    > ![image-20241128154157844](assets/image-20241128154157844.png)
+	> ![image-20241128154157844](assets/image-20241128154157844.png)
 
 - **扩展**：`<dt>` 的元素内容可以使用 [`<dfn>`](#[术语 `<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn))。
 
@@ -1156,19 +1156,19 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ### 标记消歧义
 
 - **粗体**
-    - `<strong>` 用来对一个句子的部分**文本**增加重要性
-    - `<b>` 用来引起人们的注意，如关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
+	- `<strong>` 用来对一个句子的部分**文本**增加重要性
+	- `<b>` 用来引起人们的注意，如关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
 - **斜体**
-    - `<em>` 表示语气上的强调
-    - `<i>` 用于技术术语、音译、思想或船名等
-    - `<dfn>` 表示定义中的术语
-    - `<cite>` 用于引用作品
+	- `<em>` 表示语气上的强调
+	- `<i>` 用于技术术语、音译、思想或船名等
+	- `<dfn>` 表示定义中的术语
+	- `<cite>` 用于引用作品
 - **删除线**
-    - `<del>` 属于编辑标识，表示被从文档中删除的内容。
-    - `<s>` 表示不再准确或不再相关的内容，不适用于指示文档编辑。
+	- `<del>` 属于编辑标识，表示被从文档中删除的内容。
+	- `<s>` 表示不再准确或不再相关的内容，不适用于指示文档编辑。
 - **下划线**
-    -  `<del>` 属于编辑标识，表示已经被插入文档中的文本。
-    -  `<u>` 表示非文本注释，例如拼写错误和中文专有名词。
+	-  `<del>` 属于编辑标识，表示已经被插入文档中的文本。
+	-  `<u>` 表示非文本注释，例如拼写错误和中文专有名词。
 - **高亮**：`<mark>` 表示上下文相关或突出显示以供参考
 
 ### [标记高亮 `<mark>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/mark)
@@ -1177,24 +1177,24 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
-    ```
+	```html
+	<p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
+	```
 
 - **渲染效果**：标记高亮
 
-    > <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
+	> <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
 
 - **注意**：不要纯粹为了高亮显示而用 `<mark>` 元素，而是应该使用 CSS 来实现。
 
 - 浏览器通常以黄色背景高亮显示 `<mark>` 元素的内容，但您可以通过 CSS 进行自定义样式。
 
-    ```css
-    mark {
-      background-color: yellow;
-      color: black;
-    }
-    ```
+	```css
+	mark {
+	  background-color: yellow;
+	  color: black;
+	}
+	```
 
 ### [语气强调 `<em>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em)
 
@@ -1202,17 +1202,17 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>Get out of bed <em>now</em>!</p>
-    <p>We <em>had</em> to do something about it.</p>
-    <p>This is <em>not</em> a drill!</p>
-    ```
+	```html
+	<p>Get out of bed <em>now</em>!</p>
+	<p>We <em>had</em> to do something about it.</p>
+	<p>This is <em>not</em> a drill!</p>
+	```
 
 - **渲染效果**：斜体
 
-    > <p>Get out of bed <em>now</em>!</p>
-    > <p>We <em>had</em> to do something about it.</p>
-    > <p>This is <em>not</em> a drill!</p>
+	> <p>Get out of bed <em>now</em>!</p>
+	> <p>We <em>had</em> to do something about it.</p>
+	> <p>This is <em>not</em> a drill!</p>
 
 ### [重要文本 `<strong>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong)
 
@@ -1220,13 +1220,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
-    ```
+	```html
+	<p>这个句子里的<strong>这个词语</strong>比较重要。</p>
+	```
 
 - **渲染效果**：粗体
 
-    > <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
+	> <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
 
 ### [注意文本 `<b>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b)
 
@@ -1234,19 +1234,19 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>
-      本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
-      <b class="keywords">HTML</b> 文档中的用法。
-    </p>
-    ```
+	```html
+	<p>
+	  本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
+	  <b class="keywords">HTML</b> 文档中的用法。
+	</p>
+	```
 
 - **渲染效果**：粗体
 
-    > <p>
-    > 本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
-    > <b class="keywords">HTML</b> 文档中的用法。
-    > </p>
+	> <p>
+	> 本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
+	> <b class="keywords">HTML</b> 文档中的用法。
+	> </p>
 
 - **注意**：实在找不到合适的元素才
 
@@ -1256,13 +1256,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
-    ```
+	```html
+	<p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
+	```
 
 - **渲染效果**：加删除线
 
-    > <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
+	> <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
 
 ### [不准确 `<s>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/s)
 
@@ -1270,13 +1270,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <s>Today's Special: Salmon</s> SOLD OUT
-    ```
+	```html
+	<s>Today's Special: Salmon</s> SOLD OUT
+	```
 
 - **渲染效果**：加删除线
 
-    > <s>Today's Special: Salmon</s> SOLD OUT
+	> <s>Today's Special: Salmon</s> SOLD OUT
 
 ### [插入 `<ins>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ins)
 
@@ -1284,15 +1284,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <body>
-      <p><ins>这是一段新增的文本</ins></p>
-    </body>
-    ```
+	```html
+	<body>
+	  <p><ins>这是一段新增的文本</ins></p>
+	</body>
+	```
 
 - **渲染效果**：加下划线
 
-    > <p><ins>这是一段新增的文本</ins></p>
+	> <p><ins>这是一段新增的文本</ins></p>
 
 ### [非文本注释 `<u>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/u)
 
@@ -1300,13 +1300,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
-    ```
+	```html
+	<p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
+	```
 
 - **渲染效果**：加下划线
 
-    > <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
+	> <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
 
 ## [块级引用 `<blockquote>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/blockquote)
 
@@ -1355,39 +1355,39 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**：缩进，加引号
 
-    > ![image-20241128163006929](assets/image-20241128163006929.png)
+	> ![image-20241128163006929](assets/image-20241128163006929.png)
 
 - **说明**
-    - 若引文来源于网络，则可以将原内容的出处 URL 地址设置到 cite 特性上。
-    - 若要以文本的形式告知读者引文的出处时，可以通过 `<cite>` 元素。
+	- 若引文来源于网络，则可以将原内容的出处 URL 地址设置到 cite 特性上。
+	- 若要以文本的形式告知读者引文的出处时，可以通过 `<cite>` 元素。
 
 ## [行内引用 `<q>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q)
 
 - **语法**：用于引用短文本，是行内元素。
 
-    ```html
-    <p>他说：<q>今天的天气真好！</q></p>
-    ```
+	```html
+	<p>他说：<q>今天的天气真好！</q></p>
+	```
 
 - **渲染效果**：加引号
 
-    > <p>他说：<q>今天的天气真好！</q></p>
+	> <p>他说：<q>今天的天气真好！</q></p>
 
 ## [作品引用 `<cite>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite)
 
 - **语法**：用于引用作品，是行内元素。
 
-    ```html
-    <p>
-      更多内容详见<cite>《计算机基础》</cite>。
-    </p>
-    ```
+	```html
+	<p>
+	  更多内容详见<cite>《计算机基础》</cite>。
+	</p>
+	```
 
 - **渲染效果**：斜体
 
-    > <p>
-    > 更多内容详见<cite>《计算机基础》</cite>。
-    > </p>
+	> <p>
+	> 更多内容详见<cite>《计算机基础》</cite>。
+	> </p>
 
 - **扩展**：元素内容可以是 `<a>`。
 
@@ -1395,49 +1395,49 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：表示定义中的术语，是行内元素。
 
-    ```html
-    <p>
-      <!-- Define "The Internet" -->
-      <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
-      networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
-      users worldwide.
-    </p>
-    
-    <dl>
-      <dt>
-        <!-- Define "World-Wide Web" and reference definition for "the Internet" -->
-        <dfn>
-          <abbr title="World-Wide Web">WWW</abbr>
-        </dfn>
-      </dt>
-      <dd>
-        The World-Wide Web (WWW) is a system of interlinked hypertext documents
-        accessed on <a href="#def-internet">the Internet</a>.
-      </dd>
-    </dl>
-    ```
+	```html
+	<p>
+	  <!-- Define "The Internet" -->
+	  <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
+	  networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
+	  users worldwide.
+	</p>
+	
+	<dl>
+	  <dt>
+	    <!-- Define "World-Wide Web" and reference definition for "the Internet" -->
+	    <dfn>
+	      <abbr title="World-Wide Web">WWW</abbr>
+	    </dfn>
+	  </dt>
+	  <dd>
+	    The World-Wide Web (WWW) is a system of interlinked hypertext documents
+	    accessed on <a href="#def-internet">the Internet</a>.
+	  </dd>
+	</dl>
+	```
 
 - **渲染效果**：斜体
 
-    > <p>
-    > <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
-    > networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
-    > users worldwide.
-    > </p>
-    >
-    > 
-    >
-    > <dl>
-    > <dt>
-    >  <dfn>
-    >    <abbr title="World-Wide Web">WWW</abbr>
-    >  </dfn>
-    > </dt>
-    > <dd>
-    >  The World-Wide Web (WWW) is a system of interlinked hypertext documents
-    >  accessed on <a href="#def-internet">the Internet</a>.
-    > </dd>
-    > </dl>
+	> <p>
+	> <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
+	> networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
+	> users worldwide.
+	> </p>
+	>
+	> 
+	>
+	> <dl>
+	> <dt>
+	>  <dfn>
+	>    <abbr title="World-Wide Web">WWW</abbr>
+	>  </dfn>
+	> </dt>
+	> <dd>
+	>  The World-Wide Web (WWW) is a system of interlinked hypertext documents
+	>  accessed on <a href="#def-internet">the Internet</a>.
+	> </dd>
+	> </dl>
 
 - **扩展**：可以作为 [`<dl>`](#[描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)) 中的 `<dt>` 的元素内容。
 
@@ -1447,13 +1447,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
-    ```
+	```html
+	<p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
+	```
 
 - **渲染效果**：斜体
 
-    > <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
+	> <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
 
 ## [可附标题内容 `<figure>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figure)
 
@@ -1519,29 +1519,29 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    > ![image-20241128160504158](assets/image-20241128160504158.png)
+	> ![image-20241128160504158](assets/image-20241128160504158.png)
 
 - **扩展**：
 
 ## [预格式化 `<pre>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/pre)
 
 - **语法**：用于保证文本的编排顺序不变，文本中的空白符（比如空格和换行符）都会显示出来，是行内元素。
-    
-    ```html
-    <pre>
-    function greet() {
-        console.log("Hello, world!");
-    }
-    </pre>
-    ```
-    
+	
+	```html
+	<pre>
+	function greet() {
+	    console.log("Hello, world!");
+	}
+	</pre>
+	```
+	
 - **渲染效果**
 
-    > <pre>
-    > function greet() {
-    >     console.log("Hello, world!");
-    > }
-    > </pre>
+	> <pre>
+	> function greet() {
+	> 	console.log("Hello, world!");
+	> }
+	> </pre>
 
 - **说明**：类似于 Markdown 的代码块
 
@@ -1549,13 +1549,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：表示行内代码，是行内元素。
 
-    ```html
-    <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
-    ```
+	```html
+	<p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
+	```
 
 - **渲染效果**
 
-    > <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
+	> <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
 
 ## [锚 `<a>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a)
 
@@ -1563,41 +1563,41 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：
 
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-    
-    <body>
-      <p>You can reach Michael at:</p>
-    
-      <ul>
-        <li><a href="https://example.com">Website</a></li>
-        <li><a href="mailto:m.bluth@example.com">Email</a></li>
-        <li><a href="tel:+123456789">Phone</a></li>
-      </ul>
-    </body>
-    ```
+	```html
+	<head>
+	  <link href="../css/css-test.css" rel="stylesheet" />
+	</head>
+	
+	<body>
+	  <p>You can reach Michael at:</p>
+	
+	  <ul>
+	    <li><a href="https://example.com">Website</a></li>
+	    <li><a href="mailto:m.bluth@example.com">Email</a></li>
+	    <li><a href="tel:+123456789">Phone</a></li>
+	  </ul>
+	</body>
+	```
 
-    ```css
-    li {
-      margin-bottom: 0.5rem;
-    }
-    ```
+	```css
+	li {
+	  margin-bottom: 0.5rem;
+	}
+	```
 
 - **渲染效果**
 
-    > ![image-20241128153125244](assets/image-20241128153125244.png)
+	> ![image-20241128153125244](assets/image-20241128153125244.png)
 
 - **常用属性**：
 
-    - `href`
+	- `href`
 
-    - [跳转方式 `target`](#[跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target))
+	- [跳转方式 `target`](#[跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target))
 
-    - `title`
+	- `title`
 
-    - `download`
+	- `download`
 
 - **扩展**
 
@@ -1624,7 +1624,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **渲染效果**
 
-    <p>程序运行后输出：<samp>Hello, world!</samp></p>
+	<p>程序运行后输出：<samp>Hello, world!</samp></p>
 
 ## [注音 `<ruby>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby)
 
@@ -1655,47 +1655,47 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：指定文本渲染方向，默认从左向右，是行内元素。
 
-    ```html
-    <p>该文本应从左到右绘制。</p>
-    <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
-    ```
+	```html
+	<p>该文本应从左到右绘制。</p>
+	<p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
+	```
 
 - **渲染效果**
 
-    > <p>该文本应从左到右绘制。</p>
-    >
-    > <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
+	> <p>该文本应从左到右绘制。</p>
+	>
+	> <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
 
 ## [日期时间 `<time>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time)
 
 - **语法**：表示一个特定的时间段。
 
-    ```html
-    <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
-    ```
+	```html
+	<p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
+	```
 
 - **渲染效果*
-    
-    > <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
+	
+	> <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
 - **注意**
-    
-    - 在使用公历之前的日期时不应使用该元素（因为这些日期的计算比较复杂）。
-    - 此部分关于 [**有效的日期时间值**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time#有效的日期时间值) 没弄懂。
+	
+	- 在使用公历之前的日期时不应使用该元素（因为这些日期的计算比较复杂）。
+	- 此部分关于 [**有效的日期时间值**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time#有效的日期时间值) 没弄懂。
 
 ## [缩略语 `<abbr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr)
 
 - **语法**：表示一个缩略词。
 
-    ```html
-    <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
-    <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
-    ```
+	```html
+	<p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
+	<p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
+	```
 
 - **渲染效果**
 
-    > <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
-    >
-    > <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
+	> <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
+	>
+	> <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
 
 - **说明**：`title` 属性用于当鼠标悬停时，对缩略词提供一个扩展解释。
 
@@ -1721,70 +1721,70 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**
 
-    ```html
-    <table>
-      <caption>表格标题</caption>
-      <thead>
-        <tr>
-          <th>表头1</th>
-          <th>表头2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>数据1</td>
-          <td>数据2</td>
-        </tr>
-        <tr>
-          <td>数据3</td>
-          <td>数据4</td>
-        </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>总计</td>
-          <td>100</td>
-        </tr>
-      </tfoot>
-    </table>
-    ```
+	```html
+	<table>
+	  <caption>表格标题</caption>
+	  <thead>
+	    <tr>
+	      <th>表头1</th>
+	      <th>表头2</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    <tr>
+	      <td>数据1</td>
+	      <td>数据2</td>
+	    </tr>
+	    <tr>
+	      <td>数据3</td>
+	      <td>数据4</td>
+	    </tr>
+	  </tbody>
+	  <tfoot>
+	    <tr>
+	      <td>总计</td>
+	      <td>100</td>
+	    </tr>
+	  </tfoot>
+	</table>
+	```
 
 - **渲染效果**
 
-    > ![image-20241128151117058](assets/image-20241128151117058.png)
+	> ![image-20241128151117058](assets/image-20241128151117058.png)
 
 - **元素说明**
 
-    - `<table>`：定义整个表格。
-    - `<caption>` 标题  `<thead>` 表头  `<tbody>` 主体   `<tfoot>` 页脚，可省略。
-    - `<tr>`：定义表格中的行。
-    - `<th>`：定义表格中的表头单元格（表头单元格会加粗且默认居中显示）。
-    - `<td>`：定义表格中的数据单元格。
+	- `<table>`：定义整个表格。
+	- `<caption>` 标题  `<thead>` 表头  `<tbody>` 主体   `<tfoot>` 页脚，可省略。
+	- `<tr>`：定义表格中的行。
+	- `<th>`：定义表格中的表头单元格（表头单元格会加粗且默认居中显示）。
+	- `<td>`：定义表格中的数据单元格。
 
 ## 基本表格
 
 - **语法**
 
-    ```html
-    <table>
-      <tr>
-        <th>表头1</th>
-        <th>表头2</th>
-      </tr>
-      <tr>
-        <td>数据1</td>
-        <td>数据2</td>
-      </tr>
-      <tr>
-        <td>数据3</td>
-        <td>数据4</td>
-      </tr>
-    </table>
-    ```
+	```html
+	<table>
+	  <tr>
+	    <th>表头1</th>
+	    <th>表头2</th>
+	  </tr>
+	  <tr>
+	    <td>数据1</td>
+	    <td>数据2</td>
+	  </tr>
+	  <tr>
+	    <td>数据3</td>
+	    <td>数据4</td>
+	  </tr>
+	</table>
+	```
 
 - **渲染效果**
 
-    > ![image-20241128151252635](assets/image-20241128151252635.png)
+	> ![image-20241128151252635](assets/image-20241128151252635.png)
 
 - **`border` 属性**：属性 `<table border="1">` 控制边框已经弃用，在实际开发中，建议使用 CSS 样式来进行更灵活和精细的样式控制，或者引入 BootStrap。
 
@@ -1794,27 +1794,27 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **语法**：合并行  `rowspan`，合并列 `colspan`，单元格占几行（列），值就等于几。
 
-    ```html
-    <table border="1">
-      <tr>
-        <th>表头1</th>
-        <th colspan="2">表头2</th>
-      </tr>
-      <tr>
-        <td rowspan="2">数据1</td>
-        <td>数据2</td>
-        <td>数据3</td>
-      </tr>
-      <tr>
-        <td>数据4</td>
-        <td>数据5</td>
-      </tr>
-    </table>
-    ```
+	```html
+	<table border="1">
+	  <tr>
+	    <th>表头1</th>
+	    <th colspan="2">表头2</th>
+	  </tr>
+	  <tr>
+	    <td rowspan="2">数据1</td>
+	    <td>数据2</td>
+	    <td>数据3</td>
+	  </tr>
+	  <tr>
+	    <td>数据4</td>
+	    <td>数据5</td>
+	  </tr>
+	</table>
+	```
 
 - **渲染效果**  
 
-    > ![image-20241128151538056](assets/image-20241128151538056.png)
+	> ![image-20241128151538056](assets/image-20241128151538056.png)
 
 ## 自由表头
 
@@ -1822,54 +1822,54 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - `scope` 的值
 
-    - 单列表头 `col`
-    - 多列表头 `colgroup`
-    - 单行表头 `row`
-    - 多行表头 `rowgroup`
+	- 单列表头 `col`
+	- 多列表头 `colgroup`
+	- 单行表头 `row`
+	- 多行表头 `rowgroup`
 
 - **示例**
 
-    ```html
-    <table border="1">
-      <tr>
-        <th>&nbsp;</th>
-        <th scope="col">单列表头</th>
-        <th colspan="2" scope="colgroup">多列表头</th>
-        <th scope="col">单列表头</th>
-      </tr>
-      <tr>
-        <th scope="row">单行表头</th>
-        <td>数据1</td>
-        <td>数据1</td>
-        <td>数据1</td>
-        <td>数据1</td>
-      </tr>
-      <tr>
-        <th rowspan="2" scope="rowgroup">多行表头</th>
-        <td>数据2</td>
-        <td>数据2</td>
-        <td>数据2</td>
-        <td>数据2</td>
-      </tr>
-      <tr>
-        <td>数据3</td>
-        <td>数据3</td>
-        <td>数据3</td>
-        <td>数据3</td>
-      </tr>
-      <tr>
-        <th scope="row">单行表头</th>
-        <td>数据4</td>
-        <td>数据4</td>
-        <td>数据4</td>
-        <td>数据4</td>
-      </tr>
-    </table>
-    ```
+	```html
+	<table border="1">
+	  <tr>
+	    <th>&nbsp;</th>
+	    <th scope="col">单列表头</th>
+	    <th colspan="2" scope="colgroup">多列表头</th>
+	    <th scope="col">单列表头</th>
+	  </tr>
+	  <tr>
+	    <th scope="row">单行表头</th>
+	    <td>数据1</td>
+	    <td>数据1</td>
+	    <td>数据1</td>
+	    <td>数据1</td>
+	  </tr>
+	  <tr>
+	    <th rowspan="2" scope="rowgroup">多行表头</th>
+	    <td>数据2</td>
+	    <td>数据2</td>
+	    <td>数据2</td>
+	    <td>数据2</td>
+	  </tr>
+	  <tr>
+	    <td>数据3</td>
+	    <td>数据3</td>
+	    <td>数据3</td>
+	    <td>数据3</td>
+	  </tr>
+	  <tr>
+	    <th scope="row">单行表头</th>
+	    <td>数据4</td>
+	    <td>数据4</td>
+	    <td>数据4</td>
+	    <td>数据4</td>
+	  </tr>
+	</table>
+	```
 
 - **渲染效果**
 
-    > ![image-20241128151655606](assets/image-20241128151655606.png)
+	> ![image-20241128151655606](assets/image-20241128151655606.png)
 
 # [表单 `<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#%E8%A1%A8%E5%8D%95)
 
@@ -1899,9 +1899,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ## [`<form> 属性`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#%E5%B1%9E%E6%80%A7)
 
 - 允许的值在 [`<form>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#%E5%B1%9E%E6%80%A7)中
-    - [**`action`**](#[`action`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#action))：提交的目标 URL
-    - [**`method`**](#[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#method))：数据传输方式
-    - [`target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target)：跳转方式
+	- [**`action`**](#[`action`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#action))：提交的目标 URL
+	- [**`method`**](#[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#method))：数据传输方式
+	- [`target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target)：跳转方式
 
 ### [`action`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#action)
 
@@ -1926,39 +1926,39 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - `<label>` 元素用于为表单元素提供标签，并且在用户界面上通常表现为可点击的文本。
 
-    -  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的可点击区域。
-    - 当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
+	-  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的可点击区域。
+	- 当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
 
 - **语法**：
 
-    ```html
-    <form>
-      <label for="username">用户名:</label>
-      <input type="text" id="username" name="username" placeholder="请输入用户名">
-    </form>
-    ```
+	```html
+	<form>
+	  <label for="username">用户名:</label>
+	  <input type="text" id="username" name="username" placeholder="请输入用户名">
+	</form>
+	```
 
-    ![image-20241204211508665](assets/image-20241204211508665.png)
+	![image-20241204211508665](assets/image-20241204211508665.png)
 
-    **在上述示例中**：
+	**在上述示例中**：
 
-    1. 使用 `<label>` 元素来标识 `用户名：` 字段。
-    2. 使用 `for` 属性用于关联 `<input>` 元素的 `id`。
-    3. 使用 `<input>` 元素来创建文本输入框。
-    4. 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
+	1. 使用 `<label>` 元素来标识 `用户名：` 字段。
+	2. 使用 `for` 属性用于关联 `<input>` 元素的 `id`。
+	3. 使用 `<input>` 元素来创建文本输入框。
+	4. 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
 
 - **`for` 属性**：用于关联表单元素的 `id`。
 
 - **扩展**：如果将 `<input>` 元素嵌套在 `<label>` 元素内部，就不需要使用 `for` 和 `id` 属性，因为它们将自动关联。但这种方式不利于 CSS 样式控制。
 
-    ```html
-    <form>
-      <label>
-        用户名:
-        <input type="text" name="username" placeholder="请输入用户名">
-      </label>
-    </form>
-    ```
+	```html
+	<form>
+	  <label>
+	    用户名:
+	    <input type="text" name="username" placeholder="请输入用户名">
+	  </label>
+	</form>
+	```
 
 ## [输入框 `<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input)
 
@@ -2004,8 +2004,8 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - `type` 属性指定要渲染的控件的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值。
 - **属性值**
-    - 允许的值在 [Input 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_类型)中
-    - 如果未指定此属性，则采用的默认类型为 `text`。
+	- 允许的值在 [Input 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_类型)中
+	- 如果未指定此属性，则采用的默认类型为 `text`。
 
 #### [单行文本 `text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/text)
 
@@ -2033,7 +2033,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
   ```html
   <form>
-      <input type="password" name="password" placeholder="请输入密码">
+  	<input type="password" name="password" placeholder="请输入密码">
   </form>
   ```
   
@@ -2070,8 +2070,8 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
   ```html
   <form>
-      <input type="radio" name="gender" value="male"> 男性
-      <input type="radio" name="gender" value="female"> 女性
+  	<input type="radio" name="gender" value="male"> 男性
+  	<input type="radio" name="gender" value="female"> 女性
   </form>
   ```
 
@@ -2089,8 +2089,8 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
   ```html
   <form>
-      <input type="checkbox" name="vehicle" value="Bike">我喜欢自行车<br>
-      <input type="checkbox" name="vehicle" value="Car">我喜欢小汽车
+  	<input type="checkbox" name="vehicle" value="Bike">我喜欢自行车<br>
+  	<input type="checkbox" name="vehicle" value="Car">我喜欢小汽车
   </form>
   ```
   
@@ -2125,13 +2125,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **扩展**：除了 `<input>` 元素之外，也可以使用 `<button>` 元素创建提交按钮。
 
-    ```html
-    <form action="/submit" method="post">
-      <!-- 这里是其他表单元素 -->
-    
-      <button type="submit">提交</button>
-    </form>
-    ```
+	```html
+	<form action="/submit" method="post">
+	  <!-- 这里是其他表单元素 -->
+	
+	  <button type="submit">提交</button>
+	</form>
+	```
 
 ## [多行文本 `<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea)
 
@@ -2187,20 +2187,20 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **扩展**：`<select>` 元素还支持 `multiple` 属性，允许用户通过 `Ctrl` 键选择多个选项。
 
-    ```html
-    <form>
-        选择一辆汽车:
-        <select name="cars" multiple>
-            <option value="volvo">沃尔沃</option>
-            <option value="saab">萨博</option>
-            <option value="mercedes">奔驰</option>
-            <option value="audi">奥迪</option>
-        </select>
-        <input type="submit" value="提交">
-    </form>
-    ```
+	```html
+	<form>
+	    选择一辆汽车:
+	    <select name="cars" multiple>
+	        <option value="volvo">沃尔沃</option>
+	        <option value="saab">萨博</option>
+	        <option value="mercedes">奔驰</option>
+	        <option value="audi">奥迪</option>
+	    </select>
+	    <input type="submit" value="提交">
+	</form>
+	```
 
-    ![image-20241204224352505](assets/image-20241204224352505.png)
+	![image-20241204224352505](assets/image-20241204224352505.png)
 
 ## [按钮 `<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button)
 
@@ -2214,13 +2214,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - [**`type` 属性**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type)
 
-    - **`submit`**：默认值，提交按钮，在表单内点击时会提交表单。
-    - **`button`**：普通按钮，没有默认行为。
-    - **`reset`**：重置按钮，在表单内点击时会重置表单中的输入字段为默认值。
+	- **`submit`**：默认值，提交按钮，在表单内点击时会提交表单。
+	- **`button`**：普通按钮，没有默认行为。
+	- **`reset`**：重置按钮，在表单内点击时会重置表单中的输入字段为默认值。
 
 - **扩展**
 
-    - 与 `<input>` 元素的按钮相比，`<button>` 元素具有更多的自定义选项和样式，可以包含其他 HTML 元素，并且更容易通过 CSS 进行样式化。
+	- 与 `<input>` 元素的按钮相比，`<button>` 元素具有更多的自定义选项和样式，可以包含其他 HTML 元素，并且更容易通过 CSS 进行样式化。
 
     ```html
     <!-- 这是一个包含按钮的示例 -->
@@ -2229,7 +2229,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     </button>
     ```
 
-    - 在使用 `<button>` 元素时，通常会结合 JavaScript 使用，例如：
+	- 在使用 `<button>` 元素时，通常会结合 JavaScript 使用，例如：
 
     ```html
     <button onclick="myFunction()">点击我</button>
@@ -2280,9 +2280,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 元素 `<video>` 用于支持文档内的视频播放，属性 `controls` 用于添加播放按钮。
 
-    ```html
-    <video src="video/终局第01集.mp4" controls></video>
-    ```
+	```html
+	<video src="video/终局第01集.mp4" controls></video>
+	```
 
 ### [视频属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)
 
@@ -2300,12 +2300,12 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 在 `<video>` 里嵌套 `<source>` 使视频有备用播放源，浏览器将会使用它所支持的第一个源。
 
-    ```html
-    <video controls>
-      <source src="video/终局第01集.mp4" type="video/MP4" />
-      <source src="video/终局第01集.mkv" type="video/mkv" />
-    </video>
-    ```
+	```html
+	<video controls>
+	  <source src="video/终局第01集.mp4" type="video/MP4" />
+	  <source src="video/终局第01集.mkv" type="video/mkv" />
+	</video>
+	```
 
 ## [picture `<picture>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/picture)
 
