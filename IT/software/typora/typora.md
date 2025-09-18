@@ -673,21 +673,31 @@
 - 优先使用**标准 Markdown 写法**
 
     ```markdown
-    ![测试图片](assets/测试.png "测试")
+    ![测试图片](assets/测试.png)
     ```
 
 - 需要调整大小但不使用图注时，使用**标准 HTML 写法**
 
     ```html
-    <img src="assets/测试.png" alt="测试" style="width: 40%" />
+    <img src="assets/图片.png" alt="替代" style="width: 40%" />
     ```
 
 - 需要使用图注时，使用 `<figure>` 嵌套写法，图片文件不支持复制和删除
 
     ```html
+    <!-- 一个图注 -->
     <figure>
-      <img src="assets/测试.png" alt="测试" style="width: 40%" />
-      <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+      <img src="assets/图片.png" alt="替代" style="width: 40%" />
+      <figcaption style="font-size: 16px; color: gray">图注</figcaption>
+    </figure>
+    
+    <!-- 多个图注 -->
+    <figure>
+      <img src="assets/图片.png" alt="替代" style="width: 40%" />
+      <figcaption style="font-size: 16px; color: gray">
+        <div>图注</div>
+        <div>图注</div>
+      </figcaption>
     </figure>
     ```
 
@@ -696,19 +706,19 @@
     ```html
     <!-- 不需要图注的并排图片 -->
     <div style="display: flex; justify-content: left;">
-      <img src="assets/测试.png" alt="测试" style="height: 400px" />
-      <img src="assets/测试.png" alt="测试" style="height: 400px" />
+      <img src="assets/图片.png" alt="替代" style="height: 400px" />
+      <img src="assets/图片.png" alt="替代" style="height: 400px" />
     </div>
     
     <!-- 需要图注的并排图片 -->
     <div style="display: flex; justify-content: left">
       <figure>
-        <img src="assets/测试.png" alt="测试" style="height: 400px" />
-        <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+        <img src="assets/图片.png" alt="替代" style="height: 400px" />
+        <figcaption style="font-size: 16px; color: gray">图注</figcaption>
       </figure>
       <figure>
-        <img src="assets/测试.png" alt="测试" style="height: 400px" />
-        <figcaption style="font-size: 16px; color: gray">测试</figcaption>
+        <img src="assets/图片.png" alt="替代" style="height: 400px" />
+        <figcaption style="font-size: 16px; color: gray">图注</figcaption>
       </figure>
     </div>
     ```

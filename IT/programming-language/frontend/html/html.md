@@ -1457,9 +1457,28 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ## [可附标题内容 `<figure>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figure)
 
-- `<figure>` 元素代表一段独立的内容，可能包含 `<figcaption>` 元素定义的说明元素，是行内元素。
+- `<figure>` 表示“独立的媒体单元”，是块级元素。`<figcaption>` 专门做“图注”，不会和正文混淆，是块级元素。
 
 - **语法**
+
+    ```html
+    <!-- 一个图注 -->
+    <figure>
+      <img src="assets/图片.png" alt="替代" style="width: 40%" />
+      <figcaption style="font-size: 16px; color: gray">图注</figcaption>
+    </figure>
+    
+    <!-- 多个图注 -->
+    <figure>
+      <img src="assets/图片.png" alt="替代" style="width: 40%" />
+      <figcaption style="font-size: 16px; color: gray">
+        <div>图注</div>
+        <div>图注</div>
+      </figcaption>
+    </figure>
+    ```
+
+- **扩展示例**
 
   ```html
   <head>
@@ -2235,7 +2254,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     - 在 XHTML 中要求所有标签必须闭合，但 XHTML 已逐渐被 HTML5 取代。
 
-    - 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
+    - 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
 
 - **语法**
 
