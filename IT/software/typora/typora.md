@@ -706,18 +706,18 @@
     ```html
     <!-- 不需要图注的并排图片 -->
     <div style="display: flex; justify-content: left;">
-      <img src="assets/图片.png" alt="替代" style="height: 400px" />
-      <img src="assets/图片.png" alt="替代" style="height: 400px" />
+      <img src="assets/图片.png" alt="替代" style="height: 300px" />
+      <img src="assets/图片.png" alt="替代" style="height: 300px" />
     </div>
     
     <!-- 需要图注的并排图片 -->
     <div style="display: flex; justify-content: left">
       <figure>
-        <img src="assets/图片.png" alt="替代" style="height: 400px" />
+        <img src="assets/图片.png" alt="替代" style="height: 300px" />
         <figcaption style="font-size: 16px; color: gray">图注</figcaption>
       </figure>
       <figure>
-        <img src="assets/图片.png" alt="替代" style="height: 400px" />
+        <img src="assets/图片.png" alt="替代" style="height: 300px" />
         <figcaption style="font-size: 16px; color: gray">图注</figcaption>
       </figure>
     </div>
