@@ -1089,3 +1089,4 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 ## 已整理完
 
 - 历史、Markdown、前端、Python、Java、sql、mermaid、latex
+- electronics-collection、it-basics
