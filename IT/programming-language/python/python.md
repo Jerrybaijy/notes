@@ -13,22 +13,21 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 ### Windows 系统
 
 - [Python 官网下载安装包](https://www.python.org/downloads/)
-
 - 勾选 `管理员权限` 和 `添加系统变量`，自定义安装（新台式机选择 `Install Now`）
 
-    <img src="assets/image-20250223141439176.png" alt="image-20250223141439176" style="zoom:50%;" />
+    <img src="assets/image-20250223141439176.png" alt="image-20250223141439176" style="width:50%;" />
 
 - 全部勾选
 
-    <img src="assets/image-20250223141633793.png" alt="image-20250223141633793" style="zoom:50%;" />
+    <img src="assets/image-20250223141633793.png" alt="image-20250223141633793" style="width:50%;" />
 
 - 自定义安装路径
 
-    <img src="assets/image-20250223141946726.png" alt="image-20250223141946726" style="zoom:50%;" />
+    <img src="assets/image-20250223141946726.png" alt="image-20250223141946726" style="width:50%;" />
 
 - 禁用长路径限制
 
-    <img src="assets/image-20250223142206941.png" alt="image-20250223142206941" style="zoom:50%;" />
+    <img src="assets/image-20250223142206941.png" alt="image-20250223142206941" style="width:50%;" />
 
 - 终端查看 Python 版本
 
@@ -39,7 +38,6 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 ### Ubuntu 系统
 
 - 默认情况下，Ubuntu 通常会预装 Python。
-
 - 查看 Python 版本
 
     ```bash
@@ -58,31 +56,31 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
     - `Lib`：存放内置模块
     - `site-packages`：存放第三方模块
-  
+
 - **帮助**
 
     - 确保 Python 已加入环境变量；
     - 终端进入 Python 交互环境；
-    
+
         ```bash
         pyhton
         ```
     
     - **列出模块中的函数**
-    
+
         ```python
         >>> import urllib
         >>> dir(urllib)
         ```
-    
+
     - **查看完整的python内置函数清单**
-    
+
         ```python
         >>> dir(__builtins__)
         ```
-    
+
     - **查看某个函数的文档帮助信息**
-      
+
         ```python
         >>> help(sum)
         ```
@@ -100,24 +98,24 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
     pip --version
     # 升级 pip
     python -m pip install --upgrade pip
-    
+
     # 查看 pip 下载源
     pip config get global.index-url
     # 设置 pip 下载源
     pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple/
-    
+
     # 查看已经安装的第三方模块
     pip list
     # 查看需要升级的库
     pip list -o
-    
+
     # 安装模块（选项为指定下载源）
     pip install $MODULE_NAME
     # 卸载第三方模块
     pip uninstall $MODULE_NAME
     # 显示模块信息
     pip show $MODULE_NAME
-    
+
     # 将库列表保存到指定文件中
     pip freeze > requirements.txt
     # 从指定文件中安装库
@@ -172,9 +170,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 ## 虚拟环境
 
 - 确认 Python 已安装；
-
 - 终端进入项目目录；
-
 - 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
     ```python
@@ -186,7 +182,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
     ```bash
     # Windows
     source venv/Scripts/activate
-    
+
     # Mac/Linux
     source venv/bin/activate
     ```
@@ -198,13 +194,9 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
     ```
 
 - 如果没有，参照以下办法激活：
-
 - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
-
 - 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
-
 - 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
-
 - 生成 `requirements.txt`
 
     ```bash
@@ -249,7 +241,7 @@ PyCharm 有商业版和社区版两个版本。
 2. 勾选如图 2 项
 3. 继续安装直到 `Finish`
 
-    <img src="assets/image-20231026230614766.png" alt="图片1" style="zoom:50%;" />
+    <img src="assets/image-20231026230614766.png" alt="图片1" style="width:50%;" />
 
 ####  破解
 
@@ -259,7 +251,7 @@ PyCharm 有商业版和社区版两个版本。
 4. 博客地址或网盘下载并解压激活工具 `【请解压】JetBrains 2023.1 永久激活插件`；
 5. 为了避免路径问题，请将解压后的文件夹到本地一个没有中文以及特殊符号的路径下，且配置后不能移动和删除；
 
-    <img src="assets/image-20231026232300636.png" alt="图片1" style="zoom: 50%;" />
+    <img src="assets/image-20231026232300636.png" alt="图片1" style="width: 50%;" />
 
 6. `jetbra` > `scripts` > 双击运行 `install-all-users.vbs` 脚本 > 出现 `done` 弹框，说明成功；
 7. 由于存在环境变量配置，插件安装之后，需要重启电脑才会生效。
@@ -269,18 +261,20 @@ PyCharm 有商业版和社区版两个版本。
     ```
     # Pycharm
     EUWT4EE9X2-eyJsaWNlbnNlSWQiOiJFVVdUNEVFOVgyIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBDIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjpmYWxzZX0seyJjb2RlIjoiUFBDIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBDV01QIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfV0sIm1ldGFkYXRhIjoiMDEyMDIyMDkwMlBTQU4wMDAwMDUiLCJoYXNoIjoiVFJJQUw6MzUzOTQ0NTE3IiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-FT9l1nyyF9EyNmlelrLP9rGtugZ6sEs3CkYIKqGgSi608LIamge623nLLjI8f6O4EdbCfjJcPXLxklUe1O/5ASO3JnbPFUBYUEebCWZPgPfIdjw7hfA1PsGUdw1SBvh4BEWCMVVJWVtc9ktE+gQ8ldugYjXs0s34xaWjjfolJn2V4f4lnnCv0pikF7Ig/Bsyd/8bsySBJ54Uy9dkEsBUFJzqYSfR7Z/xsrACGFgq96ZsifnAnnOvfGbRX8Q8IIu0zDbNh7smxOwrz2odmL72UaU51A5YaOcPSXRM9uyqCnSp/ENLzkQa/B9RNO+VA7kCsj3MlJWJp5Sotn5spyV+gA==-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU/Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8/COMrxRlZW5mfzo0xsK0dQGNH3UoG/9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE/BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5/FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB/R5oUlebwaTE6WZNBs+TA/qPj+5/we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329/WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V/0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ/c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0//lOmVya/PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0/WFPl1aw5VV/VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH/0onD
+    ```
 
+    ```
     # IDEA
     6G5NXCPJZB-eyJsaWNlbnNlSWQiOiI2RzVOWENQSlpCIiwibGljZW5zZWVOYW1lIjoic2lnbnVwIHNjb290ZXIiLCJhc3NpZ25lZU5hbWUiOiIiLCJhc3NpZ25lZUVtYWlsIjoiIiwibGljZW5zZVJlc3RyaWN0aW9uIjoiIiwiY2hlY2tDb25jdXJyZW50VXNlIjpmYWxzZSwicHJvZHVjdHMiOlt7ImNvZGUiOiJQU0kiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBEQiIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiSUkiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOmZhbHNlfSx7ImNvZGUiOiJQUEMiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBHTyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFNXIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQV1MiLCJmYWxsYmFja0RhdGUiOiIyMDI1LTA4LTAxIiwicGFpZFVwVG8iOiIyMDI1LTA4LTAxIiwiZXh0ZW5kZWQiOnRydWV9LHsiY29kZSI6IlBQUyIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX0seyJjb2RlIjoiUFJCIiwiZmFsbGJhY2tEYXRlIjoiMjAyNS0wOC0wMSIsInBhaWRVcFRvIjoiMjAyNS0wOC0wMSIsImV4dGVuZGVkIjp0cnVlfSx7ImNvZGUiOiJQQ1dNUCIsImZhbGxiYWNrRGF0ZSI6IjIwMjUtMDgtMDEiLCJwYWlkVXBUbyI6IjIwMjUtMDgtMDEiLCJleHRlbmRlZCI6dHJ1ZX1dLCJtZXRhZGF0YSI6IjAxMjAyMjA5MDJQU0FOMDAwMDA1IiwiaGFzaCI6IlRSSUFMOi0xMDc4MzkwNTY4IiwiZ3JhY2VQZXJpb2REYXlzIjo3LCJhdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlLCJpc0F1dG9Qcm9sb25nYXRlZCI6ZmFsc2V9-SnRVlQQR1/9nxZ2AXsQ0seYwU5OjaiUMXrnQIIdNRvykzqQ0Q+vjXlmO7iAUwhwlsyfoMrLuvmLYwoD7fV8Mpz9Gs2gsTR8DfSHuAdvZlFENlIuFoIqyO8BneM9paD0yLxiqxy/WWuOqW6c1v9ubbfdT6z9UnzSUjPKlsjXfq9J2gcDALrv9E0RPTOZqKfnsg7PF0wNQ0/d00dy1k3zI+zJyTRpDxkCaGgijlY/LZ/wqd/kRfcbQuRzdJ/JXa3nj26rACqykKXaBH5thuvkTyySOpZwZMJVJyW7B7ro/hkFCljZug3K+bTw5VwySzJtDcQ9tDYuu0zSAeXrcv2qrOg==-MIIETDCCAjSgAwIBAgIBDTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTIwMTAxOTA5MDU1M1oXDTIyMTAyMTA5MDU1M1owHzEdMBsGA1UEAwwUcHJvZDJ5LWZyb20tMjAyMDEwMTkwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCUlaUFc1wf+CfY9wzFWEL2euKQ5nswqb57V8QZG7d7RoR6rwYUIXseTOAFq210oMEe++LCjzKDuqwDfsyhgDNTgZBPAaC4vUU2oy+XR+Fq8nBixWIsH668HeOnRK6RRhsr0rJzRB95aZ3EAPzBuQ2qPaNGm17pAX0Rd6MPRgjp75IWwI9eA6aMEdPQEVN7uyOtM5zSsjoj79Lbu1fjShOnQZuJcsV8tqnayeFkNzv2LTOlofU/Tbx502Ro073gGjoeRzNvrynAP03pL486P3KCAyiNPhDs2z8/COMrxRlZW5mfzo0xsK0dQGNH3UoG/9RVwHG4eS8LFpMTR9oetHZBAgMBAAGjgZkwgZYwCQYDVR0TBAIwADAdBgNVHQ4EFgQUJNoRIpb1hUHAk0foMSNM9MCEAv8wSAYDVR0jBEEwP4AUo562SGdCEjZBvW3gubSgUouX8bOhHKQaMBgxFjAUBgNVBAMMDUpldFByb2ZpbGUgQ0GCCQDSbLGDsoN54TATBgNVHSUEDDAKBggrBgEFBQcDATALBgNVHQ8EBAMCBaAwDQYJKoZIhvcNAQELBQADggIBABqRoNGxAQct9dQUFK8xqhiZaYPd30TlmCmSAaGJ0eBpvkVeqA2jGYhAQRqFiAlFC63JKvWvRZO1iRuWCEfUMkdqQ9VQPXziE/BlsOIgrL6RlJfuFcEZ8TK3syIfIGQZNCxYhLLUuet2HE6LJYPQ5c0jH4kDooRpcVZ4rBxNwddpctUO2te9UU5/FjhioZQsPvd92qOTsV+8Cyl2fvNhNKD1Uu9ff5AkVIQn4JU23ozdB/R5oUlebwaTE6WZNBs+TA/qPj+5/we9NH71WRB0hqUoLI2AKKyiPw++FtN4Su1vsdDlrAzDj9ILjpjJKA1ImuVcG329/WTYIKysZ1CWK3zATg9BeCUPAV1pQy8ToXOq+RSYen6winZ2OO93eyHv2Iw5kbn1dqfBw1BuTE29V2FJKicJSu8iEOpfoafwJISXmz1wnnWL3V/0NxTulfWsXugOoLfv0ZIBP1xH9kmf22jjQ2JiHhQZP7ZDsreRrOeIQ/c4yR8IQvMLfC0WKQqrHu5ZzXTH4NO3CwGWSlTY74kE91zXB5mwWAx1jig+UXYc2w4RkVhy0//lOmVya/PEepuuTTI4+UJwC7qbVlh5zfhj8oTNUXgN0AOc+Q0/WFPl1aw5VV/VrO8FCoB15lFVlpKaQ1Yh+DVU8ke+rt9Th0BCHXe0uZOEmH0nOnH/0onD
     ```
 
-    <img src="assets/image-20231026232934381.png" alt="图片1" style="zoom:50%;" />
+    <img src="assets/image-20231026232934381.png" alt="图片1" style="width:50%;" />
 
 10. 此时运行 PyCharm Professional，在 `activation code` 选项下，填入最新激活码，点击 `Activate` 就能完成激活了；
 11. 注意激活以后，不要移动或删除激活插件文件夹；
 12. 查看激活状态：`Help` > `About`
 
-    <img src="assets/image-20231026233121030.png" alt="图片1" style="zoom:50%;" />
+    <img src="assets/image-20231026233121030.png" alt="图片1" style="width:50%;" />
 
 #### 配置
 
@@ -290,7 +284,7 @@ PyCharm 有商业版和社区版两个版本。
 
     1. `Main menu` > `Settings` > `Editor` > `Code Style` > `Python`
     2. 设置 `Tab size` `Indent` `Continuation indent` 三项为 `2`
-  
+
 - **鼠标滚轮**
 
     1. `Main menu` > `Settings` > `Editor` > `General` > `Mouse Control` 选项
@@ -302,11 +296,11 @@ PyCharm 有商业版和社区版两个版本。
     1. `Main menu` > `Settings` > `Editor` > `Font`
     2. `Size = 24`，`Line Height = 1.2`
     3. 如果设置不生效，`Main menu` > `Settings` > `Editor` > `Color Scheme` > `Color Scheme Font` > 取消勾选  `Use color scheme font instead of the default`
-  
+
 - **汉化**
 
     1. `Main menu` > `Settings` > `Plugins`，搜索 `Chinese`，`Install` 安装汉化包。软件重启即汉化版
-  
+
 - **代码格式化**
 
     1. `Main menu` > `Settings` > `Editor` > `Code Style` > `Python` > `Space` 选项卡
@@ -329,7 +323,7 @@ PyCharm 有商业版和社区版两个版本。
 
     1. Terminal 可以模拟 cmd
     2. `Settings` > `Tools` > `Terminal` > `Shell path` 下拉菜单，`切换至 cmd`
-  
+
 - **无法调用第三方模块**
 
     1. `Settings` > `Project：当前文件名` > `Python Interpreter` > `右侧Add Interpreter` > `Existing` > `右侧…`
@@ -342,7 +336,6 @@ PyCharm 有商业版和社区版两个版本。
     - **`Previously configured interpreter`**：已存在环境，使用全局的 Python 解释器，正常无法使用虚拟环境的依赖。
     - **`Viutualenv`**：虚拟环境，与全局环境隔离，不影响全局，可以使用全局环境依赖。
     
-    
     <img src="assets/image-20240322004048261.png" alt="图片1" style="zoom:50%;" />
 
 ### Sublime
@@ -350,12 +343,12 @@ PyCharm 有商业版和社区版两个版本。
 Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。除了 Python 之外，它还提供对其他语言的支持。Sublime 有自己的包管理器，开发者可以用来安装组件，插件和额外样式。与 PyCharm、VS Code 不同，Sublime Text 并没有集成开发环境，而是作为一个纯粹的编辑器，提供了快速、便捷的编辑功能。特点：第三方，轻量化，界面好，支持常见所有语言。
 
 - **安装 Sublime**
-  
+
     1. 默认所有选项安装 Sublime
     2. Sublime 原生环境不支持 `input` 语句的执行，所以要安装 `SublimeREPL` 插件。
-  
+
 - **安装 SublimeREPL 插件**
-  
+
     1. `Ctrl+shift+P` 打开命令面板，输入 `install`，选择 `Package Control：Install Package`
     2. 程序包控件，安装程序包，需要等待一下，看左下角有 `=` 左右动；
     3. 注意，如果没有这个选项，需要先安装 `Package Control`，点击 `Install Package Control`，等待安装，提示安装成功后再重新按 `Ctrl+shift+P` 选择 `Package Control：Install Package`；
@@ -377,16 +370,16 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
             ```
 
     7. 关闭快捷键设置页面，重启 `Sublime` 软件。
-    
+
         - 需要注意，`input` 语句在 Sublime 中执行，需要按快捷键 `F5`，并且新跳出一个窗口显示。
-  
+
 - **卸载 SublimeREPL 插件**
-  
+
     1. `Ctrl+shift + p`，输入框中输入`remove package`；
     2. 下面会有提示，直接点击或者输入后回车。
 
 - **创建文件**
-  
+
     - 右下角单击选择 `Python`；
     - 编写代码，保存：`文件名.py`；
     - 运行：`Ctrl + B`（第一次选择 `Python`）。
@@ -395,10 +388,11 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - 除以下规范，其余同编程语言通用规范。
 - **缩进**：敏感
+
     - Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 **`{}`** 。
     - 缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
     - 最佳4个空格。
-    
+
 - **分号**：每行代码结束不使用分号
 
 ## 标识符
@@ -409,6 +403,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     - 第一个字符必须是字母或下划线 `_`。
     - 只能含有字母、数字、下划线，且不能以数字开头
     - 大小写敏感
+
 - **命名习惯**
 
     - **变量名**：小蛇形，例 `max_length`。
@@ -466,9 +461,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
     ```python
     print("a")  # a
     ```
-  
+
     **说明**：
-  
+
     1. 如果输出内容为字符串，加 `双/单引号`。
     2. `a` 可以是拼接数据
     3. `print("内容", end = "")`：多行 `print` 显示结果不换行
@@ -592,11 +587,14 @@ Python 中有**基础数据类型**和**集合数据类型**。
 在 Python 中，数据类型主要分为两大类：**基本数据类型**（六种）和**引用数据类型**。
 
 - **基本数据类型**
+
     - **数值**：int，float，complex
     - **字符串**：str
     - **布尔型**：bool
     - **空值**：None
+
 - **集合数据类型**
+
     - **列表**：list
     - **元祖**：tuple
     - **集合**：set
@@ -653,7 +651,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     strr[0:6:2]  # 切片
     
     if "中国" in strr:  # in 包含
-      pass
+        pass
     
     strr.replace("a", "A")  # 替换
     
@@ -1071,11 +1069,11 @@ Python 中有**基础数据类型**和**集合数据类型**。
     ``` python
     tpl1 = ("中国")
     print(tpl1)  # 中国
-    
+
     tpl2 = ("中国",)
     print(tpl2)  # ('中国',)
     ```
-  
+
 - **说明**：虽然元祖是不可变数据，但如果元组内部嵌套容器，该容器内部的元素可以修改
 
     ``` python
@@ -1083,7 +1081,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     tpl1[1][0] = "深圳"
     print(tpl1)  # ('中国', ['深圳', '上海'], 123)
     ```
-  
+
 - **元组公共功能**
 
     - 以下功能详见字符串
@@ -1301,7 +1299,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 ### 构造字典
 
 - 构造字典
-  
+
     ```python
     name = "ZhangSan"
     age = 18
@@ -1360,7 +1358,6 @@ Python 中有**基础数据类型**和**集合数据类型**。
 ### bool()
 
 - 在 Python 中可以将其它数据类型转换为布尔型
-
 - **语法**：`bool(ITEM)`，返回 `<class 'bool'>`。
 
     ```python
@@ -1381,6 +1378,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 ## 数据的可变性
 
 - **不可变数据类型**
+
     - **`int`**：整型
     - **`float`**：浮点型
     - **`str`**：字符串
@@ -1389,6 +1387,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     - **`bytes`**：字节序列
 
 - **可变数据类型**
+
     - **`list`**：列表
     - **`dict`**：字典
     - **`set`**：集合
@@ -1487,6 +1486,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     - **`%=`**：求余赋值
     - **`//=`**：取整除赋值
     - Python 中没有以下复合赋值运算符
+
         - **`++`**：自增，即在自身的基础加1
         - **`--`**：自减，即在自身的基础减1
         - **`%=`**：求余赋值
@@ -1507,7 +1507,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     ```python
     def greet(name="Guest"):
         print(f"Hello, {name}")
-    
+
     greet()  # 输出: Hello, Guest
     greet("Alice")  # 输出: Hello, Alice
     ```
@@ -1531,19 +1531,19 @@ Python 中有**基础数据类型**和**集合数据类型**。
         }
     }
     ```
-    
+
     ``` python
     a = 11
     a %= 3  # a=a/3之后再求余
     print(a)  # 2
     ```
-    
+
     ``` python
     a = 11
     a //= 3  # a=a/3之后再取整
     print(a)  # 3
     ```
-    
+
     ```python
     a = 11
     a **= 3  # a = a的3次方 
@@ -1623,7 +1623,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
     ```python
     score = 85
-    
+
     if score >= 60:
         print("及格！")
     ```
@@ -1648,7 +1648,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
     ```python
     score = 85
-    
+
     if score >= 60:
         print("及格！")
     else:
@@ -1671,7 +1671,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     else:
         执行语句D
     ```
-  
+
     ```python
     score = 85
     
@@ -1692,7 +1692,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     ```python
     真值 if 条件表达式 else 假值
     ```
-    
+
     ```python
     score = 85
     result = "及格" if score >= 60 else "不及格"
@@ -1861,6 +1861,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 # 循环结构
 
 - Python 中有 `for-in` 和 `while` 两种循环结构。
+
     - 其中 `while` 循环，作用同 Java，格式不同。
     - 其中 `for-in` 循环集合了 JS 中 `for`、`for-in` 和 `for-of` 的全部功能。
 
@@ -1946,7 +1947,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     while 条件表达式:
         循环体
     ```
-  
+
     ```python
     i = 1
     while i <= 10:
@@ -1973,7 +1974,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
         for month in range(1, 13):
             print("第", year, "年，第", month, "月，还款1000元！")
     ```
-  
+
 - **遍历多维容器**
 
     ```python
@@ -2034,7 +2035,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     data = f.read()
     f.close()
     ```
-  
+
 - **读大体积文本文件**
 
     ```python
@@ -2043,7 +2044,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
         data = line
     f.close()
     ```
-  
+
 - **读大体积二进制文件**
 
     ```python
@@ -2127,8 +2128,8 @@ Python 中有**基础数据类型**和**集合数据类型**。
     789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
     # 结尾多个换行
     ```
-  
-    ```py
+
+    ```python
     with open(r"file.txt", "r", encoding="utf-8") as f:
         # 获取到去除首尾空白行的文件内容
         data = f.read().strip()
@@ -2170,7 +2171,6 @@ Python 中有**基础数据类型**和**集合数据类型**。
         output_file.write('\n'.join(extracted_lines))
     ```
 
-
 ### 下载图片
 
 - **语法**
@@ -2181,7 +2181,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     data = res.content  # content解码
     # 接下来进行文件读写处理数据
     ```
-  
+
 - **下载图片示例**
 
     ```python
@@ -2205,7 +2205,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
     # 接尾多个换行
     ```
-  
+
     ```python
     import requests
     
@@ -2309,7 +2309,6 @@ Python 中有**基础数据类型**和**集合数据类型**。
     v2 = 2  # 全局变量
     v3 = 3  # 全局变量
     
-    
     def func():
         v2 = 3  # 与全局变量同名的局部变量
         global v3  # 通过global，将局部变量 v3 改为全局变量
@@ -2319,7 +2318,6 @@ Python 中有**基础数据类型**和**集合数据类型**。
         print(v2)  # 3  优先获取局部变量 v2 的值
         print(v3)  # 4  获取全局变量 v3 的新值
         print(v4)  # 4  取局部变量 v4 的值
-    
     
     func()  # 1 3 4 4
     print(v1)  # 1  获取全局变量 v1 的值
@@ -2375,7 +2373,6 @@ Python 中有**基础数据类型**和**集合数据类型**。
     print(round(c, 1))  # 5.1
     print(round(3.1415926, 4))  # 3.1416  四舍五入
     ```
-
 
 - **reversed() 序列反转**：将序列中的排序进行反转
 
@@ -2441,23 +2438,23 @@ Python 中有**基础数据类型**和**集合数据类型**。
     callable(func)  # True/False 判断func是否可执行，即是不是函数
     eval() : 执行一个表达式，或字符串作为运算。 eval('1+1') > 2
     exec() : 执行python语句。 exec('print("Python")') > Python
-    
+
     filter(func, iterable) : 通过判断函数fun，筛选符合条件的元素。
     filter(lambda x: x>3, [1,2,3,4,5,6]) > <filter object at 0x0000000003813828>
-    
+
     map(func, *iterable) : 将func用于每个iterable对象。
     map(lambda a,b: a+b, [1,2,3,4], [5,6,7]) > [6,8,10]
-    
+
     zip(*iterable) : 将iterable分组合并。返回一个zip对象。
     list(zip([1,2,3],[4,5,6])) > [(1, 4), (2, 5), (3, 6)]
-    
+
     help()：调用系统内置的帮助系统。
     isinstance()：判断一个对象是否为该类的一个实例。
     issubclass()：判断一个类是否为另一个类的子类。
     globals() : 返回当前全局变量的字典。
     next(iterator[, default]) : 接收一个迭代器，返回迭代器中的数值，如果设置了default，则当迭代器中的元素遍历后，输出default内容。
     ```
-  
+
 - **id() 获取id**：获取一个数据的id，判断两个变量是不是同一个变量
 
     ```python
@@ -2594,13 +2591,13 @@ Python 中有**基础数据类型**和**集合数据类型**。
     r = random.randint(1, 1000)
     print("----------您的抽奖号码是：", r)
     if r == 1:
-    print("*******恭喜你，获得一等奖笔记本电脑！")
+        print("*******恭喜你，获得一等奖笔记本电脑！")
     elif 10 <= r <= 19:
-    print("*******恭喜你，获得二等奖 冰箱！")
+        print("*******恭喜你，获得二等奖 冰箱！")
     elif 100 <= r <= 149:
-    print("*******恭喜你，获得三等奖 音响！")
+        print("*******恭喜你，获得三等奖 音响！")
     else:
-    print("******* 谢谢惠顾！")
+        print("******* 谢谢惠顾！")
     ```
 
 - **打乱次序**：打乱次序以后，原数据会更改
@@ -2853,11 +2850,11 @@ Python 中有**基础数据类型**和**集合数据类型**。
         users = '[{"name":"zhangsan","pwd":"123"},{"name":"lisi","pwd":"123"},{"name":"wangwu","pwd":"123"}]'
         f.write(users)
     ```
-  
+
     ```
     [{"name":"zhangsan","pwd":"123"},{"name":"lisi","pwd":"123"},{"name":"wangwu","pwd":"123"}]
     ```
-  
+
 - Python 中保存一个对象
 
     ```json
@@ -2870,18 +2867,18 @@ Python 中有**基础数据类型**和**集合数据类型**。
     - 如果 Python 数据键是单引号，转换后会自动变成双引号。
     - 序列化支持以下类型
     ```
-  
-  |   Python    | JSON     |
-  | :---------: | -------- |
-  |    dict     | object   |
-  | list, tuple | array    |
-  |     str     | string   |
-  | int, float  | number   |
-  |    True     | true     |
-  |    False    | false    |
-  |    None     | null     |
-  |  '单引号'   | "双引号" |
-  
+
+    |   Python    | JSON     |
+    | :---------: | -------- |
+    |    dict     | object   |
+    | list, tuple | array    |
+    |     str     | string   |
+    | int, float  | number   |
+    |    True     | true     |
+    |    False    | false    |
+    |    None     | null     |
+    |  '单引号'   | "双引号" |
+
 - Python 中保存多个对象
 
     ```json
@@ -3082,16 +3079,15 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         def __init__(self, name, age):
             self.name = name  # 初始化 name 属性
             self.age = age    # 初始化 age 属性
-    
+
         # 定义方法
         def introduce(self):
             print(f"My name is {self.name}, and I am {self.age} years old.")
-    
-    
+
     # 创建对象
     person1 = Person("Alice", 25)
     person2 = Person("Bob", 30)
-    
+
     # 调用方法
     person1.introduce()  # 输出: My name is Alice, and I am 25 years old.
     person2.introduce()  # 输出: My name is Bob, and I am 30 years old.
@@ -3130,7 +3126,6 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
                 money = float(input("请输入存款金额："))
                 self.balance += money
                 print("存款成功！存入", money, "元！余额", self.balance, "元！")
-    
     
     # 创建对象
     c1 = Card("1001", "123", "张三", 0)
@@ -3228,30 +3223,28 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     from sqlalchemy.orm import sessionmaker
     from sqlalchemy.ext.declarative import declarative_base
     from sqlalchemy import Column, String
-    
+
     # 1.创建数据库引擎，连接数据库
     DATABASE_URL = 'sqlite:///users.db'
     engine = create_engine('DATABASE_URL', echo=True)
-    
+
     # 2.创建基类
     Base = declarative_base()
-    
+
     # 3.创建 Session 类
     Session = sessionmaker(bind=engine)
-    
+
     # 4.定义模型类，映射到数据库中的表
-    
-    
+
     class User(Base):
         __tablename__ = 'tb_users'  # 映射到表 tb_users
         id = Column(Integer, primary_key=True, autoincrement=True)  # 映射到 id 列
         username = Column(String(16), nullable=False, unique=True)  # 映射到 username 列
         password = Column(String(255), nullable=False)  # 映射到 password 列
-    
-    
+
     # 5.创建 Table
     Base.metadata.create_all(engine)
-    
+
     # 6.使用 session 交互数据库
     session = Session()
     new_user = User(username="johndoe", password="secret")
@@ -3347,12 +3340,14 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     
     # 其余同基础函数模板
     ```
-    
+
     **在以上代码中**：
-    
+
     1. **`DATABASE_URL`**：连接地址
+
         - **`mysql`**：数据库的类型
         - **`pymysql`**：数据库驱动，需 pip 安装 `pymysql`。
+
     2. **`username:password`**：MySQL 数据库登录用户名和密码。
     3. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
     4. **`3306`**：端口号
@@ -3370,7 +3365,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 1.引入 pymysql 和 DictCursor
     import pymysql
     from pymysql.cursors import DictCursor
-    
+
     # 2.连接 MySQL 服务器（事先已创建好 Database）
     conn = pymysql.Connect(
         host="localhost",  # 主机地址
@@ -3380,17 +3375,17 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         charset="utf8",  # 字符集
         database="db_users"  # 数据库名称
     )
-    
+
     # 3.创建游标对象
     cursor = conn.cursor(cursor=DictCursor)
-    
+
     # 4.交互 MySQL
     sql = "$SQL_SYNTAX"
     cursor.execute(sql)  # 增删改查
     conn.commit()  # 如果是增删改业务，则执行 commit()
     res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
     res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-    
+
     # 5.关闭游标对象和连接
     cursor.close()
     conn.close()
@@ -3402,6 +3397,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     2. **`port=3306`**：端口号，注意数字是整型。
     3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
     4. **`cursor=DictCursor`**：查询结果为列表嵌套字典，否则为元祖嵌套元祖。
+
         - 用户名和密码应优先使用元祖，详见[元祖特性](../code-general/code-general.md#元祖)。
         - 用户资料（如性别、年龄、邮箱、电话号码等）优先使用列表，可用键索引值。
 
@@ -3450,19 +3446,19 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     def insert_user(username, password):
         conn = conn_db()
         cursor = conn.cursor()
-        
+    
         try:
             cursor.execute('''
                 INSERT INTO tb_users (username, password)
                 VALUES (%s, %s)
             ''', (username, password))
-            
+    
             conn.commit()
             print(f"用户 {username} 插入成功！")
-        
+    
         except pymysql.MySQLError as e:
             print(f"插入失败，错误信息: {e}")
-        
+    
         finally:
             close_db(conn, cursor)
     
@@ -3644,14 +3640,14 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     ```python
     # 1.引入 sqlite3
     import sqlite3
-    
+
     # 2.连接 SQLite 数据库，如果不存在，则会自动创建
     conn = sqlite3.connect('users.db')
-    
+
     # 3.创建游标对象
     conn.row_factory = sqlite3.Row  # 相当于 MySQL 里的cursor=DictCursor，获取结果为列表嵌套字典。
     cursor = conn.cursor()
-    
+
     # 以下交互与 pymysql 相同，但 sqlite3 不支持使用 with 进行上下文自动管理。
     # 4.交互 SQLite
     sql = "$SQL_SYNTAX"
@@ -3659,7 +3655,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     conn.commit()  # 如果是增删改业务，则执行 commit()
     res = cursor.fetchall()  # 如果是查询所有，则执行 fetchall()
     res = cursor.fetchone()  # 如果是查询一个，则执行 fetchone()
-    
+
     # 5.关闭游标对象和连接
     cursor.close()
     conn.close()
@@ -3705,13 +3701,13 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     def insert_user(username, password):
         conn = conn_db()
         cursor = conn.cursor()
-        
+    
         try:
             cursor.execute('''
                 INSERT INTO tb_users (username, password)
                 VALUES (?, ?)
             ''', (username, password))
-            
+    
             conn.commit()
             print(f"用户 {username} 插入成功！")
         except sqlite3.IntegrityError as e:
@@ -3817,29 +3813,23 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
     ```jinja2
     <html>
+      <head>
+        <title>{% block title %}{% endblock %}</title>
+      </head>
     
-    <head>
-      <title>{% block title %}{% endblock %}</title>
-    </head>
-    
-    <body>
-      <header>
-        <h1>My Website</h1>
-      </header>
-      <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/about">About</a></li>
-        </ul>
-      </nav>
-      <main>
-        {% block content %}{% endblock %}
-      </main>
-      <footer>
-        &copy; 2024 My Company
-      </footer>
-    </body>
-    
+      <body>
+        <header>
+          <h1>My Website</h1>
+        </header>
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/about">About</a></li>
+          </ul>
+        </nav>
+        <main>{% block content %}{% endblock %}</main>
+        <footer>&copy; 2024 My Company</footer>
+      </body>
     </html>
     ```
 
@@ -3865,7 +3855,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     from flask import Flask, render_template
     
     app = Flask(__name__)
-    
+
     @app.route("/")
     def index():
         return render_template("index.html", name="Alice", items=["Apple", "Banana", "Cherry"])
@@ -3918,22 +3908,22 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     ├── static/           # 静态文件目录：存放CSS、JS、图片等
     └── app.py            # 主程序文件
     ```
-    
+
 - **主程序文件**：`app.py`
 
     ```python
     # 导入 Flask 类和 render_template 函数
     from flask import Flask, render_template
-    
+
     # 创建 Flask 应用实例
     app = Flask(__name__)
-    
+
     # 定义主页路由
     @app.route('/')  # 路由装饰器
     def home():  # 视图函数
         # 渲染index.html模板
         return render_template('index.html')
-    
+
     # 运行主程序
     if __name__ == '__main__':
         app.run(debug=True)
@@ -3956,22 +3946,24 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     ```html
     <!DOCTYPE html>
     <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Home</title>
+        <!-- 动态引入 CSS 样式表 -->
+        <link
+          rel="stylesheet"
+          href="{{ url_for('static', filename='styles.css') }}"
+        />
+      </head>
     
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Home</title>
-      <!-- 动态引入 CSS 样式表 -->
-      <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    </head>
-    
-    <body>
-      <h1>Welcome to Flask</h1>
-      <!-- 动态引入 JavaScript 脚本 -->
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
-    </body>
-    
+      <body>
+        <h1>Welcome to Flask</h1>
+        <!-- 动态引入 JavaScript 脚本 -->
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+      </body>
     </html>
+    
     ```
 
     **在以上代码中**：
@@ -3982,7 +3974,6 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 - 此初始化脚本是自己创建的，用于自动创建虚拟环境和 Flask 框架简单结构。
 - 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成虚拟环境和 Flask 框架简单结构。
-
 - **注意**：
 
     - 执行脚本前，关闭所有终端，重新进入终端，查看当前目录确实是本项目目录。
@@ -4035,8 +4026,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         else:
             # Linux/Mac
             command = f"source {activate_script} && pip install flask"
-        
-        
+
+
         # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
         # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
         # 为了在 Python 脚本中使用虚拟环境，可以通过执行一个子进程，同时激活虚拟环境并安装所需的包。
@@ -4053,7 +4044,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
             "static",
             "static/img"
         ]
-        
+    
         # 定义文件
         files = {
             "templates/base.html": (
@@ -4105,13 +4096,13 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     def main():
         # 第一步：创建并定义激活虚拟环境
         activate_script = create_and_activate_virtual_environment()
-        
+    
         # 第二步：激活虚拟环境，并安装 Flask
         install_flask(activate_script)
-        
+    
         # 第三步：创建目录和文件
         create_project_structure()
-        
+    
         # 添加使用提示
         print("\n项目已创建完成！")
         if os.name == "nt":
@@ -4154,17 +4145,17 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     # 导入必要的模块
     from flask import Flask  # Flask核心类
     from config import Config  # 导入配置类
-    
+
     def create_app():
         # 创建Flask应用实例
         app = Flask(__name__)
         # 从配置类加载配置
         app.config.from_object(Config)
-        
+
         # 导入并注册蓝图（路由）
         from app.routes import main  # 导入routes.py创建的蓝图对象
         app.register_blueprint(main)  # 注册到应用
-        
+
         return app 
     ```
 
@@ -4172,15 +4163,16 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
     ```python
     from flask import Blueprint, render_template
-    
+
     # 创建蓝图对象
     main = Blueprint('main', __name__)
-    
+
     # 定义主页路由
     @main.route('/')  # 路由装饰器
     def home():
         return render_template('index.html') 
     ```
+
 - **配置文件 `config.py`**
 
     ```python
@@ -4188,6 +4180,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         # 基础配置
         SECRET_KEY = 'dev'  # 用于加密session和cookies的密钥
     ```
+
 - **启动文件 `run.py`**
 
     ```python
@@ -4202,6 +4195,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         # 启动Flask开发服务器，开启调试模式
         app.run(debug=True) 
     ```
+
 #### Flask 工厂结构初始化脚本
 
 - 此初始化脚本是自己创建的，用于自动创建虚拟环境和 Flask 框架工厂结构。
@@ -4264,7 +4258,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
         else:
             # Linux/Mac
             command = f"source {activate_script} && pip install flask"
-        
+    
         # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
         # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
         # 为了在 Python 脚本中使用虚拟环境，可以通过执行一个子进程，同时激活虚拟环境并安装所需的包。
@@ -4284,7 +4278,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
             "app/static/js",
             "app/static/img"
         ]
-        
+    
         # 定义文件
         files = {
             "config.py": (
@@ -4356,13 +4350,13 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
     def main():
         # 第一步：创建并定义激活虚拟环境
         activate_script = create_and_activate_virtual_environment()
-        
+    
         # 第二步：激活虚拟环境，并安装 Flask
         install_flask(activate_script)
-        
+    
         # 第三步：创建目录和文件
         create_project_structure()
-        
+    
         # 添加使用提示
         print("\n项目已创建完成！")
         if os.name == "nt":
@@ -4377,9 +4371,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 ## 蓝图
 
 - 蓝图是 Flask 的一个功能，用于组织一组相关的视图、模板和静态文件。
-
 - 例如：可以把它理解为一个迷你的应用，包含了一组路由。
-
 - **蓝图的优点**
 
     - **模块化**：可以把不同功能的路由分组
@@ -4400,11 +4392,11 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 ###  [Login Flask Txt HTML](../../projects/projects.md#Login Flask Txt HTML)
 
-<img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="zoom:50%;" />
+<img src="assets/image-20241216003929200.png" alt="image-20241216003929200" style="width:50%;" />
 
 ### [Login Flask React](../../projects/projects.md#Login Flask React)
 
-<img src="assets/image-20241225231722788.png" alt="image-20241225231722788" style="zoom:33%;" />
+<img src="assets/image-20241225231722788.png" alt="image-20241225231722788" style="width:70%;" />
 
 # Django 框架
 
@@ -4472,7 +4464,7 @@ myproject/                   # 项目根目录
 
     ```
     # 这会生成以下目录结构：
-    
+
     myproject/
     ├── manage.py
     └── myproject/
@@ -4526,7 +4518,7 @@ myproject/                   # 项目根目录
         from django.contrib import admin
         from django.urls import path
         from myapp import views
-        
+
         urlpatterns = [
             path('admin/', admin.site.urls),
             path('', views.index, name='index'),  # 首页路由
@@ -4537,7 +4529,7 @@ myproject/                   # 项目根目录
 
         ```python
         from django.shortcuts import render
-        
+
         def index(request):
             context = {
                 'name': 'Alice',
@@ -4551,22 +4543,20 @@ myproject/                   # 项目根目录
         ```html
         <!DOCTYPE html>
         <html lang="en">
+          <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>Django Example</title>
+          </head>
         
-        <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Django Example</title>
-        </head>
-        
-        <body>
-          <h1>Hello, {{ name }}!</h1>
-          <ul>
-            {% for item in items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        </body>
-        
+          <body>
+            <h1>Hello, {{ name }}!</h1>
+            <ul>
+              {% for item in items %}
+              <li>{{ item }}</li>
+              {% endfor %}
+            </ul>
+          </body>
         </html>
         ```
 
@@ -4591,31 +4581,31 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
     - 进入项目目录
     - 创建项目
 
-    ```
-    >pip install django
-    >e:回车   进入E盘
-    >cd 文件\工作\Pycharm项目\Web开发\Web开发文件笔记   进入想放项目的文件夹
-    >django-admin startproject 项目名
-    ```
+        ```
+        >pip install django
+        >e:回车   进入E盘
+        >cd 文件\工作\Pycharm项目\Web开发\Web开发文件笔记   进入想放项目的文件夹
+        >django-admin startproject 项目名
+        ```
 
-    ```
-    - 项目名
-      - manage.py       # 管理当前项目
-      - 项目名
-          - setting.py  # 一部分项目配置
-          - wsgi.py
-          - asgi.py     # 启动项目，接收浏览器发送的请求
-          - urls.py     # 对应关系   浏览器->函数
-    ```
+        ```
+        - 项目名
+          - manage.py       # 管理当前项目
+          - 项目名
+              - setting.py  # 一部分项目配置
+              - wsgi.py
+              - asgi.py     # 启动项目，接收浏览器发送的请求
+              - urls.py     # 对应关系   浏览器->函数
+        ```
 
     - 启动和关闭项目
 
-    ```
-    >进入项目目录
-    >python manage.py runserver
-    
-    关闭：Ctrl + c
-    ```
+        ```
+        >进入项目目录
+        >python manage.py runserver
+        
+        关闭：Ctrl + c
+        ```
 
 ## Django 知识点
 
@@ -4656,25 +4646,25 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
               - admin.py    【django内置后台管理】
         ```
 
-  - **注册 app**：settings.py
+    - **注册 app**：settings.py
 
-    ```python
-    -> INSTALLED_APPS = [
-      ...
-      'app01.apps.App01Config',
-    ]
-    ```
+        ```python
+        -> INSTALLED_APPS = [
+          ...
+          'app01.apps.App01Config',
+        ]
+        ```
 
-  - **app 创建文件夹**
+    - **app 创建文件夹**
 
-    ```
-    - day15
-      - app  【所有功能放在一起管理】
-          - static  【存放静态资源】
-              - 详见静态资源
-          - templates  【存放html文件】
-              - html模板
-    ```
+        ```
+        - day15
+          - app  【所有功能放在一起管理】
+              - static  【存放静态资源】
+                  - 详见静态资源
+              - templates  【存放html文件】
+                  - html模板
+        ```
 
 - **views**：存放视图函数的文件
 
@@ -4883,50 +4873,52 @@ html 模板就是存放 html 文件的文件夹
     
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>login页面</title>
-      <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">  <!-- head引入其它插件 -->
-    </head>
-    <body>
-      <!-- 引入图片同理 -->
-      <img src="{% static 'images/demo1.png' %}">
+      <head>
+        <meta charset="UTF-8" />
+        <title>login页面</title>
+        <link
+          rel="stylesheet"
+          href="{% static 'plugins/bootstrap/css/bootstrap.css' %}"
+        />
+        <!-- head引入其它插件 -->
+      </head>
+      <body>
+        <!-- 引入图片同理 -->
+        <img src="{% static 'images/demo1.png' %}" />
     
-      <a class="btn btn-danger">删除</a>
-    </body>
+        <a class="btn btn-danger">删除</a>
+      </body>
     </html>
     ```
 
     **在以上代码中**：
 
     - 在顶部引入static文件夹确保系统能找到路径，输入路径时才能有提示。
-    - 引入路径时 src="{% static '...' %}"
+    - 引入路径时 `src="{% static '...' %}"`
     - 定义 class 方式不变
 
 ## 请求与相应
 
 - **请求与响应**
 
-    <div style="display: flex; justify-content: left;">
-      <img src="assets/image-20231104113148646.png" alt="图片1" style="width: 100%;">
-  </div>
-
+    ![图片1](assets/image-20231104113148646.png)
+    
 - **获取请求**
 
     ```python
     def login(request):
-      # 1.1获取请求方式  GET/POST
-      print(request.method)
-      # 在pycharm底部可以看见用户请求数据的方式GET/POST
+        # 1.1获取请求方式  GET/POST
+        print(request.method)
+        # 在pycharm底部可以看见用户请求数据的方式GET/POST
 
-      # 1.2获取URL中传递的参数  浏览器地址由.../login/变为.../login/?n1=111&n2=222&n3=333
-      print(request.GET)# <QueryDict: {'n1': ['111'], 'n2': ['222'], 'n3': ['333']}>
+        # 1.2获取URL中传递的参数  浏览器地址由.../login/变为.../login/?n1=111&n2=222&n3=333
+        print(request.GET)  # <QueryDict: {'n1': ['111'], 'n2': ['222'], 'n3': ['333']}>
 
-      # 1.3单独获取URL中传递的某个参数
-      print(request.GET.get("n1"))  # 111
+        # 1.3单独获取URL中传递的某个参数
+        print(request.GET.get("n1"))  # 111
 
-      # 1.4获取请求体中传递的数据
-      print(request.POST)
+        # 1.4获取请求体中传递的数据
+        print(request.POST)
     ```
 
 - **响应**
@@ -4936,15 +4928,16 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     from django.shortcuts import redirect
 
+
     def login(request):
-      # 2.1返回一个字符串
-      return HttpResponse("你好")
-
-      # 2.2返回一个html页面 + 数据渲染
-      return render(request, 'login.html')
-
-      # 2.3返回一个重定向
-      return redirect("http://www.baidu.com")
+        # 2.1返回一个字符串
+        return HttpResponse("你好")
+    
+        # 2.2返回一个html页面 + 数据渲染
+        return render(request, "login.html")
+    
+        # 2.3返回一个重定向
+        return redirect("http://www.baidu.com")
     ```
 
 - 案例：登录
@@ -4957,51 +4950,53 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     from django.shortcuts import redirect
     
+    
     def login(request):
-      # 浏览器上输入地址/跳转
-      # Django默认传递方式为GET
-      if request.method == "GET":
-          return render(request, 'login.html')
+        # 浏览器上输入地址/跳转
+        # Django默认传递方式为GET
+        if request.method == "GET":
+            return render(request, "login.html")
     
-      # 否则就是以POST方式提交
-      user = request.POST.get("username")
-      pwd = request.POST.get("password")
+        # 否则就是以POST方式提交
+        user = request.POST.get("username")
+        pwd = request.POST.get("password")
     
-      if user == "root" and pwd == "123":
-          # 登录成功，跳转到百度首页
-          return redirect("http://www.baidu.com")
+        if user == "root" and pwd == "123":
+            # 登录成功，跳转到百度首页
+            return redirect("http://www.baidu.com")
     
-      else:
-          # 登录失败，依然返回登录页面
-          # 向html传入占位符error的值
-          return render(request, "login.html", {"error":"用户名或密码错误"})
+        else:
+            # 登录失败，依然返回登录页面
+            # 向html传入占位符error的值
+            return render(request, "login.html", {"error": "用户名或密码错误"})
     ```
 
     ```html
-    # login.html
-    {% load static %}
+    # login.html {% load static %}
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>login页面</title>
-      <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
-    </head>
-    <body>
-    <h1>用户登录</h1>
-    <form action="/login/" method="post">
-      <!-- 校验，否则无法提交 -->
-      {% csrf_token %}
+      <head>
+        <meta charset="UTF-8" />
+        <title>login页面</title>
+        <link
+          rel="stylesheet"
+          href="{% static 'plugins/bootstrap/css/bootstrap.css' %}"
+        />
+      </head>
+      <body>
+        <h1>用户登录</h1>
+        <form action="/login/" method="post">
+          <!-- 校验，否则无法提交 -->
+          {% csrf_token %}
     
-      <input type="text" name="username" placeholder="用户名"/>
-      <input type="password" name="password" placeholder="密码"/>
-      <input type="submit" value="提交"/>
+          <input type="text" name="username" placeholder="用户名" />
+          <input type="password" name="password" placeholder="密码" />
+          <input type="submit" value="提交" />
     
-      <!-- 错误提示，占位符error -->
-      <span style="color: red;">{{ error }}</span>
-    </form>
-    
-    </body>
+          <!-- 错误提示，占位符error -->
+          <span style="color: red">{{ error }}</span>
+        </form>
+      </body>
     </html>
     ```
 
@@ -5009,9 +5004,7 @@ html 模板就是存放 html 文件的文件夹
 
 - Django 操作数据库流程
 
-    <div style="display: flex; justify-content: left;">
-      <img src="assets/无标题-2023-11-04-1411.png" alt="图片1" style="width: 80%;">
-  </div>	
+    <img src="assets/无标题-2023-11-04-1411.png" alt="图片1" style="width: 80%;">
 
 - 路径配置
 
@@ -5033,45 +5026,41 @@ html 模板就是存放 html 文件的文件夹
 
     - [下载驱动](https://github.com/xerial/sqlite-jdbc/releases)
 
-        <div style="display: flex; justify-content: left;">
-            <img src="assets/image-20231104193510562.png" alt="图片1" style="width: 80%;">
-        </div>	
+        <img src="assets/image-20231104193510562.png" alt="图片1" style="width: 80%;">
 
-        <div style="display: flex; justify-content: left;">
-            <img src="assets/image-20231104193729867.png" alt="图片1" style="width: 80%;">
-        </div>	
+        <img src="assets/image-20231104193729867.png" alt="图片1" style="width: 80%;">
 
     - 将下载的`sqlite-jdbc-3.43.0.0.jar`文件放入如下路径`C:\Users\39331\AppData\Roaming\JetBrains\PyCharm2023.2\jdbc-drivers\Xerial SQLiteJDBC\3.43.0\org\xerial\sqlite-jdbc\3.43.0.0`
     - 配置
 
-        ![image-20231104194439218](assets/image-20231104194439218.png)
+        <img src="assets/image-20231104194439218.png" alt="image-20231104194439218" style="width:80%;" />
 
-        ![image-20231104194617754](assets/image-20231104194617754.png)
+        <img src="assets/image-20231104194617754.png" alt="image-20231104194617754" style="width:80%;" />
 
-        ![image-20231104194803561](assets/image-20231104194803561.png)
+        <img src="assets/image-20231104194803561.png" alt="image-20231104194803561" style="width:70%;" />
 
-        ![image-20231104195036183](assets/image-20231104195036183.png)
+        <img src="assets/image-20231104195036183.png" alt="image-20231104195036183" style="width:70%;" />
 
 - 查看数据库
 
-    ![image-20231104195320024](assets/image-20231104195320024.png)
+    <img src="assets/image-20231104195320024.png" alt="image-20231104195320024" style="width:80%;" />
 
-    ![image-20231104195722346](assets/image-20231104195722346.png)
+    <img src="assets/image-20231104195722346.png" alt="image-20231104195722346" style="width:80%;" />
 
 ### 创建数据表
 
 - 创建类
 
-    ![image-20231104151521903](assets/image-20231104151521903.png)
+    <img src="assets/image-20231104151521903.png" alt="image-20231104151521903" style="width:80%;" />
 
     ```python
     # models.py
     from django.db import models
 
     class UserInfo(models.Model):
-      username = models.CharField(verbose_name = "用户名", max_length = 16)
-      password = models.CharField(verbose_name = "密码", max_length = 16)
-      age = models.IntegerField(verbose_name = "年龄")
+        username = models.CharField(verbose_name = "用户名", max_length = 16)
+        password = models.CharField(verbose_name = "密码", max_length = 16)
+        age = models.IntegerField(verbose_name = "年龄")
     ```
 
     ```
@@ -5086,7 +5075,7 @@ html 模板就是存放 html 文件的文件夹
 
 - 创建表
 
-    ![image-20231104153624882](assets/image-20231104153624882.png)
+    <img src="assets/image-20231104153624882.png" alt="image-20231104153624882" style="width:80%;" />
 
     - 终端中先后执行
 
@@ -5097,15 +5086,14 @@ html 模板就是存放 html 文件的文件夹
 
   - 方法2
 
-    Pycharm --> 工具 --> 运行manage.py任务（Ctrl+Alt+R）
-
-    先后输入执行makemigrations和migrate
+    - Pycharm --> 工具 --> 运行manage.py任务（Ctrl+Alt+R）
+    - 先后输入执行makemigrations和migrate
 
 ### 删除数据表
 
 - 删除表
 
-    ![image-20231104155211390](assets/image-20231104155211390.png)
+    <img src="assets/image-20231104155211390.png" alt="image-20231104155211390" style="width:80%;" />
 
     ```
     - 将models.py中该表的类注释或者删除
@@ -5118,7 +5106,7 @@ html 模板就是存放 html 文件的文件夹
 
 - 删除列
 
-    ![image-20231104160037026](assets/image-20231104160037026.png)
+    <img src="assets/image-20231104160037026.png" alt="image-20231104160037026" style="width:80%;" />
 
     ```
     - 将models.py中此类的该列注释或者删除
@@ -5138,7 +5126,7 @@ html 模板就是存放 html 文件的文件夹
     from app01 import views
 
     urlpatterns = [
-      path('demo/', views.demo),
+        path('demo/', views.demo),
     ]
     ```
 
@@ -5148,9 +5136,9 @@ html 模板就是存放 html 文件的文件夹
     from django.db import models
 
     class UserInfo(models.Model):
-      username = models.CharField(verbose_name = "用户名", max_length = 16)
-      password = models.CharField(verbose_name = "密码", max_length = 16)
-      age = models.IntegerField(verbose_name = "年龄")
+        username = models.CharField(verbose_name = "用户名", max_length = 16)
+        password = models.CharField(verbose_name = "密码", max_length = 16)
+        age = models.IntegerField(verbose_name = "年龄")
     ```
 
 - **views.py**：`models.UserInfo.objects.create(增加内容)`
@@ -5159,14 +5147,14 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     
     def demo(request):
-      from app01 import models
+        from app01 import models
     
-      # 增加数据
-      models.UserInfo.objects.create(username = "root", password = "123", age = 19)
+        # 增加数据
+        models.UserInfo.objects.create(username = "root", password = "123", age = 19)
     
-      return HttpResponse("测试")
-    # 访问demo页面就会触发增加数据行
-    # 刷新并查看数据表得以验证已经增加数据
+        return HttpResponse("测试")
+        # 访问demo页面就会触发增加数据行
+        # 刷新并查看数据表得以验证已经增加数据
     ```
 
 ### 删除数据行
@@ -5178,14 +5166,14 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     
     def demo(request):
-      from app01 import models
+        from app01 import models
     
-      # 删除数据行
-      models.UserInfo.objects.filter(age = 20, username = "root").delete()
+        # 删除数据行
+        models.UserInfo.objects.filter(age = 20, username = "root").delete()
     
-      return HttpResponse("测试")
-    # 访问demo页面就会触发删除age = 20且username = "root"的数据行
-    # 刷新并查看数据表得以验证已经删除数据
+        return HttpResponse("测试")
+        # 访问demo页面就会触发删除age = 20且username = "root"的数据行
+        # 刷新并查看数据表得以验证已经删除数据
     ```
 
     ```python
@@ -5202,14 +5190,14 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     
     def demo(request):
-      from app01 import models
+        from app01 import models
     
-      # 删除数据列
-      models.UserInfo.objects.all().update(username = "zhangsan", age = 90)
+        # 删除数据列
+        models.UserInfo.objects.all().update(username = "zhangsan", age = 90)
     
-      return HttpResponse("测试")
-    # 访问demo页面就会触发修改所有username都是zhangsan，所有的age都是90
-    # 刷新并查看数据表得以验证已经修改数据列
+        return HttpResponse("测试")
+        # 访问demo页面就会触发修改所有username都是zhangsan，所有的age都是90
+        # 刷新并查看数据表得以验证已经修改数据列
     ```
 
 ### 修改数据
@@ -5221,14 +5209,14 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     
     def demo(request):
-      from app01 import models
+        from app01 import models
     
-      # 修改数据
-      models.UserInfo.objects.filter(id = 2).update(username = "lisi", age = 80)
+        # 修改数据
+        models.UserInfo.objects.filter(id = 2).update(username = "lisi", age = 80)
     
-      return HttpResponse("测试")
-    # 访问demo页面就会触发将id = 2的username修改为lisi，age修改为80
-    # 刷新并查看数据表得以验证已经修改数据
+        return HttpResponse("测试")
+        # 访问demo页面就会触发将id = 2的username修改为lisi，age修改为80
+        # 刷新并查看数据表得以验证已经修改数据
     ```
 
 ### 查询数据
@@ -5240,21 +5228,22 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import HttpResponse
     
     def demo(request):
-      from app01 import models
+        from app01 import models
     
-      # 查询并接收数据
-      res = models.UserInfo.objects.filter(username = "zhangsan", age = 90)
-      print(res)  # QuerySet类型：[obj1, obj2]
+        # 查询并接收数据
+        res = models.UserInfo.objects.filter(username="zhangsan", age=90)
+        print(res)  # QuerySet类型：[obj1, obj2]
     
-      # 遍历
-      for obj in res:
-          print(obj.id, obj.username, obj.password, obj.age)
-          # 3 zhangsan 123 90
+        # 遍历
+        for obj in res:
+            print(obj.id, obj.username, obj.password, obj.age)
+            # 3 zhangsan 123 90
     
-      return HttpResponse("测试")
+        return HttpResponse("测试")
+    
     # 访问demo页面就会触发查询username = "zhangsan"且age = 90的数据行
     ```
-
+    
     ```python
     # 查询所有条件数据
     models.UserInfo.objects.all()
@@ -5262,9 +5251,8 @@ html 模板就是存放 html 文件的文件夹
 
 ### 案例：页面展示数据库
 
-<div style="display: flex; justify-content: left;">
-    <img src="assets/image-20231105001327278.png" alt="图片1" style="width: 100%;">
-</div>
+<img src="assets/image-20231105001327278.png" alt="图片1" style="width: 100%;">
+
 
 - **urls.py**
 
@@ -5273,8 +5261,8 @@ html 模板就是存放 html 文件的文件夹
     from app01 import views
 
     urlpatterns = [
-      path('user/list/', views.user_list),
-      path('user/delete/', views.user_delete),
+        path('user/list/', views.user_list),
+        path('user/delete/', views.user_delete),
     ]
     ```
 
@@ -5284,9 +5272,9 @@ html 模板就是存放 html 文件的文件夹
     from django.db import models
 
     class UserInfo(models.Model):
-      username = models.CharField(verbose_name = "用户名", max_length = 16)
-      password = models.CharField(verbose_name = "密码", max_length = 16)
-      age = models.IntegerField(verbose_name = "年龄")
+        username = models.CharField(verbose_name = "用户名", max_length = 16)
+        password = models.CharField(verbose_name = "密码", max_length = 16)
+        age = models.IntegerField(verbose_name = "年龄")
     ```
 
 - **views.py**
@@ -5297,13 +5285,13 @@ html 模板就是存放 html 文件的文件夹
     from django.shortcuts import redirect
 
     def user_list(request):
-      lst = models.UserInfo.objects.all()
-      return render(request, "user_list.html", {"lst": lst})
+        lst = models.UserInfo.objects.all()
+        return render(request, "user_list.html", {"lst": lst})
 
     def user_delete(request):
-      uid = request.GET.get('uid')
-      models.UserInfo.objects.filter(id = uid).delete()
-      return redirect("/user/list/")
+        uid = request.GET.get('uid')
+        models.UserInfo.objects.filter(id = uid).delete()
+        return redirect("/user/list/")
     ```
 
 - **user_list.html**
@@ -5312,40 +5300,46 @@ html 模板就是存放 html 文件的文件夹
     {% load static %}
     <!DOCTYPE html>
     <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <title>user_list</title>
-      <link rel="stylesheet" href="{% static 'plugins/bootstrap/css/bootstrap.css' %}">
-    </head>
-    <body>
-    
-    <div class="container">
-      <h1>用户列表</h1>
-      <table class="table table-bordered">
-          <thead>
-          <tr>
-              <th>ID</th>
-              <th>用户名</th>
-              <th>密码</th>
-              <th>年龄</th>
-          </tr>
-          </thead>
-          <tbody>
-          {% for obj in lst %}
+      <head>
+        <meta charset="UTF-8" />
+        <title>user_list</title>
+        <link
+          rel="stylesheet"
+          href="{% static 'plugins/bootstrap/css/bootstrap.css' %}"
+        />
+      </head>
+      <body>
+        <div class="container">
+          <h1>用户列表</h1>
+          <table class="table table-bordered">
+            <thead>
               <tr>
-                  <td>{{ obj.id }}</td>
-                  <td>{{ obj.username }}</td>
-                  <td>{{ obj.password }}</td>
-                  <td>{{ obj.age }}</td>
-                  <td>
-                      <a href="/user/delete/?uid={{ obj.id }}" class="btn btn-danger btn-xs">删除</a>
-                  </td>
+                <th>ID</th>
+                <th>用户名</th>
+                <th>密码</th>
+                <th>年龄</th>
               </tr>
-          {% endfor %}
-          </tbody>
-      </table>
-    </div>
-    </body>
+            </thead>
+            <tbody>
+              {% for obj in lst %}
+              <tr>
+                <td>{{ obj.id }}</td>
+                <td>{{ obj.username }}</td>
+                <td>{{ obj.password }}</td>
+                <td>{{ obj.age }}</td>
+                <td>
+                  <a
+                    href="/user/delete/?uid={{ obj.id }}"
+                    class="btn btn-danger btn-xs"
+                    >删除</a
+                  >
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </body>
     </html>
     ```
 
@@ -5366,23 +5360,38 @@ html 模板就是存放 html 文件的文件夹
     
     # app01_Admin
     class Admin(models.Model):
-      """ 管理员表 """
-      username = models.CharField(verbose_name = "用户名", max_length = 16)
-      password = models.CharField(verbose_name = "密码", max_length = 64)
+        """管理员表"""
+    
+        username = models.CharField(verbose_name="用户名", max_length=16)
+        password = models.CharField(verbose_name="密码", max_length=64)
     
     # app01_DepartMent
     class DepartMent(models.Model):
-      """ 部门表 """
-      title = models.CharField(verbose_name = "标题", max_length = 16)
+        """部门表"""
+    
+        title = models.CharField(verbose_name="标题", max_length=16)
     
     # app01_AssetSet
     class AssetSet(models.Model):
-      """ 资产表 """
-      name = models.CharField(verbose_name = "名称", max_length = 32)
-      price = models.IntegerField(verbose_name = "价格")
-      category = models.SmallIntegerField(verbose_name = "资产类型",choices = ((1, "办公类"), (2, "3C类"), (3, "房产类"),))                                                       
-      # 外键             # DepartMent类                     
-      depart = models.ForeignKey(verbose_name = "所属部门", to = "DepartMent", to_field = "id",on_delete = models.CASCADE)# 级联删除
+        """资产表"""
+    
+        name = models.CharField(verbose_name="名称", max_length=32)
+        price = models.IntegerField(verbose_name="价格")
+        category = models.SmallIntegerField(
+            verbose_name="资产类型",
+            choices=(
+                (1, "办公类"),
+                (2, "3C类"),
+                (3, "房产类"),
+            ),
+        )
+        # 外键             # DepartMent类
+        depart = models.ForeignKey(
+            verbose_name="所属部门",
+            to="DepartMent",
+            to_field="id",
+            on_delete=models.CASCADE,
+        )  # 级联删除
     ```
 
 ### 用户登录
@@ -5407,13 +5416,13 @@ html 模板就是存放 html 文件的文件夹
 
     ```python
     import requests
-    
+
     # 抓包获取音乐的链接
     url = "$URL"
-    
+
     # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
     data = requests.get(url).content
-    
+
     # 写入到本地
     with open(r"E:\labs\以后的以后.mp4", "wb") as f:
         f.write(data)
