@@ -461,7 +461,7 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
         
         - 第三列表项
         ```
-    
+
         ```html
         <ul>
           <li><p>第一列表项</p></li>
@@ -973,11 +973,11 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 
 - **渲染效果**
 
-    Here's a simple footnote,[^1] and here's a longer one.[^bignote]
-
-    [^1]: This is the first footnote.
-
-    [^bignote]: Here's one with multiple paragraphs and code.
+    > Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+    >
+    > [^1]: This is the first footnote.
+    >
+    > [^bignote]: Here's one with multiple paragraphs and code.
 
 # 任务列表
 
@@ -1051,9 +1051,11 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 ## 个人代码风格
 
 - 缩进：4个空格
-- 所有整块的项，前后都空一行！
+- 不同项目之间必须有整行空格
+
+    - 比如图片和围栏代码块
+    - 比如不同级别的列表
 
 ## 已整理完
 
-- 历史
-- CSS
+- 历史、CSS、Markdown
