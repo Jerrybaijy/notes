@@ -6,15 +6,15 @@
 
 - **语法**：单行注释 `--`；多行注释 `/* */`
 
-    ```sql
-    SELECT * FROM users;  -- 这是一个单行注释
-    
-    /*
-    这是一个多行注释
-    它可以跨越多行
-    并且会被 SQL 引擎忽略
-    */
-    ```
+	```sql
+	SELECT * FROM users;  -- 这是一个单行注释
+	
+	/*
+	这是一个多行注释
+	它可以跨越多行
+	并且会被 SQL 引擎忽略
+	*/
+	```
 
 ## 语法规范
 
@@ -36,19 +36,19 @@
 
 - **Linux**：未完成行的行尾使用反斜杠 `\` 作为续行符。
 
-    ```sql
-    SELECT * \
-    FROM users \
-    WHERE age > 20;
-    ```
+	```sql
+	SELECT * \
+	FROM users \
+	WHERE age > 20;
+	```
 
 - **Windows**：可以使用 Linux 的方法，但更好的做法是直接按回车键进行换行输入，最后以分号 `;` 结尾就行。
 
-    ```sql
-    SELECT *
-    FROM users
-    WHERE age > 20;
-    ```
+	```sql
+	SELECT *
+	FROM users
+	WHERE age > 20;
+	```
 
 # SELECT Clause
 
@@ -100,6 +100,7 @@ SELECT * FROM students
 ## Operator
 
 - 在 sql 中，**操作符**用于对条件进行分组和限定。
+
 - Example
 
     ```sql
@@ -135,6 +136,7 @@ SELECT * FROM students
 ### IN
 
 - `IN` 操作符用于判断某个字段的值是否在指定的一组值中。替代使用多个 `OR` 条件的复杂写法。
+
 - IN 的基本用法
 
     ```sql
@@ -183,7 +185,9 @@ SELECT * FROM students
 - **Wildcard**
 
     - `%`：匹配任意数量（包含零个）字符。
+
     - `_`：匹配任意单个字符。
+
     - `[]`：用于指定一个字符范围或一组字符，只要匹配其中一个字符就算匹配成功。
 
         ```sql
@@ -236,6 +240,7 @@ SELECT * FROM students
 ## Order Condition
 
 - 排序条件用于指定排序方式
+
 - **Example**
 
     ```sql
@@ -258,6 +263,7 @@ SELECT * FROM students
 # LIMIT Clause
 
 - **LIMIT** clause is used to limit the number of query results.
+
 - **Syntax**
 
     ```sql
@@ -277,7 +283,9 @@ SELECT * FROM students
 ## INER JOIN
 
 - **INER JOIN** only returns the combinations of all rows in two tables that meet the join condition.
+
 - **INER JOIN** equals to **JOIN**.
+
 - **Syntax**
 
     ```sql
@@ -329,6 +337,7 @@ SELECT * FROM students
 # AS Clause
 
 - **AS** clause is used to specify a alias (similar to variables) for a field.
+
 - **Syntax**
 
     ```sql
@@ -347,6 +356,7 @@ SELECT * FROM students
 - **Notice**
 
     - Execution order: **FROM** > ... > **SELECT** > **ORDER BY**
+
     - So, the alias declared last in the behind clause shouldn't be used in the front ones.
 
         ```sql
@@ -355,7 +365,7 @@ SELECT * FROM students
         FROM students
         GROUP BY gender
         HAVING student_count > 2; -- student_count is declared in SELECT clause
-
+        
         -- Correct Example
         SELECT e.employee_id, d.department_name
         FROM employees AS e
@@ -365,6 +375,7 @@ SELECT * FROM students
 # Aggregate Functions
 
 - **Aggregate Functions** are functions that calculate the values of a specified field.
+
 - **Syntax**
 
     ```sql
@@ -388,7 +399,9 @@ SELECT * FROM students
 # GROUP Clause
 
 - **GROUP** Clause is used to group query results. Usually used together with Aggregate Functions.
+
 - Query results are grouped by fields.
+
 - **Syntax**
 
     ```sql
@@ -436,16 +449,16 @@ SELECT * FROM students
 
 - **基础命令**
 
-    ```sql
-    -- 查看所有
-    SHOW DATABASES; 
-    -- 进入
-    USE $DATABASE;
-    # 创建
-    CREATE DATABASE $DATABASE [DEFAULT CHARSET=utf8];
-    -- 删除
-    DROP DATABASE $DATABASE;
-    ```
+	```sql
+	-- 查看所有
+	SHOW DATABASES; 
+	-- 进入
+	USE $DATABASE;
+	# 创建
+	CREATE DATABASE $DATABASE [DEFAULT CHARSET=utf8];
+	-- 删除
+	DROP DATABASE $DATABASE;
+	```
 
 # Table
 
@@ -453,42 +466,42 @@ SELECT * FROM students
 
 - **基础命令**
 
-    ```sql
-    -- 查看某个数据库中所有数据表
-    SHOW TABLES;
-    -- 查看表头
-    DESC $TABLE
-    -- 删除 TABLE
-    DROP TABLE $TABLE
-    -- 清空 TABLE
-    DELETE FROM $TABLE
-    ```
+	```sql
+	-- 查看某个数据库中所有数据表
+	SHOW TABLES;
+	-- 查看表头
+	DESC $TABLE
+	-- 删除 TABLE
+	DROP TABLE $TABLE
+	-- 清空 TABLE
+	DELETE FROM $TABLE
+	```
 
 - **创建数据表**（以 MySQL 为例）
 
-    ```sql
-    CREATE TABLE $TABLE(
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION
-    )DEFAULT CHARSET=utf8;
-    ```
+	```sql
+	CREATE TABLE $TABLE(
+		$COLUMN $CONDITION,
+		$COLUMN $CONDITION,
+		$COLUMN $CONDITION,
+		$COLUMN $CONDITION
+	)DEFAULT CHARSET=utf8;
+	```
 
-    ```sql
-    CREATE TABLE tb_users (
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(16) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL
-    ) DEFAULT CHARSET=utf8;
-    ```
-
-    **在以上代码中**：
-
-    1. **`INT`**：整型
-    2. **`NOT NULL`**：非空
-    3. **`AUTO_INCREMENT`**：
-    4. **`PRIMARY KEY`**：主键
+	```sql
+	CREATE TABLE tb_users (
+	    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	    username VARCHAR(16) NOT NULL UNIQUE,
+	    password VARCHAR(255) NOT NULL
+	) DEFAULT CHARSET=utf8;
+	```
+	
+	**在以上代码中**：
+	
+	1. **`INT`**：整型
+	2. **`NOT NULL`**：非空
+	3. **`AUTO_INCREMENT`**：
+	4. **`PRIMARY KEY`**：主键
 
 # Field
 
@@ -511,15 +524,11 @@ SELECT * FROM students
 **常用的约束**：
 
 - [PRIMARY KEY](https://www.w3cschool.cn/sql/vle8zfpd.html)：主键
-
-    - 主键必须包含唯一的值。
-    - 主键列不能包含 NULL 值。
-    - 每个表都应该有一个主键，并且只能有一个主键。
-
+	- 主键必须包含唯一的值。
+	- 主键列不能包含 NULL 值。
+	- 每个表都应该有一个主键，并且只能有一个主键。
 - [FOREIGN KEY](https://www.w3cschool.cn/sql/5dycsfpf.html)：外键
-
-    - 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
-
+	- 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
 - [NOT NULL](https://www.w3cschool.cn/sql/6tlpzfpb.html)：非空
 - [DEFAULT](https://www.w3cschool.cn/sql/jm8e9fpj.html)：默认
 - [UNIQUE](https://www.w3cschool.cn/sql/wxzqsfpc.html)：确保唯一
@@ -530,50 +539,50 @@ SELECT * FROM students
 
 - **基础命令**
 
-    ```sql
-    -- 查看 row
-    SELECT * FROM $TABLE [where id=1];
-    -- 删除 row
-    DELETE FROM $TABLE [where $CONDITION];
-    -- 添加 row
-    INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
-    ```
+	```sql
+	-- 查看 row
+	SELECT * FROM $TABLE [where id=1];
+	-- 删除 row
+	DELETE FROM $TABLE [where $CONDITION];
+	-- 添加 row
+	INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
+	```
 
 # Column
 
 - **基础命令**
 
-    ```sql
-    -- 删除 COLUMN
-    ALTER TABLE $TABLE DROP COLUMN $COLUMN
-    ```
+	```sql
+	-- 删除 COLUMN
+	ALTER TABLE $TABLE DROP COLUMN $COLUMN
+	```
 
 # Data
 
 - **查看数据**
 
-    ```sql
-    -- 查看数据行的所有字段数据
-    SELECT * FROM $TABLE WHERE $CONDITION;
-    
-    -- 查看数据行的某些字段数据
-    SELECT $COLUMN[, $COLUMN2...] FROM $TABLE WHERE $CONDITION;
-    ```
+	```sql
+	-- 查看数据行的所有字段数据
+	SELECT * FROM $TABLE WHERE $CONDITION;
+	
+	-- 查看数据行的某些字段数据
+	SELECT $COLUMN[, $COLUMN2...] FROM $TABLE WHERE $CONDITION;
+	```
 
 - **更新数据**
 
-    ```sql
-    UPDATE $TABLE SET $COLUMN = $VALUE WHERE $CONDITION;
-    ```
+	```sql
+	UPDATE $TABLE SET $COLUMN = $VALUE WHERE $CONDITION;
+	```
 
-    ```SQL
-    UPDATE tb1 SET mobile = '1999999999' WHERE name = 'zhangsan';
-
-    UPDATE tb1 SET 
-        name = 'zhangsan', 
-        mobile = '1999999999' 
-    WHERE name = 'zhaoliu';
-    ```
+	```SQL
+	UPDATE tb1 SET mobile = '1999999999' WHERE name = 'zhangsan';
+	
+	UPDATE tb1 SET 
+		name = 'zhangsan', 
+		mobile = '1999999999' 
+	WHERE name = 'zhaoliu';
+	```
 
 # 其它
 
