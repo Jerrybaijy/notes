@@ -23,7 +23,7 @@
 ```
 %% 指定图表类型为流程图，图表方向为从上到下
 flowchart TD
-    
+
     %% 定义节点，节点方向和连接线类型
     A[开始] --> B{条件判断}
     B -->|Yes| C[执行操作A]
@@ -40,7 +40,7 @@ flowchart TD
 
     ```
     %% 节点ID(显示文本)
-    
+
     A(这是显示文本)
     ```
 
@@ -48,7 +48,6 @@ flowchart TD
     flowchart LR
         A(这是显示文本)
     ```
-
 
 - 显示文本可以使用 HTML
 
@@ -104,13 +103,11 @@ flowchart TD
     flowchart LR
         id1["这是一段（文本）"]
     ```
-    
+
     ```mermaid
     flowchart LR
         id1["这是一段（文本）"]
     ```
-    
-    
 
 ## 子图
 
@@ -160,8 +157,6 @@ flowchart TD
         click B "https://www.github.com" _blank
     ```
 
-    
-
     ```
     click 节点ID "网址" _blank
     ```
@@ -197,7 +192,7 @@ linkStyle 索引 stroke:#连接线颜色,stroke-width:连接线线宽,color:#文
 flowchart TD
     A --> B
     B --> C
-    
+
     %% 修改第一条边 (A --> B)
     linkStyle 0 stroke:red,stroke-width:2px,color:blue;
 ```
