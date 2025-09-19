@@ -67,81 +67,78 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 
 - **单行注释**：Ctrl + /    **多行注释**：Ctrl + Shift + /
 
-  ```java
-  /**
-   * 这是一个文档注释示例。
-   * 它通常包含有关类、方法或字段的详细信息。
-   * 例如，描述类的作用或方法的功能。
-   */
-  public class HelloWorld {
-      
-      // 这是一个单行注释，描述下面的方法。
-      public static void main(String[] args) {
-          
-          /*
-           * 多行注释第一行
-           * 多行注释第二行
-           * 多行注释第三行
-           * 这里是对下面的输出代码块的解释。
-           */
-          
-          System.out.println("Hello World"); 
-      }
-  }
-  ```
+    ```java
+    /**
+     * 这是一个文档注释示例。
+     * 它通常包含有关类、方法或字段的详细信息。
+     * 例如，描述类的作用或方法的功能。
+     */
+    public class HelloWorld {
+    
+        // 这是一个单行注释，描述下面的方法。
+        public static void main(String[] args) {
+    
+            /*
+             * 多行注释第一行
+             * 多行注释第二行
+             * 多行注释第三行
+             * 这里是对下面的输出代码块的解释。
+             */
+    
+            System.out.println("Hello World"); 
+        }
+    }
+    ```
 
 ## 声明变量
 
 - 在 Java 中，声明变量时要指定相应的**数据类型**。
 
-  ```java
-  // 声明原始数据类型的变量时，不使用 new 关键字。
-  int age = 19;
-  
-  // 声明非原始数据类型的变量时，使用 new 关键字。
-  List<String> myList = new ArrayList<>();
-  ```
+    ```java
+    // 声明原始数据类型的变量时，不使用 new 关键字。
+    int age = 19;
+    
+    // 声明非原始数据类型的变量时，使用 new 关键字。
+    List<String> myList = new ArrayList<>();
+    ```
 
 ## 运算符
 
 - **算术运算符**
 
-  没有幂次方`**`
+    - 没有幂次方 `**`
 
 - **赋值运算符**
-
 - **关系运算符**
-
 - **逻辑运算符**
 
-  与 `&&`、或 `||`、非 `!`
+    - 与 `&&`、或 `||`、非 `!`
 
 ## 输入与输出
 
 - **输入**
 
-  ```java
-  package com.unit1.test;
-  
-  import java.util.Scanner;// 引入内部类Scanner
-  
-  public class Test {
-  	public static void main(String[] args) {
-  		Scanner input = new Scanner(System.in);// 同一个java类文件，只需创建一次
-  
-  		System.out.println("请输入你的年龄：");// 提示
-  		int a = input.nextInt();// 用户输入一个int类型数据，并使用a接收
-          System.out.println("你的年龄：" + age);// 返回结果
-  	}
-  }
-  ```
+    ```java
+    package com.unit1.test;
+
+    import java.util.Scanner;// 引入内部类Scanner
+
+    public class Test {
+        public static void main(String[] args) {
+            Scanner input = new Scanner(System.in);// 同一个java类文件，只需创建一次
+
+            System.out.println("请输入你的年龄：");// 提示
+            int a = input.nextInt();// 用户输入一个int类型数据，并使用a接收
+            System.out.println("你的年龄：" + age);// 返回结果
+        }
+    }
+    ```
 
 - **输出**
 
-  ```java
-  System.out.println("这是要输出的信息");
-  ```
-
+    ```java
+    System.out.println("这是要输出的信息");
+    ```
 
 ## Maven
 
@@ -159,10 +156,10 @@ Maven 是一个用于构建和管理 Java 项目的工具
 
 - 命令
 
-  ```bash
-  # 构建项目
-  mvn clean package -DskipTests
-  ```
+    ```bash
+    # 构建项目
+    mvn clean package -DskipTests
+    ```
 
 # 数据类型
 
@@ -171,11 +168,14 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
 ## 数据类型分类
 
 - [Primitive Data Types (8)](https://dev.java/learn/language-basics/primitive-types/)
+
     - **整型**：byte，short，int，long
     - **浮点型**：float，double
     - **布尔型**：boolean
     - **字符型**：char
+
 - **引用数据类型**
+
     - **类**：class
     - **接口**：interface
     - **数组**：array
@@ -277,13 +277,14 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
 ## 数据的可变性
 
 - **不可变数据类型**
+
     - Java 的 基本数据类型是不可变的。
     - 字符串
     - ...
 
 - **可变数据类型**
-    - ...
 
+    - ...
 
 # 选择结构
 
@@ -293,13 +294,13 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ### if
 
-```javascript
+```java
 if (条件表达式) {
     执行语句;
 }
 ```
 
-```javascript
+```java
 int score = 85;
 
 if (score >= 60) {
@@ -307,10 +308,9 @@ if (score >= 60) {
 }
 ```
 
-
 ### if-else
 
-```javascript
+```java
 if (条件表达式) {
     执行语句A;
 } else {
@@ -318,7 +318,7 @@ if (条件表达式) {
 }
 ```
 
-```javascript
+```java
 int score = 85;
 
 if (score >= 60) {
@@ -328,10 +328,9 @@ if (score >= 60) {
 }
 ```
 
-
 ### if-else if-else
 
-```javascript
+```java
 if (条件表达式1) {
     执行语句A;
 } else if (条件表达式2) {
@@ -343,7 +342,7 @@ if (条件表达式1) {
 }
 ```
 
-```javascript
+```java
 int score = 85;
 
 if (score >= 90) {
@@ -375,7 +374,7 @@ if (score >= 90) {
 
     ```java
     String status = "Processing";
-    
+
     switch (status) {
         case "New":
             System.out.println("订单是新的");
@@ -490,13 +489,13 @@ for (String data : arr) {
 
 - **语法**
 
-    ```javascript
+    ```java
     do {
         循环体
     } while (条件表达式);
     ```
 
-    ```javascript
+    ```java
     public class HelloWorld {
         public static void main(String[] args) {
             int i = 1;
@@ -845,9 +844,11 @@ Java 集合框架主要由两大接口派生而出：`Collection` 和 `Map`。`C
 **常用接口：**
 
 - **`Collection` 接口**：是集合框架的根接口，定义了集合的基本操作，如添加、删除、判断元素是否存在等。
+
     - **`List` 接口**：继承自 `Collection` 接口，存储有序且可重复的元素。用户可以通过索引访问和操作列表中的元素。
     - **`Set` 接口**：继承自 `Collection` 接口，存储唯一且无序的元素，不允许有重复元素。
     - **`Queue` 接口**：继承自 `Collection` 接口，用于模拟队列这种数据结构，遵循先进先出（FIFO）的原则。
+
 - **`Map` 接口**：存储键值对，键是唯一的，每个键对应一个值。通过键可以快速查找对应的值。
 
 **以下是一些使用 Java 集合框架的示例代码：**
@@ -1083,15 +1084,21 @@ public class MethodExample {
 ```
 
 - **访问修饰符**：规定了方法的访问权限
+
     - `public`：任何地方都能访问
     - `private`：只有在同一个类里能访问
     - `protected`：在同一个类及其子类里能访问
+
 - **静态或实例指示符**
+
     - 有 `static`：表明该方法是静态方法，能够直接通过类名调用，无需创建类的实例。
     - 无 `static`：表明该方法是实例方法，需要先创建类的实例，再通过实例来调用。
+
 - **返回类型**：
+
     - 指定方法返回值的类型，例如 `List<Contact>`、`Integer`、`String` 等。
     - 若方法不返回任何值，返回值类型需设为 `void`。
+
 - **方法名**：方法的标识符，要遵循 Java 的命名规范。
 - **参数列表**：包含零个或多个参数，参数之间用逗号分隔，每个参数由**类型**和**名称**组成。
 
@@ -1314,6 +1321,7 @@ public class Main {
 
 - **`Error`**：表示系统级的错误，通常是由 Java 虚拟机（JVM）本身的问题引起的，如内存溢出（`OutOfMemoryError`）、栈溢出（`StackOverflowError`）等。这类错误一般无法通过程序代码进行处理，开发者通常只能尽量避免。
 - `Exception`：表示程序可以处理的异常，它又可以分为两类：
+
     - **受检查异常（Checked Exception）**：编译器会检查这类异常，要求程序员在代码中进行显式的处理，否则编译不通过。例如，`IOException`、`SQLException` 等。
     - **非受检查异常（Unchecked Exception）**：也称为运行时异常（`RuntimeException`），编译器不会检查这类异常，它们通常是由程序逻辑错误引起的，如 `NullPointerException`、`ArrayIndexOutOfBoundsException` 等。
 
@@ -1458,84 +1466,83 @@ Spring Boot 是一个 Java 语言的框架。它是基于 Spring Framework 构�
 
 1. **创建项目**
 
-   1. [进入 Spring Initializr 网站](https://start.spring.io/)
-     2. 添加项目信息
+    1. [进入 Spring Initializr 网站](https://start.spring.io/)
+    2. 添加项目信息
+
         - Group：com.jerrycodes
         - Artifact：$PROJECT_NAME
+
      3. 添加项目依赖
      4. 生成项目压缩文件
-   5. 下载并解压项目压缩文件到项目文件夹
-   6. IDEA 打开项目文件夹，设置 JDK
-   7. 创建包、类、数据库连接等
+     5. 下载并解压项目压缩文件到项目文件夹
+     6. IDEA 打开项目文件夹，设置 JDK
+     7. 创建包、类、数据库连接等
 
 2. **本地测试**
 
-   1. 启动 APP 后端
-   2. 使用 Postman 模拟前端浏览器与后端交互
-   3. 调试通过即可转向前端开发
+    1. 启动 APP 后端
+    2. 使用 Postman 模拟前端浏览器与后端交互
+    3. 调试通过即可转向前端开发
 
 3. **生成 JAR 文件**
 
-   1. Maven 已安装
+    1. Maven 已安装
+    2. 在项目的根目录中运行 Maven 命令来构建项目，这将在 `target` 目录中生成一个名为 `$APPLICATION.jar` 的可执行 JAR 文件。
 
-   2. 在项目的根目录中运行 Maven 命令来构建项目，这将在 `target` 目录中生成一个名为 `$APPLICATION.jar` 的可执行 JAR 文件。
+        ```bash
+        mvn clean package -DskipTests
+        ```
 
-      ```bash
-      mvn clean package -DskipTests
-      ```
-
-   3. 将 `.gitignore` 中的 target 注释掉，或者将生成的可执行 JAR 文件 `your-application.jar` 复制到项目根目录
+    3. 将 `.gitignore` 中的 target 注释掉，或者将生成的可执行 JAR 文件 `your-application.jar` 复制到项目根目录
 
 4. **生成 Image**
 
-   - 使用 GitLab Pipeline 生成 Image
+    - 使用 GitLab Pipeline 生成 Image
+    - `.gitlab-ci.yml` 按通用格式写
+    - Dockerfile
 
-   - `.gitlab-ci.yml` 按通用格式写
-
-   - Dockerfile
-
-     ```dockerfile
-     FROM openjdk:17.0.1-jdk-slim
-     WORKDIR /app
-     COPY $APPLICATION.jar app.jar
-     EXPOSE 8080
-     CMD ["java", "-jar", "app.jar"]
-     ```
+        ```dockerfile
+        FROM openjdk:17.0.1-jdk-slim
+        WORKDIR /app
+        COPY $APPLICATION.jar app.jar
+        EXPOSE 8080
+        CMD ["java", "-jar", "app.jar"]
+        ```
 
 ## 依赖
-
-- 
 
 ## 包和类
 
 - java /.../...
 - Package `controller`：用于与 HTTP 交互，并传递给 service
 - Package `model`
-  - Class `CLASS_NAME`：定义类的方法
-- Package `service`：服务
-  - Class - Interfaces `SERVICE_NAME`：服务接口，接收 controller 的信息，并传递给 serviceImpl
-  -  Class `SERVICE_NAME_IMPL`：服务实现
-- Packge `repository`：数据库接口
-  - Class `CLASS_NAME`：数据库接口
 
+    - Class `CLASS_NAME`：定义类的方法
+
+- Package `service`：服务
+
+    - Class - Interfaces `SERVICE_NAME`：服务接口，接收 controller 的信息，并传递给 serviceImpl
+    -  Class `SERVICE_NAME_IMPL`：服务实现
+
+- Packge `repository`：数据库接口
+
+    - Class `CLASS_NAME`：数据库接口
 
 ## 数据库
 
 - resources / application.properties
-
 - 数据库进入方法和驱动
 
-  ```properties
-  # configuration
-  spring.application.name=studentsystem
-  
-  spring.jpa.hibernate.ddl-auto=update
-  spring.datasource.url=jdbc:mysql://localhost:3306/fullstack
-  spring.datasource.username=root
-  spring.datasource.password=
-  spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
-  ```
-
+    ```properties
+    # configuration
+    spring.application.name=studentsystem
+    
+    spring.jpa.hibernate.ddl-auto=update
+    spring.datasource.url=jdbc:mysql://localhost:3306/fullstack
+    spring.datasource.username=root
+    spring.datasource.password=
+    spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+    ```
 
 ## 项目
 
