@@ -1840,11 +1840,11 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
         },
       };
     }
-
+    
     // 使用工厂函数创建对象
     const person1 = createPerson("Alice", 25);
     const person2 = createPerson("Bob", 30);
-
+    
     // 调用方法
     person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
     person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1861,12 +1861,12 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
         console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
       },
     };
-
+    
     // 使用 Object.create 创建一个新对象
     const person1 = Object.create(personPrototype);
     person1.name = "Alice";
     person1.age = 25;
-
+    
     person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
     ```
 
@@ -1878,10 +1878,10 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
     ```javascript
     const obj = { name: "Alice", age: 25 };
-
+    
     // 使用点操作符
     console.log(obj.name); // "Alice"
-
+    
     // 使用方括号
     console.log(obj["age"]); // 25
     ```
@@ -1892,16 +1892,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
     ```javascript
     const obj = { name: "Alice" };
-
+    
     // 更新已有属性
     obj.name = "Bob";
-
+    
     // 添加新属性
     obj.age = 25;
-
+    
     // 删除属性
     delete obj.age;
-
+    
     // 检查属性是否存在
     console.log("name" in obj); // false
     ```
@@ -1956,7 +1956,7 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
     ```html
     <head>
       <!-- 其它 head 元素 -->
-
+    
       <!-- 使用 CDN 引入 jQuery -->
       <link src="https://code.jquery.com/jquery-3.7.1.min.js">
     </head>
@@ -1976,7 +1976,7 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
     ```html
     <head>
       <!-- 其它 head 元素 -->
-
+    
       <!-- 本地引入 jQuery 文件 -->
       <script src="js/jquery-3.7.1.js"></script>
     </head>
@@ -1999,7 +1999,7 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
 
     ``` javascript
     // 选择器
-
+    
     // class选择器
     $(".c1")
     // 标签选择器
@@ -2014,14 +2014,14 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
 
     ``` javascript
     // 筛选器
-
+    
     // 上一个兄弟
     $("h1").prev()
     // 下一个兄弟
     $("h1").next()
     // 所有兄弟
     $("h1").siblings()
-
+    
     // 父亲
     $("h1").parent()  // 即<div class="c1"></div>,可叠加
     // 儿子
@@ -2037,23 +2037,23 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
 
     ``` javascript
     // 以下tag均为jQuery创建/获取的标签的变量
-
+    
     // 创建标签
     let tag = $("<div>");  // div为标签形式
-
+    
     // 获取标签,可通过各种选择器/筛选器获取标签
     let tag = $("#city");  // city为原HTML标签id
-
+    
     // 添加标签
     tagFather.append(tag);  // 添加至尾部
     tagFarher.prepend(tag);  // 添加至顶部
-
+    
     // 获取标签内容
     let data = tag.text();
-
+    
     // 更改标签内容
     tag.text("666");  // tag 标签变量  666 更改内容
-
+    
     // 获取输入框内容text/password
     let data = tag.val();
     // 清空输入框内容
@@ -2195,61 +2195,77 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
 
 - 主程序文件 App.js 有一个主函数，以标签形式调用组件的函数，自项目 student-springboot-react-frontend
 
-  ```js
-  import './App.css';
-  // 引入 Appbar.js 文件
-  import Appbar from './components/Appbar';
-  // 引入 Student.js 文件
-  import Student from './components/Student';
-  
-  // APP 主函数
-  function App() {
+    ```js
+    import './App.css';
+    // 引入 Appbar.js 文件
+    import Appbar from './components/Appbar';
+    // 引入 Student.js 文件
+    import Student from './components/Student';
+    
+    // APP 主函数
+    function App() {
     return (
       <div className="App">
         {/* 调用 Appbar.js 中的 Appbar 函数 */}
         <Appbar />
-  
+    
         {/* 调用 Student.js 中的 Student 函数 */}
         <Student />
       </div>
     );
-  }
-  export default App;
-  ```
+    }
+    export default App;
+    ```
 
 ## Router
 
 - From project `Login-flask-react`
-
 - Jump to another page
 
-  ```javascript
-  import React, { useState } from 'react';
-  import axios from 'axios';
-  import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-  import Login from './components/Login';
-  import Home from './components/Home';
-  
-  const App = () => {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
-    const handleLoginSuccess = () => {
-      setIsLoggedIn(true);
+    ```javascript
+    import React, { useState } from "react";
+    import axios from "axios";
+    import {
+      BrowserRouter as Router,
+      Routes,
+      Route,
+      Navigate,
+    } from "react-router-dom";
+    import Login from "./components/Login";
+    import Home from "./components/Home";
+    
+    const App = () => {
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+    
+      const handleLoginSuccess = () => {
+        setIsLoggedIn(true);
+      };
+    
+      return (
+        <Router>
+          <Routes>
+            {/*如果未登录直接访问 Home 页面，则跳转至登录页面*/}
+            <Route
+              path="/"
+              element={
+                isLoggedIn ? (
+                  <Navigate to="/home" />
+                ) : (
+                  <Login onLogin={handleLoginSuccess} />
+                )
+              }
+            />
+            <Route
+              path="/home"
+              element={isLoggedIn ? <Home /> : <Navigate to="/" />}
+            />
+          </Routes>
+        </Router>
+      );
     };
-  
-    return (
-      <Router>
-        <Routes>
-          {/*如果未登录直接访问 Home 页面，则跳转至登录页面*/}
-          <Route path="/" element={isLoggedIn ? <Navigate to="/home" /> : <Login onLogin={handleLoginSuccess} />} />
-          <Route path="/home" element={isLoggedIn ? <Home /> : <Navigate to="/" />} />
-        </Routes>
-      </Router>
-    );
-  };
-  
-  export default App;
-  ```
+    
+    export default App;
+    ```
 
 ## 处理方法
 
@@ -2257,35 +2273,35 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
 
 - 源自项目 student-springboot-react-frontend
 
-  ```js
-  const paperStyle = { padding: '50px 20px', width: 600, margin: '20px auto' }
-  
-  // POST
-  const [name, setName] = React.useState('')
-  const [address, setAddress] = React.useState('')
-  const handleClick = (e) => {
-    e.preventDefault()
-    const student = { name, address }
-    console.log(student)
-    fetch("http://localhost:8080/student/add", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(student)
-    }).then(() => {
-      console.log("New Student added")
-    })
-  }
-  
-  // GET
-  const [students, setStudents] = React.useState([])
-  React.useEffect(() => {
-    fetch("http://localhost:8080/student/getAll")
-      .then(res => res.json())
-      .then((result) => {
-        setStudents(result);
-      })
-  })
-  ```
+    ```js
+    const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
+
+    // POST
+    const [name, setName] = React.useState("");
+    const [address, setAddress] = React.useState("");
+    const handleClick = (e) => {
+      e.preventDefault();
+      const student = { name, address };
+      console.log(student);
+      fetch("http://localhost:8080/student/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(student),
+      }).then(() => {
+        console.log("New Student added");
+      });
+    };
+
+    // GET
+    const [students, setStudents] = React.useState([]);
+    React.useEffect(() => {
+      fetch("http://localhost:8080/student/getAll")
+        .then((res) => res.json())
+        .then((result) => {
+          setStudents(result);
+        });
+    });
+    ```
 
 ## React 项目
 

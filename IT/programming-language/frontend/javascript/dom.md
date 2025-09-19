@@ -2,7 +2,7 @@
 
 **文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。
 
-<img src="assets/image-20231119172421918.png" alt="image-20231119172421918" style="zoom: 80%;" />
+<img src="assets/image-20231119172421918.png" alt="image-20231119172421918" style="width: 60%;" />
 
 # 元素操作
 
@@ -107,14 +107,11 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 - **语法**：`document.getElementsByName("name属性值")`
 
     ```html
-    <body>
-      <form>
-        <input type="radio" name="age">20<br>
-        <input type="radio" name="age">21<br>
-        <input type="radio" name="age">22<br>
-      </form>
-      <script src="script.js"></script>
-    </body>
+    <form>
+      <input type="radio" name="age">20<br>
+      <input type="radio" name="age">21<br>
+      <input type="radio" name="age">22<br>
+    </form>
     ```
 
     ```javascript
@@ -129,10 +126,8 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 - **语法**：`document.getElementById("id值")`
 
     ```html
-    <body>
-      <p id="demo">text1</p>
-      <script src="script.js"></script>
-    </body>
+    <p id="demo">text1</p>
+    <script src="script.js"></script>
     ```
 
     ```javascript
@@ -165,14 +160,11 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
     ```
 
     ```html
-    <body>
-      <ul id="parent">
-        <li id="child1">1</li>
-        <li id="child2">2</li>
-        <li id="child3">3</li>
-      </ul>
-      <script src="script.js"></script>
-    </body>
+    <ul id="parent">
+      <li id="child1">1</li>
+      <li id="child2">2</li>
+      <li id="child3">3</li>
+    </ul>
     ```
 
     ```javascript
@@ -206,14 +198,11 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
     ```
 
     ```html
-    <body>
-      <ul id="parent">
-        <li id="child1">1</li>
-        <li id="child2">2</li>
-        <li id="child3">3</li>
-      </ul>
-      <script src="script.js"></script>
-    </body>
+    <ul id="parent">
+      <li id="child1">1</li>
+      <li id="child2">2</li>
+      <li id="child3">3</li>
+    </ul>
     ```
 
     ```javascript
@@ -298,9 +287,7 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 - **内联绑定**：HTML 元素有**绑定事件**的属性
 
     ```html
-    <body>
-      <button onclick="alert('按钮被点击了!')">点击按钮</button>
-    </body>
+    <button onclick="alert('按钮被点击了!')">点击按钮</button>
     ```
 
 - **外部绑定**：监听事件类型，推荐。
@@ -310,10 +297,8 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
     ```
 
     ```html
-    <body>
-      <button>点击按钮</button>
-      <script src="script.js"></script>
-    </body>
+    <button>点击按钮</button>
+    <script src="script.js"></script>
     ```
 
     ```javascript
@@ -466,7 +451,7 @@ searchInput.addEventListener('keydown', (event) => {
     ```javascript
     let btn = document.getElementById("btn");
     let pic = document.getElementById("pic");
-    
+
     // 因为获取src属性值会得到绝对路径，所以不能做相等判断，所以引入msg
     let msg = 1;
     
@@ -488,7 +473,7 @@ searchInput.addEventListener('keydown', (event) => {
     <head>
       <link rel="stylesheet" href="styles.css">
     </head>
-    
+
     <body>
       <input type="button" value="点击隐藏" id="btn"><br>
       <div id="box"></div>
@@ -501,17 +486,17 @@ searchInput.addEventListener('keydown', (event) => {
       margin: 0;
       padding: 0;
     }
-    
+
     div {
       width: 200px;
       height: 200px;
       background-color: pink;
     }
-    
+
     .hide {
       display: none;
     }
-    
+
     .show {
       display: block;
     }
@@ -520,7 +505,7 @@ searchInput.addEventListener('keydown', (event) => {
     ```javascript
     let btn = document.getElementById("btn");
     let box = document.getElementById("box");
-    
+
     // 给按钮添加事件
     btn.onclick = function () {
       if (this.value == "点击隐藏") {
