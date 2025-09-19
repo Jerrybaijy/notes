@@ -327,7 +327,7 @@
     ```javascript
     let num1 = 07;
     console.log(num1);  // 7
-  
+    
     let num2 = 010;
     console.log(num2);  // 8
     ```
@@ -1540,40 +1540,39 @@ JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 J
 
     ```javascript
     // 作为其它函数的回调函数
-    
+
     let numbers = [1, 2, 3, 4, 5];
     // 使用匿名函数作为forEach的回调函数，这里对每个元素进行翻倍操作
     numbers.forEach(function (element) {
-        console.log(element * 2);
+      console.log(element * 2);
     });
-    
-    
+
     // 作为其它函数的回调函数
-    
+
     let numbers = [1, 2, 3, 4, 5];
     // 使用匿名函数作为forEach的回调函数，这里对每个元素进行翻倍操作
     numbers.forEach(function (element) {
-        console.log(element * 2);
+      console.log(element * 2);
     });
     ```
 
 - **函数表达式**：使用变量接收匿名函数。
 
     ```javascript
-    const 变量名 = function(参数列表) {
-        函数体
-        return 返回值;
+    const 变量名 = function (参数列表) {
+      函数体;
+      return 返回值;
     };
     ```
 
     ```javascript
-    const getSum = function(a, b) {
-        let res = console.log(a + b);
-        return res;
+    const getSum = function (a, b) {
+      let res = console.log(a + b);
+      return res;
     };
     
-    getSum(1, 1);  // 2
-    console.log(typeof getSum);  // function
+    getSum(1, 1); // 2
+    console.log(typeof getSum); // function
     ```
 
 ### 箭头函数
@@ -1597,8 +1596,8 @@ const square2 = (num1, num2) => num1 * num2;
 
 // 当函数体包含多条语句，需要使用花括号 {} 包裹，并且使用 return 关键字返回值。
 const calculate = num => {
-    const result = num * 2 + 3;
-    return result;
+  const result = num * 2 + 3;
+  return result;
 };
 ```
 
@@ -1619,7 +1618,7 @@ const calculate = num => {
 
     ```javascript
     const getSum = new Function('a', 'b', 'console.log(a + b)');
-    
+
     getSum(1, 1);  // 2
     console.log(typeof getSum);  // function
     ```
@@ -1633,9 +1632,12 @@ const calculate = num => {
 - **语法**
 
     - 如果声明函数想实现自调用，可以想办法将声明函数矮化成函数表达式
-      - 给函数前面加一些运算符，如 + - () !    
-      - 此法可以省略函数名    
+
+      - 给函数前面加一些运算符，如 + - () !
+      - 此法可以省略函数名
+
     - 调用方法
+
       - 在函数体的代码块后加小括号()
       - 自调用函数在IIFE结构以外无法被调用
 
@@ -1643,7 +1645,7 @@ const calculate = num => {
 
     ```javascript
     let foo = function () {
-        console.log(1);
+      console.log(1);
     }();  // 1  ()就是自调用
     ```
 
@@ -1651,11 +1653,11 @@ const calculate = num => {
 
     ```javascript
     +function fun() {  // 通过+将声明函数矮化成函数表达式，可以替换为-或！
-        console.log(1);
+      console.log(1);
     }();  // 自调用函数
     
     (function fun() {  // 通过()将声明函数包围，矮化成函数表达式
-        console.log(1);
+      console.log(1);
     })();  // 自调用函数
     ```
 
@@ -1663,7 +1665,7 @@ const calculate = num => {
     // 常用的IIFE结构
     
     (function (a) {  // 通过()将声明函数包围，矮化成函数表达式，并且省略函数名
-        console.log(a);
+      console.log(a);
     })(1);  // 1
     ```
 
@@ -1676,71 +1678,69 @@ const calculate = num => {
 ### arguments对象
 
 - JS中，函数有一个内置属性 `arguments` 对象，其存储了传递的所有实参。
-
 - 语法
 
     - arguments是一个伪数组，因此具有数组的一些功能，比如索引，遍历，获取长度...
     - 由于arguments的存在，JS中允许实参和形参个数不一致。
-    
+
     ```javascript
     function sum(a, b) {
-        console.log(arguments);
+      console.log(arguments);
     }
-    
+
     sum(1, 2, 3, 4)  // Arguments(4)[1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
     ```
-    
+
     ```javascript
     function sum(a, b) {
         return a + b;
     }
-    
+
     console.log(sum(1, 2));  // 3
     console.log(sum(1));  // NaN
     console.log(sum(1, 2, 3, 4));  // 3
     ```
-    
+
 - **示例**：定义一个求和函数，如果传入 1 个参数，返回它自己；如果传入 2 个参数，返回它们的和；如果传入 3 个参数，先比较前两个的大小，大的与第三个参数求和；如果传入 4 个及以上，输出提示错误。
 
     ```javascript
     function sum(a, b, c) {
-        switch (arguments.length) {
-            case 1:
-                return a;
-            case 2:
-                return a + b;
-            case 3:
-                return a > b ? a + c : b + c;
-            default:
-                throw new Error("参数个数不能超过 3 个");
-        }
+      switch (arguments.length) {
+        case 1:
+          return a;
+        case 2:
+          return a + b;
+        case 3:
+          return a > b ? a + c : b + c;
+        default:
+          throw new Error("参数个数不能超过 3 个");
+      }
     }
     
-    console.log(sum(1));  // 1
-    console.log(sum(1, 2));  // 3
-    console.log(sum(1, 2, 3));  // 5
-    console.log(sum(1, 2, 3, 4));  // 报错
+    console.log(sum(1)); // 1
+    console.log(sum(1, 2)); // 3
+    console.log(sum(1, 2, 3)); // 5
+    console.log(sum(1, 2, 3, 4)); // 报错
     ```
 
 ### 函数递归
 
 - 函数内部可以通过函数名调用函数自身的方式，就是函数递归。
-
 - **示例**：定义一个函数，如果传入的参数是1，则返回1；如果传入的数字是1以上的数字，则返回参数 + 函数调用上一项。
 
     ```javascript
     function fun(a) {
-        if (a < 1) {
-            alert("请输入0以上的整数");
-        } else if (a === 1) {
-            return 1;
-        } else {
-            return a + fun(a - 1);  // 函数内部调用自身
-        }
+      if (a < 1) {
+        alert("请输入0以上的整数");
+      } else if (a === 1) {
+        return 1;
+      } else {
+        return a + fun(a - 1); // 函数内部调用自身
+      }
     }
     
-    console.log(fun(1))
-    console.log(fun(3))
+    console.log(fun(1));
+    console.log(fun(3));
     ```
 
 # [Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
@@ -1758,13 +1758,13 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
     ```javascript
     // 创建一个对象
     const person = {
-        name: "Alice", // 定义属性
-        age: 25,
+      name: "Alice", // 定义属性
+      age: 25,
     
-        // 定义方法
-        introduce: function () {
-            console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-        }
+      // 定义方法
+      introduce: function () {
+        console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+      },
     };
     
     // 使用对象调用方法
@@ -1778,13 +1778,13 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
     ```javascript
     // 定义构造函数
     function Person(name, age) {
-        this.name = name; // 初始化 name 属性
-        this.age = age;   // 初始化 age 属性
+      this.name = name; // 初始化 name 属性
+      this.age = age; // 初始化 age 属性
     
-        // 添加一个方法
-        this.introduce = function () {
-            console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-        };
+      // 添加一个方法
+      this.introduce = function () {
+        console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+      };
     }
     
     // 创建对象
@@ -1803,16 +1803,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
     ```javascript
     // 定义类
     class Person {
-        // 构造函数
-        constructor(name, age) {
-            this.name = name; // 初始化 name 属性
-            this.age = age;   // 初始化 age 属性
-        }
+      // 构造函数
+      constructor(name, age) {
+        this.name = name; // 初始化 name 属性
+        this.age = age; // 初始化 age 属性
+      }
     
-        // 定义方法
-        introduce() {
-            console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-        }
+      // 定义方法
+      introduce() {
+        console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+      }
     }
     
     // 创建对象
@@ -1831,20 +1831,20 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
     ```javascript
     // 定义工厂函数
     function createPerson(name, age) {
-        # 返回一个包含属性和方法的对象
+      // 返回一个包含属性和方法的对象
       return {
-            name: name,
-            age: age,
-            introduce() {
-                console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-            }
-        };
+        name: name,
+        age: age,
+        introduce() {
+          console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+        },
+      };
     }
-    
+
     // 使用工厂函数创建对象
     const person1 = createPerson("Alice", 25);
     const person2 = createPerson("Bob", 30);
-    
+
     // 调用方法
     person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
     person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1857,16 +1857,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
     ```javascript
     // 定义一个原型对象
     const personPrototype = {
-        introduce() {
-            console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-        }
+      introduce() {
+        console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+      },
     };
-    
+
     // 使用 Object.create 创建一个新对象
     const person1 = Object.create(personPrototype);
     person1.name = "Alice";
     person1.age = 25;
-    
+
     person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
     ```
 
@@ -1878,10 +1878,10 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
     ```javascript
     const obj = { name: "Alice", age: 25 };
-    
+
     // 使用点操作符
     console.log(obj.name); // "Alice"
-    
+
     // 使用方括号
     console.log(obj["age"]); // 25
     ```
@@ -1892,16 +1892,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
     ```javascript
     const obj = { name: "Alice" };
-    
+
     // 更新已有属性
     obj.name = "Bob";
-    
+
     // 添加新属性
     obj.age = 25;
-    
+
     // 删除属性
     delete obj.age;
-    
+
     // 检查属性是否存在
     console.log("name" in obj); // false
     ```
@@ -1918,169 +1918,171 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
 
 1. jQuery [官网](https://releases.jquery.com/)
 2. **Uncompressed（非压缩版）：**
-   - 文件名通常不包含 `.min`，例如：`jquery-3.6.4.js`。
-   - 这个版本是未经压缩的，包含所有的注释和可读性更好的代码。通常用于开发和调试目的，方便阅读和调试 jQuery 源码。
+
+    - 文件名通常不包含 `.min`，例如：`jquery-3.6.4.js`。
+    - 这个版本是未经压缩的，包含所有的注释和可读性更好的代码。通常用于开发和调试目的，方便阅读和调试 jQuery 源码。
+
 3. **Minified（压缩版）***
-   - 文件名通常以 ".min.js" 结尾，例如：`jquery-3.6.4.min.js`。
-   - 这个版本是经过压缩的，包括了所有 jQuery 功能，但是通过删除不必要的空格、注释等来减小文件大小。
-   - 压缩版适合用于生产环境，因为它减小了文件大小，有助于提高页面加载性能。
+
+    - 文件名通常以 ".min.js" 结尾，例如：`jquery-3.6.4.min.js`。
+    - 这个版本是经过压缩的，包括了所有 jQuery 功能，但是通过删除不必要的空格、注释等来减小文件大小。
+    - 压缩版适合用于生产环境，因为它减小了文件大小，有助于提高页面加载性能。
+
 4. **Slim（精简版）：**
-   - 文件名通常包含 `.slim`，例如：`jquery-3.6.4.slim.js`。
-   - Slim 版本去除了一些不太常用的功能，例如处理 Ajax 请求的模块，以减小文件大小。适合在项目中需要更轻量级的 jQuery 版本的情况下使用。
+
+    - 文件名通常包含 `.slim`，例如：`jquery-3.6.4.slim.js`。
+    - Slim 版本去除了一些不太常用的功能，例如处理 Ajax 请求的模块，以减小文件大小。适合在项目中需要更轻量级的 jQuery 版本的情况下使用。
+
 5. **Slim Minified（精简压缩版）：**
-   - 文件名通常以 `.slim.min.js` 结尾，例如：`jquery-3.6.4.slim.min.js`。
-   - 这是 Slim 版本的压缩版，经过了精简和压缩处理，适用于生产环境。
+
+    - 文件名通常以 `.slim.min.js` 结尾，例如：`jquery-3.6.4.slim.min.js`。
+    - 这是 Slim 版本的压缩版，经过了精简和压缩处理，适用于生产环境。
 
 ## 引入 jQuery
 
-​    有两种引入方式：使用 CDN（内容分发网络）和本地引入jQuery文件
+有两种引入方式：使用 CDN（内容分发网络）和本地引入jQuery文件
 
 ### 使用 CDN
 
 - **使用 CDN 方式特性**
 
-  - **速度快：** 使用 CDN 可以加速页面加载速度，因为用户可能已经在访问其他网站时加载了相同的 jQuery 版本，从而在访问你的网站时可以从浏览器缓存中获取该文件，而不需要再次下载。
-  - **省去本地存储空间：** 不需要将 jQuery 文件存储在本地项目中，可以减少项目大小。
-  - **实时更新：** CDN 通常会定期更新和维护文件，因此你的网页可以始终使用最新版本的 jQuery。
-  - **简单方便：** 只需在项目中引入一个 `<script>` 标签，就可以使用 jQuery，无需下载和管理本地文件。
+    - **速度快：** 使用 CDN 可以加速页面加载速度，因为用户可能已经在访问其他网站时加载了相同的 jQuery 版本，从而在访问你的网站时可以从浏览器缓存中获取该文件，而不需要再次下载。
+    - **省去本地存储空间：** 不需要将 jQuery 文件存储在本地项目中，可以减少项目大小。
+    - **实时更新：** CDN 通常会定期更新和维护文件，因此你的网页可以始终使用最新版本的 jQuery。
+    - **简单方便：** 只需在项目中引入一个 `<script>` 标签，就可以使用 jQuery，无需下载和管理本地文件。
 
 - 进入[jQuery官网](https://releases.jquery.com/)，点击 `Minified` 版本，复制引入代码，粘贴到html文件 `<head>` 元素中。
 
-  ```html
-  <head>
+    ```html
+    <head>
       <!-- 其它 head 元素 -->
-  
+
       <!-- 使用 CDN 引入 jQuery -->
       <link src="https://code.jquery.com/jquery-3.7.1.min.js">
-  </head>
-  ```
+    </head>
+    ```
 
 ### 本地引入
 
 - **本地引入方式特性**
 
-  - **离线使用：** 如果你的项目在没有互联网连接的环境中运行，或者你更喜欢掌握自己项目的所有依赖，可以选择下载 jQuery 文件并在本地项目中引入。
-  - **更好的控制：** 将 jQuery 文件下载到本地意味着你可以更好地控制文件的版本和更新时间。你可以选择在项目需要时手动更新文件。
-  - **不依赖外部网络：** 在使用本地文件的情况下，不需要依赖外部网络资源，这有助于确保你的网页在任何环境中都能正常工作。
+    - **离线使用：** 如果你的项目在没有互联网连接的环境中运行，或者你更喜欢掌握自己项目的所有依赖，可以选择下载 jQuery 文件并在本地项目中引入。
+    - **更好的控制：** 将 jQuery 文件下载到本地意味着你可以更好地控制文件的版本和更新时间。你可以选择在项目需要时手动更新文件。
+    - **不依赖外部网络：** 在使用本地文件的情况下，不需要依赖外部网络资源，这有助于确保你的网页在任何环境中都能正常工作。
 
 - 官网[下载jQuery ](https://code.jquery.com/jquery-3.7.1.js)
-
 - HTML文件同级目录创建名为 `js` 的文件夹，将下载的 `js` 文件复制进该文件夹
 
-  ```html
-  <head>
+    ```html
+    <head>
       <!-- 其它 head 元素 -->
-  
+
       <!-- 本地引入 jQuery 文件 -->
       <script src="js/jquery-3.7.1.js"></script>
-  </head>
-  ```
+    </head>
+    ```
 
 ## 选择器和筛选器
 
 - 选择器和筛选器
 
-  ``` html
-  <div class="c1">
+    ``` html
+    <div class="c1">
       <div id="c2">北京</div>
       <h1>
-          <span class="c1">北京</span>
-          <a>北京</a>
+        <span class="c1">北京</span>
+        <a>北京</a>
       </h1>
       <input type="text"/>
-  </div>
-  ```
+    </div>
+    ```
 
-  ``` javascript
-  // 选择器
-  
-  // class选择器
-  $(".c1")
-  // 标签选择器
-  $("h1")
-  // ID选择器
-  $("c2")
-  // 层级选择器
-  $(".c1 h1")
-  // 属性选择器
-  $("input[type=\"text\"]")
-  ```
+    ``` javascript
+    // 选择器
 
-  ``` javascript
-  // 筛选器
-  
-  // 上一个兄弟
-  $("h1").prev()
-  // 下一个兄弟
-  $("h1").next()
-  // 所有兄弟
-  $("h1").siblings()
-  
-  // 父亲
-  $("h1").parent()  // 即<div class="c1"></div>,可叠加
-  // 儿子
-  $("h1").children("a")  // 即<a>北京</a>,可叠加
-  $("h1").children(".c1")  // 即<span>北京</span>,可叠加
-  // 子子孙孙
-  $(".c1").find()
-  ```
+    // class选择器
+    $(".c1")
+    // 标签选择器
+    $("h1")
+    // ID选择器
+    $("c2")
+    // 层级选择器
+    $(".c1 h1")
+    // 属性选择器
+    $("input[type=\"text\"]")
+    ```
 
+    ``` javascript
+    // 筛选器
+
+    // 上一个兄弟
+    $("h1").prev()
+    // 下一个兄弟
+    $("h1").next()
+    // 所有兄弟
+    $("h1").siblings()
+
+    // 父亲
+    $("h1").parent()  // 即<div class="c1"></div>,可叠加
+    // 儿子
+    $("h1").children("a")  // 即<a>北京</a>,可叠加
+    $("h1").children(".c1")  // 即<span>北京</span>,可叠加
+    // 子子孙孙
+    $(".c1").find()
+    ```
 
 ## 读写HTML
 
 - jQuery读写HTML
 
-  ``` javascript
-  // 以下tag均为jQuery创建/获取的标签的变量
-  
-  // 创建标签
-  let tag = $("<div>");  // div为标签形式
-  
-  // 获取标签,可通过各种选择器/筛选器获取标签
-  let tag = $("#city");  // city为原HTML标签id
-  
-  // 添加标签
-  tagFather.append(tag);  // 添加至尾部
-  tagFarher.prepend(tag);  // 添加至顶部
-  
-  // 获取标签内容
-  let data = tag.text();
-  
-  // 更改标签内容
-  tag.text("666");  // tag 标签变量  666 更改内容
-  
-  // 获取输入框内容text/password
-  let data = tag.val();
-  // 清空输入框内容
-  tag.val("");
-  ```
+    ``` javascript
+    // 以下tag均为jQuery创建/获取的标签的变量
 
+    // 创建标签
+    let tag = $("<div>");  // div为标签形式
+
+    // 获取标签,可通过各种选择器/筛选器获取标签
+    let tag = $("#city");  // city为原HTML标签id
+
+    // 添加标签
+    tagFather.append(tag);  // 添加至尾部
+    tagFarher.prepend(tag);  // 添加至顶部
+
+    // 获取标签内容
+    let data = tag.text();
+
+    // 更改标签内容
+    tag.text("666");  // tag 标签变量  666 更改内容
+
+    // 获取输入框内容text/password
+    let data = tag.val();
+    // 清空输入框内容
+    tag.val("");
+    ```
 
 ## 标签转换
 
 - DOM标签和jQuery标签的转换
 
-  ``` javascript
-  // DOM标签转换为jQuery标签
-  let tag2 = $(tag1);
-  // jQuery标签转换为DOM标签
-  let tag4 = tag3[0];
-  ```
-
+    ``` javascript
+    // DOM标签转换为jQuery标签
+    let tag2 = $(tag1);
+    // jQuery标签转换为DOM标签
+    let tag4 = tag3[0];
+    ```
 
 ## 框架加载
 
 - 框架加载
 
-  ``` javascript
-  $(function (){
+    ``` javascript
+    $(function (){
       // 当页面框架加载完之后自动执行
       $("#x1").click(function (){
-          console.log(123)
+        console.log(123)
       })
-  })
-  ```
-
+    })
+    ```
 
 # React
 
@@ -2090,119 +2092,108 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
 
 1. **创建项目**
 
-   1. Node.js 已安装，npm 更新至最新版
+    1. Node.js 已安装，npm 更新至最新版
+    2. 创建 React 项目
 
-   2. 创建 React 项目
+        ```bash
+        npx create-react-app PROJECT_NAME
+        ```
 
-      ```bash
-      npx create-react-app PROJECT_NAME
-      ```
-
-   3. 安装组件库
-
-   4. 编写主程序文件和组件文件
+    3. 安装组件库
+    4. 编写主程序文件和组件文件
 
 2. **本地测试**
 
-   1. 后端与数据库已启动
+    1. 后端与数据库已启动
+    2. 调试源文件
 
-   2. 调试源文件
-
-      ```bash
-      npm start
-      ```
+        ```bash
+        npm start
+        ```
 
 3. **生成静态文件**
 
-   1. 在项目的根目录中运行 npm 命令，这将项目根目录中生成一个名为 `build` 的静态文件夹。
+    1. 在项目的根目录中运行 npm 命令，这将项目根目录中生成一个名为 `build` 的静态文件夹。
 
-      ```bash
-      npm run build
-      ```
+        ```bash
+        npm run build
+        ```
 
-   2. 将 `.gitignore` 中的 build 注释掉
+    2. 将 `.gitignore` 中的 build 注释掉
 
 4. **生成 Image**
 
-   1. 使用 GitLab Pipeline 生成 Image
+    1. 使用 GitLab Pipeline 生成 Image
+    2. `.gitlab-ci.yml` 按通用格式写
+    3. Dockerfile
 
-   2. `.gitlab-ci.yml` 按通用格式写
-
-   3. Dockerfile
-
-      ```dockerfile
-      FROM node:latest
-      WORKDIR /app
-      COPY ./build .
-      RUN npm install -g http-server
-      CMD ["http-server", "-p", "8080"]
-      ```
+        ```dockerfile
+        FROM node:latest
+        WORKDIR /app
+        COPY ./build .
+        RUN npm install -g http-server
+        CMD ["http-server", "-p", "8080"]
+        ```
 
 ## Reac 管理
 
 - Reac 管理
 
-  ```bash
-  # 查看 React 版本
-  npm list react
-  # 安装 React
-  npm install react[@VERSION]
-  # 删除 React
-  npm uninstall react
-  ```
+    ```bash
+    # 查看 React 版本
+    npm list react
+    # 安装 React
+    npm install react[@VERSION]
+    # 删除 React
+    npm uninstall react
+    ```
 
 ## 组件
 
 ### Material UI
 
-​    Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Material Design 规范，提供了丰富的 React 组件，用于构建美观、易用的用户界面。
+Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Material Design 规范，提供了丰富的 React 组件，用于构建美观、易用的用户界面。
 
 - **Material UI 管理**
 
-  ```bash
-  # 查看版本
-  npm list @mui/material
-  
-  # 安装 Material UI
-  npm install @mui/material @emotion/react @emotion/styled
-  # 安装 Material Icons
-  npm install @mui/icons-material
-  
-  # 删除 Material UI
-  npm uninstall @mui/material
-  ```
+    ```bash
+    # 查看版本
+    npm list @mui/material
+
+    # 安装 Material UI
+    npm install @mui/material @emotion/react @emotion/styled
+    # 安装 Material Icons
+    npm install @mui/icons-material
+
+    # 删除 Material UI
+    npm uninstall @mui/material
+    ```
 
 - **使用方法**
 
-  1. 注意：组件依赖于 React 不同版本，要根据时下官网进行安装
+    1. 注意：组件依赖于 React 不同版本，要根据时下官网进行安装
+    2. 此方法以 Material Icons 中的 App Bar 组件为例
+    3. [安装组件库 Material UI](https://mui.com/material-ui/getting-started/installation/)
 
-  2. 此方法以 Material Icons 中的 App Bar 组件为例
+        ```bash
+        cd PATH/TO/PROJECT_FILE
+        npm install @mui/material @emotion/react @emotion/styled
+        ```
 
-  3. [安装组件库 Material UI](https://mui.com/material-ui/getting-started/installation/)
+    4. [安装图标类 Material Icons](https://mui.com/material-ui/material-icons/)
 
-     ```bash
-     cd PATH/TO/PROJECT_FILE
-     npm install @mui/material @emotion/react @emotion/styled
-     ```
+        ```bash
+        cd PATH/TO/PROJECT_FILE
+        npm install @mui/icons-material
+        ```
 
-  4. [安装图标类 Material Icons](https://mui.com/material-ui/material-icons/)
-
-     ```bash
-     cd PATH/TO/PROJECT_FILE
-     npm install @mui/icons-material
-     ```
-
-  5. [官网搜索 App Bar，复制代码](https://mui.com/material-ui/react-app-bar/)
-
-  6. `src` 文件夹下创建 `components` 文件夹，在里面创建组件文件 `Appbar.js`，粘贴代码
-
-  7. 在主程序文件内引入组件文件 `Appbar.js`，并以标签形式调用 Appbar.js 中的函数
+    5. [官网搜索 App Bar，复制代码](https://mui.com/material-ui/react-app-bar/)
+    6. `src` 文件夹下创建 `components` 文件夹，在里面创建组件文件 `Appbar.js`，粘贴代码
+    7. 在主程序文件内引入组件文件 `Appbar.js`，并以标签形式调用 Appbar.js 中的函数
 
 ## 主程序文件
 
-- 主程序文件 App.js 有一个主函数，以标签形式调用组件的函数
-
-  源自项目 student-springboot-react-frontend
+- 主程序文件 App.js 有一个主函数，以标签形式调用组件的函数，自项目 student-springboot-react-frontend
 
   ```js
   import './App.css';
