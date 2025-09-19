@@ -124,13 +124,13 @@
 
 - **全局作用域**：整个程序的作用域。
 
-    - 全局变量具有全局作用域；
-    - 全局作用域不能直接使用局部变量。
+	- 全局变量具有全局作用域；
+	- 全局作用域不能直接使用局部变量。
 
 - **局部作用域**：函数级或块级作用域。
 
-    - 局部变量只具有局部作用域；
-    - 局部作用域优先使用局部变量，如果没有，再使用全局变量。
+	- 局部变量只具有局部作用域；
+	- 局部作用域优先使用局部变量，如果没有，再使用全局变量。
 
 - **函数作用域**：即函数内部的作用域，属于局部作用域。
 - **块级作用域**：即代码块内部的作用域，属于局部作用域。
@@ -138,20 +138,23 @@
 ### 闭包
 
 - **闭包**：通过函数嵌套机制，先将外部函数数据封装到内部函数作用域，后续再执行内部函数时，直接获取封装进内部函数作用域的数据即可。
+
 - 闭包的作用就是解决在全局无法调用函数内部定义的函数。
+
 - 在本质上，闭包是将函数内部和函数外部连接起来的桥梁。
+
 - **高阶函数示例**
 
-    ```python
-    def func():
-        print(123)
-        def new_func():
-            print(456)
-        return new_func
-    
-    v1 = func()  # 123
-    v1()  # 456
-    ```
+	```python
+	def func():
+	    print(123)
+	    def new_func():
+	        print(456)
+	    return new_func
+	
+	v1 = func()  # 123
+	v1()  # 456
+	```
 
 ## 代码块
 
@@ -161,62 +164,62 @@
 
 - **if 语句**
 
-    ```javascript
-    if (condition) {
-      // 这里是 if 语句的代码块
-      // 如果条件为真，这里的代码会被执行
-    } else {
-      // 这里是 else 语句的代码块
-      // 如果条件为假，这里的代码会被执行
-    }
-    ```
+	```javascript
+	if (condition) {
+	  // 这里是 if 语句的代码块
+	  // 如果条件为真，这里的代码会被执行
+	} else {
+	  // 这里是 else 语句的代码块
+	  // 如果条件为假，这里的代码会被执行
+	}
+	```
 
 - **for 循环**
 
-    ```javascript
-    for (let i = 0; i < 5; i++) {
-      // 这里是 for 循环的代码块
-      // 循环体中的代码会被执行 5 次
-    }
-    ```
+	```javascript
+	for (let i = 0; i < 5; i++) {
+	  // 这里是 for 循环的代码块
+	  // 循环体中的代码会被执行 5 次
+	}
+	```
 
 - **while 循环**
 
-    ```javascript
-    let i = 0;
-    while (i < 5) {
-      // 这里是 while 循环的代码块
-      // 循环体中的代码会被执行 5 次
-      i++;
-    }
-    ```
+	```javascript
+	let i = 0;
+	while (i < 5) {
+	  // 这里是 while 循环的代码块
+	  // 循环体中的代码会被执行 5 次
+	  i++;
+	}
+	```
 
 ### 函数中的代码块
 
 - 在函数中，代码块用于定义函数体，即函数要执行的一系列语句。
 
-    ```javascript
-    function greet(name) {
-      // 这里是函数体的代码块
-      console.log("Hello, " + name + "!");
-    }
-    
-    greet("Alice"); // 调用函数，执行代码块
-    ```
+	```javascript
+	function greet(name) {
+	  // 这里是函数体的代码块
+	  console.log("Hello, " + name + "!");
+	}
+	
+	greet("Alice"); // 调用函数，执行代码块
+	```
 
 ### 创建局部作用域
 
 - 在 JavaScript 中，代码块也用于创建局部作用域，这意味着在代码块内声明的变量在代码块外不可见。
 
-    ```javascript
-    {
-      // 这里是代码块，也是局部作用域
-      let localVar = "I am local!";
-      console.log(localVar); // 可以在代码块内访问
-    }
-    
-    console.log(localVar); // 无法在代码块外访问，会报错
-    ```
+	```javascript
+	{
+	  // 这里是代码块，也是局部作用域
+	  let localVar = "I am local!";
+	  console.log(localVar); // 可以在代码块内访问
+	}
+	
+	console.log(localVar); // 无法在代码块外访问，会报错
+	```
 
 ## 代码执行方式
 
@@ -228,15 +231,15 @@
 
 **编译型 vs 解释型对比**
 
-| 特性 | 编译型语言 | 解释型语言 |
-| :---: | :---: | :---: |
-| **执行方式** | 先编译为机器码，后运行 | 运行时逐行解释执行 |
-| **运行速度** | 快 | 慢 |
-| **开发效率** | 较低，需先编译 | 高，修改后可直接运行 |
-| **错误发现** | 编译时发现大部分错误 | 运行时发现错误 |
-| **跨平台性** | 较差，需针对平台重新编译 | 强，只要有解释器即可 |
-| **依赖性** | 不依赖编译器，直接运行可执行文件 | 依赖解释器 |
-| **示例语言** | C、C++、Go、Rust | Python、JavaScript、PHP、Ruby |
+| 特性         | 编译型语言                       | 解释型语言                    |
+| ------------ | -------------------------------- | ----------------------------- |
+| **执行方式** | 先编译为机器码，后运行           | 运行时逐行解释执行            |
+| **运行速度** | 快                               | 慢                            |
+| **开发效率** | 较低，需先编译                   | 高，修改后可直接运行          |
+| **错误发现** | 编译时发现大部分错误             | 运行时发现错误                |
+| **跨平台性** | 较差，需针对平台重新编译         | 强，只要有解释器即可          |
+| **依赖性**   | 不依赖编译器，直接运行可执行文件 | 依赖解释器                    |
+| **示例语言** | C、C++、Go、Rust                 | Python、JavaScript、PHP、Ruby |
 
 # 代码格式化
 
@@ -335,6 +338,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 在构建脚本中使用
 
 - 以 `package.json` 为例：当执行 `package.json` 时，会根据 `.prettierrc` 的规则进行格式化。
+
 - `.prettierrc`
 
     ```json
@@ -356,11 +360,11 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
     ```json
     {
         // 其他配置
-    
+        
         "devDependencies": {
             // 安装 prettier 依赖
             "prettier": "^3.4.2",
-    
+            
             // 其他依赖
         },
         "scripts": {
@@ -368,10 +372,10 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
             "prettier": "prettier --write \"**/*.{css,html,js,mjs,json,md,yaml,yml}\"",
             // 验证格式化
             "prettier:verify": "prettier --check \"**/*.{css,html,js,mjs,json,md,yaml,yml}\"",
-    
+            
             // 其他脚本命令
         },
-    
+        
         // 其他配置
     }
     ```
@@ -382,34 +386,34 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **格式**：JSON 或 YAML
 - **位置**：项目根目录
-- 配置
 
-    ```json
-    {
-        "trailingComma": "none", // 在多行对象或数组的最后一个元素后面不添加逗号
-        "singleQuote": true, // 使用单引号标记字符串
-        "tabWidth": 4, // 缩进的空格数为 4
-        // overrides 为特定类型的文件覆盖全局配置
-        "overrides": [
-            {
-                "files": "**/*.html", // 指定该覆盖规则适用于所有 HTML 文件
-                "options": { "parser": "lwc" } // 对于 HTML 文件，使用 lwc 解析器进行处理
-            }
-        ]
-    }
-    ```
+```json
+{
+    "trailingComma": "none", // 在多行对象或数组的最后一个元素后面不添加逗号
+    "singleQuote": true, // 使用单引号标记字符串
+    "tabWidth": 4, // 缩进的空格数为 4
+    // overrides 为特定类型的文件覆盖全局配置
+    "overrides": [
+        {
+            "files": "**/*.html", // 指定该覆盖规则适用于所有 HTML 文件
+            "options": { "parser": "lwc" } // 对于 HTML 文件，使用 lwc 解析器进行处理
+        }
+    ]
+}
+```
 
 # 忽略规则
 
 在构建脚本或版本控制中，通常会涉及到多种类型的 `ignore` 文件，比如 `npmignore`、`yarnignore` 等，用于在项目构建过程中排除特定的文件或目录。
 
 - **基本语法**：每行指定一个要忽略的文件或目录模式。
+
 - **注释**：`#`
+
 - **通配符**：支持使用通配符。
-
     - **所有**：`*`
-
 - **文件夹**：`<folder_name>/`
+
 - **排除例外**：`!`
 
 # 数据类型
@@ -417,6 +421,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ## 静态和动态
 
 - 静态数据类型和动态数据类型，是描述变量的数据类型如何确定和处理的。
+
 - **在静态类型的语言中**：
 
     - 必须先指定所有变量的数据类型，然后才能使用它们。
@@ -451,27 +456,29 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - **布尔值**表示真假的判断，属于不可变数据类型。
 - 一个布尔型只有 `true` 和 `false` 两种值（不同语言注意大小写）。
 
-    ```java
-    boolean a = true;   // 真
-    boolean b = false;  // 假
-
-    System.out.println(5 > 3);  // 输出：true
-    System.out.println(6 < 2);  // 输出：false
-    ```
+  ```java
+  boolean a = true;   // 真
+  boolean b = false;  // 假
+  
+  System.out.println(5 > 3);  // 输出：true
+  System.out.println(6 < 2);  // 输出：false
+  ```
 
 ## 字符串
 
 - **定义**：字符串是一串字符，用来保存普通文本，属于不可变数据类型。
 
-    ```python
-    strr1 = "Hello world!"  # 文本形式的字符串
-    strr2 = ""  # 空字符串
-    strr3 = "6"  # 数值形式的字符串
-    ```
+	```python
+	strr1 = "Hello world!"  # 文本形式的字符串
+	strr2 = ""  # 空字符串
+	strr3 = "6"  # 数值形式的字符串
+	```
+
 
 ### 边界标记
 
 - **边界标记**：可以是成对的双引号 `"`、三重双引号 `"""`。某些语言也支持单引号`'` 和三重单引号 `'''`。
+
 - **普通字符串**：一般使用双引号 `"` 作为边界标记。
 
     ```java
@@ -500,72 +507,56 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 字符串功能
 
 - **获取长度**
-
-    - 用于获取字符串长度，返回字符串长度。
+	- 用于获取字符串长度，返回字符串长度。
 
 - **索引**
-
-    - 索引用于根据索引号获取字符串片段或者容器元素，返回字符串或者容器元素。
-    - 支持索引的数据类型每个元素都有一个索引号（又称下标）。
-    - 正序从0开始，逆序从-1开始。有的语言没有直接逆序索引，比如 JavaScript。
-    - 功能
-
-        - 获取元素
-        - 修改元素
-        - 索引切片
-        - 多层嵌套。
-
+	- 索引用于根据索引号获取字符串片段或者容器元素，返回字符串或者容器元素。
+	- 支持索引的数据类型每个元素都有一个索引号（又称下标）。
+	- 正序从0开始，逆序从-1开始。有的语言没有直接逆序索引，比如 JavaScript。
+	- 功能
+		- 获取元素
+		- 修改元素
+		- 索引切片
+		- 多层嵌套。
 - **遍历**
-
-    - 使用 `for-of` 语句
+	- 使用 `for-of` 语句
 
 - **`in` 包含**
-
-    - 用于判断一个字符串是否含在另一个字符串中，返回布尔值。
+	- 用于判断一个字符串是否含在另一个字符串中，返回布尔值。
 
 - **切片**
-
-    - 切片用于截取字符串的某个片段，返回字符串。
-    - 索引号左闭右开。
-    - 原字符串不受影响。
+	- 切片用于截取字符串的某个片段，返回字符串。
+	- 索引号左闭右开。
+	- 原字符串不受影响。
 
 - **切割**
-
-    - 用于根据切割标识，将一个字符串切割成多段，返回列表。
+	- 用于根据切割标识，将一个字符串切割成多段，返回列表。
 
 - **合并**
-
-    - 用于将多个数据类型，合并成一个字符串，返回字符串。
+	- 用于将多个数据类型，合并成一个字符串，返回字符串。
 
 - **模板字符串**
-
-    - 跨行输出
-    - 嵌套变量 + 拼接
+	- 跨行输出
+	- 嵌套变量 + 拼接
 
 - **替换**
-
-    - 用于使用一段字符串代替一个字符串的某个片段，返回字符串。
+	- 用于使用一段字符串代替一个字符串的某个片段，返回字符串。
 
 - **去除空格、换行**
-
-    - 用于去除字符串开头和结尾的空格以及结尾的换行符，返回新 `str`。
-    - 此功能不能去除中间的空格，去除中间空格应使用 `STR.replace(" ", "")`，将空格替换成空白。
+	- 用于去除字符串开头和结尾的空格以及结尾的换行符，返回新 `str`。
+	- 此功能不能去除中间的空格，去除中间空格应使用 `STR.replace(" ", "")`，将空格替换成空白。
 
 - **转大小写**
-
-    - 将原字符串中的全部字母转换成大写或小写，返回字符串。
+	- 将原字符串中的全部字母转换成大写或小写，返回字符串。
 
 - **判断起始**
-
-    - 用于判断一个字符串是否以某个字符串片段开头，返回字符串。
+	- 用于判断一个字符串是否以某个字符串片段开头，返回字符串。
 
 - **判断数字**
-
-    - 用于判断一个字符串是否是数字形式的字符串，返回布尔值。
+	- 用于判断一个字符串是否是数字形式的字符串，返回布尔值。
 
 - **找下标**
-
-    - 用于根据匹配项找其在原字符串中的索引号，返回数字。
+	- 用于根据匹配项找其在原字符串中的索引号，返回数字。
 
 ## 空值
 
@@ -578,18 +569,18 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - 列表是一个有序的序列结构。
 - **特性**
 
-    - 可存放多种数据类型
-    - 有序，可索引
-    - 元素可重复
-    - 元素可修改，属于可变类型。
+  - 可存放多种数据类型
+  - 有序，可索引
+  - 元素可重复
+  - 元素可修改，属于可变类型。
 
 - **基础示例**
 
-    ```python
-    lst = ["中国", "上海", 123]
-    print(lst)  # ['中国', '上海', 123]
-    print(type(lst))  # <class 'list'>
-    ```
+	```python
+	lst = ["中国", "上海", 123]
+	print(lst)  # ['中国', '上海', 123]
+	print(type(lst))  # <class 'list'>
+	```
 
 ### 列表公共功能
 
@@ -605,36 +596,28 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 列表其它功能
 
 - **修改元素（索引）**
-
-    - 通过索引号修改：`lst[0] = 5`
+	- 通过索引号修改：`lst[0] = 5`
 
 - **追加元素**
-
-    - 向列表尾部添加元素
+	- 向列表尾部添加元素
 
 - **插入元素**
-
-    - 向列表任意位置添加元素
+	- 向列表任意位置添加元素
 
 - **删除元素**
-
-    - 删除某个元素
+	- 删除某个元素
 
 - **清空**
-
-    - 清空所有元素
+	- 清空所有元素
 
 - **反转**
-
-    - 将列表所有元素颠倒顺序
+	- 将列表所有元素颠倒顺序
 
 - **升序**
-
-    - 将列表所有元按升序排列顺序
+	- 将列表所有元按升序排列顺序
 
 - **连接**
-
-    - 将列表所有元素，按指定分隔符连接成一个字符串。
+	- 将列表所有元素，按指定分隔符连接成一个字符串。
 
 ## 数组 array
 
@@ -644,6 +627,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ## 元祖
 
 - 元组（Tuple）是一种不可变的有序集合。
+
 - **特性**
 
   - 有序，可索引。
@@ -652,29 +636,29 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **基础示例**
 
-    ```python
-    tpl = ("中国", "上海", 123)
-    print(tpl)  # ('中国', '上海', 123)
-    print(type(tpl))  # <class 'tuple'>
-    ```
+  ```python
+  tpl = ("中国", "上海", 123)
+  print(tpl)  # ('中国', '上海', 123)
+  print(type(tpl))  # <class 'tuple'>
+  ```
 
 ## 集合
 
 - **集合**是一种无序的序列结构；用来去重复值和进行数学集合运算。
 - **特性**
 
-    - 可存放多种数据类型
-    - 无序，不可索引
-    - 元素不可重复
-    - 元素可修改，属于可变类型。
+	- 可存放多种数据类型
+	- 无序，不可索引
+	- 元素不可重复
+	- 元素可修改，属于可变类型。
 
 - **基础示例**
 
-    ```python
-    st = {"中国", "上海", 123}
-    print(st)  # {123, '上海', '中国'}
-    print(type(st))  # <class 'seta'>
-    ```
+	```python
+	st = {"中国", "上海", 123}
+	print(st)  # {123, '上海', '中国'}
+	print(type(st))  # <class 'seta'>
+	```
 
 ## 字典
 
@@ -684,11 +668,11 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - 键必须是哈希类型：int、bool、str、tuple，一般用字符串作为键，不可重复。
 - **基础示例**
 
-    ```python
-    dict_a = {"A": 1,"B": 2,"C": 3}
-    print(dict_a)  # {'A': 1, 'B': 2, 'C': 3}
-    print(type(dict_a))  # <class 'dict'>
-    ```
+	```python
+	dict_a = {"A": 1,"B": 2,"C": 3}
+	print(dict_a)  # {'A': 1, 'B': 2, 'C': 3}
+	print(type(dict_a))  # <class 'dict'>
+	```
 
 ### 字典公共功能
 
@@ -715,28 +699,28 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - **容器嵌套**：容器与容器之间可相互嵌套，得到多维容器。
 - **索引示例：找北京**
 
-    ```python
-    lst1 = [213, 2432, 43, 545, 46]
-    lst2 = [1212, 234, 35, 45, "你好", (1, 23, 2, "北京", 535, 4), 68, 12]  # 多维容器
-    lst3 = [44, 67, 67, 8798, 64, 646, 5, 345]
-    lst4 = [lst1, lst2, lst3, [21, 322, 343, 5, 4, 6, 6]] 
-    print(lst4[1][5][3])  # 北京
-    ```
+	```python
+	lst1 = [213, 2432, 43, 545, 46]
+	lst2 = [1212, 234, 35, 45, "你好", (1, 23, 2, "北京", 535, 4), 68, 12]  # 多维容器
+	lst3 = [44, 67, 67, 8798, 64, 646, 5, 345]
+	lst4 = [lst1, lst2, lst3, [21, 322, 343, 5, 4, 6, 6]] 
+	print(lst4[1][5][3])  # 北京
+	```
 
-    **在以上示例中**：
+	**在以上示例中**：
 
-    1. 北京在 `lst2` 中，所以第一个索引为1；
-    2. 北京在元组 `(1,23,2,"北京",535,4,)` 中，此元组在 `lst2` 中索引号为5，所以第二个索引号为5；
-    3. 北京在元组 `(1,23,2,"北京",535,4,)` 中的索引号为3，所以第三个索引号为3。
+	1. 北京在 `lst2` 中，所以第一个索引为1；
+	2. 北京在元组 `(1,23,2,"北京",535,4,)` 中，此元组在 `lst2` 中索引号为5，所以第二个索引号为5；
+	3. 北京在元组 `(1,23,2,"北京",535,4,)` 中的索引号为3，所以第三个索引号为3。
 
 ## 获取数据类型
 
 - 根据各自语言的不同函数可获到取数据类型，以 Python 为例：
 
-    ```python
-    lst = ["中国", "江西", "联通"]
-    print(type(lst))  # <class 'str'>
-    ```
+	```python
+	lst = ["中国", "江西", "联通"]
+	print(type(lst))  # <class 'str'>
+	```
 
 ## 数据类型转换
 
@@ -745,7 +729,9 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 显示转换
 
 - **显示转换（Explicit Conversion）**：也称为 **强制类型转换（Type Casting）**，程序员**手动指定**的类型转换，告诉编译器或解释器进行数据类型的强制转换。
+
 - 通常发生在将**高精度类型**转换为**低精度类型**时。
+
 - **示例**
 
     ```java
@@ -757,7 +743,9 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 隐式转换
 
 - **隐式转换（Implicit Conversion）**：也称为 **自动类型转换** 或 **类型提升（Type Promotion）**，由编译器或解释器**自动完成**的类型转换，无需程序员手动指定。
+
 - 通常发生在将**低精度类型**转换为**高精度类型**时。
+
 - **示例**
 
     ```java
@@ -769,6 +757,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### 强类型和弱类型
 
 - 强类型和弱类型是描述编程语言在**是否允许隐式跨类型操作**方面的严格程度。
+
 - **在弱类型语言中**：变量的类型约束较弱，**允许**隐式跨类型操作；例如 JavaScript。
 
     ```javascript
@@ -787,32 +776,32 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **数据的可变性**：是指一个变量在创建后，它的值是否允许被直接修改。
 
-    - **可变数据类型**（Mutable Data Types）：对原对象修改操作时，会直接改变原对象的值。
-    - **不可变数据类型**（Immutable Data Types）：对原对象修改操作时，不会直接改变原对象，而是生成一个新对象。
+  - **可变数据类型**（Mutable Data Types）：对原对象修改操作时，会直接改变原对象的值。
+  - **不可变数据类型**（Immutable Data Types）：对原对象修改操作时，不会直接改变原对象，而是生成一个新对象。
 
 - **不可变类型**：如果一个变量是不可变类型，那么它的值就是不可变的，除非对它重新赋值。
 
-    ```java
-    # 操作不可变数据类型
-    name1 = "root"
-    name1.upper()  # 转换为 ROOT，原变量 name1 的值仍为 root。
-    print(name1)  # 输出：root # name1 的值不变
-
-    # 操作不可变数据类型，并给变量重新赋值
-    name2 = "root"
-    name2 = name2.upper()  # 转换为 ROOT，并给原变量重新赋值，原变量 name2 的值变为 ROOT。
-    print(name2)  # 输出：ROOT  # 变量 name2 的值改变
-
-    # 操作可变数据类型
-    name3 = ["Jerry", "Peter"]
-    name3.append("Andy")  # 添加 Andy，原变量 name3 的值也增加了 Andy。
-    print(name3)  # 输出：['Jerry', 'Peter', 'Andy']  # name3 的值增加了 Andy
-    ```
+  ```java
+  # 操作不可变数据类型
+  name1 = "root"
+  name1.upper()  # 转换为 ROOT，原变量 name1 的值仍为 root。
+  print(name1)  # 输出：root # name1 的值不变
+  
+  # 操作不可变数据类型，并给变量重新赋值
+  name2 = "root"
+  name2 = name2.upper()  # 转换为 ROOT，并给原变量重新赋值，原变量 name2 的值变为 ROOT。
+  print(name2)  # 输出：ROOT  # 变量 name2 的值改变
+  
+  # 操作可变数据类型
+  name3 = ["Jerry", "Peter"]
+  name3.append("Andy")  # 添加 Andy，原变量 name3 的值也增加了 Andy。
+  print(name3)  # 输出：['Jerry', 'Peter', 'Andy']  # name3 的值增加了 Andy
+  ```
 
 - **说明**：数据的可变性取决于语言的内存地址管理和对象模型，不同语言，情况不同。
 
-    - 某些语言的原始数据类型（如数字、字符串）是不可变的，容器（如列表、数组、字典、集合）是可变的。
-    - 某些语言（如 C/C++）的普通变量和对象默认可变，只有通过 `const` 关键字创建的变量和对象是不可变的。
+  - 某些语言的原始数据类型（如数字、字符串）是不可变的，容器（如列表、数组、字典、集合）是可变的。
+  - 某些语言（如 C/C++）的普通变量和对象默认可变，只有通过 `const` 关键字创建的变量和对象是不可变的。
 
 # 公共方法
 
@@ -822,13 +811,12 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - 支持索引的数据类型每个元素都有一个**索引号**（又称**下标**）。
 - 有的语言有逆序索引，下标从 -1 开始，比如 Python。
-- 索引示例
 
-    ```java
-    // 索引号：            0       1      2       3      4
-    String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
-    System.out.println(address[0]); // 北京
-    ```
+```java
+// 索引号：            0       1      2       3      4
+String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
+System.out.println(address[0]); // 北京
+```
 
 **索引应用：**
 
@@ -874,120 +862,117 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ## 算术运算符
 
 - **算术运算符**：数学运算中的符号
-
-    - **`+`**：加
-    - **`-`**：减
-    - **`*`**：乘
-    - **`/`**：除
-    - **`**`**：幂
-    - **`//`**：向下取整除（除法保留整数）
-    - **`%`**：取模（除法获取余数）
+  - **`+`**：加
+  - **`-`**：减
+  - **`*`**：乘
+  - **`/`**：除
+  - **`**`**：幂
+  - **`//`**：向下取整除（除法保留整数）
+  - **`%`**：取模（除法获取余数）
 
 ## 赋值运算符
 
 - **赋值运算符**：赋值运算符用来将一个值赋值给变量。
 - **基本赋值运算符**
 
-    - **`=`**：赋值
+  - **`=`**：赋值
 
 - **复合赋值运算符**
 
-    - **`+=`**：加赋值
-    - **`-=`**：减赋值
-    - **`*=`**：乘赋值
-    - **`/=`**：除赋值
-    - **`**=`**：幂赋值
-    - **`++`**：自增，即在自身的基础加1
-    - **`--`**：自减，即在自身的基础减1
-    - **`%=`**：求余赋值
-    - **`//=`**：取整除赋值
-    - **`??=`**：空赋值
-    -  `<<=`：左移赋值
-    -  `>>=`：右移赋值
-    - `>>>=`：无符号右移赋值
+  - **`+=`**：加赋值
+  - **`-=`**：减赋值
+  - **`*=`**：乘赋值
+  - **`/=`**：除赋值
+  - **`**=`**：幂赋值
+  - **`++`**：自增，即在自身的基础加1
+  - **`--`**：自减，即在自身的基础减1
+  - **`%=`**：求余赋值
+  - **`//=`**：取整除赋值
+  - **`??=`**：空赋值
+  -  `<<=`：左移赋值
+  -  `>>=`：右移赋值
+  - `>>>=`：无符号右移赋值
 
 - **解构赋值运算符**
 
-    ```python
-    a, b, c = 1, 2, 3  # 将值 1, 2, 3 分别赋给 a, b, c
-    print(a, b, c)  # 输出: 1 2 3
-    ```
+  ```python
+  a, b, c = 1, 2, 3  # 将值 1, 2, 3 分别赋给 a, b, c
+  print(a, b, c)  # 输出: 1 2 3
+  ```
 
 - **函数默认参数赋值**
 
-    ```python
-    def greet(name="Guest"):
+  ```python
+  def greet(name="Guest"):
     print(f"Hello, {name}")
-
-    greet()  # 输出: Hello, Guest
-    greet("Alice")  # 输出: Hello, Alice
-    ```
+  
+  greet()  # 输出: Hello, Guest
+  greet("Alice")  # 输出: Hello, Alice
+  ```
 
 ## 关系运算符
 
 - **关系运算符**：用来检查两个值之间的关系是否成立，关系运算符运算的结果是**布尔值**
 
-    - **`>`**：大于
-    - **`<`**：小于
-    - **`>=`**：大于等于
-    - **`<=`**：小于等于
-    - **`==`**：相等（值相等，类型忽略，返回 `真`）
-    - **`!=`**：不等（值不相等，类型忽略，返回 `真`）
-    - **`===`**：全等（值相等，类型也相同，返回 `真`）
-    - **`!==`**：不全等（值和类型至少有一个相等，返回 `真`）
+  - **`>`**：大于
+  - **`<`**：小于
+  - **`>=`**：大于等于
+  - **`<=`**：小于等于
+  - **`==`**：相等（值相等，类型忽略，返回 `真`）
+  - **`!=`**：不等（值不相等，类型忽略，返回 `真`）
+  - **`===`**：全等（值相等，类型也相同，返回 `真`）
+  - **`!==`**：不全等（值和类型至少有一个相等，返回 `真`）
 
 - 判断数字关系
 
-    ``` python
-    a = 5
-    b = 6
-    print(a > b)  # False
-    print(a < b)  # True
-    print(a == 5)  # True
-    print(a >= b)  # False
-    print(a != b)  # True
-    ```
+  ``` python
+  a = 5
+  b = 6
+  print(a > b)  # False
+  print(a < b)  # True
+  print(a == 5)  # True
+  print(a >= b)  # False
+  print(a != b)  # True
+  ```
 
 - 判断字符串关系示例：用来判断用户输入的内容与存储内容是否一致，比如登录密码。
 
-    ``` python
-    c = "hello"
-    d = "你好"
-    print(c == d)  # False
-    print(c != d)  # True
-    ```
+  ``` python
+  c = "hello"
+  d = "你好"
+  print(c == d)  # False
+  print(c != d)  # True
+  ```
 
 ## 逻辑运算符
 
 - **逻辑运算符**：判断表达式之间的逻辑关系，即判断真假。
 - **非**：对原布尔表达式取反，如果原表达式为 `true`，则返回 `false`，否则返回 `true`。
-
-    - **`not`**：非
-    - **`!`**：非
+  - **`not`**：非
+  - **`!`**：非
 
 - **与**：当两个布尔表达式都为 `true`，则返回 `true`，否则返回 `false`。
-
-    - **`and`**：与
-    - **`&&`**：与
+  - **`and`**：与
+  - **`&&`**：与
 
 - **或**：当两个布尔表达式中全为 `false`，则返回 `false`，否则返回 `true`。
-
-    - **`or`**：或
-    - **`||`**：或
+  - **`or`**：或
+  - **`||`**：或
 
 - **示例**
 
-    ``` python
-    print(5 > 3 and 6 < 3)  # False
-    print(5 > 3 or 6 < 3)  # True
-    print(not 6 > 3)  # False
-    ```
+  ``` python
+  print(5 > 3 and 6 < 3)  # False
+  print(5 > 3 or 6 < 3)  # True
+  print(not 6 > 3)  # False
+  ```
 
 - **逻辑运算顺序**：`非` > `与` > `或`
 
 ## 三元条件运算符
 
 - 详见[三元表达式](#三元表达式)
+
 
 ## 运算符优先级
 
@@ -1020,70 +1005,69 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### `if`
 
 - **`if`**：相当于 `如果`，会先对条件表达式进行布尔值判断：
-
-    - 如果结果为 `true`，则执行语句；
-    - 如果结果为 `false`，则不执行语句。
-
+	- 如果结果为 `true`，则执行语句；
+	- 如果结果为 `false`，则不执行语句。
 - **`else if`**：相当于 `如果不是，那么如果`，即前面的条件不满足，运行另一个执行语句。
 - **`else`**：相当于 `否则`，即前面的条件都不满足时，运行行最后一个执行语句。
 
 ### `switch`
 
 - `switch 语句` 类似于 `if-elif-else 语句`，但用于进行全等判断。
+
 - `switch 语句` 在执行时，会依次将 `条件值` 和 `case值` 进行**全等比较**：
 
-    - 如果结果为 `true`，则执行当前语句；
-    - 如果结果为 `false`，则不执行语句；
-    - 每个 `case` 后都应该有 `break`；
-    - 最后的 `case` 后面应该有 `default`，相当于 `if-elif-else` 里的 `else`。
+	- 如果结果为 `true`，则执行当前语句；
+	- 如果结果为 `false`，则不执行语句；
+	- 每个 `case` 后都应该有 `break`；
+	- 最后的 `case` 后面应该有 `default`，相当于 `if-elif-else` 里的 `else`。
 
 - **JavaScript 示例**
 
-    ```javascript
-    switch (条件值) {
-      case 值1:
-        执行语句1;
-        break;
-      case 值2:
-        执行语句2;
-        break;
-      default:
-        执行语句3;
-    }
-    ```
+	```javascript
+	switch (条件值) {
+	  case 值1:
+	    执行语句1;
+	    break;
+	  case 值2:
+	    执行语句2;
+	    break;
+	  default:
+	    执行语句3;
+	}
+	```
 
-    ```javascript
-    let num = +prompt("请输入数字")
-    switch (num) {
-      case 1:
-        console.log("壹");
-        break;
-      case 2:
-        console.log("贰");
-        break;
-      case 3:
-        console.log("叁");
-        break;
-      default:
-        console.log("没有这个数");
-        break;
-    }
-    ```
+	```javascript
+	let num = +prompt("请输入数字")
+	switch (num) {
+	  case 1:
+	    console.log("壹");
+	    break;
+	  case 2:
+	    console.log("贰");
+	    break;
+	  case 3:
+	    console.log("叁");
+	    break;
+	  default:
+	    console.log("没有这个数");
+	    break;
+	}
+	```
 
 ### 三元表达式
 
 - 三元表达式是一种简单的选择结构，在执行时，会先对条件表达式进行判断：
 
-    - 如果结果为 `true`，则执行语句；
-    - 如果结果为 `false`，则不执行语句。
+	- 如果结果为 `true`，则执行语句；
+	- 如果结果为 `false`，则不执行语句。
 
 - **JavaScript 示例**
 
-    ```javascript
-    let score = 75;
-    let result = (score >= 60) ? "及格" : "不及格";
-    console.log(result);  // 输出：及格
-    ```
+	```javascript
+	let score = 75;
+	let result = (score >= 60) ? "及格" : "不及格";
+	console.log(result);  // 输出：及格
+	```
 
 ## 循环结构
 
@@ -1097,34 +1081,37 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### for 循环
 
 - 适用于循环次数已知或可以明确计算的场景。
+
 - **语法**
 
-    ```javascript
-    for (初始化变量; 条件表达式; 更新表达式){
-      循环体;
-    }
-    ```
+	```javascript
+	for (初始化变量; 条件表达式; 更新表达式){
+	  循环体;
+	}
+	```
 
-    **说明**：
+	**说明**：
 
-    1. **初始化变量**：循环开始时执行一次，通常用于定义或初始化计数器变量。
-    2. **条件表达式**：每次循环开始前都会判断，如果结果为 `true`，继续执行循环体；为 `false` 时退出循环。
-    3. **更新表达式**：每次执行完循环体后，进行计数器的更新操作。
+	1. **初始化变量**：循环开始时执行一次，通常用于定义或初始化计数器变量。
+	2. **条件表达式**：每次循环开始前都会判断，如果结果为 `true`，继续执行循环体；为 `false` 时退出循环。
+	3. **更新表达式**：每次执行完循环体后，进行计数器的更新操作。
 
 ### for-in 循环
 
 #### JS
 
 - JS 中，`for-in` 循环用于遍历对象的**属性键**。
+
 - **语法**
 
-    ```javascript
-    for (let 变量名 in 对象){
-      循环体;
-    }
-    ```
+	```javascript
+	for (let 变量名 in 对象){
+	  循环体;
+	}
+	```
 
 - **说明**：如果（不推荐）使用 `for-in` 语句遍历字符串和数组，遍历到的是元素的索引号。（Python 除外）
+
 
 #### Python
 
@@ -1133,46 +1120,48 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ### for-of 循环
 
 - `for-of` 循环用于遍历可迭代对象的**值**；适用于字符串、数组、集合、Map等。
+
 - **语法**
 
-    ```javascript
-    for (let 变量名 of 可迭代对象){
-      循环体;
-    }
-    ```
+	```javascript
+	for (let 变量名 of 可迭代对象){
+	  循环体;
+	}
+	```
 
 ### while 循环
 
 - `while` 循环通过判断条件表达式的布尔值，来控制循环体重复执行：
 
-    - 如果结果为 `true`，则执行循环体；
-    - 如果结果为 `false`，则循环结束。
+	- 如果结果为 `true`，则执行循环体；
+	- 如果结果为 `false`，则循环结束。
 
 - **语法**
 
-    ```javascript
-    while (条件表达式){
-      循环体;
-    }
-    ```
+	```javascript
+	while (条件表达式){
+	  循环体;
+	}
+	```
 
 - **死循环**：如果 `while` 条件表达式永远为 `true`，且没有 `break` 进行终止，就形成了一个无限循环，也叫死循环。
 
 ### do-while 循环
 
 - `do-while` 与 `while` 的本质区别就是 `do-while` 先执行循环体，再检查条件；它保证无论条件是否成立，循环体至少执行一次。
+
 - `do-while` 循环在执行时，会先执行循环体，再判断条件表达式的布尔值：
 
-    - 如果结果为 `True`，则再执行循环体；
-    - 如果结果为 `False`，则循环结束。
+	- 如果结果为 `True`，则再执行循环体；
+	- 如果结果为 `False`，则循环结束。
 
 - **语法**
 
-    ```javascript
-    do {
-      循环体
-    } while (条件表达式);
-    ```
+	```javascript
+	do {
+	  循环体
+	} while (条件表达式);
+	```
 
 ### 无限循环
 
@@ -1212,90 +1201,90 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **函数名重复**
 
-    ```python
-    def func():
-        print(1)
-    def func():
-        print(2)
-    func()  # 2 执行最后一个func()
-    ```
+	```python
+	def func():
+	    print(1)
+	def func():
+	    print(2)
+	func()  # 2 执行最后一个func()
+	```
 
 - **函数名可用其它变量代替**
 
-    ```python
-    def f():
-        print(123)
-    f()  # 123
-    
-    f1 = f
-    f1()  # 123 f1 = f, 故f1() = f()
-    
-    lst = [11, "中国联通", (11, 22), f, f()]
-    lst[-2]()  # 123  user_list[-2]索引到函数名f，后面加()，整体作为函数名，相当于f()
-    lst[-1]  # 123  user_list[-1]索引到函数名f()
-    ```
+	```python
+	def f():
+	    print(123)
+	f()  # 123
+	
+	f1 = f
+	f1()  # 123 f1 = f, 故f1() = f()
+	
+	lst = [11, "中国联通", (11, 22), f, f()]
+	lst[-2]()  # 123  user_list[-2]索引到函数名f，后面加()，整体作为函数名，相当于f()
+	lst[-1]  # 123  user_list[-1]索引到函数名f()
+	```
 
 - **变量接收函数**
 
-    ```python
-    def func():
-        print(123)
-        value = 999
-        return value
-    
-    res = func()  # 123  此时 res 等同于执行 func()
-    print(res)  # 999  此时 res 接收 func() 的返回值 value
-    ```
+	```python
+	def func():
+	    print(123)
+	    value = 999
+	    return value
+	
+	res = func()  # 123  此时 res 等同于执行 func()
+	print(res)  # 999  此时 res 接收 func() 的返回值 value
+	```
 
 - **for循环一次性调用多个函数**
 
-    ```python
-    def send_sms():
-        print("发送短信")
-    
-    def send_email():
-        print("发送邮件")
-    
-    def send_dingding():
-        print("发送钉钉")
-    
-    def send_wechat():
-        print("发送微信")
-    
-    func_list = [send_sms, send_email, send_dingding, send_wechat]  # 注意此处元素为变量，没有引号
-    
-    for func in func_list:
-        func()  # 发送短信 发送邮件 发送钉钉 发送微信
-    ```
+	```python
+	def send_sms():
+	    print("发送短信")
+	
+	def send_email():
+	    print("发送邮件")
+	
+	def send_dingding():
+	    print("发送钉钉")
+	
+	def send_wechat():
+	    print("发送微信")
+	
+	func_list = [send_sms, send_email, send_dingding, send_wechat]  # 注意此处元素为变量，没有引号
+	
+	for func in func_list:
+	    func()  # 发送短信 发送邮件 发送钉钉 发送微信
+	```
 
 - **字典一次性调用多个函数**
 
-    ```python
-    def register():
-        print("运行注册程序")
-    
-    def login():
-        print("运行登录程序")
-    
-    def user_info():
-        print("运行查看用户信息程序")
-    
-    # 将函数放入字典
-    mapping = {
-        "1": register,
-        "2": login,
-        "3": user_info
-    }
-    
-    print("1.注册")
-    print("2.登录")
-    print("3.查看用户信息")
-    
-    choice = input("请选择业务编号：")
-    func = mapping.get(choice)  # func 将变为 register/login/user_info
-    if func:
-        func()
-    ```
+	```python
+	def register():
+	    print("运行注册程序")
+	
+	def login():
+	    print("运行登录程序")
+	
+	def user_info():
+	    print("运行查看用户信息程序")
+	
+	# 将函数放入字典
+	mapping = {
+	    "1": register,
+	    "2": login,
+	    "3": user_info
+	}
+	
+	print("1.注册")
+	print("2.登录")
+	print("3.查看用户信息")
+	
+	choice = input("请选择业务编号：")
+	func = mapping.get(choice)  # func 将变为 register/login/user_info
+	if func:
+	    func()
+	```
 
 ### 参数
 
@@ -1307,113 +1296,113 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **位置传参**
 
-    ```py
-    def func(x1, x2):
-        pass
-    func(1, 2)  # 位置传参
-    ```
+	```py
+	def func(x1, x2):
+	    pass
+	func(1, 2)  # 位置传参
+	```
 
 - **关键字传参**
 
-    ```python
-    def func(x1, x2):
-        pass
-    func(x1 = 1, x2 = 2)  # 关键字传参
-    ```
+	```python
+	def func(x1, x2):
+	    pass
+	func(x1 = 1, x2 = 2)  # 关键字传参
+	```
 
 - **默认传参**：可传可默认
 
-    ```python
-    def fun(x1, x2, x3 = 999):  # x3 = 999，默认传参
-        pass
-    func (1, 2)  # 不传默认参数x3，x3默认等于999
-    func (1, 2, x3 = 888)  # 传默认参数x3，x3等于888
-    ```
+	```python
+	def fun(x1, x2, x3 = 999):  # x3 = 999，默认传参
+	    pass
+	func (1, 2)  # 不传默认参数x3，x3默认等于999
+	func (1, 2, x3 = 888)  # 传默认参数x3，x3等于888
+	```
 
 - **动态传参**
 
-    - 动态传参：多个位置传参
+	- 动态传参：多个位置传参
 
-    ```python
-    def func(*args):  # 在形参前面加*，可传多个参数
-        return args  # 返回参数
-    
-    res = func(45, "hj")  # 传两个参数
-    print(res)  # (45, 'hj')  得到元组
-    print(type(res))  # <class 'tuple'>
-    
-    res2 = func()  # 不传参数得到空元组
-    print(res2)  # () 得到空元组
-    print(type(res2))  # <class 'tuple'>
-    ```
+	```python
+	def func(*args):  # 在形参前面加*，可传多个参数
+	    return args  # 返回参数
+	
+	res = func(45, "hj")  # 传两个参数
+	print(res)  # (45, 'hj')  得到元组
+	print(type(res))  # <class 'tuple'>
+	
+	res2 = func()  # 不传参数得到空元组
+	print(res2)  # () 得到空元组
+	print(type(res2))  # <class 'tuple'>
+	```
 
-    - 动态传参：关键字传参
+	- 动态传参：关键字传参
 
-    ```python
-    def func(**kwargs):  # 在形参前面加**，可传多个赋值参数
-        return kwargs  # 返回参数
-    
-    res = func(v1 = 1, v2 = 2)  # 传两个赋值参数
-    print(res)  # {'v1': 1, 'v2': 2}  得到字典
-    print(type(res))  # <class 'dict'>
-    
-    res2 = func()  # 不传参数
-    print(res2)  # {}  得到空字典
-    print(type(res2))  # <class 'dict'>
-    ```
+	```python
+	def func(**kwargs):  # 在形参前面加**，可传多个赋值参数
+	    return kwargs  # 返回参数
+	
+	res = func(v1 = 1, v2 = 2)  # 传两个赋值参数
+	print(res)  # {'v1': 1, 'v2': 2}  得到字典
+	print(type(res))  # <class 'dict'>
+	
+	res2 = func()  # 不传参数
+	print(res2)  # {}  得到空字典
+	print(type(res2))  # <class 'dict'>
+	```
 
-    - 动态传参：位置和关键字混合传参
+	- 动态传参：位置和关键字混合传参
 
-    ```python
-    def func(*args, **kwargs):  # 混合动态形参
-        return args, kwargs  # 返回参数
-    
-    res = func(11, 22, v1 = 1, v2 = 2)
-    print(res)  # ((11, 22), {'v1': 1, 'v2': 2})  得到元组
-    print(type(res))  # <class 'tuple'>
-    print(res[0])  # (11, 22)  索引元组
-    
-    res2 = func()
-    print(res2)  # ((), {})  不传参数得到以空元祖和空字典为元素的元组
-    print(type(res2))  # <class 'tuple'>
-    print(res2[0])  # ()  索引元组
-    ```
+	```python
+	def func(*args, **kwargs):  # 混合动态形参
+	    return args, kwargs  # 返回参数
+	
+	res = func(11, 22, v1 = 1, v2 = 2)
+	print(res)  # ((11, 22), {'v1': 1, 'v2': 2})  得到元组
+	print(type(res))  # <class 'tuple'>
+	print(res[0])  # (11, 22)  索引元组
+	
+	res2 = func()
+	print(res2)  # ((), {})  不传参数得到以空元祖和空字典为元素的元组
+	print(type(res2))  # <class 'tuple'>
+	print(res2[0])  # ()  索引元组
+	```
 
 ### 返回值
 
 - **语法**
 
-    - 返回值就是函数执行后返回的结果；
-    - 函数内部遇到 `return`，函数立即终止；
-    
+	- 返回值就是函数执行后返回的结果；
+	- 函数内部遇到 `return`，函数立即终止；
+	
 - **基础示例**
 
-    ```python
-    def get_sum(a, b):
-        result = a + b
-        return result  # 函数的输出结果返回result，函数停止
-        print("求和：", result)  # 由于前面有return，所以此行代码不执行
-    
-    res = get_sum(4, 5)  # 调用函数并接收返回值
-    print(res)  # 9
-    ```
+	```python
+	def get_sum(a, b):
+	    result = a + b
+	    return result  # 函数的输出结果返回result，函数停止
+	    print("求和：", result)  # 由于前面有return，所以此行代码不执行
+	
+	res = get_sum(4, 5)  # 调用函数并接收返回值
+	print(res)  # 9
+	```
 
 - **多个返回值示例**
 
-    ```python
-    def func2():
-        a = 11
-        b = 22
-        c = 33
-        return a, b, c
-    
-    r1, r2, r3 = func2()  # 把返回值分别赋值给r1, r2, r3
-    print(r1, r2, r3)  # 11 22 33
-    print(r1)  # 11
-    r4 = func2()  # 把返回值赋值给r4，并放入一个元组中
-    print(r4)  # (11 22 33)
-    print(type(r4))  # <class 'tuple'>
-    ```
+	```python
+	def func2():
+	    a = 11
+	    b = 22
+	    c = 33
+	    return a, b, c
+	
+	r1, r2, r3 = func2()  # 把返回值分别赋值给r1, r2, r3
+	print(r1, r2, r3)  # 11 22 33
+	print(r1)  # 11
+	r4 = func2()  # 把返回值赋值给r4，并放入一个元组中
+	print(r4)  # (11 22 33)
+	print(type(r4))  # <class 'tuple'>
+	```
 
 ## 创建函数
 
@@ -1429,17 +1418,17 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - 构造函数是一种特殊的函数，主要用于创建和初始化对象。构造函数可以理解为对象的 “模板”。
 
-    ```javascript
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    let person1 = new Person('张三', 20);
-    let person2 = new Person('李四', 22);
-    ```
+	```javascript
+	function Person(name, age) {
+		this.name = name;
+		this.age = age;
+	}
+	
+	let person1 = new Person('张三', 20);
+	let person2 = new Person('李四', 22);
+	```
 
-    在上述代码中，`Person` 就是构造函数。使用 `new` 关键字调用构造函数时，它会创建一个新对象，将函数内的 `this` 指向新对象，并执行函数体中的代码来初始化对象的属性。
+	在上述代码中，`Person` 就是构造函数。使用 `new` 关键字调用构造函数时，它会创建一个新对象，将函数内的 `this` 指向新对象，并执行函数体中的代码来初始化对象的属性。
 
 ### 匿名函数
 
@@ -1449,53 +1438,53 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **基础示例**
 
-    ```python
-    def func():
-        print(456)
-        yield "abc"
-        print(789)
-        yield "def"
-        yield "ghi"
-    
-    func()  # 什么也没有
-    obj = func()  # 返回一个生成器对象
-    # 生成器对象.__next__()
-    v1 = obj.__next__()  # 456  执行yield之前的函数，一旦遇到yield, v1 = yield
-    print(v1)  # abc
-    
-    v2 = obj.__next__()  # 789  继续执行函数，一旦遇到下一个yield, v2 = yield
-    print(v2)  # def
-    
-    v3 = obj.__next__()  # 继续执行函数，一旦遇到下一个yield, v3 = yield
-    print(v3)  # ghi
-    ```
+	```python
+	def func():
+	    print(456)
+	    yield "abc"
+	    print(789)
+	    yield "def"
+	    yield "ghi"
+	
+	func()  # 什么也没有
+	obj = func()  # 返回一个生成器对象
+	# 生成器对象.__next__()
+	v1 = obj.__next__()  # 456  执行yield之前的函数，一旦遇到yield, v1 = yield
+	print(v1)  # abc
+	
+	v2 = obj.__next__()  # 789  继续执行函数，一旦遇到下一个yield, v2 = yield
+	print(v2)  # def
+	
+	v3 = obj.__next__()  # 继续执行函数，一旦遇到下一个yield, v3 = yield
+	print(v3)  # ghi
+	```
 
 - **简洁示例**
 
-    ```python
-    def func():
-        yield "abc"
-        yield "def"
-        yield "ghi"
-    
-    obj = func()  # 返回一个生成器对象
-    for item in obj:
-    print(item)  # 依次打印abc def ghi
-    ```
+	```python
+	def func():
+	    yield "abc"
+	    yield "def"
+	    yield "ghi"
+	
+	obj = func()  # 返回一个生成器对象
+	for item in obj:
+	print(item)  # 依次打印abc def ghi
+	```
 
 - **应用场景**
 
-    ```python
-    def func(limit):
-        num = 0
-        while num < limit:
-            yield num
-            num += 1
-    
-    obj = func(1000)
-    for item in obj:
-        print(item)
-    ```
+	```python
+	def func(limit):
+	    num = 0
+	    while num < limit:
+	        yield num
+	        num += 1
+	
+	obj = func(1000)
+	for item in obj:
+	    print(item)
+	```
 
 ### 递归函数
 
@@ -1503,28 +1492,28 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - 装饰器
 
-    - 应用：自定义一个新功能，在不修改源函数内部代码的前提下，可以在源函数执行前后扩展自定义功能。
-    - 把 `func()` 的函数名作为 `a` 传给 `outer()`，把 `inner()` 的函数名作为返回值，赋给 `func` 的函数名。
-
-    ```python
-    def outer(a):
-        def inner():
-            print("before")  # 扩展功能
-            res = a()  # res接收func()的返回值
-            print("after")  # 扩展功能
-            return res  # 以res作为inner()的返回值，为后续v1做准备
-        return inner
-    @outer  # a = func  func() = inner()
-    def func():  # 源函数
-        print(123)
-        return 999
-
-    v1 = func()  # 依次打印before 123 after
-    # 此处的func()实际就是inner()，用v1接收inner()的返回值
-
-    print(v1)  # 999
-    # 结果：func()在inner()内执行，执行前后添加其它操作
-    ```
+	- 应用：自定义一个新功能，在不修改源函数内部代码的前提下，可以在源函数执行前后扩展自定义功能。
+	- 把 `func()` 的函数名作为 `a` 传给 `outer()`，把 `inner()` 的函数名作为返回值，赋给 `func` 的函数名。
+	
+	```python
+	def outer(a):
+	    def inner():
+	        print("before")  # 扩展功能
+	        res = a()  # res接收func()的返回值
+	        print("after")  # 扩展功能
+	        return res  # 以res作为inner()的返回值，为后续v1做准备
+	    return inner
+	@outer  # a = func  func() = inner()
+	def func():  # 源函数
+	    print(123)
+	    return 999
+	
+	v1 = func()  # 依次打印before 123 after
+	# 此处的func()实际就是inner()，用v1接收inner()的返回值
+	
+	print(v1)  # 999
+	# 结果：func()在inner()内执行，执行前后添加其它操作
+	```
 
 ## 推导器
 
@@ -1533,56 +1522,56 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - 用于快速从现有列表生成新列表。
 - **语法**
 
-    - `a` 为要输出的内容/与i有关的内容
-    - `for` 语句后面也可加 `if` 条件
+  - `a` 为要输出的内容/与i有关的内容
+  - `for` 语句后面也可加 `if` 条件
 
-    ```python
-    lst = ["a" for i in range(1, 51)]
-    print(lst)  # 生成一个含有50个a的列表
-    ```
+  ```python
+  lst = ["a" for i in range(1, 51)]
+  print(lst)  # 生成一个含有50个a的列表
+  ```
 
 - **示例**
 
-    ```python
-    lst = ["用户_{}".format(i) for i in range(1, 51) if i > 10]
-    print(lst)  # [用户_11, 用户12, … , 用户50]
-    ```
+  ```python
+  lst = ["用户_{}".format(i) for i in range(1, 51) if i > 10]
+  print(lst)  # [用户_11, 用户12, … , 用户50]
+  ```
 
 ### 字典推导式
 
 - 格式
 
-    ```python
-    info = {i: 123 for i in range(10) if i > 5}
-    print(info)  # {6: 123, 7: 123, 8: 123, 9: 123}
-    ```
+	```python
+	info = {i: 123 for i in range(10) if i > 5}
+	print(info)  # {6: 123, 7: 123, 8: 123, 9: 123}
+	```
 
 - 示例
 
-    - 将字典写成key1=v2&key2=v2字符串模式，并将key排序
+	- 将字典写成key1=v2&key2=v2字符串模式，并将key排序
 
-    ```python
-    dict = {
-        'sign_type': 'MD5',
-        'refund': '123',
-        'app_id': 'wx55',
-        'mch_id': '15260',
-        'trade': 'ff'
-    }
+	```python
+	dict = {
+	    'sign_type': 'MD5',
+	    'refund': '123',
+	    'app_id': 'wx55',
+	    'mch_id': '15260',
+	    'trade': 'ff'
+	}
+	
+	result = "&".join(["{}={}".format(key, dict[key]) for key in sorted(dict.keys())])
+	print(result)  # app_id=wx55&mch_id=15260&refund=123&sign_type=MD5&trade=ff
+	```
 
-    result = "&".join(["{}={}".format(key, dict[key]) for key in sorted(dict.keys())])
-    print(result)  # app_id=wx55&mch_id=15260&refund=123&sign_type=MD5&trade=ff
-    ```
+	- 将字符串写成字典
 
-    - 将字符串写成字典
-
-    ```python
-    dict_string = "name=武沛齐&email=xxx@163.com&gender=男"
-    result = {
-        data.split('=')[0]: data.split('=')[1] for data in dict_string.split('&')
-    }
-    print(result)  # {'name': '武沛齐', 'email': 'xxx@163.com', 'gender': '男'}
-    ```
+	```python
+	dict_string = "name=武沛齐&email=xxx@163.com&gender=男"
+	result = {
+	    data.split('=')[0]: data.split('=')[1] for data in dict_string.split('&')
+	}
+	print(result)  # {'name': '武沛齐', 'email': 'xxx@163.com', 'gender': '男'}
+	```
 
 # 对象
 
@@ -1623,54 +1612,53 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 ## 模板语法基础
 
 - **模版语法**：是一种将后端逻辑嵌入到模板文件中（如 HTML ）的规则，用于在模版文件动态显示从后端视图函数传递过来的变量值。
+
 - **模板引擎**：是一种软件工具，用于将数据与模板（通常是文本格式，如 HTML）结合起来，生成最终的文档。
-
-    - 模板引擎首先会解析模板文件，识别其中的模板语法。
-    - 后端程序将数据传递给模板引擎，模板引擎会根据模板语法将数据绑定到模板中的相应位置。
-    - 在完成数据绑定后，模板引擎会生成最终的输出文档，通常是一个完整的 HTML 页面。
-    - **常用引擎**：Jinja2 模板引擎，Django 模板引擎等。
-
+	- 模板引擎首先会解析模板文件，识别其中的模板语法。
+	- 后端程序将数据传递给模板引擎，模板引擎会根据模板语法将数据绑定到模板中的相应位置。
+	- 在完成数据绑定后，模板引擎会生成最终的输出文档，通常是一个完整的 HTML 页面。
+	- **常用引擎**：Jinja2 模板引擎，Django 模板引擎等。
 - **缩进**：模板语法和 HTML 元素之间的缩进不是必须的，但为了代码的可读性，建议使用缩进，而且此缩进会被编辑器代码格式化功能破坏掉。
 - **标识**
-
-    - `{% 逻辑语句 %}`
-    - `{{ 变量 }}`
+	- `{% 逻辑语句 %}`
+	- `{{ 变量 }}`
 
 ## 模板语法示例
 
 - Flask 框架使用模板语法示例
+
 - `app.py`
 
-    ```python
-    from flask import Flask, render_template, session
-    
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = 'your_secret_key'  
-
-    @app.route('/')
-    def index():
-        # 模拟用户登录状态和用户姓名
-        session['logged_in'] = True
-        session['user_name'] = '张三'
-        return render_template('index.html', user_name=session['user_name'])
-
-    if __name__ == '__main__':
-        app.run(debug=True)
-    ```
+	```python
+	from flask import Flask, render_template, session
+	
+	app = Flask(__name__)
+	app.config['SECRET_KEY'] = 'your_secret_key'  
+	
+	@app.route('/')
+	def index():
+	    # 模拟用户登录状态和用户姓名
+	    session['logged_in'] = True
+	    session['user_name'] = '张三'
+	    return render_template('index.html', user_name=session['user_name'])
+	
+	if __name__ == '__main__':
+	    app.run(debug=True)
+	```
 
 - `templates/index.html`
 
-    ```html
-    <body>
-      {% if session.logged_in %}
-        <h1>欢迎，{{ user_name }}！</h1>
-        <p>您正在浏览我们的专属页面内容。</p>
-      {% else %}
-        <h1>欢迎，访客！</h1>
-        <p>请登录以获取更多功能和专属内容。</p>
-      {% endif %}
-    </body>
-    ```
+	```html
+	<body>
+	  {% if session.logged_in %}
+	    <h1>欢迎，{{ user_name }}！</h1>
+	    <p>您正在浏览我们的专属页面内容。</p>
+	  {% else %}
+	    <h1>欢迎，访客！</h1>
+	    <p>请登录以获取更多功能和专属内容。</p>
+	  {% endif %}
+	</body>
+	```
 
 # 后端技巧
 
