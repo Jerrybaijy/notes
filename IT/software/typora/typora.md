@@ -89,8 +89,8 @@
     </td>
   </tr>
   <tr>
-    <td>内容</td>
-    <td>内容</td>
+    <td>源码模式</td>
+    <td><kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>?</kbd></td>
   </tr>
   <tr>
     <td>内容</td>

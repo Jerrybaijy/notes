@@ -4,12 +4,18 @@
 
 Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。Markdown 由 John Gruber 于 2004 年创建，如今已成为世界上最受欢迎的标记语言之一。
 
-一些有用的技术文档：
+**Markdown 资源**：
 
-- [John Gruber 的 Markdown 文档](https://daringfireball.net/projects/markdown/)。Markdown的创建者编写的原始指南。
+- [John Gruber 的 Markdown 文档](https://daringfireball.net/projects/markdown/)：Markdown 的创建者编写的原始指南。
+- [GitHub Flavored Markdown (GFM)](https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)：GitHub 关于 Markdown 扩展的介绍。
 - [Markdown 中文网](https://markdown.p2hp.com/index.html)
 - [Markdown 中文教程](https://markdown.com.cn/basic-syntax/)
 - [一个很好的 Markdown 项目](https://github.com/mundimark/awesome-markdown/tree/master)
+
+**Markdown 工具**：
+
+- [在线 Markdown 编辑器](https://markdown.com.cn/editor/)
+- [Markdown 转思维导图](https://markdown.p2hp.com/index.html)
 
 ## 速查表
 
@@ -26,11 +32,7 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
       ## H2<br>
       ### H3<br>
     </td>
-    <td>
-      <h1>
-      一级标题
-      </h1>
-    </td>
+    <td>此处不展示</td>
   </tr>
   <tr>
     <td>段落（paragraph）</td>
@@ -118,8 +120,8 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
   </tr>
   <tr>
     <td>链接（Link）</td>
-    <td>[title](https://www.example.com)</td>
-    <td><a href="https://www.example.com">title</a></td>
+    <td>[alt](https://www.example.com)</td>
+    <td><a href="https://www.example.com">alt</a></td>
   </tr>
   <tr>
     <td>引用块（Blockquote）</td>
@@ -128,20 +130,49 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
   </tr>
 </table>
 
+
 ## 内嵌 HTML 标签
 
 - 在 Markdown 中可以直接使用 HTML 标签。
+
+    - Markdown 语法可以和 HTML 标签相互嵌套。
+    - 无法在 HTML *块级标签*内使用 Markdown 语法。
+
+- 块级 HTML 元素（例如 `<div>`、、、 等）必须用空行与周围内容分隔，并且块的开始和结束标记不应使用制表符或空格缩进。
 - 并非所有 Markdown 应用程序都支持在 Markdown 文档中添加 HTML。
-- 无法在 HTML 块级标签内使用 Markdown 语法。
-- 块级 HTML 元素（例如`<div>`、、、 等）必须用空行与周围内容分隔，并且块的开始和结束标记不应使用制表符或空格缩进。
 
-## 转义字符
+## 扩展语法
 
-- **普通字符**：使用反斜杠 \ 进行转义。
+John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后来人们通过以下两种方式添加**扩展语法**：
+
+- 使用基于 Markdown 基本语法的**轻量级标记语言**
+- 向兼容的 **Markdown 处理器**添加扩展来启用某些元素
+- **注意**：并非所有 Markdown 应用程序都支持扩展语法元素。如果不支持，那么可以在 Markdown 处理器中启用扩展。
+
+### 轻量标记语言
+
+有几种轻量级标记语言是 Markdown 的超集。它们包含Gruber的基本语法，并通过添加其他元素（例如表格，围栏代码块，语法高亮显示，URL 自动链接和脚注）在此基础上构建。许多最受欢迎的 Markdown 应用程序使用以下轻量级标记语言之一：
+
+- [CommonMark](https://commonmark.org/)
+- [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/)
+- [Markdown Extra(opens new window)](https://michelf.ca/projects/php-markdown/extra/)
+- [MultiMarkdown(opens new window)](https://fletcherpenney.net/multimarkdown/)
+- [R Markdown](https://rmarkdown.rstudio.com/)
+
+### Markdown 处理器
+
+有许多[Markdown处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations)可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
+
+## 转义
+
+### 转义普通字符
+
+- 使用反斜杠 `\` 转义普通字符。
 
     ```
     \   backslash
     `   backtick
+    |   管道符
     *   asterisk
     _   underscore
     {}  curly braces
@@ -154,13 +185,22 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
     !   exclamation mark
     ```
 
-- **特殊字符**：`<` 和 `&` 等字符，**无需**转换成 **HTML 实体**，Markdown 会自动转换。
 
-## 扩展语法
+### 转义特殊字符
 
-John Gruber 的原始设计文档中概述的基本语法主要是为了应付大多数情况下的日常所需元素，但对于某些人来说还不够，开始通过添加其他元素（例如表，代码块，语法突出显示，URL 自动链接和脚注）来扩展基本语法。可以通过使用基于基本 Markdown 语法的轻量级标记语言，或通过向兼容的 Markdown 处理器添加扩展来启用这些元素。
+- `<` 和 `&` 等字符，*无需*转换成 **HTML 实体**，Markdown 会自动转换。
 
-**注意**：并非所有 Markdown 应用程序都支持扩展语法元素。如果不支持，那么可以在 Markdown 处理器中启用扩展。
+### 转义行内代码
+
+- 使用反 <code>\`\`</code> 转义带有行内代码的内容
+
+    ```markdown
+    ``请将 `none` 输入到文本框``
+    ```
+
+- 渲染效果
+
+    > ``请将 `none` 输入到文本框``
 
 ## 注释
 
@@ -182,7 +222,7 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
 
 # 标题
 
-**语法**：不同数量的 `#`可以完成不同级别的标题，`#` 和标题内容之间留一个空格。 
+**语法**：不同数量的 `#` 可以完成不同级别的标题，`#` 和标题内容之间留一个空格。 
 
 <table style="text-align: center;">
   <tr>
@@ -277,6 +317,8 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
 
 - **说明**：**同一个段落内**，不要使用 <kbd>Enter</kbd> 换行，这仅仅会添加**单换行符**。
 
+- **技巧**：可以使用 HTML 的 `<br />` 元素代替 Markdown 的换行方式。
+
 ## 单换行符
 
 - **单换行符**：文本中每一行结束时按一次 <kbd>Enter</kbd>，在代码或文本编辑中用来分隔内容的一种方式。
@@ -332,8 +374,8 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
 
 ## 删除线
 
-- 删除线是 Markdown 的扩展语法。
-- **创建删除线**：在文本前后各加两个波浪号 `~~` 。
+- 删除线是 Markdown 的**扩展语法**。
+- **语法**：在文本前后各加两个波浪号 `~~` 。
 
     <table style="text-align: center;">
       <tr>
@@ -348,9 +390,314 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
       </tr>
     </table>
 
+## 高亮
+
+- 高亮是 Markdown 的**扩展语法**。
+
+- **语法**：在文本前后各加两个等号 `==` 。
+
+    <table style="text-align: center;">
+      <tr>
+        <th>Markdown语法</th>
+        <th>HTML</th>
+        <th>预览效果</th>
+      </tr>
+      <tr>
+        <td>==这是一段高亮文本==</td>
+        <td>&lt;mark&gt;这是一段高亮文本&lt;/mark&gt;</td>
+        <td><mark>这是一段高亮文本</mark></td>
+      </tr>
+    </table>
+
 ## 嵌套
 
 粗体和斜体可以相互嵌套
+
+# 代码
+
+## 行内代码
+
+要想让行内代码不被渲染，可以将其包裹在一个或多个反引号 (<code>`</code>) 中。
+
+<table style="text-align: center;">
+  <tr>
+    <th>Markdown语法</th>
+    <th>HTML</th>
+    <th>预览效果</th>
+  </tr>
+  <tr>
+    <td>请输入行内代码 `none`</td>
+    <td>&lt;code&gt;none&lt;/code&gt;</td>
+    <td>请输入行内代码 <code>none</code></td>
+  </tr>
+</table>
+
+## 代码块
+
+- 要创建代码块，请将代码块的每一行缩进**至少**四个空格或一个制表符。
+- **段落之间**的代码块，相对于段首缩进4个空格。
+
+    ```markdown
+    这是第一段，下面是两个段落之间的 JSON 代码块（相对于段首缩进4个空格）
+    
+        {
+        "firstName": "John",
+        "lastName": "Smith",
+        "age": 25
+        }
+    
+    这是第二段
+    ```
+
+    > 这是第一段，下面是两个段落之间的 JSON 代码块（相对于段首缩进4个空格）
+    >
+    > ```json
+    > {
+    > "firstName": "John",
+    > "lastName": "Smith",
+    > "age": 25
+    > }
+    > ```
+    >
+    > 这是第二段
+
+- **一级列表项之内**的代码块，相对于段首缩进8个空格。
+
+    ```markdown
+    - 第一个列表项,下面是第一个列表项之内的 JSON 代码块（相对于段首缩进8个空格）
+    
+            {
+            "firstName": "John",
+            "lastName": "Smith",
+            "age": 25
+            }
+    
+    - 第二个列表项
+    ```
+
+    > - 第一个列表项（相对于段首缩进8个空格）
+    >
+    >     ```json
+    >     {
+    >     "firstName": "John",
+    >     "lastName": "Smith",
+    >     "age": 25
+    >     }
+    >     ```
+    >
+    > - 第二个列表项
+
+## 围栏代码块
+
+- 围栏代码块属于 Markdown 的**扩展语法**。
+
+- **语法**：在代码块之前和之后的行上使用**三个反引号**（<code>\`\`\`</code>）。  
+如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
+
+    ````markdown
+    ```json
+    {
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25
+    }
+    ```
+    ````
+
+- **渲染效果**
+
+    ```json
+    {
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25
+    }
+    ```
+
+# 链接
+
+Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链接和图片。
+
+- **内联链接**：替代文本和链接地址在一起，`[alt](SRC/URL)`
+- **引用链接**：链接地址放在别处。
+
+## 内联链接
+
+- **链接文本**放在方括号内，**链接地址**放在后面的圆括号中。
+
+- **语法**：`[alt](SRC/URL)`
+
+    ```markdown
+    <!-- Markdown 格式 -->
+    这是一个基本链接：[Markdown语法](https://markdown.com.cn)
+    这是一个悬停带解释的链接：[Markdown语法](https://markdown.com.cn "关于链接的解释")
+    
+    <!-- HTML 格式 -->
+    这是一个基本链接：<a href="https://markdown.com.cn">Markdown语法</a>
+    这是一个悬停带解释的链接：<a href="https://markdown.com.cn" title="关于链接的解释">Markdown语法</a>
+    ```
+
+- **渲染效果**
+
+    > 这是一个基本链接：[Markdown语法](https://markdown.com.cn)。
+    >
+    > 这是一个悬停带解释的链接：[Markdown语法](https://markdown.com.cn "关于链接的解释")。
+
+## 引用链接
+
+- 引用链接可以增加文章连续性和可读性。以链接为例，图片同理。
+
+    - **第一部分**：使用两组括号进行格式设置。第一组方括号包围应显示为链接的文本。第二组括号显示了一个标签，该标签用于指向您存储在文档其他位置的链接。
+    - **第二部分**：放在括号中的标签，其后紧跟一个冒号和至少一个空格，以及链接的URL。
+
+- **语法**：`[alt][label]` & `[label]: URL`
+
+    ```markdown
+    请访问 [John Gruber 的 Markdown 文档][John Gruber] 了解更多内容
+    
+    [John Gruber]: https://daringfireball.net/
+    ```
+
+- **渲染效果**
+
+    > 请访问 [John Gruber 的 Markdown 文档][John Gruber] 了解更多内容
+    >
+    > [John Gruber]: https://daringfireball.net/
+
+## 网址和 Email
+
+- 使用**尖括号**把 URL 或者 Email 地址变成可点击的链接。
+
+- **语法**：`<URL/Email>`
+
+    ```markdown
+    <https://markdown.com.cn>
+
+    <fake@example.com>
+    ```
+
+- **渲染效果**
+
+    > <https://markdown.com.cn>
+    > 
+    > <fake@example.com>
+
+## 自动链接
+
+- 自动链接属于 Markdown 的**扩展语法**。
+
+- 即使未使用内联或尖括号，某些 Markdown 处理器也会自动将其转换为链接。
+
+- **语法**
+
+    ```markdown
+    请访问：https://markdown.com.cn
+    ```
+
+- **渲染效果**
+
+    > 请访问：https://markdown.com.cn
+
+## 锚点
+
+- 锚点属于 Markdown 的**扩展语法**。
+
+### 标题锚点
+
+- Typora 中的标题自带 `id`，`id` 值为 `标题名`。
+
+- **语法**：`[跳转文本](#id)`
+
+    ```markdown
+    # 第一部分
+    
+    回到[顶部](#第一部分)
+    ```
+
+- 也许可以通过 `### 标题名 {#custom-id}` 自定义标题锚点，但至今没有在任何一个 Markdown 处理器成功过。
+
+### 自定义锚点
+
+- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
+
+    ```markdown
+    <span id="example">第一部分</span>
+    
+    [点击跳转至百度](#example)
+    ```
+
+
+### 跨文件锚点
+
+- **语法**
+
+    ```markdown
+    <span id="anchor">锚点</span>
+    ```
+
+    ```markdown
+    详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
+    ```
+
+    **在以上示例中**：
+
+    1. 如果 `html.md` 文件事先处于关闭状态，要点击两次才能直达锚点。
+
+# 图片
+
+## 图片
+
+- 由于 Markdown 文件是纯文本文件，因此不能直接在 Markdown 文件中插入图像数据，而是插入对图像文件的**引用**。
+
+- **语法**：`![alt](SRC/URL)`
+
+    ```markdown
+    <!-- Markdown 格式 -->
+    ![Linux](/assets/Linux.png)
+    
+    <!-- HTML 格式 -->
+    <img src="/assets/Linux.png" alt="Linux">
+    ```
+
+- **渲染效果**
+
+    > ![Linux](assets/Linux.png)
+
+## 带解释的图片
+
+- **语法**：`![alt](SRC/URL "title")`
+
+    ```markdown
+    <!-- Markdown 格式 -->
+    ![Linux](/assets/Linux.png "Linux 图标")
+    
+    <!-- HTML 格式 -->
+    <img src="/assets/Linux.png" alt="Linux" title="Linux 图标">
+    ```
+
+- **渲染效果**
+
+    > ![Linux](assets/Linux.png "Linux 图标")
+
+## 带链接的图片
+
+- 将**图片的 Markdown 语法整体**括在方括号中，然后将**链接**添加在圆括号中；也可使用**引用链接**。
+
+- **语法**：`[![alt](SRC/URL)](URL)`
+
+    ```markdown
+    <!-- Markdown 格式 -->
+    [![Linux](/assets/Linux.png)](https://markdown.com.cn)
+    
+    <!-- HTML 格式 -->
+    <a href="https://markdown.com.cn">
+      <img src="/assets/Linux.png" alt="Linux">
+    </a>
+    ```
+
+- **渲染效果**
+
+    > [![Linux](assets/Linux-1758368876359-1.png)](https://markdown.com.cn)
 
 # 列表
 
@@ -600,247 +947,27 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
     - 第四列表项
     ````
 
-# 代码
-
-## 行内代码
-
-要想让行内代码不被渲染，可以将其包裹在一个或多个反引号 (<code>`</code>) 中。
-
-<table style="text-align: center;">
-  <tr>
-    <th>Markdown语法</th>
-    <th>HTML</th>
-    <th>预览效果</th>
-  </tr>
-  <tr>
-    <td>请输入行内代码 `none`</td>
-    <td>&lt;code&gt;none&lt;/code&gt;</td>
-    <td>请输入行内代码 <code>none</code></td>
-  </tr>
-</table>
-
-## 转义反引号
-
-如果行内代码中包含**一个或多个反引号**，则将行内代码包裹在双反引号（<code>``</code>）中。
-
-<table style="text-align: center;">
-  <tr>
-    <th>Markdown语法</th>
-    <th>HTML</th>
-    <th>预览效果</th>
-  </tr>
-  <tr>
-    <td>``请将 `none` 输入到文本框``</td>
-    <td>请将 &lt;code&gt;`none`&lt;/code&gt; 输入到文本框</td>
-    <td>请将 <code>`none`</code> 输入到文本框</td>
-  </tr>
-</table>
-
-## 围栏代码块
-
-- **语法**：在代码块之前和之后的行上使用**三个反引号** (<code>```</code>）。  
-如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
-
-    ````markdown
-    ```json
-    {
-    "firstName": "John",
-    "lastName": "Smith",
-    "age": 25
-    }
-    ```
-    ````
-
-- **渲染效果**
-
-    ```json
-    {
-    "firstName": "John",
-    "lastName": "Smith",
-    "age": 25
-    }
-    ```
-
-# 链接
-
-Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超链接和图片。
-
-- **内联链接**：替代文本和链接地址在一起，`[alt](SRC/URL)`
-- **引用链接**：链接地址放在别处。
-
-## 超链接
-
-### 内联超链接
-
-- **语法**：**链接文本**放在方括号内，**链接地址**放在后面的圆括号中。
-
-    - **Markdown 格式**：`[超链接显示名](超链接地址)`
-
-        ```markdown
-        <!-- 标准链接 -->
-        这是一个标准链接 [Markdown语法](https://markdown.com.cn)。
-        
-        <!-- 悬停带解释的链接 -->
-        这是一个悬停带注释的链接 [Markdown语法](https://markdown.com.cn "关于链接的解释")。
-        ```
-
-    - **HTML 格式**：`<a href="超链接地址">超链接显示名</a>`
-
-        ```html
-        <!-- 标准链接 -->
-        这是一个链接 <a href="https://markdown.com.cn">Markdown语法</a>。
-        
-        <!-- 悬停带解释的链接 -->
-        这是一个悬停带注释的链接 <a href="https://markdown.com.cn" title="关于链接的解释">Markdown语法</a>。
-        ```
-
-- **渲染效果**
-
-    > 这是一个链接 [Markdown语法](https://markdown.com.cn)。
-    >
-    > 这是一个悬停带注释的链接 [Markdown语法](https://markdown.com.cn "关于链接的解释")。
-
-### 自动超链接
-
-- **语法**：使用**尖括号**把 URL 或者 Email 地址变成可点击的链接。
-
-    ```markdown
-    <https://markdown.com.cn>
-
-    <fake@example.com>
-    ```
-
-- **渲染效果**
-
-    > <https://markdown.com.cn>
-    > 
-    > <fake@example.com>
-
-## 图片
-
-### 内联图片
-
-- 由于 Markdown 文件是纯文本文件，因此不能直接在 Markdown 文件中插入图像数据，而是插入对图像文件的**引用**。
-- **语法**：使用感叹号 (!) **开头**，然后在方括号 ([]) 增加**替代文本** (alt)，在圆括号里放**图片路径**。另有 `title` 可选。
-
-    - **Markdown 格式**：`![alt](SRC/URL)`
-
-        ```markdown
-        ![Linux](/assets/Linux.png)
-        ```
-
-    - **HTML 格式**：`<img src="SRC/URL" alt="alt">`
-
-        ```markdown
-        <img src="/assets/Linux.png" alt="Linux">
-        ```
-
-- **渲染效果**
-
-    ![Linux](assets/Linux.png)
-
-### 内联图片超链接
-
-- **语法**：请将**图像的 Markdown 语法整体**括在方括号中，然后将**链接**添加在圆括号中。
-
-    ```markdown
-    [![Linux](/assets/Linux.png)](https://markdown.com.cn)
-    ```
-
-- **渲染效果**
-
-    [![Linux](assets/Linux.png)](https://markdown.com.cn)
-
-## 引用链接
-
-引用链接可以增加文章连续性和可读性。以超链接为例，图片同理。
-
-- **语法**：`[alt][id]`
-
-    ```markdown
-    请访问 [John Gruber 的 Markdown 文档][John Gruber] 了解更多内容
-
-    [John Gruber]: https://daringfireball.net/
-    ```
-
-- **渲染效果**
-
-    > 请访问 [John Gruber 的 Markdown 文档][John Gruber] 了解更多内容
-    >
-    > [John Gruber]: https://daringfireball.net/
-
-## 锚点
-
-- 锚点属于 Markdown 的扩展语法。
-- **使用标题自动生成锚点**
-
-    - Markdown 中标题自带 `id`，`id` 值为 `标题名`
-    - **语法**：`[跳转文本](#标题名)`
-
-        ```markdown
-        # 第一部分
-        
-        回到[顶部](#第一部分)
-        ```
-
-- **非标题锚点**：内嵌 HTML ，详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
-
-    ```markdown
-    <span id="example">第一部分</span>
-
-    [点击跳转至百度](#example)
-    ```
-
-- **跨文件锚点示例**
-
-    ```markdown
-    <span id="anchor">锚点</span>
-    ```
-
-    ```markdown
-    详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
-    ```
-
-    **在以上示例中**：
-
-    1. 如果 `html.md` 文件事先处于关闭状态，要点击两次才能直达锚点。
-
-# 分隔线
-
-- **语法**：在**单独一个段落**（即前后都有空白行）使用三个或多个星号 (`***`)、破折号 (`---`) 或下划线 (`___`) ，并且不能包含其他内容。
-
-    ```markdown
-    ***
-
-    ---
-
-    _________________
-    ```
-
-- **以上三个分隔线的渲染效果如下：**
-
-    ---
-
 # 表格
 
-- 表格属于 Markdown 的扩展语法。
-- Markdown 格式无法完成**合并单元格**等其它复杂操作，所以尽量使用 **HTML** 的 `<table>`。
+- 表格属于 Markdown 的**扩展语法**。
+- 可以使用 [Tables Generator](https://www.tablesgenerator.com/markdown_tables) 图形界面构建表格，然后将生成的 Markdown 格式的文本复制到文件中。
+- Markdown 格式无法完成**合并单元格**等其它复杂操作，可以使用 **HTML** 的 `<table>`。
 
 ## 创建表格
 
 - **语法**：使用三个或多个连字符（`---`）创建每列的标题，并使用管道（`|`）分隔每列。
 
     ```markdown
-    | 表头  | 表头 |
-    | ---- | ---- |
-    | 内容  | 内容 |
-    | 内容  | 内容 |
+    | 表头 | 表头 |
+    | --- | --- |
+    | 内容 | 内容 |
+    | 内容 | 内容 |
     ```
 
 - **渲染效果**
 
     > | 表头 | 表头 |
-    > | ---- | ---- |
+    > | --- | --- |
     > | 内容 | 内容 |
     > | 内容 | 内容 |
 
@@ -867,10 +994,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 - **可以添加**：链接，行内代码和强调。
 - **不可添加**：标题，块引用，列表，水平规则，图像或 HTML 标签。
 
-## 管道字符
-
-可以使用表格的 HTML 字符代码（`|`）在表中显示竖线（`|`）字符。
-
 ## 换行
 
 如果想在表格中换行，应该使用 HTML 的换行元素 `<br>`。
@@ -883,12 +1006,15 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 - 所有单元格内容和管道符之间只保留一个空格，不需要对齐管道符
 - 第二行的格式为 `| :---: |`（注意只有三个-），以确保所有内容居中显示
 - 最后以代码块形式给我 markdown 源码
+- 最终格式
 
-    | 标题 | 标题 | 标题 |
-    | :---: | :---: | :---: |
-    | 内容 | 内容 | 内容 |
+    > ```markdown
+    > | 标题 | 标题 | 标题 |
+    > | :---: | :---: | :---: |
+    > | 内容 | 内容 | 内容 |
+    > ```
 
-# 引用块
+# 块引用
 
 ## 单个块引用
 
@@ -960,7 +1086,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 
 # 脚注
 
-- 脚注属于 Markdown 的扩展语法。
+- 脚注属于 Markdown 的**扩展语法**。
 - **语法**：在方括号（`[^1]`）内添加插入符号和标识符。
 
     ```markdown
@@ -981,7 +1107,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 
 # 任务列表
 
-- 任务列表属于 Markdown 的扩展语法。
+- 任务列表属于 Markdown 的**扩展语法**。
 - **语法**：在任务列表项之前添加**减号**和**方括号**，并在方括号前面加上**空格**。  
 要选择一个复选框，请在方括号`[x]`之间添加 x 。
 
@@ -999,7 +1125,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
 
 # 定义列表
 
-- 定义列表属于 Markdown 的扩展语法。
+- 定义列表属于 Markdown 的**扩展语法**。
 - 该列表的 Markdown 语法没有试验成功。
 - **语法**：在第一行上键入术语。在下一行，键入一个冒号，后跟一个空格和定义。
 
@@ -1031,6 +1157,23 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建超�
     >     <dd>This is one definition of the second term. </dd>
     >     <dd>This is another definition of the second term.</dd>
     > </dl>
+
+# 分隔线
+
+- **语法**：在**单独一个段落**（即前后都有空白行）使用三个或多个星号 (`***`)、破折号 (`---`) 或下划线 (`___`) ，并且不能包含其他内容。
+
+    ```markdown
+    ***
+
+    ---
+
+    _________________
+    ```
+
+- **以上三个分隔线的渲染效果如下：**
+
+    ---
+
 
 # Emoji 表情
 
