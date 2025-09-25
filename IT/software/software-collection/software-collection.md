@@ -2139,6 +2139,20 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 - 保存以后，将文件名改为 `.bashrc`。
 - 重启终端生效。
 
+# Wiki
+
+**Wiki**是一种可通过浏览器访问并由用户协同编辑其内容的网站。包括[维基百科](https://zh.wikipedia.org/wiki/Wikipedia:首页)、[维基词典](https://zh.wiktionary.org/wiki/Wiktionary:首页)、[维基教科书](https://zh.wikibooks.org/wiki/Wikibooks:首页)、[维基语录](https://zh.wikiquote.org/wiki/Wikiquote:首页)、[维基共享资源](https://commons.wikimedia.org/wiki/首页)、[维基新闻](https://zh.wikinews.org/zh-cn/Wikinews:首页)、[维基文库](https://zh.wikisource.org/zh-hans/Wikisource:首页)、[维基物种](https://species.wikimedia.org/wiki/首页)、[维基数据](https://www.wikidata.org/wiki/Wikidata:Introduction/zh)、[维基导游](https://zh.wikivoyage.org/wiki/首页)及[元维基](https://meta.wikimedia.org/wiki/Main_Page/zh)。
+
+## 维基百科
+
+### 添加后缀
+
+在维基百科 URL 添加后缀可搜索固定内容：
+
+- **主题示例**：`https://zh.wikipedia.org/wiki/Portal:主题名`
+- **主题**：`Portal:主题名`
+- **模板**：`Template:模板名`
+
 # XAMPP
 
 XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运行 Web 服务器环境。XAMPP 包含了 Apache HTTP 服务器、MySQL 数据库、PHP 和 Perl 等工具，以及一些其他必要的组件，使用户能够在本地计算机上轻松地搭建和运行 Web 应用程序。
