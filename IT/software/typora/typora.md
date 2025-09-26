@@ -53,56 +53,62 @@
     <th>快捷键</th>
   </tr>
   <tr>
-    <td>标题&nbsp;(Heading)</td>
+    <td>标题（Heading）</td>
     <td>
-      <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>Num</kbd>
+      <kbd>Ctrl</kbd> + <kbd>Num</kbd>
     </td>
   </tr>
   <tr>
-    <td>粗体&nbsp;(Strong)</td>
+    <td>粗体（Strong）</td>
     <td>
-      <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>B</kbd>
+      <kbd>Ctrl</kbd> + <kbd>B</kbd>
     </td>
   </tr>
   <tr>
-    <td>斜体&nbsp;(Emphasis)</td>
+    <td>斜体（Emphasis）</td>
     <td>
-      <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>I</kbd>
+      <kbd>Ctrl</kbd> + <kbd>I</kbd>
     </td>
   </tr>
   <tr>
-    <td>下划线&nbsp;(Underline)</td>
+    <td>下划线（Underline）</td>
     <td>
-      <kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>U</kbd>
+      <kbd>Ctrl</kbd> + <kbd>U</kbd>
     </td>
   </tr>
   <tr>
-    <td>删除线&nbsp;(Strike)</td>
+    <td>删除线（Strike）</td>
     <td>
-      <kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>Shift</kbd>+&nbsp;<kbd>5</kbd>
+      <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>
     </td>
   </tr>
   <tr>
     <td>单行换行</td>
     <td>
-      <kbd>Space</kbd>&nbsp;-&nbsp;<kbd>Space</kbd>-&nbsp;<kbd>Shift</kbd>+&nbsp;<kbd>Enter</kbd>
+      <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd>
     </td>
   </tr>
   <tr>
     <td>源码模式</td>
-    <td><kbd>Ctrl</kbd>&nbsp;+&nbsp;<kbd>?</kbd></td>
+    <td><kbd>Ctrl</kbd> + <kbd>?</kbd></td>
   </tr>
   <tr>
-    <td>内容</td>
-    <td>内容</td>
+    <td>纯文本粘贴</td>
+    <td>
+      <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd>
+    </td>
   </tr>
   <tr>
-    <td>内容</td>
-    <td>内容</td>
+    <td>表格单元格内换行</td>
+    <td>
+      <kbd>Shift</kbd> + <kbd>Enter</kbd>
+    </td>
   </tr>
   <tr>
-    <td>内容</td>
-    <td>内容</td>
+    <td>列表项内加元素<br />即源码空一行再缩进</td>
+    <td>
+      <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd>
+    </td>
   </tr>
   <tr>
     <td>内容</td>

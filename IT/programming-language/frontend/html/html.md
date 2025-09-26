@@ -1511,15 +1511,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     </ul>
     ```
 
-    ```css
-    li {
-      margin-bottom: 0.5rem;
-    }
-    ```
-
 - **渲染效果**
 
-    > ![image-20241128153125244](assets/image-20241128153125244.png)
+    > <p>You can reach Michael at:</p>
+    >
+    > <ul>
+    >   <li><a href="https://example.com">Website</a></li>
+    >   <li><a href="mailto:m.bluth@example.com">Email</a></li>
+    >   <li><a href="tel:+123456789">Phone</a></li>
+    > </ul>
 
 - **常用属性**：
 
