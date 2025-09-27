@@ -1,6 +1,6 @@
 # Mermaid
 
-[Mermaid](https://mermaid.nodejs.cn/) 是一款基于 JavaScript 的开源**图表工具**，通过类 Markdown 的语法将文本描述转换为流程图、时序图、甘特图等可视化图表，实现“代码即图表”的理念。
+[Mermaid](https://mermaid.js.org/) 是一款基于 JavaScript 的开源**图表工具**，通过类 Markdown 的语法**将文本描述转换为可视化图表**，实现“代码即图表”的理念。
 
 ## 学习资源
 
@@ -15,7 +15,8 @@
 %% 这是一个行注释
 ```
 
-- 不能再行尾注释
+- 不能在行尾注释
+- 不能在图表配置之注释
 - 不能含有某些特殊字符，如 `{}`，以防止[图表破坏](https://mermaid.js.org/intro/syntax-reference.html#diagram-breaking)。
 
 ## 语法结构
@@ -89,6 +90,101 @@ graph LR
 
 可以使用 `config` 对图表的[外观和布局](https://docs.min2k.com/zh/mermaid/intro/syntax-reference.html#布局和外观)进行更改。
 
+## 配置
+
+### 配置概述
+
+**[配置](https://mermaid.js.org/config/configuration.html)**，Mermaid 启动时，会提取配置来确定用于图表的一个配置。配置有三个来源：
+
+- 默认配置
+
+- 站点级别的覆盖是在初始化调用中设置的，并将应用于站点/应用中的所有图表。这个术语是 **siteConfig**。
+
+- Frontmatter (v10.5.0+) - 图表作者可以在图表的frontmatter中更新选定的配置参数。这些参数将应用于渲染配置。
+
+- [Directives 指令](https://mermaid.js.org/config/directives.html)：使用 `%%{ }%%` 语法进行配置传递（被 Frontmatter 代替，已弃用）。
+
+    > 从 v10.5.0 版本开始，Directives 指令已弃用。请使用 frontmatter 中的 `config` 键传递配置。
+
+### Frontmatter 配置
+
+**[Frontmatter 配置](https://mermaid.js.org/config/configuration.html#frontmatter-config)**是图表顶部的 YAML 块，整个 mermaid 配置（安全配置除外）都可以在 frontmatter 中覆盖。
+
+```
+---
+config:
+    配置属性
+---
+图表声明
+	图表内容
+```
+
+> ```mermaid
+> ---
+> title: Hello Title
+> config:
+>   theme: base
+>   themeVariables:
+>     primaryColor: "#00ff00"
+> ---
+> flowchart LR
+> 	Hello --> World
+> ```
+
+# XY 图表
+
+## XY 图表概述
+
+[XY 图表](https://docs.min2k.com/zh/mermaid/syntax/xyChart.html)是一个综合性的图表模块，包含各种使用 x 轴和 y 轴表示数据的图表类型。目前，它包括两种基本图表类型：条形图和折线图。
+
+```
+xychart-beta
+    
+    %% 图表标题，可省略
+    title "图表标题"
+    
+    %% X轴
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    
+    %% Y轴
+    y-axis "Revenue (in $)" 4000 --> 11000
+    
+    %% 条形图数据
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    
+    %% 折线图数据
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+
+> ```mermaid
+> xychart-beta
+>        title "XY 图表示例"
+>        x-axis Month [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+>        y-axis "Revenue (in $)" 4000 --> 11000
+>        bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>        line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+> ```
+
+**字符串说明**：在 XY 图表中，所有涉及字符串的文本，只有**单个英文单词**才允许不使用双引号 `"` 作为边界标记。
+
+**图表方向**：图表可以水平或垂直绘制，默认值为**垂直**。设为水平：`xychart-beta horizontal`
+
+## 坐标轴
+
+- **分类值**是每个 Bar 的**名称**：`["名称1", "名称2", ... "名称n"]`
+- **数值范围值**是所有 Bar 的**数值范围**：`min --> max`
+- **x 轴和 y 轴**
+    - x 轴主要用作**分类值**，但在需要时也可以用作数值范围值。
+    - y 轴用于表示**数值范围值**，不能包含分类值。
+    - **注意**：当图表方向是 `horizontal` 时，x 轴是垂直的，y 轴是水平的，各自用途不变。
+- **轴标题**：可省略
+    - `x-axis "x轴标题" [分类值, 分类值, 分类值]`
+    - `y-axis "y轴标题" min --> max`
+
+## XY 图表配置
+
+
+
 # 饼图
 
 ```
@@ -132,7 +228,7 @@ gantt
 > ```
 
 - `开始时间`：除第一个以外，其余都可省略，默认为上一个任务的结束时间。
-- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 
+- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 
 
 ## 甘特图元数据
 
@@ -140,10 +236,10 @@ gantt
 
 - 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 `任务名: 元数据项`
 - 如果指定**单个**元数据项，则确定任务结束时间。
-    - 它可以是：`特定的日期/时间` | `持续时间`，如 `2025-09-26` | `15d`
+    - 它可以是：`特定的日期/时间` | `持续时间`，如 `2025-09-26` | `15d`
     - 如果指定的是 `持续时间`，则将其添加到任务的开始日期以确定任务的结束日期，同时考虑任何排除项。
 - 如果指定**两个**元数据项，则后面的元数据项将按前面的情况进行解释。如 `2025-09-26, 15d`
-- 如果指定**三个**元数据项，则后面两个项目将按前面的情况进行解释。第一个项目将表示任务的 ID，可以使用 `later <taskID>` 语法引用它。如 `task1, 2025-09-26, 15d` & `after task1, 15d`，详见  `taskID`
+- 如果指定**三个**元数据项，则后面两个项目将按前面的情况进行解释。第一个项目将表示任务的 ID，可以使用 `later <taskID>` 语法引用它。如 `task1, 2025-09-26, 15d` & `after task1, 15d`，详见  `taskID`
 
 ### taskID
 
@@ -203,7 +299,7 @@ gantt
 
 ## 排除
 
-使用 [`excludes`](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#排除) 排除任务中的日期，值可以是：`YYYY-MM-DD` | `星期几` | `weekends`
+使用 [`excludes`](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#排除) 排除任务中的日期，值可以是：`YYYY-MM-DD` | `星期几` | `weekends`
 
 ```
 gantt
@@ -233,7 +329,7 @@ gantt
 
 ## 日期格式
 
-使用 [`日期格式`](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#设置日期) 达到特殊日期的输入和输出目的。
+使用 [`日期格式`](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#设置日期) 达到特殊日期的输入和输出目的。
 
 ### 输入日期
 
@@ -584,4 +680,26 @@ flowchart LR
 > ```mermaid
 > flowchart LR
 >     id1["这是一段（文本）"]
+> ```
+
+# 思维导图
+
+## 思维导图概述
+
+[思维导图](https://docs.min2k.com/zh/mermaid/syntax/mindmap.html)依赖于**缩进**设置层次结构中的级别。
+
+```
+mindmap
+    A
+        B
+            C
+            D
+```
+
+> ```mermaid
+> mindmap
+>     A
+>         B
+>             C
+>             D
 > ```
