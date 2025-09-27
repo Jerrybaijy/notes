@@ -295,7 +295,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ## [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
 
-## [根元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)
+## [根元素 `<html>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)
 
 **`<html>`** 元素称为*根元素*。该元素包含整个页面的所有内容，其他所有元素必须是此元素的后代。
 

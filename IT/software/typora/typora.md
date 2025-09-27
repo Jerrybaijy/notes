@@ -1,6 +1,6 @@
 # Typora 基础
 
-**Typora** 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 *所见即所得* 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
+**[Typora](https://typora.io/)** 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 *所见即所得* 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
 
 **Typora 支持以下语法**：
 
@@ -47,7 +47,6 @@
 
 ## 快捷键
 
-
 | 操作 | 快捷键 |
 | :---: | :---: |
 | 源码模式 | <kbd>Ctrl</kbd> + <kbd>?</kbd> |
@@ -65,8 +64,8 @@
 | 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
 | 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
 |                 删除行                 |     <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Back</kbd>     |
-| 内容 | 内容 |
-| 内容 | 内容 |
+| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 # 主题
 

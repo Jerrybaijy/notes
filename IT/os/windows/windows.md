@@ -58,7 +58,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     - `Ctrl + 鼠标滚轮` 改变文件和文件夹图标的大小和外观 
     - `Ctrl + 单击` 点击超链接
 
-- `Ctrl + N` 新建一个文档
+- `Ctrl + N` 新开一个窗口
 - `Ctrl + C` 复制
 - `Ctrl + X` 剪切
 - `Ctrl + V` 粘贴
