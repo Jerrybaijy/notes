@@ -47,78 +47,26 @@
 
 ## 快捷键
 
-<table style="text-align: center;">
-  <tr>
-    <th>操作</th>
-    <th>快捷键</th>
-  </tr>
-  <tr>
-    <td>标题（Heading）</td>
-    <td>
-      <kbd>Ctrl</kbd> + <kbd>Num</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>粗体（Strong）</td>
-    <td>
-      <kbd>Ctrl</kbd> + <kbd>B</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>斜体（Emphasis）</td>
-    <td>
-      <kbd>Ctrl</kbd> + <kbd>I</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>下划线（Underline）</td>
-    <td>
-      <kbd>Ctrl</kbd> + <kbd>U</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>删除线（Strike）</td>
-    <td>
-      <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>单行换行</td>
-    <td>
-      <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>源码模式</td>
-    <td><kbd>Ctrl</kbd> + <kbd>?</kbd></td>
-  </tr>
-  <tr>
-    <td>纯文本粘贴</td>
-    <td>
-      <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>表格单元格内换行</td>
-    <td>
-      <kbd>Shift</kbd> + <kbd>Enter</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>列表项内加元素<br />即源码空一行再缩进</td>
-    <td>
-      <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd>
-    </td>
-  </tr>
-  <tr>
-    <td>内容</td>
-    <td>内容</td>
-  </tr>
-  <tr>
-    <td>内容</td>
-    <td>内容</td>
-  </tr>
-</table>
+
+| 操作 | 快捷键 |
+| :---: | :---: |
+| 源码模式 | <kbd>Ctrl</kbd> + <kbd>?</kbd> |
+| 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
+| 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
+| 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
+| 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
+| 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
+| 纯文本粘贴 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> |
+| 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
+| 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
+| 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
+| 表格 | 表格 |
+| 表格单元格内换行 | <kbd>Shift</kbd> + <kbd>Enter</kbd> |
+| 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
+| 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
+|                 删除行                 |     <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Back</kbd>     |
+| 内容 | 内容 |
+| 内容 | 内容 |
 
 # 主题
 

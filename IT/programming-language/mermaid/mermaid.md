@@ -4,19 +4,25 @@
 
 ## 学习资源
 
+- [Mermaid 官方文档](https://mermaid.js.org/intro/)：[Mermaid 官方在线编辑器](https://www.mermaidchart.com/play?utm_source=mermaid_live_editor&utm_medium=toggle#pako:eNqrVkrOT0lVslJKy8kvT85ILCpR8AmKyVMAgpLMkpxUhWdbG5-v6H46e9_TCb3Pl2-ASDkq6OraKTgp1QIAEVwYww)
+- [Mermaid 中文文档](https://docs.min2k.com/zh/mermaid/intro/)：[Mermaid 中文在线编辑器](https://www.min2k.com/tools/mermaid/)
 - [Mermaid 中文网](https://mermaid.nodejs.cn/)
-- [Mermaid 中文文档](https://docs.min2k.com/zh/mermaid/intro/)
-- [Mermaid 在线编辑器](https://www.min2k.com/tools/mermaid/)
-- [使用方法](https://docs.min2k.com/zh/mermaid/config/usage.html)
+- [Mermaid 使用方法](https://docs.min2k.com/zh/mermaid/config/usage.html)
 
 ## 注释
 
 ```
+# 这是 config 内部注释
+
 %% 这是一个行注释
 ```
 
+- 注释种类
+    - `config` 内部使用 `#` 注释
+    - 其余使用 `%%` 注释
+
 - 不能在行尾注释
-- 不能在图表配置之注释
+- 不能在 `config` 之前注释
 - 不能含有某些特殊字符，如 `{}`，以防止[图表破坏](https://mermaid.js.org/intro/syntax-reference.html#diagram-breaking)。
 
 ## 语法结构
@@ -100,7 +106,7 @@ graph LR
 
 - 站点级别的覆盖是在初始化调用中设置的，并将应用于站点/应用中的所有图表。这个术语是 **siteConfig**。
 
-- Frontmatter (v10.5.0+) - 图表作者可以在图表的frontmatter中更新选定的配置参数。这些参数将应用于渲染配置。
+- Frontmatter (v10.5.0+)：详见 `Frontmatter 配置`
 
 - [Directives 指令](https://mermaid.js.org/config/directives.html)：使用 `%%{ }%%` 语法进行配置传递（被 Frontmatter 代替，已弃用）。
 
@@ -117,6 +123,18 @@ config:
 ---
 图表声明
 	图表内容
+```
+
+```
+---
+title: Hello Title
+config:
+  theme: base
+  themeVariables:
+    primaryColor: "#00ff00"
+---
+flowchart LR
+	Hello --> World
 ```
 
 > ```mermaid
@@ -157,12 +175,17 @@ xychart-beta
 ```
 
 > ```mermaid
+> ---
+> config:
+>     xyChart:
+>         height: 400
+> ---
 > xychart-beta
->        title "XY 图表示例"
->        x-axis Month [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
->        y-axis "Revenue (in $)" 4000 --> 11000
->        bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
->        line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>     title "XY 图表示例"
+>     x-axis Month [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+>     y-axis "Revenue (in $)" 4000 --> 11000
+>     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 > ```
 
 **字符串说明**：在 XY 图表中，所有涉及字符串的文本，只有**单个英文单词**才允许不使用双引号 `"` 作为边界标记。
@@ -174,16 +197,201 @@ xychart-beta
 - **分类值**是每个 Bar 的**名称**：`["名称1", "名称2", ... "名称n"]`
 - **数值范围值**是所有 Bar 的**数值范围**：`min --> max`
 - **x 轴和 y 轴**
+
     - x 轴主要用作**分类值**，但在需要时也可以用作数值范围值。
     - y 轴用于表示**数值范围值**，不能包含分类值。
     - **注意**：当图表方向是 `horizontal` 时，x 轴是垂直的，y 轴是水平的，各自用途不变。
+
 - **轴标题**：可省略
+
     - `x-axis "x轴标题" [分类值, 分类值, 分类值]`
     - `y-axis "y轴标题" min --> max`
 
 ## XY 图表配置
 
+**[XY 图表配置](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)**可以在 **Frontmatter** 中进行。
 
+```
+---
+config:
+
+    # 定义图表属性
+    xyChart:
+        图表属性声明
+
+        # 定义坐标轴属性
+        xAxis:
+            坐标轴属性声明
+
+    # 定义主题属性
+    themeVariables:
+        xyChart:
+            主题属性声明
+---
+xychart-beta
+    图表内容
+```
+
+### 图表配置
+
+**[图表配置](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)**：即 `config` 中的 `xyChart` 属性
+
+```
+---
+config:
+
+    # 定义图表属性
+    xyChart:
+
+        # 声明图表高度为400
+        height: 400
+---
+xychart-beta
+    title "图表属性示例"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+
+> ```mermaid
+> ---
+> config:
+> 
+>     # 定义图表属性
+>     xyChart:
+> 
+>         # 声明图表高度为400
+>         height: 400
+> ---
+> xychart-beta
+>     title "图表属性示例"
+>     x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+>     y-axis "Revenue (in $)" 4000 --> 11000
+>     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+> ```
+
+| 参数 | 描述 | 默认值 |
+| :---: | :---: | :---: |
+| width | 图表的宽度 | 700 |
+| height | 图表的高度 | 500 |
+| titleFontSize | 标题的字体大小 | 20 |
+| xAxis | x 轴配置 | AxisConfig |
+| yAxis | y 轴配置 | AxisConfig |
+| chartOrientation | 'vertical' 垂直或 'horizontal' 水平 | 'vertical' |
+| 更多详见[图表属性](https://mermaid.js.org/syntax/xyChart.html#chart-configurations) | | |
+
+### 坐标轴配置
+
+**[坐标轴配置](https://mermaid.js.org/syntax/xyChart.html#axisconfig)**：即 `xyChart` 中的 `xAxis` 和 `yAxis` 属性，默认值为 `AxisConfig`。
+
+修改坐标轴属性，即用相应的属性声明代替 `AxisConfig`。
+
+```
+---
+config:
+
+    # 坐标轴属性写在图表属性内
+    xyChart:
+
+        # 定义x轴属性
+        xAxis:
+            # 声明 x 轴宽度为10
+            axisLineWidth: 10
+---
+xychart-beta
+    xychart-beta
+    title "坐标轴属性示例"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+
+> ```mermaid
+> ---
+> config:
+> 
+>     # 坐标轴属性写在图表属性内
+>     xyChart:
+>         height: 400
+> 
+>         # 定义 x 轴属性
+>         xAxis:
+>             # 声明 x 轴宽度为10
+>             axisLineWidth: 10
+> ---
+> xychart-beta
+>     xychart-beta
+>     title "坐标轴属性示例"
+>     x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+>     y-axis "Revenue (in $)" 4000 --> 11000
+>     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+> ```
+
+| 参数 | 描述 | 默认值 |
+| :---: | :---: | :---: |
+| titleFontSize | 轴标题的字体大小 | 16 |
+| labelFontSize | 要绘制的标签的字体大小 | 14 |
+| 更多详见[AxisConfig](https://mermaid.js.org/syntax/xyChart.html#axisconfig) | | |
+
+### 主题变量
+
+**[主题变量](https://mermaid.js.org/syntax/xyChart.html#chart-theme-variables)**：即 `config` 中的 `themeVariables` 属性
+
+```
+---
+config:
+
+    # 定义主题属性
+    themeVariables:
+
+        # 主题属性声明需要写在图表属性内
+        xyChart:
+            
+            # 声明 x 轴线颜色
+            xAxisLineColor: "#ff0000"
+---
+xychart-beta
+    title "主题属性示例"
+    x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+    y-axis "Revenue (in $)" 4000 --> 11000
+    bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+    line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+```
+
+> ```mermaid
+> ---
+> config:
+>     xyChart:
+>         height: 400
+> 
+>     # 定义主题属性
+>     themeVariables:
+> 
+>         # 主题属性声明写在图表属性内
+>         xyChart:
+>             
+>             # 声明 x 轴线颜色
+>             xAxisLineColor: "#ff0000"
+> ---
+> xychart-beta
+>     title "主题属性示例"
+>     x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
+>     y-axis "Revenue (in $)" 4000 --> 11000
+>     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+>     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
+> ```
+
+| 参数 | 描述 |
+| :---: | :---: |
+| backgroundColor | 整个图表的背景颜色 |
+| titleColor | 标题文本的颜色 |
+| xAxisTitleColor | x 轴标题的颜色 |
+| yAxisTitleColor | y 轴标题的颜色 |
+| 更多详见[主题变量](https://mermaid.js.org/syntax/xyChart.html#chart-theme-variables) | |
 
 # 饼图
 

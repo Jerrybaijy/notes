@@ -35,7 +35,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Win`：打开或关闭 **开始菜单**
 - `Win + E `：打开 **快速访问**
 - `Win + I `：打开 **系统设置**
-- `Win + V `：剪贴板历史记录
+- `Win + V `：剪贴板历史记录
 - **窗口**
 
     - `Win + D `：最小化所有窗口 / 恢复所有窗口
@@ -62,6 +62,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Ctrl + C` 复制
 - `Ctrl + X` 剪切
 - `Ctrl + V` 粘贴
+- `Ctrl + Shift + V` 仅粘贴文本
 - `Ctrl + Z` 撤消
 - `Ctrl + Y` 恢复撤消
 - `Ctrl + F` 查找
