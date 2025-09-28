@@ -309,7 +309,7 @@ Markdown 原生语法没有官方标准的注释功能，但可以使用 HTML �
           这是第二行
         </td>
         <td>
-          <p>&lt;p&gt;这是第一行&lt;br&gt;这是第二行&lt;/p&gt;</p>
+          <p>&lt;p&gt;这是第一行&lt;br /&gt;这是第二行&lt;/p&gt;</p>
         </td>
         <td>这是第一行<br>这是第二行</td>
       </tr>
@@ -631,7 +631,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 - **语法**
 
-    ```markdown
+    ```html
     <span id="anchor">锚点</span>
     ```
 
