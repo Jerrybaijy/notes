@@ -1,4 +1,4 @@
-# Typora 基础
+# Typora
 
 ## Typora 概述
 
@@ -89,9 +89,9 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 
     - 用于在**纯文本选项**时，想将 Markdown 和 HTML 格式都复制为 HTML 格式。
 
-# 快捷键
+# [快捷键](https://support.typora.io/Shortcut-Keys/)
 
-## 快剪辑列表
+## 快捷键列表
 
 | 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
 | :---: | :---: |
@@ -104,11 +104,6 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | ==编辑== |  |
-| 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
-| 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
-| 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
-| 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
-| 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
 | 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
 | 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
 | 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
@@ -117,6 +112,14 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 | 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
 | 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
 | 删除行 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==格式== |  |
+| 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
+| 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
+| 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
+| 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
+| 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
+| 清除**当前段落**或**选中段落**格式 | <kbd>Ctrl</kbd> + <kbd>\\</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## 快捷键设定
@@ -940,6 +943,15 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 flowchart TD
     黄帝("<font color='orange'>黄帝</font>")
 ```
+
+# 导出
+
+- 导出到 word
+    - Markdown 格式表格失效
+    - 所有 HTML 标签的效果将失效。
+- 导出到 PDF、HTML、图片时，Markdown 和 HTML 标签都有效。
+- `<!-- 注释 -->` 这种 HTML 在代码块以外时，在导出时会隐藏。
+- 
 
 # 其它
 
