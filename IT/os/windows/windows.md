@@ -28,91 +28,73 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     choco install APPLICATION
     ```
 
-## 快捷键
-
-### Win 快捷键
-
-- `Win`：打开或关闭 **开始菜单**
-- `Win + E `：打开 **快速访问**
-- `Win + I `：打开 **系统设置**
-- `Win + V `：剪贴板历史记录
-- **窗口**
-
-    - `Win + D `：最小化所有窗口 / 恢复所有窗口
-    - `Win + ↑/↓ `：最大化 / 缩小窗口 
-    - `Win + ←/→` ：最大化到窗口左 / 右侧的屏幕上 
-    - `Alt + Tap`：显示当前桌面所有运行程序
-
-- **桌面**
-
-    - `Win + Tab`：显示所有任务窗口
-    - `Win + Ctrl + D`：创建新桌面
-    - `Win + Ctrl + ←/→`：向左/右切换桌面
-
-- `Win + 加号或减号`：放大镜
-
-### Ctrl 快捷键
-
-- **鼠标**
-
-    - `Ctrl + 鼠标滚轮` 改变文件和文件夹图标的大小和外观 
-    - `Ctrl + 单击` 点击超链接
-
-- `Ctrl + N` 新开一个窗口
-- `Ctrl + O` 新开某个文件（O）
-- `Ctrl + C` 复制
-- `Ctrl + X` 剪切
-- `Ctrl + V` 粘贴
-- `Ctrl + Shift + V` 仅粘贴文本
-- `Ctrl + Z` 撤消
-- `Ctrl + Y` 恢复撤消
-- `Ctrl + F` 查找
-- `Ctrl + H` 替换
-- `Ctrl + A` 全选
-- `Ctrl + HOME` 返回至文档首页
-- `Ctrl + Fn + ←` 返回至文档首页（华为笔记本）
-- `Ctrl + B` 将所选文本改为粗体
-- `Ctrl + I` 将所选文本改为斜体
-- `Ctrl + U` 为所选文本添加下划线
-- `Ctrl + Shift + Esc` 打开任务管理器
-
-### 其它快捷键 
-
-- `Delete` 右删除 / 删除文件
-- `Back Space` 左删除
-- `Shift + Delete` 直接删除文件，而不是送入回收站
-- `Insert` 插入 / 取消插入（输入文本会逐渐覆盖光标右边文本）
-- `F111` 当前应用进入全屏
-
 # 快捷键
 
 ## 系统
 
 | 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
 | :---: | :---: |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-
-## 桌面
-
-| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
-| :---: | :---: |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 锁定计算机 | <kbd>Win</kbd> + <kbd>L</kbd> |
+| 打开或关闭**开始菜单** | <kbd>Win</kbd> |
+| 打开**系统设置** | <kbd>Win</kbd> + <kbd>I</kbd> |
+| 打开任务管理器 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Esc</kbd> |
+| 改变文件和文件夹图标的大小和外观 | <kbd>Ctrl</kbd> + <kbd>滚轮</kbd> |
+| 点击超链接 | <kbd>Ctrl</kbd> + <kbd>单击</kbd> |
+| ==窗口== |  |
+| 最小化 / 恢复**所有窗口** | <kbd>Win</kbd> + <kbd>D</kbd> |
+| 最大化 / 缩小**活动窗口** | <kbd>Win</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
+| 将活动窗口贴靠到屏幕上 / 下 / 左 / 右半部分 | <kbd>Win</kbd> + <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
+| 当前应用进入 / 退出全屏 | <kbd>F11</kbd> |
+| ==桌面== |  |
+| 切换窗口 | <kbd>Alt</kbd> + <kbd>Tap</kbd> |
+| 打开任务视图 | <kbd>Win</kbd> + <kbd>Tap</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## 文件
 
 | 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
 | :---: | :---: |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 打开新窗口 | <kbd>Ctrl</kbd> + <kbd>N</kbd> |
+| 打开 ... | <kbd>Ctrl</kbd> + <kbd>O</kbd> |
+| 打开最近关闭的文件 | <kbd>Ctrl</kbd> + <kbd>P</kbd> |
+| 关闭 | <kbd>Ctrl</kbd> + <kbd>W</kbd> |
+| 保存 | <kbd>Ctrl</kbd> + <kbd>S</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## 编辑
 
 | 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
 | :---: | :---: |
+| 复制 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| 剪切 | <kbd>Ctrl</kbd> + <kbd>X</kbd> |
+| 粘贴 | <kbd>Ctrl</kbd> + <kbd>V</kbd> |
+| 粘贴为纯文本 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> |
+| 剪贴板历史记录 | <kbd>Win</kbd> + <kbd>V</kbd> |
+| 右删除 / 删除文件移至回收站 | <kbd>Del</kbd> |
+| 左删除 | <kbd>Backspace</kbd> |
+| 永久删除文件，不移至回收站 | <kbd>Shift</kbd> + <kbd>Del</kbd> |
+| 插入 / 取消插入<br />（输入文本会逐渐覆盖光标右边文本） | <kbd>Insert</kbd> |
+| 全选 | <kbd>Ctrl</kbd> + <kbd>A</kbd> |
+| 撤消 | <kbd>Ctrl</kbd> + <kbd>Z</kbd> |
+| 恢复撤消 | <kbd>Ctrl</kbd> + <kbd>Y</kbd> |
+| 查找 | <kbd>Ctrl</kbd> + <kbd>F</kbd> |
+| 替换 | <kbd>Ctrl</kbd> + <kbd>H</kbd> |
+| 跳转至行首 | <kbd>Home</kbd> |
+| 跳转至行尾 | <kbd>End</kbd> |
+| 跳转至文档起始处 | <kbd>Ctrl</kbd> + <kbd>Home</kbd> |
+| 跳转至文档结尾处 | <kbd>Ctrl</kbd> + <kbd>End</kbd> |
+| 跳转至文档起始处（华为笔记本） | <kbd>Ctrl</kbd> + <kbd>Fn</kbd> + <kbd>←</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+
+## 格式
+
+| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
+| :---: | :---: |
+| 粗体 | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
+| 斜体 | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
+| 下划线 | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+|  |  |
 
 # 环境搭建
 

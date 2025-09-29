@@ -1,5 +1,7 @@
 # Typora 基础
 
+## Typora 概述
+
 **[Typora](https://typora.io/)** 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 *所见即所得* 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
 
 **Typora 资源**：
@@ -13,10 +15,6 @@
 >  [Markdown 参考](https://support.typoraio.cn/zh/Markdown-Reference/)：Typora 的 Markdown 语法
 
 Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 [Markdown 参考](https://support.typoraio.cn/Markdown-Reference/)。
-
-
-
-
 
 **Typora 支持以下语法**：
 
@@ -61,38 +59,86 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 
 - **单换行符**：`编辑` - `空格与换行` - 取消 `保留单换行符`
 
-## 快捷键
+## 复制
+
+此处讨论的情况，全是在**预览模式**下操作。
+
+根据 Typora 的 `偏好设置 | 编辑器` 设置中，有没有选中 `当复制纯文本时复制 Markdown 源码` 选项，可将默认的复制行为分为两种情况：
+
+- **纯文本选项**
+
+    - 即没有选中 `当复制纯文本时复制 Markdown 源码` 选项
+    - 复制以后会以**纯文本格式**粘贴到其它软件（但复制到 Typora 和 Notion 时，还是**原有的格式**）
+
+- **Markdown 选项**
+
+    - 即已选中 `当复制纯文本时复制 Markdown 源码` 选项
+    - 复制以后会以 Markdown 源码中**原有的格式**粘贴到任何地方
+
+在 Typora 的 `编辑` 选项卡内，有5种[复制](https://support.typoraio.cn/Quick-Start/#copy)操作：
+
+- `复制`：即默认的复制行为，遵循 `当复制纯文本时复制 Markdown 源码` 选项是否被选中
+- `复制内容并简化格式`：暂时未发现与 `复制` 有何不同
+- `复制为纯文本`：用于在**Markdown 选项**时，想把 Markdown 或 HTML 格式复制为纯文本格式
+- `复制为 Markdown`
+
+    - 用于在**纯文本选项**时，想将 Markdown 格式复制为 Markdown 格式。
+    - 源码必须是 Markdown 格式，不能是 HTML 格式。
+
+- `复制为 HTML 代码`
+
+    - 用于在**纯文本选项**时，想将 Markdown 和 HTML 格式都复制为 HTML 格式。
+
+# 快捷键
+
+## 快剪辑列表
 
 | 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
 | :---: | :---: |
-| 文件 | 文件 |
+| ==系统== |  |
+| 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
+| 源码模式 | <kbd>Ctrl</kbd> + <kbd>/</kbd> |
+| 开发者工具 | <kbd>Shift</kbd> + <kbd>F12</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==文件== |  |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-|  |  |
-|  |  |
-| 源码模式 | <kbd>Ctrl</kbd> + <kbd>?</kbd> |
+| ==编辑== |  |
 | 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
 | 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
 | 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
 | 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
 | 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
-| 纯文本粘贴 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>V</kbd> |
 | 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
 | 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
 | 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
-| 表格 | 表格 |
+| ==表格== |  |
 | 表格单元格内换行 | <kbd>Shift</kbd> + <kbd>Enter</kbd> |
 | 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
 | 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
-|                 删除行                 |     <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Back</kbd>     |
+| 删除行 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+
+## 快捷键设定
+
+- **文件 | 偏好设置** > **通用** > **打开高级设置**
+- 打开 `conf.user.json`。如果没有该文件，参照 `conf.default.json` 创建一个。
+- 在 `keyBinding` 项下添加快捷键的设置，如 `"Always on Top": "Ctrl+Shift+P"`。
+
+    ```json
+    "keyBinding": {
+        "Always on Top": "Ctrl+Shift+P"
+    },
+    ```
+
+- 重启生效
 
 # 主题
 
-## 安装主题
+## [安装主题](https://support.typoraio.cn/About-Themes/)
 
 - [官网下载主题文件并解压](https://theme.typoraio.cn/)
+
     - **文件 | 偏好设置** > **外观** > **打开主题文件夹**
     - 复制**基本文件夹**和**所有 CSS 文件**到 Typora 主题文件夹
 
@@ -101,151 +147,40 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 - 重启 Typora
 - **主题 | 选择主题**
 
-## 主题基础
+## [自定义主题](https://support.typoraio.cn/Add-Custom-CSS/)
 
-- **工作区域**
+### 添加自定义 css
 
-    <img src="assets/typora-area1.png" style="width: 100%; height: 100%;">
+- 当想修改一个已下载的主题时，不要在原主题文件修改 CSS，否则版本更新时可能被覆盖。
 
-- **各种可修改的部分**
+- 应[添加自定义 CSS](https://support.typoraio.cn/Add-Custom-CSS/)文件 `base.user.css` 和 `{current-theme}.css`
+- `base.user.css`：对所有主题生效
+- `{current-theme}.user.css`：对 `{current-theme}.css` 生效
 
-    ```css
-    /* ---------------------- sidebar ---------------- */
-    /* sidebar 区背景色 */
-    #typora-sidebar {
-    background-color: #fff;
-    }
-    /* ---------------------- content ---------------- */
-    /* content 区背景色 */
-    content {
-    background-color: #f7f8fa;
-    }
-    /* ---------------------- write ---------------- */
-    /* write 区背景色 */
-    #write {
-    background-color: #fff;
-    }
-    
-    /* write 区加宽 */
-    #write {
-      max-width: 1500px;
-      margin: 0 auto;
-      padding: 30px;
-      padding-bottom: 100px;
-    }
-    /* ---------------------- 标题 ---------------- */
-    /* 一级标题居中 */
-    h1 {
-    text-align: center; 
-    }
-    /* ---------------------- 代码块 ---------------- */
-    /* 行内代码高亮颜色 */
-    code {
-    color: #f50059;
-    }
-    
-    /* 代码块背景色 */
-    pre {
-      background-color: #dcdcdc !important;
-    }
-    
-    /* 语言选择器 */
-    /*
-    为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
-    需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
-      background-color: var(--item-hover-bg-color);
-    */
-    /* ---------------------- 超链接 ---------------- */
-    /* 超链接取消下划线 */
-    a:link {
-      text-decoration: none !important;
-    }
-    
-    /* 超链接悬停显示下划线 */
-    a:hover {
-    text-decoration: underline !important;
-    }
-    
-    /* 超链接颜色 */
-    a:link {
-      color: black !important;
-    }
-    
-    /* 超链接悬停变色 */
-    a:hover {
-      color: #4183C4 !important;
-    }
-    
-    /* ---------------------- 图片 ---------------- */
-    /* 图片边框 */
-    #write img {
-      border: 1px solid rgb(229, 229, 229);
-    }
-    
-    /* 去除图片黑边 */
-    .md-image > img {
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* md图片靠左 */
-    p .md-image:only-child {
-      width: auto;
-      text-align: left;
-    }
-    
-    /* img图片靠左 */
-    #write img {
-        display: block;
-        margin: 0 auto 0 0 !important;
-    }
-    
-    /* ---------------------- 其它 ---------------- */
-    /* 删除线颜色 */
-    del {
-      text-decoration-color: red;
-    }
-    
-    /* 未知代码继承 */
-    .md-heading code, #typora-sidebar code {
-    color: inherit;
-    }
-    
-    /* kbd标签 */
-    kbd {
-      color: #000000;  /* 文本颜色 */
-      font-size: 1.1em;  /* 字体大小变大 */
-      padding: 7px 12px;  /* 增加内边距，使元素更大 */
-    }
-    
-    /* 去除图片黑边 */
-    .md-image>img {
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* 设置加粗文本粗细 */
-    strong {
-      font-weight: 1000 !important; /* 使用更高的字体粗细 */
-    }
-    
-    /* 图表左对齐 */
-    .md-diagram-panel-preview {text-align:left;}
-    ```
+### 样式定制
 
-## 自定义主题
+- **[常用样式定制](https://support.typoraio.cn/Add-Custom-CSS/#common-style-customization)**：列举了很多定制样式的方法
+    - [字体](https://support.typoraio.cn/Custom-Font/)
+    - [排版](https://support.typoraio.cn/Typeset/)
+    - [背景](https://support.typoraio.cn/Backgound/)
+    - [代码块](https://support.typoraio.cn/Code-Block-Styles/)：Typora 使用 [CodeMirror](http://codemirror.net/) 在代码围栏中进行语法高亮。
+    - [标题](https://support.typoraio.cn/Auto-Numbering/)
+    - [书写区域宽度](https://support.typoraio.cn/Width-of-Writing-Area/)
+    - [列表样式](https://support.typoraio.cn/List-Style/)
+    - [任务列表](https://support.typoraio.cn/Task-List/)
+    - [文本方向](https://support.typoraio.cn/RTL/)(RTL)
+    - [图表](https://support.typora.io/Draw-Diagrams-With-Markdown/#mermaid-options)
+    - [专注模式](https://support.typoraio.cn/Change-Styles-in-Focus-Mode/)
+    - [目录](https://support.typoraio.cn/TOC-levels/)
+    
+- [标题自动编号](https://support.typora.io/Auto-Numbering/)
 
-- 当想修改一个已下载的主题时，应创建**自定义 CSS 文件**，[详见官方说明](https://support.typora.io/Add-Custom-CSS/)
-    - 不要在原主题文件修改
-    - `base.user.css`：对所有主题生效
-    - `{current-theme}.user.css`：对 `{current-theme}.css` 生效
-
-- 关于标题自动编号，[详见官方说明](https://support.typora.io/Auto-Numbering/)
+## base.user.css
 
 - GitHub 网友制作了一个优秀的 [`base.user.css`](https://github.com/lipengzhou/typora-theme-auto-numbering)
 
     - 1级标题没有编号
-    - 大纲和正文都有自动编号，而且支持删除某个编号，其余编号自动更正
+    - 大纲和正文都有自动编号，且支持自动更正
     - 不需要禁止大纲自动折叠
     - 导出至PDF时，保留编号
 
@@ -507,17 +442,28 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
       padding: 0;
     }
     
-    /* md图片靠左 */
+    /* 图片居中，官方方法 */
     p .md-image:only-child {
       width: auto;
-      text-align: left;
+      text-align: inherit;
     }
     
+    p > .md-image:only-child:not(.md-img-error) img {
+      display: inline-block;
+    }
+    
+    /* 下面两个是之前自己的方法，2025.09.29已替换为上述官方方法 */
+    /* md图片靠左 */
+    /* p .md-image:only-child {
+      width: auto;
+      text-align: left;
+    } */
+    
     /* img图片靠左 */
-    #write img {
+    /* #write img {
         display: block;
         margin: 0 auto 0 0 !important;
-    }
+    } */
     
     /* 超链接取消下划线 */
     a:link {
@@ -541,6 +487,137 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
       border-top: 2px solid #7a828e; /* 设置上边框为2像素宽的灰色实线 */
       height: 0;           /* 明确设置高度为0，确保由边框决定视觉厚度 */
     }
+    ```
+## 主题备忘
+
+- **工作区域**
+
+    <img src="assets/typora-area1.png" style="width: 100%; height: 100%;">
+
+- **各种可修改的部分**
+
+    ```css
+    /* ---------------------- sidebar ---------------- */
+    /* sidebar 区背景色 */
+    #typora-sidebar {
+    background-color: #fff;
+    }
+    /* ---------------------- content ---------------- */
+    /* content 区背景色 */
+    content {
+    background-color: #f7f8fa;
+    }
+    /* ---------------------- write ---------------- */
+    /* write 区背景色 */
+    #write {
+    background-color: #fff;
+    }
+    
+    /* write 区加宽 */
+    #write {
+      max-width: 1500px;
+      margin: 0 auto;
+      padding: 30px;
+      padding-bottom: 100px;
+    }
+    /* ---------------------- 标题 ---------------- */
+    /* 一级标题居中 */
+    h1 {
+    text-align: center; 
+    }
+    /* ---------------------- 代码块 ---------------- */
+    /* 行内代码高亮颜色 */
+    code {
+    color: #f50059;
+    }
+    
+    /* 代码块背景色 */
+    pre {
+      background-color: #dcdcdc !important;
+    }
+    
+    /* 语言选择器 */
+    /*
+    为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
+    需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
+      background-color: var(--item-hover-bg-color);
+    */
+    /* ---------------------- 超链接 ---------------- */
+    /* 超链接取消下划线 */
+    a:link {
+      text-decoration: none !important;
+    }
+    
+    /* 超链接悬停显示下划线 */
+    a:hover {
+    text-decoration: underline !important;
+    }
+    
+    /* 超链接颜色 */
+    a:link {
+      color: black !important;
+    }
+    
+    /* 超链接悬停变色 */
+    a:hover {
+      color: #4183C4 !important;
+    }
+    
+    /* ---------------------- 图片 ---------------- */
+    /* 图片边框 */
+    #write img {
+      border: 1px solid rgb(229, 229, 229);
+    }
+    
+    /* 去除图片黑边 */
+    .md-image > img {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* md图片靠左 */
+    p .md-image:only-child {
+      width: auto;
+      text-align: left;
+    }
+    
+    /* img图片靠左 */
+    #write img {
+        display: block;
+        margin: 0 auto 0 0 !important;
+    }
+    
+    /* ---------------------- 其它 ---------------- */
+    /* 删除线颜色 */
+    del {
+      text-decoration-color: red;
+    }
+    
+    /* 未知代码继承 */
+    .md-heading code, #typora-sidebar code {
+    color: inherit;
+    }
+    
+    /* kbd标签 */
+    kbd {
+      color: #000000;  /* 文本颜色 */
+      font-size: 1.1em;  /* 字体大小变大 */
+      padding: 7px 12px;  /* 增加内边距，使元素更大 */
+    }
+    
+    /* 去除图片黑边 */
+    .md-image>img {
+      margin: 0;
+      padding: 0;
+    }
+    
+    /* 设置加粗文本粗细 */
+    strong {
+      font-weight: 1000 !important; /* 使用更高的字体粗细 */
+    }
+    
+    /* 图表左对齐 */
+    .md-diagram-panel-preview {text-align:left;}
     ```
 
 ## Github
@@ -772,7 +849,7 @@ Markdown 本身不支持直接插入视频，但可以使用 HTML 实现
 
 # 表格
 
-- Typora 默认的是 Markdown 格式的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
+- Typora 默认的是 Markdown 扩展语法的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
 
     ```html
     <!-- 全文居中 -->
@@ -843,10 +920,12 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 - **水平对齐**：只能使用**水平移动** `\hspace{-80mm} 公式内容`
 - **上下两个公式**：使用**换行** `公式1\\公式2`
 
-# 图表
+# [图表](https://support.typora.io/Draw-Diagrams-With-Markdown/)
 
-- Typora 使用 Mermaid 语言创建图表。
+- Typora 使用 Mermaid 及其它创建图表。
 - 将代码块语言添加 mermaid 即可。
+- [Typora 关于 Mermaid 教程和样式设置](https://support.typora.io/Draw-Diagrams-With-Markdown/#mermaid)
+- [图表选项](https://support.typoraio.cn/Diagram-Options/)
 - 关于 Mermaid 详见 Mermaid 笔记。
 
 ## 文本颜色
