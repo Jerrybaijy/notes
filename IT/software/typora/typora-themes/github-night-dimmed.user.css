@@ -5,10 +5,11 @@ del {
 
 /* <kbd>样式 */
 kbd {
-  color: #000000;
+  background-color: #000000;
+  color: #ffffff;
   font-size: 1.1em;
   /* 增加内边距，使元素更大 */
-  padding: 7px 12px;
+  padding: 12px 12px;
 }
 
 /* 使用更高的加粗文本粗细 */

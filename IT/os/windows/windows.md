@@ -59,6 +59,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
     - `Ctrl + 单击` 点击超链接
 
 - `Ctrl + N` 新开一个窗口
+- `Ctrl + O` 新开某个文件（O）
 - `Ctrl + C` 复制
 - `Ctrl + X` 剪切
 - `Ctrl + V` 粘贴
@@ -80,9 +81,38 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - `Delete` 右删除 / 删除文件
 - `Back Space` 左删除
 - `Shift + Delete` 直接删除文件，而不是送入回收站
-- `Insert` 插入 / 取消插入
+- `Insert` 插入 / 取消插入（输入文本会逐渐覆盖光标右边文本）
+- `F111` 当前应用进入全屏
 
-    - 输入文本会逐渐覆盖光标右边文本
+# 快捷键
+
+## 系统
+
+| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
+| :---: | :---: |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+
+## 桌面
+
+| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
+| :---: | :---: |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+
+## 文件
+
+| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
+| :---: | :---: |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+
+## 编辑
+
+| 操作 | [Windows 快捷键](https://support.microsoft.com/zh-cn/windows/windows-%E7%9A%84%E9%94%AE%E7%9B%98%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-dcc61a57-8ff0-cffe-9796-cb9706c75eec) |
+| :---: | :---: |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 # 环境搭建
 

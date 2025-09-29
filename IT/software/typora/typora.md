@@ -2,6 +2,22 @@
 
 **[Typora](https://typora.io/)** 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 *所见即所得* 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
 
+**Typora 资源**：
+
+> [Typora 官网](https://typora.io/)
+>
+> [Typora 官网中文站](https://typoraio.cn/)
+>
+> [Typora 官方文档](https://support.typoraio.cn/)
+>
+>  [Markdown 参考](https://support.typoraio.cn/zh/Markdown-Reference/)：Typora 的 Markdown 语法
+
+Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 [Markdown 参考](https://support.typoraio.cn/Markdown-Reference/)。
+
+
+
+
+
 **Typora 支持以下语法**：
 
 - 全部 Markdown 原生语法
@@ -13,7 +29,7 @@
 
 ## 环境搭建
 
-[官网下载安装 Typora](https://typora.io/)
+- [官网下载安装 Typora](https://typora.io/)
 
 ### 配置服务器
 
@@ -47,8 +63,13 @@
 
 ## 快捷键
 
-| 操作 | 快捷键 |
+| 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
 | :---: | :---: |
+| 文件 | 文件 |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+|  |  |
+|  |  |
 | 源码模式 | <kbd>Ctrl</kbd> + <kbd>?</kbd> |
 | 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
 | 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
@@ -64,8 +85,8 @@
 | 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
 | 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
 |                 删除行                 |     <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Back</kbd>     |
-| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 # 主题
 
@@ -591,10 +612,11 @@
     
     /* <kbd>样式 */
     kbd {
-      color: #000000;
+      background-color: #000000;
+      color: #ffffff;
       font-size: 1.1em;
       /* 增加内边距，使元素更大 */
-      padding: 7px 12px;
+      padding: 12px 12px;
     }
     
     /* 使用更高的加粗文本粗细 */

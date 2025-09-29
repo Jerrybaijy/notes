@@ -150,27 +150,39 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 - `设置` > `搜索引擎` > `管理搜索引擎和网站搜索`
 
-- 可以在浏览器地址栏输入关键词配合快捷键，实现在特定网站搜索
+- 可以在浏览器地址栏输入关键词配合快捷键，实现在特定网站搜索，如 `g chrome使用技巧`
 
-    ```
-    g chrome使用技巧
-    ```
 
 ## 快捷键
 
-- **`Cctl + Shift + B`**：显示 / 隐藏书签栏
-- **`F11`**：全屏
-- **`Ctrl + D`**：添加书签
+| 操作 | 快捷键 |
+| :---: | :---: |
+| 显示 / 隐藏书签栏 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> |
+| 添加书签 | <kbd>Ctrl</kbd> + <kbd>D</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## Google Search Engine
 
 - Google 搜索引擎是全球最大的搜索引擎。
 
-- 搜索特定网站的特定内容
+- 搜索特定网站的特定内容，如 `intitle:"google使用教程" site:youtube.com`
 
-    ```
-    intitle:"google使用教程" site:youtube.com
-    ```
+
+## 扩展
+
+- **Adblock Plus**：广告拦截器
+- **Infinity 新标签页 (Pro)**：新标签页定制
+- **Dark Reader**：为每个网站启用暗色模式
+- **Google 翻译**
+- **划词翻译**
+- **沉浸式翻译**
+- **Markdown Viewer**
+- **OneTab**：把不活动的网页暂时冻结在一起
+- **Screenshot YouTube**：YouTube 截屏
+- **YouTube Summary with ChatGPT & Claude**：总结 YouTube 视频内容
+- **复制受保护的文本**：自由复制
+- **篡改猴**
+- **迅雷下载支持**
 
 # Google Cloud
 
