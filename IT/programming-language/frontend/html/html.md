@@ -1,12 +1,68 @@
-# [HTML 基础](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+# [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
 
 **超文本标记语言**（**H**yper **T**ext **M**arkup **L**anguage，简称 HTML），是一种用来定义 Web 网页**结构**和**语义**的**标记语言**；HTML 文件的扩展名为 `.html`。
 
-## [HTML 主要资源](https://developer.mozilla.org/zh-CN/docs/Web/HTML#%E4%B8%BB%E8%A6%81%E8%B5%84%E6%BA%90)
+## HTML 主要资源
 
-- [HTML 基础](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics)：了解 HTML 的含义和最基本用法
-- [HTML 学习区](https://developer.mozilla.org/zh-CN/docs/Learn/HTML)：学习 HTML 基础知识
-- [HTML 参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference)：查找 HTML 的各个属性与概念
+> <details>
+>   <summary>HTML 基础</summary>
+>   <ul>
+>     <li>
+>       <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" alt="HTML"
+>         >HTML</a
+>       >：HTML 介绍
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics"
+>         alt="HTML 基础"
+>         >HTML 基础</a
+>       >：了解 HTML 的含义和最基本用法
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML"
+>         alt="HTML 学习区"
+>         >HTML 学习区</a
+>       >：学习 HTML 基础知识
+>     </li>
+>   </ul>
+> </details>
+>
+> <details>
+>   <summary>
+>     <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
+>       >HTML 参考</a
+>     >：查找 HTML 的各个属性与概念
+>   </summary>
+>   <ul>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>         alt="HTML 元素参考"
+>         >HTML 元素参考</a
+>       >：所有 HTML 元素详解
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
+>         alt="HTML 属性参考"
+>         >HTML 属性参考</a
+>       >：所有属性详解
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes"
+>         alt="全局属性"
+>         >全局属性</a
+>       >
+>     </li>
+>   </ul>
+> </details>
+>
+> [内容分类](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Content_categories)：从不同维度，将内容元素分成几类
+>
+> [HTML 中使用的日期和时间格式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Date_and_time_formats)
 
 ## HTML 注释
 
@@ -25,61 +81,6 @@
       <h1>Hello, World!</h1>
     </div>
     ```
-
-## [HTML 元素](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_%E5%85%83%E7%B4%A0%E8%AF%A6%E8%A7%A3)
-
-HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。
-
-### 元素结构
-
-![image-20231205005652176](assets/image-20231205005652176.png)
-
-**元素的主要部分有**：
-
-- **开始标签**（Opening tag）：`<元素名称>` （本例为 `<p>`），表示元素从这里开始起作用。
-- **结束标签**（Closing tag）：`</元素名称>` （本例为 `</p>`），表示元素的结尾。
-- **元素内容**（Content）：元素的内容，本例为 `My cat is veru grumpy`。
-- **元素**（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。
-
-### 元素属性
-
-![image-20231205010242559](assets/image-20231205010242559.png)
-
-- **有值的属性（Attribute）应包含**：
-
-    -  **空格符**：在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格。
-    -  **属性名称**，并接等号，本例为 `class`。
-    -  **属性值**：由双（单）引号所包围，本例为 `editor-note`。
-
-- **说明**
-
-    - 属性一般存在于开始标签。
-    - 一个元素可以有多个属性，每个属性之间用 `空格` 分隔。
-    - 一个属性可以有多个属性值，每个属性值之间用 `空格` 分隔。
-    - 属性和属性值对大小写不敏感，但新版本的 (X)HTML 要求使用小写属性。
-    - 不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"`、`'`、`=`、`<`、`>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
-
-### 嵌套元素
-
-元素可以嵌套符合条件的另一个元素。
-
-```html
-<p>My cat is <strong>very</strong> grumpy.</p>
-```
-
-### [**空元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)
-
-- **语法**：空元素只有开始标签，没有结束标签，即没有内容的元素，也称 *自闭合标签*。
-
-    ```html
-    <img src="images/firefox-icon.png" alt="My test image" />
-    ```
-
-- **注意**
-
-    -  `<tag>` 和 `<tag />` 都表示空元素
-    -  HTML5 使用 `<tag>`，同时兼容 `<tag />`
-    -  XML 和 XHTML 使用 `<tag />`，但不支持 `<tag>`
 
 ## [实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)
 
@@ -107,7 +108,68 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
     ```
 
-# [HTML 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Attributes)
+# [HTML 元素](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content#html_元素详解)
+
+HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。
+
+本章节讲解 HTML 元素的基础，关于各元素的具体情况，详见各章节。
+
+## 元素结构
+
+![image-20231205005652176](assets/image-20231205005652176.png)
+
+**元素的主要部分有**：
+
+- **开始标签**（Opening tag）：`<元素名称>` （本例为 `<p>`），表示元素从这里开始起作用。
+- **结束标签**（Closing tag）：`</元素名称>` （本例为 `</p>`），表示元素的结尾。
+- **元素内容**（Content）：元素的内容，本例为 `My cat is veru grumpy`。
+- **元素**（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。
+
+## 元素属性
+
+![image-20231205010242559](assets/image-20231205010242559.png)
+
+- **有值的属性（Attribute）应包含**：
+
+    -  **空格符**：在属性与元素名称（或上一个属性，如果有超过一个属性的话）之间的空格。
+    -  **属性名称**，并接等号，本例为 `class`。
+    -  **属性值**：由双（单）引号所包围，本例为 `editor-note`。
+
+- **说明**
+    - 属性一般存在于开始标签。
+    - 一个元素可以有多个属性，每个属性之间用 `空格` 分隔。
+    - 一个属性可以有多个属性值，每个属性值之间用 `空格` 分隔。
+    - 属性和属性值对大小写不敏感，但新版本的 (X)HTML 要求使用小写属性。
+    - 不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"`、`'`、`=`、`<`、`>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
+
+## 嵌套元素
+
+元素可以嵌套符合条件的另一个元素。
+
+```html
+<p>My cat is <strong>very</strong> grumpy.</p>
+```
+
+## [空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)
+
+**空元素**，也称**自闭合标签**，只有开始标签，没有结束标。
+
+```html
+<img src="images/firefox-icon.png" alt="My test image" />
+```
+
+关于空元素**自闭合**的说明，以 `<img>` 为例：
+
+- 在 HTML5 中，`<img>` 是空元素，**不需要**自闭合标签。这是现代 HTML 的标准写法，简洁且符合规范。
+- 在 XHTML 中要求所有标签必须闭合，但 XHTML 已逐渐被 HTML5 取代。
+- 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
+- 所有空元素同理。
+
+# HTML 属性
+
+> HTML 属性基础：`HTML 笔记 | HTML 元素 | 元素属性`
+>
+> [HTML 属性参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes)
 
 ## [标识 `id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id)
 
@@ -267,6 +329,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 # 文档结构
 
+本章节包含：
+
+- 文档类型
+- 主根元素
+- 文档元数据
+- 分区根元素
+
+## [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
+
 ## [文档结构](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_文档详解)
 
 - **文档结构**
@@ -293,11 +364,9 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     3. [**元数据分区**](#[元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据))：`<head>`
     4. [**内容分区**](#[内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body))：`<body>`
 
-## [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
+## [主根元素 `<html>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)
 
-## [根元素 `<html>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)
-
-**`<html>`** 元素称为*根元素*。该元素包含整个页面的所有内容，其他所有元素必须是此元素的后代。
+**`<html>`** 元素称为*主根元素*。该元素包含整个页面的所有内容，其他所有元素必须是此元素的后代。
 
 ## [元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据)
 
@@ -385,15 +454,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个该元素。
 
-# [内容结构](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#内容分区)
-
-- **内容分区**就是 `<body>` 的结构，由 `<body>` 所包围，该部分与用户进行交互。
-
-## [内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)
+## [分区根元素 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)
 
 - 包含文档的结构信息（如页眉、页脚等）和文档其它内容。
 
-## [ 页眉`<header>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
+# 内容分区
+
+[内容分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements#内容分区)元素允许你将文档内容从逻辑上进行组织划分。内容分区就是 `<body>` 里内容的结构划分。
+
+## [ 页眉 `<header>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
 
 -  **`<header>` 元素**用于展示介绍性内容，通常包含一组介绍性的或是辅助导航的实用元素。它可能包含一些标题元素，但也可能包含其他元素，比如 Logo、搜索框、作者名称，等等。
 -  **语法**
@@ -445,7 +514,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128130156849](assets/image-20241128130156849.png)
 
-## [ 页脚`<footer>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer)
+## [ 页脚 `<footer>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/footer)
 
 - 一个页脚通常包含该章节作者、版权数据或者与文档相关的链接等信息。
 - **语法**
@@ -481,16 +550,17 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128131541136](assets/image-20241128131541136.png)
 
-## [ 导航栏`<nav>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
+## [ 导航栏 `<nav>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
 
 - **`<nav>`元素**用于在当前文档或其他文档中提供导航链接。导航部分的常见示例是菜单，目录和索引。
+
 - **语法**
 
     ```html
     <head>
       <link href="../css/css-test.css" rel="stylesheet" />
     </head>
-
+    
     <body>
       <nav class="crumbs">
         <ol>
@@ -499,7 +569,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
           <li class="crumb">Jump Bike 3000</li>
         </ol>
       </nav>
-
+    
       <h1>Jump Bike 3000</h1>
       <p>
         This BMX bike is a solid step into the pro world. It looks as legit as it
@@ -512,25 +582,75 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128130034228](assets/image-20241128130034228.png)
 
-## [ 主要内容 `<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
+## [ 侧边栏 `<aside>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/aside)
 
-- **`<main>` 元素**呈现文档的主要内容。
+- **`<aside>` 元素**表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者标注框（call-out boxes）。
+
 - **语法**
 
     ```html
     <head>
       <link href="../css/css-test.css" rel="stylesheet" />
     </head>
+    
+    <body>
+      <p>
+        Salamanders are a group of amphibians with a lizard-like appearance, including short legs and a tail in both larval
+        and adult forms.
+      </p>
+    
+      <aside>
+        <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
+      </aside>
+    
+      <p>
+        Several species of salamander inhabit the temperate rainforest of the Pacific Northwest, including the Ensatina, the
+        Northwestern Salamander and the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for insects, worms and
+        other small creatures.
+      </p>  
+    </body>
+    ```
 
+    ```css
+    aside {
+      width: 40%;
+      padding-left: 0.5rem;
+      margin-left: 0.5rem;
+      float: right;
+      box-shadow: inset 5px 0 5px -5px #29627e;
+      font-style: italic;
+      color: #29627e;
+    }
+    
+    aside > p {
+      margin: 0.5rem;
+    }
+    ```
+
+- **渲染效果**
+
+    > ![image-20241128132126937](assets/image-20241128132126937.png)
+
+## [ 主要内容 `<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/header)
+
+- **`<main>` 元素**呈现文档的主要内容。
+
+- **语法**
+
+    ```html
+    <head>
+      <link href="../css/css-test.css" rel="stylesheet" />
+    </head>
+    
     <body>
       <header>Gecko facts</header>
-
+    
       <main>
         <p>
           Geckos are a group of usually small, usually nocturnal lizards. They are
           found on every continent except Antarctica.
         </p>
-
+    
         <p>
           Many species of gecko have adhesive toe pads which enable them to climb
           walls and even windows.
@@ -620,77 +740,6 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128130311310](assets/image-20241128130311310.png)
 
-## [ 侧边栏 `<aside>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/aside)
-
-- **`<aside>` 元素**表示一个和其余页面内容几乎无关的部分，被认为是独立于该内容的一部分并且可以被单独的拆分出来而不会使整体受影响。其通常表现为侧边栏或者标注框（call-out boxes）。
-- **语法**
-
-    ```html
-    <head>
-      <link href="../css/css-test.css" rel="stylesheet" />
-    </head>
-
-    <body>
-      <p>
-        Salamanders are a group of amphibians with a lizard-like appearance, including short legs and a tail in both larval
-        and adult forms.
-      </p>
-
-      <aside>
-        <p>The Rough-skinned Newt defends itself with a deadly neurotoxin.</p>
-      </aside>
-
-      <p>
-        Several species of salamander inhabit the temperate rainforest of the Pacific Northwest, including the Ensatina, the
-        Northwestern Salamander and the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for insects, worms and
-        other small creatures.
-      </p>  
-    </body>
-    ```
-
-    ```css
-    aside {
-      width: 40%;
-      padding-left: 0.5rem;
-      margin-left: 0.5rem;
-      float: right;
-      box-shadow: inset 5px 0 5px -5px #29627e;
-      font-style: italic;
-      color: #29627e;
-    }
-
-    aside > p {
-      margin: 0.5rem;
-    }
-    ```
-
-- **渲染效果**
-
-    > ![image-20241128132126937](assets/image-20241128132126937.png)
-
-## [标题 `<h>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Heading_Elements)
-
-- **语法**：用于定义标题级别，从 `<h1>` 到 `<h6>`，是行内元素。
-
-    ```html
-    <h1>一级标题</h1>
-    <h2>二级标题</h2>
-    <h3>三级标题</h3>
-    <h4>四级标题</h4>
-    <h5>五级标题</h5>
-    <h6>六级标题</h6>
-    ```
-
-- **渲染效果**
-
-    ![image-20241128135532190](assets/image-20241128135532190.png)
-
-- **注意**
-
-  - 不要为了减小标题的字体而使用低级别的标题
-  - 避免跳过某级标题：始终要从 `<h1>` 开始，接下来依次使用 `<h2>` 等等
-  - 同一篇幅尽量不要超过三级标题
-
 ## [独立章节 `<section>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/section)
 
 - `<section>` 是一个通用的分节元素，只有在没有更具体的元素来代表它的时候才可以使用。
@@ -735,7 +784,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     ```html
     <p>Contact the author of this page:</p>
-
+    
     <address>
       <a href="mailto:jim@example.com">jim@example.com</a><br />
       <a href="tel:+14155550132">+1 (415) 555‑0132</a>
@@ -746,7 +795,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     a[href^='mailto']::before {
       content: '📧 ';
     }
-
+    
     a[href^='tel']::before {
       content: '📞 ';
     }
@@ -756,64 +805,32 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128135927232](assets/image-20241128135927232.png)
 
-## [内容划分 `<div>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div)
+# 文章结构
 
-- **语法**：无语义，将零散的行内元素组成区块，是行内元素。
+## [标题 `<h>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Heading_Elements)
+
+**标题 `<h>`** 用于定义标题级别，从 `<h1>` 到 `<h6>`，是块级元素。
+
+- **语法**
 
     ```html
-    <div class="shadowbox">
-      <p>这是一张非常有趣的说明，陈列在一个可爱的影盒里。</p>
-    </div>
-    ```
-
-    ```css
-    .shadowbox {
-      width: 15em;
-      border: 1px solid #333;
-      box-shadow: 8px 8px 5px #444;
-      padding: 8px 12px;
-      background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
-    }
+    <h1>一级标题</h1>
+    <h2>二级标题</h2>
+    <h3>三级标题</h3>
+    <h4>四级标题</h4>
+    <h5>五级标题</h5>
+    <h6>六级标题</h6>
     ```
 
 - **渲染效果**
 
-    > ![image-20241128144407274](assets/image-20241128144407274.png)
+    ![image-20241128135532190](assets/image-20241128135532190.png)
 
-## [主题分割 `<hr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr)
+- **注意**
 
-- **语法**：语义上表示段落级元素之间的主题转换。
-
-    ```html
-    <p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
-    <hr />
-    <p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
-    ```
-
-    ```css
-    hr {
-      border: none;
-      border-top: 3px double #333;
-      color: #333;
-      overflow: visible;
-      text-align: center;
-      height: 5px;
-    }
-
-    hr::after {
-      background: #fff;
-      content: '§';
-      padding: 0 4px;
-      position: relative;
-      top: -13px;
-    }
-    ```
-
-- **渲染效果**
-
-    > ![image-20241128161540618](assets/image-20241128161540618.png)
-
-# [文本内容](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文本内容)
+    - 不要为了减小标题的字体而使用低级别的标题
+    - 避免跳过某级标题：始终要从 `<h1>` 开始，接下来依次使用 `<h2>` 等等
+    - 同一篇幅尽量不要超过三级标题
 
 ## [段落 `<p>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p)
 
@@ -824,7 +841,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
       Geckos are a group of usually small, usually nocturnal lizards. They are found
       on every continent except Antarctica.
     </p>
-
+    
     <p>
       Some species live in houses where they hunt insects attracted by artificial
       light.
@@ -845,565 +862,10 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 - **说明**：浏览器会自动地在段落的前后添加空行。
 
-## [换行 `<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br)
-
-- **语法**：表示在文本中生成一个换行（回车）符号，将一行文本渲染为两行，是一个空元素。
-
-    ```html
-    <p>这是第一行<br>这是第二行</p>
-    ```
-
-- **渲染效果**
-
-    > <p>这是第一行<br>这是第二行</p>
-
-- **注意**
-
-    - 不要使用 <kbd>Enter</kbd> 进行换行
-    - 不要用 `<br>` 来增加文本之间的行间隔
-
-## [内容跨越 `<span>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span)
-
-- `<span>` 元素无语义，用于标记文档中的小块文本，以便于添加样式（通过使用 `class` 或 `id` 属性），或共享属性值，是行内元素。
-- **语法**
-
-    ```html
-    <p>
-      Add the <span class="ingredient">basil</span>,
-      <span class="ingredient">pine nuts</span> and
-      <span class="ingredient">garlic</span> to a blender and blend into a paste.
-    </p>
-
-    <p>
-      Gradually add the <span class="ingredient">olive oil</span> while running the
-      blender slowly.
-    </p>
-    ```
-
-    ```css
-    span.ingredient {
-      color: #f00;
-    }
-    ```
-
-- **渲染效果**
-
-    > ![image-20241128170152520](assets/image-20241128170152520.png)
-
-- **注意**：该元素仅应在无其他合适语义元素时使用。
-
-## 列表
-
-- **缩进**：列表与前一个元素会有一个缩进。
-
-### [无序列表 `<ul>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul)
-
-- **语法**：显示无顺序排列的列表项 `<li>`。
-
-    ```html
-    <ul>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ul>
-    ```
-
-- **渲染效果**
-
-    > <ul>
-    >     <li>第一列表项</li>
-    >     <li>第二列表项</li>
-    >     <li>第三列表项</li>
-    > </ul>
-
-- **说明**：渲染时默认以圆点等符号进行标记，如果想修改，应该在 CSS 中修改。
-
-### [有序列表 `<ol>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol)
-
-#### **有序列表 `<ol>`**
-
-- **语法**：显示按顺序排列的列表项 `<li>`，默认以数字等符号进行标记。
-
-    ```html
-    <ol>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ol>
-    ```
-
-- **渲染效果**
-
-    > <ol>
-    > <li>第一列表项</li>
-    > <li>第二列表项</li>
-    > <li>第三列表项</li>
-    > </ol>
-
-#### `type` 属性
-
-- **语法**：用于指定有序列表的计数器类型，即序列号的类型。
-
-    ```html
-    <ol type="A">
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </ol>
-    ```
-
-- **渲染效果**
-
-    > <ol type="A">
-    > <li>第一列表项</li>
-    > <li>第二列表项</li>
-    > <li>第三列表项</li>
-    > </ol>
-
-#### `start` 属性
-
-- **语法**：用于指定有序列表的起始值。
-
-    ```html
-    <ol start="5">
-      <li>第五列表项</li>
-      <li>第六列表项</li>
-      <li>第七列表项</li>
-    </ol>
-    ```
-
-- **渲染效果**
-
-    > <ol start="5">
-    > <li>第五列表项</li>
-    > <li>第六列表项</li>
-    > <li>第七列表项</li>
-    > </ol>
-
-#### `value` 属性
-
-- **语法**：用于指定有序列表项的值，这是 `<li>` 的属性。
-
-    ```html
-    <ol>
-      <li value="100">第一百列表项</li>
-      <li value="200">第二百列表项</li>
-      <li value="300">第三百列表项</li>
-    </ol>
-    ```
-
-- **渲染效果**
-
-    > <ol>
-    > <li value="100">第一百列表项</li>
-    > <li value="200">第二百列表项</li>
-    > <li value="300">第三百列表项</li>
-    > </ol>
-
-### 列表嵌套
-
-- **语法**：在一个列表项 `<li>` 中包含另一个列表。
-
-    ```html
-    <!-- 规范写法 -->
-    <ul>
-      <li>
-        项目1
-        <ol>
-          <li>子项目 1</li>
-          <li>子项目 2</li>
-        </ol>
-      </li>
-      <li>项目2</li>
-    </ul>
-
-    <!-- 不规范写法 -->
-    <ul>
-      <li>项目1</li>
-      <ol>
-        <li>子项目 1</li>
-        <li>子项目 2</li>
-      </ol>
-      <li>项目2</li>
-    </ul>
-    ```
-
-- **渲染效果**
-
-    > <ul>
-    >  <li>项目1
-    >      <ol>
-    >          <li>子项目 1</li>
-    >          <li>子项目 2</li>
-    >      </ol>
-    >  </li>
-    >  <li>项目2</li>
-    > </ul>
-
-- **注意**：不要将一个列表当成列表项 `<li>` 进行嵌套，而是要把列表放在 `<li>` 的内容中。
-
-## [菜单 `<menu>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu)
-
-- **`<menu>`** 元素在 HTML 规范中被描述为 `<ul>` 的语义替代，但浏览器将其视为与 `<ul>` 没有区别。
-- **语法**
-
-    ```html
-    <menu>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
-    </menu>
-    ```
-
-- **渲染效果**：一个无序列表
-
-    > <menu>
-    >   <li>第一列表项</li>
-    >   <li>第二列表项</li>
-    >   <li>第三列表项</li>
-    > </menu>
-
-## [描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)
-
-- **`<dl>` 元素** （或 *HTML* *描述列表元素*）是一个包含术语定义以及描述的列表，通常用于展示词汇表或者元数据 (键 - 值对列表)。
-- **语法**：[描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)，[术语定义 `<dt>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dt)，[描述 `<dd>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dd)
-
-    ```html
-    <p>Cryptids of Cornwall:</p>
-
-    <dl>
-      <dt>Beast of Bodmin</dt>
-      <dd>A large feline inhabiting Bodmin Moor.</dd>
-
-      <dt>Morgawr</dt>
-      <dd>A sea serpent.</dd>
-
-      <dt>Owlman</dt>
-      <dd>A giant owl-like creature.</dd>
-    </dl>
-    ```
-
-    ```css
-    p,
-    dt {
-      font-weight: bold;
-    }
-
-    dl,
-    dd {
-      font-size: 0.9rem;
-    }
-
-    dd {
-      margin-bottom: 1em;
-    }
-    ```
-
-- **渲染效果**：描述部分有缩进
-
-    > ![image-20241128154157844](assets/image-20241128154157844.png)
-
-- **扩展**：`<dt>` 的元素内容可以使用 [`<dfn>`](#[术语 `<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn))。
-
-## 标记
-
-### 标记消歧义
-
-- **粗体**
-
-    - `<strong>` 用来对一个句子的部分**文本**增加重要性
-    - `<b>` 用来引起人们的注意，如关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
-
-- **斜体**
-
-    - `<em>` 表示语气上的强调
-    - `<i>` 用于技术术语、音译、思想或船名等
-    - `<dfn>` 表示定义中的术语
-    - `<cite>` 用于引用作品
-
-- **删除线**
-
-    - `<del>` 属于编辑标识，表示被从文档中删除的内容。
-    - `<s>` 表示不再准确或不再相关的内容，不适用于指示文档编辑。
-
-- **下划线**
-
-    -  `<del>` 属于编辑标识，表示已经被插入文档中的文本。
-    -  `<u>` 表示非文本注释，例如拼写错误和中文专有名词。
-
-- **高亮**：`<mark>` 表示上下文相关或突出显示以供参考
-
-### [标记高亮 `<mark>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/mark)
-
-- `<mark>` 表示上下文相关或突出显示以供参考，是行内元素。
-- **语法**
-
-    ```html
-    <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
-    ```
-
-- **渲染效果**：标记高亮
-
-    > <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
-
-- **注意**：不要纯粹为了高亮显示而用 `<mark>` 元素，而是应该使用 CSS 来实现。
-- 浏览器通常以黄色背景高亮显示 `<mark>` 元素的内容，但您可以通过 CSS 进行自定义样式。
-
-    ```css
-    mark {
-      background-color: yellow;
-      color: black;
-    }
-    ```
-
-### [语气强调 `<em>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em)
-
-- `<em>` 表示语气上的强调，是行内元素。
-- **语法**
-
-    ```html
-    <p>Get out of bed <em>now</em>!</p>
-    <p>We <em>had</em> to do something about it.</p>
-    <p>This is <em>not</em> a drill!</p>
-    ```
-
-- **渲染效果**：斜体
-
-    > <p>Get out of bed <em>now</em>!</p>
-    > <p>We <em>had</em> to do something about it.</p>
-    > <p>This is <em>not</em> a drill!</p>
-
-### [重要文本 `<strong>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong)
-
-- HTML5中，`<strong>` 用来对一个句子的部分**文本**增加重要性，是行内元素。
-- **语法**
-
-    ```html
-    <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
-    ```
-
-- **渲染效果**：粗体
-
-    > <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
-
-### [注意文本 `<b>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b)
-
-- `<b>` 用来引起人们的注意，但不传达任何额外的重要性，也不暗示其他语气或情绪，例如文档摘要中的关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
-- **语法**
-
-    ```html
-    <p>
-      本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
-      <b class="keywords">HTML</b> 文档中的用法。
-    </p>
-    ```
-
-- **渲染效果**：粗体
-
-    > <p>
-    > 本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
-    > <b class="keywords">HTML</b> 文档中的用法。
-    > </p>
-
-- **注意**：实在找不到合适的元素才
-
-### [删除 `<del>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/del)
-
-- `<del>` 属于编辑标识，表示被从文档中删除的内容，与 `<ins>` 对应，是行内元素。
-- **语法**
-
-    ```html
-    <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
-    ```
-
-- **渲染效果**：加删除线
-
-    > <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
-
-### [不准确 `<s>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/s)
-
-- `<s>` 表示不再准确或不再相关的内容，不适用于指示文档编辑，是行内元素。
-- **语法**
-
-    ```html
-    <s>Today's Special: Salmon</s> SOLD OUT
-    ```
-
-- **渲染效果**：加删除线
-
-    > <s>Today's Special: Salmon</s> SOLD OUT
-
-### [插入 `<ins>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ins)
-
-- `<del>` 属于编辑标识，表示已经被插入文档中的文本，与 `<del>` 对应，是行内元素。
-- **语法**
-
-    ```html
-    <body>
-      <p><ins>这是一段新增的文本</ins></p>
-    </body>
-    ```
-
-- **渲染效果**：加下划线
-
-    > <p><ins>这是一段新增的文本</ins></p>
-
-### [非文本注释 `<u>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/u)
-
-- `<u>` 表示行内文本拥有一个非文本形式的注释，该注释需要以某种方式渲染出来。例如拼写错误和中文专有名词。
-- **语法**
-
-    ```html
-    <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
-    ```
-
-- **渲染效果**：加下划线
-
-    > <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
-
-## [块级引用 `<blockquote>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/blockquote)
-
-- 块级引用 `<blockquote>` 表示其中的文字是引用内容，是行内元素。
-- **语法**
-
-    ```html
-    <div>
-      <blockquote cite="https://www.huxley.net/bnw/four.html">
-        <p>
-          Words can be like X-rays, if you use them properly—they’ll go through
-          anything. You read and you’re pierced.
-        </p>
-      </blockquote>
-      <p>—Aldous Huxley, <cite>Brave New World</cite></p>
-    </div>
-    ```
-
-    ```css
-    div:has(> blockquote) {
-      background-color: #ededed;
-      margin: 10px auto;
-      padding: 15px;
-      border-radius: 5px;
-    }
-
-    blockquote p::before {
-      content: "\201C";
-    }
-
-    blockquote p::after {
-      content: "\201D";
-    }
-
-    blockquote + p {
-      text-align: right;
-    }    
-    ```
-
-- **渲染效果**：缩进，加引号
-
-    > ![image-20241128163006929](assets/image-20241128163006929.png)
-
-- **说明**
-
-    - 若引文来源于网络，则可以将原内容的出处 URL 地址设置到 cite 特性上。
-    - 若要以文本的形式告知读者引文的出处时，可以通过 `<cite>` 元素。
-
-## [行内引用 `<q>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q)
-
-- **语法**：用于引用短文本，是行内元素。
-
-    ```html
-    <p>他说：<q>今天的天气真好！</q></p>
-    ```
-
-- **渲染效果**：加引号
-
-    > <p>他说：<q>今天的天气真好！</q></p>
-
-## [作品引用 `<cite>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite)
-
-- **语法**：用于引用作品，是行内元素。
-
-    ```html
-    <p>
-      更多内容详见<cite>《计算机基础》</cite>。
-    </p>
-    ```
-
-- **渲染效果**：斜体
-
-    > <p>
-    > 更多内容详见<cite>《计算机基础》</cite>。
-    > </p>
-
-- **扩展**：元素内容可以是 `<a>`。
-
-## [术语定义 `<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn)
-
-- **语法**：表示定义中的术语，是行内元素。
-
-    ```html
-    <p>
-      <!-- Define "The Internet" -->
-      <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
-      networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
-      users worldwide.
-    </p>
-
-    <dl>
-      <dt>
-        <!-- Define "World-Wide Web" and reference definition for "the Internet" -->
-        <dfn>
-          <abbr title="World-Wide Web">WWW</abbr>
-        </dfn>
-      </dt>
-      <dd>
-        The World-Wide Web (WWW) is a system of interlinked hypertext documents
-        accessed on <a href="#def-internet">the Internet</a>.
-      </dd>
-    </dl>
-    ```
-
-- **渲染效果**：斜体
-
-    > <p>
-    > <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
-    > networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
-    > users worldwide.
-    > </p>
-    >
-    > 
-    >
-    > <dl>
-    > <dt>
-    >  <dfn>
-    >    <abbr title="World-Wide Web">WWW</abbr>
-    >  </dfn>
-    > </dt>
-    > <dd>
-    >  The World-Wide Web (WWW) is a system of interlinked hypertext documents
-    >  accessed on <a href="#def-internet">the Internet</a>.
-    > </dd>
-    > </dl>
-
-- **扩展**：可以作为 [`<dl>`](#[描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)) 中的 `<dt>` 的元素内容。
-
-## [术语文本 `<i>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i)
-
-- `<i>` 用于标记因某些原因需要区分普通文本的一系列文本。例如技术术语、音译、思想或船名等。
-- **语法**
-
-    ```html
-    <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
-    ```
-
-- **渲染效果**：斜体
-
-    > <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
-
 ## [可附标题内容 `<figure>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/figure)
 
-- `<figure>` 表示“独立的媒体单元”，是块级元素。`<figcaption>` 专门做“图注”，不会和正文混淆，是块级元素。
+**可附标题内容 `<figure>`** 表示“独立的媒体单元”，是块级元素。可能包含 [`<figcaption>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/figcaption) 元素定义的说明内容。
+
 - **语法**
 
     ```html
@@ -1412,7 +874,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
       <img src="assets/图片.png" alt="替代" style="width: 40%" />
       <figcaption style="font-size: 16px; color: gray">图注</figcaption>
     </figure>
-
+    
     <!-- 多个图注 -->
     <figure>
       <img src="assets/图片.png" alt="替代" style="width: 40%" />
@@ -1441,12 +903,12 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
       max-width: 220px;
       margin: auto;
     }
-
+    
     img {
       max-width: 220px;
       max-height: 150px;
     }
-
+    
     figcaption {
       background-color: #222;
       color: #fff;
@@ -1460,190 +922,198 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128160504158](assets/image-20241128160504158.png)
 
-- **扩展**：
+## [主题分割 `<hr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr)
 
-## [预格式化 `<pre>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/pre)
+**主题分割 `<hr>`** 即水平线，语义上表示段落级元素之间的主题转换，是块级元素。
 
-- **语法**：用于保证文本的编排顺序不变，文本中的空白符（比如空格和换行符）都会显示出来，是行内元素。
+```html
+<p>§1: The first rule of Fight Club is: You do not talk about Fight Club.</p>
+<hr />
+<p>§2: The second rule of Fight Club is: Always bring cupcakes.</p>
+```
+
+```css
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: #333;
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+}
+
+hr::after {
+  background: #fff;
+  content: '§';
+  padding: 0 4px;
+  position: relative;
+  top: -13px;
+}
+```
+
+> ![image-20241128161540618](assets/image-20241128161540618.png)
+
+# 列表
+
+**缩进**：列表与前一个元素会有一个缩进。
+
+## [列表项 `<li>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/li)
+
+**列表项 `<li>`** 用于表示列表中的项目。
+
+## [无序列表 `<ul>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul)
+
+- **语法**：显示无顺序排列的列表项 `<li>`。
 
     ```html
-    <pre>
-    function greet() {
-        console.log("Hello, world!");
-    }
-    </pre>
-    ```
-
-- **渲染效果**
-
-    > <pre>
-    > function greet() {
-    >     console.log("Hello, world!");
-    > }
-    > </pre>
-
-- **说明**：类似于 Markdown 的代码块
-
-## [行内代码 `<code>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/code)
-
-- **语法**：表示行内代码，是行内元素。
-
-    ```html
-    <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
-    ```
-
-- **渲染效果**
-
-    > <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
-
-## [锚 `<a>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a)
-
-- `<a>` 元素（或称锚元素）可以通过它的 href 属性创建通向其他网页、文件、电子邮件地址、同一页面内的位置或任何其他 URL 的超链接，供用户点击，属于行内元素。
-- **语法**：
-
-    ```html
-    <p>You can reach Michael at:</p>
-
     <ul>
-      <li><a href="https://example.com">Website</a></li>
-      <li><a href="mailto:m.bluth@example.com">Email</a></li>
-      <li><a href="tel:+123456789">Phone</a></li>
+      <li>第一列表项</li>
+      <li>第二列表项</li>
+      <li>第三列表项</li>
     </ul>
     ```
 
 - **渲染效果**
 
-    > <p>You can reach Michael at:</p>
-    >
     > <ul>
-    >   <li><a href="https://example.com">Website</a></li>
-    >   <li><a href="mailto:m.bluth@example.com">Email</a></li>
-    >   <li><a href="tel:+123456789">Phone</a></li>
+    >  <li>第一列表项</li>
+    >  <li>第二列表项</li>
+    >  <li>第三列表项</li>
     > </ul>
 
-- **常用属性**：
+- **说明**：渲染时默认以圆点等符号进行标记，如果想修改，应该在 CSS 中修改。
 
-    - `href`
-    - [跳转方式 `target`](#[跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target))
-    - `title`
-    - `download`
+## [有序列表 `<ol>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol)
 
-- **扩展**
+**有序列表 `<ol>`** 显示按顺序排列的列表项 `<li>`，默认以数字等符号进行标记。
 
-  - 元素内容可以是文本或其它元素（如图像）
-  - 可以在 URL/SRC 后加锚点
+### 有序列表语法
 
-## [键盘输入 `<kbd>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd)
+```html
+<ol>
+  <li>第一列表项</li>
+  <li>第二列表项</li>
+  <li>第三列表项</li>
+</ol>
+```
 
-- **语法**：表示用户输入，是行内元素。
+> <ol>
+> <li>第一列表项</li>
+> <li>第二列表项</li>
+> <li>第三列表项</li>
+> </ol>
 
-    ```html
-    <kbd>Enter</kbd>
-    ```
+### `type` 属性
 
-- **渲染效果**：<kbd>Enter</kbd>
+**`type` 属性**用于指定有序列表的计数器类型，即序列号的类型。
 
-## [程序输出 `<samp>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp)
+```html
+<ol type="A">
+  <li>第一列表项</li>
+  <li>第二列表项</li>
+  <li>第三列表项</li>
+</ol>
+```
 
-- **语法**：表示程序输出，是行内元素。
+> <ol type="A">
+> <li>第一列表项</li>
+> <li>第二列表项</li>
+> <li>第三列表项</li>
+> </ol>
 
-    ```html
-    <p>程序运行后输出：<samp>Hello, world!</samp></p>
-    ```
+### `start` 属性
 
-- **渲染效果**
+**`start` 属性**用于指定有序列表的起始值。
 
-    > <p>程序运行后输出：<samp>Hello, world!</samp></p>
+```html
+<ol start="5">
+  <li>第五列表项</li>
+  <li>第六列表项</li>
+  <li>第七列表项</li>
+</ol>
+```
 
-## [注音 `<ruby>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby)
+> <ol start="5">
+> <li>第五列表项</li>
+> <li>第六列表项</li>
+> <li>第七列表项</li>
+> </ol>
 
-- **语法**：用来展示东亚文字注音或字符注释。
+### `value` 属性
 
-    ```html
-    <ruby>
-      汉字
-      <rp>(</rp>
-      <rt>hàn zì</rt>
-      <rp>)</rp>
-    </ruby>
+**`value` 属性**用于指定有序列表项的值，这是 `<li>` 的属性。
 
-    <ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
-    ```
+```html
+<ol>
+  <li value="100">第一百列表项</li>
+  <li value="200">第二百列表项</li>
+  <li value="300">第三百列表项</li>
+</ol>
+```
 
-- **渲染效果**：<ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
-- **说明**
+> <ol>
+> <li value="100">第一百列表项</li>
+> <li value="200">第二百列表项</li>
+> <li value="300">第三百列表项</li>
+> </ol>
 
-  - **`<rp>(</rp>`** 表示在不支持 `ruby` 的浏览器中显示的**备用字符**。
-  - `<rb>` 元素已被弃用，不再使用。
+## 列表嵌套
 
-- 特殊标注
+**列表嵌套**是指在一个列表项 `<li>` 中包含另一个列表
 
-    - 拼音声调：ˉˊˇˋ
+```html
+<!-- 规范写法 -->
+<ul>
+  <li>
+    项目1
+    <ol>
+      <li>子项目 1</li>
+      <li>子项目 2</li>
+    </ol>
+  </li>
+  <li>项目2</li>
+</ul>
 
-## [文本方向 `<bdo>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo)
+<!-- 不规范写法 -->
+<ul>
+  <li>项目1</li>
+  <ol>
+    <li>子项目 1</li>
+    <li>子项目 2</li>
+  </ol>
+  <li>项目2</li>
+</ul>
+```
 
-- **语法**：指定文本渲染方向，默认从左向右，是行内元素。
+> <ul>
+> <li>项目1
+>   <ol>
+>       <li>子项目 1</li>
+>       <li>子项目 2</li>
+>   </ol>
+> </li>
+> <li>项目2</li>
+> </ul>
 
-    ```html
-    <p>该文本应从左到右绘制。</p>
-    <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
-    ```
+**注意**：不要将一个列表当成列表项 `<li>` 进行嵌套，而是要把列表放在 `<li>` 的内容中。
 
-- **渲染效果**
+## [菜单 `<menu>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu)
 
-    > <p>该文本应从左到右绘制。</p>
-    >
-    > <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
+**菜单 `<menu>`** 在 HTML 规范中被描述为 `<ul>` 的语义替代，但浏览器将其视为与 `<ul>` 没有区别。
 
-## [日期时间 `<time>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time)
+```html
+<menu>
+  <li>第一列表项</li>
+  <li>第二列表项</li>
+  <li>第三列表项</li>
+</menu>
+```
 
-- **语法**：表示一个特定的时间段。
-
-    ```html
-    <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
-    ```
-
-- **渲染效果*
-
-    > <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
-
-- **注意**
-
-    - 在使用公历之前的日期时不应使用该元素（因为这些日期的计算比较复杂）。
-    - 此部分关于 [**有效的日期时间值**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time#有效的日期时间值) 没弄懂。
-
-## [缩略语 `<abbr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr)
-
-- **语法**：表示一个缩略词。
-
-    ```html
-    <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
-    <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
-    ```
-
-- **渲染效果**
-
-    > <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
-    >
-    > <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
-
-- **说明**：`title` 属性用于当鼠标悬停时，对缩略词提供一个扩展解释。
-
-## 其它内联文本语义
-
-[上标 `<sup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup)
-
-[下标 `<sub>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub)
-
-[`bdi`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdi)
-
-[`data`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/data)
-
-[`small`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/small)
-
-[`var`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var)
-
-[`wbr`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr)
+> <menu>
+>   <li>第一列表项</li>
+>   <li>第二列表项</li>
+>   <li>第三列表项</li>
+> </menu>
 
 # [表格 `<table>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/table)
 
@@ -1717,6 +1187,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     > ![image-20241128151252635](assets/image-20241128151252635.png)
 
 - **`border` 属性**：属性 `<table border="1">` 控制边框已经弃用，在实际开发中，建议使用 CSS 样式来进行更灵活和精细的样式控制，或者引入 BootStrap。
+
 - **嵌套**：`<table>` 可以嵌套在 `<th>` 或 `<td>` 中
 
 ## 合并单元格
@@ -1748,6 +1219,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ## 自由表头
 
 - 属性 `scope` 可以添加在 `<th>` 元素中，以告诉屏幕阅读器该表头的类型——它是所在行的表头，还是所在列的表头。
+
 - `scope` 的值
 
     - 单列表头 `col`
@@ -1799,11 +1271,14 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
     > ![image-20241128151655606](assets/image-20241128151655606.png)
 
-# [表单 `<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#%E8%A1%A8%E5%8D%95)
+# 表单
 
-## [`<form> 基础`](https://developer.mozilla.org/zh-CN/docs/Learn/Forms)
+## [表单 `<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form)
 
-- `<form>` 元素表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。
+**表单 `<form>`** 元素表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。
+
+### 表单语法
+
 - **语法**
 
     ```html
@@ -1812,7 +1287,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
       <input type="submit" value="提交">
     </form>
     ```
-  
+
 - **扩展**：在 Django 框架下，必须校验，否则无法提交。
 
     ```html
@@ -1824,7 +1299,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     </form>
     ```
 
-## [`<form> 属性`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#%E5%B1%9E%E6%80%A7)
+### 表单属性
 
 - 允许的值在 [`<form>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#%E5%B1%9E%E6%80%A7)中
 
@@ -1834,27 +1309,30 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ### [`action`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#action)
 
-- `<form>` 元素的 `action` 属性用于指定表单数据提交的目标 URL。当用户填写表单并点击提交按钮时，浏览器会将表单数据发送到指定的 `action` URL。
-- **语法**：`<form action="/submit">`
+**`action`** 属性用于指定表单数据提交的目标 URL。当用户填写表单并点击提交按钮时，浏览器会将表单数据发送到指定的 `action` URL。
+
+**语法**：`<form action="/submit">`
 
 ### [`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/form#method)
 
-- `<form>` 元素的 `method` 属性用于指定表单数据提交时使用的 HTTP 方法。HTTP 方法定义了浏览器将如何发送表单数据以及服务器应该如何处理这些数据。`method` 属性有两个常用的取值： `get` 和 `post`。
-- **语法**：`<form method="post">`
-- [**GET方法**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)
+**`method`** 属性用于指定表单数据提交时使用的 HTTP 方法。HTTP 方法定义了浏览器将如何发送表单数据以及服务器应该如何处理这些数据。`method` 属性有两个常用的取值： `get` 和 `post`。
 
-    - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
+**语法**：`<form method="post">`
 
-- [**POST方法**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)
+**[GET方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**
 
-    - 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
+- 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
+
+**[POST方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)**
+
+- 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
 
 ## [标签 `<label>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/label)
 
-- `<label>` 元素用于为表单元素提供标签，并且在用户界面上通常表现为可点击的文本。
+- **标签 `<label>`** 用于为表单元素提供标签，并且在用户界面上通常表现为可点击的文本。
 
     -  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的可点击区域。
-    - 当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
+    -  当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
 
 - **语法**：
 
@@ -1875,6 +1353,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
     4. 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
 
 - **`for` 属性**：用于关联表单元素的 `id`。
+
 - **扩展**：如果将 `<input>` 元素嵌套在 `<label>` 元素内部，就不需要使用 `for` 和 `id` 属性，因为它们将自动关联。但这种方式不利于 CSS 样式控制。
 
     ```html
@@ -1888,29 +1367,28 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ## [输入框 `<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input)
 
-### `<input>` 基础
+**输入框 `<input>`** 用于创建各种表单控件，允许用户输入数据或进行选择。
 
-- `<input>` 元素用于创建各种表单控件，允许用户输入数据或进行选择。
-- **语法**
+### 输入框语法
 
-    ```html
-    <form action="/submit" method="post">
-      <label for="username">用户名：</label>
-      <input type="text" id="username" name="username" placeholder="请输入用户名">
-      <input type="submit" value="提交">
-    </form>
-    ```
+```html
+<form action="/submit" method="post">
+  <label for="username">用户名：</label>
+  <input type="text" id="username" name="username" placeholder="请输入用户名">
+  <input type="submit" value="提交">
+</form>
+```
 
-    ![image-20241204213459154](assets/image-20241204213459154.png)
+![image-20241204213459154](assets/image-20241204213459154.png)
 
-    **在上述示例中**：
+**在上述示例中**：
 
-    1. 使用 `<label>` 元素的 `for` 属性来标识 `用户名：` 字段。
-    2. 使用 `id` 属性关联 `label` 元素的 `for` 属性。
-    3. 使用 `name` 属性标识输入框的内容。
-    4. 使用 `placeholder` 属性进行输入提示。
+1. 使用 `<label>` 元素的 `for` 属性来标识 `用户名：` 字段。
+2. 使用 `id` 属性关联 `label` 元素的 `for` 属性。
+3. 使用 `name` 属性标识输入框的内容。
+4. 使用 `placeholder` 属性进行输入提示。
 
-### [`<input>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%E5%B1%9E%E6%80%A7)
+### 输入框属性
 
 - 允许的值在 [`<input>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#%E5%B1%9E%E6%80%A7)中
 - [**`type`**](#[`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#type))：控件类型
@@ -1925,15 +1403,15 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ### [`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#type)
 
-- `type` 属性指定要渲染的控件的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值。
-- **属性值**
+**[`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#type)** 属性指定要渲染的控件的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值。
 
-    - 允许的值在 [Input 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_类型)中
-    - 如果未指定此属性，则采用的默认类型为 `text`。
+- 允许的值在 [Input 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#input_类型)中
+- 如果未指定此属性，则采用的默认类型为 `text`。
 
 #### [单行文本 `text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/text)
 
 - **`text`** 类型的 `<input>` 元素用于创建单行文本输入框。
+
 - **语法**：`<input type="text">`
 
     ```html
@@ -1953,6 +1431,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 #### [密码 `password`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/password)
 
 - `password` 类型的 `<input>` 元素用于创建密码输入框，允许用户输入密码或其他敏感信息。与普通的文本输入框不同，密码输入框中的输入通常以点或星号的形式显示，以隐藏实际输入的字符。
+
 - **语法**：`<input type="password">`
 
     ```html
@@ -1966,6 +1445,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 #### [文件上传 `file`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/file)
 
 - `password` 类型的 `<input>` 元素用于创建文件上传表单控件，允许用户从本地文件系统中选择一个或多个文件，并将其上传到服务器。
+
 - **语法**：`<input type="file">`
 
     ```html
@@ -1988,6 +1468,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 #### [单选框 `radio`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/radio)
 
 - `radio` 类型的 `<input>` 元素用于创建单选框，允许用户从一组选项中选择一个选项。
+
 - **语法**：`<input type="radio">`
 
     ```html
@@ -2007,6 +1488,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 #### [复选框 `checkbox`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/checkbox)
 
 - `checkbox` 类型的 `<input>` 元素用于创建复选框，允许用户选择或取消选择一个或多个选项。
+
 - **语法**：`<input type="checkbox">`
 
     ```html
@@ -2028,12 +1510,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 #### [提交 `submit`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input/submit)
 
 - `submit` 类型的 `<input>` 元素用于创建表单中的提交按钮。当用户点击该按钮时，将触发表单的提交行为，将表单中的数据发送到服务器。
+
 - **语法**：`<input type="submit">`
 
     ```html
     <form action="/submit" method="post">
       <!-- 这里是其他表单元素 -->
-
+    
       <input type="submit" value="提交">
     </form>
     ```
@@ -2058,6 +1541,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ## [多行文本 `<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/textarea)
 
 - `<textarea>` 元素用于在 HTML 表单中创建多行文本输入框，允许用户输入大段自由格式的文本。
+
 - **语法**：
 
     ```html
@@ -2080,6 +1564,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ## [下拉框 `<select>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/select)
 
 - `<select>` 元素表示一个提供下拉菜单的控件。通常与 [`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/option) 元素结合使用，每个 `<option>` 表示一个可选项。
+
 - **语法**
 
     ```html
@@ -2125,11 +1610,12 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 ## [按钮 `<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button)
 
 - `<button>` 元素用于在 HTML 中创建按钮，可以包含文本、图像或其他 HTML 元素。它是一个多功能的元素，通常用于与 JavaScript 配合执行自定义操作。
+
 - **语法**
 
-  ```html
-  <button type="reset">重置</button>
-  ```
+    ```html
+    <button type="reset">重置</button>
+    ```
 
 - [**`type` 属性**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/button#type)
 
@@ -2161,46 +1647,51 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
         </script>
         ```
 
-# [图片和多媒体](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#图片和多媒体)
+# 多媒体
+
+**[图片和多媒体](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#图片和多媒体)**：HTML 支持各种多媒体资源，例如图像、音频和视频。
 
 ## [图像 `<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/img)
 
-- `<img>` 用于在页面中嵌入图像，是一个空元素，显示类型是行内元素，内容类型为替换元素。
-- 关于自闭合的说明
+**图像 `<img>`** 用于在页面中嵌入图像，是行内元素，空元素。
 
-    - 在 HTML5 中，`<img>` 是 void 元素（空元素），**不需要**自闭合标签。这是现代 HTML 的标准写法，简洁且符合规范。
-    - 在 XHTML 中要求所有标签必须闭合，但 XHTML 已逐渐被 HTML5 取代。
-    - 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
+### 语法
 
-- **语法**
+```html
+<img src="assets/dog.jpg" alt="dog" />
+```
 
-    ```html
-    <img src="assets/dog.jpg" alt="dog" />
-    ```
-
-- **渲染效果**
-
-  > <img src="assets/dog.jpg" alt="dog" style="width: 50%; float: left" />
-
-- **常用属性**：`src`  `alt`  `title`  `width`  `height`
+> <img src="assets/dog.jpg" alt="dog" style="width: 50%; float: left" />
 
 ### [响应式图片](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
-响应式可以解决不同尺寸屏幕对图片的要求
+**响应式图片**可以解决不同尺寸屏幕对图片的要求
+
+### [图像映射 `<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map)
+
+**[图像映射 `<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map)** 与 [图像映射区域 `area`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area) 元素一起使用来定义一个图像映射（一个可点击的链接区域）。
 
 ## [音频 `<audio>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/audio)
 
-音频大多数功能与音频相似
+**音频 `<audio>`** 元素用于在页面中嵌入音频，是行内元素。
+
+```html
+<audio src="music/实验音频.mp3" controls>降级文本</audio>
+```
+
+> <audio src="music/实验音频.mp3" controls>降级文本</audio>
+
+- `降级文本` 是当浏览器不支持 `<audio>` 元素时的回退
 
 ## [视频 `<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)
 
-- 元素 `<video>` 用于支持文档内的视频播放，属性 `controls` 用于添加播放按钮。
+**视频 `<video>`** 元素 `<video>` 用于支持文档内的视频播放，属性 `controls` 用于添加播放按钮。
 
-    ```html
-    <video src="video/终局第01集.mp4" controls></video>
-    ```
+```html
+<video src="video/终局第01集.mp4" controls></video>
+```
 
-### [视频属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/video)
+### 视频属性
 
 - src、height、width
 - `autoplay` 自动播放
@@ -2210,39 +1701,690 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 
 ### 视频事件
 
-## [内嵌内容](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#内嵌内容)
+## [播放源 `<source>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/source)
 
-## [播放源`<source>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source)
+**播放源 `<source>`** 元素为 picture、audio 或 video 元素指定多个媒体资源。
 
-- 在 `<video>` 里嵌套 `<source>` 使视频有备用播放源，浏览器将会使用它所支持的第一个源。
+在 `<video>` 里嵌套 `<source>` 使视频有备用播放源，浏览器将会使用它所支持的第一个源。
 
-    ```html
-    <video controls>
-      <source src="video/终局第01集.mp4" type="video/MP4" />
-      <source src="video/终局第01集.mkv" type="video/mkv" />
-    </video>
-    ```
+```html
+<video controls>
+  <source src="video/终局第01集.mp4" type="video/MP4" />
+  <source src="video/终局第01集.mkv" type="video/mkv" />
+</video>
+```
+
+## [嵌入文本轨 `<track>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/track)
+
+**嵌入文本轨 `<track>`** 作为媒体元素 [`audio`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/audio) 和 [`video`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/video) 的子元素使用。每个文本轨元素允许你指定一个定时文本轨（或基于时间的数据），可以与媒体元素并行显示，例如在视频上叠加字幕或隐藏式字幕，或与音频轨一起显示。
+
+# 内嵌内容
+
+**[内嵌内容](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements#内嵌内容)**是嵌入到网页的内容。
 
 ## [picture `<picture>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/picture)
 
-## [内联框架`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
+**picture `<picture>`** 过包含零或多个 [`source`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/source) 元素和一个 [`img`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img) 元素来为不同的显示 / 设备场景提供图像版本。
 
-它能够将另一个 HTML 页面嵌入到当前页面中。
+## [内联框架 `<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/iframe)
 
-## [外部内容嵌入`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)
+**内联框架 `<iframe>`** 能够将另一个 HTML 页面嵌入到当前页面中。
 
-将外部内容嵌入文档中的指定位置。
+## [外部内容嵌入 `<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/embed)
 
-## [嵌入对象`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)
+**外部内容嵌入 `<embed>`** 能够将外部内容嵌入文档中的指定位置。
 
-表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。
+## [嵌入对象 `<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/object)
 
-# [SVG 和 MathML](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#svg_和_mathml)
+**嵌入对象 `<object>`** 表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。
 
-# [脚本](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#脚本)
+# 引用
 
-# [交互元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#交互元素)
+## [块级引用 `<blockquote>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/blockquote)
 
-# [Web 组件](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#web_组件)
+**块级引用 `<blockquote>`** 表示其中的文字是引用内容，是块级元素。
 
-# 待学习
+- **语法**
+
+    ```html
+    <div>
+      <blockquote cite="https://www.huxley.net/bnw/four.html">
+        <p>
+          Words can be like X-rays, if you use them properly—they’ll go through
+          anything. You read and you’re pierced.
+        </p>
+      </blockquote>
+      <p>—Aldous Huxley, <cite>Brave New World</cite></p>
+    </div>
+    ```
+
+    ```css
+    div:has(> blockquote) {
+      background-color: #ededed;
+      margin: 10px auto;
+      padding: 15px;
+      border-radius: 5px;
+    }
+    
+    blockquote p::before {
+      content: "\201C";
+    }
+    
+    blockquote p::after {
+      content: "\201D";
+    }
+    
+    blockquote + p {
+      text-align: right;
+    }    
+    ```
+
+- **渲染效果**：缩进，加引号
+
+    > ![image-20241128163006929](assets/image-20241128163006929.png)
+
+- **说明**
+
+    - 若引文来源于网络，则可以将原内容的出处 URL 地址设置到 cite 特性上。
+    - 若要以文本的形式告知读者引文的出处时，可以通过 `<cite>` 元素。
+
+## [行内引用 `<q>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/q)
+
+**行内引用 `<q>`** 用于引用短文本，是行内元素，渲染时加引号。
+
+```html
+<p>他说：<q>今天的天气真好！</q></p>
+```
+
+> <p>他说：<q>今天的天气真好！</q></p>
+
+## [作品引用 `<cite>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/cite)
+
+**作品引用 `<cite>`** 用于引用作品，是行内元素，渲染时为斜体。
+
+```html
+<p>
+  更多内容详见<cite>《计算机基础》</cite>。
+</p>
+```
+
+> <p>
+> 更多内容详见<cite>《计算机基础》</cite>。
+> </p>
+
+# 标记
+
+## 标记消歧义
+
+标记类的元素一般在渲染时，呈现特殊格式，以突出显示，不能为了某种视觉效果而滥用该类元素。
+
+- **粗体**
+
+    - `<strong>` 用来对一个句子的部分**文本**增加重要性
+    - `<b>` 用来引起人们的注意，如关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
+
+- **斜体**
+
+    - `<em>` 表示语气上的强调
+    - `<i>` 用于技术术语、音译、思想或船名等
+    - `<dfn>` 表示定义中的术语
+    - `<cite>` 用于引用作品
+
+- **删除线**
+
+    - `<del>` 属于编辑标识，表示被从文档中删除的内容。
+    - `<s>` 表示不再准确或不再相关的内容，不适用于指示文档编辑。
+
+- **下划线**
+
+    -  `<del>` 属于编辑标识，表示已经被插入文档中的文本。
+    -  `<u>` 表示非文本注释，例如拼写错误和中文专有名词。
+
+- **高亮**：`<mark>` 表示上下文相关或突出显示以供参考
+
+## [标记高亮 `<mark>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/mark)
+
+- `<mark>` 表示上下文相关或突出显示以供参考，是行内元素。
+
+- **语法**
+
+    ```html
+    <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
+    ```
+
+- **渲染效果**：标记高亮
+
+    > <p>&lt;mark&gt; 元素用于 <mark>高亮</mark> 文本</p>
+
+- **注意**：不要纯粹为了高亮显示而用 `<mark>` 元素，而是应该使用 CSS 来实现。
+
+- 浏览器通常以黄色背景高亮显示 `<mark>` 元素的内容，但您可以通过 CSS 进行自定义样式。
+
+    ```css
+    mark {
+      background-color: yellow;
+      color: black;
+    }
+    ```
+
+## [语气强调 `<em>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/em)
+
+- `<em>` 表示语气上的强调，是行内元素。
+
+- **语法**
+
+    ```html
+    <p>Get out of bed <em>now</em>!</p>
+    <p>We <em>had</em> to do something about it.</p>
+    <p>This is <em>not</em> a drill!</p>
+    ```
+
+- **渲染效果**：斜体
+
+    > <p>Get out of bed <em>now</em>!</p>
+    > <p>We <em>had</em> to do something about it.</p>
+    > <p>This is <em>not</em> a drill!</p>
+
+## [重要文本 `<strong>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/strong)
+
+- HTML5中，`<strong>` 用来对一个句子的部分**文本**增加重要性，是行内元素。
+
+- **语法**
+
+    ```html
+    <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
+    ```
+
+- **渲染效果**：粗体
+
+    > <p>这个句子里的<strong>这个词语</strong>比较重要。</p>
+
+## [删除文本 `<del>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/del)
+
+**删除文本 `<del>`** 表示被从文档中删除的内容，属于编辑标识，与 `<ins>` 对应，是行内元素，渲染时加删除线。
+
+```html
+<p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
+```
+
+> <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
+
+## [插入文本 `<ins>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ins)
+
+**插入文本 `<ins>`** 表示已经被插入文档中的文本，属于编辑标识，与 `<del>` 对应，是行内元素，渲染时加下划线。
+
+```html
+<body>
+  <p><ins>这是一段新增的文本</ins></p>
+</body>
+```
+
+> <p><ins>这是一段新增的文本</ins></p>
+
+## [不准确文本 `<s>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/s)
+
+**不准确文本 `<s>`** 表示不再准确或不再相关的内容，不适用于指示文档编辑，是行内元素，渲染时加删除线。
+
+```html
+<s>Today's Special: Salmon</s> SOLD OUT
+```
+
+> <s>Today's Special: Salmon</s> SOLD OUT
+
+## [非文本注释 `<u>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/u)
+
+**非文本注释 `<u>`** 表示行内文本拥有一个非文本形式的注释，该注释需要以某种方式渲染出来。例如拼写错误和中文专有名词。渲染时加下划线。
+
+```html
+<p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
+```
+
+> <p>This paragraph includes a <u>wrnogly</u> spelled word.</p>
+
+## [注意文本 `<b>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/b)
+
+**注意文本 `<b>`** 用来引起人们的注意，但不传达任何额外的重要性，也不暗示其他语气或情绪，例如文档摘要中的关键词、评论中的产品名称、交互式文本驱动软件中的可操作词或文章导语。
+
+- **语法**
+
+    ```html
+    <p>
+      本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
+      <b class="keywords">HTML</b> 文档中的用法。
+    </p>
+    ```
+
+- **渲染效果**：粗体
+
+    > <p>
+    > 本文档描述了几个<b class="keywords">文本级</b>元素，并解释了它们在
+    > <b class="keywords">HTML</b> 文档中的用法。
+    > </p>
+
+- **注意**：实在找不到合适的元素才使用
+
+# 术语
+
+## [描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)
+
+**描述列表 `<dl>`** 是一个包含 [术语 `<dd>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dd) 和 [描述 `<dt>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dt) 的列表，通常用于展示词汇表或者元数据 (键 - 值对列表)。
+
+- **语法**
+
+    ```html
+    <p>Cryptids of Cornwall:</p>
+    
+    <dl>
+      <dt>Beast of Bodmin</dt>
+      <dd>A large feline inhabiting Bodmin Moor.</dd>
+    
+      <dt>Morgawr</dt>
+      <dd>A sea serpent.</dd>
+    
+      <dt>Owlman</dt>
+      <dd>A giant owl-like creature.</dd>
+    </dl>
+    ```
+
+    ```css
+    p,
+    dt {
+      font-weight: bold;
+    }
+    
+    dl,
+    dd {
+      font-size: 0.9rem;
+    }
+    
+    dd {
+      margin-bottom: 1em;
+    }
+    ```
+
+- **渲染效果**：描述部分有缩进
+
+    > ![image-20241128154157844](assets/image-20241128154157844.png)
+
+- **扩展**：`<dt>` 的元素内容可以使用 [`<dfn>`](#[术语 `<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn))。
+
+## [术语定义 `<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dfn)
+
+**术语定义 `<dfn>`** 表示定义中的术语，是行内元素。
+
+```html
+<p>
+  <!-- Define "The Internet" -->
+  <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
+  networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
+  users worldwide.
+</p>
+
+<dl>
+  <dt>
+    <!-- Define "World-Wide Web" and reference definition for "the Internet" -->
+    <dfn>
+      <abbr title="World-Wide Web">WWW</abbr>
+    </dfn>
+  </dt>
+  <dd>
+    The World-Wide Web (WWW) is a system of interlinked hypertext documents
+    accessed on <a href="#def-internet">the Internet</a>.
+  </dd>
+</dl>
+```
+
+- **渲染效果**：斜体
+
+    > <p>
+    > <dfn id="def-internet">The Internet</dfn> is a global system of interconnected
+    > networks that use the Internet Protocol Suite (TCP/IP) to serve billions of
+    > users worldwide.
+    > </p>
+    >
+    > 
+    >
+    >
+    > <dl>
+    > <dt>
+    > <dfn>
+    > <abbr title="World-Wide Web">WWW</abbr>
+    > </dfn>
+    > </dt>
+    > <dd>
+    > The World-Wide Web (WWW) is a system of interlinked hypertext documents
+    > accessed on <a href="#def-internet">the Internet</a>.
+    > </dd>
+    > </dl>
+
+- **扩展**：可以作为 [`<dl>`](#[描述列表 `<dl>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/dl)) 中的 `<dt>` 的元素内容。
+
+## [术语文本 `<i>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/i)
+
+**术语文本 `<i>`** 用于标记因某些原因需要区分普通文本的一系列文本。例如技术术语、音译、思想或船名等。是行内元素，渲染为斜体。
+
+```html
+<p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
+```
+
+> <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
+
+# 计算机
+
+## [预格式化 `<pre>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/pre)
+
+**预格式化 `<pre>`** 用于保证文本的编排顺序不变，文本中的空白符（比如空格和换行符）都会显示出来，是行内元素。类似于 Markdown 的代码块。
+
+```html
+<pre>
+function greet() {
+  console.log("Hello, world!");
+}
+</pre>
+```
+
+> <pre>
+> function greet() {
+>  console.log("Hello, world!");
+> }
+> </pre>
+
+## [行内代码 `<code>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/code)
+
+**行内代码 `<code>`** 表示在段落内的一段文本是一段代码，是行内元素。
+
+```html
+<p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
+```
+
+> <p>请将以下代码添加到项目中：<code>console.log("Hello, world!");</code></p>
+
+## [键盘输入 `<kbd>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/kbd)
+
+**键盘输入 `<kbd>`** 表示用户输入，是行内元素。
+
+```html
+<kbd>Enter</kbd>
+```
+
+> <kbd>Enter</kbd>
+
+## [程序输出 `<samp>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/samp)
+
+**程序输出 `<samp>`** 表示程序输出，是行内元素。
+
+```html
+<p>程序运行后输出：<samp>Hello, world!</samp></p>
+```
+
+> <p>程序运行后输出：<samp>Hello, world!</samp></p>
+
+## [变量 `var`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/var)
+
+**变量 `var`** 表示数学表达式或编程上下文中的变量名称，是行内元素，渲染为斜体。
+
+```html
+<p>
+  长方体的体积公式为：<var>v</var> = <var>l</var> × <var>w</var> × <var>h</var>
+</p>
+```
+
+> <p>
+>   长方体的体积公式为：<var>v</var> = <var>l</var> × <var>w</var> × <var>h</var>
+> </p>
+
+# 文本方向
+
+## [双向文本覆盖 `<bdo>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/bdo)
+
+**双向文本覆盖 `<bdo>`** 元素用于覆盖文本默认的渲染方向，默认从左向右，是行内元素。
+
+```html
+<p>该文本应从左到右绘制。</p>
+<p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
+```
+
+> <p>该文本应从左到右绘制。</p>
+>
+> <p><bdo dir="rtl">该文本应从右到左绘制。</bdo></p>
+
+## [双向文本隔离 `<bdi>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/bdi)
+
+**双向文本隔离 `<bdi>`** 元素用于隔离文本默认的渲染方向，防止未知方向的文本影响周围文本的布局，是行内元素。
+
+# 交互
+
+[交互元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#交互元素)用于创建交互式用户界面对象。
+
+## [折叠组件 `<details>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/details)
+
+**折叠组件 `<details>`** 可创建一个折叠组件，仅在被切换成展开状态时，它才会显示内含的信息。[`<summary>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/summary) 元素可为该部件提供概要或者标签。
+
+```html
+<details>
+  <summary>古埃及</summary>
+  <p>
+    <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a> 前3150年–前2686年
+  </p>
+  <p>
+    <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a> 前2686年–前2181年
+  </p>
+  <p>
+    <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a> 前2181年–前2055年
+  </p>
+  <p>更多...</p>
+</details>
+```
+
+> <details>
+> <summary>古埃及</summary>
+> <p>
+>  <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a> 前3150年–前2686年
+> </p>
+> <p>
+>  <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a> 前2686年–前2181年
+> </p>
+> <p>
+>  <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a> 前2181年–前2055年
+> </p>
+> <p>更多...</p>
+> </details>
+
+## [对话框 `dialog`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dialog)
+
+# 脚本
+
+**[脚本](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#脚本)**可以创建动态内容和 Web 应用程序。
+
+## [脚本 `<script>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script)
+
+**脚本 `<script>`** 用于嵌入可执行代码或数据，通常用作嵌入或者引用 JavaScript 代码。
+
+## [`<canvas>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/canvas)
+
+**`<canvas>`** 元素可被用来通过 JavaScript（[Canvas](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API) API 或 [WebGL](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API) API）绘制图形及图形动画。
+
+## [无脚本 `<noscript>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/noscript)
+
+**无脚本 `<noscript>`** 定义了在页面上的脚本类型不支持或浏览器当前关闭脚本时插入的 HTML 部分。
+
+# SVG 和 MathML
+
+**[SVG 和 MathML](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#svg_和_mathml)**：可以使用 [`svg`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Reference/Element/svg) 或 [`math`](https://developer.mozilla.org/zh-CN/docs/Web/MathML/Reference/Element/math) 将 [SVG](https://developer.mozilla.org/zh-CN/docs/Web/SVG) 或 [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML) 内容直接嵌入 HTML 文档。
+
+# [Web 组件](https://developer.mozilla.org/zh-CN/docs/Web/API/Web_components)
+
+**Web 组件**是一种与 HTML 相关联的技术，允许你创建可重用的定制元素（它们的功能封装在你的代码之外）并且在你的 web 应用中使用它们。
+
+## [内容模板 `<template>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/template)
+
+**内容模板 `<template>`** 是一种用于保存客户端内容机制，该内容在加载页面时不会呈现，但随后可以 (原文为 may be) 在运行时使用 JavaScript 实例化。
+
+## [插槽 `<slot>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/slot)
+
+**插槽 `<slot>`** 是一个在 web 组件内部的占位符，你可以使用自己的标记来填充该占位符，从而创建单独的 DOM 树并将其一起呈现。
+
+# 其它行内元素
+
+## [内容跨越 `<span>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/span)
+
+**内容跨越 `<span>`** 元素无语义，用于给段落内的文本加样式，是行内元素。该元素仅应在无其他合适语义元素时使用。
+
+```html
+<p>
+  Add the <span class="ingredient">basil</span>,
+  <span class="ingredient">pine nuts</span> and
+  <span class="ingredient">garlic</span> to a blender and blend into a paste.
+</p>
+
+<p>
+  Gradually add the <span class="ingredient">olive oil</span> while running the
+  blender slowly.
+</p>
+```
+
+```css
+span.ingredient {
+  color: #f00;
+}
+```
+
+> ![image-20241128170152520](assets/image-20241128170152520.png)
+
+## [锚元素 `<a>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a)
+
+**锚元素 `<a>`** 可以通过它的 `href` 属性创建通向其他网页、文件、电子邮件地址、同一页面内的位置或任何其他 URL 的超链接，供用户点击，属于行内元素。
+
+- **语法**：
+
+    ```html
+    <p>You can reach Michael at:</p>
+    
+    <ul>
+      <li><a href="https://example.com">Website</a></li>
+      <li><a href="mailto:m.bluth@example.com">Email</a></li>
+      <li><a href="tel:+123456789">Phone</a></li>
+    </ul>
+    ```
+
+- **渲染效果**
+
+    > <p>You can reach Michael at:</p>
+    >
+    > <ul>
+    > <li><a href="https://example.com">Website</a></li>
+    > <li><a href="mailto:m.bluth@example.com">Email</a></li>
+    > <li><a href="tel:+123456789">Phone</a></li>
+    > </ul>
+
+- **常用属性**：
+
+    - `href`
+    - [跳转方式 `target`](#[跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target))
+    - `title`
+    - `download`
+
+- **扩展**
+
+    - 元素内容可以是文本或其它元素（如图像）
+    - 可以在 URL/SRC 后加锚点
+
+## [注音 `<ruby>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ruby)
+
+**注音 `<ruby>`** 用来展示东亚文字注音或字符注释。
+
+```html
+<ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
+```
+
+> <ruby>汉字<rp>(</rp><rt>hàn zì</rt><rp>)</rp></ruby>
+
+## [日期时间 `<time>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time)
+
+- **语法**：表示一个特定的时间段。
+
+    ```html
+    <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
+    ```
+
+- **渲染效果*
+
+    > <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>
+
+- **注意**
+
+    - 在使用公历之前的日期时不应使用该元素（因为这些日期的计算比较复杂）。
+    - 此部分关于 [**有效的日期时间值**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/time#有效的日期时间值) 没弄懂。
+
+## [缩略语 `<abbr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/abbr)
+
+**缩略语 `<abbr>`** 用于代表缩写。
+
+- **语法**
+
+    ```html
+    <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
+    <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
+    ```
+
+- **渲染效果**
+
+    > <p>你可以用 <abbr>EMS</abbr> 把这个包裹寄给我。</p>
+    >
+    > <p>你可以用 <abbr title="邮政特快专递服务">EMS</abbr> 把这个包裹寄给我。</p>
+
+- **说明**：`title` 属性用于当鼠标悬停时，对缩略词提供一个扩展解释。
+
+## 其它内联文本语义
+
+[上标 `<sup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sup)
+
+[下标 `<sub>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/sub)
+
+[`data`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/data)
+
+[`small`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/small)
+
+[`wbr`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/wbr)
+
+# 其它块级元素
+
+## [内容划分 `<div>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/div)
+
+**内容划分 `<div>`** 元素无语义，用于将零散的行内元素组成区块，是块级元素。
+
+```html
+<div class="shadowbox">
+  <p>这是一张非常有趣的说明，陈列在一个可爱的影盒里。</p>
+</div>
+```
+
+```css
+.shadowbox {
+  width: 15em;
+  border: 1px solid #333;
+  box-shadow: 8px 8px 5px #444;
+  padding: 8px 12px;
+  background-image: linear-gradient(180deg, #fff, #ddd 40%, #ccc);
+}
+```
+
+> ![image-20241128144407274](assets/image-20241128144407274.png)
+
+# 其它空元素
+
+## [换行 `<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br)
+
+**换行 `<br>`** 用于在文本中生成一个换行符（回车），将 `<br>` 之后的文本从下一行开始渲染，是空元素。
+
+```html
+<p>这是第一行<br>这是第二行</p>
+```
+
+> <p>这是第一行<br>这是第二行</p>
+
+**注意**
+
+- 不要使用 <kbd>Enter</kbd> 进行换行
+- 不要用 `<br>` 来增加文本之间的行间隔
+

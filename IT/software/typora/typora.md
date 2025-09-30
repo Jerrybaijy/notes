@@ -104,6 +104,7 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | ==编辑== |  |
+| 增加 / 降低标题级别 | <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd> |
 | 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
 | 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
 | 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
@@ -156,7 +157,7 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 
 - 当想修改一个已下载的主题时，不要在原主题文件修改 CSS，否则版本更新时可能被覆盖。
 
-- 应[添加自定义 CSS](https://support.typoraio.cn/Add-Custom-CSS/)文件 `base.user.css` 和 `{current-theme}.css`
+- 应[添加自定义 CSS](https://support.typoraio.cn/Add-Custom-CSS/)文件 `base.user.css` 和 `{current-theme}.css`
 - `base.user.css`：对所有主题生效
 - `{current-theme}.user.css`：对 `{current-theme}.css` 生效
 
@@ -490,6 +491,11 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
       border-top: 2px solid #7a828e; /* 设置上边框为2像素宽的灰色实线 */
       height: 0;           /* 明确设置高度为0，确保由边框决定视觉厚度 */
     }
+    
+    /* <summary> 元素字体大小 */
+    summary {
+      font-size: 1.3em;
+    }
     ```
 ## 主题备忘
 
@@ -621,6 +627,11 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
     
     /* 图表左对齐 */
     .md-diagram-panel-preview {text-align:left;}
+    
+    /* <summary> 元素字体大小 */
+    summary {
+      font-size: 1.3em;
+    }
     ```
 
 ## Github
@@ -951,7 +962,8 @@ flowchart TD
     - 所有 HTML 标签的效果将失效。
 - 导出到 PDF、HTML、图片时，Markdown 和 HTML 标签都有效。
 - `<!-- 注释 -->` 这种 HTML 在代码块以外时，在导出时会隐藏。
-- 
+- `HTML`：带 Typora 主题的 HTML
+- `HTML (without styles)`：不带 Typora 主题的 HTML
 
 # 其它
 
