@@ -79,9 +79,9 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 # [Emmet](https://emmet.io/)
 
-**Emmet** 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的标配工具。
+**Emmet** 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的内置工具。
 
-- **使用**：`缩写 + Tap` 或 `缩写 + Enter`
+- **使用**：`缩写 | Tap` 或 `缩写 | Enter`
 
 - **基础语法规则**
 
@@ -848,6 +848,51 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
     "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
 }
 ```
+
+# [MDN](https://developer.mozilla.org/zh-CN/)
+
+**MDN** (**M**ozilla **D**eveloper **N**etwork)，全称 **MDN Web Docs**，是一个为 Web 开发者提供权威的、开放的、免费的技术文档网站。
+
+最初由 **Mozilla 基金会**（也就是开发 Firefox 浏览器的组织）创建和维护，后来，MDN 的发展不再仅仅依赖 Mozilla，而是由 **MDN Web Docs 社区** 维护，并且由 **Mozilla、谷歌、微软、三星等公司**共同支持。
+
+> <details>
+> <summary>
+>  <a
+>    href="https://developer.mozilla.org/zh-CN/docs/Web"
+>    alt="MDN Web" title="MDN Web"
+>    >Web 技术</a
+>  >：Web 主页面
+> </summary>
+> <ul>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Web/HTML"
+>      alt="MDN HTML" title="MDN HTML"
+>      >HTML</a
+>    >：HTML 主页面
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>      alt="MDN CSS" title="MDN CSS"
+>      >CSS</a
+>    >：CSS 主页面
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript"
+>      alt="MDN JavaScript" title="MDN JavaScript"
+>      >JavaScript</a
+>    >：JavaScript 主页面
+>  </li>
+> </ul>
+> </details>
+>
+> [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Glossary "学习 Web 开发")
+>
+> [教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials "MDN 教程")：HTML、CSS、JavaScript 教程
+>
+> [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary  "MDN Web 文档术语表")：Web 相关术语的定义
 
 # MongoDB
 
@@ -1850,6 +1895,8 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 # VS Code
 
+> [VS Code 文档](https://vscode.github.net.cn/docs)
+
 ## 环境搭建
 
 ### 安装文件 
@@ -1989,36 +2036,32 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 - **`autopep8`**：Python 格式化（备用）
 - **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
 
-## 快捷键
+## [快捷键](https://vscode.github.net.cn/docs/getstarted/keybindings)
 
-- **设置快捷键**
+### 快捷键列表
 
-    - 左下角 `管理` - `键盘快捷方式`
+| 操作 | [VS Code 快捷键](https://code.visualstudio.com/docs/reference/default-keybindings) |
+| :---: | :---: |
+| ==软件配置== |  |
+| 设置<br />（注意与搜狗输入法冲突） | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
+| 打开命令面板 | <kbd>F1</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==光标== |  |
+| 选择下一个匹配项，并添加多光标 | <kbd>Ctrl</kbd> + <kbd>D</kbd> |
+| 取消最近添加的匹配项和多光标 | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
+| 添加多光标 | <kbd>Alt</kbd> + <kbd>单击</kbd> |
+| ==代码== |  |
+| 代码格式化（自己修改） | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Z</kbd> |
+| 使用 Emmet 缩写包围 （自己修改） | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> |
+| ==终端== |  |
+| 打开内置终端 | <kbd>Ctrl</kbd> + <kbd>~</kbd> |
 
-- **软件配置**
+### 快捷键相关问题
 
-    - **`Ctrl + ,`**：设置
-
-        > 注意与搜狗输入法冲突！
-        >
-        > `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
-
-    - **`F1 | Ctrl + Shift + P`**：打开命令面板
-
-- **光标**
-
-    - **`Ctrl + D`**：选择下一个匹配项，并添加多光标
-    - **`Ctrl + U`**：取消最近添加的匹配项和多光标
-    - **`Alt + 单击`**：添加多光标
-
-- **代码**
-
-    - **`Ctrl + Alt + Z`**：代码格式化（自己修改）
-    - **`Ctrl + Shift + A`**：使用 Emmet 缩写包围 （自己修改）
-
-- **终端**
-
-    - **`Ctrl + ~`**：打开内置终端
+- **设置快捷键**：左下角 `管理` - `键盘快捷方式`
+- `Ctrl + ,` 快捷键失效
+    - 与搜狗输入法冲突！
+    - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
 ## 选择解释器虚拟环境
 
@@ -2031,6 +2074,10 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
+
+## 其它
+
+- **Emmet** 可通过**缩写语法**快速生成 HTML 和 CSS 代码片段，详见 `Emmet` 章节。
 
 # Wallpaper Engine
 
