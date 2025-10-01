@@ -487,16 +487,26 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
     
     /* 水平线宽度 */
     hr {
-      border: none;        /* 首先清除默认边框 */
+      border: none; /* 首先清除默认边框 */
       border-top: 2px solid #7a828e; /* 设置上边框为2像素宽的灰色实线 */
-      height: 0;           /* 明确设置高度为0，确保由边框决定视觉厚度 */
+      height: 0; /* 明确设置高度为0，确保由边框决定视觉厚度 */
+    }
+    
+    /* <kbd>样式 */
+    kbd {
+      background-color: #000000;
+      color: #ffffff;
+      font-size: 1.1em;
+      padding: 12px 12px; /* 增加内边距，使元素更大 */
     }
     
     /* <summary> 元素字体大小 */
     summary {
       font-size: 1.3em;
     }
+    
     ```
+
 ## 主题备忘
 
 - **工作区域**
@@ -578,17 +588,28 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
       border: 1px solid rgb(229, 229, 229);
     }
     
-    /* 去除图片黑边 */
-    .md-image > img {
-      margin: 0;
-      padding: 0;
-    }
-    
-    /* md图片靠左 */
+    /* 图片居中，官方方法 */
     p .md-image:only-child {
       width: auto;
-      text-align: left;
+      text-align: inherit;
     }
+    
+    p > .md-image:only-child:not(.md-img-error) img {
+      display: inline-block;
+    }
+    
+    /* 下面两个是之前自己的方法，2025.09.29已替换为上述官方方法 */
+    /* md图片靠左 */
+    /* p .md-image:only-child {
+      width: auto;
+      text-align: left;
+    } */
+    
+    /* img图片靠左 */
+    /* #write img {
+        display: block;
+        margin: 0 auto 0 0 !important;
+    } */
     
     /* img图片靠左 */
     #write img {
@@ -699,15 +720,6 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
     /* 删除线颜色 */
     del {
       text-decoration-color: red;
-    }
-    
-    /* <kbd>样式 */
-    kbd {
-      background-color: #000000;
-      color: #ffffff;
-      font-size: 1.1em;
-      /* 增加内边距，使元素更大 */
-      padding: 12px 12px;
     }
     
     /* 使用更高的加粗文本粗细 */

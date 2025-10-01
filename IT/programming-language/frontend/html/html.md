@@ -5,66 +5,157 @@
 ## HTML 主要资源
 
 > <details>
->   <summary>HTML 基础</summary>
->   <ul>
->     <li>
->       <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" alt="HTML"
->         >HTML</a
->       >：HTML 介绍
->     </li>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics"
->         alt="HTML 基础"
->         >HTML 基础</a
->       >：了解 HTML 的含义和最基本用法
->     </li>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML"
->         alt="HTML 学习区"
->         >HTML 学习区</a
->       >：学习 HTML 基础知识
->     </li>
->   </ul>
+> <summary>
+>  <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" alt="HTML" title="HTML on MDN"
+>    >HTML</a
+>  >：MDN 关于 HTML 的主页面
+> </summary>
+> <ul>
+>  <li>
+>    <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML" alt="HTML"
+>      >HTML</a
+>    >：MDN 关于 HTML 的主页面
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics"
+>      alt="HTML 基础"
+>      >HTML 基础</a
+>    >：了解 HTML 的含义和最基本用法
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML"
+>      alt="HTML 学习区"
+>      >HTML 学习区</a
+>    >：学习 HTML 基础知识
+>  </li>
+>  <li>
+>    <details>
+>      <summary>
+>        <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
+>          >HTML 参考</a
+>        >：MDN 对 WHATWG 官方文档的解释
+>      </summary>
+>      <ul>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>            alt="HTML 元素参考"
+>            >HTML 元素参考</a
+>          >：所有 HTML 元素详解
+>        </li>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
+>            alt="HTML 属性参考"
+>            >HTML 属性参考</a
+>          >：所有 HTML 属性详解
+>        </li>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes"
+>            alt="全局属性"
+>            >全局属性</a
+>          >
+>        </li>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Content_categories"
+>            alt="内容分类"
+>            >从不同维度，将内容元素分成几类</a
+>          >
+>        </li>
+>      </ul>
+>    </details>
+>  </li>
+> </ul>
 > </details>
->
 > <details>
 >   <summary>
->     <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
->       >HTML 参考</a
->     >：查找 HTML 的各个属性与概念
+>     <a
+>       href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>       alt="HTML 元素参考"
+>       title="HTML 元素参考"
+>       >HTML 文档</a
+>     >：此链接指向 MDN 的 HTML 元素参考
 >   </summary>
 >   <ul>
 >     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
->         alt="HTML 元素参考"
->         >HTML 元素参考</a
->       >：所有 HTML 元素详解
+>       <a href="https://html.spec.whatwg.org/" alt="WHATWG 单页版"
+>         >WHATWG 单页版</a
+>       >：官方文档，单页显示
 >     </li>
 >     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
->         alt="HTML 属性参考"
->         >HTML 属性参考</a
->       >：所有属性详解
+>       <details>
+>         <summary>
+>           <a href="https://html.spec.whatwg.org/multipage/" alt="WHATWG 多页版"
+>             >WHATWG 多页版</a
+>           >：官方文档，分多个页面显示
+>         </summary>
+>         <ul>
+>           <li>
+>             <a
+>               href="https://html.spec.whatwg.org/multipage/indices.html#elements-3"
+>               alt="WHATWG 元素参考"
+>               >WHATWG 元素参考</a
+>             >：WHATWG 多页版中所有 HTML 元素的列表
+>           </li>
+>         </ul>
+>       </details>
 >     </li>
 >     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes"
->         alt="全局属性"
->         >全局属性</a
->       >
+>       <a href="https://html.spec.whatwg.org/dev/" alt="WHATWG 开发者版"
+>         >WHATWG 开发者版</a
+>       >：官方文档，与多页版相比，此版删除了只有浏览器供应商才需要知道的信息。
+>     </li>
+>     <li>
+>       <details>
+>         <summary>
+>           <a
+>             href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
+>             alt="HTML 参考"
+>             title="HTML 参考"
+>             >MDN 版</a
+>           >：MDN 对 WHATWG 官方文档的解释
+>         </summary>
+>         <ul>
+>           <li>
+>             <a
+>               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>               alt="HTML 元素参考"
+>               >HTML 元素参考</a
+>             >：所有 HTML 元素详解
+>           </li>
+>           <li>
+>             <a
+>               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
+>               alt="HTML 属性参考"
+>               >HTML 属性参考</a
+>             >：所有 HTML 属性详解
+>           </li>
+>           <li>
+>             <a
+>               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes"
+>               alt="全局属性"
+>               >全局属性</a
+>             >
+>           </li>
+>           <li>
+>             <a
+>               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Content_categories"
+>               alt="内容分类"
+>               >从不同维度，将内容元素分成几类</a
+>             >
+>           </li>
+>         </ul>
+>       </details>
 >     </li>
 >   </ul>
 > </details>
->
-> [内容分类](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Content_categories)：从不同维度，将内容元素分成几类
->
-> [HTML 中使用的日期和时间格式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Date_and_time_formats)
 
-## HTML 注释
+
+## [HTML 注释](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Comments)
 
 - 单行注释：`Ctrl + / `，多行注释：`Ctrl + Shift + /`
 
@@ -110,9 +201,9 @@
 
 # [HTML 元素](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website/Creating_the_content#html_元素详解)
 
-HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。
+HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前符合要求的[元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
 
-本章节讲解 HTML 元素的基础，关于各元素的具体情况，详见各章节。
+本章节讲解 HTML 元素的基础，关于各元素的具体情况，详见各章节。各章节的元素分类参照 [WHATWG 元素目录](https://html.spec.whatwg.org/multipage/#toc-semantics)。
 
 ## 元素结构
 
@@ -158,7 +249,7 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 <img src="images/firefox-icon.png" alt="My test image" />
 ```
 
-关于空元素**自闭合**的说明，以 `<img>` 为例：
+关于空元素**自闭合**的说明，以 `<img>` 为例：
 
 - 在 HTML5 中，`<img>` 是空元素，**不需要**自闭合标签。这是现代 HTML 的标准写法，简洁且符合规范。
 - 在 XHTML 中要求所有标签必须闭合，但 XHTML 已逐渐被 HTML5 取代。
