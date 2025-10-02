@@ -68,6 +68,62 @@
 - **单行注释**：`Ctrl + / `，注释一行代码；单行注释可以写在段首，也可写在某行代码的最后，但不能写在前面，否则整行都会变成注释。
 - **多行注释**：`Ctrl + Shift + / `，注释多行代码；多行注释都是用特定符号将多行代码包围。
 - **文档注释**：文档注释以 **/\**** 开始，以 ***/** 结束，通常出现在类、方法、字段等的声明前面，通常包含一些特定的标签，如 **@param** 用于描述方法参数，**@return** 用于描述返回值，**@throws** 用于描述可能抛出的异常等等。文档注释的格式这些标签有助于生成清晰的API文档，以便其他开发者能够更好地理解和使用你的代码。
+- 如果一个注释没有在新缩进级别之后开始，请在空行后添加注释。这将创建一个代码块，使得注释与代码的关联更加清晰。此外，将你的注释放在它们所指的代码之前的单独一行上。
+
+    ```javascript
+    function checkout(goodsPrice, shipmentPrice, taxes) {
+      // 计算总价
+      const total = goodsPrice + shipmentPrice + taxes;
+    
+      // 创建一个文档并向其添加一个新的段落
+      const para = document.createElement("p");
+      para.textContent = `总价是 ${total}`;
+      document.body.appendChild(para);
+    }
+    ```
+
+- 为了帮助读者在不运行代码的情况下，清除输出结果，可以在打印函数*之后*注释输出的内容。
+
+    ```javascript
+    function exampleFunc(fruitBasket) {
+      console.log(fruitBasket); // ['香蕉', '芒果', '橙子']
+    }
+    ```
+
+    请不要这样写：
+
+    ```javascript
+    function exampleFunc(fruitBasket) {
+      // 输出：['香蕉', '芒果', '橙子']
+      console.log(fruitBasket);
+    }
+    ```
+
+    如果这样会让行变得太长，请将注释放在函数之后，如下所示：
+
+    ```javascript
+    function exampleFunc(fruitBasket) {
+      console.log(fruitBasket);
+      // ['香蕉', '芒果', '橙子', '苹果', '梨', '榴莲', '柠檬']
+    }
+    ```
+
+- 使用注释来标记省略号
+
+    ```javascript
+    function exampleFunc() {
+      // 在此处添加你的代码
+      // …
+    }
+    ```
+
+    请不要像这样这样使用省略号：
+
+    ```javascript
+    function exampleFunc() {
+      …
+    }
+    ```
 
 ## 字面量、变量、常量
 

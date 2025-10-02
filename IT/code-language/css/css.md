@@ -1,6 +1,6 @@
-# [CSS 基础](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+# [CSS](https://developer.mozilla.org/zh-CN/docs/Glossary/CSS)
 
-**层叠样式表**（**C**ascading **S**tyle **S**heets，简称 CSS），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的**样式表语言**；CSS 文件的扩展名为 `.css`。
+**CSS**（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的**样式表语言**；CSS 文件的扩展名为 `.css`。
 
 ## CSS 资源
 
@@ -39,8 +39,6 @@
 >     </li>
 >   </ul>
 > </details>
-
-
 
 ## CSS 注释
 

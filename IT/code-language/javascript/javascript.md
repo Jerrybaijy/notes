@@ -1,4 +1,4 @@
-# [JavaScript 基础](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+# [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript)
 
 **JavaScript**（JS）是一种基于对象和事件驱动的**脚本语言**；JavaScript 文件的扩展名为 `.js`。Ecma 国际以 JavaScript 为基础制定了 ECMAScript 标准。
 

@@ -1,4 +1,4 @@
-> [WHATWG 元素参考](https://html.spec.whatwg.org/multipage/#toc-semantics "WHATWG 元素参考")
+> [WHATWG 元素参考](https://html.spec.whatwg.org/multipage/indices.html#elements-3 "WHATWG 元素参考")
 >
 > [MDN 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements "MDN HTML 元素参考")
 
@@ -89,7 +89,7 @@ HTML 元素基础详见 `html-grammar 笔记 | HTML 元素 | 元素结构`
 
 ## [文档根 URL `<base>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base)
 
-- 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个该元素。
+- 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个该元素，是空元素。
 
 # 章节
 
@@ -1347,6 +1347,10 @@ span.ingredient {
 ## [图像映射 `<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map)
 
 **[图像映射 `<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map)** 与 [图像映射区域 `area`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area) 元素一起使用来定义一个图像映射（一个可点击的链接区域）。
+
+## [图像映射区域 `<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area)
+
+是空元素
 
 ## [播放源 `<source>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/source)
 
