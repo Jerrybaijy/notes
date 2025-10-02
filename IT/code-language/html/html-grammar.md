@@ -273,7 +273,7 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
         <input disabled>
         ```
 
-        上述示例中，`disabled` 就是一个空属性。
+        上述示例中，`disabled` 就是一个空属性。
 
     - **[不带引号的属性值语法](https://html.spec.whatwg.org/multipage/syntax.html#attributes-2)**：不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"`、`'`、`=`、`<`、`>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
 
