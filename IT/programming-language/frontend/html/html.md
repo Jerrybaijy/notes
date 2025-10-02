@@ -170,7 +170,7 @@
 
 HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前符合要求的[元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
 
-本章节讲解 HTML 元素的基础，关于各元素的具体情况，详见各章节。各章节的元素分类参照 WHATWG 元素目录。
+本章节讲解 HTML 元素的基础，关于各元素的具体情况，详见 `html-elements 笔记`。
 
 ## [元素结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#%E5%89%96%E6%9E%90%E4%B8%80%E4%B8%AA_html_%E5%85%83%E7%B4%A0)
 

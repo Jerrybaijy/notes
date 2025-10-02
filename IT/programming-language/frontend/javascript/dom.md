@@ -2,6 +2,8 @@
 
 **文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。
 
+HTML 官方文档在[HTML 简介](https://html.spec.whatwg.org/multipage/introduction.html#a-quick-introduction-to-html)章节对 DOM 的工作原理有解释。
+
 <img src="assets/image-20231119172421918.png" alt="image-20231119172421918" style="width: 60%;" />
 
 # 元素操作
@@ -473,7 +475,7 @@ searchInput.addEventListener('keydown', (event) => {
     <head>
       <link rel="stylesheet" href="styles.css">
     </head>
-
+    
     <body>
       <input type="button" value="点击隐藏" id="btn"><br>
       <div id="box"></div>
@@ -486,17 +488,17 @@ searchInput.addEventListener('keydown', (event) => {
       margin: 0;
       padding: 0;
     }
-
+    
     div {
       width: 200px;
       height: 200px;
       background-color: pink;
     }
-
+    
     .hide {
       display: none;
     }
-
+    
     .show {
       display: block;
     }
@@ -505,7 +507,7 @@ searchInput.addEventListener('keydown', (event) => {
     ```javascript
     let btn = document.getElementById("btn");
     let box = document.getElementById("box");
-
+    
     // 给按钮添加事件
     btn.onclick = function () {
       if (this.value == "点击隐藏") {
