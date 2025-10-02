@@ -4,11 +4,43 @@
 
 ## CSS 资源
 
-[CSS MDN 资源](https://developer.mozilla.org/zh-CN/docs/Web/CSS#主要资源)：
+> [W3C 官方文档](https://www.w3.org/Style/CSS/current-work "W3C")
+>
+> [MDN 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
+>
+> <details>
+>   <summary>
+>     <a
+>       href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>       alt="MDN CSS"
+>       title="MDN CSS"
+>       >MDN CSS</a
+>     >：MDN 关于 CSS 的主页面
+>   </summary>
+>   <ul>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics"
+>         alt="CSS 基础"
+>         >CSS 基础</a
+>       >：了解 CSS 的含义和最基本用法
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS"
+>         alt="CSS 学习区"
+>         >CSS 学习区</a
+>       >：学习 CSS 基础知识
+>     </li>
+>     <li>
+>       <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference"
+>         >CSS 参考</a
+>       >
+>     </li>
+>   </ul>
+> </details>
 
-- [CSS 基础](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics)：了解 CSS 的含义和最基本用法
-- [CSS 学习区](https://developer.mozilla.org/zh-CN/docs/Learn/CSS)：学习 CSS 基础知识
-- [CSS 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)：查找 CSS 的各个属性与概念
+
 
 ## CSS 注释
 
@@ -1342,7 +1374,7 @@ th {
 ### 表格文字对齐
 
 - 水平 `text-align`  垂直 `vertical-align`
-- 注意 `vertical-align` 不能直接用于 `<table>` 元素，而应该用在 `<th>` 和 `<td>` 中
+- 注意 `vertical-align` 不能直接用于 `<table>` 元素，而应该用在 `<th>` 和 `<td>` 中
 
     - `left  center  right`    `top  middle  bottom`
 

@@ -1,27 +1,3 @@
-# 前端基础
-
-## 概述
-
-- 前端开发是创建 WEB 页面或 APP 等前端界面呈现给用户的过程，通过 HTML、CSS 及 JavaScript 以及衍生出来的各种技术、框架、解决方案，来实现互联网产品的用户界面交互。
-- 前端三剑客
-
-    - **HTML**：结构层  从语义角度描述页面结构
-    - **CSS**：样式层  从美观角度描述页面样式
-    - **JavaScript**：行为层  从交互角度描述页面行为
-
-## 文件处理
-
-1. 创建一个名为 `web-projects` 的新文件夹。这是你所有的网站项目的存放地。
-2. 在 `web-projects` 中，创建名为 `test-site` 的文件夹来存放你的第一个网站。
-3. 项目结构
-
-    - **`index.html` 文件**
-    - **`images` 文件夹**：存图片
-    - **`styles` 文件夹**：存 CSS 文件
-    - **`scripts` 文件夹**：存 JS 文件
-4. 文件名符合规范，详见 `计算机基础` > `文件名`
-5. **引用文件**：详见 `计算机基础` > `路径`
-
 # 员工管理系统（web）
 
 - 这是一个训练案例，预先安装 MySQL。
@@ -126,11 +102,11 @@
 
 - 引入 BootStrap
 
-  ```html
-  <div class="container">
-      <table class="table table-bordered">...</table>
-  </div>
-  ```
+    ```html
+    <div class="container">
+        <table class="table table-bordered">...</table>
+    </div>
+    ```
 
 ## HTML 添加数据
 
@@ -157,7 +133,7 @@
     def admin_delete():
         # 获取 id
         aid = request.args.get("aid")
-  
+      
         # 连接 MySQL
         conn = pymysql.Connect(
             host="localhost",
@@ -169,7 +145,7 @@
         )
         print("MySQL已连接.....")
         cursor = conn.cursor(cursor=DictCursor)
-  
+      
         # 删除数据行
         cursor.execute("delete from admin where id=%s", [aid])
         conn.commit()

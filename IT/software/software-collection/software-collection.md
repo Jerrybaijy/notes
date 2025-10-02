@@ -856,43 +856,83 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 最初由 **Mozilla 基金会**（也就是开发 Firefox 浏览器的组织）创建和维护，后来，MDN 的发展不再仅仅依赖 Mozilla，而是由 **MDN Web Docs 社区** 维护，并且由 **Mozilla、谷歌、微软、三星等公司**共同支持。
 
 > <details>
-> <summary>
->  <a
->    href="https://developer.mozilla.org/zh-CN/docs/Web"
->    alt="MDN Web" title="MDN Web"
->    >Web 技术</a
->  >：Web 主页面
-> </summary>
-> <ul>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Web/HTML"
->      alt="MDN HTML" title="MDN HTML"
->      >HTML</a
->    >：HTML 主页面
->  </li>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
->      alt="MDN CSS" title="MDN CSS"
->      >CSS</a
->    >：CSS 主页面
->  </li>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript"
->      alt="MDN JavaScript" title="MDN JavaScript"
->      >JavaScript</a
->    >：JavaScript 主页面
->  </li>
-> </ul>
+>   <summary>
+>     <a
+>       href="https://developer.mozilla.org/zh-CN/docs/Web"
+>       alt="MDN Web"
+>       title="MDN Web"
+>       >Web 技术</a
+>     >：Web 主页面
+>   </summary>
+>   <ul>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML"
+>         alt="MDN HTML"
+>         title="MDN HTML"
+>         >HTML</a
+>       >：HTML 主页面
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>         alt="MDN CSS"
+>         title="MDN CSS"
+>         >CSS</a
+>       >：CSS 主页面
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript"
+>         alt="MDN JavaScript"
+>         title="MDN JavaScript"
+>         >JavaScript</a
+>       >：JavaScript 主页面
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/API"
+>         alt="MDN API"
+>         title="MDN API"
+>         >Web APIs</a
+>       >：Web APIs 主页面
+>     </li>
+>   </ul>
 > </details>
 >
-> [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Glossary "学习 Web 开发")
->
-> [教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials "MDN 教程")：HTML、CSS、JavaScript 教程
+> <details>
+>   <summary>
+>     <a
+>       href="https://developer.mozilla.org/zh-CN/docs/MDN"
+>       alt="MDN Web 文档项目"
+>       title="MDN Web 文档项目"
+>       >MDN Web 文档项目</a
+>     >：文档项目主页面
+>   </summary>
+>   <ul>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials"
+>         alt="Web 开发教程"
+>         title="Web 开发教程"
+>         >Web 开发教程</a
+>       >：面向纯新手的教程
+>     </li>
+>     <li>
+>       <a
+>         href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>         alt="Web 开发者指南"
+>         title="Web 开发者指南"
+>         >Web 开发者指南</a
+>       >：最简单的新手指导
+>     </li>
+>   </ul>
+> </details>
+> [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
 >
 > [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary  "MDN Web 文档术语表")：Web 相关术语的定义
+>
+> [浏览器扩展](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions)
 
 # MongoDB
 

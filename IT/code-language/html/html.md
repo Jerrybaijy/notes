@@ -2,114 +2,111 @@
 
 **超文本标记语言**（**H**yper **T**ext **M**arkup **L**anguage，简称 HTML），是一种用来定义 Web 网页**结构**和**语义**的**标记语言**；HTML 文件的扩展名为 `.html`。
 
-## HTML 主要资源
+## HTML 资源
 
-**HTML 参考**：
+**HTML 资源**：
 
 > <details>
->   <summary>
->     <a
->       href="https://html.spec.whatwg.org/multipage/indices.html#index"
->       alt="WHATWG 参考"
->       >WHATWG 参考</a
->     >：官方参考
->   </summary>
->   <ul>
->     <li>
->       <a
->         href="https://html.spec.whatwg.org/multipage/indices.html#elements-3"
->         alt="HTML 元素参考"
->         >HTML 元素参考</a
->       >：所有 HTML 元素的表格
->     </li>
->     <li>
->       <a
->         href="https://html.spec.whatwg.org/multipage/indices.html#attributes-3"
->         alt="HTML 属性参考"
->         >HTML 属性参考</a
->       >：所有 HTML 属性的表格（不包括事件处理程序内容属性）
->     </li>
->   </ul>
+> <summary>
+>  <a
+>    href="https://html.spec.whatwg.org/multipage/indices.html#index"
+>    alt="WHATWG 参考"
+>    >WHATWG 参考</a
+>  >：官方参考
+> </summary>
+> <ul>
+>  <li>
+>    <a
+>      href="https://html.spec.whatwg.org/multipage/indices.html#elements-3"
+>      alt="HTML 元素参考"
+>      >HTML 元素参考</a
+>    >：所有 HTML 元素的表格
+>  </li>
+>  <li>
+>    <a
+>      href="https://html.spec.whatwg.org/multipage/indices.html#attributes-3"
+>      alt="HTML 属性参考"
+>      >HTML 属性参考</a
+>    >：所有 HTML 属性的表格（不包括事件处理程序内容属性）
+>  </li>
+> </ul>
 > </details>
 > <details>
->   <summary>
->     <a
->       href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
->       alt="MDN 参考"
->       title="MDN 参考"
->       >MDN 参考</a
->     >：MDN 对 WHATWG 参考的解释
->   </summary>
->   <ul>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
->         alt="HTML 元素参考"
->         >HTML 元素参考</a
->       >：所有 HTML 元素详解
->     </li>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
->         alt="HTML 属性参考"
->         >HTML 属性参考</a
->       >：所有 HTML 属性详解
->     </li>
->   </ul>
+> <summary>
+>  <a
+>    href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
+>    alt="MDN 参考"
+>    title="MDN 参考"
+>    >MDN 参考</a
+>  >：MDN 对 WHATWG 参考的解释
+> </summary>
+> <ul>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>      alt="HTML 元素参考"
+>      >HTML 元素参考</a
+>    >：所有 HTML 元素详解
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
+>      alt="HTML 属性参考"
+>      >HTML 属性参考</a
+>    >：所有 HTML 属性详解
+>  </li>
+> </ul>
 > </details>
-
-**其它资源**：
-
 > <details>
->   <summary>
->     <a
->       href="https://developer.mozilla.org/zh-CN/docs/Web/HTML"
->       alt="MDN HTML"
->       title="MDN HTML"
->       >MDN HTML</a
->     >：MDN 关于 HTML 的主页面
->   </summary>
->   <ul>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics"
->         alt="HTML 基础"
->         >HTML 基础</a
->       >：了解 HTML 的含义和最基本用法
->     </li>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML"
->         alt="HTML 学习区"
->         >HTML 学习区</a
->       >：学习 HTML 基础知识
->     </li>
->     <li>
->       <details>
->         <summary>
->           <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
->             >HTML 参考</a
->           >：MDN 对 WHATWG 官方文档的解释
->         </summary>
->         <ul>
->           <li>
->             <a
->               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
->               alt="HTML 元素参考"
->               >HTML 元素参考</a
->             >：所有 HTML 元素详解
->           </li>
->           <li>
->             <a
->               href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
->               alt="HTML 属性参考"
->               >HTML 属性参考</a
->             >：所有 HTML 属性详解
->           </li>
->         </ul>
->       </details>
->     </li>
->   </ul>
+> <summary>
+>  <a
+>    href="https://developer.mozilla.org/zh-CN/docs/Web/HTML"
+>    alt="MDN HTML"
+>    title="MDN HTML"
+>    >MDN HTML</a
+>  >：MDN 关于 HTML 的主页面
+> </summary>
+> <ul>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics"
+>      alt="HTML 基础"
+>      >HTML 基础</a
+>    >：了解 HTML 的含义和最基本用法
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/HTML"
+>      alt="HTML 学习区"
+>      >HTML 学习区</a
+>    >：学习 HTML 基础知识
+>  </li>
+>  <li>
+>    <details>
+>      <summary>
+>        <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference"
+>          >HTML 参考</a
+>        >：MDN 对 WHATWG 官方文档的解释
+>      </summary>
+>      <ul>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements"
+>            alt="HTML 元素参考"
+>            >HTML 元素参考</a
+>          >：所有 HTML 元素详解
+>        </li>
+>        <li>
+>          <a
+>            href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes"
+>            alt="HTML 属性参考"
+>            >HTML 属性参考</a
+>          >：所有 HTML 属性详解
+>        </li>
+>      </ul>
+>    </details>
+>  </li>
+> </ul>
 > </details>
 
 **[WHATWG](https://html.spec.whatwg.org/)  中 HTML 官方文档不同版本的含义**：

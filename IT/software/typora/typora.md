@@ -16,15 +16,6 @@
 
 Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 [Markdown 参考](https://support.typoraio.cn/Markdown-Reference/)。
 
-**Typora 支持以下语法**：
-
-- 全部 Markdown 原生语法
-- 部分 Markdown 扩展语法
-- HTML
-- CSS
-- LaTex
-- ...
-
 ## 环境搭建
 
 - [官网下载安装 Typora](https://typora.io/)
@@ -967,7 +958,7 @@ flowchart TD
     黄帝("<font color='orange'>黄帝</font>")
 ```
 
-# 导出
+# [导出](https://support.typora.io/Export/)
 
 - 导出到 word
     - Markdown 格式表格失效
@@ -986,12 +977,6 @@ flowchart TD
 ## 未解决问题
 
 - 无法正确渲染连续空格
-
-## 突出显示
-
-- **斜体**：强调语气、定义中的术语、技术术语、引用作品、音译、思想或船名
-- **粗体**：行首名词、关键词
-- **反引号**：`代码`、`变量名`、`文件路径`、`命令`、`扩展名` 等
 
 ## 格式转换
 

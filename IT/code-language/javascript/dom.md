@@ -2,6 +2,8 @@
 
 **文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。
 
+> [WHATWG DOM 文档](https://dom.spec.whatwg.org/)：官方文档
+
 HTML 官方文档在[HTML 简介](https://html.spec.whatwg.org/multipage/introduction.html#a-quick-introduction-to-html)章节对 DOM 的工作原理有解释。
 
 <img src="assets/image-20231119172421918.png" alt="image-20231119172421918" style="width: 60%;" />
