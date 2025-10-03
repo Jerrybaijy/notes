@@ -193,7 +193,7 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
     3. [**元数据分区**](#[元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据))：`<head>`
     4. [**内容分区**](#[内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body))：`<body>`
 
-- VS Code 快速创建文档结构：`!`
+- VS Code Emmet 快速创建文档结构：`!`
 
 # [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
 
