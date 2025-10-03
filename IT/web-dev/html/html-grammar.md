@@ -125,29 +125,30 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 ## [实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)
 
-- **HTML 实体**（也叫 `字符引用`）：是一段以符号 `&` 开始，以 `;` 结束的文本（字符串）。
-- 在 HTML 中，某些特殊字符是 HTML 语法自身的一部分，如果想将这些字符包含进文本中，必须使用 `HTML 实体`。
-- 每个 HTML 实体以符号 `&` 开始，以 `;` 结束。
+**HTML 实体**（也叫 `字符引用`）：是一段以符号 `&` 开始，以 `;` 结束的文本（字符串）。
 
-    |   原义字符   | HTML 实体         |
-    | :----------: | ----------------- |
-    |      <       | `&lt;`            |
-    |      >       | `&gt;`            |
-    |      "       | `&quot;`          |
-    |      '       | `&apos;`          |
-    |      &       | `&amp;`           |
-    |     空格     | `&nbsp;`          |
-    | ............ | ................. |
+在 HTML 中，某些特殊字符是 HTML 语法自身的一部分，如果想将这些字符包含进文本中，必须使用 `HTML 实体`。
 
-- **示例**
+```html
+<!-- 错误写法 -->
+<p>HTML 中用 <p> 来定义段落元素。</p>
 
-    ```html
-    <!-- 错误写法 -->
-    <p>HTML 中用 <p> 来定义段落元素。</p>
-    
-    <!-- 正确写法 -->
-    <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
-    ```
+<!-- 正确写法 -->
+<p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
+```
+
+> <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
+
+**以下是常用的 HTML 实体**：
+
+| 原义字符 | [HTML 实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity) |
+| :---: | :---: |
+| `<` | `&lt;` |
+| `>` | `&gt;` |
+| `"` | `&quot;` |
+| `'` | `&apos;` |
+| `&` | `&amp;` |
+| `空格` | `&nbsp;` |
 
 # [HTML 注释](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Comments)
 
@@ -199,13 +200,13 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 在 HTML 中，**文档类型声明**是必要的。在所有文档的头部，你都将会看到 “`<!DOCTYPE html>`” 序言。这个声明的目的是防止浏览器在渲染文档时，切换到我们称为[“怪异模式”](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode)的渲染模式。“`<!DOCTYPE html>`” 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
 
-# HTML 元素
-
-## [元素结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)
-
-HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前符合要求的[元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
+# 元素
 
 本章节只记录 HTML 元素的基础，关于各元素的详解，详见 `html-elements` 笔记。
+
+## [元素基础](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)
+
+HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前符合要求的[元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
 
 ![image-20231205005652176](assets/image-20231205005652176.png)
 
@@ -245,9 +246,11 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
 - 因为代码格式化工具 `Prettier` 会将 `<img>` 自动格式化为 `<img />` ，所以暂时保持为 `<img />` 写法。
 - 所有空元素同理。
 
-# [元素属性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#%E5%B1%9E%E6%80%A7)
+# 属性
 
 本章节只记录 HTML 元素属性的基础，关于各元素属性的详解，详见 `html-arrributes` 笔记。
+
+## [属性基础](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#%E5%B1%9E%E6%80%A7)
 
 ![image-20231205010242559](assets/image-20231205010242559.png)
 
@@ -276,6 +279,29 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
         上述示例中，`disabled` 就是一个空属性。
 
     - **[不带引号的属性值语法](https://html.spec.whatwg.org/multipage/syntax.html#attributes-2)**：不包含 [ASCII](https://developer.mozilla.org/zh-CN/docs/Glossary/ASCII) 空格（以及 `"`、`'`、`=`、`<`、`>`）的简单属性值可以不使用引号，但是建议将所有属性值用引号括起来，这样的代码一致性更佳，更易于阅读。
+
+## [布尔属性](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean/HTML)
+
+**布尔属性**是表示 `true` 或 `false` 值的属性。只要指定属性，无论有没有属性值，或是取任何值，都显示为 `true`；只有不指定属性，才表现为 `false`。
+
+```html
+<!-- 未指定属性 -->
+<input type="checkbox" /><br>
+
+<!-- 指定属性 -->
+<input type="checkbox" checked /><br />
+<input type="checkbox" checked="" /><br />
+<input type="checkbox" checked="checked" /><br />
+<input type="checkbox" checked="true" /><br />
+<input type="checkbox" checked="false" />
+```
+
+> - [ ] 
+> - [x] 
+> - [x] 
+> - [x] 
+> - [x] 
+> - [x] 
 
 # 其它
 

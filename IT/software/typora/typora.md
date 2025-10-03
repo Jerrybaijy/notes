@@ -14,8 +14,6 @@
 >
 >  [Markdown 参考](https://support.typoraio.cn/zh/Markdown-Reference/)：Typora 的 Markdown 语法
 
-Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 [Markdown 参考](https://support.typoraio.cn/Markdown-Reference/)。
-
 ## 环境搭建
 
 - [官网下载安装 Typora](https://typora.io/)
@@ -128,6 +126,92 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 
 - 重启生效
 
+# [Markdown](https://support.typoraio.cn/zh/Markdown-Reference/)
+
+此部分记录的是 Typora 中 Markdown 语法的特殊之处。
+
+Markdown 的语法因不同的解析器或编辑器而异。Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 `Markdown | 扩展语法 | GFM` 笔记。
+
+- Typora 仅支持 GFM 中的围栏代码块。不支持 Markdown 中的原始代码块。
+- 
+
+# [HTML](https://support.typora.io/HTML/)
+
+此部分是 Typora 对 HTML 特殊渲染的说明，详见官网中的 [Typora 中的 HTML 支持](https://support.typora.io/HTML/)。
+
+Typora 支持大部分 HTML 元素。
+
+## HTML 块
+
+**HTML 块**中不允许有空行，否则将被渲染为两个 HTML 块。
+
+```html
+<!-- 正确 -->
+<ul>
+  <li>
+    第一项
+  </li>
+  <li>
+    第二项
+  </li>
+</ul>
+
+<!-- 错误 -->
+<ul>
+  <li>
+    第一项
+  </li>
+
+  <li>
+    第二项
+  </li>
+</ul>
+```
+
+## 内联
+
+为了方便编辑，Typora 会显示空标签和带有 `display: none` 样式的元素。例如，以下 Markdown 中的相关内容在 Typora 中可见，但在导出后将不可见。
+
+```markdown
+<span></span><br />
+<span style="display:none">这是一段被隐藏的内容</span>
+```
+
+> <span></span><br />
+> <span style="display:none">这是一段被隐藏的内容</span>
+
+## 嵌入
+
+**嵌入 JavaScript**
+
+- 有些网站仅提供基于 Javascript 的嵌入代码，而不是 `<iframe>` 代码片段。
+- Typora 仅支持一些基于脚本的共享代码，这些内容仅在 `<iframe>` 元素内运行，但无法访问本地文件。
+
+**嵌入 PDF**
+
+- 不再支持嵌入 PDF
+
+## 注释
+
+Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见，但在导出后将不可见。
+
+```markdown
+<!-- 这是一段注释内容 -->
+
+这是注释下面的正文内容
+```
+
+> <!-- 这是一段注释内容 -->
+>
+> 这是注释下面的正文内容
+
+## 其它
+
+- 处于安全考虑，不支持 `<script>` 元素和 `onload` 属性。
+
+    - `<script>` 元素可以放在 `<iframe>` 元素内，但无法访问本地文件。
+- 并非所有属性都受支持。HTML 中的 `id`、`class`和`data-*` 及未知属性在渲染时将不会包含在内（导出/打印时将包含它们）。
+
 # 主题
 
 ## [安装主题](https://support.typoraio.cn/About-Themes/)
@@ -142,9 +226,13 @@ Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github
 - 重启 Typora
 - **主题 | 选择主题**
 
-## [自定义主题](https://support.typoraio.cn/Add-Custom-CSS/)
+## 自定义主题
 
-### 添加自定义 css
+### [创建自定义主题](https://theme.typora.io/doc/Write-Custom-Theme/)
+
+从0到1创建自定义主题
+
+### [添加自定义 css](https://support.typoraio.cn/Add-Custom-CSS/)
 
 - 当想修改一个已下载的主题时，不要在原主题文件修改 CSS，否则版本更新时可能被覆盖。
 
@@ -925,7 +1013,11 @@ Markdown 本身不支持直接插入视频，但可以使用 HTML 实现
     </table>
     ```
 
-# 公式
+# [学术](https://support.typora.io/Math/)
+
+Typora 支持 Tex 和 LaTex 语法，渲染公式。渲染过程由 [MathJax](https://www.mathjax.org/) 处理。使用前应先在 `偏好设置` 中启用 `图表` 功能。
+
+## 公式
 
 Typora 使用 LaTeX 语法输入公式，具体详见 LaTex。
 
@@ -939,34 +1031,51 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 
 # [图表](https://support.typora.io/Draw-Diagrams-With-Markdown/)
 
-- Typora 使用 Mermaid 及其它创建图表。
+Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应先在 `偏好设置` 中启用 `图表` 功能。
+
+## Mermaid
+
 - 将代码块语言添加 mermaid 即可。
 - [Typora 关于 Mermaid 教程和样式设置](https://support.typora.io/Draw-Diagrams-With-Markdown/#mermaid)
 - [图表选项](https://support.typoraio.cn/Diagram-Options/)
-- 关于 Mermaid 详见 Mermaid 笔记。
+- 关于 Mermaid，详见 `mermaid` 笔记。
+- 在 Typora 中，使用 Mermaid 对文本颜色的设置会失效，解决办法是使用 HTML，示例如下：
 
-## 文本颜色
+    注意：此例只为了留下方法，`<font>` 元素已弃用。
 
-在 Typora 中，使用 Mermaid 对文本颜色的设置会失效，解决办法是使用 HTML
-
-```
-黄帝("<font color='orange'>黄帝</font>")
-```
-
-```mermaid
-flowchart TD
+    ```
     黄帝("<font color='orange'>黄帝</font>")
-```
+    ```
+
+    ```mermaid
+    flowchart TD
+        黄帝("<font color='orange'>黄帝</font>")
+    ```
 
 # [导出](https://support.typora.io/Export/)
 
-- 导出到 word
-    - Markdown 格式表格失效
-    - 所有 HTML 标签的效果将失效。
-- 导出到 PDF、HTML、图片时，Markdown 和 HTML 标签都有效。
-- `<!-- 注释 -->` 这种 HTML 在代码块以外时，在导出时会隐藏。
+## 导出功能
+
 - `HTML`：带 Typora 主题的 HTML
 - `HTML (without styles)`：不带 Typora 主题的 HTML
+
+## 之前实验
+
+- 导出到 word
+
+    - Markdown 格式表格失效
+    - 所有 HTML 标签的效果将失效。
+
+- 导出到 PDF、HTML、图片时，Markdown 格式和部分 HTML 格式有效。
+
+## 其它说明
+
+- 以下内容在导出后不可见，详见 `Typora | HTML` 笔记。
+
+    - 正文中的 HTML 注释
+    - 空标签和带有 `display: none` 样式的元素
+
+- 并非所有 HTML 标签/样式都能导出为其他格式。
 
 # 其它
 
@@ -981,6 +1090,12 @@ flowchart TD
 ## 格式转换
 
 - 安装 `Pandoc` 以后，可以增强 Typora 的导出功能。
+
+## 打开同一个文件
+
+在 `侧边栏` 的 `文件` 里，右击想打开的文件，选择 `新建窗口`。
+
+![image-20251003210609906](assets/image-20251003210609906.png)
 
 ## 锚点
 

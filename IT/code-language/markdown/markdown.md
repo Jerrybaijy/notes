@@ -133,12 +133,12 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
 
 ## 内嵌 HTML 标签
 
-- 在 Markdown 中可以直接使用 HTML 标签。
+- 在 Markdown 中可以直接使用 HTML 元素，形成一个 **HTML 块**。
 
-    - Markdown 语法可以和 HTML 标签相互嵌套。
-    - 无法在 HTML *块级标签*内使用 Markdown 语法。
+    - Markdown 语法可以和 HTML 元素相互嵌套。
+    - 无法在 HTML *块级元素*内使用 Markdown 语法。
 
-- 块级 HTML 元素（例如 `<div>`、、、 等）必须用空行与周围内容分隔，并且块的开始和结束标记不应使用制表符或空格缩进。
+- 块级 HTML 元素（例如 `<div>`、、、 等）必须用空行与周围内容分隔，并且块的开始和结束标签不应使用制表符或空格缩进。
 - 并非所有 Markdown 应用程序都支持在 Markdown 文档中添加 HTML。
 
 ## 扩展语法
@@ -159,9 +159,35 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 - [MultiMarkdown(opens new window)](https://fletcherpenney.net/multimarkdown/)
 - [R Markdown](https://rmarkdown.rstudio.com/)
 
+### [GFM](https://github.github.com/gfm/)
+
+**GFM**（**G**itHub **F**lavored **M**arkdown），是标准 Markdown 的一种扩展。
+
 ### Markdown 处理器
 
-有许多[Markdown处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations)可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
+有许多 [Markdown 处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations) 可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
+
+### YAML Front Matter
+
+**YAML Front Matter**，即 **YAML 前置元数据**，用来定义 Markdown 文件的标题、标签等各种元数据。
+
+YAML Front Matter 必须是文件中的第一部分，并设置在三段虚线之间。
+
+```markdown
+---
+title: YAML Front Matter
+category: how-to
+author: typora.io
+tags: [YAML, metadata, tags]
+typora-root-url: ../../
+---
+
+这是正文内容
+```
+
+元数据将在导出时使用。例如，将上述 Markdown 文件导出为 HTML 格式时，Typora 会将其输出 `<title>YAML Front Matter</title>` 为 HTML `<head>` 元素。导出为 PDF 或 Pub 格式时，作者信息也会作为元数据添加。
+
+也可以使用本地工具对根据元数据进行检索等操作。
 
 ## 转义
 
@@ -1198,7 +1224,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 - 缩进：
 
     - 每个缩进为，4个空格
-    - 围栏代码块之内的换行，源码不需要空格，这是 Typora 系统缺陷，应手动删除
+    - 围栏代码块之内的换行，源码不需要空格，这是 Typora 系统缺陷，应手动删除。
 
         ````markdown
         ```css

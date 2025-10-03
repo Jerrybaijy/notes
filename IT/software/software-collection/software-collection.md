@@ -934,6 +934,54 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 >
 > [浏览器扩展](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions)
 
+页面导航：
+
+- **docs（无该页）**：
+
+    - [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)
+
+    - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
+        - [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
+        - [CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
+        - [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
+        - [Web APIs](https://developer.mozilla.org/zh-CN/docs/Web/Web APIs)
+        - [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
+    - [MDN Web 文档项目](https://developer.mozilla.org/zh-CN/docs/MDN)
+        - [Web 开发者指南](https://developer.mozilla.org/zh-CN/docs/MDN/Guides)
+        - [面向 Web 开发者的教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials)
+    - [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
+        - [入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)
+            - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：你的第一个网站
+        - [核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
+            - [使用 HTML 构建 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content)
+        - [扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)
+        - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto)
+    - [Mozilla](https://developer.mozilla.org/zh-CN/docs/Mozilla)：docs/Mozilla
+
+- [MDN 课程](https://developer.mozilla.org/en-US/curriculum/)（只有英文版才有）
+
+## [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
+
+此部分是作为新手学习路线：
+
+- [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)
+-  [HTML 简介](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")
+- [CSS 第一步](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")
+- [JavaScript 第一步](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting "创建 JavaScript 代码块")
+- [Web 表单——操作用户数据](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms "Web 表单构建块")
+- [客户端 Web 开发工具](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Client-side_tools)
+- [客户端 JavaScript 框架](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries "JavaScript 客户端和函数库")
+- [Web 性能优化——让网站更快做出响应](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Performance "Web 性能")
+- [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
+- [工具和测试](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Testing)
+- [服务器端网站编程](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Server-side)
+
+## [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
+
+此部分是作为开发者的学习路线
+
+
+
 # MongoDB
 
 MongoDB 是一种非关系型数据库管理系统（NoSQL），使用的是 **文档导向模型**，以 BSON（Binary JSON，二进制 JSON）格式展示数据。
