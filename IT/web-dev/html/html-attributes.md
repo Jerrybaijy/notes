@@ -28,7 +28,6 @@
 ## [类名 `class`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Global_attributes/class)
 
 - **定义**：`class` 属性用于为多个具有相似特征的一组元素定义类名。
-
 - **语法**：`class="类名1 类名2 ..."`
 
     ```html
@@ -64,11 +63,9 @@
 ## [样式 `style`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/style)
 
 - `style` 属性用于为 HTML 元素添加样式，详见 **[`CSS` - `css 来源`](../css/css.md#CSS 来源)**。
-
 - 关于 `style` 属性最后一个声明结尾 `;` 的说明
 
     - 保留最后一个分号更规范，而且不易出错
-
     - 因为代码格式化工具 `Prettier` 会将结尾 `;` 自动格式化删掉，所以暂时保持结尾没有 `;` 的写法。
 
         ```html
@@ -82,7 +79,6 @@
 ## 路径 `src`
 
 - **语法**：用于指定脚本文件引用的外部资源的路径。可以是本地路径，也可以是网络上的 URL。
-
 - 通常用于元素，如 `<img>`、`<script>`、`<audio>`、`<video>` 等。
 
     ```html
@@ -92,7 +88,6 @@
 ## 链接 `href`
 
 - **语法**：`href`（超文本引用）是用于指定超链接。
-
 - 通常用于 `<a>`、`<link>` 和 `<area>` 元素，一般用于链接资源文件，比如样式表。
 
     ```html

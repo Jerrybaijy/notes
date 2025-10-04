@@ -130,10 +130,9 @@
 
 此部分记录的是 Typora 中 Markdown 语法的特殊之处。
 
-Markdown 的语法因不同的解析器或编辑器而异。Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 `Markdown | 扩展语法 | GFM` 笔记。
+Markdown 的语法因不同的解析器或编辑器而异。Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 `Markdown | 扩展语法 | GFM` 笔记。
 
-- Typora 仅支持 GFM 中的围栏代码块。不支持 Markdown 中的原始代码块。
-- 
+Typora 仅支持 GFM 中的围栏代码块。不支持 Markdown 中的原始代码块。
 
 # [HTML](https://support.typora.io/HTML/)
 
@@ -210,6 +209,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 - 处于安全考虑，不支持 `<script>` 元素和 `onload` 属性。
 
     - `<script>` 元素可以放在 `<iframe>` 元素内，但无法访问本地文件。
+
 - 并非所有属性都受支持。HTML 中的 `id`、`class`和`data-*` 及未知属性在渲染时将不会包含在内（导出/打印时将包含它们）。
 
 # 主题
@@ -235,7 +235,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 ### [添加自定义 css](https://support.typoraio.cn/Add-Custom-CSS/)
 
 - 当想修改一个已下载的主题时，不要在原主题文件修改 CSS，否则版本更新时可能被覆盖。
-
 - 应[添加自定义 CSS](https://support.typoraio.cn/Add-Custom-CSS/)文件 `base.user.css` 和 `{current-theme}.css`
 - `base.user.css`：对所有主题生效
 - `{current-theme}.user.css`：对 `{current-theme}.css` 生效
@@ -243,6 +242,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 ### 样式定制
 
 - **[常用样式定制](https://support.typoraio.cn/Add-Custom-CSS/#common-style-customization)**：列举了很多定制样式的方法
+
     - [字体](https://support.typoraio.cn/Custom-Font/)
     - [排版](https://support.typoraio.cn/Typeset/)
     - [背景](https://support.typoraio.cn/Backgound/)
@@ -255,7 +255,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     - [图表](https://support.typora.io/Draw-Diagrams-With-Markdown/#mermaid-options)
     - [专注模式](https://support.typoraio.cn/Change-Styles-in-Focus-Mode/)
     - [目录](https://support.typoraio.cn/TOC-levels/)
-    
+
 - [标题自动编号](https://support.typora.io/Auto-Numbering/)
 
 ## base.user.css
@@ -737,7 +737,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 ## Github
 
 - Github 是 Typora 官方默认主题。
-
 - **Github.css  文件留存**：
 
     ```css
@@ -783,7 +782,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 ## github-night-dimmed
 
 - [github-night-dimmed 是从 GitHub 下载的暗黑主题。](https://github.com/kinoute/typora-github-night-theme/releases/tag/v0.6.2)
-
 - **安装**：把以下所有文件（夹）复制到主题文件夹
 
     - github-night
@@ -792,7 +790,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     - github-night-high-contrast.css
 
 - **注意**：github-night-dimmed.css 引入了 github-night.css 的样式
-
 - 编写自定义主题文件 **github-night-dimmed.user.css**，复制到主题文件夹
 
     ```css
@@ -901,6 +898,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 
 - 在删除代码或者移动内容到其它文件以后，如果此图片无用，应及时删除 `assets` 文件夹中相应图片。
 - 如果删除的内容中含有图片，且在本 `.md` 文件中没有其它引用，则先删图片，再删文字。
+
     - `右键` | `删除图片文件`
     - 否则在 `assets` 文件夹中逐一删除很麻烦
 

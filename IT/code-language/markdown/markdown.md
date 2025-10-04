@@ -165,7 +165,7 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 
 ### Markdown 处理器
 
-有许多 [Markdown 处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations) 可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
+有许多 [Markdown 处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations) 可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
 
 ### YAML Front Matter
 
@@ -210,7 +210,6 @@ typora-root-url: ../../
     .   dot
     !   exclamation mark
     ```
-
 
 ### 转义特殊字符
 
@@ -344,7 +343,6 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
     </table>
 
 - **说明**：**同一个段落内**，不要使用 <kbd>Enter</kbd> 换行，这仅仅会添加**单换行符**。
-
 - **技巧**：可以使用 HTML 的 `<br />` 元素代替 Markdown 的换行方式。
 
 ## 单换行符
@@ -421,7 +419,6 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 ## 高亮
 
 - 高亮是 Markdown 的**扩展语法**。
-
 - **语法**：在文本前后各加两个等号 `==` 。
 
     <table style="text-align: center;">
@@ -518,7 +515,6 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 ## 围栏代码块
 
 - 围栏代码块属于 Markdown 的**扩展语法**。
-
 - **语法**：在代码块之前和之后的行上使用**三个反引号**（<code>\`\`\`</code>）。  
 如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
 
@@ -552,7 +548,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 内联链接
 
 - **链接文本**放在方括号内，**链接地址**放在后面的圆括号中。
-
 - **语法**：`[alt](SRC/URL)`
 
     ```markdown
@@ -595,7 +590,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 网址和 Email
 
 - 使用**尖括号**把 URL 或者 Email 地址变成可点击的链接。
-
 - **语法**：`<URL/Email>`
 
     ```markdown
@@ -613,9 +607,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 自动链接
 
 - 自动链接属于 Markdown 的**扩展语法**。
-
 - 即使未使用内联或尖括号，某些 Markdown 处理器也会自动将其转换为链接。
-
 - **语法**
 
     ```markdown
@@ -633,7 +625,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ### 标题锚点
 
 - Typora 中的标题自带 `id`，`id` 值为 `标题名`。
-
 - **语法**：`[跳转文本](#id)`
 
     ```markdown
@@ -676,7 +667,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 图片
 
 - 由于 Markdown 文件是纯文本文件，因此不能直接在 Markdown 文件中插入图像数据，而是插入对图像文件的**引用**。
-
 - **语法**：`![alt](SRC/URL)`
 
     ```markdown
@@ -710,7 +700,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 带链接的图片
 
 - 将**图片的 Markdown 语法整体**括在方括号中，然后将**链接**添加在圆括号中；也可使用**引用链接**。
-
 - **语法**：`[![alt](SRC/URL)](URL)`
 
     ```markdown
@@ -1202,7 +1191,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
     ---
 
-
 # Emoji 表情
 
 - Emoji 表情属于 Markdown 的扩展语法。
@@ -1251,7 +1239,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
         }
         ```
         ````
-    
+
 - 不同项目之间必须有整行空格
 
     - 比如图片和围栏代码块

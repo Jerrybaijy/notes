@@ -9,32 +9,24 @@
 ## Task list
 
 - **Daily**
-  - [ ] 正则表达式，slack dev-misc
 
+    - [ ] 正则表达式，slack dev-misc
 
 - **Shell Script**
-  - [ ] Windows
-  - [ ] Linux
+
+    - [ ] Windows
+    - [ ] Linux
+
 - **System**
 
-  - [ ] ssh   linux
+    - [ ] ssh   linux
+    - [ ] rdp   windows
 
-  - [ ] rdp   windows
 - **Net**
 
-  - [ ] domain name、IP、DNS
-
-  - [ ] server
-  - [ ] nslookup
-- **Broswer**
-  - [ ] CS
-
-  - [ ] BS  Java Client
-- **configmap**
-
-  - [ ] 
-
-# 2925邮箱
+    - [ ] domain name、IP、DNS
+    - [ ] server
+    - [ ] nslookup
 
 - 2925邮箱是一个可以无限接收的邮箱，用于反复注册。
 - 比如注册的邮箱账号是 example@2925.com。
@@ -47,7 +39,6 @@
 ## 环境搭建
 
 - [官网下载并安装 AnythingLLM](https://anythingllm.com/desktop)
-
 - 确保 Ollama 和 Deepseek 已安装，添加模型（以 Deepseek 为例）
 
     ![image-20250205161230183](assets/image-20250205161230183.png)
@@ -59,7 +50,6 @@
 ## 环境搭建
 
 - 确保 Ollama 已安装
-
 - 安装 Deepseek
 
     ```bash
@@ -82,60 +72,59 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 **Emmet** 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的内置工具。
 
 - **使用**：`缩写 | Tap` 或 `缩写 | Enter`
-
 - **基础语法规则**
 
-	| 符号 | 描述         | 示例                  | 结果                                            |
-	| :--: | :----------- | :-------------------- | :---------------------------------------------- |
-	| `>`  | 子元素       | `div>p`               | `<div><p></p></div>`                            |
-	| `+`  | 兄弟元素     | `div+p`               | `<div></div><p></p>`                            |
-	| `*`  | 多个相同元素 | `div*2`               | `<div></div><div></div>`                        |
-	| `{}` | 文本内容     | `p{Hello}`            | `<p>Hello</p>`                                  |
-	| `[]` | 添加属性     | `input[type="text"]`  | `<input type="text">`                           |
-	| `()` | 分组         | `div>(header+footer)` | `<div><header></header><footer></footer></div>` |
+    | 符号 | 描述 | 示例 | 结果 |
+    | :---: | :---: | :---: | :---: |
+    | `>` | 子元素 | `div>p` | `<div><p></p></div>` |
+    | `+` | 兄弟元素 | `div+p` | `<div></div><p></p>` |
+    | `*` | 多个相同元素 | `div*2` | `<div></div><div></div>` |
+    | `{}` | 文本内容 | `p{Hello}` | `<p>Hello</p>` |
+    | `[]` | 添加属性 | `input[type="text"]` | `<input type="text">` |
+    | `()` | 分组 | `div>(header+footer)` | `<div><header></header><footer></footer></div>` |
 
 - **常用缩写**
 
-	| 示例                 | 描述                  | 结果                          |
-	| -------------------- | --------------------- | ----------------------------- |
-	| `!`                  | HTML5 文档结构        | 自动生成 HTML5 标准结构       |
-	| `HTML:5`             | HTML5 文档结构        | 自动生成 HTML5 标准结构       |
-	| `div`                | 元素                  | `<div></div>`                 |
-	| `div*2`              | 多个同级元素          | `<div></div><div></div>`      |
-	| `ul>li*2`            | 列表                  | `<ul><li></li><li></li></ul>` |
-	| `input[type="text"]` | 带属性的元素          | `<input type="text">`         |
-	| `div.class`          | 带 `class` 属性的元素 | `<div class="class"></div>`   |
-	| `div#id`             | 带 `id` 属性的元素    | `<div id="id"></div>`         |
-	| `div>p`              | 子元素                | `<div><p></p></div>`          |
-	| `div+p`              | 兄弟元素              | `<div></div><p></p>`          |
-	| `div>(p+p)`          | 分组                  | `<div><p></p><p></p></div>`   |
+    | 示例 | 描述 | 结果 |
+    | :---: | :---: | :---: |
+    | `!` | HTML5 文档结构 | 自动生成 HTML5 标准结构 |
+    | `HTML:5` | HTML5 文档结构 | 自动生成 HTML5 标准结构 |
+    | `div` | 元素 | `<div></div>` |
+    | `div*2` | 多个同级元素 | `<div></div><div></div>` |
+    | `ul>li*2` | 列表 | `<ul><li></li><li></li></ul>` |
+    | `input[type="text"]` | 带属性的元素 | `<input type="text">` |
+    | `div.class` | 带 `class` 属性的元素 | `<div class="class"></div>` |
+    | `div#id` | 带 `id` 属性的元素 | `<div id="id"></div>` |
+    | `div>p` | 子元素 | `<div><p></p></div>` |
+    | `div+p` | 兄弟元素 | `<div></div><p></p>` |
+    | `div>(p+p)` | 分组 | `<div><p></p><p></p></div>` |
 
 - **缩写包围**
 
-	```html
-	<div class="one">block</div>
-	<div class="two">block</div>
-	<div class="three">inline-block</div>
-	<div class="four">inline-block</div>
-	<div class="five">none</div>
-	```
+    ```html
+    <div class="one">block</div>
+    <div class="two">block</div>
+    <div class="three">inline-block</div>
+    <div class="four">inline-block</div>
+    <div class="five">none</div>
+    ```
 
-	```html
-	<div>
-	  <div class="one">block</div>
-	  <div class="two">block</div>
-	  <div class="three">inline-block</div>
-	  <div class="four">inline-block</div>
-	  <div class="five">none</div>
-	</div>
-	```
+    ```html
+    <div>
+      <div class="one">block</div>
+      <div class="two">block</div>
+      <div class="three">inline-block</div>
+      <div class="four">inline-block</div>
+      <div class="five">none</div>
+    </div>
+    ```
 
-	1. 修改 Emmet 缩写包围快捷键
-		1. 按下 `Ctrl + Shift + P`（macOS：`Cmd + Shift + P`）打开命令面板。
-		2. 搜索并选择 `Emmet: Wrap with Abbreviation`。
-		3. 修改快捷键为 `Ctrl + Shift + A`，注意删除热键冲突。
-	2. 选中包围内容，按 `Ctrl + Shift + A`
-	3. 在弹出的输入框中，输入想要使用的 Emmet 缩写，按 `Enter` 确认。
+    1. 修改 Emmet 缩写包围快捷键
+        1. 按下 `Ctrl + Shift + P`（macOS：`Cmd + Shift + P`）打开命令面板。
+        2. 搜索并选择 `Emmet: Wrap with Abbreviation`。
+        3. 修改快捷键为 `Ctrl + Shift + A`，注意删除热键冲突。
+    2. 选中包围内容，按 `Ctrl + Shift + A`
+    3. 在弹出的输入框中，输入想要使用的 Emmet 缩写，按 `Enter` 确认。
 
 # Everything
 
@@ -149,9 +138,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 ## 管理搜索引擎
 
 - `设置` > `搜索引擎` > `管理搜索引擎和网站搜索`
-
 - 可以在浏览器地址栏输入关键词配合快捷键，实现在特定网站搜索，如 `g chrome使用技巧`
-
 
 ## 快捷键
 
@@ -164,9 +151,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 ## Google Search Engine
 
 - Google 搜索引擎是全球最大的搜索引擎。
-
 - 搜索特定网站的特定内容，如 `intitle:"google使用教程" site:youtube.com`
-
 
 ## 扩展
 
@@ -193,89 +178,82 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 ### Windows
 
 1. [根据操作系统选择安装 Google Cloud CLI](https://cloud.google.com/sdk/docs/install?hl=zh-cn)
-
 2. 安装之后会出现 Google Cloud SDK Shell 应用
-
 3. 根据提示在 SDK Shell 中选择并在浏览器中登录 Google
-
 4. 使用本地 SDK Shell 代替网页版的 Cloud Shell 
-
 5. 安装 `gke-gcloud-auth-plugin` 插件，否则无法使用 `kubectl` 命令来管理您的集群
 
-   ```bash
-   gcloud components install gke-gcloud-auth-plugin
-   ```
+    ```bash
+    gcloud components install gke-gcloud-auth-plugin
+    ```
 
 ### Linux
 
 1. [根据操作系统选择安装 Google Cloud CLI](https://cloud.google.com/sdk/docs/install?hl=zh-cn)
-
 2. 进入 User 目录
-
 3. 下载 Linux 归档文件
 
-   ```bash
-   curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-469.0.0-linux-x86_64.tar.gz
-   ```
+    ```bash
+    curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-469.0.0-linux-x86_64.tar.gz
+    ```
 
 4. 解压
 
-   ```bash
-   tar -xf google-cloud-cli-469.0.0-linux-x86_64.tar.gz
-   ```
+    ```bash
+    tar -xf google-cloud-cli-469.0.0-linux-x86_64.tar.gz
+    ```
 
 5. 将 gcloud CLI 添加到路径
 
-   ```bash
-   ./google-cloud-sdk/install.sh
-   ```
+    ```bash
+    ./google-cloud-sdk/install.sh
+    ```
 
 6. 初始化
 
-   ```bash
-   ./google-cloud-sdk/bin/gcloud init
-   ```
+    ```bash
+    ./google-cloud-sdk/bin/gcloud init
+    ```
 
-   1. 选择第 2 项：Log in with a new account
-   2. 点击输出的网址，跳转到网页获取 authorization code，并粘贴回至 bash
-   3. 选择项目，目前项目为 true-oasis-418914
-   4. 选择默认区域：上次选 [48] asia-east2-b
+    1. 选择第 2 项：Log in with a new account
+    2. 点击输出的网址，跳转到网页获取 authorization code，并粘贴回至 bash
+    3. 选择项目，目前项目为 true-oasis-418914
+    4. 选择默认区域：上次选 [48] asia-east2-b
 
 7. 安装 kubectl
 
-   ```bash
-   # 成功过的方法一
-   gcloud components install kubectl
-   ```
-   
-   ```bash
-   # 成功过的方法二
-   sudo apt-get update
-   # 安装 kubectl
-   sudo snap install kubectl --classic
-   # 添加环境变量
-   export PATH=$PATH:/snap/bin
-   # 验证安装
-   kubectl version --client
-   # 安装插件
-   sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
-   ```
+    ```bash
+    # 成功过的方法一
+    gcloud components install kubectl
+    ```
+
+    ```bash
+    # 成功过的方法二
+    sudo apt-get update
+    # 安装 kubectl
+    sudo snap install kubectl --classic
+    # 添加环境变量
+    export PATH=$PATH:/snap/bin
+    # 验证安装
+    kubectl version --client
+    # 安装插件
+    sudo apt-get install google-cloud-cli-gke-gcloud-auth-plugin
+    ```
 
 ### [卸载 Google Cloud CLI](https://cloud.google.com/sdk/docs/uninstall-cloud-sdk?hl=zh-cn)
 
 1. 运行以下命令查找您的安装目录；
 
-	```bash
-	gcloud info --format='value(installation.sdk_root)'
-	```
+    ```bash
+    gcloud info --format='value(installation.sdk_root)'
+    ```
 
 2. 手动打开安装目录，点击 `unistall` 卸载；
-
 3. 运行以下命令查找您的用户配置目录；
 
-	```bash
-	 gcloud info --format='value(config.paths.global_config_dir)'
-	```
+    ```bash
+     gcloud info --format='value(config.paths.global_config_dir)'
+    ```
 
 4. 手动删除用户配置目录。
 
@@ -283,73 +261,72 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 - **账户**
 
-  ```bash
-  # 查看登录账户
-  gcloud auth list
-  # 切换登录账户
-  gcloud config set account $YOUR_ACCOUNT
-  # 查看当前区域
-  gcloud config get-value compute/region
-  ```
+    ```bash
+    # 查看登录账户
+    gcloud auth list
+    # 切换登录账户
+    gcloud config set account $YOUR_ACCOUNT
+    # 查看当前区域
+    gcloud config get-value compute/region
+    ```
 
 - **项目**
 
-  ```bash
-  # 查看当前项目ID
-  gcloud config get-value project
-  # 查看当前项目
-  gcloud config list project
-  # 查看所有项目
-  gcloud projects list
-  # 删除项目
-  gcloud projects delete $PROJECT_ID
-  # 切换项目
-  gcloud config set project $PROJECT_ID
-  ```
+    ```bash
+    # 查看当前项目ID
+    gcloud config get-value project
+    # 查看当前项目
+    gcloud config list project
+    # 查看所有项目
+    gcloud projects list
+    # 删除项目
+    gcloud projects delete $PROJECT_ID
+    # 切换项目
+    gcloud config set project $PROJECT_ID
+    ```
 
 - **镜像**
 
-  ```bash
-  # 创建镜像
-  gcloud builds submit --tag us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME .
-  # 查看仓库镜像
-  gcloud artifacts docker images list LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME
-  # 
-  ```
+    ```bash
+    # 创建镜像
+    gcloud builds submit --tag us-central1-docker.pkg.dev/PROJECT_ID/REPO_NAME/IMAGE_NAME .
+    # 查看仓库镜像
+    gcloud artifacts docker images list LOCATION-docker.pkg.dev/PROJECT_ID/REPO_NAME
+    # 
+    ```
 
 - **仓库**
 
-  ```bash
-  # 创建仓库
-  gcloud artifacts repositories create REPO_NAME --project=$PROJECT_ID --repository-format=docker --location=LOCATION --description="MESSAGE"
-  # 查看仓库
-  gcloud artifacts repositories list
-  # 删除仓库
-  gcloud artifacts repositories delete REPO_NAME --location=$LOCATION --project=$PROJECT_ID
-  ```
+    ```bash
+    # 创建仓库
+    gcloud artifacts repositories create REPO_NAME --project=$PROJECT_ID --repository-format=docker --location=LOCATION --description="MESSAGE"
+    # 查看仓库
+    gcloud artifacts repositories list
+    # 删除仓库
+    gcloud artifacts repositories delete REPO_NAME --location=$LOCATION --project=$PROJECT_ID
+    ```
 
 - **集群**
 
-  ```bash
-  # 创建集群
-  gcloud container clusters create-auto $CLUSTER_NAME --location=$LOCATION
-  # e.g.
-  gcloud container clusters create-auto jerry-cluster --location=asia-east2
-  # 查看集群
-  gcloud container clusters list
-  # 删除集群
-  gcloud container clusters delete $CLUSTER_NAME --location=$LOCATION
-  # 停止集群
-  gcloud container clusters resize $CLUSTER_NAME --size=0 --zone=$LOCATION
-  ```
+    ```bash
+    # 创建集群
+    gcloud container clusters create-auto $CLUSTER_NAME --location=$LOCATION
+    # e.g.
+    gcloud container clusters create-auto jerry-cluster --location=asia-east2
+    # 查看集群
+    gcloud container clusters list
+    # 删除集群
+    gcloud container clusters delete $CLUSTER_NAME --location=$LOCATION
+    # 停止集群
+    gcloud container clusters resize $CLUSTER_NAME --size=0 --zone=$LOCATION
+    ```
 
 - 实例
 
-  ```bash
-  # 查看项目中的实例
-  gcloud compute instances list --project=$PROJECT_ID
-  ```
-
+    ```bash
+    # 查看项目中的实例
+    gcloud compute instances list --project=$PROJECT_ID
+    ```
 
 ## [Bare Metal](https://cloud.google.com/bare-metal/docs/bms-setup?hl=zh-cn)
 
@@ -358,112 +335,110 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 ### 准备工作
 
 1. Google Cloud 控制台中的项目选择器页面上创建项目，并启用 API。
-
 2. [创建 VPC 网络](https://cloud.google.com/vpc/docs/create-modify-vpc-networks?hl=zh-cn#gcloud)
 
-   ```bash
-   # 创建
-   gcloud compute networks create $VPC_NETWORK_NAME \
-       --subnet-mode=auto \
-       --bgp-routing-mode=$DYNAMIC_ROUTING_MODE \
-       --mtu=$MTU
-   
-   # 删除
-   gcloud compute networks delete $VPC_NETWORK_NAME
-   ```
+    ```bash
+    # 创建
+    gcloud compute networks create $VPC_NETWORK_NAME \
+        --subnet-mode=auto \
+        --bgp-routing-mode=$DYNAMIC_ROUTING_MODE \
+        --mtu=$MTU
+    
+    # 删除
+    gcloud compute networks delete $VPC_NETWORK_NAME
+    ```
 
-   ```bash
-   # EG
-   gcloud compute networks create my-vpc-network-1 \
-       --subnet-mode=auto \
-       --bgp-routing-mode=global \
-       --mtu=1460
-   ```
+    ```bash
+    # EG
+    gcloud compute networks create my-vpc-network-1 \
+        --subnet-mode=auto \
+        --bgp-routing-mode=global \
+        --mtu=1460
+    ```
 
 ### [创建 VLAN 连接](https://cloud.google.com/bare-metal/docs/bms-setup?hl=zh-cn#bms-vlan-attachments)
 
 1. 按照以下步骤为 Cloud Interconnect 连接创建 VLAN 连接
-
 2. 创建两个 Cloud Router 实例
 
-   ```bash
-   gcloud compute routers create $ROUTER_NAME \
-   --network $VPC_NETWORK_NAME \
-   --asn 16550 \
-   --region $REGION
-   ```
+    ```bash
+    gcloud compute routers create $ROUTER_NAME \
+        --network $VPC_NETWORK_NAME \
+        --asn 16550 \
+        --region $REGION
+    ```
 
-   ```bash
-   # EG
-   gcloud compute routers create my-router-1 \
-   --network my-vpc-network-1 \
-   --asn 16550 \
-   --region us-central1
-   
-   gcloud compute routers create my-router-2 \
-   --network my-vpc-network-1 \
-   --asn 16550 \
-   --region us-central1
-   ```
+    ```bash
+    # EG
+    gcloud compute routers create my-router-1 \
+        --network my-vpc-network-1 \
+        --asn 16550 \
+        --region us-central1
+
+    gcloud compute routers create my-router-2 \
+        --network my-vpc-network-1 \
+        --asn 16550 \
+        --region us-central1
+    ```
 
 3. 创建两个  `InterconnectAttachment`
 
-   ```bash
-   # 创建
-   gcloud compute interconnects attachments partner create $ATTACHMENT_NAME \
-     --region $REGION \
-     --router $ROUTER_NAME \
-     --edge-availability-domain availability-domain-1 \
-     --edge-availability-domain $AVAILABILITY_DOMAIN \
-     --admin-enabled
-   
-   # 删除
-   gcloud compute interconnects attachments delete $ATTACHMENT_NAME --region=us-central1
-   ```
+    ```bash
+    # 创建
+    gcloud compute interconnects attachments partner create $ATTACHMENT_NAME \
+        --region $REGION \
+        --router $ROUTER_NAME \
+        --edge-availability-domain availability-domain-1 \
+        --edge-availability-domain $AVAILABILITY_DOMAIN \
+        --admin-enabled
 
-   ```bash
-   # EG
-   gcloud compute interconnects attachments partner create my-attachment-1 \
-    --region us-central1 \
-    --router my-router-1 \
-    --edge-availability-domain availability-domain-1 \
-    --admin-enabled
-    
-   gcloud compute interconnects attachments partner create my-attachment-2 \
-    --region us-central1 \
-    --router my-router-2 \
-    --edge-availability-domain availability-domain-2 \
-    --admin-enabled
-   ```
+    # 删除
+    gcloud compute interconnects attachments delete $ATTACHMENT_NAME --region=us-central1
+    ```
+
+    ```bash
+    # EG
+    gcloud compute interconnects attachments partner create my-attachment-1 \
+        --region us-central1 \
+        --router my-router-1 \
+        --edge-availability-domain availability-domain-1 \
+        --admin-enabled
+
+    gcloud compute interconnects attachments partner create my-attachment-2 \
+        --region us-central1 \
+        --router my-router-2 \
+        --edge-availability-domain availability-domain-2 \
+        --admin-enabled
+    ```
 
 4. 描述连接，以检索其配对密钥。您在打开更改请求以创建与裸金属解决方案环境的连接后，将与 Google Cloud 共享密钥。
 
-   ```bash
-   gcloud compute interconnects attachments describe my-attachment-1 \
-     --region us-central1
-   
-   gcloud compute interconnects attachments describe my-attachment-2 \
-     --region us-central1
-   ```
+    ```bash
+    gcloud compute interconnects attachments describe my-attachment-1 \
+        --region us-central1
+
+    gcloud compute interconnects attachments describe my-attachment-2 \
+    	--region us-central1
+    ```
 
 5. 激活 VLAN 连接
 
-   ```bash
-   gcloud compute interconnects attachments partner update $ATTACHMENT_NAME \
-   --region $REGION \
-   --admin-enabled
-   ```
+    ```bash
+    gcloud compute interconnects attachments partner update $ATTACHMENT_NAME \
+        --region $REGION \
+        --admin-enabled
+    ```
 
-   ```bash
-   # EG
-   gcloud compute interconnects attachments partner update my-attachment-1 \
-   --region us-central1 \
-   --admin-enabled
-   
-   gcloud compute interconnects attachments partner update my-attachment-2 \
-   --region us-central1 \
-   --admin-enabled
-   ```
+    ```bash
+    # EG
+    gcloud compute interconnects attachments partner update my-attachment-1 \
+        --region us-central1 \
+        --admin-enabled
+
+    gcloud compute interconnects attachments partner update my-attachment-2 \
+        --region us-central1 \
+        --admin-enabled
+    ```
 
 6. 至此仍为：`state: PENDING_PARTNER`，实际应为 `INACTIVE` 或 `ACTIVE`
 
@@ -474,78 +449,73 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 ### 手动部署
 
 1. 来源：[部署容器化应用](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster)
-
-2. 这是一个 GKE 练习，将一个简单的容器化 Web Server 部署到 GKE 集群，并可以在互联网访问
-
+2. 这是一个 GKE 练习，将一个简单的容器化 Web Server 部署到 GKE 集群，并可以在互联网访问。
 3. 此练习没有使用  Yaml 文件部署
-
 4. **准备**
 
-   1. Google Cloud CLI 环境搭建完成，详见 《Google Cloud》
+    1. Google Cloud CLI 环境搭建完成，详见 《Google Cloud》
+    2. 在 Google Cloud 中启用 API
+    3. 设置默认项目
 
-   2. 在 Google Cloud 中启用 API
-
-   3. 设置默认项目
-
-      ```bash
-      gcloud config set project opportune-study-413101
-      ```
+        ```bash
+        gcloud config set project opportune-study-413101
+        ```
 
 5. **创建集群**
 
    1. 创建集群
 
-      ```bash
-      gcloud container clusters create-auto jerry-cluster --location=asia-east2
-      ```
+        ```bash
+        gcloud container clusters create-auto jerry-cluster --location=asia-east2
+        ```
 
    2. 获取用于集群的身份验证凭据
 
-      ```bash
-      gcloud container clusters get-credentials jerry-cluster --location asia-east2
-      ```
+        ```bash
+        gcloud container clusters get-credentials jerry-cluster --location asia-east2
+        ```
 
 6. **部署应用**
 
-   - 手动部署应用
+    - 手动部署应用
 
-     ```bash
-     kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
-     ```
+        ```bash
+        kubectl create deployment hello-server --image=us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+        ```
 
-   - 可替换为自己创建的镜像
+    - 可替换为自己创建的镜像
 
 7. **公开端口**
 
-   ```bash
-   kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
-   ```
+    ```bash
+    kubectl expose deployment hello-server --type LoadBalancer --port 80 --target-port 8080
+    ```
 
 8. **获取外部 IP**
 
-   ```bash
-   kubectl get service hello-server
-   ```
+    ```bash
+    kubectl get service hello-server
+    ```
 
 9. **访问应用**
 
-   ```bash
-   curl http://EXTERNAL-IP
-   ```
+    ```bash
+    curl http://EXTERNAL-IP
+    ```
 
 10. **清理**
 
     1. 删除 Service
 
-       ```bash
-       kubectl delete service hello-server
-       ```
+        ```bash
+        kubectl delete service hello-server
+        ```
 
     2. 删除集群
 
-       ```bash
-       gcloud container clusters delete hello-cluster --location us-central1
-       ```
+        ```bash
+        gcloud container clusters delete hello-cluster --location us-central1
+        ```
 
 ### Yaml 部署
 
@@ -556,249 +526,244 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 #### 准备
 
 1. Google Cloud CLI 环境搭建完成，详见 《Google Cloud》
-
 2. 在 Google Cloud 中启用 API
-
 3. 设置默认项目
 
-   ```bash
-   gcloud config set project opportune-study-413101
-   ```
+    ```bash
+    gcloud config set project opportune-study-413101
+    ```
 
 4. 安装 Go 语言环境
 
-   ```bash
-   sudo apt-get install golang
-   go version
-   ```
+    ```bash
+    sudo apt-get install golang
+    go version
+    ```
 
 #### 编写应用
 
 1. 如果使用自己的镜像，可以跳过此步
-
 2. 创建工作目录 `helloworld-gke` 并进入
-
 3. 创建名为 `example.com/helloworld` 的新模块
 
-   ```bash
-   go mod init example.com/helloworld
-   ```
+    ```bash
+    go mod init example.com/helloworld
+    ```
 
 4. 创建名为 `helloworld.go` 的新文件
 
-   ```go
-   package main
-   
-   import (
-           "fmt"
-           "log"
-           "net/http"
-           "os"
-   )
-   
-   func main() {
-           http.HandleFunc("/", handler)
-   
-           port := os.Getenv("PORT")
-           if port == "" {
-                   port = "8080"
-           }
-   
-           log.Printf("Listening on localhost:%s", port)
-           log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
-   }
-   
-   func handler(w http.ResponseWriter, r *http.Request) {
-           log.Print("Hello world received a request.")
-           target := os.Getenv("TARGET")
-           if target == "" {
-                   target = "World"
-           }
-           fmt.Fprintf(w, "Hello %s!\n", target)
-   }
-   ```
+    ```go
+    package main
+    
+    import (
+            "fmt"
+            "log"
+            "net/http"
+            "os"
+    )
+    
+    func main() {
+            http.HandleFunc("/", handler)
+    
+            port := os.Getenv("PORT")
+            if port == "" {
+                    port = "8080"
+            }
+    
+            log.Printf("Listening on localhost:%s", port)
+            log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
+    }
+    
+    func handler(w http.ResponseWriter, r *http.Request) {
+            log.Print("Hello world received a request.")
+            target := os.Getenv("TARGET")
+            if target == "" {
+                    target = "World"
+            }
+            fmt.Fprintf(w, "Hello %s!\n", target)
+    }
+    ```
 
 #### 创建镜像
 
 1. 如果使用自己的镜像，可以跳过此步
-
 2. 创建 Dockerfile
 
-   ```dockerfile
-   FROM golang:1.21.0 as builder
-   WORKDIR /app
-   RUN go mod init quickstart-go
-   COPY *.go ./
-   RUN CGO_ENABLED=0 GOOS=linux go build -o /quickstart-go
-   
-   # 使用 Docker 多阶段构建来创建精简的生产镜像
-   # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
-   # 原文件不是这个image，导致容器无法启动
-   FROM debian
-   WORKDIR /
-   COPY --from=builder /quickstart-go /quickstart-go
-   
-   # 原文件没有这句，导致找不到nonroot用户，容器无法启动
-   RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
-   
-   USER nonroot:nonroot
-   ENTRYPOINT ["/quickstart-go"]
-   ```
+    ```dockerfile
+    FROM golang:1.21.0 as builder
+    WORKDIR /app
+    RUN go mod init quickstart-go
+    COPY *.go ./
+    RUN CGO_ENABLED=0 GOOS=linux go build -o /quickstart-go
+
+    # 使用 Docker 多阶段构建来创建精简的生产镜像
+    # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
+    # 原文件不是这个image，导致容器无法启动
+    FROM debian
+    WORKDIR /
+    COPY --from=builder /quickstart-go /quickstart-go
+
+    # 原文件没有这句，导致找不到nonroot用户，容器无法启动
+    RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
+
+    USER nonroot:nonroot
+    ENTRYPOINT ["/quickstart-go"]
+    ```
 
 3. 获取 Google Cloud 项目 ID
 
-   ```bash
-   gcloud config get-value project
-   ```
+    ```bash
+    gcloud config get-value project
+    ```
 
 4. 在集群所在的位置创建名为 `hello-repo` 的仓库
 
-   ```bash
-   gcloud artifacts repositories create hello-repo --project=opportune-study-413101 --repository-format=docker --location=us-central1 --description="Docker repository"
-   ```
+    ```bash
+    gcloud artifacts repositories create hello-repo --project=opportune-study-413101 --repository-format=docker --location=us-central1 --description="Docker repository"
+    ```
 
 5. 创建镜像
 
-   ```bash
-   gcloud builds submit --tag us-central1-docker.pkg.dev/opportune-study-413101/hello-repo/helloworld-gke .
-   ```
+    ```bash
+    gcloud builds submit --tag us-central1-docker.pkg.dev/opportune-study-413101/hello-repo/helloworld-gke .
+    ```
 
 #### 创建集群
 
 1. 创建集群
 
-   ```sh
-   gcloud container clusters create-auto helloworld-gke --location us-central1
-   ```
+    ```sh
+    gcloud container clusters create-auto helloworld-gke --location us-central1
+    ```
 
 2. 验证有权访问该集群
 
-   ```
-   kubectl get nodes
-   ```
+    ```
+    kubectl get nodes
+    ```
 
 #### 创建 Deployment
 
 1. 创建 `deployment.yaml` 文件
 
-   `$GCLOUD_PROJECT` 是您的 Google Cloud 项目 ID，$LOCATION 是代码库位置，例如 us-central1
+    `$GCLOUD_PROJECT` 是您的 Google Cloud 项目 ID，$LOCATION 是代码库位置，例如 us-central1
 
-   ```yaml
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: helloworld-gke
-   spec:
-     replicas: 1
-     selector:
-       matchLabels:
-         app: hello
-     template:
-       metadata:
-         labels:
-           app: hello
-       spec:
-         containers:
-         - name: hello-app
-           # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
-           # Replace $GCLOUD_PROJECT with your project ID.
-           image: $LOCATION-docker.pkg.dev/$GCLOUD_PROJECT/hello-repo/helloworld-gke:latest
-           # This app listens on port 8080 for web traffic by default.
-           ports:
-           - containerPort: 8080
-           env:
-             - name: PORT
-               value: "8080"
-           resources:
-             requests:
-               memory: "1Gi"
-               cpu: "500m"
-               ephemeral-storage: "1Gi"
-             limits:
-               memory: "1Gi"
-               cpu: "500m"
-               ephemeral-storage: "1Gi"
-   ```
+    ```yaml
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: helloworld-gke
+    spec:
+      replicas: 1
+      selector:
+        matchLabels:
+          app: hello
+      template:
+        metadata:
+          labels:
+            app: hello
+        spec:
+          containers:
+          - name: hello-app
+            # Replace $LOCATION with your Artifact Registry location (e.g., us-west1).
+            # Replace $GCLOUD_PROJECT with your project ID.
+            image: $LOCATION-docker.pkg.dev/$GCLOUD_PROJECT/hello-repo/helloworld-gke:latest
+            # This app listens on port 8080 for web traffic by default.
+            ports:
+            - containerPort: 8080
+            env:
+              - name: PORT
+                value: "8080"
+            resources:
+              requests:
+                memory: "1Gi"
+                cpu: "500m"
+                ephemeral-storage: "1Gi"
+              limits:
+                memory: "1Gi"
+                cpu: "500m"
+                ephemeral-storage: "1Gi"
+    ```
 
 2. 部署应用
 
-   ```bash
-   kubectl apply -f deployment.yaml
-   ```
+    ```bash
+    kubectl apply -f deployment.yaml
+    ```
 
 3. 查看应用
 
-   如果所有 `AVAILABLE` 部署都为 `READY`，则表示 Deployment 已完成。否则再次运行 `kubectl apply -f deployment.yaml`，更新 Deployment 以纳入任何更改
+    如果所有 `AVAILABLE` 部署都为 `READY`，则表示 Deployment 已完成。否则再次运行 `kubectl apply -f deployment.yaml`，更新 Deployment 以纳入任何更改
 
-   ```bash
-   kubectl get deployments
-   ```
+    ```bash
+    kubectl get deployments
+    ```
 
 4. 查看 Pod
 
-   ```bash
-   kubectl get pods
-   ```
+    ```bash
+    kubectl get pods
+    ```
 
 #### 创建 Service
 
 1. 创建 `service.yaml` 文件
 
-   ```yaml
-   apiVersion: v1
-   kind: Service
-   metadata:
-     name: hello
-   spec:
-     type: LoadBalancer
-     selector:
-       app: hello
-     ports:
-     - port: 80
-       targetPort: 8080
-   ```
+    ```yaml
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: hello
+    spec:
+      type: LoadBalancer
+      selector:
+        app: hello
+      ports:
+        - port: 80
+          targetPort: 8080
+    ```
 
 2. 部署 Service
 
-   ```sh
-   kubectl apply -f service.yaml
-   ```
+    ```sh
+    kubectl apply -f service.yaml
+    ```
 
 #### 访问应用
 
 1. 获取外部 IP
 
-   输出结果的 `EXTERNAL-IP` 列中，复制 Service 的外部 IP 地址
+    输出结果的 `EXTERNAL-IP` 列中，复制 Service 的外部 IP 地址
 
-   ```bash
-   kubectl get service
-   ```
+    ```bash
+    kubectl get service
+    ```
 
 2. 访问应用
 
-   ```bash
-   http://EXTERNAL-IP
-   ```
+    ```bash
+    http://EXTERNAL-IP
+    ```
 
 #### 清理
 
 1. Delete service
 
-   ```bash
-   kubectl delete service hello
-   ```
+    ```bash
+    kubectl delete service hello
+    ```
 
 2. Delete cluster
 
-   ```bash
-   gcloud container clusters delete helloworld-gke --location us-central1
-   ```
+    ```bash
+    gcloud container clusters delete helloworld-gke --location us-central1
+    ```
 
 3. Delete repo
 
-   ```bash
-   gcloud artifacts repositories delete hello-repo --location=us-central1 --project=opportune-study-413101
-   ```
+    ```bash
+    gcloud artifacts repositories delete hello-repo --location=us-central1 --project=opportune-study-413101
+    ```
 
 # JSON
 
@@ -808,16 +773,17 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 - **语法**：`{"KEY1": VALUE1, "KEY2": VALUE2, ....}`
 
-  ```json
-  {
-      "name": "Git Bash",
-      "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
-  }
-  ```
+    ```json
+    {
+        "name": "Git Bash",
+        "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
+    }
+    ```
 
 - **说明**
-	- 键必须是字符串，必须使用双引号；
-	- 多个键值对使用 `,` 分隔，最后一个键值对接尾不加 `,`；
+
+    - 键必须是字符串，必须使用双引号；
+    - 多个键值对使用 `,` 分隔，最后一个键值对接尾不加 `,`；
 
 ## JSON 注释
 
@@ -827,7 +793,7 @@ JSON 本身 **不支持注释**，标准的 JSON 解析器会将任何非数据�
 
 ### 使用额外字段作为注释
 
-**语法**：`    "_comment": "这是一个注释！",`
+**语法**：`"_comment": "这是一个注释！",`
 
 ```json
 {
@@ -939,23 +905,32 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 - **docs（无该页）**：
 
     - [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)
-
     - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
+
         - [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
         - [CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
         - [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
         - [Web APIs](https://developer.mozilla.org/zh-CN/docs/Web/Web APIs)
         - [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
+
     - [MDN Web 文档项目](https://developer.mozilla.org/zh-CN/docs/MDN)
+
         - [Web 开发者指南](https://developer.mozilla.org/zh-CN/docs/MDN/Guides)
         - [面向 Web 开发者的教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials)
+
     - [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
+
         - [入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)
+
             - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：你的第一个网站
+
         - [核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
+
             - [使用 HTML 构建 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content)
+
         - [扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)
         - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto)
+
     - [Mozilla](https://developer.mozilla.org/zh-CN/docs/Mozilla)：docs/Mozilla
 
 - [MDN 课程](https://developer.mozilla.org/en-US/curriculum/)（只有英文版才有）
@@ -980,8 +955,6 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 此部分是作为开发者的学习路线
 
-
-
 # MongoDB
 
 MongoDB 是一种非关系型数据库管理系统（NoSQL），使用的是 **文档导向模型**，以 BSON（Binary JSON，二进制 JSON）格式展示数据。
@@ -991,98 +964,97 @@ MongoDB 是一种非关系型数据库管理系统（NoSQL），使用的是 **�
 ### 安装 MongoDB
 
 1. 此步骤为在 Ubuntu 中安装
-
 2. 导入 MongoDB 公钥
 
-   ```bash
-   wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
-   ```
+    ```bash
+    wget -qO - https://www.mongodb.org/static/pgp/server-7.0.asc | sudo apt-key add -
+    ```
 
 3. 创建 MongoDB 的列表文件
 
-   ```bash
-   echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
-   ```
+    ```bash
+    echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu $(lsb_release -cs)/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+    ```
 
 4. 更新包数据库
 
-   ```bash
-   sudo apt-get update
-   ```
+    ```bash
+    sudo apt-get update
+    ```
 
 5. 安装 MongoDB
 
-   ```bash
-   sudo apt-get install -y mongodb-org
-   ```
+    ```bash
+    sudo apt-get install -y mongodb-org
+    ```
 
 6. 安装 MongoDB Shell
 
-   ```bash
-   sudo apt-get install mongodb-mongosh
-   ```
+    ```bash
+    sudo apt-get install mongodb-mongosh
+    ```
 
 7. 启动 MongoDB 服务
 
-   ```bash
-   sudo systemctl start mongod
-   ```
+    ```bash
+    sudo systemctl start mongod
+    ```
 
 8. 设置 MongoDB 服务开机自启动
 
-   ```bash
-   sudo systemctl enable mongod、
-   ```
+    ```bash
+    sudo systemctl enable mongod、
+    ```
 
 9. 查看状态
 
-   ```bash
-   sudo systemctl status mongod
-   ```
+    ```bash
+    sudo systemctl status mongod
+    ```
 
 ## MongoDB 基础
 
 - **MongoDB 管理**
 
-  ```bash
-  # 查看 mongod 版本
-  mongod --version
-  # 查看 MongoDB Shell 版本
-  mongo --version
-  # 查看 status
-  sudo systemctl status mongod
-  
-  # 启动
-  sudo systemctl start mongod
-  # 停止
-  sudo systemctl stop mongod
-  # 重启
-  sudo systemctl restart mongod
-  # 启动 MongoDB Shell
-  mongosh
-  # 退出 MongoDB Shell
-  exit
-  ```
+    ```bash
+    # 查看 mongod 版本
+    mongod --version
+    # 查看 MongoDB Shell 版本
+    mongo --version
+    # 查看 status
+    sudo systemctl status mongod
+
+    # 启动
+    sudo systemctl start mongod
+    # 停止
+    sudo systemctl stop mongod
+    # 重启
+    sudo systemctl restart mongod
+    # 启动 MongoDB Shell
+    mongosh
+    # 退出 MongoDB Shell
+    exit
+    ```
 
 - **其它命令**
 
-	```bash
-	# 清屏
-	cls
-	```
+    ```bash
+    # 清屏
+    cls
+    ```
 
 ## Database
 
 - **基础命令**
 
-  ```sh
-  # 查看所有
-  show dbs
-  # 进入（如果没有，会自动创建）
-  use $DATABASE;
-  # 删除
-  drop database $DATABASE;
-  ```
+    ```sh
+    # 查看所有
+    show dbs
+    # 进入（如果没有，会自动创建）
+    use $DATABASE;
+    # 删除
+    drop database $DATABASE;
+    ```
 
 ## Collection
 
@@ -1090,14 +1062,14 @@ MongoDB 中的 `collection` 类似于 MySQL 中的 `table`。
 
 - **基础命令**
 
-  ```sh
-  # 查看 collection
-  show collections
-  # 创建 Collection / document
-  db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"}[,{$KEY2:"$VALUE2"},...])
-  # 删除 Collection
-  db.$COLLECTION_NAME.drop()
-  ```
+    ```sh
+    # 查看 collection
+    show collections
+    # 创建 Collection / document
+    db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"}[,{$KEY2:"$VALUE2"},...])
+    # 删除 Collection
+    db.$COLLECTION_NAME.drop()
+    ```
 
 ## Document
 
@@ -1105,30 +1077,29 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 - **基础命令**
 
-  ```bash
-  # 查看 document
-  db.$COLLECTION_NAME.find()
+    ```bash
+    # 查看 document
+    db.$COLLECTION_NAME.find()
     
-  # 操作第一个 document 用'~One'
-  # 操作所有 document 用'~Many'
+    # 操作第一个 document 用'~One'
+    # 操作所有 document 用'~Many'
     
-  # 创建 Collection / document
-  db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
-  # 修改 document
-  db.$COLLECTION_NAME.updateOne({KEY:"VALUE"},{$set:{KEY1:"VALUE1",KEY2:"VALUE2"}})
-  db.$COLLECTION_NAME.updateMany({KEY:"VALUE"},{$set:{KEY1:"VALUE1",KEY2:"VALUE2"}})
-  # 删除 document
-  db.$COLLECTION_NAME.updateOne({KEY:"VALUE"})
-  db.$COLLECTION_NAME.updateMany({KEY:"VALUE"})
-  ```
-  
+    # 创建 Collection / document
+    db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
+    # 修改 document
+    db.$COLLECTION_NAME.updateOne({KEY:"VALUE"},{$set:{KEY1:"VALUE1",KEY2:"VALUE2"}})
+    db.$COLLECTION_NAME.updateMany({KEY:"VALUE"},{$set:{KEY1:"VALUE1",KEY2:"VALUE2"}})
+    # 删除 document
+    db.$COLLECTION_NAME.updateOne({KEY:"VALUE"})
+    db.$COLLECTION_NAME.updateMany({KEY:"VALUE"})
+    ```
 
 # Mp3tag
 
 [Mp3tag](https://www.mp3tag.de/en/) 是一个音乐标签管理工具。
 
 | 变量 | 描述 |
-|------|------|
+| :---: | :---: |
 | FILENAME | 文件名 |
 | %album% | 唱片集 |
 | %title% | 标题 |
@@ -1144,22 +1115,20 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 ## 环境搭建
 
 1. [官网下载 MusicBee](https://getmusicbee.com/downloads/)（网盘里有便携版安装包）。
-
 2. 选择 `Installer Edition` 版本可以集成到系统中。
 
-	![image-20250225125339882](assets/image-20250225125339882.png)
+    ![image-20250225125339882](assets/image-20250225125339882.png)
 
 3. 如果安装便携版安装之后需手动加入开始菜单，详见 `Windows` > `加入开始菜单`。
-
 4. 先建立本地音乐库，并持续监控。
 
-  - `MusicBee` > `文件` > `库` > `建立新的音乐库`
+    - `MusicBee` > `文件` > `库` > `建立新的音乐库`
 
-    <img src="assets/image-20231214210941173.png" alt="image-20231214210941173" style="zoom:50%;" />
+        <img src="assets/image-20231214210941173.png" alt="image-20231214210941173" style="zoom:50%;" />
 
-  - `主菜单` > `首选项` > `库` > `监控的文件夹`
+    - `主菜单` > `首选项` > `库` > `监控的文件夹`
 
-    <img src="assets/image-20231214211310959.png" alt="image-20231214211310959" style="zoom:50%;" />
+        <img src="assets/image-20231214211310959.png" alt="image-20231214211310959" style="zoom:50%;" />
 
 ## 布局备忘
 
@@ -1217,9 +1186,11 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 - 首先说明的是，这个软件很灵活，不同地方可以设置同一个功能，并且名字有可能会不同
 - 标题列：标题列就是右上角的工具和搜索
-  - 主功能表：普通软件的菜单栏
-  - 标签页列：首选项里的布局（1）
-  - 控制按钮：右上角的自定义工具栏
+
+    - 主功能表：普通软件的菜单栏
+    - 标签页列：首选项里的布局（1）
+    - 控制按钮：右上角的自定义工具栏
+
 - 顶部面板
 - 左边栏
 - 左边栏
@@ -1252,107 +1223,98 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 #### 安装
 
 1. 尽量使用容器化的 MySQL；
-
 2. 以下步骤详见《我要自学网Python课程》软件安装包说明；
-
 3. 安装之前创建一个系统还原点，以防不测；
-
 4. 安装之前，要先彻底卸载之前残留的版本；
-
 5. [官网下载 MySQL：**Windows (x86, 64-bit), MSI Installer**](https://dev.mysql.com/downloads/mysql/)；
-
 6. 开始安装，安装方式选择 `custom`；
 
-   <img src="assets/image-20240317172713492.png" alt="image-20240317172713492" style="zoom:50%;" />
+    <img src="assets/image-20240317172713492.png" alt="image-20240317172713492" style="zoom:50%;" />
 
 7. 安装完成之后会出现 MySQL 配置的引导界面；
-
 8. Data Directory：`D:\ProgramData\MySQL\MySQL Server 8.3\`；
-
 9. Type and Networking：`Config Type` 选择 `DeveloperMachine`；
 
-   <img src="assets/image-20240317173419078.png" alt="image-20240317173419078" style="zoom:50%;" />
+    <img src="assets/image-20240317173419078.png" alt="image-20240317173419078" style="zoom:50%;" />
 
 10. 创建 root 账户
 
-   <img src="assets/image-20240317174252087.png" alt="image-20240317174252087" style="zoom:50%;" />
+    <img src="assets/image-20240317174252087.png" alt="image-20240317174252087" style="zoom:50%;" />
 
 11. Apply Configuration：`Execute`
 
-	<img src="assets/image-20240317174816106.png" alt="image-20240317174816106" style="zoom: 80%;" />
+    <img src="assets/image-20240317174816106.png" alt="image-20240317174816106" style="zoom: 80%;" />
 
 12. 将 MySQL 加入系统环境变量，详见《Windows 笔记》。
-
 13. 安装完成，检查
 
-	```bash
-	# 查看版本
-	mysql --version
-	# 登录
-	mysql -u root -p
-	```
+    ```bash
+    # 查看版本
+    mysql --version
+    # 登录
+    mysql -u root -p
+    ```
 
 #### 卸载
 
 1. 详见《我要自学网Python课程》软件安装包说明；
-
 2. 必须先停止 MySQL 服务！！
-   1. `控制面板` > `系统与安全` > `管理工具` > `服务界面`；
-   2. 找到 MySQL 服务，右键点击该服务，选择 `停止`；
-   3. 服务停止完毕后，右键点击 MySQL 服务，选择 `属性`，进入属性窗口；
-   4. 在属性窗口中，找到 `启动类型`，将其改为 `手动`；
-   5. 点击 `确定` 保存设置，关闭窗口；
+
+    1. `控制面板` > `系统与安全` > `管理工具` > `服务界面`；
+    2. 找到 MySQL 服务，右键点击该服务，选择 `停止`；
+    3. 服务停止完毕后，右键点击 MySQL 服务，选择 `属性`，进入属性窗口；
+    4. 在属性窗口中，找到 `启动类型`，将其改为 `手动`；
+    5. 点击 `确定` 保存设置，关闭窗口；
 
 3. 停止 MySQL 服务后，删除 MySQL 服务；
-   1. 打开命令提示符窗口（管理员权限）；
-   2. 输入 `sc delete MySQL`，执行删除操作；
+
+    1. 打开命令提示符窗口（管理员权限）；
+    2. 输入 `sc delete MySQL`，执行删除操作；
 
 4. 卸载 MySQL，并删除安装目录；
 5. 删除安装盘下 `D:\ProgramData\MySQL` 文件夹（可能需要取消隐藏），里面包含了上一次安装的数据库中的所有数据、用户名和密码；
 6. 打开注册表：`regedit.exe`，删除以下注册表，如果没有可以不删；
-   - `HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL ` 文件夹
-   - `HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL` 文件夹
-   - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL` 文件夹
+
+    - `HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Services\Eventlog\Application\MySQL ` 文件夹
+    - `HKEY_LOCAL_MACHINE\SYSTEM\ControlSet002\Services\Eventlog\Application\MySQL` 文件夹
+    - `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Eventlog\Application\MySQL` 文件夹
+
 7. 完全卸载了以后就可以正常重新安装了；
 8. 如想彻底删除，记得删除安装时自己配置的系统环境变量；
 
 ### 容器化 MySQL
 
 1. Docker 已成功搭建，详见 [Docker > 环境搭建](../devops/docker/docker.md#环境搭建)。
-
 2. 运行容器
 
-	```bash
-	docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:latest
-	```
+    ```bash
+    docker run --name mysql-container -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:latest
+    ```
 
-	**在以上代码中**：
+    **在以上代码中**：
 
-	1. **`--name mysql-container`**：指定容器的名字
-	2. **`-e MYSQL_ROOT_PASSWORD=123456 -p`**：设置 MySQL 的 root 用户密码
-	3. **`-p 3306:3306`**：端口映射
-	4. **`-d`**：让容器在后台运行
-	5. **`mysql:latest`**：镜像
+    1. **`--name mysql-container`**：指定容器的名字
+    2. **`-e MYSQL_ROOT_PASSWORD=123456 -p`**：设置 MySQL 的 root 用户密码
+    3. **`-p 3306:3306`**：端口映射
+    4. **`-d`**：让容器在后台运行
+    5. **`mysql:latest`**：镜像
 
 3. 接下来可使用 Navicat 操作 MySQL。
-
 4. 如果想在命令行中操作 MySQL，可进入容器内 MySQL 交互界面。
 
-	```bash
-	docker exec -it mysql-container mysql -uroot -p
-	```
+    ```bash
+    docker exec -it mysql-container mysql -uroot -p
+    ```
 
-	**在以上代码中**：
+    **在以上代码中**：
 
-	1. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+    1. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+    2. **`mysql-container`**：容器名
+    3. **`mysql -uroot -p`**：以 root 用户登录 MySQL，并输入密码，输入密码以后就会进入 MySQL 命令行界面，进而使用 SQL 语言操作 MySQL。
 
-	2. **`mysql-container`**：容器名
-
-	3. **`mysql -uroot -p`**：以 root 用户登录 MySQL，并输入密码，输入密码以后就会进入 MySQL 命令行界面，进而使用 SQL 语言操作 MySQL。
-
-		```bash
-		mysql>
-		```
+        ```bash
+        mysql>
+        ```
 
 ## MySQL 交互方式
 
@@ -1365,56 +1327,56 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
 - **语法规范**
 
-  - MySQL 遵循 [SQL](../../code-language/sql/sql.md) 标准语法。
+    - MySQL 遵循 [SQL](../../code-language/sql/sql.md) 标准语法。
 
 - **MySQL 管理**
 
-  ```bash
-  # 查看版本
-  mysql --version
-  # 登录
-  mysql -u $USER -p
-  ```
+    ```bash
+    # 查看版本
+    mysql --version
+    # 登录
+    mysql -u $USER -p
+    ```
 
-  ```sql
-  -- 退出 MySQL server
-  EXIT;
-  
-  -- 设置 MySQL server 密码
-  SET PASSWORD = PASSWORD('$PASSWORD');
-  
-  -- 查看所有用户
-  SELECT USER, HOST FROM MYSQL.USER;
-  -- 使用 root 登录，并授权 jerry，否则 jerry 不能操作数据库
-  GRANT ALL PRIVILEGES ON `$DATABASE`.`$TABLE` TO 'jerry'@'%';
-  ```
+    ```sql
+    -- 退出 MySQL server
+    EXIT;
+
+    -- 设置 MySQL server 密码
+    SET PASSWORD = PASSWORD('$PASSWORD');
+
+    -- 查看所有用户
+    SELECT USER, HOST FROM MYSQL.USER;
+    -- 使用 root 登录，并授权 jerry，否则 jerry 不能操作数据库
+    GRANT ALL PRIVILEGES ON `$DATABASE`.`$TABLE` TO 'jerry'@'%';
+    ```
 
 - **其它问题**
 
-  ```sql
-  -- 查看 database 字符集
-  show variables like 'character_set_database';
-  -- 设置客户端和服务端之间的字符集
-  set names 'utf8';
-  ```
+    ```sql
+    -- 查看 database 字符集
+    show variables like 'character_set_database';
+    -- 设置客户端和服务端之间的字符集
+    set names 'utf8';
+    ```
 
 ## MySQL 命令样板
 
 - **创建 Database**
 
-	```sql
-	CREATE DATABASE IF NOT EXISTS db_users DEFAULT CHARACTER SET utf8;
-	```
+    ```sql
+    CREATE DATABASE IF NOT EXISTS db_users DEFAULT CHARACTER SET utf8;
+    ```
 
 - **创建 Table**
 
-	```sql
-	CREATE TABLE IF NOT EXISTS tb_users (
-	    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	    username VARCHAR(16) NOT NULL UNIQUE,
-	    password VARCHAR(255) NOT NULL
-	) DEFAULT CHARSET=utf8;
-	```
+    ```sql
+    CREATE TABLE IF NOT EXISTS tb_users (
+        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(16) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
+    ) DEFAULT CHARSET=utf8;
+    ```
 
 ## 解决办法
 
@@ -1432,14 +1394,19 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 **使用方法如下**：
 
 - **连接数据库**
-	- 连接名称随便填
-	- 填入主机地址、端口号、root 用户名和密码
+
+    - 连接名称随便填
+    - 填入主机地址、端口号、root 用户名和密码
+
 - **创建 Databae**
-	- 右键点击已连接的数据库 > `新建数据库`
-	- **字符集**：`utf8mb4`
-	- **排序规则**：`utf8mb4_general_ci`
+
+    - 右键点击已连接的数据库 > `新建数据库`
+    - **字符集**：`utf8mb4`
+    - **排序规则**：`utf8mb4_general_ci`
+
 - **创建 Table**
-	- 在已创建的 Database 目录下，右键点击 `表` > `新建表`
+
+    - 在已创建的 Database 目录下，右键点击 `表` > `新建表`
 
 # [Nexus](https://www.winstep.net/nexus.asp)
 
@@ -1487,9 +1454,7 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
 ## 根据文件部署
 
 - **总体思路**：从 Hugging Face 下载大模型的 `GGUF` 文件，结合 `modelfile`，使用 Ollama 本地部署大模型。
-
 - 创建元数据文件目录 `deepseek`
-
 - 下载大模型的 `GGUF` 文件
 
     - 进入  [Hugging Face](https://huggingface.co/) 主页，搜索栏输入 `qwen GGUF`，下拉列表中选择 1.5B 版本的 GGUF，进入文件仓库
@@ -1507,7 +1472,6 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
     ```
 
 - 运行 Ollama
-
 - **部署本地模型**，终端进入元数据文件目录 `deepseek`，运行以下命令
 
     ```
@@ -1528,49 +1492,43 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
 ## 环境搭建
 
 1. [下载pandoc-3.5-windows-x86_64.msi](https://github.com/jgm/pandoc/releases)
-
 2. 修改安装路径
 
-   <div style="display: flex; justify-content: left;">
-     <img src="assets/image-20241122120939289.png" alt="图片1" style="width: 50%; height: 400px;">
-   </div>
+    <img src="assets/image-20241122120939289.png" alt="图片1" style="width: 60%;">
 
-   <div style="display: flex; justify-content: left;">
-     <img src="assets/image-20241122121208576.png" alt="图片1" style="width: 50%; height: 400px;">
-   </div>
+    <img src="assets/image-20241122121208576.png" alt="图片1" style="width: 60%;">
 
 3. 点击 `Install` 安装，直到完成
-
 4. 验证
 
-   ```bash
-   pandoc -v
-   ```
+    ```bash
+    pandoc -v
+    ```
 
 ## 命令
 
 - **命令**
 
-  ```bash
-  # 查看版本
-  pandoc -v
-  # 帮助
-  pandoc --help
-  ```
+    ```bash
+    # 查看版本
+    pandoc -v
+    # 帮助
+    pandoc --help
+    ```
 
 ## word转MD
 
 - 使用命令行转换
 
-  ```bash
-  pandoc 文件名1 -o 文件名2 --extract-media=图片存储路径
-  ```
-  
-  ```bash
-  pandoc 实验.md -o 实验.docx --extract-media=./assets
-  ```
-  
-  - **`--extract-media`**：可以提取媒体文件并存储到指定路径。
+    ```bash
+    pandoc 文件名1 -o 文件名2 --extract-media=图片存储路径
+    ```
+
+    ```bash
+    pandoc 实验.md -o 实验.docx --extract-media=./assets
+    ```
+
+    - **`--extract-media`**：可以提取媒体文件并存储到指定路径。
 
 # Podman
 
@@ -1580,16 +1538,15 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
 
 - 安装
 
-  ```bash
-  sudo apt install podman
-  ```
+    ```bash
+    sudo apt install podman
+    ```
 
 - 验证
 
-  ```bash
-  podman --version
-  ```
-
+    ```bash
+    podman --version
+    ```
 
 # Postman
 
@@ -1603,14 +1560,11 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 
 - 模拟浏览器向后端发送请求
 
-  ![image-20240321193038122](assets/image-20240321193038122.png)
+    ![image-20240321193038122](assets/image-20240321193038122.png)
 
 - **请求方法**：例 `PUT`，对应前端的 `method`；
-
 - **请求地址**：对应后端的接口，例子中 `/student` 是类，`/update/{studentId}` 由 `controller` 定义；
-
 - **Body**：即用户要发送的请求内容，以 JSON 格式发送；
-
 - 最后一行是反馈结果，类似于 `console`。
 
 # PowerToys
@@ -1622,7 +1576,6 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 - [在 GitHub 上下载](https://github.com/microsoft/PowerToys)
 - 或通过 Microsoft Store 搜索 “PowerToys” 安装最新版。
 - 安装后，会在系统托盘显示一个 PowerToys 图标。
-
 - [官方文档](https://learn.microsoft.com/zh-cn/windows/powertoys/)
 
 ## PowerRename
@@ -1665,56 +1618,47 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 ### Install
 
 1. [This part is from NANA, and it is unfinished.](https://www.youtube.com/watch?v=QoDqxm7ybLc)
-
 2. **Requirement**
 
-   1. Cluster is running.
-   2. Helm has been installed and the repo 'arldka' is added into local.
+    1. Cluster is running.
+    2. Helm has been installed and the repo 'arldka' is added into local.
 
 3. Install
 
-   ```bash
-   helm install prometheus arldka/prometheus-operator
-   ```
+    ```bash
+    helm install prometheus arldka/prometheus-operator
+    ```
 
 ### Install
 
 1. [**Source:** This part is from IBM.](https://www.youtube.com/watch?v=VMP48mMBDZw)
-
 2. **Requirement:** Git, Docker, Docker Compose
-
 3. install
 
-   ```bash
-   git clone https://gitlab.com/jerrybai/pmi-prometheus-grafana-sample.git
-   cd pmi-prometheus-grafana-sample
-   docker-compose up
-   ```
+    ```bash
+    git clone https://gitlab.com/jerrybai/pmi-prometheus-grafana-sample.git
+    cd pmi-prometheus-grafana-sample
+    docker-compose up
+    ```
 
 4. This will build and run 3 containers.
+5. Access WAS PMI metrics - Prometheus endpoint http://localhost:9080/metrics
+6. Access Prometheus Server UI [http://localhost:9090](http://localhost:9090/)
+7. Access Grafana [http://localhost:3000](http://localhost:3000/)
 
-5. Access WAS PMI metrics - Prometheus endpoint
-   http://localhost:9080/metrics
-
-6. Access Prometheus Server UI
-   [http://localhost:9090](http://localhost:9090/)
-
-7. Access Grafana
-    [http://localhost:3000](http://localhost:3000/)
-
-   Login: admin / admin
+    Login: admin / admin
 
 8. Stop
 
-   ```bash
-   docker stop grafana prometheus twas_metrics
-   ```
+    ```bash
+    docker stop grafana prometheus twas_metrics
+    ```
 
 9. Restart
 
-   ```bash
-   docker start grafana prometheus twas_metrics
-   ```
+    ```bash
+    docker start grafana prometheus twas_metrics
+    ```
 
 # [Rainmeter](https://www.rainmeter.net/)
 
@@ -1746,30 +1690,35 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 ## 功能说明
 
 - **镜像选项（Windows）**
+
     - **标准 Windows 安装**：即制作正常启动 U 盘。
     - **Windows To Go**：即把系统安装在 U 盘里，得到一个可以完整运行的 Windows 系统。
+
         - 当把 U 盘变成 Windows To Go 以后，插入任一台电脑，即可使用这个 Windows 系统。
         - **注意**：这台电脑和 Windows To Go 的引导方式要相同。
         - 当完成初始化设置以后，拔出 U 盘，再次插入电脑，运行 Rufus，即可把 Windows To Go 保存为 VHDX 镜像，供给 Ventoy 使用。
+
 - **持久分区大小（Linux）**：当 Linux 以 Live CD 运行时，用来保存 Live 运行时所做的修改。否则关机后会丢失所有修改。
 - **分区类型**
+
     - **GPT**：对应 UEFI 引导
     - **MBR**：对应传统 BIOS 引导
+
 - **高级设备选项**
-    - **显示 USB 外置硬盘**：如果插入的是移动硬盘且无法识别，即可勾选此项
-    - **启用对旧 BIOS 修正**：这是对传统 BIOS 引导的优化，提高兼容性
+
+    - **显示 USB 外置硬盘**：如果插入的是移动硬盘且无法识别，即可勾选此项。
+    - **启用对旧 BIOS 修正**：这是对传统 BIOS 引导的优化，提高兼容性。
+
 - **卷标**：即 U 盘名称
 - **高级格式化选项**
+
     - **创建扩展的标签和图标文件**：把 U 盘图标变成 Rufus
 
 ## 使用步骤
 
 - [官网下载 Rufus 工具](https://rufus.ie/zh/)
-
 - 电脑插入已备份的 U 盘（制作时会格式化）
-
 - 双击已下载的 `.exe` 文件，免安装打开工具
-
 - 配置安装选项
 
     - 选择 U 盘驱动器和 ISO 镜像文件，修改卷标（U 盘名称）
@@ -1777,15 +1726,12 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
         <img src="assets/image-20250213133434262.png" alt="image-20250213133434262" style="zoom:50%;" />
 
     - 如果不是老电脑，`分区类型` 和 `目标系统类型` 按工具默认选择即可
-
     - 点击 `开始`
-
     - 弹出选项窗口，选择需要的选项，点击 `确定`。
 
         <img src="assets/image-20250213133611614.png" alt="image-20250213133611614" style="zoom:50%;" />
 
 - Rufus 会将 ISO 镜像文件写入 U 盘并创建启动盘。
-
 - 将 U 盘插入待做系统的电脑，从 U 盘启动做系统（注意此工具不是 PE，只能像 Windows 官网安装介质那样做系统）。
 
 # SQLite
@@ -1801,67 +1747,62 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 ### 容器化 SQLite
 
 1. Docker 已成功搭建，详见 [Docker > 环境搭建](../devops/docker/docker.md#环境搭建)。
-
 2. 运行容器
 
-	```bash
-	docker run -d -v $(pwd):/tmp --name sqlite-container -it jitesoft/sqlite:latest /tmp/test.db
-	```
+    ```bash
+    docker run -d -v $(pwd):/tmp --name sqlite-container -it jitesoft/sqlite:latest /tmp/test.db
+    ```
 
-	**在以上代码中**：
+    **在以上代码中**：
 
-	1. **`--name sqlite-container`**：指定容器的名字
-	2. **`-v $(pwd):/tmp`**：挂载到本地当前文件夹下的 `tmp`，但是本次实验没有挂载成功。
-	3. **`/tmp/test.db`**：容器中 `test.db` 的位置
-	4. **`-d`**：让容器在后台运行
-	5. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
-	6. **`jitesoft/sqlite:latest`**：镜像
+    1. **`--name sqlite-container`**：指定容器的名字
+    2. **`-v $(pwd):/tmp`**：挂载到本地当前文件夹下的 `tmp`，但是本次实验没有挂载成功。
+    3. **`/tmp/test.db`**：容器中 `test.db` 的位置
+    4. **`-d`**：让容器在后台运行
+    5. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+    6. **`jitesoft/sqlite:latest`**：镜像
 
 3. 如果想在命令行中操作 SQLite，可进入容器内 SQLite 交互界面。
 
-	```bash
-	docker exec -it sqlite-container sqlite3
-	```
+    ```bash
+    docker exec -it sqlite-container sqlite3
+    ```
 
-	**在以上代码中**：
+    **在以上代码中**：
 
-	1. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+    1. **`-it`**：以交互模式运行命令，并且分配一个伪终端。
+    2. **`sqlite-container`**：容器名
+    3. **`sqlite3`**：SQLite 命令行客户端
 
-	2. **`sqlite-container`**：容器名
-
-	3. **`sqlite3`**：SQLite 命令行客户端
-
-		```bash
-		sqlite>
-		```
+        ```bash
+        sqlite>
+        ```
 
 4. 退出 SQLite 交互界面
 
-	```bash
-	sqlite> .exit
-	```
+    ```bash
+    sqlite> .exit
+    ```
 
 ## SQLite 基础
 
 - 无需安装。
-
 - 在连接 SQLite 时，如果数据库不存在，会立即创建一个空数据库。
-
 - **常用命令**
 
-	```sql
-	-- 退出 SQLite 交互界面
-	.exit
-	
-	-- 查看所有数据库
-	.database
-	
-	-- 查看数据库中的所有表
-	.tables
-	
-	-- 查看某个表的结构
-	.schema tbl1
-	```
+    ```sql
+    -- 退出 SQLite 交互界面
+    .exit
+    
+    -- 查看所有数据库
+    .database
+    
+    -- 查看数据库中的所有表
+    .tables
+    
+    -- 查看某个表的结构
+    .schema tbl1
+    ```
 
 ## SQLite 交互方式
 
@@ -1874,25 +1815,25 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 
 - **直接创建 Database**
 
-	```sql
-	sqlite3 db_users.db
-	```
+    ```sql
+    sqlite3 db_users.db
+    ```
 
 - **在程序中创建 Database（如果数据库文件不存在，会直接创建）**
 
-	```sql
-	conn = sqlite3.connect('db_users.db')
-	```
+    ```sql
+    conn = sqlite3.connect('db_users.db')
+    ```
 
 - **创建 Table**
 
-	```sql
-	CREATE TABLE IF NOT EXISTS tb_users (
-	    id INTEGER PRIMARY KEY AUTOINCREMENT,
-	    username VARCHAR(16) NOT NULL UNIQUE,
-	    password VARCHAR(255) NOT NULL
-	);
-	```
+    ```sql
+    CREATE TABLE IF NOT EXISTS tb_users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username VARCHAR(16) NOT NULL UNIQUE,
+        password VARCHAR(255) NOT NULL
+    );
+    ```
 
 ## SQLite 可视化
 
@@ -1909,35 +1850,33 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将ISO镜像�
 ## 连接 Google Cloud 实例
 
 1. 全程都可以在 `Powershell` 中执行，无需切换目录
-
 2. **创建 SSH 密钥对**
 
-  ```bash
-  ssh-keygen -t rsa -f C:\Users\<windows_user>\.ssh\<key_file_name> -C <linux_username> -b 2048
-  # eg
-  ssh-keygen -t rsa -f C:\Users\39331\.ssh\windows_key -C max_shaoych -b 2048
-  ```
+    ```bash
+    ssh-keygen -t rsa -f C:\Users\<windows_user>\.ssh\<key_file_name> -C <linux_username> -b 2048
+    # e.g.
+    ssh-keygen -t rsa -f C:\Users\39331\.ssh\windows_key -C max_shaoych -b 2048
+    ```
 
-  解释：
+    解释：
 
-  - 新生成的密钥存储在`C:\Users\39331\.ssh\`
-
-  - 一个是私钥，另一个是同名的公钥（`.pub`）
+    - 新生成的密钥存储在`C:\Users\39331\.ssh\`
+    - 一个是私钥，另一个是同名的公钥（`.pub`）
 
 3. **发送 SSH 密钥对**
 
-  1. 创建 Google 实例时，在 `高级选项` > `安全` > `管理访问权限` 手动添加本地 `Windows公钥` 内容
-  2. 记事本打开新生成的公钥，复制内容，粘贴至 Google
+    1. 创建 Google 实例时，在 `高级选项` > `安全` > `管理访问权限` 手动添加本地 `Windows公钥` 内容
+    2. 记事本打开新生成的公钥，复制内容，粘贴至 Google
 
 4. **连接虚机**
 
-  ```bash
-  ssh -i <PATH_TO_PRIVATE_KEY> <LINUX_USERNAME>@<LINUX_EXTERNAL_IP>
-  # eg
-  ssh -i ~/.ssh/windows_key max_shaoych@34.16.204.233
-  ```
+    ```bash
+    ssh -i <PATH_TO_PRIVATE_KEY> <LINUX_USERNAME>@<LINUX_EXTERNAL_IP>
+    # eg
+    ssh -i ~/.ssh/windows_key max_shaoych@34.16.204.233
+    ```
 
-  - 如果收到警告无法连接，原因是远程主机的公钥已经发生了变化，而 `known_hosts` 文件中的条目与之前保存的公钥不匹配。应该删除 `known_hosts` 文件的冲突条目，重新连接。
+    - 如果收到警告无法连接，原因是远程主机的公钥已经发生了变化，而 `known_hosts` 文件中的条目与之前保存的公钥不匹配。应该删除 `known_hosts` 文件的冲突条目，重新连接。
 
 # [TranslucentTB](https://translucenttb.com/)
 
@@ -1952,19 +1891,15 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 ## 制作 Ventoy U 盘
 
 - 下载并解压 Ventoy。
-
 - 将 USB 驱动器插入电脑，运行 `Ventoy2Disk.exe` 安装到 USB 上。
 
     - **安全启动**：选中。
-
     - **分区类型**：GPT。
-
     - **分区文件系统类型**：Ventoy U 盘的分区类型；为了保证新台式机安装系统成功，选 NTFS。
 
         <img src="assets/1f24a424ec08957d283e32508eba9ab.png" alt="1f24a424ec08957d283e32508eba9ab" style="zoom:50%;" />
 
 - 将你需要的 ISO 镜像文件直接复制到 USB 驱动器中。
-
 - 重启电脑，选择从 USB 启动，Ventoy 会显示一个菜单让你选择要启动的 ISO 文件。
 
 ## 配置 Ventoy U 盘
@@ -2148,6 +2083,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 - **设置快捷键**：左下角 `管理` - `键盘快捷方式`
 - `Ctrl + ,` 快捷键失效
+
     - 与搜狗输入法冲突！
     - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
@@ -2157,7 +2093,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 2. 每次进入项目目录都应该检查；
 3. 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
 4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
-   
+
     - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
 
 5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
@@ -2193,15 +2129,10 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 ## 添加终端
 
 1. 以 Git Bash 为例（Git Bash 可以在安装时勾选添加到 Windows Terminal）
-
 2. 电脑中安装好 Git
-
 3. 在 Microsoft Store 中安装 Windows Terminal 并运行
-
 4. 下拉菜单中进入设置
-
 5. 左下角打开 JSON 文件，用 VS Code 编辑
-
 6. 将以下内容加入到 `profiles` 的 `list` 中添加一项
 
     - **如果在安装 Git 时已添加 Git Bash，在原有配置中添加如下，原文最后一行加逗号**
@@ -2308,13 +2239,12 @@ XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运�
 
 1. **关于环境搭建**
 
-   - [官网下载 XAMPP](https://www.apachefriends.org/download.html)
-
-   - 安装之前把以前的 MySQL 清理干净
+    - [官网下载 XAMPP](https://www.apachefriends.org/download.html)
+    - 安装之前把以前的 MySQL 清理干净
 
 2. 启动 XAMPP，启动 `Apache` 和  `MySQL`；
 
-	<img src="assets/image-20240320233226497.png" alt="image-20240320233226497" style="zoom:50%;" />
+    <img src="assets/image-20240320233226497.png" alt="image-20240320233226497" style="zoom:50%;" />
 
 3. 进入 `Admin` 新建一个数据库，其余交给后端；
 
@@ -2328,11 +2258,13 @@ YAML 是 `YAML Ain't a Markup Language`（YAML 不是一种标记语言）的递
 
 - 大小写敏感
 - 缩进
+
   - 使用缩进表示层级关系；
   - 缩进的空格数不重要，只要相同层级的元素左对齐即可；
   - 缩进不允许使用 `Tab`，只允许 `Space`；
   - 上下级缩进 2 个空格；
   - 字符（如冒号）后缩进 1 个空格；
+
 - `#` 表示注释
 - `-` 表示列表项
 
@@ -2342,15 +2274,16 @@ YouTube 是 Google 旗下的全球最大的视频网站。
 
 ## 快捷键
 
-- **`Shift + ?`**：快捷键查询
-- **`F`**：全屏模式
-- **`I`**：迷你模式
-- **`C`**：字幕
-- **`M`**：静音
-- **`0 ~ 9`**：快速跳转至播放进度的 0% ~ 90%
-- **`Shift + ,`**：减速播放
-- **`Shift + .`**：加速播放
-- **``**：
+| 操作 | YouTube 快捷键 |
+| :---: | :---: |
+| 快捷键查询 | <kbd>?</kbd> |
+| 减速播放 | <kbd><</kbd> |
+| 加速播放 | <kbd>></kbd> |
+| 快速跳转至播放进度的 0% ~ 90% | <kbd>0</kbd> ~ <kbd>9</kbd> |
+| 全屏模式 | <kbd>F</kbd> |
+| 迷你模式 | <kbd>I</kbd> |
+| 字幕 | <kbd>C</kbd> |
+| 静音 | <kbd>M</kbd> |
 
 ## 插件
 
@@ -2379,8 +2312,6 @@ YouTube 是 Google 旗下的全球最大的视频网站。
 
 ## 其它技巧
 
-- 内容区域
+内容区域：
 
-    <img src="assets/image-20250118170730363.png" alt="image-20250118170730363" style="zoom:50%;" />
-
-- 
+<img src="assets/image-20250118170730363.png" alt="image-20250118170730363" style="zoom:50%;" />

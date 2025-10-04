@@ -11,18 +11,15 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
 - 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
 - 安装完成后，点击启动，设置用户名和密码。
-  - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
+
+    - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
 ### 在物理机上安装
 
 - [官网下载 Ubuntu Desktop 的 ISO 文件](https://ubuntu.com/download/desktop)，存入 Ventoy 启动 U 盘。
-
 - 从 BIOS 进入 U 盘启动，选择 Ubuntu。
-
 - 选择 `Try Or Install Ubuntu`，进入类似 PE 的 Ubuntu 系统。
-
 - 右下角双击 `Install Ubuntu` 图标开始安装。
-
 - 安装过程中会询问如何分区
 
     - 如果想把整个磁盘作为 Ubuntu 的运行磁盘，选择 `擦除磁盘并安装 Ubuntu` 即可，安装程序会自动修改分区类型和重新分区。
@@ -45,9 +42,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
     <img src="assets/image-20250214221957424.png" alt="image-20250214221957424" style="zoom:50%;" />
 
 - 安装完成后，手动重启，根据提示，应先拔掉 U 盘，然后按 `Enter` 重启。
-
 - 重启后即可进行初始设置。
-
 - 如果是双系统，可以在 Ubuntu 安装完成后，进行引导设置，详见 `Linux > 系统引导`。
 
 ### 新系统配置
@@ -55,79 +50,75 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - VMware Tools
 - 系统更新
 - 系统设置
+
     - Dock 栏：图标，底部，最小化
     - 终端光标
     - 密码反馈
+
 - VPN，Chrome，VSCode，Git，python，docker
 
 ## Zsh
 
 - Zsh（Z Shell）是一种命令行解释器，也是一种交互式的 Unix shell，它是 Bash 的替代品。
-
 - 安装 Zsh
 
-  ```bash
-  # 安装
-  sudo apt install zsh
-  # 设置 Zsh 为默认 shell
-  chsh -s $(which zsh)
-  ```
+    ```bash
+    # 安装
+    sudo apt install zsh
+    # 设置 Zsh 为默认 shell
+    chsh -s $(which zsh)
+    ```
 
 - 安装 Oh-My-Zsh 插件
 
-  ```bash
-  # 下载
-  wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
-  # 安装
-  sh install.sh
-  ```
-
+    ```bash
+    # 下载
+    wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
+    # 安装
+    sh install.sh
+    ```
 
 - 安装 Zsh 主题和插件
 
-  ```bash
-  # PowerLevel10k主题
-  git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-  # zsh-autosuggestions自动提示插件
-  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-  # zsh-syntax-highlighting语法高亮插件
-  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-  ```
+    ```bash
+    # PowerLevel10k主题
+    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+    # zsh-autosuggestions自动提示插件
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    # zsh-syntax-highlighting语法高亮插件
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    ```
 
 - 编辑 `~/.zshrc` 文件启用插件和主题
 
-  ```shell
-  # 修改主题
-  ZSH_THEME="powerlevel10k/powerlevel10k"
-  
-  # 启用插件
-  plugins=(
-    git
-    zsh-autosuggestions
-    zsh-syntax-highlighting
-  )
-  ```
+    ```shell
+    # 修改主题
+    ZSH_THEME="powerlevel10k/powerlevel10k"
+
+    # 启用插件
+    plugins=(
+      git
+      zsh-autosuggestions
+      zsh-syntax-highlighting
+    )
+    ```
 
 - 重启终端，启动 PowerLevel10k 配置向导
 
-  ```bash
-  p10k configure
-  ```
+    ```bash
+    p10k configure
+    ```
 
 ## 安装软件
 
 - 优先使用 `apt` 或 `snap` 在线安装
-
 - 其次官网下载 `.deb` 包至本地，使用 `apt` 安装
-
 - 如果官网只有 `.tar.xz` 包
 
     - 解压安装包 `tar -xf <package_name>`
-
-    - 根据 `README` 文件说明安装。
+    - 根据 `README` 文件说明安装。
 
 - 再次官网下载官方脚本至本地，使用 `sh` 运行安装脚本
-
 - 再次，手动安装，以 Docke 为例
 
     - 更新软件包列表
@@ -167,7 +158,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
         sudo apt install -y docker-ce docker-ce-cli containerd.io
         ```
 
-- 最后，使用 ``dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
+- 最后，使用 `dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
 
 ## 路径
 
@@ -176,15 +167,15 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - **目录结构**：`/Home/USER_NAME/...`
 - **路径分隔符**：正斜杠 `/`
 - **Linux 特有路径（区别于 Windows）**
-  - Home目录：`cd` 或 `/Home`
-  - 上一次的工作目录：`cd -`
+
+    - Home目录：`cd` 或 `/Home`
+    - 上一次的工作目录：`cd -`
 
 - 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
 
 ### 路径转义
 
 - 在 Linux 中，空格是一个特殊字符，通常用来分隔不同的命令或参数。如果路径中包含空格，你需要使用转义字符 `\` 或者引号来避免错误。例如进入 `VMware Tools` 目录。
-
 - 使用 `\` 转义
 
     ```bash
@@ -217,13 +208,12 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 # 发行版
 
-
-
 # 包管理工具
 
 Linux 包管理工具用于简化和管理软件包的安装、更新、卸载和依赖管理。不同的 Linux 发行版采用不同的包管理工具和格式，但它们的目标是相同的，即简化系统和应用软件的管理。
 
 - 包管理工具
+
     - 分发行版默认包管理工具，如 Ubuntu 的 `apt`
     - 跨发行版包管理工具，如 `snap`
 
@@ -295,6 +285,7 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 - `apt-get` 是 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的命令行工具，是 `apt` 系列命令中的一个较为传统的工具。设计目标是**稳定性和脚本兼容性**，语法较为严格。它用于从软件源安装、升级、删除和管理 `.deb` 包，并且能够处理包的依赖关系，通常与 `dpkg` 配合使用。
 - `apt-get` 的输出格式稳定，适合脚本解析（如 CI/CD 流水线）。
 - `apt-get` vs `apt`
+
     - **`apt-get`** 提供更强的控制，适合脚本和系统管理员使用。
     - **`apt`** 是更现代化、更面向用户的工具，语法更简洁，通常在日常操作中推荐使用。
 
@@ -410,7 +401,6 @@ GRUB 的工作过程大致如下：
 ## GRUB 修复
 
 - U 盘启动，进入 Live USB 环境。
-
 - 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
 
     ```bash
@@ -451,7 +441,6 @@ GRUB 的工作过程大致如下：
     ```
 
 - 修复 GRUB 后，Windows 的引导程序 `Windows Boot Manager` 会消失
-
 - Ubuntu 默认禁用 `os-prober`（用于探测其他操作系统），需手动启用
 
     ```bash
@@ -470,7 +459,6 @@ GRUB 的工作过程大致如下：
     ```
 
 - 重启后可在启动菜单里看见 `Windows Boot Manager`
-
 - 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
 
 ## GRUB 菜单
@@ -564,51 +552,51 @@ GRUB 的工作过程大致如下：
 
 - **基础命令**
 
-  ```bash
-  # 查看文件
-  cat $FILE
-  # 创建文件
-  touch $FILE
-  # 编辑文件
-  nano $FILE
-  vim $FILE
-  # 删除文件
-  rm $FILE
-  # 复制文件
-  cp $FILE $DES_PATH
-  ```
+    ```bash
+    # 查看文件
+    cat $FILE
+    # 创建文件
+    touch $FILE
+    # 编辑文件
+    nano $FILE
+    vim $FILE
+    # 删除文件
+    rm $FILE
+    # 复制文件
+    cp $FILE $DES_PATH
+    ```
 
 - **文本搜索**
 
-  ```bash
-  grep CONTENT
-  ```
+    ```bash
+    grep CONTENT
+    ```
 
 - 替换
 
-  `sed`：流编辑器，用于对文本进行流式处理；`-i`：在原文件修改；`s`：替换；`g` ：全局替换
+    `sed`：流编辑器，用于对文本进行流式处理；`-i`：在原文件修改；`s`：替换；`g` ：全局替换
 
-  ```bash
-  sed -i 's/SOURCE_CONTENT/NEW_CONTENT/g' 'PATH/FILE'
-  # eg
-  sed -i 's/aaa/bbb/g' './html.py' # 将当前文件夹下的html.py文件中的aaa替换成bbb
-  ```
+    ```bash
+    sed -i 's/SOURCE_CONTENT/NEW_CONTENT/g' 'PATH/FILE'
+    # e.g.
+    sed -i 's/aaa/bbb/g' './html.py' # 将当前文件夹下的html.py文件中的aaa替换成bbb
+    ```
 
 - `echo`：快速向文件添加内容
 
-  ```bash
-  echo "[CONTENT]" > [FILE]
-  # eg
-  echo "Hello World!" > demo.txt
-  ```
+    ```bash
+    echo "[CONTENT]" > [FILE]
+    # e.g.
+    echo "Hello World!" > demo.txt
+    ```
 
 - 查找文件
 
-  ```bash
-  find PATH OPTION COMMAND
-  # eg
-  find . -name jquery* -print # 查找当前目录下所有文件名以jquery开头的文件，并打印路径
-  ```
+    ```bash
+    find PATH OPTION COMMAND
+    # e.g.
+    find . -name jquery* -print # 查找当前目录下所有文件名以jquery开头的文件，并打印路径
+    ```
 
 ## Vim
 
@@ -618,49 +606,47 @@ GRUB 的工作过程大致如下：
 
 - Basics
 
-  ```bash
-  # show version
-  vi / vim
-  # open / create file
-  vim $FILE
-  # into insert mode
-  i
-  # back to command mode
-  `Esc`
-  # exit
-  :q
-  # save and exit
-  :wq
-  ```
+    ```bash
+    # show version
+    vi / vim
+    # open / create file
+    vim $FILE
+    # into insert mode
+    i
+    # back to command mode
+    `Esc`
+    # exit
+    :q
+    # save and exit
+    :wq
+    ```
 
 ### Command mode
 
 - Default enter into command mode.
 
-  ![image-20240406160608629](assets/image-20240406160608629.png)
+    ![image-20240406160608629](assets/image-20240406160608629.png)
 
 - `Esc`: Back to command mode
-
 - `dd`: Cut cursor line. `2dd`: Cut cursor and next line
-
 - `yy`: Copy cursor line. `2yy`: Copy cursor and next line
-
 - `p`: Paste at next line of cursor. `2p`: Paste at next line of cursor 2 times
-
 - `Ctrl + F`: Page Up. `Ctrl + U`: Page Up Half.
-
 - `Ctrl + B`: Page Down. `Ctrl + D`: Page Down Half.
 
 ### Insert mode
 
 - Into insert mode
+
   - `i`: before cursor
   - `I`: line beginning
   - `a`: after cursor
   - `A`: line end
   - `o`: next new line
   - `O`: previous new line
+
 - Edit
+
   - `^`: jump to line beginning
   - `$`: jump to line end
 
@@ -678,22 +664,23 @@ GRUB 的工作过程大致如下：
 
 - **基础命令**
 
-  ```bash
-  # 创建文件夹
-  mkdir [PATH] FOLDER_NAME
-  # 删除空文件夹
-  rmdir [PATH] FOLDER_NAME
-  # 删除非空文件夹
-  rm -r [PATH] FOLDER_NAME
-  # 列出文件夹内容
-  ls [-al] # -al列出隐藏内容
-  ```
+    ```bash
+    # 创建文件夹
+    mkdir [PATH] FOLDER_NAME
+    # 删除空文件夹
+    rmdir [PATH] FOLDER_NAME
+    # 删除非空文件夹
+    rm -r [PATH] FOLDER_NAME
+    # 列出文件夹内容
+    ls [-al] # -al列出隐藏内容
+    ```
 
 # 命令选项
 
 - `-rf` 选项是 `-r` 和 `-f` 的组合
-  - `-r` 选项，以确保递归删除子目录和文件。
-  - `-f` 选项，强制删除。
+
+    - `-r` 选项，以确保递归删除子目录和文件。
+    - `-f` 选项，强制删除。
 
 - `-y`：默认同意
 
@@ -701,9 +688,9 @@ GRUB 的工作过程大致如下：
 
 - **`|`**：管道符，命令输出传递；eg：打开 `tmp` 文件夹中的 `html.py` 文件，然后找出字符串 `jquery-1.11.3.min.js`
 
-  ```bash
-  cat /tmp/html.py | grep jquery-1.11.3.min.js
-  ```
+    ```bash
+    cat /tmp/html.py | grep jquery-1.11.3.min.js
+    ```
 
 ## tldr
 
@@ -735,15 +722,13 @@ GRUB 的工作过程大致如下：
 在 Linux 终端中，默认情况下，输入密码时是不可见的，这是出于安全性考虑。然而，如果你想让密码在输入时可见，有一些方法可以实现。
 
 - 打开 sudoers 文件：`sudo visudo`
-
 - 找到 `Defaults   env_reset` 行，添加 `pwfeedback`，如下
 
-  ```bash
-  Defaults env_reset,pwfeedback
-  ```
+    ```bash
+    Defaults env_reset,pwfeedback
+    ```
 
 - 这将启用密码反馈功能，使得在输入密码时可以看到 * 星号，但仍然不是明文显示。
-
 
 ## 更新下载源
 
@@ -758,15 +743,12 @@ GRUB 的工作过程大致如下：
 - 错误信息表明，系统无法从指定的仓库（`file:/cdrom noble Release`）获取 `Release` 文件，因此该源被禁用。这通常发生在你尝试从一个无效或不可用的源更新软件包时。
 
 - 右键打开 `/etc/apt/sources.list` 文件，检查是否有指向 `file:/cdrom` 的源。
-
 - 如果发现 `file:/cdrom` 相关的行，可以将其注释掉（在行首添加 `#`）或删除，然后保存。
-
 - 重新更新。
 
 ## Ubuntu Dock 栏最小化
 
 - 使用 Ubuntu LTS 时，点击 Dock 栏上已打开的应用图标时，无法最小化
-
 - 终端运行如下代码
 
     ```bash

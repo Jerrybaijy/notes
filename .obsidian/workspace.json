@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "32c1ac8d5c31fca4",
+            "id": "b625e2516d088e2f",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -37,7 +37,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": true
               },
               "icon": "lucide-folder-closed",
               "title": "文件列表"
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:linux",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -70,11 +70,12 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200
   },
   "right": {
     "id": "9d47538a58fd4ff6",
@@ -162,6 +163,8 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "32c1ac8d5c31fca4",
-  "lastOpenFiles": []
+  "active": "25752b8ea6c8f738",
+  "lastOpenFiles": [
+    "IT/software/software-collection/software-collection.md"
+  ]
 }
