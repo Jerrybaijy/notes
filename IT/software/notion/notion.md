@@ -38,13 +38,13 @@
 
 ## 快捷键
 
-| 操作 | 快捷键 |
-| :---: | :---: |
-| 创建块 | <kbd>/</kbd> |
-| 强制换行 | <kbd>Shift</kbd> + <kbd>Enter</kbd> |
+|  操作  |                        快捷键                        |
+| :--: | :-----------------------------------------------: |
+| 创建块  |                   <kbd>/</kbd>                    |
+| 强制换行 |        <kbd>Shift</kbd> + <kbd>Enter</kbd>        |
 | 添加评论 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> |
-| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 内容 | <kbd>?</kbd> + <kbd>?</kbd> |
+|  内容  |            <kbd>?</kbd> + <kbd>?</kbd>            |
+|  内容  |            <kbd>?</kbd> + <kbd>?</kbd>            |
 
 # 块
 

@@ -11,7 +11,6 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
 - 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
 - 安装完成后，点击启动，设置用户名和密码。
-
     - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
 ### 在物理机上安装

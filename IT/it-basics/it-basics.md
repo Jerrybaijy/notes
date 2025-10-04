@@ -54,7 +54,7 @@
 
 # CLI 命令行界面
 
-**命令行界面**（**C**ommand **L**ine **I**nterface，简称 **CLI**），是一种通过输入文本命令与计算机或软件交互的方式。与 **GUI（图形用户界面）**不同，CLI 主要依赖键盘输入命令行指令，而不是鼠标点击操作。
+**CLI**（**C**ommand **L**ine **I**nterface，命令行界面），是一种通过输入文本命令与计算机或软件交互的方式。与 **GUI**（图形用户界面）不同，CLI 主要依赖键盘输入命令行指令，而不是鼠标点击操作。
 
 ## **CLI 的特点**
 
@@ -78,30 +78,22 @@
 
 ## 快捷键
 
-- **光标**
-
-    - **`Ctrl + A` / `Home`**：将光标移动到行首
-    - **`Ctrl + E` / `End`**：将光标移动到行尾
-
-- **退出**
-
-    - **`Ctrl + C`**：强制从输出中退出
-    - **`Ctrl + D` / `exit`**：退出系统
-
-- **复制粘贴**
-
-    - **`Ctrl + Shift + C`**：复制
-    - **`Ctrl + Shift + V`**：粘贴
-
-- **删除**
-
-    - **`Ctrl + U`**：删除光标到行首的内容
-    - **`Ctrl + K`**：删除光标到行尾的内容
-
-- **切换命令**
-
-    - **`↑`**：向上翻一条命令
-    - **`↓`**：向上翻一条命令
+| 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
+| :---: | :---: |
+| ==光标== |  |
+| 将光标移动到行首 | <kbd>Home</kbd> \| <kbd>Ctrl</kbd> + <kbd>A</kbd> |
+| 将光标移动到行尾 | <kbd>End</kbd> \| <kbd>Ctrl</kbd> + <kbd>E</kbd> |
+| ==退出== |  |
+| 强制从输出中退出 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| 退出系统 | `exit` \| <kbd>Ctrl</kbd> + <kbd>D</kbd> |
+| ==复制粘贴== |  |
+| 复制 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> |
+| 粘贴 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> |
+| ==删除== |  |
+| 删除光标到行首的内容 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| 删除光标到行尾的内容 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
+| ==其它== |  |
+| 向上/下翻一条命令 | <kbd>↑</kbd> \| <kbd>↓</kbd> |
 
 # GUI
 
@@ -342,10 +334,8 @@
 
 - **命令**：`cd`
 - **示例**
-
     - Linux：`cd /Home/USER_NAME`
     - Windows：`cd C:/Users/USER_NAME`
-
 - **分隔符**
 
     - `/`：Linux、Unix、Windows、macOS、Android、IOS、URL 等都支持

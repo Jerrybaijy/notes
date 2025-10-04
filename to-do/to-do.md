@@ -1,3 +1,5 @@
+# To-Do
+
 - [ ] **IT**
     - [ ] CSS 文档、笔记
     - [ ] JavaScript 文档、笔记
@@ -18,3 +20,40 @@
 - [ ] Obsidian
 - [ ] 其它
 
+# Andy's Suggestion
+
+## Claude Code
+
+- [Official site](https://claude.com/product/claude-code)
+
+- Youtube Intro
+    - [果断退订Cursor！这个AI编程神器又贵又强，20分钟搞定你的需求。](https://www.youtube.com/watch?v=rWkbrb1R9kY)
+    - [Claude Code 用了 30 天，我再也回不去从零手写代码了 | 编程正式从「胶卷时代」正式迈入「数码时代」| Vibe Coding](https://youtu.be/sOvi9Iu1Dq8?si=NTvahE9-2Hcby6Fc)
+
+## More
+
+- [Ranking AI Skills From 1 to 10](https://www.youtube.com/shorts/sIxFjKpSKhA): 1 is beginner and 10 is advanced.
+    - 3 AI NPCs
+    - 4 Video Generation
+    - 5 Image Generation
+    - 6 Voice Generation
+    - 7 Vibe Coding
+    - 9 AI Agents
+    - 10 Prompt Engineering
+- [AI YouTuber Ranks Vibe Coding Tools From 1 to 10](https://www.youtube.com/shorts/TGRHzke8MuI): 1 is beginner and 10 is advanced.
+    - 1 Lovable
+    - 2 Bolt (most beginner)
+    - 2 v0
+    - [4 Replit](https://replit.com/)
+    - [6 Firebase Studio](https://firebase.studio/)
+    - [7 Windsurf](https://windsurf.com/)
+    - [8 Cursor](https://cursor.com/)
+    - [9 Claude Code (most pro)](https://claude.com/product/claude-code)
+- [李宏毅的公告网站](https://speech.ee.ntu.edu.tw/~hylee/GenAI-ML/2025-fall.php)
+    - [【生成式人工智慧與機器學習導論2025】第 2 講：上下文工程 (Context Engineering) — AI Agent 背後的關鍵技術](https://www.youtube.com/watch?v=lVdajtNpaGI&t=3695s)
+    - [第二講：AI 使用工具概念介紹.ipynb](https://colab.research.google.com/drive/1t347cQEyMikpHUHV_ap83A-mq9PMSl3O?usp=sharing#scrollTo=skvU7w77T5j4)：一个工具网站
+    - [Google Colab](https://colab.google/ "https://colab.google/")：谷歌合作实验室
+
+## Q
+
+- 资讯搜寻汇总还是要上 `perplexity`，左手 perplexity 搜索资讯，右手 Claude code 干活！？？？？

@@ -1,3 +1,7 @@
 {
-  "cssTheme": "GitHub Theme"
+  "cssTheme": "GitHub Theme",
+  "enabledCssSnippets": [
+    "0",
+    "user"
+  ]
 }

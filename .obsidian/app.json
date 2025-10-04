@@ -1,1 +1,11 @@
-{}
+{
+  "strictLineBreaks": true,
+  "foldHeading": false,
+  "foldIndent": false,
+  "showIndentGuide": false,
+  "useTab": false,
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "useMarkdownLinks": true,
+  "showInlineTitle": false
+}
