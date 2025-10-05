@@ -937,19 +937,25 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 ## [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
 
-此部分是作为新手学习路线：
+[学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")文档包含[入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)、[核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)、[扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)及其它等多个模块。
 
-- [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)
--  [HTML 简介](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")
-- [CSS 第一步](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")
-- [JavaScript 第一步](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting "创建 JavaScript 代码块")
-- [Web 表单——操作用户数据](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms "Web 表单构建块")
-- [客户端 Web 开发工具](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Client-side_tools)
-- [客户端 JavaScript 框架](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries "JavaScript 客户端和函数库")
-- [Web 性能优化——让网站更快做出响应](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Performance "Web 性能")
-- [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
-- [工具和测试](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Testing)
-- [服务器端网站编程](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Server-side)
+[学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")根页面部分是作为新手的学习路线：
+
+- [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
+-  [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
+- [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
+- [JavaScript——动态客户端脚本语言](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting "创建 JavaScript 代码块")：`核心模块` 中的 `使用 JavaScript 添加脚本交互`
+- [Web 表单——操作用户数据](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms "Web 表单构建块")：`扩展模块` 中的 `Web 表单`
+- [无障碍——让每个人都能使用 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility "无障碍")：`核心模块` 中的 `无障碍`
+- [Web 性能优化——让网站更快做出响应](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Performance "Web 性能")：`扩展模块` 中的 `Web 性能`
+- [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML "MathML")：`面向开发者的 Web 技术` 中的 `MathML`
+- [工具和测试](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Testing "跨浏览器测试")：`扩展模块` 中的 `测试`
+- [服务器端网站编程](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Server-side "服务器端网站编程")：`扩展模块` 中的 `服务器端网站编程`
+- “涵盖的主题”之外行文中的扩展：
+    - [客户端 Web 开发工具](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Client-side_tools "理解客户端 web 开发工具")：`扩展模块` 中的 `理解客户端工具`
+    - [客户端 JavaScript 框架](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Frameworks_libraries "JavaScript 客户端和函数库")：`核心模块` 中的 `JavaScript 框架和库`
+    - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto "常见问题")：`学习 Web 开发` 中的 `如何解决常见问题`
+
 
 ## [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
 

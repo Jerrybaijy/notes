@@ -2,7 +2,7 @@
 >
 > [MDN 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements "MDN HTML 元素参考")
 
-HTML 元素基础详见 `html-grammar 笔记 | HTML 元素 | 元素结构`
+HTML 元素基础详见 `html | 元素 | 元素结构` 笔记。
 
 本笔记的元素分类参照 WHATWG 文档的 [HTML 元素目录](https://html.spec.whatwg.org/multipage/#toc-semantics)。
 

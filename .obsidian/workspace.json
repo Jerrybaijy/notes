@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "ai-tools-collection"
             }
+          },
+          {
+            "id": "9105b90f444870d7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/software/software-collection/software-collection.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "software-collection"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +68,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:ai",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -142,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IT/ai/ai-tools-collection/ai-tools-collection.md",
+                "file": "IT/software/software-collection/software-collection.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ai-tools-collection 的大纲"
+              "title": "software-collection 的大纲"
             }
           }
         ],
@@ -169,36 +184,53 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "ee8ae37f0ec9ab33",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "IT/os/windows/windows.md",
+    "IT/code-language/html/html.md",
+    "IT/code-language/css/assets/position_type.png",
+    "IT/code-language/css/assets/image-20241217160045045.png",
+    "IT/code-language/css/assets/image-20241205165017474.png",
+    "IT/code-language/css/assets/image-20241203205719165.png",
+    "IT/code-language/css/assets/image-20241203200754334.png",
+    "IT/code-language/css/assets/image-20241203200725662.png",
+    "IT/code-language/css/assets/image-20241203200646038.png",
+    "IT/code-language/css/assets/image-20241203200556497.png",
+    "IT/code-language/css/assets/image-20241203200520694.png",
+    "IT/code-language/css/assets/image-20241203194626540.png",
+    "IT/code-language/css/css.md",
+    "IT/code-language/css/assets",
+    "IT/code-language/css",
+    "IT/code-language/javascript/javascript.md",
+    "IT/code-language/javascript/dom.md",
+    "IT/code-language/javascript/bom.md",
+    "IT/code-language/javascript/assets",
+    "IT/code-language/javascript",
+    "IT/code-language/html/html-grammar.md",
+    "IT/code-language/html/html-elements.md",
+    "IT/code-language/html/html-attributes.md",
+    "IT/code-language/html/assets",
+    "IT/code-language/html",
+    "IT/web/frontend-collection/bootstrap/bootstrap.md",
+    "IT/web/frontend-collection/bootstrap/assets",
+    "IT/web/frontend-collection/frontend-collection.md",
+    "IT/web/frontend-collection/bootstrap",
+    "IT/web/frontend-collection/assets",
+    "IT/web/frontend-collection",
+    "IT/web/web-dev/web-to-learn.md",
+    "IT/web/web-dev/web-projects.md",
+    "IT/web/web-dev/web-dev.md",
+    "IT/web/javascript/javascript.md",
+    "IT/web/javascript/dom.md",
+    "IT/web/javascript/bom.md",
+    "IT/web/html/html-grammar.md",
+    "IT/web/html/html-elements.md",
+    "IT/web/html/html-attributes.md",
+    "IT/web/css/css.md",
+    "IT/web-dev/web-dev/web-to-learn.md",
+    "IT/web-dev/web-dev/web-projects.md",
+    "IT/web-dev/web-dev/web-dev.md",
+    "IT/web-dev/web/web-dev.md",
     "IT/ai/ai-tools-collection/ai-tools-collection.md",
-    "obsidian标题实验.md",
-    "IT/software/obsidian/README.md",
-    "IT/software/obsidian/新建 Markdown File.md",
-    "IT/software/obsidian/obsidian.md",
-    "IT/software/obsidian/claude-底板.css",
-    "IT/software/obsidian/0.css",
-    "IT/software/obsidian.md",
-    "IT/software/obsidian",
-    "IT/software/新建文件夹",
-    "IT/software/新建 Markdown File.md",
-    "README.md",
-    "to-do/to-do.md",
-    "IT/code-language/markdown/markdown.md",
-    "IT/it-basics/it-basics.md",
-    "IT/software/typora/typora.md",
-    "IT/os/linux/linux.md",
-    "IT/web-dev/html/html-grammar.md",
-    "IT/web-dev/javascript/javascript.md",
-    "IT/ai/ai-tools-collection/ai-tools/ai-tools.md",
-    "IT/software/notion/notion.md",
-    "IT/software/3d-max/3d-max.md",
-    "IT/ai/ai-tools-collection/ai-tools/assets/image-20251005042605198.png",
-    "IT/ai/ai-tools-collection/ai-tools/assets",
-    "IT/ai/ai-tools-collection/ai-tools",
-    "IT/ai/ai-tools-collection",
-    "IT/ai",
-    "IT/software/software-collection/software-collection.md"
+    "IT/os/windows/windows.md"
   ]
 }
