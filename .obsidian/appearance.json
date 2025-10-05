@@ -2,6 +2,7 @@
   "cssTheme": "GitHub Theme",
   "enabledCssSnippets": [
     "0",
-    "user"
+    "obsidian-heading-numbering",
+    "claude-底板-主题"
   ]
 }
