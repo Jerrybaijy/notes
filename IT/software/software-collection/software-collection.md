@@ -900,7 +900,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 >
 > [浏览器扩展](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions)
 
-页面导航：
+## 页面导航
 
 - **docs（无该页）**：
 

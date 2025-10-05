@@ -19,9 +19,7 @@
 
 ## 环境搭建
 
-安装 Node.js，详见 `Node.js` 笔记。
-
-
+安装 Node.js，详见 `Node.js` 笔记。
 
 ## pnpm
 
