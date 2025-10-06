@@ -9,7 +9,8 @@
     - [ ] [导入和导出](https://support.typoraio.cn/Export/#other-pandoc-options)
     - [ ] [YAML Front Matter](https://support.typora.io/YAML/)：插入元数据
 - [ ] MDN
-    - [ ] Web
+    - [ ] [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
+        - [ ] [Git](https://developer.mozilla.org/zh-CN/docs/Learn/Tools_and_testing/GitHub)
     - [ ] [浏览器扩展](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions)
 - [ ] [Prettier](https://prettier.io/docs/index.html)
 - [ ] VS Code
@@ -53,6 +54,8 @@
     - [【生成式人工智慧與機器學習導論2025】第 2 講：上下文工程 (Context Engineering) — AI Agent 背後的關鍵技術](https://www.youtube.com/watch?v=lVdajtNpaGI&t=3695s)
     - [第二講：AI 使用工具概念介紹.ipynb](https://colab.research.google.com/drive/1t347cQEyMikpHUHV_ap83A-mq9PMSl3O?usp=sharing#scrollTo=skvU7w77T5j4)：一个工具网站
     - [Google Colab](https://colab.google/ "https://colab.google/")：谷歌合作实验室
+- [Everything Free You Can Do With Gemini](https://www.youtube.com/watch?v=NDf0p5hgjvk)
+    - imagen：
 
 ## Q
 

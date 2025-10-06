@@ -46,24 +46,30 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 ## [外部资源链接 `<link>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/link)
 
-- **语法**：引入外部资源。
+### 语法
 
-    ```html
-    <head>
-      <link href="styles.css" rel="stylesheet" />
-    </head>
-    ```
+**`<link>` 元素**用于引入外部资源。
 
-    ```css
-    /* styles.css */
-    p {color: red;}
-    ```
+```html
+<head>
+  <link href="styles.css" rel="stylesheet" />
+</head>
+```
 
-- **说明**
+```css
+/* styles.css */
+p {color: red;}
+```
 
-    - **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部CSS样式文件，并应用其中的样式规则。
-    - `<link>` 元素可以出现在 [`<head>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head) 元素或 [`<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body) 元素中，具体取决于它是否有一个 **body-ok** 的[链接类型](https://html.spec.whatwg.org/multipage/links.html#body-ok)，但最好将其放在 `<head>` 中。
-    - 该元素最常用于链接 CSS，此外也可以被用来创建站点图标 。
+**说明**
+
+- **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部CSS样式文件，并应用其中的样式规则。
+- `<link>` 元素可以出现在 [`<head>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head) 元素或 [`<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body) 元素中，具体取决于它是否有一个 **body-ok** 的[链接类型](https://html.spec.whatwg.org/multipage/links.html#body-ok)，但最好将其放在 `<head>` 中。
+- 该元素最常用于链接 CSS，此外也可以被用来创建站点图标 。
+
+### 其它属性
+
+- `href` 属性详见 `<a>` 元素。
 
 ## [样式信息 `<style>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/style)
 
@@ -90,6 +96,10 @@ HTML 元素基础详见 `html | 元素` 笔记。
 ## [文档根 URL `<base>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base)
 
 - 指定用于一个文档中包含的所有相对 URL 的根 URL。一份中只能有一个该元素，是空元素。
+
+### 其它属性
+
+- `href` 属性详见 `<a>` 元素。
 
 # 章节
 
@@ -274,26 +284,22 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 **标题 `<h>`** 用于定义标题级别，从 `<h1>` 到 `<h6>`，是块级元素。
 
-- **语法**
+```html
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+<h3>三级标题</h3>
+<h4>四级标题</h4>
+<h5>五级标题</h5>
+<h6>六级标题</h6>
+```
 
-    ```html
-    <h1>一级标题</h1>
-    <h2>二级标题</h2>
-    <h3>三级标题</h3>
-    <h4>四级标题</h4>
-    <h5>五级标题</h5>
-    <h6>六级标题</h6>
-    ```
+> ![image-20241128135532190](assets/image-20241128135532190.png)
 
-- **渲染效果**
+**注意**：
 
-    ![image-20241128135532190](assets/image-20241128135532190.png)
-
-- **注意**
-
-    - 不要为了减小标题的字体而使用低级别的标题
-    - 避免跳过某级标题：始终要从 `<h1>` 开始，接下来依次使用 `<h2>` 等等
-    - 同一篇幅尽量不要超过三级标题
+- 避免跳过某级标题：始终要从 `<h1>` 开始，接下来依次使用 `<h2>` 等等
+- 不要为了减小标题的字体而使用低级别的标题
+- 同一篇幅尽量不要超过三级标题
 
 ## [独立结构 `<article>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/article)
 
@@ -433,33 +439,18 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 ## [段落 `<p>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/p)
 
-- **语法**：用于定义 HTML 文档中的段落，是行内元素。
+`<p>` 元素用于定义 HTML 文档中的段落，是块级元素。
 
-    ```html
-    <p>
-      Geckos are a group of usually small, usually nocturnal lizards. They are found
-      on every continent except Antarctica.
-    </p>
-    
-    <p>
-      Some species live in houses where they hunt insects attracted by artificial
-      light.
-    </p>
-    ```
+```html
+<p>这是第一个段落</p>
+<p>这是第一个段落</p>
+```
 
-    ```css
-    p {
-      margin: 10px 0;
-      padding: 5px;
-      border: 1px solid #999;
-    }
-    ```
+**渲染效果**：浏览器默认会在段落的前后添加空行。
 
-- **渲染效果**
-
-    > ![image-20241128145742800](assets/image-20241128145742800.png)
-
-- **说明**：浏览器会自动地在段落的前后添加空行。
+> <p>这是第一个段落</p>
+> 
+> <p>这是第二个段落</p>
 
 ## [主题分割 `<hr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/hr)
 
@@ -560,9 +551,9 @@ function greet() {
 
 ## [有序列表 `<ol>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol)
 
-**有序列表 `<ol>`** 显示按顺序排列的列表项 `<li>`，默认以数字等符号进行标记。
+### 语法
 
-### 有序列表语法
+**有序列表 `<ol>`** 显示按顺序排列的列表项 `<li>`，默认以数字等符号进行标记。
 
 ```html
 <ol>
@@ -578,27 +569,52 @@ function greet() {
 > <li>第三列表项</li>
 > </ol>
 
-### `type` 属性
+### 列表嵌套
 
-**`type` 属性**用于指定有序列表的计数器类型，即序列号的类型。
+**列表嵌套**是指在一个列表项 `<li>` 中包含另一个列表
 
 ```html
-<ol type="A">
-  <li>第一列表项</li>
-  <li>第二列表项</li>
-  <li>第三列表项</li>
-</ol>
+<!-- 规范写法 -->
+<ul>
+  <li>
+    项目一
+    <ol>
+      <li>子项目一</li>
+      <li>子项目二</li>
+    </ol>
+  </li>
+  <li>项目二</li>
+</ul>
+
+<!-- 不规范写法 -->
+<ul>
+  <li>项目一</li>
+  <ol>
+    <li>子项目一</li>
+    <li>子项目二</li>
+  </ol>
+  <li>项目三</li>
+</ul>
 ```
 
-> <ol type="A">
-> <li>第一列表项</li>
-> <li>第二列表项</li>
-> <li>第三列表项</li>
-> </ol>
+> <ul>
+>   <li>
+>     项目一
+>     <ol>
+>       <li>子项目一</li>
+>       <li>子项目二</li>
+>     </ol>
+>   </li>
+>   <li>项目二</li>
+> </ul>
 
-### `start` 属性
+**注意**：不要将一个列表当成列表项 `<li>` 进行嵌套，而是要把列表放在 `<li>` 的内容中。
+
+### [`start` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/ol#start "<ol> start")
 
 **`start` 属性**用于指定有序列表的起始值。
+
+**适用元素**：[`<ol>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ol)
 
 ```html
 <ol start="5">
@@ -614,63 +630,23 @@ function greet() {
 > <li>第七列表项</li>
 > </ol>
 
-### `value` 属性
+### [`type` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/ol#type "<ol> type")
 
-**`value` 属性**用于指定有序列表项的值，这是 `<li>` 的属性。
+**`type` 属性**在有序列表中，用于指定有序列表的计数器类型，即序列号的类型。
 
 ```html
-<ol>
-  <li value="100">第一百列表项</li>
-  <li value="200">第二百列表项</li>
-  <li value="300">第三百列表项</li>
+<ol type="A">
+  <li>第一列表项</li>
+  <li>第二列表项</li>
+  <li>第三列表项</li>
 </ol>
 ```
 
-> <ol>
-> <li value="100">第一百列表项</li>
-> <li value="200">第二百列表项</li>
-> <li value="300">第三百列表项</li>
+> <ol type="A">
+> <li>第一列表项</li>
+> <li>第二列表项</li>
+> <li>第三列表项</li>
 > </ol>
-
-### 列表嵌套
-
-**列表嵌套**是指在一个列表项 `<li>` 中包含另一个列表
-
-```html
-<!-- 规范写法 -->
-<ul>
-  <li>
-    项目1
-    <ol>
-      <li>子项目 1</li>
-      <li>子项目 2</li>
-    </ol>
-  </li>
-  <li>项目2</li>
-</ul>
-
-<!-- 不规范写法 -->
-<ul>
-  <li>项目1</li>
-  <ol>
-    <li>子项目 1</li>
-    <li>子项目 2</li>
-  </ol>
-  <li>项目2</li>
-</ul>
-```
-
-> <ul>
-> <li>项目1
-> <ol>
->    <li>子项目 1</li>
->    <li>子项目 2</li>
-> </ol>
-> </li>
-> <li>项目2</li>
-> </ul>
-
-**注意**：不要将一个列表当成列表项 `<li>` 进行嵌套，而是要把列表放在 `<li>` 的内容中。
 
 ## [无序列表 `<ul>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/ul)
 
@@ -696,7 +672,27 @@ function greet() {
 
 ## [列表项 `<li>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/li)
 
-**列表项 `<li>`** 用于表示列表中的项目。
+### 语法
+
+**列表项 `<li>`** 用于表示列表中的项目，详见 `html-elements | <ol>` 笔记。
+
+### [`value` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/li#value)
+
+**`value` 属性**在有序列表中，指定列表项 `<li>` 的序号。
+
+```html
+<ol>
+  <li value="100">第一百列表项</li>
+  <li value="200">第二百列表项</li>
+  <li value="300">第三百列表项</li>
+</ol>
+```
+
+> <ol>
+> <li value="100">第一百列表项</li>
+> <li value="200">第二百列表项</li>
+> <li value="300">第三百列表项</li>
+> </ol>
 
 ## [菜单 `<menu>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/menu)
 
@@ -1129,41 +1125,80 @@ span.ingredient {
 
 ## [锚元素 `<a>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a)
 
+### 语法
+
 **锚元素 `<a>`** 可以通过它的 `href` 属性创建通向其他网页、文件、电子邮件地址、同一页面内的位置或任何其他 URL 的超链接，供用户点击，属于行内元素。
 
-- **语法**：
+```html
+<a href="https://www.example.com">点击这里</a>
+```
 
-    ```html
-    <p>You can reach Michael at:</p>
-    
-    <ul>
-      <li><a href="https://example.com">Website</a></li>
-      <li><a href="mailto:m.bluth@example.com">Email</a></li>
-      <li><a href="tel:+123456789">Phone</a></li>
-    </ul>
-    ```
+> <p>You can reach Michael at:</p>
+>
+> <ul>
+> <li><a href="https://example.com">Website</a></li>
+> <li><a href="mailto:m.bluth@example.com">Email</a></li>
+> <li><a href="tel:+123456789">Phone</a></li>
+> </ul>
 
-- **渲染效果**
+### [`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)
 
-    > <p>You can reach Michael at:</p>
-    >
-    > <ul>
-    > <li><a href="https://example.com">Website</a></li>
-    > <li><a href="mailto:m.bluth@example.com">Email</a></li>
-    > <li><a href="tel:+123456789">Phone</a></li>
-    > </ul>
+**`href`**（***h**ypertext **ref**erence*，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
 
-- **常用属性**：
+```html
+<p>You can reach Michael at:</p>
+<ul>
+  <li><a href="https://example.com">Website</a></li>
+  <li><a href="mailto:m.bluth@example.com">Email</a></li>
+  <li><a href="tel:+123456789">Phone</a></li>
+</ul>
+```
 
-    - `href`
-    - [跳转方式 `target`](#[跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target))
-    - `title`
-    - `download`
+> <p>You can reach Michael at:</p>
+> <ul>
+>   <li><a href="https://example.com">Website</a></li>
+>   <li><a href="mailto:m.bluth@example.com">Email</a></li>
+>   <li><a href="tel:+123456789">Phone</a></li>
+> </ul>
 
-- **扩展**
+**<span id="anchor">锚点</span>**：锚点元素添加属性 `id="锚点"`，跳转元素在 URL/SRC 后添加 `#锚点`（同一地址可省略 URL/SRC）
 
-    - 元素内容可以是文本或其它元素（如图像）
-    - 可以在 URL/SRC 后加锚点
+```html
+<!-- 跳转到本地锚点 -->
+<div id="锚点">百度</div>
+<a href="#锚点">点击跳转至百度</a>
+
+<!-- 跳转到 URL 锚点 -->
+<a href="https://example.com#Home">Website</a>
+```
+
+### [跳转方式 `target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/a#target)
+
+**`target` 属性**用于指定链接的*打开方式* 或者指定提交表单时的*目标窗口*。通常用于 `<a>` 和 `<form>`。
+
+```html
+<a href="https://www.example.com" target="_blank">Visit Example.com</a>
+```
+
+**属性值**：
+
+- **`_self`**：默认值，在当前窗口中打开。
+- **`_blank`**：在新窗口或新标签页中打开。
+- **`_parent`**：在父级框架中打开。
+- **`_top`**：在顶级窗口中打开。
+
+### 替代文本 `alt`
+
+`alt` 属性作用：
+
+- 如果图像无法加载，`alt` 属性的文本将被显示。
+- 屏幕阅读器等辅助技术可以读取 `alt` 文本，以提供对图像的描述，帮助视觉障碍用户理解图像内容。
+
+```html
+<img src="example.jpg" alt="一个展示示例的图像">
+```
+
+`alt` 属性使用元素：[`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img)、[`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input)、[`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img)
 
 ## [换行 `<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/br)
 
@@ -1324,6 +1359,20 @@ span.ingredient {
 
 > <img src="assets/dog.jpg" alt="dog" style="width: 50%; float: left" />
 
+### [外部资源 `src`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img#src)
+
+**`src` 属性**用于指定脚本文件引用的外部资源的路径。可以是本地路径，也可以是网络上的 URL。
+
+```html
+<img src="path/to/image.jpg" alt="Description">
+```
+
+### [宽度 `width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)
+
+- **语法**：`width` 和 `height` 属性是 HTML 中用于指定元素宽度和高度的属性。
+- **属性值单位**：可以是像素 `px`、百分比 `%`、视口 `vw/vh`、`em`、`rem` 和绝对长度单位（如mm）等，详见 `CSS` - `值和单位`。
+- **自适应**：通常情况下，如果只设置 `width: 200px;`，而没有设置 `height`，浏览器将根据图像的纵横比自动计算 `height`。
+
 ### [响应式图片](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images)
 
 **响应式图片**可以解决不同尺寸屏幕对图片的要求
@@ -1351,6 +1400,10 @@ span.ingredient {
 ## [图像映射区域 `<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area)
 
 是空元素
+
+### 其它属性
+
+- `href` 属性详见 `<a>` 元素。
 
 ## [播放源 `<source>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/source)
 
@@ -1960,6 +2013,14 @@ span.ingredient {
           }
         </script>
         ```
+
+### [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button#disabled)
+
+**`disabled` 属性**用于禁止用户与某个元素进行交互。
+
+```html
+<input type="text" disabled>
+```
 
 ## [`<datalist>`](https://html.spec.whatwg.org/multipage/form-elements.html#the-datalist-element)
 

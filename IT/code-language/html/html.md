@@ -196,11 +196,11 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 - **基本结构包含：**
 
-    1. [**文档类型**](#[文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype))：`<!DOCTYPE html>`
-    2. [**根元素**](#[根元素](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html))：`<html>`
+    1. [**文档类型**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)：`<!DOCTYPE html>`
+    2. [**根元素**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)：`<html>`
 
-    3. [**元数据分区**](#[元数据分区](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据))：`<head>`
-    4. [**内容分区**](#[内容分区 `<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body))：`<body>`
+    3. [**元数据分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据)：`<head>`
+    4. [**内容分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)：`<body>`
 
 - VS Code Emmet 快速创建文档结构：`!`
 
@@ -256,7 +256,10 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
 
 # 属性
 
-本章节只记录 HTML 元素属性的基础，关于各元素属性的详解，详见 `html-arrributes` 笔记。
+本章节只记录 HTML 元素属性的基础，关于各元素属性的详解：
+
+- **全局属性**：详见 `html-arrributes` 笔记。
+- **其它属性**：详见 `html-elements` 笔记中的各个元素。
 
 ## [属性基础](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#%E5%B1%9E%E6%80%A7)
 

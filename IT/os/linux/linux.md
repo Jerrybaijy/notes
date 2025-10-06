@@ -159,53 +159,227 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 最后，使用 `dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
 
-## 路径
+## 特殊目录
 
-### 常用路径
+- Linux 目录的常用操作详见 `cli | 目录` 笔记
+- **Linux 目录结构**：`/Home/USER_NAME/...`
+- **Linux Home目录（区别于 Windows）**
+    - **Linux**：`/Home`
+    - **Windows**：`/c/Users/USER_NAME`
 
-- **目录结构**：`/Home/USER_NAME/...`
-- **路径分隔符**：正斜杠 `/`
-- **Linux 特有路径（区别于 Windows）**
+# Ubuntu 快捷键
 
-    - Home目录：`cd` 或 `/Home`
-    - 上一次的工作目录：`cd -`
+| 操作 | 快捷键 |
+| :---: | :---: |
+| 打开终端 | <kbd>Ctrl</kbd> + <kbd>Shit</kbd> + <kbd>T</kbd> |
+| 显示所有任务窗口 | <kbd>Win</kbd> |
+| 显示所有程序 | <kbd>双击 Win</kbd> |
+| 切换输入法 | <kbd>Win</kbd> + <kbd>Space</kbd> |
 
-- 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
+# GRUB 引导加载程序
 
-### 路径转义
+## GRUB 基础
 
-- 在 Linux 中，空格是一个特殊字符，通常用来分隔不同的命令或参数。如果路径中包含空格，你需要使用转义字符 `\` 或者引号来避免错误。例如进入 `VMware Tools` 目录。
-- 使用 `\` 转义
+GRUB（GRand Unified Bootloader）是一个多重引导程序，通常用于 Linux 系统，它的主要功能是引导操作系统的启动。GRUB 支持多种操作系统的启动，因此它常常被用于在同一台计算机上安装多个操作系统的场景。它的工作方式是先加载引导程序到内存，然后让用户选择需要启动的操作系统或内核。
+
+GRUB 的主要特点包括：
+
+- **加载操作系统**：当计算机开机时，GRUB 会被加载，它会读取配置文件，显示操作系统的选择菜单，并将控制权转交给选择的操作系统。
+- **多重引导支持**：GRUB 允许你安装并选择不同的操作系统，例如 Windows、各种 Linux 发行版、甚至是其他的类Unix系统。
+- **内核加载**：GRUB 可以加载 Linux 内核，并将内核与根文件系统（root filesystem）一起加载到内存中。
+- **灵活的配置**：GRUB 的配置文件通常是 `grub.cfg`，它包含了启动项和内核加载的配置。用户可以通过编辑这个配置文件来增加或修改启动选项。
+- **支持多种文件系统**：GRUB 能够从多种文件系统中加载引导文件，包括 ext4、Btrfs、FAT、NTFS 等。
+- **命令行界面**：GRUB 提供了一个命令行界面，用户可以在启动过程中输入命令进行故障排查或引导特定内核。
+- **图形和文本模式**：GRUB 支持图形模式和文本模式，你可以选择不同的显示风格，增强用户体验。
+- **支持内核参数**：GRUB 允许在启动时向内核传递参数，这对于调整内核的行为（例如调整内存、处理器参数等）非常有用。
+- **链式引导**：GRUB 可以与其他引导程序配合使用，如 Windows 的引导程序，它会调用其他引导程序来启动相应的操作系统。
+
+GRUB 的工作过程大致如下：
+
+- BIOS 或 UEFI 启动时，GRUB 作为引导加载程序被加载到内存中。
+- GRUB 读取配置文件（通常位于 `/boot/grub/grub.cfg`）并显示启动菜单。
+- 用户从菜单中选择一个操作系统或内核进行启动。
+- GRUB 将控制权交给选定的操作系统或内核，完成引导过程。
+
+## GRUB 修复
+
+- U 盘启动，进入 Live USB 环境。
+
+- 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
 
     ```bash
-    cd /media/jerry/VMware\ Tools
+    lsblk -f
     ```
 
-- 使用 `'` 转义
+    <img src="assets/image-20250217041113536.png" alt="image-20250217041113536" style="zoom:50%;" />
+
+- **挂载分区并修复 GRUB**
 
     ```bash
-    cd '/media/jerry/VMware Tools'
+    # 挂载 Linux 根分区（文件类型为 EXT4）
+    sudo mount /dev/nvme0n1p6 /mnt
+    
+    # 挂载 EFI 分区（文件类型为 FAT32）
+    sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+    
+    # 挂载虚拟文件系统
+    sudo mount --bind /dev /mnt/dev
+    sudo mount --bind /proc /mnt/proc
+    sudo mount --bind /sys /mnt/sys
+    
+    # 使用 chroot 进入已经挂载的 Linux 系统
+    sudo chroot /mnt
+    
+    # 手动挂载 EFI 变量文件系统
+    mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+    
+    # 重新安装 GRUB 并更新（nvme0n1 为 NVMe 硬盘，就是系统所在的硬盘）
+    grub-install /dev/nvme0n1
+    update-grub
+    
+    # 退出 chroot 并重启
+    exit
+    sudo reboot
+    
+    # 重启后即可进入 Ubuntu 系统，但没有 Windows Boot Manager
     ```
 
-- 使用 `"` 转义
+- 修复 GRUB 后，Windows 的引导程序 `Windows Boot Manager` 会消失
+
+- Ubuntu 默认禁用 `os-prober`（用于探测其他操作系统），需手动启用
 
     ```bash
-    cd "/media/jerry/VMware Tools"
+    # 编辑 GRUB 配置文件
+    sudo nano /etc/default/grub
+    
+    # 添加如下，取消禁用
+    GRUB_DISABLE_OS_PROBER=false
+    
+    # 修改如下，显示启动菜单
+    GRUB_TIMEOUT_STYLE=menu
+    
+    # 更新并重启
+    sudo update-grub
+    sudo reboot
     ```
 
-- 关于 `'` 和 `"` 的区别
+- 重启后可在启动菜单里看见 `Windows Boot Manager`
 
-    - `'` 会**完全保留**其中的字符，不进行任何特殊的处理或扩展（例如，变量不会被展开）。
-    - `"`  会允许其中的变量进行扩展和某些特殊字符的处理（例如 `$HOME` 会被展开为实际路径）。
+- 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
 
-## 快捷键
+## GRUB 菜单
 
-- `Win`：显示所有任务窗口
-- `双击 Win`：显示所有程序
-- `Ctrl + Alt + T`：打开终端
-- `Win + Space`：切换输入法
+### GRUB 默认菜单
 
-# 发行版
+- GRUB 默认说明
+
+    ```
+    # 启动 Ubuntu
+    Ubuntu
+    
+    # 选择 Ubuntu 其它内核
+    Advanced options for Ubuntu
+    
+    # 启动内存检测
+    Memory test (memtest86+x64.efi)
+    Memory test (memtest86+x64.efi, serial console)
+    
+    # 启动 Windows 引导加载程序
+    Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
+    
+    # 进入固件
+    UEFI Firmware Settings
+    ```
+
+### GRUB 设置
+
+- 打开 GRUB 配置文件
+
+    ```bash
+    sudo nano /etc/defualt/grub
+    ```
+
+- 修改
+
+    ![image-20250215022232841](assets/image-20250215022232841.png)
+
+    ```bash
+    # 默认启动项为 Windows（第一项为0）
+    GRUB_DEFAULT=4
+    
+    # GRUB 菜单倒计时
+    GRUB_TIMEOUT=3
+    ```
+
+- 更新 GRUB 配置并重启
+
+    ```bash
+    sudo update-grub
+    sudo reboot
+    ```
+
+- 系统倒计时3秒后自动进入 Windows 系统。
+
+# 系统管理
+
+## 服务管理 systemctl
+
+- 开机启动
+
+    ```bash
+    # 设置开机启动
+    sudo systemctl enable $APP
+    
+    # 禁用开机启动
+    sudo systemctl disable $APP
+    
+    # 查看开机启动
+    sudo systemctl is-enabled $APP
+    ```
+
+- 运行和停止
+
+    ```bash
+    # 运行应用
+    sudo systemctl start $APP
+    
+    # 停止应用
+    sudo systemctl stop $APP
+    
+    # 查看应用状态
+    sudo systemctl status $APP
+    ```
+
+- 其它服务管理
+
+    ```bash
+    # 以超级权限执行命令（让普通用户变成root用户）
+    sudo $COMMAND
+    ```
+
+## 用户管理 usermod
+
+- 修改用户组
+
+    ```bash
+    sudo usermod -aG docker jerry
+    ```
+
+    - 默认情况下，只有 `root` 用户或使用 `sudo` 前缀才能运行某些命令，如 `docker`。将当前用户加入 `docker` 组以后，可以不使用 `sudo` 来执行 Docker 命令。
+    - 修改用户组以后，需退出当前终端并注销系统重新登录，使用户组生效。如果不想注销，可以直接在终端中使用 `newgrp docker` 命令，这个命令会让你切换到新的组，并使更改立即生效。但关闭当前终端再进入时，还是会失效，除非注销重新登录。
+
+- 其它用户管理命令
+
+    ```bash
+    # 查看当前用户
+    whoami
+    
+    # 创建用户
+    sudo adduser $NEW_USER
+    
+    # 切换用户
+    su - $USER
+    ```
 
 # 包管理工具
 
@@ -310,409 +484,6 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 - **APT / DPKG (Debian / Ubuntu)**：这些传统的包管理工具更依赖于操作系统的软件仓库和软件源，包通常不包含依赖，依赖库必须单独处理。
 - **Snap**：相比之下，Snap 包包含所有必需的依赖，并且是跨发行版的兼容格式。Snap 的安装、更新和沙箱化提供了更高的便捷性和安全性，但可能在性能上有所牺牲。
-
-# 系统管理
-
-## 服务管理 systemctl
-
-- 开机启动
-
-    ```bash
-    # 设置开机启动
-    sudo systemctl enable $APP
-    
-    # 禁用开机启动
-    sudo systemctl disable $APP
-    
-    # 查看开机启动
-    sudo systemctl is-enabled $APP
-    ```
-
-- 运行和停止
-
-    ```bash
-    # 运行应用
-    sudo systemctl start $APP
-    
-    # 停止应用
-    sudo systemctl stop $APP
-    
-    # 查看应用状态
-    sudo systemctl status $APP
-    ```
-
-- 其它服务管理
-
-    ```bash
-    # 以超级权限执行命令（让普通用户变成root用户）
-    sudo $COMMAND
-    ```
-
-## 用户管理 usermod
-
-- 修改用户组
-
-    ```bash
-    sudo usermod -aG docker jerry
-    ```
-
-    - 默认情况下，只有 `root` 用户或使用 `sudo` 前缀才能运行某些命令，如 `docker`。将当前用户加入 `docker` 组以后，可以不使用 `sudo` 来执行 Docker 命令。
-    - 修改用户组以后，需退出当前终端并注销系统重新登录，使用户组生效。如果不想注销，可以直接在终端中使用 `newgrp docker` 命令，这个命令会让你切换到新的组，并使更改立即生效。但关闭当前终端再进入时，还是会失效，除非注销重新登录。
-
-- 其它用户管理命令
-
-    ```bash
-    # 查看当前用户
-    whoami
-    
-    # 创建用户
-    sudo adduser $NEW_USER
-    
-    # 切换用户
-    su - $USER
-    ```
-
-# GRUB 引导加载程序
-
-## GRUB 基础
-
-GRUB（GRand Unified Bootloader）是一个多重引导程序，通常用于 Linux 系统，它的主要功能是引导操作系统的启动。GRUB 支持多种操作系统的启动，因此它常常被用于在同一台计算机上安装多个操作系统的场景。它的工作方式是先加载引导程序到内存，然后让用户选择需要启动的操作系统或内核。
-
-GRUB 的主要特点包括：
-
-- **加载操作系统**：当计算机开机时，GRUB 会被加载，它会读取配置文件，显示操作系统的选择菜单，并将控制权转交给选择的操作系统。
-- **多重引导支持**：GRUB 允许你安装并选择不同的操作系统，例如 Windows、各种 Linux 发行版、甚至是其他的类Unix系统。
-- **内核加载**：GRUB 可以加载 Linux 内核，并将内核与根文件系统（root filesystem）一起加载到内存中。
-- **灵活的配置**：GRUB 的配置文件通常是 `grub.cfg`，它包含了启动项和内核加载的配置。用户可以通过编辑这个配置文件来增加或修改启动选项。
-- **支持多种文件系统**：GRUB 能够从多种文件系统中加载引导文件，包括 ext4、Btrfs、FAT、NTFS 等。
-- **命令行界面**：GRUB 提供了一个命令行界面，用户可以在启动过程中输入命令进行故障排查或引导特定内核。
-- **图形和文本模式**：GRUB 支持图形模式和文本模式，你可以选择不同的显示风格，增强用户体验。
-- **支持内核参数**：GRUB 允许在启动时向内核传递参数，这对于调整内核的行为（例如调整内存、处理器参数等）非常有用。
-- **链式引导**：GRUB 可以与其他引导程序配合使用，如 Windows 的引导程序，它会调用其他引导程序来启动相应的操作系统。
-
-GRUB 的工作过程大致如下：
-
-- BIOS 或 UEFI 启动时，GRUB 作为引导加载程序被加载到内存中。
-- GRUB 读取配置文件（通常位于 `/boot/grub/grub.cfg`）并显示启动菜单。
-- 用户从菜单中选择一个操作系统或内核进行启动。
-- GRUB 将控制权交给选定的操作系统或内核，完成引导过程。
-
-## GRUB 修复
-
-- U 盘启动，进入 Live USB 环境。
-- 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
-
-    ```bash
-    lsblk -f
-    ```
-
-    <img src="assets/image-20250217041113536.png" alt="image-20250217041113536" style="zoom:50%;" />
-
-- **挂载分区并修复 GRUB**
-
-    ```bash
-    # 挂载 Linux 根分区（文件类型为 EXT4）
-    sudo mount /dev/nvme0n1p6 /mnt
-    
-    # 挂载 EFI 分区（文件类型为 FAT32）
-    sudo mount /dev/nvme0n1p1 /mnt/boot/efi
-    
-    # 挂载虚拟文件系统
-    sudo mount --bind /dev /mnt/dev
-    sudo mount --bind /proc /mnt/proc
-    sudo mount --bind /sys /mnt/sys
-    
-    # 使用 chroot 进入已经挂载的 Linux 系统
-    sudo chroot /mnt
-    
-    # 手动挂载 EFI 变量文件系统
-    mount -t efivarfs efivarfs /sys/firmware/efi/efivars
-    
-    # 重新安装 GRUB 并更新（nvme0n1 为 NVMe 硬盘，就是系统所在的硬盘）
-    grub-install /dev/nvme0n1
-    update-grub
-    
-    # 退出 chroot 并重启
-    exit
-    sudo reboot
-    
-    # 重启后即可进入 Ubuntu 系统，但没有 Windows Boot Manager
-    ```
-
-- 修复 GRUB 后，Windows 的引导程序 `Windows Boot Manager` 会消失
-- Ubuntu 默认禁用 `os-prober`（用于探测其他操作系统），需手动启用
-
-    ```bash
-    # 编辑 GRUB 配置文件
-    sudo nano /etc/default/grub
-    
-    # 添加如下，取消禁用
-    GRUB_DISABLE_OS_PROBER=false
-    
-    # 修改如下，显示启动菜单
-    GRUB_TIMEOUT_STYLE=menu
-    
-    # 更新并重启
-    sudo update-grub
-    sudo reboot
-    ```
-
-- 重启后可在启动菜单里看见 `Windows Boot Manager`
-- 从 `Windows Boot Manager` 进入 Windows 以后，Windows 会自动修复。
-
-## GRUB 菜单
-
-### GRUB 默认菜单
-
-- GRUB 默认说明
-
-    ```
-    # 启动 Ubuntu
-    Ubuntu
-    
-    # 选择 Ubuntu 其它内核
-    Advanced options for Ubuntu
-    
-    # 启动内存检测
-    Memory test (memtest86+x64.efi)
-    Memory test (memtest86+x64.efi, serial console)
-    
-    # 启动 Windows 引导加载程序
-    Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
-    
-    # 进入固件
-    UEFI Firmware Settings
-    ```
-
-### GRUB 设置
-
-- 打开 GRUB 配置文件
-
-    ```bash
-    sudo nano /etc/defualt/grub
-    ```
-
-- 修改
-
-    ![image-20250215022232841](assets/image-20250215022232841.png)
-
-    ```bash
-    # 默认启动项为 Windows（第一项为0）
-    GRUB_DEFAULT=4
-    
-    # GRUB 菜单倒计时
-    GRUB_TIMEOUT=3
-    ```
-
-- 更新 GRUB 配置并重启
-
-    ```bash
-    sudo update-grub
-    sudo reboot
-    ```
-
-- 系统倒计时3秒后自动进入 Windows 系统。
-
-# Curl
-
-`curl` 是一个用于与网络服务器进行数据交换的命令行工具。
-
-## 下载文件
-
-- 下载并显示文件内容
-
-    ```bash
-    curl http://example.com/file.txt
-    ```
-
-- 下载的文件，并按原文件名保存
-
-    ```bash
-    curl -O http://example.com/file.txt
-    ```
-
-- 下载的文件，并按指定路径和文件名保存
-
-    ```bash
-    curl -o myfile.txt http://example.com/file.txt
-    ```
-
-## 上传文件
-
-- 上传文件
-
-    ```bash
-    curl -X POST -F "file=@myfile.txt" http://example.com/upload
-    ```
-
-# 文件
-
-## 文件基础
-
-- **基础命令**
-
-    ```bash
-    # 查看文件
-    cat $FILE
-    # 创建文件
-    touch $FILE
-    # 编辑文件
-    nano $FILE
-    vim $FILE
-    # 删除文件
-    rm $FILE
-    # 复制文件
-    cp $FILE $DES_PATH
-    ```
-
-- **文本搜索**
-
-    ```bash
-    grep CONTENT
-    ```
-
-- 替换
-
-    `sed`：流编辑器，用于对文本进行流式处理；`-i`：在原文件修改；`s`：替换；`g` ：全局替换
-
-    ```bash
-    sed -i 's/SOURCE_CONTENT/NEW_CONTENT/g' 'PATH/FILE'
-    # e.g.
-    sed -i 's/aaa/bbb/g' './html.py' # 将当前文件夹下的html.py文件中的aaa替换成bbb
-    ```
-
-- `echo`：快速向文件添加内容
-
-    ```bash
-    echo "[CONTENT]" > [FILE]
-    # e.g.
-    echo "Hello World!" > demo.txt
-    ```
-
-- 查找文件
-
-    ```bash
-    find PATH OPTION COMMAND
-    # e.g.
-    find . -name jquery* -print # 查找当前目录下所有文件名以jquery开头的文件，并打印路径
-    ```
-
-## Vim
-
-**Vi**（Vi IMproved）是 Unix 系统上最早的文本编辑器之一，**Vim**（Vi IMproved）是 Vi 的增强版。
-
-### Basics
-
-- Basics
-
-    ```bash
-    # show version
-    vi / vim
-    # open / create file
-    vim $FILE
-    # into insert mode
-    i
-    # back to command mode
-    `Esc`
-    # exit
-    :q
-    # save and exit
-    :wq
-    ```
-
-### Command mode
-
-- Default enter into command mode.
-
-    ![image-20240406160608629](assets/image-20240406160608629.png)
-
-- `Esc`: Back to command mode
-- `dd`: Cut cursor line. `2dd`: Cut cursor and next line
-- `yy`: Copy cursor line. `2yy`: Copy cursor and next line
-- `p`: Paste at next line of cursor. `2p`: Paste at next line of cursor 2 times
-- `Ctrl + F`: Page Up. `Ctrl + U`: Page Up Half.
-- `Ctrl + B`: Page Down. `Ctrl + D`: Page Down Half.
-
-### Insert mode
-
-- Into insert mode
-
-  - `i`: before cursor
-  - `I`: line beginning
-  - `a`: after cursor
-  - `A`: line end
-  - `o`: next new line
-  - `O`: previous new line
-
-- Edit
-
-  - `^`: jump to line beginning
-  - `$`: jump to line end
-
-### Last line mode
-
-- `:`: Into last line mode
-- `:q`: exit
-- `:wq`: save and exit
-- `:set nu`: show line number
-- `:set nonu`: close line number
-
-# 文件夹
-
-## 文件夹基础
-
-- **基础命令**
-
-    ```bash
-    # 创建文件夹
-    mkdir [PATH] FOLDER_NAME
-    # 删除空文件夹
-    rmdir [PATH] FOLDER_NAME
-    # 删除非空文件夹
-    rm -r [PATH] FOLDER_NAME
-    # 列出文件夹内容
-    ls [-al] # -al列出隐藏内容
-    ```
-
-# 命令选项
-
-- `-rf` 选项是 `-r` 和 `-f` 的组合
-
-    - `-r` 选项，以确保递归删除子目录和文件。
-    - `-f` 选项，强制删除。
-
-- `-y`：默认同意
-
-# 其它
-
-- **`|`**：管道符，命令输出传递；eg：打开 `tmp` 文件夹中的 `html.py` 文件，然后找出字符串 `jquery-1.11.3.min.js`
-
-    ```bash
-    cat /tmp/html.py | grep jquery-1.11.3.min.js
-    ```
-
-## tldr
-
-`tldr` 是一个简化的命令行工具，名字来源于 "Too Long; Didn't Read"，旨在提供比传统 `man` 页面更简洁、更实用的命令帮助信息。
-
-- 安装
-
-    ```bash
-    sudo apt update && sudo apt full-upgrade
-    sudo apt install tldr
-    ```
-
-- 升级
-
-    ```bash
-    tldr --update
-    ```
-
-- 使用（以 `apt` 为例）
-
-    ```bash
-    tldr apt
-    ```
 
 # 解决方法
 

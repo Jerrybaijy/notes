@@ -66,7 +66,7 @@
     1. [**选择器**（Selector）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#选择器（selector）)：用于指定为哪种元素添加样式，多个选择器使用 `,` 分隔。
     2. [**声明**（Declaration）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#声明（declaration）)：即属性名值对，用大括号 `{}` 包含声明，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
     3. [**属性**（Properties）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性（properties）)：用于指定改变元素的哪种样式
-    4. [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 <kbd>Space</kbd> 分隔。
+    4. [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔。
 
 ## CSS 来源
 
@@ -212,24 +212,25 @@
 
 - <span id="常用选择器">**常用选择器**</span>
 
-    | 选择器 | 示例 | 示例说明 | css |
+    | [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors) | 示例 | 示例说明 | css |
     | :---: | :---: | :---: | :---: |
-    | 通用选择器 | * | 选择所有元素 | 2 |
-    | 元素选择器 | p | 选择所有 `<p>`元素 | 1 |
-    | 类选择器 | .class | 选择所有 `class="class"` 的元素 | 1 |
-    | ID选择器 | #id | 选择所有 `id="id"` 的元素 | 1 |
-    | 属性选择器 | [target] | 选择所有带有 `target属性` 的元素 | 2 |
-    | 关系选择器 | | | |
-    | 后代选择器（所有后代） | div p | 选择 `<div>` 元素内的所有 `\<p>` 元素 | 1 |
-    | 子代选择器（直系后代） | div>p | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
-    | 相邻兄弟选择器 | div+p | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
-    | 通用兄弟选择器 | div~p | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
-    | 选择器列表 | div,p | 选择所有 `<div>` 元素和 `<p>` 元素 | 1 |
-    | 组合选择器 | p.class#id | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1 |
+    | 通用选择器 | `*` | 选择所有元素 | 2 |
+    | 元素选择器 | `p` | 选择所有 `<p>`元素 | 1 |
+    | 类选择器 | `.class` | 选择所有 `class="class"` 的元素 | 1 |
+    | ID选择器 | `#my-id` | 选择所有 `id="my-id"` 的元素 | 1 |
+    | 属性选择器 | `img[src]` | 选择所有带有 `src` 属性的 `img` 元素 | 2 |
+    | 伪类选择器 | `a:hover` | 选择仅在鼠标指针悬停在链接上时的 `<a>` 元素 |  |
+    | ==关系选择器== | | | |
+    | 选择器列表 | `div,p` | 选择所有 `<div>` 元素和 `<p>` 元素 | 1 |
+    | 组合选择器 | `p.class#id` | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1 |
+    | 后代选择器（所有后代） | `div p` | 选择 `<div>` 元素内的所有 `<p>` 元素 | 1 |
+    | 子代选择器（直系后代） | `div>p` | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
+    | 相邻兄弟选择器 | `div+p` | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
+    | 通用兄弟选择器 | `div~p` | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
 
-## [标签选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
+## [元素选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
 
-- **标签选择器**：通过**元素名**选择元素；也称类型选择器。
+- **元素选择器**：通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
 - **语法**：`元素名 {样式声明}`
 
     ```css
@@ -362,31 +363,31 @@
     }
     ```
 
-### 伪类 `after`
+### `:after`
 
-- 自动为元素里的文字末尾添加内容
+**`:after` 伪类**自动为元素里的文字末尾添加内容
 
-    ```html
-    <span>中国联通</span>
-    ```
+```html
+<span>中国联通</span>
+```
 
-    ```css
-    span {
-      font-size: 100px;
-      background-color: green;
-    }
-    span:after {
-      content: "公司";
-    }
-    ```
+```css
+span {
+  font-size: 100px;
+  background-color: green;
+}
+span:after {
+  content: "公司";
+}
+```
 
-    - 添加之后页面将展示“中国联通公司”
-    - 注意 `content` 的属性值要加引号
-    - 可以加内容，也可加其它 style，详见清除浮动
+- 添加之后页面将展示“中国联通公司”
+- 注意 `content` 的属性值要加引号
+- 可以加内容，也可加其它 style，详见清除浮动
 
 ## [伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)
 
-- **伪元素**：用来修改一个元素的特定部分的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
+- **伪元素**：用来修改一个*元素的特定部分*的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
 - **语法**：`选择器::伪元素名`
 
     ```html
@@ -1666,7 +1667,7 @@ th {
 
 # [CSS 布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout)
 
-## [盒模型](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/The_box_model)
+## [盒模型](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)
 
 ### 盒模型概述
 
@@ -1681,7 +1682,7 @@ th {
     - **Padding(内边距)**：清除内容周围的区域，内边距是透明的。
     - **Content(内容)**：盒子的内容，显示文本和图像。
 
-### [盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
+### [`box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
 
 - **语法**： **`box-sizing`** 属性定义了 user agent 应该如何计算一个元素的总宽度和总高度。
 - **属性值**
@@ -1691,7 +1692,7 @@ th {
     - `content-box`：默认值，`width` = `content` 宽度，`height` 同理。
     - `border-box`：`width` = `border` + `padding` + `content` 宽度，`height` 同理。
 
-### [外边距 `margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)
+### [`margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)
 
 - **语法**：`margin` 是一个 CSS 简写属性，用于定义元素 `border` 以外的空间。
 
@@ -1742,7 +1743,7 @@ th {
     - 两个负外边距会折叠，并使用最小（离零最远）的值。
     - 如果其中一个外边距为负值，其值将从总值中*减去*。
 
-### [内边距 `padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
+### [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
 
 - **语法**：`padding` 是一个 CSS 简写属性，用于定义元素 `border` 与 `content` 之间的空间。
 
@@ -1782,6 +1783,36 @@ th {
 
     - `padding` 属性适用 [**四值语法**](#四值语法)
     - `padding` 本身没有背景颜色，完全透明，但有背景色时，会受到背景色影响
+
+### [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+
+- **定义**：**`display`** 属性会影响元素两个方面的布局表现
+    - **外部表现**：元素本身在常规流布局中的表现
+    - **内部表现**：元素的子元素在元素内部的布局表现
+
+- **语法**：`display: 外部值  内部值;` | `display: 外部值;`
+- **属性值**
+
+    - **外部值**
+
+        - [**`inline`**](#inline)：元素外部显示为行内元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
+        - [**`block`**](#block)：元素外部显示为块级元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
+
+    - **内部值**
+
+        - [**`flex`**](#[弹性布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex))：元素内部显示为弹性元素，适用于[弹性布局](#[弹性盒布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox))
+        - [**`grid`**](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))：元素内部显示为网格元素，适用于[网格布局](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))
+
+    - **盒**
+
+        - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
+        - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+
+- **说明**
+
+    - 当 `display` 属性仅有一个外部值时，内部值会被默认设置为 [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)。
+    - `inline-block` 是一种传统的单值语法，用于对旧浏览器的支持，等同于 `inline block`，应该使用后者。
+    - `inline` 和 `block` 在非常规流布局中，会失去它们原有的特性，统一变成其它布局特性。
 
 ## [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals#%E6%96%87%E6%9C%AC%E5%B8%83%E5%B1%80)
 
@@ -1929,39 +1960,9 @@ th {
     - 继承
     - 其它...
 
-## [`display` 属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
-
-- **定义**：**`display`** 属性会影响元素两个方面的布局表现
-    - **外部表现**：元素本身在常规流布局中的表现
-    - **内部表现**：元素的子元素在元素内部的布局表现
-    
-- **语法**：`display: 外部值  内部值;` | `display: 外部值;`
-- **属性值**
-
-    - **外部值**
-
-        - [**`inline`**](#inline)：元素外部显示为行内元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
-        - [**`block`**](#block)：元素外部显示为块级元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
-
-    - **内部值**
-
-        - [**`flex`**](#[弹性布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex))：元素内部显示为弹性元素，适用于[弹性布局](#[弹性盒布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox))
-        - [**`grid`**](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))：元素内部显示为网格元素，适用于[网格布局](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))
-
-    - **盒**
-
-        - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
-        - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
-
-- **说明**
-
-    - 当 `display` 属性仅有一个外部值时，内部值会被默认设置为 [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)。
-    - `inline-block` 是一种传统的单值语法，用于对旧浏览器的支持，等同于 `inline block`，应该使用后者。
-    - `inline` 和 `block` 在非常规流布局中，会失去它们原有的特性，统一变成其它布局特性。
-
 ## [常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow)
 
-- **语法**：常规流布局是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内部的布局方式）。
+- **语法**：常规流布局是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内的布局方式）。
 - 在 HTML 中，元素在常规流布局的**显示类型**可以分为 `块级元素`、`行内元素` 和 `行内块级元素`，它们在常规文档流的布局方式不同。
 - <span id="block">[**块级元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Block-level_content)</span>
 

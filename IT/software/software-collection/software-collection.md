@@ -902,37 +902,26 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 ## 页面导航
 
-- **docs（无该页）**：
-
-    - [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)
-    - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
-
+- **docs（无该页）**
+    - [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)：Web 术语
+    - [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")：新手的学习路线
+        - [入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)
+        - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)
+        - [核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
+        - [使用 HTML 构建 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content)
+        - [扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)
+        - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto)
+    - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)：开发者的学习路线
         - [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
         - [CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
         - [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
         - [Web APIs](https://developer.mozilla.org/zh-CN/docs/Web/Web APIs)
         - [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
-
     - [MDN Web 文档项目](https://developer.mozilla.org/zh-CN/docs/MDN)
-
-        - [Web 开发者指南](https://developer.mozilla.org/zh-CN/docs/MDN/Guides)
-        - [面向 Web 开发者的教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials)
-
-    - [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
-
-        - [入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)
-
-            - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：你的第一个网站
-
-        - [核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)
-
-            - [使用 HTML 构建 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content)
-
-        - [扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)
-        - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto)
-
-    - [Mozilla](https://developer.mozilla.org/zh-CN/docs/Mozilla)：docs/Mozilla
-
+        - [教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials "教程")：教程
+        - [指南](https://developer.mozilla.org/zh-CN/docs/MDN/Guides "Web 开发者指南")：Web 开发者指南
+    - [Mozilla](https://developer.mozilla.org/zh-CN/docs/Mozilla)
+    - [游戏开发](https://developer.mozilla.org/zh-CN/docs/Games)
 - [MDN 课程](https://developer.mozilla.org/en-US/curriculum/)（只有英文版才有）
 
 ## [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
@@ -941,6 +930,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")根页面部分是作为新手的学习路线：
 
+- [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)：`入门模块` 中的 `配置环境`
 - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
 -  [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
@@ -1654,6 +1644,28 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 ## PowerToys Run
 
 [PowerToys Run](https://learn.microsoft.com/zh-cn/windows/powertoys/run) 可帮助立即搜索和打开应用。 可使用 `Alt + Space` 进行激活。
+
+# Prettier
+
+**Prettier** 是一个非常流行的**代码格式化工具**。
+
+## 命令行界面
+
+```bash
+# 本地安装，保存在项目目录，项目内生效
+npm install --save-dev prettier
+
+# 全局安装，系统全局内生效
+npm install --global prettier
+
+# 使用：先在命令行导航至 index.js 目录，再执行命令。
+# npx 优先使用本地安装版本，其次使用全局版本。
+npx prettier --write index.js
+```
+
+## VS Code
+
+VS Code 中提供 Prettier 扩展。
 
 # Prometheus
 

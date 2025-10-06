@@ -52,49 +52,6 @@
 6. **持续交付：人工审批后发布** 或 **持续部署：自动发布**
 7. **监控和回滚机制**（如有问题，快速回滚）
 
-# CLI 命令行界面
-
-**CLI**（**C**ommand **L**ine **I**nterface，命令行界面），是一种通过输入文本命令与计算机或软件交互的方式。与 **GUI**（图形用户界面）不同，CLI 主要依赖键盘输入命令行指令，而不是鼠标点击操作。
-
-## **CLI 的特点**
-
-- **高效性**：比 GUI 快速，适用于自动化任务。
-- **可编写脚本**：CLI 命令可以编写成脚本，自动化执行任务。
-- **资源占用低**：比 GUI 需要的计算资源更少。
-- **远程操作**：可以通过 SSH 远程管理服务器。
-- **精准控制**：提供更细粒度的操作能力。
-
-## CLI 实例
-
-- **Windows** ：CMD 或 PowerShell
-- **Linux / macOS**：Terminal
-
-## 操作常识
-
-- **大小写**：命令中的大小写不敏感（Windows 中的文件名敏感）
-- **`$`**：行首的 `$` 表示终端正在等待输入命令
-- **跨行输入**：行尾使用 `\`
-- **多条命令**：以 `;` 隔开
-
-## 快捷键
-
-| 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
-| :---: | :---: |
-| ==光标== |  |
-| 将光标移动到行首 | <kbd>Home</kbd> \| <kbd>Ctrl</kbd> + <kbd>A</kbd> |
-| 将光标移动到行尾 | <kbd>End</kbd> \| <kbd>Ctrl</kbd> + <kbd>E</kbd> |
-| ==退出== |  |
-| 强制从输出中退出 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| 退出系统 | `exit` \| <kbd>Ctrl</kbd> + <kbd>D</kbd> |
-| ==复制粘贴== |  |
-| 复制 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> |
-| 粘贴 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> |
-| ==删除== |  |
-| 删除光标到行首的内容 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| 删除光标到行尾的内容 | <kbd>Ctrl</kbd> + <kbd>C</kbd> |
-| ==其它== |  |
-| 向上/下翻一条命令 | <kbd>↑</kbd> \| <kbd>↓</kbd> |
-
 # GUI
 
 **图形用户界面**（**G**raphical **U**ser **I**nterface，简称 **GUI**） 是指通过图形元素（窗口、按钮、菜单、图标等）与计算机或软件交互的方式。与 **CLI（命令行界面）**不同，GUI 让用户可以使用鼠标、触摸屏或手势操作，而不需要输入命令行指令。
@@ -329,44 +286,6 @@
 
     - 十进制为整型数据
     - 二进制、八进制、十六进制都是字符串
-
-# 路径
-
-- **命令**：`cd`
-- **示例**
-    - Linux：`cd /Home/USER_NAME`
-    - Windows：`cd C:/Users/USER_NAME`
-- **分隔符**
-
-    - `/`：Linux、Unix、Windows、macOS、Android、IOS、URL 等都支持
-    - `\`：仅 Windows 支持，且为默认
-
-- **大小写敏感**
-
-    - 敏感：Linux、Unix、Android、iOS
-    - 不敏感：Windows、macOS
-
-- **路径符号**
-
-    - 根目录：
-
-        - Linux：`cd /`
-        - Windows：`cd X:/`（`x` 为驱动器名称）
-
-    - User 目录：
-
-        - Linux：`cd ~` 或 `Home/USER_NAME`
-        - Windows：`cd ~` 或 `C:/Users/USER_NAME`
-
-    - 当前目录：`cd .` （在当前目录操作可省略路径）
-    - 上级目录：`cd ..`
-    - 显示当前工作目录的绝对路径：`pwd` 
-
-- **引用文件**
-
-    - 上级：`../my-image.jpg`
-    - 同级：`./my-image.jpg` 或 `my-image.jpg`（基于当前目录的相对路径可省略 `./`）
-    - 子目录：`./subdirectory/my-image.jpg` 或 `subdirectory/my-image.jpg`
 
 # 文件名
 
