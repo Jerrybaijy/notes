@@ -68,9 +68,9 @@
     3. [**属性**（Properties）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性（properties）)：用于指定改变元素的哪种样式
     4. [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔。
 
-## CSS 来源
+## 引入方式
 
-- **语法**：实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 可以有不同的来源。
+- **语法**：实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 可以有不同的引入方式。
 - **内联样式**：元素内部直接使用 `style` 属性定义样式。
 
     ```html
@@ -124,13 +124,159 @@
     @import 'github-night.css';
     ```
 
-## CSS 层叠
+# [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Types)
 
-## 层叠、优先级、继承
+## [数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)
 
-### 层叠
+- **语法**：数据类型 `<number>` 表示一个数字。
 
-- 样式表[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Cascade)——简单的说，就是 CSS 规则的顺序很重要。
+- **数字示例**
+
+    ```
+    12          原始的 <integer> 也是 <number>。
+    4.01        正分数
+    -456.8      负分数
+    0           零
+    0.0         零
+    +0.0        带 + 号的零
+    -0.0        带 - 号的零
+    .60         不带零的小数
+    10e3        科学计数法
+    -3.4e-2     复杂的科学记数法
+    ```
+
+## [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
+
+### [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
+
+- **语法**：数据类型 `<length>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 和一个长度单位构成。数字为 `0` 时，长度单位是可选的。
+    - 数字与单位之间不能出现空格。
+    - 数字为 `0` 时，长度单位是可选的。
+    - 对于某些 CSS 属性，长度可以是负数。
+
+- **单位**
+
+    - 绝对长度单位
+    - 相对长度单位
+
+### [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%BB%9D%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+- **绝对长度的区别**
+
+    - 低分辨率设备（如屏幕）与高分辨率设备（如打印机）的锚定方式不同。
+    - 对于低分辨率设备，单位 `px` 代表物理*参考像素*；其他单位是相对于它定义的。在这些设备上，以英寸（`in`）、厘米（`cm`）或毫米（`mm`）描述的尺寸不一定与同名物理单位的尺寸一致。
+    - 对于高分辨率设备，英寸（`in`）、厘米（`cm`）和毫米（`mm`）与物理单位相同。因此，`px` 单位是相对于它们定义的（`1in` 的 1/96）。
+
+- <span id="explanation-of-absolute-length-units">**绝对长度单位说明**</span>
+
+    - 绝对长度是固定值，无法根据用户的设置进行缩放，因此会降低页面友好性。例如，在设置字体大小 `font-size` 相关的长度值时，最好优先选择使用相对长度单位，比如 `em` 或 `rem`。
+
+- **像素 `px`**：对于普通的屏幕，通常是一个设备像素（点）。对于*打印机*和*高分辨率屏幕*，一个 CSS 像素往往占多个设备像素。一般来说，每英寸的像素的数量保持在 96 左右，`1px` = `1in / 96`。
+- **厘米 `cm`**：`1cm` = `96px / 2.54`。
+- **毫米 `mm`**：`1mm` = `1cm / 10`。
+- **四分之一毫米 `Q`**：`1Q` = `1cm / 40`。
+- **英寸 `in`**：`1in` = `2.54cm` = `96px`。
+- **派卡 `pc`**：`1pc` = `12pt` = `1in / 6`。
+- **磅 `pt`**：`1pt` = `1in / 72`。
+
+### [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+#### [基于字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+- **语法**：字体长度根据元素或其父元素当前使用的字体中特定字符或字体属性的大小定义 `<length>` 值。
+- [**`em`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#em)：相对长度单位，基于继承元素的 `font-size` 值。
+- **其它**：[`cap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cap)、[`ch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ch)、[`ex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ex)、[`ic`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ic)、[`lh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#lh)
+
+#### [基于根元素字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E6%A0%B9%E5%85%83%E7%B4%A0%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+- **语法**：根元素字体相对长度单位以根元素的特定字符或字体属性的大小来定义 `<length>` 值。
+- [**`rem`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rem)：相对长度单位，这个单位表示根元素的（通常是 [`html`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)）`font-size` 的计算值。在根元素 `font-size` 中使用时，它代表初始值。常见的浏览器默认值为 `16px`，但用户自定义的偏好设置可能会对此进行修改。
+- **其它**：[`rcap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rcap)、[`rch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rch)、[`rex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rex)、[`ric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ric)、[`rlh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rlh)
+
+#### [基于视口](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E8%A7%86%E5%8F%A3%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+- **语法**：视口百分比长度单位基于四种不同的视口尺寸：小（small）、大（large）、动态（dynamic）和默认（default）。允许不同的视口尺寸是为了应对浏览器界面的动态扩展和收缩，以及隐藏和显示下方的内容。
+- [**`vw`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vw)：代表视口初始包含块**宽度**的百分比。
+
+    - `1vw` 是视口宽度的 1%。例如，如果视口宽度为 `800px`，那么属性上的 `50vw` 值就是 `400px`。
+    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svw`、`lvw` 和 `dvw`。`vw` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
+- [**`vh`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vh)：代表视口初始包含块**高度**的百分比。
+    - `1vh` 是视口高度的 1%。例如，如果视口高度为 `300px`，那么属性上的 `70vh` 值就是 `210px`。
+    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svh`、`lvh` 和 `dvh`。`vh` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
+
+- **其它**：[`vmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmax)、[`vmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmin)、[`vb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vb)、[`vi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vi)
+
+#### [容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
+
+- **语法**：使用容器查询对容器应用样式时，可以使用容器查询长度单位。这些单位指定了相对于查询容器尺寸的长度。使用相对于其容器的长度单位的组件在不同容器中使用更灵活，而无需重新计算具体的长度值。更多信息，请参见[容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_containment/Container_queries)。
+- [`cqw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqw)、[`cqh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqh)、[`cqi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqi)、[`cqb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqb)、[`cqmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmin)、[`cqmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmax)
+
+### [插值](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E6%8F%92%E5%80%BC)
+
+当包含动画效果时，动画中 `<length>` 的值是由计算出的值应用[插值](https://developer.mozilla.org/zh-CN/docs/Glossary/Interpolation)后得出的浮点实数。插值的速度由动画的[缓动函数](https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function)决定。
+
+## [百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)
+
+- **语法**：数据类型 `<percentage>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 具体数值后跟着 `%` 构成。
+
+    - 数字与 `%` 之间不能出现空格。
+    - 对所有属性来说 `<percentage>` 负值都是无效的。
+
+- **关于插值动画的说明**：使用 `<percentage>` 的值可以插值为动画。在这种情况下，它们被内插为实数或浮点数。插值的速度取决于与动画相关联的 [timing function](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)。
+
+## [自定义标识符 `<custom-indent>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/custom-ident)
+
+- **语法**：数据类型 `<custom-ident>` 指用户自定义字符串标识符。可以由以下字符组成：
+
+    - 字母 (`A` - `Z`, `a` - `z`)
+    - 十进制数 (`0` - `9`)
+    - 连字符 (`-`)
+    - 下划线 (`_`)
+    - 转义字符 ( `\`)
+    - [Unicode](http://en.wikipedia.org/wiki/Unicode) 编码（格式：转义字符（`\`）后跟 1 到 6 位十六进制数）
+
+- **注意**
+
+    - 第一个字符不能为数字，字符串开头不能是连字符 (`-`) 后跟数字或连字符。
+    - 其它...
+
+## [图像 `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/image)
+
+- **语法**： **`<image>`** 数据类型描述的是 2D 图形。
+- 一个 `<image>` 数据类型可能表示成如下几种类型：
+
+    - 一个图像被引用为 CSS [`<url>`](#[指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)) 数据类型使用 `url()` 方法；
+    - 一个 CSS [`<gradient>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient);
+    - 页面的一个部分，定义在 [`element()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/element) 方法中；
+
+## [指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)
+
+- **语法**：**`<url>`** CSS 数据类型是指向资源的指针。资源可以是图像、视频、CSS 文件、字体文件、SVG 特性等。
+- **属性值**
+
+    - [`<url()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_function)
+    - [`<src()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value#src)
+
+## [位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value)
+
+- **语法**：`<position>`（或 **`<bg-position>`**）数据类型表示用于设置相对于元素盒子的位置的 2 维空间中的坐标。它被用于 `background-position` 和 `offset-anchor` 属性。
+- **属性值**
+
+    - **`center`**：中
+    - **`top`**：上
+    - **`right`**：右
+    - **`bottom`**：下
+    - **`left`**：左
+
+# [值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
+
+待整理
+
+# [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+
+## 层叠
+
+- 样式表[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)——简单的说，就是 CSS 规则的顺序很重要。
 - 当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。
 - 有三个因素需要考虑，根据重要性排序如下，后面的更重要：
 
@@ -151,23 +297,11 @@
 
 - 假如层叠顺序相等，则使用哪个值取决于[优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)。
 
-### 优先级
+## 优先级
 
-- 浏览器是根据[优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
+浏览器是根据[优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
 
-### 继承
-
-- [继承](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)：一些设置在父元素上的 CSS 属性是可以被子元素继承的，有些则不能。
-- CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性都接收这些值。
-
-### [层叠层 `cascade_layers`](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
-
-### [级联层 `@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
-
-## CSS 优先级
-
-- **样式来源优先级**
-
+- **引入方式优先级**
     - `!important` > 内联样式 > 内部样式表 > 外部样式表 > 浏览器默认样式
 
 - **同一样式表内优先级**
@@ -175,14 +309,17 @@
     - ID选择器 > 类选择器、属性选择器、伪类 > 标签选择器、伪元素 > 通用选择器、继承
     - 同一样式表中同一种样式写法，后声明的样式比先声明的优先级高
 
-## CSS 继承
+## [继承](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)
 
-- 子元素的某个属性值与父元素相同，有些属性值可以继承，有些不能
-- [`inherit`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit)：开启继承
-- [`initial`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial)：将属性值设置为该属性的默认值
-- [`revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert)：将属性值设置为该属性的用户代理样式（即浏览器默认样式）
-- [`unset`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset)：将属性重置为自然值，也就是如果属性是自然继承那么就是 `inherit`，否则和 `initial` 一样
-- `all`：重设所有属性
+- **继承**：一些设置在父元素上的 CSS 属性是可以被子元素继承的，有些则不能。
+- CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性都接收这些值。
+
+    - [`inherit`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit)：开启继承
+    - [`initial`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial)：将继承属性值设置为该属性的默认值
+    - [`revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert)：将继承属性值设置为该属性的用户代理样式（即浏览器默认样式）
+    - [`unset`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset)：将继承属性重置为自然值，也就是如果属性是自然继承那么就是 `inherit`，否则和 `initial` 一样
+    - `all`：重设所有继承属性
+
 - **示例**
 
     ```html
@@ -196,11 +333,11 @@
     </div>
     ```
 
-## [值和单位](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Values_and_units)
+## [层叠层 `cascade_layers`](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
 
-- 待整理
+## [级联层 `@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
 
-# [CSS 选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)
+# [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)
 
 ## [选择器基础](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors)
 
@@ -407,152 +544,7 @@ span:after {
     - [**`::placeholder`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::placeholder)：占位文本
     - [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
 
-
-# [CSS 数据类型](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Types)
-
-## [数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)
-
-- **语法**：数据类型 `<number>` 表示一个数字。
-- **数字示例**
-
-    ```
-    12          原始的 <integer> 也是 <number>。
-    4.01        正分数
-    -456.8      负分数
-    0           零
-    0.0         零
-    +0.0        带 + 号的零
-    -0.0        带 - 号的零
-    .60         不带零的小数
-    10e3        科学计数法
-    -3.4e-2     复杂的科学记数法
-    ```
-
-## [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
-
-### [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
-
-- **语法**：数据类型 `<length>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 和一个长度单位构成。数字为 `0` 时，长度单位是可选的。
-
-    - 数字与单位之间不能出现空格。
-    - 数字为 `0` 时，长度单位是可选的。
-    - 对于某些 CSS 属性，长度可以是负数。
-
-- **单位**
-
-    - 绝对长度单位
-    - 相对长度单位
-
-### [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%BB%9D%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **绝对长度的区别**
-
-    - 低分辨率设备（如屏幕）与高分辨率设备（如打印机）的锚定方式不同。
-    - 对于低分辨率设备，单位 `px` 代表物理*参考像素*；其他单位是相对于它定义的。在这些设备上，以英寸（`in`）、厘米（`cm`）或毫米（`mm`）描述的尺寸不一定与同名物理单位的尺寸一致。
-    - 对于高分辨率设备，英寸（`in`）、厘米（`cm`）和毫米（`mm`）与物理单位相同。因此，`px` 单位是相对于它们定义的（`1in` 的 1/96）。
-
-- <span id="explanation-of-absolute-length-units">**绝对长度单位说明**</span>
-
-    - 绝对长度是固定值，无法根据用户的设置进行缩放，因此会降低页面友好性。例如，在设置字体大小 `font-size` 相关的长度值时，最好优先选择使用相对长度单位，比如 `em` 或 `rem`。
-
-- **像素 `px`**：对于普通的屏幕，通常是一个设备像素（点）。对于*打印机*和*高分辨率屏幕*，一个 CSS 像素往往占多个设备像素。一般来说，每英寸的像素的数量保持在 96 左右，`1px` = `1in / 96`。
-- **厘米 `cm`**：`1cm` = `96px / 2.54`。
-- **毫米 `mm`**：`1mm` = `1cm / 10`。
-- **四分之一毫米 `Q`**：`1Q` = `1cm / 40`。
-- **英寸 `in`**：`1in` = `2.54cm` = `96px`。
-- **派卡 `pc`**：`1pc` = `12pt` = `1in / 6`。
-- **磅 `pt`**：`1pt` = `1in / 72`。
-
-### [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-#### [基于字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：字体长度根据元素或其父元素当前使用的字体中特定字符或字体属性的大小定义 `<length>` 值。
-- [**`em`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#em)：相对长度单位，基于继承元素的 `font-size` 值。
-- **其它**：[`cap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cap)、[`ch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ch)、[`ex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ex)、[`ic`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ic)、[`lh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#lh)
-
-#### [基于根元素字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E6%A0%B9%E5%85%83%E7%B4%A0%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：根元素字体相对长度单位以根元素的特定字符或字体属性的大小来定义 `<length>` 值。
-- [**`rem`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rem)：相对长度单位，这个单位表示根元素的（通常是 [`html`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)）`font-size` 的计算值。在根元素 `font-size` 中使用时，它代表初始值。常见的浏览器默认值为 `16px`，但用户自定义的偏好设置可能会对此进行修改。
-- **其它**：[`rcap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rcap)、[`rch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rch)、[`rex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rex)、[`ric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ric)、[`rlh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rlh)
-
-#### [基于视口](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E8%A7%86%E5%8F%A3%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：视口百分比长度单位基于四种不同的视口尺寸：小（small）、大（large）、动态（dynamic）和默认（default）。允许不同的视口尺寸是为了应对浏览器界面的动态扩展和收缩，以及隐藏和显示下方的内容。
-- [**`vw`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vw)：代表视口初始包含块**宽度**的百分比。
-
-    - `1vw` 是视口宽度的 1%。例如，如果视口宽度为 `800px`，那么属性上的 `50vw` 值就是 `400px`。
-    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svw`、`lvw` 和 `dvw`。`vw` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
-- [**`vh`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vh)：代表视口初始包含块**高度**的百分比。
-    - `1vh` 是视口高度的 1%。例如，如果视口高度为 `300px`，那么属性上的 `70vh` 值就是 `210px`。
-    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svh`、`lvh` 和 `dvh`。`vh` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
-
-- **其它**：[`vmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmax)、[`vmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmin)、[`vb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vb)、[`vi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vi)
-
-#### [容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：使用容器查询对容器应用样式时，可以使用容器查询长度单位。这些单位指定了相对于查询容器尺寸的长度。使用相对于其容器的长度单位的组件在不同容器中使用更灵活，而无需重新计算具体的长度值。更多信息，请参见[容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_containment/Container_queries)。
-- [`cqw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqw)、[`cqh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqh)、[`cqi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqi)、[`cqb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqb)、[`cqmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmin)、[`cqmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmax)
-
-### [插值](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E6%8F%92%E5%80%BC)
-
-当包含动画效果时，动画中 `<length>` 的值是由计算出的值应用[插值](https://developer.mozilla.org/zh-CN/docs/Glossary/Interpolation)后得出的浮点实数。插值的速度由动画的[缓动函数](https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function)决定。
-
-## [百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)
-
-- **语法**：数据类型 `<percentage>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 具体数值后跟着 `%` 构成。
-
-    - 数字与 `%` 之间不能出现空格。
-    - 对所有属性来说 `<percentage>` 负值都是无效的。
-
-- **关于插值动画的说明**：使用 `<percentage>` 的值可以插值为动画。在这种情况下，它们被内插为实数或浮点数。插值的速度取决于与动画相关联的 [timing function](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)。
-
-## [自定义标识符 `<custom-indent>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/custom-ident)
-
-- **语法**：数据类型 `<custom-ident>` 指用户自定义字符串标识符。可以由以下字符组成：
-
-    - 字母 (`A` - `Z`, `a` - `z`)
-    - 十进制数 (`0` - `9`)
-    - 连字符 (`-`)
-    - 下划线 (`_`)
-    - 转义字符 ( `\`)
-    - [Unicode](http://en.wikipedia.org/wiki/Unicode) 编码（格式：转义字符（`\`）后跟 1 到 6 位十六进制数）
-
-- **注意**
-
-    - 第一个字符不能为数字，字符串开头不能是连字符 (`-`) 后跟数字或连字符。
-    - 其它...
-
-## [图像 `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/image)
-
-- **语法**： **`<image>`** 数据类型描述的是 2D 图形。
-- 一个 `<image>` 数据类型可能表示成如下几种类型：
-
-    - 一个图像被引用为 CSS [`<url>`](#[指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)) 数据类型使用 `url()` 方法；
-    - 一个 CSS [`<gradient>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient);
-    - 页面的一个部分，定义在 [`element()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/element) 方法中；
-
-## [指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)
-
-- **语法**：**`<url>`** CSS 数据类型是指向资源的指针。资源可以是图像、视频、CSS 文件、字体文件、SVG 特性等。
-- **属性值**
-
-    - [`<url()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_function)
-    - [`<src()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value#src)
-
-## [位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value)
-
-- **语法**：`<position>`（或 **`<bg-position>`**）数据类型表示用于设置相对于元素盒子的位置的 2 维空间中的坐标。它被用于 `background-position` 和 `offset-anchor` 属性。
-- **属性值**
-
-    - **`center`**：中
-    - **`top`**：上
-    - **`right`**：右
-    - **`bottom`**：下
-    - **`left`**：左
-
-# CSS 属性
+# 属性
 
 ## [属性值定义语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax)
 
@@ -685,7 +677,7 @@ span:after {
     - 数据类型：`<length>` | `<percentage>` | `calc();`
     - 默认：0
 
-- **注意**：`gap` 属性不适用于常规流布局。
+- **注意**：`gap` 属性不适用于流式布局。
 
 ## [`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)
 
@@ -803,7 +795,155 @@ span:after {
     }
     ```
 
-# CSS 样式
+# 文本样式
+
+## [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals#%E6%96%87%E6%9C%AC%E5%B8%83%E5%B1%80)
+
+### [文本水平对齐 `text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)
+
+- **语法**：`text-align` 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容**的**水平对齐**。
+- **属性值**
+
+    - `left`：左对齐
+    - `right`：右对齐
+    - `center`：居中对齐
+    - `justify`：两端对齐（对最后一行无效）
+    - `justify-all`：两端对齐（对最后一行有效）
+    - 继承
+    - 其它...
+
+### [垂直对齐 `vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)
+
+- **语法**：`vertical-align` 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
+
+#### 属性值
+
+- **关键字：基于父元素**
+
+    - `text-top`：顶部对齐
+    - `text-bottom`：底部对齐
+    - `middle`：中部对齐
+    - 其它...
+
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，基于父元素基线，可以是负值。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于父元素基线，可以是负值；该百分比是 `line-height` 属性的百分比。
+- **相对行的值**
+
+    - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
+    - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
+    - 没有基线的元素，使用外边距的下边缘替代。
+
+- **表格单元格的值**
+
+    - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
+    - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
+    - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
+    - 其它...
+    - 可以是负数。
+
+#### 文本垂直对齐扩展
+
+- **使用 `line-height` 属性**
+
+    ```CSS
+    .container {
+      height: 100px; /* 容器高度 */
+      line-height: 100px; /* 行高等于容器高度 */
+    }
+    ```
+
+    ```html
+    <div class="container">
+      <div>这个元素内容将会基于容器垂直对齐。</div>
+    </div>
+    ```
+
+- **使用 `padding` 属性**
+
+    ```css
+    .container {
+      padding: 10px 0; /* 容器上下内边距相等 */
+      border: 3px solid green;
+    }
+    ```
+
+    ```html
+    <div class="container">
+      <div>这个元素内容将会基于容器垂直对齐。</div>
+    </div>
+    ```
+
+### [文本行高 `line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)
+
+- **语法**：`line-height` 属性用于设置行高。
+
+    - 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
+
+- **属性值**
+
+    - **`normal`**：关键字，约为 `1.2`
+    - [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
+    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
+    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
+
+- **扩展**
+
+    - 使用 `line-height` 属性可设置文本基于容器垂直居中。
+
+### [字母间距 `letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing)
+
+- **语法**：`letter-spacing` 属性用于设置字母间距。
+
+- **属性值**
+
+    - **`normal`**：默认，关键字
+    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
+    - 继承
+
+- **字母间距属性值示例**
+
+    ```css
+    /* Keyword value */
+    letter-spacing: normal;
+    
+    /* <length> values */
+    letter-spacing: 0.3em;
+    letter-spacing: 3px;
+    letter-spacing: -0.05em;
+    ```
+
+### [单词间距 `word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing)
+
+- **语法**：`word-spacing` 属性用于设置单词、标签间距。
+
+- **属性值**
+
+    - **`normal`**：默认，关键字
+    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+    - 继承
+
+- **字母间距属性值示例**
+
+    ```css
+    /* Keyword value */
+    letter-spacing: normal;
+    
+    /* <length> values */
+    letter-spacing: 0.3em;
+    letter-spacing: 3px;
+    letter-spacing: -0.05em;
+    ```
+
+### [文本缩进 `text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent)
+
+- **语法**：text-indent 属性用于设置区块元素中文本行前面缩进的长度。
+- **属性值**
+
+    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
+    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
+    - 继承
+    - 其它...
 
 ## [文本](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text)
 
@@ -1665,7 +1805,7 @@ th {
     }
     ```
 
-# [CSS 布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout)
+# [布局](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout)
 
 ## [盒模型](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)
 
@@ -1781,204 +1921,59 @@ th {
 
 - **说明**
 
-    - `padding` 属性适用 [**四值语法**](#四值语法)
+    - `padding` 属性适用**四值语法**
     - `padding` 本身没有背景颜色，完全透明，但有背景色时，会受到背景色影响
 
-### [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+## [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
 
-- **定义**：**`display`** 属性会影响元素两个方面的布局表现
-    - **外部表现**：元素本身在常规流布局中的表现
-    - **内部表现**：元素的子元素在元素内部的布局表现
+### 显示类型
 
-- **语法**：`display: 外部值  内部值;` | `display: 外部值;`
-- **属性值**
+盒模型有两个方面的显示类型，由 `display` 属性控制：
 
-    - **外部值**
+- **外部显示类型**：即 `<display-outside>`，决定**元素自身**如何参与**父容器的流式布局**。
+- **内部显示类型**：即 `<display-inside>`，决定**元素内部**的**子元素**使用哪种布局模型进行排列。
 
-        - [**`inline`**](#inline)：元素外部显示为行内元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
-        - [**`block`**](#block)：元素外部显示为块级元素，适用于[常规流布局](#[常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow))
+外部显示类型：
 
-    - **内部值**
+- [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。将这种元素称为**块级元素**。
+- [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
+- `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
 
-        - [**`flex`**](#[弹性布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex))：元素内部显示为弹性元素，适用于[弹性布局](#[弹性盒布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox))
-        - [**`grid`**](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))：元素内部显示为网格元素，适用于[网格布局](#[网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout))
+内部显示类型：
 
-    - **盒**
+- [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
+- [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：弹性布局
+- [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：见网格布局
+- [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
+- [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
+- 更多...
 
-        - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
-        - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+[`<display-box>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-box)：
 
-- **说明**
+- [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
+- [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
 
-    - 当 `display` 属性仅有一个外部值时，内部值会被默认设置为 [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)。
-    - `inline-block` 是一种传统的单值语法，用于对旧浏览器的支持，等同于 `inline block`，应该使用后者。
-    - `inline` 和 `block` 在非常规流布局中，会失去它们原有的特性，统一变成其它布局特性。
+### 多值语法
 
-## [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals#%E6%96%87%E6%9C%AC%E5%B8%83%E5%B1%80)
+CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <display-outside>  <display-inside>;`。
 
-### [文本水平对齐 `text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)
+这意味着一个 `display` 值可以由**一个外部关键字**和**一个内部关键字**组成（用空格分隔），或者是一个**复合值**（旧语法）。常用复合值和多值的映射关系为：
 
-- **语法**：`text-align` 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容**的**水平对齐**。
-- **属性值**
+| [复合值](https://drafts.csswg.org/css-display/#inner-display-type) | 多值 |
+| :---: | :---: |
+| [`none`](https://drafts.csswg.org/css-display/#valdef-display-none) | — |
+| [`contents`](https://drafts.csswg.org/css-display/#valdef-display-contents) | — |
+| `block` | `block flow` |
+| `inline` | `inline flow` |
+| [`inline-block`](https://drafts.csswg.org/css-display/#valdef-display-inline-block) | `inline flow-root` |
+| `flex` | `block flex` |
+| `grid` | `block grid` |
+| 更多 | ... |
 
-    - `left`：左对齐
-    - `right`：右对齐
-    - `center`：居中对齐
-    - `justify`：两端对齐（对最后一行无效）
-    - `justify-all`：两端对齐（对最后一行有效）
-    - 继承
-    - 其它...
+## [流式布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow)
 
-### [垂直对齐 `vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)
-
-- **语法**：`vertical-align` 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
-
-#### 属性值
-
-- **关键字：基于父元素**
-
-    - `text-top`：顶部对齐
-    - `text-bottom`：底部对齐
-    - `middle`：中部对齐
-    - 其它...
-
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，基于父元素基线，可以是负值。
-- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于父元素基线，可以是负值；该百分比是 `line-height` 属性的百分比。
-- **相对行的值**
-
-    - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
-    - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
-    - 没有基线的元素，使用外边距的下边缘替代。
-
-- **表格单元格的值**
-
-    - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
-    - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
-    - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
-    - 其它...
-    - 可以是负数。
-
-#### 文本垂直对齐扩展
-
-- **使用 `line-height` 属性**
-
-    ```CSS
-    .container {
-      height: 100px; /* 容器高度 */
-      line-height: 100px; /* 行高等于容器高度 */
-    }
-    ```
-
-    ```html
-    <div class="container">
-      <div>这个元素内容将会基于容器垂直对齐。</div>
-    </div>
-    ```
-
-- **使用 `padding` 属性**
-
-    ```css
-    .container {
-      padding: 10px 0; /* 容器上下内边距相等 */
-      border: 3px solid green;
-    }
-    ```
-
-    ```html
-    <div class="container">
-      <div>这个元素内容将会基于容器垂直对齐。</div>
-    </div>
-    ```
-
-### [文本行高 `line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)
-
-- **语法**：`line-height` 属性用于设置行高。
-
-    - 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
-
-- **属性值**
-
-    - **`normal`**：关键字，约为 `1.2`
-    - [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
-
-- **扩展**
-
-    - 使用 `line-height` 属性可设置文本基于容器垂直居中。
-
-### [字母间距 `letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing)
-
-- **语法**：`letter-spacing` 属性用于设置字母间距。
-- **属性值**
-
-    - **`normal`**：默认，关键字
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
-    - 继承
-
-- **字母间距属性值示例**
-
-    ```css
-    /* Keyword value */
-    letter-spacing: normal;
-    
-    /* <length> values */
-    letter-spacing: 0.3em;
-    letter-spacing: 3px;
-    letter-spacing: -0.05em;
-    ```
-
-### [单词间距 `word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing)
-
-- **语法**：`word-spacing` 属性用于设置单词、标签间距。
-- **属性值**
-
-    - **`normal`**：默认，关键字
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-    - 继承
-
-- **字母间距属性值示例**
-
-    ```css
-    /* Keyword value */
-    letter-spacing: normal;
-    
-    /* <length> values */
-    letter-spacing: 0.3em;
-    letter-spacing: 3px;
-    letter-spacing: -0.05em;
-    ```
-
-### [文本缩进 `text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent)
-
-- **语法**：text-indent 属性用于设置区块元素中文本行前面缩进的长度。
-- **属性值**
-
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
-    - 继承
-    - 其它...
-
-## [常规流布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow)
-
-- **语法**：常规流布局是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内的布局方式）。
-- 在 HTML 中，元素在常规流布局的**显示类型**可以分为 `块级元素`、`行内元素` 和 `行内块级元素`，它们在常规文档流的布局方式不同。
-- <span id="block">[**块级元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Block-level_content)</span>
-
-    - 以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。
-    - 常见的块级元素包括 `<div>`、`<p>`、`<h1>` 到 `<h6>`、`<ul>`、`<ol>`、`<li>`、`<table>`、`<header>`、`<footer>` 等。
-
-- <span id="inline">[**行内元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Inline-level_content)</span>
-
-    - 行内元素不会新起一行，它们在同一行上显示，只占据它所包含内容的宽度。
-    - 常见的行内元素包括 `<span>`、`<a>`、`<strong>`、`<em>`、`<img>`、`<br>`、`<i>` 等。
-
-- **行内块级元素**
-
-    - 元素外部显示为行内元素，内部显示为块级元素。
-    - 表现为同行显示并可修改宽高内外边距等属性。
-
+- **语法**：流式布局是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内的布局方式）。
+- [`inline-block`](https://drafts.csswg.org/css-display/#valdef-display-inline-block) 表现为同行显示并可修改宽高内外边距等属性。
 - **块级元素和行内元素的区别**
 
     |  | 块级元素 | 行内元素 |
@@ -2102,7 +2097,7 @@ th {
 
 - **定义**：`display: flex;` 声明用于将元素内部设置为弹性布局，元素本身设为弹性容器，子元素显示为弹性元素。
 
-    - 外部表现：不影响，仍是常规流布局
+    - 外部表现：不影响，仍是流式布局
     - 内部表现：弹性布局，内部子元素统一变为弹性元素。
     - 弹性元素：元素失去常规布局流的特性，统一按照弹性规则进行布局。
 
@@ -2612,9 +2607,9 @@ th {
     </html>
     ```
 
-# CSS 变化
+# 变化
 
-# CSS 总结
+# 总结
 
 ## 元素对齐
 
@@ -2717,9 +2712,9 @@ th {
 - `visibility: hidden;`：可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间，即仍会影响布局。
 - `opacity: 0;`：
 
-# CSS 技巧
+# 技巧
 
-## CSS 技巧汇总
+## 技巧汇总
 
 - **光标样式**：`cursor: pointer;`
 - **颜色过渡**：`transition: background-color 0.3s;`
