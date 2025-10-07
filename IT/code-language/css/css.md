@@ -274,32 +274,22 @@
 
 # [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
 
-## 层叠
+创建了多个应用于同一个元素的规则时，层叠、优先级与继承共同决定了系统会使用哪条规则。
 
-- 样式表[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)——简单的说，就是 CSS 规则的顺序很重要。
-- 当应用两条同级别的规则到一个元素的时候，写在后面的就是实际使用的规则。
+## [层叠](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)
+
+- **层叠**：当两条同级别的规则应用到同一个元素的时候，写在后面的就是实际使用的规则。
+- 规则覆盖：不会覆盖所有规则，只覆盖相同的属性。
 - 有三个因素需要考虑，根据重要性排序如下，后面的更重要：
 
-    - **资源顺序**
+    - **层叠顺序**
     - **优先级**
     - **重要程度**
+- 假如层叠顺序相等，则使用哪个值取决于优先级。
 
-- 关于规则覆盖：不会覆盖所有规则，只覆盖相同的属性。
-- **选择器优先级**：一个选择器的优先级可以说是由三个不同的值（或分量）相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：
+## [优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Specificity)
 
-    - **ID**：选择器中包含 ID 选择器则百位得一分。
-    - **类**：选择器中包含类选择器、属性选择器或者伪类则十位得一分。
-    - **元素**：选择器中包含元素、伪元素选择器则个位得一分。
-
-        > **备注：**通用选择器（[`*`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)）、组合符（`+`、`>`、`~`、' '）和调整优先级的选择器（[`:where()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)）不会影响优先级。
-
-        > 否定（[`:not()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)）和任意匹配（[`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)）伪类本身对优先级没有影响，但它们的参数则会带来影响。参数中，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级。
-
-- 假如层叠顺序相等，则使用哪个值取决于[优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)。
-
-## 优先级
-
-浏览器是根据[优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Specificity)来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
+浏览器是根据**优先级**来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
 
 - **引入方式优先级**
     - `!important` > 内联样式 > 内部样式表 > 外部样式表 > 浏览器默认样式
@@ -308,6 +298,18 @@
 
     - ID选择器 > 类选择器、属性选择器、伪类 > 标签选择器、伪元素 > 通用选择器、继承
     - 同一样式表中同一种样式写法，后声明的样式比先声明的优先级高
+
+- **选择器优先级**：一个选择器的优先级可以说是由三个不同的值（或分量）相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：
+
+    - **ID**：选择器中包含 ID 选择器则百位得一分。
+
+    - **类**：选择器中包含类选择器、属性选择器或者伪类则十位得一分。
+
+    - **元素**：选择器中包含元素、伪元素选择器则个位得一分。
+
+        > **备注：**通用选择器（[`*`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)）、组合符（`+`、`>`、`~`、' '）和调整优先级的选择器（[`:where()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)）不会影响优先级。
+
+        > 否定（[`:not()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)）和任意匹配（[`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)）伪类本身对优先级没有影响，但它们的参数则会带来影响。参数中，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级。
 
 ## [继承](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)
 
@@ -335,6 +337,10 @@
 
 ## [层叠层 `cascade_layers`](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
 
+> [层叠层](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
+>
+> [@layer](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
+
 ## [级联层 `@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
 
 # [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)
@@ -361,144 +367,146 @@
     | 选择器列表 | `div,p` | 选择所有 `<div>` 元素和 `<p>` 元素 | 1 |
     | 组合选择器 | `p.class#id` | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1 |
     | 后代选择器（所有后代） | `div p` | 选择 `<div>` 元素内的所有 `<p>` 元素 | 1 |
-    | 子代选择器（直系后代） | `div>p` | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
-    | 相邻兄弟选择器 | `div+p` | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
-    | 通用兄弟选择器 | `div~p` | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
+    | 子代选择器（直系后代） | `div > p` | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
+    | 相邻兄弟选择器 | `div + p` | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
+    | 通用兄弟选择器 | `div ~ p` | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
 
 ## [元素选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
 
-- **元素选择器**：通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
-- **语法**：`元素名 {样式声明}`
+**元素选择器**：通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
 
-    ```css
-    p{
-      color: red;
-    }
-    ```
+**语法**：`元素名 {样式声明}`
 
-    ```html
-    <p>这是一个段落</p>
-    ```
+```html
+<p>这是一个段落</p>
+```
+
+```css
+p {
+  color: red;
+}
+```
 
 ## [类选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors)
 
-- **语法**：`.类名 {样式声明}`
+**语法**：`.类名 {样式声明}`
 
-    ```css
-    .test {
-      background-color: red;
-      color: green;
-    }
-    ```
+```html
+<p class="test">这是一个段落</p>
+```
 
-    ```html
-    <p class="test">这是一个段落</p>
-    ```
+```css
+.test {
+  background-color: red;
+  color: green;
+}
+```
 
 ## [属性选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
 
-- **属性选择器**：通过**元素名**和**元素属性**选择元素。
-- **语法**：`元素名[元素属性/属性名值对] {样式声明}`
+**属性选择器**：通过**元素名**和**元素属性**选择元素。
 
-    ```css
-    /* 存在 title 属性的 <a> 元素 */
-    a[title] {
-      color: purple;
-    }
-    
-    /* 存在 href 属性并且属性值匹配"https://example.org"的 <a> 元素 */
-    a[href="https://example.org"]
-    {
-      color: green;
-    }
-    ```
+**语法**：`元素名[元素属性/属性名值对] {样式声明}`
 
-    ```html
-    <a href="https://baidu.com" alt="baidu">baidu</a>
-    
-    <a href="https://example.com">example</a>
-    ```
+```html
+<a href="https://baidu.com" alt="baidu">baidu</a>
+
+<a href="https://example.com">example</a>
+```
+
+```css
+/* 存在 title 属性的 <a> 元素 */
+a[title] {
+  color: purple;
+}
+
+/* 存在 href 属性并且属性值匹配"https://example.org"的 <a> 元素 */
+a[href="https://example.org"]
+{
+  color: green;
+}
+```
 
 ## [ID 选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)
 
-- ID **选择器**：通过**元素 ID**选择元素。
-- **语法**：`#id值 {样式声明}`
+ID **选择器**：通过**元素 ID**选择元素。
 
-    ```css
-    #test {
-      color: red
-    }
-    ```
+**语法**：`#id值 {样式声明}`
 
-    ```html
-    <h1 id="test">
-      这是一个标题
-    </h1>
-    ```
+```html
+<h1 id="test">
+  这是一个标题
+</h1>
+```
+
+```css
+#test {
+  color: red
+}
+```
 
 ## [关系选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
 
-- **关系选择器**：通过具有逻辑关系的一个元素，选择另一个元素；又称*组合器*；详见 [`常用选择器`](#常用选择器)。
+**关系选择器**：通过具有逻辑关系的一个元素，选择另一个元素；又称*组合器*；详见 [`常用选择器`](#常用选择器)。
 
 ## [选择器列表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Selector_list)
 
-- **选择器列表**：选择满足条件之一的所有元素，即 `或`。
-- **语法**：多个选择器用 `,` 分隔，`选择器1,选择器2...选择器n {样式声明}`
+**选择器列表**：选择满足条件之一的所有元素，即 `或`。
 
-    ```css
-    p,
-    div {
-      color: red;
-    }
-    ```
+**语法**：多个选择器用 `,` 分隔，`选择器1,选择器2...选择器n {样式声明}`
 
-    ```html
-    <p>第一部分</p>
-    <div>第二部分</div>
-    ```
+```html
+<p>第一部分</p>
+<div>第二部分</div>
+```
 
-- **渲染效果**
+```css
+p,
+div {
+  color: red;
+}
+```
 
-    > ![image-20241129210739116](assets/image-20241129210739116.png)
+> ![image-20241129210739116](assets/image-20241129210739116.png)
 
 - **注意**：如果选择器列表中任何一个选择器无效 (存在语法错误)，那么整条规则都会被忽略。
 
 ## 组合选择器
 
-- **组合选择器**：选择同时满足所有条件的元素，即 `与`。
-- **语法**：多个选择器之间没有空格，`选择器1选择器2...选择器n {样式声明}`
+**组合选择器**：选择同时满足所有条件的元素，即 `与`。
 
-    ```css
-    .test#one {
-      color: red;
-    }
-    ```
+**语法**：多个选择器之间没有空格，`选择器1选择器2...选择器n {样式声明}`
 
-    ```html
-    <p class="test" id="one">第一部分</p>
-    <p class="test" id="two">第一部分</p>
-    ```
+```html
+<p class="test" id="one">第一部分</p>
+<p class="test" id="two">第一部分</p>
+```
 
-- **渲染效果**
+```css
+.test#one {
+  color: red;
+}
+```
 
-    > ![image-20241129210614262](assets/image-20241129210614262.png)
+> ![image-20241129210614262](assets/image-20241129210614262.png)
 
 ## [伪类](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes)
 
 ### 伪类语法
 
-- **伪类**：用来样式化一个元素的特定状态。例如 `:hover` 伪类会在鼠标悬停到一个元素上时选择这个元素。
-- **语法**：`选择器:伪类名`
+**伪类**：用来样式化一个元素的特定状态。例如 `:hover` 伪类会在鼠标悬停到一个元素上时选择这个元素。
 
-    ```html
-    <a href="https://example.com" alt="test">test</a>
-    ```
+**语法**：`选择器:伪类名`
 
-    ```css
-    a:hover {
-      color: red;
-    }
-    ```
+```html
+<a href="https://example.com" alt="test">test</a>
+```
+
+```css
+a:hover {
+  color: red;
+}
+```
 
 ### `:after`
 
@@ -520,29 +528,31 @@ span:after {
 
 - 添加之后页面将展示“中国联通公司”
 - 注意 `content` 的属性值要加引号
-- 可以加内容，也可加其它 style，详见清除浮动
+- 可以加内容，也可加其它 style，详见清除浮动。
 
 ## [伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)
 
-- **伪元素**：用来修改一个*元素的特定部分*的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
-- **语法**：`选择器::伪元素名`
+**伪元素**：用来修改一个*元素的特定部分*的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
 
-    ```html
-    <p>这是第一行<br>这是第二行</p>
-    ```
+**语法**：`选择器::伪元素名`
 
-    ```css
-    p::first-line {
-      color: red;
-    }
-    ```
+**注意**：一个选择器中只能使用一个伪元素。
 
-- **注意**：一个选择器中只能使用一个伪元素。
-- **常用伪元素**
+```html
+<p>这是第一行<br>这是第二行</p>
+```
 
-    - [伪元素索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#%E5%AD%97%E6%AF%8D%E7%B4%A2%E5%BC%95)
-    - [**`::placeholder`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::placeholder)：占位文本
-    - [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
+```css
+p::first-line {
+  color: red;
+}
+```
+
+**[伪元素索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#字母索引)**：
+
+- [**`::placeholder`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::placeholder)：占位文本
+- [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
+- 更多...
 
 # 属性
 
@@ -992,7 +1002,7 @@ span:after {
 
 ### [字体颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)
 
-- **语法**：使用 [`color`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color)) 属性设置字体颜色。
+- **语法**：使用 `color` 属性设置字体颜色。
 - **属性值**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
 
 ### [字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight)
@@ -1693,101 +1703,6 @@ th {
     - 如果仅有一个数值被给定，这个数值将作为宽度值大小，高度值将被设定为 `auto`。
     - 如果有两个数值被给定，第一个将作为宽度值大小，第二个作为高度值大小。
 
-## [边框 `border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border)
-
-### [边框简写 `border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border)
-
-- **语法**： `border` 属性是一个 CSS 简写属性，用于设置所有边框。
-
-    - [`border-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top)
-    - [`border-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right)
-    - [`border-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom)
-    - [`border-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left)
-
-- **属性值**：可以设置一个或多个以下属性的值，值的顺序无关紧要：
-
-    - [边框宽度 `border-width`](#[边框样式 `border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-width))
-    - [边框样式 `border-style`](#[边框样式 `border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style))
-    - [边框颜色 `border-color`](#[边框样式 `border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color))
-
-### [边框样式 `border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style)
-
-- **语法**：`border-style` 是一个 CSS 简写属性，用来设定元素所有边框的样式。
-
-    - [`border-top-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-style)
-    - [`border-right-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right-style)
-    - [`border-bottom-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-style)
-    - [`border-left-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left-style)
-
-- **属性值**
-
-    - **`none`**：默认值，不显示边框。
-    - **`solid`**：实线
-    - **`double`**：双实线
-    - **`dashed`**：虚线
-    - 其它...
-
-- **说明**：`border-style` 属性适用 [**四值语法**](#四值语法)
-
-### [边框颜色 `border-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color)
-
-- **语法**：`border-color` 是一个 CSS 简写属性，用来设定元素所有边框的颜色。
-
-    - [`border-top-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-color)
-    - [`border-right-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right-color)
-    - [`border-bottom-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-color)
-    - [`border-left-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left-color)
-
-- **属性值**
-
-    - [颜色值 `<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
-
-- **说明**：`border-color` 属性适用 [**四值语法**](#四值语法)
-
-### [边框宽度 `border-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color)
-
-- **语法**：`border-color` 是一个 CSS 简写属性，用来设定元素所有边框的宽度。
-
-    - [`border-top-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-width)
-    - [`border-right-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right-width)
-    - [`border-bottom-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-width)
-    - [`border-left-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left-width)
-
-- **属性值**
-
-    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - [关键字 `<line-width>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-width#line-width)
-
-        - `thin`
-        - `medium`
-        - `thick`
-
-- **说明**：`border-width` 属性适用 [**四值语法**](#四值语法)
-
-### [边框圆角 `border-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
-
-- **语法**：`border-radius` 属性是一个 CSS 简写属性，用于设置所有边框圆角。
-
-    - [`border-top-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-left-radius)
-    - [`border-top-right-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius)
-    - [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius)
-    - [`border-bottom-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-left-radius)
-
-- **属性值**：当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。
-
-    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
-
-- **边框圆角示例**
-
-    ```css
-    border-radius: 30px;
-
-    border-radius: 25% 10%;
-    ```
-
-- **扩展**：即使元素没有边框，圆角也可以用到 `background` 上面，具体效果受 `background-clip` 影响。
-
 ## 轮廓 `outline`
 
 - 轮廓 outline 属性用于绘制元素周围的轮廓线，可起到突出元素的作用。
@@ -1811,161 +1726,203 @@ th {
 
 ### 盒模型概述
 
-- HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
+HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
 
-    ![image-20231202143654812](assets/image-20231202143654812.png)
+<img src="assets/image-20231202143654812.png" alt="image-20231202143654812" style="zoom: 67%;" />
 
-- 不同部分的说明：
+不同部分的说明：
 
-    - **Margin(外边距)**：清除边框外的区域，外边距是透明的。
-    - **Border(边框)**：围绕在内边距和内容外的边框。
-    - **Padding(内边距)**：清除内容周围的区域，内边距是透明的。
-    - **Content(内容)**：盒子的内容，显示文本和图像。
-
-### [`box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
-
-- **语法**： **`box-sizing`** 属性定义了 user agent 应该如何计算一个元素的总宽度和总高度。
-- **属性值**
-
-    <img src="assets/box-sizing.svg" alt="box-sizing" style="width: 50%"/>
-
-    - `content-box`：默认值，`width` = `content` 宽度，`height` 同理。
-    - `border-box`：`width` = `border` + `padding` + `content` 宽度，`height` 同理。
-
-### [`margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)
-
-- **语法**：`margin` 是一个 CSS 简写属性，用于定义元素 `border` 以外的空间。
-
-    - [`margin-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-top)
-    - [`margin-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-right)
-    - [`margin-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-bottom)
-    - [`margin-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-left)
-
-- **示例**
-
-    ```css
-    .center {
-      background-color: lime;
-      width: 66%;
-      margin: auto;
-    }
-
-    .outside {
-      background-color: cyan;
-      width: 66%;
-      margin: 3rem 0 0 -3rem;
-    }
-    ```
-
-    ```css
-    <div class="center">此元素会被居中显示</div>
-    <div class="outside">此元素会被显示在包含块之外</div>
-    ```
-
-    ![image-20241202171510218](assets/image-20241202171510218.png)
-
-- **属性值**
-
-    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：可以使用负值，重叠的内容
-    - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于包含块
-    - `auto`
-
-- **说明**
-
-    - `margin` 属性适用 [**四值语法**](#四值语法)
-    - 上、下外边距的设置对**不可替换**行内元素无效。
-    - `margin` 没有背景色，完全透明。
-
-- **扩展**：可以利用 `margin: auto` 使元素基于其父元素水平居中
-- **外边距折叠**：两个外边距相接的元素，这些外边距将合并为一个外边距。
-
-    - 两个正外边距将合并为一个外边距。其大小等于最大的单个外边距。
-    - 两个负外边距会折叠，并使用最小（离零最远）的值。
-    - 如果其中一个外边距为负值，其值将从总值中*减去*。
-
-### [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
-
-- **语法**：`padding` 是一个 CSS 简写属性，用于定义元素 `border` 与 `content` 之间的空间。
-
-    - [`padding-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-top)
-    - [`padding-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-right)
-    - [`padding-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-bottom)
-    - [`padding-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-left)
-
-- **示例**
-
-    ```css
-    h4 {
-      background-color: lime;
-      padding: 20px 50px;
-    }
-
-    h3 {
-      background-color: cyan;
-      padding: 110px 50px 50px 110px;
-    }
-    ```
-
-    ```html
-    <h4>此元素有合适的内边距</h4>
-    <h3>此元素的内边距很大</h3>
-    ```
-
-    <img src="assets/image-20241202170552169.png" alt="image-20241202170552169" />
-
-- **属性值**
-
-    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：必须是非负值
-    - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于包含块
-    - `auto`
-
-- **说明**
-
-    - `padding` 属性适用**四值语法**
-    - `padding` 本身没有背景颜色，完全透明，但有背景色时，会受到背景色影响
-
-## [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+- **Margin**：外边距是最外层的盒。
+- **Border**：边框是围绕在内边距和外边距之间的盒。
+- **Padding**：内边距是围绕在边框和内容之间的盒。
+- **Content**：盒子的内容，显示文本和图像。
 
 ### 显示类型
 
 盒模型有两个方面的显示类型，由 `display` 属性控制：
 
-- **外部显示类型**：即 `<display-outside>`，决定**元素自身**如何参与**父容器的流式布局**。
-- **内部显示类型**：即 `<display-inside>`，决定**元素内部**的**子元素**使用哪种布局模型进行排列。
+- **外部显示类型**：决定**元素自身**如何参与**父容器的流式布局**，即 `<display-outside>`，详见 `display` 属性。
+- **内部显示类型**：决定**元素内部**的**子元素**使用哪种布局模型进行排列，即 `<display-inside>`，详见 `display` 属性。
 
-外部显示类型：
+### [`margin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin)
 
-- [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。将这种元素称为**块级元素**。
-- [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
-- `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
+`margin` 是一个 CSS 简写属性，用于定义元素 `border` 以外的空间。
 
-内部显示类型：
+- [`margin-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-top)
+- [`margin-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-right)
+- [`margin-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-bottom)
+- [`margin-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/margin-left)
 
-- [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
-- [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：弹性布局
-- [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：见网格布局
-- [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
-- [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
-- 更多...
+```css
+<div class="center">此元素会被居中显示</div>
+<div class="outside">此元素会被显示在包含块之外</div>
+```
 
-[`<display-box>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-box)：
+```css
+.center {
+  background-color: lime;
+  width: 66%;
+  margin: auto;
+}
 
-- [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
-- [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+.outside {
+  background-color: cyan;
+  width: 66%;
+  margin: 3rem 0 0 -3rem;
+}
+```
+
+> <img src="assets/image-20241202171510218.png" alt="image-20241202171510218" style="zoom:40%;" />
+
+**属性值**
+
+- [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：可以使用负值，重叠的内容
+- [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于包含块
+- `auto`
+
+**说明**
+
+- `margin` 属性适用 [**四值语法**](#四值语法)
+- 上、下外边距的设置对**不可替换**行内元素无效。
+- `margin` 没有背景色，完全透明。
+
+**扩展**：可以利用 `margin: auto` 使元素基于其父元素水平居中
+
+**外边距折叠**：两个外边距相接的元素，这些外边距将合并为一个外边距。
+
+- 两个正外边距将合并为一个外边距。其大小等于最大的单个外边距。
+- 两个负外边距会折叠，并使用最小（离零最远）的值。
+- 如果其中一个外边距为负值，其值将从总值中*减去*。
+
+### [`border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border)
+
+#### 语法
+
+边框 `border` 属性是一个 CSS 简写属性，用于设置所有边框。
+
+设置所有边框的一个或多个以下属性的值：
+
+- [`border-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-width)
+- [`border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style)
+- [`border-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color)
+
+设置一条边框：
+
+- [`border-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top)
+- [`border-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right)
+- [`border-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom)
+- [`border-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left)
+
+#### [`border-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
+
+边框圆角 `border-radius` 属性是一个 CSS 简写属性，用于设置所有边框圆角。
+
+- [`border-top-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-left-radius)
+- [`border-top-right-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius)
+- [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius)
+- [`border-bottom-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-left-radius)
+
+**属性值**：当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。
+
+- [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+- [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
+
+**边框圆角示例**
+
+```css
+border-radius: 30px;
+
+border-radius: 25% 10%;
+```
+
+### [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
+
+`padding` 是一个 CSS 简写属性，用于定义元素 `border` 与 `content` 之间的空间。
+
+- [`padding-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-top)
+- [`padding-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-right)
+- [`padding-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-bottom)
+- [`padding-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-left)
+
+```html
+<h3>此元素的上下内边距为 70px</h3>
+<h4>此元素的上下内边距为 50px</h4>
+```
+
+```css
+h3 {
+  background-color: cyan;
+  padding: 110px 50px 110px 50px;
+}
+
+h4 {
+  background-color: lime;
+  padding: 20px 50px;
+}
+```
+
+> <img src="assets/image-20251007201623242.png" alt="image-20251007201623242" style="zoom:40%;" />
+
+**属性值**：
+
+- [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：必须是非负值
+- [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于包含块
+- `auto`
+
+**说明**：
+
+- `padding` 属性适用**四值语法**
+- `padding` 本身没有背景颜色，完全透明，但有背景色时，会受到背景色影响
+
+### [`box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
+
+`box-sizing` 属性，即**替代盒模型**，定义了应该如何计算一个元素的总宽度和总高度。
+
+<img src="assets/box-sizing.svg" alt="box-sizing" style="width: 50%"/>
+
+**属性值**：
+
+- `content-box`：默认值，`width` = `content` 宽度，`height` 同理。
+- `border-box`：`width` = `border` + `padding` + `content` 宽度，`height` 同理。
+
+## [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+
+### [语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#形式语法)
+
+`display` 属性有六种取值类型：
+
+- [`<display-outside>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-outside)
+    - [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。将这种元素称为**块级元素**。
+    - [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
+    - `run-in`
+    - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
+- [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
+    - [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
+    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：弹性布局
+    - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：见网格布局
+    - [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
+    - [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
+    - 更多...
+- [`<display-box>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-box)
+    - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
+    - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+- [`<display-listitem>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-listitem)
+- [`<display-internal>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-internal)
+- [`<display-legacy>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-legacy)
 
 ### 多值语法
 
 CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <display-outside>  <display-inside>;`。
 
-这意味着一个 `display` 值可以由**一个外部关键字**和**一个内部关键字**组成（用空格分隔），或者是一个**复合值**（旧语法）。常用复合值和多值的映射关系为：
+这意味着一个 `display` 值可以由**一个外部关键字**和**一个内部关键字**组成（用空格分隔），或者是一个**复合值**（旧语法）。常用复合值和多值的对应关系为：
 
 | [复合值](https://drafts.csswg.org/css-display/#inner-display-type) | 多值 |
 | :---: | :---: |
-| [`none`](https://drafts.csswg.org/css-display/#valdef-display-none) | — |
-| [`contents`](https://drafts.csswg.org/css-display/#valdef-display-contents) | — |
+| `none` | — |
+| `contents` | — |
 | `block` | `block flow` |
 | `inline` | `inline flow` |
-| [`inline-block`](https://drafts.csswg.org/css-display/#valdef-display-inline-block) | `inline flow-root` |
+| `inline-block` | `inline flow-root` |
 | `flex` | `block flex` |
 | `grid` | `block grid` |
 | 更多 | ... |

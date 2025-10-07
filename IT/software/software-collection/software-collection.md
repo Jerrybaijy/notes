@@ -932,8 +932,21 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 
 - [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)：`入门模块` 中的 `配置环境`
 - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
--  [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
+- [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
+    - [HTML 基础语法](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax)
+    - [HTML 的标题和段落](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs)
+    - [强调与重要性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Emphasis_and_importance)
+    - [列表](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Lists)
+    - [文本格式进阶](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Advanced_text_features)
+    - [挑战：标记信件](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Marking_up_a_letter) 未完
+    - [构建文档](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Structuring_documents) 未完
+
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
+    - [什么是 CSS？](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
+    - [让我们开始 CSS 的学习之旅](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Getting_started)
+    - [挑战：为传记页面添加样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Styling_a_bio_page)
+    - 
+
 - [JavaScript——动态客户端脚本语言](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting "创建 JavaScript 代码块")：`核心模块` 中的 `使用 JavaScript 添加脚本交互`
 - [Web 表单——操作用户数据](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms "Web 表单构建块")：`扩展模块` 中的 `Web 表单`
 - [无障碍——让每个人都能使用 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility "无障碍")：`核心模块` 中的 `无障碍`
