@@ -10,5 +10,6 @@
   "showInlineTitle": false,
   "propertiesInDocument": "source",
   "attachmentFolderPath": "./assets",
-  "defaultViewMode": "preview"
+  "defaultViewMode": "preview",
+  "livePreview": false
 }

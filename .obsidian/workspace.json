@@ -14,8 +14,8 @@
               "type": "markdown",
               "state": {
                 "file": "obsidian标题实验.md",
-                "mode": "preview",
-                "source": false
+                "mode": "source",
+                "source": true
               },
               "icon": "lucide-file",
               "title": "obsidian标题实验"
@@ -29,7 +29,7 @@
               "state": {
                 "file": "IT/software/software-collection/software-collection.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "software-collection"
@@ -43,7 +43,7 @@
               "state": {
                 "file": "IT/it-basics/it-basics.md",
                 "mode": "source",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "it-basics"
@@ -57,7 +57,7 @@
               "state": {
                 "file": "IT/network/network.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "network"
@@ -71,7 +71,7 @@
               "state": {
                 "file": "IT/code-language/markdown/markdown.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "markdown"
@@ -83,12 +83,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IT/code-language/markdown/markdown.md",
-                "mode": "source",
-                "source": false
+                "file": "IT/software/typora/typora.md",
+                "mode": "preview",
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "markdown"
+              "title": "typora"
             }
           },
           {
@@ -99,7 +99,7 @@
               "state": {
                 "file": "IT/code-language/yaml/yaml.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "yaml"
@@ -113,7 +113,7 @@
               "state": {
                 "file": "历史/中国史/中国史支线.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "中国史支线"
@@ -127,7 +127,7 @@
               "state": {
                 "file": "IT/code-language/html/html.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "html"
@@ -141,7 +141,7 @@
               "state": {
                 "file": "IT/code-language/html/html-elements.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "html-elements"
@@ -155,7 +155,7 @@
               "state": {
                 "file": "IT/code-language/html/html-attributes.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "html-attributes"
@@ -169,13 +169,14 @@
               "state": {
                 "file": "IT/code-language/css/css.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
               "title": "css"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -207,7 +208,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#note-editor",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -228,7 +229,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -284,7 +286,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": ""
+                "searchQuery": "note"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -296,17 +298,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IT/code-language/markdown/markdown.md",
+                "file": "IT/software/typora/typora.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "markdown 的大纲"
+              "title": "typora 的大纲"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -323,16 +325,16 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "78b9c3b0c8b7a18a",
+  "active": "06937891421a5979",
   "lastOpenFiles": [
-    "obsidian链接实验.md",
     "obsidian标题实验.md",
+    "IT/software/typora/typora.md",
     "IT/code-language/markdown/markdown.md",
     "IT/software/software-collection/software-collection.md",
+    "obsidian链接实验.md",
     "历史/中国史/中国史支线.md",
     "IT/code-language/yaml/yaml.md",
     "IT/software/typora/css.md",
-    "IT/software/typora/typora.md",
     "IT/code-language/css/css.md",
     "未命名 1.canvas",
     "未命名.canvas",
