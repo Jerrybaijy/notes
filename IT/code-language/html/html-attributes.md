@@ -1,3 +1,14 @@
+---
+title: html-attributes
+author: Jerry.Baijy
+tags:
+  - code-language
+  - frontend
+  - html
+  - it
+  - web
+---
+
 > HTML 属性基础：`HTML 语法 | HTML 元素 | 元素属性`
 >
 > [WHATWG 属性参考](https://html.spec.whatwg.org/multipage/indices.html#attributes-3 "WHATWG 属性参考")

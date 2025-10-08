@@ -1,3 +1,14 @@
+---
+title: bom
+author: Jerry.Baijy
+tags:
+  - code-language
+  - frontend
+  - it
+  - javascript
+  - web
+---
+
 # BOM
 
 ## BOM 基础

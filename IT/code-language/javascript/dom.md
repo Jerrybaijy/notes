@@ -1,3 +1,14 @@
+---
+title: dom
+author: Jerry.Baijy
+tags:
+  - code-language
+  - frontend
+  - it
+  - javascript
+  - web
+---
+
 # [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 
 **文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。

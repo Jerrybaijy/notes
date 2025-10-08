@@ -1,3 +1,12 @@
+---
+title: typora
+author: Jerry.Baijy
+tags:
+  - software
+  - note-editor
+  - markdown
+---
+
 # Typora
 
 ## Typora 概述
@@ -48,36 +57,6 @@
 
 - **单换行符**：`编辑` - `空格与换行` - 取消 `保留单换行符`
 
-## 复制
-
-此处讨论的情况，全是在**预览模式**下操作。
-
-根据 Typora 的 `偏好设置 | 编辑器` 设置中，有没有选中 `当复制纯文本时复制 Markdown 源码` 选项，可将默认的复制行为分为两种情况：
-
-- **纯文本选项**
-
-    - 即没有选中 `当复制纯文本时复制 Markdown 源码` 选项
-    - 复制以后会以**纯文本格式**粘贴到其它软件（但复制到 Typora 和 Notion 时，还是**原有的格式**）
-
-- **Markdown 选项**
-
-    - 即已选中 `当复制纯文本时复制 Markdown 源码` 选项
-    - 复制以后会以 Markdown 源码中**原有的格式**粘贴到任何地方
-
-在 Typora 的 `编辑` 选项卡内，有5种[复制](https://support.typoraio.cn/Quick-Start/#copy)操作：
-
-- `复制`：即默认的复制行为，遵循 `当复制纯文本时复制 Markdown 源码` 选项是否被选中
-- `复制内容并简化格式`：暂时未发现与 `复制` 有何不同
-- `复制为纯文本`：用于在**Markdown 选项**时，想把 Markdown 或 HTML 格式复制为纯文本格式
-- `复制为 Markdown`
-
-    - 用于在**纯文本选项**时，想将 Markdown 格式复制为 Markdown 格式。
-    - 源码必须是 Markdown 格式，不能是 HTML 格式。
-
-- `复制为 HTML 代码`
-
-    - 用于在**纯文本选项**时，想将 Markdown 和 HTML 格式都复制为 HTML 格式。
-
 # [快捷键](https://support.typora.io/Shortcut-Keys/)
 
 ## 快捷键列表
@@ -93,6 +72,7 @@
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | ==编辑== |  |
+| 元数据 | `---` + <kbd>Enter</kbd> |
 | 增加 / 降低标题级别 | <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd> |
 | 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
 | 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
@@ -1050,15 +1030,47 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
         黄帝("<font color='orange'>黄帝</font>")
     ```
 
-# [导出](https://support.typora.io/Export/)
+# 操作
 
-## 导出功能
+## 复制
+
+此处讨论的情况，全是在**预览模式**下操作。
+
+根据 Typora 的 `偏好设置 | 编辑器` 设置中，有没有选中 `当复制纯文本时复制 Markdown 源码` 选项，可将默认的复制行为分为两种情况：
+
+- **纯文本选项**
+
+    - 即没有选中 `当复制纯文本时复制 Markdown 源码` 选项
+    - 复制以后会以**纯文本格式**粘贴到其它软件（但复制到 Typora 和 Notion 时，还是**原有的格式**）
+
+- **Markdown 选项**
+
+    - 即已选中 `当复制纯文本时复制 Markdown 源码` 选项
+    - 复制以后会以 Markdown 源码中**原有的格式**粘贴到任何地方
+
+在 Typora 的 `编辑` 选项卡内，有5种[复制](https://support.typoraio.cn/Quick-Start/#copy)操作：
+
+- `复制`：即默认的复制行为，遵循 `当复制纯文本时复制 Markdown 源码` 选项是否被选中
+- `复制内容并简化格式`：暂时未发现与 `复制` 有何不同
+- `复制为纯文本`：用于在**Markdown 选项**时，想把 Markdown 或 HTML 格式复制为纯文本格式
+- `复制为 Markdown`
+
+    - 用于在**纯文本选项**时，想将 Markdown 格式复制为 Markdown 格式。
+    - 源码必须是 Markdown 格式，不能是 HTML 格式。
+
+- `复制为 HTML 代码`
+
+    - 用于在**纯文本选项**时，想将 Markdown 和 HTML 格式都复制为 HTML 格式。
+
+## [导出](https://support.typora.io/Export/)
+
+### 导出功能
 
 - `HTML`：带 Typora 主题的 HTML
 - `HTML (without styles)`：不带 Typora 主题的 HTML
 - 安装 `Pandoc` 以后，可以增强 Typora 的导出功能，可以导出到 `word` 等其它格式。
 
-## 之前实验
+### 之前实验
 
 - 导出到 word
 
@@ -1067,7 +1079,7 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
 
 - 导出到 PDF、HTML、图片时，Markdown 格式和部分 HTML 格式有效。
 
-## 其它说明
+### 其它说明
 
 - 以下内容在导出后不可见，详见 `Typora | HTML` 笔记。
 
@@ -1084,7 +1096,7 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
 
 ## 未解决问题
 
-- 无法正确渲染连续空格
+无法正确渲染连续空格
 
 ## 打开同一个文件
 
@@ -1100,3 +1112,7 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
 ## 关于空行
 
 在列表嵌套其它块时，未知的某些操作，可能将原本没有空行间隔的连续列表项“撑开”，造成每个列表项之间都有空行，目前没办法解决，所以应放弃原来的严格空行的原则。
+
+## 元数据
+
+可以在 Markdown 文件顶部使用 YAML Front Matter 嵌入元数据，详见 [`yaml | YAML Front Matter`](../../code-language/yaml/yaml.md#YAML Front Matter) 笔记。

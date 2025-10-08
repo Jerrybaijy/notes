@@ -1,6 +1,16 @@
-# Bootstrap 基础
+---
+title: bootstrap
+author: Jerry.Baijy
+tags:
+  - frontend
+  - it
+  - library
+  - web
+---
 
-Bootstrap 是一个流行的开源前端框架，用于快速开发响应式和移动优先的网站及应用程序。它由 Twitter 团队开发和维护，提供了一系列预制的 HTML、CSS、JavaScript 和图标，帮助开发者构建具有一致外观和交互功能的网页界面，而无需从头开始编写大量的样式和脚本。
+# Bootstrap
+
+Bootstrap 是一个流行的开源前端库，用于快速开发响应式和移动优先的网站及应用程序。它由 Twitter 团队开发和维护，提供了一系列预制的 HTML、CSS、JavaScript 和图标，帮助开发者构建具有一致外观和交互功能的网页界面，而无需从头开始编写大量的样式和脚本。
 
 ## Bootstrap 核心组成
 
@@ -43,14 +53,14 @@ Bootstrap 包含以下核心部分：
     <head>
       <!-- 使用 CDN 引入 Bootstrap 的 CSS 样式表 -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-
+    
       <!-- 使用 CDN 引入 Bootstrap 的图标样式表 -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     </head>
-
+    
     <body>
       <!-- 其它 body 元素 -->
-
+    
       <!-- 使用 CDN 引入 Bootstrap 的 JS 组件 -->
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     </body>
@@ -68,7 +78,7 @@ Bootstrap 包含以下核心部分：
     </head>
     <body>
       <!-- 其它 body 元素 -->
-
+    
       <!-- 本地引入 Bootstrap 的JS组件 -->
       <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
     </body>
@@ -82,7 +92,7 @@ Bootstrap 包含以下核心部分：
     ```html
     <body>
       <!-- 其它 body 元素 -->
-
+    
       <script src="js/jquery-3.7.1.min.js"></script>
       <!-- bootstrap.js 需要依赖 jquery，所以要在 jquery 后面引入 -->
       <script src="bootstrap/js/bootstrap.js"></script>
@@ -165,7 +175,7 @@ Bootstrap 包含以下核心部分：
         <div class="col - sm - 4">右</div>
       </div>
     </div>
-
+    
     <!--将500px宽度分3份-->
     <div style="width:500px;margin:0 auto;">
       <div class="d-flex" style="flex-basis:100%;">
@@ -209,7 +219,7 @@ Bootstrap 包含以下核心部分：
     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
       Launch static backdrop modal
     </button>
-
+    
     <!-- Modal -->
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">

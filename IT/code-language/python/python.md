@@ -1,3 +1,14 @@
+---
+title: python
+author: Jerry.Baijy
+tags:
+  - it
+  - web
+  - code-language
+  - backend
+  - python
+---
+
 **参考**：
 
 > [我要自学网：燎原《Python编程入门2021新版教程》](https://www.51zxw.net/List.aspx?cid=929)
@@ -5416,13 +5427,13 @@ html 模板就是存放 html 文件的文件夹
 
     ```python
     import requests
-
+    
     # 抓包获取音乐的链接
     url = "$URL"
-
+    
     # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
     data = requests.get(url).content
-
+    
     # 写入到本地
     with open(r"E:\labs\以后的以后.mp4", "wb") as f:
         f.write(data)

@@ -2,15 +2,15 @@
 title: yaml
 author: Jerry.Baijy
 tags:
-  - it
   - code-language
+  - it
 ---
 
 # YAML
 
 YAML 是 `YAML Ain't a Markup Language`（YAML 不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：`Yet Another Markup Language`（仍是一种标记语言）。
 
-- 大小写敏感
+- 大小写敏感：所有的值最好全小写，避免严格检索字段时找不到。
 - 缩进
 
     - 使用缩进表示层级关系；

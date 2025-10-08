@@ -1,3 +1,14 @@
+---
+title: css
+author: Jerry.Baijy
+tags:
+  - code-language
+  - css
+  - frontend
+  - it
+  - web
+---
+
 # [CSS](https://developer.mozilla.org/zh-CN/docs/Glossary/CSS)
 
 **CSS**（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的**样式表语言**；CSS 文件的扩展名为 `.css`。

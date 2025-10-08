@@ -1,3 +1,12 @@
+---
+title: obsidian
+author: Jerry.Baijy
+tags:
+  - software
+  - note-editor
+  - markdown
+---
+
 # [Obsidian](https://obsidian.md/)
 
 **Obsidian** 是一个 Markdown 笔记工具。目前用它作为 Typora 的辅助。
@@ -23,4 +32,13 @@
 
 - 下载主题：`设置 / 外观 / 主题`
 - 自定义部分：`设置 / 外观 / CSS 代码片段`，相当于 `base.user`。
-- 当前文件夹下的 `claude-底板.css` 文件是 Claude Code 生成的代码片段，没解决重置问题。
+- 当前文件夹下的 `claude-底板.css` 文件是 Claude Code 生成的代码片段，没解决重置问题。
+
+## 插件
+
+- 插件分为*官方插件*和*第三方插件*，以下是第三方插件的安装方法。
+- `设置` > `第三方插件`
+- 关闭 `安全模式`
+- 搜索插件，安装，启用。
+- 优秀插接件：
+    - Tag Wrangler：插件管理

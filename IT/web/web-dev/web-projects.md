@@ -1,3 +1,11 @@
+---
+title: web-projects
+author: Jerry.Baijy
+tags:
+  - it
+  - web
+---
+
 # 员工管理系统（web）
 
 - 这是一个训练案例，预先安装 MySQL。

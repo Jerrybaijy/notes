@@ -1,3 +1,11 @@
+---
+title: markdown
+author: Jerry.Baijy
+tags:
+  - code-language
+  - markdown
+---
+
 # Markdown
 
 ## 概述
@@ -595,7 +603,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ### 自定义锚点
 
-- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`html-elements | 锚点`](../html/html-elements.md#锚点) 笔记。
+- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`html-elements | 锚点`](../html/html-elements.md#锚点) 笔记。
 
     ```markdown
     <span id="example">第一部分</span>
@@ -1191,7 +1199,7 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 
 ## YAML Front Matter
 
-可以在 Markdown 文件顶部使用 YAML Front Matter 嵌入元数据，详见 [`yaml | YAML Front Matter`](../yaml/yaml.md#YAML Front Matter) 笔记。
+可以在 Markdown 文件顶部使用 YAML Front Matter 嵌入元数据，详见 [`yaml | YAML Front Matter`](../yaml/yaml.md#YAML Front Matter) 笔记。
 
 # 其它
 

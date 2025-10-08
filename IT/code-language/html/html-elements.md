@@ -1,3 +1,14 @@
+---
+title: html-elements
+author: Jerry.Baijy
+tags:
+  - code-language
+  - frontend
+  - html
+  - it
+  - web
+---
+
 > [WHATWG 元素参考](https://html.spec.whatwg.org/multipage/indices.html#Elements-3 "WHATWG 元素参考")
 >
 > [MDN 元素参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements "MDN HTML 元素参考")
@@ -984,7 +995,7 @@ function greet() {
 
 **锚点**是分隔 URL 中*地址*和*片段*的**标识符**，可以在点击链接后跳转到该网页的锚点位置。
 
-锚点元素添加 `id="锚点"` 属性，跳转元素在 URL/SRC 地址后添加 `#锚点`。
+锚点元素添加 `id="锚点"` 属性，跳转元素在 URL/SRC 地址后添加 `#锚点`。
 
 ```html
 <!-- 跳转到本地锚点 -->

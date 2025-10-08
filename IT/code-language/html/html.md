@@ -1,3 +1,14 @@
+---
+title: html
+author: Jerry.Baijy
+tags:
+  - code-language
+  - frontend
+  - html
+  - it
+  - web
+---
+
 # [HTML](https://developer.mozilla.org/zh-CN/docs/Glossary/HTML)
 
 **HTML**（**H**yper **T**ext **M**arkup **L**anguage，超文本标记语言），是一种用来定义 Web 网页**结构**和**语义**的**标记语言**。

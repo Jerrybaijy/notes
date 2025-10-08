@@ -8,5 +8,7 @@
   "newFileLocation": "current",
   "useMarkdownLinks": true,
   "showInlineTitle": false,
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "source",
+  "attachmentFolderPath": "./assets",
+  "defaultViewMode": "preview"
 }
