@@ -150,7 +150,7 @@ p {color: red;}
 
 ### `charset`
 
-**字符集** `charset` 告诉文档使用哪种字符编码：`<meta charset="UTF-8">`
+**字符集** `charset` 告诉文档使用哪种字符编码：`<meta charset="UTF-8">`
 
 ### `name` 和 `content`
 
@@ -431,6 +431,45 @@ header > time {
 ## `<hgroup>`
 
 **标题组**  [`<hgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/hgroup) 元素
+
+##  `<main>`
+
+**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/header) 元素用于做页面分组，呈现文档的主要内容，可以有各种子内容区段，如 `<article>`、`<section>` 和 `<aside>` 等。
+
+```html
+<head>
+  <link href="../css/css-test.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>Gecko facts</header>
+
+  <main>
+    <p>
+      Geckos are a group of usually small, usually nocturnal lizards. They are
+      found on every continent except Antarctica.
+    </p>
+
+    <p>
+      Many species of gecko have adhesive toe pads which enable them to climb
+      walls and even windows.
+    </p>
+  </main>
+</body>
+```
+
+```css
+header {
+  font: bold 7vw Arial, sans-serif;
+}
+```
+
+> ![image-20241128132615446](assets/image-20241128132615446.png)
+
+**扩展**：
+
+- 主内容中还可以有各种子内容区段，可用 `<article>`、`<section>` 和 `<div>` 等元素表示。
+- 侧边栏 `<aside>`、 独立结构 `<article>`、独立章节 `<section>` 和 `<div>` 经常嵌套在 `<main>` 中。
 
 ## `<nav>`
 
@@ -727,45 +766,6 @@ hr::after {
 > <li value="300">第三百列表项</li>
 > </ol>
 
-##  `<main>`
-
-**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/header) 元素呈现文档的主要内容，可以有各种子内容区段，可用 `<article>`、`<section>` 和 `<div>` 等元素表示。
-
-```html
-<head>
-  <link href="../css/css-test.css" rel="stylesheet" />
-</head>
-
-<body>
-  <header>Gecko facts</header>
-
-  <main>
-    <p>
-      Geckos are a group of usually small, usually nocturnal lizards. They are
-      found on every continent except Antarctica.
-    </p>
-
-    <p>
-      Many species of gecko have adhesive toe pads which enable them to climb
-      walls and even windows.
-    </p>
-  </main>
-</body>
-```
-
-```css
-header {
-  font: bold 7vw Arial, sans-serif;
-}
-```
-
-> ![image-20241128132615446](assets/image-20241128132615446.png)
-
-**扩展**：
-
-- 主内容中还可以有各种子内容区段，可用 `<article>`、`<section>` 和 `<div>` 等元素表示。
-- 侧边栏 `<aside>`、 独立结构 `<article>`、独立章节 `<section>` 和 `<div>` 经常嵌套在 `<main>` 中。
-
 ## `<menu>`
 
 **菜单** [`<menu>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/menu) 在 HTML 规范中被描述为 `<ul>` 的语义替代，但浏览器将其视为与 `<ul>` 没有区别。
@@ -938,7 +938,7 @@ function greet() {
 
 # 文本级语义
 
->  [WHATWG 文本级语义元素汇总](https://html.spec.whatwg.org/multipage/text-level-semantics.html#usage-summary)
+>  [WHATWG 文本级语义元素汇总](https://html.spec.whatwg.org/multipage/text-level-semantics.html#usage-summary)
 
 ## `<a>`
 
@@ -960,6 +960,8 @@ function greet() {
 
 ### `href`
 
+#### 语法
+
 [`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)（***h**ypertext **ref**erence*，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
 
 ```html
@@ -978,7 +980,11 @@ function greet() {
 > <li><a href="tel:+123456789">Phone</a></li>
 > </ul>
 
-**<span id="anchor">锚点</span>**：锚点元素添加属性 `id="锚点"`，跳转元素在 URL/SRC 后添加 `#锚点`（同一地址可省略 URL/SRC）
+#### 锚点
+
+**锚点**是分隔 URL 中*地址*和*片段*的**标识符**，可以在点击链接后跳转到该网页的锚点位置。
+
+锚点元素添加 `id="锚点"` 属性，跳转元素在 URL/SRC 地址后添加 `#锚点`。
 
 ```html
 <!-- 跳转到本地锚点 -->
@@ -988,6 +994,15 @@ function greet() {
 <!-- 跳转到 URL 锚点 -->
 <a href="https://example.com#Home">Website</a>
 ```
+
+**锚点的规范**：
+
+- 同一地址可省略 URL/SRC
+- **全转换成小写**：即 `Full-page` → `full-page`
+- **空格替换为连字符 `-`**：
+    - 标题中的空格需用半角连字符（`-`）替代，避免 URL 中的空格引发解析错误。
+    - `full-page databases` → `full-page-databases`
+- **保留特殊符号（如连字符）**：标题原有的半角连字符（如 `Full-page` 中的 `-`）无需处理，直接保留。
 
 ### 跳转方式 `target`
 
@@ -1093,11 +1108,11 @@ function greet() {
 
 ## `<data>`
 
-[`<data>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/data) 元素
+[`<data>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/data) 元素
 
 ## `<dfn>`
 
-[`<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dfn) 元素表示定义中的术语，是行内元素，渲染为斜体。
+[`<dfn>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dfn) 元素表示定义中的术语，是行内元素，渲染为斜体。
 
 ```html
 <p>
@@ -1144,7 +1159,7 @@ function greet() {
 
 ## `<em>`
 
-[`<em>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/em) 元素表示语气上的强调，是行内元素，斜体渲染。
+[`<em>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/em) 元素表示语气上的强调，是行内元素，斜体渲染。
 
 ```html
 <p>Get out of bed <em>now</em>!</p>
@@ -1207,7 +1222,7 @@ mark {
 
 ## `<rp>`
 
-[`<rp>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/rp) 元素
+[`<rp>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/rp) 元素
 
 ## `<rt>`
 
@@ -1292,7 +1307,7 @@ span.ingredient {
 
 ## `<time>`
 
-[`<time>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/time) 元素表示一个特定的时间段。
+[`<time>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/time) 元素表示一个特定的时间段。
 
 ```html
 <p>演出于 <time datetime="2018-07-07T20:00:00">20:00</time> 开始。</p>

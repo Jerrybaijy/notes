@@ -939,8 +939,12 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
     - [列表](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Lists)
     - [文本格式进阶](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Advanced_text_features)
     - [挑战：标记信件](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Marking_up_a_letter) 未完
-    - [构建文档](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Structuring_documents) 未完
-
+    - [构建文档](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Structuring_documents) 未完
+    - [创建超链接](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Creating_links)
+    - [HTML 中的图片](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_images)
+    - [视频和音频内容](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio)
+    - 
+    
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
     - [什么是 CSS？](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
     - [让我们开始 CSS 的学习之旅](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Getting_started)
@@ -2322,22 +2326,6 @@ XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运�
 # Xmind
 
 Xmind 是一个思维导图工具。
-
-# YAML
-
-YAML 是 `YAML Ain't a Markup Language`（YAML 不是一种标记语言）的递归缩写。在开发的这种语言时，YAML 的意思其实是：`Yet Another Markup Language`（仍是一种标记语言）。
-
-- 大小写敏感
-- 缩进
-
-  - 使用缩进表示层级关系；
-  - 缩进的空格数不重要，只要相同层级的元素左对齐即可；
-  - 缩进不允许使用 `Tab`，只允许 `Space`；
-  - 上下级缩进 2 个空格；
-  - 字符（如冒号）后缩进 1 个空格；
-
-- `#` 表示注释
-- `-` 表示列表项
 
 # YouTube
 

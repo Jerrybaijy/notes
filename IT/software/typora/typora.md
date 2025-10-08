@@ -1056,7 +1056,7 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
 
 - `HTML`：带 Typora 主题的 HTML
 - `HTML (without styles)`：不带 Typora 主题的 HTML
-- 安装 `Pandoc` 以后，可以增强 Typora 的导出功能，可以导出到 `word` 等其它格式。
+- 安装 `Pandoc` 以后，可以增强 Typora 的导出功能，可以导出到 `word` 等其它格式。
 
 ## 之前实验
 
@@ -1094,7 +1094,8 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种图表语法，使用前应
 
 ## 锚点
 
-- Typora 标题自带锚点，`id` 值为 `标题名`。
+- Typora 标题自带锚点，`id="标题名"`。
+- Typora 中的锚点不要按 HTML 的规范格式化，要保留标题中的空格，否则无法跳转。
 
 ## 关于空行
 

@@ -141,53 +141,11 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
 - 块级 HTML 元素（例如 `<div>`、、、 等）必须用空行与周围内容分隔，并且块的开始和结束标签不应使用制表符或空格缩进。
 - 并非所有 Markdown 应用程序都支持在 Markdown 文档中添加 HTML。
 
-## 扩展语法
+## 代码风格
 
-John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后来人们通过以下两种方式添加**扩展语法**：
+- 缩进：每个缩进为 4 个空格
 
-- 使用基于 Markdown 基本语法的**轻量级标记语言**
-- 向兼容的 **Markdown 处理器**添加扩展来启用某些元素
-- **注意**：并非所有 Markdown 应用程序都支持扩展语法元素。如果不支持，那么可以在 Markdown 处理器中启用扩展。
-
-### 轻量标记语言
-
-有几种轻量级标记语言是 Markdown 的超集。它们包含Gruber的基本语法，并通过添加其他元素（例如表格，围栏代码块，语法高亮显示，URL 自动链接和脚注）在此基础上构建。许多最受欢迎的 Markdown 应用程序使用以下轻量级标记语言之一：
-
-- [CommonMark](https://commonmark.org/)
-- [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/)
-- [Markdown Extra(opens new window)](https://michelf.ca/projects/php-markdown/extra/)
-- [MultiMarkdown(opens new window)](https://fletcherpenney.net/multimarkdown/)
-- [R Markdown](https://rmarkdown.rstudio.com/)
-
-### [GFM](https://github.github.com/gfm/)
-
-**GFM**（**G**itHub **F**lavored **M**arkdown），是标准 Markdown 的一种扩展。
-
-### Markdown 处理器
-
-有许多 [Markdown 处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations) 可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
-
-### YAML Front Matter
-
-**YAML Front Matter**，即 **YAML 前置元数据**，用来定义 Markdown 文件的标题、标签等各种元数据。
-
-YAML Front Matter 必须是文件中的第一部分，并设置在三段虚线之间。
-
-```markdown
----
-title: YAML Front Matter
-category: how-to
-author: typora.io
-tags: [YAML, metadata, tags]
-typora-root-url: ../../
----
-
-这是正文内容
-```
-
-元数据将在导出时使用。例如，将上述 Markdown 文件导出为 HTML 格式时，Typora 会将其输出 `<title>YAML Front Matter</title>` 为 HTML `<head>` 元素。导出为 PDF 或 Pub 格式时，作者信息也会作为元数据添加。
-
-也可以使用本地工具对根据元数据进行检索等操作。
+- 空行：不同块之间必须有空行，比如*图片*、*围栏代码块*和*列表项*。
 
 ## 转义
 
@@ -637,7 +595,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ### 自定义锚点
 
-- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
+- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`html-elements | 锚点`](../html/html-elements.md#锚点) 笔记。
 
     ```markdown
     <span id="example">第一部分</span>
@@ -1205,45 +1163,37 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
     > 真好笑！:joy:
 
+# 扩展语法
+
+John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后来人们通过以下两种方式添加**扩展语法**：
+
+- 使用基于 Markdown 基本语法的**轻量级标记语言**
+- 向兼容的 **Markdown 处理器**添加扩展来启用某些元素
+- **注意**：并非所有 Markdown 应用程序都支持扩展语法元素。如果不支持，那么可以在 Markdown 处理器中启用扩展。
+
+## 轻量标记语言
+
+有几种轻量级标记语言是 Markdown 的超集。它们包含Gruber的基本语法，并通过添加其他元素（例如表格，围栏代码块，语法高亮显示，URL 自动链接和脚注）在此基础上构建。许多最受欢迎的 Markdown 应用程序使用以下轻量级标记语言之一：
+
+- [CommonMark](https://commonmark.org/)
+- [GitHub Flavored Markdown (GFM)](https://github.github.com/gfm/)
+- [Markdown Extra(opens new window)](https://michelf.ca/projects/php-markdown/extra/)
+- [MultiMarkdown(opens new window)](https://fletcherpenney.net/multimarkdown/)
+- [R Markdown](https://rmarkdown.rstudio.com/)
+
+## [GFM](https://github.github.com/gfm/)
+
+**GFM**（**G**itHub **F**lavored **M**arkdown），是标准 Markdown 的一种扩展。
+
+## Markdown 处理器
+
+有许多 [Markdown 处理器 (opens new window)](https://github.com/markdown/markdown.github.com/wiki/Implementations) 可用。它们中的许多允许您添加启用扩展语法元素的扩展。查看您所使用处理器的文档以获取更多信息。
+
+## YAML Front Matter
+
+可以在 Markdown 文件顶部使用 YAML Front Matter 嵌入元数据，详见 [`yaml | YAML Front Matter`](../yaml/yaml.md#YAML Front Matter) 笔记。
+
 # 其它
-
-## 个人代码风格
-
-- 缩进：
-
-    - 每个缩进为，4个空格
-    - 围栏代码块之内的换行，源码不需要空格，这是 Typora 系统缺陷，应手动删除。
-
-        ````markdown
-        ```css
-        .example {
-          color: red;
-        }
-        <!-- 此行是为了提高代码可读性的空行。在源码模式下，行首不应该有空格 -->
-        .example1 {
-          color: blue;
-        }
-        ```
-        ````
-        
-    - 每个不同项目之间的空行，不需要加空格，这是 Typora 系统缺陷，应手动删除
-
-        ````markdown
-        ```html
-        <p class="example">example</p>
-        ```
-        <!-- 此行是为了提高代码可读性的空行。在源码模式下，行首不应该有空格 -->
-        ```css
-        .example {
-          color: red;
-        }
-        ```
-        ````
-
-- 不同项目之间必须有整行空格
-
-    - 比如图片和围栏代码块
-    - 比如不同级别的列表
 
 ## 已整理完
 

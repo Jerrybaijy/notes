@@ -8,31 +8,87 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ee8ae37f0ec9ab33",
+            "id": "78b9c3b0c8b7a18a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "IT/ai/ai-tools-collection/ai-tools-collection.md",
+                "file": "IT/code-language/markdown/markdown.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ai-tools-collection"
+              "title": "markdown"
             }
           },
           {
-            "id": "9105b90f444870d7",
+            "id": "57e029cd3cb9152d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "to-do/to-do.md",
+                "file": "IT/software/typora/typora.md",
                 "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "to-do"
+              "title": "typora"
+            }
+          },
+          {
+            "id": "ad8429447f52a958",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/it-basics/it-basics.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "it-basics"
+            }
+          },
+          {
+            "id": "a4b8bcd27a98d77a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/network/network.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "network"
+            }
+          },
+          {
+            "id": "2f874aa59eff2e22",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/code-language/markdown/markdown.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "markdown"
+            }
+          },
+          {
+            "id": "06937891421a5979",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/code-language/markdown/markdown.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "markdown"
             }
           },
           {
@@ -50,6 +106,20 @@
             }
           },
           {
+            "id": "d454e182e49ab7bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "IT/code-language/html/html-elements.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "html-elements"
+            }
+          },
+          {
             "id": "294f04cc8a689fd2",
             "type": "leaf",
             "state": {
@@ -64,20 +134,6 @@
             }
           },
           {
-            "id": "78b9c3b0c8b7a18a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/markdown/markdown.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "markdown"
-            }
-          },
-          {
             "id": "c8b8da6ef84a5c2d",
             "type": "leaf",
             "state": {
@@ -89,20 +145,6 @@
               },
               "icon": "lucide-file",
               "title": "css"
-            }
-          },
-          {
-            "id": "d454e182e49ab7bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/html/html-elements.md",
-                "mode": "preview",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "html-elements"
             }
           }
         ],
@@ -138,7 +180,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "address",
+                "query": "anchor",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -227,13 +269,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IT/code-language/css/css.md",
+                "file": "IT/code-language/markdown/markdown.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "css 的大纲"
+              "title": "markdown 的大纲"
             }
           }
         ],
@@ -254,14 +296,31 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "06937891421a5979",
   "lastOpenFiles": [
-    "IT/code-language/markdown/markdown.md",
-    "IT/code-language/html/html-attributes.md",
+    "IT/network/network.md",
+    "IT/code-language/css/css.md",
     "IT/code-language/html/html.md",
-    "to-do/to-do.md",
+    "IT/it-basics/it-basics.md",
+    "IT/code-language/code-general/code-general.md",
+    "IT/code-language/html/html-attributes.md",
+    "IT/software/typora/typora.md",
+    "IT/code-language/markdown/markdown.md",
+    "IT/code-language/yaml/yaml0000000.html",
+    "IT/code-language/yaml/yaml.html",
+    "IT/code-language/yaml/test.md",
+    "IT/code-language/yaml/yaml.pdf",
+    "2025-10-08.md",
+    "IT/code-language/yaml/yaml.md",
     "IT/ai/ai-tools-collection/ai-tools-collection.md",
+    "to-do/to-do.md",
+    "IT/code-language/yaml/记笔记.md",
+    "IT/code-language/yaml/新建 Markdown File.md",
+    "IT/code-language/yaml",
+    "IT/code-language/新建文件夹",
     "IT/code-language/html/html-elements.md",
+    "IT/code-language/html/assets/image-20251008171559475.png",
+    "IT/code-language/html/assets/image-20251008170252188.png",
     "IT/software/software-collection/software-collection.md",
     "IT/cli/assets/image-20240406160608629.png",
     "IT/cli/assets",
@@ -273,34 +332,17 @@
     "IT/cmd-test/新建 Markdown File.md",
     "IT/cmd-test/rmdir",
     "IT/cmd-test/rm",
-    "IT/cmd-test/新建文件夹",
     "IT/cmd-test/2/0.md",
-    "IT/cmd-test/2",
     "IT/cmd-test/0/0.md",
     "IT/cmd-test/1/0.md",
-    "IT/cmd-test/1",
-    "IT/cmd-test/0",
     "IT/cmd-test/rm-r/0.md",
     "IT/cmd-test/rmdir/0.md",
-    "IT/cmd-test/rmdir/新建 Markdown File.md",
-    "IT/cmd-test/rm-r",
-    "IT/code-language/code-general/code-general.md",
     "IT/code-language/css/assets/position_type.png",
     "IT/code-language/css/assets/image-20241217160045045.png",
     "IT/code-language/css/assets/image-20241205165017474.png",
     "IT/code-language/css/assets/image-20241203205719165.png",
     "IT/code-language/css/assets/image-20241203200754334.png",
     "IT/code-language/css/assets/image-20241203200725662.png",
-    "IT/code-language/css/assets/image-20241203200646038.png",
-    "IT/code-language/css/assets/image-20241203200556497.png",
-    "IT/code-language/css/assets/image-20241203200520694.png",
-    "IT/code-language/css/css.md",
-    "IT/code-language/javascript/javascript.md",
-    "IT/code-language/javascript/dom.md",
-    "IT/code-language/javascript/bom.md",
-    "IT/code-language/html/html-grammar.md",
-    "IT/web/frontend-collection/bootstrap/bootstrap.md",
-    "IT/web/frontend-collection/frontend-collection.md",
-    "IT/web/web-dev/web-to-learn.md"
+    "IT/code-language/css/assets/image-20241203200646038.png"
   ]
 }

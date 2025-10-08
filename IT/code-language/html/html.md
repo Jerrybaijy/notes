@@ -178,6 +178,8 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 # [文档结构](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_文档详解)
 
+## 基础结构
+
 - **文档结构**
 
     ```html
@@ -203,6 +205,271 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
     4. [**内容分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)：`<body>`
 
 - VS Code Emmet 快速创建文档结构：`!`
+
+## 网页结构
+
+一个典型的网页结构应该是：
+
+- `<header>`
+    - `<h1>`
+- `<nav>`
+    - `<ul>`
+        - 每个链接是一个列表项
+    - `<form>`
+        - `<search>`
+        - `<submit>`
+- `<main>`
+    - `<article>`
+        - `<h2>`
+        - `<p>`
+        - `<section>`
+        - `<section>`
+    - `<aside>`
+        - `<h2>`
+        - Others
+- `<footer>`
+
+```html
+<!-- Here is our main header that is used across all the pages of our website -->
+
+<header>
+  <h1>Header</h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Our team</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+
+  <!-- A Search form is another common non-linear way to navigate through a website. -->
+
+  <form>
+    <input type="search" name="q" placeholder="Search query" />
+    <input type="submit" value="Go!" />
+  </form>
+</nav>
+
+<!-- Here is our page's main content -->
+<main>
+  <!-- It contains an article -->
+  <article>
+    <h2>Article heading</h2>
+
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam
+      lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam
+      viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent
+      et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt
+      congue enim, ut porta lorem lacinia consectetur.
+    </p>
+
+    <section>
+      <h3>Subsection</h3>
+
+      <p>
+        Donec ut librero sed accu vehicula ultricies a non tortor. Lorem
+        ipsum dolor sit amet, consectetur adipisicing elit. Aenean ut
+        gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id
+        dolor.
+      </p>
+
+      <p>
+        Pelientesque auctor nisi id magna consequat sagittis. Curabitur
+        dapibus, enim sit amet elit pharetra tincidunt feugiat nist
+        imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed
+        odio eros.
+      </p>
+    </section>
+
+    <section>
+      <h3>Another subsection</h3>
+
+      <p>
+        Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum
+        soclis natoque penatibus et manis dis parturient montes, nascetur
+        ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at
+        sem facilisis semper ac in est.
+      </p>
+
+      <p>
+        Vivamus fermentum semper porta. Nunc diam velit, adipscing ut
+        tristique vitae sagittis vel odio. Maecenas convallis ullamcorper
+        ultricied. Curabitur ornare, ligula semper consectetur sagittis,
+        nisi diam iaculis velit, is fringille sem nunc vet mi.
+      </p>
+    </section>
+  </article>
+
+  <!-- the aside content can also be nested within the main content -->
+  <aside>
+    <h2>Related</h2>
+
+    <ul>
+      <li><a href="#">Oh I do like to be beside the seaside</a></li>
+      <li><a href="#">Oh I do like to be beside the sea</a></li>
+      <li><a href="#">Although in the North of England</a></li>
+      <li><a href="#">It never stops raining</a></li>
+      <li><a href="#">Oh well…</a></li>
+    </ul>
+  </aside>
+</main>
+
+<!-- And here is our main footer that is used across all the pages of our website -->
+
+<footer>
+  <p>©Copyright 2050 by nobody. All rights reversed.</p>
+</footer>
+```
+
+```css
+/* || General setup */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 10px;
+  background-color: #a9a9a9;
+}
+
+body {
+  width: 70%;
+  margin: 0 auto;
+}
+
+/* || typography */
+
+h1,
+h2,
+h3 {
+  font-family: "Sonsie One", cursive;
+  color: #2a2a2a;
+}
+
+p,
+input,
+li {
+  font-family: "Open Sans Condensed", sans-serif;
+  color: #2a2a2a;
+}
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+  color: white;
+  text-shadow: 2px 2px 10px black;
+}
+
+h2 {
+  font-size: 3rem;
+  text-align: center;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+p,
+li {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+/* || header layout */
+
+nav,
+article,
+aside,
+footer {
+  background-color: white;
+  padding: 1%;
+}
+
+nav {
+  height: 50px;
+  background-color: #ff80ff;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a {
+  display: inline-block;
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+nav form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2em;
+}
+
+input {
+  font-size: 1.6rem;
+  height: 32px;
+}
+
+input[type="search"] {
+  flex: 3;
+}
+
+input[type="submit"] {
+  flex: 1;
+  margin-left: 1rem;
+  background: #333;
+  border: 0;
+  color: white;
+}
+
+/* || main layout */
+
+main {
+  display: flex;
+}
+
+article {
+  flex: 4;
+}
+
+aside {
+  flex: 1;
+  margin-left: 10px;
+  background-color: #ff80ff;
+}
+
+aside li {
+  padding-bottom: 10px;
+}
+
+footer {
+  margin-top: 10px;
+}
+
+```
+
+> <img src="assets/image-20251008171559475.png" alt="image-20251008171559475" style="zoom: 50%;" />
 
 # [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
 

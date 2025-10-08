@@ -7,5 +7,6 @@
   "alwaysUpdateLinks": true,
   "newFileLocation": "current",
   "useMarkdownLinks": true,
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "propertiesInDocument": "source"
 }
