@@ -1685,11 +1685,97 @@ span.ingredient {
 
 ## `<col>`
 
-**表格列** [`<col>`](https://html.spec.whatwg.org/multipage/tables.html#the-col-Elements) 用于
+**表格列** [`<col>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/col) 与 `<colgroup>` 一起给表格各列分组。
+
+```html
+<table>
+  <colgroup>
+    <col span="2" style="background-color: red"/>
+    <col span="2" style="background-color: blue"/>
+  </colgroup>
+  <tr>
+    <th>周一</th>
+    <th>周二</th>
+    <th>周三</th>
+    <th>周四</th>
+  </tr>
+  <tr>
+    <td>扫除</td>
+    <td>足球</td>
+    <td>舞蹈</td>
+    <td>历史</td>
+  </tr>
+  <tr>
+    <td>瑜伽</td>
+    <td>棋类</td>
+    <td>朋友</td>
+    <td>体操</td>
+  </tr>
+</table>
+```
+
+> <img src="assets/image-20251010063940742.png" alt="image-20251010063940742" style="zoom:50%;" />
 
 ## `<colgroup>`
 
-**表格列组** [`<colgroup>`](https://html.spec.whatwg.org/multipage/tables.html#the-colgroup-Elements) 用于
+**表格列组** [`<colgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/colgroup) 用于与 `<col>` 一起给表格各列分组。
+
+```html
+<table>
+  <colgroup span="2" style="background-color: red"></colgroup>
+  <tr>
+    <th>周一</th>
+    <th>周二</th>
+    <th>周三</th>
+    <th>周四</th>
+  </tr>
+  <tr>
+    <td>扫除</td>
+    <td>足球</td>
+    <td>舞蹈</td>
+    <td>历史</td>
+  </tr>
+  <tr>
+    <td>瑜伽</td>
+    <td>棋类</td>
+    <td>朋友</td>
+    <td>体操</td>
+  </tr>
+</table>
+```
+
+> <img src="assets/image-20251010063807902.png" alt="image-20251010063807902" style="zoom: 50%;" />
+
+**注意**：`<colgroup>` 的 `span` 属性在遇到 `<col>` 元素的指定 `style` 时会停止作用。
+
+```html
+<table>
+  <colgroup span="4" style="background-color: red">
+    <col />
+    <col style="background-color: blue"/>
+  </colgroup>
+  <tr>
+    <th>周一</th>
+    <th>周二</th>
+    <th>周三</th>
+    <th>周四</th>
+  </tr>
+  <tr>
+    <td>扫除</td>
+    <td>足球</td>
+    <td>舞蹈</td>
+    <td>历史</td>
+  </tr>
+  <tr>
+    <td>瑜伽</td>
+    <td>棋类</td>
+    <td>朋友</td>
+    <td>体操</td>
+  </tr>
+</table>
+```
+
+> <img src="assets/image-20251010064433778.png" alt="image-20251010064433778" style="zoom:50%;" />
 
 ## `<thead>`
 

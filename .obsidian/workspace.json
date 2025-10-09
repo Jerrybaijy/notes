@@ -62,9 +62,23 @@
               "icon": "lucide-file",
               "title": "software"
             }
+          },
+          {
+            "id": "85e33dca13551ba0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "css.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "css"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "software",
+                "query": "tag:#web",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -174,7 +188,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "markd"
+                "searchQuery": "we"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -186,13 +200,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "typora.md",
+                "file": "css.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "typora 的大纲"
+              "title": "css 的大纲"
             }
           }
         ],
@@ -200,8 +214,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -214,10 +227,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "27b67f6ac5bb562d",
+  "active": "85e33dca13551ba0",
   "lastOpenFiles": [
-    "software.md",
+    "assets/image-20251010064433778.png",
+    "assets/image-20251010063940742.png",
+    "assets/image-20251010063807902.png",
+    "assets/image-20251010063145150.png",
+    "html-elements.md",
     "typora.md",
+    "software.md",
     "obsidian.md",
     "markdown.md",
     "md-test.md",
@@ -230,10 +248,7 @@
     "assets/Kubernetes架构图.png",
     "assets/image-20240329143851461.png",
     "assets/image-20240329143514361.png",
-    "assets/git02.png",
-    "assets/image-20241214215306498.png",
     "git.md",
-    "assets/image-20240309155440099.png",
     "docker.md",
     "excel.md",
     "ppt.md",
@@ -260,8 +275,6 @@
     "cad.md",
     "windows.md",
     "css.md",
-    "blockchain.md",
-    "web3.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

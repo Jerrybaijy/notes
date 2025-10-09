@@ -944,16 +944,8 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 - [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)：`入门模块` 中的 `配置环境`
 - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
 - [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
-    - [HTML 基础语法](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax)
-    - [HTML 的标题和段落](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Headings_and_paragraphs)
-    - [强调与重要性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Emphasis_and_importance)
-    - [列表](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Lists)
-    - [文本格式进阶](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Advanced_text_features)
-    - [挑战：标记信件](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Marking_up_a_letter) 未完
-    - [构建文档](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Structuring_documents) 未完
-    - [创建超链接](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Creating_links)
-    - [HTML 中的图片](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_images)
     - [视频和音频内容](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio)
+    - [使用 `<col>` 应用样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics#%E4%BD%BF%E7%94%A8_col_%E5%BA%94%E7%94%A8%E6%A0%B7%E5%BC%8F)
     - 
     
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
