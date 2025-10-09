@@ -5,11 +5,12 @@
   "showIndentGuide": false,
   "useTab": false,
   "alwaysUpdateLinks": true,
-  "newFileLocation": "current",
+  "newFileLocation": "root",
   "useMarkdownLinks": true,
   "showInlineTitle": false,
   "propertiesInDocument": "source",
-  "attachmentFolderPath": "./assets",
+  "attachmentFolderPath": "assets",
   "defaultViewMode": "preview",
-  "livePreview": false
+  "livePreview": false,
+  "readableLineLength": false
 }

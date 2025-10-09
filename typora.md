@@ -61,36 +61,36 @@ tags:
 
 ## 快捷键列表
 
-|           操作           |            [Typora 快捷键](https://support.typora.io/Shortcut-Keys/)             |
-| :--------------------: | :---------------------------------------------------------------------------: |
-|         ==系统==         |                                                                               |
-|          偏好设置          |                        <kbd>Ctrl</kbd> + <kbd>,</kbd>                         |
-|          源码模式          |                        <kbd>Ctrl</kbd> + <kbd>/</kbd>                         |
-|         开发者工具          |                       <kbd>Shift</kbd> + <kbd>F12</kbd>                       |
-|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
-|         ==文件==         |                                                                               |
-|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
-|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
-|         ==编辑==         |                                                                               |
-|          元数据           |                           `---` + <kbd>Enter</kbd>                            |
-|      增加 / 降低标题级别       |                 <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd>                 |
-|          单行换行          |   <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd>   |
-| 列表项内加元素<br />即源码空一行再缩进 |            <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd>             |
-|        上（下）移该行         |                 <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd>                 |
-|         ==表格==         |                                                                               |
-|        表格单元格内换行        |                      <kbd>Shift</kbd> + <kbd>Enter</kbd>                      |
-|       移动该行 \| 列        | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
-|         下方插入行          |                      <kbd>Ctrl</kbd> + <kbd>Enter</kbd>                       |
-|          删除行           |           <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd>           |
-|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
-|         ==格式==         |                                                                               |
-|      标题（Heading）       |                       <kbd>Ctrl</kbd> + <kbd>Num</kbd>                        |
-|       粗体（Strong）       |                        <kbd>Ctrl</kbd> + <kbd>B</kbd>                         |
-|      斜体（Emphasis）      |                        <kbd>Ctrl</kbd> + <kbd>I</kbd>                         |
-|     下划线（Underline）     |                        <kbd>Ctrl</kbd> + <kbd>U</kbd>                         |
-|      删除线（Strike）       |               <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>                |
-| 清除**当前段落**或**选中段落**格式  |                        <kbd>Ctrl</kbd> + <kbd>\\</kbd>                        |
-|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
+| 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
+| :---: | :---: |
+| ==系统== |  |
+| 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
+| 源码模式 | <kbd>Ctrl</kbd> + <kbd>/</kbd> |
+| 开发者工具 | <kbd>Shift</kbd> + <kbd>F12</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==文件== |  |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==编辑== |  |
+| 元数据 | `---` + <kbd>Enter</kbd> |
+| 增加 / 降低标题级别 | <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd> |
+| 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
+| 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
+| 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
+| ==表格== |  |
+| 表格单元格内换行 | <kbd>Shift</kbd> + <kbd>Enter</kbd> |
+| 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
+| 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
+| 删除行 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| ==格式== |  |
+| 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
+| 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
+| 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
+| 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
+| 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
+| 清除**当前段落**或**选中段落**格式 | <kbd>Ctrl</kbd> + <kbd>\\</kbd> |
+| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## 快捷键设定
 
@@ -868,7 +868,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
         <img src="assets/image-20241122153133932.png" alt="图片1" style="width: 100%; height: 100%;">
 
 - **云存储**：可将图片上传至云服务器
-
 - **更改存储**
 
     - 将所有引用的本地图片移动到指定文件夹，同时自动修改引用路径。

@@ -1,0 +1,15 @@
+.markdown-rendered table {
+    display: table;
+    border-collapse: separate;
+    box-sizing: border-box;
+    text-indent: initial;
+    unicode-bidi: isolate;
+    border-spacing: 2px;
+    border-color: red;
+}
+
+.markdown-rendered table {
+    margin-block-start: var(--p-spacing);
+    margin-block-end: var(--p-spacing);
+    word-break: normal;
+}

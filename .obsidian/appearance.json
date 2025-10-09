@@ -1,9 +1,13 @@
 {
-  "cssTheme": "Typora-Vue",
+  "cssTheme": "",
   "enabledCssSnippets": [
     "0",
     "obsidian-heading-numbering",
-    "claude-底板-主题"
+    "user-base",
+    "user-color"
   ],
-  "theme": "system"
+  "theme": "obsidian",
+  "accentColor": "#adbac7",
+  "baseFontSize": 18,
+  "baseFontSizeAction": true
 }
