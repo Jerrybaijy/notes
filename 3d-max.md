@@ -1,6 +1,12 @@
-```
-参考：我要自学网《3D2018室内设计教程》
-```
+---
+title: 3d-max
+author: Jerry.Baijy
+tags:
+  - software
+  - 设计
+---
+
+> 参考：我要自学网《3D2018室内设计教程》
 
 # 3D-MAX 基础
 

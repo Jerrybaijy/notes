@@ -1,3 +1,13 @@
+---
+title: trailhead-sample-intermediate
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - code-language
+  - salesforce
+---
+
 - Summary for Trailhead: [Developer Intermediate](https://trailhead.salesforce.com/content/learn/trails/force_com_dev_intermediate)
 
 # User Management

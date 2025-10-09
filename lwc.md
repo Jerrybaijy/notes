@@ -1,3 +1,13 @@
+---
+title: lwc
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - code-language
+  - salesforce
+---
+
 # Lightning Components
 
 Lightning Components is a framework for developing mobile and desktop apps.

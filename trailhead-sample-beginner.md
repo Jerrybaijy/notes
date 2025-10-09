@@ -1,3 +1,13 @@
+---
+title: trailhead-sample-beginner
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - code-language
+  - salesforce
+---
+
 - Summary for Trailhead: [Developer Beginner](https://trailhead.salesforce.com/content/learn/trails/force_com_dev_beginner)
 - Summary for Trailhead: [Build an Event Registration App](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app)
 

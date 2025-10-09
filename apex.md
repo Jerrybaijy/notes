@@ -1,3 +1,13 @@
+---
+title: apex
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - code-language
+  - salesforce
+---
+
 Apex is a **strongly-typed**, **object-oriented** programming language developed by Salesforce for building applications on the Salesforce platform. It is similar to Java and C# in syntax. Apex is saved, compiled, and executed on the server—the Lightning Platform.
 
 Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言，专门用于在 Salesforce 平台上进行后端逻辑开发，它的语法类似于 Java。

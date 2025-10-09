@@ -1,3 +1,13 @@
+---
+title: docker
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - software
+  - dev-ops
+---
+
 # Docker 基础
 
 Docker 是一个开源的平台，用于开发、交付和运行应用程序。它使用容器技术，通过将应用程序及其依赖项打包到一个容器中，提供了轻量级、可移植和自包含的环境。

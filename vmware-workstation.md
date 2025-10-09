@@ -1,3 +1,12 @@
+---
+title: vmware-workstation
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - software
+  - vm
+---
 
 # 名词解释
 
@@ -10,7 +19,7 @@
 # 环境搭建
 
 -  [官网下载 `Vmware workstation`](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
--  主板最好开启 `CSM` 功能，否则 `Linux` 可能进不去系统。
+-  主板最好开启 `CSM` 功能，否则 `Linux` 可能进不去系统。
 -  以下是从网上找的 VMware Workstation Pro 密钥
 
     - 17秘钥：`MC60H-DWHD5-H80U9-6V85M-8280D`

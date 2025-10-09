@@ -1,3 +1,12 @@
+---
+title: notion
+author: Jerry.Baijy
+tags:
+  - software
+  - note-editor
+  - markdown
+---
+
 # 关于 Notion 的使用体验
 
 2025年9月末开始，受 Notion 数据库吸引，开始试用 Notion。

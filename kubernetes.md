@@ -1,6 +1,16 @@
-# K8S Basics
+---
+title: kubernetes
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - software
+  - dev-ops
+---
 
-Kubernetes （K8S）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
+# Kubernetes
+
+**K8S**（Kubernetes，集群）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
 
 ## 环境搭建
 

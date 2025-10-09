@@ -1,3 +1,14 @@
+---
+title: git
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - software
+  - dev-ops
+  - web
+---
+
 # Git
 
 ## Git基础

@@ -1,6 +1,12 @@
-```
-参考：我要自学网《CAD2019装修施工图教程》
-```
+---
+title: cad
+author: Jerry.Baijy
+tags:
+  - software
+  - 设计
+---
+
+>  参考：我要自学网《CAD2019装修施工图教程》
 
 # CAD 基础
 
@@ -23,7 +29,7 @@
 3. 选择解压位置后点确定
 
    <div style="display: flex; justify-content: left;">
-       <img src="assets/clip_image001.jpg" alt="图片1" style="width: 50%;">
+     <img src="assets/安装cad步骤.jpg" alt="图片1" style="width: 50%;">
    </div>
 
 4. 正在解压

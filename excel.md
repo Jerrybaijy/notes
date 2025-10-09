@@ -1,3 +1,14 @@
+---
+title: excel
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - software
+  - 办公
+  - 微软
+---
+
 # Excel 基础
 
 ## 环境搭建
