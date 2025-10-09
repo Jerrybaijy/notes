@@ -1,8 +1,9 @@
 {
-  "cssTheme": "GitHub Theme",
+  "cssTheme": "Typora-Vue",
   "enabledCssSnippets": [
     "0",
     "obsidian-heading-numbering",
     "claude-底板-主题"
-  ]
+  ],
+  "theme": "system"
 }
