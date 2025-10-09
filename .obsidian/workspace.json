@@ -4,170 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7c7bbc994c91c4a1",
+        "id": "843986d1cd067107",
         "type": "tabs",
         "children": [
           {
-            "id": "78b9c3b0c8b7a18a",
+            "id": "5f745ac752e9af3f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian标题实验.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "obsidian标题实验"
-            }
-          },
-          {
-            "id": "b63868ca591e25c3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/software/software-collection/software-collection.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "software-collection"
-            }
-          },
-          {
-            "id": "ad8429447f52a958",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/it-basics/it-basics.md",
-                "mode": "source",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "it-basics"
-            }
-          },
-          {
-            "id": "a4b8bcd27a98d77a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/network/network.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "network"
-            }
-          },
-          {
-            "id": "2f874aa59eff2e22",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/markdown/markdown.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "markdown"
-            }
-          },
-          {
-            "id": "06937891421a5979",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/software/typora/typora.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "typora"
-            }
-          },
-          {
-            "id": "b362fcf9fdcd35e1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/yaml/yaml.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "yaml"
-            }
-          },
-          {
-            "id": "780a115f3b295fc8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "历史/中国史/中国史支线.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "中国史支线"
-            }
-          },
-          {
-            "id": "08816c93b3b85722",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/html/html.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "html"
-            }
-          },
-          {
-            "id": "d454e182e49ab7bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/html/html-elements.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "html-elements"
-            }
-          },
-          {
-            "id": "294f04cc8a689fd2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/html/html-attributes.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "html-attributes"
-            }
-          },
-          {
-            "id": "c8b8da6ef84a5c2d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "IT/code-language/css/css.md",
+                "file": "css.md",
                 "mode": "preview",
                 "source": true
               },
@@ -175,8 +21,7 @@
               "title": "css"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -208,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#note-editor",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -229,8 +74,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -286,7 +130,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "note"
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -298,17 +142,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "IT/software/typora/typora.md",
+                "file": "css.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "typora 的大纲"
+              "title": "css 的大纲"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -325,55 +169,55 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "06937891421a5979",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
-    "obsidian标题实验.md",
-    "IT/software/typora/typora.md",
-    "IT/code-language/markdown/markdown.md",
+    "assets/image-20250427013923928.png",
+    "assets/image-20250427013823810.png",
+    "assets/image-20250427011551595.png",
+    "assets/image-20250427005858278.png",
+    "assets/image-20250427005003651.png",
+    "assets/image-20250427004850682.png",
+    "assets/image-20250427003740261.png",
+    "assets/image-20250427003017812.png",
+    "assets/image-20250427002727664.png",
+    "assets/image-20250427002532251.png",
+    "assets/image-20250426132914071.png",
+    "blockchain.md",
+    "web3.md",
+    "web3-生态平台.md",
+    "crypto.md",
+    "IT/web3/web3-生态平台.md",
+    "web-projects.md",
+    "web.md",
+    "IT/web/web-dev/web.md",
+    "bootstrap.md",
     "IT/software/software-collection/software-collection.md",
-    "obsidian链接实验.md",
-    "历史/中国史/中国史支线.md",
-    "IT/code-language/yaml/yaml.md",
-    "IT/software/typora/css.md",
-    "IT/code-language/css/css.md",
+    "html.md",
+    "IT/software/typora/typora.md",
+    "frontend.md",
+    "IT/web/frontend-collection/frontend.md",
+    "电子产品.md",
+    "IT/electronics-collection/电子产品.md",
+    "projects.md",
+    "linux.md",
+    "windows.md",
+    "network.md",
+    "it-basics.md",
+    "yaml.md",
+    "sql.md",
+    "solidity.md",
+    "foundry.md",
+    "其它格式未转换/statics/icon/vscode.ico",
+    "其它格式未转换/statics/icon/Unibody",
+    "其它格式未转换/statics/icon/terminal.ico",
+    "其它格式未转换/statics/其它",
+    "其它格式未转换/statics/wallpaper",
+    "其它格式未转换/statics/icon",
+    "其它格式未转换/statics",
+    "其它格式未转换/交易/留存.xlsx",
+    "其它格式未转换/交易/新建文本文档.txt",
+    "其它格式未转换/交易/加密货币交易计算.xlsx",
     "未命名 1.canvas",
-    "未命名.canvas",
-    "IT/web/frontend-collection/frontend-collection.md",
-    "IT/web/frontend-collection/bootstrap/bootstrap.md",
-    "IT/network/network.md",
-    "IT/code-language/html/html.md",
-    "IT/it-basics/it-basics.md",
-    "IT/code-language/code-general/code-general.md",
-    "IT/code-language/html/html-attributes.md",
-    "IT/code-language/yaml/yaml0000000.html",
-    "IT/code-language/yaml/yaml.html",
-    "IT/code-language/yaml/test.md",
-    "IT/code-language/yaml/yaml.pdf",
-    "2025-10-08.md",
-    "IT/ai/ai-tools-collection/ai-tools-collection.md",
-    "to-do/to-do.md",
-    "IT/code-language/yaml/记笔记.md",
-    "IT/code-language/yaml/新建 Markdown File.md",
-    "IT/code-language/yaml",
-    "IT/code-language/新建文件夹",
-    "IT/code-language/html/html-elements.md",
-    "IT/code-language/html/assets/image-20251008171559475.png",
-    "IT/code-language/html/assets/image-20251008170252188.png",
-    "IT/cli/assets/image-20240406160608629.png",
-    "IT/cli/assets",
-    "IT/cli/cli.md",
-    "IT/cli/新建 Markdown File.md",
-    "IT/cli",
-    "IT/新建文件夹",
-    "IT/cmd-test/0.md",
-    "IT/cmd-test/rmdir",
-    "IT/cmd-test/rm",
-    "IT/code-language/css/assets/position_type.png",
-    "IT/code-language/css/assets/image-20241217160045045.png",
-    "IT/code-language/css/assets/image-20241205165017474.png",
-    "IT/code-language/css/assets/image-20241203205719165.png",
-    "IT/code-language/css/assets/image-20241203200754334.png",
-    "IT/code-language/css/assets/image-20241203200725662.png",
-    "IT/code-language/css/assets/image-20241203200646038.png"
+    "未命名.canvas"
   ]
 }
