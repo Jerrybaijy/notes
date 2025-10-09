@@ -48,9 +48,23 @@
               "icon": "lucide-file",
               "title": "typora"
             }
+          },
+          {
+            "id": "9b00c59566390b2e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "software.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "software"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -82,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#markdown",
+                "query": "software",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -186,7 +200,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,10 +214,11 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "cbf3a3c7f7ca1f90",
+  "active": "27b67f6ac5bb562d",
   "lastOpenFiles": [
-    "obsidian.md",
+    "software.md",
     "typora.md",
+    "obsidian.md",
     "markdown.md",
     "md-test.md",
     "00.md",
@@ -246,7 +262,6 @@
     "css.md",
     "blockchain.md",
     "web3.md",
-    "web3-生态平台.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

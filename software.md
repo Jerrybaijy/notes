@@ -926,7 +926,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
         - [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
         - [CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
         - [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
-        - [Web APIs](https://developer.mozilla.org/zh-CN/docs/Web/Web APIs)
+        - [Web APIs](https://developer.mozilla.org/zh-CN/docs/Web/API)
         - [MathML](https://developer.mozilla.org/zh-CN/docs/Web/MathML)
     - [MDN Web 文档项目](https://developer.mozilla.org/zh-CN/docs/MDN)
         - [教程](https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials "教程")：教程
