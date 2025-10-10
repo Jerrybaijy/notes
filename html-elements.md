@@ -92,6 +92,10 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 ## 表格
 
+- [`<table>`](#`<table>`) 表格
+- [`<tr>`](#<tr>) 表格行
+- 
+
 ## 表单
 
 ## 交互
@@ -1016,7 +1020,7 @@ function greet() {
     - `full-page databases` → `full-page-databases`
 - **保留特殊符号（如连字符）**：标题原有的半角连字符（如 `Full-page` 中的 `-`）无需处理，直接保留。
 
-### 跳转方式 `target`
+### `target`
 
 [`target`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#target) 属性用于指定链接的*打开方式* 或者指定提交表单时的*目标窗口*。通常用于 `<a>` 和 `<form>`。
 
@@ -1517,181 +1521,513 @@ span.ingredient {
 
 ## `<table>`
 
-[`<table>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/table) 元素
+[`<table>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/table) 元素表示一个表格。
+
+### 简写表格
+
+```html
+<table border="1">
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
+
+> <table border="1">
+>   <tr>
+>     <th>表头1</th>
+>     <th>表头2</th>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
 
 ### 完整表格
 
-- **语法**
+```html
+<table border="1">
+  <caption>
+    表格标题
+  </caption>
+  <thead>
+    <tr>
+      <th>-</th>
+      <th>列表头1</th>
+      <th>列表头2</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>行表头1</th>
+      <td>数据</td>
+      <td>数据</td>
+    </tr>
+    <tr>
+      <th>行表头2</th>
+      <td>数据</td>
+      <td>数据</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="2">总计</th>
+      <td>100</td>
+    </tr>
+  </tfoot>
+</table>
+```
 
-    ```html
-    <table>
-      <caption>表格标题</caption>
-      <thead>
+> <table border="1">
+>   <caption>
+>     表格标题
+>   </caption>
+>   <thead>
+>     <tr>
+>       <th>-</th>
+>       <th>列表头1</th>
+>       <th>列表头2</th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th>行表头1</th>
+>       <td>数据</td>
+>       <td>数据</td>
+>     </tr>
+>     <tr>
+>       <th>行表头2</th>
+>       <td>数据</td>
+>       <td>数据</td>
+>     </tr>
+>   </tbody>
+>   <tfoot>
+>     <tr>
+>       <th colspan="2">总计</th>
+>       <td>100</td>
+>     </tr>
+>   </tfoot>
+> </table>
+
+**元素说明**：
+
+- `<table>`：定义整个表格
+- `<caption>` 标题、 `<thead>` 表头、 `<tbody>` 主体和  `<tfoot>` 页脚，可省略。
+- `<tr>`：定义表格中的行
+- `<th>`：定义表格中的表头单元格
+- `<td>`：定义表格中的数据单元格
+
+### 表格嵌套
+
+`<table>` 可以嵌套在 `<th>` 或 `<td>` 中。
+
+```html
+<table border="1">
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>
+      嵌套表格
+      <table border="1">
         <tr>
           <th>表头1</th>
           <th>表头2</th>
         </tr>
-      </thead>
-      <tbody>
         <tr>
-          <td>数据1</td>
-          <td>数据2</td>
+          <td>数据</td>
+          <td>数据</td>
         </tr>
         <tr>
-          <td>数据3</td>
-          <td>数据4</td>
+          <td>数据</td>
+          <td>数据</td>
         </tr>
-      </tbody>
-      <tfoot>
-        <tr>
-          <td>总计</td>
-          <td>100</td>
-        </tr>
-      </tfoot>
-    </table>
-    ```
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
-- **渲染效果**
+> <table border="1">
+>   <tr>
+>     <th>表头1</th>
+>     <th>表头2</th>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>
+>       嵌套表格
+>       <table border="1">
+>         <tr>
+>           <th>表头1</th>
+>           <th>表头2</th>
+>         </tr>
+>         <tr>
+>           <td>数据</td>
+>           <td>数据</td>
+>         </tr>
+>         <tr>
+>           <td>数据</td>
+>           <td>数据</td>
+>         </tr>
+>       </table>
+>     </td>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
 
-    > ![image-20241128151117058](assets/image-20241128151117058.png)
+### `border`
 
-- **元素说明**
+[~~`border`~~](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/table#border) 属性定义了环绕表格外部的框的大小，该属性已弃用。在实际开发中，建议使用 CSS 样式来进行更灵活和精细的样式控制，或者引入 BootStrap。以下是 `border` 的基本效果：
 
-    - `<table>`：定义整个表格。
-    - `<caption>` 标题  `<thead>` 表头  `<tbody>` 主体   `<tfoot>` 页脚，可省略。
-    - `<tr>`：定义表格中的行。
-    - `<th>`：定义表格中的表头单元格（表头单元格会加粗且默认居中显示）。
-    - `<td>`：定义表格中的数据单元格。
+```html
+<table border="1">
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
-### 基本表格
+> <img src="assets/image-20251010195356535.png" alt="image-20251010195356535" style="zoom:50%;" />
 
-- **语法**
+## `<tr>`
 
-    ```html
-    <table>
-      <tr>
-        <th>表头1</th>
-        <th>表头2</th>
-      </tr>
-      <tr>
-        <td>数据1</td>
-        <td>数据2</td>
-      </tr>
-      <tr>
-        <td>数据3</td>
-        <td>数据4</td>
-      </tr>
-    </table>
-    ```
+**表格数据行** [`<tr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/tr) （**t**able **r**ow）用于定义表格中的一行。
 
-- **渲染效果**
+## `<th>`
 
-    > ![image-20241128151252635](assets/image-20241128151252635.png)
+**表格头部** [`<th>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/th) （**t**able **h**ead）用于定义表格中的*表头单元格*，在渲染时会加粗且默认居中显示。
 
-- **`border` 属性**：属性 `<table border="1">` 控制边框已经弃用，在实际开发中，建议使用 CSS 样式来进行更灵活和精细的样式控制，或者引入 BootStrap。
+```html
+<table border="1">
+  <tr>
+    <th>-</th>
+    <th>列表头</th>
+    <th>列表头</th>
+  </tr>
+  <tr>
+    <th>行表头</th>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <th>行表头</th>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
-- **嵌套**：`<table>` 可以嵌套在 `<th>` 或 `<td>` 中
+> <table border="1">
+>   <tr>
+>     <th>-</th>
+>     <th>列表头</th>
+>     <th>列表头</th>
+>   </tr>
+>   <tr>
+>     <th>行表头</th>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <th>行表头</th>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
 
-### 合并单元格
+### `scope`
 
-- **语法**：合并行  `rowspan`，合并列 `colspan`，单元格占几行（列），值就等于几。
+[`scope`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/th#scope) 属性可以告诉屏幕阅读器该 `<th>` 的类型，对无障碍有帮助，无额外渲染效果。
 
-    ```html
-    <table border="1">
-      <tr>
-        <th>表头1</th>
-        <th colspan="2">表头2</th>
-      </tr>
-      <tr>
-        <td rowspan="2">数据1</td>
-        <td>数据2</td>
-        <td>数据3</td>
-      </tr>
-      <tr>
-        <td>数据4</td>
-        <td>数据5</td>
-      </tr>
-    </table>
-    ```
+- 单列表头 `col`
+- 多列表头 `colgroup`
+- 单行表头 `row`
+- 多行表头 `rowgroup`
 
-- **渲染效果**
+```html
+<table border="1">
+  <tr>
+    <th>-</th>
+    <th scope="col">单列表头</th>
+    <th colspan="2" scope="colgroup">多列表头</th>
+    <th scope="col">单列表头</th>
+  </tr>
+  <tr>
+    <th scope="row">单行表头</th>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <th rowspan="2" scope="rowgroup">多行表头</th>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <th scope="row">单行表头</th>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
-    > ![image-20241128151538056](assets/image-20241128151538056.png)
+> <table border="1">
+>   <tr>
+>     <th>-</th>
+>     <th scope="col">单列表头</th>
+>     <th colspan="2" scope="colgroup">多列表头</th>
+>     <th scope="col">单列表头</th>
+>   </tr>
+>   <tr>
+>     <th scope="row">单行表头</th>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <th rowspan="2" scope="rowgroup">多行表头</th>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <th scope="row">单行表头</th>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
 
-### 自由表头
+## `<td>`
 
-- 属性 `scope` 可以添加在 `<th>` 元素中，以告诉屏幕阅读器该表头的类型——它是所在行的表头，还是所在列的表头。
+**表格数据** [`<td>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td) （**t**able **d**ata）用于定义表格中的*数据单元格*。
 
-- `scope` 的值
+### `headers`
 
-    - 单列表头 `col`
-    - 多列表头 `colgroup`
-    - 单行表头 `row`
-    - 多行表头 `rowgroup`
+[`headers`](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Table_accessibility#id_和_headers_属性) 属性用于说明 `<td>` 对应哪个 `<th>` 的 `id` 属性，对无障碍有帮助，无特殊渲染效果。
 
-- **示例**
+```html
+<table border="1">
+  <thead>
+    <tr>
+      <th rowspan="2">-</th>
+      <th id="clothes" colspan="3">衣物</th>
+    </tr>
+    <tr>
+      <th id="trousers">长裤</th>
+      <th id="skirts">裙子</th>
+      <th id="dresses">连衣裙</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th id="price" rowspan="3">价格</th>
+      <td headers="price clothes trousers">56</td>
+      <td headers="price clothes skirts">45</td>
+      <td headers="price clothes dresses">36</td>
+    </tr>
+    <tr>
+      <td headers="price clothes trousers">22</td>
+      <td headers="price clothes skirts">58</td>
+      <td headers="price clothes dresses">76</td>
+    </tr>
+    <tr>
+      <td headers="price clothes trousers">43</td>
+      <td headers="price clothes skirts">66</td>
+      <td headers="price clothes dresses">55</td>
+    </tr>
+  </tbody>
+</table>
+```
 
-    ```html
-    <table border="1">
-      <tr>
-        <th>&nbsp;</th>
-        <th scope="col">单列表头</th>
-        <th colspan="2" scope="colgroup">多列表头</th>
-        <th scope="col">单列表头</th>
-      </tr>
-      <tr>
-        <th scope="row">单行表头</th>
-        <td>数据1</td>
-        <td>数据1</td>
-        <td>数据1</td>
-        <td>数据1</td>
-      </tr>
-      <tr>
-        <th rowspan="2" scope="rowgroup">多行表头</th>
-        <td>数据2</td>
-        <td>数据2</td>
-        <td>数据2</td>
-        <td>数据2</td>
-      </tr>
-      <tr>
-        <td>数据3</td>
-        <td>数据3</td>
-        <td>数据3</td>
-        <td>数据3</td>
-      </tr>
-      <tr>
-        <th scope="row">单行表头</th>
-        <td>数据4</td>
-        <td>数据4</td>
-        <td>数据4</td>
-        <td>数据4</td>
-      </tr>
-    </table>
-    ```
-
-- **渲染效果**
-
-    > ![image-20241128151655606](assets/image-20241128151655606.png)
-
-
+> <table border="1">
+>   <thead>
+>     <tr>
+>       <th rowspan="2">-</th>
+>       <th id="clothes" colspan="3">衣物</th>
+>     </tr>
+>     <tr>
+>       <th id="trousers">长裤</th>
+>       <th id="skirts">裙子</th>
+>       <th id="dresses">连衣裙</th>
+>     </tr>
+>   </thead>
+>   <tbody>
+>     <tr>
+>       <th id="price" rowspan="3">价格</th>
+>       <td headers="price clothes trousers">56</td>
+>       <td headers="price clothes skirts">45</td>
+>       <td headers="price clothes dresses">36</td>
+>     </tr>
+>     <tr>
+>       <td headers="price clothes trousers">22</td>
+>       <td headers="price clothes skirts">58</td>
+>       <td headers="price clothes dresses">76</td>
+>     </tr>
+>     <tr>
+>       <td headers="price clothes trousers">43</td>
+>       <td headers="price clothes skirts">66</td>
+>       <td headers="price clothes dresses">55</td>
+>     </tr>
+>   </tbody>
+> </table>
 
 ## `<caption>`
 
-**表格标题**  [`<caption>`](https://html.spec.whatwg.org/multipage/tables.html#the-caption-Elements) 用于
+**表格标题**  [`<caption>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/caption) 用于展示一个表格的标题，默认显示在表格顶部。
+
+```html
+<table border="1">
+  <caption>表格标题</caption>
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
+
+> <table border="1">
+>   <caption>表格标题</caption>
+>   <tr>
+>     <th>表头1</th>
+>     <th>表头2</th>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
+
+**注意**：虽然可以通过 `align` 属性已弃用，不要再使用它改变 `<caption>` 在表格中的显示位置，而是通过 CSS 的 `caption-side` 和 `text-align` 属性修改。
+
+## `<thead>`
+
+**表格表头行** [`<thead>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/thead) 用于定义单行或多行列表头，与 `<tbody>` 和 `<tfoot>` 共同将 `<table>` 结构化，对无障碍有帮助，简写可省略。
+
+```html
+<table border="1">
+  <thead>
+    <tr>
+      <th colspan="2">表头</th>
+    </tr>
+    <tr>
+      <th>表头1</th>
+      <th>表头2</th>
+    </tr>
+  </thead>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
+
+> <table border="1">
+>   <thead>
+>     <tr>
+>       <th colspan="2">表头</th>
+>     </tr>
+>     <tr>
+>       <th>表头1</th>
+>       <th>表头2</th>
+>     </tr>
+>   </thead>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+>   <tr>
+>     <td>数据</td>
+>     <td>数据</td>
+>   </tr>
+> </table>
 
 ## `<tbody>`
 
-**表格主体** [`<tbody>`](https://html.spec.whatwg.org/multipage/tables.html#the-tbody-Elements) 用于
+**表格主体** [`<tbody>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/tbody) 用于定义表格的内容部分，与 `<thead>` 和 `<tfoot>` 共同将 `<table>` 结构化，对无障碍有帮助，简写可省略。示例详见 `<table> | 完整表格`。
+
+## `<tfoot>`
+
+**表格汇总行** [`<tfoot>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/tfoot) 用于定义表格的汇总部分，与 `<thead>` 和 `<tbody>` 共同将 `<table>` 结构化，对无障碍有帮助，简写可省略。示例详见 `<table> | 完整表格`。
 
 ## `<col>`
 
-**表格列** [`<col>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/col) 与 `<colgroup>` 一起给表格各列分组。
+**表格列** [`<col>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/col) 作为 `<colgroup>` 的子元素，通过 `span` 属性给表格各列分组。
 
 ```html
-<table>
+<table border="1">
   <colgroup>
-    <col span="2" style="background-color: red"/>
-    <col span="2" style="background-color: blue"/>
+    <col span="2" style="background-color: red" />
+    <col span="2" style="background-color: pink" />
   </colgroup>
   <tr>
     <th>周一</th>
@@ -1714,14 +2050,14 @@ span.ingredient {
 </table>
 ```
 
-> <img src="assets/image-20251010063940742.png" alt="image-20251010063940742" style="zoom:50%;" />
+> <img src="assets/image-20251010195711109.png" alt="image-20251010195711109" style="zoom:50%;" />
 
 ## `<colgroup>`
 
-**表格列组** [`<colgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/colgroup) 用于与 `<col>` 一起给表格各列分组。
+**表格列组** [`<colgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/colgroup) 用于通过 `span` 属性给表格各列分组。
 
 ```html
-<table>
+<table  border="1">
   <colgroup span="2" style="background-color: red"></colgroup>
   <tr>
     <th>周一</th>
@@ -1744,15 +2080,15 @@ span.ingredient {
 </table>
 ```
 
-> <img src="assets/image-20251010063807902.png" alt="image-20251010063807902" style="zoom: 50%;" />
+> <img src="assets/image-20251010195828798.png" alt="image-20251010195828798" style="zoom:50%;" />
 
-**注意**：`<colgroup>` 的 `span` 属性在遇到 `<col>` 元素的指定 `style` 时会停止作用。
+**注意**：`<colgroup>` 的某个属性会默认持续作用到 `span` 的值那一列，但如果遇到的 `<col>` 元素定义了相同属性，便会停止作用。
 
 ```html
-<table>
+<table border="1">
   <colgroup span="4" style="background-color: red">
     <col />
-    <col style="background-color: blue"/>
+    <col style="background-color: pink"/>
   </colgroup>
   <tr>
     <th>周一</th>
@@ -1775,63 +2111,48 @@ span.ingredient {
 </table>
 ```
 
-> <img src="assets/image-20251010064433778.png" alt="image-20251010064433778" style="zoom:50%;" />
+> <img src="assets/image-20251010195935620.png" alt="image-20251010195935620" style="zoom:50%;" />
 
-## `<thead>`
+## `colspan` 和 `rowspan`
 
-**表格表头行** [`<thead>`](https://html.spec.whatwg.org/multipage/tables.html#the-thead-Elements) 用于
+[`colspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#colspan) 属性用于指定单元格占几列，[`rowspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#rowspan) 属性用于指定单元格占几行。
 
-## `<tr>`
+```html
+<table border="1">
+  <tr>
+    <th>表头1</th>
+    <th colspan="2">表头2</th>
+  </tr>
+  <tr>
+    <td rowspan="2">数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
-**表格数据行** [`<tr>`](https://html.spec.whatwg.org/multipage/tables.html#the-tr-Elements) 用于
-
-## `<tfoot>`
-
-**表格汇总行** [`<tfoot>`](https://html.spec.whatwg.org/multipage/tables.html#the-tfoot-Elements) 用于
-
-## `<th>`
-
-**表格表头单元格** [`<th>`](https://html.spec.whatwg.org/multipage/tables.html#the-th-Elements) 用于
-
-## `<td>`
-
-**表格数据单元格** [`<td>`](https://html.spec.whatwg.org/multipage/tables.html#the-td-Elements) 用于
+> <img src="assets/image-20251010200941764.png" alt="image-20251010200941764" style="zoom:50%;" />
 
 # 表单
 
+HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们常用于为用户提供控件，以便操作用户界面（UI）或在需要时输入数据。
+
 ## `<form>`
 
-**表单** [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 元素表示文档中的一个区域，此区域包含交互控件，用于向 Web 服务器提交信息。
+**表单** [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 是表单控件的外层元素，用于向 Web 服务器提交信息。
 
-### 表单语法
+### 语法
 
-- **语法**
-
-    ```html
-    <form action="/submit" method="post">
-      <!-- 这里是表单内容，包括输入框、按钮等 -->
-      <input type="submit" value="提交">
-    </form>
-    ```
-
-- **扩展**：在 Django 框架下，必须校验，否则无法提交。
-
-    ```html
-    <form action="/login/" method="post">
-      <!-- 校验，否则无法提交 -->
-      {% csrf_token %}
-      <!-- 这里是表单内容，包括输入框、按钮等 -->
-      <input type="submit" value="提交">
-    </form>
-    ```
-
-### 表单属性
-
-- 允许的值在 [`<form>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#%E5%B1%9E%E6%80%A7)中
-
-    - `action`：提交的目标 URL
-    - `method`：数据传输方式
-    - `target`：跳转方式
+```html
+<form action="/submit" method="post">
+  <!-- 这里是表单内容，包括输入框、按钮等 -->
+  <input type="submit" value="提交">
+</form>
+```
 
 ### `action`
 
@@ -1841,17 +2162,13 @@ span.ingredient {
 
 ### `method`
 
-[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 HTTP 方法。HTTP 方法定义了浏览器将如何发送表单数据以及服务器应该如何处理这些数据。`method` 属性有两个常用的取值： `get` 和 `post`。
+[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 *HTTP 请求方法*。`method` 属性有两个常用的取值： `get` 和 `post`。详见 [`http | 请求方法`](http.md/#请求方法)
 
 **语法**：`<form method="post">`
 
-**[GET方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**
+### `target`
 
-- 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
-
-**[POST方法](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)**
-
-- 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
+[**`target`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#target) 属性表示在提交表单之后，在哪里显示响应信息。详见 [`<a>` | `target`](#`target`)
 
 ## `<label>`
 
@@ -2135,7 +2452,7 @@ span.ingredient {
 
 ## `<button>`
 
-- [`<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button) 元素用于在 HTML 中创建**按钮**，可以包含文本、图像或其他 HTML 元素。它是一个多功能的元素，通常用于与 JavaScript 配合执行自定义操作。
+- [`<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button) 元素用于在 HTML 中创建*按钮*，可以包含文本、图像或其他 HTML 元素。它是一个多功能的元素，通常用于与 JavaScript 配合执行自定义操作。
 
 - **语法**
 

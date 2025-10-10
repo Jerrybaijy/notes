@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "27b67f6ac5bb562d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "typora.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "typora"
-            }
-          },
-          {
             "id": "cbf3a3c7f7ca1f90",
             "type": "leaf",
             "state": {
@@ -76,9 +62,51 @@
               "icon": "lucide-file",
               "title": "css"
             }
+          },
+          {
+            "id": "c88c607c9462e7bd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "html"
+            }
+          },
+          {
+            "id": "e982a28507ed6077",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html-attributes.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "html-attributes"
+            }
+          },
+          {
+            "id": "6261d78ef56d94d5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html-elements.md",
+                "mode": "preview",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "html-elements"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -110,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#web",
+                "query": "file:html",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -200,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "css.md",
+                "file": "html-attributes.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "css 的大纲"
+              "title": "html-attributes 的大纲"
             }
           }
         ],
@@ -227,27 +255,30 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "85e33dca13551ba0",
+  "active": "e982a28507ed6077",
   "lastOpenFiles": [
+    "html.md",
+    "http.md",
+    "html-attributes.md",
+    "software.md",
+    "html-elements.md",
+    "markdown.md",
+    "assets/image-20251010200941764.png",
+    "assets/image-20251010195935620.png",
+    "assets/image-20251010195828798.png",
+    "assets/image-20251010195711109.png",
+    "assets/image-20251010195623421.png",
+    "assets/image-20251010195356535.png",
+    "css.md",
+    "assets/image-20251010193703222.png",
+    "typora.md",
     "assets/image-20251010064433778.png",
     "assets/image-20251010063940742.png",
     "assets/image-20251010063807902.png",
-    "assets/image-20251010063145150.png",
-    "html-elements.md",
-    "typora.md",
-    "software.md",
     "obsidian.md",
-    "markdown.md",
     "md-test.md",
     "00.md",
     "kubernetes.md",
-    "assets/components-of-kubernetes.svg",
-    "assets/argo-cd.png",
-    "assets/module_03_pods.svg",
-    "assets/module_02_first_app.svg",
-    "assets/Kubernetes架构图.png",
-    "assets/image-20240329143851461.png",
-    "assets/image-20240329143514361.png",
     "git.md",
     "docker.md",
     "excel.md",
@@ -272,9 +303,6 @@
     "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.woff2",
     "其它格式未转换/README.md",
     "notion.md",
-    "cad.md",
-    "windows.md",
-    "css.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

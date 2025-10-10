@@ -5354,6 +5354,19 @@ html 模板就是存放 html 文件的文件夹
     </html>
     ```
 
+## 关于表单
+
+在 Django 框架下，表单必须校验，否则无法提交。
+
+```html
+<form action="/login/" method="post">
+  <!-- 校验，否则无法提交 -->
+  {% csrf_token %}
+  <!-- 这里是表单内容，包括输入框、按钮等 -->
+  <input type="submit" value="提交">
+</form>
+```
+
 ## 综合案例
 
 ### 创建项目
