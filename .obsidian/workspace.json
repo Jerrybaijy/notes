@@ -69,12 +69,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "html.md",
+                "file": "html-elements.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "html"
+              "title": "html-elements"
             }
           },
           {
@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -138,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:html",
+                "query": "section:(disable)",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -228,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "html-attributes.md",
+                "file": "html-elements.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "html-attributes 的大纲"
+              "title": "html-elements 的大纲"
             }
           }
         ],
@@ -255,26 +255,26 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "e982a28507ed6077",
+  "active": "c88c607c9462e7bd",
   "lastOpenFiles": [
     "html.md",
-    "http.md",
+    "assets/image-20251011090711349.png",
+    "assets/image-20251011090200568.png",
+    "assets/image-20251011082824053.png",
+    "assets/image-20251011080910953.png",
+    "assets/image-20251011080741976.png",
+    "html-elements.md",
     "html-attributes.md",
     "software.md",
-    "html-elements.md",
+    "http.md",
     "markdown.md",
     "assets/image-20251010200941764.png",
     "assets/image-20251010195935620.png",
     "assets/image-20251010195828798.png",
     "assets/image-20251010195711109.png",
     "assets/image-20251010195623421.png",
-    "assets/image-20251010195356535.png",
     "css.md",
-    "assets/image-20251010193703222.png",
     "typora.md",
-    "assets/image-20251010064433778.png",
-    "assets/image-20251010063940742.png",
-    "assets/image-20251010063807902.png",
     "obsidian.md",
     "md-test.md",
     "00.md",
@@ -302,7 +302,6 @@
     "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.eot",
     "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.woff2",
     "其它格式未转换/README.md",
-    "notion.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

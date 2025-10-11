@@ -10,22 +10,31 @@ tags:
   - web
 ---
 
+
+
 > HTML 属性基础：`HTML 语法 | HTML 元素 | 元素属性`
 >
 > [WHATWG 属性参考](https://html.spec.whatwg.org/multipage/indices.html#attributes-3 "WHATWG 属性参考")
 >
 > [MDN 属性参考](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes "MDN HTML 属性参考")
 
-本笔记只记录**全局属性*，关于其它：
+本笔记只记录**全局属性**，关于其它：
 
 - **属性基础**：详见 `html | 属性` 笔记。
 - **其它属性**：详见 `html-elements` 笔记中的各个元素。
 
-# [全局属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes)
+关于属性的记录方法：
 
-## [标识 `id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id)
+- 应先在 [WHATWG 属性参考](https://html.spec.whatwg.org/multipage/indices.html#attributes-3 "WHATWG 属性参考") 中查看该属性适用于哪些元素
+- 如果是全局属性，则记录在本笔记。
+- 如果是某些元素共用属性，则挑选一个典型元素记录该属性，其它元素进行引用。
+- 注意某些属性在不同元素中的值可能不同，比如 `type`。
 
-`id` 属性用于为元素指定唯一的标识符，属于全局属性。
+[**全局属性**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Global_attributes)是所有 HTML 元素共有的属性；它们可以用于所有元素，即使属性可能对某些元素不起作用。
+
+## `id` 
+
+[`id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id) 属性用于为元素指定唯一的标识符，属于全局属性。
 
 - **唯一性**
     - 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
