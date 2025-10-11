@@ -2279,13 +2279,23 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **输入框** [`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input) 用于创建各种表单控件，允许用户输入数据或进行选择。
 
-下面是一个 `text` 类型的 `<input>`：
+下面是一个 `text` 类型的 `<input>` 示例：
 
 ```html
 <input type="text">
 ```
 
 > <img src="assets/image-20251011090711349.png" alt="image-20251011090711349" style="zoom:50%;" />
+
+`<input>` 允许的属性在 [`<input>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#属性)中
+
+- [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#name)：输入框名称，用于在提交表单时标识输入框的内容
+- [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#value)：输入框默认值
+- [`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#accept)：限制文件类型。`accept="image/*"`，仅允许选择图片文件。
+- [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#required)：当存在时，要求用户在提交表单之前必须填写该字段
+- [`readonly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#readonly)：当存在时，使输入框变为只读，用户无法编辑输入框的内容
+- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#disabled)：当存在时，禁用输入框或按钮，使其不可编辑或不可点击
+- [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#size)：控件尺寸
 
 ### `placeholder`
 
@@ -2299,144 +2309,89 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ### `type`
 
-[`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#type) 是一个公用属性，表示元素的类型，在这里用于指定 `<input>` 的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值：
+#### 语法
+
+[`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#type) 是一个公用属性，表示元素的类型，在这里用于指定 `<input>` 的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值。
 
 - 允许的值在 [`<input>` 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#input_类型)中
 - 默认类型为 `text`
+- [`submit`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/submit)：创建提交按钮，不如 `<button type="submit">提交</button>` 灵活。
 
-#### `text`
+#### `checkbox`
 
-[`text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/text) 类型的 `<input>` 元素用于创建单行文本输入框。
+[`checkbox`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/checkbox) 类型的 `<input>` 元素用于创建**复选框**，允许用户选择或取消选择一个或多个选项。
 
-```html
-<form action="/submit" method="post">
-  <label for="name">用户名：</label>
-  <input type="text" id="name" name="username" placeholder="请输入用户名">
-  <button type="submit">提交订单</button>
-</form>
-```
-
-![image-20241204213529813](assets/image-20241204213529813.png)
-
-#### `password`
-
-[`password`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/password) 类型的 `<input>` 元素用于创建密码输入框，允许用户输入密码或其他敏感信息。与普通的文本输入框不同，密码输入框中的输入通常以点或星号的形式显示，以隐藏实际输入的字符。
-
-**语法**：`<input type="password">`
+**语法**：`<input type="checkbox">`
 
 ```html
-<form>
-  <input type="password" name="password" placeholder="请输入密码">
-</form>
+<input type="checkbox" name="vehicle" value="Bike" />自行车
+<input type="checkbox" name="vehicle" value="Car" />小汽车
 ```
 
-![image-20241204175001002](assets/image-20241204175001002.png)
+> <img src="assets/image-20251011114006335.png" alt="image-20251011114006335" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 使用 `name` 属性将复选框分组在一起，确保用户可以从同一组中选择多个选项。
+- 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
 
 #### `file`
 
-- [`file`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/file) 类型的 `<input>` 元素用于创建文件上传表单控件，允许用户从本地文件系统中选择一个或多个文件，并将其上传到服务器。
+[`file`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/file) 类型的 `<input>` 元素用于创建文件上传表单控件，允许用户从本地文件系统中选择一个或多个文件，并将其上传到服务器。
 
-- **语法**：`<input type="file">`
+```html
+<form action="/upload" method="post" enctype="multipart/form-data">
+  <label for="avatar">请上传图片：</label>
+  <input type="file" id="avatar" name="avatar" accept="image/*">
+  <input type="submit" value="上传">
+</form>
+```
 
-    ```html
-    <form action="/upload" method="post" enctype="multipart/form-data">
-      <label for="avatar">请上传图片：</label>
-      <input type="file" id="avatar" name="avatar" accept="image/*">
-      <input type="submit" value="上传">
-    </form>
-    ```
+![image-20241204185108699](assets/image-20241204185108699.png)
 
-    ![image-20241204185108699](assets/image-20241204185108699.png)
+**在上述示例中**：
 
-    **在上述示例中**：
+- `method="post"`：传递文件必须使用 `POST` 形式传递。
+- `enctype="multipart/form-data"`：指定了表单数据的编码类型，通常在上传文件时使用。
+- `type="file"`：表示创建一个文件上传控件。
+- `accept="image/*"` 限制文件类型，仅允许选择图片文件。
 
-    1. `method="post"`：传递文件必须使用 `POST` 形式传递。
-    2. `enctype="multipart/form-data"`：指定了表单数据的编码类型，通常在上传文件时使用。
-    3. `type="file"`：表示创建一个文件上传控件。
-    4. `accept="image/*"` 限制文件类型，仅允许选择图片文件。
+#### `password`
+
+[`password`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/password) 类型的 `<input>` 元素用于创建密码输入框，允许用户输入密码或其他敏感信息。与 `text` 类型的 `<input>` 不同，密码输入框中的输入通常以点或星号的形式显示，以隐藏实际输入的字符。
+
+```html
+<input type="password">
+```
+
+> <img src="assets/image-20251011111432722.png" alt="image-20251011111432722" style="zoom:50%;" />
 
 #### `radio`
 
 [`radio`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/radio) 类型的 `<input>` 元素用于创建**单选框**，允许用户从一组选项中选择一个选项。
 
 ```html
-<form>
-  <input type="radio" name="gender" value="male" />
-  <input type="radio" name="gender" value="female" />
-</form>
+<input type="radio" name="gender" value="male" /> 男性
+<input type="radio" name="gender" value="female" /> 女性
 ```
 
-![image-20241204185234245](assets/image-20241204185234245.png)
+> <img src="assets/image-20251011114307741.png" alt="image-20251011114307741" style="zoom:50%;" />
 
 **在上述示例中**：
 
-1. 使用 `type` 属性的 `<input>` 元素创建**单选框**。
-2. 使用 `name` 属性将单选框分组在一起，确保用户只能从同一组中选择一个选项。
-3. 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
+- 使用 `type="radio"` 类型的 `<input>` 元素创建**单选框**。
+- 使用 `name` 属性将单选框分组在一起，确保用户只能从同一组中选择一个选项。
+- 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
 
-#### `checkbox`
+#### `text`
 
-- [`checkbox`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/checkbox) 类型的 `<input>` 元素用于创建**复选框**，允许用户选择或取消选择一个或多个选项。
+[`text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/text) 类型的 `<input>` 元素用于创建单行文本输入框。
 
-- **语法**：`<input type="checkbox">`
+```html
+<input type="text">
+```
 
-    ```html
-    <form>
-      <input type="checkbox" name="vehicle" value="Bike">我喜欢自行车<br>
-      <input type="checkbox" name="vehicle" value="Car">我喜欢小汽车
-    </form>
-    ```
-
-    ![image-20241204185713038](assets/image-20241204185713038.png)
-
-    **在上述示例中**：
-
-    1. 使用 `name` 属性将复选框分组在一起，确保用户可以从同一组中选择多个选项。
-    2. 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
-
-- **说明**：用户可以点击复选框以选择或取消选择相应的选项。如果 `value` 属性未指定，提交表单时将默认使用 `on` 作为复选框的值。
-
-#### `submit`
-
-- [`submit`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/submit) 类型的 `<input>` 元素用于创建表单中的**提交按钮**。当用户点击该按钮时，将触发表单的提交行为，将表单中的数据发送到服务器。
-
-- **语法**：`<input type="submit">`
-
-    ```html
-    <form action="/submit" method="post">
-      <!-- 这里是其他表单元素 -->
-    
-      <input type="submit" value="提交">
-    </form>
-    ```
-
-    ![image-20241204191228212](assets/image-20241204191228212.png)
-
-    **在上述示例中**：
-
-    1. `value` 属性定义了按钮上显示的文本，这里是 `提交`。
-    2. 当用户点击 `提交` 按钮时，表单将按照指定的 `action` 和 `method` 属性提交到服务器。
-
-- **扩展**：除了 `<input>` 元素之外，也可以使用 `<button>` 元素创建提交按钮。
-
-    ```html
-    <form action="/submit" method="post">
-      <!-- 这里是其他表单元素 -->
-    
-      <button type="submit">提交</button>
-    </form>
-    ```
-
-### 其它属性
-
-- 允许的值在 [`<input>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#%E5%B1%9E%E6%80%A7)中
-- [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#name)：输入框名称，用于在提交表单时标识输入框的内容
-- [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#value)：输入框默认值
-- [`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#accept)：限制文件类型。`accept="image/*"`，仅允许选择图片文件。
-- [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#required)：当存在时，要求用户在提交表单之前必须填写该字段
-- [`readonly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#readonly)：当存在时，使输入框变为只读，用户无法编辑输入框的内容
-- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#disabled)：当存在时，禁用输入框或按钮，使其不可编辑或不可点击
-- [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#size)：控件尺寸
+> <img src="assets/image-20251011110656793.png" alt="image-20251011110656793" style="zoom:50%;" />
 
 ## `<label>`
 
