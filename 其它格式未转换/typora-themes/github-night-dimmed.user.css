@@ -1,3 +1,15 @@
+body {
+  /* 侧边栏，代码块外圈，语言建议 */
+  /* 在 github-night.css:984 中，
+  侧边栏指定为 var(--item-hover-bg-color) */
+  --item-hover-bg-color: #22272e;
+
+  /* write 区 */
+  /* 在 github-night.css:161 中，
+  此处指定为 var(--bg-color) !important */
+  --bg-color: #2d333b;
+}
+
 /* 删除线颜色 */
 del {
   text-decoration-color: red;
@@ -8,9 +20,38 @@ strong {
   font-weight: 1000 !important;
 }
 
-/* 语言选择器 */
-/*
-为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
-需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
-  background-color: var(--item-hover-bg-color);
-*/
+/* 当前大纲标题颜色 */
+.outline-active {
+  color: white;
+}
+
+/* 语言建议区选中背景色 */
+/* 在 github-night.css 中，
+此处指定为 --item-hover-bg-color，
+和语言建议区的背景相同，
+所以要单独修改为 write 区的 --bg-color */
+.auto-suggest-container li.active,
+.auto-suggest-container li:hover {
+  background-color: var(--bg-color);
+}
+
+/* 代码块内的选中行 */
+/* 在 github-night.css:56 中，
+此处指定为 rgba(255, 255, 255, 0.1) */
+.md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+  background-color: #ffffff1a;
+}
+
+/* 行内代码 */
+/* 在 github-night.css:535 中，
+此处指定为 rgba(240, 246, 252, 0.15) */
+code {
+  background-color: #ffffff1a;
+}
+
+/* 元数据 */
+/* 在 github-night.css:579 中，
+此处指定为 #fff */
+#write pre.md-meta-block {
+  color: #adbac7;
+}

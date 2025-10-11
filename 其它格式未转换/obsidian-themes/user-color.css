@@ -1,0 +1,52 @@
+body {
+  /* 内容区 */
+  --background-primary: #2d333b;
+
+  /* 其它区 */
+  --background-secondary: #22272e;
+
+  /* 文本 */
+  --text-normal: #adbac7;
+
+  /* 块引用 */
+  --blockquote-border-color: #444c56;
+
+  /* 行内代码、代码块和kbd */
+  --code-background: #22272e;
+
+  /* 代码块注释 */
+  --code-comment: #8b949e;
+}
+
+/* .markdown-rendered th,
+.markdown-rendered td {
+    border-color: red;
+} */
+
+/* table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  overflow: auto;
+  page-break-inside: auto;
+  text-align: left;
+} */
+
+/* table {
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  text-indent: initial;
+  unicode-bidi: isolate;
+  border-spacing: 2px;
+  border-color: red;
+} */
+
+
+
+
+
+
+
+
+

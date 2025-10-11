@@ -632,9 +632,7 @@ code {
 
 /* Languages suggestions Menu */
 .auto-suggest-container {
-    /* 此处为自己手动注释，为了解决 github-night-dimmed 主题语言选择器背景颜色冲突 */
-    /* background-color: var(--item-hover-bg-color); */
-    
+    background-color: var(--item-hover-bg-color);
     border: 1px solid var(--item-hover-bg-color);
     color: var(--text-color);
     border-radius: 6px;

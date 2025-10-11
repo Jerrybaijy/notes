@@ -302,7 +302,7 @@ hr {
 /* <kbd>样式 */
 kbd {
   background-color: #000000;
-  color: #ffffff;
+  color: #adbac7;
   font-size: 1.1em;
   padding: 12px 12px; /* 增加内边距，使元素更大 */
 }

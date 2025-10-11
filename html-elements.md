@@ -1768,6 +1768,30 @@ span.ingredient {
 >   </tr>
 > </table>
 
+### `colspan`
+
+[`colspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#colspan) 属性用于指定单元格占几列，[`rowspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#rowspan) 属性用于指定单元格占几行。
+
+```html
+<table border="1">
+  <tr>
+    <th>表头1</th>
+    <th colspan="2">表头2</th>
+  </tr>
+  <tr>
+    <td rowspan="2">数据</td>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
+
+> <img src="assets/image-20251010200941764.png" alt="image-20251010200941764" style="zoom:50%;" />
+
 ### `scope`
 
 [`scope`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/th#scope) 属性可以告诉屏幕阅读器该 `<th>` 的类型，对无障碍有帮助，无额外渲染效果。
@@ -1850,6 +1874,12 @@ span.ingredient {
 >     <td>数据</td>
 >   </tr>
 > </table>
+
+### 其它属性
+
+`<th>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/th#属性)：
+
+- [`rowspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/th#rowspan)：单元格占几行，用法同 `colspan`。
 
 ## `<td>`
 
@@ -2113,30 +2143,6 @@ span.ingredient {
 
 > <img src="assets/image-20251010195935620.png" alt="image-20251010195935620" style="zoom:50%;" />
 
-## `colspan` 和 `rowspan`
-
-[`colspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#colspan) 属性用于指定单元格占几列，[`rowspan`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/td#rowspan) 属性用于指定单元格占几行。
-
-```html
-<table border="1">
-  <tr>
-    <th>表头1</th>
-    <th colspan="2">表头2</th>
-  </tr>
-  <tr>
-    <td rowspan="2">数据</td>
-    <td>数据</td>
-    <td>数据</td>
-  </tr>
-  <tr>
-    <td>数据</td>
-    <td>数据</td>
-  </tr>
-</table>
-```
-
-> <img src="assets/image-20251010200941764.png" alt="image-20251010200941764" style="zoom:50%;" />
-
 # 表单
 
 HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们常用于为用户提供控件，以便操作用户界面（UI）或在需要时输入数据。
@@ -2145,7 +2151,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ### 语法
 
-[`<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button) 元素用于在 HTML 中创建*按钮*，可以包含文本、图像或其他 HTML 元素。它是一个多功能的元素，通常用于与 JavaScript 配合执行自定义操作。
+[`<button>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button) 元素用于在 HTML 中创建**按钮**，可以包含文本、图像或其他 HTML 元素。它是一个多功能的元素，通常用于与 JavaScript 配合执行自定义操作。
 
 ```html
 <button type="reset">重置</button>
@@ -2186,8 +2192,22 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled) 是一个表单公用*布尔属性*，用于表示用户不能与该元素交互。
 
 ```html
-<input type="text" disabled>
+<input type="text" name="text" disabled>
 ```
+
+**在上述示例中**：
+
+- 使用 `disabled` 属性，使用户不能在文本块输入。
+
+### 其它属性
+
+`<button>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/button#属性)：
+
+- 更多...
+
+## `<datalist>`
+
+[`<datalist>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-datalist-Elements)
 
 ## `<fieldset>`
 
@@ -2235,13 +2255,13 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **表单** [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 是表单控件的外层元素，用于将所有的表单控件组织到一起。
 
 ```html
-<form action="/submit" method="post">
+<form action="/submit" method="get">
   <!-- 这里是表单内容，包括输入框、按钮等 -->
-  <button type="submit">提交订单</button>
+  <button type="submit">提交</button>
 </form>
 ```
 
-**在以上示例中**：
+**在上述示例中**：
 
 - `<form>`：表单控件的*外层元素*
     - `action`：指定表单数据提交的*目标 URL*
@@ -2259,19 +2279,21 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 [*HTTP 请求方法*](http.md/#请求方法 "http | 请求方法")。
 
+- **[GET](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**：
+    - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
 - **[POST](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)**：
     - 表单数据会包含在表单体内然后发送给服务器。
     - 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
-- **[GET](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**：
-    - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
-
 - `dialog`
 
 **语法**：`<form method="post">`
 
-### `target`
+### 其它属性
 
-`<form>` 的 [**`target`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#target) 属性用法同 [`<a>` | `target`](#`target`)
+`<form>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#属性)：
+
+- [**`target`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#target)：目标窗口，用法同 `<a>` 的 [`target`](#`target`)。
+- 更多...
 
 ## `<input>`
 
@@ -2279,23 +2301,43 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **输入框** [`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input) 用于创建各种表单控件，允许用户输入数据或进行选择。
 
-下面是一个 `text` 类型的 `<input>` 示例：
-
 ```html
-<input type="text">
+<input type="text" name="text">
 ```
 
 > <img src="assets/image-20251011090711349.png" alt="image-20251011090711349" style="zoom:50%;" />
 
-`<input>` 允许的属性在 [`<input>` 属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#属性)中
+**在上述示例中**：
 
-- [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#name)：输入框名称，用于在提交表单时标识输入框的内容
-- [`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#value)：输入框默认值
-- [`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#accept)：限制文件类型。`accept="image/*"`，仅允许选择图片文件。
-- [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#required)：当存在时，要求用户在提交表单之前必须填写该字段
-- [`readonly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#readonly)：当存在时，使输入框变为只读，用户无法编辑输入框的内容
-- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#disabled)：当存在时，禁用输入框或按钮，使其不可编辑或不可点击
-- [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#size)：控件尺寸
+- 使用 `type="text"` 类型的 `<input>` 元素创建**文本框**。
+- 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- *用户输入值*作为数据提交时键值对的**值**。
+
+### `name`
+
+[`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#name) 的属性值作为数据提交时键值对的**键**。在不同表单控件中会表现其它作用，详见具体控件。
+
+当用户点击提交按钮时，浏览器会收集表单中所有带有 `name` 属性的表单控件，并将它们组织成一系列的“键值对”进行发送。如果一个表单控件缺少 `name` 属性，那么它输入或选中的数据**将不会**被浏览器包含在提交的数据中。
+
+- **键 (Key)：** 就是元素的 `name` 属性的值。
+- **值 (Value)：** 就是元素的 `value` 属性的值。
+
+以下是包含 `name` 属性的示例：
+
+```html
+<form action="/submit" method="get">
+  <input type="text" name="username"/>
+  <button type="submit">提交</button>
+</form>
+```
+
+> ![image-20251011220755041](assets/image-20251011220755041.png)
+
+**在上述示例中**：
+
+- 使用 `type="text"` 类型的 `<input>` 元素创建**文本框**。
+- 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- 用户输入的 `Jerry` 作为数据提交时键值对的**值**。
 
 ### `placeholder`
 
@@ -2321,8 +2363,6 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`checkbox`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/checkbox) 类型的 `<input>` 元素用于创建**复选框**，允许用户选择或取消选择一个或多个选项。
 
-**语法**：`<input type="checkbox">`
-
 ```html
 <input type="checkbox" name="vehicle" value="Bike" />自行车
 <input type="checkbox" name="vehicle" value="Car" />小汽车
@@ -2332,8 +2372,11 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **在上述示例中**：
 
-- 使用 `name` 属性将复选框分组在一起，确保用户可以从同一组中选择多个选项。
-- 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
+- 使用 `type="checkbox"` 类型的 `<input>` 元素创建**复选框**。
+- 使用 `name` 属性
+    - 作为数据提交时键值对的**键**。
+    - 将复选框分组在一起。
+- 使用 `value` 的属性值作为数据提交时键值对的**值**。
 
 #### `file`
 
@@ -2354,17 +2397,23 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 - `method="post"`：传递文件必须使用 `POST` 形式传递。
 - `enctype="multipart/form-data"`：指定了表单数据的编码类型，通常在上传文件时使用。
 - `type="file"`：表示创建一个文件上传控件。
-- `accept="image/*"` 限制文件类型，仅允许选择图片文件。
+- `accept="image/*"`：限制文件类型，仅允许选择图片文件。
 
 #### `password`
 
 [`password`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/password) 类型的 `<input>` 元素用于创建密码输入框，允许用户输入密码或其他敏感信息。与 `text` 类型的 `<input>` 不同，密码输入框中的输入通常以点或星号的形式显示，以隐藏实际输入的字符。
 
 ```html
-<input type="password">
+<input type="password" name="password">
 ```
 
 > <img src="assets/image-20251011111432722.png" alt="image-20251011111432722" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 使用 `type="checkbox"` 类型的 `<input>` 元素创建**复选框**。
+- 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- *用户输入值*作为数据提交时键值对的**值**。
 
 #### `radio`
 
@@ -2380,18 +2429,54 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **在上述示例中**：
 
 - 使用 `type="radio"` 类型的 `<input>` 元素创建**单选框**。
-- 使用 `name` 属性将单选框分组在一起，确保用户只能从同一组中选择一个选项。
-- 使用 `value` 属性为每个选项指定一个值，这个值将在表单提交时被发送到服务器。
+- 使用 `name` 属性
+    - 作为数据提交时键值对的**键**。
+    - 将单选框分组在一起，确保用户只能从同一组中选择一个选项。
+
+- 使用 `value` 属性为每个选项指定一个值，作为数据提交时键值对的**值**。
 
 #### `text`
 
 [`text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/text) 类型的 `<input>` 元素用于创建单行文本输入框。
 
 ```html
-<input type="text">
+<input type="text" name="text">
 ```
 
 > <img src="assets/image-20251011110656793.png" alt="image-20251011110656793" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 使用 `type="text"` 类型的 `<input>` 元素创建**文本框**。
+- 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- *用户输入值*作为数据提交时键值对的**值**。
+
+### `value`
+
+[`value`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#value) 属性用于指定表单控件的默认值，以及数据提交时键值对的**值**。关于*数据提交时的“键值对”*，详见 `<input>` 中的 `name` 属性。
+
+作为表单控件的默认值：
+
+```html
+<!-- 不指定默认值 -->
+<input type="text" name="text" /><br>
+
+<!-- 指定默认值 -->
+<input type="text" name="text" value="默认值" />
+```
+
+> <img src="assets/image-20251011225239417.png" alt="image-20251011225239417" style="zoom:50%;" />
+
+### 其它属性
+
+`<input>` 元素的 [属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#属性)：
+
+- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled)：表禁用，用法同 `<button>` 的 [`disabled`](#`disabled`)。
+- [`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#accept)：限制文件类型。`accept="image/*"`，仅允许选择图片文件。
+- [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#required)：当存在时，要求用户在提交表单之前必须填写该字段
+- [`readonly`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#readonly)：当存在时，使输入框变为只读，用户无法编辑输入框的内容
+- [`size`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#size)：控件尺寸
+- 更多...
 
 ## `<label>`
 
@@ -2399,124 +2484,86 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`<label>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/label) 用于为某些文本和表单控件提供关联。
 
--  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的可点击区域。
+-  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的*可点击区域*。
 -  当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
 
 ```html
-<form>
-  <label for="username">用户名:</label>
-  <input type="text" id="username" name="username" placeholder="请输入用户名">
-</form>
+<label for="username">用户名:</label>
+<input type="text" id="username" name="username" placeholder="请输入用户名">
 ```
 
 ![image-20241204211508665](assets/image-20241204211508665.png)
 
 **在上述示例中**：
 
-1. 使用 `<label>` 元素来标识 `用户名：` 文本。
-2. 使用 `for` 属性用于关联 `<input>` 元素的 `id`。
-3. 使用 `<input>` 元素来创建文本输入框。
-4. 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
+- 使用 `<label>` 元素来标识 `用户名：` 文本。
+    - 使用 `for="username"` 属性关联 `<input>` 元素的 `id`。
+- 使用 `<input>` 元素来创建文本输入框。
+    - 使用 `id="username"` 属性接受 `<label>` 元素的 `for` 属性的关联。
+- 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
 
 **扩展**：如果将 `<input>` 元素嵌套在 `<label>` 元素内部，就不需要使用 `for` 和 `id` 属性，因为它们将自动关联。但这种方式不利于 CSS 样式控制。
 
 ```html
-<form>
-  <label>
-    用户名:
-    <input type="text" name="username" placeholder="请输入用户名">
-  </label>
-</form>
+<label>
+  用户名:
+  <input type="text" name="username" placeholder="请输入用户名" />
+</label>
 ```
 
-### `for`
+### 其它属性
 
-[**`for`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/label#for) 属性用于关联表单控件中的 `id`。
+- [**`for`**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/label#for) 属性用于关联表单控件中的 `id`。
+- 更多...
+
+## `<legend>`
+
+[`<legend>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-legend-Elements)
 
 ## `<meter>`
 
 [`<meter>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-meter-Elements)
 
-## `<textarea>`
+## `<optgroup>`
 
-- **多行文本** [`<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea) 元素用于在 HTML 表单中创建**多行文本输入框**，允许用户输入大段自由格式的文本。
+### 语法
 
-- **语法**：
+[`<optgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/optgroup) 用于为 `<select>` 中的 `<option>` 元素创建分组。
 
-    ```html
-    <form action="/submit" method="post">
-      <label for="story">Tell us your story:</label>
-    
-      <textarea id="story" name="story" rows="5" cols="33">
-        It was a dark and stormy night...
-      </textarea>
-    </form>
-    ```
+```html
+选择一辆汽车:
+<select name="cars" multiple>
+  <optgroup label="德国车">
+    <option value="volvo">奔驰</option>
+    <option value="saab">宝马</option>
+  </optgroup>
 
-    ![image-20241204202909809](assets/image-20241204202909809.png)
+  <optgroup label="日本车">
+    <option value="mercedes">丰田</option>
+    <option value="audi">本田</option>
+  </optgroup>
+</select>
+```
 
-    **在上述示例中**：
+> <img src="assets/image-20251012002429316.png" alt="image-20251012002429316" style="zoom:50%;" />
 
-    1. 使用 `<textarea>` 元素创建多行文本输入框。
-    2. `rows` 和 `cols` 属性定义了文本框的行数和列数，这是可选的。
+**在上述示例中**：
 
-## `<select>`
+- 使用 `<optgroup>` 元素的 `label` 属性为 `<select>` 中的 `<option>` 元素创建分组。
 
-- **下拉框** [`<select>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select) 元素表示一个提供下拉菜单的控件。通常与 `<option>` 元素结合使用，每个 `<option>` 表示一个可选项。
+### 其它属性
 
-- **语法**
+`<optgroup>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/optgroup#属性)：
 
-    ```html
-    <form  action="/submit" method="post">
-      <label for="cars">请选择一辆汽车：</label>
-      <select name="car" id="cars">
-        <option value="">请点击选择</option>
-        <option value="volvo">沃尔沃</option>
-        <option value="saab">萨博</option>
-        <option value="mercedes">奔驰</option>
-        <option value="audi">奥迪</option>
-      </select>
-      <input type="submit" value="提交">
-    </form>
-    ```
-
-    ![image-20241204223958572](assets/image-20241204223958572.png)
-
-    **在上述示例中**：
-
-    1. 使用 `<select>` 元素创建下拉列表框。
-    2. 使用 [`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/option) 元素定义了下拉列表中的每个选项。
-    3. 使用 `name` 属性定义了在提交表单时将选择的值关联到的名称。
-    4. 用户可以通过点击下拉列表框并选择其中的一个选项。当表单被提交时，所选选项的值将被作为表单数据的一部分发送到服务器。
-
-- **扩展**：`<select>` 元素还支持 `multiple` 属性，允许用户通过 `Ctrl` 键选择多个选项。
-
-    ```html
-    <form>
-      选择一辆汽车:
-      <select name="cars" multiple>
-        <option value="volvo">沃尔沃</option>
-        <option value="saab">萨博</option>
-        <option value="mercedes">奔驰</option>
-        <option value="audi">奥迪</option>
-      </select>
-      <input type="submit" value="提交" />
-    </form>
-    ```
-
-    ![image-20241204224352505](assets/image-20241204224352505.png)
-
-## `<datalist>`
-
-[`<datalist>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-datalist-Elements)
+- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled)：表禁用，用法同 `<button>` 的 [`disabled`](#`disabled`)。
+- [`label`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/optgroup#label)：分组组名
+- 更多...
 
 ## `<option>`
 
-[`<option>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-option-Elements)
+[`<option>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/option) 用于定义在 [`<select>`](#`<select>`)、[`<optgroup>`](#`<optgroup>`) 或 [`<datalist>`](#`<datalist>`) 元素中包含的项。
 
-## `<optgroup>`
-
-[`<optgroup>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-optgroup-Elements)
+用法参见 [`<select>`](#`<select>`)
 
 ## `<output>`
 
@@ -2526,13 +2573,88 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`<progress>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-progress-Elements)
 
-## `<legend>`
+## `<select>`
 
-[`<legend>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-legend-Elements)
+### 语法
+
+**下拉框** [`<select>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select) 元素表示一个提供下拉菜单的控件。通常与 `<option>` 元素结合使用，每个 `<option>` 表示一个可选项。
+
+```html
+请选择一辆汽车：
+<select name="car">
+  <option value="">请点击选择</option>
+  <option value="volvo">沃尔沃</option>
+  <option value="saab">萨博</option>
+  <option value="mercedes">奔驰</option>
+  <option value="audi">奥迪</option>
+</select>
+```
+
+> <img src="assets/image-20251011235025028.png" alt="image-20251011235025028" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 使用 `<select>` 元素创建下拉列表框。
+    - 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- 使用 `<option>` 元素定义了下拉列表中的每个选项。
+    - 使用 `value` 的属性值作为数据提交时键值对的**值**。
+
+### `multiple`
+
+[`multiple`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#multiple) 是一个*布尔属性*，表示是否支持多选。用户可以通过 `Ctrl` 键选择多个选项。
+
+```html
+选择一辆汽车:
+<select name="cars" multiple>
+  <option value="volvo">沃尔沃</option>
+  <option value="saab">萨博</option>
+  <option value="mercedes">奔驰</option>
+  <option value="audi">奥迪</option>
+</select>
+```
+
+> <img src="assets/image-20251012000957461.png" alt="image-20251012000957461" style="zoom:50%;" />
+
+### 其它属性
+
+`<select>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#属性)：
+
+- [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#name)：属性值作为数据提交时键值对的**键**，用法同 `<input>` 的 [`name`](#name)。
+- 更多...
 
 ## `<selectedcontent>`
 
-[`<selectedcontent>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-selectedcontent-Elements)
+[`<selectedcontent>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent) 目前是一个*实验元素*，在某些最广泛使用的浏览器中不起作用。
+
+## `<textarea>`
+
+### 语法
+
+**多行文本** [`<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea) 元素用于在表单中创建**多行文本输入框**，允许用户输入大段自由格式的文本。
+
+```html
+Tell us your story:
+<textarea name="story" rows="5" cols="33"></textarea>
+```
+
+> <img src="assets/image-20251012003728984.png" alt="image-20251012003728984" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 使用 `<textarea>` 元素创建多行文本输入框。
+- 使用 `name` 的属性值作为数据提交时键值对的**键**。
+- 用户输入的 `It was a dark and stormy night...` 作为数据提交时键值对的**值**。
+- `rows` 和 `cols` 属性定义了文本框的行数和列数，这是可选的。
+
+### 其它属性
+
+`<textarea>` 元素的[属性](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#属性)：
+
+- [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#cols)：控件可见文本的列数，默认为20。
+- [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled)：表禁用，用法同 `<button>` 的 [`disabled`](#`disabled`)。
+- [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#name)：属性值作为数据提交时键值对的**键**，用法同 `<input>` 的 [`name`](#name)。
+- [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#rows)：控件可见文本的行数，默认为2。
+- 更多...
 
 # 交互
 

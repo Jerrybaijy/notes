@@ -19,10 +19,58 @@ body {
   /* 字体 */
   --font-text:"Nunito", sans-serif;
 
+  /* 表格边框 */
+  --table-border-width: 1px;
 }
 
 /* 移除外链图标 */
 .external-link {
   background-image: none;
   padding-inline-end: 0;
+}
+
+/* kbd */
+kbd {
+  background-color: #000000;
+  color: #adbac7;
+  font-size: 1.5em;
+  padding: 12px 12px;
+  box-shadow: inset 0 -2px 0 #c6cbd1;
+}
+
+kbd {
+  display: inline-block;
+  font: 20px SFMono-Regular, Nunito, Consolas, Liberation Mono, Menlo, monospace;
+  line-height: 10px;
+  vertical-align: middle;
+  border: 1px solid #6e7681;
+  border-radius: 6px;
+  margin: 0 0.1em;
+  white-space: nowrap;
+}
+
+/* 表格边框 */
+.markdown-rendered table,
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+  padding: 0;
+  word-break: initial;
+  line-height: 24px;
+  font-size: 1.25rem;
+  cursor: text;
+
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  overflow: auto;
+  page-break-inside: auto;
+  text-align: left;
+
+  display: table;
+  text-indent: initial;
+  unicode-bidi: isolate;
+}
+
+.markdown-source-view.mod-cm6 .cm-table-widget table {
+    margin-top: 0;
+    margin-bottom: 0;
 }

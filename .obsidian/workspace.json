@@ -55,6 +55,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "0000.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "0000"
+            }
+          },
+          {
+            "id": "0c83986f32d3e4f5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "css.md",
                 "mode": "preview",
                 "source": true
@@ -106,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -138,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "section:(disable)",
+                "query": "file:css",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -228,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "html-elements.md",
+                "file": "typora.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "html-elements 的大纲"
+              "title": "typora 的大纲"
             }
           }
         ],
@@ -242,7 +256,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -255,27 +270,32 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "c88c607c9462e7bd",
+  "active": "cbf3a3c7f7ca1f90",
   "lastOpenFiles": [
+    "0000.md",
+    "html-elements.md",
+    "其它格式未转换/obsidian-themes/user-base.css",
+    "其它格式未转换/obsidian-themes/user-color.css",
+    "其它格式未转换/obsidian-themes",
+    "其它格式未转换/新建文件夹",
+    "css.md",
+    "typora.md",
+    "3d-max.md",
+    "assets/image-20251012003728984.png",
+    "assets/image-20251012002429316.png",
+    "assets/image-20251012000957461.png",
+    "assets/image-20251011235025028.png",
+    "assets/image-20251011225239417.png",
+    "assets/image-20251011224909883.png",
+    "assets/image-20251011220755041.png",
+    "assets/image-20251011220610991.png",
     "assets/image-20251011115147470.png",
     "assets/image-20251011114307741.png",
-    "assets/image-20251011114006335.png",
-    "assets/image-20251011111432722.png",
-    "assets/image-20251011110656793.png",
     "html.md",
-    "assets/image-20251011090711349.png",
-    "assets/image-20251011090200568.png",
-    "assets/image-20251011082824053.png",
-    "assets/image-20251011080910953.png",
-    "assets/image-20251011080741976.png",
-    "html-elements.md",
     "html-attributes.md",
     "software.md",
     "http.md",
     "markdown.md",
-    "assets/image-20251010200941764.png",
-    "css.md",
-    "typora.md",
     "obsidian.md",
     "md-test.md",
     "00.md",
@@ -291,18 +311,12 @@
     "trailhead-sample-intermediate.md",
     "trailhead-sample-beginner.md",
     "vmware-workstation.md",
-    "IT/software/typora/typora.md",
     "其它格式未转换/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Regular.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Italic.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-ExtraBoldItalic.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-ExtraBold.woff",
     "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.woff2",
-    "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.woff",
-    "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.ttf",
-    "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.eot",
-    "其它格式未转换/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.woff2",
-    "其它格式未转换/README.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

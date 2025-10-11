@@ -61,36 +61,36 @@ tags:
 
 ## 快捷键列表
 
-| 操作 | [Typora 快捷键](https://support.typora.io/Shortcut-Keys/) |
-| :---: | :---: |
-| ==系统== |  |
-| 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
-| 源码模式 | <kbd>Ctrl</kbd> + <kbd>/</kbd> |
-| 开发者工具 | <kbd>Shift</kbd> + <kbd>F12</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| ==文件== |  |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| ==编辑== |  |
-| 元数据 | `---` + <kbd>Enter</kbd> |
-| 增加 / 降低标题级别 | <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd> |
-| 单行换行 | <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd> |
-| 列表项内加元素<br />即源码空一行再缩进 | <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd> |
-| 上（下）移该行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
-| ==表格== |  |
-| 表格单元格内换行 | <kbd>Shift</kbd> + <kbd>Enter</kbd> |
-| 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
-| 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
-| 删除行 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| ==格式== |  |
-| 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
-| 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
-| 斜体（Emphasis） | <kbd>Ctrl</kbd> + <kbd>I</kbd> |
-| 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
-| 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
-| 清除**当前段落**或**选中段落**格式 | <kbd>Ctrl</kbd> + <kbd>\\</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+|           操作           |            [Typora 快捷键](https://support.typora.io/Shortcut-Keys/)             |
+| :--------------------: | :---------------------------------------------------------------------------: |
+|         ==系统==         |                                                                               |
+|          偏好设置          |                        <kbd>Ctrl</kbd> + <kbd>,</kbd>                         |
+|          源码模式          |                        <kbd>Ctrl</kbd> + <kbd>/</kbd>                         |
+|         开发者工具          |                       <kbd>Shift</kbd> + <kbd>F12</kbd>                       |
+|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
+|         ==文件==         |                                                                               |
+|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
+|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
+|         ==编辑==         |                                                                               |
+|          元数据           |                           `---` + <kbd>Enter</kbd>                            |
+|      增加 / 降低标题级别       |                 <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd>                 |
+|          单行换行          |   <kbd>Space</kbd> - <kbd>Space</kbd> - <kbd>Shift</kbd> + <kbd>Enter</kbd>   |
+| 列表项内加元素<br />即源码空一行再缩进 |            <kbd>Shift</kbd> + <kbd>Enter</kbd> + <kbd>Enter</kbd>             |
+|        上（下）移该行         |                 <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd>                 |
+|         ==表格==         |                                                                               |
+|        表格单元格内换行        |                      <kbd>Shift</kbd> + <kbd>Enter</kbd>                      |
+|       移动该行 \| 列        | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
+|         下方插入行          |                      <kbd>Ctrl</kbd> + <kbd>Enter</kbd>                       |
+|          删除行           |           <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd>           |
+|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
+|         ==格式==         |                                                                               |
+|      标题（Heading）       |                       <kbd>Ctrl</kbd> + <kbd>Num</kbd>                        |
+|       粗体（Strong）       |                        <kbd>Ctrl</kbd> + <kbd>B</kbd>                         |
+|      斜体（Emphasis）      |                        <kbd>Ctrl</kbd> + <kbd>I</kbd>                         |
+|     下划线（Underline）     |                        <kbd>Ctrl</kbd> + <kbd>U</kbd>                         |
+|      删除线（Strike）       |               <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd>                |
+| 清除**当前段落**或**选中段落**格式  |                        <kbd>Ctrl</kbd> + <kbd>\\</kbd>                        |
+|           操作           |                          <kbd>?</kbd> + <kbd>?</kbd>                          |
 
 ## 快捷键设定
 
@@ -554,7 +554,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     /* <kbd>样式 */
     kbd {
       background-color: #000000;
-      color: #ffffff;
+      color: #adbac7;
       font-size: 1.1em;
       padding: 12px 12px; /* 增加内边距，使元素更大 */
     }
@@ -575,10 +575,27 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 - **各种可修改的部分**
 
     ```css
+    body {
+      /* 侧边栏，代码块外圈，语言建议 */
+      /* 在 github-night.css:984 中，
+      侧边栏指定为 var(--item-hover-bg-color) */
+      --item-hover-bg-color: #22272e;
+    
+      /* write 区 */
+      /* 在 github-night.css:161 中，
+      此处指定为 var(--bg-color) !important */
+      --bg-color: #2d333b;
+    }
+    
     /* ---------------------- sidebar ---------------- */
     /* sidebar 区背景色 */
     #typora-sidebar {
     background-color: #fff;
+    }
+    
+    /* 当前大纲标题颜色 */
+    .outline-active {
+      color: white;
     }
     /* ---------------------- content ---------------- */
     /* content 区背景色 */
@@ -614,12 +631,49 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       background-color: #dcdcdc !important;
     }
     
-    /* 语言选择器 */
-    /*
-    为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
-    需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
+    /* 语言建议区背景色 */
+    .auto-suggest-container {
+      /* 默认为以下值 */
       background-color: var(--item-hover-bg-color);
-    */
+    }
+    
+    /* 语言建议区选中背景色 */
+    /* 在 github-night.css 中，
+    此处指定为 --item-hover-bg-color，
+    和语言建议区的背景相同，
+    所以要单独修改为 write 区的 --bg-color */
+    .auto-suggest-container li.active,
+    .auto-suggest-container li:hover {
+      background-color: var(--bg-color);
+    }
+    
+    /* 语言提示区背景色 */
+    .code-tooltip {
+      /* 默认为以下值 */
+      background: var(--bg-color);
+    }
+    
+    /* 代码块内的选中行 */
+    /* 在 github-night.css:56 中，
+    此处指定为 rgba(255, 255, 255, 0.1) */
+    .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+      background-color: #ffffff1a;
+    }
+    
+    /* 行内代码 */
+    /* 在 github-night.css:535 中，
+    此处指定为 rgba(240, 246, 252, 0.15) */
+    code {
+      background-color: #ffffff1a;
+    }
+    
+    /* 元数据 */
+    /* 在 github-night.css:579 中，
+    此处指定为 #fff */
+    #write pre.md-meta-block {
+      color: #adbac7;
+    }
+    
     /* ---------------------- 超链接 ---------------- */
     /* 超链接取消下划线 */
     a:link {
@@ -657,19 +711,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       display: inline-block;
     }
     
-    /* 下面两个是之前自己的方法，2025.09.29已替换为上述官方方法 */
-    /* md图片靠左 */
-    /* p .md-image:only-child {
-      width: auto;
-      text-align: left;
-    } */
-    
-    /* img图片靠左 */
-    /* #write img {
-        display: block;
-        margin: 0 auto 0 0 !important;
-    } */
-    
     /* img图片靠左 */
     #write img {
         display: block;
@@ -687,11 +728,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     color: inherit;
     }
     
-    /* kbd标签 */
+    /* <kbd>样式 */
     kbd {
-      color: #000000;  /* 文本颜色 */
-      font-size: 1.1em;  /* 字体大小变大 */
-      padding: 7px 12px;  /* 增加内边距，使元素更大 */
+      background-color: #000000;
+      color: #adbac7;
+      font-size: 1.1em;
+      padding: 12px 12px; /* 增加内边距，使元素更大 */
     }
     
     /* 去除图片黑边 */
@@ -773,6 +815,18 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 - 编写自定义主题文件 **github-night-dimmed.user.css**，复制到主题文件夹
 
     ```css
+    body {
+      /* 侧边栏，代码块外圈，语言建议 */
+      /* 在 github-night.css:984 中，
+      侧边栏指定为 var(--item-hover-bg-color) */
+      --item-hover-bg-color: #22272e;
+    
+      /* write 区 */
+      /* 在 github-night.css:161 中，
+      此处指定为 var(--bg-color) !important */
+      --bg-color: #2d333b;
+    }
+    
     /* 删除线颜色 */
     del {
       text-decoration-color: red;
@@ -783,13 +837,50 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       font-weight: 1000 !important;
     }
     
-    /* 语言选择器 */
-    /*
-    为了解决 github-night-dimmed 主题语言选择器背景颜色冲突,
-    需要在 github-night.css 中的类选择器.auto-suggest-container中注释以下样式：
-      background-color: var(--item-hover-bg-color);
-    */
+    /* 当前大纲标题颜色 */
+    .outline-active {
+      color: white;
+    }
+    
+    /* 语言建议区选中背景色 */
+    /* 在 github-night.css 中，
+    此处指定为 --item-hover-bg-color，
+    和语言建议区的背景相同，
+    所以要单独修改为 write 区的 --bg-color */
+    .auto-suggest-container li.active,
+    .auto-suggest-container li:hover {
+      background-color: var(--bg-color);
+    }
+    
+    /* 代码块内的选中行 */
+    /* 在 github-night.css:56 中，
+    此处指定为 rgba(255, 255, 255, 0.1) */
+    .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
+      background-color: #ffffff1a;
+    }
+    
+    /* 行内代码 */
+    /* 在 github-night.css:535 中，
+    此处指定为 rgba(240, 246, 252, 0.15) */
+    code {
+      background-color: #ffffff1a;
+    }
+    
+    /* 元数据 */
+    /* 在 github-night.css:579 中，
+    此处指定为 #fff */
+    #write pre.md-meta-block {
+      color: #adbac7;
+    }
     ```
+
+## 颜色备忘
+
+- 主要深色：#22272e
+- 主要浅色：#2d333b
+- 代码块内的选中行背景：#ffffff1a
+- 行内代码背景：#ffffff1a
+- 文本：#adbac7
 
 # [图片](https://support.typora.io/Images/)
 

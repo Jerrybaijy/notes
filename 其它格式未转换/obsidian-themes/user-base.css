@@ -1,0 +1,28 @@
+body {
+  /* 链接颜色 */
+  --link-external-color: #58a6ff;
+  --link-color: #58a6ff;
+  --link-external-color-hover: #76bfff;
+  --link-color-hover: #76bfff;
+
+  /* 链接下划线 */
+  --link-decoration: none;
+  --link-external-decoration: none;
+
+  /* 块引用 */
+  --blockquote-border-thickness: 0.22em;
+  --size-4-6: 1em;
+
+  /* 行高 */
+  --line-height-normal: 1.8;
+
+  /* 字体 */
+  --font-text:"Nunito", sans-serif;
+
+}
+
+/* 移除外链图标 */
+.external-link {
+  background-image: none;
+  padding-inline-end: 0;
+}
