@@ -944,9 +944,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 - [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)：`入门模块` 中的 `配置环境`
 - [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
 - [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
-    - [视频和音频内容](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio)
-    - [使用 `<col>` 应用样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics#%E4%BD%BF%E7%94%A8_col_%E5%BA%94%E7%94%A8%E6%A0%B7%E5%BC%8F)
-    - [HTML 中的表单和按钮](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/HTML_forms) 未完
+    - 完
     
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
     - [什么是 CSS？](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
@@ -1429,46 +1427,6 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 **Winstep Nexus** 是一款功能强大的桌面增强工具，主要用于创建和管理**动态桌面工具栏**（Dock）。相比传统的 RocketDock，Nexus 更允许被高度定制。
 
 - 不支持拖放图标
-
-# [Node.js](https://nodejs.org/zh-cn)
-
-## Node.js
-
-**Node.js** 是一个开源、跨平台的 JavaScript 运行时环境，能够在服务器端运行 JavaScript。它最初由 Ryan Dahl 于 2009 年创建，并且使用了 Google 的 **V8 JavaScript 引擎**，该引擎最初是用于 Chrome 浏览器的，用于将 JavaScript 代码编译成高效的机器代码。Node.js 的核心优势在于它的非阻塞、事件驱动架构，使得它在构建高性能的网络应用时非常高效。
-
-### 环境搭建
-
-- [官网](https://nodejs.org/zh-cn)下载 Node.js 并安装
-
-- 查看 Node.js 版本
-
-    ```bash
-    node -v
-    ```
-
-## npm
-
-**npm** 是 node.js 的默认包管理工具。
-
-- **命令**
-
-    ```bash
-    # 查看 npm 版本
-    npm -v
-    # 更新 npm 到最新版
-    npm install -g npm
-    # 查看安装过的包
-    npm list -g --depth=0
-    
-    # 创建静态文件夹
-    npm run build
-    ```
-
-- **选项**
-
-    ```bash
-    -g # 全局
-    ```
 
 # Ollama
 

@@ -1446,7 +1446,7 @@ mark {
 
 **在上述示例中**：
 
-- 当把浏览器窗口变窄时，即容纳不下一整行 URL 内容，此时会从 `<wbr>` 处换行。
+- 当把浏览器窗口变窄时，即容纳不下一整行 URL 内容，此时会从 `<wbr>` 处换行。
 
 # 编辑
 
@@ -1473,6 +1473,34 @@ mark {
 > <p><del>This text has been deleted</del>, here is the rest of the paragraph.</p>
 
 # 嵌入内容
+
+## `<video>`
+
+**视频** [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/video) 元素用于支持文档内的视频播放，属性 `controls` 用于添加播放按钮。
+
+```html
+<video src="video/终局第01集.mp4" controls></video>
+```
+
+### 视频属性
+
+- `src`、`height`、`width`
+- `autoplay` 自动播放
+- `loop` 布尔属性；指定后，会在视频播放结束的时候，自动返回视频开始的地方，继续播放。
+- `muted` 默认静音
+- `poster` 播放前显示海报
+
+## `<audio>`
+
+**音频** [`<audio>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/audio) 元素用于在页面中嵌入音频，是行内元素。
+
+```html
+<audio src="music/实验音频.mp3" controls>降级文本</audio>
+```
+
+> <audio src="music/实验音频.mp3" controls>降级文本</audio>
+
+- `降级文本` 是当浏览器不支持 `<audio>` 元素时的回退，可替换成需要的提示。
 
 ## `<img>`
 
@@ -1507,42 +1535,76 @@ mark {
 
 ### `width`
 
-**语法**：[`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性是 HTML 中用于指定元素宽度和高度的属性。
+**语法**：[`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性用于指定元素宽度和高度。
 
 - **属性值单位**：可以是像素 `px`、百分比 `%`、视口 `vw/vh`、`em`、`rem` 和绝对长度单位（如mm）等，详见 `CSS` - `值和单位`。
 - **自适应**：通常情况下，如果只设置 `width: 200px;`，而没有设置 `height`，浏览器将根据图像的纵横比自动计算 `height`。
 
 ### 响应式图片
 
-[**响应式图片**](https://developer.mozilla.org/zh-CN/docs/Learn/HTML/Reference/Multimedia_and_embedding/Responsive_images)可以解决不同尺寸屏幕对图片的要求
-
-## `<audio>`
-
-**音频** [`<audio>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/audio) 元素用于在页面中嵌入音频，是行内元素。
-
-```html
-<audio src="music/实验音频.mp3" controls>降级文本</audio>
-```
-
-> <audio src="music/实验音频.mp3" controls>降级文本</audio>
-
-- `降级文本` 是当浏览器不支持 `<audio>` 元素时的回退，可替换成需要的提示。
+[**响应式图片**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Responsive_images)可以解决不同尺寸屏幕对图片的要求
 
 ## `<picture>`
 
-[`<picture>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/picture) 包含零或多个 `<source>` 元素和一个 `<img>` 元素来为不同的显示 / 设备场景提供图像版本。
+[`<picture>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/picture) 是一个**容器**，为不同的屏幕尺寸展示不同裁剪或修改过的图片。
+
+```html
+<picture>
+  <source media="(min-width: 800px)" srcset="large.jpg" />
+  <source media="(min-width: 450px)" srcset="medium.jpg" />
+  <img src="default.jpg" alt="描述图片" />
+</picture>
+```
+
+**在以上示例中**：
+
+- `<picture>`：作为容器，用于包含 `<source>` 和 `<img>` 元素。
+- `<source>`：指定媒体资源
+    - `media`：告诉浏览器： “只有当视口宽度至少达到多少像素时，才考虑加载我 srcset 中定义的图片。”
+- `<img>`：提供回退图片和图片尺寸，当所有 `<source>` 都不可用时，才使用这个。
 
 ## `<map>`
 
-**图像映射** [`<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map) 与*图像映射区域* `<area>` 元素一起使用来定义一个图像映射（一个可点击的链接区域）。
+[`<map>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/map) 与 `<area>` 元素一起使用来定义一个图像映射（一个可以在图像上点击的链接区域）。
+
+```html
+<map name="primary">
+  <area
+    shape="circle"
+    coords="0,0,200"
+    href="https://developer.mozilla.org/docs/Web/JavaScript"
+    target="_blank"
+    alt="JavaScript"
+  />
+  <area
+    shape="rect"
+    coords="500,500,700,700"
+    href="https://developer.mozilla.org/docs/Web/CSS"
+    target="_blank"
+    alt="CSS"
+  />
+</map>
+<img
+  usemap="#primary"
+  src="assets/image-20250929162712569.png"
+  alt="一只鹦鹉的照片，大小为 350 x 150"
+/>
+```
+
+**在以上示例中**：
+
+- `<map>` 作为图像地图容器，用于包含 `<area>` 元素。
+    - `name` 用于给这个地图命名，方便与 `<img>` 元素关联。
+- `<area>` 用于在 `<map>` 内部定义**可点击的链接区域**。
+    - `shape`：定义区域形状（`rect` 矩形, `circle` 圓形, `poly` 多边形）。
+    - `coords`： 定义区域的**坐标**（左上角为0点，根据 `shape` 的值不同，坐标数量和含义不同）。
+    - `href`：定义点击该区域后跳转的目标 URL。
+- `<img>` 提供一个图片
+    - `usemap="#primary"`：关联 `<map>` 的 `name="primary"`。
 
 ## `<area>`
 
-**图像映射区域** [`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area) 元素...，是空元素。
-
-### 其它属性
-
-- `href` 属性详见 `<a>` 元素。
+**图像映射区域** [`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area) 作为 `<map>` 的子元素，一起使用来定义一个图像映射（一个可以在图像上点击的链接区域），是空元素，详见 [`<map>`](#`<map>`)。
 
 ## `<source>`
 
@@ -1556,24 +1618,6 @@ mark {
   <source src="video/终局第01集.mkv" type="video/mkv" />
 </video>
 ```
-
-## `<video>`
-
-**视频** [`<video>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/video) 元素用于支持文档内的视频播放，属性 `controls` 用于添加播放按钮。
-
-```html
-<video src="video/终局第01集.mp4" controls></video>
-```
-
-### 视频属性
-
-- `src`、`height`、`width`
-- `autoplay` 自动播放
-- `loop` 布尔属性；指定后，会在视频播放结束的时候，自动返回视频开始的地方，继续播放。
-- `muted` 默认静音
-- `poster` 播放前显示海报
-
-### 视频事件
 
 ## `<track>`
 
@@ -2912,30 +2956,204 @@ Tell us your story:
 
 ## `<summary>`
 
-**折叠摘要** [`<summary>`](https://html.spec.whatwg.org/multipage/interactive-Elements.html#the-summary-Elements) 元素用于
+**折叠摘要** [`<summary>`](https://html.spec.whatwg.org/multipage/interactive-Elements.html#the-summary-Elements) 作为 `<details>` 的子元素，共同创建折叠组件，详见 [`<details>`](#`<details>`)。
 
 ## `<dialog>`
 
-**对话框** [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dialog) 元素用于
+**对话框** [`<dialog>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/dialog) 元素用于表示一个对话框或其他交互式组件。
+
+```html
+<button onclick="document.getElementById('myDialog').showModal()">
+  打开模态框
+</button>
+
+<dialog id="myDialog">
+  <h2>请确认您的操作</h2>
+  <p>您确定要继续吗？</p>
+
+  <button onclick="document.getElementById('myDialog').close()">
+    关闭
+  </button>
+</dialog>
+```
+
+**在以上示例中**：
+
+- `<dialog>`：对话框组件
+- `id="myDialog"`：与 JavaScript 事件关联
 
 # 脚本
 
 ## `<script>`
 
-**脚本** [`<script>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script) 用于嵌入可执行代码或数据，通常用作嵌入或者引用 JavaScript 代码。
+**脚本** [`<script>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/script) 用于在 HTML 中嵌入 JS 脚本，或引入外部 JS 脚本，详见 [`javascript | 引入方式`](javascript.md#引入方式)。
 
 ## `<noscript>`
 
-**无脚本** [`<noscript>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/noscript) 定义了在页面上的脚本类型不支持或浏览器当前关闭脚本时插入的 HTML 部分。
+**无脚本** [`<noscript>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/noscript) 定义当浏览器**不支持**脚本（JavaScript）或者用户在浏览器中**关闭**了脚本功能时，应该显示给用户的**替代内容**。实际就是一种回退机制。
+
+```html
+<p id="status">正在检查脚本状态...</p>
+
+<script>
+  // 2. JavaScript 找到并修改 ID 为 'status' 的元素
+  document.getElementById("status").innerText =
+    "脚本已开启，页面功能完整。";
+</script>
+
+<noscript>
+  <p>警告：为了获得完整的网站体验，请在浏览器中启用 JavaScript。</p>
+</noscript>
+```
+
+> <figure>
+>   <img
+>     src="assets/image-20251012231344600.png"
+>     alt="开启脚本的结果"
+>     style="height: 50px"
+>   />
+>   <figcaption style="font-size: 16px; color: gray">
+>     开启脚本的结果
+>   </figcaption>
+> </figure>
+>
+> <figure>
+>   <img
+>     src="assets/image-20251012230445393.png"
+>     alt="开启脚本的结果"
+>     style="height: 100px"
+>   />
+>   <figcaption style="font-size: 16px; color: gray">
+>     关闭脚本的结果
+>   </figcaption>
+> </figure>
+
+开启或关闭 Chrome 浏览器的脚本功能：
+
+- `设置` > `隐私和安全` > `网站设置` > `JavaScript`
+- 选择是否允许网站使用 JavaScript
 
 ## `<template>`
 
-**内容模板** [`<template>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/template) 是一种用于保存客户端内容机制，该内容在加载页面时不会呈现，但随后可以 (原文为 may be) 在运行时使用 JavaScript 实例化。
+**内容模板** [`<template>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/template) 用于创建一个模板片段，渲染时使用 JavaScript 动态插入到 HTML 文档目标点。
+
+```html
+<template id="item-template">
+  <li>
+    <p>名称：<span></span></p>
+    <p>价格：<span></span></p>
+  </li>
+</template>
+
+<ul id="item-list"></ul>
+
+<script>
+    const template = document.getElementById('item-template');
+    const list = document.getElementById('item-list');
+    
+    // 假设这是需要添加到页面的数据
+    const data = { name: "苹果", price: "5.00" };
+
+    // 3. 通过 JavaScript 使用模板
+    const clone = template.content.cloneNode(true); // 克隆模板内容
+    
+    // 4. 修改克隆出来的内容并激活它
+    clone.querySelector('p:first-child span').textContent = data.name;
+    clone.querySelector('p:last-child span').textContent = data.price;
+
+    list.appendChild(clone); // 将激活的内容插入到文档中
+</script>
+```
+
+**在上述示例中**：
+
+- `<template>` 元素用于创建模板。
+- `id="item-template"` 属性用于 JavaScript 获取到 `<template>`。
+- `id="item-list""` 属性用于 JavaScript 获取到 `<ul>`。
+- JavaScript 会动态地将新产生的 `<li>` 元素添加到 `<ul>` 中。
 
 ## `<slot>`
 
 **插槽** [`<slot>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/slot) 是一个在 web 组件内部的占位符，你可以使用自己的标记来填充该占位符，从而创建单独的 DOM 树并将其一起呈现。
 
+默认插槽：
+
+```html
+<!-- 定义模板 -->
+<template id="user-card-template">
+  <div>
+    <slot name="info"></slot>
+    <slot></slot>
+  </div>
+</template>
+
+<!-- 使用自定义元素 -->
+<user-card>
+  <p slot="info">这里是插入到 info 插槽的内容。</p>
+  <p>这是默认插槽的内容。</p>
+</user-card>
+
+<script>
+  class UserCard extends HTMLElement {
+    constructor() {
+      super();
+      // 创建 shadow DOM
+      const shadow = this.attachShadow({ mode: "open" });
+      // 获取模板内容
+      const template = document.getElementById("user-card-template");
+      // 克隆模板并添加到 shadow DOM
+      shadow.appendChild(template.content.cloneNode(true));
+    }
+  }
+
+  // 注册自定义元素
+  customElements.define("user-card", UserCard);
+</script>
+```
+
+> <img src="assets/image-20251013013443718.png" alt="image-20251013013443718" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- `<template>`：模板的结构
+    - `<slot name="info">`：具名插槽，与 `<user-card>` 中的 `<p slot="info">` 关联，接收其内容。
+    - `<slot>`：默认插槽，与 `<user-card>` 中的 `<p>` 关联，接收其内容。
+- `<user-card>`：模板的实例，元素由 JavaScript 定义。
+- 浏览器会根据模板的结构，渲染一个示例。
+
 ## `<canvas>`
 
 **画布** [`<canvas>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/canvas) 元素可被用来通过 JavaScript（[Canvas](https://developer.mozilla.org/zh-CN/docs/Web/API/Canvas_API) API 或 [WebGL](https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API) API）绘制图形及图形动画。
+
+```html
+<canvas id="myCanvas" width="500" height="300">
+  抱歉，您的浏览器不支持 HTML5 canvas 元素。
+</canvas>
+
+<script>
+  // 2. 编写 JavaScript 绘图代码
+  window.onload = function () {
+    // 2.1 获取 Canvas 元素
+    const canvas = document.getElementById("myCanvas");
+
+    // 检查浏览器是否支持 Canvas
+    if (canvas.getContext) {
+      // 2.2 获取 2D 渲染上下文
+      const ctx = canvas.getContext("2d");
+
+      // 2.3 使用上下文绘制图形 (绘制一个红色矩形)
+
+      // 设置填充颜色为红色
+      ctx.fillStyle = "red";
+
+      // 绘制一个填充矩形
+      // 参数：(起始x坐标, 起始y坐标, 宽度, 高度)
+      ctx.fillRect(50, 50, 150, 75);
+    } else {
+      // 如果不支持，则执行备用内容 (浏览器会显示 canvas 标签内部的文本)
+      console.error("您的浏览器不支持 Canvas。");
+    }
+  };
+</script>
+```
+

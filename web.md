@@ -18,3 +18,7 @@ tags:
 > [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary)：Web 相关术语的定义
 
 此部分作为不方便归档的集中收纳。
+
+# 浏览器开发者工具
+
+> [浏览器开发者工具](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto/Tools_and_setup/What_are_browser_developer_tools)

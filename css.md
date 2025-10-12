@@ -82,59 +82,72 @@ tags:
 
 ## 引入方式
 
-- **语法**：实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 可以有不同的引入方式。
-- **内联样式**：元素内部直接使用 `style` 属性定义样式。
+实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 有不同的引入方式：
 
-    ```html
-    <p style="color: red; font-size: 24px;">这是一段红色的文本。</p>
-    ```
+- 内联样式
+- 内部样式表
+- 外部样式表
 
-- **内部样式表**：将 CSS 规则集放到 HTML 文档 `<head>` 中的 `<style>` 元素中。
+### 内联样式
 
-    ```html
-    <head>
-    <style>
-      p {
-        color: red;
-        font-size: 24px;
-      }
-    </style>
-    </head>
+元素内部直接使用 `style` 属性定义样式。
 
-    <body>
-    <p>这是一段红色的文本。</p>
-    <style>
-      p {
-        color: red;
-        font-size: 24px;
-      }
-    </style>
-    </body>
-    ```
+```html
+<p style="color: red; font-size: 24px;">这是一段红色的文本。</p>
+```
 
-- **外部样式表**：在 HTML 文档的 `<head>` 中使用 `<link>` 元素引入外部 **CSS 文档**。
+### 内部样式表
 
-    ```html
-    <head>
-      <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-      <p>这是一段红色的文本。</p>
-    </body>
-    ```
+将 CSS 规则集放到 HTML 文档 `<head>` 中的 `<style>` 元素中。
 
-    ```css
-    p {
-      color: red;
-      font-size: 24px;
-    }
-    ```
+```html
+<head>
+<style>
+  p {
+    color: red;
+    font-size: 24px;
+  }
+</style>
+</head>
 
-- **[导入](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import)**：在 CSS 文档中使用 `@import` 导入另一个 **CSS 文档**
+<body>
+<p>这是一段红色的文本。</p>
+<style>
+  p {
+    color: red;
+    font-size: 24px;
+  }
+</style>
+</body>
+```
 
-    ```css
-    @import 'github-night.css';
-    ```
+### 外部样式表
+
+在 HTML 文档的 `<head>` 中使用 `<link>` 元素引入外部 **CSS 文档**。
+
+```html
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <p>这是一段红色的文本。</p>
+</body>
+```
+
+```css
+p {
+  color: red;
+  font-size: 24px;
+}
+```
+
+### 导入
+
+在 CSS 文档中使用 [`@import`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) 导入另一个 **CSS 文档**。
+
+```css
+@import 'github-night.css';
+```
 
 # [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Types)
 
@@ -355,37 +368,33 @@ tags:
 
 ## [级联层 `@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
 
-# [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)
+# 选择器
 
-## [选择器基础](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors)
+## 选择器基础
 
-- **选择器**用来指定网页上我们想要样式化的 HTML 元素。
-- **选择器的对象**：选择器所选择的元素
-- **选择器种类**
+[**CSS 选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors)规定了 CSS 规则会被应用到哪些元素上。
 
-    - 通用选择器、类型选择器、类选择器、属性选择器、ID选择器、伪类、伪元素
+**常用选择器**：
 
-- <span id="常用选择器">**常用选择器**</span>
+| [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors) | 示例 | 示例说明 | css |
+| :---: | :---: | :---: | :---: |
+| 通用选择器 | `*` | 选择所有元素 | 2 |
+| 元素选择器 | `p` | 选择所有 `<p>`元素 | 1 |
+| 类选择器 | `.class` | 选择所有 `class="class"` 的元素 | 1 |
+| ID选择器 | `#my-id` | 选择所有 `id="my-id"` 的元素 | 1 |
+| 属性选择器 | `img[src]` | 选择所有带有 `src` 属性的 `img` 元素 | 2 |
+| 伪类选择器 | `a:hover` | 选择仅在鼠标指针悬停在链接上时的 `<a>` 元素 |  |
+| ==关系选择器== | | | |
+| 选择器列表 | `div,p` | 选择所有 `<div>` 元素和 `<p>` 元素 | 1 |
+| 组合选择器 | `p.class#id` | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1 |
+| 后代选择器（所有后代） | `div p` | 选择 `<div>` 元素内的所有 `<p>` 元素 | 1 |
+| 子代选择器（直系后代） | `div > p` | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
+| 相邻兄弟选择器 | `div + p` | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
+| 通用兄弟选择器 | `div ~ p` | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
 
-    | [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors) | 示例 | 示例说明 | css |
-    | :---: | :---: | :---: | :---: |
-    | 通用选择器 | `*` | 选择所有元素 | 2 |
-    | 元素选择器 | `p` | 选择所有 `<p>`元素 | 1 |
-    | 类选择器 | `.class` | 选择所有 `class="class"` 的元素 | 1 |
-    | ID选择器 | `#my-id` | 选择所有 `id="my-id"` 的元素 | 1 |
-    | 属性选择器 | `img[src]` | 选择所有带有 `src` 属性的 `img` 元素 | 2 |
-    | 伪类选择器 | `a:hover` | 选择仅在鼠标指针悬停在链接上时的 `<a>` 元素 |  |
-    | ==关系选择器== | | | |
-    | 选择器列表 | `div,p` | 选择所有 `<div>` 元素和 `<p>` 元素 | 1 |
-    | 组合选择器 | `p.class#id` | 选择同时具有 `class="class"`、`id="id"` 属性的所有 `<p>` 元素 | 1 |
-    | 后代选择器（所有后代） | `div p` | 选择 `<div>` 元素内的所有 `<p>` 元素 | 1 |
-    | 子代选择器（直系后代） | `div > p` | 选择 `<div>` 元素内的直系 `<p>` 元素 | 2 |
-    | 相邻兄弟选择器 | `div + p` | 选择 `<div>` 元素之后的第一个 `<p>` 元素 | 2 |
-    | 通用兄弟选择器 | `div ~ p` | 选择 `<div>` 元素之后的所有 `<p>` 元素 | |
+## 元素选择器
 
-## [元素选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)
-
-**元素选择器**：通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
+[**元素选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
 
 **语法**：`元素名 {样式声明}`
 
@@ -399,7 +408,9 @@ p {
 }
 ```
 
-## [类选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors)
+## 类选择器
+
+[**类选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Class_selectors)通过元素的 `class` 属性的内容选择元素。
 
 **语法**：`.类名 {样式声明}`
 
@@ -414,9 +425,9 @@ p {
 }
 ```
 
-## [属性选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)
+## 属性选择器
 
-**属性选择器**：通过**元素名**和**元素属性**选择元素。
+[**属性选择器**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)通过**元素名**和**元素属性**选择元素。
 
 **语法**：`元素名[元素属性/属性名值对] {样式声明}`
 
@@ -439,9 +450,9 @@ a[href="https://example.org"]
 }
 ```
 
-## [ID 选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)
+## ID 选择器
 
-ID **选择器**：通过**元素 ID**选择元素。
+[**ID 选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)通过**元素 ID**选择元素。
 
 **语法**：`#id值 {样式声明}`
 
@@ -457,13 +468,13 @@ ID **选择器**：通过**元素 ID**选择元素。
 }
 ```
 
-## [关系选择器](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Combinators)
+## 关系选择器
 
-**关系选择器**：通过具有逻辑关系的一个元素，选择另一个元素；又称*组合器*；详见 [`常用选择器`](#常用选择器)。
+[**关系选择器**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Combinators)通过具有逻辑关系的一个元素，选择另一个元素；又称*组合器*；详见 `选择器基础 | 常用选择器`。
 
-## [选择器列表](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Selector_list)
+## 选择器列表
 
-**选择器列表**：选择满足条件之一的所有元素，即 `或`。
+[**选择器列表**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Selector_list)选择满足条件之一的所有元素，即 `或`。
 
 **语法**：多个选择器用 `,` 分隔，`选择器1,选择器2...选择器n {样式声明}`
 
@@ -502,11 +513,11 @@ div {
 
 > ![image-20241129210614262](assets/image-20241129210614262.png)
 
-## [伪类](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes)
+## 伪类
 
-### 伪类语法
+### 语法
 
-**伪类**：用来样式化一个元素的特定状态。例如 `:hover` 伪类会在鼠标悬停到一个元素上时选择这个元素。
+[**伪类**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes)用来样式化一个元素的特定状态。例如 `:hover` 伪类会在鼠标悬停到一个元素上时选择这个元素。
 
 **语法**：`选择器:伪类名`
 
@@ -520,31 +531,16 @@ a:hover {
 }
 ```
 
-### `:after`
+### 其它伪类
 
-**`:after` 伪类**自动为元素里的文字末尾添加内容
+- [伪类索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes#%E5%AD%97%E6%AF%8D%E7%B4%A2%E5%BC%95)
+- 更多...
 
-```html
-<span>中国联通</span>
-```
+## 伪元素
 
-```css
-span {
-  font-size: 100px;
-  background-color: green;
-}
-span:after {
-  content: "公司";
-}
-```
+### 语法
 
-- 添加之后页面将展示“中国联通公司”
-- 注意 `content` 的属性值要加引号
-- 可以加内容，也可加其它 style，详见清除浮动。
-
-## [伪元素](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)
-
-**伪元素**：用来修改一个*元素的特定部分*的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
+[**伪元素**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements)用于修改一个*元素的特定部分*的样式。例如 `::first-line` 伪元素会选择这个元素的第一行。
 
 **语法**：`选择器::伪元素名`
 
@@ -560,8 +556,31 @@ p::first-line {
 }
 ```
 
-**[伪元素索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#字母索引)**：
+### `::after`
 
+[`::after`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::after) 伪元素自动为元素里的文字末尾添加内容
+
+```html
+<span>中国联通</span>
+```
+
+```css
+span {
+  font-size: 100px;
+  background-color: green;
+}
+span::after {
+  content: "公司";
+}
+```
+
+- 添加之后页面将展示“中国联通公司”
+- 注意 `content` 的属性值要加引号
+- 可以加内容，也可加其它 style，详见清除浮动。
+
+### 其它伪元素
+
+- **[伪元素索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#字母索引)**
 - [**`::placeholder`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::placeholder)：占位文本
 - [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
 - 更多...

@@ -32,103 +32,75 @@ tags:
 
 ## 环境搭建
 
-安装 Node.js，详见 `Node.js` 笔记。
+安装 Node.js，详见 [`Node.js`](node-js.md#环境搭建) 笔记。
 
-## pnpm
 
-`pnpm` 是一个快速、节省磁盘空间的 JavaScript 包管理器，它是 `npm` 和 `yarn` 的替代品。
 
-- 安装
+## 引入方式
 
-    ```bash
-    pnpm install -g pnpm
-    ```
+### 内联事件处理
 
-- 命令
+HTML 元素内部直接使用 JavaScript 代码添加事件。
 
-    ```bash
-    # 查看 pnpm 版本
-    pnpm -v
-    # 更新 pnpm 包管理工具到最新版
-    pnpm install -g pnpm
-    # 查看安装过的包
-    pnpm list -g --depth=0
-    ```
+```html
+<button onclick="console.log('按钮被点击了')">点击按钮</button>
+```
 
-## http-server
+### 嵌入式脚本
 
-- **http-server** 是一个基于 Node.js 的简单的静态文件服务器，可以用来快速地在本地启动一个 HTTP 服务器，用于提供静态文件服务。
+将 JavaScript 代码放到在 HTML 文档 `<script>` 元素中。
 
-    ```bash
-    # 安装
-    npm install -g http-server
-    # 启动
-    http-server -p 8080
-    ```
+#### 脚本前置
 
-## axios
+将 `<script>` 放到 `<head>` 中。
 
-- `axios` 是一个基于 Promise 的 HTTP 客户端，用于浏览器和 Node.js 环境。它可以用于发送 HTTP 请求并处理响应，具有简单易用的 API，支持异步操作，并提供了丰富的配置选项和拦截器功能。在前端开发中，`axios` 经常被用来与后端 API 进行数据交互，例如发送 GET、POST、PUT、DELETE 等请求，然后处理服务器返回的数据。
-- Commands
+```html
+<head>
+  <script>
+    console.log("JavaScript in head");
+  </script>
+</head>
 
-    ```bash
-    # Install
-    npm install axios
-    ```
+<body>
+  <h1>欢迎使用JavaScript</h1>
+</body>
+```
 
-## JS 位置
+#### 脚本后置
 
-- **内联事件处理**： HTML 元素内部直接使用 JavaScript 代码添加事件。
+将 `<script>` 放到 `<body>` 底部。
 
-    ```html
-    <button onclick="console.log('按钮被点击了')">点击按钮</button>
-    ```
+```html
+<body>
+  <h1 id="title">欢迎使用JavaScript</h1>
+  <script>
+    document.getElementById("title").style.color = "green";
+  </script>
+</body>
+```
 
-- **嵌入式脚本**：将 JavaScript 代码放到在 HTML 文档 `<script>` 元素中。
+#### 前置与后置对比
 
-    - **脚本前置**：将 `<script>` 放到 `<head>` 中。
+正常情况，浏览器会按照代码在文件中的顺序加载 HTML。如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。因此，在不带 `async` 或 `defer` 属性时，脚本后置比脚本前置更好。
 
-        ```html
-        <head>
-          <script>
-            console.log("JavaScript in head");
-          </script>
-        </head>
+### 外部脚本
 
-        <body>
-          <h1>欢迎使用JavaScript</h1>
-        </body>
-        ```
+在 HTML 文档的 `<head>` 中使用 `<script>` 元素引入外部 JS 脚本。
 
-    - **脚本后置**：将 `<script>` 放到 `<body>` 底部。
+```html
+<head>
+  <script src="script.js" defer></script>
+</head>
+```
 
-        ```html
-        <body>
-            <h1 id="title">欢迎使用JavaScript</h1>
-            <script>
-                document.getElementById('title').style.color = 'green';
-            </script>
-        </body>
-        ```
+```javascript
+// script.js
+console.log("External JavaScript file");
+```
 
-    - **前置与后置对比**：正常情况，浏览器会按照代码在文件中的顺序加载 HTML。如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。因此，脚本后置比脚本前置更好。
+**在以上代码中**：
 
-- **外部脚本**：在 HTML 文档的 `<head>` 中使用 `<script>` 元素引入外部 **JS 文件**。
-
-    ```html
-    <head>
-      <script src="script.js" defer></script>
-    </head>
-    ```
-
-    ```javascript
-    // script.js
-    console.log("External JavaScript file");
-    ```
-
-    **在以上代码中**：
-
-    1. `difer`：解析渲染 HTML 和加载脚本文件会同时进行（异步加载），HTML 文档解析完毕（`DOMContentLoaded` 事件触发之前）再执行脚本。
+1. `difer`：解析渲染 HTML 和加载脚本文件会同时进行（异步加载），HTML 文档解析完毕（`DOMContentLoaded` 事件触发之前）再执行脚本。
 
 ## 代码规范
 
