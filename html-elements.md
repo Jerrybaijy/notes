@@ -446,32 +446,56 @@ header > time {
 
 ## `<hgroup>`
 
-**标题组**  [`<hgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/hgroup) 元素
+**标题组**  [`<hgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/hgroup) 元素将一个标题与任意次要内容（例如子标题、副标题或口号）组合在一起。
+
+```html
+<hgroup>
+  <h1>Frankenstein</h1>
+  <p>Or: The Modern Prometheus</p>
+</hgroup>
+<p>
+  Victor Frankenstein, a Swiss scientist, has a great ambition: to create
+  intelligent life. But when his creature first stirs, he realizes he has
+  made a monster. A monster which, abandoned by his master and shunned by
+  everyone who sees it, follows Dr Frankenstein to the very ends of the
+  earth.
+</p>
+```
+
+```css
+hgroup {
+  text-align: center;
+}
+
+hgroup h1 {
+  margin-bottom: 0;
+}
+
+hgroup p {
+  margin: 0;
+  font-weight: bold;
+}
+```
+
+> ![image-20251012081618812](assets/image-20251012081618812.png)
 
 ##  `<main>`
 
-**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/header) 元素用于做页面分组，呈现文档的主要内容，可以有各种子内容区段，如 `<article>`、`<section>` 和 `<aside>` 等。
+**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/main) 元素用于做页面分组，呈现文档的主要内容，与  `<header>`、`<nav>` 和 `<footer>`  同等级，可以有各种子内容区段，如 `<article>`、`<section>` 和 `<aside>` 等。不同页面的重复内容不应该包含在其中。
 
 ```html
-<head>
-  <link href="../css/css-test.css" rel="stylesheet" />
-</head>
+<header>Gecko facts</header>
+<main>
+  <p>
+    Geckos are a group of usually small, usually nocturnal lizards. They are
+    found on every continent except Antarctica.
+  </p>
 
-<body>
-  <header>Gecko facts</header>
-
-  <main>
-    <p>
-      Geckos are a group of usually small, usually nocturnal lizards. They are
-      found on every continent except Antarctica.
-    </p>
-
-    <p>
-      Many species of gecko have adhesive toe pads which enable them to climb
-      walls and even windows.
-    </p>
-  </main>
-</body>
+  <p>
+    Many species of gecko have adhesive toe pads which enable them to climb
+    walls and even windows.
+  </p>
+</main>
 ```
 
 ```css
@@ -480,40 +504,87 @@ header {
 }
 ```
 
-> ![image-20241128132615446](assets/image-20241128132615446.png)
-
-**扩展**：
-
-- 主内容中还可以有各种子内容区段，可用 `<article>`、`<section>` 和 `<div>` 等元素表示。
-- 侧边栏 `<aside>`、 独立结构 `<article>`、独立章节 `<section>` 和 `<div>` 经常嵌套在 `<main>` 中。
+> <img src="assets/image-20251012082850249.png" alt="image-20251012082850249" style="zoom: 33%;" />
 
 ## `<nav>`
 
 **导航栏 ** [`<nav>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/nav) 用于在当前文档或其他文档中提供导航链接。导航部分的常见示例是菜单，目录和索引。
 
 ```html
-<head>
-  <link href="../css/css-test.css" rel="stylesheet" />
-</head>
-
-<body>
-  <nav class="crumbs">
-    <ol>
-      <li class="crumb"><a href="#">Bikes</a></li>
-      <li class="crumb"><a href="#">BMX</a></li>
-      <li class="crumb">Jump Bike 3000</li>
-    </ol>
-  </nav>
-
-  <h1>Jump Bike 3000</h1>
-  <p>
-    This BMX bike is a solid step into the pro world. It looks as legit as it
-    rides and is built to polish your skills.
-  </p>
-</body>
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="#">Our team</a></li>
+    <li><a href="#">Projects</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <form>
+    <input type="search" name="q" placeholder="Search query" />
+    <input type="submit" value="Go!" />
+  </form>
+</nav>
 ```
 
-> ![image-20241128130034228](assets/image-20241128130034228.png)
+```css
+nav {
+  background-color: white;
+  padding: 1%;
+}
+
+nav {
+  height: 50px;
+  background-color: #ff80ff;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a {
+  display: inline-block;
+  font-size: 2rem;
+  text-decoration: none;
+  color: black;
+}
+
+nav form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2em;
+}
+
+input {
+  font-size: 1.6rem;
+  height: 32px;
+}
+
+input[type="search"] {
+  flex: 3;
+}
+
+input[type="submit"] {
+  flex: 1;
+  margin-left: 1rem;
+  background: #333;
+  border: 0;
+  color: white;
+}
+```
+
+> ![image-20251012084442839](assets/image-20251012084442839.png)
 
 ## `<section>`
 
@@ -667,65 +738,63 @@ dd {
 
 ## `<figcaption>`
 
+[`<figcaption>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/figcaption) 用来描述其父元素 `<figure>` 里的其余内容的标题或说明。详见 `<figure>` 元素。
+
 ## `<figure>`
 
-**可附标题内容** [`<figure>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/figure) 表示“独立的媒体单元”，是块级元素。可能包含 `<figcaption>` 元素定义的说明内容。
+**可附标题内容** [`<figure>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/figure) 表示“独立的媒体单元”，是块级元素。*可能*包含 `<figcaption>` 元素定义的说明内容。
 
-- **语法**
+```html
+<!-- 一个图注 -->
+<figure>
+  <img src="assets/图片.png" alt="替代" style="width: 40%" />
+  <figcaption style="font-size: 16px; color: gray">图注</figcaption>
+</figure>
 
-    ```html
-    <!-- 一个图注 -->
-    <figure>
-      <img src="assets/图片.png" alt="替代" style="width: 40%" />
-      <figcaption style="font-size: 16px; color: gray">图注</figcaption>
-    </figure>
-    
-    <!-- 多个图注 -->
-    <figure>
-      <img src="assets/图片.png" alt="替代" style="width: 40%" />
-      <figcaption style="font-size: 16px; color: gray">
-        <div>图注</div>
-        <div>图注</div>
-      </figcaption>
-    </figure>
-    ```
+<!-- 多个图注 -->
+<figure>
+  <img src="assets/图片.png" alt="替代" style="width: 40%" />
+  <figcaption style="font-size: 16px; color: gray">
+    <div>图注</div>
+    <div>图注</div>
+  </figcaption>
+</figure>
+```
 
-- **扩展示例**
+**扩展示例**：
 
-    ```html
-    <figure>
-      <img src="../images/elephant-660-480.jpg" alt="Elephant at sunset" />
-      <figcaption>An elephant at sunset</figcaption>
-    </figure>
-    ```
+```html
+<figure>
+  <img src="../images/elephant-660-480.jpg" alt="Elephant at sunset" />
+  <figcaption>An elephant at sunset</figcaption>
+</figure>
+```
 
-    ```css
-    figure {
-      border: thin #c0c0c0 solid;
-      display: flex;
-      flex-flow: column;
-      padding: 5px;
-      max-width: 220px;
-      margin: auto;
-    }
-    
-    img {
-      max-width: 220px;
-      max-height: 150px;
-    }
-    
-    figcaption {
-      background-color: #222;
-      color: #fff;
-      font: italic smaller sans-serif;
-      padding: 3px;
-      text-align: center;
-    }
-    ```
+```css
+figure {
+  border: thin #c0c0c0 solid;
+  display: flex;
+  flex-flow: column;
+  padding: 5px;
+  max-width: 220px;
+  margin: auto;
+}
 
-- **渲染效果**
+img {
+  max-width: 220px;
+  max-height: 150px;
+}
 
-    > ![image-20241128160504158](assets/image-20241128160504158.png)
+figcaption {
+  background-color: #222;
+  color: #fff;
+  font: italic smaller sans-serif;
+  padding: 3px;
+  text-align: center;
+}
+```
+
+> ![image-20241128160504158](assets/image-20241128160504158.png)
 
 ## `<hr>`
 
@@ -1283,25 +1352,16 @@ mark {
 **内容跨越** [`<span>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/span) 元素无语义，用于给段落内的文本加样式，是行内元素。该元素仅应在无其他合适语义元素时使用。
 
 ```html
-<p>
-  Add the <span class="ingredient">basil</span>,
-  <span class="ingredient">pine nuts</span> and
-  <span class="ingredient">garlic</span> to a blender and blend into a paste.
-</p>
-
-<p>
-  Gradually add the <span class="ingredient">olive oil</span> while running the
-  blender slowly.
-</p>
+<p>这是一段<span class="red-text">红色文本</span></p>
 ```
 
 ```css
-span.ingredient {
-  color: #f00;
+.red-text {
+  color: red;
 }
 ```
 
-> ![image-20241128170152520](assets/image-20241128170152520.png)
+> <p>这是一段<span style="color: red">红色文本</span></p>
 
 ## `<strong>`
 
@@ -1315,11 +1375,23 @@ span.ingredient {
 
 ## `<sub>`
 
-**下标** [`<sub>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/sub) 元素
+**下标** [`<sub>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/sub) 元素用于指定应显示为下标的行内文本。
+
+```html
+<p>水的分子式是H<sub>2</sub>O</p>
+```
+
+> <p>水的分子式是H<sub>2</sub>O</p>
 
 ## `<sup>`
 
-**上标** [`<sup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/sup) 元素
+**上标** [`<sup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/sup) 元素用于指定应显示为上标的行内文本。
+
+```html
+<p>勾股定理：a<sub>2</sub> + b<sub>2</sub> = c<sub>2</sub></p>
+```
+
+> <p>勾股定理：a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
 
 ## `<time>`
 
@@ -1362,7 +1434,19 @@ span.ingredient {
 
 ## `<wbr>`
 
-**换行机会** [`<wbr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/wbr) 元素
+**换行机会** [`<wbr>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/wbr) （ **W**ord **B**rea**k** **R**ule）元素就是告诉浏览器，当前空间容纳不下这行长内容时，应该在哪换行。
+
+用于在“可能需要换行”的地方添加一个“软换行”点。如果空间足够，它会像一个普通字符一样，也不起任何作用，否则就从此处换行。
+
+```html
+<p>http://thisisalongurlwithoutanyspacesinbetween.com<wbr />/some/path/to/a/very/long/file</p>
+```
+
+> <img src="assets/image-20251012091651100.png" alt="image-20251012091651100" style="zoom:50%;" />
+
+**在上述示例中**：
+
+- 当把浏览器窗口变窄时，即容纳不下一整行 URL 内容，此时会从 `<wbr>` 处换行。
 
 # 编辑
 
@@ -1421,8 +1505,6 @@ span.ingredient {
 <img src="example.jpg" alt="一个展示示例的图像">
 ```
 
-`alt` 属性适用元素：[`<img>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img)、[`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input)、[`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img)
-
 ### `width`
 
 **语法**：[`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性是 HTML 中用于指定元素宽度和高度的属性。
@@ -1444,7 +1526,7 @@ span.ingredient {
 
 > <audio src="music/实验音频.mp3" controls>降级文本</audio>
 
-- `降级文本` 是当浏览器不支持 `<audio>` 元素时的回退
+- `降级文本` 是当浏览器不支持 `<audio>` 元素时的回退，可替换成需要的提示。
 
 ## `<picture>`
 
@@ -1495,27 +1577,123 @@ span.ingredient {
 
 ## `<track>`
 
-**嵌入文本轨** [`<track>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/track) 作为媒体元素 `<audio>` 和 `<video>` 的子元素使用。每个文本轨元素允许你指定一个定时文本轨（或基于时间的数据），可以与媒体元素并行显示，例如在视频上叠加字幕或隐藏式字幕，或与音频轨一起显示。
+**文本轨道** [`<track>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/track) 作为 `<audio>` 和 `<video>` 的子元素使用，为媒体内容添加**定时文本轨道**。
+
+```html
+<video controls src="my_video.mp4">
+  <track kind="captions" src="my_captions.vtt" srclang="zh" default>
+</video>
+```
+
+**在以上示例中**：
+
+- `<video>` 作为播放控件
+- `<track>` 作为 `<video>` 的子元素，从外部引入文本轨道。
 
 ## `<iframe>`
 
-**内联框架** [`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/iframe) 能够将另一个 HTML 页面嵌入到当前页面中。
+**内联框架** [`<iframe>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/iframe) 用于将另一个 HTML 页面嵌入到当前页面中。
+
+```html
+<iframe
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik"
+  width="300"
+  height="200"
+  title="嵌入的谷歌地图"
+  >降级文本
+</iframe>
+```
+
+> <iframe
+>   src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&amp;layer=mapnik"
+>   width="300"
+>   height="200"
+>   title="嵌入的谷歌地图"
+>   >降级文本
+> </iframe>
+
+**在以上示例中**：
+
+- `<iframe>` 作为内联框架
+- `src` 属性指定 URL
+- `title` 属性用于无障碍
+- `降级文本` 是当浏览器不支持 `<iframe>` 元素时的回退，可替换成需要的提示。
 
 ## `<embed>`
 
-**外部内容嵌入** [`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/embed) 能够将外部内容嵌入文档中的指定位置。
+**外部内容嵌入** [`<embed>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/embed) 是一个通用的容器，用于嵌入**任何外部内容**，但主要用于那些需要浏览器插件（如 Flash）才能运行的内容。大多数现代浏览器已**停止支持**或移除了对这些插件的支持。现在更推荐使用 `<video>`、`<audio>` 或 `<canvas>` 等现代 HTML5 元素。
 
 ## `<object>`
 
-**嵌入对象** [`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/object) 表示引入一个外部资源，这个资源可能是一张图片，一个嵌入的浏览上下文，亦或是一个插件所使用的资源。
+**嵌入对象** [`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/object) 用于各种非 HTML 资源的嵌入（如 PDF，Flash 等）。
+
+```html
+<object data="html-elements.pdf" type="application/pdf" width="800" height="600">
+  降级文本
+</object>
+```
+
+**在以上示例中**：
+
+- `<iframe>` 作为内联框架
+- `data` 属性指定资源地址
+- `type` 属性用于指定 `MIME类型`，即 `大类别/子类别`。
+- `降级文本` 是当浏览器不支持 `<iframe>` 元素时的回退，可替换成需要的提示。
 
 ## `<svg>`
 
-[`<svg>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Reference/Elements/svg) 元素
+[`<svg>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Reference/Element/svg) 元素用于嵌入 *SVG 语言*，绘制*二维矢量图形*。
+
+```html
+<svg width="150" height="100" viewBox="0 0 3 2">
+  <rect width="1" height="2" x="0" fill="#008d46" />
+  <rect width="1" height="2" x="1" fill="#ffffff" />
+  <rect width="1" height="2" x="2" fill="#d2232c" />
+</svg>
+```
+
+> <svg width="150" height="100" viewBox="0 0 3 2">
+>   <rect width="1" height="2" x="0" fill="#008d46" />
+>   <rect width="1" height="2" x="1" fill="#ffffff" />
+>   <rect width="1" height="2" x="2" fill="#d2232c" />
+> </svg>
+
+**在以上示例中**：
+
+- `<svg>` 作为外层元素
+- `<svg>` 内部都是 SVG 语言
 
 ## `<math>`
 
-**数学公式** [`<math>`](https://developer.mozilla.org/zh-CN/docs/Web/MathML/Reference/Elements/math) 元素
+**数学公式** [`<math>`](https://developer.mozilla.org/zh-CN/docs/Web/MathML/Reference/Element/math) 元素用于嵌入 *MathML 语言*，编写单个*数学公式*。
+
+```html
+<math>
+  <mrow>
+    <msup>
+      <mi>a</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>+</mo>
+    <msup>
+      <mi>b</mi>
+      <mn>2</mn>
+    </msup>
+    <mo>=</mo>
+    <msup>
+      <mi>c</mi>
+      <mn>2</mn>
+    </msup>
+  </mrow>
+</math>
+```
+
+> <img src="assets/image-20251012092823011.png" alt="image-20251012092823011" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- `<math>` 作为外层元素
+- `<math>` 内部都是 MathML 语言
 
 # 表格
 
@@ -2197,7 +2375,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **在上述示例中**：
 
-- 使用 `disabled` 属性，使用户不能在文本块输入。
+- 使用 `disabled` 属性，使用户不能在文本块输入。
 
 ### 其它属性
 
@@ -2243,6 +2421,11 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 ```
 
 > ![image-20251011090200568](assets/image-20251011090200568.png)
+
+**在上述示例中**：
+
+- 使用 `<fieldset>` 元素对表单控件 `<input>` 进行分组。
+- 使用 `<legend>` 元素为分组添加标题。
 
 ### 其它属性
 
@@ -2499,7 +2682,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 - 使用 `<label>` 元素来标识 `用户名：` 文本。
     - 使用 `for="username"` 属性关联 `<input>` 元素的 `id`。
 - 使用 `<input>` 元素来创建文本输入框。
-    - 使用 `id="username"` 属性接受 `<label>` 元素的 `for` 属性的关联。
+    - 使用 `id="username"` 属性接受 `<label>` 元素的 `for` 属性的关联。
 - 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
 
 **扩展**：如果将 `<input>` 元素嵌套在 `<label>` 元素内部，就不需要使用 `for` 和 `id` 属性，因为它们将自动关联。但这种方式不利于 CSS 样式控制。
@@ -2518,11 +2701,25 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ## `<legend>`
 
-[`<legend>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-legend-Elements)
+[`<legend>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-legend-Elements) 元素表示其父元素 `<fieldset>` 内容的标题，用法见 [`<fieldset>`](#`<fieldset>`) 元素。
 
 ## `<meter>`
 
-[`<meter>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-meter-Elements)
+**标量** [`<meter>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meter) 元素表示在已知范围内的标量值或分数值。
+
+**注意**：不能用 `<meter>` 表示进度（例如进度条），应该使用 `<progress>` 表示进度。
+
+```html
+电池电量：<meter min="0" max="100" value="75">75%</meter>
+```
+
+> 电池电量：<meter min="0" max="100" value="75">75%</meter>
+
+**在以上示例中**：
+
+- `min` 属性表示最小值
+- `max` 属性表示最大值
+- `value` 属性表示当前值
 
 ## `<optgroup>`
 
@@ -2549,7 +2746,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **在上述示例中**：
 
-- 使用 `<optgroup>` 元素的 `label` 属性为 `<select>` 中的 `<option>` 元素创建分组。
+- 使用 `<optgroup>` 元素的 `label` 属性为 `<select>` 中的 `<option>` 元素创建分组。
 
 ### 其它属性
 
@@ -2567,11 +2764,32 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ## `<output>`
 
-[`<output>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-output-Elements)
+[`<output>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/output) 元素表示计算或用户操作的结果。
+
+```html
+<form oninput="result.value=parseInt(a.value)+parseInt(b.value)">
+  <input type="range" name="b" value="50" /> +
+  <input type="number" name="a" value="10" /> =
+  <output name="result"></output>
+</form>
+```
+
+> <img src="assets/image-20251012080523179.png" alt="image-20251012080523179" style="zoom:33%;" />
 
 ## `<progress>`
 
-[`<progress>`](https://html.spec.whatwg.org/multipage/form-Elements.html#the-progress-Elements)
+**进度** [`<progress>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/progress) 元素用来显示一项任务的完成进度。
+
+```html
+当前进度：<progress id="file" max="100" value="70">70%</progress>
+```
+
+> 当前进度：<progress id="file" max="100" value="70">70%</progress>
+
+**在以上示例中**：
+
+- `max` 属性表示最大值
+- `value` 属性表示当前值
 
 ## `<select>`
 
