@@ -12,7 +12,7 @@ tags:
 
 # [CSS](https://developer.mozilla.org/zh-CN/docs/Glossary/CSS)
 
-**CSS**（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式（字体、间距和颜色等）的**样式表语言**；CSS 文件的扩展名为 `.css`。
+**CSS**（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式的**样式表语言**，文件扩展名为 `.css`。
 
 ## CSS 资源
 
@@ -297,27 +297,81 @@ p {
 
 待整理
 
-# [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+# 层叠、优先级与继承
 
-创建了多个应用于同一个元素的规则时，层叠、优先级与继承共同决定了系统会使用哪条规则。
+[**层叠、优先级与继承**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)：创建了多个应用于同一个元素的规则时，三者共同决定了系统会使用哪条规则。
 
-## [层叠](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)
+## 层叠
 
-- **层叠**：当两条同级别的规则应用到同一个元素的时候，写在后面的就是实际使用的规则。
-- 规则覆盖：不会覆盖所有规则，只覆盖相同的属性。
-- 有三个因素需要考虑，根据重要性排序如下，后面的更重要：
+[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)描述了*不同来源*的样式规则如何堆叠在一起。主要涉及三个因素：
 
-    - **层叠顺序**
-    - **优先级**
-    - **重要程度**
-- 假如层叠顺序相等，则使用哪个值取决于优先级。
+- 样式来源
+- 优先级
+- `!important`
+
+### 样式来源
+
+样式可以来自不同的地方，它们的优先级从高到低通常是：
+
+1. **用户自定义的重要样式 (`!important`)**：用户在浏览器中设置的样式，并且带有 `!important` 声明。
+2. **作者重要样式 (`!important`)**：网页开发者（作者）编写的 CSS 中带有 `!important` 的样式。
+3. **作者常规样式 (Normal)**：网页开发者编写的常规 CSS 样式。
+4. **用户常规样式 (Normal)**：用户在浏览器中设置的常规样式（例如，浏览器的可访问性设置）。
+5. **浏览器默认样式 (User Agent)**：浏览器自带的默认样式（例如，`<h1>` 标签默认是粗体大字）。
+
+## 层叠
+
+### 层叠
+
+[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)：当两条同级别的规则应用到同一个元素的时候，写在后面的就是实际使用的规则。
+
+**规则覆盖**：不会覆盖所有规则，只覆盖相同的属性。
+
+```html
+<p>这是一个段落</p>
+```
+
+```css
+p{
+  background-color: aqua;
+  color: green;
+}
+
+p{
+  color: red;
+}
+```
+
+> <img src="assets/image-20251013074554767.png" alt="image-20251013074554767" style="zoom: 67%;" />
+
+**在以上示例中**：
+
+- 第二条规则的 `color: red;` 声明覆盖了第一条规则的 `color: green;` 声明。
+- 第二条规则没有覆盖第一条规则的 `background-color: aqua;` 声明。
+
+### 层叠顺序
+
+[**层叠顺序**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade#层叠顺序)决定层叠的级别，比如：`!important` > 普通。
+
+当层叠顺序相等时，则使用哪个值取决于优先级。
+
+|      |            来源            |   层叠顺序   |
+| :--: | :------------------------: | :----------: |
+|  1   |          用户代理          |     普通     |
+|  2   |            用户            |     普通     |
+|  3   |          页面作者          |     普通     |
+|  4   |          CSS 动画          |    见下节    |
+|  5   |          页面作者          | `!important` |
+|  6   |            用户            | `!important` |
+|  7   |          用户代理          | `!important` |
+|  8   | css 过渡 (css transitions) |              |
 
 ## [优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Specificity)
 
 浏览器是根据**优先级**来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
 
 - **引入方式优先级**
-    - `!important` > 内联样式 > 内部样式表 > 外部样式表 > 浏览器默认样式
+    - `!important` > 内联样式 > 内部样式表 > 外部样式表 > 浏览器的**用户代理样式**
 
 - **同一样式表内优先级**
 
@@ -325,16 +379,12 @@ p {
     - 同一样式表中同一种样式写法，后声明的样式比先声明的优先级高
 
 - **选择器优先级**：一个选择器的优先级可以说是由三个不同的值（或分量）相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：
-
     - **ID**：选择器中包含 ID 选择器则百位得一分。
-
+    
     - **类**：选择器中包含类选择器、属性选择器或者伪类则十位得一分。
-
+    
     - **元素**：选择器中包含元素、伪元素选择器则个位得一分。
-
-        > **备注：**通用选择器（[`*`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Universal_selectors)）、组合符（`+`、`>`、`~`、' '）和调整优先级的选择器（[`:where()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:where)）不会影响优先级。
-
-        > 否定（[`:not()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:not)）和任意匹配（[`:is()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:is)）伪类本身对优先级没有影响，但它们的参数则会带来影响。参数中，对优先级算法有贡献的参数的优先级的最大值将作为该伪类选择器的优先级。
+    
 
 ## [继承](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)
 

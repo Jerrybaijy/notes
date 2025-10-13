@@ -826,9 +826,9 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
 }
 ```
 
-# [MDN](https://developer.mozilla.org/zh-CN/)
+# MDN
 
-**MDN** (**M**ozilla **D**eveloper **N**etwork)，全称 **MDN Web Docs**，是一个为 Web 开发者提供权威的、开放的、免费的技术文档网站。
+[**MDN**](https://developer.mozilla.org/zh-CN/) (**M**ozilla **D**eveloper **N**etwork)，全称 **MDN Web Docs**，是一个为 Web 开发者提供权威的、开放的、免费的技术文档网站。
 
 最初由 **Mozilla 基金会**（也就是开发 Firefox 浏览器的组织）创建和维护，后来，MDN 的发展不再仅仅依赖 Mozilla，而是由 **MDN Web Docs 社区** 维护，并且由 **Mozilla、谷歌、微软、三星等公司**共同支持。
 
@@ -922,7 +922,7 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
         - [使用 HTML 构建 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content)
         - [扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)
         - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto)
-    - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)：开发者的学习路线
+    - [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)：Web 根页面
         - [HTML](https://developer.mozilla.org/zh-CN/docs/Web/HTML)
         - [CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
         - [JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)
@@ -935,23 +935,18 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
     - [游戏开发](https://developer.mozilla.org/zh-CN/docs/Games)
 - [MDN 课程](https://developer.mozilla.org/en-US/curriculum/)（只有英文版才有）
 
-## [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
+## 学习 Web 开发
 
 [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")文档包含[入门模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started)、[核心模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core)、[扩展模块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions)及其它等多个模块。
 
 [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")根页面部分是作为新手的学习路线：
 
-- [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)：`入门模块` 中的 `配置环境`
-- [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)：`入门模块` 中的 `你的第一个网站`，从 0 到 1 创建一个网站，包含 HTML、CSS 和 JavaScript 最基础的内容。
-- [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")：`核心模块` 中的 `使用 HTML 构建内容`
-    - 完
-    
+- [配置环境](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Environment_setup)
+- [Web 入门](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Getting_started/Your_first_website)
+- [HTML——为 Web 提供结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content "使用 HTML 构建 Web")
 - [CSS——为 Web 提供样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics "CSS 构建")：`核心模块` 中的 `CSS 样式基础`
-    - [什么是 CSS？](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/What_is_CSS)
-    - [让我们开始 CSS 的学习之旅](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Getting_started)
-    - [挑战：为传记页面添加样式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Styling_a_bio_page)
     - 
-
+    
 - [JavaScript——动态客户端脚本语言](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting "创建 JavaScript 代码块")：`核心模块` 中的 `使用 JavaScript 添加脚本交互`
 - [Web 表单——操作用户数据](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms "Web 表单构建块")：`扩展模块` 中的 `Web 表单`
 - [无障碍——让每个人都能使用 Web](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility "无障碍")：`核心模块` 中的 `无障碍`
@@ -965,9 +960,9 @@ JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
     - [常见问题](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto "常见问题")：`学习 Web 开发` 中的 `如何解决常见问题`
 
 
-## [面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)
+## 面向开发者的 Web 技术
 
-此部分是作为开发者的学习路线
+[面向开发者的 Web 技术](https://developer.mozilla.org/zh-CN/docs/Web)：Web 根页面
 
 # MongoDB
 
