@@ -21,35 +21,35 @@ tags:
 > [MDN 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
 >
 > <details>
->   <summary>
->     <a
->       href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
->       alt="MDN CSS"
->       title="MDN CSS"
->       >MDN CSS</a
->     >：MDN 关于 CSS 的主页面
->   </summary>
->   <ul>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics"
->         alt="CSS 基础"
->         >CSS 基础</a
->       >：了解 CSS 的含义和最基本用法
->     </li>
->     <li>
->       <a
->         href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS"
->         alt="CSS 学习区"
->         >CSS 学习区</a
->       >：学习 CSS 基础知识
->     </li>
->     <li>
->       <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference"
->         >CSS 参考</a
->       >
->     </li>
->   </ul>
+> <summary>
+>  <a
+>    href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>    alt="MDN CSS"
+>    title="MDN CSS"
+>    >MDN CSS</a
+>  >：MDN 关于 CSS 的主页面
+> </summary>
+> <ul>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics"
+>      alt="CSS 基础"
+>      >CSS 基础</a
+>    >：了解 CSS 的含义和最基本用法
+>  </li>
+>  <li>
+>    <a
+>      href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS"
+>      alt="CSS 学习区"
+>      >CSS 学习区</a
+>    >：学习 CSS 基础知识
+>  </li>
+>  <li>
+>    <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference"
+>      >CSS 参考</a
+>    >
+>  </li>
+> </ul>
 > </details>
 
 ## CSS 注释
@@ -102,22 +102,22 @@ tags:
 
 ```html
 <head>
-<style>
-  p {
-    color: red;
-    font-size: 24px;
-  }
-</style>
+  <style>
+    p {
+      color: red;
+      font-size: 24px;
+    }
+  </style>
 </head>
 
 <body>
-<p>这是一段红色的文本。</p>
-<style>
-  p {
-    color: red;
-    font-size: 24px;
-  }
-</style>
+  <p>这是一段红色的文本。</p>
+  <style>
+    p {
+      color: red;
+      font-size: 24px;
+    }
+  </style>
 </body>
 ```
 
@@ -293,76 +293,300 @@ p {
     - **`bottom`**：下
     - **`left`**：左
 
-# [值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
+# 值和单位
 
-待整理
+[值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)：待整理
 
-# 层叠、优先级与继承
+# 层叠
 
-[**层叠、优先级与继承**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)：创建了多个应用于同一个元素的规则时，三者共同决定了系统会使用哪条规则。
+[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)（Cascading，实际意为“串联或级联”）是 CSS 处理*规则冲突*的核心算法。
 
+## 层叠顺序
 
+>  [**层叠、优先级与继承**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+>
+>  [级联排序顺序](https://drafts.csswg.org/css-cascade-4/#cascade-sort "w3c")
 
-比较样式冲突，依次考虑几种因素：
+层叠的核心算法，依次考虑几种因素：
 
-- 相同因素时
-    - 如果优先级不同，前一种优先级将覆盖后一种优先级。
-    - 如果优先级相同，则考虑下一个因素。
+层叠的总体原则：
 
-- `!important` 标记：
-    - 带有 `!important` 标记的声明
-    - 不带 `!important` 标记的声明
-- 样式来源：
-    - 带有 `!important` 的用户代理样式表
-    - 带有 `!important` 的用户样式表
-    - 带有 `!important` 的作者样式表
-    - 作者样式表
-        - 内部样式表和外部样式表都属于作者样式表，二者平级，当分层相同时，则考虑特异度
-            - 未分层样式
-            - 级联层样式
-    - 用户样式表
-    - 用户代理样式表
-- 特异度：前一种将覆盖后一种（1, 1, 1, 1）
-    - 内联样式
-    - ID
-    - 类、属性、伪类
-    - 元素、伪元素
-- 层叠
-    - 顺序在后的声明
-    - 顺序在前的声明
-- 继承
-    - 父级样式
-    - 默认样式
+- 如果不是同一个因素，前面的因素将覆盖后面的因素
+- 如果是同一个因素，高优先级将覆盖低优先级，详见各因素章节。
 
+影响层叠的因素：
 
-
-
-
-## 层叠
-
-[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)描述了*不同来源*的样式规则如何堆叠在一起。主要涉及三个因素：
-
+- `!important` 标记
 - 样式来源
-- 优先级
-- `!important`
+- 层叠层
+- 特异度
+- 源码顺序
+- 继承
 
-### 样式来源
+## `!important`
 
-样式可以来自不同的地方，它们的优先级从高到低通常是：
+**`!important` 标记**：
 
-1. **用户自定义的重要样式 (`!important`)**：用户在浏览器中设置的样式，并且带有 `!important` 声明。
-2. **作者重要样式 (`!important`)**：网页开发者（作者）编写的 CSS 中带有 `!important` 的样式。
-3. **作者常规样式 (Normal)**：网页开发者编写的常规 CSS 样式。
-4. **用户常规样式 (Normal)**：用户在浏览器中设置的常规样式（例如，浏览器的可访问性设置）。
-5. **浏览器默认样式 (User Agent)**：浏览器自带的默认样式（例如，`<h1>` 标签默认是粗体大字）。
+- **普通声明**：不带有 `!important` 标记的声明，如 `color: red;`。
+- **重要声明**：带有 `!important` 标记的声明，如 `color: red !important;`。
 
-## 层叠
+当一个元素有两个样式声明时，*重要声明*将覆盖*普通声明*。
 
-### 层叠
+```html
+<p>这是一个段落</p>
+```
 
-[**层叠**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade)：当两条同级别的规则应用到同一个元素的时候，写在后面的就是实际使用的规则。
+```css
+p{
+  color: green !important;
+}
 
-**规则覆盖**：不会覆盖所有规则，只覆盖相同的属性。
+p{
+  color: red;
+}
+```
+
+> <img src="assets/image-20251014005522973.png" alt="image-20251014005522973" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- 第一条带有 `!important` 标记的*重要声明*覆盖了第二条的*普通声明*，否则应按规则顺序显示为红色。
+
+## 样式来源
+
+[**样式来源**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts#%E8%A6%86%E7%9B%96%E5%A3%B0%E6%98%8E%E7%9A%84%E9%A1%BA%E5%BA%8F)可以是：
+
+- 作者（开发者）
+- 用户（用户在浏览器中设置）
+- 用户代理（浏览器）
+
+当两个样式声明具有相同的 *`!important`* 标记时，根据*样式来源*判断应该使用哪个声明，前一种覆盖后一种。
+
+- 带有 `!important` 的用户代理声明
+- 带有 `!important` 的用户声明
+- 带有 `!important` 的作者声明
+- 作者声明
+- 用户声明
+- 用户代理声明
+
+## 层叠层
+
+样式来源的*作者样式表*中，将样式分为**未分层样式**和**层叠层样式**。
+
+### 语法
+
+[**层叠层**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Cascade_layers)：CSS [@规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule)中的 [`@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer) 声明了一个*层叠层*。
+
+当两个样式声明具有相同的 *`!important` 标记*、*样式来源* 和 *分层* 时:
+
+- 写在后面的层的优先级将高于写在前面的层
+- 同一层内的规则符合层叠算法
+
+#### 块级语法
+
+```css
+/* ---声明层的顺序--- */
+@layer reset, components, utilities;
+
+/* ---向层叠层添加规则--- */
+
+@layer reset {
+  /* reset 层规则 */
+}
+
+@layer components {
+  /* components 层规则 */
+}
+```
+
+#### 函数导入法
+
+通常用于从外部文件导入样式并将其分配给一个层。
+
+```css
+/* ---声明层，并从外部导入层的规则内容--- */
+@import url("utility-classes.css") layer(utilities);
+
+/* ---向层叠层添加规则--- */
+@layer utilities {
+  /* 这是最高优先级的工具类 */
+}
+```
+
+### 应用场景
+
+- 如果想选中一个元素，在未分层的情况下，必须使用更高的*特异度*。
+- 为了使用更低*特异度*，并将它的影响力限制在一个可控的范围内，应使用层叠层。
+
+```html
+<button id="main-button" class="btn">提交</button>
+```
+
+```css
+/* 声明层级顺序： utilities 优先级高于 base */
+@layer base, utilities;
+
+/* --- base 层 (低优先级) --- */
+@layer base {
+  /* 规则 A: 特异度高 (#ID 选择器) */
+  /* 特异度: (0, 1, 1, 0) */
+  #main-button.btn {
+    background-color: blue;
+    padding: 20px;
+  }
+}
+
+/* --- utilities 层 (高优先级) --- */
+@layer utilities {
+  /* 规则 B: 特异度低 (.类选择器) */
+  /* 特异度: (0, 0, 1, 0) */
+  .btn {
+    background-color: red;
+    padding: 10px;
+  }
+}
+```
+
+**在以上示例中**：
+
+- 如果只有一个 `base` 层叠层，由于 `base` 层中有 `#main-button.btn` 的存在，那就必须在 `base` 层中定义一个更高特异度的声明，这会导致特异度的混乱。
+- 更好的做法：
+    - 定义一个更高优先级的 `utilities` 层
+    - 在 `utilities` 层中定义一个低特异度的 `.btn` 声明，即可生效，并且不会对原 `base` 层的特异度生态产生污染。
+
+### 覆盖
+
+层叠层的普通样式**不会**覆盖未分层的普通样式。
+
+```html
+<p>这是一个段落</p>
+```
+
+```css
+p {
+  color: green;
+}
+
+@layer test {
+  p {
+    color: red;
+  }
+}
+```
+
+> <img src="assets/image-20251014023932146.png" alt="image-20251014023932146" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- 层叠层规则的 `color: red;` 声明不会覆盖未分层规则的 `color: green;` 声明。
+
+### 层叠层顺序
+
+当两个样式声明具有相同的 *`!important`* 标记和*样式来源*时，应根据*层叠层*和*未分层*判断应该使用哪个声明，前一种覆盖后一种：
+
+- 带有 `!important` 的层叠层
+- 带有 `!important` 的未分层
+- 未分层
+- 层叠层
+
+### 嵌套层
+
+层叠层允许[嵌套](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer#嵌套层)，向内层加规则，只需用 `.` 连接这两层。
+
+```css
+@layer framework {
+  @layer layout {
+  }
+}
+
+@layer framework.layout {
+  p {
+    margin-block: 1rem;
+  }
+}
+```
+
+### 匿名层
+
+[**匿名层**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer#匿名层)是并未指定名字的层叠层。除创建后无法向其添加规则外，该层和其他命名层功能一致。
+
+```css
+@layer {
+  p {
+    margin-block: 1rem;
+  }
+}
+```
+
+## 特异度
+
+[**特异度**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Specificity)，即*选择器的优先级*。
+
+[**特异度的计算方法**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts#优先级_2)：特异度是通过给不同的选择器类型赋予不同的“权重”或“分值”来计算的。
+
+当两个样式声明具有相同的 *`!important`* 标记和*样式来源*时，根据*特异度*判断应该使用哪个声明。
+
+通常将特异度表示为四个数字的组合（a, b, c, d），高位覆盖地位：
+
+- 内联样式
+- ID选择器
+- 类选择器、属性选择器、伪类
+- 元素选择器、伪元素
+
+## 源码顺序
+
+**源码顺序**：当两个样式声明具有相同的 *`!important`* 标记、*样式来源*和*特异度*时，*源码顺序*靠后的声明将覆盖靠前的声明。
+
+```html
+<p>这是一个段落</p>
+```
+
+```css
+p{
+  color: green;
+}
+
+p{
+  color: red;
+}
+```
+
+> <img src="assets/image-20251014004747508.png" alt="image-20251014004747508" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- 后面规则的 `color: red;` 声明覆盖了前面规则的 `color: green;` 声明。
+
+## 继承
+
+[**继承**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)：一些设置在父元素上的 CSS 属性是可以被子元素继承的，有些则不能。
+
+CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性都接收这些值。
+
+- [`inherit`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit)：开启继承
+- [`initial`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial)：将继承属性值设置为该属性的默认值
+- [`revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert)：将继承属性值设置为该属性的用户代理样式（即浏览器默认样式）
+- [`unset`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset)：将继承属性重置为自然值，也就是如果属性是自然继承那么就是 `inherit`，否则和 `initial` 一样
+- `all`：重设所有继承属性
+
+```html
+<div style="color: red;">
+
+  <!-- 将 <p> 元素的 color 属性设置为默认值，否则应继承父元素 -->
+  <p style="color: initial;">颜色变化</p>
+
+  <!-- 将 <p> 元素的所有属性设置为默认值，否则应继承父元素 -->
+  <p style="all: initial;">颜色变化</p>
+</div>
+```
+
+## 其它说明
+
+- 内部样式表和外部样式表属于 HTML 的两种引入方式，属于*样式来源*中的*作者样式*，**不会**对层叠产生影响。
+
+### 规则覆盖
+
+**规则覆盖**：不会覆盖所有声明，只覆盖相同的声明。
 
 ```html
 <p>这是一个段落</p>
@@ -385,75 +609,6 @@ p{
 
 - 第二条规则的 `color: red;` 声明覆盖了第一条规则的 `color: green;` 声明。
 - 第二条规则没有覆盖第一条规则的 `background-color: aqua;` 声明。
-
-### 层叠顺序
-
-[**层叠顺序**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Cascade#层叠顺序)决定层叠的级别，比如：`!important` > 普通。
-
-当层叠顺序相等时，则使用哪个值取决于优先级。
-
-|      |            来源            |   层叠顺序   |
-| :--: | :------------------------: | :----------: |
-|  1   |          用户代理          |     普通     |
-|  2   |            用户            |     普通     |
-|  3   |          页面作者          |     普通     |
-|  4   |          CSS 动画          |    见下节    |
-|  5   |          页面作者          | `!important` |
-|  6   |            用户            | `!important` |
-|  7   |          用户代理          | `!important` |
-|  8   | css 过渡 (css transitions) |              |
-
-## [优先级](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Specificity)
-
-浏览器是根据**优先级**来决定当多个规则有不同选择器对应相同的元素的时候需要使用哪个规则。
-
-- **引入方式优先级**
-    - `!important` > 内联样式 > 内部样式表 > 外部样式表 > 浏览器的**用户代理样式**
-
-- **同一样式表内优先级**
-
-    - ID选择器 > 类选择器、属性选择器、伪类 > 标签选择器、伪元素 > 通用选择器、继承
-    - 同一样式表中同一种样式写法，后声明的样式比先声明的优先级高
-
-- **选择器优先级**：一个选择器的优先级可以说是由三个不同的值（或分量）相加，可以认为是百（ID）十（类）个（元素）——三位数的三个位数：
-    - **ID**：选择器中包含 ID 选择器则百位得一分。
-    
-    - **类**：选择器中包含类选择器、属性选择器或者伪类则十位得一分。
-    
-    - **元素**：选择器中包含元素、伪元素选择器则个位得一分。
-    
-
-## [继承](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Inheritance)
-
-- **继承**：一些设置在父元素上的 CSS 属性是可以被子元素继承的，有些则不能。
-- CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性都接收这些值。
-
-    - [`inherit`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/inherit)：开启继承
-    - [`initial`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/initial)：将继承属性值设置为该属性的默认值
-    - [`revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert)：将继承属性值设置为该属性的用户代理样式（即浏览器默认样式）
-    - [`unset`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unset)：将继承属性重置为自然值，也就是如果属性是自然继承那么就是 `inherit`，否则和 `initial` 一样
-    - `all`：重设所有继承属性
-
-- **示例**
-
-    ```html
-    <div style="color: red;">
-    
-      <!-- 将 <p> 元素的 color 属性设置为默认值，否则应继承父元素 -->
-      <p style="color: initial;">颜色变化</p>
-    
-      <!-- 将 <p> 元素的所有属性设置为默认值，否则应继承父元素 -->
-      <p style="all: initial;">颜色变化</p>
-    </div>
-    ```
-
-## [层叠层 `cascade_layers`](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
-
-> [层叠层](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Cascade_layers)
->
-> [@layer](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
-
-## [级联层 `@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer)
 
 # 选择器
 
@@ -515,6 +670,8 @@ p {
 ## 属性选择器
 
 [**属性选择器**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)通过**元素名**和**元素属性**选择元素。
+
+>  参考：[属性选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)
 
 **语法**：`元素名[元素属性/属性名值对] {样式声明}`
 
@@ -618,6 +775,28 @@ a:hover {
 }
 ```
 
+### `:root`
+
+[`:root`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root) 伪类用于声明 *CSS 变量*（自定义属性）。或者选择 `<html>` 元素。
+
+属性名以前缀 `--` 开始，可以通过 [`var()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var) 函数在全文档范围内复用的。
+
+```css
+:root {
+  --main-color: red;
+}
+
+/* 使用变量 */
+#container {
+  backgroud-color: var(--main-color);
+}
+
+/* 修改变量值 */
+.body {
+  --main-color: green;
+}
+```
+
 ### 其它伪类
 
 - [伪类索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-classes#%E5%AD%97%E6%AF%8D%E7%B4%A2%E5%BC%95)
@@ -689,6 +868,10 @@ span::after {
     - **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
     - **三个值**：第一个值应用于 `top`，第二个值应用于 `left` 和 `right`，第三个值应用于 `bottom`.
     - **四个值**：这些值按照 `top`、`right`、`bottom`、`left` 的顺序（顺时针）进行应用。
+
+## CSS-变量
+
+[**CSS 变量**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/--*)是一个自定义属性，详见 [:root](#:root)。
 
 ## [所有属性 `all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all)
 
@@ -1838,13 +2021,15 @@ th {
     }
     ```
 
-# [布局](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout)
+# 布局
 
-## [盒模型](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)
+[**布局**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout)就是将网页内容从无序的堆叠状态，组织成设计稿要求的，有结构、有层次的视觉排列。
 
-### 盒模型概述
+## 盒模型
 
-HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
+### 概述
+
+[**盒模型**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)：HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
 
 <img src="assets/image-20231202143654812.png" alt="image-20231202143654812" style="zoom: 67%;" />
 
@@ -1857,7 +2042,7 @@ HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`�
 
 ### 显示类型
 
-盒模型有两个方面的显示类型，由 `display` 属性控制：
+盒模型有两个方面的**显示类型**，由 `display` 属性控制：
 
 - **外部显示类型**：决定**元素自身**如何参与**父容器的流式布局**，即 `<display-outside>`，详见 `display` 属性。
 - **内部显示类型**：决定**元素内部**的**子元素**使用哪种布局模型进行排列，即 `<display-inside>`，详见 `display` 属性。
@@ -2044,6 +2229,12 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 | `flex` | `block flex` |
 | `grid` | `block grid` |
 | 更多 | ... |
+
+### `inline`
+
+### `block`
+
+### `inline-block`
 
 ## [流式布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow)
 
@@ -2683,6 +2874,40 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
     ```
 
 # 变化
+
+# At-规则
+
+## 语法
+
+[**At 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule)是一个 [CSS 语句](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_语句)，用来指示 CSS 如何运行。
+
+```css
+/* 一般结构 */
+@identifier (RULE);
+
+/* 示例：通知浏览器使用 UTF-8 字符集 */
+@charset "utf-8";
+```
+
+## 嵌套
+
+[**嵌套 at 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#嵌套)
+
+## 条件规则组
+
+[**条件规则组**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#条件规则组)
+
+## `@important`
+
+[`@important`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) 规则用于导入其它样式表。`@important` 必须先于所有其他类型的 at 规则（`@charset` 规则除外）。
+
+```css
+@import "github-night.css";
+```
+
+## 其它-At-规则
+
+- [At 规则索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#%索引)
 
 # 总结
 

@@ -199,8 +199,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -215,9 +214,12 @@
   },
   "active": "0c83986f32d3e4f5",
   "lastOpenFiles": [
-    "assets/image-20251013074554767.png",
     "software.md",
     "css.md",
+    "assets/image-20251014023932146.png",
+    "assets/image-20251014005522973.png",
+    "assets/image-20251014004747508.png",
+    "assets/image-20251013074554767.png",
     "web.md",
     "html-elements.md",
     "javascript.md",
@@ -237,10 +239,6 @@
     "0000.md",
     "html-elements.pdf",
     "中国史主线.md",
-    "assets/image-20251012093418001.png",
-    "assets/image-20251012092823011.png",
-    "assets/image-20251012091651100.png",
-    "assets/image-20251012091435311.png",
     "写作风格.md",
     "其它格式未转换/obsidian-themes/user-base.css",
     "其它格式未转换/obsidian-themes/user-color.css",
