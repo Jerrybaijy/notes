@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#node-js",
+                "query": "file:ja",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -117,7 +117,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -212,7 +213,7 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "0c83986f32d3e4f5",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
     "software.md",
     "css.md",

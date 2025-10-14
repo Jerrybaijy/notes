@@ -10,11 +10,11 @@ tags:
   - web
 ---
 
-# [CSS](https://developer.mozilla.org/zh-CN/docs/Glossary/CSS)
+# CSS
 
-**CSS**（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式的**样式表语言**，文件扩展名为 `.css`。
+[**CSS**](https://developer.mozilla.org/zh-CN/docs/Web/CSS)（**C**ascading **S**tyle **S**heets，层叠样式表），是一种用来为结构化文档（如 HTML 文档或 XML 应用）添加样式的**样式表语言**，文件扩展名为 `.css`。
 
-## CSS 资源
+## 主要资源
 
 > [W3C 官方文档](https://www.w3.org/Style/CSS/current-work "W3C")
 >
@@ -52,250 +52,43 @@ tags:
 > </ul>
 > </details>
 
-## CSS 注释
+## 代码风格
 
-- 单行注释：Ctrl + /    多行注释：Ctrl + Shift + /
+- **大小写**：不敏感，通常全小写。
+- **缩进**：不敏感，通常2个空格。
+- **分号**：行尾不加 `;`
+- **空白行**：不敏感
+- **换行**：不敏感
 
-    ``` css
-    .demo{
-      /* 这是一个单行注释 */
-    
-      /*多行注释第一行
-      多行注释第二行
-      多行注释第三行*/
-    }
-    ```
+## 注释
 
-## [CSS 规则集](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解)
+**CSS 注释**：
 
-- CSS 由一系列规则集组成。
-- **规则集结构**
+- 单行注释：`Ctrl + /`
+- 多行注释：`Ctrl + Shift + /`
 
-    <img src="assets/image-20231205115235248.png" alt="image-20231205115235248" style="height: 300px"/>
+``` css
+.demo{
+  /* 这是一个单行注释 */
 
-    **规则集主要部分有**：
-
-    1. [**选择器**（Selector）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#选择器（selector）)：用于指定为哪种元素添加样式，多个选择器使用 `,` 分隔。
-    2. [**声明**（Declaration）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#声明（declaration）)：即属性名值对，用大括号 `{}` 包含声明，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
-    3. [**属性**（Properties）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性（properties）)：用于指定改变元素的哪种样式
-    4. [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔。
-
-## 引入方式
-
-实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 有不同的引入方式：
-
-- 内联样式
-- 内部样式表
-- 外部样式表
-
-### 内联样式
-
-元素内部直接使用 `style` 属性定义样式。
-
-```html
-<p style="color: red; font-size: 24px;">这是一段红色的文本。</p>
-```
-
-### 内部样式表
-
-将 CSS 规则集放到 HTML 文档 `<head>` 中的 `<style>` 元素中。
-
-```html
-<head>
-  <style>
-    p {
-      color: red;
-      font-size: 24px;
-    }
-  </style>
-</head>
-
-<body>
-  <p>这是一段红色的文本。</p>
-  <style>
-    p {
-      color: red;
-      font-size: 24px;
-    }
-  </style>
-</body>
-```
-
-### 外部样式表
-
-在 HTML 文档的 `<head>` 中使用 `<link>` 元素引入外部 **CSS 文档**。
-
-```html
-<head>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <p>这是一段红色的文本。</p>
-</body>
-```
-
-```css
-p {
-  color: red;
-  font-size: 24px;
+  /*多行注释第一行
+  多行注释第二行
+  多行注释第三行*/
 }
 ```
 
-### 导入
+## 规则集
 
-在 CSS 文档中使用 [`@import`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) 导入另一个 **CSS 文档**。
+CSS 由一系列[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解)组成，规则集结构如下：
 
-```css
-@import 'github-night.css';
-```
+<img src="assets/image-20231205115235248.png" alt="image-20231205115235248" style="height: 300px"/>
 
-# [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Types)
+**规则集主要部分有**：
 
-## [数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)
-
-- **语法**：数据类型 `<number>` 表示一个数字。
-
-- **数字示例**
-
-    ```
-    12          原始的 <integer> 也是 <number>。
-    4.01        正分数
-    -456.8      负分数
-    0           零
-    0.0         零
-    +0.0        带 + 号的零
-    -0.0        带 - 号的零
-    .60         不带零的小数
-    10e3        科学计数法
-    -3.4e-2     复杂的科学记数法
-    ```
-
-## [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
-
-### [长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)
-
-- **语法**：数据类型 `<length>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 和一个长度单位构成。数字为 `0` 时，长度单位是可选的。
-    - 数字与单位之间不能出现空格。
-    - 数字为 `0` 时，长度单位是可选的。
-    - 对于某些 CSS 属性，长度可以是负数。
-
-- **单位**
-
-    - 绝对长度单位
-    - 相对长度单位
-
-### [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%BB%9D%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **绝对长度的区别**
-
-    - 低分辨率设备（如屏幕）与高分辨率设备（如打印机）的锚定方式不同。
-    - 对于低分辨率设备，单位 `px` 代表物理*参考像素*；其他单位是相对于它定义的。在这些设备上，以英寸（`in`）、厘米（`cm`）或毫米（`mm`）描述的尺寸不一定与同名物理单位的尺寸一致。
-    - 对于高分辨率设备，英寸（`in`）、厘米（`cm`）和毫米（`mm`）与物理单位相同。因此，`px` 单位是相对于它们定义的（`1in` 的 1/96）。
-
-- <span id="explanation-of-absolute-length-units">**绝对长度单位说明**</span>
-
-    - 绝对长度是固定值，无法根据用户的设置进行缩放，因此会降低页面友好性。例如，在设置字体大小 `font-size` 相关的长度值时，最好优先选择使用相对长度单位，比如 `em` 或 `rem`。
-
-- **像素 `px`**：对于普通的屏幕，通常是一个设备像素（点）。对于*打印机*和*高分辨率屏幕*，一个 CSS 像素往往占多个设备像素。一般来说，每英寸的像素的数量保持在 96 左右，`1px` = `1in / 96`。
-- **厘米 `cm`**：`1cm` = `96px / 2.54`。
-- **毫米 `mm`**：`1mm` = `1cm / 10`。
-- **四分之一毫米 `Q`**：`1Q` = `1cm / 40`。
-- **英寸 `in`**：`1in` = `2.54cm` = `96px`。
-- **派卡 `pc`**：`1pc` = `12pt` = `1in / 6`。
-- **磅 `pt`**：`1pt` = `1in / 72`。
-
-### [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-#### [基于字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：字体长度根据元素或其父元素当前使用的字体中特定字符或字体属性的大小定义 `<length>` 值。
-- [**`em`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#em)：相对长度单位，基于继承元素的 `font-size` 值。
-- **其它**：[`cap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cap)、[`ch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ch)、[`ex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ex)、[`ic`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ic)、[`lh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#lh)
-
-#### [基于根元素字体](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E6%A0%B9%E5%85%83%E7%B4%A0%E5%AD%97%E4%BD%93%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：根元素字体相对长度单位以根元素的特定字符或字体属性的大小来定义 `<length>` 值。
-- [**`rem`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rem)：相对长度单位，这个单位表示根元素的（通常是 [`html`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)）`font-size` 的计算值。在根元素 `font-size` 中使用时，它代表初始值。常见的浏览器默认值为 `16px`，但用户自定义的偏好设置可能会对此进行修改。
-- **其它**：[`rcap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rcap)、[`rch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rch)、[`rex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rex)、[`ric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#ric)、[`rlh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#rlh)
-
-#### [基于视口](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%9F%BA%E4%BA%8E%E8%A7%86%E5%8F%A3%E7%9A%84%E7%9B%B8%E5%AF%B9%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：视口百分比长度单位基于四种不同的视口尺寸：小（small）、大（large）、动态（dynamic）和默认（default）。允许不同的视口尺寸是为了应对浏览器界面的动态扩展和收缩，以及隐藏和显示下方的内容。
-- [**`vw`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vw)：代表视口初始包含块**宽度**的百分比。
-
-    - `1vw` 是视口宽度的 1%。例如，如果视口宽度为 `800px`，那么属性上的 `50vw` 值就是 `400px`。
-    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svw`、`lvw` 和 `dvw`。`vw` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
-- [**`vh`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vh)：代表视口初始包含块**高度**的百分比。
-    - `1vh` 是视口高度的 1%。例如，如果视口高度为 `300px`，那么属性上的 `70vh` 值就是 `210px`。
-    - 对于小、大和动态视口尺寸，视口百分比单位分别是 `svh`、`lvh` 和 `dvh`。`vh` 表示基于浏览器默认视口尺寸的视口百分比长度单位。
-
-- **其它**：[`vmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmax)、[`vmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vmin)、[`vb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vb)、[`vi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#vi)
-
-#### [容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E5%AE%B9%E5%99%A8%E6%9F%A5%E8%AF%A2%E9%95%BF%E5%BA%A6%E5%8D%95%E4%BD%8D)
-
-- **语法**：使用容器查询对容器应用样式时，可以使用容器查询长度单位。这些单位指定了相对于查询容器尺寸的长度。使用相对于其容器的长度单位的组件在不同容器中使用更灵活，而无需重新计算具体的长度值。更多信息，请参见[容器查询](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_containment/Container_queries)。
-- [`cqw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqw)、[`cqh`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqh)、[`cqi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqi)、[`cqb`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqb)、[`cqmin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmin)、[`cqmax`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#cqmax)
-
-### [插值](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#%E6%8F%92%E5%80%BC)
-
-当包含动画效果时，动画中 `<length>` 的值是由计算出的值应用[插值](https://developer.mozilla.org/zh-CN/docs/Glossary/Interpolation)后得出的浮点实数。插值的速度由动画的[缓动函数](https://developer.mozilla.org/zh-CN/docs/Web/CSS/easing-function)决定。
-
-## [百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)
-
-- **语法**：数据类型 `<percentage>` 由一个 [`<number>`](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)) 具体数值后跟着 `%` 构成。
-
-    - 数字与 `%` 之间不能出现空格。
-    - 对所有属性来说 `<percentage>` 负值都是无效的。
-
-- **关于插值动画的说明**：使用 `<percentage>` 的值可以插值为动画。在这种情况下，它们被内插为实数或浮点数。插值的速度取决于与动画相关联的 [timing function](https://developer.mozilla.org/en-US/docs/Web/CSS/easing-function)。
-
-## [自定义标识符 `<custom-indent>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/custom-ident)
-
-- **语法**：数据类型 `<custom-ident>` 指用户自定义字符串标识符。可以由以下字符组成：
-
-    - 字母 (`A` - `Z`, `a` - `z`)
-    - 十进制数 (`0` - `9`)
-    - 连字符 (`-`)
-    - 下划线 (`_`)
-    - 转义字符 ( `\`)
-    - [Unicode](http://en.wikipedia.org/wiki/Unicode) 编码（格式：转义字符（`\`）后跟 1 到 6 位十六进制数）
-
-- **注意**
-
-    - 第一个字符不能为数字，字符串开头不能是连字符 (`-`) 后跟数字或连字符。
-    - 其它...
-
-## [图像 `<image>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/image)
-
-- **语法**： **`<image>`** 数据类型描述的是 2D 图形。
-- 一个 `<image>` 数据类型可能表示成如下几种类型：
-
-    - 一个图像被引用为 CSS [`<url>`](#[指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)) 数据类型使用 `url()` 方法；
-    - 一个 CSS [`<gradient>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gradient);
-    - 页面的一个部分，定义在 [`element()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/element) 方法中；
-
-## [指针 `<url>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value)
-
-- **语法**：**`<url>`** CSS 数据类型是指向资源的指针。资源可以是图像、视频、CSS 文件、字体文件、SVG 特性等。
-- **属性值**
-
-    - [`<url()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_function)
-    - [`<src()>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/url_value#src)
-
-## [位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value)
-
-- **语法**：`<position>`（或 **`<bg-position>`**）数据类型表示用于设置相对于元素盒子的位置的 2 维空间中的坐标。它被用于 `background-position` 和 `offset-anchor` 属性。
-- **属性值**
-
-    - **`center`**：中
-    - **`top`**：上
-    - **`right`**：右
-    - **`bottom`**：下
-    - **`left`**：左
-
-# 值和单位
-
-[值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)：待整理
+- [**选择器**（Selector）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#选择器（selector）)：用于指定为哪种元素添加样式，多个选择器使用 `,` 分隔。
+- [**声明**（Declaration）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#声明（declaration）)：即属性名值对，用大括号 `{}` 包含声明，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
+- [**属性**（Properties）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性（properties）)：用于指定改变元素的哪种样式
+- [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔。
 
 # 层叠
 
@@ -303,7 +96,7 @@ p {
 
 ## 层叠顺序
 
->  [**层叠、优先级与继承**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+>  [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
 >
 >  [级联排序顺序](https://drafts.csswg.org/css-cascade-4/#cascade-sort "w3c")
 
@@ -853,258 +646,369 @@ span::after {
 
 # 属性
 
-## [属性值定义语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Value_definition_syntax)
+## 属性值
 
-## [简写属性](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Shorthand_properties)
+[**CSS 属性值定义语法**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)（CSS value definition syntax）是用来限定 CSS 属性合法取值的专门语法。
 
-**简写属性**是可以让你同时设置好几个 CSS 属性值的 CSS 属性。
+以下是几个常见的属性值类型：
 
-## 四值语法
+- 关键字，如 `red`
+- 基本数据类型，如 `<length>` 的 `5px`
+- 函数，如 `<color>` 的 `rgb(255 0 153)`
+- 更多...
 
-- **语法**：四值语法是某个属性的**属性值**可以是 `1-4` 个值；此部分是自己总结。
-- **四值语法**
+### 基本数据类型
 
-    - **一个值**：该值将应用于**四条边**。
-    - **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
-    - **三个值**：第一个值应用于 `top`，第二个值应用于 `left` 和 `right`，第三个值应用于 `bottom`.
-    - **四个值**：这些值按照 `top`、`right`、`bottom`、`left` 的顺序（顺时针）进行应用。
+[**CSS 基本数据类型**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)是一种[组合值类型](https://www.w3.org/TR/css3-values/#component-types)。用于定义 CSS 属性和函数可以接受的变量（关键字和单位）的种类。
 
-## CSS-变量
+- [`<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)：数字
+- [`<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)：长度值，由 *`<number>`* 和*长度单位*构成。
+    - [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#绝对长度单位)
+    - [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#相对长度单位)
+- [`<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)：百分比，由 *`<number>`* 和 `%` 构成。
+- [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)：颜色值
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)
+
+### 四值语法
+
+**四值语法**是某个属性的*属性值*，可以是 `1-4` 个值；此部分是自己总结。
+
+- **一个值**：该值将应用于**四条边**。
+- **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
+- **三个值**：第一个值应用于 `top`，第二个值应用于 `left` 和 `right`，第三个值应用于 `bottom`.
+- **四个值**：这些值按照 `top`、`right`、`bottom`、`left` 的顺序（顺时针）进行应用。
+
+## 简写属性
+
+[**简写属性**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Shorthand_properties)是可以让你同时设置好几个 CSS 属性值的 CSS 属性。
+
+## CSS 变量
 
 [**CSS 变量**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/--*)是一个自定义属性，详见 [:root](#:root)。
 
-## [所有属性 `all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all)
+## `align-items`
 
-- CSS **`all`** 简写属性将除了 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 与 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 之外的所有属性重设至其初始值，或继承值。
+[`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 属性用于设置子元素的轴向对齐方式：
 
-## [颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color)
+- 在 Flex 布局中，基于交叉轴；
+- 在 Grid 布局中，基于块向轴。
 
-- **语法**：**`color`** 属性设置元素的文本以及文本装饰的前景色颜色值，并设置 `currentcolor` 值。
-- **属性值**：[`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)
-- 一个 `<color>` 值可以以如下方式定义：
+**属性值**：
 
-    - 通过关键字：[`<named-color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/named-color)（例如 `blue` 和 `pink`）、[`<system-color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/system-color) 和 [`currentcolor`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value#currentcolor_关键字).
-    - 通过十六进制标记：[`<hex-color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/hex-color)（例如 `#ff0000`）。
-    - 通过使用函数标记的颜色空间的参数：
+- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
 
-        - [sRGB](https://zh.wikipedia.org/wiki/SRGB色彩空间) 颜色空间：[`hsl()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/hsl)、[`hwb()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/hwb)、[`rgb()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/rgb)；
-        - [CIELAB](https://zh.wikipedia.org/wiki/CIELAB色彩空间) 颜色空间：[`lab()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/lab)、[`lch()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/lch)；
-        - [Oklab](https://bottosson.github.io/posts/oklab/) 颜色空间：[`oklab()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/oklab)、[`oklch()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/oklch)；
-        - 其他颜色空间：[`color()`](https://developer.mozilla.org/en-US/docs/Web/CSS/color_value/color)。
+    <img src="assets/image-20241203200646038.png" alt="image-20241203200646038" style="zoom:33%;" />
 
-    - 通过混合两个颜色：[`color-mix()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value/color-mix)。
+- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
 
-- **颜色值示例**
+    <img src="assets/image-20241203200725662.png" alt="image-20241203200725662" style="zoom:33%;" />
 
-    ```css
-    /* <named-color> */
-    red
-    blue
-    
-    /* RGB 十六进制 */
-    #f09
-    #ff0099
-    
-    /* RGB（红、绿、蓝） */
-    rgb(255 0 153)
-    rgb(255 0 153 / 80%)
-    
-    /* HSL（色相、饱和度、明度） */
-    hsl(150 30% 60%)
-    hsl(150 30% 60% / 0.8)
-    
-    /* HWB（色相、白度、黑度）*/
-    hwb(12 50% 0%)
-    hwb(194 0% 0% / 0.5)
-    
-    /* LAB（亮度、A 轴、B 轴） */
-    lab(50% 40 59.5)
-    lab(50% 40 59.5 / 0.5)
-    
-    /* LCH（亮度、色度、色相） */
-    lch(52.2% 72.2 50)
-    lch(52.2% 72.2 50 / 0.5)
-    
-    /* Oklab（亮度、A 轴、B 轴） */
-    oklab(59% 0.1 0.1)
-    oklab(59% 0.1 0.1 / 0.5)
-    
-    /* Oklch（亮度、色度、色相） */
-    oklch(60% 0.15 50)
-    oklch(60% 0.15 50 / 0.5)
-    ```
+- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**
 
-## [宽度 `width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)
+    <img src="assets/image-20241203200754334.png" alt="image-20241203200754334" style="zoom:33%;" />
 
-- **语法**：**`width`** 属性*默认*用于设置元素盒模型 `content` 的宽度。
+**示例**：
+
+```html
+<div class="parent">
+  <div class="child">1-block</div>
+  <div class="child">2-block</div>
+  <div class="child">3-block</div>
+</div>
+```
+
+```css
+.parent {
+  width: 500px;
+  height: 100px;
+  border: 2px black solid;
+
+  /* 弹性布局 */
+  display: flex;
+
+  /* 设置对齐方式 */
+  align-items: center;
+}
+
+.child {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+}
+```
+
+## `all`
+
+**所有属性** [`all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all) 是一个简写属性，将除了 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 与 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 之外的所有属性重设至其初始值，或继承值。
+
+## `color`
+
+**前景色** [`color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color) 属性设置元素的文本以及文本装饰的*前景色*颜色值，属性值为 [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)。
+
+## `gap`
+
+**间隔** [`gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap) 是一个 CSS 简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
+
+- [`column-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
+- [`row-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
+
+**注意**：`gap` 属性不适用于流式布局。
+
+## `height`
+
+**高度** [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 用于设置元素盒模型 `content` 的高度。
+
+**注意**：
+
+- `height` 默认设置盒模型 `content` 的高度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
+- `height` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
+
+## `justify-content`
+
+[`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content) 属性用于设置子元素轴向排列方式，以及分配轴向剩余空间：
+
+- 在 Flex 布局中，沿着主轴；
+- 在 Grid 布局中，沿着块向轴。
+
+**属性值**：
+
+- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
+
+    <img src="assets/image-20241203200520694.png" alt="image-20241203200520694" style="zoom:33%;" />
+
+- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列 
+
+    <img src="assets/image-20241203200556497.png" alt="image-20241203200556497" style="zoom:33%;" />
+
+- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
+
+    <img src="assets/image-20241203194626540.png" alt="image-20241203194626540" style="zoom:33%;" />
+
+- **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
+
+    <img src="assets/image-20241203192830779.png" alt="image-20241203192830779" style="zoom:33%;" />
+
+- **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
+
+    <img src="assets/image-20241203193218905.png" alt="image-20241203193218905" style="zoom:33%;" />
+
+- **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：所有空间都相等
+
+    <img src="assets/image-20241203193438718.png" alt="image-20241203193438718" style="zoom:33%;" />
+
+**示例**：
+
+```html
+<div class="parent">
+  <div class="child">1-block</div>
+  <div class="child">2-block</div>
+  <div class="child">3-block</div>
+</div>
+```
+
+```css
+.parent {
+  width: 500px;
+  height: 100px;
+  border: 2px black solid;
+
+  /* 弹性布局 */
+  display: flex;
+
+  /* 设置排列方式 */
+  justify-content: space-between;
+}
+
+.child {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+}
+```
+
+## `width`
+
+**宽度** [`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 用于设置元素盒模型 `content` 的宽度。
+
+**注意**：
+
+- `width` 默认设置盒模型 `content` 的宽度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
+- `width` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
+- `<body>` 元素默认宽度为一整行。
+
+# 样式
+
+## 背景
+
+### `background`
+
+**背景** [`background`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background) 是一个简写属性，用于设置背景。
+
+```css
+body {
+  background: #00ff00 url("images/b.jpg") no-repeat fixed center;
+}
+```
+
+### `background-attachment`
+
+**背景滚动** [`background-attachment`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-attachment) 用于设置背景图像的滚动行为。
+
+**属性值**：
+
+- **`fixed`**：相对于视口固定
+- **`scroll`**：相对于元素本身固定
+- **`local`**：相对于元素的内容固定
+
+### `background-color`
+
+[`background-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-color) 用于设置元素的背景颜色。
+
+**属性值**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
+
+**扩展**：默认情况下，元素的背景是元素的总大小，包括填充和边框（但不包括外边距）
+
+### `background-image`
+
+[`background-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-image) 属性用于为元素设置背景图像。
+
+**属性值**：
+
+- **`none`**：关键字，表示无背景图像。
+- **`<image>`**：标记将要显示的图片
+
+```html
+<div>
+  <p class="catsandstars">This paragraph is full of cats<br />and stars.</p>
+  <p>This paragraph is not.</p>
+  <p class="catsandstars">Here are more cats for you.<br />Look at them!</p>
+  <p>And no more.</p>
+</div>
+```
+
+```css
+p {
+  font-size: 1.5em;
+  color: #fe7f88;
+  background-image: none;
+  background-color: transparent;
+}
+
+div {
+  background-image: url("mdn_logo_only_color.png");
+}
+
+.catsandstars {
+  background-image: url("startransparent.gif"), url("catfront.png");
+  background-color: transparent;
+}
+```
+
+**说明**：
+
+- 默认情况下，元素的背景包括内容区域、内边距（padding），以及边框（border），但不包括外边距（margin）
+- 默认情况下，背景图像进行平铺重复显示，以覆盖整个元素实体。
+
+### `background-origin`
+
+**背景初始位置** [`background-origin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-origin) 用于设置背景原点位置。
+
+### `background-position`
+
+**背景位置** [`background-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position) 用于设置背景图片的初始位置。这个位置是相对于由 `background-origin` 定义的位置图层的。
+
+**属性值**：可用一个或两个 [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value)) 关键字指定，关键字可选带不带偏移量。
+
+- **关键字**
+
+    - [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value))
+
+- **偏移量**
+
+    - [`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+    - [`<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
+
+**说明**
+
+- **一个关键字**：用于指定 `x` 轴坐标，`y` 轴的值默认为 `center`。
+- **两个关键字**：用于指定 `x` 和 `y` 轴坐标，用空格分隔。
+
+**图例**：
+
+<img src="assets/position_type.png" alt="背景位置" style="width: 50%"/>
+
+### `background-repeat`
+
+**背景平铺** [`background-repeat`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-repeat) 用于设置如何平铺对象的 `background-image` 属性。
+
 - **属性值**
 
-    - **值**
+    -  **`repeat-x`**：水平
+    -  **`repeat-y`**：垂直
+    -  **`no-repeat`**：不平铺
+    -  其它...
 
-        - [**`长度值 <length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：使用绝对值定义宽度。
-        - [**`百分比 <percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于外层元素的容纳区块宽度。
+- **说明**：默认水平和垂直平铺
 
-    - **关键字**
+### `background-size`
 
-      - [**`auto`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width#auto)
-      - [**`fit-content`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width#fit-content)
+**背景大小** [`background-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size) 用于设置背景图片大小。
 
-- **注意：**
+**属性值**：
 
-    - `width` 默认设置盒模型 `content` 的宽度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
-    - `width` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
-    - `<body>` 元素默认宽度为一整行，无默认高度。
+- 设定宽度和高度值
 
-## [高度 `height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width)
+    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+    - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
 
-- **语法**：**`height`** 属性默认用于设置元素的内容区域高度。
-- **属性值**
+- 关键词 [`cover`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#cover)
+- 关键词 [`contain`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#contain)
 
-    - [**`长度值 <length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：使用绝对值定义高度。
-    - [**`百分比 <percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于外层元素的容纳区块高度。
-    - `auto`
-    - `fit-content`
+**说明**：当通过宽度和高度值来设定尺寸时，可以提供一或者两个数值
 
-- **注意：**
+- 如果仅有一个数值被给定，这个数值将作为宽度值大小，高度值将被设定为 `auto`。
+- 如果有两个数值被给定，第一个将作为宽度值大小，第二个作为高度值大小。
 
-    - `height` 默认设置盒模型 `content` 的高度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
-    - `height` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
-    - `<body>` 元素默认高度为一整行，无默认高度
+## 边框
 
-## [间隔 `gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap)
+### `border`
 
-- `gap` 属性是一个 CSS 简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
+**边框** [`border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border) 是一个简写属性，用于设置所有边框的一个或多个以下属性的值：
 
-    - [`column-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
-    - [`row-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
+- [`border-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-width)
+- [`border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style)
+- [`border-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color)
 
-- **语法**
+设置一条边框：
 
-    - `gap: gap值;`
-    - `gap: column-gap值 row-gap值;`
+- [`border-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top)
+- [`border-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right)
+- [`border-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom)
+- [`border-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left)
 
-- **属性值**：
+### `border-radius`
 
-    - 数据类型：`<length>` | `<percentage>` | `calc();`
-    - 默认：0
+**边框圆角** [`border-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius) 是一个简写属性，用于设置所有边框圆角。
 
-- **注意**：`gap` 属性不适用于流式布局。
+- [`border-top-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-left-radius)
+- [`border-top-right-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius)
+- [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius)
+- [`border-bottom-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-left-radius)
 
-## [`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)
+**属性值**：当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。
 
-- **语法**：**`justify-content`** 属性设置子元素轴向排列方式，以及分配轴向剩余空间：
+- [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+- [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
 
-    - 在 Flex 布局中，沿着主轴；
-    - 在 Grid 布局中，沿着块向轴。
+**边框圆角示例**：
 
-- **属性值**
+```css
+border-radius: 30px;
 
-    - **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
-
-        <img src="assets/image-20241203200520694.png" alt="image-20241203200520694" style="zoom:33%;" />
-
-    - **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列 
-
-        <img src="assets/image-20241203200556497.png" alt="image-20241203200556497" style="zoom:33%;" />
-
-    - **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
-
-        <img src="assets/image-20241203194626540.png" alt="image-20241203194626540" style="zoom:33%;" />
-
-    - **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
-
-        <img src="assets/image-20241203192830779.png" alt="image-20241203192830779" style="zoom:33%;" />
-
-    - **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
-
-        <img src="assets/image-20241203193218905.png" alt="image-20241203193218905" style="zoom:33%;" />
-
-    - **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：所有空间都相等
-
-        <img src="assets/image-20241203193438718.png" alt="image-20241203193438718" style="zoom:33%;" />
-
-- **示例**
-
-    ```html
-    <div class="parent">
-      <div class="child">1-block</div>
-      <div class="child">2-block</div>
-      <div class="child">3-block</div>
-    </div>
-    ```
-
-    ```css
-    .parent {
-      width: 500px;
-      height: 100px;
-      border: 2px black solid;
-    
-      /* 弹性布局 */
-      display: flex;
-    
-      /* 设置排列方式 */
-      justify-content: space-between;
-    }
-    
-    .child {
-      width: 100px;
-      height: 50px;
-      border: 1px black solid;
-      background-color: purple;
-    }
-    ```
-
-## [`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)
-
-- **语法**：**`align-items`** 属性设置子元素的轴向对齐方式：
-
-    - 在 Flex 布局中，基于交叉轴；
-    - 在 Grid 布局中，基于块向轴。
-
-- **属性值**
-
-    - **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
-
-        <img src="assets/image-20241203200646038.png" alt="image-20241203200646038" style="zoom:33%;" />
-
-    - **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
-
-        <img src="assets/image-20241203200725662.png" alt="image-20241203200725662" style="zoom:33%;" />
-
-    - **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**
-
-        <img src="assets/image-20241203200754334.png" alt="image-20241203200754334" style="zoom:33%;" />
-
-- **示例**
-
-    ```html
-    <div class="parent">
-      <div class="child">1-block</div>
-      <div class="child">2-block</div>
-      <div class="child">3-block</div>
-    </div>
-    ```
-
-    ```css
-    .parent {
-      width: 500px;
-      height: 100px;
-      border: 2px black solid;
-    
-      /* 弹性布局 */
-      display: flex;
-    
-      /* 设置对齐方式 */
-      align-items: center;
-    }
-    
-    .child {
-      width: 100px;
-      height: 50px;
-      border: 1px black solid;
-      background-color: purple;
-    }
-    ```
+border-radius: 25% 10%;
+```
 
 # 文本样式
 
@@ -1112,7 +1016,7 @@ span::after {
 
 ### [文本水平对齐 `text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)
 
-- **语法**：`text-align` 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容**的**水平对齐**。
+- **语法**：`text-align` 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
 - **属性值**
 
     - `left`：左对齐
@@ -1514,7 +1418,7 @@ span::after {
 
     - **`text-decoration-line: underline;`**：下划线
     - **`color: #0000EE;`**：蓝色
-    - **`backgroud: #0000EE;`**：蓝色
+    - **`background: #0000EE;`**：蓝色
     - **`background: url("external-link-52.png") no-repeat 100% 0;`**：[在链接上加图标](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E5%9C%A8%E9%93%BE%E6%8E%A5%E4%B8%AD%E5%8C%85%E5%90%AB%E5%9B%BE%E6%A0%87)
     - **`cursor: auto;`**：光标
     - **`outline`**：轮廓
@@ -1876,134 +1780,6 @@ th {
     }
     ```
 
-## [背景](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Backgrounds_and_borders#css_%E7%9A%84%E8%83%8C%E6%99%AF%E6%A0%B7%E5%BC%8F)
-
-### [背景简写 `background`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background)
-
-- **语法**：`background` 属性用于在一个声明中设置多个属性。
-
-    ```css
-    body {
-      background: #00ff00 url("images/b.jpg") no-repeat fixed center;
-    }
-    ```
-
-### [背景颜色 `background-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-color)
-
-- **语法**：**`background-color`** CSS 属性设置元素的背景色。
-- **属性值**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
-- **扩展**：默认情况下，元素的背景是元素的总大小，包括填充和边框（但不包括外边距）
-
-### [背景图像 `background-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-image)
-
-- **语法**：**`background-image`** 属性用于为元素设置背景图像。
-- **属性值**
-
-    - **`none`**：关键字，表示无背景图像。
-    - **`<image>`**：标记将要显示的图片
-
-- **背景图像示例**
-
-    ```html
-    <div>
-      <p class="catsandstars">This paragraph is full of cats<br />and stars.</p>
-      <p>This paragraph is not.</p>
-      <p class="catsandstars">Here are more cats for you.<br />Look at them!</p>
-      <p>And no more.</p>
-    </div>
-    ```
-
-    ```css
-    p {
-      font-size: 1.5em;
-      color: #fe7f88;
-      background-image: none;
-      background-color: transparent;
-    }
-
-    div {
-      background-image: url("mdn_logo_only_color.png");
-    }
-
-    .catsandstars {
-      background-image: url("startransparent.gif"), url("catfront.png");
-      background-color: transparent;
-    }
-    ```
-
-- **说明**
-
-    - 默认情况下，元素的背景包括内容区域、内边距（padding），以及边框（border），但不包括外边距（margin）
-    - 默认情况下，背景图像进行平铺重复显示，以覆盖整个元素实体。
-
-### [背景平铺 `background-repeat`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-repeat)
-
-- **语法**：**`background-repeat`** 设置如何平铺对象的 `background-image` 属性。
-- **属性值**
-
-    -  **`repeat-x`**：水平
-    -  **`repeat-y`**：垂直
-    -  **`no-repeat`**：不平铺
-    - 其它...
-
-- **说明**：默认水平和垂直平铺
-
-### [背景滚动 `background-attachment`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-attachment)
-
-- **语法**：**`background-attachment`** 属性设置背景图像的滚动行为。
-- **属性值**
-
-    - **`fixed`**：相对于视口固定
-    - **`scroll`**：相对于元素本身固定
-    - **`local`**：相对于元素的内容固定
-
-- **示例**
-
-### [背景初始位置 `background-origin`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-origin)
-
-- **语法**：`background-origin` 属性背景原点位置。
-
-### [背景位置 `background-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-position)
-
-- **语法**：**`background-position`** 属性为背景图片设置初始位置。这个位置是相对于由 `background-origin` 定义的位置图层的。
-- **属性值**：可用一个或两个 [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value)) 关键字指定，关键字可选带不带偏移量
-
-    - **关键字**
-
-        - [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value))
-
-    - **偏移量**
-
-        - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-        - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
-
-- **说明**
-
-    - **一个关键字**：用于指定 `x` 轴坐标，`y` 轴的值默认为 `center`。
-    - **两个关键字**：用于指定 `x` 和 `y` 轴坐标，用空格分隔。
-
-- **图例**
-
-    <img src="assets/position_type.png" alt="背景位置" style="width: 50%"/>
-
-### [背景大小 `background-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size)
-
-- **语法**：`background-size` 属性用于设置背景图片大小。
-- **属性值**
-
-    - 设定宽度和高度值
-
-        - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-        - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
-
-    - 关键词 [`cover`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#cover)
-    - 关键词 [`contain`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#contain)
-
-- **说明**：当通过宽度和高度值来设定尺寸时，可以提供一或者两个数值
-
-    - 如果仅有一个数值被给定，这个数值将作为宽度值大小，高度值将被设定为 `auto`。
-    - 如果有两个数值被给定，第一个将作为宽度值大小，第二个作为高度值大小。
-
 ## 轮廓 `outline`
 
 - 轮廓 outline 属性用于绘制元素周围的轮廓线，可起到突出元素的作用。
@@ -2096,47 +1872,6 @@ th {
 - 两个正外边距将合并为一个外边距。其大小等于最大的单个外边距。
 - 两个负外边距会折叠，并使用最小（离零最远）的值。
 - 如果其中一个外边距为负值，其值将从总值中*减去*。
-
-### [`border`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border)
-
-#### 语法
-
-边框 `border` 属性是一个 CSS 简写属性，用于设置所有边框。
-
-设置所有边框的一个或多个以下属性的值：
-
-- [`border-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-width)
-- [`border-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-style)
-- [`border-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-color)
-
-设置一条边框：
-
-- [`border-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top)
-- [`border-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-right)
-- [`border-bottom`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom)
-- [`border-left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-left)
-
-#### [`border-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-radius)
-
-边框圆角 `border-radius` 属性是一个 CSS 简写属性，用于设置所有边框圆角。
-
-- [`border-top-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-left-radius)
-- [`border-top-right-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-top-right-radius)
-- [`border-bottom-right-radius`](https://developer.mozilla.org/en-US/docs/Web/CSS/border-bottom-right-radius)
-- [`border-bottom-left-radius`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-bottom-left-radius)
-
-**属性值**：当使用一个半径时确定一个圆形，当使用两个半径时确定一个椭圆。
-
-- [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-- [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
-
-**边框圆角示例**
-
-```css
-border-radius: 30px;
-
-border-radius: 25% 10%;
-```
 
 ### [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
 
@@ -2875,7 +2610,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 # 变化
 
-# At-规则
+# At 规则
 
 ## 语法
 

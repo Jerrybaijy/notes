@@ -10,15 +10,15 @@ tags:
   - web
 ---
 
-# [HTML](https://developer.mozilla.org/zh-CN/docs/Glossary/HTML)
+# HTML
 
-**HTML**（**H**yper **T**ext **M**arkup **L**anguage，超文本标记语言），是一种用来定义 Web 网页**结构**和**语义**的**标记语言**。
+[**HTML**](https://developer.mozilla.org/zh-CN/docs/Web/HTML)（**H**yper **T**ext **M**arkup **L**anguage，超文本标记语言），是一种用来定义 Web 网页**结构**和**语义**的**标记语言**。
 
 HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web 服务器](https://developer.mozilla.org/zh-CN/docs/Glossary/Server)中下载，并使用任一 [Web 浏览器](https://developer.mozilla.org/zh-CN/docs/Glossary/Browser)来解析和显示这些文件。
 
 本笔记只记录 [HTML 语法](https://html.spec.whatwg.org/multipage/#toc-syntax "WHATWG HTML 语法")，关于 HTML 元素和属性，详见各自笔记。
 
-## HTML 资源
+## 主要资源
 
 **HTML 资源**：
 
@@ -138,14 +138,162 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写，但新版本的 (X)HTML 要求使用小写属性。
-- **缩进**：不敏感，通常2个空格
+- **缩进**：不敏感，通常2个空格。
 - **分号**：行尾不加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
 
-## [实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)
+## 注释
 
-**HTML 实体**（也叫 `字符引用`）：是一段以符号 `&` 开始，以 `;` 结束的文本（字符串）。
+[**HTML 注释**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Comments)：
+
+- 单行注释：`Ctrl + / `
+- 多行注释：`Ctrl + Shift + /`
+
+```html
+<div>
+  <!-- 这是一个单行注释 -->
+  <h1>Hello, World!</h1>
+    
+  <!--
+  多行注释第一行
+  多行注释第二行
+  多行注释第三行
+  -->
+  <h1>Hello, World!</h1>
+</div>
+```
+
+## 引入 CSS
+
+实际上 CSS 就是 HTML 元素的 **`style` 属性**，对于 HTML 而言，CSS 有不同的引入方式：
+
+- 内联样式
+- 内部样式表
+- 外部样式表
+
+### 内联样式
+
+元素内部直接使用 `style` 属性定义样式。
+
+```html
+<p style="color: red; font-size: 24px;">这是一段红色的文本。</p>
+```
+
+### 内部样式表
+
+将 CSS 规则集放到 HTML 文档 `<head>` 中的 `<style>` 元素中。
+
+```html
+<head>
+  <style>
+    p {
+      color: red;
+      font-size: 24px;
+    }
+  </style>
+</head>
+
+<body>
+  <p>这是一段红色的文本。</p>
+  <style>
+    p {
+      color: red;
+      font-size: 24px;
+    }
+  </style>
+</body>
+```
+
+### 外部样式表
+
+在 HTML 文档的 `<head>` 中使用 `<link>` 元素引入外部 **CSS 文档**。
+
+```html
+<head>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <p>这是一段红色的文本。</p>
+</body>
+```
+
+```css
+p {
+  color: red;
+  font-size: 24px;
+}
+```
+
+## 引入 JavaScript
+
+### 内联事件处理
+
+HTML 元素内部直接使用 JavaScript 代码添加事件。
+
+```html
+<button onclick="console.log('按钮被点击了')">点击按钮</button>
+```
+
+### 嵌入式脚本
+
+将 JavaScript 代码放到在 HTML 文档 `<script>` 元素中。
+
+#### 脚本前置
+
+将 `<script>` 放到 `<head>` 中。
+
+```html
+<head>
+  <script>
+    console.log("JavaScript in head");
+  </script>
+</head>
+
+<body>
+  <h1>欢迎使用JavaScript</h1>
+</body>
+```
+
+#### 脚本后置
+
+将 `<script>` 放到 `<body>` 底部。
+
+```html
+<body>
+  <h1 id="title">欢迎使用JavaScript</h1>
+  <script>
+    document.getElementById("title").style.color = "green";
+  </script>
+</body>
+```
+
+#### 前置与后置对比
+
+正常情况，浏览器会按照代码在文件中的顺序加载 HTML。如果先加载的 JavaScript 期望修改其下方的 HTML，那么它可能由于 HTML 尚未被加载而失效。因此，在不带 `async` 或 `defer` 属性时，脚本后置比脚本前置更好。
+
+### 外部脚本
+
+在 HTML 文档的 `<head>` 中使用 `<script>` 元素引入外部 JS 脚本。
+
+```html
+<head>
+  <script src="script.js" defer></script>
+</head>
+```
+
+```javascript
+// script.js
+console.log("External JavaScript file");
+```
+
+**在以上代码中**：
+
+- `difer`：解析渲染 HTML 和加载脚本文件会同时进行（异步加载），HTML 文档解析完毕（`DOMContentLoaded` 事件触发之前）再执行脚本。
+
+## 实体
+
+[**HTML 实体**](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity)（也叫 `字符引用`）：是一段以符号 `&` 开始，以 `;` 结束的文本（字符串）。
 
 在 HTML 中，某些特殊字符是 HTML 语法自身的一部分，如果想将这些字符包含进文本中，必须使用 `HTML 实体`。
 
@@ -170,43 +318,25 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 | `&` | `&amp;` |
 | `空格` | `&nbsp;` |
 
-# [HTML 注释](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Comments)
-
-- 单行注释：`Ctrl + / `，多行注释：`Ctrl + Shift + /`
-
-    ```html
-    <div>
-      <!-- 这是一个单行注释 -->
-      <h1>Hello, World!</h1>
-        
-      <!--
-      多行注释第一行
-      多行注释第二行
-      多行注释第三行
-      -->
-      <h1>Hello, World!</h1>
-    </div>
-    ```
-
-# [文档结构](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_文档详解)
+# 文档结构
 
 ## 基础结构
 
-- **文档结构**
+[**文档结构**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/HTML_basics#html_文档详解)：
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-          <meta charset="UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1.0">
-          <title>Document</title>
-      </head>
-      <body>
-    
-      </body>
-    </html>
-    ```
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Document</title>
+  </head>
+  <body>
+
+  </body>
+</html>
+```
 
 - **基本结构包含：**
 
@@ -483,17 +613,17 @@ footer {
 
 > <img src="assets/image-20251008171559475.png" alt="image-20251008171559475" style="zoom: 50%;" />
 
-# [文档类型](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)
+# 文档类型
 
-在 HTML 中，**文档类型声明**是必要的。在所有文档的头部，你都将会看到 “`<!DOCTYPE html>`” 序言。这个声明的目的是防止浏览器在渲染文档时，切换到我们称为[“怪异模式”](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode)的渲染模式。“`<!DOCTYPE html>`” 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
+在 HTML 中，[**文档类型声明**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)是必要的。在所有文档的头部，你都将会看到 “`<!DOCTYPE html>`” 序言。这个声明的目的是防止浏览器在渲染文档时，切换到我们称为[“怪异模式”](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode)的渲染模式。“`<!DOCTYPE html>`” 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
 
 # 元素
 
 本章节只记录 HTML 元素的基础，关于各元素的详解，详见 `html-elements` 笔记。
 
-## [元素基础](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)
+## 元素基础
 
-HTML 由一系列的元素组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前符合要求的[元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
+HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前[符合要求的元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
 
 ![image-20231205005652176](assets/image-20231205005652176.png)
 
@@ -512,13 +642,13 @@ HTML 由一系列的元素组成，这些元素可以用来包围不同部分的
 <p>My cat is <strong>very</strong> grumpy.</p>
 ```
 
-## [元素分类](https://html.spec.whatwg.org/multipage/syntax.html#elements-2 "WHATWG 元素")
+## 元素分类
 
-WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)、[模板元素](https://html.spec.whatwg.org/multipage/syntax.html#the-template-element-2)、[原始文本元素](https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements)、[可转义的原始文本元素](https://html.spec.whatwg.org/multipage/syntax.html#escapable-raw-text-elements)、[外来元素](https://html.spec.whatwg.org/multipage/syntax.html#foreign-elements)和[普通元素](https://html.spec.whatwg.org/multipage/syntax.html#normal-elements)。
+WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multipage/syntax.html#elements-2 "WHATWG 元素")：[空元素](https://html.spec.whatwg.org/multipage/syntax.html#void-elements)、[模板元素](https://html.spec.whatwg.org/multipage/syntax.html#the-template-element-2)、[原始文本元素](https://html.spec.whatwg.org/multipage/syntax.html#raw-text-elements)、[可转义的原始文本元素](https://html.spec.whatwg.org/multipage/syntax.html#escapable-raw-text-elements)、[外来元素](https://html.spec.whatwg.org/multipage/syntax.html#foreign-elements)和[普通元素](https://html.spec.whatwg.org/multipage/syntax.html#normal-elements)。
 
-### [空元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)
+### 空元素
 
-**空元素**（void element），是**不能**存在子节点（例如内嵌的元素或者文本节点）的元素。空元素只有开始标签，没有结束标签，即**自闭合标签**`。
+[**空元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)（void element），是**不能**存在子节点（例如内嵌的元素或者文本节点）的元素。空元素只有开始标签，没有结束标签，即**自闭合标签**`。
 
 [`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area)、[ `<base>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base)、
 
@@ -540,11 +670,11 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
 - **全局属性**：详见 `html-arrributes` 笔记。
 - **其它属性**：详见 `html-elements` 笔记中的各个元素。
 
-## [属性基础](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#%E5%B1%9E%E6%80%A7)
+## 属性基础
 
 ![image-20231205010242559](assets/image-20231205010242559.png)
 
-**属性（Attribute）的说明**：
+**[属性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#属性)（Attribute）的说明**：
 
 -  **属性**：存在于开始标签内
 -  **属性名称**：本例为 `class`
@@ -557,9 +687,9 @@ WHATWG 将 HTML 的元素分成六种类型：[空元素](https://html.spec.what
 
 -  **等号**：左右无空格
 
-## [布尔属性](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean/HTML)
+## 布尔属性
 
-**布尔属性**，也称空属性，是表示 `true` 或 `false` 值的属性。只要指定属性，无论有没有属性值，或是取任何值，都显示为 `true`；只有不指定属性，才表现为 `false`。
+[**布尔属性**](https://developer.mozilla.org/zh-CN/docs/Glossary/Boolean/HTML)，也称空属性，是表示 `true` 或 `false` 值的属性。只要指定属性，无论有没有属性值，或是取任何值，都显示为 `true`；只有不指定属性，才表现为 `false`。
 
 ```html
 <!-- 未指定属性 -->
