@@ -568,6 +568,43 @@ a:hover {
 }
 ```
 
+### `:hover`
+
+[`:hover`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:hover) 用选择鼠标悬停的元素。
+
+```html
+<a href="https://www.google.com/" alt="谷歌主页">谷歌</a>
+```
+
+```css
+a:hover {
+  color: #4183c4;
+}
+```
+
+### `:nth-child()`
+
+**索引号** [`:nth-child()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:nth-child) 用于根据该元素在父元素的子元素列表中的索引来选择元素。
+
+<img src="assets/image-20251015155509703.png" alt="image-20251015155509703" style="zoom:50%;" />
+
+```html
+<div>
+  <p>这是第一行</p>
+  <p>这是第二行</p>
+  <p>这是第三行</p>
+  <p>这是第四行</p>
+  <p>这是第五行</p>
+</div>
+```
+
+```css
+/* 为奇数行设置为灰色背景 */
+p:nth-child(odd) {
+  background-color: gray;
+}
+```
+
 ### `:root`
 
 [`:root`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root) 伪类用于声明 *CSS 变量*（自定义属性）。或者选择 `<html>` 元素。
@@ -1027,7 +1064,7 @@ font: bolder 50px 微软雅黑, sans-serif;
 
 ### `font-family`
 
-**字体栈** [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) 用于设置字体种类。
+**字体栈** [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) 用于设置字体种类。
 
 **默认字体**：
 
@@ -1045,7 +1082,7 @@ font: bolder 50px 微软雅黑, sans-serif;
 
 ### `font-size`
 
-**字体大小** [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 用于设置字体大小。
+**字体大小** [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 用于设置字体大小。
 
 **属性值**：
 
@@ -1558,162 +1595,90 @@ ol.shortcut {
 
 ## 表格
 
-> [表格](https://www.runoob.com/css/css-table.html)
+> [样式化表格](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Tables)
 
-### 折叠边框
+此小节如无特殊说明，都使用如下表格：
 
-- 元素 `<table>` 的 `boder` 属性控制边框已经弃用，在实际开发中，建议使用 CSS 样式来进行更灵活和精细的样式控制，或者引入 BootStrap。
-- CSS 中的 `border` 样式属性可以给表格加边框
-
-    - 线宽 `px`  线型 `solid`  颜色 `black`
-    - 但是由于表格和 th/ td 元素有独立的边界，所以表格有双边框。
-
-        ![image-20231201171222401](assets/image-20231201171222401.png)
-
-        ```css
-        table,
-        th,
-        td {
-          border: 1px solid black;
-        }
-        ```
-
-- 添加 `border-collapse` 属性可设置表格的边框是否被折叠成一个单一的边框或隔开，即折叠边框，解决双边框问题。
-
-    ![image-20231201171454137](assets/image-20231201171454137.png)
-
-    ```css
-    table {
-      border-collapse: collapse;
-    }
-    table,
-    th,
-    td {
-      border: 1px solid black;
-    }
-    ```
-
-- 引入BootStrap
-
-    ![image-20231128220837269](assets/image-20231128220837269.png)
-
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>百分比宽度示例</title>
-    
-        <!-- 引入BootStrap -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
-      </head>
-      <body>
-        <!-- 使用border属性 -->
-        <table border="1"></table>
-    
-        <!-- 使用BootStrap -->
-        <table class="table">
-          <tr>
-            <th>表头1</th>
-            <th>表头2</th>
-          </tr>
-          <tr>
-            <td>数据1</td>
-            <td>数据2</td>
-          </tr>
-          <tr>
-            <td>数据3</td>
-            <td>数据4</td>
-          </tr>
-        </table>
-      </body>
-    </html>
-    ```
-
-### 表格颜色
+```html
+<table>
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+  <tr>
+    <td>数据</td>
+    <td>数据</td>
+  </tr>
+</table>
+```
 
 ```css
-table,td,th {
-  border: 1px solid green;
+table {
+  border-collapse: collapse;
 }
-th {
-  background-color: green;
-  color: red;
+
+th,
+td {
+  border: 1px solid black;
 }
 ```
 
-### 表格尺寸
+### `border-collapse`
 
-- `width`  和 `height` 属性用来设置表格尺寸
-- 像素值 `px`   百分比 `%`
-- `<table>`
+**边框折叠** [`border-collapse`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-collapse) 用于设置*表格*与*单元格*的边框是分开的还是合并的。
 
-    - 宽度 `width`   `px`   `%`
-    - 高度 `height`   `px`
+由于 `<table>` 和 `<th>` / `<td>` 都有边框，所以默认情况下，边框看起来有双层，这个时候需要把  `<table>` 的边框进行折叠，之后所有针对表格边框的样式化，都在 `<th>` 和 `<td>` 中设置。
 
-- `<th>`
+<div style="display: flex; justify-content: left; gap: 10px">
+  <figure>
+    <img src="assets/image-20251015143623287.png" alt="边框未折叠" style="height: 150px" />
+    <figcaption style="font-size: 16px; color: gray">边框未折叠</figcaption>
+  </figure>
+  <figure>
+    <img src="assets/image-20251015143846012.png" alt="边框折叠" style="height: 150px" />
+    <figcaption style="font-size: 16px; color: gray">边框折叠</figcaption>
+  </figure>
+</div>
 
-    - 高度 `height`   `px`   `%`
+```css
+table {
+  border-collapse: collapse;
+}
 
-- `<td>`
+th,
+td {
+  border: 1px solid black;
+}
+```
 
-    - 高度 `height`   `px`   `%`
+### 其它属性
 
-### 表格文字对齐
+- 颜色
 
-- 水平 `text-align`  垂直 `vertical-align`
-- 注意 `vertical-align` 不能直接用于 `<table>` 元素，而应该用在 `<th>` 和 `<td>` 中
+    - [`border-color`](#`border-color`)
+    - [`background-color`](#`background-color`)
+    - [`color`](#`color`)
 
-    - `left  center  right`    `top  middle  bottom`
+- 尺寸
 
-        ```html
-        <table>
-          <tr>
-            <th>表头1</th>
-            <th>表头2</th>
-          </tr>
-          <tr>
-            <td>数据1</td>
-            <td>数据2</td>
-          </tr>
-          <tr>
-            <td>数据3</td>
-            <td>数据4</td>
-          </tr>
-        </table>
-        ```
+    - [`width`](#`width`)
+    - [`height`](#`height`)
+    - [`line-height`](#`line-height`)
 
-        ```css
-        table {
-          border-collapse: collapse; /* 折叠边框 */
-          width: 100%;
-          height: 200px;
-          text-align: center; /* 水平居中 */
-        }
-        
-        table,
-        th,
-        td {
-          border: 1px solid black;
-        }
-        td {
-          vertical-align: middle; /* 垂直居中 */
-        }
-        th {
-          vertical-align: middle; /* 垂直居中 */
-        }
-        ```
+- 对齐
 
-### 表格填充
+    - [`text-align`](#`text-align`)
+    - [`vertial-align`](#`vertial-align`)：需直接作用于 `<th>` 和 `<td>` 元素
 
-- 如需控制边框和表格内容之间的间距，应使用 `<td>` 和 `<th>` 元素的填充属性。
+- [`:nth-child()`](#`:nth-child()`)：可设置斑马纹
 
-    ```css
-    td {
-      padding: 5px;
-    }
-    ```
+    <img src="assets/image-20251015160237674.png" alt="image-20251015160237674" style="zoom:50%;" />
+
+- [`:hover`](#`:hover`)：可设置鼠标悬停变色
 
 ## `color`
 
@@ -1721,20 +1686,19 @@ th {
 
 ## `outline`
 
-- **轮廓** [`outline`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline) 用于绘制元素周围的轮廓线，可起到突出元素的作用。
-- 轮廓位于 border 外边缘的外围
-- 轮廓可以与元素本身外边距及其它元素任何部分重合
-- outline 属性用于在一个声明中设置多个属性。
+**轮廓线** [`outline`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline) 是一个简写属性，用于绘制元素周围的轮廓线，可起到突出元素的作用。
 
-    - **样式 outline-style**：实心圆点 dotted、虚线 dashed、...
-    - **线宽 outline-width**：长度值、粗细 thin/thick、...
-    - **颜色 outline-color**
+- [`outline-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline-style)
+- [`outline-width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline-width)
+- [`outline-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline-color)
 
-    ```css
-    .example {
-      outline: #00ff00 dotted 10px;
-    }
-    ```
+```css
+.example {
+  outline: #00ff00 dotted 10px;
+}
+```
+
+**注意**：`outline` 位于 `border` 的外围，不占据空间，可与外边距重合。
 
 # 布局
 
@@ -1790,9 +1754,9 @@ th {
 }
 ```
 
-> <img src="assets/image-20241202171510218.png" alt="image-20241202171510218" style="zoom:40%;" />
+<img src="assets/image-20241202171510218.png" alt="image-20241202171510218" style="zoom:40%;" />
 
-**属性值**
+**属性值**：
 
 - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：可以使用负值，重叠的内容
 - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：基于包含块
@@ -1812,9 +1776,9 @@ th {
 - 两个负外边距会折叠，并使用最小（离零最远）的值。
 - 如果其中一个外边距为负值，其值将从总值中*减去*。
 
-### [`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding)
+### `padding`
 
-`padding` 是一个 CSS 简写属性，用于定义元素 `border` 与 `content` 之间的空间。
+[`padding`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding) 是一个简写属性，用于定义元素 `border` 与 `content` 之间的空间。
 
 - [`padding-top`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-top)
 - [`padding-right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/padding-right)

@@ -62,9 +62,23 @@
               "icon": "lucide-file",
               "title": "css"
             }
+          },
+          {
+            "id": "bffea4ebe4b5bb1d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html-elements.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "html-elements"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:ja",
+                "query": "file:html",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -186,13 +200,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "css.md",
+                "file": "typora.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "css 的大纲"
+              "title": "typora 的大纲"
             }
           }
         ],
@@ -213,16 +227,21 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "cbf3a3c7f7ca1f90",
   "lastOpenFiles": [
-    "software.md",
+    "assets/image-20251015160237674.png",
+    "assets/image-20251015155509703.png",
+    "assets/image-20251015154611510.png",
+    "html-elements.md",
+    "assets/image-20251015143846012.png",
+    "assets/image-20251015143623287.png",
     "css.md",
+    "software.md",
     "assets/image-20251014023932146.png",
     "assets/image-20251014005522973.png",
     "assets/image-20251014004747508.png",
     "assets/image-20251013074554767.png",
     "web.md",
-    "html-elements.md",
     "javascript.md",
     "node-js.md",
     "html-attributes.md",
@@ -230,10 +249,6 @@
     "assets/image-20251013013443718.png",
     "assets/image-20251013012227858.png",
     "typora.md",
-    "assets/image-20251012231344600.png",
-    "assets/image-20251012230837981.png",
-    "assets/image-20251012230445393.png",
-    "assets/image-20251012230423688.png",
     "axios.md",
     "未命名",
     "salesforce.md",
