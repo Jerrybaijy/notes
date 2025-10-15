@@ -653,7 +653,7 @@ span::after {
 以下是几个常见的属性值类型：
 
 - 关键字，如 `red`
-- 基本数据类型，如 `<length>` 的 `5px`
+- 基本数据类型，如 `<length>` 的 `5px`
 - 函数，如 `<color>` 的 `rgb(255 0 153)`
 - 更多...
 
@@ -741,10 +741,6 @@ span::after {
 ## `all`
 
 **所有属性** [`all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all) 是一个简写属性，将除了 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 与 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 之外的所有属性重设至其初始值，或继承值。
-
-## `color`
-
-**前景色** [`color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color) 属性设置元素的文本以及文本装饰的*前景色*颜色值，属性值为 [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)。
 
 ## `gap`
 
@@ -854,7 +850,7 @@ body {
 
 ### `background-attachment`
 
-**背景滚动** [`background-attachment`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-attachment) 用于设置背景图像的滚动行为。
+**背景滚动** [`background-attachment`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-attachment) 用于设置背景图像的滚动行为。
 
 **属性值**：
 
@@ -1010,26 +1006,290 @@ border-radius: 30px;
 border-radius: 25% 10%;
 ```
 
-# 文本样式
+## 字体
 
-## [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Fundamentals#%E6%96%87%E6%9C%AC%E5%B8%83%E5%B1%80)
+### `font`
 
-### [文本水平对齐 `text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align)
+[`font`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font) 是一个简写属性，用于在一个声明中设置多个字体属性。
 
-- **语法**：`text-align` 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
-- **属性值**
+```css
+font: bolder 50px 微软雅黑, sans-serif;
+```
 
-    - `left`：左对齐
-    - `right`：右对齐
-    - `center`：居中对齐
-    - `justify`：两端对齐（对最后一行无效）
-    - `justify-all`：两端对齐（对最后一行有效）
-    - 继承
-    - 其它...
+**说明**：
 
-### [垂直对齐 `vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align)
+- 可设置的属性是（按顺序）：[`font-style`](#[字体斜体 `font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style))，[`font-variant`](#[字体变体 `font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant))，[`font-weight`](#[字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight))，[`font-stretch`](#[字体伸缩 `font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch))，[`font-size`](#[字体大小 `font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size))，[`line-height`](#[文本行高 `font-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height))，和 [`font-family`](#[字体栈`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family))。
+- `font-size` 和 `font-family` 的值是必需的；如果缺少了其他值，默认值将被插入。
+- `font-style`、`font-variant` 和 `font-weight` 必须在 `font-size` 之前。
+- `font-variant` 只可以使用 CSS 2.1 定义的值，即 `normal` 和 `small-caps`。
+- `font-stretch` 必须是单个关键字值
+- `line-height` 必须跟在 `font-size` 后面，由 `/` 分隔，例如 `16px/3`。
 
-- **语法**：`vertical-align` 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
+### `font-family`
+
+**字体栈** [`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family) 用于设置字体种类。
+
+**默认字体**：
+
+- `serif`：衬线字体
+- `sans-serif`：无衬线字体
+- `monospace`：等宽字体
+- `cursive`：手写字体
+- `fantasy`：装饰字体
+
+**说明**：
+
+- 为了防止浏览器不支持第一种字体，应该同时设置几个字体名称作为一种**后备机制**；用 `,` 分隔多个字体。
+- 如果字体系列的名称超过一个字，它必须用 `""`，如 `Font Family："宋体"`。
+- **安全网页字体**：只有某几个字体通常可以应用到所有系统。
+
+### `font-size`
+
+**字体大小** [`font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size) 用于设置字体大小。
+
+**属性值**：
+
+- **关键字**：`small` 、 `medium` 或 `large` 等
+- [**`长度值 <length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：优先使用**相对长度单位**，详见 [`绝对长度单位说明`](#explanation-of-absolute-length-units)
+- [**`百分比 <percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
+
+```css
+/* 关键字 值 */
+font-size: small;
+font-size: smaller;
+
+/* <length> 值 */
+font-size: 0.8em;
+
+/* <percentage> 值 */
+font-size: 80%;
+```
+
+### `font-style`
+
+[`font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style) 用于指定字体斜体。
+
+**属性值**：
+
+- 默认： `normal`
+- 斜体：`italic`
+- 选择倾斜体：`oblique`
+- 继承
+
+```css
+font-style: normal;
+font-style: italic;
+font-style: oblique;
+font-style: oblique 10deg;
+
+/* Global values */
+font-style: inherit;
+font-style: initial;
+font-style: unset;
+```
+
+### `font-variant`
+
+**字体变体** [`font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant) 是一个简写属性，用于设置字体的变体形式。
+
+- [`font-variant-caps`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-caps)
+- [`font-variant-numeric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-numeric)
+- [`font-variant-alternates`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-alternates)
+- [`font-variant-ligatures`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-ligatures)
+- [`font-variant-east-asian` ](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-east-asian)等属性的简写。
+
+**属性值**：
+
+- **`normal`**：默认值，常规显示，没有变体。
+- **`small-caps`**：小型大写字母，即所有小写字母都会转换为大写字母，但字体尺寸会比正常大写字母的小。
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant#值)
+
+### `font-weight`
+
+[`font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight) 用于设置字体粗细。
+
+**属性值**：
+
+- [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：纯数字
+- **`normal`**：默认，与 `400` 等值
+- **`bold`**： 与 `700` 等值
+- **`bolder`**：基于父元素更粗
+- **`lighter`**：基于父元素更细
+- **注意**：某些字体只提供 `normal` 和 `bold` 两种值。
+
+```css
+/* <number> 值 */
+fontsize: 400;
+
+/* 关键字 */
+fontsize: bold;
+fontsize: bolder;
+fontsize: lighter;
+```
+
+### `font-stretch`
+
+**字体伸缩** [`font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch) 用于从字体中选择正常、压缩或扩展的字体外观。
+
+**属性值**：
+
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
+- `<font-stretch-css3>`：关键字
+    - `normal`：默认，普通字体外观。
+    - `semi-condensed`、`condensed`、`extra-condensed` 和 `ultra-condensed`：紧凑
+    - `semi-expanded`、`expanded`、`extra-expanded` 和 `ultra-expanded`：扩展
+
+### `@font-face`
+
+**Web 字体**：[`@font-face`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face) at 规则指定在访问时随你的网站一起下载字体文件。
+
+## 文本样式
+
+### `text-decoration`
+
+**文本装饰** [`text-decoration`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration) 是一个简写属性。用于设置文本的修饰。
+
+- [`text-decoration-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-color)：颜色
+- [`text-decoration-line`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-line)：类型
+- [`text-decoration-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-style)：样式
+- [`text-decoration-thickness`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-thickness)：粗细
+
+```css
+/* 全名 */
+text-decoration-line: underline;
+
+/* 简写 */
+text-decoration: underline;
+
+/* 多个值 */
+text-decoration: underline solid red 5px;
+```
+
+### `text-transform`
+
+[`text-transform`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-transform) 用于控制文本的大小写切换。
+
+**属性值**：
+
+- **`none`**：阻止所有字符的大小写被转换
+- **`capitalize`**：每个单词首字母转大写
+- **`uppercase`**：所有字母转大写
+- **`lowercase`**：所有字母转小写
+- 继承
+
+### `text-shadow`
+
+[`text-shadow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration) 用于设置文本阴影。
+
+- 每个阴影值由元素在 X 和 Y 方向的偏移量、模糊半径和颜色值组成。
+- 多组阴影值之间用 `,` 隔开。
+
+**属性值**
+
+- **颜色**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
+- **水平偏移量**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+- **垂直偏移量**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+- **模糊半径**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+
+```css
+/* 单个值 */
+text-shadow: 1px 1px 2px black;
+
+/* 多个值 */
+text-shadown: 1px 1px 2px black;
+text-shadown: 0 0 1em blue;
+```
+
+## 文本布局
+
+> [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#文本布局)
+
+### `text-align`
+
+[`text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align) 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
+
+**属性值**：
+
+- `left`：左对齐
+- `right`：右对齐
+- `center`：居中对齐
+- `justify`：两端对齐（对最后一行无效）
+- `justify-all`：两端对齐（对最后一行有效）
+- 继承
+- 其它...
+
+### `text-indent`
+
+[`text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent) 属性用于设置区块元素中文本行前面缩进的长度。
+
+**属性值**：
+
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
+- 继承
+- 其它...
+
+### `letter-spacing`
+
+[`letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing) 属性用于设置字母间距。
+
+**属性值**：
+
+- **`normal`**：默认，关键字
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
+- 继承
+
+```css
+/* Keyword value */
+letter-spacing: normal;
+
+/* <length> values */
+letter-spacing: 0.3em;
+letter-spacing: 3px;
+letter-spacing: -0.05em;
+```
+
+### `line-height`
+
+[`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) 属性用于设置行高。
+
+- 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
+
+**属性值**：
+
+- **`normal`**：关键字，约为 `1.2`
+- [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
+
+**扩展**：
+
+- 使用 `line-height` 属性可设置文本基于容器垂直居中。
+
+### `word-spacing`
+
+[`word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing) 属性用于设置单词、标签间距。
+
+**属性值**：
+
+- **`normal`**：默认，关键字
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+- 继承
+
+```css
+/* Keyword value */
+letter-spacing: normal;
+
+/* <length> values */
+letter-spacing: 0.3em;
+letter-spacing: 3px;
+letter-spacing: -0.05em;
+```
+
+### `vertial-align`
+
+[`vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align) 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
 
 #### 属性值
 
@@ -1058,572 +1318,247 @@ border-radius: 25% 10%;
 
 #### 文本垂直对齐扩展
 
-- **使用 `line-height` 属性**
-
-    ```CSS
-    .container {
-      height: 100px; /* 容器高度 */
-      line-height: 100px; /* 行高等于容器高度 */
-    }
-    ```
-
-    ```html
-    <div class="container">
-      <div>这个元素内容将会基于容器垂直对齐。</div>
-    </div>
-    ```
-
-- **使用 `padding` 属性**
-
-    ```css
-    .container {
-      padding: 10px 0; /* 容器上下内边距相等 */
-      border: 3px solid green;
-    }
-    ```
-
-    ```html
-    <div class="container">
-      <div>这个元素内容将会基于容器垂直对齐。</div>
-    </div>
-    ```
-
-### [文本行高 `line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height)
-
-- **语法**：`line-height` 属性用于设置行高。
-
-    - 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
-
-- **属性值**
-
-    - **`normal`**：关键字，约为 `1.2`
-    - [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
-
-- **扩展**
-
-    - 使用 `line-height` 属性可设置文本基于容器垂直居中。
-
-### [字母间距 `letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing)
-
-- **语法**：`letter-spacing` 属性用于设置字母间距。
-
-- **属性值**
-
-    - **`normal`**：默认，关键字
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
-    - 继承
-
-- **字母间距属性值示例**
-
-    ```css
-    /* Keyword value */
-    letter-spacing: normal;
-    
-    /* <length> values */
-    letter-spacing: 0.3em;
-    letter-spacing: 3px;
-    letter-spacing: -0.05em;
-    ```
-
-### [单词间距 `word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing)
-
-- **语法**：`word-spacing` 属性用于设置单词、标签间距。
-
-- **属性值**
-
-    - **`normal`**：默认，关键字
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-    - 继承
-
-- **字母间距属性值示例**
-
-    ```css
-    /* Keyword value */
-    letter-spacing: normal;
-    
-    /* <length> values */
-    letter-spacing: 0.3em;
-    letter-spacing: 3px;
-    letter-spacing: -0.05em;
-    ```
-
-### [文本缩进 `text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent)
-
-- **语法**：text-indent 属性用于设置区块元素中文本行前面缩进的长度。
-- **属性值**
-
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
-    - 继承
-    - 其它...
-
-## [文本](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text)
-
-### [字体栈 `font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)
-
-- **语法**：**`font-family`** 属性用于设置字体种类。
-- **说明**
-
-    - 为了防止浏览器不支持第一种字体，应该同时设置几个字体名称作为一种**后备机制**；用 `,` 分隔多个字体。
-    - 如果字体系列的名称超过一个字，它必须用 `""`，如 `Font Family："宋体"`。
-
-- **安全网页字体**：只有某几个字体通常可以应用到所有系统。
-- **默认字体**
-
-    - `serif`：衬线字体
-    - `sans-serif`：无衬线字体
-    - `monospace`：等宽字体
-    - `cursive`：手写字体
-    - `fantasy`：装饰字体
-
-### [Web 字体 `@font-face`](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Web_fonts)
-
-- **语法**：[`@font-face`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face) CSS at-rule 指定在访问时随你的网站一起下载字体文件。
-
-### [字体大小 `font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size)
-
-- **语法**：**`font-size`** 属性用于设置字体大小。
-
-    ```css
-    /* 关键字 值 */
-    font-size: small;
-    font-size: smaller;
-
-    /* <length> 值 */
-    font-size: 0.8em;
-
-    /* <percentage> 值 */
-    font-size: 80%;
-    ```
-
-- **属性值**
-
-    - **关键字**：`small` 、 `medium` 或 `large` 等
-    - [**`长度值 <length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：优先使用**相对长度单位**，详见 [`绝对长度单位说明`](#explanation-of-absolute-length-units)
-    - [**`百分比 <percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
-
-### [字体颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)
-
-- **语法**：使用 `color` 属性设置字体颜色。
-- **属性值**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
-
-### [字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight)
-
-- **语法**：使用 `font-weight` 属性设置字体粗细
-- **属性值**
-
-    - [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：纯数字
-    - **`normal`**：默认，与 `400` 等值
-    - **`bold`**： 与 `700` 等值
-    - **`bolder`**：基于父元素更粗
-    - **`lighter`**：基于父元素更细
-
-- **字体粗细属性值示例**
-
-    ```css
-    /* <number> 值 */
-    fontsize: 400;
-
-    /* 关键字 */
-    fontsize: bold;
-    fontsize: bolder;
-    fontsize: lighter;
-    ```
-
-- **注意**：某些字体只提供 `normal` 和 `bold` 两种值。
-
-### [字体斜体 `font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style)
-
-- **语法**：使用 **`font-style`** 属性指定字体斜体。
-- **属性值**
-
-    - 默认： `normal`
-    - 斜体：`italic`
-    - 选择倾斜体：`oblique`
-    - 继承
-
-- **字体样式属性值示例**
-
-    ```css
-    font-style: normal;
-    font-style: italic;
-    font-style: oblique;
-    font-style: oblique 10deg;
-    
-    /* Global values */
-    font-style: inherit;
-    font-style: initial;
-    font-style: unset;
-    ```
-
-### [字体变体 `font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant)
-
-- **语法**：使用 `font-variant` 属性设置字体的变体形式。
-- **`font-variant`** 属性是以下 CSS 属性的简写。也可以使用简写 [`font`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font) 设定 `font-variant` 的值。
-
-    - [`font-variant-caps`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-caps)
-    - [`font-variant-numeric`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-numeric)
-    - [`font-variant-alternates`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-alternates)
-    - [`font-variant-ligatures`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant-ligatures)
-    - [`font-variant-east-asian` ](https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-east-asian)等属性的简写。
-
-- **属性值**：
-
-    - **`normal`**：默认值，常规显示，没有变体。
-    -  **`small-caps`**：小型大写字母，即所有小写字母都会转换为大写字母，但字体尺寸会比正常大写字母的小。
-    - 其它
-
-### [字体伸缩 `font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch)
-
-- **语法**：使用 `font-stretch` 属性从字体中选择正常、压缩或扩展的字体外观。
-- **属性值**
-
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
-    -  `<font-stretch-css3>`：关键字
-
-        - `normal`：默认，普通字体外观。
-        - `semi-condensed`、`condensed`、`extra-condensed` 和 `ultra-condensed`：紧凑
-        - `semi-expanded`、`expanded`、`extra-expanded` 和 `ultra-expanded`：扩展
-
-### [字体简写 `font`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font)
-
-- **语法**：使用 `font` 属性在一个声明中设置多个字体属性。
-- **字体简写属性值示例**
-
-    ```css
-    font: bolder 50px 微软雅黑, sans-serif;
-    ```
-
-- **说明**
-
-    - 可设置的属性是（按顺序）：[`font-style`](#[字体斜体 `font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style))，[`font-variant`](#[字体变体 `font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant))，[`font-weight`](#[字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight))，[`font-stretch`](#[字体伸缩 `font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch))，[`font-size`](#[字体大小 `font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size))，[`line-height`](#[文本行高 `font-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height))，和 [`font-family`](#[字体栈`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family))。
-    - `font-size` 和 `font-family` 的值是必需的；如果缺少了其他值，默认值将被插入。
-    - `font-style`、`font-variant` 和 `font-weight` 必须在 `font-size` 之前。
-    - `font-variant` 只可以使用 CSS 2.1 定义的值，即 `normal` 和 `small-caps`。
-    - `font-stretch` 必须是单个关键字值
-    - `line-height` 必须跟在 `font-size` 后面，由 `/` 分隔，例如 `16px/3`。
-
-### [文本装饰 `text-decoration`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration)
-
-- **语法**：使用 `text-decoration` 属性设置字体的修饰；该属性是以下 CSS 属性的简写。
-
-    - [`text-decoration-color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-color)：颜色
-    - [`text-decoration-line`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-line)：类型
-    - [`text-decoration-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-style)：样式
-    - [`text-decoration-thickness`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration-thickness)：粗细
-
-- **`text-decoration-color` 属性值**
-
-    - [`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
-
-- **`text-decoration-line` 属性值**
-
-    - **`none`**：默认无装饰
-    - **`underline`**：下划线
-    - **`line-through`**：删除线
-    - 继承
-    - 其它...
-
-- **`text-decoration-style` 属性值**
-
-    - **`solid`**：实线
-    - **`dashed`**：虚线
-    - **`wavy`**：波浪线
-    - **`dotted`**：点划线
-    - 其它...
-
-- **`text-decoration-thickness` 属性值**
-
-    - **`auto`**：默认，自动
-    - **`from-font`**：根据字体，如果没有，即为`auto`
-    - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
-    - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
-
-- **文本装饰属性值示例**
-
-    ```css
-    /* 全名 */
-    text-decoration-line: underline;
-    
-    /* 简写 */
-    text-decoration: underline;
-    
-    /* 多个值 */
-    text-decoration: underline solid red 5px;
-    ```
-
-### [文本大小写 `text-transform`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-transform)
-
-- **语法**：使用 `text-transform` 属性控制文本的大小写。
-- **属性值**
-
-    - **`none`**：阻止所有字符的大小写被转换
-    - **`capitalize`**：每个单词首字母转大写
-    - **`uppercase`**：所有字母转大写
-    - **`lowercase`**：所有字母转小写
-    - 继承
-
-### [文本阴影 `text-shadow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-shadow)
-
-- **语法**
-
-    - 使用 [`text-shadow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-decoration) 属性设置文本阴影
-    - 每个阴影值由元素在 X 和 Y 方向的偏移量、模糊半径和颜色值组成。
-    - 多组阴影值之间用 `,` 隔开。
-
-- **属性值**
-
-    - **颜色**：[`<color>`](#[颜色 `color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color))
-    - **水平偏移量**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - **垂直偏移量**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - **模糊半径**：[`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-
-- **文本阴影属性值示例**
-
-    ```css
-    /* 单个值 */
-    text-shadow: 1px 1px 2px black;
-    
-    /* 多个值 */
-    text-shadown: 1px 1px 2px black;
-    text-shadown: 0 0 1em blue;
-    ```
-
-## [链接](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links)
-
-### [链接状态](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E9%93%BE%E6%8E%A5%E7%8A%B6%E6%80%81)
-
-- 通过**伪类**获取链接的状态。
+**使用 `line-height` 属性**：
+
+```CSS
+.container {
+  height: 100px; /* 容器高度 */
+  line-height: 100px; /* 行高等于容器高度 */
+}
+```
+
+```html
+<div class="container">
+  <div>这个元素内容将会基于容器垂直对齐。</div>
+</div>
+```
+
+**使用 `padding` 属性**：
+
+```css
+.container {
+  padding: 10px 0; /* 容器上下内边距相等 */
+  border: 3px solid green;
+}
+```
+
+```html
+<div class="container">
+  <div>这个元素内容将会基于容器垂直对齐。</div>
+</div>
+```
+
+## 链接
+
+> [样式化链接](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links)
+
+### 链接状态
+
+- 通过**伪类**获取[链接状态](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#链接状态)。
 - **`a:link`**：未访问过的链接
 - **`a:visited`**：已访问过的链接
 - **`a:hover`**：鼠标悬停的链接
 - **`a:active`**：活动（被点击时）的链接
-- **`a:ocus`**：聚焦的链接（比如通过键盘的 <kbd>Tab</kbd> 移动到这个链接，或者使用像 [`HTMLElement.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 这样的方法编程地聚焦链接）。
+- **`a:focus`**：聚焦的链接（比如通过键盘的 <kbd>Tab</kbd> 移动到这个链接，或者使用像 [`HTMLElement.focus()`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/focus) 这样的方法编程地聚焦链接）。
 
-### [链接样式](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E9%BB%98%E8%AE%A4%E6%A0%B7%E5%BC%8F)
+### 链接样式
 
-- **默认链接样式**
+[**默认链接样式**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Styling_links#默认样式)：
 
-    - 链接以下划线表示。
-    - 未访问链接为蓝色。
-    - 已访问过的链接为紫色。
-    - 鼠标悬停的链接，鼠标指针会变成一个小手图标。
-    - 聚焦链接的周围有一个轮廓。
-    - 活动的链接为红色。
+- 链接以下划线表示。
+- 未访问链接为蓝色。
+- 已访问过的链接为紫色。
+- 鼠标悬停的链接，鼠标指针会变成一个小手图标。
+- 聚焦链接的周围有一个轮廓。
+- 活动的链接为红色。
 
-- **链接样式声明**
+**链接样式声明**：
 
-    - **`text-decoration-line: underline;`**：下划线
-    - **`color: #0000EE;`**：蓝色
-    - **`background: #0000EE;`**：蓝色
-    - **`background: url("external-link-52.png") no-repeat 100% 0;`**：[在链接上加图标](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E5%9C%A8%E9%93%BE%E6%8E%A5%E4%B8%AD%E5%8C%85%E5%90%AB%E5%9B%BE%E6%A0%87)
-    - **`cursor: auto;`**：光标
-    - **`outline`**：轮廓
-    - **`a[href^="http"]`**：虚拟链接（真正指向任何地方）
-    - 其它...
+- **`text-decoration-line: underline;`**：下划线
+- **`color: #0000EE;`**：蓝色
+- **`background: #0000EE;`**：蓝色
+- **`background: url("external-link-52.png") no-repeat 100% 0;`**：[在链接上加图标](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E5%9C%A8%E9%93%BE%E6%8E%A5%E4%B8%AD%E5%8C%85%E5%90%AB%E5%9B%BE%E6%A0%87)
+- **`cursor: auto;`**：光标
+- **`outline`**：轮廓
+- **`a[href^="http"]`**：虚拟链接（真正指向任何地方）
+- 其它...
 
-- **链接样式示例**：[样式化链接为按钮](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#%E6%A0%B7%E5%BC%8F%E5%8C%96%E9%93%BE%E6%8E%A5%E4%B8%BA%E6%8C%89%E9%92%AE)
+[**样式化链接为按钮**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links#样式化链接为按钮)：
 
-    ![image-20241130222939368](assets/image-20241130222939368.png)
+![image-20241130222939368](assets/image-20241130222939368.png)
 
-    ```html
-    <nav class="container">
-      <a href="#">主页</a>
-      <a href="#">披萨</a>
-      <a href="#">音乐</a>
-      <a href="#">袋熊</a>
-      <a href="#">芬兰</a>
-    </nav>
-    ```
+```html
+<nav class="container">
+  <a href="#">主页</a>
+  <a href="#">披萨</a>
+  <a href="#">音乐</a>
+  <a href="#">袋熊</a>
+  <a href="#">芬兰</a>
+</nav>
+```
 
-    ```css
-    body,
-    html {
-      margin: 0;
-      font-family: sans-serif;
-    }
-    
-    .container {
-      display: flex;
-      gap: 0.625%;
-    }
-    
-    a {
-      flex: 1;
-      text-decoration: none;
-      outline-color: transparent;
-      text-align: center;
-      line-height: 3;
-      color: black;
-    }
-    
-    a:link,
-    a:visited,
-    a:focus {
-      background: palegoldenrod;
-      color: black;
-    }
-    
-    a:hover {
-      background: orange;
-    }
-    
-    a:active {
-      background: darkred;
-      color: white;
-    }
-    ```
+```css
+body,
+html {
+  margin: 0;
+  font-family: sans-serif;
+}
 
-## [列表](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_lists)
+.container {
+  display: flex;
+  gap: 0.625%;
+}
 
-### [标记类型 `list-style-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type)
+a {
+  flex: 1;
+  text-decoration: none;
+  outline-color: transparent;
+  text-align: center;
+  line-height: 3;
+  color: black;
+}
 
-- **语法**：属性 `list-style-type` 可以设置列表元素的 marker（比如圆点、符号、或者自定义计数器样式）。
-- **属性值**
+a:link,
+a:visited,
+a:focus {
+  background: palegoldenrod;
+  color: black;
+}
 
-    - **关键字**：
+a:hover {
+  background: orange;
+}
 
-        - **`none`**：关键字，移除标记
+a:active {
+  background: darkred;
+  color: white;
+}
+```
 
-    - **通用**
+## 列表
 
-        -  **`decimal`**：数字
-        -  **`disc`**：实心圆点
-        - **`circle`**：空心圆点
-        - **`square`**：方块
-        - **`lower-alpha`**：小写英文
-        - **`upper-alpha`**：大写英文
-        - **`lower-roman`**：小写罗马
-        - **`upper-roman`**：大写罗马
-        - **`trad-chinese-informal`**：中文
-        - 其它...
+> [为列表添加样式](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_lists)
 
-    - **`<string>`**：字符串，应该用 `""` 包围
-        - **`"-"`**：字符串短横线
-        
-    - 继承
-    - 其它...
-    
-- 示例
+### `list-style`
 
-    ```html
-    <ol class="normal">
-      List 1
-      <li>Hello</li>
-      <li>World</li>
-      <li>What's up?</li>
-    </ol>
-    
-    <ol class="shortcut">
-      List 2
-      <li>Looks</li>
-      <li>Like</li>
-      <li>The</li>
-      <li>Same</li>
-    </ol>
-    ```
+[`list-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style) 是一个简写属性，用于在一个声明中设置多个列表属性。
 
-    ```css
-    ol.normal {
-      list-style-type: upper-alpha;
-    }
-    
-    /* or use the shortcut "list-style": */
-    ol.shortcut {
-      list-style: upper-alpha;
-    }
-    ```
+- [`list-style-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type)：标记类型
+- [`list-style-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-image)：
+- [`list-style-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-position)：
 
-### [图像标记 `list-style-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-image)
+**扩展**：默认情况下列表 `<ul>` 或 `<ol>` 还设置了内边距和外边距，可使用 `margin: 0` 和 `padding: 0` 来移除。
 
-- **语法**：`list-style-image` 属性使用图像来替换列表项的标记。
-- **属性值**
+### `list-style-image`
 
-    - `URL`：用来作为标记的图片的地址。格式：`url("URL")`
-    - `none`：关键字， `list-style-type` 中定义的值会被取代。
-    - 继承
+**图像标记** [`list-style-image`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-image) 用于使用图像来替换列表项的标记。
 
-- **图像标记示例**
+**属性值**：
 
-    ```html
-    <ul>
-      <li>Item 1</li>
-      <li>Item 2</li>
-    </ul>
-    ```
+- `URL`：用来作为标记的图片的地址。格式：`url("URL")`
+- `none`：关键字， `list-style-type` 中定义的值会被取代。
+- 继承
 
-    ```css
-    ul {
-      list-style-image: url("starsolid.gif");
-    }
-    ```
+```html
+<ul>
+  <li>Item 1</li>
+  <li>Item 2</li>
+</ul>
+```
 
-### [标记框位置 `list-style-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-position)
+```css
+ul {
+  list-style-image: url("starsolid.gif");
+}
+```
 
-- **语法**：**`list-style-position`** 属性指定标记框在主体块框中的位置。
-- **属性值**
+### `list-style-position`
 
-    - **`outside`**：默认，标记盒在主块盒的外面。
-    - **`inside`**：标记盒是主要块盒中的第一个行内盒，处于元素的内容流之后。
-    - 继承
+**标记位置** [`list-style-position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-position) 用于指定标记框在主体块框中的位置。
 
-- **标记框位置示例**
+**属性值**：
 
-    ```html
-    <ul class="one">
-      List 1
-      <li>List Item 1-1</li>
-      <li>List Item 1-2</li>
-      <li>List Item 1-3</li>
-      <li>List Item 1-4</li>
-    </ul>
-    <ul class="two">
-      List 2
-      <li>List Item 2-1</li>
-      <li>List Item 2-2</li>
-      <li>List Item 2-3</li>
-      <li>List Item 2-4</li>
-    </ul>
-    <ul class="three">
-      List 3
-      <li>List Item 3-1</li>
-      <li>List Item 3-2</li>
-      <li>List Item 3-3</li>
-      <li>List Item 3-4</li>
-    </ul>
-    ```
+- **`outside`**：默认，标记盒在主块盒的外面。
+- **`inside`**：标记盒是主要块盒中的第一个行内盒，处于元素的内容流之后。
+- 继承
 
-    ```css
-    .one {
-      list-style: square inside;
-    }
-    
-    .two {
-      list-style-position: outside;
-      list-style-type: circle;
-    }
-    
-    .three {
-      list-style-image: url("starsolid.gif");
-      list-style-position: inherit;
-    }
-    ```
+```html
+<ul class="one">
+  List 1
+  <li>List Item 1-1</li>
+  <li>List Item 1-2</li>
+  <li>List Item 1-3</li>
+  <li>List Item 1-4</li>
+</ul>
+<ul class="two">
+  List 2
+  <li>List Item 2-1</li>
+  <li>List Item 2-2</li>
+  <li>List Item 2-3</li>
+  <li>List Item 2-4</li>
+</ul>
+<ul class="three">
+  List 3
+  <li>List Item 3-1</li>
+  <li>List Item 3-2</li>
+  <li>List Item 3-3</li>
+  <li>List Item 3-4</li>
+</ul>
+```
 
-    <img src="assets/image-20241201145321681.png" alt="image-20241201145321681" style="width: 50%; float: left"/>
+```css
+.one {
+  list-style: square inside;
+}
 
-### [列表简写](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style)
+.two {
+  list-style-position: outside;
+  list-style-type: circle;
+}
 
-- **语法**：`list-style` 属性用于在一个声明中设置多个列表属性。
+.three {
+  list-style-image: url("starsolid.gif");
+  list-style-position: inherit;
+}
+```
 
-    - 可以设置的属性（按顺序）：`list-style-type`、`list-style-position`、`list-style-image`。
-    - 默认：`list-style: disc outside none`
-    
-- **扩展**：默认情况下列表 `<ul>` 或 `<ol>` 还设置了内边距和外边距，可使用 `margin: 0` 和 `padding: 0` 来移除
+<img src="assets/image-20241201145321681.png" alt="image-20241201145321681" style="width: 50%; float: left"/>
 
-## [表格](https://www.runoob.com/css/css-table.html)
+### `list-style-type`
+
+**标记类型** [`list-style-type`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/list-style-type) 用于设置列表元素的 marker（比如圆点、符号、或者自定义计数器样式）。
+
+```html
+<ol class="normal">
+  List 1
+  <li>Hello</li>
+  <li>World</li>
+  <li>What's up?</li>
+</ol>
+
+<ol class="shortcut">
+  List 2
+  <li>Looks</li>
+  <li>Like</li>
+  <li>The</li>
+  <li>Same</li>
+</ol>
+```
+
+```css
+ol.normal {
+  list-style-type: upper-alpha;
+}
+
+/* or use the shortcut "list-style": */
+ol.shortcut {
+  list-style: upper-alpha;
+}
+```
+
+## 表格
+
+> [表格](https://www.runoob.com/css/css-table.html)
 
 ### 折叠边框
 
@@ -1643,7 +1578,7 @@ border-radius: 25% 10%;
         }
         ```
 
-- 添加`border-collapse` 属性可设置表格的边框是否被折叠成一个单一的边框或隔开，即折叠边框，解决双边框问题。
+- 添加 `border-collapse` 属性可设置表格的边框是否被折叠成一个单一的边框或隔开，即折叠边框，解决双边框问题。
 
     ![image-20231201171454137](assets/image-20231201171454137.png)
 
@@ -1772,7 +1707,7 @@ th {
 
 ### 表格填充
 
-- 如需控制边框和表格内容之间的间距，应使用 td 和 th 元素的填充属性
+- 如需控制边框和表格内容之间的间距，应使用 `<td>` 和 `<th>` 元素的填充属性。
 
     ```css
     td {
@@ -1780,9 +1715,13 @@ th {
     }
     ```
 
-## 轮廓 `outline`
+## `color`
 
-- 轮廓 outline 属性用于绘制元素周围的轮廓线，可起到突出元素的作用。
+**前景色** [`color`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color) 属性设置元素的文本以及文本装饰的*前景色*颜色值，属性值为 [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)。
+
+## `outline`
+
+- **轮廓** [`outline`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/outline) 用于绘制元素周围的轮廓线，可起到突出元素的作用。
 - 轮廓位于 border 外边缘的外围
 - 轮廓可以与元素本身外边距及其它元素任何部分重合
 - outline 属性用于在一个声明中设置多个属性。
@@ -2683,7 +2622,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - **元素垂直居中**
 
-    - 使用 position 和 transform
+    - 使用 `position` 和 `transform`
 
         ```html
         <div class="container">
@@ -2710,7 +2649,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - **元素水平对齐**
 
-    - 利用 margin，元素必须有宽度，元素必须是块级或显示为块级
+    - 利用 `margin`，元素必须有宽度，元素必须是块级或显示为块级
 
         ```css
         /* 水平靠左 */
