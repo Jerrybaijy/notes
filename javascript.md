@@ -11,11 +11,13 @@ tags:
   - web
 ---
 
-# [JavaScript](https://developer.mozilla.org/zh-CN/docs/Glossary/JavaScript)
+# JavaScript
 
-**JavaScript**（JS）是一种基于对象和事件驱动的**脚本语言**；JavaScript 文件的扩展名为 `.js`。Ecma 国际以 JavaScript 为基础制定了 ECMAScript 标准。
+[**JavaScript**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)（JS）是一种基于对象和事件驱动的**脚本语言**，文件的扩展名为 `.js`。**ECMAScript** 是 JavaScript 的官方标准。
 
 <img src="assets/image-20231111155734150.png" alt="image-20231111155734150" style="zoom:50%;" />
+
+## 主要资源
 
 > [ECMAScript 官方文档](https://tc39.es/ecma262/ "ECMAScript")
 >
@@ -23,52 +25,54 @@ tags:
 >
 > [MDN JavaScript](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript)：MDN 关于 JavaScript 的主页面
 
-## JS 主要资源
-
-- [JavaScript 基础](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/JavaScript_basics)：了解 JavaScript 的含义和最基本用法
-- [JavaScript  概述](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Language_overview)：了解 JavaScript 的基本概况
-- [JavaScript 学习区](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript)：学习 JavaScript 基础知识
-- [JavaScript 参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference)：查找 JavaScript 的各个属性与概念
-
 ## 环境搭建
 
 安装 Node.js，详见 [`Node.js`](node-js.md#环境搭建) 笔记。
 
 ## 代码规范
 
-- 除以下规范，其余同编程语言通用规范。
-- **缩进**：一般缩进2个空格
+- **大小写**：敏感
+- **缩进**：不敏感，通常缩进2个空格。
+- **分号**：行尾加 `;`
+- **空白行**：不敏感
+- **换行**：不敏感
 
 ## 标识符
 
-- 除以下规范，其余同编程语言通用规范。
+- **规范**
+    - 只能含有字母、数字、下划线、$，且不能以数字开头
+    - 大小写敏感
+    - 不能是[关键字和保留字](https://tc39.es/ecma262/#sec-keywords-and-reserved-words)
 
 ## 注释
 
-- 同 Java；单行注释：`Ctrl + /`，多行注释：`Ctrl + Shift + /`
+**JavaScript 注释**：
 
-    ``` javascript
-    /**
-     * 这是一个文档注释示例。
-     * 它通常包含有关类、方法或字段的详细信息。
-     * 例如，描述类的作用或方法的功能。
+- 单行注释：`Ctrl + /`
+- 多行注释：`Ctrl + Shift + /`
+
+``` javascript
+/**
+ * 这是一个文档注释示例。
+ * 它通常包含有关类、方法或字段的详细信息。
+ * 例如，描述类的作用或方法的功能。
+ */
+
+// 这是一个单行注释，描述下面的方法。
+function main() {
+    /*
+     * 多行注释第一行
+     * 多行注释第二行
+     * 多行注释第三行
+     * 这里是对下面的输出代码块的解释。
      */
-    
-    // 这是一个单行注释，描述下面的方法。
-    function main() {
-        /*
-         * 多行注释第一行
-         * 多行注释第二行
-         * 多行注释第三行
-         * 这里是对下面的输出代码块的解释。
-         */
-    
-        console.log("Hello World");
-    }
-    
-    // 调用 main 方法
-    main();
-    ```
+
+    console.log("Hello World");
+}
+
+// 调用 main 方法
+main();
+```
 
 ## 变量声明
 
@@ -99,55 +103,38 @@ tags:
 
 ### 输入
 
-- **语法**：`prompt("提示语")`
+**语法**：`prompt("提示语")`
 
-    ```html
-    <head>
-      <script src="./test.js" defer></script>
-    </head>
-    ```
+```javascript
+let a = prompt("请输入用户名");
+console.log(a);
+```
 
-    ```javascript
-    let a = prompt("请输入用户名");
-    console.log(a);
-    ```
+**扩展**：`prompt()` 可以输入默认参数
 
-- **扩展**：`prompt()` 可以输入默认参数
-
-    ```html
-    <head>
-      <script src="./test.js" defer></script>
-    </head>
-    ```
-
-    ```javascript
-    let a = prompt("请输入用户名", "张三");
-    console.log(a);
-    ```
+```javascript
+let a = prompt("请输入用户名", "张三");
+console.log(a);
+```
 
 ### 输出
 
-- **语法**：`console.log("输出内容")`
+**语法**：`console.log("输出内容")`
 
-    ```html
-    <head>
-      <script src="./test.js" defer></script>
-    </head>
-    ```
+```javascript
+console.log("你猜我在哪？");
+```
 
-    ```javascript
-    console.log("你猜我在哪？");
-    ```
+**查看**：`Live server` 在浏览器查看 `HTML`，浏览器控制台查看输出结果，`F12`。
 
-- **查看**：`Live server` 在浏览器查看 `HTML`，浏览器控制台查看结果，`F12 | 右键 > 检查`
-- **扩展**
+**扩展**：
 
-    - 弹窗：`alert("哈哈哈");`
-    - 网页输出：`document.write("你猜我在哪");`，注意此种方法在引入脚本时不能使用 `defer`。
+- 弹窗：`alert("哈哈哈");`
+- 网页输出：`document.write("你猜我在哪");`，注意此种方法在引入脚本时不能使用 `defer`。
 
-## [`this`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this)
+## `this`
 
-`this` 是 JavaScript 中的一个特殊关键字，用于引用当前上下文中的对象。`this` 的值在不同的场景中会有所不同，其行为依赖于**函数调用的方式**。
+[`this`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/this) 是 JavaScript 中的一个特殊关键字，用于引用当前上下文中的对象。`this` 的值在不同的场景中会有所不同，其行为依赖于**函数调用的方式**。
 
 关于 `this` 的指向如下所述：
 
@@ -163,112 +150,110 @@ tags:
 - **类**：指向该类的实例
 - **DOM 事件**：指向绑定事件的 DOM 元素
 
-# [数据类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)
+# 数据类型
 
 - JS 是一种**弱类型语言**，不用提前声明变量的数据类型，在程序运行过程中，变量的数据类型会被自动确定。
 
     - 虽说是**弱类型语言**，但各种数据类型在程序执行的时候，会很灵活地自动转换 ，所以要格外小心。
 
-- **JavaScript 数据类型**
-
+- [**JavaScript 数据类型**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures)
   - **原始值**：基本数据类型
   - **对象**：复杂数据类型（或称为引用数据类型）
 
-## [原始值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#%E5%8E%9F%E5%A7%8B%E5%80%BC)
+## 原始值
 
-- **原始值**，除了 `Object` 以外，所有的类型都定义了不可变的、在语言最底层直接表示的值。我们将这些类型的值称为**原始值**，一共7种。
+[**原始值**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#原始值)，除了 `Object` 以外，所有的类型都定义了[不可变的](https://developer.mozilla.org/zh-CN/docs/Glossary/Immutable)、在语言最底层直接表示的值。我们将这些类型的值称为**原始值**，一共7种。
 
-  - **`number`**：数字
-  - **`bigInt`**：大整数
-  - **`boolean`**：布尔值
-  - **`string`**：字符串
-  - **`symbol`**：标识
-  - **`null`**：空值
-  - **`undefined`**：未定义
+- **`number`**：数字
+- **`bigInt`**：大整数
+- **`boolean`**：布尔值
+- **`string`**：字符串
+- **`null`**：空值
+- **`undefined`**：未定义
+- **`symbol`**：标识
 
-- **说明**：原始值是不可变类型，一旦创建，就不能修改。
+**说明**：原始值是不可变类型，一旦创建，就不能修改。
 
-## [数字 `number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#number_%E7%B1%BB%E5%9E%8B)
+## `number`
 
-- **语法**：JS 中的 `number` 可以用来保存整数或浮点数
-- **说明**
+[`number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#number_类型) 类型用于保存整数或浮点数，属于原始值。
 
-  - JS中位数多的数值在输出时不会十分精确，应该使用大整数。
-  - 浮点数运算时不会十分精确
+- JS 中位数多的 `number` 在输出时不会十分精确，应该使用 `bigint`。
+- 浮点数运算时不会十分精确。
 
 ### 进制
 
-- **JS 中的进制**
+**JS 中的进制**：
 
-  - 常见的进制有二进制、八进制、十进制和十六进制;
-  - 在JS中还可以用八进制和十六进制，输出时统一用十进制表示；
+- 常见的进制有二进制、八进制、十进制和十六进制;
+- 在 JS 中还可以用八进制和十六进制，输出时统一用十进制表示；
 
-- **八进制**
+**八进制**：
 
-  - 在数字开头加上0，表示八进制数，八进制数由0~7组成，逢8进位。
+- 在数字开头加上0，表示八进制数，八进制数由0~7组成，逢8进位。
+
+  ```javascript
+  let num1 = 07;
+  console.log(num1);  // 7
+  
+  let num2 = 010;
+  console.log(num2);  // 8
+  ```
+
+**十六进制**：
+
+- 在数字开头加上 `0x`，表示十六进制数，十六进制数由 `0-9` 和 `a-f` 组成。
+- 十六进制数中的 `x` 和 `a~f` 不区分大小写。
 
     ```javascript
-    let num1 = 07;
-    console.log(num1);  // 7
-    
-    let num2 = 010;
-    console.log(num2);  // 8
+    let numl = 0x9;
+    console.log((numl);  // 9
+    let num2 = Oxa;
+    console.log(num2);  // 10
     ```
-
-- **十六进制**
-
-    - 在数字开头加上 `0x`，表示十六进制数，十六进制数由 `0-9` 和 `a-f` 组成。
-    - 十六进制数中的 `x` 和 `a~f` 不区分大小写。
-
-        ```javascript
-        let numl = 0x9;
-        console.log((numl);  // 9
-        let num2 = Oxa;
-        console.log(num2);  // 10
-        ```
 
 ### 范围
 
-- 数字型有一定的范围
+`number` 有一定的范围：
 
-    ```javascript
-    console.log(Number.MAX_VALUE);  // 1.7976931348623157e+308
-    console.log(Number.MIN_VALUE);  // 5e-324
-    ```
+```javascript
+console.log(Number.MAX_VALUE);  // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);  // 5e-324
+```
 
 ### 特殊值
 
-- 数字型有3个特殊值：
-- `Infinity` ：无穷大；
+`number` 有3个特殊值：
 
+- `Infinity` ：无穷大；
   - 大于或等于2的1024次方的数值，JS 无法表示，会返回 `Infinity`。
 
 - `-Infinity` ：无穷小；
 - `NaN` ：非数字（Not a Number）；
-
   - 使用 `isNaN()` 函数检查一个数值是不是 `NaN`，返回 `true` 或 `false`。
 
-## [大整数 `bigint`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#bigint_%E7%B1%BB%E5%9E%8B)
+## `bigint`
 
-- **定义**：`bigint` 是 JS 中的任意精度整数，没有位数的限制，即使超出 `number` 能够表示的安全整数范围。
-- **语法**
+**大整数** [`bigint`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#bigint_类型) 用于表示任意精度整数，没有位数的限制，即使超出 `number` 能够表示的安全整数范围，属于原始值。
 
-    - 大整数表示一些数值比较大的整数
-    - 大整数必须添加后缀 `n`
-    - 大整数与普通整数是两种值，它们之间并不相等，例如 `100 == 100n;  // false`
+- `bigint` 表示一些数值比较大的整数
+- `bigint` 必须添加后缀 `n`
+- `bigint` 与 `number` 是两种值，它们之间并不相等，例如 `100 == 100n;  // false`
 
-## [布尔值 `boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#boolean_%E7%B1%BB%E5%9E%8B)
+## `boolean`
 
-- JS 中的布尔值首字母**小写**：`true` 和 `false`
+**布尔值** [`boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#boolean_类型) 首字母**小写**：`true` 和 `false`，属于原始值
 
-    ```javascript
-    let a = true;
-    let b = false;
-    console.log(5 > 3);  // true
-    console.log(6 < 2);  // false
-    ```
+```javascript
+let a = true;
+let b = false;
+console.log(5 > 3);  // true
+console.log(6 < 2);  // false
+```
 
-## [字符串 `string`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#string_%E7%B1%BB%E5%9E%8B)
+## `string`
+
+**字符串** [`string`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#string_类型) 属于原始值。
 
 ### 字符串基础
 
@@ -538,33 +523,33 @@ tags:
     console.log(str.indexOf("海"));  // -1
     ```
 
-## [空值 `null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#null_%E7%B1%BB%E5%9E%8B)
+## `null`
 
-- JS 中，空值的字面量是 `null`，数据类型是 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)。
-- 从逻辑角度，`null` 表示空对象指针。
+JS 中，**空值** [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#null_类型) 的字面量是 `null`，数据类型是 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)，属于原始值。
 
-## [未定义 `undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#undefined_%E7%B1%BB%E5%9E%8B)
+从逻辑角度，`null` 表示空对象指针。
 
-- JS 中，未定义的字面量是 `undefined`，数据类型是 `undefined`。
+## `undefined`
 
-## [标识 `symbol`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#symbol_%E7%B1%BB%E5%9E%8B)
+**未定义** [`undefined`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#undefined_类型) 类型只有一个值：`undefined`。
 
-- `symbol` 指的是独一无二的值，这是 ES6 新增的数据类型。
+## `symbol`
+
+**标识** [`symbol`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#symbol_类型) 指的是独一无二的值，这是 ES6 新增的数据类型，属于原始值。
+
 - 每个通过 `Symbol()` 生成的值都是唯一的。
 
-    - `symbol` 类型的对象永远不相等，即便创建的时候传入相同的值
+- `symbol` 类型的对象永远不相等，即便创建的时候传入相同的值。
 
-- **语法**
+```javascript
+let a = Symbol();
+let b = Symbol();
+console.log(a);  // Symbol()
+console.log(typeof a);  // symbol
+console.log(a == b);  // false
+```
 
-    ```javascript
-    let a = Symbol();
-    let b = Symbol();
-    console.log(a);  // Symbol()
-    console.log(typeof a);  // symbol
-    console.log(a == b);  // false
-    ```
-
-## 数组 `Array`
+## `Array`
 
 ### 数组基础
 
@@ -761,31 +746,24 @@ tags:
     console.log(arr);  // ["中国", "上海", 123]
     ```
 
-## [获取数据类型](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof)
+## 获取数据类型
 
-- **语法**：`typeof OPERAND | (OPERAND)`，返回代表数据类型的**字符串**。
+[`typeof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof) 运算符返回一个字符串，表示操作数的类型。
 
-    ```javascript
-    let str = "中国江西联通";
-    console.log(typeof str);  // string
-    ```
+```javascript
+let str = "中国江西联通";
+console.log(typeof str);  // string
+```
 
-- `typeof` 可以获取到原始值和对象
+`typeof` [可能的返回值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#描述)：
 
-    - **原始值（没有 `null`）**
-
-        - **`number`**：数字
-        - **`bigInt`**：大整数
-        - **`boolean`**：布尔值
-        - **`string`**：字符串
-        - **`symbol`**：标识
-        - ~~**`null`**：获取不到 `null`，会返回 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)。~~
-        - **`undefined`**：未定义
-
-    - **对象**
-
-        - `object`：包括普通对象、数组和 `null`
-        - `function`：函数属于特殊的对象
+<iframe
+  src="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#描述"
+  width="100%"
+  height="800"
+  title="嵌入的 MDN 页面"
+  >你的设备不支持嵌入
+</iframe>
 
 ## 数据类型转换
 
@@ -917,7 +895,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ## 数据的可变性
 
-- 关于数据的可变性，详见 **code-general | 数据的可变性**
+- 关于数据的可变性，详见 [`code-general | 数据的可变性`](code-general.md/#强类型和弱类型) 笔记。
 - **不可变数据类型：**
 
     - **`Number`**：数字
@@ -939,6 +917,8 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
     - **`WeakSet`**：弱集合
 
 # 运算符
+
+> [表达式和运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators)
 
 ## 算术运算符
 

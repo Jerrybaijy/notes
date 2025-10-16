@@ -55,8 +55,8 @@ tags:
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写。
-- **缩进**：不敏感，通常2个空格。
-- **分号**：行尾不加 `;`
+- **缩进**：不敏感，通常缩进2个空格。
+- **分号**：行尾加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
 
@@ -687,12 +687,14 @@ span::after {
 
 [**CSS 属性值定义语法**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)（CSS value definition syntax）是用来限定 CSS 属性合法取值的专门语法。
 
+> [CSS 值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#数值、长度和百分比)
+
 以下是几个常见的属性值类型：
 
-- 关键字，如 `red`
-- 基本数据类型，如 `<length>` 的 `5px`
-- 函数，如 `<color>` 的 `rgb(255 0 153)`
-- 更多...
+- **关键字**，如 `red`
+- **基本数据类型**，如 `<length>` 的 `5px`
+- **函数**，如 `<color>` 的 `rgb(255 0 153)`
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)
 
 ### 基本数据类型
 
@@ -781,21 +783,12 @@ span::after {
 
 ## `gap`
 
-**间隔** [`gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap) 是一个 CSS 简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
+**间隔** [`gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap) 是一个简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
 
 - [`column-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
 - [`row-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
 
 **注意**：`gap` 属性不适用于流式布局。
-
-## `height`
-
-**高度** [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 用于设置元素盒模型 `content` 的高度。
-
-**注意**：
-
-- `height` 默认设置盒模型 `content` 的高度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
-- `height` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
 
 ## `justify-content`
 
@@ -861,7 +854,52 @@ span::after {
 }
 ```
 
-## `width`
+## `z-index`
+
+[`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index) 属性用于设置 *非 `static` 定位元素及其后代元素* 或 *flex 项目* 的 **Z 轴顺序**。z-index 较大的重叠元素会覆盖较小的元素。
+
+当没有在任何元素上指定 `z-index` 属性时，元素的[堆叠顺序](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_positioned_layout/Stacking_without_z-index)如下（从上到下）：
+
+- 后代定位元素，按在 HTML 中出现的顺序排列。
+- 后代非定位元素，按在 HTML 中出现的顺序排列。
+- 根元素的背景和边框。
+
+以下是 `relative` 覆盖 `absolute` 的示例：
+
+<img src="assets/image-20251016040507967.png" alt="image-20251016040507967" style="zoom:50%;" />
+
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+```
+
+# 样式
+
+## 大小
+
+### `width`
 
 **宽度** [`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 用于设置元素盒模型 `content` 的宽度。
 
@@ -871,7 +909,14 @@ span::after {
 - `width` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
 - `<body>` 元素默认宽度为一整行。
 
-# 样式
+### `height`
+
+**高度** [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 用于设置元素盒模型 `content` 的高度。
+
+**注意**：
+
+- `height` 默认设置盒模型 `content` 的高度，详见[盒子尺寸 `box-sizing`](#[盒子尺寸 `box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing))。
+- `height` 属性对于*纯行内元素*无效（如 `<img>` 等**内容类型**为*替换元素*的行内元素不属于*纯行内元素*）。
 
 ## 背景
 
@@ -1237,154 +1282,6 @@ text-shadown: 1px 1px 2px black;
 text-shadown: 0 0 1em blue;
 ```
 
-## 文本布局
-
-> [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#文本布局)
-
-### `text-align`
-
-[`text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align) 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
-
-**属性值**：
-
-- `left`：左对齐
-- `right`：右对齐
-- `center`：居中对齐
-- `justify`：两端对齐（对最后一行无效）
-- `justify-all`：两端对齐（对最后一行有效）
-- 继承
-- 其它...
-
-### `text-indent`
-
-[`text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent) 属性用于设置区块元素中文本行前面缩进的长度。
-
-**属性值**：
-
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
-- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
-- 继承
-- 其它...
-
-### `letter-spacing`
-
-[`letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing) 属性用于设置字母间距。
-
-**属性值**：
-
-- **`normal`**：默认，关键字
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
-- 继承
-
-```css
-/* Keyword value */
-letter-spacing: normal;
-
-/* <length> values */
-letter-spacing: 0.3em;
-letter-spacing: 3px;
-letter-spacing: -0.05em;
-```
-
-### `line-height`
-
-[`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) 属性用于设置行高。
-
-- 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
-
-**属性值**：
-
-- **`normal`**：关键字，约为 `1.2`
-- [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
-- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
-
-**扩展**：
-
-- 使用 `line-height` 属性可设置文本基于容器垂直居中。
-
-### `word-spacing`
-
-[`word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing) 属性用于设置单词、标签间距。
-
-**属性值**：
-
-- **`normal`**：默认，关键字
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
-- 继承
-
-```css
-/* Keyword value */
-letter-spacing: normal;
-
-/* <length> values */
-letter-spacing: 0.3em;
-letter-spacing: 3px;
-letter-spacing: -0.05em;
-```
-
-### `vertial-align`
-
-[`vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align) 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
-
-#### 属性值
-
-- **关键字：基于父元素**
-
-    - `text-top`：顶部对齐
-    - `text-bottom`：底部对齐
-    - `middle`：中部对齐
-    - 其它...
-
-- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，基于父元素基线，可以是负值。
-- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于父元素基线，可以是负值；该百分比是 `line-height` 属性的百分比。
-- **相对行的值**
-
-    - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
-    - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
-    - 没有基线的元素，使用外边距的下边缘替代。
-
-- **表格单元格的值**
-
-    - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
-    - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
-    - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
-    - 其它...
-    - 可以是负数。
-
-#### 文本垂直对齐扩展
-
-**使用 `line-height` 属性**：
-
-```CSS
-.container {
-  height: 100px; /* 容器高度 */
-  line-height: 100px; /* 行高等于容器高度 */
-}
-```
-
-```html
-<div class="container">
-  <div>这个元素内容将会基于容器垂直对齐。</div>
-</div>
-```
-
-**使用 `padding` 属性**：
-
-```css
-.container {
-  padding: 10px 0; /* 容器上下内边距相等 */
-  border: 3px solid green;
-}
-```
-
-```html
-<div class="container">
-  <div>这个元素内容将会基于容器垂直对齐。</div>
-</div>
-```
-
 ## 链接
 
 > [样式化链接](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Styling_text/Styling_links)
@@ -1704,6 +1601,154 @@ td {
 
 [**布局**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/CSS_layout)就是将网页内容从无序的堆叠状态，组织成设计稿要求的，有结构、有层次的视觉排列。
 
+## 文本布局
+
+> [文本布局](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Text_styling/Fundamentals#文本布局)
+
+### `text-align`
+
+[`text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align) 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
+
+**属性值**：
+
+- `left`：左对齐
+- `right`：右对齐
+- `center`：居中对齐
+- `justify`：两端对齐（对最后一行无效）
+- `justify-all`：两端对齐（对最后一行有效）
+- 继承
+- 其它...
+
+### `text-indent`
+
+[`text-indent`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-indent) 属性用于设置区块元素中文本行前面缩进的长度。
+
+**属性值**：
+
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于区块宽度
+- 继承
+- 其它...
+
+### `letter-spacing`
+
+[`letter-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/letter-spacing) 属性用于设置字母间距。
+
+**属性值**：
+
+- **`normal`**：默认，关键字
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
+- 继承
+
+```css
+/* Keyword value */
+letter-spacing: normal;
+
+/* <length> values */
+letter-spacing: 0.3em;
+letter-spacing: 3px;
+letter-spacing: -0.05em;
+```
+
+### `line-height`
+
+[`line-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height) 属性用于设置行高。
+
+- 对于块级元素，它指定元素行盒（line boxes）的最小高度。对于非替代的 inline 元素，它用于计算行盒（line box）的高度。
+
+**属性值**：
+
+- **`normal`**：关键字，约为 `1.2`
+- [**`<number>`**](#[数字 `<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number))：数字，**推荐此种值**，不会在继承时产生不确定的结果。
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，以 `em` 为单位的值可能会产生不确定的结果。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于当前字体尺寸的百分比；可能会带来不确定的结果。
+
+**扩展**：
+
+- 使用 `line-height` 属性可设置文本基于容器垂直居中。
+
+### `word-spacing`
+
+[`word-spacing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/word-spacing) 属性用于设置单词、标签间距。
+
+**属性值**：
+
+- **`normal`**：默认，关键字
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，正值变大，负值变小。
+- 继承
+
+```css
+/* Keyword value */
+letter-spacing: normal;
+
+/* <length> values */
+letter-spacing: 0.3em;
+letter-spacing: 3px;
+letter-spacing: -0.05em;
+```
+
+### `vertial-align`
+
+[`vertial-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/vertical-align) 属性用于指定行内（inline）、行内区块（inline-block）、表格单元格（table-cell）盒子的垂直对齐方式。
+
+#### 属性值
+
+- **关键字：基于父元素**
+
+    - `text-top`：顶部对齐
+    - `text-bottom`：底部对齐
+    - `middle`：中部对齐
+    - 其它...
+
+- [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，基于父元素基线，可以是负值。
+- [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于父元素基线，可以是负值；该百分比是 `line-height` 属性的百分比。
+- **相对行的值**
+
+    - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
+    - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
+    - 没有基线的元素，使用外边距的下边缘替代。
+
+- **表格单元格的值**
+
+    - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
+    - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
+    - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
+    - 其它...
+    - 可以是负数。
+
+#### 文本垂直对齐扩展
+
+**使用 `line-height` 属性**：
+
+```CSS
+.container {
+  height: 100px; /* 容器高度 */
+  line-height: 100px; /* 行高等于容器高度 */
+}
+```
+
+```html
+<div class="container">
+  <div>这个元素内容将会基于容器垂直对齐。</div>
+</div>
+```
+
+**使用 `padding` 属性**：
+
+```css
+.container {
+  padding: 10px 0; /* 容器上下内边距相等 */
+  border: 3px solid green;
+}
+```
+
+```html
+<div class="container">
+  <div>这个元素内容将会基于容器垂直对齐。</div>
+</div>
+```
+
 ## 盒模型
 
 ### 概述
@@ -1839,7 +1884,7 @@ h4 {
     - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
 - [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
     - [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
-    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：弹性布局
+    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：见弹性布局
     - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：见网格布局
     - [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
     - [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
@@ -2140,311 +2185,323 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 ## [多列布局 ](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
 
-## [浮动 `float`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float)
+## 浮动
 
-- float 属性指定元素是否应该浮动，以及向哪个方向移动。
-- **浮动效果**
+### `float`
 
-    - 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移到所处的容器内容区边界，或者碰到另外一个浮动的元素。
-    - 浮动元素之后的其它元素（块级元素的文本或者行内元素）将围绕它，之前的其它元素不受影响。
-    - 块级元素浮动之后不再独占一行
+[`float`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float) 属性用于指定元素是否应该浮动，以及向哪个方向移动。
 
-- **属性值**
+**浮动效果**：
 
-    - 默认值 none
-    - left、right
+- 当一个元素浮动之后，它会被移出正常的文档流，然后向左或者向右平移，一直平移到所处的容器内容区边界，或者碰到另外一个浮动的元素。
+- 浮动元素之后的其它元素将围绕它，之前的其它元素不受影响。
+- 块级元素浮动之后不再独占一行
 
-- **清除浮动**
+**属性值**：
 
-    1. 方案1：利用属性 **clear**
+- [`none`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float#none)：默认值，不浮动
+- [`left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float#left)
+- [`right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float#right)
+- [`inline-start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float#inline-start)：所在块容器的开始一侧
+- [`inline-end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/float#inline-end)：所在块容器的结束一侧
 
-        - clear 属性让受浮动影响的其它元素不受浮动的影响，即不环绕元素，回归正常位置。
-        - 默认值 none，其它属性值 left、right、both。
-        - 该属性设置在受浮动影响的其它元素内。
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+<div class="surround">
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+</div>
+```
 
-        ```html
-        <div class="wrapper">
-          <div class="black"></div>
-        
-          <div class="blue"></div>
-        
-          <div class="con">
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-            This paragraph clears both.This paragraph clears both.
-          </div>
-        </div>
-        ```
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  top: 20px;
+  left: 20px;
+}
 
-        ```css
-        .wrapper {
-          border: 1px solid black;
-          width: 80%;
-          height: 500px;
-        
-          /* 验证浮动到padding以内 */
-          /* padding: 10px; */
-        }
-        
-        .black {
-          background-color: black;
-          width: 20%;
-          height: 200px;
-          float: left;
-        }
-        
-        .blue {
-          background-color: blue;
-          width: 20%;
-          height: 100px;
-          float: right;
-        }
-        
-        .con {
-          clear: both;
-        }
-        ```
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+  /* 设置为向右侧浮动 */
+  float: right;
+}
+```
 
-    2. 方案2：利用伪元素 **`:after`** 
+![image-20251016051235090](assets/image-20251016051235090.png)
 
-        ```html
-        <div class="clearfix">
-          <div class="float-left">浮动元素 1</div>
-          <div class="float-right">浮动元素 2</div>
-        </div>
-        <p>这个段落不会环绕在浮动元素的周围。</p>
-        ```
+### `clear`
 
-        ```css
-        /*在style中添加clearfix style*/
-        .clearfix::after {
-          content: "";
-          display: table;
-          clear: both;
-        }
-        
-        .float-left {
-          float: left;
-        }
-        
-        .float-right {
-          float: right;
-        }
-        ```
+[`clear`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear) 属性用于清除 `float` 对其它元素的影响，设置在受浮动影响的其它元素内。
 
-## [溢出 `overfloat`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow)
+- [`none`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#none)
+- [`left`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#left)
+- [`right`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#right)
+- [`both`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#both)
+- [`inline-start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#inline-start)
+- [`inline-end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/clear#inline-end)
 
-- overflow 属性用于控制内容溢出元素框时显示的方式。
-- 属性值
+<img src="assets/image-20251016051835976.png" alt="image-20251016051835976" style="zoom:33%;" />
 
-    - 默认值 visible，如果有溢出内容，会呈现在元素框之外。
-    - hidden 溢出内容不可见，但**可以**以编程的方式滚动。
-    - clip 溢出内容不可见，但**不可以**以编程的方式滚动。
-    - scroll 无论是否溢出，浏览器**总是**显示滚动条，所有内容通过滚动条查看。
-    - auto 如果有溢出内容，浏览器显示滚动条，所有内容通过滚动条查看，否则正常显示。
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+<div class="surround">
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+  <p>这段文字将围绕 Normal Block.</p>
+</div>
+```
 
-- 说明
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  top: 20px;
+  left: 20px;
+}
 
-    - overflow 属性只工作于指定高度的块元素上。
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+  float: right;
+}
 
-## [元素定位 `position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position)
+.surround {
+  /* 清除浮动 */
+  clear: right;
+}
+```
 
-- position 属性指定了元素的定位类型。
-- 默认值为 static，即没有定位，遵循正常的文档流对象。
-- position 属性的五个值（定位类型）：
+## `overfloaw`
 
-    - 默认 static
-    - 固定 fixed
-    - 绝对 absolute
-    - 相对 relative
-    - 粘性 sticky
+**溢出**  [`overfloaw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 用于控制内容溢出*指定高度*的元素框时显示的方式。
 
-- **定位方法**
+**属性值**:
 
-    - top，bottom，left，right，...
-    - 定位值：默认 auto，长度值，百分比
-    - 定位类型为 `static` 的元素不会受到 top、 bottom、 left、right影响
-    - 可以省略定位方法
+- `visible`：默认值，如果有溢出内容，会呈现在元素框之外。
+- `hidden`：溢出内容不可见，但**可以**以编程的方式滚动。
+- `clip`：溢出内容不可见，但**不可以**以编程的方式滚动。
+- `scroll`：无论是否溢出，浏览器**总是**显示滚动条，所有内容通过滚动条查看。
+- `auto`：如果有溢出内容，浏览器显示滚动条，所有内容通过滚动条查看，否则正常显示。
 
-    ```css
-    .example {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-    }
-    ```
+```html
+<p>
+  Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+  doloremque laudantium.
+</p>
+```
 
-- **[固定定位](https://www.runoob.com/css/css-positioning.html#position-fixed)**
+```css
+p {
+  width: 8em;
+  height: 5em;
+  border: solid;
+  overflow: auto;
+}
+```
 
-    - `position: fixed;` 
-    - 元素会被移出正常文档流，并不为元素预留空间，基于屏幕视口（viewport）的位置来指定元素位置。
-    - 元素的位置在屏幕滚动时不会改变。
-    - 元素不占据空间，可与其它元素重叠。
+## `position`
 
-- **[绝对定位](https://www.runoob.com/css/css-positioning.html#position-absolute)**
+### 语法
 
-    - `position:absolute;` 
-    - 元素会被移出正常文档流，并不为元素预留空间，基于最近的非 static 定位的祖先元素位置来指定元素位置。
-    - 元素不占据空间，可与其它元素重叠。
-    - 绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。
+**定位** [`position`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position) 属性指定了元素的定位类型。再由方位属性（如 `top`）指定元素的偏移量。
 
-- **[相对定位](https://www.runoob.com/css/css-positioning.html#position-absolute)**
+**属性值**：
 
-    - `position:relative;` 
-    - 元素不会被移出正常文档流，并为元素预留空间，基于元素未定位的位置来指定元素位置。
-    - 元素不占据空间，可与其它元素重叠。
+- `static`：默认值
+- `relative`：相对定位
+- `absolute`：绝对定位
+- `fixed`：固定定位
+- `sticky`：粘性定位
 
-- **[粘性定位](https://www.runoob.com/css/css-positioning.html#position-sticky)**
+```css
+.example {
+  /* 指定位置类型 */
+  position: fixed;
 
-    - `position: sticky;`
-    - 粘性定位可以被认为是相对定位和固定定位的混合。元素在跨越特定阈值前为相对定位，之后为固定定位。
-    - 须指定四个阈值top、bottom、left、right其中之一，才可使粘性定位生效。否则其行为与相对定位相同。
-    - Safari 需要使用 `position: -webkit-sticky;` 才能兼容。
+  /* 指定偏移量 */
+  right: 20px;
+  bottom: 20px;
+}
+```
 
-- 下面是 `position: sticky;` 在两种元素中的对比案例
+### `static`
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <style>
-          /* header元素会始终停靠在页面顶部 */
-          header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-          }
-    
-          section {
-            padding: 20px;
-          }
-    
-          footer {
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            text-align: center;
-          }
-    
-          * {
-            box-sizing: border-box;
-          }
-    
-          dl {
-            margin: 0;
-            padding: 24px 0 0 0;
-          }
-    
-          /*
-                在描述列表<dl>里的<dt>元素，
-                指定position: sticky，
-                <dt>元素会呈现特殊显示
-            */
-          dt {
-            background: #b8c1c8;
-            border-bottom: 1px solid #989ea4;
-            border-top: 1px solid #717d85;
-            color: #fff;
-            font: bold 18px/21px Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 2px 0 0 12px;
-            position: -webkit-sticky;
-            position: sticky;
-            top: 16px;
-          }
-    
-          dd {
-            font: bold 20px/45px Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0 0 0 12px;
-            white-space: nowrap;
-          }
-    
-          dd + dd {
-            border-top: 1px solid #ccc;
-          }
-        </style>
-      </head>
-    
-      <body>
-        <header>
-          <p>Sticky Header</p>
-        </header>
-    
-        <section>
-          <p>
-            This is some content. Scroll down to see the header stick to the top.
-          </p>
-        </section>
-    
-        <footer>
-          <p>Sticky Footer</p>
-        </footer>
-    
-        <div>
-          <dl>
-            <dt>A</dt>
-            <dd>Andrew W.K.</dd>
-            <dd>Apparat</dd>
-            <dd>Arcade Fire</dd>
-            <dd>At The Drive-In</dd>
-            <dd>Aziz Ansari</dd>
-            <dd>Andrew W.K.</dd>
-            <dd>Apparat</dd>
-            <dd>Arcade Fire</dd>
-            <dd>At The Drive-In</dd>
-            <dd>Aziz Ansari</dd>
-            <dd>Andrew W.K.</dd>
-            <dd>Apparat</dd>
-            <dd>Arcade Fire</dd>
-            <dd>At The Drive-In</dd>
-            <dd>Aziz Ansari</dd>
-            <dd>Andrew W.K.</dd>
-            <dd>Apparat</dd>
-            <dd>Arcade Fire</dd>
-            <dd>At The Drive-In</dd>
-            <dd>Aziz Ansari</dd>
-            <dd>Andrew W.K.</dd>
-            <dd>Apparat</dd>
-            <dd>Arcade Fire</dd>
-            <dd>At The Drive-In</dd>
-            <dd>Aziz Ansari</dd>
-          </dl>
-          <dl>
-            <dt>C</dt>
-            <dd>Chromeo</dd>
-            <dd>Common</dd>
-            <dd>Converge</dd>
-            <dd>Crystal Castles</dd>
-            <dd>Cursive</dd>
-          </dl>
-          <dl>
-            <dt>E</dt>
-            <dd>Explosions In The Sky</dd>
-          </dl>
-          <dl>
-            <dt>T</dt>
-            <dd>Ted Leo & The Pharmacists</dd>
-            <dd>T-Pain</dd>
-            <dd>Thrice</dd>
-            <dd>TV On The Radio</dd>
-            <dd>Two Gallants</dd>
-          </dl>
-        </div>
-      </body>
-    </html>
-    ```
-    
+[`static`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#static) 关键字作为 `position` 的属性值。
+
+- 是 `position` 属性的默认值。
+- 元素遵循正常文档流。
+- 方位属性（如 `top`）无效。
+
+### `relative`
+
+**相对定位** [`relative`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#relative) 关键字作为 `position` 的属性值。
+
+- 元素**不会**被移出正常文档流。
+- 基于*自身*指定元素偏移量，偏移值**不会**影响其他元素的位置。
+- 绝对定位的元素**可以**设置外边距，且不会与其他边距合并。
+
+<img src="assets/image-20251016031601492.png" alt="image-20251016031601492" style="zoom:45%;" />
+
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+}
+```
+
+### `absolute`
+
+**绝对定位** [`absolute`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#absolute) 关键字作为 `position` 的属性值。
+
+- 元素**会**被移出正常文档流，**不**为元素预留空间。
+- 基于*最近的祖先（如果有）或初始[包含块](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_display/Containing_block#确定包含块)*指定元素偏移量，偏移值**不会**影响其他元素的位置。
+- 绝对定位的元素可以设置外边距（margins），且不会与其他边距合并。
+
+<img src="assets/image-20251016031345301.png" alt="image-20251016031345301" style="zoom:45%;" />
+
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+}
+```
+
+### `fixed`
+
+**固定定位** [`fixed`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#fixed) 关键字作为 `position` 的属性值。
+
+- 元素**会**被移出正常文档流，**不**为元素预留空间。
+- 基于*屏幕视口*指定元素偏移量，偏移值**不会**影响其他元素的位置。
+- 元素的位置在屏幕滚动时不会改变。
+
+<img src="assets/image-20251016030619515.png" alt="image-20251016030619515" style="zoom:45%;" />
+
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: relative;
+  top: 20px;
+  left: 20px;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+}
+```
+
+### `sticky`
+
+**粘性定位** [`sticky`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position#sticky) 关键字作为 `position` 的属性值。
+
+- `sticky` 是 `relative` 和 `absolute` 的混合。
+- 视口滚动到偏移量之前为 `relative`。
+- 视口滚动到偏移量之后为 `absolute`，元素将一直固定在该偏移量位置。
+
+<img src="assets/image-20251016034903556.png" alt="image-20251016034903556" style="zoom:50%;" />
+
+```html
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+<p>占位行</p>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: sticky;
+  top: 20px;
+  left: 20px;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  top: 20px;
+  left: 20px;
+}
+```
+
+
+
+
+
 - **[元素堆叠](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)**
 
     - z-index 属性指定一个元素的堆叠顺序。
@@ -2461,55 +2518,11 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - 案例：固定在窗口中上部的登录对话框，有遮盖 cove
 
-    ```html
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <title>测试页面</title>
-        <style>
-          body {
-            margin: 0;
-          }
-          .bg {
-            height: 3000px;
-            background-color: pink;
-          }
-          .cover {
-            /*固定在整个窗口*/
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            right: 0;
     
-            background-color: black;
-            opacity: 0.5;
-          }
-          .dialog {
-            position: fixed;
-            top: 100px;
-    
-            /*左右居中*/
-            left: 0;
-            right: 0;
-            margin: auto;
-    
-            width: 400px;
-            height: 300px;
-            background-color: white;
-          }
-        </style>
-      </head>
-      <body>
-        <!--注意三者顺序，cover一定在dialog之前，否则会遮盖住dialog-->
-        <!--或者通过z-index控制-->
-        <div class="bg"></div>
-        <div class="cover"></div>
-        <div class="dialog"></div>
-      </body>
-    </html>
-    ```
+
+### `position` 相关
+
+- `z-index`：覆盖顺序，详见 [`z-index`](#`z-index`)。
 
 # 变化
 
@@ -2650,7 +2663,11 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 - `visibility: hidden;`：可以隐藏某个元素，但隐藏的元素仍需占用与未隐藏之前一样的空间，即仍会影响布局。
 - `opacity: 0;`：
 
-# 技巧
+# 其它
+
+## CSS 调试
+
+> [CSS 调试](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Debugging_CSS)
 
 ## 技巧汇总
 
