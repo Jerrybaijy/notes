@@ -74,31 +74,6 @@ function main() {
 main();
 ```
 
-## 变量声明
-
-- `无关键字` 声明的变量，具有全局级作用域，考略到代码可维护性和可读性，不推荐。
-- `var` 声明的变量，具有函数级作用域；存在变量提升现象。
-- `let` 用于声明**变量**，具有块级作用域。优先使用 **let** 声明变量。
-- `const` 用于声明**常量**，具有块级作用域；不能被重新赋值。
-- **变量提升**：JS 代码的执行是由浏览器中的 JS 解析器执行的，分为两个过程：预解析和代码执行。
-- **变量提升**
-
-    - 把变量的声明提升到声明作用域的最前面；
-
-        - 只会提升声明，不会提升赋值，相当于声明但未赋值，此时变量的值为 `undefined`；
-
-    - 把函数的声明提升到当前作用域的最前面；
-
-        - 提升定义，在前面调用后定义的函数可以正常执行；
-
-            - 注意函数表达式的声明提升，是变量声明提升，而不是函数声明提升；
-
-    - 先提升变量，后提升函数，如果变量与函数同名，函数会覆盖变量。
-
-- 代码执行
-
-  - 预解析之后，按既定规律执行代码
-
 ## 输入与输出
 
 ### 输入
@@ -150,6 +125,55 @@ console.log("你猜我在哪？");
 - **类**：指向该类的实例
 - **DOM 事件**：指向绑定事件的 DOM 元素
 
+## 声明变量
+
+### 语法
+
+声明变量：
+
+- 使用关键字
+- 不需要指定数据类型
+
+```javascript
+// 声明变量并赋值
+let myVariable = 19;
+console.log(age); // 19
+```
+
+重新赋值：
+
+```javascript
+let myVariable = 19;
+
+// 给变量重新赋值
+myVariable = 20;
+console.log(age); // 20
+```
+
+### 声明关键字和变量提升
+
+- `无关键字` 声明的变量，具有全局级作用域，考略到代码可维护性和可读性，不推荐。
+- `var` 声明的变量，具有函数级作用域；存在变量提升现象。
+- `let` 用于声明**变量**，具有块级作用域。优先使用 **let** 声明变量。
+- `const` 用于声明**常量**，具有块级作用域；不能被重新赋值。
+- **变量提升**：JS 代码的执行是由浏览器中的 JS 解析器执行的，分为两个过程：预解析和代码执行。
+- **变量提升**
+    - 把变量的声明提升到声明作用域的最前面；
+
+        - 只会提升声明，不会提升赋值，相当于声明但未赋值，此时变量的值为 `undefined`；
+
+    - 把函数的声明提升到当前作用域的最前面；
+
+        - 提升定义，在前面调用后定义的函数可以正常执行；
+
+            - 注意函数表达式的声明提升，是变量声明提升，而不是函数声明提升；
+
+    - 先提升变量，后提升函数，如果变量与函数同名，函数会覆盖变量。
+
+- 代码执行
+
+    - 预解析之后，按既定规律执行代码
+
 # 数据类型
 
 - JS 是一种**弱类型语言**，不用提前声明变量的数据类型，在程序运行过程中，变量的数据类型会被自动确定。
@@ -178,7 +202,7 @@ console.log("你猜我在哪？");
 
 [`number`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#number_类型) 类型用于保存整数或浮点数，属于原始值。
 
-- JS 中位数多的 `number` 在输出时不会十分精确，应该使用 `bigint`。
+- JS 中位数多的 `number` 在输出时不会十分精确，应该使用 `bigint`。
 - 浮点数运算时不会十分精确。
 
 ### 进制
@@ -242,7 +266,7 @@ console.log(Number.MIN_VALUE);  // 5e-324
 
 ## `boolean`
 
-**布尔值** [`boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#boolean_类型) 首字母**小写**：`true` 和 `false`，属于原始值
+**布尔值** [`boolean`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#boolean_类型) 首字母**小写**：`true` 和 `false`，属于原始值。
 
 ```javascript
 let a = true;
@@ -250,6 +274,15 @@ let b = false;
 console.log(5 > 3);  // true
 console.log(6 < 2);  // false
 ```
+
+以下类型或值会返回 `false`，其余都返回 `true`：
+
+- `false`
+- `undefined`
+- `null`
+- `0`
+- `NaN`
+- `''` 空字符串
 
 ## `string`
 
@@ -525,7 +558,7 @@ console.log(6 < 2);  // false
 
 ## `null`
 
-JS 中，**空值** [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#null_类型) 的字面量是 `null`，数据类型是 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)，属于原始值。
+JS 中，**空值** [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#null_类型) 的字面量是 `null`，数据类型是 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)，属于原始值。
 
 从逻辑角度，`null` 表示空对象指针。
 
@@ -895,7 +928,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ## 数据的可变性
 
-- 关于数据的可变性，详见 [`code-general | 数据的可变性`](code-general.md/#强类型和弱类型) 笔记。
+- 关于数据的可变性，详见 [`code-general | 数据的可变性`](code-general.md/#强类型和弱类型) 笔记。
 - **不可变数据类型：**
 
     - **`Number`**：数字
@@ -1159,111 +1192,99 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ## 逻辑运算符
 
+> [逻辑运算符](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#逻辑运算符：与、或、非)
+
 ### 逻辑非 `!`
 
-- **基础示例**
+**基础示例**：
 
-    ```javascript
-    let a = 5;
-    a = !a;
-    console.log(a ,typeof a)  // false 'boolean'
-    ```
+```javascript
+let a = 5;
+a = !a;
+console.log(a ,typeof a)  // false 'boolean'
+```
 
-- **扩展**：如果对其它数据类型进行非运算，系统会先将其转换为布尔值，然后进行非运算
+**扩展**：如果对其它数据类型进行非运算，系统会先将其转换为布尔值，然后进行非运算。
 
-    ``` javascript
-    let a = true;
-    a = !a;
-    console.log(a)  // false
+``` javascript
+let a = true;
+a = !a;
+console.log(a)  // false
 
-    let b = 5;
-    b = !b;
-    console.log(b, typeof b)  // false 'boolean'
-    ```
+let b = 5;
+b = !b;
+console.log(b, typeof b)  // false 'boolean'
+```
 
-- **扩展**：连续取非，将其它数据类型转换为布尔值
+**扩展**：连续取非，将其它数据类型转换为布尔值。
 
-    ```javascript
-    let b = 5;
-    console.log(typeof b);  // number
-    
-    b = !!b;
-    console.log(b, typeof b)  // true 'boolean'
-    ```
+```javascript
+let b = 5;
+console.log(typeof b);  // number
+
+b = !!b;
+console.log(b, typeof b)  // true 'boolean'
+```
 
 ### 逻辑与 `&&`
 
-- **基础示例**
+**基础示例**：
 
-  ```javascript
-  let a = 5 > 3 && 6 <3;
-  console.log(a ,typeof a)  // false 'boolean'
-  ```
+```javascript
+let a = 5 > 3 && 6 <3;
+console.log(a ,typeof a)  // false 'boolean'
+```
 
-- **短路运算**：如果第一个值为 `false`，则第二个值不执行，直接返回 `false`；否则执行第二个值
+**短路运算**：如果第一个值为 `false`，则第二个值不执行，直接返回 `false`；否则执行第二个值。
 
-    ```javascript
-    let res = false && alert(123);
-    console.log(res);  // false 不执行alert(123)
-    ```
+```javascript
+let res = false && alert(123);
+console.log(res);  // false 不执行alert(123)
+```
 
-    ```javascript
-    let res = true && alert(123);
-    console.log(res)；  // 执行alert(123)
-    ```
+```javascript
+let res = true && alert(123);
+console.log(res)；  // 执行alert(123)
+```
 
-- 如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值
+如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
 
-    ```javascript
-    let a = 1 && 2;  // 2 'number'
-    a = 1 && 0;  // 0 'number'
-    a = 0 && NaN;  // 0 'number'
-    console.log(a ,typeof a)
-    ```
+```javascript
+let a = 1 && 2;  // 2 'number'
+a = 1 && 0;  // 0 'number'
+a = 0 && NaN;  // 0 'number'
+console.log(a ,typeof a)
+```
 
 ### 逻辑或 `||`
 
-- **基础示例**
+**基础示例**：
 
-    ```javascript
-    let a = 5 > 3 || 6 <3;
-    console.log(a ,typeof a)  // true 'boolean'
-    ```
+```javascript
+let a = 5 > 3 || 6 <3;
+console.log(a ,typeof a)  // true 'boolean'
+```
 
-- **短路运算**：如果第一个值为 `true`，则第二个值不执行，直接返回 `true`；否则执行第二个
+**短路运算**：如果第一个值为 `true`，则第二个值不执行，直接返回 `true`；否则执行第二个。
 
-    ```javascript
-    let res = true || alert(123);  // true 不执行alert(123)
-    res = false || alert(123);  // 执行alert(123)
-    console.log(res)；
-    ```
+```javascript
+let res = true || alert(123);  // true 不执行alert(123)
+res = false || alert(123);  // 执行alert(123)
+console.log(res)；
+```
 
-- 如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值
+如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
 
-    ```javascript
-    let a = 1 || 2;  // 1 'number'
-        a = 0 || 1;  // 0 'number'
-        a = 0 || NaN;  // NaN 'number'
-        console.log(a ,typeof a)
-    ```
+```javascript
+let a = 1 || 2;  // 1 'number'
+    a = 0 || 1;  // 0 'number'
+    a = 0 || NaN;  // NaN 'number'
+    console.log(a ,typeof a)
+```
 
 ## 三元条件运算符
 
-- **语法**：`条件表达式 ? 真值 ： 假值`
-
-    - 如果条件表达式为 `true`，则执行表达式1；
-    - 如果条件表达式为 `false`，则执行表达式2。
-
-    ```javascript
-    true ? alert(1) : alert(2);  // 执行alert(1)
-    ```
-
-    ```javascript
-    let a = 1;
-    let b = 2;
-    let max = a > b ? a : b;
-    console.log(max);
-    ```
+详见[三元表达式](#三元表达式)。
 
 ## 运算符优先级
 
@@ -1281,86 +1302,294 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 7. **赋值运算符** `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
 8. **逗号运算符** `,`
 
-# [选择结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Control_flow_and_error_handling)
+# 选择结构
 
-JS 中有 `if`、`switch` 和 `三元表达式` 三种选择结构，用法同 Java。
+JS 中有 `if`、`switch` 和 `三元表达式` 三种[选择结构](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals)。
 
 ## if 语句
 
-- JS 中 `if` 语句的语法格式与 Java 相同。
+### if
+
+```javascript
+if (条件表达式) {
+  // 执行语句;
+}
+```
+
+```javascript
+let score = 85;
+
+if (score >= 60) {
+  console.log("及格！");
+}
+```
+
+### if-else
+
+> [if-else](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#if...else_语句)
+
+```javascript
+if (条件表达式) {
+  // 执行语句A;
+} else {
+  // 执行语句B;
+}
+```
+
+```javascript
+let score = 85;
+
+if (score >= 60) {
+  console.log("及格！");
+} else {
+  console.log("不及格！");
+}
+```
+
+### if-else if-else
+
+> [else if](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#else_if)
+
+```javascript
+if (条件表达式1) {
+  // 执行语句A;
+} else if (条件表达式2) {
+  // 执行语句B;
+} else if (条件表达式3) {
+  // 执行语句C;
+} else {
+  // 执行语句D;
+}
+```
+
+```javascript
+let score = 85;
+
+if (score >= 90) {
+  console.log("优秀！");
+} else if (score >= 80) {
+  console.log("良好！");
+} else if (score >= 60) {
+  console.log("及格！");
+} else {
+  console.log("不及格！");
+}
+```
 
 ## switch 语句
 
-- 在 JavaScript 中，`switch` 语句的 `case` 标签不能直接用逗号分隔多个值，因此需要将多个 `case` 分开写。
+>  [switch 语句](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#switch_语句)
 
-    ```javascript
-    let day = 6;
-    
-    switch (day) {
-      case 1:
-      case 2:
-      case 3:
-      case 4:
-      case 5:
-        console.log("工作日");
-        break;
-      case 6:
-      case 7:
-        console.log("周末");
-        break;
-      default:
-        console.log("未知");
-    }
-    ```
+### 语法
 
-# [循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)
+```javascript
+switch (条件值) {
+  case 值1:
+    // 执行语句1;
+    break;
+  case 值2:
+    // 执行语句2;
+    break;
+  default:
+    // 执行语句3;
+}
+```
 
-- JS 中有 `for`、`for-in`、`for-of`、`while` 和 `do-while` 五种循环结构。
+```javascript
+let status = "Processing";
 
-    - 其中 `for`、`while` 和 `do-while` 循环，用法同 Java。
-    - 其中 `for-of` 的作用类似于 Java 的 `for-each`，用于遍历可迭代对象。
-    - 其中 `for-in` 为 JS 特有，用于遍历对象的 **可枚举属性名**（包括继承的属性）。它也可以用于遍历数组，但它返回的是数组的索引（键名），而不是数组的值。
+switch (status) {
+  case "New":
+    console.log("订单是新的");
+    break;
+  case "Processing":
+    console.log("订单正在处理中");
+    break;
+  case "Completed":
+    console.log("订单已完成");
+    break;
+  default:
+    console.log("未知订单状态");
+}
+```
 
-- JS 中支持**无限循环**和**循环嵌套**，用法同 Java。
+### 多值匹配
 
-## for-of 循环
+```javascript
+let day = 6;
 
-- **语法**
+switch (day) {
+  case 1:
+  case 2:
+  case 3:
+  case 4:
+  case 5:
+    console.log("工作日");
+    break;
+  case 6:
+  case 7:
+    console.log("周末");
+    break;
+  default:
+    console.log("未知");
+}
+```
 
-    ```javascript
-    for (let 变量名 of 可迭代对象){
-      循环体;
-    }
-    ```
+## 三元表达式
 
-    ```javascript
-    let arr = ["中国", "上海", 123]
-    for (let data of arr) {
-      console.log(data);
-    }
-    ```
+> [三元表达式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#三元运算符)
 
-## for-in 循环
+```javascript
+条件表达式 ? 真值 : 假值
+```
 
-- **语法**
+```javascript
+let score = 80;
+let result = score >= 60 ? "及格" : "不及格";
+console.log(result); // 及格
+```
 
-    ```javascript
-    for (let 变量名 in 对象){
-      循环体;
-    }
-    ```
+# 循环结构
 
-    ```javascript
-    let user = {name: "张三", age: 18, gender: "男"};
-    for (let k in user){
-      console.log(1);  // 输出3次1
-      console.log(k, user[k]);  // 依次输出属性名和属性值，这里不能使用user.i获取属性值
-    }
-    ```
+JS 中有 `for`、`for-in`、`for-of`、`while` 和 `do-while` 五种[循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)。
+
+- 其中 `for`、`while` 和 `do-while` 循环，用法同 Java。
+- 其中 `for-of` 的作用类似于 Java 的 `for-each`，用于遍历可迭代对象。
+- 其中 `for-in` 为 JS 特有，用于遍历对象的 **可枚举属性名**（包括继承的属性）。它也可以用于遍历数组，但它返回的是数组的索引（键名），而不是数组的值。
+
+JS 中支持**无限循环**和**循环嵌套**，用法同 Java。
+
+## for 语句
+
+```javascript
+for (初始化表达式; 条件表达式; 更新表达式) {
+  // 循环体;
+}
+```
+
+```javascript
+for (let i = 0; i <= 5; i++) {
+  console.log(i); // 依次输出：0 1 2 3 4 5
+}
+```
+
+**扩展**：可用“for 循环 + 索引”进行遍历
+
+```javascript
+let arr = ["中国", "上海", "北京"];
+
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]); // 依次输出：中国 上海 北京
+}
+```
+
+## for-of 语句
+
+```javascript
+for (let 变量名 of 可迭代对象){
+  // 循环体;
+}
+```
+
+```javascript
+let arr = ["中国", "上海", 123]
+for (let data of arr) {
+  console.log(data); // 依次输出：中国 上海 123
+}
+```
+
+## for-in 语句
+
+```javascript
+for (let 变量名 in 对象){
+  // 循环体;
+}
+```
+
+```javascript
+let user = {name: "张三", age: 18, gender: "男"};
+for (let k in user){
+  console.log(1);  // 输出3次1
+  console.log(k, user[k]);  // 依次输出属性名和属性值，这里不能使用user.i获取属性值
+}
+```
+
+## while 语句
+
+```javascript
+while (条件表达式) {
+  // 循环体;
+}
+```
+
+```javascript
+let i = 1;
+while (i <= 3) {
+  console.log("第" + i + "次打印：Hello World!");
+  i += 1; // 条件迭代
+}
+```
+
+## do-while 语句
+
+```javascript
+do {
+  // 循环体;
+} while (条件表达式);
+```
+
+```javascript
+let i = 1;
+do {
+  console.log("第" + i + "次打印：Hello World!");
+  i += 1; // 条件迭代
+} while (i <= 3);
+```
+
+## 无限循环
+
+```javascript
+while (true) {
+  // 循环体;
+}
+```
+
+```javascript
+do {
+  // 循环体;
+} while (true);
+```
+
+```javascript
+for (;;){
+  // 循环体;
+}
+```
 
 # 跳转结构
 
-- JS 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构，用法同 Java。
+JS 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构。
+
+[`continue`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration#continue_语句) 和 [`break`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration#break_语句) 示例：
+
+```javascript
+for (let year = 1; year < 11; year++) {
+  if (year === 5) {
+    console.log("第5年疫情原因，今年不用还款了！");
+    // 此处如果没有 continue，会同时正常显示：第五年到了，还款1.2万。
+    continue; // 第5年不用还，本次循环结束，进入下一次该循环，第6年。
+  }
+  if (year === 6) {
+    console.log("第" + year + "年到了！还款2.4万！");
+    continue; // 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
+  }
+  if (year === 8) {
+    console.log("第8年，提前还清，以后都不用还了！");
+    break; // 从第9年不用再还款了，当前循环结束。
+  }
+  console.log("第" + year + "年到了！还款1.2万！");
+}
+```
 
 # Function
 

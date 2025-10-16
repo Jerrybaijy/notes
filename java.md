@@ -115,9 +115,8 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
 ## 运算符
 
 - **算术运算符**
-
     - 没有幂次方 `**`
-
+    
 - **赋值运算符**
 - **关系运算符**
 - **逻辑运算符**
@@ -306,7 +305,7 @@ Java 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 ```java
 if (条件表达式) {
-    执行语句;
+    // 执行语句;
 }
 ```
 
@@ -322,9 +321,9 @@ if (score >= 60) {
 
 ```java
 if (条件表达式) {
-    执行语句A;
+    // 执行语句A;
 } else {
-    执行语句B;
+    // 执行语句B;
 }
 ```
 
@@ -342,13 +341,13 @@ if (score >= 60) {
 
 ```java
 if (条件表达式1) {
-    执行语句A;
+    // 执行语句A;
 } else if (条件表达式2) {
-    执行语句B;
+    // 执行语句B;
 } else if (条件表达式3) {
-    执行语句c;
+   // 执行语句C;
 } else {
-    执行语句D;
+    // 执行语句D;
 }
 ```
 
@@ -367,55 +366,55 @@ if (score >= 90) {
 
 ## switch 语句
 
-- **语法**
+### 语法
 
-    ```java
-    switch (条件值) {
-        case 值1:
-            执行语句1;
-            break;
-        case 值2:
-            执行语句2;
-            break;
-        default:
-            执行语句3;
-    }
-    ```
+```java
+switch (条件值) {
+    case 值1:
+        // 执行语句1;
+        break;
+    case 值2:
+        // 执行语句2;
+        break;
+    default:
+        // 执行语句3;
+}
+```
 
-    ```java
-    String status = "Processing";
+```java
+String status = "Processing";
 
-    switch (status) {
-        case "New":
-            System.out.println("订单是新的");
-            break;
-        case "Processing":
-            System.out.println("订单正在处理中");
-            break;
-        case "Completed":
-            System.out.println("订单已完成");
-            break;
-        default:
-            System.out.println("未知订单状态");
-    }
-    ```
+switch (status) {
+    case "New":
+        System.out.println("订单是新的");
+        break;
+    case "Processing":
+        System.out.println("订单正在处理中");
+        break;
+    case "Completed":
+        System.out.println("订单已完成");
+        break;
+    default:
+        System.out.println("未知订单状态");
+}
+```
 
-- **多值匹配**
+### 多值匹配
 
-    ```java
-    int day = 6;
-    
-    switch (day) {
-        case 1, 2, 3, 4, 5:
-            System.out.println("工作日");
-            break;
-        case 6, 7:
-            System.out.println("周末");
-            break;
-        default:
-            System.out.println("未知");
-    }
-    ```
+```java
+int day = 6;
+
+switch (day) {
+    case 1, 2, 3, 4, 5:
+        System.out.println("工作日");
+        break;
+    case 6, 7:
+        System.out.println("周末");
+        break;
+    default:
+        System.out.println("未知");
+}
+```
 
 ## 三元表达式
 
@@ -425,29 +424,29 @@ if (score >= 90) {
 
 ```java
 Integer score = 80;
-String result = (score >= 60) ? "及格" : "不及格";
-System.out.println(result);  // 输出：及格
+String result = score >= 60 ? "及格" : "不及格";
+System.out.println(result);  // 及格
 ```
 
 # 循环结构
 
-- Java 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构。
+Java 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构。
 
-## for 循环
+## for 语句
 
 ```java
 for (初始化表达式; 条件表达式; 更新表达式){
-    循环体
+    // 循环体;
 }
 ```
 
 ```java
-for (int i=0; i<=5; i++) {
-    System.out.println(i);  // 0 1 2 3 4 5
+for (int i = 0; i <= 5; i++) {
+    System.out.println(i);  // 依次输出：0 1 2 3 4 5
 }
 ```
 
-可用“for 循环 + 索引”进行遍历
+**扩展**：可用“for 循环 + 索引”进行遍历
 
 ```java
 String[] arr = {"中国", "上海", "北京" };
@@ -456,13 +455,13 @@ for (int i = 0; i < arr.length; i++) {
 }
 ```
 
-## for-each 循环
+## for-each 语句
 
 for-each 循环用于直接遍历
 
 ```java
 for (数据类型 变量名 : 数组或集合){
-    循环体
+    // 循环体;
 }
 ```
 
@@ -473,71 +472,65 @@ for (String data : arr) {
 }
 ```
 
-## while 循环
+## while 语句
 
-- **语法**
+```java
+while (条件表达式){
+    // 循环体;
+}
+```
 
-    ```java
-    while (条件表达式){
-        循环体;
-    }
-    ```
-
-    ```java
-    public class HelloWorld {
-        public static void main(String[] args) {
-            int i = 1;
-            while (i <= 3) {
-                System.out.println("第" + i + "次打印：Hello World!");
-                i += 1;  // 条件迭代
-            }
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        int i = 1;
+        while (i <= 3) {
+            System.out.println("第" + i + "次打印：Hello World!");
+            i += 1;  // 条件迭代
         }
     }
-    ```
+}
+```
 
-## do-while 循环
+## do-while 语句
 
-- **语法**
+```java
+do {
+    // 循环体;
+} while (条件表达式);
+```
 
-    ```java
-    do {
-        循环体
-    } while (条件表达式);
-    ```
-
-    ```java
-    public class HelloWorld {
-        public static void main(String[] args) {
-            int i = 1;
-            do {
-                System.out.println("第" + i + "次打印：Hello World!");
-                i += 1;  // 条件迭代
-            } while (i <= 3);
-        }
+```java
+public class HelloWorld {
+    public static void main(String[] args) {
+        int i = 1;
+        do {
+            System.out.println("第" + i + "次打印：Hello World!");
+            i += 1;  // 条件迭代
+        } while (i <= 3);
     }
-    ```
+}
+```
 
 ## 无限循环
 
-- **语法**
+```java
+while (true) {
+    // 循环体;
+}
+```
 
-    ```java
-    while (true) {
-        循环体;
-    }
-    ```
+```java
+do {
+    // 循环体;
+} while (true);
+```
 
-    ```java
-    do {
-        循环体;
-    } while (true);
-    ```
-
-    ```java
-    for (;;){
-        循环体;
-    }
-    ```
+```java
+for (;;){
+    // 循环体;
+}
+```
 
 ## 循环结构嵌套
 
@@ -591,32 +584,32 @@ for (String data : arr) {
 
 Java 中有 `continue`、`break`、`return`、`throw`、`throws` 五种跳转结构。
 
-- **`continue` 和 `break` 示例**
+**`continue` 和 `break` 示例**：
 
-    ```java
-    public class LoanRepayment {
-        public static void main(String[] args) {
-            for (int year = 1; year < 11; year++) {
-                if (year == 5) {
-                    System.out.println("第5年疫情原因，今年不用还款了！");
-                    // 此处如果没有 continue，会同时正常显示：第五年到了，还款1.2万
-                    continue;  // 第5年不用还，本次循环结束，进入下一次该循环，第6年。
-                }
-                if (year == 6) {
-                    System.out.println("第" + year + "年到了！还款2.4万！");
-                    continue;  // 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
-                }
-                if (year == 8) {
-                    System.out.println("第8年，提前还清，以后都不用还了！");
-                    break;  // 从第9年不用再还款了，当前循环结束。
-                }
-                System.out.println("第" + year + "年到了！还款1.2万！");
+```java
+public class LoanRepayment {
+    public static void main(String[] args) {
+        for (int year = 1; year < 11; year++) {
+            if (year == 5) {
+                System.out.println("第5年疫情原因，今年不用还款了！");
+                // 此处如果没有 continue，会同时正常显示：第五年到了，还款1.2万。
+                continue;  // 第5年不用还，本次循环结束，进入下一次该循环，第6年。
             }
+            if (year == 6) {
+                System.out.println("第" + year + "年到了！还款2.4万！");
+                continue;  // 第6年还2.4万，本次循环结束，进入下一次该循环，第7年。
+            }
+            if (year == 8) {
+                System.out.println("第8年，提前还清，以后都不用还了！");
+                break;  // 从第9年不用再还款了，当前循环结束。
+            }
+            System.out.println("第" + year + "年到了！还款1.2万！");
         }
     }
-    ```
+}
+```
 
-- `return`：详见[返回值](#返回值)
+`return`：详见[返回值](#返回值)。
 
 # [Array](https://dev.java/learn/language-basics/arrays/)
 

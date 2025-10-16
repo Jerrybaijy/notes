@@ -90,9 +90,51 @@
               "icon": "lucide-file",
               "title": "javascript"
             }
+          },
+          {
+            "id": "858665a3e503c57b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "html"
+            }
+          },
+          {
+            "id": "d24062434e94f506",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "java"
+            }
+          },
+          {
+            "id": "6e48e1226f3e75a4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "code-general.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "code-general"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -124,7 +166,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:java",
+                "query": "file:cod",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -214,13 +256,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "javascript.md",
+                "file": "css.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "javascript 的大纲"
+              "title": "css 的大纲"
             }
           }
         ],
@@ -241,10 +283,13 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "0c83986f32d3e4f5",
   "lastOpenFiles": [
-    "html-elements.md",
     "javascript.md",
+    "java.md",
+    "code-general.md",
+    "html.md",
+    "html-elements.md",
     "css.md",
     "software.md",
     "assets/image-20251016051835976.png",
@@ -261,7 +306,6 @@
     "web.md",
     "node-js.md",
     "html-attributes.md",
-    "html.md",
     "axios.md",
     "未命名",
     "salesforce.md",
@@ -283,7 +327,6 @@
     "git.md",
     "docker.md",
     "excel.md",
-    "ppt.md",
     "其它格式未转换/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Regular.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Italic.woff",

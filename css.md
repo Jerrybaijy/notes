@@ -864,7 +864,7 @@ span::after {
 - 后代非定位元素，按在 HTML 中出现的顺序排列。
 - 根元素的背景和边框。
 
-以下是 `relative` 覆盖 `absolute` 的示例：
+以下是 `relative` 覆盖 `absolute` 的示例：
 
 <img src="assets/image-20251016040507967.png" alt="image-20251016040507967" style="zoom:50%;" />
 
@@ -1576,6 +1576,10 @@ td {
     <img src="assets/image-20251015160237674.png" alt="image-20251015160237674" style="zoom:50%;" />
 
 - [`:hover`](#`:hover`)：可设置鼠标悬停变色
+
+## 表单
+
+> [样式化表单](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms#表单样式指南)
 
 ## `color`
 
@@ -2520,7 +2524,7 @@ p {
 
     
 
-### `position` 相关
+### `position` 相关
 
 - `z-index`：覆盖顺序，详见 [`z-index`](#`z-index`)。
 

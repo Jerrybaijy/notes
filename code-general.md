@@ -1084,71 +1084,74 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 ### `if`
 
-- **`if`**：相当于 `如果`，会先对条件表达式进行布尔值判断：
+**`if`**：相当于 `如果`，会先对条件表达式进行布尔值判断：
 
-    - 如果结果为 `true`，则执行语句；
-    - 如果结果为 `false`，则不执行语句。
+- 如果结果为 `true`，则执行语句；
+- 如果结果为 `false`，则不执行语句。
 
-- **`else if`**：相当于 `如果不是，那么如果`，即前面的条件不满足，运行另一个执行语句。
-- **`else`**：相当于 `否则`，即前面的条件都不满足时，运行行最后一个执行语句。
+**`else if`**：相当于 `如果不是，那么如果`，即前面的条件不满足，运行另一个执行语句。
+
+**`else`**：相当于 `否则`，即前面的条件都不满足时，运行行最后一个执行语句。
 
 ### `switch`
 
-- `switch 语句` 类似于 `if-elif-else 语句`，但用于进行全等判断。
-- `switch 语句` 在执行时，会依次将 `条件值` 和 `case值` 进行**全等比较**：
+`switch 语句` 类似于 `if-elif-else 语句`，但用于进行全等判断。
 
-    - 如果结果为 `true`，则执行当前语句；
-    - 如果结果为 `false`，则不执行语句；
-    - 每个 `case` 后都应该有 `break`；
-    - 最后的 `case` 后面应该有 `default`，相当于 `if-elif-else` 里的 `else`。
+`switch 语句` 在执行时，会依次将 `条件值` 和 `case值` 进行**全等比较**：
 
-- **JavaScript 示例**
+- 如果结果为 `true`，则执行当前语句；
+- 如果结果为 `false`，则不执行语句；
+- 每个 `case` 后都应该有 `break`；
+- 最后的 `case` 后面应该有 `default`，相当于 `if-elif-else` 里的 `else`。
 
-    ```javascript
-    switch (条件值) {
-      case 值1:
-        执行语句1;
-        break;
-      case 值2:
-        执行语句2;
-        break;
-      default:
-        执行语句3;
-    }
-    ```
+**JavaScript 示例**：
 
-    ```javascript
-    let num = +prompt("请输入数字")
-    switch (num) {
-      case 1:
-        console.log("壹");
-        break;
-      case 2:
-        console.log("贰");
-        break;
-      case 3:
-        console.log("叁");
-        break;
-      default:
-        console.log("没有这个数");
-        break;
-    }
-    ```
+```javascript
+switch (条件值) {
+  case 值1:
+    执行语句1;
+    break;
+  case 值2:
+    执行语句2;
+    break;
+  default:
+    执行语句3;
+}
+```
+
+```javascript
+let num = +prompt("请输入数字")
+switch (num) {
+  case 1:
+    console.log("壹");
+    break;
+  case 2:
+    console.log("贰");
+    break;
+  case 3:
+    console.log("叁");
+    break;
+  default:
+    console.log("没有这个数");
+    break;
+}
+```
 
 ### 三元表达式
 
-- 三元表达式是一种简单的选择结构，在执行时，会先对条件表达式进行判断：
+**三元表达式**是一种简单的*选择结构*：`条件表达式 ? 值1 ： 值2 `
 
-    - 如果结果为 `true`，则执行语句；
-    - 如果结果为 `false`，则不执行语句。
+- 在执行时，会先对条件表达式进行判断；
+- 如果条件表达式为 `true`，则取值1；
+- 如果条件表达式为 `false`，则取值2。
 
-- **JavaScript 示例**
+**JavaScript 示例**：
 
-    ```javascript
-    let score = 75;
-    let result = (score >= 60) ? "及格" : "不及格";
-    console.log(result);  // 输出：及格
-    ```
+```javascript
+let score = 80;
+let result = score >= 60 ? "及格" : "不及格";
+console.log(result); // 及格
+```
 
 ## 循环结构
 
@@ -1159,28 +1162,27 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 - `do-while`
 - 无限循环
 
-### for 循环
+### for 语句
 
-- 适用于循环次数已知或可以明确计算的场景。
-- **语法**
+适用于循环次数已知或可以明确计算的场景。
 
-    ```javascript
-    for (初始化变量; 条件表达式; 更新表达式){
-      循环体;
-    }
-    ```
+```javascript
+for (初始化变量; 条件表达式; 更新表达式){
+  循环体;
+}
+```
 
-    **说明**：
+**说明**：
 
-    1. **初始化变量**：循环开始时执行一次，通常用于定义或初始化计数器变量。
-    2. **条件表达式**：每次循环开始前都会判断，如果结果为 `true`，继续执行循环体；为 `false` 时退出循环。
-    3. **更新表达式**：每次执行完循环体后，进行计数器的更新操作。
+- **初始化变量**：循环开始时执行一次，通常用于定义或初始化计数器变量。
+- **条件表达式**：每次循环开始前都会判断，如果结果为 `true`，继续执行循环体；为 `false` 时退出循环。
+- **更新表达式**：每次执行完循环体后，进行计数器的更新操作。
 
-### for-in 循环
+### for-in 语句
 
 #### JS
 
-- JS 中，`for-in` 循环用于遍历对象的**属性键**。
+- JS 中，`for-in` 语句用于遍历对象的**属性键**。
 - **语法**
 
     ```javascript
@@ -1195,9 +1197,9 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - Python 中，`for-in` 循环集合了 JS 中 `for`、`for-in` 和 `for-of` 的全部功能。
 
-### for-of 循环
+### for-of 语句
 
-- `for-of` 循环用于遍历可迭代对象的**值**；适用于字符串、数组、集合、Map等。
+- `for-of` 语句用于遍历可迭代对象的**值**；适用于字符串、数组、集合、Map等。
 - **语法**
 
     ```javascript
@@ -1206,9 +1208,9 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
     }
     ```
 
-### while 循环
+### while 语句
 
-- `while` 循环通过判断条件表达式的布尔值，来控制循环体重复执行：
+- `while` 语句通过判断条件表达式的布尔值，来控制循环体重复执行：
 
     - 如果结果为 `true`，则执行循环体；
     - 如果结果为 `false`，则循环结束。
@@ -1223,10 +1225,10 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **死循环**：如果 `while` 条件表达式永远为 `true`，且没有 `break` 进行终止，就形成了一个无限循环，也叫死循环。
 
-### do-while 循环
+### do-while 语句
 
 - `do-while` 与 `while` 的本质区别就是 `do-while` 先执行循环体，再检查条件；它保证无论条件是否成立，循环体至少执行一次。
-- `do-while` 循环在执行时，会先执行循环体，再判断条件表达式的布尔值：
+- `do-while` 语句在执行时，会先执行循环体，再判断条件表达式的布尔值：
 
     - 如果结果为 `True`，则再执行循环体；
     - 如果结果为 `False`，则循环结束。
@@ -1253,7 +1255,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **`continue`**：跳过本次循环的剩余部分，程序继续执行下一次该循环。
 - **`break`**：用于跳出当前循环或 `switch` 语句，程序向下执行当前循环或 `switch` 语句以外内容。
-- **`return`**：结束函数的执行并返回值。（Python 中的 [`try...except...finally`](../python/python.md#`try...except...finally`) 异常处理除外）
+- **`return`**：结束函数的执行并返回值。（Python 中的 [`try...except...finally`](python.md#`try...except...finally`) 异常处理除外）
 - **`goto`**：无条件跳转到程序的指定位置。
 - `throw`
 - `throws`
