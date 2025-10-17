@@ -78,59 +78,17 @@
             }
           },
           {
-            "id": "bffea4ebe4b5bb1d",
+            "id": "58a59b4606024ebf",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "html-elements.md",
+                "file": "css.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "html-elements"
-            }
-          },
-          {
-            "id": "0c83986f32d3e4f5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "it-basics.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "it-basics"
-            }
-          },
-          {
-            "id": "6e48e1226f3e75a4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "dom.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "dom"
-            }
-          },
-          {
-            "id": "d24062434e94f506",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "java.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "java"
+              "title": "css"
             }
           },
           {
@@ -180,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#it-basics",
+                "query": "file:css",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -299,10 +257,13 @@
   },
   "active": "858665a3e503c57b",
   "lastOpenFiles": [
-    "software.md",
-    "it-basics.md",
-    "network.md",
     "css.md",
+    "html.md",
+    "it-basics.md",
+    "html-attributes.md",
+    "html-elements.md",
+    "software.md",
+    "network.md",
     "无障碍.md",
     "assets/web-server.svg+xml",
     "assets/web-server-1760659535080-7.svg",
@@ -311,9 +272,7 @@
     "assets/web-server-1760659318347-3-1760659318347-4.svg",
     "assets/web-server-1760659162421-1.svg",
     "web.md",
-    "html-elements.md",
     "assets/640.webp",
-    "html.md",
     "dom.md",
     "bom.md",
     "code-general.md",
@@ -326,7 +285,6 @@
     "assets/image-20251016034903556.png",
     "typora.md",
     "node-js.md",
-    "html-attributes.md",
     "axios.md",
     "未命名",
     "salesforce.md",

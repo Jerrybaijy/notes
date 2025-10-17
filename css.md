@@ -18,39 +18,11 @@ tags:
 
 > [W3C 官方文档](https://www.w3.org/Style/CSS/current-work "W3C")
 >
-> [MDN 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
+> [MDN CSS](https://developer.mozilla.org/zh-CN/docs/Web/CSS)
 >
-> <details>
-> <summary>
->  <a
->    href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
->    alt="MDN CSS"
->    title="MDN CSS"
->    >MDN CSS</a
->  >：MDN 关于 CSS 的主页面
-> </summary>
-> <ul>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics"
->      alt="CSS 基础"
->      >CSS 基础</a
->    >：了解 CSS 的含义和最基本用法
->  </li>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS"
->      alt="CSS 学习区"
->      >CSS 学习区</a
->    >：学习 CSS 基础知识
->  </li>
->  <li>
->    <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference"
->      >CSS 参考</a
->    >
->  </li>
-> </ul>
-> </details>
+> [MDN CSS 语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax)
+>
+> [MDN CSS 参考](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Reference)
 
 ## 代码风格
 
@@ -62,7 +34,7 @@ tags:
 
 ## 注释
 
-**CSS 注释**：
+[**CSS 注释**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Comments)：
 
 - 单行注释：`Ctrl + /`
 - 多行注释：`Ctrl + Shift + /`
