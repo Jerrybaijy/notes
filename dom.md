@@ -11,11 +11,13 @@ tags:
   - web
 ---
 
-# [DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
+# DOM
 
-**文档对象模型**（**D**ocument **O**bject **M**odel，简称 **DOM**），是一套操作页面元素的 API。
+[**DOM**](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)（**D**ocument **O**bject **M**odel，文档对象模型），是一套操作页面元素的 API。
 
 > [WHATWG DOM 文档](https://dom.spec.whatwg.org/)：官方文档
+>
+> [MDN DOM](https://developer.mozilla.org/zh-CN/docs/Web/API/Document_Object_Model)
 
 HTML 官方文档在[HTML 简介](https://html.spec.whatwg.org/multipage/introduction.html#a-quick-introduction-to-html)章节对 DOM 的工作原理有解释。
 
@@ -293,41 +295,40 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
     }
     ```
 
-# 事件
+# 事件（旧）
 
 事件是由 DOM 元素产生的资源，可以由 JavaScript 代码操控。
 
-在 JavaScript 和网页开发中，**事件** 是指网页上发生的各种行为或动作。例如：**点击按钮** 和 **按下键盘上的键** 等。
+在 JavaScript 和网页开发中，**事件**是指网页上发生的各种行为或动作。例如：**点击按钮** 和 **按下键盘上的键** 等。
 
 ## 绑定事件
 
-- **内联绑定**：HTML 元素有**绑定事件**的属性
+**内联绑定**：HTML 元素有**绑定事件**的属性
 
-    ```html
-    <button onclick="alert('按钮被点击了!')">点击按钮</button>
-    ```
+```html
+<button onclick="alert('按钮被点击了!')">点击按钮</button>
+```
 
-- **外部绑定**：监听事件类型，推荐。
+**外部绑定**：监听事件类型，推荐。
 
-    ```javascript
-    对象.addEventListener("事件类型", 事件函数)
-    ```
+```javascript
+对象.addEventListener("事件类型", 事件函数)
+```
 
-    ```html
-    <button>点击按钮</button>
-    <script src="script.js"></script>
-    ```
+```html
+<button>点击按钮</button>
+```
 
-    ```javascript
-    const button = document.querySelector("button");
-    button.addEventListener("click", () => {
-      alert("按钮被点击了!");
-    });
-    ```
+```javascript
+const button = document.querySelector("button");
+button.addEventListener("click", () => {
+  alert("按钮被点击了!");
+});
+```
 
 ## 事件类型
 
-**事件类型 **是指浏览器支持的 **事件名称**，用来描述某种用户交互或浏览器行为，如 `click`、`keydown`、`load` 等。
+**事件类型**是指浏览器支持的*事件名称*，用来描述某种用户交互或浏览器行为，如 `click`、`keydown`、`load` 等。
 
 **常见的事件类型包括**：
 
@@ -340,9 +341,9 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 
 ## 事件属性
 
-**事件属性** 是 **HTML 元素的属性**，用于在 HTML 或 JavaScript 代码中**绑定事件处理程序**。
+**事件属性**是*HTML 元素的属性*，用于在 HTML 或 JavaScript 代码中**绑定事件处理程序**。
 
-- 以 `on` 开头，比如 **单击** 的事件类型 `click`，对应的事件属性 `onclick`。
+- 以 `on` 开头，比如**单击**的事件类型 `click`，对应的事件属性 `onclick`。
 - 既可以在 HTML 中使用，也可以在 JavaScript 中赋值
 - 只能绑定 **一个** 事件处理程序（会被后面的覆盖）
 
@@ -363,13 +364,13 @@ button.onclick = () => {
 
 ## 事件命名规范
 
-事件类型的名称通常是 **全小写** 的，多个单词之间没有任何分隔符和空格。
+事件类型的名称通常是**全小写**的，多个单词之间没有任何分隔符和空格。
 
 ```javascript
 element.addEventListener("mouseover", () => {}); // mouseover 采用全小写、无分隔符
 ```
 
-创建自定义事件推荐使用 **驼峰命名**，但监听时要小写。
+创建自定义事件推荐使用**驼峰命名**，但监听时要小写。
 
 ```javascript
 const event = new CustomEvent("myCustomEvent"); // 创建自定义事件时，驼峰命名

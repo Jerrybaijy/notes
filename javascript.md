@@ -1599,77 +1599,68 @@ for (let year = 1; year < 11; year++) {
 
 ### 函数声明
 
-- **语法**
+**说明**：函数声明创建的函数，存在变量提升。
 
-    ```javascript
-    function 函数名(形参列表) {
-      函数体;
-      return 返回值;
-    }
+```javascript
+function 函数名(形参列表) {
+  // 函数体;
+  return 返回值;
+}
 
-    函数名(实参列表); // 调用函数
-    ```
+// 调用函数
+函数名(实参列表);
+```
 
-    ```javascript
-    function getSum(a, b) {
-      let res = console.log(a + b);
-      return res;
-    }
+```javascript
+function getSum(a, b) {
+  let res = console.log(a + b);
+  return res;
+}
 
-    getSum(1, 1); // 2
-    console.log(typeof getSum); // function
-    ```
-
-- **说明**：函数声明创建的函数，存在变量提升。
+getSum(1, 1); // 2
+console.log(typeof getSum); // function
+```
 
 ### 匿名函数
 
-- **语法**
+```javascript
+function(参数列表) {函数体;}
+```
 
-    ```javascript
-    function(参数列表) {函数体}
-    ```
+```javascript
+// 作为其它函数的回调函数
 
-    ```javascript
-    // 作为其它函数的回调函数
+let numbers = [1, 2, 3, 4, 5];
+// 使用匿名函数作为 forEach 的回调函数，这里对每个元素进行翻倍操作
+numbers.forEach(function (element) {
+  console.log(element * 2);
+});
+```
 
-    let numbers = [1, 2, 3, 4, 5];
-    // 使用匿名函数作为forEach的回调函数，这里对每个元素进行翻倍操作
-    numbers.forEach(function (element) {
-      console.log(element * 2);
-    });
+### 函数表达式
 
-    // 作为其它函数的回调函数
+**函数表达式**：使用变量接收匿名函数。
 
-    let numbers = [1, 2, 3, 4, 5];
-    // 使用匿名函数作为forEach的回调函数，这里对每个元素进行翻倍操作
-    numbers.forEach(function (element) {
-      console.log(element * 2);
-    });
-    ```
+```javascript
+const 变量名 = function (参数列表) {
+  函数体;
+  return 返回值;
+};
+```
 
-- **函数表达式**：使用变量接收匿名函数。
+```javascript
+const getSum = function (a, b) {
+  let res = console.log(a + b);
+  return res;
+};
 
-    ```javascript
-    const 变量名 = function (参数列表) {
-      函数体;
-      return 返回值;
-    };
-    ```
-
-    ```javascript
-    const getSum = function (a, b) {
-      let res = console.log(a + b);
-      return res;
-    };
-    
-    getSum(1, 1); // 2
-    console.log(typeof getSum); // function
-    ```
+getSum(1, 1); // 2
+console.log(typeof getSum); // function
+```
 
 ### 箭头函数
 
-箭头函数的语法形式较为灵活，根据 **参数数量** 和 **函数体语句数量** 有不同的写法。
+箭头函数的语法形式较为灵活，根据 *参数数量* 和 *函数体语句数量* 有不同的写法。
 
 ```javascript
 // 无参数、单行函数体
@@ -1702,18 +1693,16 @@ const calculate = num => {
 
 ### 构造函数
 
-- **语法**
+```javascript
+const 函数名 = new Function('参数1', '参数2', '函数体');
+```
 
-    ```javascript
-    const 函数名 = new Function('参数1', '参数2', '函数体');
-    ```
+```javascript
+const getSum = new Function('a', 'b', 'console.log(a + b)');
 
-    ```javascript
-    const getSum = new Function('a', 'b', 'console.log(a + b)');
-
-    getSum(1, 1);  // 2
-    console.log(typeof getSum);  // function
-    ```
+getSum(1, 1);  // 2
+console.log(typeof getSum);  // function
+```
 
 - **扩展**：函数体作为字符串传入，可以动态创建函数，但安全性较低。
 
@@ -1721,45 +1710,45 @@ const calculate = num => {
 
 **立即调用函数表达式**（**I**mmediately-**I**nvoked **F**unction **E**xpression，简称 IIFE），也叫做自调用函数，表示函数在定义时就立即调用。
 
-- **语法**
+**语法**：
 
-    - 如果声明函数想实现自调用，可以想办法将声明函数矮化成函数表达式
+- 如果声明函数想实现自调用，可以想办法将声明函数矮化成函数表达式
 
-      - 给函数前面加一些运算符，如 + - () !
-      - 此法可以省略函数名
+  - 给函数前面加一些运算符，如 + - () !
+  - 此法可以省略函数名
 
-    - 调用方法
+- 调用方法
 
-      - 在函数体的代码块后加小括号()
-      - 自调用函数在IIFE结构以外无法被调用
+  - 在函数体的代码块后加小括号()
+  - 自调用函数在IIFE结构以外无法被调用
 
-- **函数表达式自调用**
+**函数表达式自调用**：
 
-    ```javascript
-    let foo = function () {
-      console.log(1);
-    }();  // 1  ()就是自调用
-    ```
+```javascript
+let foo = function () {
+  console.log(1);
+}();  // 1  ()就是自调用
+```
 
-- **声明函数自调用**
+**声明函数自调用**：
 
-    ```javascript
-    +function fun() {  // 通过+将声明函数矮化成函数表达式，可以替换为-或！
-      console.log(1);
-    }();  // 自调用函数
-    
-    (function fun() {  // 通过()将声明函数包围，矮化成函数表达式
-      console.log(1);
-    })();  // 自调用函数
-    ```
+```javascript
++function fun() {  // 通过+将声明函数矮化成函数表达式，可以替换为-或！
+  console.log(1);
+}();  // 自调用函数
 
-    ```javascript
-    // 常用的IIFE结构
-    
-    (function (a) {  // 通过()将声明函数包围，矮化成函数表达式，并且省略函数名
-      console.log(a);
-    })(1);  // 1
-    ```
+(function fun() {  // 通过()将声明函数包围，矮化成函数表达式
+  console.log(1);
+})();  // 自调用函数
+```
+
+```javascript
+// 常用的IIFE结构
+
+(function (a) {  // 通过()将声明函数包围，矮化成函数表达式，并且省略函数名
+  console.log(a);
+})(1);  // 1
+```
 
 ###  方法定义
 
@@ -1769,71 +1758,75 @@ const calculate = num => {
 
 ### arguments对象
 
-- JS中，函数有一个内置属性 `arguments` 对象，其存储了传递的所有实参。
-- 语法
+#### 语法
 
-    - arguments是一个伪数组，因此具有数组的一些功能，比如索引，遍历，获取长度...
-    - 由于arguments的存在，JS中允许实参和形参个数不一致。
+JS中，函数有一个内置属性 `arguments` 对象，其存储了传递的所有实参。
 
-    ```javascript
-    function sum(a, b) {
-      console.log(arguments);
-    }
+- `arguments` 是一个伪数组，因此具有数组的一些功能，比如索引，遍历，获取长度...。
+- 由于 `arguments` 的存在，JS 中允许实参和形参个数不一致。
 
-    sum(1, 2, 3, 4)  // Arguments(4)[1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
-    ```
+```javascript
+function sum(a, b) {
+  console.log(arguments);
+}
 
-    ```javascript
-    function sum(a, b) {
-        return a + b;
-    }
+sum(1, 2, 3, 4)  // Arguments(4)[1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+```
 
-    console.log(sum(1, 2));  // 3
-    console.log(sum(1));  // NaN
-    console.log(sum(1, 2, 3, 4));  // 3
-    ```
+```javascript
+function sum(a, b) {
+    return a + b;
+}
 
-- **示例**：定义一个求和函数，如果传入 1 个参数，返回它自己；如果传入 2 个参数，返回它们的和；如果传入 3 个参数，先比较前两个的大小，大的与第三个参数求和；如果传入 4 个及以上，输出提示错误。
+console.log(sum(1, 2));  // 3
+console.log(sum(1));  // NaN
+console.log(sum(1, 2, 3, 4));  // 3
+```
 
-    ```javascript
-    function sum(a, b, c) {
-      switch (arguments.length) {
-        case 1:
-          return a;
-        case 2:
-          return a + b;
-        case 3:
-          return a > b ? a + c : b + c;
-        default:
-          throw new Error("参数个数不能超过 3 个");
-      }
-    }
-    
-    console.log(sum(1)); // 1
-    console.log(sum(1, 2)); // 3
-    console.log(sum(1, 2, 3)); // 5
-    console.log(sum(1, 2, 3, 4)); // 报错
-    ```
+#### 示例
+
+定义一个求和函数，如果传入 1 个参数，返回它自己；如果传入 2 个参数，返回它们的和；如果传入 3 个参数，先比较前两个的大小，大的与第三个参数求和；如果传入 4 个及以上，输出提示错误。
+
+```javascript
+function sum(a, b, c) {
+  switch (arguments.length) {
+    case 1:
+      return a;
+    case 2:
+      return a + b;
+    case 3:
+      return a > b ? a + c : b + c;
+    default:
+      throw new Error("参数个数不能超过 3 个");
+  }
+}
+
+console.log(sum(1)); // 1
+console.log(sum(1, 2)); // 3
+console.log(sum(1, 2, 3)); // 5
+console.log(sum(1, 2, 3, 4)); // 报错
+```
 
 ### 函数递归
 
-- 函数内部可以通过函数名调用函数自身的方式，就是函数递归。
-- **示例**：定义一个函数，如果传入的参数是1，则返回1；如果传入的数字是1以上的数字，则返回参数 + 函数调用上一项。
+函数内部可以通过函数名调用函数自身的方式，就是**函数递归**。
 
-    ```javascript
-    function fun(a) {
-      if (a < 1) {
-        alert("请输入0以上的整数");
-      } else if (a === 1) {
-        return 1;
-      } else {
-        return a + fun(a - 1); // 函数内部调用自身
-      }
-    }
-    
-    console.log(fun(1));
-    console.log(fun(3));
-    ```
+**示例**：定义一个函数，如果传入的参数是1，则返回1；如果传入的数字是1以上的数字，则返回参数 + 函数调用上一项。
+
+```javascript
+function fun(a) {
+  if (a < 1) {
+    alert("请输入0以上的整数");
+  } else if (a === 1) {
+    return 1;
+  } else {
+    return a + fun(a - 1); // 函数内部调用自身
+  }
+}
+
+console.log(fun(1));
+console.log(fun(3));
+```
 
 # [Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 

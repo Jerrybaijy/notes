@@ -1494,19 +1494,19 @@ for (初始化变量; 条件表达式; 更新表达式){
 
 ### 构造函数
 
-- 构造函数是一种特殊的函数，主要用于创建和初始化对象。构造函数可以理解为对象的 “模板”。
+**构造函数**是一种特殊的函数，主要用于创建和初始化对象。构造函数可以理解为对象的 “模板”。
 
-    ```javascript
-    function Person(name, age) {
-        this.name = name;
-        this.age = age;
-    }
-    
-    let person1 = new Person('张三', 20);
-    let person2 = new Person('李四', 22);
-    ```
+```javascript
+function Person(name, age) {
+  this.name = name;
+  this.age = age;
+}
 
-    在上述代码中，`Person` 就是构造函数。使用 `new` 关键字调用构造函数时，它会创建一个新对象，将函数内的 `this` 指向新对象，并执行函数体中的代码来初始化对象的属性。
+let person1 = new Person('张三', 20);
+let person2 = new Person('李四', 22);
+```
+
+在上述代码中，`Person` 就是构造函数。使用 `new` 关键字调用构造函数时，它会创建一个新对象，将函数内的 `this` 指向新对象，并执行函数体中的代码来初始化对象的属性。
 
 ### 匿名函数
 

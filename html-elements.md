@@ -170,7 +170,7 @@ p {color: red;}
 
 ### `name` 和 `content`
 
-- `name` 和 `content` 属性一起使用，以名 - 值对的方式给文档提供元数据，其中 name 作为元数据的名称，content 作为元数据的值。
+- `name` 和 `content` 属性一起使用，以 `名="值"` 的方式给文档提供元数据，其中 `name` 作为元数据的名称，`content` 作为元数据的值。
 - [标准元数据名称](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta/name)
 - **作者信息**：`<meta name="author" content="NAME" />`
 - **描述信息**：`<meta name="description" content="content..." />`
@@ -2369,6 +2369,8 @@ mark {
 
 HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们常用于为用户提供控件，以便操作用户界面（UI）或在需要时输入数据。
 
+> [Web 表单构建块](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Extensions/Forms)
+
 ## `<button>`
 
 ### 语法
@@ -2437,6 +2439,8 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`<fieldset>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/fieldset) 用于对表单控件进行分组。
 
+![image-20251011090200568](assets/image-20251011090200568.png)
+
 ```html
 <form action="./payment_page" method="get">
   <fieldset>
@@ -2464,8 +2468,6 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 </form>
 ```
 
-> ![image-20251011090200568](assets/image-20251011090200568.png)
-
 **在上述示例中**：
 
 - 使用 `<fieldset>` 元素对表单控件 `<input>` 进行分组。
@@ -2479,7 +2481,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ### 语法
 
-**表单** [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 是表单控件的外层元素，用于将所有的表单控件组织到一起。
+**表单** [`<form>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form) 是所有表单控件的容器，用于将所有的表单控件组织到一起。
 
 ```html
 <form action="/submit" method="get">
@@ -2490,7 +2492,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 **在上述示例中**：
 
-- `<form>`：表单控件的*外层元素*
+- `<form>`：所有表单控件的容器
     - `action`：指定表单数据提交的*目标 URL*
     - `method`：指定表单数据提交时使用的 *HTTP 请求方法*
 - `<button>`：创建一个*提交按钮*
@@ -2581,10 +2583,6 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 #### 语法
 
 [`type`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#type) 是一个公用属性，表示元素的类型，在这里用于指定 `<input>` 的类型。`<input>` 的工作方式相当程度上取决于 `type` 属性的值。
-
-- 允许的值在 [`<input>` 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#input_类型)中
-- 默认类型为 `text`
-- [`submit`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/submit)：创建提交按钮，不如 `<button type="submit">提交</button>` 灵活。
 
 #### `checkbox`
 
@@ -2677,6 +2675,13 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 - 使用 `type="text"` 类型的 `<input>` 元素创建**文本框**。
 - 使用 `name` 的属性值作为数据提交时键值对的**键**。
 - *用户输入值*作为数据提交时键值对的**值**。
+
+#### 其它类型
+
+- 允许的值在 [`<input>` 类型](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#input_类型)中
+- 默认类型为 `text`
+- [`submit`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/submit)：创建提交按钮，不如 `<button type="submit">提交</button>` 灵活。
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input#input_类型)
 
 ### `value`
 
@@ -3070,7 +3075,7 @@ Tell us your story:
 - `<template>` 元素用于创建模板。
 - `id="item-template"` 属性用于 JavaScript 获取到 `<template>`。
 - `id="item-list""` 属性用于 JavaScript 获取到 `<ul>`。
-- JavaScript 会动态地将新产生的 `<li>` 元素添加到 `<ul>` 中。
+- JavaScript 会动态地将新产生的 `<li>` 元素添加到 `<ul>` 中。
 
 ## `<slot>`
 
