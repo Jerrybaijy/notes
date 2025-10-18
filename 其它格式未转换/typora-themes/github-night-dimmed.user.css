@@ -20,7 +20,12 @@ strong {
   font-weight: 1000 !important;
 }
 
-/* 当前大纲标题颜色 */
+/* Sidebar 当前文件颜色 */
+.file-list-item.active {
+  color: white;
+}
+
+/* Sidebar 当前大纲标题颜色 */
 .outline-active {
   color: white;
 }

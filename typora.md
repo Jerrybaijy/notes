@@ -593,7 +593,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     background-color: #fff;
     }
     
-    /* 当前大纲标题颜色 */
+    /* Sidebar 当前文件颜色 */
+    .file-list-item.active {
+      color: white;
+    }
+    
+    /* Sidebar 当前大纲标题颜色 */
     .outline-active {
       color: white;
     }
@@ -837,7 +842,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       font-weight: 1000 !important;
     }
     
-    /* 当前大纲标题颜色 */
+    /* Sidebar 当前文件颜色 */
+    .file-list-item.active {
+      color: white;
+    }
+    
+    /* Sidebar 当前大纲标题颜色 */
     .outline-active {
       color: white;
     }

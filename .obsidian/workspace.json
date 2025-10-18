@@ -106,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -228,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "html.md",
+                "file": "css.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "html 的大纲"
+              "title": "css 的大纲"
             }
           }
         ],
@@ -255,8 +255,20 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "858665a3e503c57b",
+  "active": "58a59b4606024ebf",
   "lastOpenFiles": [
+    "assets/image-20251018172454085.png",
+    "assets/image-20251018172418759.png",
+    "assets/image-20251018172317503.png",
+    "assets/image-20251018172247616.png",
+    "assets/image-20251018172218622.png",
+    "assets/image-20251018172154170.png",
+    "assets/image-20251018172118200.png",
+    "assets/image-20251018171650819.png",
+    "assets/image-20251018171320581.png",
+    "assets/image-20251018170851705.png",
+    "assets/image-20251018170602349.png",
+    "typora.md",
     "css.md",
     "html.md",
     "it-basics.md",
@@ -266,24 +278,13 @@
     "network.md",
     "无障碍.md",
     "assets/web-server.svg+xml",
-    "assets/web-server-1760659535080-7.svg",
-    "assets/web-server.svg",
     "assets/web-server-1760659318347-3.svg+xml",
-    "assets/web-server-1760659318347-3-1760659318347-4.svg",
-    "assets/web-server-1760659162421-1.svg",
     "web.md",
-    "assets/640.webp",
     "dom.md",
     "bom.md",
     "code-general.md",
     "javascript.md",
     "java.md",
-    "assets/image-20251016051835976.png",
-    "assets/image-20251016051235090.png",
-    "assets/image-20251016045857044.png",
-    "assets/image-20251016040507967.png",
-    "assets/image-20251016034903556.png",
-    "typora.md",
     "node-js.md",
     "axios.md",
     "未命名",
@@ -300,7 +301,6 @@
     "http.md",
     "markdown.md",
     "obsidian.md",
-    "md-test.md",
     "其它格式未转换/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Regular.woff",
     "未命名 1.canvas",

@@ -49,18 +49,167 @@ tags:
 }
 ```
 
+## CSS 语句
+
+CSS 样式表的由一系列 [**CSS 语句**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_语句)组成，有两种类型：
+
+- 规则集
+- At 规则
+    - **条件规则组**是特殊的 at 规则
+
+## At 规则
+
+### 语法
+
+[**At 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule)是一个 [CSS 语句](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_语句)，用来指示 CSS 如何运行。
+
+```css
+/* 一般结构 */
+@identifier (RULE);
+
+/* 示例：通知浏览器使用 UTF-8 字符集 */
+@charset "utf-8";
+```
+
+### 嵌套
+
+[**嵌套 at 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#嵌套)
+
+### 条件规则组
+
+[**条件规则组**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#条件规则组)
+
+### `@important`
+
+[`@important`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) 规则用于导入其它样式表。`@important` 必须先于所有其他类型的 at 规则（`@charset` 规则除外）。
+
+```css
+@import "github-night.css";
+```
+
+### 其它 at 规则
+
+- [At 规则索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#%索引)
+
 ## 规则集
 
-CSS 由一系列[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解)组成，规则集结构如下：
+[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解) 是一个 *CSS 语句*，结构如下：
 
 <img src="assets/image-20231205115235248.png" alt="image-20231205115235248" style="height: 300px"/>
 
 **规则集主要部分有**：
 
-- [**选择器**（Selector）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#选择器（selector）)：用于指定为哪种元素添加样式，多个选择器使用 `,` 分隔。
-- [**声明**（Declaration）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#声明（declaration）)：即属性名值对，用大括号 `{}` 包含声明，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
-- [**属性**（Properties）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性（properties）)：用于指定改变元素的哪种样式
-- [**属性值**（Property value）](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#属性的值（property_value）)：用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔。
+- **选择器**：`p`，用于指定为哪种元素添加样式，详见[选择器](#选择器)。
+- [**声明块**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_声明块)：`{color: red;}`，声明块用大括号 `{}` 包含声明。
+    - [**声明**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_声明）)：`color: red;`，即属性名值对，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
+        - **属性**：`color`，用于指定改变元素的哪种样式，详见[属性](#属性)。
+        - **属性值**：`red`，用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔，详见[属性值](#属性值)。
+
+# 属性
+
+CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于设置所选元素的某些样式。
+
+## 简写属性
+
+[**简写属性**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Shorthand_properties)是可以让你同时设置好几个 CSS 属性值的 CSS 属性。
+
+## `CSS 变量`
+
+[`CSS 变量`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/--*) 是一个自定义属性，详见 [:root](#:root)。
+
+## `all`
+
+**所有属性** [`all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all) 是一个简写属性，将除了 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 与 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 之外的所有属性重设至其初始值，或继承值。
+
+## `gap`
+
+**间隔** [`gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap) 是一个简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
+
+- [`column-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
+- [`row-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
+
+**注意**：`gap` 属性不适用于流式布局。
+
+## `z-index`
+
+[`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index) 属性用于设置 *非 `static` 定位元素及其后代元素* 或 *flex 项目* 的 **Z 轴顺序**。z-index 较大的重叠元素会覆盖较小的元素。
+
+当没有在任何元素上指定 `z-index` 属性时，元素的[堆叠顺序](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_positioned_layout/Stacking_without_z-index)如下（从上到下）：
+
+- 后代定位元素，按在 HTML 中出现的顺序排列。
+- 后代非定位元素，按在 HTML 中出现的顺序排列。
+- 根元素的背景和边框。
+
+以下是 `relative` 覆盖 `absolute` 的示例：
+
+<img src="assets/image-20251016040507967.png" alt="image-20251016040507967" style="zoom:50%;" />
+
+```html
+<div class="test-block">Test Block</div>
+<div class="normal-block">Normal Block</div>
+```
+
+```css
+.test-block {
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1;
+}
+
+.normal-block {
+  width: 150px;
+  height: 150px;
+  background-color: green;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+```
+
+# 属性值
+
+## 属性值定义语法
+
+[**CSS 属性值定义语法**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)（CSS value definition syntax）是用来限定 CSS 属性合法取值的专门语法。
+
+- **关键字**，如 `red`
+- **基本数据类型**，如 `<length>` 的 `5px`
+- **函数**，如 `<color>` 的 `rgb(255 0 153)`
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)
+
+## 值和单位
+
+>  [CSS 值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
+
+## 基本数据类型
+
+[**CSS 基本数据类型**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)是一种[组合值类型](https://www.w3.org/TR/css3-values/#component-types)。用于定义 CSS 属性和函数可以接受的变量（关键字和单位）的种类。
+
+- [`<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)：数字
+- [`<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)：长度值，由 *`<number>`* 和*长度单位*构成。
+    - [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#绝对长度单位)
+    - [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#相对长度单位)
+- [`<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)：百分比，由 *`<number>`* 和 `%` 构成。
+- [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)：颜色值
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)
+
+## 值函数
+
+[**CSS 值函数**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_value_functions)是调用特殊数据处理或计算的语句，以返回一个属性值。
+
+## 四值语法
+
+**四值语法**是某个属性的*属性值*，可以是 `1-4` 个值；此部分是自己总结。
+
+- **一个值**：该值将应用于**四条边**。
+- **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
+- **三个值**：第一个值应用于 `top`，第二个值应用于 `left` 和 `right`，第三个值应用于 `bottom`.
+- **四个值**：这些值按照 `top`、`right`、`bottom`、`left` 的顺序（顺时针）进行应用。
 
 # 层叠
 
@@ -71,8 +220,6 @@ CSS 由一系列[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/G
 >  [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
 >
 >  [级联排序顺序](https://drafts.csswg.org/css-cascade-4/#cascade-sort "w3c")
-
-层叠的核心算法，依次考虑几种因素：
 
 层叠的总体原则：
 
@@ -653,220 +800,6 @@ span::after {
 - [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
 - 更多...
 
-# 属性
-
-## 属性值
-
-[**CSS 属性值定义语法**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)（CSS value definition syntax）是用来限定 CSS 属性合法取值的专门语法。
-
-> [CSS 值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units#数值、长度和百分比)
-
-以下是几个常见的属性值类型：
-
-- **关键字**，如 `red`
-- **基本数据类型**，如 `<length>` 的 `5px`
-- **函数**，如 `<color>` 的 `rgb(255 0 153)`
-- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/Value_definition_syntax)
-
-### 基本数据类型
-
-[**CSS 基本数据类型**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)是一种[组合值类型](https://www.w3.org/TR/css3-values/#component-types)。用于定义 CSS 属性和函数可以接受的变量（关键字和单位）的种类。
-
-- [`<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)：数字
-- [`<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)：长度值，由 *`<number>`* 和*长度单位*构成。
-    - [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#绝对长度单位)
-    - [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#相对长度单位)
-- [`<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)：百分比，由 *`<number>`* 和 `%` 构成。
-- [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)：颜色值
-- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)
-
-### 四值语法
-
-**四值语法**是某个属性的*属性值*，可以是 `1-4` 个值；此部分是自己总结。
-
-- **一个值**：该值将应用于**四条边**。
-- **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
-- **三个值**：第一个值应用于 `top`，第二个值应用于 `left` 和 `right`，第三个值应用于 `bottom`.
-- **四个值**：这些值按照 `top`、`right`、`bottom`、`left` 的顺序（顺时针）进行应用。
-
-## 简写属性
-
-[**简写属性**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_cascade/Shorthand_properties)是可以让你同时设置好几个 CSS 属性值的 CSS 属性。
-
-## CSS 变量
-
-[**CSS 变量**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/--*)是一个自定义属性，详见 [:root](#:root)。
-
-## `align-items`
-
-[`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 属性用于设置子元素的轴向对齐方式：
-
-- 在 Flex 布局中，基于交叉轴；
-- 在 Grid 布局中，基于块向轴。
-
-**属性值**：
-
-- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
-
-    <img src="assets/image-20241203200646038.png" alt="image-20241203200646038" style="zoom:33%;" />
-
-- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
-
-    <img src="assets/image-20241203200725662.png" alt="image-20241203200725662" style="zoom:33%;" />
-
-- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**
-
-    <img src="assets/image-20241203200754334.png" alt="image-20241203200754334" style="zoom:33%;" />
-
-**示例**：
-
-```html
-<div class="parent">
-  <div class="child">1-block</div>
-  <div class="child">2-block</div>
-  <div class="child">3-block</div>
-</div>
-```
-
-```css
-.parent {
-  width: 500px;
-  height: 100px;
-  border: 2px black solid;
-
-  /* 弹性布局 */
-  display: flex;
-
-  /* 设置对齐方式 */
-  align-items: center;
-}
-
-.child {
-  width: 100px;
-  height: 50px;
-  border: 1px black solid;
-  background-color: purple;
-}
-```
-
-## `all`
-
-**所有属性** [`all`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/all) 是一个简写属性，将除了 [`unicode-bidi`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/unicode-bidi) 与 [`direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/direction) 之外的所有属性重设至其初始值，或继承值。
-
-## `gap`
-
-**间隔** [`gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/gap) 是一个简写属性，用于设置容器内子元素之间间隔（例如弹性布局中，沿主轴方向）。
-
-- [`column-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/column-gap)
-- [`row-gap`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/row-gap)
-
-**注意**：`gap` 属性不适用于流式布局。
-
-## `justify-content`
-
-[`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content) 属性用于设置子元素轴向排列方式，以及分配轴向剩余空间：
-
-- 在 Flex 布局中，沿着主轴；
-- 在 Grid 布局中，沿着块向轴。
-
-**属性值**：
-
-- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
-
-    <img src="assets/image-20241203200520694.png" alt="image-20241203200520694" style="zoom:33%;" />
-
-- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列 
-
-    <img src="assets/image-20241203200556497.png" alt="image-20241203200556497" style="zoom:33%;" />
-
-- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
-
-    <img src="assets/image-20241203194626540.png" alt="image-20241203194626540" style="zoom:33%;" />
-
-- **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
-
-    <img src="assets/image-20241203192830779.png" alt="image-20241203192830779" style="zoom:33%;" />
-
-- **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
-
-    <img src="assets/image-20241203193218905.png" alt="image-20241203193218905" style="zoom:33%;" />
-
-- **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：所有空间都相等
-
-    <img src="assets/image-20241203193438718.png" alt="image-20241203193438718" style="zoom:33%;" />
-
-**示例**：
-
-```html
-<div class="parent">
-  <div class="child">1-block</div>
-  <div class="child">2-block</div>
-  <div class="child">3-block</div>
-</div>
-```
-
-```css
-.parent {
-  width: 500px;
-  height: 100px;
-  border: 2px black solid;
-
-  /* 弹性布局 */
-  display: flex;
-
-  /* 设置排列方式 */
-  justify-content: space-between;
-}
-
-.child {
-  width: 100px;
-  height: 50px;
-  border: 1px black solid;
-  background-color: purple;
-}
-```
-
-## `z-index`
-
-[`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index) 属性用于设置 *非 `static` 定位元素及其后代元素* 或 *flex 项目* 的 **Z 轴顺序**。z-index 较大的重叠元素会覆盖较小的元素。
-
-当没有在任何元素上指定 `z-index` 属性时，元素的[堆叠顺序](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_positioned_layout/Stacking_without_z-index)如下（从上到下）：
-
-- 后代定位元素，按在 HTML 中出现的顺序排列。
-- 后代非定位元素，按在 HTML 中出现的顺序排列。
-- 根元素的背景和边框。
-
-以下是 `relative` 覆盖 `absolute` 的示例：
-
-<img src="assets/image-20251016040507967.png" alt="image-20251016040507967" style="zoom:50%;" />
-
-```html
-<div class="test-block">Test Block</div>
-<div class="normal-block">Normal Block</div>
-```
-
-```css
-.test-block {
-  width: 150px;
-  height: 150px;
-  background-color: red;
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  z-index: 1;
-}
-
-.normal-block {
-  width: 150px;
-  height: 150px;
-  background-color: green;
-  position: relative;
-  top: 20px;
-  left: 20px;
-  z-index: 2;
-}
-```
-
 # 样式
 
 ## 大小
@@ -1197,7 +1130,7 @@ fontsize: lighter;
 
 **Web 字体**：[`@font-face`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@font-face) at 规则指定在访问时随你的网站一起下载字体文件。
 
-## 文本样式
+## 文本装饰
 
 ### `text-decoration`
 
@@ -1836,9 +1769,9 @@ h4 {
 - `padding` 属性适用**四值语法**
 - `padding` 本身没有背景颜色，完全透明，但有背景色时，会受到背景色影响
 
-### [`box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing)
+### `box-sizing`
 
-`box-sizing` 属性，即**替代盒模型**，定义了应该如何计算一个元素的总宽度和总高度。
+[`box-sizing`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/box-sizing) 属性，即**替代盒模型**，定义了应该如何计算一个元素的总宽度和总高度。
 
 <img src="assets/box-sizing.svg" alt="box-sizing" style="width: 50%"/>
 
@@ -1847,9 +1780,11 @@ h4 {
 - `content-box`：默认值，`width` = `content` 宽度，`height` 同理。
 - `border-box`：`width` = `border` + `padding` + `content` 宽度，`height` 同理。
 
-## [`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display)
+## `display`
 
-### [语法](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#形式语法)
+[`display`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display) 属性用于设置元素是否被视为*块级或行级盒子*以及用于*子元素*的布局，例如流式布局、网格布局或弹性布局。
+
+### 语法
 
 `display` 属性有六种取值类型：
 
@@ -1860,8 +1795,8 @@ h4 {
     - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
 - [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
     - [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
-    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：见弹性布局
-    - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：见网格布局
+    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：详见[弹性布局](#弹性布局)
+    - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：详见[网格布局](#网格布局)
     - [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
     - [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
     - 更多...
@@ -1895,271 +1830,967 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 ### `inline-block`
 
-## [流式布局](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow)
+[`inline-block`](https://drafts.csswg.org/css-display/#valdef-display-inline-block) 表现为同行显示并可修改宽高内外边距等属性。
 
-- **语法**：流式布局是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内的布局方式）。
-- [`inline-block`](https://drafts.csswg.org/css-display/#valdef-display-inline-block) 表现为同行显示并可修改宽高内外边距等属性。
-- **块级元素和行内元素的区别**
+## 流式布局
 
-    |  | 块级元素 | 行内元素 |
-    | :---: | :---: | :---: |
-    | 显示方式 | 以块的形式显示，独占一行。 | 在同一行上显示，只占据内容的宽度。 |
-    | 宽度 | 默认情况下宽度是父元素的100%。 | 宽度仅占据它所包含内容的宽度。<br />*纯行内元素*不可设置宽度。 |
-    | 高度 | 高度由内容和内边距决定，可以设置。 | 由所包含内容的高度决定。<br />*纯行内元素*不可设置宽度。 |
-    | 边距 | 全部可以设置。 | 不可以设置上下边距。 |
-    | 可包含元素 | 可以包含块级元素和行内元素。 | 只能包含行内元素和部分其他行内元素。 |
+[**流式布局**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Normal_Flow#正常布局流)是指在不对页面进行任何布局控制时，浏览器默认的 HTML 布局方式（即元素在 `<body>` 元素内的布局方式）。
 
-- **`inline`、`block`、`inline-block` 和 `none` 示例**
+### 块级元素和行内元素的区别
 
-    ```html
-    <div class="container">
-      <span class="inline">inline</span>
-      <span class="inline">inline</span>
-      <div class="block">block</div>
-      <div class="block">block</div>
-      <div class="inline-block">inline-block</div>
-      <div class="inline-block">
-        inline-block
-        <div class="block block2">block</div>
-        <div class="block block2">block</div>
-      </div>
-      <div class="none">none</div>
-    </div>
-    ```
+|  | 块级元素 | 行内元素 |
+| :---: | :---: | :---: |
+| 显示方式 | 以块的形式显示，独占一行。 | 在同一行上显示，只占据内容的宽度。 |
+| 宽度 | 默认情况下宽度是父元素的100%。 | 宽度仅占据它所包含内容的宽度。<br />*纯行内元素*不可设置宽度。 |
+| 高度 | 高度由内容和内边距决定，可以设置。 | 由所包含内容的高度决定。<br />*纯行内元素*不可设置宽度。 |
+| 边距 | 全部可以设置。 | 不可以设置上下边距。 |
+| 可包含元素 | 可以包含块级元素和行内元素。 | 只能包含行内元素和部分其他行内元素。 |
 
-    ```css
-    .container {
-      border: 2px black solid;
-      width: 500px;
-      height: 250px;
-    }
+### `inline`、`block`、`inline-block` 和 `none` 示例
 
-    .inline {
-      background-color: purple;
-    }
+```html
+<div class="container">
+  <span class="inline">inline</span>
+  <span class="inline">inline</span>
+  <div class="block">block</div>
+  <div class="block">block</div>
+  <div class="inline-block">inline-block</div>
+  <div class="inline-block">
+    inline-block
+    <div class="block block2">block</div>
+    <div class="block block2">block</div>
+  </div>
+  <div class="none">none</div>
+</div>
+```
 
-    .block {
-      background-color: purple;
-      margin-top: 10px;
-    }
+```css
+.container {
+  border: 2px black solid;
+  width: 500px;
+  height: 250px;
+}
 
-    .inline-block {
-      display: inline-block;
-      background-color: purple;
-      margin-top: 10px;
-    }
+.inline {
+  background-color: purple;
+}
 
-    .block2 {
-      background-color: green;
-    }
+.block {
+  background-color: purple;
+  margin-top: 10px;
+}
 
-    .none {
-      display: none;
-    }
-    ```
+.inline-block {
+  display: inline-block;
+  background-color: purple;
+  margin-top: 10px;
+}
 
-    <img src="assets/image-20241205165017474.png" alt="image-20241205165017474" style="zoom:50%;" />
+.block2 {
+  background-color: green;
+}
 
-- **鼠标悬停显示示例**
+.none {
+  display: none;
+}
+```
 
-    ```html
-    <div class="trigger-element">Hover me</div>
-    <div class="hidden-element">I appear on hover!</div>
-    ```
+<img src="assets/image-20241205165017474.png" alt="image-20241205165017474" style="zoom:50%;" />
 
-    ```css
-    .hidden-element {
-      display: none;
-    }
-    
-    .trigger-element:hover+.hidden-element {
-      display: block;
-    }
-    ```
+### 鼠标悬停显示示例
 
-## [弹性布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)
+```html
+<div class="trigger-element">Hover me</div>
+<div class="hidden-element">I appear on hover!</div>
+```
 
-### [主轴方向 `flex-direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-direction)
+```css
+.hidden-element {
+  display: none;
+}
 
-- 弹性布局有两条轴线：主轴和交叉轴（类似于 x 轴和 y 轴），元素沿着主轴排列。
+.trigger-element:hover+.hidden-element {
+  display: block;
+}
+```
 
-    ![123](assets/flex-direction.svg)
+## 弹性布局
 
-- **语法**：**`flex-direction`** 属性指定弹性容器的主轴方向。
-- **属性值**：`flex-direction: row | column | row-reverve | column-reverse;  /* default row */`
-- **示例**
+### 概念
 
-    ```html
-    <div class="parent">
-      <div class="child">1-block</div>
-      <div class="child">2-block</div>
-      <div class="child">3-block</div>
-    </div>
-    ```
+[**两根轴线**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flexbox_的两根轴线)（类似于 x 轴和 y 轴）：
 
-    ```css
-    .parent {
-      width: 500px;
-      height: 500px;
-      border: 2px black solid;
-      display: flex;
-    
-      /* 设置主轴方向为行 */
-      flex-direction: column;
-    }
-    
-    .child {
-      width: 150px;
-      height: 150px;
-      border: 1px black solid;
-      background-color: purple;
-    }
-    ```
+- 主轴：元素沿着主轴排列
+- 交叉轴：垂直于主轴
 
-    <img src="assets/image-20241203183230505.png" alt="image-20241203183230505" style="zoom:50%;" />
+[**起始线和终止线**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#起始线和终止线)：
 
-### [弹性布局基础 `flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex)
+<img src="assets/basics5.svg" alt="书写英文时，主轴的起始线是左边" style="zoom:50%;" />
 
-- **定义**：`display: flex;` 声明用于将元素内部设置为弹性布局，元素本身设为弹性容器，子元素显示为弹性元素。
+<img src="assets/basics6.svg" alt="书写阿拉伯文时，主轴的起始线是右边" style="zoom:50%;" />
 
-    - 外部表现：不影响，仍是流式布局
-    - 内部表现：弹性布局，内部子元素统一变为弹性元素。
-    - 弹性元素：元素失去常规布局流的特性，统一按照弹性规则进行布局。
+### 语法
 
-- **语法**：`display: flex;`
+[**弹性布局**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox)是一种一维布局模型，用于将**元素本身**设为*弹性容器*，**子元素**显示为*弹性元素*。
 
-    <img src="assets/image-20241203163518514.png" alt="image-20241203163518514" style="width: 60%;"/>
+- 外部表现：不影响，仍是流式布局。
+- 内部表现：内部子元素统一变为弹性元素。
+- 弹性元素：元素失去流式布局的特性，统一按照弹性规则进行排列。
 
-    ```html
-    <div class="container">
-      <div class="one">1-block</div>
-      <div class="two">2-inline</div>
-      <div class="three">3-inline-block</div>
-    </div>
-    ```
+**语法**：`display: flex;`
 
-    ```css
-    .container {
-      display: flex;
-      border: 2px black solid;
-      width: 500px;
-    }
+```html
+<div class="parent">
+  <div class="child">1-block</div>
+  <div class="child">2-block</div>
+  <div class="child">3-block</div>
+</div>
+```
 
-    .one {
-      border: 1px black solid;
-      background-color: purple;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 10px;
-    }
+```css
+.container {
+  width: 500px;
+  height: 200px;
+  border: 2px black solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-    .two {
-      display: inline;
-      border: 1px black solid;
-      background-color: purple;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 10px;
-    }
+.item-1,
+.item-2,
+.item-3 {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+  font-size: 20px;
+  text-align: center;
+}
+```
 
-    .three {
-      display: inline-block;
-      border: 1px black solid;
-      background-color: purple;
-      width: 150px;
-      height: 150px;
-      margin-bottom: 10px;
-    }
-    ```
+<img src="assets/image-20251018170025344.png" alt="image-20251018170025344" style="zoom: 50%;" />
 
-- **扩展**：弹性盒布局经常结合以下属性一起使用
+**在以上示例中**：
 
-    - **[`flex-direction`](#[主轴方向 `flex-direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-direction))**：用于确定主轴方向
-    - **[`justify-content`](#[`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content))**：用于沿主轴排列
-    - **[`align-items`](#[`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items))**：用于沿交叉轴对齐
+- `display: flex;`：设置布局方式为弹性布局
+- `flex-direction`：设置弹性容器的主轴方向
+- `justify-content`：设置弹性元素在主轴上的对齐方式
+- `align-items`：设置弹性元素在交叉轴的对齐方式
 
-    ```html
-    <div class="parent">
-      <div class="child">1-block</div>
-      <div class="child">2-block</div>
-      <div class="child">3-block</div>
-    </div>
-    ```
+### `align-items`
 
-    ```css
-    .parent {
-      width: 500px;
-      height: 200px;
-      border: 2px black solid;
-    
-      /* 设置布局方式为弹性布局 */
-      display: flex;
-    
-      /* 设置主轴沿着列方向 */
-      flex-direction: column;
-    
-      /* 设置沿主轴的排列方式 */
-      justify-content: center;
-    
-      /* 设置基于交叉轴的对齐方式 */
-      align-items: center;
-    }
-    
-    .child {
-      width: 100px;
-      height: 50px;
-      border: 1px black solid;
-      background-color: purple;
-    }
-    ```
+[`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items) 属性用于设置子元素的轴向对齐方式：
 
-    <img src="assets/image-20241203205719165.png" alt="image-20241203205719165" style="zoom: 50%;" />
+- 在 Flex 布局中，沿着交叉轴；
+- 在 Grid 布局中，沿着块向轴。
 
-### [`flex-grow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow)
+**属性值**：
 
-- **定义**：`flex-grow` 属性用于定义弹性容器中子元素在剩余空间中的分配比例（改变元素的默认尺寸）。
-- **语法**：`flex-grow: <number>`
+- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
 
-    ```html
-    <div class="container">
-      <div class="left">左侧占2份</div>
-      <div class="right">右侧占1份</div>
-    </div>
-    ```
+    <img src="assets/image-20251018170602349.png" alt="image-20251018170602349" style="zoom:50%;" />
 
-    ```css
-    .container {
-      background-color: gray;
-      border: 1px solid red;
-      display: flex;
-      width: 500px;
-      padding: 10px;
-    }
-    
-    .left {
-      background-color: red;
-      flex-grow: 2;  /* 左侧占2份 */
-      text-align: center;
-    }
-    
-    .right {
-      background-color: aqua;
-      flex-grow: 1;  /* 右侧占1份 */
-      text-align: center;
-    }
-    ```
+- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
 
-    <img src="assets/image-20241217160045045.png" alt="image-20241217160045045" style="zoom: 80%;" />
+    <img src="assets/image-20251018170541057.png" alt="image-20251018170541057" style="zoom:50%;" />
 
-## [网格布局](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
+- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**：
 
-### [网格布局基础 `grid`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)
+    <img src="assets/image-20251018170505157.png" alt="image-20251018170505157" style="zoom:50%;" />
 
-- `display:grid;` 将元素设为网格容器，子元素显示为网格项目
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#取值)
 
-    - 子元素水平和垂直都居中 `place-items: center;`
+**示例**：
 
-## [多列布局 ](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Multiple-column_Layout)
+```html
+<div class="parent">
+  <div class="child">1-block</div>
+  <div class="child">2-block</div>
+  <div class="child">3-block</div>
+</div>
+```
+
+```css
+.container {
+  width: 400px;
+  height: 100px;
+  border: 2px black solid;
+  display: flex;
+  align-items: center;
+}
+
+.item-1,
+.item-2,
+.item-3 {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+  font-size: 20px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018170851705.png" alt="image-20251018170851705" style="zoom:80%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `align-items`：设置弹性元素在交叉轴的对齐方式
+
+### `flex`
+
+> [Flex 属性的简写](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flex_属性的简写)
+
+[`flex`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex) 是弹性容器中**弹性元素**的*简写属性*，用于设置弹性元素如何增大或缩小以适应其弹性容器中可用的空间。
+
+- `flex-grow`：增长系数，详见 [`flex-grow`](#`flex-grow`)
+- `flex-shrink`：收缩系数，详见 [`flex-shrink`](#`flex-shrink`)
+- `flex-basis`：初始大小，详见 [`flex-basis`](#`flex-basis`)
+
+**属性值**：多值语法。
+
+### `flex-basis`
+
+> [Flex 元素属性：`flex-basis`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flex_元素属性：flex-basis)
+
+**初始大小** [`flex-basis`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-basis) 是弹性容器中**弹性元素**的属性，用于设置弹性元素在主轴方向上的初始大小。
+
+- 如果不使用 `box-sizing` 改变盒模型的话，那么这个属性就决定了 flex 元素的内容盒（content-box）的尺寸。
+- 如果不设置弹性元素在交叉轴方向上的尺寸，则在该方向上会填满父级元素。
+
+**属性值**：
+
+- `auto`：默认值，基于元素的内容自动调整大小。
+- `<'width'>`
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+</div>
+```
+
+```css
+.container {
+  width: 400px;
+  height: 100px;
+  border: 2px black solid;
+  display: flex;
+}
+
+.item-1,
+.item-2,
+.item-3 {
+  flex-basis: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+  font-size: 20px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018171320581.png" alt="image-20251018171320581" style="zoom: 80%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `flex-basis`：设置弹性元素在主轴方向上的初始大小
+
+### `flex-direction`
+
+[`flex-direction`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-direction) 用于设置**弹性容器**的主轴方向。
+
+![123](assets/flex-direction.svg)
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+</div>
+```
+
+```css
+.container {
+  width: 400px;
+  height: 200px;
+  border: 2px black solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.item-1,
+.item-2,
+.item-3 {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+  font-size: 20px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018171650819.png" alt="image-20251018171650819" style="zoom:80%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `flex-direction: column;`：设置主轴方向为 `column`
+
+### `flex-grow`
+
+> [Flex 元素属性：`flex-grow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flex_元素属性：flex-grow)
+
+**增长系数** [`flex-grow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-grow) 是弹性容器中**弹性元素**的属性，弹性元素会以 `flex-basis` 为基础，以 `flex-grow` 为系数（并非占几份），沿主轴方向增长尺寸。只有在弹性元素的 `flex-basis` 总和在主轴内才会生效。
+
+**语法**：`flex-grow: <number>`
+
+```html
+<div class="container">
+  <div class="left">左侧</div>
+  <div class="right">右侧</div>
+</div>
+```
+
+```css
+.container {
+  width: 500px;
+  height: 100px;
+  border: 2px black solid;
+  display: flex;
+}
+
+.left {
+  background-color: red;
+  flex-basis: 100px;
+  flex-grow: 2;
+  height: 50px;
+  text-align: center;
+}
+
+.right {
+  background-color: aqua;
+  flex-basis: 100px;
+  flex-grow: 1;
+  height: 50px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018093743221.png" alt="image-20251018093743221" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `flex-basis`：设置在主轴方向的初始大小
+    - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例增长了。
+- `flex-grow`：设置弹性元素在主轴方向上的增长系数
+
+### `flex-shrink`
+
+> [Flex 元素属性：`flex-shrink`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_flexible_box_layout/Basic_concepts_of_flexbox#flex_元素属性：flex-shrink)
+
+**收缩系数** [`flex-shrink`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/flex-shrink) 是弹性容器中**弹性元素**的属性，弹性元素会以 `flex-basis` 为基础，以 `flex-shrink` 为系数（并非占几份），沿主轴方向收缩尺寸。只有在弹性元素的 `flex-basis` 总和超出主轴才会生效。
+
+```html
+<div class="container">
+  <div class="left">左侧</div>
+  <div class="right">右侧</div>
+</div>
+```
+
+```css
+.container {
+  width: 500px;
+  height: 100px;
+  border: 2px black solid;
+  display: flex;
+}
+
+.left {
+  background-color: red;
+  flex-basis: 400px;
+  flex-shrink: 2;
+  height: 50px;
+  text-align: center;
+}
+
+.right {
+  background-color: aqua;
+  flex-basis: 400px;
+  flex-shrink: 1;
+  height: 50px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018101034563.png" alt="image-20251018101034563" style="zoom:50%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `flex-basis`：设置在主轴方向的初始大小
+    - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例收缩了。
+- `flex-shrink`：设置弹性元素在主轴方向上的收缩系数
+
+### `justify-content`
+
+[`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content) 属性用于设置子元素的轴向对齐方式，以及分配轴向剩余空间：
+
+- 在 Flex 布局中，沿着主轴；
+- 在 Grid 布局中，沿着行向轴。
+
+**属性值**：
+
+- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
+
+    <img src="assets/image-20251018172154170.png" alt="image-20251018172154170" style="zoom:50%;" />
+
+- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列 
+
+    <img src="assets/image-20251018172218622.png" alt="image-20251018172218622" style="zoom:50%;" />
+
+- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
+
+    <img src="assets/image-20251018172247616.png" alt="image-20251018172247616" style="zoom:50%;" />
+
+- **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
+
+    <img src="assets/image-20251018172317503.png" alt="image-20251018172317503" style="zoom:50%;" />
+
+- **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
+
+    <img src="assets/image-20251018172418759.png" alt="image-20251018172418759" style="zoom:50%;" />
+
+- **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：剩余所有空间都相等
+
+    <img src="assets/image-20251018172454085.png" alt="image-20251018172454085" style="zoom:50%;" />
+
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#值)
+
+**示例**：
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+</div>
+```
+
+```css
+.container {
+  width: 400px;
+  height: 100px;
+  border: 2px black solid;
+  display: flex;
+  justify-content: center;
+}
+
+.item-1,
+.item-2,
+.item-3 {
+  width: 100px;
+  height: 50px;
+  border: 1px black solid;
+  background-color: purple;
+  font-size: 20px;
+  text-align: center;
+}
+```
+
+<img src="assets/image-20251018172118200.png" alt="image-20251018172118200" style="zoom:80%;" />
+
+**在以上示例中**：
+
+- `display: flex;`：设置布局方式为弹性布局
+- `justify-content`：设置弹性元素在主轴方向上的对齐方式
+
+## 网格布局
+
+### 概念
+
+[**网格容器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网格容器)：使用 `display：grid` 创建的容器。
+
+[**网格线**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网格线)：网格轨道两侧的线。
+
+[**网格轨道**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网格轨道)：网格容器上任意两条网格线之间的空间。
+
+[**网格单元**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网单元)：网格项中最小的单位，类似于单元格。
+
+[**网格区域**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网区域)：多个网格单元形成的区域，类似于合并单元格。
+
+### 语法
+
+[**网格布局**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout)是一种二维布局模型，用于将元素本身设为*网格容器*，子元素显示为*网格项*。
+
+- 外部表现：不影响，仍是流式布局。
+- 内部表现：内部子元素统一变为网格项。
+- 网格项：元素失去流式布局的特性，统一按照网格规则进行排列。
+
+**语法**：`display:grid;`
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: 100px;
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018151901365](assets/image-20251018151901365.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：设置列轨道的数量和大小
+- `grid-auto-rows: 100px;`：设置隐式创建的行轨道大小
+
+### `grid-auto-rows`
+
+[`grid-auto-rows`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-auto-rows) 用于指定隐式创建的行轨道大小。
+
+> [隐式和显式网格](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#隐式和显式网格)
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-auto-rows: 100px;
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018151834653](assets/image-20251018151834653.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局。
+- `grid-auto-rows: 100px;`：设置隐式创建的行轨道大小为 100px。
+
+### `grid-template-columns`
+
+#### 语法
+
+**网格列** [`grid-template-columns`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/grid-template-columns) 属性是基于网格列的维度，去定义网格线的名称和列轨道的尺寸大小，几个值就有几列。
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018151805516](assets/image-20251018151805516.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：设置列轨道的数量和大小。
+    - 此例中的 `200px` 是一个绝对大小。
+    - 绝对大小、`fr`、`repeat()` 可混合写。
+
+#### fr 单位
+
+[`fr` 单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#fr_单位)代表列轨道占网格容器剩余空间的份额。
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018151739084](assets/image-20251018151739084.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：定义网格列的大小，`fr` 是一个相对大小。
+
+#### `repeat()`
+
+[`repeat()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/repeat) 函数用于设置轨道列表的重复片段。
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  /* grid-auto-rows: 100px; */
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018151716187](assets/image-20251018151716187.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
+
+### `grid-column`
+
+[`grid-column`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column) 是网格项的简写属性，用于设置网格项的列起始和终止网格线编号，以形成*网格区域*。
+
+- [`grid-column-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start)：网格项的列起始网格线编号，详见 [`grid-column-start`](#`grid-column-start`)。
+- [`grid-column-end`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-end)：网格项的列终止网格线编号，用法同 [`grid-column-start`](#`grid-column-start`)。
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+
+.item-1 {
+  background-color: orangered;
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
+}
+
+.item-2 {
+  background-color: blue;
+  grid-column: 1 / 2;
+  grid-row: 3 / 5;
+}
+```
+
+![image-20251018154919443](assets/image-20251018154919443.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：设置列轨道的数量和大小
+- `grid-column`：设置网格项的列起始和终止网格线编号，两个值用 `/` 分隔。
+
+### `grid-column-start`
+
+[`grid-column-start`](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column-start) 是网格项的属性，用于设置网格项的列起始网格线编号。
+
+> [跨轨道放置网格项目](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#跨轨道放置网格项目)
+
+#### 网格线编号
+
+> [网格线](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_grid_layout/Basic_concepts_of_grid_layout#网格线)
+
+网格布局会为我们创建编号的网格线来让我们来定位每一个网格元素。例如下面这个三列两行的网格中，就拥有四条纵向的网格线。
+
+网格线的编号顺序取决于文章的书写模式。在从左至右书写的语言中，编号为 1 的网格线位于最左边。在从右至左书写的语言中，编号为 1 的网格线位于最右边。
+
+<img src="assets/image-20251018133402315.png" alt="image-20251018133402315" style="zoom:50%;" />
+
+#### 语法
+
+```html
+<div class="container">
+  <div class="item-1">item-1</div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+
+.item-1 {
+  background-color: orangered;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.item-2 {
+  background-color: blue;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 5;
+}
+```
+
+![image-20251018155339634](assets/image-20251018155339634.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
+- `grid-column-start`：设置网格项的列起始网格线编号
+- `grid-column-end`：设置网格项的列终止网格线编号
+- `grid-row-start`：设置网格项的行起始网格线编号
+- `grid-row-end`：设置网格项的行终止网格线编号
+
+### `justify-items`
+
+[`justify-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-items) 属性为所有盒中的**项目**定义了默认的 [`justify-self`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-self) ，可以使这些项目以默认方式沿适当轴线对齐到每个盒子。
+
+### `place-items`
+
+[`place-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/place-items) 是一个简写属性，用于在*网格布局*中同时设置子元素沿着两个轴向对齐。
+
+- `align-items`：沿着块向轴
+- `justify-items`
+
+```html
+<div class="parent">
+  <div class="child">1-block</div>
+  <div class="child">2-block</div>
+  <div class="child">3-block</div>
+</div>
+```
+
+```css
+.container {
+  height: 300px;
+  border: 2px black solid;
+  display: grid;
+  place-items: center;
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+```
+
+![image-20251018155804530](assets/image-20251018155804530.png)
+
+**在以上示例中**：
+
+- `display: grid;`：设置布局方式为网格布局
+- `place-items: center;`：同时设置 `align-items: center;` 和 `justify-items: center;`
+
+### 网格布局嵌套
+
+```html
+<div class="container">
+  <div class="item-1">
+    <div class="item-1-1">item-1-1</div>
+    <div class="item-1-2">item-1-2</div>
+    <div class="item-1-3">item-1-3</div>
+  </div>
+  <div class="item-2">item-2</div>
+  <div class="item-3">item-3</div>
+  <div class="item-4">item-4</div>
+  <div class="item-5">item-5</div>
+</div>
+```
+
+```css
+.container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-1,
+.item-2,
+.item-3,
+.item-4,
+.item-5 {
+  background-color: purple;
+  text-align: center;
+  font-size: 30px;
+}
+
+.item-1 {
+  background-color: orangered;
+  grid-column: 1 / 4;
+  grid-row: 1 / 3;
+}
+
+.item-2 {
+  background-color: blue;
+  grid-column: 1 / 2;
+  grid-row: 3 / 5;
+}
+
+.item-1 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.item-1-1,
+.item-1-2,
+.item-1-3 {
+  text-align: center;
+  font-size: 30px;
+}
+
+.item-1-1 {
+  background-color:black;
+  grid-column: 1 / 2;
+  grid-row: 1 / 4;
+}
+
+.item-1-2 {
+  background-color:blue;
+}
+
+.item-1-3 {
+  background-color:brown;
+}
+
+```
+
+![image-20251018163207834](assets/image-20251018163207834.png)
+
+**在以上示例中**：
+
+- 通过 `display: grid;` 将 `item-1` 网格项再设为网格布局。
+- 网格项 `item-1` 内部的三个子元素都变为它的网格项。
+
+### 其它属性
+
+- [`align-items`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items)：设置子元素沿着块向轴的对齐方式，详见 [`align-items`](#`align-items`)。
+- [`justify-content`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content)：设置子元素沿着行向轴的对齐方式，详见 [`justify-content`](#`justify-content`)。
+- [`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)：当不同网格项占据同一网格单元时，解决覆盖顺序，详见 [`z-index`](#`z-index`)。
+- 更多...
+
+## 多列布局 
+
+[**多列布局**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_multicol_layout/Basic_concepts)用于将内容布置到一组列框中。
 
 ## 浮动
 
@@ -2474,67 +3105,11 @@ p {
 }
 ```
 
-
-
-
-
-- **[元素堆叠](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)**
-
-    - z-index 属性指定一个元素的堆叠顺序。
-    - 只有定位类型为 fixed、absolute、relative的元素才能使用 z-index 属性。
-    - 拥有更高堆叠顺序的元素总是会处于堆叠顺序较低的元素的前面。
-    - 默认值为 auto，修改值为数字
-
-    ```html
-    <body>
-      <h1 style="position: absolute; z-index: 2;">中国移动</h1>
-      <p>因为“中国移动”设置了 z-index:2，所以它会显示本行之后。</p>
-    </body>
-    ```
-
-- 案例：固定在窗口中上部的登录对话框，有遮盖 cove
-
-    
-
 ### `position` 相关
 
-- `z-index`：覆盖顺序，详见 [`z-index`](#`z-index`)。
+- [`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)：覆盖顺序，详见 [`z-index`](#`z-index`)。
 
 # 变化
-
-# At 规则
-
-## 语法
-
-[**At 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule)是一个 [CSS 语句](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_语句)，用来指示 CSS 如何运行。
-
-```css
-/* 一般结构 */
-@identifier (RULE);
-
-/* 示例：通知浏览器使用 UTF-8 字符集 */
-@charset "utf-8";
-```
-
-## 嵌套
-
-[**嵌套 at 规则**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#嵌套)
-
-## 条件规则组
-
-[**条件规则组**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#条件规则组)
-
-## `@important`
-
-[`@important`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@import) 规则用于导入其它样式表。`@important` 必须先于所有其他类型的 at 规则（`@charset` 规则除外）。
-
-```css
-@import "github-night.css";
-```
-
-## 其它-At-规则
-
-- [At 规则索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule#%索引)
 
 # 总结
 
