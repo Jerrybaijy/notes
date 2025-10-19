@@ -453,7 +453,7 @@ console.log(typeof res);  // number
 
 ### `replace()`
 
-[`replace()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace) 方法用于替换字符串中的一段序列。
+[`replace()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace) 方法用于替换字符串中的一段序列。
 
 **语法**：`STR.replace("旧元素", "新元素")`，返回 `string`。
 
@@ -538,7 +538,7 @@ console.log(res);  // ABC
 
 ### `trim()`
 
- [`trim()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trim) 方法用于去除字符串两端的空格 ` ` 或换行符 `\n`。
+ [`trim()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trim) 方法用于去除字符串两端的空格 ` ` 或换行符 `\n`。
 
 **语法**：`STR.trim()`，返回 `string`。
 
