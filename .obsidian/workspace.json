@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -152,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "code",
+                "query": "prett",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -242,17 +242,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "markdown.md",
+                "file": "typora.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "markdown 的大纲"
+              "title": "typora 的大纲"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -269,10 +269,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "9477e3cc114d297a",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "javascript.md",
+    "html.md",
     "markdown.md",
+    "software.md",
+    "vs-code.md",
+    "vscode.md",
+    "javascript.md",
+    "code-general.md",
     "vue.md",
     "react.md",
     "jquery.md",
@@ -288,11 +293,9 @@
     "assets/image-20251018171320581.png",
     "assets/image-20251018170851705.png",
     "typora.md",
-    "html.md",
     "it-basics.md",
     "html-attributes.md",
     "html-elements.md",
-    "software.md",
     "network.md",
     "无障碍.md",
     "assets/web-server.svg+xml",
@@ -300,7 +303,6 @@
     "web.md",
     "dom.md",
     "bom.md",
-    "code-general.md",
     "java.md",
     "node-js.md",
     "axios.md",
@@ -309,12 +311,10 @@
     "0000.md",
     "html-elements.pdf",
     "中国史主线.md",
-    "写作风格.md",
     "其它格式未转换/obsidian-themes/user-base.css",
     "其它格式未转换/obsidian-themes/user-color.css",
     "其它格式未转换/obsidian-themes",
     "其它格式未转换/新建文件夹",
-    "3d-max.md",
     "其它格式未转换/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Regular.woff",
     "未命名 1.canvas",

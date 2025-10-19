@@ -1410,15 +1410,17 @@ for (let year = 1; year < 11; year++) {
 }
 ```
 
-# Function
+# 函数
 
-在 JS 中，函数是一个特殊的对象，使用 `typeof` 获取到的数据类型为 `function`。
+在 JS 中，函数是一个 [`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function) 对象，使用 `typeof` 获取到的数据类型为 `function`。
 
-## 创建函数
+## 定义函数
 
 ### 函数声明
 
-**说明**：函数声明创建的函数，存在变量提升。
+[**函数声明**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function)：使用 `function` 关键字声明一个绑定到给定名称的 `Function` 对象。
+
+**注意**：函数声明创建的函数，存在变量提升。
 
 ```javascript
 function 函数名(形参列表) {
@@ -1458,11 +1460,13 @@ numbers.forEach(function (element) {
 
 ### 函数表达式
 
-**函数表达式**：使用变量接收匿名函数。
+[**函数表达式**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function)：
+
+使用变量接收匿名函数。
 
 ```javascript
 const 变量名 = function (参数列表) {
-  函数体;
+  // 函数体;
   return 返回值;
 };
 ```
@@ -1510,7 +1514,9 @@ const calculate = num => {
 - 箭头函数不能使用 `yield` 关键字，因此不能用作生成器函数。
 - 箭头函数适合用作回调函数。
 
-### 构造函数
+### `Function()`
+
+**构造函数** [Function()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/Function) 用于创建一个新的 `Function` 对象。
 
 ```javascript
 const 函数名 = new Function('参数1', '参数2', '函数体');
@@ -1573,60 +1579,7 @@ let foo = function () {
 
 ### 生成器函数
 
-## 函数其它
-
-### arguments对象
-
-#### 语法
-
-JS中，函数有一个内置属性 `arguments` 对象，其存储了传递的所有实参。
-
-- `arguments` 是一个伪数组，因此具有数组的一些功能，比如索引，遍历，获取长度...。
-- 由于 `arguments` 的存在，JS 中允许实参和形参个数不一致。
-
-```javascript
-function sum(a, b) {
-  console.log(arguments);
-}
-
-sum(1, 2, 3, 4)  // Arguments(4)[1, 2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
-```
-
-```javascript
-function sum(a, b) {
-    return a + b;
-}
-
-console.log(sum(1, 2));  // 3
-console.log(sum(1));  // NaN
-console.log(sum(1, 2, 3, 4));  // 3
-```
-
-#### 示例
-
-定义一个求和函数，如果传入 1 个参数，返回它自己；如果传入 2 个参数，返回它们的和；如果传入 3 个参数，先比较前两个的大小，大的与第三个参数求和；如果传入 4 个及以上，输出提示错误。
-
-```javascript
-function sum(a, b, c) {
-  switch (arguments.length) {
-    case 1:
-      return a;
-    case 2:
-      return a + b;
-    case 3:
-      return a > b ? a + c : b + c;
-    default:
-      throw new Error("参数个数不能超过 3 个");
-  }
-}
-
-console.log(sum(1)); // 1
-console.log(sum(1, 2)); // 3
-console.log(sum(1, 2, 3)); // 5
-console.log(sum(1, 2, 3, 4)); // 报错
-```
-
-### 函数递归
+## 函数递归
 
 函数内部可以通过函数名调用函数自身的方式，就是**函数递归**。
 
@@ -1647,7 +1600,7 @@ console.log(fun(1));
 console.log(fun(3));
 ```
 
-# [Object](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+# [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
 **对象**是 JS 中一种复合数据类型 `object`；它用于存储各种键值集合（形式类似于 Python 中的字典）。
 
@@ -2035,3 +1988,6 @@ console.log(typeof res3);  // object
 
 - [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)：表示数组长度的属性，用法同 [`length`](#`length`)。
 
+## `Function`
+
+[`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
