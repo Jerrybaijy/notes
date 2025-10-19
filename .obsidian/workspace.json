@@ -105,8 +105,7 @@
               "title": "javascript"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -138,7 +137,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:css",
+                "query": "tag:#frontend",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -159,8 +158,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -216,7 +214,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "it"
+                "searchQuery": "fro"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -228,17 +226,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "css.md",
+                "file": "markdown.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "css 的大纲"
+              "title": "markdown 的大纲"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -255,8 +253,14 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "58a59b4606024ebf",
+  "active": "0225cb405dc13bdb",
   "lastOpenFiles": [
+    "vue.md",
+    "markdown.md",
+    "react.md",
+    "jquery.md",
+    "javascript.md",
+    "css.md",
     "assets/image-20251018172454085.png",
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",
@@ -267,9 +271,7 @@
     "assets/image-20251018171650819.png",
     "assets/image-20251018171320581.png",
     "assets/image-20251018170851705.png",
-    "assets/image-20251018170602349.png",
     "typora.md",
-    "css.md",
     "html.md",
     "it-basics.md",
     "html-attributes.md",
@@ -283,7 +285,6 @@
     "dom.md",
     "bom.md",
     "code-general.md",
-    "javascript.md",
     "java.md",
     "node-js.md",
     "axios.md",
@@ -298,9 +299,6 @@
     "其它格式未转换/obsidian-themes",
     "其它格式未转换/新建文件夹",
     "3d-max.md",
-    "http.md",
-    "markdown.md",
-    "obsidian.md",
     "其它格式未转换/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora-themes/github-night/NunitoSans-Regular.woff",
     "未命名 1.canvas",
