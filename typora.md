@@ -620,6 +620,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       padding: 30px;
       padding-bottom: 100px;
     }
+    
+    /* write 区滚动条 */
+    ::-webkit-scrollbar-thumb {
+      background-color: #ffffff1a;
+    }
+    
     /* ---------------------- 标题 ---------------- */
     /* 一级标题居中 */
     h1 {
@@ -881,6 +887,11 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     此处指定为 #fff */
     #write pre.md-meta-block {
       color: #adbac7;
+    }
+    
+    /* write 区滚动条 */
+    ::-webkit-scrollbar-thumb {
+      background-color: #ffffff1a;
     }
     ```
 

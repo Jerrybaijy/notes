@@ -60,3 +60,8 @@ code {
 #write pre.md-meta-block {
   color: #adbac7;
 }
+
+/* write 区滚动条 */
+::-webkit-scrollbar-thumb {
+  background-color: #ffffff1a;
+}

@@ -1,0 +1,117 @@
+{
+    // ------------------|| 功能--------------------------------
+    "workbench.startupEditor": "none", // 启动时默认打开项
+    "files.autoSave": "afterDelay", // 实时自动保存
+    "editor.codeActionsOnSave": {}, // 文件保存时自动执行代码操作
+    "editor.fontFamily": "Consolas, '微软雅黑'", // 编辑区字体
+    "editor.fontSize": 24, // 编辑区字体大小
+    "editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮：对编辑器字体大小缩放
+    "open-in-browser.default": "chrome", // 默认浏览器
+
+    // ------------------|| 主题---------------------------
+    "workbench.colorTheme": "GitHub Dark Dimmed", // 主题
+    "workbench.iconTheme": "vscode-icons", // 侧边栏和文件树图标样式
+    "vsicons.dontShowNewVersionMessage": true, // 禁用图标扩展更新弹窗提醒
+
+    // ------------------|| 代码---------------------------
+    "editor.guides.bracketPairs": true, // 启用花括号的引导线
+    "editor.linkedEditing": true, // 同时修改 HTML/XML 等标记语言中配对的标签
+
+    // ------------------|| 格式化---------------------------
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // 使用 Prettier 对代码格式化
+    "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
+    "editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
+    "editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格
+    "editor.tabSize": 4, // 默认 1 个 Tab 的宽度为 4 个空格
+    // ------特定语言------
+    "[css]": {
+        "editor.tabSize": 2 // Tab 宽度设置为 2 个空格
+    },
+    "[html]": {
+        "editor.tabSize": 2 // Tab 宽度设置为 2 个空格
+    },
+    "[javascript]": {
+        "editor.tabSize": 2 // Tab 宽度设置为 2 个空格
+    },
+    "[json]": {
+        "prettier.tabWidth": 4 // Prettier 对 JSONC 文件使用 4 个空格缩进
+    },
+    "[jsonc]": {
+        "prettier.tabWidth": 4 // Prettier 对 JSONC 文件使用 4 个空格缩进
+    },
+    "[markdown]": {
+        "editor.tabSize": 2, // Tab 宽度设置为 2 个空格
+        "editor.renderWhitespace": "boundary", // 显示缩进空格标记为 boundary
+        "editor.unicodeHighlight.ambiguousCharacters": false, // 禁用 Unicode 模糊字符的高亮
+        "editor.unicodeHighlight.invisibleCharacters": false, // 禁用不可见字符的 Unicode 高亮
+        "diffEditor.ignoreTrimWhitespace": false, // 在 diff 比较时，不忽略尾部空白字符
+        "editor.wordWrap": "on", // 自动换行，文本过长时自动换行
+        // 自动补全建议
+        "editor.quickSuggestions": {
+            "comments": "off",
+            "strings": "off",
+            "other": "off"
+        }
+    },
+    "[python]": {
+        "editor.defaultFormatter": "mikoz.black-py" // Python 默认格式化工具
+    },
+
+    // ------------------|| 终端---------------------------
+    "terminal.integrated.cursorStyle": "line", // 终端聚焦时光标的样式
+    "terminal.integrated.cursorStyleInactive": "line", // 终端未聚焦时光标的样式
+    // 默认终端
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+    "terminal.integrated.profiles.windows": {
+        "Git Bash": {
+            "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+        }
+    },
+
+    // ------------------|| Git---------------------------
+    "git.autofetch": true, // 自动获取远程仓库信息，但不会自动合并到本地
+    "git.openRepositoryInParentFolders": "never", // 禁止在打开的文件夹的父级目录中搜索 Git 仓库
+
+    // ------------------|| Live Server---------------------------
+    "liveServer.settings.CustomBrowser": "chrome", // Live Server 默认浏览器
+    "liveServer.settings.donotVerifyTags": true, // 禁用 Live Server 在启动时对 HTML 标签的验证
+    "liveServer.settings.donotShowInfoMsg": true, // 禁用 Live Server 在运行时弹出的各种信息通知
+
+    // ------------------|| 其它设置---------------------------
+    "redhat.telemetry.enabled": true, // 禁止 Red Hat 收集匿名使用数据
+
+    // ------------------|| 文件嵌套和关联，稳定以后再删除---------------------------
+    // "explorer.fileNesting.patterns": {
+    //     "*.ts": "${capture}.js",
+    //     "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    //     "*.jsx": "${capture}.js",
+    //     "*.tsx": "${capture}.ts",
+    //     "tsconfig.json": "tsconfig.*.json",
+    //     "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb",
+    //     "*.sqlite": "${capture}.${extname}-*",
+    //     "*.db": "${capture}.${extname}-*",
+    //     "*.sqlite3": "${capture}.${extname}-*",
+    //     "*.db3": "${capture}.${extname}-*",
+    //     "*.sdb": "${capture}.${extname}-*",
+    //     "*.s3db": "${capture}.${extname}-*"
+    // },
+    // ------------------|| 文件类型和编辑器关联，稳定以后再删除---------------------------
+    // "workbench.editorAssociations": {
+    //     "{git,gitlens,git-graph}:/**/*.{md,csv,svg}": "default"
+    // },
+    // --------------|| 以下为系统自动创建----------------------------------------------
+    "[dockercompose]": {
+        "editor.insertSpaces": true,
+        "editor.tabSize": 2,
+        "editor.autoIndent": "advanced",
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
+    "[github-actions-workflow]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    }
+}
