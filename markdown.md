@@ -1212,7 +1212,7 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 - 历史、Markdown、前端、Python、Java、sql、mermaid、latex
 - electronics-collection、it-basics
 
-## Prettier
+## 格式化
 
 在使用 Prettier 格式化 Markdown 时，可以在 Markdown 表格的前面添加注释 `<!-- prettier-ignore -->`，从而让 Prettier 在格式化这个文件时，忽略这个表格。
 
@@ -1224,15 +1224,9 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 
 - 同级列表项之间的空行不会删除。
 
-- 表格源码会很乱，通过在表格的前面添加注释 `<!-- prettier-ignore -->` ，从而让 Prettier 在格式化这个文件时，忽略这个表格。
+- 表格源码会很乱，使用 `<!-- prettier-ignore -->`，详见 `prettier | 忽略代码`。
 
-  ```markdown
-  <!-- prettier-ignore -->
-  | 操作 | Typora 快捷键 |
-  | :---: | :---: |
-  | ==系统== |  |
-  | 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
-  ```
+- 会强制把围栏代码块中的 `JSON` 语言的缩进量设置为 2 个空格，其它语言正常。
 
   
 

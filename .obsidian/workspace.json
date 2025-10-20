@@ -50,6 +50,20 @@
             }
           },
           {
+            "id": "0f6d7b9d90840466",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "prettier.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "prettier"
+            }
+          },
+          {
             "id": "a7763c7a019261a0",
             "type": "leaf",
             "state": {
@@ -119,7 +133,8 @@
               "title": "code-general"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -151,7 +166,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vs-",
+                "query": "json",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -172,7 +187,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -228,7 +244,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "fro"
+                "searchQuery": "code"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -240,13 +256,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "markdown.md",
+                "file": "software.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "markdown 的大纲"
+              "title": "software 的大纲"
             }
           }
         ],
@@ -267,12 +283,18 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "0225cb405dc13bdb",
+  "active": "9b00c59566390b2e",
   "lastOpenFiles": [
-    "未命名.md",
     "markdown.md",
-    "typora.md",
+    "java.md",
+    "prettier.md",
+    "0000.json",
+    "新建 Markdown File.md",
     "software.md",
+    "assets/image-20251020122212688.png",
+    "assets/image-20251020122105636.png",
+    "新建 文本文档.txt",
+    "typora.md",
     "其它格式未转换/vs-code-settings/settings.json",
     "其它格式未转换/vs-code-settings/keybindings.json",
     "其它格式未转换/vs-code-settings",
@@ -295,8 +317,6 @@
     "assets/image-20251018172154170.png",
     "assets/image-20251018172118200.png",
     "assets/image-20251018171650819.png",
-    "assets/image-20251018171320581.png",
-    "assets/image-20251018170851705.png",
     "it-basics.md",
     "html-attributes.md",
     "html-elements.md",
@@ -307,14 +327,9 @@
     "web.md",
     "dom.md",
     "bom.md",
-    "java.md",
     "node-js.md",
-    "axios.md",
     "未命名",
-    "salesforce.md",
     "html-elements.pdf",
-    "其它格式未转换/obsidian-themes/user-base.css",
-    "其它格式未转换/obsidian-themes/user-color.css",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

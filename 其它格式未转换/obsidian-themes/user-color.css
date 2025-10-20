@@ -16,37 +16,26 @@ body {
 
   /* 代码块注释 */
   --code-comment: #8b949e;
+
+  /* 表格边框 */
+  --table-border-color: gray;
+
+  /* HTML 标签 */
+  --code-tag: #7ee787;
+
+  /* HTML 属性名 */
+  --code-string: #79c0ff;
+
+  /* HTML 属性值 */
+  --code-property: #a5d6ff;
+  --code-function: #a5d6ff;
 }
 
-/* .markdown-rendered th,
-.markdown-rendered td {
-    border-color: red;
-} */
-
-/* table {
-  border-collapse: collapse;
-  border-spacing: 0;
-  width: 100%;
-  overflow: auto;
-  page-break-inside: auto;
-  text-align: left;
-} */
-
-/* table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: red;
-} */
-
-
-
-
-
-
-
-
+/* 行内代码 */
+/* 由于默认使用 --code-background，
+所以单独修改其背景 */
+.markdown-rendered code,
+.cm-s-obsidian span.cm-inline-code {
+  background-color: #ffffff1a;
+}
 

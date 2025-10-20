@@ -95,28 +95,46 @@ VS Code 的 `settings.json` 是一种 `JSONC` 模式。
 
 ## 格式化
 
-### Prettier
+格式化由两方面控制：
 
-详见 `software | Prettier` 笔记。
+- VS Code 控制动态输入时的 Tab 宽度
+- Prettier 控制格式化时的 Tab 宽度
 
 ### VS Code
+
+VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空格数量 <img src="assets/image-20251020122212688.png" alt="image-20251020122212688" style="zoom:67%;" />，它控制以下两方面。
+
+- 按下 `Tab` 键以后缩进的空格数量
+- 按下 `Enter` 键以后缩进的空格数量
 
 ```json
 "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
 "editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
 "editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格
-"editor.tabSize": 4, // 默认 1 个 Tab 的宽度为 4 个空格
+"editor.tabSize": 2, // 默认 1 个 Tab 的宽度为 2 个空格
+```
+
+### Prettier
+
+Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
+
+```json
+"editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
+"editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
 ```
 
 ### 特定语言
 
-如果想让特定语言有特殊设置，例如想让 CSS 的 Tab 宽度设置为 2 个空格：
+如果想让特定语言有特殊设置：
 
 ```json
-"[css]": {
-    "editor.tabSize": 2 // Tab 宽度设置为 2 个空格
-},
+"[json]": {
+  "editor.tabSize": 4 // 动态输入时的 Tab 宽度
+  "prettier.tabWidth": 4, // 格式化时的 Tab 宽度
+}
 ```
+
+**注意**：在实际项目中，应该在 Prettier 的 `.prettierrc` 文件中设置格式化，详见 `.prettierrc`。
 
 ## 代码高亮
 
@@ -244,6 +262,7 @@ textMateRules
 - **`Black`**：Python 格式化（首选）
 - **`autopep8`**：Python 格式化（备用）
 - **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
+- `Prettier`：代码格式化
 
 # 其它
 

@@ -780,23 +780,24 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 **JSON**（**J**ava**S**cript **O**bject **N**otation，）即 JavaScript 对象简谱，是一种轻量级的数据交换格式。JSON 可以实现不同平台的数据交换，也可以使用它保存业务数据。
 
-## JSON 基础
+## JSON
 
-- **语法**：`{"KEY1": VALUE1, "KEY2": VALUE2, ....}`
+**语法**：`{"KEY1": VALUE1, "KEY2": VALUE2, ....}`
 
-    ```json
-    {
-        "name": "Git Bash",
-        "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
-    }
-    ```
+```json
+{
+    "name": "Git Bash",
+    "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
+}
+```
 
-- **说明**
+**说明**：
 
-    - 键必须是字符串，必须使用双引号；
-    - 多个键值对使用 `,` 分隔，最后一个键值对接尾不加 `,`；
+- 键必须是字符串，必须使用双引号；
+- 多个键值对使用 `,` 分隔，最后一个键值对接尾不加 `,`；
+- **缩进**：不敏感，通常缩进 2 个空格。
 
-## JSON 注释
+## 注释
 
 JSON 本身 **不支持注释**，标准的 JSON 解析器会将任何非数据部分（例如注释）视为无效内容。
 
@@ -1616,50 +1617,6 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 ## PowerToys Run
 
 [PowerToys Run](https://learn.microsoft.com/zh-cn/windows/powertoys/run) 可帮助立即搜索和打开应用。 可使用 `Alt + Space` 进行激活。
-
-# Prettier
-
-[**Prettier**](https://prettier.io/docs/) 是一个非常流行的**代码格式化工具**。
-
-## 命令行界面
-
-```bash
-# 本地安装，保存在项目目录，项目内生效
-npm install --save-dev prettier
-
-# 全局安装，系统全局内生效
-npm install --global prettier
-
-# 使用：先在命令行导航至 index.js 目录，再执行命令。
-# npx 优先使用本地安装版本，其次使用全局版本。
-npx prettier --write index.js
-```
-
-## VS Code
-
-VS Code 中提供 Prettier 扩展。
-
-## 配置
-
-### 通用配置
-
-```json
-"editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
-"editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
-
-// Prettier 对 JSONC 文件使用 4 个空格进行缩进
-"[jsonc]": {
-    "prettier.tabWidth": 4
-}
-```
-
-### `prettier-ignore`
-
-解决格式化 Markdown 时表格很乱的问题，详见 `markdown | Prettier` 笔记。
-
-### `.prettierrc`
-
-可以配置 `.prettierrc` 文件，对 Prettier 进行精细化配置。
 
 # Prometheus
 
