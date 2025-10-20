@@ -119,8 +119,7 @@
               "title": "code-general"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -173,8 +172,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -242,13 +240,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "typora.md",
+                "file": "markdown.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "typora 的大纲"
+              "title": "markdown 的大纲"
             }
           }
         ],
@@ -269,16 +267,17 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "0225cb405dc13bdb",
   "lastOpenFiles": [
+    "未命名.md",
+    "markdown.md",
+    "typora.md",
+    "software.md",
     "其它格式未转换/vs-code-settings/settings.json",
     "其它格式未转换/vs-code-settings/keybindings.json",
     "其它格式未转换/vs-code-settings",
     "其它格式未转换/新建文件夹",
-    "markdown.md",
-    "software.md",
     "prettier-test.md",
-    "typora.md",
     "html.md",
     "vs-code.md",
     "vscode.md",
@@ -316,7 +315,6 @@
     "html-elements.pdf",
     "其它格式未转换/obsidian-themes/user-base.css",
     "其它格式未转换/obsidian-themes/user-color.css",
-    "其它格式未转换/obsidian-themes",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

@@ -18,7 +18,8 @@
     "editor.linkedEditing": true, // 同时修改 HTML/XML 等标记语言中配对的标签
 
     // ------------------|| 格式化---------------------------
-    "editor.defaultFormatter": "esbenp.prettier-vscode", // 使用 Prettier 对代码格式化
+    "editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
+    "editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
     "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
     "editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
     "editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格

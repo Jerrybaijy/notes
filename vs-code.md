@@ -97,16 +97,7 @@ VS Code 的 `settings.json` 是一种 `JSONC` 模式。
 
 ### Prettier
 
-```json
-"editor.defaultFormatter": "esbenp.prettier-vscode", // 使用 Prettier 对代码格式化
-```
-
-```json
-// Prettier 对 JSONC 文件使用 4 个空格进行缩进
-"[jsonc]": {
-    "prettier.tabWidth": 4
-}
-```
+详见 `software | Prettier` 笔记。
 
 ### VS Code
 
@@ -119,7 +110,7 @@ VS Code 的 `settings.json` 是一种 `JSONC` 模式。
 
 ### 特定语言
 
-如果想让特定语言有特殊设置，如想让 CSS 的 Tab 宽度设置为 2 个空格：
+如果想让特定语言有特殊设置，例如想让 CSS 的 Tab 宽度设置为 2 个空格：
 
 ```json
 "[css]": {

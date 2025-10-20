@@ -1619,7 +1619,7 @@ Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可
 
 # Prettier
 
-**Prettier** 是一个非常流行的**代码格式化工具**。
+[**Prettier**](https://prettier.io/docs/) 是一个非常流行的**代码格式化工具**。
 
 ## 命令行界面
 
@@ -1639,19 +1639,27 @@ npx prettier --write index.js
 
 VS Code 中提供 Prettier 扩展。
 
-## 技巧
+## 配置
+
+### 通用配置
+
+```json
+"editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
+"editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
+
+// Prettier 对 JSONC 文件使用 4 个空格进行缩进
+"[jsonc]": {
+    "prettier.tabWidth": 4
+}
+```
 
 ### `prettier-ignore`
 
-可以在 Markdown 表格的前面添加注释 `<!-- prettier-ignore -->`，从而让 Prettier 在格式化这个文件时，忽略这个表格。
+解决格式化 Markdown 时表格很乱的问题，详见 `markdown | Prettier` 笔记。
 
-```markdown
-<!-- prettier-ignore -->
-| 操作 | Typora 快捷键 |
-| :---: | :---: |
-| ==系统== |  |
-| 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
-```
+### `.prettierrc`
+
+可以配置 `.prettierrc` 文件，对 Prettier 进行精细化配置。
 
 # Prometheus
 
