@@ -27,7 +27,7 @@ strategy("策略名字", overlay=true, ...)
 
 - `//@version=6`：声明脚本版本。TradingView 规定必须写在第一行，否则报错。
 - `strategy()`：定义一个策略
-- `overlay=true`：画在K线图上（否则会单独开一块窗口）。
+- `overlay=true`：画在 K 线图上（否则会单独开一块窗口）。
 
 ```pine
 fastLength = input.int(9, "快线周期")
@@ -61,4 +61,3 @@ slowMA = ta.sma(close, slowLength)
 plot(fastMA, color=color.orange, title="快线")
 plot(slowMA, color=color.blue, title="慢线")
 ```
-

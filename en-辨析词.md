@@ -17,7 +17,7 @@ tags:
 
 at 表示**具体时间**、周末、时刻、年龄：
 
-- at 10 o'clock 在10点
+- at 10 o'clock 在 10 点
 - at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/夜里/午夜
 - at six / at the age of six 在六岁时
 - at that moment 在那一刻
@@ -27,9 +27,9 @@ at 表示**具体时间**、周末、时刻、年龄：
 
 on 表示**具体某一天**或特定某一天的早中晚：
 
-- on May 1st 在5月1日
+- on May 1st 在 5 月 1 日
 - on Monday 在星期一
-- on New Year's  Day 在新年那天
+- on New Year's Day 在新年那天
 - on my birthday 在我生日那天
 - on Friday morning 在星期五早晨
 
@@ -38,9 +38,9 @@ on 表示**具体某一天**或特定某一天的早中晚：
 in 表示**较长的时间段**（朝代、世纪、年代、年份，季节，月份等）或泛指的早中晚：
 
 - in the Tang Dynasty 在唐朝
-- in the 21st century 在21世纪
-- in the 1990s/1990's 在20世纪90年代
-- in 2025 在2025年
+- in the 21st century 在 21 世纪
+- in the 1990s/1990's 在 20 世纪 90 年代
+- in 2025 在 2025 年
 - in spring 在春季
 - in January 在一月
 - in the morning/afternoon/evening (具体某一天早中晚用 on：on Friday morning)
@@ -96,85 +96,84 @@ We will stay in Tokyo **for a week**. (一般将来时)
 
 - **when + 瞬间动作：表示“当 ... 时候”。**
 
-    I was cooking when he arrived.  
-    当他到达的时候，我正在做饭。
+  I was cooking when he arrived.  
+  当他到达的时候，我正在做饭。
 
 - **while + 持续动作：表示“当 ... 时候”，通常接进行时**
 
-    I was reading while she was cooking.  
-    当我在看书的时候，她在做饭。
+  I was reading while she was cooking.  
+  当我在看书的时候，她在做饭。
 
 - **as：表示“随着...”**
 
-    As the days went by, the weather got warmer.  
-    随着日子一天天过去，天气变得更暖了。
+  As the days went by, the weather got warmer.  
+  随着日子一天天过去，天气变得更暖了。
 
-- **whenever：每当；无论何时****
+- **whenever：每当；无论何时\*\***
 
-    Whenever it rains, the street gets flooded.  
-    每当下雨，街道都会积水。
+  Whenever it rains, the street gets flooded.  
+  每当下雨，街道都会积水。
 
-    You can come over whenever you need help.  
-    无论何时你需要帮助，都可以过来。
-
+  You can come over whenever you need help.  
+  无论何时你需要帮助，都可以过来。
 
 ## 一...就...
 
 - **once：一旦 ... 就 ...**
 
-    Once you understand it, it becomes easy.  
-    一旦你明白了，它就变得简单了。
+  Once you understand it, it becomes easy.  
+  一旦你明白了，它就变得简单了。
 
 - **as soon as**：可以用 when 替换，反之则不完全可以。
 
-    I’ll call you as soon as I arrive.  
-    我一到就打电话给你。
+  I’ll call you as soon as I arrive.  
+  我一到就打电话给你。
 
-    As soon as I got home, it started raining.  
-    我一到家就下起了雨。
+  As soon as I got home, it started raining.  
+  我一到家就下起了雨。
 
 - **No sooner...than...**；**Hardly/Scarecely...when...**：位于句首需要倒装
 
-    **No sooner had** he opened the door **than** a gust of wind blew the candle out.   
-    **Scarcely/Hardly had** he opened the door **when** a gust of wind blew the candle out.  
-    他一打开门，一阵强风就把蜡烛吹灭了。
+  **No sooner had** he opened the door **than** a gust of wind blew the candle out.  
+  **Scarcely/Hardly had** he opened the door **when** a gust of wind blew the candle out.  
+  他一打开门，一阵强风就把蜡烛吹灭了。
 
 - **the moment, the instant, immediately, directly + 从句**
 
-    The boy burst into tears immediately he saw his mother.  
-    那个男孩一见到他妈妈便大哭起来。
+  The boy burst into tears immediately he saw his mother.  
+  那个男孩一见到他妈妈便大哭起来。
 
 ## 在...之前
 
 - **before + 时间点/从句：表示“在...时间点之前”，强调动作，通常用于一般时、过去时和完成时；与 after 相反**
 
-    I went to bed **before 11 p.m.**  
-    我在晚上11点之前上床睡觉了。
+  I went to bed **before 11 p.m.**  
+  我在晚上 11 点之前上床睡觉了。
 
-    We had sailed four days and four nights **before we saw land**.  
-    我们航行了四天四夜才看到陆地。
+  We had sailed four days and four nights **before we saw land**.  
+  我们航行了四天四夜才看到陆地。
 
 - **时间段 + ago：表示“在...时间段以前”，用于过去时。**
 
-    He called me **2 hours ago**.  
-    两个小时前他给我打电话了。
+  He called me **2 hours ago**.  
+  两个小时前他给我打电话了。
 
 - **by：表示“在...时间点之前”，强调截止时间（含截止时间），通常用于将来时和完成时。**
 
-    - **by + 时间点**
+  - **by + 时间点**
 
-        I will finish the report **by 5 p.m.**  
-        我将在下午5点之前完成报告。
+    I will finish the report **by 5 p.m.**  
+    我将在下午 5 点之前完成报告。
 
-    - **by the time + 从句**
+  - **by the time + 从句**
 
-        By the time he arrived, we had left.  
-        他到之前，我们已经走了。
+    By the time he arrived, we had left.  
+    他到之前，我们已经走了。
 
 - **within + 时间段：表示“在...时间段之内”，与 in 相反。**
 
-    He finished the job **within 10 minutes**.  
-    他在10分钟内完成了工作。
+  He finished the job **within 10 minutes**.  
+  他在 10 分钟内完成了工作。
 
 ## 在...之后
 
@@ -182,42 +181,41 @@ after，later 和 in 都表示“在...之后”，具体用法如下：
 
 - **after + 时间点 / 事件 / 从句：表示“在...时间点之后”，与 before 相反**
 
-    I’ll call you **after lunch**. (接事件)  
-    午饭后我给你打电话。
+  I’ll call you **after lunch**. (接事件)  
+  午饭后我给你打电话。
 
-    I went home **after I finished work**. (引导时间状语从句)  
-    我下班后回家了。
+  I went home **after I finished work**. (引导时间状语从句)  
+  我下班后回家了。
 
 - **时间段 + later：表示“在...时间段以后”，通常位于句首，用于现在时。**
 
-    **Two hours later**, he finally called.  
-    两个小时后他终于打来了电话。
+  **Two hours later**, he finally called.  
+  两个小时后他终于打来了电话。
 
-    I'll see you **later**. (单独作为副词，位于句尾)  
-    稍后见。
+  I'll see you **later**. (单独作为副词，位于句尾)  
+  稍后见。
 
 - **after + 时间段：表示“在...时间段之后”，通常位于句尾，用于过去时**
 
-    He came back after 10 minutes.  
-    他在10分钟后回来了。
-    
+  He came back after 10 minutes.  
+  他在 10 分钟后回来了。
+
 - **in + 时间段：表示“从现在起，在...时间段之后”，通常位于句尾，用于将来时和完成时；与 within 相反**
 
-    He will be back from abroad in three days.  
-    他3天后从国外回来。
+  He will be back from abroad in three days.  
+  他 3 天后从国外回来。
 
 - **past**
 
-    - **in the past：表示“在过去”，作为状语，通常用于过去时；与 in the future 相反。**
+  - **in the past：表示“在过去”，作为状语，通常用于过去时；与 in the future 相反。**
 
-        In the past, trains were pulled by steam engines.  
-        过去火车是由蒸汽机驱动的。
+    In the past, trains were pulled by steam engines.  
+    过去火车是由蒸汽机驱动的。
 
-    - **in the past + 时间段：表示“在过去多长时间里”，作为状语，通常用于现在完成时。**
+  - **in the past + 时间段：表示“在过去多长时间里”，作为状语，通常用于现在完成时。**
 
-        He has made rapid progress in the past three months.  
-        在过去的3个月里他进步很快。
-
+    He has made rapid progress in the past three months.  
+    在过去的 3 个月里他进步很快。
 
 ## 在...期间
 
@@ -225,78 +223,78 @@ during，through 和 over 都表示“在...期间”，具体区别如下：
 
 - **during：表示“期间的某个时刻或阶段”，并非整个期间。**
 
-    I fell asleep **during** the movie.  
-    电影放映期间，我睡着了。
+  I fell asleep **during** the movie.  
+  电影放映期间，我睡着了。
 
 - **through：表示“期间的全部”，强调完整贯穿。**
 
-    We worked **through** the night.  
-    我们工作了一整夜。
+  We worked **through** the night.  
+  我们工作了一整夜。
 
 - **over：表示“跨越一段时间”，强调时间范围的整体性，或动作在期间逐渐发生。**
 
-    The city has changed **over** the years.  
-    这座城市多年来逐渐变化。
+  The city has changed **over** the years.  
+  这座城市多年来逐渐变化。
 
 ## 从...时候
 
 - **from... to/till/...：表示“从...时候到...时候”，通常用于一般时态或将来时态中。**
 
-    I work **from** 9 a.m. **to** 5 p.m. (一般现在时)  
-    我从早上9点工作到下午5点。
+  I work **from** 9 a.m. **to** 5 p.m. (一般现在时)  
+  我从早上 9 点工作到下午 5 点。
 
-    The class will run **from** September **to** December. (一般将来时)  
-    课程从九月持续到十二月。
+  The class will run **from** September **to** December. (一般将来时)  
+  课程从九月持续到十二月。
 
 - **since + 时间点/从句：表示“自从...时候起”，通常用于现在完成时。**
 
-    I have lived here **since 2010**. (接时间点)  
-    我从2010年起一直住在这里。
+  I have lived here **since 2010**. (接时间点)  
+  我从 2010 年起一直住在这里。
 
-    She has been working here **since she graduated**. (接从句)  
-    她从毕业起就在这里工作了。
-    
-    It is/has been two years since we arrived here.  
-    我们到这儿两年了。
+  She has been working here **since she graduated**. (接从句)  
+  她从毕业起就在这里工作了。
+
+  It is/has been two years since we arrived here.  
+  我们到这儿两年了。
 
 ## 直到...时候
 
 - **till 和 untill**
 
-    - 都表示“直到 ...时候”，某个动作/状态一直持续到某个时间点为止。
-    - 作为介词：till/untill + 时间点
-    - 作为连词：till/untill + 从句
+  - 都表示“直到 ...时候”，某个动作/状态一直持续到某个时间点为止。
+  - 作为介词：till/untill + 时间点
+  - 作为连词：till/untill + 从句
 
 - **肯定形式：till/untill + 时间点 / 从句**
 
-    I’ll wait **till/untill** 6 o’clock.  
-    我会一直等到6点。
+  I’ll wait **till/untill** 6 o’clock.  
+  我会一直等到 6 点。
 
-    Stay here **till/untill** I come back.  
-    你在这待着，直到我回来为止。
+  Stay here **till/untill** I come back.  
+  你在这待着，直到我回来为止。
 
 - **否定形式：not ... untill/till + 时间点 / 从句**：意为“直到...才...”
 
-    I **didn’t** sleep **untill** 2 a.m.  
-    我直到两点才去睡觉。
+  I **didn’t** sleep **untill** 2 a.m.  
+  我直到两点才去睡觉。
 
-    She **didn't** have any idea of it **until** you told me.  
-    直到你告诉我，我才知道这件事。
+  She **didn't** have any idea of it **until** you told me.  
+  直到你告诉我，我才知道这件事。
 
 - **强调句型：It was not until... that...**
 
-    It was not until you told me that I had any idea of it.  
-    直到你告诉我，我才知道这件事。
+  It was not until you told me that I had any idea of it.  
+  直到你告诉我，我才知道这件事。
 
 - **倒装：Not untill 位于句首，主句需要倒装。**
 
-    Not until you told me did I have any idea of it.  
-    直到你告诉我，我才知道这件事。
+  Not until you told me did I have any idea of it.  
+  直到你告诉我，我才知道这件事。
 
 - **till 不可置于句首，而 until 可以。**
 
-    Until you told me I had no idea of it.  
-    直到你告诉我，我才知道这件事。
+  Until you told me I had no idea of it.  
+  直到你告诉我，我才知道这件事。
 
 ## 在...次
 
@@ -318,12 +316,12 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **at**：在较小的地方
 
-    at the village 在那个村庄  
-    at 105 Green Street 在格林大街105号
+  at the village 在那个村庄  
+  at 105 Green Street 在格林大街 105 号
 
 - **in**：在较大的地方
 
-    in Beijing 在北京
+  in Beijing 在北京
 
 ## 东南西北
 
@@ -331,30 +329,35 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **in**：在...范围之内
 
-    Fujian lies in the southeast of China.  
-    福建在中国的东南部。
+  Fujian lies in the southeast of China.  
+  福建在中国的东南部。
 
 - **on**：接壤
 
-    Guangdong Province is on the southeast of Guangxi.  
-    广东省在广西省南面。（广东和广西接壤）
+  Guangdong Province is on the southeast of Guangxi.  
+  广东省在广西省南面。（广东和广西接壤）
 
 - **to**：在...范围之外，不接壤
 
-    Japan is to the east of China.  
-    日本在中国东面（日本和中国不接壤）
+  Japan is to the east of China.  
+  日本在中国东面（日本和中国不接壤）
 
 ## 在...上面
 
 - **on**：指在与物体表面相接触的上面。
 - **above**：指水平位置在某物之上，和 below 相反。
-    - The sun rose above the horizon.
-    - The jet flew above the clouds.
+
+  - The sun rose above the horizon.
+  - The jet flew above the clouds.
+
 - **over**：指在某物正上方，和 under 相反；
-    - A bridge over the river
+
+  - A bridge over the river
+
 - **aboard**：在(船、飞机、公共汽车、火车等)上
-    - aboard the plane
-    - go aboard 上船
+
+  - aboard the plane
+  - go aboard 上船
 
 ## 在...下面
 
@@ -366,13 +369,13 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **between**：在 ... 之间（两个）
 
-    The secret was shared between Alice and Bob.  
-    这个秘密是 Alice 和 Bob 两人之间分享的。
+  The secret was shared between Alice and Bob.  
+  这个秘密是 Alice 和 Bob 两人之间分享的。
 
 - **among**：在 ... 之间（三个或以上）
 
-    She was the smartest among the five candidates.  
-    她是五个候选人中最聪明的。
+  She was the smartest among the five candidates.  
+  她是五个候选人中最聪明的。
 
 ## 在...里面
 
@@ -395,23 +398,23 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **close to**：距离近
 
-    The coffee shop is **close to** my office.
+  The coffee shop is **close to** my office.
 
 - **next (door) to**：紧挨着
 
-    The supermarket is **next to** the bank.
+  The supermarket is **next to** the bank.
 
 - **by**：旁边或附近
 
-    The library is just **by** the corner.
+  The library is just **by** the corner.
 
 - **near**：附近
 
-    The park is **near** my house.
+  The park is **near** my house.
 
 - **beside**：旁边，通常指非常接近的地方。
 
-    She sat **beside** me during the movie.
+  She sat **beside** me during the movie.
 
 - next door to sp. 在...旁边
 
@@ -425,120 +428,109 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **with**：通过工具或设备
 
-    I wrote the letter **with** a pen.  我用钢笔写信。
+  I wrote the letter **with** a pen. 我用钢笔写信。
 
 - **by**
 
-    - **通过某种方式**
+  - **通过某种方式**
 
-        She learned Spanish by practicing every day.  
-        她通过每天练习学会了西班牙语。
+    She learned Spanish by practicing every day.  
+    她通过每天练习学会了西班牙语。
 
-    - **动作的施动者**
+  - **动作的施动者**
 
-        The book was written **by** J.K. Rowling. 这本书是J.K.罗琳写的。
+    The book was written **by** J.K. Rowling. 这本书是 J.K.罗琳写的。
 
-        The letter was sent **by** email. 信件通过电子邮件发送。
+    The letter was sent **by** email. 信件通过电子邮件发送。
 
-    - **通过交通工具**
+  - **通过交通工具**
 
-        I prefer to go **by** train. 我更喜欢坐火车。
+    I prefer to go **by** train. 我更喜欢坐火车。
 
 - **through**：通过某种方式，此时可以与 by 互换
-
 - **via**：通过某种渠道
 
-    The message was sent **via** email. 信息通过电子邮件发送。
+  The message was sent **via** email. 信息通过电子邮件发送。
 
-    They arrived **via** a different route. 他们通过另一条路线到达。
+  They arrived **via** a different route. 他们通过另一条路线到达。
 
 - **in**：使用的语言、材料等。
 
-    in English 用英语  
-    in blue ink 用蓝墨水
+  in English 用英语  
+  in blue ink 用蓝墨水
 
-at seventy miles an hour 以每小时70英里的速度
+at seventy miles an hour 以每小时 70 英里的速度
 
 # 动向
 
 ## 动向介词
 
 - **from**：从...地方
-
 - **to**：到...地方
-
 - **back to**：回到...地方
-
 - **towards**：朝着某个方向，不一定到达目的地
-
 - **into**：强调进入某个地方或空间的过程
-
 - **onto**：表示方向朝向某个表面
-
 - **up**：向上
-
 - **down**：向下
-
 - **along**：沿着 along the street
-
 - **穿过**
 
-    ![image-20240415175515902](assets/image-20240415175515902.png)
+  ![image-20240415175515902](assets/image-20240415175515902.png)
 
-    - **across**：从表面穿过（马路，桥，河...）
+  - **across**：从表面穿过（马路，桥，河...）
 
-        There's a way across the fields. 
+    There's a way across the fields.
 
-    - **through**：从内部穿过（森林，隧道，人群，门窗...）
+  - **through**：从内部穿过（森林，隧道，人群，门窗...）
 
-        I usually cycle home through the park.
+    I usually cycle home through the park.
 
-    - **over**：从上方越过（栅栏，墙，山...）
+  - **over**：从上方越过（栅栏，墙，山...）
 
-        The cat jumped over the wall.
+    The cat jumped over the wall.
 
-    - **past**：从旁边经过
+  - **past**：从旁边经过
 
-        The crowd walked past the City Hall to the Centre Square.  
-        这群人走过市政厅到达中心广场。
+    The crowd walked past the City Hall to the Centre Square.  
+    这群人走过市政厅到达中心广场。
 
 ## 上升
 
 - **raise**：vt. 把某物抬高；引申为提高、募集等。
 
-    She raised her hand.  
-    她举起了手。
+  She raised her hand.  
+  她举起了手。
 
 - **rise**：vi. 自行升起；强调“自己上升”。
 
-    The sun rises in the east.  
-    太阳从东方升起。
+  The sun rises in the east.  
+  太阳从东方升起。
 
 - **lift**：vt.&vi. 把某物提起（有动作感）
 
-    He lifted the box.  
-    他提起了箱子。
+  He lifted the box.  
+  他提起了箱子。
 
 ## 行为对象
 
 - 区分
 
-    - to 强调**动作的方向**，通常是“把某物/行为传递给某人”
-    - at 强调**行为的方向**，如果强调动作的方向可能含有恶意。
+  - to 强调**动作的方向**，通常是“把某物/行为传递给某人”
+  - at 强调**行为的方向**，如果强调动作的方向可能含有恶意。
 
 - 例句
 
-    I threw the ball **to** him. 他把球朝我扔过来。  
-    I threw the ball **at** him. 他把球传给我。
-
+  I threw the ball **to** him. 他把球朝我扔过来。  
+  I threw the ball **at** him. 他把球传给我。
 
 - 固定搭配
 
-    speake to sb. 同某人说话
+  speake to sb. 同某人说话
 
-    shout at sb. 冲某人喊
+  shout at sb. 冲某人喊
 
-    smile at sb. 冲某人微笑
+  smile at sb. 冲某人微笑
 
 # 名词辨析
 
@@ -556,23 +548,28 @@ at seventy miles an hour 以每小时70英里的速度
 ## 人
 
 - **person**
-    - 指单一的个体，通常用于强调某个具体的个人。
-    - 可数名词，表示单数形式。
-    - 通常不说 two persons，而说 two people。
+
+  - 指单一的个体，通常用于强调某个具体的个人。
+  - 可数名词，表示单数形式。
+  - 通常不说 two persons，而说 two people。
+
 - **people**
-    - 通常是 "person" 的复数形式，指多个个体，也可以表示某个群体或民族。
-    - 不可数名词时表示"人类"（指代整体的人类群体）；可数名词时表示“多个个体”。
-    - 通常不说 one people，而说 one person。
+
+  - 通常是 "person" 的复数形式，指多个个体，也可以表示某个群体或民族。
+  - 不可数名词时表示"人类"（指代整体的人类群体）；可数名词时表示“多个个体”。
+  - 通常不说 one people，而说 one person。
 
 - **human**
-    - 通常指人类这个物种
-    - 作为名词（指人类）：all humans，所有人类
-    - 作为形容词（形容与人类有关的事物）:a basic human need
+
+  - 通常指人类这个物种
+  - 作为名词（指人类）：all humans，所有人类
+  - 作为形容词（形容与人类有关的事物）:a basic human need
 
 - **human being**
-    - 通常用于强调个体的人类，常见于较为正式或哲学性的话题，比 person 更正式。
-    - 作为单数名词表示单独的人类个体：Every human being，每个人。
-    - 作为复数名词表示人类整体：The rights of human beings ，人类的权利。
+
+  - 通常用于强调个体的人类，常见于较为正式或哲学性的话题，比 person 更正式。
+  - 作为单数名词表示单独的人类个体：Every human being，每个人。
+  - 作为复数名词表示人类整体：The rights of human beings ，人类的权利。
 
 ## 声音
 
@@ -584,16 +581,16 @@ at seventy miles an hour 以每小时70英里的速度
 
 - **entrance**：实体“入口”，与 exit 相反。
 
-    The entrance to the station is crowded.  
-    火车站的入口很拥挤。
+  The entrance to the station is crowded.  
+  火车站的入口很拥挤。
 
 - **access**：“通道”或“进入权限”，可以指物理或虚拟空间。
 
-    There is no direct access to the platform from this side of the station.  
-    这边没有通往站台的直接通道。
+  There is no direct access to the platform from this side of the station.  
+  这边没有通往站台的直接通道。
 
-    Only passengers have access to the waiting area.  
-    只有乘客可以进入候车区。
+  Only passengers have access to the waiting area.  
+  只有乘客可以进入候车区。
 
 ## 处罚
 
@@ -604,6 +601,7 @@ at seventy miles an hour 以每小时70英里的速度
 
 ## 携带
 
+<!-- prettier-ignore -->
 | 动词 | 中文意思 | 说明 | 示例 |
 | :---: | :---: | :---: | :---: |
 | take | 带走；<br>随身携带 | 从“说话地点”出发，向外带走；<br>随身携带 | Take this letter to the post office.<br>I forgot to take my bag with me when I got off the bus. |
@@ -617,44 +615,44 @@ at seventy miles an hour 以每小时70英里的速度
 
 - **spend**
 
-    - 花费（金钱、时间、精力），主语是人。
-    - 句型：详见 **词汇 | spend**
+  - 花费（金钱、时间、精力），主语是人。
+  - 句型：详见 **词汇 | spend**
 
-        sb. spend 时间/金钱 on sth.  
-        sb. spend 时间/金钱 (in) doing sth.
+    sb. spend 时间/金钱 on sth.  
+    sb. spend 时间/金钱 (in) doing sth.
 
 - **cost**
 
-    - 花费（金钱、代价），主语是物。
-    - 句型：详见 **词汇 | cost**
+  - 花费（金钱、代价），主语是物。
+  - 句型：详见 **词汇 | cost**
 
-        sth. cost sb. 金钱/代价  
-        sth. cost 金钱
+    sth. cost sb. 金钱/代价  
+    sth. cost 金钱
 
 - **take**
 
-    - 花费（金钱），主语是 it 或物。
-    - 句型：详见 **词汇 | take**
+  - 花费（金钱），主语是 it 或物。
+  - 句型：详见 **词汇 | take**
 
-        It takes sb. 时间 to do sth.
+    It takes sb. 时间 to do sth.
 
 - **pay**
 
-    - 花费（金钱），强调付款动作，主语是人。
-    - 句型：详见 **词汇 | pay**
+  - 花费（金钱），强调付款动作，主语是人。
+  - 句型：详见 **词汇 | pay**
 
-        sb. pay (金钱) for sth.  
-        sb. pay sb. 金钱  
-        sb. pay to do sth.
+    sb. pay (金钱) for sth.  
+    sb. pay sb. 金钱  
+    sb. pay to do sth.
 
 - **afford**
 
-    - “花费得起（金钱）”或“承担得起（某种代价）”，主语是人。
-    - 句型：详见 **词汇 | afford**
+  - “花费得起（金钱）”或“承担得起（某种代价）”，主语是人。
+  - 句型：详见 **词汇 | afford**
 
-        常用于 be able to 或 can 之后  
-        can afford 钱/sth.  
-        can afford to do sth.
+    常用于 be able to 或 can 之后  
+    can afford 钱/sth.  
+    can afford to do sth.
 
 ## 接受
 

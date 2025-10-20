@@ -16,10 +16,10 @@ tags:
 - 图谱：没觉得有啥用
 - 数据库：没研究
 - 目前用它作为 Typora 的辅助，充当以下角色：
-    - 搜索功能强大，能搜文件和内容。
-    - 可以筛选文件元数据中的标签
-    - 做链接到本地文件时更方便，有选择提示。（在设置中关闭 `Wiki 链接`）
-    - ...
+  - 搜索功能强大，能搜文件和内容。
+  - 可以筛选文件元数据中的标签
+  - 做链接到本地文件时更方便，有选择提示。（在设置中关闭 `Wiki 链接`）
+  - ...
 
 ## 缺点
 
@@ -30,10 +30,11 @@ tags:
 
 # 快捷键
 
-|   操作   |                   obsidian 快捷键                    |
-| :----: | :-----------------------------------------------: |
-| ==系统== |                                                   |
-| 开发者工具  | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> |
+<!-- prettier-ignore -->
+| 操作 | obsidian 快捷键 |
+| :---: | :---: |
+| ==系统== |  |
+| 开发者工具 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> |
 
 # 主题
 
@@ -49,12 +50,12 @@ tags:
 
 - 颜色
 
-    ```css
-    .theme-dark {
-      --background-primary: #22272e;
-      --background-secondary: #2d333b;
-    }
-    ```
+  ```css
+  .theme-dark {
+    --background-primary: #22272e;
+    --background-secondary: #2d333b;
+  }
+  ```
 
 # 插件
 
@@ -63,4 +64,4 @@ tags:
 - 关闭 `安全模式`
 - 搜索插件，安装，启用。
 - 优秀插接件：
-    - Tag Wrangler：插件管理
+  - Tag Wrangler：插件管理

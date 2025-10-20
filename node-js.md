@@ -21,9 +21,9 @@ tags:
 
 - 查看 Node.js 版本
 
-    ```bash
-    node -v
-    ```
+  ```bash
+  node -v
+  ```
 
 ## npm
 

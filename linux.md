@@ -20,7 +20,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
 - 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
 - 安装完成后，点击启动，设置用户名和密码。
-    - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
+  - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
 ### 在物理机上安装
 
@@ -30,24 +30,24 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 右下角双击 `Install Ubuntu` 图标开始安装。
 - 安装过程中会询问如何分区
 
-    - 如果想把整个磁盘作为 Ubuntu 的运行磁盘，选择 `擦除磁盘并安装 Ubuntu` 即可，安装程序会自动修改分区类型和重新分区。
+  - 如果想把整个磁盘作为 Ubuntu 的运行磁盘，选择 `擦除磁盘并安装 Ubuntu` 即可，安装程序会自动修改分区类型和重新分区。
 
-        <img src="assets/image-20250214220744413.png" alt="image-20250214220744413" style="zoom:50%;" />
+    <img src="assets/image-20250214220744413.png" alt="image-20250214220744413" style="zoom:50%;" />
 
-    - 如果是双系统
+  - 如果是双系统
 
-        - 提前使用 `磁盘管理工具` 或 `DiskGenius` 准备一个空分区供 Ubuntu 使用
-        - 选择 `在 Windows Boot Manager 中安装 Ubuntu`
+    - 提前使用 `磁盘管理工具` 或 `DiskGenius` 准备一个空分区供 Ubuntu 使用
+    - 选择 `在 Windows Boot Manager 中安装 Ubuntu`
 
-            <img src="assets/image-20250214220639232.png" alt="image-20250214220639232" style="zoom:50%;" />
+      <img src="assets/image-20250214220639232.png" alt="image-20250214220639232" style="zoom:50%;" />
 
-        - 根据磁盘容量选择分区，并将分区拉满
+    - 根据磁盘容量选择分区，并将分区拉满
 
-            <img src="assets/image-20250214221137495.png" alt="image-20250214221137495" style="zoom:50%;" />
+      <img src="assets/image-20250214221137495.png" alt="image-20250214221137495" style="zoom:50%;" />
 
 - 正常下一步设置其他项，直到安装
 
-    <img src="assets/image-20250214221957424.png" alt="image-20250214221957424" style="zoom:50%;" />
+  <img src="assets/image-20250214221957424.png" alt="image-20250214221957424" style="zoom:50%;" />
 
 - 安装完成后，手动重启，根据提示，应先拔掉 U 盘，然后按 `Enter` 重启。
 - 重启后即可进行初始设置。
@@ -59,9 +59,9 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 系统更新
 - 系统设置
 
-    - Dock 栏：图标，底部，最小化
-    - 终端光标
-    - 密码反馈
+  - Dock 栏：图标，底部，最小化
+  - 终端光标
+  - 密码反馈
 
 - VPN，Chrome，VSCode，Git，python，docker
 
@@ -70,52 +70,52 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - Zsh（Z Shell）是一种命令行解释器，也是一种交互式的 Unix shell，它是 Bash 的替代品。
 - 安装 Zsh
 
-    ```bash
-    # 安装
-    sudo apt install zsh
-    # 设置 Zsh 为默认 shell
-    chsh -s $(which zsh)
-    ```
+  ```bash
+  # 安装
+  sudo apt install zsh
+  # 设置 Zsh 为默认 shell
+  chsh -s $(which zsh)
+  ```
 
 - 安装 Oh-My-Zsh 插件
 
-    ```bash
-    # 下载
-    wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
-    # 安装
-    sh install.sh
-    ```
+  ```bash
+  # 下载
+  wget https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh
+  # 安装
+  sh install.sh
+  ```
 
 - 安装 Zsh 主题和插件
 
-    ```bash
-    # PowerLevel10k主题
-    git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
-    # zsh-autosuggestions自动提示插件
-    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-    # zsh-syntax-highlighting语法高亮插件
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-    ```
+  ```bash
+  # PowerLevel10k主题
+  git clone https://github.com/romkatv/powerlevel10k.git $ZSH_CUSTOM/themes/powerlevel10k
+  # zsh-autosuggestions自动提示插件
+  git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+  # zsh-syntax-highlighting语法高亮插件
+  git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+  ```
 
 - 编辑 `~/.zshrc` 文件启用插件和主题
 
-    ```shell
-    # 修改主题
-    ZSH_THEME="powerlevel10k/powerlevel10k"
+  ```shell
+  # 修改主题
+  ZSH_THEME="powerlevel10k/powerlevel10k"
 
-    # 启用插件
-    plugins=(
-      git
-      zsh-autosuggestions
-      zsh-syntax-highlighting
-    )
-    ```
+  # 启用插件
+  plugins=(
+    git
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+  )
+  ```
 
 - 重启终端，启动 PowerLevel10k 配置向导
 
-    ```bash
-    p10k configure
-    ```
+  ```bash
+  p10k configure
+  ```
 
 ## 安装软件
 
@@ -123,48 +123,48 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 其次官网下载 `.deb` 包至本地，使用 `apt` 安装
 - 如果官网只有 `.tar.xz` 包
 
-    - 解压安装包 `tar -xf <package_name>`
-    - 根据 `README` 文件说明安装。
+  - 解压安装包 `tar -xf <package_name>`
+  - 根据 `README` 文件说明安装。
 
 - 再次官网下载官方脚本至本地，使用 `sh` 运行安装脚本
 - 再次，手动安装，以 Docke 为例
 
-    - 更新软件包列表
+  - 更新软件包列表
 
-        ```bash
-        sudo apt update
-        sudo apt upgrade -y
-        ```
+    ```bash
+    sudo apt update
+    sudo apt upgrade -y
+    ```
 
-    - 安装依赖
+  - 安装依赖
 
-        ```bash
-        sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
-        ```
+    ```bash
+    sudo apt install -y apt-transport-https ca-certificates curl software-properties-common
+    ```
 
-    - 添加 Docker 官方 GPG 密钥
+  - 添加 Docker 官方 GPG 密钥
 
-        ```bash
-        curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
-        ```
+    ```bash
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+    ```
 
-    - 添加 Docker 软件源
+  - 添加 Docker 软件源
 
-        ```bash
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-        ```
+    ```bash
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+    ```
 
-    - 再次更新软件包列表，以确保新添加的 Docker 软件源已经包含在软件包列表中
+  - 再次更新软件包列表，以确保新添加的 Docker 软件源已经包含在软件包列表中
 
-        ```bash
-        sudo apt update
-        ```
+    ```bash
+    sudo apt update
+    ```
 
-    - 安装 Docker Engine
+  - 安装 Docker Engine
 
-        ```bash
-        sudo apt install -y docker-ce docker-ce-cli containerd.io
-        ```
+    ```bash
+    sudo apt install -y docker-ce docker-ce-cli containerd.io
+    ```
 
 - 最后，使用 `dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
 
@@ -172,12 +172,13 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - Linux 目录的常用操作详见 `cli | 目录` 笔记
 - **Linux 目录结构**：`/Home/USER_NAME/...`
-- **Linux Home目录（区别于 Windows）**
-    - **Linux**：`/Home`
-    - **Windows**：`/c/Users/USER_NAME`
+- **Linux Home 目录（区别于 Windows）**
+  - **Linux**：`/Home`
+  - **Windows**：`/c/Users/USER_NAME`
 
 # Ubuntu 快捷键
 
+<!-- prettier-ignore -->
 | 操作 | 快捷键 |
 | :---: | :---: |
 | 打开终端 | <kbd>Ctrl</kbd> + <kbd>Shit</kbd> + <kbd>T</kbd> |
@@ -194,7 +195,7 @@ GRUB（GRand Unified Bootloader）是一个多重引导程序，通常用于 Lin
 GRUB 的主要特点包括：
 
 - **加载操作系统**：当计算机开机时，GRUB 会被加载，它会读取配置文件，显示操作系统的选择菜单，并将控制权转交给选择的操作系统。
-- **多重引导支持**：GRUB 允许你安装并选择不同的操作系统，例如 Windows、各种 Linux 发行版、甚至是其他的类Unix系统。
+- **多重引导支持**：GRUB 允许你安装并选择不同的操作系统，例如 Windows、各种 Linux 发行版、甚至是其他的类 Unix 系统。
 - **内核加载**：GRUB 可以加载 Linux 内核，并将内核与根文件系统（root filesystem）一起加载到内存中。
 - **灵活的配置**：GRUB 的配置文件通常是 `grub.cfg`，它包含了启动项和内核加载的配置。用户可以通过编辑这个配置文件来增加或修改启动选项。
 - **支持多种文件系统**：GRUB 能够从多种文件系统中加载引导文件，包括 ext4、Btrfs、FAT、NTFS 等。
@@ -216,61 +217,61 @@ GRUB 的工作过程大致如下：
 
 - 查询每个分区的文件系统类型，进而确认 `根分区` 和 `EFI 分区` 路径
 
-    ```bash
-    lsblk -f
-    ```
+  ```bash
+  lsblk -f
+  ```
 
     <img src="assets/image-20250217041113536.png" alt="image-20250217041113536" style="zoom:50%;" />
 
 - **挂载分区并修复 GRUB**
 
-    ```bash
-    # 挂载 Linux 根分区（文件类型为 EXT4）
-    sudo mount /dev/nvme0n1p6 /mnt
-    
-    # 挂载 EFI 分区（文件类型为 FAT32）
-    sudo mount /dev/nvme0n1p1 /mnt/boot/efi
-    
-    # 挂载虚拟文件系统
-    sudo mount --bind /dev /mnt/dev
-    sudo mount --bind /proc /mnt/proc
-    sudo mount --bind /sys /mnt/sys
-    
-    # 使用 chroot 进入已经挂载的 Linux 系统
-    sudo chroot /mnt
-    
-    # 手动挂载 EFI 变量文件系统
-    mount -t efivarfs efivarfs /sys/firmware/efi/efivars
-    
-    # 重新安装 GRUB 并更新（nvme0n1 为 NVMe 硬盘，就是系统所在的硬盘）
-    grub-install /dev/nvme0n1
-    update-grub
-    
-    # 退出 chroot 并重启
-    exit
-    sudo reboot
-    
-    # 重启后即可进入 Ubuntu 系统，但没有 Windows Boot Manager
-    ```
+  ```bash
+  # 挂载 Linux 根分区（文件类型为 EXT4）
+  sudo mount /dev/nvme0n1p6 /mnt
+
+  # 挂载 EFI 分区（文件类型为 FAT32）
+  sudo mount /dev/nvme0n1p1 /mnt/boot/efi
+
+  # 挂载虚拟文件系统
+  sudo mount --bind /dev /mnt/dev
+  sudo mount --bind /proc /mnt/proc
+  sudo mount --bind /sys /mnt/sys
+
+  # 使用 chroot 进入已经挂载的 Linux 系统
+  sudo chroot /mnt
+
+  # 手动挂载 EFI 变量文件系统
+  mount -t efivarfs efivarfs /sys/firmware/efi/efivars
+
+  # 重新安装 GRUB 并更新（nvme0n1 为 NVMe 硬盘，就是系统所在的硬盘）
+  grub-install /dev/nvme0n1
+  update-grub
+
+  # 退出 chroot 并重启
+  exit
+  sudo reboot
+
+  # 重启后即可进入 Ubuntu 系统，但没有 Windows Boot Manager
+  ```
 
 - 修复 GRUB 后，Windows 的引导程序 `Windows Boot Manager` 会消失
 
 - Ubuntu 默认禁用 `os-prober`（用于探测其他操作系统），需手动启用
 
-    ```bash
-    # 编辑 GRUB 配置文件
-    sudo nano /etc/default/grub
-    
-    # 添加如下，取消禁用
-    GRUB_DISABLE_OS_PROBER=false
-    
-    # 修改如下，显示启动菜单
-    GRUB_TIMEOUT_STYLE=menu
-    
-    # 更新并重启
-    sudo update-grub
-    sudo reboot
-    ```
+  ```bash
+  # 编辑 GRUB 配置文件
+  sudo nano /etc/default/grub
+
+  # 添加如下，取消禁用
+  GRUB_DISABLE_OS_PROBER=false
+
+  # 修改如下，显示启动菜单
+  GRUB_TIMEOUT_STYLE=menu
+
+  # 更新并重启
+  sudo update-grub
+  sudo reboot
+  ```
 
 - 重启后可在启动菜单里看见 `Windows Boot Manager`
 
@@ -282,52 +283,52 @@ GRUB 的工作过程大致如下：
 
 - GRUB 默认说明
 
-    ```
-    # 启动 Ubuntu
-    Ubuntu
-    
-    # 选择 Ubuntu 其它内核
-    Advanced options for Ubuntu
-    
-    # 启动内存检测
-    Memory test (memtest86+x64.efi)
-    Memory test (memtest86+x64.efi, serial console)
-    
-    # 启动 Windows 引导加载程序
-    Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
-    
-    # 进入固件
-    UEFI Firmware Settings
-    ```
+  ```
+  # 启动 Ubuntu
+  Ubuntu
+
+  # 选择 Ubuntu 其它内核
+  Advanced options for Ubuntu
+
+  # 启动内存检测
+  Memory test (memtest86+x64.efi)
+  Memory test (memtest86+x64.efi, serial console)
+
+  # 启动 Windows 引导加载程序
+  Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
+
+  # 进入固件
+  UEFI Firmware Settings
+  ```
 
 ### GRUB 设置
 
 - 打开 GRUB 配置文件
 
-    ```bash
-    sudo nano /etc/defualt/grub
-    ```
+  ```bash
+  sudo nano /etc/defualt/grub
+  ```
 
 - 修改
 
-    ![image-20250215022232841](assets/image-20250215022232841.png)
+  ![image-20250215022232841](assets/image-20250215022232841.png)
 
-    ```bash
-    # 默认启动项为 Windows（第一项为0）
-    GRUB_DEFAULT=4
-    
-    # GRUB 菜单倒计时
-    GRUB_TIMEOUT=3
-    ```
+  ```bash
+  # 默认启动项为 Windows（第一项为0）
+  GRUB_DEFAULT=4
+
+  # GRUB 菜单倒计时
+  GRUB_TIMEOUT=3
+  ```
 
 - 更新 GRUB 配置并重启
 
-    ```bash
-    sudo update-grub
-    sudo reboot
-    ```
+  ```bash
+  sudo update-grub
+  sudo reboot
+  ```
 
-- 系统倒计时3秒后自动进入 Windows 系统。
+- 系统倒计时 3 秒后自动进入 Windows 系统。
 
 # 系统管理
 
@@ -335,60 +336,60 @@ GRUB 的工作过程大致如下：
 
 - 开机启动
 
-    ```bash
-    # 设置开机启动
-    sudo systemctl enable $APP
-    
-    # 禁用开机启动
-    sudo systemctl disable $APP
-    
-    # 查看开机启动
-    sudo systemctl is-enabled $APP
-    ```
+  ```bash
+  # 设置开机启动
+  sudo systemctl enable $APP
+
+  # 禁用开机启动
+  sudo systemctl disable $APP
+
+  # 查看开机启动
+  sudo systemctl is-enabled $APP
+  ```
 
 - 运行和停止
 
-    ```bash
-    # 运行应用
-    sudo systemctl start $APP
-    
-    # 停止应用
-    sudo systemctl stop $APP
-    
-    # 查看应用状态
-    sudo systemctl status $APP
-    ```
+  ```bash
+  # 运行应用
+  sudo systemctl start $APP
+
+  # 停止应用
+  sudo systemctl stop $APP
+
+  # 查看应用状态
+  sudo systemctl status $APP
+  ```
 
 - 其它服务管理
 
-    ```bash
-    # 以超级权限执行命令（让普通用户变成root用户）
-    sudo $COMMAND
-    ```
+  ```bash
+  # 以超级权限执行命令（让普通用户变成root用户）
+  sudo $COMMAND
+  ```
 
 ## 用户管理 usermod
 
 - 修改用户组
 
-    ```bash
-    sudo usermod -aG docker jerry
-    ```
+  ```bash
+  sudo usermod -aG docker jerry
+  ```
 
-    - 默认情况下，只有 `root` 用户或使用 `sudo` 前缀才能运行某些命令，如 `docker`。将当前用户加入 `docker` 组以后，可以不使用 `sudo` 来执行 Docker 命令。
-    - 修改用户组以后，需退出当前终端并注销系统重新登录，使用户组生效。如果不想注销，可以直接在终端中使用 `newgrp docker` 命令，这个命令会让你切换到新的组，并使更改立即生效。但关闭当前终端再进入时，还是会失效，除非注销重新登录。
+  - 默认情况下，只有 `root` 用户或使用 `sudo` 前缀才能运行某些命令，如 `docker`。将当前用户加入 `docker` 组以后，可以不使用 `sudo` 来执行 Docker 命令。
+  - 修改用户组以后，需退出当前终端并注销系统重新登录，使用户组生效。如果不想注销，可以直接在终端中使用 `newgrp docker` 命令，这个命令会让你切换到新的组，并使更改立即生效。但关闭当前终端再进入时，还是会失效，除非注销重新登录。
 
 - 其它用户管理命令
 
-    ```bash
-    # 查看当前用户
-    whoami
-    
-    # 创建用户
-    sudo adduser $NEW_USER
-    
-    # 切换用户
-    su - $USER
-    ```
+  ```bash
+  # 查看当前用户
+  whoami
+
+  # 创建用户
+  sudo adduser $NEW_USER
+
+  # 切换用户
+  su - $USER
+  ```
 
 # 包管理工具
 
@@ -396,8 +397,8 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 - 包管理工具
 
-    - 分发行版默认包管理工具，如 Ubuntu 的 `apt`
-    - 跨发行版包管理工具，如 `snap`
+  - 分发行版默认包管理工具，如 Ubuntu 的 `apt`
+  - 跨发行版包管理工具，如 `snap`
 
 ## apt
 
@@ -405,41 +406,41 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 - **特点**：
 
-    - **自动处理依赖**：安装本地 `.deb` 包时，`apt` 会从系统已配置的软件源（包括 `.deb` 包内自动添加的源）下载并安装缺失的依赖。
-    - **触发软件源更新**：如果 `.deb` 包内嵌了软件源配置（如 Chrome 的包），`apt` 会识别并更新源信息。
+  - **自动处理依赖**：安装本地 `.deb` 包时，`apt` 会从系统已配置的软件源（包括 `.deb` 包内自动添加的源）下载并安装缺失的依赖。
+  - **触发软件源更新**：如果 `.deb` 包内嵌了软件源配置（如 Chrome 的包），`apt` 会识别并更新源信息。
 
 - **命令**
 
-    ```bash
-    # 更新软件包列表
-    sudo apt update
-    
-    # 升级所有软件包
-    sudo apt upgrade
-    # 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
-    sudo apt full-upgrade
-    
-    # 安装新软件包
-    sudo apt install <package_name>
-    # 安装本地软件包
-    sudo apt install path/to/package/<package_name>
-    
-    # 删除已安装的软件包（保留配置文件）
-    sudo apt remove <package_name>
-    # 删除已安装的软件包（包括配置文件）
-    sudo apt purge <package_name>
-    # 删除不再需要的依赖包
-    sudo apt autoremove
-    
-    # 查看已安装的软件包
-    apt list --installed
-    
-    # 搜索软件包
-    apt search <package_name>
-    
-    # 查看软件包信息
-    apt show <package_name>
-    ```
+  ```bash
+  # 更新软件包列表
+  sudo apt update
+
+  # 升级所有软件包
+  sudo apt upgrade
+  # 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
+  sudo apt full-upgrade
+
+  # 安装新软件包
+  sudo apt install <package_name>
+  # 安装本地软件包
+  sudo apt install path/to/package/<package_name>
+
+  # 删除已安装的软件包（保留配置文件）
+  sudo apt remove <package_name>
+  # 删除已安装的软件包（包括配置文件）
+  sudo apt purge <package_name>
+  # 删除不再需要的依赖包
+  sudo apt autoremove
+
+  # 查看已安装的软件包
+  apt list --installed
+
+  # 搜索软件包
+  apt search <package_name>
+
+  # 查看软件包信息
+  apt show <package_name>
+  ```
 
 ## dpkg
 
@@ -447,29 +448,28 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 - **特点**
 
-    - **不处理依赖**：仅安装当前 `.deb` 包，如果缺少依赖会报错，并提示需要运行 `sudo apt install -f` 修复依赖，但不会自动安装依赖。
-    - **不修改软件源**：即使 `.deb` 包内嵌了软件源配置（如 Chrome 的 `.deb` 包），`dpkg` 不会主动触发 `apt` 更新。
+  - **不处理依赖**：仅安装当前 `.deb` 包，如果缺少依赖会报错，并提示需要运行 `sudo apt install -f` 修复依赖，但不会自动安装依赖。
+  - **不修改软件源**：即使 `.deb` 包内嵌了软件源配置（如 Chrome 的 `.deb` 包），`dpkg` 不会主动触发 `apt` 更新。
 
 - **适合场景**
 
-    - 手动调试依赖或需要直接操作包文件时
+  - 手动调试依赖或需要直接操作包文件时
 
 - **命令**
 
-    ```bash
-    # 安装 .deb 包（不处理依赖和软件源）
-    sudo dpkg -i <package_name.deb>
-    ```
+  ```bash
+  # 安装 .deb 包（不处理依赖和软件源）
+  sudo dpkg -i <package_name.deb>
+  ```
 
 ## apt-get
-
 
 - `apt-get` 是 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的命令行工具，是 `apt` 系列命令中的一个较为传统的工具。设计目标是**稳定性和脚本兼容性**，语法较为严格。它用于从软件源安装、升级、删除和管理 `.deb` 包，并且能够处理包的依赖关系，通常与 `dpkg` 配合使用。
 - `apt-get` 的输出格式稳定，适合脚本解析（如 CI/CD 流水线）。
 - `apt-get` vs `apt`
 
-    - **`apt-get`** 提供更强的控制，适合脚本和系统管理员使用。
-    - **`apt`** 是更现代化、更面向用户的工具，语法更简洁，通常在日常操作中推荐使用。
+  - **`apt-get`** 提供更强的控制，适合脚本和系统管理员使用。
+  - **`apt`** 是更现代化、更面向用户的工具，语法更简洁，通常在日常操作中推荐使用。
 
 ## snap
 
@@ -503,21 +503,21 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 - 打开 sudoers 文件：`sudo visudo`
 - 找到 `Defaults   env_reset` 行，添加 `pwfeedback`，如下
 
-    ```bash
-    Defaults env_reset,pwfeedback
-    ```
+  ```bash
+  Defaults env_reset,pwfeedback
+  ```
 
-- 这将启用密码反馈功能，使得在输入密码时可以看到 * 星号，但仍然不是明文显示。
+- 这将启用密码反馈功能，使得在输入密码时可以看到 \* 星号，但仍然不是明文显示。
 
 ## 更新下载源
 
 - 当执行 `sudo apt update` 时，提示以下信息
 
-    ```bash
-    E: 仓库 “file:/cdrom noble Release” 不再含有 Release 文件。
-    N: 无法安全地用该源进行更新，所以默认禁用该源。
-    N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。
-    ```
+  ```bash
+  E: 仓库 “file:/cdrom noble Release” 不再含有 Release 文件。
+  N: 无法安全地用该源进行更新，所以默认禁用该源。
+  N: 参见 apt-secure(8) 手册以了解仓库创建和用户配置方面的细节。
+  ```
 
 - 错误信息表明，系统无法从指定的仓库（`file:/cdrom noble Release`）获取 `Release` 文件，因此该源被禁用。这通常发生在你尝试从一个无效或不可用的源更新软件包时。
 
@@ -530,8 +530,6 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 - 使用 Ubuntu LTS 时，点击 Dock 栏上已打开的应用图标时，无法最小化
 - 终端运行如下代码
 
-    ```bash
-    gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-    ```
-
-    
+  ```bash
+  gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+  ```

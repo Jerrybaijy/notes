@@ -27,7 +27,7 @@ tags:
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写。
-- **缩进**：不敏感，通常缩进2个空格。
+- **缩进**：不敏感，通常缩进 2 个空格。
 - **分号**：行尾加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
@@ -39,8 +39,8 @@ tags:
 - 单行注释：`Ctrl + /`
 - 多行注释：`Ctrl + Shift + /`
 
-``` css
-.demo{
+```css
+.demo {
   /* 这是一个单行注释 */
 
   /*多行注释第一行
@@ -55,7 +55,8 @@ CSS 样式表的由一系列 [**CSS 语句**](https://developer.mozilla.org/zh-C
 
 - 规则集
 - At 规则
-    - **条件规则组**是特殊的 at 规则
+
+  - **条件规则组**是特殊的 at 规则
 
 ## At 规则
 
@@ -93,7 +94,7 @@ CSS 样式表的由一系列 [**CSS 语句**](https://developer.mozilla.org/zh-C
 
 ## 规则集
 
-[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解) 是一个 *CSS 语句*，结构如下：
+[**规则集**](https://developer.mozilla.org/zh-CN/docs/Learn/Getting_started_with_the_web/CSS_basics#“css_规则集”详解) 是一个 _CSS 语句_，结构如下：
 
 <img src="assets/image-20231205115235248.png" alt="image-20231205115235248" style="height: 300px"/>
 
@@ -101,9 +102,11 @@ CSS 样式表的由一系列 [**CSS 语句**](https://developer.mozilla.org/zh-C
 
 - **选择器**：`p`，用于指定为哪种元素添加样式，详见[选择器](#选择器)。
 - [**声明块**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_声明块)：`{color: red;}`，声明块用大括号 `{}` 包含声明。
-    - [**声明**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_声明）)：`color: red;`，即属性名值对，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
-        - **属性**：`color`，用于指定改变元素的哪种样式，详见[属性](#属性)。
-        - **属性值**：`red`，用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔，详见[属性值](#属性值)。
+
+  - [**声明**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/Syntax#css_声明）)：`color: red;`，即属性名值对，属性与属性值用冒号 `:` 分隔，声明用 `;` 结尾。
+
+    - **属性**：`color`，用于指定改变元素的哪种样式，详见[属性](#属性)。
+    - **属性值**：`red`，用于指定元素样式的值，一个声明里含多个属性值用 `空格` 分隔，详见[属性值](#属性值)。
 
 # 属性
 
@@ -132,7 +135,7 @@ CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于�
 
 ## `z-index`
 
-[`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index) 属性用于设置 *非 `static` 定位元素及其后代元素* 或 *flex 项目* 的 **Z 轴顺序**。z-index 较大的重叠元素会覆盖较小的元素。
+[`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index) 属性用于设置 _非 `static` 定位元素及其后代元素_ 或 _flex 项目_ 的 **Z 轴顺序**。z-index 较大的重叠元素会覆盖较小的元素。
 
 当没有在任何元素上指定 `z-index` 属性时，元素的[堆叠顺序](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_positioned_layout/Stacking_without_z-index)如下（从上到下）：
 
@@ -184,17 +187,19 @@ CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于�
 
 ## 值和单位
 
->  [CSS 值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
+> [CSS 值和单位](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Values_and_units)
 
 ## 基本数据类型
 
 [**CSS 基本数据类型**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)是一种[组合值类型](https://www.w3.org/TR/css3-values/#component-types)。用于定义 CSS 属性和函数可以接受的变量（关键字和单位）的种类。
 
 - [`<number>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/number)：数字
-- [`<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)：长度值，由 *`<number>`* 和*长度单位*构成。
-    - [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#绝对长度单位)
-    - [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#相对长度单位)
-- [`<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)：百分比，由 *`<number>`* 和 `%` 构成。
+- [`<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length)：长度值，由 _`<number>`_ 和*长度单位*构成。
+
+  - [绝对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#绝对长度单位)
+  - [相对长度单位](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length#相对长度单位)
+
+- [`<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage)：百分比，由 _`<number>`_ 和 `%` 构成。
 - [`<color>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/color_value)：颜色值
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_values_and_units/CSS_data_types)
 
@@ -217,9 +222,9 @@ CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于�
 
 ## 层叠顺序
 
->  [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
+> [层叠、优先级与继承](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts)
 >
->  [级联排序顺序](https://drafts.csswg.org/css-cascade-4/#cascade-sort "w3c")
+> [级联排序顺序](https://drafts.csswg.org/css-cascade-4/#cascade-sort "w3c")
 
 层叠的总体原则：
 
@@ -249,11 +254,11 @@ CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于�
 ```
 
 ```css
-p{
+p {
   color: green !important;
 }
 
-p{
+p {
   color: red;
 }
 ```
@@ -272,7 +277,7 @@ p{
 - 用户（用户在浏览器中设置）
 - 用户代理（浏览器）
 
-当两个样式声明具有相同的 *`!important`* 标记时，根据*样式来源*判断应该使用哪个声明，前一种覆盖后一种。
+当两个样式声明具有相同的 _`!important`_ 标记时，根据*样式来源*判断应该使用哪个声明，前一种覆盖后一种。
 
 - 带有 `!important` 的用户代理声明
 - 带有 `!important` 的用户声明
@@ -289,7 +294,7 @@ p{
 
 [**层叠层**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Cascade_layers)：CSS [@规则](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_syntax/At-rule)中的 [`@layer`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/@layer) 声明了一个*层叠层*。
 
-当两个样式声明具有相同的 *`!important` 标记*、*样式来源* 和 *分层* 时:
+当两个样式声明具有相同的 _`!important` 标记_、_样式来源_ 和 _分层_ 时:
 
 - 写在后面的层的优先级将高于写在前面的层
 - 同一层内的规则符合层叠算法
@@ -363,8 +368,9 @@ p{
 
 - 如果只有一个 `base` 层叠层，由于 `base` 层中有 `#main-button.btn` 的存在，那就必须在 `base` 层中定义一个更高特异度的声明，这会导致特异度的混乱。
 - 更好的做法：
-    - 定义一个更高优先级的 `utilities` 层
-    - 在 `utilities` 层中定义一个低特异度的 `.btn` 声明，即可生效，并且不会对原 `base` 层的特异度生态产生污染。
+
+  - 定义一个更高优先级的 `utilities` 层
+  - 在 `utilities` 层中定义一个低特异度的 `.btn` 声明，即可生效，并且不会对原 `base` 层的特异度生态产生污染。
 
 ### 覆盖
 
@@ -394,7 +400,7 @@ p {
 
 ### 层叠层顺序
 
-当两个样式声明具有相同的 *`!important`* 标记和*样式来源*时，应根据*层叠层*和*未分层*判断应该使用哪个声明，前一种覆盖后一种：
+当两个样式声明具有相同的 _`!important`_ 标记和*样式来源*时，应根据*层叠层*和*未分层*判断应该使用哪个声明，前一种覆盖后一种：
 
 - 带有 `!important` 的层叠层
 - 带有 `!important` 的未分层
@@ -436,29 +442,29 @@ p {
 
 [**特异度的计算方法**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Handling_conflicts#优先级_2)：特异度是通过给不同的选择器类型赋予不同的“权重”或“分值”来计算的。
 
-当两个样式声明具有相同的 *`!important`* 标记和*样式来源*时，根据*特异度*判断应该使用哪个声明。
+当两个样式声明具有相同的 _`!important`_ 标记和*样式来源*时，根据*特异度*判断应该使用哪个声明。
 
 通常将特异度表示为四个数字的组合（a, b, c, d），高位覆盖地位：
 
 - 内联样式
-- ID选择器
+- ID 选择器
 - 类选择器、属性选择器、伪类
 - 元素选择器、伪元素
 
 ## 源码顺序
 
-**源码顺序**：当两个样式声明具有相同的 *`!important`* 标记、*样式来源*和*特异度*时，*源码顺序*靠后的声明将覆盖靠前的声明。
+**源码顺序**：当两个样式声明具有相同的 _`!important`_ 标记、*样式来源*和*特异度*时，*源码顺序*靠后的声明将覆盖靠前的声明。
 
 ```html
 <p>这是一个段落</p>
 ```
 
 ```css
-p{
+p {
   color: green;
 }
 
-p{
+p {
   color: red;
 }
 ```
@@ -483,7 +489,6 @@ CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性�
 
 ```html
 <div style="color: red;">
-
   <!-- 将 <p> 元素的 color 属性设置为默认值，否则应继承父元素 -->
   <p style="color: initial;">颜色变化</p>
 
@@ -505,12 +510,12 @@ CSS 为控制继承提供了五个特殊的通用属性值。每个 CSS 属性�
 ```
 
 ```css
-p{
+p {
   background-color: aqua;
   color: green;
 }
 
-p{
+p {
   color: red;
 }
 ```
@@ -530,6 +535,7 @@ p{
 
 **常用选择器**：
 
+<!-- prettier-ignore -->
 | [选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_selectors) | 示例 | 示例说明 | css |
 | :---: | :---: | :---: | :---: |
 | 通用选择器 | `*` | 选择所有元素 | 2 |
@@ -548,7 +554,7 @@ p{
 
 ## 元素选择器
 
-[**元素选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)通过**元素名**选择元素；也称*类型选择器*、*标签选择器*。
+[**元素选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Type_selectors)通过**元素名**选择元素；也称*类型选择器*、_标签选择器_。
 
 **语法**：`元素名 {样式声明}`
 
@@ -583,7 +589,7 @@ p {
 
 [**属性选择器**](https://developer.mozilla.org/zh-CN/docs/Learn/CSS/Building_blocks/Selectors/Attribute_selectors)通过**元素名**和**元素属性**选择元素。
 
->  参考：[属性选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)
+> 参考：[属性选择器](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Attribute_selectors)
 
 **语法**：`元素名[元素属性/属性名值对] {样式声明}`
 
@@ -613,14 +619,12 @@ a[href="https://example.org"]
 **语法**：`#id值 {样式声明}`
 
 ```html
-<h1 id="test">
-  这是一个标题
-</h1>
+<h1 id="test">这是一个标题</h1>
 ```
 
 ```css
 #test {
-  color: red
+  color: red;
 }
 ```
 
@@ -726,7 +730,7 @@ p:nth-child(odd) {
 
 ### `:root`
 
-[`:root`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root) 伪类用于声明 *CSS 变量*（自定义属性）。或者选择 `<html>` 元素。
+[`:root`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/:root) 伪类用于声明 _CSS 变量_（自定义属性）。或者选择 `<html>` 元素。
 
 属性名以前缀 `--` 开始，可以通过 [`var()`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/var) 函数在全文档范围内复用的。
 
@@ -762,7 +766,7 @@ p:nth-child(odd) {
 **注意**：一个选择器中只能使用一个伪元素。
 
 ```html
-<p>这是第一行<br>这是第二行</p>
+<p>这是第一行<br />这是第二行</p>
 ```
 
 ```css
@@ -906,12 +910,12 @@ div {
 
 - **关键字**
 
-    - [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value))
+  - [`<position>`](#[位置 `<position>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/position_value))
 
 - **偏移量**
 
-    - [`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - [`<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
+  - [`<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+  - [`<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
 
 **说明**
 
@@ -928,10 +932,10 @@ div {
 
 - **属性值**
 
-    -  **`repeat-x`**：水平
-    -  **`repeat-y`**：垂直
-    -  **`no-repeat`**：不平铺
-    -  其它...
+  - **`repeat-x`**：水平
+  - **`repeat-y`**：垂直
+  - **`no-repeat`**：不平铺
+  - 其它...
 
 - **说明**：默认水平和垂直平铺
 
@@ -943,8 +947,8 @@ div {
 
 - 设定宽度和高度值
 
-    - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
-    - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
+  - [长度值 `<length>`](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))
+  - [百分比 `<percentage>`](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))
 
 - 关键词 [`cover`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#cover)
 - 关键词 [`contain`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/background-size#contain)
@@ -1005,7 +1009,7 @@ font: bolder 50px 微软雅黑, sans-serif;
 
 **说明**：
 
-- 可设置的属性是（按顺序）：[`font-style`](#[字体斜体 `font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style))，[`font-variant`](#[字体变体 `font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant))，[`font-weight`](#[字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight))，[`font-stretch`](#[字体伸缩 `font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch))，[`font-size`](#[字体大小 `font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size))，[`line-height`](#[文本行高 `font-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height))，和 [`font-family`](#[字体栈`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family))。
+- 可设置的属性是（按顺序）：[`font-style`](#[字体斜体 `font-style`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-style))，[`font-variant`](#[字体变体 `font-variant`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-variant))，[`font-weight`](#[字体粗细 `font-weight`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-weight))，[`font-stretch`](#[字体伸缩 `font-stretch`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-stretch))，[`font-size`](#[字体大小 `font-size`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-size))，[`line-height`](#[文本行高 `font-height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/line-height))，和 [`font-family`](<#[字体栈`font-family`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/font-family)>)。
 - `font-size` 和 `font-family` 的值是必需的；如果缺少了其他值，默认值将被插入。
 - `font-style`、`font-variant` 和 `font-weight` 必须在 `font-size` 之前。
 - `font-variant` 只可以使用 CSS 2.1 定义的值，即 `normal` 和 `small-caps`。
@@ -1122,9 +1126,10 @@ fontsize: lighter;
 
 - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比
 - `<font-stretch-css3>`：关键字
-    - `normal`：默认，普通字体外观。
-    - `semi-condensed`、`condensed`、`extra-condensed` 和 `ultra-condensed`：紧凑
-    - `semi-expanded`、`expanded`、`extra-expanded` 和 `ultra-expanded`：扩展
+
+  - `normal`：默认，普通字体外观。
+  - `semi-condensed`、`condensed`、`extra-condensed` 和 `ultra-condensed`：紧凑
+  - `semi-expanded`、`expanded`、`extra-expanded` 和 `ultra-expanded`：扩展
 
 ### `@font-face`
 
@@ -1433,7 +1438,7 @@ td {
 
 **边框折叠** [`border-collapse`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/border-collapse) 用于设置*表格*与*单元格*的边框是分开的还是合并的。
 
-由于 `<table>` 和 `<th>` / `<td>` 都有边框，所以默认情况下，边框看起来有双层，这个时候需要把  `<table>` 的边框进行折叠，之后所有针对表格边框的样式化，都在 `<th>` 和 `<td>` 中设置。
+由于 `<table>` 和 `<th>` / `<td>` 都有边框，所以默认情况下，边框看起来有双层，这个时候需要把 `<table>` 的边框进行折叠，之后所有针对表格边框的样式化，都在 `<th>` 和 `<td>` 中设置。
 
 <div style="display: flex; justify-content: left; gap: 10px">
   <figure>
@@ -1461,22 +1466,22 @@ td {
 
 - 颜色
 
-    - [`border-color`](#`border-color`)
-    - [`background-color`](#`background-color`)
-    - [`color`](#`color`)
+  - [`border-color`](#`border-color`)
+  - [`background-color`](#`background-color`)
+  - [`color`](#`color`)
 
 - 尺寸
 
-    - [`width`](#`width`)
-    - [`height`](#`height`)
-    - [`line-height`](#`line-height`)
+  - [`width`](#`width`)
+  - [`height`](#`height`)
+  - [`line-height`](#`line-height`)
 
 - 对齐
 
-    - [`text-align`](#`text-align`)
-    - [`vertial-align`](#`vertial-align`)：需直接作用于 `<th>` 和 `<td>` 元素
+  - [`text-align`](#`text-align`)
+  - [`vertial-align`](#`vertial-align`)：需直接作用于 `<th>` 和 `<td>` 元素
 
-- [`:nth-child()`](#`:nth-child()`)：可设置斑马纹
+- [`:nth-child()`](<#`:nth-child()`>)：可设置斑马纹
 
     <img src="assets/image-20251015160237674.png" alt="image-20251015160237674" style="zoom:50%;" />
 
@@ -1516,7 +1521,7 @@ td {
 
 ### `text-align`
 
-[`text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align) 属性用于设置 *块元素* 或者 *单元格框* 的**行内内容的水平对齐**。
+[`text-align`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/text-align) 属性用于设置 _块元素_ 或者 _单元格框_ 的**行内内容的水平对齐**。
 
 **属性值**：
 
@@ -1605,26 +1610,26 @@ letter-spacing: -0.05em;
 
 - **关键字：基于父元素**
 
-    - `text-top`：顶部对齐
-    - `text-bottom`：底部对齐
-    - `middle`：中部对齐
-    - 其它...
+  - `text-top`：顶部对齐
+  - `text-bottom`：底部对齐
+  - `middle`：中部对齐
+  - 其它...
 
 - [**`<length>`**](#[长度值 `<length>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/length))：长度值，基于父元素基线，可以是负值。
 - [**`<percentage>`**](#[百分比 `<percentage>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/percentage))：百分比，基于父元素基线，可以是负值；该百分比是 `line-height` 属性的百分比。
 - **相对行的值**
 
-    - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
-    - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
-    - 没有基线的元素，使用外边距的下边缘替代。
+  - **`top`**：使元素及其后代元素的顶部与整行的顶部对齐。
+  - **`bottom`**：使元素及其后代元素的底部与整行的底部对齐。
+  - 没有基线的元素，使用外边距的下边缘替代。
 
 - **表格单元格的值**
 
-    - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
-    - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
-    - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
-    - 其它...
-    - 可以是负数。
+  - **`top`**：使单元格内边距的上边缘与该行顶部对齐。
+  - **`middle`**：使单元格内边距盒模型在该行内居中对齐。
+  - **`bottom`**：使单元格内边距的下边缘与该行底部对齐。
+  - 其它...
+  - 可以是负数。
 
 #### 文本垂直对齐扩展
 
@@ -1662,7 +1667,7 @@ letter-spacing: -0.05em;
 
 ### 概述
 
-[**盒模型**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)：HTML元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
+[**盒模型**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Styling_basics/Box_model)：HTML 元素可以看作盒子，它包括：外边距 `margin`、边框 `border`、内边距 `padding` 和内容 `content`
 
 <img src="assets/image-20231202143654812.png" alt="image-20231202143654812" style="zoom: 67%;" />
 
@@ -1789,20 +1794,26 @@ h4 {
 `display` 属性有六种取值类型：
 
 - [`<display-outside>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-outside)
-    - [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。将这种元素称为**块级元素**。
-    - [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
-    - `run-in`
-    - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
+
+  - [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的 100%。将这种元素称为**块级元素**。
+  - [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
+  - `run-in`
+  - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
+
 - [`<display-inside>`](https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside)
-    - [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
-    - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：详见[弹性布局](#弹性布局)
-    - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：详见[网格布局](#网格布局)
-    - [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
-    - [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
-    - 更多...
+
+  - [`flow`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#flow)：正常文档流
+  - [`flex`](https://drafts.csswg.org/css-display/#valdef-display-flex)：详见[弹性布局](#弹性布局)
+  - [`grid`](https://drafts.csswg.org/css-display/#valdef-display-grid)：详见[网格布局](#网格布局)
+  - [`flow-root`](https://drafts.csswg.org/css-display/#valdef-display-flow-root)：消除 `float` 的 `flow`
+  - [`table`](https://drafts.csswg.org/css-display/#valdef-display-table)：遵循表格结构规则
+  - 更多...
+
 - [`<display-box>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-box)
-    - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
-    - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+
+  - [**`none`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#none)：可以隐藏元素，且隐藏的元素不会占用任何空间，即不再影响页面布局。
+  - [**`contents`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display#contents)：可以隐藏除 `content` 以外的所有盒属性，并且外部表现为 `inline`。
+
 - [`<display-listitem>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-listitem)
 - [`<display-internal>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-internal)
 - [`<display-legacy>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-legacy)
@@ -1813,6 +1824,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 这意味着一个 `display` 值可以由**一个外部关键字**和**一个内部关键字**组成（用空格分隔），或者是一个**复合值**（旧语法）。常用复合值和多值的对应关系为：
 
+<!-- prettier-ignore -->
 | [复合值](https://drafts.csswg.org/css-display/#inner-display-type) | 多值 |
 | :---: | :---: |
 | `none` | — |
@@ -1838,6 +1850,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 ### 块级元素和行内元素的区别
 
+<!-- prettier-ignore -->
 |  | 块级元素 | 行内元素 |
 | :---: | :---: | :---: |
 | 显示方式 | 以块的形式显示，独占一行。 | 在同一行上显示，只占据内容的宽度。 |
@@ -1909,7 +1922,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
   display: none;
 }
 
-.trigger-element:hover+.hidden-element {
+.trigger-element:hover + .hidden-element {
   display: block;
 }
 ```
@@ -1990,15 +2003,15 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
 
-    <img src="assets/image-20251018170602349.png" alt="image-20251018170602349" style="zoom:50%;" />
+  <img src="assets/image-20251018170602349.png" alt="image-20251018170602349" style="zoom:50%;" />
 
 - **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
 
-    <img src="assets/image-20251018170541057.png" alt="image-20251018170541057" style="zoom:50%;" />
+  <img src="assets/image-20251018170541057.png" alt="image-20251018170541057" style="zoom:50%;" />
 
 - **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**：
 
-    <img src="assets/image-20251018170505157.png" alt="image-20251018170505157" style="zoom:50%;" />
+  <img src="assets/image-20251018170505157.png" alt="image-20251018170505157" style="zoom:50%;" />
 
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#取值)
 
@@ -2189,7 +2202,9 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - `display: flex;`：设置布局方式为弹性布局
 - `flex-basis`：设置在主轴方向的初始大小
-    - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例增长了。
+
+  - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例增长了。
+
 - `flex-grow`：设置弹性元素在主轴方向上的增长系数
 
 ### `flex-shrink`
@@ -2236,7 +2251,9 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - `display: flex;`：设置布局方式为弹性布局
 - `flex-basis`：设置在主轴方向的初始大小
-    - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例收缩了。
+
+  - 如果未设置 `flex-basis`，则默认为 `auto`，由于左右两个元素的内容都是两个字，默认宽度相等，所以二者在主轴方向的初始大小是其内容的默认宽度，也相等。如果改变其中一个元素内容的字数，则二者就不是以 `2:1` 的比例收缩了。
+
 - `flex-shrink`：设置弹性元素在主轴方向上的收缩系数
 
 ### `justify-content`
@@ -2250,27 +2267,27 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
 
-    <img src="assets/image-20251018172154170.png" alt="image-20251018172154170" style="zoom:50%;" />
+  <img src="assets/image-20251018172154170.png" alt="image-20251018172154170" style="zoom:50%;" />
 
-- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列 
+- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列
 
-    <img src="assets/image-20251018172218622.png" alt="image-20251018172218622" style="zoom:50%;" />
+  <img src="assets/image-20251018172218622.png" alt="image-20251018172218622" style="zoom:50%;" />
 
 - **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
 
-    <img src="assets/image-20251018172247616.png" alt="image-20251018172247616" style="zoom:50%;" />
+  <img src="assets/image-20251018172247616.png" alt="image-20251018172247616" style="zoom:50%;" />
 
 - **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
 
-    <img src="assets/image-20251018172317503.png" alt="image-20251018172317503" style="zoom:50%;" />
+  <img src="assets/image-20251018172317503.png" alt="image-20251018172317503" style="zoom:50%;" />
 
 - **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
 
-    <img src="assets/image-20251018172418759.png" alt="image-20251018172418759" style="zoom:50%;" />
+  <img src="assets/image-20251018172418759.png" alt="image-20251018172418759" style="zoom:50%;" />
 
 - **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：剩余所有空间都相等
 
-    <img src="assets/image-20251018172454085.png" alt="image-20251018172454085" style="zoom:50%;" />
+  <img src="assets/image-20251018172454085.png" alt="image-20251018172454085" style="zoom:50%;" />
 
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#值)
 
@@ -2451,8 +2468,9 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 - `display: grid;`：设置布局方式为网格布局
 - `grid-template-columns`：设置列轨道的数量和大小。
-    - 此例中的 `200px` 是一个绝对大小。
-    - 绝对大小、`fr`、`repeat()` 可混合写。
+
+  - 此例中的 `200px` 是一个绝对大小。
+  - 绝对大小、`fr`、`repeat()`  可混合写。
 
 #### fr 单位
 
@@ -2529,7 +2547,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - `display: grid;`：设置布局方式为网格布局
-- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复 3 个 `fr`。
 
 ### `grid-column`
 
@@ -2651,7 +2669,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - `display: grid;`：设置布局方式为网格布局
-- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复 3 个 `fr`。
 - `grid-column-start`：设置网格项的列起始网格线编号
 - `grid-column-end`：设置网格项的列终止网格线编号
 - `grid-row-start`：设置网格项的行起始网格线编号
@@ -2759,19 +2777,18 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 }
 
 .item-1-1 {
-  background-color:black;
+  background-color: black;
   grid-column: 1 / 2;
   grid-row: 1 / 4;
 }
 
 .item-1-2 {
-  background-color:blue;
+  background-color: blue;
 }
 
 .item-1-3 {
-  background-color:brown;
+  background-color: brown;
 }
-
 ```
 
 ![image-20251018163207834](assets/image-20251018163207834.png)
@@ -2779,7 +2796,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - 通过 `display: grid;` 将 `item-1` 网格项再设为网格布局。
-- 网格项 `item-1` 内部的三个子元素都变为它的网格项。
+- 网格项 `item-1`  内部的三个子元素都变为它的网格项。
 
 ### 其它属性
 
@@ -2788,7 +2805,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 - [`z-index`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/z-index)：当不同网格项占据同一网格单元时，解决覆盖顺序，详见 [`z-index`](#`z-index`)。
 - 更多...
 
-## 多列布局 
+## 多列布局
 
 [**多列布局**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_multicol_layout/Basic_concepts)用于将内容布置到一组列框中。
 
@@ -2895,7 +2912,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 ## `overfloaw`
 
-**溢出**  [`overfloaw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 用于控制内容溢出*指定高度*的元素框时显示的方式。
+**溢出** [`overfloaw`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/overflow) 用于控制内容溢出*指定高度*的元素框时显示的方式。
 
 **属性值**:
 
@@ -3117,94 +3134,94 @@ p {
 
 - **元素水平和垂直对齐**
 
-    1. 使用 `display:flex`
+  1. 使用 `display:flex`
 
-        ```html
-        <div class="container">
-          <p class="content">这个元素将会基于容器水平垂直居中。</p>
-        </div>
-        ```
+     ```html
+     <div class="container">
+       <p class="content">这个元素将会基于容器水平垂直居中。</p>
+     </div>
+     ```
 
-        ```css
-        .container {
-          display: flex;
-          justify-content: center; /* 子元素水平居中 */
-          align-items: center; /* 子元素垂直居中 */
-        }
-        ```
+     ```css
+     .container {
+       display: flex;
+       justify-content: center; /* 子元素水平居中 */
+       align-items: center; /* 子元素垂直居中 */
+     }
+     ```
 
-    2. 使用 `display:grid`
+  2. 使用 `display:grid`
 
-        ```html
-        <div class="container">
-          <p class="content">这个元素将会基于容器水平垂直居中。</p>
-        </div>
-        ```
+     ```html
+     <div class="container">
+       <p class="content">这个元素将会基于容器水平垂直居中。</p>
+     </div>
+     ```
 
-        ```css
-        .container {
-          display: grid;
-          place-items: center; /* 子元素水平和垂直居中 */ 
-        }
-        ```
+     ```css
+     .container {
+       display: grid;
+       place-items: center; /* 子元素水平和垂直居中 */
+     }
+     ```
 
 - **元素垂直居中**
 
-    - 使用 `position` 和 `transform`
+  - 使用 `position` 和 `transform`
 
-        ```html
-        <div class="container">
-          <p class="content">这个元素将会基于容器水平垂直居中。</p>
-        </div>
-        ```
+    ```html
+    <div class="container">
+      <p class="content">这个元素将会基于容器水平垂直居中。</p>
+    </div>
+    ```
 
-        ```css
-        .container {
-          border: 3px solid green;
-          height: 100px;
-          position: relative; /* 父元素是相对定位 */
-        }
-        .content {
-          margin: 0;
-          background-color: pink;
-          position: absolute; /* 子元素是绝对定位 */
-          top: 50%;
-          left: 50%;
-          /* -ms-transform: translate(-50%, -50%); */
-          transform: translate(-50%, -50%);
-        }
-        ```
+    ```css
+    .container {
+      border: 3px solid green;
+      height: 100px;
+      position: relative; /* 父元素是相对定位 */
+    }
+    .content {
+      margin: 0;
+      background-color: pink;
+      position: absolute; /* 子元素是绝对定位 */
+      top: 50%;
+      left: 50%;
+      /* -ms-transform: translate(-50%, -50%); */
+      transform: translate(-50%, -50%);
+    }
+    ```
 
 - **元素水平对齐**
 
-    - 利用 `margin`，元素必须有宽度，元素必须是块级或显示为块级
+  - 利用 `margin`，元素必须有宽度，元素必须是块级或显示为块级
 
-        ```css
-        /* 水平靠左 */
-        .example {
-          width: 60%;
-          margin-right: auto;
-        }
-        
-        /* 水平居中 */
-        .example {
-          width: 60%;
-          margin: auto;
-        }
-        
-        /* 水平靠左 */
-        .example {
-          width: 60%;
-          margin-left: auto;
-        }
-        
-        /* 行内元素显示为块级并居中 */
-        .example {
-          width: 60%;
-          margin: auto;
-          display: block;
-        }
-        ```
+    ```css
+    /* 水平靠左 */
+    .example {
+      width: 60%;
+      margin-right: auto;
+    }
+
+    /* 水平居中 */
+    .example {
+      width: 60%;
+      margin: auto;
+    }
+
+    /* 水平靠左 */
+    .example {
+      width: 60%;
+      margin-left: auto;
+    }
+
+    /* 行内元素显示为块级并居中 */
+    .example {
+      width: 60%;
+      margin: auto;
+      display: block;
+    }
+    ```
 
 ## 元素隐藏
 
@@ -3239,10 +3256,8 @@ p {
 ```html
 <!--贯穿整行整体-->
 <div class="line">
-
   <!--居中整体-->
   <div class="container">
-
     <!--左侧浮动整体-->
     <div class="left">
       <a target="_blank" href="https://www.mi.com/" class="menu">小米官网</a>
@@ -3257,9 +3272,14 @@ p {
       <a target="_blank" href="https://www.mi.com/" class="menu">协议规则</a>
 
       <!--悬停展示二维码-->
-      <a target="_blank" href="https://www.mi.com/" class="menu" style="position: relative">下载app
+      <a
+        target="_blank"
+        href="https://www.mi.com/"
+        class="menu"
+        style="position: relative"
+        >下载app
         <div class="download">
-          <img src="image folder/qcode.png">
+          <img src="image folder/qcode.png" />
         </div>
       </a>
     </div>
@@ -3320,4 +3340,3 @@ p {
   display: block;
 }
 ```
-

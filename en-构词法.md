@@ -36,6 +36,7 @@ tags:
 
 **词根（Root）** 是一个单词的核心部分，包含它的**基本意义**，通过加上前缀、后缀可以构成很多新单词。词根不能作为一个单词独立使用；很多看似拼写相似的单词，词根未必相同。
 
+<!-- prettier-ignore -->
 | 单词 | 构词结构 | 词性 | 含义 |
 | :---: | :---: | :---: | :---: |
 | polis | 与词根 polis (希腊语) 同名 | n. | 城邦；政治 |
@@ -76,6 +77,7 @@ associate（v. 使发生联系，结交）
 
 ## 表相反意义
 
+<!-- prettier-ignore -->
 |  前缀  | 含义 | 示例  |
 | :---: | :---: | :---: |
 | anti- | 否定 | **anti**freeze 防冻液 |
@@ -91,6 +93,7 @@ associate（v. 使发生联系，结交）
 
 ## 表时间和序列关系
 
+<!-- prettier-ignore -->
 |  前缀  | 含义 | 示例  |
 | :---: | :---: | :---: |
 | ex- | 前任 | ex 前任<br>**ex**-president 前总统<br>**ex**-boyfriend 前男友 |
@@ -101,6 +104,7 @@ associate（v. 使发生联系，结交）
 
 ## 表程度和数量关系
 
+<!-- prettier-ignore -->
 |  前缀  | 含义 | 示例  |
 | :---: | :---: | :---: |
 | micro- | 微小的 | **micro**wave 微波、**micro**scope 显微镜 |
@@ -113,6 +117,7 @@ associate（v. 使发生联系，结交）
 
 ## 表示距离关系
 
+<!-- prettier-ignore -->
 | 前缀  | 含义 | 示例  |
 | :---: | :---: | :---: |
 | tele- | 远的 | **tele**scope 望远镜、**tele**phone 电话、**tele**vision 电视 |
@@ -120,6 +125,7 @@ associate（v. 使发生联系，结交）
 
 ## 其它意义
 
+<!-- prettier-ignore -->
 | 前缀  | 含义 | 示例  |
 | :---: | :---: | :---: |
 | a- | 在...状态中 | **a**sleep 睡着的、**a**live 活着的、**a**lone 独自的、**a**loud 大声地、**a**head 向前、**a**wake 醒着的 |
@@ -142,6 +148,7 @@ associate（v. 使发生联系，结交）
 
 ## 名词后缀
 
+<!-- prettier-ignore -->
 | 后缀 | 含义 | 示例  |
 | :---: | :---: | :---: |
 | -er<br>-or<br>-ar<br>-an<br>-ian<br>-ist<br>-eer<br>-ess | 人 | teach（教）→ teacher（教师）<br>visit（参观）→ visitor（游客）<br>beg（乞讨）→ beggar（乞丐）<br>America（美国）→ American（美国人）<br>physic（药） → physician（医师）<br>physics（物理学）→ physicist（物理学家）<br>engine（发动机） → engineer（工程师）<br>act（表演） → actress（女演员） |
@@ -158,8 +165,9 @@ associate（v. 使发生联系，结交）
 - **-or** 多用于拉丁语来源的词
 - **-er** 多用于日耳曼语来源的词（或更普通常用的动词）
 - **例外**
-    -  **sailor**（水手）虽源自日耳曼语，但受 **tailor**（裁缝）影响拼写为 **-or**
-    - 有些词可以两个都可用，比如 **advisor** 和 **adviser** 都正确，意思一样。
+
+  - **sailor**（水手）虽源自日耳曼语，但受 **tailor**（裁缝）影响拼写为 **-or**
+  - 有些词可以两个都可用，比如 **advisor** 和 **adviser** 都正确，意思一样。
 
 ## -or 和 -ess
 
@@ -167,6 +175,7 @@ associate（v. 使发生联系，结交）
 
 从学科名词（如“...学”）转化为对应的专家称谓（如“...学家”）存在一定的构词规律，主要通过添加后缀实现。
 
+<!-- prettier-ignore -->
 | 尾缀 | 分类 | 示例 | 例外 |
 | :---: | :---: | :---: | :---: |
 | -ist | 自然学科 | physics（物理学）→ physicist（物理学家） | - |

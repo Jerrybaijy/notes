@@ -35,54 +35,53 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 - 同 java
 
-
 ## 声明变量
 
 - **声明基本类型变量**
 
-    ```java
-    数据类型 变量名 = 初始值;
-    ```
+  ```java
+  数据类型 变量名 = 初始值;
+  ```
 
-    ```java
-    Integer myInteger = 10;  // 声明一个整数并赋初值
-    ```
+  ```java
+  Integer myInteger = 10;  // 声明一个整数并赋初值
+  ```
 
 - **声明数组类型变量**
 
-    ```java
-    String[] colors = new List<String>();
-    ```
+  ```java
+  String[] colors = new List<String>();
+  ```
 
 - **声明集合类型变量**
 
-    ```java
-    集合类型<数据类型> 变量名 = new 集合类型<数据类型>();
-    ```
+  ```java
+  集合类型<数据类型> 变量名 = new 集合类型<数据类型>();
+  ```
 
-    ```java
-    List<String> myList = new List<String>();   // 声明一个 String 类型的列表
-    Set<Integer> mySet = new Set<Integer>();    // 声明一个 Integer 类型的集合
-    Map<String, Integer> myMap = new Map<String, Integer>(); // 声明一个 Map，键为 String，值Integer
-    ```
+  ```java
+  List<String> myList = new List<String>();   // 声明一个 String 类型的列表
+  Set<Integer> mySet = new Set<Integer>();    // 声明一个 Integer 类型的集合
+  Map<String, Integer> myMap = new Map<String, Integer>(); // 声明一个 Map，键为 String，值Integer
+  ```
 
 - **声明自定义对象类型变量**
 
-    ```java
-    对象类型 变量名 = new 对象类型(字段 = 字段的值);
-    ```
+  ```java
+  对象类型 变量名 = new 对象类型(字段 = 字段的值);
+  ```
 
-    ```java
-    Account myAccount = new Account(Name = 'Acme Corp');  // 声明一个 Account 对象并初始化
-    ```
+  ```java
+  Account myAccount = new Account(Name = 'Acme Corp');  // 声明一个 Account 对象并初始化
+  ```
 
 ## 输入与输出
 
 - **输出**
 
-    ```java
-    System.debug('这是要输出的信息');
-    ```
+  ```java
+  System.debug('这是要输出的信息');
+  ```
 
 ## Quick Start
 
@@ -99,29 +98,29 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 - The code in your editor looks like this:
 
-    ```java
-    public class OlderAccountsUtility {
-    }
-    ```
+  ```java
+  public class OlderAccountsUtility {
+  }
+  ```
 
 ### Add a Method to the Class
 
 - In the body of the **OlderAccountsUtility** class (the information between the curly brackets), copy and paste the following method.
 
-    ```java
-    public class OlderAccountsUtility {
-        public static void updateOlderAccounts() {
-          // Get the 5 oldest accounts
-          Account[] oldAccounts = [SELECT Id, Description FROM Account ORDER BY CreatedDate ASC LIMIT 5];
-          // loop through them and update the Description field
-          for (Account acct : oldAccounts) {
-              acct.Description = 'Heritage Account';
-          }
-          // save the change you made
-          update oldAccounts;
+  ```java
+  public class OlderAccountsUtility {
+      public static void updateOlderAccounts() {
+        // Get the 5 oldest accounts
+        Account[] oldAccounts = [SELECT Id, Description FROM Account ORDER BY CreatedDate ASC LIMIT 5];
+        // loop through them and update the Description field
+        for (Account acct : oldAccounts) {
+            acct.Description = 'Heritage Account';
         }
-    }
-    ```
+        // save the change you made
+        update oldAccounts;
+      }
+  }
+  ```
 
 - Click **File | Save**.
 
@@ -133,9 +132,9 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 
 - In the **Enter Apex Code** window, enter the following:
 
-    ```java
-    OlderAccountsUtility.updateOlderAccounts();
-    ```
+  ```java
+  OlderAccountsUtility.updateOlderAccounts();
+  ```
 
 - At the bottom right, click **Execute**.
 
@@ -154,19 +153,19 @@ Apex 是 Salesforce 提供的一种**强类型**、**面向对象**编程语言�
 ## 数据类型分类
 
 - [Primitive Data Types (14)](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_primitives.htm)
-    - **整型**：Integer，Long，Decimal
-    - **浮点型**：Double
-    - **字符串**：String
-    - **布尔型**：Boolean
-    - **日期和时间**：Date，Datetime，Time
-    - **对象**：Object
-    - **ID**：ID
-    - **二进制**：Blob
-    - **非标准原始数据类型**：AnyType，Currency
+  - **整型**：Integer，Long，Decimal
+  - **浮点型**：Double
+  - **字符串**：String
+  - **布尔型**：Boolean
+  - **日期和时间**：Date，Datetime，Time
+  - **对象**：Object
+  - **ID**：ID
+  - **二进制**：Blob
+  - **非标准原始数据类型**：AnyType，Currency
 - [Collections](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_collections.htm)
-    - **列表**：List
-    - **集合**：Set
-    - **映射**：Map
+  - **列表**：List
+  - **集合**：Set
+  - **映射**：Map
 - [**枚举**：Enum](https://developer.salesforce.com/docs/atlas.en-us.apexcode.meta/apexcode/langCon_apex_enums.htm)
 
 ## String
@@ -214,21 +213,21 @@ myList.sort();  // 排序
 
 - 语法
 
-    ```java
-    myList.sort();
-    ```
+  ```java
+  myList.sort();
+  ```
 
 - 对 SelectOption 元素进行排序时，优先使用 value 字段，如果相同，则再使用 label 字段。
 
-    ```java
-    List<SelectOption> options = new List<SelectOption>();
-    options.add(new SelectOption('A','United States'));
-    options.add(new SelectOption('C','Canada'));
-    options.add(new SelectOption('A','Mexico'));
-    System.debug('Before sorting: ' + options);
-    options.sort();
-    System.debug('After sorting: ' + options);
-    ```
+  ```java
+  List<SelectOption> options = new List<SelectOption>();
+  options.add(new SelectOption('A','United States'));
+  options.add(new SelectOption('C','Canada'));
+  options.add(new SelectOption('A','Mexico'));
+  System.debug('Before sorting: ' + options);
+  options.sort();
+  System.debug('After sorting: ' + options);
+  ```
 
 ## Boolean
 
@@ -244,9 +243,9 @@ Each Salesforce record is represented as an **sObject** before it is inserted in
 
 - To create an sObject, you need to declare a variable and assign an sObject instance to it. The data type of the variable is sObject.
 
-    ```java
-    Account acct = new Account(Name='Acme');
-    ```
+  ```java
+  Account acct = new Account(Name='Acme');
+  ```
 
 **sObject and Field Names**
 
@@ -255,31 +254,31 @@ Each Salesforce record is represented as an **sObject** before it is inserted in
 - **Find API Name**: **Setup** > **Object Manager** > Click object's name
 
 - **API Name Suffix**
-    - For **custom objects** and **custom fields**, the API name always ends with **__c**.
 
-    - For **custom relationship fields**, the API name ends with **__r**.
+  - For **custom objects** and **custom fields**, the API name always ends with **\_\_c**.
+
+  - For **custom relationship fields**, the API name ends with **\_\_r**.
 
 **Create sObjects and Add Fields**
 
 - Create sObjects
 
-    ```java
-    Account acct = new Account();
-    ```
+  ```java
+  Account acct = new Account();
+  ```
 
 - Two ways to add fields: **constructor** or **dot notation**.
 
-    ```java
-    // 1. Add fields with constructor.
-    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
-    
-    // 2. Add fields with dot notation.
-    Account acct = new Account();
-    acct.Name = 'Acme';
-    acct.Phone = '(415)555-1212';
-    acct.NumberOfEmployees = 100;
-    ```
+  ```java
+  // 1. Add fields with constructor.
+  Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
 
+  // 2. Add fields with dot notation.
+  Account acct = new Account();
+  acct.Name = 'Acme';
+  acct.Phone = '(415)555-1212';
+  acct.NumberOfEmployees = 100;
+  ```
 
 **Generic sObject Data Type**
 
@@ -289,20 +288,20 @@ Each Salesforce record is represented as an **sObject** before it is inserted in
 
     <img src="assets/image-20250322122513211.png" alt="image-20250322122513211" style="zoom:80%;" />
 
-    ```java
-    sObject sobj1 = new Account(Name='Trailhead');
-    sObject sobj2 = new Book__c(Name='Workbook 1');
-    ```
+  ```java
+  sObject sobj1 = new Account(Name='Trailhead');
+  sObject sobj2 = new Book__c(Name='Workbook 1');
+  ```
 
 - The generic sObject is **not** able to access fields using dot notation. Need to **cast** your generic sObject variable to a specific sObject type.
 
-    ```java
-    // Cast a generic sObject to an Account
-    Account acct = (Account)myGenericSObject;
-    // Now, you can use the dot notation to access fields on Account
-    String name = acct.Name;
-    String phone = acct.Phone;
-    ```
+  ```java
+  // Cast a generic sObject to an Account
+  Account acct = (Account)myGenericSObject;
+  // Now, you can use the dot notation to access fields on Account
+  String name = acct.Name;
+  String phone = acct.Phone;
+  ```
 
 - The fields of a generic sObject can be accessed only through the `put()` and `get()` methods.
 
@@ -333,63 +332,64 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 ## switch 语句
 
 - Apex 的 `switch` 语句类似于 Java，但语法稍有不同。
-    - Apex 使用 `switch on` 进行变量匹配.
-    - Apex 使用 `when` 关键字代替 Java 的 `case`。
-    - Apex 的 `switch` 不会发生 Java 中的 Fall-through（贯穿），每个 `when` 代码块都是独立的，不需要 `break`。
-    - Apex 使用 `when else` 关键字代替 Java 的 `default`。
+
+  - Apex 使用 `switch on` 进行变量匹配.
+  - Apex 使用 `when` 关键字代替 Java 的 `case`。
+  - Apex 的 `switch` 不会发生 Java 中的 Fall-through（贯穿），每个 `when` 代码块都是独立的，不需要 `break`。
+  - Apex 使用 `when else` 关键字代替 Java 的 `default`。
 
 - **语法**
 
-    ```java
-    switch on 条件值 {
-        when 值1 {
-            // 执行代码
-        }
-        when 值2 {
-            // 执行代码
-        }
-        when else {
-            // 处理默认情况（类似 Java 的 default）
-        }
-    }
-    ```
+  ```java
+  switch on 条件值 {
+      when 值1 {
+          // 执行代码
+      }
+      when 值2 {
+          // 执行代码
+      }
+      when else {
+          // 处理默认情况（类似 Java 的 default）
+      }
+  }
+  ```
 
-    ```java
-    String status = 'Processing';
-    
-    switch on status {
-        when 'New' {
-            System.debug('订单是新的');
-        }
-        when 'Processing' {
-            System.debug('订单正在处理中');
-        }
-        when 'Completed' {
-            System.debug('订单已完成');
-        }
-        when else {
-            System.debug('未知订单状态');
-        }
-    }
-    ```
+  ```java
+  String status = 'Processing';
+
+  switch on status {
+      when 'New' {
+          System.debug('订单是新的');
+      }
+      when 'Processing' {
+          System.debug('订单正在处理中');
+      }
+      when 'Completed' {
+          System.debug('订单已完成');
+      }
+      when else {
+          System.debug('未知订单状态');
+      }
+  }
+  ```
 
 - **多值匹配**
 
-    ```java
-    Integer day = 6;
-    
-    switch on day {
-        when 1, 2, 3, 4, 5 {
-            System.debug('工作日');
-        }
-        when 6, 7 {
-            System.debug('周末');
-        }
-        when else {
-            System.debug('未知');
-        }
-    }
-    ```
+  ```java
+  Integer day = 6;
+
+  switch on day {
+      when 1, 2, 3, 4, 5 {
+          System.debug('工作日');
+      }
+      when 6, 7 {
+          System.debug('周末');
+      }
+      when else {
+          System.debug('未知');
+      }
+  }
+  ```
 
 ## 三元表达式
 
@@ -397,7 +397,7 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 # 循环结构
 
-- Apex 中有 `for` 、`for-each`、`while`  和 `do-while` 四种循环结构，用法同 Java。
+- Apex 中有 `for` 、`for-each`、`while` 和 `do-while` 四种循环结构，用法同 Java。
 - Apex 中支持**无限循环**和**循环嵌套**，用法同 Java。
 
 # 跳转结构
@@ -418,96 +418,96 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - The initial code is as follows:
 
-    ```java
-    public with sharing class HouseService {
-        public HouseService() {
-    
-        }
-    }
-    ```
+  ```java
+  public with sharing class HouseService {
+      public HouseService() {
+
+      }
+  }
+  ```
 
 - Replace with the following and save:
 
-    ```java
-    public with sharing class HouseService {
-        @AuraEnabled(cacheable=true)
-        public static List<House__c> getRecords() {
-            try {
-                // Create a list of House records from a SOQL query
-                List<House__c> lstHouses = [
-                    SELECT
-                       Id,
-                       Name,
-                       Address__c,
-                       State__c,
-                       City__c,
-                       Zip__c
-                       FROM House__c
-                       WITH USER_MODE
-                       ORDER BY CreatedDate
-                       LIMIT 10
-                    ];
-                      return lstHouses;
-            }
-            // Code to handle exception
-            catch (Exception e) {
-               throw new AuraHandledException(e.getMessage());
-            }
-        }
-    }
-    ```
+  ```java
+  public with sharing class HouseService {
+      @AuraEnabled(cacheable=true)
+      public static List<House__c> getRecords() {
+          try {
+              // Create a list of House records from a SOQL query
+              List<House__c> lstHouses = [
+                  SELECT
+                     Id,
+                     Name,
+                     Address__c,
+                     State__c,
+                     City__c,
+                     Zip__c
+                     FROM House__c
+                     WITH USER_MODE
+                     ORDER BY CreatedDate
+                     LIMIT 10
+                  ];
+                    return lstHouses;
+          }
+          // Code to handle exception
+          catch (Exception e) {
+             throw new AuraHandledException(e.getMessage());
+          }
+      }
+  }
+  ```
 
 - Right-click **HouseService.cls** and select **SFDX: Deploy This Source to Org**. You see a confirmation message that the Apex class successfully deployed to the org.
 
 - Create an anonymous script to test **getRecords()**.
 
-    - Create a new file named **dreamhouseapp.apex** in the **scripts/apex** folder.
+  - Create a new file named **dreamhouseapp.apex** in the **scripts/apex** folder.
 
-    - Tyoe the following:
+  - Tyoe the following:
 
-        ```java
-        System.debug(HouseService.getRecords());
-        ```
+    ```java
+    System.debug(HouseService.getRecords());
+    ```
 
-    - Click **Execute**.
+  - Click **Execute**.
 
-    - Check the query results in the **output panel** shown below. 
+  - Check the query results in the **output panel** shown below.
 
-        ![image-20250317020059440](assets/image-20250317020059440.png)
+    ![image-20250317020059440](assets/image-20250317020059440.png)
 
 ## Call a Static Method
 
 - 使用 static 声明方法
 
-    ```java
-    public class EmailManager {
-        // 使用 static 声明方法
-        public static void sendMail(String address, String subject, String body) {
-            // Create an email message object
-        }
-    }
-    ```
+  ```java
+  public class EmailManager {
+      // 使用 static 声明方法
+      public static void sendMail(String address, String subject, String body) {
+          // Create an email message object
+      }
+  }
+  ```
 
-    ```java
-    // 直接使用类名调用方法
-    EmailManager.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
-    ```
+  ```java
+  // 直接使用类名调用方法
+  EmailManager.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+  ```
 
 - 不使用 static 声明方法
 
-    ```java
-    public class EmailManager {
-        // 不使用 static 声明方法
-        public void sendMail(String address, String subject, String body) {
-            // Create an email message object
-        }
-    }
-    ```
+  ```java
+  public class EmailManager {
+      // 不使用 static 声明方法
+      public void sendMail(String address, String subject, String body) {
+          // Create an email message object
+      }
+  }
+  ```
 
-    ```java
-    EmailManager em = new EmailManager();
-    em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
-    ```
+  ```java
+  EmailManager em = new EmailManager();
+  em.sendMail('Your email address', 'Trailhead Tutorial', '123 body');
+  ```
 
 # DML
 
@@ -515,12 +515,12 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - [Apex DML Statements](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml)
 
-    - `insert`：Adds sObjects
-    - `update`：Modify the existing sObject
-    - `upsert`：Insert or update
-    - `delete`：Delete the existing sObject
-    - `undelete`：Restore the existing sObject
-    - `merge`：合并至多三个记录到其中一个记录
+  - `insert`：Adds sObjects
+  - `update`：Modify the existing sObject
+  - `upsert`：Insert or update
+  - `delete`：Delete the existing sObject
+  - `undelete`：Restore the existing sObject
+  - `merge`：合并至多三个记录到其中一个记录
 
 - The DML statements are analogous to the statement in SQL.
 
@@ -530,19 +530,19 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **Syntax**
 
-    ```java
-    insert sObject
-    insert sObject[]
-    ```
+  ```java
+  insert sObject
+  insert sObject[]
+  ```
 
-    ```java
-    Account newAcct = new Account(name = 'Acme');
-    try {
-       insert newAcct;
-    } catch (DmlException e) {
-    // Process exception here
-    }
-    ```
+  ```java
+  Account newAcct = new Account(name = 'Acme');
+  try {
+     insert newAcct;
+  } catch (DmlException e) {
+  // Process exception here
+  }
+  ```
 
 ## [Update](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_update)
 
@@ -550,24 +550,24 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **Syntax**
 
-    ```java
-    update sObject
-    update sObject[]
-    ```
+  ```java
+  update sObject
+  update sObject[]
+  ```
 
-    ```java
-    Account a = new Account(Name='Acme2');
-    insert(a);
-    
-    Account myAcct = [SELECT Id, Name, BillingCity FROM Account WHERE Id = :a.Id];
-    myAcct.BillingCity = 'San Francisco'; 
-    
-    try {
-        update myAcct;
-    } catch (DmlException e) {
-        // Process exception here
-    }
-    ```
+  ```java
+  Account a = new Account(Name='Acme2');
+  insert(a);
+
+  Account myAcct = [SELECT Id, Name, BillingCity FROM Account WHERE Id = :a.Id];
+  myAcct.BillingCity = 'San Francisco';
+
+  try {
+      update myAcct;
+  } catch (DmlException e) {
+      // Process exception here
+  }
+  ```
 
 ## [Upsert](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_upsert)
 
@@ -575,52 +575,52 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - How Upsert Chooses to Insert or Update
 
-    - Upsert uses the sObject record's primary key (the ID), an idLookup field, or an external ID field to determine whether it should create a record or update an existing one:
-    - If the key isn’t matched, a new object record is created.
-    - If the key is matched once, the existing object record is updated.
-    - If the key is matched multiple times, an error is generated and the object record isn’t inserted or updated.
+  - Upsert uses the sObject record's primary key (the ID), an idLookup field, or an external ID field to determine whether it should create a record or update an existing one:
+  - If the key isn’t matched, a new object record is created.
+  - If the key is matched once, the existing object record is updated.
+  - If the key is matched multiple times, an error is generated and the object record isn’t inserted or updated.
 
 - **Syntax**
 
-    ```java
-    upsert sObject[opt_field]
-    upsert sObject[][opt_field]
-    ```
+  ```java
+  upsert sObject[opt_field]
+  upsert sObject[][opt_field]
+  ```
 
-    ```java
-    // -------------Upsert based on ID-------------
-    List<Account> acctList = new List<Account>();
-    // Fill the accounts list with some accounts
-    
-    try {
-        upsert acctList;
-    } catch (DmlException e) {
-       
-    }
-    ```
+  ```java
+  // -------------Upsert based on ID-------------
+  List<Account> acctList = new List<Account>();
+  // Fill the accounts list with some accounts
 
-    ```java
-    // -------------Upsert based on custom fields-------------
-    // 1. Upsert based on an external ID field
-    List<Account> acctList = new List<Account>();
-    // Fill the accounts list with some accounts
-    
-    try {
-        // Upsert based on an external ID field
-        upsert acctList myExtIDField__c;
-    } catch (DmlException e) {
-       
-    }
-    
-    
-    // 2. Upsert based on the custom field Email
-    Contact jane2 = new Contact(FirstName='Jane',
-                             LastName='Smith',
-                             Email='jane.smith@example.com',
-                             Description='Prefers to be contacted by email.');
-    
-    upsert jane2 Contact.fields.Email;
-    ```
+  try {
+      upsert acctList;
+  } catch (DmlException e) {
+
+  }
+  ```
+
+  ```java
+  // -------------Upsert based on custom fields-------------
+  // 1. Upsert based on an external ID field
+  List<Account> acctList = new List<Account>();
+  // Fill the accounts list with some accounts
+
+  try {
+      // Upsert based on an external ID field
+      upsert acctList myExtIDField__c;
+  } catch (DmlException e) {
+
+  }
+
+
+  // 2. Upsert based on the custom field Email
+  Contact jane2 = new Contact(FirstName='Jane',
+                           LastName='Smith',
+                           Email='jane.smith@example.com',
+                           Description='Prefers to be contacted by email.');
+
+  upsert jane2 Contact.fields.Email;
+  ```
 
 ## [Delete](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_delete)
 
@@ -628,20 +628,20 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **Syntax**
 
-    ```java
-    delete sObject
-    delete sObject[]
-    ```
+  ```java
+  delete sObject
+  delete sObject[]
+  ```
 
-    ```java
-    Account[] doomedAccts = [SELECT Id, Name FROM Account 
-                             WHERE Name = 'DotCom']; 
-    try {
-        delete doomedAccts;
-    } catch (DmlException e) {
-        // Process exception here
-    }
-    ```
+  ```java
+  Account[] doomedAccts = [SELECT Id, Name FROM Account
+                           WHERE Name = 'DotCom'];
+  try {
+      delete doomedAccts;
+  } catch (DmlException e) {
+      // Process exception here
+  }
+  ```
 
 ## [Undelete](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_undelete)
 
@@ -649,19 +649,19 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **Syntax**
 
-    ```java
-    undelete sObject | ID
-    undelete sObject[] | ID[]
-    ```
+  ```java
+  undelete sObject | ID
+  undelete sObject[] | ID[]
+  ```
 
-    ```java
-    Account[] savedAccts = [SELECT Id, Name FROM Account WHERE Name = 'Universal Containers' ALL ROWS]; 
-    try {
-        undelete savedAccts;
-    } catch (DmlException e) {
-        // Process exception here
-    }
-    ```
+  ```java
+  Account[] savedAccts = [SELECT Id, Name FROM Account WHERE Name = 'Universal Containers' ALL ROWS];
+  try {
+      undelete savedAccts;
+  } catch (DmlException e) {
+      // Process exception here
+  }
+  ```
 
 ## [Merge](https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_dml_section.htm#apex_dml_merge)
 
@@ -669,25 +669,25 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **Syntax**
 
-    ```java
-    // The first parameter represents the master record into which the other records are to be merged.
-    merge sObject sObject
-    merge sObject sObject[]
-    merge sObject ID
-    merge sObject ID[]
-    ```
-    
-    ```java
-    List<Account> ls = new List<Account>{new Account(name='Acme Inc.'),new Account(name='Acme')};
-    insert ls;
-    Account masterAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme Inc.' LIMIT 1];
-    Account mergeAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme' LIMIT 1];
-    try {
-        merge masterAcct mergeAcct;
-    } catch (DmlException e) {
-        // Process exception here
-    }
-    ```
+  ```java
+  // The first parameter represents the master record into which the other records are to be merged.
+  merge sObject sObject
+  merge sObject sObject[]
+  merge sObject ID
+  merge sObject ID[]
+  ```
+
+  ```java
+  List<Account> ls = new List<Account>{new Account(name='Acme Inc.'),new Account(name='Acme')};
+  insert ls;
+  Account masterAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme Inc.' LIMIT 1];
+  Account mergeAcct = [SELECT Id, Name FROM Account WHERE Name = 'Acme' LIMIT 1];
+  try {
+      merge masterAcct mergeAcct;
+  } catch (DmlException e) {
+      // Process exception here
+  }
+  ```
 
 ## [获取 ID](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
 
@@ -695,17 +695,17 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **语法**
 
-    ```java
-    Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
-    insert acct;
-    
-    // Get the new ID on the inserted sObject argument
-    ID acctID = acct.Id;
-    // Display this ID in the debug log
-    System.debug('ID = ' + acctID);
-    // Debug log result (the ID will be different in your case)
-    // DEBUG|ID = 001D000000JmKkeIAF
-    ```
+  ```java
+  Account acct = new Account(Name='Acme', Phone='(415)555-1212', NumberOfEmployees=100);
+  insert acct;
+
+  // Get the new ID on the inserted sObject argument
+  ID acctID = acct.Id;
+  // Display this ID in the debug log
+  System.debug('ID = ' + acctID);
+  // Debug log result (the ID will be different in your case)
+  // DEBUG|ID = 001D000000JmKkeIAF
+  ```
 
 ## [DML Bulk](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml?trail_id=force_com_dev_beginner)
 
@@ -713,120 +713,120 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **语法**
 
-    ```java
-    List<Contact> conList = new List<Contact> {
-        new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
-            new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
-            new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
-            new Contact(FirstName='Kim',LastName='Shain',Department='Education')};
-    // Bulk insert all contacts with one DML call
-    insert conList;
-    // List to hold the new contacts to update
-    List<Contact> listToUpdate = new List<Contact>();
-    // Iterate through the list and add a title only
-    //   if the department is Finance
-    for(Contact con : conList) {
-        if (con.Department == 'Finance') {
-            con.Title = 'Financial analyst';
-            // Add updated contact sObject to the list.
-            listToUpdate.add(con);
-        }
-    }
-    // Bulk update all contacts with one DML call
-    update listToUpdate;
-    ```
+  ```java
+  List<Contact> conList = new List<Contact> {
+      new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+          new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+          new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
+          new Contact(FirstName='Kim',LastName='Shain',Department='Education')};
+  // Bulk insert all contacts with one DML call
+  insert conList;
+  // List to hold the new contacts to update
+  List<Contact> listToUpdate = new List<Contact>();
+  // Iterate through the list and add a title only
+  //   if the department is Finance
+  for(Contact con : conList) {
+      if (con.Department == 'Finance') {
+          con.Title = 'Financial analyst';
+          // Add updated contact sObject to the list.
+          listToUpdate.add(con);
+      }
+  }
+  // Bulk update all contacts with one DML call
+  update listToUpdate;
+  ```
 
 ## [DML Exceptions](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
 
 - **语法**
 
-    ```java
-    try {
-        // This causes an exception because
-        //   the required Name field is not provided.
-        Account acct = new Account();
-        // Insert the account
-        insert acct;
-    } catch (DmlException e) {
-        System.debug('A DML exception has occurred: ' +
-                    e.getMessage());
-    }
-    ```
+  ```java
+  try {
+      // This causes an exception because
+      //   the required Name field is not provided.
+      Account acct = new Account();
+      // Insert the account
+      insert acct;
+  } catch (DmlException e) {
+      System.debug('A DML exception has occurred: ' +
+                  e.getMessage());
+  }
+  ```
 
 ## [Database Methods](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml)
 
 - Apex 包含内置的 Database 类，该类提供的方法可代替对应的 DML 语句。
 
-    - `Database.insert()`
+  - `Database.insert()`
 
-    - `Database.update()`
+  - `Database.update()`
 
-    - `Database.upsert()`
+  - `Database.upsert()`
 
-    - `Database.delete()`
+  - `Database.delete()`
 
-    - `Database.undelete()`
+  - `Database.undelete()`
 
-    - `Database.merge()`
+  - `Database.merge()`
 
-    - 例如，以下方法等效于 `insert recordList;` 语句。
+  - 例如，以下方法等效于 `insert recordList;` 语句。
 
-        ```java
-        Database.insert(recordList);
-        ```
+    ```java
+    Database.insert(recordList);
+    ```
 
 - **allOrNone**
 
-    - Database 方法具有可选的 allOrNone 参数，该参数允许您指定操作是否可以部分成功。
-    - 该参数默认为 `true`，即**不提交**成功的记录，并且任何记录发生错误时，立即返回失败记录的错误；等同于正常流程的 DML 语句。
-    - 当该参数设置为 `false` 时，**提交**成功的记录，并且如果部分记录发生错误，则返回失败记录的错误；这是 Database 方法和 DML 语句的区别。
-    - 此外，partial success 选项不会引发异常。
-    - 以下是调用 `insert` 方法，并将 allOrNone 设置为 `false`。
+  - Database 方法具有可选的 allOrNone 参数，该参数允许您指定操作是否可以部分成功。
+  - 该参数默认为 `true`，即**不提交**成功的记录，并且任何记录发生错误时，立即返回失败记录的错误；等同于正常流程的 DML 语句。
+  - 当该参数设置为 `false` 时，**提交**成功的记录，并且如果部分记录发生错误，则返回失败记录的错误；这是 Database 方法和 DML 语句的区别。
+  - 此外，partial success 选项不会引发异常。
+  - 以下是调用 `insert` 方法，并将 allOrNone 设置为 `false`。
 
-        ```java
-        Database.insert(recordList, false);
-        ```
+    ```java
+    Database.insert(recordList, false);
+    ```
 
 - database 的返回值
 
-    - Database 方法会返回一个对象，这个对象包含每条记录的成功或失败的信息。
-    - Insert 返回 `Database.SaveResult` 对象；
-    - Upsert 返回 `Database.UpsertResult` 对象；
-    - Delete 返回 `Database.DeleteResult` 对象。
-    - 例如，insert 返回 `Database.SaveResult` 对象的数组。
+  - Database 方法会返回一个对象，这个对象包含每条记录的成功或失败的信息。
+  - Insert 返回 `Database.SaveResult` 对象；
+  - Upsert 返回 `Database.UpsertResult` 对象；
+  - Delete 返回 `Database.DeleteResult` 对象。
+  - 例如，insert 返回 `Database.SaveResult` 对象的数组。
 
-        ```java
-        Database.SaveResult[] results = Database.insert(recordList, false);
-        ```
+    ```java
+    Database.SaveResult[] results = Database.insert(recordList, false);
+    ```
 
 - **综合示例**：使用 Database 方法，并且有一条记录会返回错误信息。
 
-    ```java
-    // Create a list of contacts
-    List<Contact> conList = new List<Contact> {
-            new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
-            new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
-            new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
-            new Contact()};
-    
-    // Bulk insert all contacts with one DML call
-    Database.SaveResult[] srList = Database.insert(conList, false);
-    
-    // Debug logs: Iterate through each returned result
-    for (Database.SaveResult sr : srList) {
-        if (sr.isSuccess()) {
-            // Operation was successful, so get the ID of the record that was processed
-            System.debug('Successfully inserted contact. Contact ID: ' + sr.getId());
-        } else {
-            // Operation failed, so get all errors
-            for(Database.Error err : sr.getErrors()) {
-                System.debug('The following error has occurred.');
-                System.debug(err.getStatusCode() + ': ' + err.getMessage());
-                System.debug('Contact fields that affected this error: ' + err.getFields());
-    	 }
-        }
-    }
-    ```
+  ```java
+  // Create a list of contacts
+  List<Contact> conList = new List<Contact> {
+          new Contact(FirstName='Joe',LastName='Smith',Department='Finance'),
+          new Contact(FirstName='Kathy',LastName='Smith',Department='Technology'),
+          new Contact(FirstName='Caroline',LastName='Roth',Department='Finance'),
+          new Contact()};
+
+  // Bulk insert all contacts with one DML call
+  Database.SaveResult[] srList = Database.insert(conList, false);
+
+  // Debug logs: Iterate through each returned result
+  for (Database.SaveResult sr : srList) {
+      if (sr.isSuccess()) {
+          // Operation was successful, so get the ID of the record that was processed
+          System.debug('Successfully inserted contact. Contact ID: ' + sr.getId());
+      } else {
+          // Operation failed, so get all errors
+          for(Database.Error err : sr.getErrors()) {
+              System.debug('The following error has occurred.');
+              System.debug(err.getStatusCode() + ': ' + err.getMessage());
+              System.debug('Contact fields that affected this error: ' + err.getFields());
+  	 }
+      }
+  }
+  ```
 
 ## [Work with Related Records](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_dml#work-with-related-records)
 
@@ -834,41 +834,41 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **示例**
 
-    ```java
-    Account acct = new Account(Name='SFDC Account');
-    insert acct;
-    // Once the account is inserted, the sObject will be populated with an ID.
-    // Get this ID.
-    ID acctID = acct.ID;
-    // Add a contact to this account.
-    Contact mario = new Contact(
-        FirstName='Mario',
-        LastName='Ruiz',
-        Phone='415.555.1212',
-        AccountId=acctID);
-    insert mario;
-    ```
+  ```java
+  Account acct = new Account(Name='SFDC Account');
+  insert acct;
+  // Once the account is inserted, the sObject will be populated with an ID.
+  // Get this ID.
+  ID acctID = acct.ID;
+  // Add a contact to this account.
+  Contact mario = new Contact(
+      FirstName='Mario',
+      LastName='Ruiz',
+      Phone='415.555.1212',
+      AccountId=acctID);
+  insert mario;
+  ```
 
 ### Update Related Records
 
 - **示例**
 
-    ```java
-    // Query for the contact, which has been associated with an account.
-    Contact queriedContact = [SELECT Account.Name
-                              FROM Contact
-                              WHERE FirstName = 'Mario' AND LastName='Ruiz'
-                              LIMIT 1];
-    // Update the contact's phone number
-    queriedContact.Phone = '(415)555-1213';
-    // Update the related account industry
-    queriedContact.Account.Industry = 'Technology';
-    // Make two separate calls
-    // 1. This call is to update the contact's phone.
-    update queriedContact;
-    // 2. This call is to update the related account's Industry field.
-    update queriedContact.Account;
-    ```
+  ```java
+  // Query for the contact, which has been associated with an account.
+  Contact queriedContact = [SELECT Account.Name
+                            FROM Contact
+                            WHERE FirstName = 'Mario' AND LastName='Ruiz'
+                            LIMIT 1];
+  // Update the contact's phone number
+  queriedContact.Phone = '(415)555-1213';
+  // Update the related account industry
+  queriedContact.Account.Industry = 'Technology';
+  // Make two separate calls
+  // 1. This call is to update the contact's phone.
+  update queriedContact;
+  // 2. This call is to update the related account's Industry field.
+  update queriedContact.Account;
+  ```
 
 ### Delete Related Records
 
@@ -876,11 +876,10 @@ Apex 中有 `if`、`switch` 和 `三元表达式` 三种选择结构。
 
 - **示例**：此示例会删除该 Account 和其相关的 Contact。
 
-    ```java
-    Account[] queriedAccounts = [SELECT Id FROM Account WHERE Name='SFDC Account'];
-    delete queriedAccounts;
-    ```
-
+  ```java
+  Account[] queriedAccounts = [SELECT Id FROM Account WHERE Name='SFDC Account'];
+  delete queriedAccounts;
+  ```
 
 # [SOQL](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_soql?trail_id=force_com_dev_beginner)
 
@@ -896,48 +895,48 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - SOQL **本身不支持注释**，在 Apex 代码中用 `//` 或 `/* ... */` 记录注释。
 
-    ```sql
-    // 这是一个 Apex 代码中的 SOQL 查询
-    List<Account> accounts = [ 
-        SELECT Id, Name FROM Account
-        // WHERE Name = 'Acme'  -- 这里不能直接使用 SOQL 注释
-    ];
-    ```
+  ```sql
+  // 这是一个 Apex 代码中的 SOQL 查询
+  List<Account> accounts = [
+      SELECT Id, Name FROM Account
+      // WHERE Name = 'Acme'  -- 这里不能直接使用 SOQL 注释
+  ];
+  ```
 
 ## 运行环境
 
 - **Setup Menu** > **Developer Console** > **Query Editor**
 
-    ![image-20250309231432076](assets/image-20250309231432076.png)
+  ![image-20250309231432076](assets/image-20250309231432076.png)
 
 ## SOQL 基础
 
 - SOQL 绝大部分语法与 SQL 相同。
 - **不同点**
-  
-    - 尾缀不加分号 `;`。
-    - SOQL 不能使用 `*` 表示所有字段。
-    - ...
+
+  - 尾缀不加分号 `;`。
+  - SOQL 不能使用 `*` 表示所有字段。
+  - ...
 
 ## 基本示例
 
 - Query Editor
 
-    ```sql
-    SELECT Name,Phone FROM Account
-    ```
+  ```sql
+  SELECT Name,Phone FROM Account
+  ```
 
 - Embedded in Apex
 
-    ```java
-    List<Account> accounts = [SELECT Name, Phone FROM Account];
-    ```
+  ```java
+  List<Account> accounts = [SELECT Name, Phone FROM Account];
+  ```
 
 - **Notice**
 
-    - **Name** and **Phone** is the **Field Name**.
-    - To specify a custom field, a `__c` suffix should be the end of the **Field Name**. For example, **Price__c**.
-    - To specify a custom object (not a field) in SELECT clause, a `__r` suffix should be the end of the **Object Name**. For example, **Price__r**.
+  - **Name** and **Phone** is the **Field Name**.
+  - To specify a custom field, a `__c` suffix should be the end of the **Field Name**. For example, **Price\_\_c**.
+  - To specify a custom object (not a field) in SELECT clause, a `__r` suffix should be the end of the **Object Name**. For example, **Price\_\_r**.
 
 ## Bind Variables
 
@@ -945,18 +944,16 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - **语法**：在变量前加冒号 `:`
 
-    ```java
-    String targetDepartment = 'Wingo';
-    Contact[] techContacts = [SELECT FirstName,LastName
-                              FROM Contact WHERE Department=:targetDepartment];
-    ```
+  ```java
+  String targetDepartment = 'Wingo';
+  Contact[] techContacts = [SELECT FirstName,LastName
+                            FROM Contact WHERE Department=:targetDepartment];
+  ```
 
 ## Aggregate Functions
 
 - Similar to SQL.
 - `COUNT_DISTINCT({Field})` equals to `COUNT(DISTINCT {Field})`
-
-
 
 ## Using For Loops to Iterate Through a List
 
@@ -964,23 +961,23 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - **Setup | Developer Console** > **File | New | Apex Class**.
 
-    ```java
-    public class ContactUtility {
-        public static void viewContacts() {
-            List<Contact> listOfContacts = [SELECT FirstName, LastName FROM Contact];
-            for(Contact con : listOfContacts) {
-                String fullName = 'First Name: ' + con.FirstName + ', Last Name: ' + con.LastName;
-                System.debug(fullName);
-            }
-        }
-    }
-    ```
+  ```java
+  public class ContactUtility {
+      public static void viewContacts() {
+          List<Contact> listOfContacts = [SELECT FirstName, LastName FROM Contact];
+          for(Contact con : listOfContacts) {
+              String fullName = 'First Name: ' + con.FirstName + ', Last Name: ' + con.LastName;
+              System.debug(fullName);
+          }
+      }
+  }
+  ```
 
 - **Setup | Developer Console** > **Debug | Open Execute Anonymous window**
 
-    ```java
-    ContactUtility.viewContacts();
-    ```
+  ```java
+  ContactUtility.viewContacts();
+  ```
 
 ## Query Related Records
 
@@ -992,23 +989,23 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - **示例**
 
-    ```java
-    Account[] acctsWithContacts = [SELECT Name, (SELECT FirstName,LastName FROM Contacts)
-                                   FROM Account
-                                   WHERE Name = 'SFDC Computing'];
-    // Get child records
-    Contact[] cts = acctsWithContacts[0].Contacts;
-    System.debug('Name of first associated contact: '
-                 + cts[0].FirstName + ', ' + cts[0].LastName);
-    ```
+  ```java
+  Account[] acctsWithContacts = [SELECT Name, (SELECT FirstName,LastName FROM Contacts)
+                                 FROM Account
+                                 WHERE Name = 'SFDC Computing'];
+  // Get child records
+  Contact[] cts = acctsWithContacts[0].Contacts;
+  System.debug('Name of first associated contact: '
+               + cts[0].FirstName + ', ' + cts[0].LastName);
+  ```
 
 - **查询目的**：从 **Account** 对象中筛选出 **Name** 为 **SFDC Computing** 的 Account 记录，同时获取与这些 Account 记录关联的 **Contact** 的 **FirstName** 和 **LastName**。
 
 - `(SELECT FirstName,LastName FROM Contacts)`
 
-    - 括号里的 SELECT 是一个内部子查询，子查询在父查询的结果基础上运行。
-    - 内部子查询的 `FROM Contacts` 子句针对关系名称运行，而不是针对 Salesforce 对象名称运行。
-    - 也就是说，内部子查询的 Contacts 只是 Name 为 **SFDC Computing** 的 Account 关联的所有 Contact 对象，而不是整个 Salesforce 的 Contact 对象。
+  - 括号里的 SELECT 是一个内部子查询，子查询在父查询的结果基础上运行。
+  - 内部子查询的 `FROM Contacts` 子句针对关系名称运行，而不是针对 Salesforce 对象名称运行。
+  - 也就是说，内部子查询的 Contacts 只是 Name 为 **SFDC Computing** 的 Account 关联的所有 Contact 对象，而不是整个 Salesforce 的 Contact 对象。
 
 - **结果存储**：查询结果存储在 `acctsWithContacts` 数组中，数组中的每个元素都是一个 `Account` 对象，每个 `Account` 对象包含一个 `Contacts` 集合，该集合包含了与该账户关联的所有联系人记录。
 
@@ -1016,37 +1013,36 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - **示例**
 
-    ```java
-    Contact[] cts = [SELECT Account.Name FROM Contact
-                     WHERE FirstName = 'Carol' AND LastName='Ruiz'];
-    Contact carol = cts[0];
-    String acctName = carol.Account.Name;
-    System.debug('Carol\'s account name is ' + acctName);
-    ```
+  ```java
+  Contact[] cts = [SELECT Account.Name FROM Contact
+                   WHERE FirstName = 'Carol' AND LastName='Ruiz'];
+  Contact carol = cts[0];
+  String acctName = carol.Account.Name;
+  System.debug('Carol\'s account name is ' + acctName);
+  ```
 
-- **查询目的**：从 `Contact` 对象中筛选出 `FirstName` 为 **Carol** 且 `LastName` 为 **Ruiz** 的 Contact 记录，同时获取这些 Contact  记录关联的 `Account` 对象的 `Name` 字段值。
+- **查询目的**：从 `Contact` 对象中筛选出 `FirstName` 为 **Carol** 且 `LastName` 为 **Ruiz** 的 Contact 记录，同时获取这些 Contact 记录关联的 `Account` 对象的 `Name` 字段值。
 
 - `SELECT Account.Name`，这里的 Account 是 Contact 记录的一个字段，这个字段会关联到 Contact 记录对应的 Account 对象。
 
 - 整个第一条语句返回的是一个包含多个 Contact 记录的数组，每个记录里包含了 Account 字段，Account 字段又有 Name 字段。
 
-    ```
-    [
-        {
-            "Id": "003000000123456",
-            "Account": {
-                "Name": "ABC 公司"
-            }
-        },
-        {
-            "Id": "003000000789012",
-            "Account": {
-                "Name": "XYZ 企业"
-            }
-        }
-    ]
-    ```
-
+  ```
+  [
+      {
+          "Id": "003000000123456",
+          "Account": {
+              "Name": "ABC 公司"
+          }
+      },
+      {
+          "Id": "003000000789012",
+          "Account": {
+              "Name": "XYZ 企业"
+          }
+      }
+  ]
+  ```
 
 ### Query Related Records for Custom Object
 
@@ -1064,29 +1060,28 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - **Child-to-Parent Query**
 
-    - `SELECT Address__c, Picture__c, Broker__r.Name FROM Property__c`
-    - `Broker__r` 代表的是 Brocker **Object**
+  - `SELECT Address__c, Picture__c, Broker__r.Name FROM Property__c`
+  - `Broker__r` 代表的是 Brocker **Object**
 
-        <img src="assets/image-20250326100857190.png" alt="image-20250326100857190" style="zoom:50%;" />
+      <img src="assets/image-20250326100857190.png" alt="image-20250326100857190" style="zoom:50%;" />
 
 - **Parent-to-Child Query**
 
-    - `SELECT Name, (SELECT Address__c, Price__c FROM Properties__r) FROM Broker__c`
-    
-    - `Broker__r` 代表的是 Brocker **Object**
-    
-        <img src="assets/image-20250326103731909.png" alt="image-20250326103731909" style="zoom:50%;" />
-    
+  - `SELECT Name, (SELECT Address__c, Price__c FROM Properties__r) FROM Broker__c`
+
+  - `Broker__r` 代表的是 Brocker **Object**
+
+      <img src="assets/image-20250326103731909.png" alt="image-20250326103731909" style="zoom:50%;" />
 
 ## Filtered Query
 
 - Sample
 
-    ```sql
-    SELECT Name, (SELECT Name FROM Contacts)
-    FROM Account
-    WHERE Id IN (SELECT AccountId FROM Contact WHERE LastName = 'Forbes')
-    ```
+  ```sql
+  SELECT Name, (SELECT Name FROM Contacts)
+  FROM Account
+  WHERE Id IN (SELECT AccountId FROM Contact WHERE LastName = 'Forbes')
+  ```
 
 - **查询目的**：从 **Account** 对象中筛选出 **Account** 和 **Contact** 的 **Name**，这个 **Contact** 的 **LastName** 为 **Forbes**。
 
@@ -1096,8 +1091,8 @@ SOQL 可以内嵌在 Apex 代码中，即**内联 SOQL**。
 
 - SOSL 用于在**多个**对象和字段中快速搜索特定的文本字符串，而 SOQL 主要用于查询**单个**对象或对象之间的关系。
 - SOSL 默认是一种**模糊**搜索，而 SOQL 默认是一种**精准**搜索。比如搜索 Digital：
-    - SOSL：Digital | The Digital Company
-    - SOQL：Digital
+  - SOSL：Digital | The Digital Company
+  - SOQL：Digital
 
 ## 运行环境
 
@@ -1110,52 +1105,55 @@ SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有�
 
 - 在 Query Editor 中，**SearchQuery** 使用花括号 `{}` 包围，且没有尾缀分号。
 
-    ```sql
-    FIND {SearchQuery} [IN SearchGroup] [RETURNING ObjectsAndFields]
-    ```
+  ```sql
+  FIND {SearchQuery} [IN SearchGroup] [RETURNING ObjectsAndFields]
+  ```
 
 - 内嵌在 Apex 中，**SearchQuery** 使用单引号 `‘` 包围
 
-    ```sql
-    FIND 'SearchQuery' [IN SearchGroup] [RETURNING ObjectsAndFields]
-    ```
+  ```sql
+  FIND 'SearchQuery' [IN SearchGroup] [RETURNING ObjectsAndFields]
+  ```
 
-    ```java
-    String searchQuery = 'SFDC'
-    List<List<SObject>> searchList = [FIND :searchQuery IN ALL FIELDS
-                                          RETURNING Account(Name), Contact(FirstName,LastName)];
-    ```
+  ```java
+  String searchQuery = 'SFDC'
+  List<List<SObject>> searchList = [FIND :searchQuery IN ALL FIELDS
+                                        RETURNING Account(Name), Contact(FirstName,LastName)];
+  ```
 
 ## SearchQuery
 
 - SearchQuery 是要搜索的文本。
 - 必须是一个或多个**完整**的单词，否则不识别。
-    - `Hello`：可以搜索到 **Hello world**
-    - `Hell`：不可以搜索到 **Hello world**
-    - `-` 可分隔多个单词，例如 `1234-5678` 中，`1234` 和 `5678` 被认为是两个单词。
+
+  - `Hello`：可以搜索到 **Hello world**
+  - `Hell`：不可以搜索到 **Hello world**
+  - `-` 可分隔多个单词，例如 `1234-5678` 中，`1234` 和 `5678` 被认为是两个单词。
 
 - 如果搜索的是两个单词，字段中包含这两个单词即可，与位置无关。
-    - 例如搜索 `The Query`，可以搜索到 `Account: The SFDC Query Man`
+  - 例如搜索 `The Query`，可以搜索到 `Account: The SFDC Query Man`
 - 可以使用逻辑运算符（AND、OR）和括号进行分组。
-    - 例如：`FIND {wingo OR man} IN ALL FIELDS RETURNING Account(Name)`
+
+  - 例如：`FIND {wingo OR man} IN ALL FIELDS RETURNING Account(Name)`
 
 - 搜索文本不区分大小写。
-    - 例如：`FIND {wingo} IN ALL FIELDS RETURNING Account(Name)` 等效于 例如：`FIND {WINGO} IN ALL FIELDS RETURNING Account(Name)`
+
+  - 例如：`FIND {wingo} IN ALL FIELDS RETURNING Account(Name)` 等效于 例如：`FIND {WINGO} IN ALL FIELDS RETURNING Account(Name)`
 
 - 通配符
-    - `*`：匹配搜索文本中间或末尾的**任意个**字符
-    - `?`：匹配搜索文本中间或末尾的**一个**字符
+  - `*`：匹配搜索文本中间或末尾的**任意个**字符
+  - `?`：匹配搜索文本中间或末尾的**一个**字符
 
 ## SearchGroup
 
 - SearchGroup 是要搜索的字段的范围。
 - 它是可选的，如果未指定，则默认搜索范围为 **ALL FIELDS**。
 - 可以采用以下值之一
-    - `ALL FIELDS` `所有字段`
-    - `NAME FIELDS` `名称字段`
-    - `EMAIL FIELDS` `电子邮件字段`
-    - `PHONE FIELDS` `电话字段`
-    - `SIDEBAR FIELDS` `侧边栏字段`
+  - `ALL FIELDS` `所有字段`
+  - `NAME FIELDS` `名称字段`
+  - `EMAIL FIELDS` `电子邮件字段`
+  - `PHONE FIELDS` `电话字段`
+  - `SIDEBAR FIELDS` `侧边栏字段`
 
 ## ObjectsAndFields
 
@@ -1165,10 +1163,10 @@ SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有�
 ## 其它
 
 - SOSL 同样具有 SQL 的如下功能。
-    - **WHERE**: `RETURNING Account(Name, Industry WHERE Industry='Apparel')`
-    - **ORDER**: `RETURNING Account(Name, Industry ORDER BY Name)`
-    - **LIMIT**: `RETURNING Account(Name, Industry LIMIT 10)`
-    - 引用变量（详见 SOQL）
+  - **WHERE**: `RETURNING Account(Name, Industry WHERE Industry='Apparel')`
+  - **ORDER**: `RETURNING Account(Name, Industry ORDER BY Name)`
+  - **LIMIT**: `RETURNING Account(Name, Industry LIMIT 10)`
+  - 引用变量（详见 SOQL）
 
 ## SOSL Sample
 
@@ -1176,58 +1174,57 @@ SOSL 的基本语法结构如下：在 Query Editor 和 API 中，语法略有�
 
 - Based on
 
-    - TP: **Write SOQL Queries**
+  - TP: **Write SOQL Queries**
 
-    - Sample: **Prerequisites**
+  - Sample: **Prerequisites**
 
-        ```java
-        // Add account and related contact
-        Account acct = new Account(
-            Name='SFDC Computing',
-            Phone='(415)555-1212',
-            NumberOfEmployees=50,
-            BillingCity='San Francisco');
-        insert acct;
-        // Once the account is inserted, the sObject will be
-        // populated with an ID.
-        // Get this ID.
-        ID acctID = acct.ID;
-        // Add a contact to this account.
-        Contact con = new Contact(
-            FirstName='Carol',
-            LastName='Ruiz',
-            Phone='(415)555-1212',
-            Department='Wingo',
-            AccountId=acctID);
-        insert con;
-        // Add account with no contact
-        Account acct2 = new Account(
-            Name='The SFDC Query Man',
-            Phone='(310)555-1213',
-            NumberOfEmployees=50,
-            BillingCity='Los Angeles',
-            Description='Expert in wing technologies.');
-        insert acct2;
-        ```
+    ```java
+    // Add account and related contact
+    Account acct = new Account(
+        Name='SFDC Computing',
+        Phone='(415)555-1212',
+        NumberOfEmployees=50,
+        BillingCity='San Francisco');
+    insert acct;
+    // Once the account is inserted, the sObject will be
+    // populated with an ID.
+    // Get this ID.
+    ID acctID = acct.ID;
+    // Add a contact to this account.
+    Contact con = new Contact(
+        FirstName='Carol',
+        LastName='Ruiz',
+        Phone='(415)555-1212',
+        Department='Wingo',
+        AccountId=acctID);
+    insert con;
+    // Add account with no contact
+    Account acct2 = new Account(
+        Name='The SFDC Query Man',
+        Phone='(310)555-1213',
+        NumberOfEmployees=50,
+        BillingCity='Los Angeles',
+        Description='Expert in wing technologies.');
+    insert acct2;
+    ```
 
 - Sample
 
-    ```java
-    String soslFindClause = 'Wingo OR SFDC';
-    List<List<sObject>> searchList = [FIND :soslFindClause IN ALL FIELDS
-                        RETURNING Account(Name),Contact(FirstName,LastName,Department)];
-    Account[] searchAccounts = (Account[])searchList[0];
-    Contact[] searchContacts = (Contact[])searchList[1];
-    System.debug('Found the following accounts.');
-    for (Account acct : searchAccounts) {
-        System.debug(acct.Name);
-    }
-    System.debug('Found the following contacts.');
-    for (Contact cont : searchContacts) {
-        System.debug(cont.LastName + ', ' + cont.FirstName);
-    }
-    ```
-
+  ```java
+  String soslFindClause = 'Wingo OR SFDC';
+  List<List<sObject>> searchList = [FIND :soslFindClause IN ALL FIELDS
+                      RETURNING Account(Name),Contact(FirstName,LastName,Department)];
+  Account[] searchAccounts = (Account[])searchList[0];
+  Contact[] searchContacts = (Contact[])searchList[1];
+  System.debug('Found the following accounts.');
+  for (Account acct : searchAccounts) {
+      System.debug(acct.Name);
+  }
+  System.debug('Found the following contacts.');
+  for (Contact cont : searchContacts) {
+      System.debug(cont.LastName + ', ' + cont.FirstName);
+  }
+  ```
 
 # Trigger
 
@@ -1257,24 +1254,24 @@ trigger HelloWorldTrigger on Account (before insert) {
 
 - Replace the default code with the following and save.
 
-    ```java
-    trigger HelloWorldTrigger on Account (before insert) {
-    	System.debug('Hello World!');
-    }
-    ```
+  ```java
+  trigger HelloWorldTrigger on Account (before insert) {
+  	System.debug('Hello World!');
+  }
+  ```
 
 - Test the trigger:
 
-    - **Debug** | **Open Execute Anonymous Window**
+  - **Debug** | **Open Execute Anonymous Window**
 
-    - Add the following and then click **Execute**.
+  - Add the following and then click **Execute**.
 
-        ```java
-        Account a = new Account(Name='Test Trigger');
-        insert a;
-        ```
+    ```java
+    Account a = new Account(Name='Test Trigger');
+    insert a;
+    ```
 
-    - In the debug log, find the `Hello World!` statement. The log also shows that the trigger has been executed.
+  - In the debug log, find the `Hello World!` statement. The log also shows that the trigger has been executed.
 
 ## Trigger Events
 
@@ -1323,12 +1320,12 @@ trigger ContextExampleTrigger on Account (before insert, after insert, after del
 
 - Sample in Trailhead: [Calling a Class Method from a Trigger](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#calling-a-class-method-from-a-trigger)
 
-    ```java
-    trigger 触发器名称 on 关联对象 (触发事件) {
-        // Call a class method in a trigger.
-        类名.方法名(参数)
-    }
-    ```
+  ```java
+  trigger 触发器名称 on 关联对象 (触发事件) {
+      // Call a class method in a trigger.
+      类名.方法名(参数)
+  }
+  ```
 
 ## Adding Related Records
 
@@ -1342,17 +1339,17 @@ You sometimes need to add restrictions on certain database operations, such as p
 
 - Sample in Trailhead: [Using Trigger Exceptions](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner#using-trigger-exceptions)
 
-    ```java
-    trigger AccountDeletion on Account (before delete) {
-        for (Account a : [SELECT Id FROM Account
-                         WHERE Id IN (SELECT AccountId FROM Opportunity) AND
-                         Id IN :Trigger.old]) {
-            // Prevent the deletion of accounts if they have related opportunities.
-            Trigger.oldMap.get(a.Id).addError(
-                'Cannot delete account with related opportunities.');
-        }
-    }
-    ```
+  ```java
+  trigger AccountDeletion on Account (before delete) {
+      for (Account a : [SELECT Id FROM Account
+                       WHERE Id IN (SELECT AccountId FROM Opportunity) AND
+                       Id IN :Trigger.old]) {
+          // Prevent the deletion of accounts if they have related opportunities.
+          Trigger.oldMap.get(a.Id).addError(
+              'Cannot delete account with related opportunities.');
+      }
+  }
+  ```
 
 ### Disable a Trigger Exceptions
 
@@ -1420,4 +1417,3 @@ trigger DmlTriggerBulk on Account(after update) {
     update oppsToUpdate;
 }
 ```
-

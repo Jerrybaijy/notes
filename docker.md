@@ -20,26 +20,26 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - **WSL**：
 
-    - Docker Desktop 安装过程中会引导安装 WSL 2，然后重启。
+  - Docker Desktop 安装过程中会引导安装 WSL 2，然后重启。
 
-        ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
-    
-    - 重启以后会自动弹出命令行窗口，安装 WSL 2。
-    
-    - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
+    ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
+
+  - 重启以后会自动弹出命令行窗口，安装 WSL 2。
+
+  - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
 
 - **Linux**
 
-    - Microsoft Store 安装 Ubuntu。
-    - 运行 Ubuntu 直到正常使用。
+  - Microsoft Store 安装 Ubuntu。
+  - 运行 Ubuntu 直到正常使用。
 
 - 运行 Docker Desktop。
 
 - 验证安装。
 
-    ```bash
-    docker -v
-    ```
+  ```bash
+  docker -v
+  ```
 
 - 接下来可以在终端中操作 Docker。
 
@@ -49,41 +49,41 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - 直接使用包管理器 apt 进行安装
 
-    ```bash
-    sudo apt install docker.io -y
-    ```
+  ```bash
+  sudo apt install docker.io -y
+  ```
 
 - 以下是安装之后的初始配置
 - 查看安装版本
 
-    ```bash
-    docker -v
-    ```
+  ```bash
+  docker -v
+  ```
 
 - 将当前用户加入到 Docker 组，详见 `Linux > usermod`
 
-    ```bash
-    sudo usermod -aG docker jerry
-    ```
+  ```bash
+  sudo usermod -aG docker jerry
+  ```
 
 - 退出当前终端并注销重新登录，使用户组生效。
 
 - 禁用开机启动；Docker 默认随系统一起开机启动，为节省资源，在学习时应禁用开机启动
 
-    ```bash
-    sudo systemctl disable docker
-    sudo systemctl disable docker.socket
-    ```
+  ```bash
+  sudo systemctl disable docker
+  sudo systemctl disable docker.socket
+  ```
 
 - 查看 Docker 服务状态；安装完成后，Docker 服务会自动启动，否则可以手动启动。
 
-    ```bash
-    # 查看 Docker 服务状态
-    sudo systemctl status docker
-    
-    # 手动启动
-    sudo systemctl start docker
-    ```
+  ```bash
+  # 查看 Docker 服务状态
+  sudo systemctl status docker
+
+  # 手动启动
+  sudo systemctl start docker
+  ```
 
 - 代理选择 `Tun 模式`
 
@@ -91,25 +91,25 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - 验证安装；如果以下容器能正常运行返回，说明安装正确。
 
-    ```bash
-    sudo docker run hello-world
-    ```
+  ```bash
+  sudo docker run hello-world
+  ```
 
 - 登录
 
-    ```bash
-    docker login
-    ```
+  ```bash
+  docker login
+  ```
 
 #### 官方脚本安装
 
 - curl 工具已安装
 - 下载 Docker 安装脚本并执行脚本
 
-    ```bash
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    ```
+  ```bash
+  curl -fsSL https://get.docker.com -o get-docker.sh
+  sudo sh get-docker.sh
+  ```
 
 - 初始配置详见包管理器安装
 
@@ -136,7 +136,6 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   docker-compose down
   ```
 
-
 ## Docker 管理
 
 - **Docker 管理**
@@ -144,13 +143,13 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   ```bash
   # 查看 Docker 版本信息
   docker -v
-  
+
   # 显示 Docker 详细版本信息
   docker version
-  
+
   # 显示 Docker 系统信息
   docker info
-  
+
   # 登录和登出
   docker login
   docker logout
@@ -160,14 +159,15 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 1. 本地已安装并启动登录 Docker
 2. 创建项目
-5. 项目根目录创建 Dockerfile
+3. 项目根目录创建 Dockerfile
 
 4. 终端进入文件夹 HelloDocker 目录
-7. 构建推送镜像
+5. 构建推送镜像
 
    - 手动构建构建镜像保存至本地，加标签，然后手动推送至 DockerHub
    - 通过 GitLab Pipeline 自动构建镜像并自动推送至 DockerHub
-8. 运行容器
+
+6. 运行容器
 
    - 从本地 image 运行容器
    - 从 DockerHub 拉取 image 运行容器
@@ -237,7 +237,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   # 检查容器详细信息
   docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
   ```
-  
+
 - **进入容器执行**
 
   ```bash
@@ -255,7 +255,6 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   ```bash
   docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH
   ```
-
 
 # 命令选项
 
@@ -336,137 +335,130 @@ Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种�
 
 ## 手动训练
 
-1. 这个训练用于手动模拟 Dockerfile 文件创建一个容器化应用的过程。
+- 这个训练用于手动模拟 Dockerfile 文件创建一个容器化应用的过程。
+- 下载 `main.go` 至本地 `hello` 文件夹
 
-2. 下载 `main.go` 至本地 `hello` 文件夹
+  - **文件来源**：[GoogleCloudPlatform/kubernetes-engine-samples/quickstarts/hello-app/](https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/da3e2c22c727e3b6d72d4eea04c19335db0727cb/quickstarts/hello-app)
+  - 与 Dockerfile Build Image 项目使用相同文件
+  - Linux 下载
 
-   - **文件来源**：[GoogleCloudPlatform/kubernetes-engine-samples/quickstarts/hello-app/](https://github.com/GoogleCloudPlatform/kubernetes-engine-samples/tree/da3e2c22c727e3b6d72d4eea04c19335db0727cb/quickstarts/hello-app)
+    ```bash
+    curl -O https://raw.githubusercontent.com/GoogleCloudPlatform/kubernetes-engine-samples/main/quickstarts/hello-app/main.go
+    ```
 
-   - 与 Dockerfile Build Image 项目使用相同文件
+  - main.go
 
-   - Linux 下载
+    ```go
+    package main
 
-     ```bash
-     curl -O https://raw.githubusercontent.com/GoogleCloudPlatform/kubernetes-engine-samples/main/quickstarts/hello-app/main.go
-     ```
+    import (
+      "fmt"
+      "log"
+      "net/http"
+      "os"
+    )
 
-   - main.go
+    func main() {
+      mux := http.NewServeMux()
+      mux.HandleFunc("/", hello)
 
-     ```go
-     package main
-     
-     import (
-     	"fmt"
-     	"log"
-     	"net/http"
-     	"os"
-     )
-     
-     func main() {
-     	mux := http.NewServeMux()
-     	mux.HandleFunc("/", hello)
-     
-     	port := os.Getenv("PORT")
-     	if port == "" {
-     		port = "8080"
-     	}
-     
-     	log.Printf("Server listening on port %s", port)
-     	log.Fatal(http.ListenAndServe(":"+port, mux))
-     }
-     
-     func hello(w http.ResponseWriter, r *http.Request) {
-     	log.Printf("Serving request: %s", r.URL.Path)
-     	host, _ := os.Hostname()
-     	fmt.Fprintf(w, "你好, 世界!\n")
-     	fmt.Fprintf(w, "Version: 1.0.0\n")
-     	fmt.Fprintf(w, "Hostname: %s\n", host)
-     }
-     ```
+      port := os.Getenv("PORT")
+      if port == "" {
+        port = "8080"
+      }
 
-   - Dockerfile
+      log.Printf("Server listening on port %s", port)
+      log.Fatal(http.ListenAndServe(":"+port, mux))
+    }
 
-     ```dockerfile
-     FROM golang:1.21.0 as builder
-     WORKDIR /app
-     RUN go mod init hello-app
-     COPY *.go ./
-     RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-     
-     FROM gcr.io/distroless/base-debian11
-     WORKDIR /
-     COPY --from=builder /hello-app /hello-app
-     ENV PORT 8080
-     USER nonroot:nonroot
-     CMD ["/hello-app"]
-     ```
+    func hello(w http.ResponseWriter, r *http.Request) {
+      log.Printf("Serving request: %s", r.URL.Path)
+      host, _ := os.Hostname()
+      fmt.Fprintf(w, "你好, 世界!\n")
+      fmt.Fprintf(w, "Version: 1.0.0\n")
+      fmt.Fprintf(w, "Hostname: %s\n", host)
+    }
+    ```
 
-3. 模拟 Dockerfile
+  - Dockerfile
 
-   ```bash
-   #本地全程都在 hello 目录下操作
-   
-   # 编译环境
-   # 创建编译环境容器
-   docker run -d -it --name builder golang:1.21.0
-   # 进入编译环境容器的 bash 环境
-   docker exec -it builder /bin/sh
-   # 进入根目录
-   cd /
-   # 创建工作目录app
-   mkdir app
-   # 模块化
-   go mod init hello-app
-   # 退出编译环境容器
-   exit
-   # 复制 main.go 至容器内的工作目录 app
-   docker cp *.go builder:/app
-   # 进入编译环境容器
-   docker exec -it builder bash
-   cd /app
-   # 编译你的 Go 应用程序为静态 Linux 可执行文件。然后，你将编译好的可执行文件保存为 /hello-app。
-   CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-   exit
-   
-   
-   # 生产环境
-   # 创建生产环境：通过将应用程序从 builder 镜像中复制到这个镜像中，并设置相应的运行时配置，最终生成的镜像将是一个精简的、只包含应用程序和运行时环境的最小化镜像，从而降低了攻击面和维护成本。
-   # 由于不允许运行，我使用了一个新image
-   docker run -d -it -p 80:8080 --name runner debian
-   # 从编译环境中复制应用程序 hello-ap 到生产环境，由于容器之间不能直接复制，所以以本机作为中转
-   docker cp builder:/hello-app .
-   docker cp hello-app runner:/hello-app
-   
-   # 进入生产环境容器的 bash 环境
-   docker exec -it runner bash
-   # 暴露生产环境的8080端口
-   export PORT=8080
-   # 添加nonroot用户
-   adduser --disabled-password --gecos "" nonroot
-   # 运行应用程序
-   /hello-app
-   ```
+    ```dockerfile
+    FROM golang:1.21.0 as builder
+    WORKDIR /app
+    RUN go mod init hello-app
+    COPY *.go ./
+    RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
 
-4. 访问应用
+    FROM gcr.io/distroless/base-debian11
+    WORKDIR /
+    COPY --from=builder /hello-app /hello-app
+    ENV PORT 8080
+    USER nonroot:nonroot
+    CMD ["/hello-app"]
+    ```
 
-   ```bash
-   # 在容器内访问应用，新建终端，容器环境内有 curl 工具
-   curl http://127.0.0.1:8080
-   # 在Linux中访问应用
-   curl http://127.0.0.1:80
-   ```
+- 模拟 Dockerfile
 
-5. 如果想把 runner 容器 commit 成 Image
+  ```bash
+  #本地全程都在 hello 目录下操作
 
-   ```bash
-   # 创建 Image
-   docker commit -c 'ENTRYPOINT ["/hello-app"]' runner $IMAGE_NAME
-   # 运行新容器
-   docker run -d -it -p 80:8080 --name $CONTAINER_NAME $IMAGE_NAME
-   # 随后即可访问
-   ```
+  # 编译环境
+  # 创建编译环境容器
+  docker run -d -it --name builder golang:1.21.0
+  # 进入编译环境容器的 bash 环境
+  docker exec -it builder /bin/sh
+  # 进入根目录
+  cd /
+  # 创建工作目录app
+  mkdir app
+  # 模块化
+  go mod init hello-app
+  # 退出编译环境容器
+  exit
+  # 复制 main.go 至容器内的工作目录 app
+  docker cp *.go builder:/app
+  # 进入编译环境容器
+  docker exec -it builder bash
+  cd /app
+  # 编译你的 Go 应用程序为静态 Linux 可执行文件。然后，你将编译好的可执行文件保存为 /hello-app。
+  CGO_ENABLED=0 GOOS=linux go build -o /hello-app
+  exit
+
+  # 生产环境
+  # 创建生产环境：通过将应用程序从 builder 镜像中复制到这个镜像中，并设置相应的运行时配置，最终生成的镜像将是一个精简的、只包含应用程序和运行时环境的最小化镜像，从而降低了攻击面和维护成本。
+  # 由于不允许运行，我使用了一个新image
+  docker run -d -it -p 80:8080 --name runner debian
+  # 从编译环境中复制应用程序 hello-ap 到生产环境，由于容器之间不能直接复制，所以以本机作为中转
+  docker cp builder:/hello-app .
+  docker cp hello-app runner:/hello-app
+
+  # 进入生产环境容器的 bash 环境
+  docker exec -it runner bash
+  # 暴露生产环境的8080端口
+  export PORT=8080
+  # 添加nonroot用户
+  adduser --disabled-password --gecos "" nonroot
+  # 运行应用程序
+  /hello-app
+  ```
+
+- 访问应用
+
+  ```bash
+  # 在容器内访问应用，新建终端，容器环境内有 curl 工具
+  curl http://127.0.0.1:8080
+  # 在Linux中访问应用
+  curl http://127.0.0.1:80
+  ```
+
+- 如果想把 runner 容器 commit 成 Image
+
+  ```bash
+  # 创建 Image
+  docker commit -c 'ENTRYPOINT ["/hello-app"]' runner $IMAGE_NAME
+  # 运行新容器
+  docker run -d -it -p 80:8080 --name $CONTAINER_NAME $IMAGE_NAME
+  # 随后即可访问
+  ```
 
 # 其它
-
-
-

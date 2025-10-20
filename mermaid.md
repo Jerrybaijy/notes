@@ -28,8 +28,9 @@ tags:
 ```
 
 - 注释种类
-    - `config` 内部使用 `#` 注释
-    - 其余使用 `%%` 注释
+
+  - `config` 内部使用 `#` 注释
+  - 其余使用 `%%` 注释
 
 - 不能在行尾注释
 - 不能在 `config` 之前注释
@@ -62,7 +63,7 @@ flowchart TD
 
 ### 图表特定主题
 
-**语法**：``%%{init: {'theme':'主题名'}}%%``
+**语法**：`%%{init: {'theme':'主题名'}}%%`
 
 ```
 %%{init: {'theme':'forest'}}%%
@@ -120,7 +121,7 @@ graph LR
 
 - [Directives 指令](https://mermaid.js.org/config/directives.html)：使用 `%%{ }%%` 语法进行配置传递（被 Frontmatter 代替，已弃用）。
 
-    > 从 v10.5.0 版本开始，Directives 指令已弃用。请使用 frontmatter 中的 `config` 键传递配置。
+  > 从 v10.5.0 版本开始，Directives 指令已弃用。请使用 frontmatter 中的 `config` 键传递配置。
 
 ### Frontmatter 配置
 
@@ -129,10 +130,10 @@ graph LR
 ```
 ---
 config:
-    配置属性
+  配置属性
 ---
 图表声明
-	图表内容
+  图表内容
 ```
 
 ```
@@ -144,7 +145,7 @@ config:
     primaryColor: "#00ff00"
 ---
 flowchart LR
-	Hello --> World
+  Hello --> World
 ```
 
 > ```mermaid
@@ -156,7 +157,7 @@ flowchart LR
 >     primaryColor: "#00ff00"
 > ---
 > flowchart LR
-> 	Hello --> World
+>   Hello --> World
 > ```
 
 # XY 图表
@@ -167,19 +168,19 @@ flowchart LR
 
 ```
 xychart-beta
-    
+
     %% 图表标题，可省略
     title "图表标题"
-    
+
     %% X轴
     x-axis [jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dec]
-    
+
     %% Y轴
     y-axis "Revenue (in $)" 4000 --> 11000
-    
+
     %% 条形图数据
     bar [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
-    
+
     %% 折线图数据
     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 ```
@@ -208,14 +209,14 @@ xychart-beta
 - **数值范围值**是所有 Bar 的**数值范围**：`min --> max`
 - **x 轴和 y 轴**
 
-    - x 轴主要用作**分类值**，但在需要时也可以用作数值范围值。
-    - y 轴用于表示**数值范围值**，不能包含分类值。
-    - **注意**：当图表方向是 `horizontal` 时，x 轴是垂直的，y 轴是水平的，各自用途不变。
+  - x 轴主要用作**分类值**，但在需要时也可以用作数值范围值。
+  - y 轴用于表示**数值范围值**，不能包含分类值。
+  - **注意**：当图表方向是 `horizontal` 时，x 轴是垂直的，y 轴是水平的，各自用途不变。
 
 - **轴标题**：可省略
 
-    - `x-axis "x轴标题" [分类值, 分类值, 分类值]`
-    - `y-axis "y轴标题" min --> max`
+  - `x-axis "x轴标题" [分类值, 分类值, 分类值]`
+  - `y-axis "y轴标题" min --> max`
 
 ## XY 图表配置
 
@@ -267,10 +268,10 @@ xychart-beta
 > ```mermaid
 > ---
 > config:
-> 
+>
 >     # 定义图表属性
 >     xyChart:
-> 
+>
 >         # 声明图表高度为400
 >         height: 400
 > ---
@@ -282,6 +283,7 @@ xychart-beta
 >     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 > ```
 
+<!-- prettier-ignore -->
 | 参数 | 描述 | 默认值 |
 | :---: | :---: | :---: |
 | width | 图表的宽度 | 700 |
@@ -322,11 +324,11 @@ xychart-beta
 > ```mermaid
 > ---
 > config:
-> 
+>
 >     # 坐标轴属性写在图表属性内
 >     xyChart:
 >         height: 400
-> 
+>
 >         # 定义 x 轴属性
 >         xAxis:
 >             # 声明 x 轴宽度为10
@@ -341,6 +343,7 @@ xychart-beta
 >     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 > ```
 
+<!-- prettier-ignore -->
 | 参数 | 描述 | 默认值 |
 | :---: | :---: | :---: |
 | titleFontSize | 轴标题的字体大小 | 16 |
@@ -360,7 +363,7 @@ config:
 
         # 主题属性声明需要写在图表属性内
         xyChart:
-            
+
             # 声明 x 轴线颜色
             xAxisLineColor: "#ff0000"
 ---
@@ -377,13 +380,13 @@ xychart-beta
 > config:
 >     xyChart:
 >         height: 400
-> 
+>
 >     # 定义主题属性
 >     themeVariables:
-> 
+>
 >         # 主题属性声明写在图表属性内
 >         xyChart:
->             
+>
 >             # 声明 x 轴线颜色
 >             xAxisLineColor: "#ff0000"
 > ---
@@ -395,6 +398,7 @@ xychart-beta
 >     line [5000, 6000, 7500, 8200, 9500, 10500, 11000, 10200, 9200, 8500, 7000, 6000]
 > ```
 
+<!-- prettier-ignore -->
 | 参数 | 描述 |
 | :---: | :---: |
 | backgroundColor | 整个图表的背景颜色 |
@@ -438,7 +442,7 @@ gantt
 > ```mermaid
 > gantt
 >     title 甘特图示例
-> 
+>
 >         任务1 :2014-01-01, 30d
 >         任务2 :20d
 >         任务3 :2014-01-12, 12d
@@ -446,7 +450,7 @@ gantt
 > ```
 
 - `开始时间`：除第一个以外，其余都可省略，默认为上一个任务的结束时间。
-- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 
+- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。
 
 ## 甘特图元数据
 
@@ -454,10 +458,10 @@ gantt
 
 - 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 `任务名: 元数据项`
 - 如果指定**单个**元数据项，则确定任务结束时间。
-    - 它可以是：`特定的日期/时间` | `持续时间`，如 `2025-09-26` | `15d`
-    - 如果指定的是 `持续时间`，则将其添加到任务的开始日期以确定任务的结束日期，同时考虑任何排除项。
+  - 它可以是：`特定的日期/时间` | `持续时间`，如 `2025-09-26` | `15d`
+  - 如果指定的是 `持续时间`，则将其添加到任务的开始日期以确定任务的结束日期，同时考虑任何排除项。
 - 如果指定**两个**元数据项，则后面的元数据项将按前面的情况进行解释。如 `2025-09-26, 15d`
-- 如果指定**三个**元数据项，则后面两个项目将按前面的情况进行解释。第一个项目将表示任务的 ID，可以使用 `later <taskID>` 语法引用它。如 `task1, 2025-09-26, 15d` & `after task1, 15d`，详见  `taskID`
+- 如果指定**三个**元数据项，则后面两个项目将按前面的情况进行解释。第一个项目将表示任务的 ID，可以使用 `later <taskID>` 语法引用它。如 `task1, 2025-09-26, 15d` & `after task1, 15d`，详见 `taskID`
 
 ### taskID
 
@@ -472,7 +476,7 @@ gantt
         任务名 :开始时间, 持续时间
 
         %% 使用前面的任务 ID
-        任务名 :after 任务ID, 持续时间  
+        任务名 :after 任务ID, 持续时间
         任务名 :开始时间, 持续时间
 ```
 
@@ -535,7 +539,7 @@ gantt
 ```mermaid
 gantt
     title 排除示例
-    
+
     %% 排除周末
     excludes weekends
 
@@ -556,13 +560,13 @@ gantt
 ```
 gantt
     title 图表名称
-    
+
     %% 定义输入日期格式
     dateFormat 输入日期格式
 
         任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
-        任务名 :开始时间, 持续时间  
+        任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
 ```
 
@@ -583,13 +587,13 @@ gantt
 ```
 gantt
     title 图表名称
-    
+
     %% 定义输出日期格式
     axisFormat 输出日期格式
 
         任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
-        任务名 :开始时间, 持续时间  
+        任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
 ```
 
@@ -610,13 +614,13 @@ gantt
 ```
 gantt
     title 图表名称
-    
+
     %% 定义轴刻度
     tickInterval 轴刻度
 
         任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
-        任务名 :开始时间, 持续时间  
+        任务名 :开始时间, 持续时间
         任务名 :开始时间, 持续时间
 ```
 
@@ -639,16 +643,16 @@ gantt
 ```
 gantt
     title 公元前年份和不足四位年份示例
-    
+
     %% 输入日期格式使用 Unix 时间戳，可使输出显示负数
     dateFormat X
-    
+
     %% 输出日期的 Y 前面加符号 -，可移除输出刻度的前导零，使年份不必强制为4位
     axisFormat %-Y
-        
+
         %% 开始时间为 Unix 时间戳
         任务1 :-68390640000, 300y
-        
+
         任务2 :200y
         任务3 :-76841328000, 200y
         任务4 :-56841328000, 200y
@@ -714,7 +718,7 @@ flowchart LR
 > ---
 > title: 流程图名称
 > ---
-> 
+>
 > flowchart LR
 >     A --> B
 >     B --> C
@@ -726,29 +730,29 @@ flowchart LR
 
 - [流程图节点](https://docs.min2k.com/zh/mermaid/syntax/flowchart.html#节点)
 
-    ```
-    %% 节点ID(显示文本)
-    
-    A(这是显示文本)
-    ```
+  ```
+  %% 节点ID(显示文本)
 
-    > ```mermaid
-    > flowchart LR
-    >     A(这是显示文本)
-    > ```
+  A(这是显示文本)
+  ```
+
+  > ```mermaid
+  > flowchart LR
+  >     A(这是显示文本)
+  > ```
 
 - 显示文本可以使用 HTML
 
-    ```
-    %% 节点ID("<font color='red'>显示文本</font>")
-    
-    A("<font color='red'>显示文本</font>")
-    ```
+  ```
+  %% 节点ID("<font color='red'>显示文本</font>")
+  
+  A("<font color='red'>显示文本</font>")
+  ```
 
-    > ```mermaid
-    > flowchart TD
-    >     A("<font color='red'>黄帝</font>")
-    > ```
+  > ```mermaid
+  > flowchart TD
+  >     A("<font color='red'>黄帝</font>")
+  > ```
 
 ### 节点形状
 
@@ -876,11 +880,11 @@ class 节点ID1,节点ID2 类名;
 ```
 flowchart TD
     A(开始) --> B(处理) --> C(结束)
-  
+
     %% 定义两个样式类
     classDef greenNode fill:#4CAF50,stroke:#333,stroke-width:2px,color:red;
     classDef redNode fill:#F44336,stroke:#000,stroke-width:2px,color:#fff;
-  
+
     %% 应用样式类
     class A greenNode;
     class C redNode;

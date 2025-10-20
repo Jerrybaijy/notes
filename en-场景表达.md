@@ -25,6 +25,7 @@ Very well.
 
 ## 表达日期
 
+<!-- prettier-ignore -->
 | 写法 | 读法 | 中文 |
 | :---: | :---: | :---: |
 | the Tang Dynasty | the Tang Dynasty | 唐代 |
@@ -37,6 +38,7 @@ Very well.
 
 ## 表达时刻
 
+<!-- prettier-ignore -->
 | 时间 | 英文 | 中文 |
 | :---: | :---: | :---: |
 | 1:00 | one o'clock<br>只能用于1到12 | 一点整 |
@@ -50,22 +52,23 @@ Very well.
 关于表示时间介词和冠词的辨析，详见 **辨析 | 时间**
 
 - in the Tang Dynasty 在唐朝
-- in the 21st century 在21世纪
-- in the 1990s/1990's 在20世纪90年代
-- in 2025 在2025年
+- in the 21st century 在 21 世纪
+- in the 1990s/1990's 在 20 世纪 90 年代
+- in 2025 在 2025 年
 - in spring 在春季
 - in January 在一月
-- on May 1st 在5月1日
+- on May 1st 在 5 月 1 日
 - on Monday 在星期一
 - on Chrildren's Day 在儿童节
 - on the Spring Festival 在春节
 - in the morning/afternoon/evening 在早晨/下午/晚上
-- on the morning of May 1st 在5月1日的早晨
+- on the morning of May 1st 在 5 月 1 日的早晨
 - on Monday morning 在星期一的早晨
 - at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/夜里/午夜
 
 ## 上一个和下一个
 
+<!-- prettier-ignore -->
 | 时间单位 | 上上一个 | 上一个 | 这个 | 下一个 | 下下一个 |
 | :---: | :---: | :---: | :---: | :---: | :---: |
 | day | the day before yesterday | yesterday | today | tomorrow | the day after tomorrow |
@@ -76,64 +79,64 @@ Very well.
 ## 表示时态
 
 - **进行**
-    - now
-    - at this time
-    - at this moment
-    - at present
+  - now
+  - at this time
+  - at this moment
+  - at present
 - **过去**
-    - in the past (two years) 在过去（两年时间里）
-    - ever曾经
-    - the other day 几天前
+  - in the past (two years) 在过去（两年时间里）
+  - ever 曾经
+  - the other day 几天前
 - **将来**
-    - tomorrow 在明天
-    - next year 在明年
-    - in a year's time 一年以后
-    - soon，at once 马上
-    - in the furture 在将来
+  - tomorrow 在明天
+  - next year 在明年
+  - in a year's time 一年以后
+  - soon，at once 马上
+  - in the furture 在将来
 - **完成**
-    - already 已经
-    - up to now，so far 到目前为止
+  - already 已经
+  - up to now，so far 到目前为止
 - **其它**
-    - often，always，usually，regularly 经常
-    - generally 一般说来
-    - ever 曾经
-    - never 从不
-    - sometimes，occasionally 有时，偶尔
-    - seldom，rarely 很少
-    - every day 每天
-    - on Sunday**s** 每逢星期日
-    - once a week 每周一次
-    - sooner or later 迟早
-    - soon after 不久以后
-    - afterward 在后来
+  - often，always，usually，regularly 经常
+  - generally 一般说来
+  - ever 曾经
+  - never 从不
+  - sometimes，occasionally 有时，偶尔
+  - seldom，rarely 很少
+  - every day 每天
+  - on Sunday**s** 每逢星期日
+  - once a week 每周一次
+  - sooner or later 迟早
+  - soon after 不久以后
+  - afterward 在后来
 
 ## 问时间
 
 - **问当前时间**
 
-    ——What **time** is it now?  
-    ——It's 10 o'clock.
+  ——What **time** is it now?  
+  ——It's 10 o'clock.
 
-    ——What **day** is it today?  
-    ——It's Friday.
+  ——What **day** is it today?  
+  ——It's Friday.
 
-    ——What **date** is it today?  
-    ——It's July 1st.
+  ——What **date** is it today?  
+  ——It's July 1st.
 
 - **问什么时候**
 
-    ——When did you watched TV?  
-    ——An hour ago.
+  ——When did you watched TV?  
+  ——An hour ago.
 
 - **问频率**
 
-    ——How often does she go to the library?  
-    ——Once a week.
+  ——How often does she go to the library?  
+  ——Once a week.
 
 - **问多长时间**
 
-    ——How long does it take to get to school?  
-    ——It takes about 15 minutes.
+  ——How long does it take to get to school?  
+  ——It takes about 15 minutes.
 
 ## 花时间
 
@@ -141,12 +144,12 @@ Very well.
 
 - **spend**
 
-    sb. spend 时间 on sth.  
-    sb. spend 时间 (in) doing sth.
+  sb. spend 时间 on sth.  
+  sb. spend 时间 (in) doing sth.
 
 - **take**
 
-    It takes sb. 时间 to do sth.
+  It takes sb. 时间 to do sth.
 
 ## 其它时间表达
 
@@ -154,9 +157,9 @@ on time 准时
 
 in time 及时
 
-The clock is **ten minutes slow**. 钟**慢10分钟**。
+The clock is **ten minutes slow**. 钟**慢 10 分钟**。
 
-five hours' time = five hours 5小时的时间
+five hours' time = five hours 5 小时的时间
 
 the other day 几天前
 
@@ -166,6 +169,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 基数（Cardinal Numbers）
 
+<!-- prettier-ignore -->
 | 数字 | 英语 | 中文 |
 | :---: | :---: | :---: |
 | 1 | one | 一 |
@@ -190,6 +194,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 序数（Ordinal Numbers）
 
+<!-- prettier-ignore -->
 | 序数 | 英语 | 中文 |
 | :---: | :---: | :---: |
 | 1st | first | 第一 |
@@ -201,6 +206,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 小数（Decimals）
 
+<!-- prettier-ignore -->
 | 小数 | 英语 | 中文 |
 | :---: | :---: | :---: |
 | 3.14 | three point one four | 三点一四 |
@@ -209,6 +215,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 分数（Fractions）
 
+<!-- prettier-ignore -->
 | 分数 | 英语 | 中文 |
 | :---: | :---: | :---: |
 | 1/2 | one half | 二分之一 |
@@ -222,6 +229,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 百分数（Percentages）
 
+<!-- prettier-ignore -->
 | 百分数 | 英语 | 中文 |
 | :---: | :---: | :---: |
 | 50% | fifty percent | 百分之五十 |
@@ -229,6 +237,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 ## 倍数（Times）
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | once | 一倍 |
@@ -239,18 +248,18 @@ How long does the exam **last**? 考试持续了多长时间？
 
 - **倍数 + as + 原级 + as + 比较者**：最标准、清晰、常见，语法非常严谨
 
-    His house is three times as large as mine.  
-    他的房子是我的三倍大。
+  His house is three times as large as mine.  
+  他的房子是我的三倍大。
 
 - **基数词 + 倍数 + 比较级 + than + 比较者**：更口语，有时略带“比…多三倍”的感觉（稍有歧义）
 
-    His house is three times larger than mine.  
-    他的房子是我的三倍大。
+  His house is three times larger than mine.  
+  他的房子是我的三倍大。
 
 - **A is 倍数 + the size / length / height / number / amount of B**：强调具体**大小/长度/金额**等，用名词，表达更精准。
 
-    His house is three times the size of mine.  
-    他的房子是我的三倍大。
+  His house is three times the size of mine.  
+  他的房子是我的三倍大。
 
 ## 数量介词
 
@@ -274,6 +283,7 @@ How long does the exam **last**? 考试持续了多长时间？
 
 # 疑问词
 
+<!-- prettier-ignore -->
 | 问地点 |   where   | 问怎样 |       how       |
 | :----: | :-------: | :----: | :-------------: |
 | 问原因 |    why    | 问身高 |    how tall     |
@@ -290,38 +300,39 @@ How long does the exam **last**? 考试持续了多长时间？
 
 - **表示正在进行**
 
-    at work 正在工作  
-    on fire 着火  
-    under construction 正在检修
+  at work 正在工作  
+  on fire 着火  
+  under construction 正在检修
 
 # 目的
 
 - **be about doing：为了...**
 
-    Movies are all about making money these days.  
-    当今电影只顾赚钱。
+  Movies are all about making money these days.  
+  当今电影只顾赚钱。
 
 - **be going to do：想要做...**
 
 # 动向
 
 - 到达
-    - arrive at / in sp.
-    - reach sp.
-    - get to sp.
+
+  - arrive at / in sp.
+  - reach sp.
+  - get to sp.
 
 - 去
 
-    - go to sp.
+  - go to sp.
 
-    - leave for sp. 前往某地
-    - frome...to... 从...去...
+  - leave for sp. 前往某地
+  - frome...to... 从...去...
 
 - 回
 
-    - return from sp. 从某地返回
+  - return from sp. 从某地返回
 
-    - return to sp. 返回某地
+  - return to sp. 返回某地
 
 - stay 待在哪
 
@@ -357,29 +368,29 @@ take medicine 吃药
 
 - **spend**
 
-    sb. spend 金钱 on sth.  
-    sb. spend 金钱 (in) doing sth.
+  sb. spend 金钱 on sth.  
+  sb. spend 金钱 (in) doing sth.
 
 - **cost**
 
-    sth. cost sb. 金钱  
-    sth. cost 金钱
+  sth. cost sb. 金钱  
+  sth. cost 金钱
 
 - **pay**
 
-    sb. pay (金钱) for sth.  
-    sb. pay sb. 金钱  
-    sb. pay to do sth.
+  sb. pay (金钱) for sth.  
+  sb. pay sb. 金钱  
+  sb. pay to do sth.
 
 - **afford**
 
-    常用于 be able to 或 can 之后  
-    can afford 钱/sth.  
-    can afford to do sth.
+  常用于 be able to 或 can 之后  
+  can afford 钱/sth.  
+  can afford to do sth.
 
 - **worth**
 
-    be worth 金钱：值多少钱
+  be worth 金钱：值多少钱
 
 ## 其它
 
@@ -389,9 +400,9 @@ It's worth every penny of it. 它确实值这么多钱。
 
 - **句型**
 
-    telephone/call sb. 给某人打电话  
-    telephone sp. 往某地打电话  
-    answer the telephone 接电话
+  telephone/call sb. 给某人打电话  
+  telephone sp. 往某地打电话  
+  answer the telephone 接电话
 
 # 乘车
 
@@ -403,65 +414,63 @@ miss the train 误车
 two return tickets to London 两张返回伦敦的票
 
 We want to **catch the eight nineteen to London**.  
-我们要**乘8点19到伦敦的车**。
-
-
+我们要**乘 8 点 19 到伦敦的车**。
 
 # 其它未整理
 
 ## 口语和书面语
 
-- spoken language  口语
+- spoken language 口语
 
 - **听你的**
 
-    (It's) up to you.
+  (It's) up to you.
 
-    Anything you say.
+  Anything you say.
 
 - **检查**
 
-    书面 review    口语 go over
+  书面 review 口语 go over
 
 - **联系**
 
-    书面 contackt him    口语 reach out to him
+  书面 contackt him 口语 reach out to him
 
 - **安排**
 
-    书面 schedule a meeting    口语 set up a meeting
+  书面 schedule a meeting 口语 set up a meeting
 
-## 100个句型
+## 100 个句型
 
 - 100 important syntax
 
-    ![image-20240419070359521](assets/image-20240419070359521.png)
+  ![image-20240419070359521](assets/image-20240419070359521.png)
 
-    ![image-20240419070618494](assets/image-20240419070618494.png)
+  ![image-20240419070618494](assets/image-20240419070618494.png)
 
-    ![image-20240419070657714](assets/image-20240419070657714.png)
+  ![image-20240419070657714](assets/image-20240419070657714.png)
 
-    ![image-20240419070744668](assets/image-20240419070744668.png)
+  ![image-20240419070744668](assets/image-20240419070744668.png)
 
-    ![image-20240419070817126](assets/image-20240419070817126.png)
+  ![image-20240419070817126](assets/image-20240419070817126.png)
 
 ## 口语
 
-- heads up    注意（类似于 be careful），提醒，警告（可用于警示牌标题）
+- heads up 注意（类似于 be careful），提醒，警告（可用于警示牌标题）
 
-    Heads up, boys! A train is coming.
+  Heads up, boys! A train is coming.
 
 ## 减少
 
-decrease  vi. 下降（大小、数量等数字的减小）
+decrease vi. 下降（大小、数量等数字的减小）
 
-reduce  vt. 减少
+reduce vt. 减少
 
 ## 没有
 
 - 没有
 
-    ![image-20240415182422223](assets/image-20240415182422223.png)
+  ![image-20240415182422223](assets/image-20240415182422223.png)
 
 - **nobody = no one**：强调内容，只指人
 
@@ -469,8 +478,8 @@ reduce  vt. 减少
 
 - **none**：强调数量，可指人 / 物
 
-    - none of + 复数可数名词，谓语可单可复
-    - none of + 不可数名词，谓语必单数
+  - none of + 复数可数名词，谓语可单可复
+  - none of + 不可数名词，谓语必单数
 
 ## 因为
 
@@ -533,12 +542,12 @@ reduce  vt. 减少
 - start to do sth.
 - finish doing sth.
 - stop 停止
-    - stop to do sth. 停下去做另一件事
-    - stop doing sth. 停下正在做的事
+  - stop to do sth. 停下去做另一件事
+  - stop doing sth. 停下正在做的事
 - go on 继续
-    - go on with sth.
-    - go on doing sth. 继续做同一件事
-    - go on to do sth. 继续去做另一件事
+  - go on with sth.
+  - go on doing sth. 继续做同一件事
+  - go on to do sth. 继续去做另一件事
 
 ## 请求帮助
 
@@ -550,23 +559,22 @@ reduce  vt. 减少
 
 - have got sth. 有...
 
-    My case **has got** a zip.  
-    我的包上有个拉链。
+  My case **has got** a zip.  
+  我的包上有个拉链。
 
-    I **have got** 3 dallors.  
-    我有3美元。
+  I **have got** 3 dallors.  
+  我有 3 美元。
 
-    I **have got** a headack.  
-    我头疼。
+  I **have got** a headack.  
+  我头疼。
 
 - 就这些
 
-    ——Is that all?  
-    ——That's all.
+  ——Is that all?  
+  ——That's all.
 
 Cheer up! 振作起来，别灰心！
 
 Aren't you lucky! 你太幸运了！
 
 sb. have the last word. 某人说了算。
-

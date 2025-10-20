@@ -261,27 +261,27 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
 - **语法**：使用 `空白行` 将一行或多行文本进行分隔。
 
-    <table style="text-align: center;">
-      <tr>
-        <th>Markdown语法</th>
-        <th>HTML</th>
-        <th>预览效果</th>
-      </tr>
-      <tr>
-        <td>
-          <p>这是第一段，下面有一个空行。</p>
-          <p>这是第二段，上面有一个空行。</p>
-        </td>
-        <td>
-          <p>&lt;p&gt;这是第一段，下面有一个空行。&lt;/p&gt;</p>
-          <p>&lt;p&gt;这是第二段，上面有一个空行。&lt;/p&gt;</p>
-        </td>
-        <td>
-          <p>这是第一段，下面有一个空行。</p>
-          <p>这是第二段，上面有一个空行。</p>
-        </td>
-      </tr>
-    </table>
+  <table style="text-align: center;">
+    <tr>
+      <th>Markdown语法</th>
+      <th>HTML</th>
+      <th>预览效果</th>
+    </tr>
+    <tr>
+      <td>
+        <p>这是第一段，下面有一个空行。</p>
+        <p>这是第二段，上面有一个空行。</p>
+      </td>
+      <td>
+        <p>&lt;p&gt;这是第一段，下面有一个空行。&lt;/p&gt;</p>
+        <p>&lt;p&gt;这是第二段，上面有一个空行。&lt;/p&gt;</p>
+      </td>
+      <td>
+        <p>这是第一段，下面有一个空行。</p>
+        <p>这是第二段，上面有一个空行。</p>
+      </td>
+    </tr>
+  </table>
 
 - **注意**
 
@@ -294,22 +294,22 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
 - **语法**：使用 <kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd> 在一个段落内创建换行。
 
-    <table style="text-align: center;">
-      <tr>
-        <th>Markdown语法</th>
-        <th>HTML</th>
-        <th>预览效果</th>
-      </tr>
-      <tr>
-        <td style="text-align: left">这是第一行<kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd><br>
-          这是第二行
-        </td>
-        <td>
-          <p>&lt;p&gt;这是第一行&lt;br /&gt;这是第二行&lt;/p&gt;</p>
-        </td>
-        <td>这是第一行<br>这是第二行</td>
-      </tr>
-    </table>
+  <table style="text-align: center;">
+    <tr>
+      <th>Markdown语法</th>
+      <th>HTML</th>
+      <th>预览效果</th>
+    </tr>
+    <tr>
+      <td style="text-align: left">这是第一行<kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd><br>
+        这是第二行
+      </td>
+      <td>
+        <p>&lt;p&gt;这是第一行&lt;br /&gt;这是第二行&lt;/p&gt;</p>
+      </td>
+      <td>这是第一行<br>这是第二行</td>
+    </tr>
+  </table>
 
 - **说明**：**同一个段落内**，不要使用 <kbd>Enter</kbd> 换行，这仅仅会添加**单换行符**。
 - **技巧**：可以使用 HTML 的 `<br />` 元素代替 Markdown 的换行方式。
@@ -372,36 +372,36 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 - 删除线是 Markdown 的**扩展语法**。
 - **语法**：在文本前后各加两个波浪号 `~~` 。
 
-    <table style="text-align: center;">
-      <tr>
-        <th>Markdown语法</th>
-        <th>HTML</th>
-        <th>预览效果</th>
-      </tr>
-      <tr>
-        <td>~~这是一段删除文本~~</td>
-        <td>&lt;del&gt;这是一段删除文本&lt;/del&gt;</td>
-        <td><del>这是一段删除文本</del></td>
-      </tr>
-    </table>
+  <table style="text-align: center;">
+    <tr>
+      <th>Markdown语法</th>
+      <th>HTML</th>
+      <th>预览效果</th>
+    </tr>
+    <tr>
+      <td>~~这是一段删除文本~~</td>
+      <td>&lt;del&gt;这是一段删除文本&lt;/del&gt;</td>
+      <td><del>这是一段删除文本</del></td>
+    </tr>
+  </table>
 
 ## 高亮
 
 - 高亮是 Markdown 的**扩展语法**。
 - **语法**：在文本前后各加两个等号 `==` 。
 
-    <table style="text-align: center;">
-      <tr>
-        <th>Markdown语法</th>
-        <th>HTML</th>
-        <th>预览效果</th>
-      </tr>
-      <tr>
-        <td>==这是一段高亮文本==</td>
-        <td>&lt;mark&gt;这是一段高亮文本&lt;/mark&gt;</td>
-        <td><mark>这是一段高亮文本</mark></td>
-      </tr>
-    </table>
+  <table style="text-align: center;">
+    <tr>
+      <th>Markdown语法</th>
+      <th>HTML</th>
+      <th>预览效果</th>
+    </tr>
+    <tr>
+      <td>==这是一段高亮文本==</td>
+      <td>&lt;mark&gt;这是一段高亮文本&lt;/mark&gt;</td>
+      <td><mark>这是一段高亮文本</mark></td>
+    </tr>
+  </table>
 
 ## 嵌套
 
@@ -459,13 +459,13 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
   ```markdown
   - 第一个列表项,下面是第一个列表项之内的 JSON 代码块（相对于段首缩进 8 个空格）
-  
+
           {
           "firstName": "John",
           "lastName": "Smith",
           "age": 25
           }
-  
+
   - 第二个列表项
   ```
 
@@ -487,15 +487,15 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 - **语法**：在代码块之前和之后的行上使用**三个反引号**（<code>\`\`\`</code>）。  
   如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
 
-      ````markdown
-      ```json
-      {
-      "firstName": "John",
-      "lastName": "Smith",
-      "age": 25
-      }
-      ```
-      ````
+  ````markdown
+  ```json
+  {
+    "firstName": "John",
+    "lastName": "Smith",
+    "age": 25
+  }
+  ```
+  ````
 
 - **渲染效果**
 
@@ -612,7 +612,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
   ```markdown
   <span id="example">第一部分</span>
-  
+
   [点击跳转至百度](#example)
   ```
 
@@ -693,36 +693,36 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ## 有序列表
 
-- **语法**：在每个列表项前添加**数字**并紧跟一个**英文句点**，然后空格。
+**语法**：在每个列表项前添加**数字**并紧跟一个**英文句点**，然后空格。
 
-    <table style="text-align: center;">
-      <tr>
-        <th>Markdown语法</th>
-        <th>HTML</th>
-        <th>预览效果</th>
-      </tr>
-      <tr>
-        <td>
-          1. 第一个有序列表<br>
-          2. 第二个有序列表<br>
-          3. 第三个有序列表
-        </td>
-        <td style="text-align:left">
-          &lt;ol&gt;<br>
-          &nbsp;&nbsp;&lt;li&gt;第一个有序列表&lt;/li&gt;<br>
-          &nbsp;&nbsp;&lt;li&gt;第二个有序列表&lt;/li&gt;<br>
-          &nbsp;&nbsp;&lt;li&gt;第三个有序列表&lt;/li&gt;<br>
-          &lt;/ol&gt;
-        </td>
-        <td style="text-align:left">
-          <ol>
-            <li>第一个有序列表</li>
-            <li>第二个有序列表</li>
-            <li>第三个有序列表</li>
-          </ol>
-        </td>
-      </tr>
-    </table>
+<table style="text-align: center;">
+  <tr>
+    <th>Markdown语法</th>
+    <th>HTML</th>
+    <th>预览效果</th>
+  </tr>
+  <tr>
+    <td>
+      1. 第一个有序列表<br>
+      2. 第二个有序列表<br>
+      3. 第三个有序列表
+    </td>
+    <td style="text-align:left">
+      &lt;ol&gt;<br>
+      &nbsp;&nbsp;&lt;li&gt;第一个有序列表&lt;/li&gt;<br>
+      &nbsp;&nbsp;&lt;li&gt;第二个有序列表&lt;/li&gt;<br>
+      &nbsp;&nbsp;&lt;li&gt;第三个有序列表&lt;/li&gt;<br>
+      &lt;/ol&gt;
+    </td>
+    <td style="text-align:left">
+      <ol>
+        <li>第一个有序列表</li>
+        <li>第二个有序列表</li>
+        <li>第三个有序列表</li>
+      </ol>
+    </td>
+  </tr>
+</table>
 
 ## 无序列表
 
@@ -793,9 +793,9 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
     ```markdown
     - 第一列表项
-    
+
     - 第二列表项
-    
+
     - 第三列表项
     ```
 
@@ -821,121 +821,103 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ### 嵌套列表
 
-- **语法**
+```markdown
+- 第一个列表项
+- 第二个列表项
 
-  ```markdown
-  - 第一个列表项
-  - 第二个列表项
+  - 第一个嵌套列表项
+  - 第二个嵌套列表项
 
-    - 第一个嵌套列表项
-    - 第二个嵌套列表项
+- 第三个列表项
+- 第四个列表项
+```
 
-  - 第三个列表项
-  - 第四个列表项
-  ```
-
-- **渲染效果**
-
-  > - 第一个列表项
-  > - 第二个列表项
-  >
-  >   - 第一个嵌套列表项
-  >   - 第二个嵌套列表项
-  >
-  > - 第三个列表项
-  > - 第四个列表项
+> - 第一个列表项
+> - 第二个列表项
+>
+>   - 第一个嵌套列表项
+>   - 第二个嵌套列表项
+>
+> - 第三个列表项
+> - 第四个列表项
 
 ### 嵌套段落
 
-- **语法**
+```markdown
+- 第一个列表项
+- 第二个列表项
 
-  ```markdown
-  - 第一个列表项
-  - 第二个列表项
+  第一个嵌套段落
 
-    第一个嵌套段落
+  第二个嵌套段落
 
-    第二个嵌套段落
+- 第三个列表项
+- 第四个列表项
+```
 
-  - 第三个列表项
-  - 第四个列表项
-  ```
-
-- **渲染效果**
-
-  > - 第一个列表项
-  > - 第二个列表项
-  >
-  >   第一个嵌套段落
-  >
-  >   第二个嵌套段落
-  >
-  > - 第三个列表项
-  > - 第四个列表项
+> - 第一个列表项
+> - 第二个列表项
+>
+>   第一个嵌套段落
+>
+>   第二个嵌套段落
+>
+> - 第三个列表项
+> - 第四个列表项
 
 ### 嵌套引用块
 
-- **语法**
+```markdown
+- 第一个列表项
+- 第二个列表项
 
-  ```markdown
-  - 第一个列表项
-  - 第二个列表项
+  > 嵌套引用块
 
-    > 嵌套引用块
+- 第三个列表项
+- 第四个列表项
+```
 
-  - 第三个列表项
-  - 第四个列表项
-  ```
-
-- **渲染效果**
-
-  > - 第一个列表项
-  > - 第二个列表项
-  >
-  >   > 嵌套引用块
-  >
-  > - 第三个列表项
-  > - 第四个列表项
+> - 第一个列表项
+> - 第二个列表项
+>
+>   > 嵌套引用块
+>
+> - 第三个列表项
+> - 第四个列表项
 
 ### 嵌套图片
 
-- **语法**
+```markdown
+- 第一个列表项
+- 第二个列表项
 
-  ```markdown
-  - 第一个列表项
-  - 第二个列表项
+  ![Linux](/assets/Linux.png)
 
-    ![Linux](/assets/Linux.png)
+- 第三个列表项
+- 第四个列表项
+```
 
-  - 第三个列表项
-  - 第四个列表项
-  ```
-
-- **渲染效果**
-
-  > - 第一个列表项
-  > - 第二个列表项
-  >
-  >   ![Linux](/assets/Linux.png)
-  >
-  > - 第三个列表项
-  > - 第四个列表项
+> - 第一个列表项
+> - 第二个列表项
+>
+>   ![Linux](/assets/Linux.png)
+>
+> - 第三个列表项
+> - 第四个列表项
 
 ### 嵌套围栏代码块
 
-- **语法**
+````markdown
+- 第一列表项
+- 第二列表项
 
-  ````markdown
-  - 第一列表项
-  - 第二列表项
-  
-    ```markdown
-    这是一个**围栏代码块**
-    ```
-  
-  - 第三列表项
-  - 第四列表项
-  ````
+  ```markdown
+  这是一个**围栏代码块**
+  ```
+
+- 第三列表项
+- 第四列表项
+````
 
 # 表格
 
@@ -945,39 +927,35 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ## 创建表格
 
-- **语法**：使用三个或多个连字符（`---`）创建每列的标题，并使用管道（`|`）分隔每列。
+**语法**：使用三个或多个连字符（`---`）创建每列的标题，并使用管道（`|`）分隔每列。
 
-  ```markdown
-  | 表头 | 表头 |
-  | ---- | ---- |
-  | 内容 | 内容 |
-  | 内容 | 内容 |
-  ```
+```markdown
+| 表头 | 表头 |
+| ---- | ---- |
+| 内容 | 内容 |
+| 内容 | 内容 |
+```
 
-- **渲染效果**
-
-  > | 表头 | 表头 |
-  > | ---- | ---- |
-  > | 内容 | 内容 |
-  > | 内容 | 内容 |
+> | 表头 | 表头 |
+> | ---- | ---- |
+> | 内容 | 内容 |
+> | 内容 | 内容 |
 
 ## 对齐表格
 
-- **语法**：通过在标题行中的连字符的左侧，右侧或两侧添加冒号（`:`），将列中的文本对齐到左侧，右侧或中心。
+**语法**：通过在标题行中的连字符的左侧，右侧或两侧添加冒号（`:`），将列中的文本对齐到左侧，右侧或中心。
 
-  ```markdown
-  | 表头 | 表头 | 表头 |
-  | :--- | :--: | ---: |
-  | 内容 | 内容 | 内容 |
-  | 内容 | 内容 | 内容 |
-  ```
+```markdown
+| 表头 | 表头 | 表头 |
+| :--- | :--: | ---: |
+| 内容 | 内容 | 内容 |
+| 内容 | 内容 | 内容 |
+```
 
-- **渲染效果**
-
-  > | 表头 | 表头 | 表头 |
-  > | :--- | :--: | ---: |
-  > | 内容 | 内容 | 内容 |
-  > | 内容 | 内容 | 内容 |
+> | 表头 | 表头 | 表头 |
+> | :--- | :--: | ---: |
+> | 内容 | 内容 | 内容 |
+> | 内容 | 内容 | 内容 |
 
 ## 格式化表格
 
@@ -1008,172 +986,162 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ## 单个块引用
 
-- **语法**：在段落前添加一个 `>` 符号，然后空格。
+**语法**：在段落前添加一个 `>` 符号，然后空格。
 
-  ```markdown
-  > 这是一个块引用。
-  ```
+```markdown
+> 这是一个块引用。
+```
 
-- **渲染效果**
-
-  > 这是一个块引用。
+> 这是一个块引用。
 
 ## 多个段落块引用
 
-- **语法**：在**段落之间的空白行**添加一个 `>` 符号，然后空格。
+**语法**：在**段落之间的空白行**添加一个 `>` 符号，然后空格。
 
-  ```markdown
-  > 这是块引用的第一个段落。
-  >
-  > 这是块引用的第一个段落。
-  ```
+```markdown
+> 这是块引用的第一个段落。
+>
+> 这是块引用的第一个段落。
+```
 
-- **渲染效果**
-
-  > 这是块引用的第一个段落。
-  >
-  > 这是块引用的第二个段落。
+> 这是块引用的第一个段落。
+>
+> 这是块引用的第二个段落。
 
 ## 嵌套
 
 ### 嵌套块引用
 
-- **语法**：在**要嵌套的段落前**添加一个 `>>` 符号，然后空格。
+**语法**：在**要嵌套的段落前**添加一个 `>>` 符号，然后空格。
 
-  ```markdown
-  > 这是块引用的第一个段落。
-  >
-  > > 这是嵌套的块引用。
-  ```
+```markdown
+> 这是块引用的第一个段落。
+>
+> > 这是嵌套的块引用。
+```
 
-- **渲染效果**
-
-  > 这是块引用的第一个段落。
-  >
-  > > 这是嵌套的块引用。
+> 这是块引用的第一个段落。
+>
+> > 这是嵌套的块引用。
 
 ### 嵌套其它元素
 
-- **语法**：块引用可以包含其他 Markdown 格式的元素，并非所有元素都可以使用。
+**语法**：块引用可以包含其他 Markdown 格式的元素，并非所有元素都可以使用。
 
-  ```markdown
-  > #### 嵌套四级标题
-  >
-  > - 嵌套无序列表
-  > - 嵌套无序列表
-  >
-  > 嵌套**粗体文本**和*斜体文本*
-  ```
+```markdown
+> #### 嵌套四级标题
+>
+> - 嵌套无序列表
+> - 嵌套无序列表
+>
+> 嵌套**粗体文本**和*斜体文本*
+```
 
-- **渲染效果**
-
-  > #### 嵌套四级标题
-  >
-  > - 嵌套无序列表
-  > - 嵌套无序列表
-  >
-  > 嵌套**粗体文本**和*斜体文本*
+> #### 嵌套四级标题
+>
+> - 嵌套无序列表
+> - 嵌套无序列表
+>
+> 嵌套**粗体文本**和*斜体文本*
 
 # 脚注
 
-- 脚注属于 Markdown 的**扩展语法**。
-- **语法**：在方括号（`[^1]`）内添加插入符号和标识符。
+脚注属于 Markdown 的**扩展语法**。
 
-  ```markdown
-  Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+**语法**：在方括号（`[^1]`）内添加插入符号和标识符。
 
-  [^1]: This is the first footnote.
-  [^bignote]: Here's one with multiple paragraphs and code.
-  ```
+```markdown
+Here's a simple footnote,[^1] and here's a longer one.[^bignote]
 
-- **渲染效果**
+[^1]: This is the first footnote.
+[^bignote]: Here's one with multiple paragraphs and code.
+```
 
-  > Here's a simple footnote,[^1] and here's a longer one.[^bignote]
-  >
-  > [^1]: This is the first footnote.
-  > [^bignote]: Here's one with multiple paragraphs and code.
+> Here's a simple footnote,[^1] and here's a longer one.[^bignote]
+>
+> [^1]: This is the first footnote.
+> [^bignote]: Here's one with multiple paragraphs and code.
 
 # 任务列表
 
-- 任务列表属于 Markdown 的**扩展语法**。
-- **语法**：在任务列表项之前添加**减号**和**方括号**，并在方括号前面加上**空格**。  
-  要选择一个复选框，请在方括号`[x]`之间添加 x 。
+任务列表属于 Markdown 的**扩展语法**。
 
-  ```markdown
-  - [x] 工作列表 1
-  - [ ] 工作列表 2
-  - [ ] 工作列表 3
-  ```
+**语法**：在任务列表项之前添加**减号**和**方括号**，并在方括号前面加上**空格**。  
+要选择一个复选框，请在方括号`[x]`之间添加 x 。
 
-- **渲染效果**
+```markdown
+- [x] 工作列表 1
+- [ ] 工作列表 2
+- [ ] 工作列表 3
+```
 
-  > - [x] 工作列表 1
-  > - [ ] 工作列表 2
-  > - [ ] 工作列表 3
+> - [x] 工作列表 1
+> - [ ] 工作列表 2
+> - [ ] 工作列表 3
 
 # 定义列表
 
-- 定义列表属于 Markdown 的**扩展语法**。
-- 该列表的 Markdown 语法没有试验成功。
-- **语法**：在第一行上键入术语。在下一行，键入一个冒号，后跟一个空格和定义。
+定义列表属于 Markdown 的**扩展语法**。
 
-  ```markdown
-  First Term
-  : This is the definition of the first term.
+该列表的 Markdown 语法没有试验成功。
 
-  Second Term
-  : This is one definition of the second term.
-  : This is another definition of the second term.
-  ```
+**语法**：在第一行上键入术语。在下一行，键入一个冒号，后跟一个空格和定义。
 
-  ```html
-  <dl>
-    <dt>First Term</dt>
-    <dd>This is the definition of the first term.</dd>
-    <dt>Second Term</dt>
-    <dd>This is one definition of the second term.</dd>
-    <dd>This is another definition of the second term.</dd>
-  </dl>
-  ```
+```markdown
+First Term
+: This is the definition of the first term.
 
-- **渲染效果**
+Second Term
+: This is one definition of the second term.
+: This is another definition of the second term.
+```
 
-  > <dl>
-  >      <dt>First Term</dt>
-  >      <dd>This is the definition of the first term.</dd>
-  >      <dt>Second Term</dt>
-  >      <dd>This is one definition of the second term.</dd>
-  >      <dd>This is another definition of the second term.</dd>
-  > </dl>
+```html
+<dl>
+  <dt>First Term</dt>
+  <dd>This is the definition of the first term.</dd>
+  <dt>Second Term</dt>
+  <dd>This is one definition of the second term.</dd>
+  <dd>This is another definition of the second term.</dd>
+</dl>
+```
+
+> <dl>
+>      <dt>First Term</dt>
+>      <dd>This is the definition of the first term.</dd>
+>      <dt>Second Term</dt>
+>      <dd>This is one definition of the second term.</dd>
+>      <dd>This is another definition of the second term.</dd>
+> </dl>
 
 # 分隔线
 
-- **语法**：在**单独一个段落**（即前后都有空白行）使用三个或多个星号 (`***`)、破折号 (`---`) 或下划线 (`___`) ，并且不能包含其他内容。
+**语法**：在**单独一个段落**（即前后都有空白行）使用三个或多个星号 (`***`)、破折号 (`---`) 或下划线 (`___`) ，并且不能包含其他内容。
 
-  ```markdown
-  ---
-  ---
+```markdown
+---
+---
 
-  ---
-  ```
+---
+```
 
-- **以上三个分隔线的渲染效果如下：**
+**以上三个分隔线的渲染效果如下：**
 
-  ***
+---
 
 # Emoji 表情
 
-- Emoji 表情属于 Markdown 的扩展语法。
-- [表情符号简码列表](https://gist.github.com/rxaviers/7360908)
-- **语法**：在**表情符号短代码**前后各加 1 个**冒号**。
+Emoji 表情属于 Markdown 的扩展语法。
 
-  ```markdown
-  真好笑！:joy:
-  ```
+> [表情符号简码列表](https://gist.github.com/rxaviers/7360908)
 
-- **渲染效果**
+**语法**：在**表情符号短代码**前后各加 1 个**冒号**。
 
-  > 真好笑！:joy:
+```markdown
+真好笑！:joy:
+```
+
+> 真好笑！:joy:
 
 # 扩展语法
 
@@ -1217,16 +1185,9 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 在使用 Prettier 格式化 Markdown 时，可以在 Markdown 表格的前面添加注释 `<!-- prettier-ignore -->`，从而让 Prettier 在格式化这个文件时，忽略这个表格。
 
 - 默认缩进 2 个空格。
-
 - 不会格式化 `<img>` 的缩进，目前手动调整。
-
 - 会把部分 `*斜体*` 自动格式化为 `_斜体_`。
-
 - 同级列表项之间的空行不会删除。
-
 - 表格源码会很乱，使用 `<!-- prettier-ignore -->`，详见 `prettier | 忽略代码`。
-
-- 会强制把围栏代码块中的 `JSON` 语言的缩进量设置为 2 个空格，其它语言正常。
-
-  
-
+- 会强制把围栏代码块中的 `JSON` 语言的缩进量设置为 2 个空格，其它语言正常。
+- 内联 HTML 代码的缩进会出现问题。

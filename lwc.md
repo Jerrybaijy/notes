@@ -40,7 +40,10 @@ LWC 组件的 HTML 代码必须放在 `<template>` 根标签内。例如：
 <template>
   <div class="container">
     <h1>Hello, LWC!</h1>
-    <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+    <lightning-button
+      label="Click Me"
+      onclick="{handleClick}"
+    ></lightning-button>
   </div>
 </template>
 ```
@@ -56,10 +59,10 @@ LWC 使用 **大括号 `{}`** 语法来绑定 JavaScript 中的变量：
 ```
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
 export default class MyComponent extends LightningElement {
-  name = 'Salesforce';
+  name = "Salesforce";
 }
 ```
 
@@ -70,10 +73,10 @@ export default class MyComponent extends LightningElement {
 LWC 提供 `lwc:if` 和 `lwc:else-if` 和 `lwc:else` 进行静态条件渲染：
 
 ```html
-<template lwc:if={isAdmin}>
+<template lwc:if="{isAdmin}">
   <p>You are an administrator!</p>
 </template>
-<template lwc:else-if={isUser}>
+<template lwc:else-if="{isUser}">
   <p>You are a regular user.</p>
 </template>
 <template lwc:else>
@@ -96,17 +99,17 @@ LWC 提供 `if:true` 和 `if:false` 进行动态条件渲染：
 
 ```html
 <template>
-  <template if:true={isVisible}>
+  <template if:true="{isVisible}">
     <p>This text is visible!</p>
   </template>
-  <template if:false={isVisible}>
+  <template if:false="{isVisible}">
     <p>This text is hidden.</p>
   </template>
 </template>
 ```
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
 export default class MyComponent extends LightningElement {
   isVisible = true;
@@ -120,21 +123,21 @@ LWC 允许使用 `for:each` 遍历数组：
 ```html
 <template>
   <ul>
-    <template for:each={items} for:item="item">
-      <li key={item.id}>{item.name}</li>
+    <template for:each="{items}" for:item="item">
+      <li key="{item.id}">{item.name}</li>
     </template>
   </ul>
 </template>
 ```
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
 export default class MyComponent extends LightningElement {
   items = [
-    { id: 1, name: 'Item A' },
-    { id: 2, name: 'Item B' },
-    { id: 3, name: 'Item C' }
+    { id: 1, name: "Item A" },
+    { id: 2, name: "Item B" },
+    { id: 3, name: "Item C" },
   ];
 }
 ```
@@ -145,16 +148,16 @@ LWC 通过标准的 `on` 事件前缀绑定事件处理函数：
 
 ```html
 <template>
-  <button onclick={handleClick}>Click Me</button>
+  <button onclick="{handleClick}">Click Me</button>
 </template>
 ```
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
 export default class MyComponent extends LightningElement {
   handleClick() {
-    alert('Button clicked!');
+    alert("Button clicked!");
   }
 }
 ```
@@ -169,7 +172,8 @@ LWC 支持 `slot`，允许父组件向子组件传递内容：
 <template>
   <div>
     <h2>Child Component</h2>
-    <slot></slot> <!-- 这里是插槽 -->
+    <slot></slot>
+    <!-- 这里是插槽 -->
   </div>
 </template>
 ```
@@ -191,14 +195,14 @@ LWC 支持 `slot`，允许父组件向子组件传递内容：
 ```html
 <template>
   <input type="text" class="my-input" />
-  <button onclick={handleClick}>Get Value</button>
+  <button onclick="{handleClick}">Get Value</button>
 </template>
 ```
 
 ```javascript
 export default class MyComponent extends LightningElement {
   handleClick() {
-    const inputElement = this.template.querySelector('.my-input');
+    const inputElement = this.template.querySelector(".my-input");
     alert(inputElement.value);
   }
 }
@@ -225,24 +229,24 @@ Salesforce Lightning Design System （SLDS） 是一个 CSS 框架。
 </template>
 ```
 
-# Java Script
+# JavaScript
 
 在 **LWC** 中，JavaScript 负责 **组件逻辑**、**数据管理** 和 **事件处理**，并与 HTML 进行交互。
 
 ## 基本结构
 
 ```javascript
-import { LightningElement } from 'lwc'; // 导入 LightningElement 基类
+import { LightningElement } from "lwc"; // 导入 LightningElement 基类
 
-export default class MyComponent extends LightningElement { // 定义组件类
+export default class MyComponent extends LightningElement {
+  // 定义组件类
   // 具体功能
-  message = 'Hello, LWC!'; // 组件的属性
+  message = "Hello, LWC!"; // 组件的属性
 
   handleClick() {
-    this.message = 'Button Clicked!'; // 修改属性值
+    this.message = "Button Clicked!"; // 修改属性值
   }
 }
-
 ```
 
 ### 导入基类
@@ -250,14 +254,13 @@ export default class MyComponent extends LightningElement { // 定义组件类
 每个 LWC 组件都需要从 `lwc` 模块导入**基类** `LightningElement`，所有组件都必须继承它：
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 ```
 
 ### 定义组件类
 
 ```javascript
-export default class MyComponent extends LightningElement {
-}
+export default class MyComponent extends LightningElement {}
 ```
 
 - `export default class`：导出 LWC 组件，使其可以被 Salesforce 识别并使用。
@@ -275,7 +278,8 @@ message = 'Hello, LWC!';
 
 ```html
 <template>
-  <p>{message}</p>  <!-- 绑定 message 变量 -->
+  <p>{message}</p>
+  <!-- 绑定 message 变量 -->
 </template>
 ```
 
@@ -296,7 +300,7 @@ HTML 绑定 `onclick` 事件：
 ```html
 <template>
   <p>{message}</p>
-  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+  <lightning-button label="Click Me" onclick="{handleClick}"></lightning-button>
 </template>
 ```
 
@@ -315,55 +319,55 @@ HTML 绑定 `onclick` 事件：
 
 - 在子组件 `childComponent.js` 中，使用 `@api` 让 `name` 变成一个 **可被父组件访问的公开属性**：
 
-    ```javascript
-    import { LightningElement, api } from 'lwc';
-    
-    export default class ChildComponent extends LightningElement {
-      @api name = 'Default Name'; // 公开属性，可被父组件访问和赋值
-    }
-    ```
+  ```javascript
+  import { LightningElement, api } from "lwc";
+
+  export default class ChildComponent extends LightningElement {
+    @api name = "Default Name"; // 公开属性，可被父组件访问和赋值
+  }
+  ```
 
 - 在子组件 HTML 模板中使用 `{name}` 绑定 `name` 变量：
 
-    ```html
-    <template>
-      <p>Child Component Name: {name}</p>
-    </template>
-    ```
+  ```html
+  <template>
+    <p>Child Component Name: {name}</p>
+  </template>
+  ```
 
 **在父组件中：**
 
 - 在父组件的 HTML 中使用 `<c-child-component>`，并给 `name` 传递一个值：
 
-    ```html
-    <template>
-      <c-child-component name="Custom Name"></c-child-component>
-    </template>
-    ```
+  ```html
+  <template>
+    <c-child-component name="Custom Name"></c-child-component>
+  </template>
+  ```
 
 - **说明：**
 
-    - `name="Custom Name"` 这一行表示 **父组件** 在 **HTML 中设置子组件的 `name` 值**。
-    - LWC 会自动**将 `"Custom Name"` 传递到子组件的 `name` 变量**。
+  - `name="Custom Name"` 这一行表示 **父组件** 在 **HTML 中设置子组件的 `name` 值**。
+  - LWC 会自动**将 `"Custom Name"` 传递到子组件的 `name` 变量**。
 
 **渲染结果：**
 
 - 当 LWC 渲染 `parentComponent.html` 时，`childComponent.html` 会显示：
 
-    ```html
-    <p>Child Component Name: Custom Name</p>
-    ```
+  ```html
+  <p>Child Component Name: Custom Name</p>
+  ```
 
 ### `@wire`
 
 `@wire` 用于 **调用 Salesforce 数据** 或 **Apex 方法**：
 
 ```javascript
-import { LightningElement, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
+import { LightningElement, wire } from "lwc";
+import { getRecord } from "lightning/uiRecordApi";
 
 export default class MyComponent extends LightningElement {
-  @wire(getRecord, { recordId: '001XXXXXXXXXXXXXXX', fields: ['Account.Name'] })
+  @wire(getRecord, { recordId: "001XXXXXXXXXXXXXXX", fields: ["Account.Name"] })
   account;
 }
 ```
@@ -376,40 +380,44 @@ LWC 提供 `lightning/uiRecordApi`，可以使用 `getRecord()` 来获取 Salesf
 
 - **获取 Account 记录**
 
-    ```javascript
-    import { LightningElement, wire } from 'lwc';
-    import { getRecord } from 'lightning/uiRecordApi';
-    
-    export default class MyComponent extends LightningElement {
-      recordId = '001XXXXXXXXXXXXXXX'; // 假设的 Account 记录 ID
-    
-      @wire(getRecord, { recordId: '$recordId', fields: ['Account.Name', 'Account.Industry'] })
-      account;
-    }
-    ```
+  ```javascript
+  import { LightningElement, wire } from "lwc";
+  import { getRecord } from "lightning/uiRecordApi";
+
+  export default class MyComponent extends LightningElement {
+    recordId = "001XXXXXXXXXXXXXXX"; // 假设的 Account 记录 ID
+
+    @wire(getRecord, {
+      recordId: "$recordId",
+      fields: ["Account.Name", "Account.Industry"],
+    })
+    account;
+  }
+  ```
 
 - **说明**
 
-    | 代码                                                         | 作用                                                         |
-    | ------------------------------------------------------------ | ------------------------------------------------------------ |
-    | `@wire(getRecord, { recordId: '$recordId', fields: [...] })` | 通过 `@wire` **调用 Salesforce API** 并获取 `recordId` 对应的 Account 记录 |
-    | `recordId: '$recordId'`                                      | `recordId` 以 `$` 开头，表示它是 **动态绑定的变量**          |
-    | `fields: ['Account.Name', 'Account.Industry']`               | 指定要获取的字段                                             |
-    | `account`                                                    | **自动存储 API 返回的数据**                                  |
+  <!-- prettier-ignore -->
+  | 代码 | 作用 |
+  | :---: | :---: |
+  | `@wire(getRecord, { recordId: '$recordId', fields: [...] })` | 通过 `@wire` **调用 Salesforce API** 并获取 `recordId` 对应的 Account 记录 |
+  | `recordId: '$recordId'` | `recordId` 以 `$` 开头，表示它是 **动态绑定的变量** |
+  | `fields: ['Account.Name', 'Account.Industry']` | 指定要获取的字段 |
+  | `account` | **自动存储 API 返回的数据** |
 
 - **使用 `account` 数据**：在 **HTML 文件** 里，可以用 `{account.data}` 访问数据：
 
-    ```html
-    <template>
-      <template if:true={account.data}>
-        <p>Account Name: {account.data.fields.Name.value}</p>
-        <p>Industry: {account.data.fields.Industry.value}</p>
-      </template>
-      <template if:true={account.error}>
-        <p>Error fetching record!</p>
-      </template>
+  ```html
+  <template>
+    <template if:true="{account.data}">
+      <p>Account Name: {account.data.fields.Name.value}</p>
+      <p>Industry: {account.data.fields.Industry.value}</p>
     </template>
-    ```
+    <template if:true="{account.error}">
+      <p>Error fetching record!</p>
+    </template>
+  </template>
+  ```
 
 #### 调用 Apex 方法
 
@@ -427,8 +435,8 @@ public with sharing class AccountController {
 **在 LWC 中调用 Apex**：
 
 ```javascript
-import { LightningElement, wire } from 'lwc';
-import getAccounts from '@salesforce/apex/AccountController.getAccounts';
+import { LightningElement, wire } from "lwc";
+import getAccounts from "@salesforce/apex/AccountController.getAccounts";
 
 export default class MyComponent extends LightningElement {
   @wire(getAccounts)
@@ -440,16 +448,15 @@ export default class MyComponent extends LightningElement {
 
 ```html
 <template>
-  <template if:true={accounts.data}>
-    <template for:each={accounts.data} for:item="acc">
-      <p key={acc.Id}>{acc.Name} - {acc.Industry}</p>
+  <template if:true="{accounts.data}">
+    <template for:each="{accounts.data}" for:item="acc">
+      <p key="{acc.Id}">{acc.Name} - {acc.Industry}</p>
     </template>
   </template>
-  <template if:true={accounts.error}>
+  <template if:true="{accounts.error}">
     <p>Error fetching accounts!</p>
   </template>
 </template>
-
 ```
 
 ## Getter 和 Setter
@@ -466,6 +473,7 @@ connectedCallback() {
 
 **常见生命周期方法**
 
+<!-- prettier-ignore -->
 | 方法                     | 触发时机            |
 | ------------------------ | ------------------- |
 | `constructor()`          | 组件实例被创建时    |
@@ -497,7 +505,7 @@ connectedCallback() {
 
 ```javascript
 // childComponent.js
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class ChildComponent extends LightningElement {
   @api message; // 通过 @api 公开属性以接收数据
@@ -511,7 +519,7 @@ export default class ChildComponent extends LightningElement {
 </template>
 ```
 
-### 传递方法 
+### 传递方法
 
 **适用于**：父组件调用子组件的方法。
 
@@ -524,49 +532,54 @@ export default class ChildComponent extends LightningElement {
 <!-- parentComponent.html -->
 <template>
   <c-child-component></c-child-component>
-  <button onclick={callChildMethod}>Call Child Method</button>
+  <button onclick="{callChildMethod}">Call Child Method</button>
 </template>
 ```
 
 ```javascript
 // parentComponent.js
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class ParentComponent extends LightningElement {
   callChildMethod() {
-    this.template.querySelector('c-child-component').childMethod();
+    this.template.querySelector("c-child-component").childMethod();
   }
 }
 ```
 
 ```javascript
 // childComponent.js
-import { LightningElement, api } from 'lwc';
+import { LightningElement, api } from "lwc";
 
 export default class ChildComponent extends LightningElement {
   @api childMethod() {
-    alert('Child method called by Parent!');
+    alert("Child method called by Parent!");
   }
 }
 ```
 
 **关键点**：子组件用 `@api` 公开 `childMethod()`，父组件通过 `this.template.querySelector()` 调用它。
 
-1. **`this.template.querySelector('c-child-component')`**
-    - `this` 指的是 `ParentComponent` 这个 LWC 组件的实例。
-    - `this.template` 代表当前组件的模板 (`parentComponent.html` 的 `<template>` 部分)。
-    - `querySelector('c-child-component')` 通过 CSS 选择器的方式，在当前组件的 HTML 模板中查找 `<c-child-component>` 这个子组件的实例。
-2. **`.childMethod();`**
-    - `querySelector` 返回 `<c-child-component>` 这个子组件的 JavaScript 实例。
-    - `childMethod()` 是 `ChildComponent` 组件暴露的 `@api` 方法。
-    - 由于 `childMethod` 是用 `@api` 标记的，它是**公开方法**，可以被父组件调用。
+- **`this.template.querySelector('c-child-component')`**
+
+  - `this` 指的是 `ParentComponent` 这个 LWC 组件的实例。
+
+  - `this.template` 代表当前组件的模板 (`parentComponent.html` 的 `<template>` 部分)。
+
+  - `querySelector('c-child-component')` 通过 CSS 选择器的方式，在当前组件的 HTML 模板中查找 `<c-child-component>` 这个子组件的实例。
+
+- **`.childMethod();`**
+
+  - `querySelector` 返回 `<c-child-component>` 这个子组件的 JavaScript 实例。
+  - `childMethod()` 是 `ChildComponent` 组件暴露的 `@api` 方法。
+  - 由于 `childMethod` 是用 `@api` 标记的，它是**公开方法**，可以被父组件调用。
 
 **代码流程**：
 
-1. `ParentComponent` 组件包含一个 `ChildComponent` (`<c-child-component>`)。
-2. 用户点击 `<button>` 时，触发 `callChildMethod()` 方法。
-3. `callChildMethod()` 通过 `querySelector` 获取 `ChildComponent` 的实例，并调用其 `childMethod()`。
-4. `ChildComponent` 的 `childMethod()` 触发 `alert('Child method called by Parent!');` 弹出对话框。
+- `ParentComponent` 组件包含一个 `ChildComponent` (`<c-child-component>`)。
+- 用户点击 `<button>` 时，触发 `callChildMethod()` 方法。
+- `callChildMethod()` 通过 `querySelector` 获取 `ChildComponent` 的实例，并调用其 `childMethod()`。
+- `ChildComponent` 的 `childMethod()` 触发 `alert('Child method called by Parent!');` 弹出对话框。
 
 ### 传递事件
 
@@ -582,26 +595,26 @@ export default class ChildComponent extends LightningElement {
 ```html
 <!-- childComponent.html -->
 <template>
-  <button onclick={sendMessage}>发送消息</button>
+  <button onclick="{sendMessage}">发送消息</button>
 </template>
 ```
 
 ```javascript
 // childComponent.js
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 export default class Child extends LightningElement {
   sendMessage() {
-    this.dispatchEvent(new CustomEvent('hello'));
+    this.dispatchEvent(new CustomEvent("hello"));
   }
 }
 ```
 
 ```javascript
 // parentComponent.js
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 export default class Parent extends LightningElement {
   handleHello() {
-    alert('收到子组件的消息！');
+    alert("收到子组件的消息！");
   }
 }
 ```
@@ -609,7 +622,7 @@ export default class Parent extends LightningElement {
 ```html
 <!-- parentComponent.html -->
 <template>
-  <c-child-component onhello={handleHello}></c-child-component>
+  <c-child-component onhello="{handleHello}"></c-child-component>
 </template>
 ```
 
@@ -632,7 +645,7 @@ export const subscribe = (event, callback) => {
 
 export const publish = (event, data) => {
   if (callbacks[event]) {
-    callbacks[event].forEach(callback => callback(data));
+    callbacks[event].forEach((callback) => callback(data));
   }
 };
 ```
@@ -641,12 +654,12 @@ export const publish = (event, data) => {
 
 ```javascript
 // componentA.js
-import { LightningElement } from 'lwc';
-import { publish } from 'c/pubsub';
+import { LightningElement } from "lwc";
+import { publish } from "c/pubsub";
 
 export default class ComponentA extends LightningElement {
   handleClick() {
-    publish('eventName', 'Hello from Component A');
+    publish("eventName", "Hello from Component A");
   }
 }
 ```
@@ -654,7 +667,7 @@ export default class ComponentA extends LightningElement {
 ```html
 <!-- componentA.html -->
 <template>
-  <button onclick={handleClick}>Send to B</button>
+  <button onclick="{handleClick}">Send to B</button>
 </template>
 ```
 
@@ -662,14 +675,14 @@ export default class ComponentA extends LightningElement {
 
 ```javascript
 // componentB.js
-import { LightningElement } from 'lwc';
-import { subscribe } from 'c/pubsub';
+import { LightningElement } from "lwc";
+import { subscribe } from "c/pubsub";
 
 export default class ComponentB extends LightningElement {
-  message = '';
+  message = "";
 
   connectedCallback() {
-    subscribe('eventName', (data) => {
+    subscribe("eventName", (data) => {
       this.message = data;
     });
   }
@@ -708,17 +721,16 @@ export default class ComponentB extends LightningElement {
 
 ```html
 <template>
-  <lightning-button label="Click Me" onclick={handleClick}></lightning-button>
+  <lightning-button label="Click Me" onclick="{handleClick}"></lightning-button>
 </template>
-
 ```
 
 ```javascript
-import { LightningElement } from 'lwc';
+import { LightningElement } from "lwc";
 
 export default class MyComponent extends LightningElement {
   handleClick() {
-    alert('Button clicked!');
+    alert("Button clicked!");
   }
 }
 ```
@@ -733,12 +745,12 @@ export default class MyComponent extends LightningElement {
 
 You have two options for displaying a Lightning web component in the UI.
 
-1. Set the component to support various flexipage types (home, record home, and so on) then add it to a flexipage using the Lightning App Builder. This is the simplest approach and the one you follow in this unit.
-2. You can also create a tab which points to an Aura component containing your Lightning web component. You can see the required pieces in the repo.
-    - [Wrapper Components](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/aura)
-    - [Tabs](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/tabs)
-    - [Visibility Settings](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/permissionsets/recipes.permissionset-meta.xml)
-    - [Default application configuration file](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/applications/LWC_Recipes.app-meta.xml)
+- Set the component to support various flexipage types (home, record home, and so on) then add it to a flexipage using the Lightning App Builder. This is the simplest approach and the one you follow in this unit.
+- You can also create a tab which points to an Aura component containing your Lightning web component. You can see the required pieces in the repo.
+  - [Wrapper Components](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/aura)
+  - [Tabs](https://github.com/trailheadapps/lwc-recipes/tree/master/force-app/main/default/tabs)
+  - [Visibility Settings](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/permissionsets/recipes.permissionset-meta.xml)
+  - [Default application configuration file](https://github.com/trailheadapps/lwc-recipes/blob/master/force-app/main/default/applications/LWC_Recipes.app-meta.xml)
 
 # Build a Reusable UI Component with LWC
 
@@ -753,82 +765,82 @@ You have two options for displaying a Lightning web component in the UI.
 
 - You see these files: a HTML file, a JavaScript file, a metadata XML file, and a test.js file.
 
-    ![image-20250317022341519](assets/image-20250317022341519.png)
+  ![image-20250317022341519](assets/image-20250317022341519.png)
 
 - In the HTML file, **housingMap.html**, copy and paste the following code.
 
-    ```html
-    <template>
-      <lightning-card title="Housing Map">
-        <!-- Explore all the base components via Base component library
-        (https://developer.salesforce.com/docs/component-library/overview/components)-->
-          <lightning-map map-markers={mapMarkers}> </lightning-map>
-      </lightning-card>
-    </template>
-    ```
+  ```html
+  <template>
+    <lightning-card title="Housing Map">
+      <!-- Explore all the base components via Base component library
+      (https://developer.salesforce.com/docs/component-library/overview/components)-->
+      <lightning-map map-markers="{mapMarkers}"> </lightning-map>
+    </lightning-card>
+  </template>
+  ```
 
 - In the JavaScript file, **housingMap.js**, copy and paste the following code.
 
-    ```javascript
-    import { LightningElement, wire } from "lwc";
-    import getHouses from "@salesforce/apex/HouseService.getRecords";
-    export default class HousingMap extends LightningElement {
-        mapMarkers;
-        error;
-        @wire(getHouses)
-        wiredHouses({ error, data }) {
-            if (data) {
-            console.log(data);
-        }
+  ```javascript
+  import { LightningElement, wire } from "lwc";
+  import getHouses from "@salesforce/apex/HouseService.getRecords";
+  export default class HousingMap extends LightningElement {
+    mapMarkers;
+    error;
+    @wire(getHouses)
+    wiredHouses({ error, data }) {
+      if (data) {
+        console.log(data);
       }
     }
-    ```
+  }
+  ```
 
-    **Notice**: The Lightning web component invokes the Apex class **HouseService** you wrote in the previous section to fetch the data.
+  **Notice**: The Lightning web component invokes the Apex class **HouseService** you wrote in the previous section to fetch the data.
 
 - Next, let's add code to transform the data as needed by the [lightning-map](https://developer.salesforce.com/docs/component-library/bundle/lightning-map/documentation) Base component. Replace the code with the following lines.
 
-    ```javascript
-    import { LightningElement, wire } from "lwc";
-    import getHouses from "@salesforce/apex/HouseService.getRecords";
-    export default class HousingMap extends LightningElement {
-        mapMarkers;
-        error;
-        @wire(getHouses)
-        wiredHouses({ error, data }) {
-            if (data) {
-             // Use JavaScript Map function to transform the Apex method response wired to the component into the format required by lightning-map
-              this.mapMarkers = data.map((element) => {
-                    return {
-                        location: {
-                            Street: element.Address__c,
-                            City: element.City__c,
-                            State: element.State__c
-                        },
-                        title: element.Name
-                    };
-                });
-                this.error = undefined;
-            } else if (error) {
-                this.error = error;
-                this.mapMarkers = undefined;
-            }
-        }
+  ```javascript
+  import { LightningElement, wire } from "lwc";
+  import getHouses from "@salesforce/apex/HouseService.getRecords";
+  export default class HousingMap extends LightningElement {
+    mapMarkers;
+    error;
+    @wire(getHouses)
+    wiredHouses({ error, data }) {
+      if (data) {
+        // Use JavaScript Map function to transform the Apex method response wired to the component into the format required by lightning-map
+        this.mapMarkers = data.map((element) => {
+          return {
+            location: {
+              Street: element.Address__c,
+              City: element.City__c,
+              State: element.State__c,
+            },
+            title: element.Name,
+          };
+        });
+        this.error = undefined;
+      } else if (error) {
+        this.error = error;
+        this.mapMarkers = undefined;
+      }
     }
-    ```
+  }
+  ```
 
 - In the XML file, **housingMap.js-meta.xml**, Replace the code with the following lines.
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8" ?>
-    <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-        <apiVersion>63.0</apiVersion>
-        <isExposed>true</isExposed>
-        <targets>
-          <target>lightning__HomePage</target>
-        </targets>
-    </LightningComponentBundle>
-    ```
+  ```xml
+  <?xml version="1.0" encoding="UTF-8" ?>
+  <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+      <apiVersion>63.0</apiVersion>
+      <isExposed>true</isExposed>
+      <targets>
+        <target>lightning__HomePage</target>
+      </targets>
+  </LightningComponentBundle>
+  ```
 
 - Right click and select **SFDX: Deploy This Source to Org**.
 
@@ -842,7 +854,7 @@ You have two options for displaying a Lightning web component in the UI.
 
 - Drag the **housingMap** Lightning web component from the **Custom** area of the Lightning Components list to the top of the **Page Canvas**.
 
-    ![image-20250317025743959](assets/image-20250317025743959.png)
+  ![image-20250317025743959](assets/image-20250317025743959.png)
 
 - Click **Save** > **Activate** > **Assign as Org Default** > **Save** > **Save**.
 
@@ -860,8 +872,8 @@ You have two options for displaying a Lightning web component in the UI.
 ## Create a Salesforce DX Project
 
 - Preconditions
-    - Salesforce CLI
-    - Salesforce Extension Pack
+  - Salesforce CLI
+  - Salesforce Extension Pack
 
 ## Authorize Your Trailhead Playground
 
@@ -885,47 +897,51 @@ You have two options for displaying a Lightning web component in the UI.
 
 - View the newly created files in VS Code: a HTML file, a JavaScript file, a metadata XML file.
 
-    ![image-20250327172236641](assets/image-20250327172236641.png)
+  ![image-20250327172236641](assets/image-20250327172236641.png)
 
 - In the HTML file, `helloWorld.html`, copy and paste the following code.
 
-    ```html
-    <template>
-      <lightning-card title="HelloWorld" icon-name="custom:custom14">
-        <div class="slds-m-around_medium">
-          <p>Hello, {greeting}!</p>
-          <lightning-input label="Name" value={greeting} onchange={changeHandler}></lightning-input>
-        </div>
-      </lightning-card>
-    </template>
-    ```
+  ```html
+  <template>
+    <lightning-card title="HelloWorld" icon-name="custom:custom14">
+      <div class="slds-m-around_medium">
+        <p>Hello, {greeting}!</p>
+        <lightning-input
+          label="Name"
+          value="{greeting}"
+          onchange="{changeHandler}"
+        ></lightning-input>
+      </div>
+    </lightning-card>
+  </template>
+  ```
 
 - In the JavaScript file, `helloWorld.js`, copy and paste the following code.
 
-    ```javascript
-    import { LightningElement } from 'lwc';
-    export default class HelloWorld extends LightningElement {
-            greeting = 'World';
-            changeHandler(event) {
-            this.greeting = event.target.value;
-            }
+  ```javascript
+  import { LightningElement } from "lwc";
+  export default class HelloWorld extends LightningElement {
+    greeting = "World";
+    changeHandler(event) {
+      this.greeting = event.target.value;
     }
-    ```
+  }
+  ```
 
 - In the XML file `helloWorld.js-meta.xml`, copy and paste the following code.
 
-    ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
-    <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="helloWorld">
-        <apiVersion>58.0</apiVersion>
-        <isExposed>true</isExposed>
-        <targets>
-        <target>lightning__AppPage</target>
-        <target>lightning__RecordPage</target>
-        <target>lightning__HomePage</target>
-        </targets>
-    </LightningComponentBundle>
-    ```
+  ```xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata" fqn="helloWorld">
+      <apiVersion>58.0</apiVersion>
+      <isExposed>true</isExposed>
+      <targets>
+      <target>lightning__AppPage</target>
+      <target>lightning__RecordPage</target>
+      <target>lightning__HomePage</target>
+      </targets>
+  </LightningComponentBundle>
+  ```
 
 ## Deploy to Your Trailhead Playground
 
@@ -937,7 +953,7 @@ You have two options for displaying a Lightning web component in the UI.
 - In VS Code, open the Command Palette by pressing **Ctrl+Shift+P**.
 
 - Type `SFDX` and select **SFDX: Open Default Org**.  
-    This opens your Trailhead Playground in a separate browser.
+   This opens your Trailhead Playground in a separate browser.
 
 - **Setup** > **Quick Find**, select **Home** in the **Feature Settings** section.
 
@@ -947,9 +963,9 @@ You have two options for displaying a Lightning web component in the UI.
 
 - Click <img src="assets/48e17b3a1603568290c0e46ff264b243_kix.7nhx167q4m1r.jpg" alt="Setup" style="zoom: 50%;" />then select **Edit Page**.
 
-- Drag the `helloWorld` Lightning web component from the **Custom** area of the Lightning Components list to the top of the Page Canvas. 
+- Drag the `helloWorld` Lightning web component from the **Custom** area of the Lightning Components list to the top of the Page Canvas.
 
-    ![image-20250327175115990](assets/image-20250327175115990.png)
+  ![image-20250327175115990](assets/image-20250327175115990.png)
 
 - Click **Save** | **Activate** | **Assign as Org Default** | **Save**
 

@@ -19,5 +19,4 @@ tags:
 
 ## 出入金
 
-- [YouTube 博主有关出入金的介绍](https://www.youtube.com/watch?v=pEb2Uuh1Iyg)（已存入网盘：出入金 - YouTube以太坊教授幣哥）
-
+- [YouTube 博主有关出入金的介绍](https://www.youtube.com/watch?v=pEb2Uuh1Iyg)（已存入网盘：出入金 - YouTube 以太坊教授幣哥）

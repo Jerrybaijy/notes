@@ -13,6 +13,7 @@ tags:
 
 ### part of speech 词性
 
+<!-- prettier-ignore -->
 | 英文 | 简写 | 中文 |
 | :---: | :---: | :---: |
 | verb<br>transitive verb<br>intransitive verb | v.<br>vt.<br>vi. | 动词<br>及物动词<br>不及物动词 |
@@ -28,6 +29,7 @@ tags:
 
 ### 其它语法
 
+<!-- prettier-ignore -->
 |  英文 |  中文  |
 | :---: | :---: |
 | vowel<br>diphthong<br>consonant | 元音<br>双元音<br>辅音 |
@@ -37,6 +39,7 @@ tags:
 
 ## syntax 句法
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :---: | :---: |
 | subject | 主语 |
@@ -52,6 +55,7 @@ tags:
 
 ## nationality 民族
 
+<!-- prettier-ignore -->
 |  中文  |  民族  |  人  |  形容词 |  语言  |
 | :---: | :---: | :---: | :---: | :---: |
 | 汉族 | Han | the Hans | Chinese | Chinese |
@@ -59,12 +63,14 @@ tags:
 
 ## religion 宗教
 
+<!-- prettier-ignore -->
 |  中文  |  宗教  |  教徒  |  形容词 |
 | :---: | :---: | :---: | :---: |
 | 伊斯兰教 | Islam /ˈɪzlɑːm/ | Islamite<br>Muslim | Islamic |
 
 ## 组织团体
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :---: | :---: |
 | association | 协会；社团 |
@@ -76,6 +82,7 @@ tags:
 
 ## 地理单位
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :---: | :---: |
 | continent | 洲 |
@@ -90,6 +97,7 @@ tags:
 
 ## continent 洲
 
+<!-- prettier-ignore -->
 | 中文名 | 洲名（名词）          | 洲的形容词 / 居民名词 |
 | ------ | --------------------- | --------------------- |
 | 亚洲   | Asia                  | Asian                 |
@@ -101,6 +109,7 @@ tags:
 
 ## nationality 国籍
 
+<!-- prettier-ignore -->
 | 中文国名 | 国籍 | 国人/国语/形容词 | 首都 | 中文首都 |
 | :---: | :---: | :---: | :---: | :---: |
 | 中国 | China<br>the People's Republic of China<br>CN<br>PRC | Chinese | Beijing | 北京 |
@@ -133,15 +142,17 @@ tags:
 
 ## city 城市
 
+<!-- prettier-ignore -->
 |  英文  |  中文  |
 | :---: | :---: |
 | Sydney | 悉尼 |
 | New York | 纽约 |
 
-#  nature 自然
+# nature 自然
 
 ## nature 自然
 
+<!-- prettier-ignore -->
 |  英文  |  中文  |
 | :---: | :---: |
 | sky | 天空 |
@@ -170,6 +181,7 @@ tags:
 
 ## weather 天气
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | sun<br>sunny | 太阳<br>晴朗的 |
@@ -186,6 +198,7 @@ tags:
 
 # plant 植物
 
+<!-- prettier-ignore -->
 |  英文  |  中文 |
 | :---: | :---: |
 | flower<br>rose | 花<br>玫瑰 |
@@ -195,6 +208,7 @@ tags:
 
 # animal 动物
 
+<!-- prettier-ignore -->
 |  英文  |  中文 |
 | :---: | :---: |
 | pig | 猪 |
@@ -231,6 +245,7 @@ tags:
 
 ## bird 鸟
 
+<!-- prettier-ignore -->
 |  英文  |  中文 |
 | :---: | :---: |
 | bird | 鸟 |
@@ -242,6 +257,7 @@ tags:
 
 ## time 时间
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | dynasty | 朝代 |
@@ -268,6 +284,7 @@ tags:
 
 ## season 季节
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | in spring | 在春季 |
@@ -277,6 +294,7 @@ tags:
 
 ## month 月份
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | in January | 在一月 |
@@ -294,6 +312,7 @@ tags:
 
 ## week 星期
 
+<!-- prettier-ignore -->
 |  英文  |  中文 |
 | :---: | :---: |
 | on Monday | 在周一 |
@@ -307,6 +326,7 @@ tags:
 
 ## 其它
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | immediately | 立即地 |
@@ -315,6 +335,7 @@ tags:
 
 ## house 房子
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | building | 建筑物 |
@@ -337,6 +358,7 @@ tags:
 
 ### school 学校
 
+<!-- prettier-ignore -->
 |  英文  |  中文  |
 | :---: | :---: |
 | playgroup<br>kindergarten | 幼儿园<br/>学前班 |
@@ -347,6 +369,7 @@ tags:
 
 ### student 学生
 
+<!-- prettier-ignore -->
 |  英文  |  中文  |
 | :---: | :---: |
 | pupil | 小学生 |
@@ -359,6 +382,7 @@ tags:
 
 ### course 课程
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | Chinese | 中文 |
@@ -373,6 +397,7 @@ tags:
 
 ### 其它学校相关
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | exam<br>examination<br>test | 考试 |
@@ -383,6 +408,7 @@ tags:
 
 ## airport 机场
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | borading pass<br>check<br>passenger ticket | 登机牌 |
@@ -396,6 +422,7 @@ tags:
 
 ### 车站相关
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | station | 长途汽车站<br>火车站 |
@@ -416,6 +443,7 @@ tags:
 
 ### 火车相关
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | train<br>high-speed train (HST)<br>subway | 火车<br>高铁<br>地铁 |
@@ -423,6 +451,7 @@ tags:
 
 ### 车票相关
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | ticket<br>one-way ticket<br>round-trip ticket<br>return ticket | 车票<br>单程票<br>往返票<br>返程票 |
@@ -430,6 +459,7 @@ tags:
 
 ## shop 商店
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | shop<br>supermarket<br>grocery | 商店<br>超市<br>杂货店 |
@@ -437,6 +467,7 @@ tags:
 
 ## 其它地点
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | east<br>south<br>west<br>north<br>southeast | 东<br>南<br>西<br>北<br>东南 |
@@ -455,6 +486,7 @@ tags:
 
 ## 不同年龄段
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | baby | 婴儿 |
@@ -463,6 +495,7 @@ tags:
 
 ## 男女
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | male<br>female | 男（性别）<br>女（性别） |
@@ -474,6 +507,7 @@ tags:
 
 ## family 家庭
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | grandfather<br>grandpa | 爷爷；外公 |
@@ -490,6 +524,7 @@ tags:
 
 ## career 职业
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | farmer | 农民 |
@@ -526,10 +561,11 @@ tags:
 | baker | 面包师 |
 | shop assistant | 售货员 |
 
-##  学科专家
+## 学科专家
 
 ### 以 -ist 为后缀的专家词汇
 
+<!-- prettier-ignore -->
 | 学科 | 专家 |
 | :---: | :---: |
 | science（科学） | scientist（科学家） |
@@ -547,6 +583,7 @@ tags:
 
 ### 以 -ian 为后缀的专家词汇
 
+<!-- prettier-ignore -->
 | 学科 | 专家 |
 | :---: | :---: |
 | mathematics（数学） | mathematician（数学家） |
@@ -558,6 +595,7 @@ tags:
 
 ## 公司人员
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :---: | :---: |
 | boss | 老板 |
@@ -568,6 +606,7 @@ tags:
 
 ## 影视人员
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | editor | 编辑 |
@@ -579,6 +618,7 @@ tags:
 
 ## 其它类人
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | millionaire /ˌmɪljəˈneə(r)/ | 百万富翁 |
@@ -594,6 +634,7 @@ tags:
 
 ## color 颜色
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | black | 黑色 |
@@ -612,6 +653,7 @@ tags:
 
 ## shape 形状
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | circle | 圆 |
@@ -624,6 +666,7 @@ tags:
 
 ## size 尺寸
 
+<!-- prettier-ignore -->
 |  英文  | 中文 |
 | :----: | :--: |
 | tall<br>short | 高的<br>矮的 |
@@ -637,6 +680,7 @@ tags:
 
 ## 人物状态
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | hungry<br>thirsty | 饿的<br>渴的 |
@@ -657,6 +701,7 @@ tags:
 
 ## 事物状态
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | awful | 让人讨厌的 |
@@ -665,6 +710,7 @@ tags:
 
 ## 其它特征
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | clean<br>dirty<br>tidy<br>untidy | 干净的<br>肮脏的<br>整洁的<br>凌乱的 |
@@ -682,6 +728,7 @@ tags:
 
 ## 吃的动作
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | eat | 吃 |
@@ -690,6 +737,7 @@ tags:
 
 ## cook 烹饪
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | boil | 煮 |
@@ -698,6 +746,7 @@ tags:
 
 ## 三餐
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | meal | 一顿饭 |
@@ -707,6 +756,7 @@ tags:
 
 ## food 食物
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | vegetable | 蔬菜 |
@@ -724,6 +774,7 @@ tags:
 
 ## meat 肉
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | pork<br>pork chop | 猪肉<br>猪排 |
@@ -733,6 +784,7 @@ tags:
 
 ## vegetable 蔬菜
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | scallion /ˈskæliən/ | 大葱 |
@@ -759,6 +811,7 @@ tags:
 
 ## fruit 水果
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | apple | 苹果 |
@@ -778,6 +831,7 @@ tags:
 
 ## nut 坚果
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | nut(s) | 坚果 |
@@ -785,6 +839,7 @@ tags:
 
 ## 皮
 
+<!-- prettier-ignore -->
 |  英文  |  中文  |
 | :---: | :---: |
 | skin<br>apple skin<br>grape skin | 薄皮<br>苹果皮<br>葡萄皮 |
@@ -797,6 +852,7 @@ tags:
 
 ## beverage 饮品
 
+<!-- prettier-ignore -->
 |  英文 |  中文  |
 | :---: | :---: |
 | water | 水 |
@@ -811,6 +867,7 @@ tags:
 
 ## alcohol 酒精
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | alcohol | 酒精 |
@@ -828,6 +885,7 @@ tags:
 
 ## seasoning 调料
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | oil | 油 |
@@ -841,6 +899,7 @@ tags:
 
 ## flavor 风味
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | fresh<br>stale | 新鲜的<br>变质的 |
@@ -855,6 +914,7 @@ tags:
 
 ## adornment 服饰
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | clothes<br>clothing | 衣物（泛指衣物） |
@@ -866,6 +926,7 @@ tags:
 
 ## tops 上装
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | tops | 上装（泛指上半身服饰） |
@@ -879,6 +940,7 @@ tags:
 
 ## bottoms 下装
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | bottoms | 下装（泛指上半身服饰） |
@@ -888,6 +950,7 @@ tags:
 
 ## shoes 鞋
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | shoe(~s) | 鞋 |
@@ -900,6 +963,7 @@ tags:
 
 ## vehicle 交通工具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | vehicle /ˈviːəkl/ | 交通工具 |
@@ -914,6 +978,7 @@ tags:
 
 ## furniture 家具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | bed | 床 |
@@ -929,6 +994,7 @@ tags:
 
 ## cooker 炊具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | closet<br>cupboard | 橱柜 |
@@ -941,6 +1007,7 @@ tags:
 
 ## tableware 餐具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | bowl | 碗 |
@@ -954,6 +1021,7 @@ tags:
 
 ## electric appliance 家电
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | TV = television | 电视 |
@@ -964,6 +1032,7 @@ tags:
 
 ## electronic 电子产品
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | clock | 钟 |
@@ -972,6 +1041,7 @@ tags:
 
 ## stationery 文具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | book | 书 |
@@ -996,6 +1066,7 @@ tags:
 
 ## 日用品
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | soap<br>toilet soap | 肥皂<br>香皂 |
@@ -1004,6 +1075,7 @@ tags:
 
 ## 未分类工具
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | case<br>suitcase<br>trunk | 箱子<br>旅行箱<br>行李箱 |
@@ -1013,6 +1085,7 @@ tags:
 
 ## head 头
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | hair | 头发 |
@@ -1030,6 +1103,7 @@ tags:
 
 ## upper limb(s) 上肢
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | chest<br>back | 前胸<br>后背 |
@@ -1043,6 +1117,7 @@ tags:
 
 ## lower limb(s) 下肢
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | butt | 屁股 |
@@ -1054,6 +1129,7 @@ tags:
 
 ## abdomen 腹部
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | heart | 心 |
@@ -1064,6 +1140,7 @@ tags:
 
 ## 国际单位前缀
 
+<!-- prettier-ignore -->
 | 前缀       | 缩写 | 倍数 (m 为单位) | 示例           |
 | :-------: | :---: | :-------------: | :--------: |
 | kilo-      | k    | 1,000           | kilometre 千米   |
@@ -1078,6 +1155,7 @@ tags:
 
 ## length 长度
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | kilometer | 千米 |
@@ -1090,6 +1168,7 @@ tags:
 
 # 量词
 
+<!-- prettier-ignore -->
 |  英文  | 中文  |  示例  |
 | :---: | :---: | :---: |
 | piece | 片 | a piece of cheese |
@@ -1104,6 +1183,7 @@ tags:
 
 ## illness 病
 
+<!-- prettier-ignore -->
 |  英文  | 中文  |
 | :---: | :---: |
 | illness<br>sickness | 病 |
@@ -1116,6 +1196,7 @@ tags:
 
 ## medicine 药
 
+<!-- prettier-ignore -->
 |  英文  | 中文  |
 | :---: | :---: |
 | medicine | 药 |
@@ -1123,6 +1204,7 @@ tags:
 
 # money 钱
 
+<!-- prettier-ignore -->
 |  英文  | 中文  |
 | :---: | :---: |
 | currency | 货币 |
@@ -1149,12 +1231,11 @@ tags:
 - graph （数据）图表
 - chart 图表（广义）bar chart 柱状图
 
-
-
 # 动作
 
 ## action 动作
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | walk | 走 |
@@ -1181,6 +1262,7 @@ tags:
 
 ## sport 运动
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | basketball | 篮球 |
@@ -1189,6 +1271,7 @@ tags:
 
 ## 其它动作
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | ask<br>answer | 问<br>答 |
@@ -1199,9 +1282,9 @@ tags:
 | turn on<br>turn off | 开（电器）<br>关（电器） |
 | catch<br>overtake | 追赶<br>从后面超越，超车 |
 
-
 # 其它
 
+<!-- prettier-ignore -->
 | 英文 | 中文 |
 | :---: | :---: |
 | letter<br>writing paper<br>pad<br>envelope<br>red envelope | 信<br>信纸<br/>信纸簿<br/>信封<br/>红包 |
@@ -1212,6 +1295,7 @@ tags:
 
 ## 感叹词
 
+<!-- prettier-ignore -->
 | English | 中文解释 |
 | :---: | :---: |
 | Oh! | 哦！（表示惊讶、感叹） |

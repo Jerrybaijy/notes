@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "markdown.md",
+                "file": "java.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "markdown"
+              "title": "java"
             }
           },
           {
@@ -133,8 +133,7 @@
               "title": "code-general"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -166,7 +165,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "json",
+                "query": "bash",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -256,13 +255,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software.md",
+                "file": "java.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software 的大纲"
+              "title": "java 的大纲"
             }
           }
         ],
@@ -283,25 +282,25 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "9b00c59566390b2e",
+  "active": "0225cb405dc13bdb",
   "lastOpenFiles": [
     "markdown.md",
+    "typora.md",
+    "vs-code.md",
+    "software.md",
     "java.md",
     "prettier.md",
     "0000.json",
     "新建 Markdown File.md",
-    "software.md",
     "assets/image-20251020122212688.png",
     "assets/image-20251020122105636.png",
     "新建 文本文档.txt",
-    "typora.md",
     "其它格式未转换/vs-code-settings/settings.json",
     "其它格式未转换/vs-code-settings/keybindings.json",
     "其它格式未转换/vs-code-settings",
     "其它格式未转换/新建文件夹",
     "prettier-test.md",
     "html.md",
-    "vs-code.md",
     "vscode.md",
     "javascript.md",
     "code-general.md",

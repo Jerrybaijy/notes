@@ -38,10 +38,10 @@ BOM 的核心对象：
 - `addEventListener` 是 JavaScript 中的一个方法，用于为指定的 DOM 元素添加事件监听器。
 - **语法**：`对象.addEventListener("事件类型", 函数)`
 
-    ```javascript
-    // 单击按钮执行func函数
-    button.addEventListener("click", func)
-    ```
+  ```javascript
+  // 单击按钮执行func函数
+  button.addEventListener("click", func);
+  ```
 
 ## [console](https://developer.mozilla.org/zh-CN/docs/Web/API/console)
 

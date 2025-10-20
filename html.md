@@ -78,20 +78,20 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 >   </ul>
 > </details>
 
-**[WHATWG](https://html.spec.whatwg.org/)  中 HTML 官方文档不同版本的含义**：
+**[WHATWG](https://html.spec.whatwg.org/) 中 HTML 官方文档不同版本的含义**：
 
 - **[单页版](https://html.spec.whatwg.org/)**：单页显示。
 
 - **[多页版](https://html.spec.whatwg.org/multipage/)**：分多个页面显示，自己默认使用该版。
 
 - **[开发者版](https://html.spec.whatwg.org/dev/)**：与多页版相比，此版删除了只有浏览器供应商才需要知道的信息。
-- **[官方中文版1](https://whatwg-cn.github.io/html/)**：单页显示。
-- **[官方中文版2](https://htmlspecs.com/)**：单页显示。
+- **[官方中文版 1](https://whatwg-cn.github.io/html/)**：单页显示。
+- **[官方中文版 2](https://htmlspecs.com/)**：单页显示。
 
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写，但新版本的 (X)HTML 要求使用小写属性。
-- **缩进**：不敏感，通常缩进2个空格。
+- **缩进**：不敏感，通常缩进 2 个空格。
 - **分号**：行尾不加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
@@ -107,7 +107,7 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 <div>
   <!-- 这是一个单行注释 -->
   <h1>Hello, World!</h1>
-    
+
   <!--
   多行注释第一行
   多行注释第二行
@@ -121,7 +121,7 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 ### 元素基础
 
-HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前[符合要求的元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
+HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前[符合要求的元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计 115 个。
 
 ![image-20231205005652176](assets/image-20231205005652176.png)
 
@@ -175,16 +175,18 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 
 **[属性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#属性)（Attribute）的说明**：
 
--  **属性**：存在于开始标签内
--  **属性名称**：本例为 `class`
-    -  与元素名称之间用 `空格` 分隔
-    -  多个属性之间用 `空格` 分隔
+- **属性**：存在于开始标签内
+- **属性名称**：本例为 `class`
 
--  **属性值**：本例为 `editor-note`
-    -  通常使用双引号 `"` 包围属性值，其它详见[不带引号的属性值语法](https://html.spec.whatwg.org/multipage/syntax.html#attributes-2)。
-    -  多个属性值之间用 `空格` 分隔
+  - 与元素名称之间用 `空格` 分隔
+  - 多个属性之间用 `空格` 分隔
 
--  **等号**：左右无空格
+- **属性值**：本例为 `editor-note`
+
+  - 通常使用双引号 `"` 包围属性值，其它详见[不带引号的属性值语法](https://html.spec.whatwg.org/multipage/syntax.html#attributes-2)。
+  - 多个属性值之间用 `空格` 分隔
+
+- **等号**：左右无空格
 
 ### 布尔属性
 
@@ -192,7 +194,7 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 
 ```html
 <!-- 未指定属性 -->
-<input type="checkbox" /><br>
+<input type="checkbox" /><br />
 
 <!-- 指定属性 -->
 <input type="checkbox" checked /><br />
@@ -202,12 +204,12 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 <input type="checkbox" checked="false" />
 ```
 
-> - [ ] 
-> - [x] 
-> - [x] 
-> - [x] 
-> - [x] 
-> - [x] 
+> - [ ]
+> - [x]
+> - [x]
+> - [x]
+> - [x]
+> - [x]
 
 ### 属性的记录方法
 
@@ -264,7 +266,8 @@ MDN 介绍了如何[使用数据属性](https://developer.mozilla.org/zh-CN/docs
   id="electric-cars"
   data-columns="3"
   data-index-number="5"
-  data-parent="cars">
+  data-parent="cars"
+>
   <!-- 有关电车的内容 -->
 </article>
 ```
@@ -293,19 +296,20 @@ article.dataset.indexNumber; // "5"
 [`id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id) 属性用于为元素指定唯一的标识符，属于全局属性。
 
 - **唯一性**
-    - 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
+
+  - 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
 
 - **命名规则**
 
-    - 必须以字母（a-z，A-Z）开头。
-    - 可以包含字母、数字（0-9）、连字符（-）、下划线（_）和句点（.）。
-    - 区分大小写。
-    - 不应包含空格和其他特殊字符。
+  - 必须以字母（a-z，A-Z）开头。
+  - 可以包含字母、数字（0-9）、连字符（-）、下划线（\_）和句点（.）。
+  - 区分大小写。
+  - 不应包含空格和其他特殊字符。
 
 - **应用**
 
-    - 在 CSS 中通过 `#id` 方法，访问和操作元素。
-    - 在 JS中 通过 `document.getElementById` 方法，访问和操作元素。
+  - 在 CSS 中通过 `#id` 方法，访问和操作元素。
+  - 在 JS 中 通过 `document.getElementById` 方法，访问和操作元素。
 
 ### `style`
 
@@ -378,7 +382,7 @@ article.dataset.indexNumber; // "5"
 
 ```html
 <head>
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <p>这是一段红色的文本。</p>
@@ -466,7 +470,8 @@ console.log("External JavaScript file");
 
 ```html
 <!-- 错误写法 -->
-<p>HTML 中用 <p> 来定义段落元素。</p>
+<p>HTML 中用</p>
+<p>来定义段落元素。</p>
 
 <!-- 正确写法 -->
 <p>HTML 中用 &lt;p&gt; 来定义段落元素</p>
@@ -476,6 +481,7 @@ console.log("External JavaScript file");
 
 **以下是常用的 HTML 实体**：
 
+<!-- prettier-ignore -->
 | 原义字符 | [HTML 实体](https://developer.mozilla.org/zh-CN/docs/Glossary/Entity) |
 | :---: | :---: |
 | `<` | `&lt;` |
@@ -495,23 +501,20 @@ console.log("External JavaScript file");
 <!DOCTYPE html>
 <html lang="en">
   <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Document</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
   </head>
-  <body>
-
-  </body>
+  <body></body>
 </html>
 ```
 
 - **基本结构包含：**
 
-    1. [**文档类型**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)：`<!DOCTYPE html>`
-    2. [**根元素**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)：`<html>`
-
-    3. [**元数据分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据)：`<head>`
-    4. [**内容分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)：`<body>`
+  - [**文档类型**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)：`<!DOCTYPE html>`
+  - [**根元素**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)：`<html>`
+  - [**元数据分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据)：`<head>`
+  - [**内容分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/body)：`<body>`
 
 - VS Code Emmet 快速创建文档结构：`!`
 
@@ -520,22 +523,22 @@ console.log("External JavaScript file");
 一个典型的网页结构应该是：
 
 - `<header>`
-    - `<h1>`
+  - `<h1>`
 - `<nav>`
-    - `<ul>`
-        - 每个链接是一个列表项
-    - `<form>`
-        - `<search>`
-        - `<submit>`
+  - `<ul>`
+    - 每个链接是一个列表项
+  - `<form>`
+    - `<search>`
+    - `<submit>`
 - `<main>`
-    - `<article>`
-        - `<h2>`
-        - `<p>`
-        - `<section>`
-        - `<section>`
-    - `<aside>`
-        - `<h2>`
-        - Others
+  - `<article>`
+    - `<h2>`
+    - `<p>`
+    - `<section>`
+    - `<section>`
+  - `<aside>`
+    - `<h2>`
+    - Others
 - `<footer>`
 
 ```html
@@ -569,27 +572,25 @@ console.log("External JavaScript file");
 
     <p>
       Lorem ipsum dolor sit amet, consectetur adipisicing elit. Donec a diam
-      lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam
-      viverra nec consectetur ant hendrerit. Donec et mollis dolor. Praesent
-      et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt
-      congue enim, ut porta lorem lacinia consectetur.
+      lectus. Set sit amet ipsum mauris. Maecenas congue ligula as quam viverra
+      nec consectetur ant hendrerit. Donec et mollis dolor. Praesent et diam
+      eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue
+      enim, ut porta lorem lacinia consectetur.
     </p>
 
     <section>
       <h3>Subsection</h3>
 
       <p>
-        Donec ut librero sed accu vehicula ultricies a non tortor. Lorem
-        ipsum dolor sit amet, consectetur adipisicing elit. Aenean ut
-        gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id
-        dolor.
+        Donec ut librero sed accu vehicula ultricies a non tortor. Lorem ipsum
+        dolor sit amet, consectetur adipisicing elit. Aenean ut gravida lorem.
+        Ut turpis felis, pulvinar a semper sed, adipiscing id dolor.
       </p>
 
       <p>
-        Pelientesque auctor nisi id magna consequat sagittis. Curabitur
-        dapibus, enim sit amet elit pharetra tincidunt feugiat nist
-        imperdiet. Ut convallis libero in urna ultrices accumsan. Donec sed
-        odio eros.
+        Pelientesque auctor nisi id magna consequat sagittis. Curabitur dapibus,
+        enim sit amet elit pharetra tincidunt feugiat nist imperdiet. Ut
+        convallis libero in urna ultrices accumsan. Donec sed odio eros.
       </p>
     </section>
 
@@ -599,15 +600,15 @@ console.log("External JavaScript file");
       <p>
         Donec viverra mi quis quam pulvinar at malesuada arcu rhoncus. Cum
         soclis natoque penatibus et manis dis parturient montes, nascetur
-        ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at
-        sem facilisis semper ac in est.
+        ridiculus mus. In rutrum accumsan ultricies. Mauris vitae nisi at sem
+        facilisis semper ac in est.
       </p>
 
       <p>
-        Vivamus fermentum semper porta. Nunc diam velit, adipscing ut
-        tristique vitae sagittis vel odio. Maecenas convallis ullamcorper
-        ultricied. Curabitur ornare, ligula semper consectetur sagittis,
-        nisi diam iaculis velit, is fringille sem nunc vet mi.
+        Vivamus fermentum semper porta. Nunc diam velit, adipscing ut tristique
+        vitae sagittis vel odio. Maecenas convallis ullamcorper ultricied.
+        Curabitur ornare, ligula semper consectetur sagittis, nisi diam iaculis
+        velit, is fringille sem nunc vet mi.
       </p>
     </section>
   </article>
@@ -775,7 +776,6 @@ aside li {
 footer {
   margin-top: 10px;
 }
-
 ```
 
 > <img src="assets/image-20251008171559475.png" alt="image-20251008171559475" style="zoom: 50%;" />
@@ -868,7 +868,6 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 - [`<table>`](#`<table>`) 表格
 - [`<tr>`](#<tr>) 表格行
-- 
 
 ## 表单
 
@@ -921,12 +920,14 @@ HTML 元素基础详见 `html | 元素` 笔记。
 
 ```css
 /* styles.css */
-p {color: red;}
+p {
+  color: red;
+}
 ```
 
 **说明**
 
-- **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部CSS样式文件，并应用其中的样式规则。
+- **`rel="stylesheet"`** 表示当前文档与`main.css`文件的关系是样式表，浏览器会将其视为页面的外部 CSS 样式文件，并应用其中的样式规则。
 - `<link>` 元素可以出现在 [`<head>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/head) 元素或 [`<body>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/body) 元素中，具体取决于它是否有一个 **body-ok** 的[链接类型](https://html.spec.whatwg.org/multipage/links.html#body-ok)，但最好将其放在 `<head>` 中。
 - 该元素最常用于链接 CSS，此外也可以被用来创建站点图标 。
 
@@ -936,7 +937,7 @@ p {color: red;}
 
 ## `<meta>`
 
- **元数据** [`<meta>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta) 用于表示文档的元数据信息。
+**元数据** [`<meta>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/meta) 用于表示文档的元数据信息。
 
 ### `charset`
 
@@ -949,7 +950,7 @@ p {color: red;}
 - **作者信息**：`<meta name="author" content="NAME" />`
 - **描述信息**：`<meta name="description" content="content..." />`
 - [**视口**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Viewport_concepts)：`<meta name="viewport" content="width=device-width">`  
-    视口可以确保页面以视口宽度进行渲染，避免移动端浏览器上因页面过宽导致缩放。
+   视口可以确保页面以视口宽度进行渲染，避免移动端浏览器上因页面过宽导致缩放。
 
 ## `<style>`
 
@@ -995,12 +996,12 @@ p {color: red;}
 ```
 
 ```css
-a[href^='mailto']::before {
-  content: '📧 ';
+a[href^="mailto"]::before {
+  content: "📧 ";
 }
 
-a[href^='tel']::before {
-  content: '📞 ';
+a[href^="tel"]::before {
+  content: "📞 ";
 }
 ```
 
@@ -1058,7 +1059,7 @@ a[href^='tel']::before {
 
 .day-forecast {
   background: right/contain content-box border-box no-repeat
-    url('../images/rain.svg') white;
+    url("../images/rain.svg") white;
 }
 
 .day-forecast > h2,
@@ -1081,8 +1082,8 @@ a[href^='tel']::before {
 
 <body>
   <p>
-    Salamanders are a group of amphibians with a lizard-like appearance, including short legs and a tail in both larval
-    and adult forms.
+    Salamanders are a group of amphibians with a lizard-like appearance,
+    including short legs and a tail in both larval and adult forms.
   </p>
 
   <aside>
@@ -1090,10 +1091,11 @@ a[href^='tel']::before {
   </aside>
 
   <p>
-    Several species of salamander inhabit the temperate rainforest of the Pacific Northwest, including the Ensatina, the
-    Northwestern Salamander and the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for insects, worms and
-    other small creatures.
-  </p>  
+    Several species of salamander inhabit the temperate rainforest of the
+    Pacific Northwest, including the Ensatina, the Northwestern Salamander and
+    the Rough-skinned Newt. Most salamanders are nocturnal, and hunt for
+    insects, worms and other small creatures.
+  </p>
 </body>
 ```
 
@@ -1182,27 +1184,28 @@ footer {
   <header>
     <a class="logo" href="#">Cute Puppies Express!</a>
   </header>
-  
+
   <article>
     <header>
       <h1>Beagles</h1>
       <time>08.12.2014</time>
     </header>
-    <p>I love beagles <em>so</em> much! Like, really, a lot. They’re adorable and their ears are so, so snugly soft!</p>
+    <p>
+      I love beagles <em>so</em> much! Like, really, a lot. They’re adorable and
+      their ears are so, so snugly soft!
+    </p>
   </article>
 </body>
 ```
 
 ```css
 .logo {
-  background: left / cover url('../images/dog.jpg');
+  background: left / cover url("../images/dog.jpg");
   display: flex;
   height: 120px;
   align-items: center;
   justify-content: center;
-  font:
-    bold calc(1em + 2 * (100vw - 120px) / 100) 'Dancing Script',
-    fantasy;
+  font: bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script", fantasy;
   color: #ff0083;
   text-shadow: #000 2px 2px 0.2rem;
 }
@@ -1220,7 +1223,7 @@ header > time {
 
 ## `<hgroup>`
 
-**标题组**  [`<hgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/hgroup) 元素将一个标题与任意次要内容（例如子标题、副标题或口号）组合在一起。
+**标题组** [`<hgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/hgroup) 元素将一个标题与任意次要内容（例如子标题、副标题或口号）组合在一起。
 
 ```html
 <hgroup>
@@ -1229,10 +1232,9 @@ header > time {
 </hgroup>
 <p>
   Victor Frankenstein, a Swiss scientist, has a great ambition: to create
-  intelligent life. But when his creature first stirs, he realizes he has
-  made a monster. A monster which, abandoned by his master and shunned by
-  everyone who sees it, follows Dr Frankenstein to the very ends of the
-  earth.
+  intelligent life. But when his creature first stirs, he realizes he has made a
+  monster. A monster which, abandoned by his master and shunned by everyone who
+  sees it, follows Dr Frankenstein to the very ends of the earth.
 </p>
 ```
 
@@ -1253,9 +1255,9 @@ hgroup p {
 
 > ![image-20251012081618812](assets/image-20251012081618812.png)
 
-##  `<main>`
+## `<main>`
 
-**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/main) 元素用于做页面分组，呈现文档的主要内容，与  `<header>`、`<nav>` 和 `<footer>`  同等级，可以有各种子内容区段，如 `<article>`、`<section>` 和 `<aside>` 等。不同页面的重复内容不应该包含在其中。
+**主内容** [`<main>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/main) 元素用于做页面分组，呈现文档的主要内容，与 `<header>`、`<nav>` 和 `<footer>` 同等级，可以有各种子内容区段，如 `<article>`、`<section>` 和 `<aside>` 等。不同页面的重复内容不应该包含在其中。
 
 ```html
 <header>Gecko facts</header>
@@ -1373,16 +1375,19 @@ input[type="submit"] {
   <h1>Choosing an Apple</h1>
   <section>
     <h2>Introduction</h2>
-    <p>This document provides a guide to help with the important task of choosing the correct Apple.</p>
+    <p>
+      This document provides a guide to help with the important task of choosing
+      the correct Apple.
+    </p>
   </section>
 
   <section>
     <h2>Criteria</h2>
     <p>
-      There are many different criteria to be considered when choosing an Apple — size, color, firmness, sweetness,
-      tartness...
+      There are many different criteria to be considered when choosing an Apple
+      — size, color, firmness, sweetness, tartness...
     </p>
-  </section>  
+  </section>
 </body>
 ```
 
@@ -1431,7 +1436,7 @@ blockquote p::after {
 
 blockquote + p {
   text-align: right;
-}    
+}
 ```
 
 > ![image-20241128163006929](assets/image-20241128163006929.png)
@@ -1592,7 +1597,7 @@ hr {
 
 hr::after {
   background: #fff;
-  content: '§';
+  content: "§";
   padding: 0 4px;
   position: relative;
   top: -13px;
@@ -1797,7 +1802,7 @@ function greet() {
 
 # 文本级语义
 
->  [WHATWG 文本级语义元素汇总](https://html.spec.whatwg.org/multipage/text-level-semantics.html#usage-summary)
+> [WHATWG 文本级语义元素汇总](https://html.spec.whatwg.org/multipage/text-level-semantics.html#usage-summary)
 
 ## `<a>`
 
@@ -1821,7 +1826,7 @@ function greet() {
 
 #### 语法
 
-[`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)（***h**ypertext **ref**erence*，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
+[`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)（**\*h**ypertext **ref**erence\*，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
 
 ```html
 <p>You can reach Michael at:</p>
@@ -1859,8 +1864,8 @@ function greet() {
 - 同一地址可省略 URL/SRC
 - **全转换成小写**：即 `Full-page` → `full-page`
 - **空格替换为连字符 `-`**：
-    - 标题中的空格需用半角连字符（`-`）替代，避免 URL 中的空格引发解析错误。
-    - `full-page databases` → `full-page-databases`
+  - 标题中的空格需用半角连字符（`-`）替代，避免 URL 中的空格引发解析错误。
+  - `full-page databases` → `full-page-databases`
 - **保留特殊符号（如连字符）**：标题原有的半角连字符（如 `Full-page` 中的 `-`）无需处理，直接保留。
 
 ### `target`
@@ -1947,7 +1952,7 @@ function greet() {
 **换行** [`<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/br) 用于在文本中生成一个换行符（回车），将 `<br>` 之后的文本从下一行开始渲染，是空元素。
 
 ```html
-<p>这是第一行<br>这是第二行</p>
+<p>这是第一行<br />这是第二行</p>
 ```
 
 > <p>这是第一行<br>这是第二行</p>
@@ -1962,9 +1967,7 @@ function greet() {
 [`<cite>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/cite) 元素用于引用作品，是行内元素，渲染时为斜体。
 
 ```html
-<p>
-  更多内容详见<cite>《计算机基础》</cite>。
-</p>
+<p>更多内容详见<cite>《计算机基础》</cite>。</p>
 ```
 
 > <p>
@@ -2051,7 +2054,10 @@ function greet() {
 **术语文本** [`<i>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/i) 用于标记因某些原因需要区分普通文本的一系列文本。例如技术术语、音译、思想或船名等。是行内元素，渲染为斜体。
 
 ```html
-<p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
+<p>
+  The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and
+  literature.
+</p>
 ```
 
 > <p>The Latin phrase <i>Veni, vidi, vici</i> is often mentioned in music, art, and literature.</p>
@@ -2229,7 +2235,9 @@ mark {
 用于在“可能需要换行”的地方添加一个“软换行”点。如果空间足够，它会像一个普通字符一样，也不起任何作用，否则就从此处换行。
 
 ```html
-<p>http://thisisalongurlwithoutanyspacesinbetween.com<wbr />/some/path/to/a/very/long/file</p>
+<p>
+  http://thisisalongurlwithoutanyspacesinbetween.com<wbr />/some/path/to/a/very/long/file
+</p>
 ```
 
 > <img src="assets/image-20251012091651100.png" alt="image-20251012091651100" style="zoom:50%;" />
@@ -2309,7 +2317,7 @@ mark {
 **外部资源** [`src`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/img#src) 属性用于指定脚本文件引用的外部资源的路径。可以是本地路径，也可以是网络上的 URL。
 
 ```html
-<img src="path/to/image.jpg" alt="Description">
+<img src="path/to/image.jpg" alt="Description" />
 ```
 
 ### `alt`
@@ -2320,14 +2328,14 @@ mark {
 - 屏幕阅读器等辅助技术可以读取 `alt` 文本，以提供对图像的描述，帮助视觉障碍用户理解图像内容。
 
 ```html
-<img src="example.jpg" alt="一个展示示例的图像">
+<img src="example.jpg" alt="一个展示示例的图像" />
 ```
 
 ### `width`
 
 **语法**：[`width`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/width) 和 [`height`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/height) 属性用于指定元素宽度和高度。
 
-- **属性值单位**：可以是像素 `px`、百分比 `%`、视口 `vw/vh`、`em`、`rem` 和绝对长度单位（如mm）等，详见 `CSS` - `值和单位`。
+- **属性值单位**：可以是像素 `px`、百分比 `%`、视口 `vw/vh`、`em`、`rem` 和绝对长度单位（如 mm）等，详见 `CSS` - `值和单位`。
 - **自适应**：通常情况下，如果只设置 `width: 200px;`，而没有设置 `height`，浏览器将根据图像的纵横比自动计算 `height`。
 
 ### 响应式图片
@@ -2350,7 +2358,7 @@ mark {
 
 - `<picture>`：作为容器，用于包含 `<source>` 和 `<img>` 元素。
 - `<source>`：指定媒体资源
-    - `media`：告诉浏览器： “只有当视口宽度至少达到多少像素时，才考虑加载我 srcset 中定义的图片。”
+  - `media`：告诉浏览器： “只有当视口宽度至少达到多少像素时，才考虑加载我 srcset 中定义的图片。”
 - `<img>`：提供回退图片和图片尺寸，当所有 `<source>` 都不可用时，才使用这个。
 
 ## `<map>`
@@ -2384,13 +2392,13 @@ mark {
 **在以上示例中**：
 
 - `<map>` 作为图像地图容器，用于包含 `<area>` 元素。
-    - `name` 用于给这个地图命名，方便与 `<img>` 元素关联。
+  - `name` 用于给这个地图命名，方便与 `<img>` 元素关联。
 - `<area>` 用于在 `<map>` 内部定义**可点击的链接区域**。
-    - `shape`：定义区域形状（`rect` 矩形, `circle` 圓形, `poly` 多边形）。
-    - `coords`： 定义区域的**坐标**（左上角为0点，根据 `shape` 的值不同，坐标数量和含义不同）。
-    - `href`：定义点击该区域后跳转的目标 URL。
+  - `shape`：定义区域形状（`rect` 矩形, `circle` 圓形, `poly` 多边形）。
+  - `coords`： 定义区域的**坐标**（左上角为 0 点，根据 `shape` 的值不同，坐标数量和含义不同）。
+  - `href`：定义点击该区域后跳转的目标 URL。
 - `<img>` 提供一个图片
-    - `usemap="#primary"`：关联 `<map>` 的 `name="primary"`。
+  - `usemap="#primary"`：关联 `<map>` 的 `name="primary"`。
 
 ## `<area>`
 
@@ -2415,7 +2423,7 @@ mark {
 
 ```html
 <video controls src="my_video.mp4">
-  <track kind="captions" src="my_captions.vtt" srclang="zh" default>
+  <track kind="captions" src="my_captions.vtt" srclang="zh" default />
 </video>
 ```
 
@@ -2462,7 +2470,12 @@ mark {
 **嵌入对象** [`<object>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/object) 用于各种非 HTML 资源的嵌入（如 PDF，Flash 等）。
 
 ```html
-<object data="html-elements.pdf" type="application/pdf" width="800" height="600">
+<object
+  data="html-elements.pdf"
+  type="application/pdf"
+  width="800"
+  height="600"
+>
   降级文本
 </object>
 ```
@@ -2476,7 +2489,7 @@ mark {
 
 ## `<svg>`
 
-[`<svg>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Reference/Element/svg) 元素用于嵌入 *SVG 语言*，绘制*二维矢量图形*。
+[`<svg>`](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Reference/Element/svg) 元素用于嵌入 _SVG 语言_，绘制*二维矢量图形*。
 
 ```html
 <svg width="150" height="100" viewBox="0 0 3 2">
@@ -2499,7 +2512,7 @@ mark {
 
 ## `<math>`
 
-**数学公式** [`<math>`](https://developer.mozilla.org/zh-CN/docs/Web/MathML/Reference/Element/math) 元素用于嵌入 *MathML 语言*，编写单个*数学公式*。
+**数学公式** [`<math>`](https://developer.mozilla.org/zh-CN/docs/Web/MathML/Reference/Element/math) 元素用于嵌入 _MathML 语言_，编写单个*数学公式*。
 
 ```html
 <math>
@@ -2638,7 +2651,7 @@ mark {
 **元素说明**：
 
 - `<table>`：定义整个表格
-- `<caption>` 标题、 `<thead>` 表头、 `<tbody>` 主体和  `<tfoot>` 页脚，可省略。
+- `<caption>` 标题、 `<thead>` 表头、 `<tbody>` 主体和 `<tfoot>` 页脚，可省略。
 - `<tr>`：定义表格中的行
 - `<th>`：定义表格中的表头单元格
 - `<td>`：定义表格中的数据单元格
@@ -2968,11 +2981,13 @@ mark {
 
 ## `<caption>`
 
-**表格标题**  [`<caption>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/caption) 用于展示一个表格的标题，默认显示在表格顶部。
+**表格标题** [`<caption>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/caption) 用于展示一个表格的标题，默认显示在表格顶部。
 
 ```html
 <table border="1">
-  <caption>表格标题</caption>
+  <caption>
+    表格标题
+  </caption>
   <tr>
     <th>表头1</th>
     <th>表头2</th>
@@ -3098,7 +3113,7 @@ mark {
 **表格列组** [`<colgroup>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/colgroup) 用于通过 `span` 属性给表格各列分组。
 
 ```html
-<table  border="1">
+<table border="1">
   <colgroup span="2" style="background-color: red"></colgroup>
   <tr>
     <th>周一</th>
@@ -3129,7 +3144,7 @@ mark {
 <table border="1">
   <colgroup span="4" style="background-color: red">
     <col />
-    <col style="background-color: pink"/>
+    <col style="background-color: pink" />
   </colgroup>
   <tr>
     <th>周一</th>
@@ -3174,9 +3189,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ```html
 <!-- 这是一个包含按钮的示例 -->
-<button>
-  <img src="icon.png" alt="图标"> 点击我
-</button>
+<button><img src="icon.png" alt="图标" /> 点击我</button>
 ```
 
 在使用 `<button>` 元素时，通常会结合 JavaScript 使用，例如：
@@ -3205,7 +3218,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled) 是一个表单公用*布尔属性*，用于表示用户不能与该元素交互。
 
 ```html
-<input type="text" name="text" disabled>
+<input type="text" name="text" disabled />
 ```
 
 **在上述示例中**：
@@ -3280,10 +3293,10 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **在上述示例中**：
 
 - `<form>`：所有表单控件的容器
-    - `action`：指定表单数据提交的*目标 URL*
-    - `method`：指定表单数据提交时使用的 *HTTP 请求方法*
+  - `action`：指定表单数据提交的*目标 URL*
+  - `method`：指定表单数据提交时使用的 _HTTP 请求方法_
 - `<button>`：创建一个*提交按钮*
-    - `submit`：指定按钮类型为*提交*
+  - `submit`：指定按钮类型为*提交*
 
 ### `action`
 
@@ -3293,13 +3306,13 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ### `method`
 
-[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 [*HTTP 请求方法*](http.md/#请求方法 "http | 请求方法")。
+[`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 [_HTTP 请求方法_](http.md/#请求方法 "http | 请求方法")。
 
 - **[GET](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**：
-    - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
+  - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
 - **[POST](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)**：
-    - 表单数据会包含在表单体内然后发送给服务器。
-    - 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
+  - 表单数据会包含在表单体内然后发送给服务器。
+  - 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
 - `dialog`
 
 **语法**：`<form method="post">`
@@ -3316,7 +3329,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **输入框** [`<input>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input) 用于创建各种表单控件，允许用户输入数据或进行选择。
 
 ```html
-<input type="text" name="text">
+<input type="text" name="text" />
 ```
 
 > <img src="assets/image-20251011090711349.png" alt="image-20251011090711349" style="zoom:50%;" />
@@ -3329,19 +3342,14 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ### `accept`
 
-[`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/accept) 属性用于指定上传的文件类型/[唯一文件类型标识符](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/accept#唯一文件类型标识符)，多种类型用 `,` 分隔。 
+[`accept`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/accept) 属性用于指定上传的文件类型/[唯一文件类型标识符](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/accept#唯一文件类型标识符)，多种类型用 `,` 分隔。
 
 ```html
 <!-- 全部 image 类型 -->
 <input type="file" id="avatar" name="avatar" accept="image/*" />
 
 <!-- png 和 jpeg 格式的 image 类型 -->
-<input
-  type="file"
-  id="avatar"
-  name="avatar"
-  accept="image/png, image/jpeg"
-/>
+<input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
 ```
 
 ### `name`
@@ -3357,7 +3365,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ```html
 <form action="/submit" method="get">
-  <input type="text" name="username"/>
+  <input type="text" name="username" />
   <button type="submit">提交</button>
 </form>
 ```
@@ -3375,7 +3383,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`placeholder`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/placeholder) 属性定义了当表单控件没有值时在控件中显示的文本，简要提示用户应向控件输入的预期数据类型。
 
 ```html
-<input type="text" placeholder="请输入用户名">
+<input type="text" placeholder="请输入用户名" />
 ```
 
 > <img src="assets/image-20251011082824053.png" alt="image-20251011082824053" style="zoom:50%;" />
@@ -3385,7 +3393,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`required`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/required) 是一个布尔属性，用于表示用户在提交表单前必须输入一个值。
 
 ```html
-<input type="text" name="text" required>
+<input type="text" name="text" required />
 ```
 
 ### `type`
@@ -3409,8 +3417,8 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 - 使用 `type="checkbox"` 类型的 `<input>` 元素创建**复选框**。
 - 使用 `name` 属性
-    - 作为数据提交时键值对的**键**。
-    - 将复选框分组在一起。
+  - 作为数据提交时键值对的**键**。
+  - 将复选框分组在一起。
 - 使用 `value` 的属性值作为数据提交时键值对的**值**。
 
 #### `file`
@@ -3420,8 +3428,8 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 ```html
 <form action="/upload" method="post" enctype="multipart/form-data">
   <label for="avatar">请上传图片：</label>
-  <input type="file" id="avatar" name="avatar" accept="image/*">
-  <input type="submit" value="上传">
+  <input type="file" id="avatar" name="avatar" accept="image/*" />
+  <input type="submit" value="上传" />
 </form>
 ```
 
@@ -3439,7 +3447,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`password`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/password) 类型的 `<input>` 元素用于创建密码输入框，允许用户输入密码或其他敏感信息。与 `text` 类型的 `<input>` 不同，密码输入框中的输入通常以点或星号的形式显示，以隐藏实际输入的字符。
 
 ```html
-<input type="password" name="password">
+<input type="password" name="password" />
 ```
 
 > <img src="assets/image-20251011111432722.png" alt="image-20251011111432722" style="zoom:50%;" />
@@ -3465,8 +3473,9 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 - 使用 `type="radio"` 类型的 `<input>` 元素创建**单选框**。
 - 使用 `name` 属性
-    - 作为数据提交时键值对的**键**。
-    - 将单选框分组在一起，确保用户只能从同一组中选择一个选项。
+
+  - 作为数据提交时键值对的**键**。
+  - 将单选框分组在一起，确保用户只能从同一组中选择一个选项。
 
 - 使用 `value` 属性为每个选项指定一个值，作为数据提交时键值对的**值**。
 
@@ -3475,7 +3484,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 [`text`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/input/text) 类型的 `<input>` 元素用于创建单行文本输入框。
 
 ```html
-<input type="text" name="text">
+<input type="text" name="text" />
 ```
 
 > <img src="assets/image-20251011110656793.png" alt="image-20251011110656793" style="zoom:50%;" />
@@ -3501,7 +3510,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 ```html
 <!-- 不指定默认值 -->
-<input type="text" name="text" /><br>
+<input type="text" name="text" /><br />
 
 <!-- 指定默认值 -->
 <input type="text" name="text" value="默认值" />
@@ -3524,12 +3533,12 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`<label>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/label) 用于为某些文本和表单控件提供关联。
 
--  点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的*可点击区域*。
--  当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
+- 点击关联的标签来聚焦或者激活输入框，就像直接点击输入框一样，这扩大了输入框的*可点击区域*。
+- 当用户聚焦到输入框时，屏幕阅读器可以读出标签，让使用辅助技术的用户更容易理解应输入什么数据。
 
 ```html
 <label for="username">用户名:</label>
-<input type="text" id="username" name="username" placeholder="请输入用户名">
+<input type="text" id="username" name="username" placeholder="请输入用户名" />
 ```
 
 ![image-20241204211508665](assets/image-20241204211508665.png)
@@ -3537,9 +3546,9 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **在上述示例中**：
 
 - 使用 `<label>` 元素来标识 `用户名：` 文本。
-    - 使用 `for="username"` 属性关联 `<input>` 元素的 `id`。
+  - 使用 `for="username"` 属性关联 `<input>` 元素的 `id`。
 - 使用 `<input>` 元素来创建文本输入框。
-    - 使用 `id="username"` 属性接受 `<label>` 元素的 `for` 属性的关联。
+  - 使用 `id="username"` 属性接受 `<label>` 元素的 `for` 属性的关联。
 - 当用户点击 `用户名：` 时，也可以激活输入框，而不是必须点击输入框。
 
 **扩展**：如果将 `<input>` 元素嵌套在 `<label>` 元素内部，就不需要使用 `for` 和 `id` 属性，因为它们将自动关联。但这种方式不利于 CSS 样式控制。
@@ -3668,9 +3677,9 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **在上述示例中**：
 
 - 使用 `<select>` 元素创建下拉列表框。
-    - 使用 `name` 的属性值作为数据提交时键值对的**键**。
+  - 使用 `name` 的属性值作为数据提交时键值对的**键**。
 - 使用 `<option>` 元素定义了下拉列表中的每个选项。
-    - 使用 `value` 的属性值作为数据提交时键值对的**值**。
+  - 使用 `value` 的属性值作为数据提交时键值对的**值**。
 
 ### `multiple`
 
@@ -3704,8 +3713,7 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 **多行文本** [`<textarea>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea) 元素用于在表单中创建**多行文本输入框**，允许用户输入大段自由格式的文本。
 
 ```html
-Tell us your story:
-<textarea name="story" rows="5" cols="33"></textarea>
+Tell us your story: <textarea name="story" rows="5" cols="33"></textarea>
 ```
 
 > <img src="assets/image-20251012003728984.png" alt="image-20251012003728984" style="zoom:50%;" />
@@ -3719,10 +3727,10 @@ Tell us your story:
 
 ### 其它属性
 
-- [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#cols)：控件可见文本的列数，默认为20。
+- [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#cols)：控件可见文本的列数，默认为 20。
 - [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled)：表禁用，详见 [`disabled`](#`disabled`)。
 - [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#name)：属性值作为数据提交时键值对的**键**，详见 [`name`](#name)。
-- [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#rows)：控件可见文本的行数，默认为2。
+- [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#rows)：控件可见文本的行数，默认为 2。
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#属性)
 
 # 交互
@@ -3735,13 +3743,16 @@ Tell us your story:
 <details>
   <summary>古埃及</summary>
   <p>
-    <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a> 前3150年–前2686年
+    <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a>
+    前3150年–前2686年
   </p>
   <p>
-    <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a> 前2686年–前2181年
+    <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a>
+    前2686年–前2181年
   </p>
   <p>
-    <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a> 前2181年–前2055年
+    <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a>
+    前2181年–前2055年
   </p>
   <p>更多...</p>
 </details>
@@ -3778,9 +3789,7 @@ Tell us your story:
   <h2>请确认您的操作</h2>
   <p>您确定要继续吗？</p>
 
-  <button onclick="document.getElementById('myDialog').close()">
-    关闭
-  </button>
+  <button onclick="document.getElementById('myDialog').close()">关闭</button>
 </dialog>
 ```
 
@@ -3804,8 +3813,7 @@ Tell us your story:
 
 <script>
   // 2. JavaScript 找到并修改 ID 为 'status' 的元素
-  document.getElementById("status").innerText =
-    "脚本已开启，页面功能完整。";
+  document.getElementById("status").innerText = "脚本已开启，页面功能完整。";
 </script>
 
 <noscript>
@@ -3823,7 +3831,6 @@ Tell us your story:
 >  开启脚本的结果
 > </figcaption>
 > </figure>
->
 >
 > <figure>
 > <img
@@ -3856,20 +3863,20 @@ Tell us your story:
 <ul id="item-list"></ul>
 
 <script>
-    const template = document.getElementById('item-template');
-    const list = document.getElementById('item-list');
-    
-    // 假设这是需要添加到页面的数据
-    const data = { name: "苹果", price: "5.00" };
+  const template = document.getElementById("item-template");
+  const list = document.getElementById("item-list");
 
-    // 3. 通过 JavaScript 使用模板
-    const clone = template.content.cloneNode(true); // 克隆模板内容
-    
-    // 4. 修改克隆出来的内容并激活它
-    clone.querySelector('p:first-child span').textContent = data.name;
-    clone.querySelector('p:last-child span').textContent = data.price;
+  // 假设这是需要添加到页面的数据
+  const data = { name: "苹果", price: "5.00" };
 
-    list.appendChild(clone); // 将激活的内容插入到文档中
+  // 3. 通过 JavaScript 使用模板
+  const clone = template.content.cloneNode(true); // 克隆模板内容
+
+  // 4. 修改克隆出来的内容并激活它
+  clone.querySelector("p:first-child span").textContent = data.name;
+  clone.querySelector("p:last-child span").textContent = data.price;
+
+  list.appendChild(clone); // 将激活的内容插入到文档中
 </script>
 ```
 
@@ -3924,8 +3931,8 @@ Tell us your story:
 **在以上示例中**：
 
 - `<template>`：模板的结构
-    - `<slot name="info">`：具名插槽，与 `<user-card>` 中的 `<p slot="info">` 关联，接收其内容。
-    - `<slot>`：默认插槽，与 `<user-card>` 中的 `<p>` 关联，接收其内容。
+  - `<slot name="info">`：具名插槽，与 `<user-card>` 中的 `<p slot="info">` 关联，接收其内容。
+  - `<slot>`：默认插槽，与 `<user-card>` 中的 `<p>` 关联，接收其内容。
 - `<user-card>`：模板的实例，元素由 JavaScript 定义。
 - 浏览器会根据模板的结构，渲染一个示例。
 
@@ -3971,6 +3978,7 @@ Tell us your story:
 
 某些元素在渲染时，会呈现特殊格式，以突出显示，使用时应遵循其语义，不能为了某种视觉效果而滥用该类元素。如想达到某种渲染效果，应使用 CSS 样式。
 
+<!-- prettier-ignore -->
 | 语义 | 元素 | 说明 |
 | :---: | :---: | ----- |
 |  | **粗体** |  |

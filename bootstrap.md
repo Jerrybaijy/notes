@@ -17,24 +17,24 @@ Bootstrap 是一个流行的开源前端库，用于快速开发响应式和移�
 
 Bootstrap 包含以下核心部分：
 
-1. **CSS 样式库**：
+- **CSS 样式库**：
 
-    - 提供了一整套预定义的样式，如布局、按钮、表格、表单、排版等。
-    - 核心文件：`bootstrap.min.css`。
+  - 提供了一整套预定义的样式，如布局、按钮、表格、表单、排版等。
+  - 核心文件：`bootstrap.min.css`。
 
-2. **JavaScript 插件**：
+- **JavaScript 插件**：
 
-    - 提供交互组件，如模态框（Modal）、轮播图（Carousel）、下拉菜单（Dropdown）等。
-    - 核心文件：`bootstrap.bundle.min.js`，包含原生 JavaScript 和依赖的 Popper.js。
+  - 提供交互组件，如模态框（Modal）、轮播图（Carousel）、下拉菜单（Dropdown）等。
+  - 核心文件：`bootstrap.bundle.min.js`，包含原生 JavaScript 和依赖的 Popper.js。
 
-3. **Icons 图标库**：
+- **Icons 图标库**：
 
-    - Bootstrap 提供了独立的图标库，支持数千种矢量图标。
-    - 文件：`bootstrap-icons.css`。
+  - Bootstrap 提供了独立的图标库，支持数千种矢量图标。
+  - 文件：`bootstrap-icons.css`。
 
-4. **工具类（Utility Classes）**：
+- **工具类（Utility Classes）**：
 
-    - 预定义的工具类帮助快速调整布局和样式，如间距、颜色、显示控制等。
+  - 预定义的工具类帮助快速调整布局和样式，如间距、颜色、显示控制等。
 
 ## Bootstrap 引入方式
 
@@ -44,87 +44,96 @@ Bootstrap 包含以下核心部分：
 - [Bootstrap 官网](https://v5.bootcss.com/) > `Icons` > CDN
 - 在 `CDN links` 中复制 Bootstrap 的 CDN 地址，在 HTML 文件 `<head>` 元素中引入 Bootstrap 的 CSS 样式和图标样式，在 `<body>` 底部引入 JS 组件。
 
-    > CSS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
-    >
-    > Icons：https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css
-    >
-    > JS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js
+  > CSS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css
+  >
+  > Icons：https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css
+  >
+  > JS：https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js
 
-    ```html
-    <head>
-      <!-- 使用 CDN 引入 Bootstrap 的 CSS 样式表 -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    
-      <!-- 使用 CDN 引入 Bootstrap 的图标样式表 -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    </head>
-    
-    <body>
-      <!-- 其它 body 元素 -->
-    
-      <!-- 使用 CDN 引入 Bootstrap 的 JS 组件 -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    ```
+  ```html
+  <head>
+    <!-- 使用 CDN 引入 Bootstrap 的 CSS 样式表 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+
+    <!-- 使用 CDN 引入 Bootstrap 的图标样式表 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- 其它 body 元素 -->
+
+    <!-- 使用 CDN 引入 Bootstrap 的 JS 组件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  ```
 
 ### 本地引入
 
-1. [官网下载 Bootstrap](https://github.com/twbs/bootstrap/releases/download/v5.3.0-alpha1/bootstrap-5.3.0-alpha1-dist.zip)
-2. 下载 BootStrap 文件并解压，文件夹名字改为 `bootStrap`，与 HTML 文件放入同级目录。
+- [官网下载 Bootstrap](https://github.com/twbs/bootstrap/releases/download/v5.3.0-alpha1/bootstrap-5.3.0-alpha1-dist.zip)
+- 下载 BootStrap 文件并解压，文件夹名字改为 `bootStrap`，与 HTML 文件放入同级目录。
 
-    ```html
-    <head>
-      <!-- 本地引入 Bootstrap 的样式表-->
-      <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
-    </head>
-    <body>
-      <!-- 其它 body 元素 -->
-    
-      <!-- 本地引入 Bootstrap 的JS组件 -->
-      <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
-    </body>
-    ```
+  ```html
+  <head>
+    <!-- 本地引入 Bootstrap 的样式表-->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css" />
+  </head>
+  <body>
+    <!-- 其它 body 元素 -->
+
+    <!-- 本地引入 Bootstrap 的JS组件 -->
+    <script src="bootStrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+  ```
 
 ### jQuery 依赖
 
 - 从 Bootstrap4 开始，移除了对 `JS组件` 对 `jQuery` 的硬性依赖，如果使用的是 Bootstrap4 以前的版本，在引入 `JS组件` 时，应事先引入 jQuery。
 - **引入方式**
 
-    ```html
-    <body>
-      <!-- 其它 body 元素 -->
-    
-      <script src="js/jquery-3.7.1.min.js"></script>
-      <!-- bootstrap.js 需要依赖 jquery，所以要在 jquery 后面引入 -->
-      <script src="bootstrap/js/bootstrap.js"></script>
-    </body>
-    ```
+  ```html
+  <body>
+    <!-- 其它 body 元素 -->
+
+    <script src="js/jquery-3.7.1.min.js"></script>
+    <!-- bootstrap.js 需要依赖 jquery，所以要在 jquery 后面引入 -->
+    <script src="bootstrap/js/bootstrap.js"></script>
+  </body>
+  ```
 
 ### 基本语法
 
-1. 实际就是去 Bootstrap 官网找喜欢的样式，然后把它们的 HTML 粘贴到自己的代码中；
-2. 首先引入 Bootstrap 的 `CSS 样式表` 和 `JS 组件`；
-3. 比如想做一个按钮，就去 Bootstrap 官网中文文档找 [Buttons](https://v5.bootcss.com/docs/components/buttons/)；
-4. 然后把喜欢的图标的 HTML 代码复制到自己的代码中；
+- 实际就是去 Bootstrap 官网找喜欢的样式，然后把它们的 HTML 粘贴到自己的代码中；
+- 首先引入 Bootstrap 的 `CSS 样式表` 和 `JS 组件`；
+- 比如想做一个按钮，就去 Bootstrap 官网中文文档找 [Buttons](https://v5.bootcss.com/docs/components/buttons/)；
+- 然后把喜欢的图标的 HTML 代码复制到自己的代码中；
 
-    ```html
-    <head>
-      <!-- 使用 CDN 引入 Bootstrap 的样式表 -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    </head>
+  ```html
+  <head>
+    <!-- 使用 CDN 引入 Bootstrap 的样式表 -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+  </head>
 
-    <body>
-      <!-- 这是从 Bootstrap 复制过来的 -->
-      <button type="button" class="btn btn-primary">Primary</button>
+  <body>
+    <!-- 这是从 Bootstrap 复制过来的 -->
+    <button type="button" class="btn btn-primary">Primary</button>
 
-      <!-- 其它 body 元素 -->
+    <!-- 其它 body 元素 -->
 
-      <!-- 使用 CDN 引入 Bootstrap 的JS组件 -->
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-    ```
+    <!-- 使用 CDN 引入 Bootstrap 的JS组件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+  ```
 
-5. 然后再使用 CSS 和 JS 调整细节。
+- 然后再使用 CSS 和 JS 调整细节。
 
 ## Class
 
@@ -132,24 +141,27 @@ Bootstrap 包含以下核心部分：
 
 - **语法**：HTML 通过 `class` 使用 Bootstrap
 
-    ```html
-    <head>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
-    </head>
+  ```html
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    />
+  </head>
 
-    <body>
-      <!-- 通过 class 使用 Bootstrap -->
-      <button type="button" class="btn btn-primary">Primary</button>
-    </body>
-    ```
+  <body>
+    <!-- 通过 class 使用 Bootstrap -->
+    <button type="button" class="btn btn-primary">Primary</button>
+  </body>
+  ```
 
 - **Class 组成**
 
-    - **组件名称（Component）**：例如 `navbar` `modal` `btn` `form`。
-    - **修饰符（Modifier）**：通常用 - 连接，用来指定组件的变体，例如 `btn-primary`。
-    - **响应式前缀（Breakpoint）**：用来控制在不同屏幕尺寸下的表现，例如 `sm-`。
-    - **功能类（Utility）**：用于快速应用常用样式，例如 `mt-3`。
-    - **状态类（State）**：表示组件的不同状态，例如 `active`。
+  - **组件名称（Component）**：例如 `navbar` `modal` `btn` `form`。
+  - **修饰符（Modifier）**：通常用 - 连接，用来指定组件的变体，例如 `btn-primary`。
+  - **响应式前缀（Breakpoint）**：用来控制在不同屏幕尺寸下的表现，例如 `sm-`。
+  - **功能类（Utility）**：用于快速应用常用样式，例如 `mt-3`。
+  - **状态类（State）**：表示组件的不同状态，例如 `active`。
 
 # [容器](https://v5.bootcss.com/docs/layout/containers/)
 
@@ -165,27 +177,27 @@ Bootstrap 包含以下核心部分：
 
 # 栅格系统
 
-- **语法**：将父级标签（整行/整块）分成12份，针对12份布局，所有栅格自带 float 属性，以分成3块为例
+- **语法**：将父级标签（整行/整块）分成 12 份，针对 12 份布局，所有栅格自带 float 属性，以分成 3 块为例
 
-    ``` html
-    <!--将一整行分3份-->
-    <div class="container">
-      <div class="row">
-        <div class="col - sm - 4">左</div>
-        <div class="col - sm - 4">中</div>
-        <div class="col - sm - 4">右</div>
-      </div>
+  ```html
+  <!--将一整行分3份-->
+  <div class="container">
+    <div class="row">
+      <div class="col - sm - 4">左</div>
+      <div class="col - sm - 4">中</div>
+      <div class="col - sm - 4">右</div>
     </div>
-    
-    <!--将500px宽度分3份-->
-    <div style="width:500px;margin:0 auto;">
-      <div class="d-flex" style="flex-basis:100%;">
-        <div class="flex-grow-1" style="flex-basis:0;">左</div>
-        <div class="flex-grow-1" style="flex-basis:0;">中</div>
-        <div class="flex-grow-1" style="flex-basis:0;">右</div>
-      </div>
+  </div>
+
+  <!--将500px宽度分3份-->
+  <div style="width:500px;margin:0 auto;">
+    <div class="d-flex" style="flex-basis:100%;">
+      <div class="flex-grow-1" style="flex-basis:0;">左</div>
+      <div class="flex-grow-1" style="flex-basis:0;">中</div>
+      <div class="flex-grow-1" style="flex-basis:0;">右</div>
     </div>
-    ```
+  </div>
+  ```
 
 # 模态框
 
@@ -197,13 +209,20 @@ Bootstrap 包含以下核心部分：
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
       </div>
       <div class="modal-body">
         <p>Modal body text goes here.</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Close
+        </button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -215,31 +234,53 @@ Bootstrap 包含以下核心部分：
 
 - 点击外部不会关闭模态框。
 
-    ```html
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      Launch static backdrop modal
-    </button>
-    
-    <!-- Modal -->
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Understood</button>
-          </div>
+  ```html
+  <!-- Button trigger modal -->
+  <button
+    type="button"
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdrop"
+  >
+    Launch static backdrop modal
+  </button>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="staticBackdrop"
+    data-bs-backdrop="static"
+    data-bs-keyboard="false"
+    tabindex="-1"
+    aria-labelledby="staticBackdropLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">...</div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Understood</button>
         </div>
       </div>
     </div>
-    ```
+  </div>
+  ```
 
 # [导航栏](https://v5.bootcss.com/docs/components/navbar/)
 
@@ -253,8 +294,15 @@ Bootstrap 包含以下核心部分：
     <a class="navbar-brand" href="#">Navbar</a>
 
     <!-- 移动端折叠按钮 -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -272,14 +320,20 @@ Bootstrap 包含以下核心部分：
         </li>
         <!-- 下拉菜单 -->
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
             Dropdown
           </a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
             <li>
-              <hr class="dropdown-divider">
+              <hr class="dropdown-divider" />
             </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
@@ -292,7 +346,12 @@ Bootstrap 包含以下核心部分：
 
       <!-- 搜索表单 -->
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <input
+          class="form-control me-2"
+          type="search"
+          placeholder="Search"
+          aria-label="Search"
+        />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
     </div>
