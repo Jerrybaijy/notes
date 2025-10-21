@@ -356,7 +356,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
       --subnet-mode=auto \
       --bgp-routing-mode=$DYNAMIC_ROUTING_MODE \
       --mtu=$MTU
-
+  
   # 删除
   gcloud compute networks delete $VPC_NETWORK_NAME
   ```
@@ -567,26 +567,26 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
   ```go
   package main
-
+  
   import (
           "fmt"
           "log"
           "net/http"
           "os"
   )
-
+  
   func main() {
           http.HandleFunc("/", handler)
-
+  
           port := os.Getenv("PORT")
           if port == "" {
                   port = "8080"
           }
-
+  
           log.Printf("Listening on localhost:%s", port)
           log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
   }
-
+  
   func handler(w http.ResponseWriter, r *http.Request) {
           log.Print("Hello world received a request.")
           target := os.Getenv("TARGET")
@@ -777,57 +777,6 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
   ```bash
   gcloud artifacts repositories delete hello-repo --location=us-central1 --project=opportune-study-413101
   ```
-
-# JSON
-
-**JSON**（**J**ava**S**cript **O**bject **N**otation，）即 JavaScript 对象简谱，是一种轻量级的数据交换格式。JSON 可以实现不同平台的数据交换，也可以使用它保存业务数据。
-
-## JSON
-
-**语法**：`{"KEY1": VALUE1, "KEY2": VALUE2, ....}`
-
-```json
-{
-  "name": "Git Bash",
-  "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
-}
-```
-
-**说明**：
-
-- 键必须是字符串，必须使用双引号；
-- 多个键值对使用 `,` 分隔，最后一个键值对接尾不加 `,`；
-- **缩进**：不敏感，通常缩进 2 个空格。
-
-## 注释
-
-JSON 本身 **不支持注释**，标准的 JSON 解析器会将任何非数据部分（例如注释）视为无效内容。
-
-如果你需要注释 JSON，可以尝试以下变通方法：
-
-### 使用额外字段作为注释
-
-**语法**：`"_comment": "这是一个注释！",`
-
-```json
-{
-  "_comment": "这是一个注释！",
-  "name": "Git Bash",
-  "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
-}
-```
-
-### 使用 JSON 解析支持的扩展格式
-
-JSON5 是 JSON 的一个超集，允许使用 `//` 和 `/* */` 注释：
-
-```json
-{
-  // 这是单行注释
-  "name": "Git Bash" /* 这是一个内嵌注释 */,
-  "commandline": "D:\\Program Files\\Git\\bin\\bash.exe -l -i"
-}
-```
 
 # MDN
 
@@ -1089,10 +1038,10 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   ```bash
   # 查看 document
   db.$COLLECTION_NAME.find()
-
+  
   # 操作第一个 document 用'~One'
   # 操作所有 document 用'~Many'
-
+  
   # 创建 Collection / document
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
   # 修改 document
@@ -1187,7 +1136,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   ```
   # 第一行
   <演出者 & 标题> - <年份 (yyyy)>
-
+  
   # 第二行
   <原演出者> - <原本年份>
   ```
@@ -1440,23 +1389,23 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
   # 帮助
   ollama
   ollama -h
-
+  
   # 运行模型
   ollama run $LLM
   ollama run deepseek-r1:14b
-
+  
   # 创建模型（根据 modelfile）
   ollama create $MODEL_NAME -f modelfile
-
+  
   # 列出已安装的模型
   ollama list
-
+  
   # 列出正在运行模型
   ollama ps
-
+  
   # 停止模型
   ollama stop
-
+  
   # 删除模型
   ollama rm $LLM
   ```
@@ -1803,13 +1752,13 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
   ```sql
   -- 退出 SQLite 交互界面
   .exit
-
+  
   -- 查看所有数据库
   .database
-
+  
   -- 查看数据库中的所有表
   .tables
-
+  
   -- 查看某个表的结构
   .schema tbl1
   ```

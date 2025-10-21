@@ -22,7 +22,7 @@ tags:
 
 ## 快捷键列表
 
-> [VS Code 快捷键](https://code.visualstudio.com/docs/reference/default-keybindings)
+> [快捷键参考](https://code.visualstudio.com/docs/reference/default-keybindings)
 
 <!-- prettier-ignore -->
 | 操作 | [VS Code 快捷键](https://code.visualstudio.com/docs/reference/default-keybindings) |
@@ -41,50 +41,112 @@ tags:
 | ==终端== |  |
 | 打开内置终端 | <kbd>Ctrl</kbd> + <kbd>~</kbd> |
 
-## 快捷键相关问题
+## 设置快捷键
 
-- **设置快捷键**：左下角 `管理` - `键盘快捷方式`
+> [快捷键文档](https://vscode.github.net.cn/docs/getstarted/keybindings)
+
+### 快捷键编辑器
+
+通过[快捷键编辑器](https://vscode.github.net.cn/docs/getstarted/keybindings#_keyboard-shortcuts-editor)在用户界面设置快捷键：`文件` > `首选项` > `键盘快捷方式`
+
+### 快捷键配置文件
+
+在 [`keybindings.json`](https://vscode.github.net.cn/docs/getstarted/keybindings#_advanced-customization) 文件中覆盖默认快捷键，以下任意方式打开：
+
+- [打开 `keybindings.json`](C:\Users\jerry\AppData\Roaming\Code\User\keybindings.json)
+- `文件` > `首选项` > `键盘快捷方式` > 右上角点击 `打开键盘快捷方式 (json)`
+
+## 其它问题
+
 - `Ctrl + ,` 快捷键失效
-
   - 与搜狗输入法冲突！
   - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
-# 配置文件
+# `settings.json`
+
+## 基础
 
 `settings.json` 是用户自定义配置文件，以下任意方式打开：
 
-- [打开配置文件](C:\Users\jerry\AppData\Roaming\Code\User\settings.json)
+- [打开 `settings.json`](C:\Users\jerry\AppData\Roaming\Code\User\settings.json)
 - `设置` > 右上角点击 `打开设置 (json)`
 
-VS Code 的 `settings.json` 是一种 `JSONC` 模式。
+VS Code 的 `settings.json` 支持 `JSONC` 模式。
 
-## 功能
+## 全局和局部
+
+**全局配置**：
 
 ```json
-"workbench.startupEditor": "none", // 启动时默认打开项
-"files.autoSave": "afterDelay", // 实时自动保存
-"editor.codeActionsOnSave": {}, // 文件保存时自动执行代码操作
-"editor.fontFamily": "Consolas, '微软雅黑'", // 编辑区字体
-"editor.fontSize": 24, // 编辑区字体大小
-"editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮：对编辑器字体大小缩放
-"open-in-browser.default": "chrome", // 默认浏览器
+"workbench.colorCustomizations": {
+  // 修改全局滚动条颜色
+  "scrollbarSlider.background": "#a0a0a0aa"
+}
+```
+
+**局部配置**：
+
+```json
+"workbench.colorCustomizations": {
+  // 仅修改名为 "GitHub Light" 的主题
+  "[GitHub Light]": {
+    // 修改滚动条颜色
+    "scrollbarSlider.background": "#a0a0a0aa"
+  }
+}
+```
+
+```json
+// 仅修改 Python 语言的设置
+"[python]": {
+  // 默认 1 个 Tab 的宽度为 4 个空格
+  "editor.tabSize": 4
+}
 ```
 
 ## 主题
 
+> [VS Code 主题](https://vscode.github.net.cn/docs/getstarted/themes)
+>
+> [主题颜色参考](https://vscode.github.net.cn/api/references/theme-color)
+
+### 自动主题
+
+[**自动主题**](https://vscode.github.net.cn/docs/getstarted/themes#_auto-switch-based-on-os-color-scheme)：VS Code 侦听操作系统的配色方案自动切换到事先设定的颜色主题。
+
 ```json
-"workbench.colorTheme": "GitHub Dark Dimmed", // 主题
-"workbench.iconTheme": "vscode-icons", // 侧边栏和文件树图标样式
-"vsicons.dontShowNewVersionMessage": true, // 禁用图标扩展更新弹窗提醒
+"window.autoDetectColorScheme": true, // 启用自动主题
+"workbench.preferredDarkColorTheme": "GitHub Dark Dimmed", // 启用自动主题时的深色主题
+"workbench.preferredLightColorTheme": "GitHub Light", // 启用自动主题时的浅色主题
 ```
 
-## UI 颜色
+### 普通主题
+
+**普通主题**：未启用自动主题时的颜色主题。
+
+```json
+"workbench.colorTheme": "GitHub Dark Dimmed"  // 未启用自动主题时的颜色主题
+```
+
+### 自定义主题
+
+[**自定义主题**](https://vscode.github.net.cn/docs/getstarted/themes#_customizing-a-color-theme)：可以对颜色主题进行部分覆盖。
+
+#### 工作台颜色
 
 ```json
 "workbench.colorCustomizations": {
-  "editor.background": "#3B4352",  // 编辑区背景色
+  // 覆盖规则
+}
+```
+
+```json
+"workbench.colorCustomizations": {
+  "editor.background": "#3B4352",  // 编辑器背景色
   "sideBar.background": "#3B4352",  // 侧边栏背景色
   "statusBar.background": "#5c5d61", // 状态栏背景色
+  "scrollbarSlider.background": "#575757aa", // 滚动条背景色
+  "scrollbarSlider.hoverBackground": "#7a7a7aaa", // 悬停滚动条背景色
   "editorGutter.background": "#3B4352",  // 行号背景色
   "editor.selectionHighlightBackground": "#4c4948",  // 选中代码高亮背景色
   "editor.selectionBackground": "#000000",  // 选中区域背景色
@@ -93,60 +155,13 @@ VS Code 的 `settings.json` 是一种 `JSONC` 模式。
 }
 ```
 
-## 格式化
-
-格式化由两方面控制：
-
-- VS Code 控制动态输入时的 Tab 宽度
-- Prettier 控制格式化时的 Tab 宽度
-
-### VS Code
-
-VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空格数量 <img src="assets/image-20251020122212688.png" alt="image-20251020122212688" style="zoom:67%;" />，它控制以下两方面。
-
-- 按下 `Tab` 键以后缩进的空格数量
-- 按下 `Enter` 键以后缩进的空格数量
+#### 编辑器语法颜色
 
 ```json
-"editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
-"editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
-"editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格
-"editor.tabSize": 2, // 默认 1 个 Tab 的宽度为 2 个空格
-```
-
-### Prettier
-
-Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
-
-```json
-"editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
-"editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
-```
-
-### 特定语言
-
-如果想让特定语言有特殊设置：
-
-```json
-"[json]": {
-  "editor.tabSize": 4 // 动态输入时的 Tab 宽度
-  "prettier.tabWidth": 4, // 格式化时的 Tab 宽度
+"editor.tokenColorCustomizations": {
+  // 覆盖规则
 }
 ```
-
-**注意**：在实际项目中，应该在 Prettier 的 `.prettierrc` 文件中设置格式化，详见 `.prettierrc`。
-
-## 代码高亮
-
-### 方式一
-
-代码语法高亮
-
-```json
-"editor.tokenColorCustomizations": {}
-```
-
-#### 语法
 
 ```json
 "editor.tokenColorCustomizations": {
@@ -160,7 +175,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 }
 ```
 
-#### `textMateRules`
+##### `textMateRules`
 
 **TextMate** 是一种用于语法高亮的语言定义格式。VS Code 沿用了这套系统来解析代码并确定代码中每个部分的**作用域（Scope）**。
 
@@ -196,12 +211,114 @@ textMateRules
 }
 ```
 
-### 方式二
-
-代码语义高亮
+#### 编辑器语义颜色
 
 ```json
-"editor.semanticTokenColorCustomizations": {}
+"editor.semanticTokenColorCustomizations": {
+  // 覆盖规则
+}
+```
+
+#### 特定主题
+
+```json
+"workbench.colorCustomizations": {
+  // 仅修改名为 "GitHub Light" 的主题
+  "[GitHub Light]": {
+    // 覆盖规则
+  },
+
+  // 修改 Abyss 和 Red 主题
+  "[Abyss][Red]": {
+    // 覆盖规则
+  },
+
+  // 修改以 Monokai 开头的主题
+  "[Monokai*]": {
+    // 覆盖规则
+  }
+}
+```
+
+### 图标主题
+
+```json
+"workbench.iconTheme": "vscode-icons", // 文件图标主题
+```
+
+## 工作台
+
+```json
+"workbench.startupEditor": "none", // 启动时默认打开项
+```
+
+工作台主题详见主题章节。
+
+## 编辑器
+
+### 格式化
+
+格式化由两方面控制：
+
+- VS Code 控制动态输入时的 Tab 宽度
+- Prettier 控制格式化时的 Tab 宽度
+
+#### VS Code
+
+VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空格数量 <img src="assets/image-20251020122212688.png" alt="image-20251020122212688" style="zoom:67%;" />，它控制以下两方面。
+
+- 按下 `Tab` 键以后缩进的空格数量
+- 按下 `Enter` 键以后缩进的空格数量
+
+```json
+"editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
+"editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
+"editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格
+"editor.tabSize": 2, // 默认 1 个 Tab 的宽度为 2 个空格
+```
+
+#### Prettier
+
+Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
+
+```json
+"editor.defaultFormatter": "esbenp.prettier-vscode", // 启用 Prettier 格式化
+"editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
+```
+
+#### 特定语言
+
+如果想让特定语言有特殊设置：
+
+```json
+"[json]": {
+  "editor.tabSize": 4 // 动态输入时的 Tab 宽度
+  "prettier.tabWidth": 4, // 格式化时的 Tab 宽度
+}
+```
+
+**注意**：在实际项目中，应该在 Prettier 的 `.prettierrc` 文件中设置格式化，详见 `.prettierrc`。
+
+### 编辑器其它
+
+```json
+"files.autoSave": "afterDelay", // 实时自动保存
+"editor.codeActionsOnSave": {}, // 文件保存时自动执行代码操作
+"editor.fontFamily": "Consolas, '微软雅黑'", // 编辑器字体
+"editor.fontSize": 24, // 编辑器字体大小
+"editor.wordWrap": "on", // 文本过长时自动换行显示
+"editor.mouseWheelZoom": true, // Ctrl + 鼠标滚轮：对编辑器字体大小缩放
+"editor.minimap.enabled": false, // 编辑器缩略图
+"editor.renderWhitespace": "boundary", // 显示缩进空格标记为 boundary
+"editor.unicodeHighlight.ambiguousCharacters": false, // 禁用 Unicode 模糊字符的高亮
+"editor.unicodeHighlight.invisibleCharacters": false, // 禁用不可见字符的 Unicode 高亮
+"editor.quickSuggestions": {}, // 自动补全建议
+```
+
+## 窗口
+
+```json
+"window.autoDetectColorScheme": true, // 启用自动主题
 ```
 
 ## 终端
@@ -218,14 +335,6 @@ textMateRules
 }
 ```
 
-## Live Server
-
-```json
-"liveServer.settings.CustomBrowser": "chrome", // Live Server 默认浏览器
-"liveServer.settings.donotVerifyTags": true, // 禁用 Live Server 在启动时对 HTML 标签的验证
-"liveServer.settings.donotShowInfoMsg": true, // 禁用 Live Server 在运行时弹出的各种信息通知
-```
-
 ## Git
 
 ```json
@@ -236,29 +345,75 @@ textMateRules
 ## 其它设置
 
 ```json
-"editor.renderWhitespace": "boundary", // 显示缩进空格标记为 boundary
-"editor.unicodeHighlight.ambiguousCharacters": false, // 禁用 Unicode 模糊字符的高亮
-"editor.unicodeHighlight.invisibleCharacters": false, // 禁用不可见字符的 Unicode 高亮
+"markdown.styles": ["vs-code-md-style.css"], // Markdown 预览模式的样式
 "diffEditor.ignoreTrimWhitespace": false, // 在 diff 比较时，不忽略尾部空白字符
-"editor.wordWrap": "on", // 自动换行，文本过长时自动换行
 "salesforcedx-vscode-apex.java.home": "C:\\\\Program Files\\\\Java\\\\jdk-21", // Salesforce 相关设置
-"redhat.telemetry.enabled": true, // 禁止 Red Hat 收集匿名使用数据
 "git.autofetch": true, // 自动获取远程仓库信息，但不会自动合并到本地
-"editor.quickSuggestions": {}, // 自动补全建议
 ```
+
+## 扩展设置
+
+扩展设置详见各扩展章节
 
 # 扩展
 
-- **`Auto Rename Tag`**：自动同步更改 HTML 或 XML 标签对的标签名
-- **`Chinese (Simplified)`**：汉化
-- **`IntelliCode`**：智能代码补全
-- **`IntelliCode API Usage Examples`**：比 `IntelliCode` 更厉害
-- **`Jinja`**：为 Jinja2 模板语言提供语法高亮和自动完成支持
-- **`Live Server`**：实时预览前端网页
-- **`Python`**：支持 Python
-- **`Black`**：Python 格式化（首选）
-- **`autopep8`**：Python 格式化（备用）
-- **`SQLite Viewer`**：在 VSCode 中查看 SQLite 数据库
+## 常驻扩展
+
+- `Chinese (Simplified)`：汉化
+- `IntelliCode`：智能代码补全
+- `IntelliCode API Usage Examples`：比 `IntelliCode` 更厉害
+- `Prettier`：代码格式化
+- `Live Server`：实时预览前端网页
+- `vscode-icons`：文件图标
+- `Auto Rename Tag`：自动同步更改 HTML 或 XML 标签对的标签名
+- `Python`：支持 Python
+- `Black`：Python 格式化（首选）
+
+## Live Server
+
+实时预览前端网页
+
+```json
+"liveServer.settings.CustomBrowser": "chrome", // Live Server 默认浏览器
+"liveServer.settings.donotVerifyTags": true, // 禁用 Live Server 在启动时对 HTML 标签的验证
+"liveServer.settings.donotShowInfoMsg": true, // 禁用 Live Server 在运行时弹出的各种信息通知
+```
+
+## open in browser
+
+直接用浏览器打开本地文件
+
+```json
+"open-in-browser.default": "chrome", // Open in browser 扩展默认打开的浏览器
+```
+
+## vscode-icons
+
+设置 VS Code 资源管理器**文件图标**。
+
+```json
+"vsicons.dontShowNewVersionMessage": true, // 禁用图标扩展更新弹窗提醒
+```
+
+## Red Hat 系列
+
+对 Red Hat 系列的扩展进行如下设置：
+
+```json
+"redhat.telemetry.enabled": true, // 禁止 Red Hat 收集匿名使用数据
+```
+
+## 其它扩展
+
+- `Auto Rename Tag`：自动同步更改 HTML 或 XML 标签对的标签名
+- `Chinese (Simplified)`：汉化
+- `IntelliCode`：智能代码补全
+- `IntelliCode API Usage Examples`：比 `IntelliCode` 更厉害
+- `Jinja`：为 Jinja2 模板语言提供语法高亮和自动完成支持
+- `Python`：支持 Python
+- `Black`：Python 格式化（首选）
+- `autopep8`：Python 格式化（备用）
+- `SQLite Viewer`：在 VSCode 中查看 SQLite 数据库
 - `Prettier`：代码格式化
 
 # 其它

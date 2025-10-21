@@ -10,7 +10,7 @@ tags:
 
 # Java
 
-- [Java 官方文档](https://dev.java/learn/)
+>  [Java 官方文档](https://dev.java/learn/)
 
 ## 环境搭建
 
@@ -84,17 +84,17 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
    * 例如，描述类的作用或方法的功能。
    */
   public class HelloWorld {
-
+  
       // 这是一个单行注释，描述下面的方法。
       public static void main(String[] args) {
-
+  
           /*
            * 多行注释第一行
            * 多行注释第二行
            * 多行注释第三行
            * 这里是对下面的输出代码块的解释。
            */
-
+  
           System.out.println("Hello World");
       }
   }
@@ -107,7 +107,7 @@ IntelliJ IDEA 是一款 IDE，主要用于 Java 开发。
   ```java
   // 声明原始数据类型的变量时，不使用 new 关键字。
   int age = 19;
-
+  
   // 声明非原始数据类型的变量时，使用 new 关键字。
   List<String> myList = new ArrayList<>();
   ```
@@ -227,11 +227,11 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
   int a = 10;
   double b = a;  // int 自动转换为 double
   System.out.println(b);  // 输出：10.0
-
+  
   char ch = 'A';
   int c = ch;  // char 自动转换为 int（ASCII 值）
   System.out.println(c);  // 输出：65
-
+  
   long l = a;  // int 自动转换为 long
   System.out.println(l);  // 输出：10
   ```
@@ -252,11 +252,11 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
   double a = 10.5;
   int b = (int) a;  // 强制类型转换，丢失小数部分
   System.out.println(b);  // 输出：10
-
+  
   int c = 130;
   byte d = (byte) c;  // 溢出，byte 取值范围 -128~127
   System.out.println(d);  // 输出：-126 (超出范围，数据溢出)
-
+  
   char ch = (char) 66;
   System.out.println(ch);  // 输出：B
   ```
@@ -277,7 +277,7 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
   int a = 100;
   String s1 = String.valueOf(a);
   String s2 = a + "";  // 拼接方式
-
+  
   System.out.println(s1);  // "100"
   System.out.println(s2);  // "100"
   ```
@@ -554,20 +554,20 @@ for (;;){
   import java.util.ArrayList;
   import java.util.Arrays;
   import java.util.List;
-
+  
   public class NestedArrays {
       public static void main(String[] args) {
           // 创建各个数组
           List<Integer> arr1 = Arrays.asList(1, 213, 13, 232, 3, 43, 3, 3);
           List<Integer> arr2 = Arrays.asList(21, 13, 243, 4, 54, 6);
           List<Integer> arr3 = Arrays.asList(23, 545, 465, 65, 6565, 76);
-
+  
           // 创建包含这些数组的二维 List
           List<List<Integer>> arr4 = new ArrayList<>();
           arr4.add(arr1);
           arr4.add(arr2);
           arr4.add(arr3);
-
+  
           // 遍历 arr4 中的每个 List
           for (List<Integer> arrx : arr4) {
               // 遍历每个 List 中的元素
@@ -1538,7 +1538,7 @@ Spring Boot 是一个 Java 语言的框架。它是基于 Spring Framework 构�
   ```properties
   # configuration
   spring.application.name=studentsystem
-
+  
   spring.jpa.hibernate.ddl-auto=update
   spring.datasource.url=jdbc:mysql://localhost:3306/fullstack
   spring.datasource.username=root
