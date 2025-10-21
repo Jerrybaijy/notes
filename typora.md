@@ -29,10 +29,10 @@ tags:
 
 ### 配置服务器
 
-1. **服务器**：无论激活还是使用，都应使用**国内服务器**。
-2. **路径**：`File` - `Preferences` - `General` - `Use Typora server in China`
-3. **E-mail**：3933
-4. **激活码**：QFW7SN-VHN2CC-SU7UJ5-XJ5S3S
+- **服务器**：无论激活还是使用，都应使用**国内服务器**。
+- **路径**：`File` - `Preferences` - `General` - `Use Typora server in China`
+- **E-mail**：3933
+- **激活码**：QFW7SN-VHN2CC-SU7UJ5-XJ5S3S
 
 ### 偏好设置
 
@@ -101,8 +101,8 @@ tags:
 
   ```json
   "keyBinding": {
-      "Always on Top": "Ctrl+Shift+P"
-  },
+    "Always on Top": "Ctrl+Shift+P"
+  }
   ```
 
 - 重启生效
@@ -149,7 +149,9 @@ Typora 支持大部分 HTML 元素。
 <span style="display:none">这是一段被隐藏的内容</span>
 ```
 
-> <span></span><br /> > <span style="display:none">这是一段被隐藏的内容</span>
+> <span></span><br />
+>
+> <span style="display:none">这是一段被隐藏的内容</span>
 
 ## 嵌入
 
@@ -246,7 +248,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
    * author: LPZ
    * email: lpzmail@163.com
    */
-  
+
   /* 标题字体 */
   h1,
   h2,
@@ -255,64 +257,64 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   strong {
     font-weight: 600;
   }
-  
+
   /* initialize css counter */
   #write {
     counter-reset: h1;
   }
-  
+
   h1 {
     counter-reset: h2;
   }
-  
+
   h2 {
     counter-reset: h3;
   }
-  
+
   h3 {
     counter-reset: h4;
   }
-  
+
   h4 {
     counter-reset: h5;
   }
-  
+
   h5 {
     counter-reset: h6;
   }
-  
+
   /* put counter result into headings（h1 不添加） */
   #write h2:before {
     counter-increment: h2;
     content: counter(h2) ". ";
   }
-  
+
   #write h3:before,
   h3.md-focus.md-heading:before {
     /** override the default style for focused headings */
     counter-increment: h3;
     content: counter(h2) "." counter(h3) ". ";
   }
-  
+
   #write h4:before,
   h4.md-focus.md-heading:before {
     counter-increment: h4;
     content: counter(h2) "." counter(h3) "." counter(h4) ". ";
   }
-  
+
   #write h5:before,
   h5.md-focus.md-heading:before {
     counter-increment: h5;
     content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) ". ";
   }
-  
+
   #write h6:before,
   h6.md-focus.md-heading:before {
     counter-increment: h6;
     content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."
       counter(h6) ". ";
   }
-  
+
   /** override the default style for focused headings */
   #write > h3.md-focus:before,
   #write > h4.md-focus:before,
@@ -336,47 +338,47 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     font-weight: inherit;
     line-height: inherit;
   }
-  
+
   /* 添加 TOC 自动序号样式 */
   .md-toc-content {
     counter-reset: toc-h1;
   }
-  
+
   .md-toc-h1 {
     counter-reset: toc-h2;
   }
-  
+
   .md-toc-h2 {
     counter-reset: toc-h3;
   }
-  
+
   .md-toc-h3 {
     counter-reset: toc-h4;
   }
-  
+
   .md-toc-h4 {
     counter-reset: toc-h5;
   }
-  
+
   .md-toc-h5 {
     counter-reset: toc-h6;
   }
-  
+
   .md-toc-content .md-toc-h2 a:before {
     counter-increment: toc-h2;
     content: counter(toc-h2) ". ";
   }
-  
+
   .md-toc-content .md-toc-h3 a:before {
     counter-increment: toc-h3;
     content: counter(toc-h2) "." counter(toc-h3) ". ";
   }
-  
+
   .md-toc-content .md-toc-h4 a:before {
     counter-increment: toc-h4;
     content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) ". ";
   }
-  
+
   .md-toc-content .md-toc-h5 a:before {
     counter-increment: toc-h5;
     content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(
@@ -384,7 +386,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       )
       ". ";
   }
-  
+
   .md-toc-content .md-toc-h6 a:before {
     counter-increment: toc-h6;
     content: counter(toc-h2) "." counter(toc-h3) "." counter(toc-h4) "." counter(
@@ -392,60 +394,60 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       )
       "." counter(toc-h6) ". ";
   }
-  
+
   /* 侧边栏自动编号 */
   .outline-content {
     counter-reset: outline-h2;
   }
-  
+
   .outline-h1 {
     counter-reset: outline-h2;
   }
-  
+
   .outline-h2 {
     counter-reset: outline-h3;
   }
-  
+
   .outline-h3 {
     counter-reset: outline-h4;
   }
-  
+
   .outline-h4 {
     counter-reset: outline-h5;
   }
-  
+
   .outline-h5 {
     counter-reset: outline-h6;
   }
-  
+
   .outline-content .outline-h2 .outline-label:before {
     counter-increment: outline-h2;
     content: counter(outline-h2) ". ";
   }
-  
+
   .outline-content .outline-h3 .outline-label:before {
     counter-increment: outline-h3;
     content: counter(outline-h2) "." counter(outline-h3) ". ";
   }
-  
+
   .outline-content .outline-h4 .outline-label:before {
     counter-increment: outline-h4;
     content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4)
       ". ";
   }
-  
+
   .outline-content .outline-h5 .outline-label:before {
     counter-increment: outline-h5;
     content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4)
       "." counter(outline-h5) ". ";
   }
-  
+
   .outline-content .outline-h6 .outline-label:before {
     counter-increment: outline-h6;
     content: counter(outline-h2) "." counter(outline-h3) "." counter(outline-h4)
       "." counter(outline-h5) "." counter(outline-h6) ". ";
   }
-  
+
   /* 自定义强制换号符，使得在导出PDF 或打印时强制换行 */
   @media print {
     /* 这是自定义标签, 在需要换行的地方插入：<pb> */
@@ -453,30 +455,30 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
       display: block;
       page-break-after: always;
     }
-  
+
     h1 {
       page-break-before: always;
     }
-  
+
     h1:first-of-type {
       page-break-before: avoid;
     }
   }
-  
+
   /* 完成的 Task 添加删除线 */
   .task-list-done {
     text-decoration: line-through;
     color: #777;
   }
-  
+
   /* 添加键盘样式 */
   kbd {
     box-shadow: inset 0 -2px 0 #c6cbd1;
     background-color: white;
   }
-  
+
   /* -----------------------以下为自己修改区域----------------- */
-  
+
   /* write 区加宽 */
   #write {
     max-width: 1500px;
@@ -484,69 +486,69 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     padding: 30px;
     padding-bottom: 100px;
   }
-  
+
   /* 一级标题居中 */
   h1 {
     text-align: center;
   }
-  
+
   /* 图片边框 */
   #write img {
     border: 1px solid rgb(229, 229, 229);
   }
-  
+
   /* 去除图片黑边 */
   .md-image > img {
     margin: 0;
     padding: 0;
   }
-  
+
   /* 图片居中，官方方法 */
   p .md-image:only-child {
     width: auto;
     text-align: inherit;
   }
-  
+
   p > .md-image:only-child:not(.md-img-error) img {
     display: inline-block;
   }
-  
+
   /* 下面两个是之前自己的方法，2025.09.29已替换为上述官方方法 */
   /* md图片靠左 */
   /* p .md-image:only-child {
     width: auto;
     text-align: left;
   } */
-  
+
   /* img图片靠左 */
   /* #write img {
       display: block;
       margin: 0 auto 0 0 !important;
   } */
-  
+
   /* 超链接取消下划线 */
   a:link {
     text-decoration: none !important;
   }
-  
+
   /* 超链接悬停显示下划线 */
   a:hover {
     text-decoration: underline !important;
   }
-  
+
   /* 对标注进行放大 */
   rt {
     font-size: 1em; /* 默认太小，设大一点，比如1em或1.2em */
     color: red; /* 可选，标注更醒目 */
   }
-  
+
   /* 水平线宽度 */
   hr {
     border: none; /* 首先清除默认边框 */
     border-top: 2px solid #7a828e; /* 设置上边框为2像素宽的灰色实线 */
     height: 0; /* 明确设置高度为0，确保由边框决定视觉厚度 */
   }
-  
+
   /* <kbd>样式 */
   kbd {
     background-color: #000000;
@@ -554,7 +556,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     font-size: 1.1em;
     padding: 12px 12px; /* 增加内边距，使元素更大 */
   }
-  
+
   /* <summary> 元素字体大小 */
   summary {
     font-size: 1.3em;
@@ -575,24 +577,24 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     /* 在 github-night.css:984 中，
     侧边栏指定为 var(--item-hover-bg-color) */
     --item-hover-bg-color: #22272e;
-  
+
     /* write 区 */
     /* 在 github-night.css:161 中，
     此处指定为 var(--bg-color) !important */
     --bg-color: #2d333b;
   }
-  
+
   /* ---------------------- sidebar ---------------- */
   /* sidebar 区背景色 */
   #typora-sidebar {
     background-color: #fff;
   }
-  
+
   /* Sidebar 当前文件颜色 */
   .file-list-item.active {
     color: white;
   }
-  
+
   /* Sidebar 当前大纲标题颜色 */
   .outline-active {
     color: white;
@@ -607,7 +609,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   #write {
     background-color: #fff;
   }
-  
+
   /* write 区加宽 */
   #write {
     max-width: 1500px;
@@ -615,12 +617,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     padding: 30px;
     padding-bottom: 100px;
   }
-  
+
   /* write 区滚动条 */
   ::-webkit-scrollbar-thumb {
     background-color: #ffffff1a;
   }
-  
+
   /* ---------------------- 标题 ---------------- */
   /* 一级标题居中 */
   h1 {
@@ -631,18 +633,18 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   code {
     color: #f50059;
   }
-  
+
   /* 代码块背景色 */
   pre {
     background-color: #dcdcdc !important;
   }
-  
+
   /* 语言建议区背景色 */
   .auto-suggest-container {
     /* 默认为以下值 */
     background-color: var(--item-hover-bg-color);
   }
-  
+
   /* 语言建议区选中背景色 */
   /* 在 github-night.css 中，
   此处指定为 --item-hover-bg-color，
@@ -652,89 +654,89 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   .auto-suggest-container li:hover {
     background-color: var(--bg-color);
   }
-  
+
   /* 语言提示区背景色 */
   .code-tooltip {
     /* 默认为以下值 */
     background: var(--bg-color);
   }
-  
+
   /* 代码块内的选中行 */
   /* 在 github-night.css:56 中，
   此处指定为 rgba(255, 255, 255, 0.1) */
   .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
     background-color: #ffffff1a;
   }
-  
+
   /* 行内代码 */
   /* 在 github-night.css:535 中，
   此处指定为 rgba(240, 246, 252, 0.15) */
   code {
     background-color: #ffffff1a;
   }
-  
+
   /* 元数据 */
   /* 在 github-night.css:579 中，
   此处指定为 #fff */
   #write pre.md-meta-block {
     color: #adbac7;
   }
-  
+
   /* ---------------------- 超链接 ---------------- */
   /* 超链接取消下划线 */
   a:link {
     text-decoration: none !important;
   }
-  
+
   /* 超链接悬停显示下划线 */
   a:hover {
     text-decoration: underline !important;
   }
-  
+
   /* 超链接颜色 */
   a:link {
     color: black !important;
   }
-  
+
   /* 超链接悬停变色 */
   a:hover {
     color: #4183c4 !important;
   }
-  
+
   /* ---------------------- 图片 ---------------- */
   /* 图片边框 */
   #write img {
     border: 1px solid rgb(229, 229, 229);
   }
-  
+
   /* 图片居中，官方方法 */
   p .md-image:only-child {
     width: auto;
     text-align: inherit;
   }
-  
+
   p > .md-image:only-child:not(.md-img-error) img {
     display: inline-block;
   }
-  
+
   /* img图片靠左 */
   #write img {
     display: block;
     margin: 0 auto 0 0 !important;
   }
-  
+
   /* ---------------------- 其它 ---------------- */
   /* 删除线颜色 */
   del {
     text-decoration-color: red;
   }
-  
+
   /* 未知代码继承 */
   .md-heading code,
   #typora-sidebar code {
     color: inherit;
   }
-  
+
   /* <kbd>样式 */
   kbd {
     background-color: #000000;
@@ -742,23 +744,23 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     font-size: 1.1em;
     padding: 12px 12px; /* 增加内边距，使元素更大 */
   }
-  
+
   /* 去除图片黑边 */
   .md-image > img {
     margin: 0;
     padding: 0;
   }
-  
+
   /* 设置加粗文本粗细 */
   strong {
     font-weight: 1000 !important; /* 使用更高的字体粗细 */
   }
-  
+
   /* 图表左对齐 */
   .md-diagram-panel-preview {
     text-align: left;
   }
-  
+
   /* <summary> 元素字体大小 */
   summary {
     font-size: 1.3em;
@@ -776,35 +778,35 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   #typora-sidebar {
     background-color: #fff;
   }
-  
+
   /* content 区背景色 */
   content {
     background-color: #f7f8fa;
   }
-  
+
   /* write 区背景色 */
   #write {
     background-color: #fff;
   }
-  
+
   /* 代码块背景色 */
   pre {
     background-color: #dcdcdc !important;
   }
-  
+
   /* 删除线颜色 */
   del {
     text-decoration-color: red;
   }
-  
+
   /* 修改<kbd> */
   kbd {
     /* 文本颜色 */
     color: #000000;
-  
+
     /* 字体大小变大 */
     font-size: 1.1em;
-  
+
     /* 增加内边距，使元素更大 */
     padding: 7px 12px;
   }
@@ -829,33 +831,33 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     /* 在 github-night.css:984 中，
     侧边栏指定为 var(--item-hover-bg-color) */
     --item-hover-bg-color: #22272e;
-  
+
     /* write 区 */
     /* 在 github-night.css:161 中，
     此处指定为 var(--bg-color) !important */
     --bg-color: #2d333b;
   }
-  
+
   /* 删除线颜色 */
   del {
     text-decoration-color: red;
   }
-  
+
   /* 使用更高的加粗文本粗细 */
   strong {
     font-weight: 1000 !important;
   }
-  
+
   /* Sidebar 当前文件颜色 */
   .file-list-item.active {
     color: white;
   }
-  
+
   /* Sidebar 当前大纲标题颜色 */
   .outline-active {
     color: white;
   }
-  
+
   /* 语言建议区选中背景色 */
   /* 在 github-night.css 中，
   此处指定为 --item-hover-bg-color，
@@ -865,28 +867,28 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   .auto-suggest-container li:hover {
     background-color: var(--bg-color);
   }
-  
+
   /* 代码块内的选中行 */
   /* 在 github-night.css:56 中，
   此处指定为 rgba(255, 255, 255, 0.1) */
   .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
     background-color: #ffffff1a;
   }
-  
+
   /* 行内代码 */
   /* 在 github-night.css:535 中，
   此处指定为 rgba(240, 246, 252, 0.15) */
   code {
     background-color: #ffffff1a;
   }
-  
+
   /* 元数据 */
   /* 在 github-night.css:579 中，
   此处指定为 #fff */
   #write pre.md-meta-block {
     color: #adbac7;
   }
-  
+
   /* write 区滚动条 */
   ::-webkit-scrollbar-thumb {
     background-color: #ffffff1a;
@@ -955,7 +957,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     <img src="assets/图片.png" alt="替代" style="height: 300px" />
     <img src="assets/图片.png" alt="替代" style="height: 300px" />
   </div>
-  
+
   <!-- 需要图注的并排图片 -->
   <div style="display: flex; justify-content: left">
     <figure>
@@ -1016,7 +1018,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     width: auto;
     text-align: left;
   }
-  
+
   /* img图片靠左 */
   #write img {
     display: block;

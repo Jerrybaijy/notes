@@ -17,15 +17,15 @@ tags:
 
 - **语法**：单行注释 `--`；多行注释 `/* */`
 
-    ```sql
-    SELECT * FROM users;  -- 这是一个单行注释
-    
-    /*
-    这是一个多行注释
-    它可以跨越多行
-    并且会被 SQL 引擎忽略
-    */
-    ```
+  ```sql
+  SELECT * FROM users;  -- 这是一个单行注释
+
+  /*
+  这是一个多行注释
+  它可以跨越多行
+  并且会被 SQL 引擎忽略
+  */
+  ```
 
 ## 语法规范
 
@@ -47,19 +47,19 @@ tags:
 
 - **Linux**：未完成行的行尾使用反斜杠 `\` 作为续行符。
 
-    ```sql
-    SELECT * \
-    FROM users \
-    WHERE age > 20;
-    ```
+  ```sql
+  SELECT * \
+  FROM users \
+  WHERE age > 20;
+  ```
 
 - **Windows**：可以使用 Linux 的方法，但更好的做法是直接按回车键进行换行输入，最后以分号 `;` 结尾就行。
 
-    ```sql
-    SELECT *
-    FROM users
-    WHERE age > 20;
-    ```
+  ```sql
+  SELECT *
+  FROM users
+  WHERE age > 20;
+  ```
 
 # SELECT Clause
 
@@ -96,133 +96,133 @@ SELECT * FROM students
 
 - **Syntax**
 
-    ```sql
-    SELECT 列名
-    FROM 表名
-    WHERE 条件;
-    ```
+  ```sql
+  SELECT 列名
+  FROM 表名
+  WHERE 条件;
+  ```
 
-    ```sql
-    SELECT name
-    FROM students
-    WHERE age = 18;
-    ```
+  ```sql
+  SELECT name
+  FROM students
+  WHERE age = 18;
+  ```
 
 ## Operator
 
 - 在 sql 中，**操作符**用于对条件进行分组和限定。
 - Example
 
-    ```sql
-    SELECT name
-    FROM students
-    WHERE (age = 18 OR (score > 60 AND gender = 'male'));
-    ```
+  ```sql
+  SELECT name
+  FROM students
+  WHERE (age = 18 OR (score > 60 AND gender = 'male'));
+  ```
 
 ### AND
 
 - `AND` 与条件。
 
-    ```sql
-    WHERE 条件1 AND 条件2;
-    ```
+  ```sql
+  WHERE 条件1 AND 条件2;
+  ```
 
-    ```sql
-    WHERE age = 18 AND score > 60 AND gender = 'male';
-    ```
+  ```sql
+  WHERE age = 18 AND score > 60 AND gender = 'male';
+  ```
 
 ### OR
 
 - `OR` 或条件。
 
-    ```sql
-    WHERE 条件1 OR 条件2;
-    ```
+  ```sql
+  WHERE 条件1 OR 条件2;
+  ```
 
-    ```sql
-    WHERE age = 18 OR score > 60 OR gender = 'male';
-    ```
+  ```sql
+  WHERE age = 18 OR score > 60 OR gender = 'male';
+  ```
 
 ### IN
 
 - `IN` 操作符用于判断某个字段的值是否在指定的一组值中。替代使用多个 `OR` 条件的复杂写法。
 - IN 的基本用法
 
-    ```sql
-    WHERE 列名 IN (值1, 值2, ...);
-    ```
+  ```sql
+  WHERE 列名 IN (值1, 值2, ...);
+  ```
 
-    ```sql
-    WHERE age IN (15, 16, 17);
-    ```
+  ```sql
+  WHERE age IN (15, 16, 17);
+  ```
 
 - 搭配子查询
 
-    ```sql
-    WHERE 列名 IN (SELECT 其它列名 FROM 其他表名);
-    ```
+  ```sql
+  WHERE 列名 IN (SELECT 其它列名 FROM 其他表名);
+  ```
 
-    ```sql
-    -- 子查询，从 valid_ages 表获取有效年龄
-    WHERE age IN (SELECT age FROM valid_ages);
-    ```
+  ```sql
+  -- 子查询，从 valid_ages 表获取有效年龄
+  WHERE age IN (SELECT age FROM valid_ages);
+  ```
 
 ### BETWEEN
 
 - `BETWEEN` 操作符用于判断某个字段的值是否在指定的范围之内，这个范围包含边界值。
 
-    ```sql
-    WHERE 列名 BETWEEN 值1 AND 值2;
-    ```
+  ```sql
+  WHERE 列名 BETWEEN 值1 AND 值2;
+  ```
 
-    ```sql
-    WHERE age BETWEEN 18 AND 20;
-    ```
+  ```sql
+  WHERE age BETWEEN 18 AND 20;
+  ```
 
 ### LIKE
 
 - `LIKE` 用于对文本字段进行模糊查询。
 
-    ```sql
-    WHERE 列名 LIKE 匹配模式;
-    ```
+  ```sql
+  WHERE 列名 LIKE 匹配模式;
+  ```
 
-    ```sql
-    WHERE note LIKE '%先生';
-    ```
+  ```sql
+  WHERE note LIKE '%先生';
+  ```
 
 - **Wildcard**
 
-    - `%`：匹配任意数量（包含零个）字符。
-    - `_`：匹配任意单个字符。
-    - `[]`：用于指定一个字符范围或一组字符，只要匹配其中一个字符就算匹配成功。
+  - `%`：匹配任意数量（包含零个）字符。
+  - `_`：匹配任意单个字符。
+  - `[]`：用于指定一个字符范围或一组字符，只要匹配其中一个字符就算匹配成功。
 
-        ```sql
-        -- 匹配第二个字符为 “a”、“b” 或者 “c” 的客户
-        SELECT * FROM customers WHERE customer_name LIKE '_[abc]%';
-        ```
+    ```sql
+    -- 匹配第二个字符为 “a”、“b” 或者 “c” 的客户
+    SELECT * FROM customers WHERE customer_name LIKE '_[abc]%';
+    ```
 
-    - `^` 或 `!`：在使用方括号时，`^`（SQL Server）或 `!`（Access）用于表示取反，即匹配不在指定范围内的字符。
+  - `^` 或 `!`：在使用方括号时，`^`（SQL Server）或 `!`（Access）用于表示取反，即匹配不在指定范围内的字符。
 
-        ```sql
-        -- 匹配第二个字符不是 “a”、“b” 或者 “c” 的客户
-        SELECT * FROM customers WHERE customer_name LIKE '_[^abc]%';
-        ```
+    ```sql
+    -- 匹配第二个字符不是 “a”、“b” 或者 “c” 的客户
+    SELECT * FROM customers WHERE customer_name LIKE '_[^abc]%';
+    ```
 
 ### NOT
 
 - `NOT` 用于对条件取反。
 
-    ```sql
-    -- 对逻辑取反
-    WHERE NOT (age = 18 OR (score > 60 AND gender = 'male'));
-    
-    -- 对 IN 取反
-    WHERE age IN (15, 16, 17);
-    
-    -- 对 LIKE 取反
-    WHERE note NOT NLIKE '%先生';
-    ```
+  ```sql
+  -- 对逻辑取反
+  WHERE NOT (age = 18 OR (score > 60 AND gender = 'male'));
+
+  -- 对 IN 取反
+  WHERE age IN (15, 16, 17);
+
+  -- 对 LIKE 取反
+  WHERE note NOT NLIKE '%先生';
+  ```
 
 # ORDER Clause
 
@@ -232,54 +232,54 @@ SELECT * FROM students
 
 - **Syntax**
 
-    ```sql
-    SELECT 列名
-    FROM 表名
-    ORDER BY 列名 [ASC|DESC];
-    ```
+  ```sql
+  SELECT 列名
+  FROM 表名
+  ORDER BY 列名 [ASC|DESC];
+  ```
 
-    ```sql
-    SELECT *
-    FROM students
-    ORDER BY name;
-    ```
+  ```sql
+  SELECT *
+  FROM students
+  ORDER BY name;
+  ```
 
 ## Order Condition
 
 - 排序条件用于指定排序方式
 - **Example**
 
-    ```sql
-    // 按字母顺序升序排列
-    SELECT * FROM students ORDER BY name [ASC];
-    
-    // 按字母顺序降序排列
-    SELECT * FROM students ORDER BY name DESC;
-    ```
+  ```sql
+  // 按字母顺序升序排列
+  SELECT * FROM students ORDER BY name [ASC];
 
-    - **ASC**：默认为升序 (ascending)，可省略；
-    - **DESC**: 降序 (descending)。
+  // 按字母顺序降序排列
+  SELECT * FROM students ORDER BY name DESC;
+  ```
+
+  - **ASC**：默认为升序 (ascending)，可省略；
+  - **DESC**: 降序 (descending)。
 
 - Ordered by multiple columns.
 
-    ```sql
-    SELECT * FROM students ORDER BY name, id;
-    ```
+  ```sql
+  SELECT * FROM students ORDER BY name, id;
+  ```
 
 # LIMIT Clause
 
 - **LIMIT** clause is used to limit the number of query results.
 - **Syntax**
 
-    ```sql
-    SELECT 列名
-    FROM 表名
-    LIMIT [开始行号] 行数;
-    ```
+  ```sql
+  SELECT 列名
+  FROM 表名
+  LIMIT [开始行号] 行数;
+  ```
 
-    ```sql
-    SELECT * FROM students LIMIT 5;
-    ```
+  ```sql
+  SELECT * FROM students LIMIT 5;
+  ```
 
 # JOIN Clause
 
@@ -291,43 +291,43 @@ SELECT * FROM students
 - **INER JOIN** equals to **JOIN**.
 - **Syntax**
 
-    ```sql
-    SELECT field1, field2
-    FROM table1
-    INNER JOIN table2
-    ON table1.field3 = table2.field3;
-    ```
+  ```sql
+  SELECT field1, field2
+  FROM table1
+  INNER JOIN table2
+  ON table1.field3 = table2.field3;
+  ```
 
-    ```sql
-    SELECT students.student_name, courses.course_name
-    FROM students
-    INNER JOIN courses
-    ON students.student_id = courses.student_id;
-    ```
+  ```sql
+  SELECT students.student_name, courses.course_name
+  FROM students
+  INNER JOIN courses
+  ON students.student_id = courses.student_id;
+  ```
 
-    - `students` table
+  - `students` table
 
-        | student_id | student_name |
-        | ---------- | ------------ |
-        | 1          | Alice        |
-        | 2          | Bob          |
-        | 3          | Charlie      |
+    | student_id | student_name |
+    | ---------- | ------------ |
+    | 1          | Alice        |
+    | 2          | Bob          |
+    | 3          | Charlie      |
 
-    - `courses` table
+  - `courses` table
 
-        | course_id | course_name | student_id |
-        | --------- | ----------- | ---------- |
-        | 101       | Math        | 1          |
-        | 102       | English     | 2          |
-        | 103       | Science     | 1          |
+    | course_id | course_name | student_id |
+    | --------- | ----------- | ---------- |
+    | 101       | Math        | 1          |
+    | 102       | English     | 2          |
+    | 103       | Science     | 1          |
 
-    - Result table
+  - Result table
 
-        | student_name | course_name |
-        | ------------ | ----------- |
-        | Alice        | Math        |
-        | Alice        | Science     |
-        | Bob          | English     |
+    | student_name | course_name |
+    | ------------ | ----------- |
+    | Alice        | Math        |
+    | Alice        | Science     |
+    | Bob          | English     |
 
 ## Other JOIN
 
@@ -342,59 +342,59 @@ SELECT * FROM students
 - **AS** clause is used to specify a alias (similar to variables) for a field.
 - **Syntax**
 
-    ```sql
-    SELECT 列名 AS 别名
-    FROM 表名;
-    ```
+  ```sql
+  SELECT 列名 AS 别名
+  FROM 表名;
+  ```
 
-    ```sql
-    SELECT gender, name AS student_name FROM students;
-    ```
-    
-    | gender | student_name |
-    | ------ | ------------ |
-    | male   | Jerry        |
+  ```sql
+  SELECT gender, name AS student_name FROM students;
+  ```
+
+  | gender | student_name |
+  | ------ | ------------ |
+  | male   | Jerry        |
 
 - **Notice**
 
-    - Execution order: **FROM** > ... > **SELECT** > **ORDER BY**
-    - So, the alias declared last in the behind clause shouldn't be used in the front ones.
+  - Execution order: **FROM** > ... > **SELECT** > **ORDER BY**
+  - So, the alias declared last in the behind clause shouldn't be used in the front ones.
 
-        ```sql
-        -- Error Example
-        SELECT gender, COUNT(name) AS student_count
-        FROM students
-        GROUP BY gender
-        HAVING student_count > 2; -- student_count is declared in SELECT clause
-        
-        -- Correct Example
-        SELECT e.employee_id, d.department_name
-        FROM employees AS e
-        JOIN departments AS d ON e.department_id = d.department_id;
-        ```
+    ```sql
+    -- Error Example
+    SELECT gender, COUNT(name) AS student_count
+    FROM students
+    GROUP BY gender
+    HAVING student_count > 2; -- student_count is declared in SELECT clause
+
+    -- Correct Example
+    SELECT e.employee_id, d.department_name
+    FROM employees AS e
+    JOIN departments AS d ON e.department_id = d.department_id;
+    ```
 
 # Aggregate Functions
 
 - **Aggregate Functions** are functions that calculate the values of a specified field.
 - **Syntax**
 
-    ```sql
-    SELECT {Function}(列名)
-    FROM 表名;
-    ```
+  ```sql
+  SELECT {Function}(列名)
+  FROM 表名;
+  ```
 
-    ```sql
-    SELECT COUNT(gender) FROM students;
-    ```
+  ```sql
+  SELECT COUNT(gender) FROM students;
+  ```
 
 - Common Aggregate Function
 
-    - **`COUNT()`**: Include the repeative values. Exclude NULL.
-    - **`COUNT(DISTINCT {Field})`**: Exclude the repeative values. Exclude NULL.
-    - **`MIN()`**: Also can handle date and time.
-    - **`MAX()`**: Also handle date and time.
-    - **`AVG()`**
-    - **`SUM()`**
+  - **`COUNT()`**: Include the repeative values. Exclude NULL.
+  - **`COUNT(DISTINCT {Field})`**: Exclude the repeative values. Exclude NULL.
+  - **`MIN()`**: Also can handle date and time.
+  - **`MAX()`**: Also handle date and time.
+  - **`AVG()`**
+  - **`SUM()`**
 
 # GROUP Clause
 
@@ -402,22 +402,22 @@ SELECT * FROM students
 - Query results are grouped by fields.
 - **Syntax**
 
-    ```sql
-    SELECT 列名1, {Function}(列名2) AS 别名
-    FROM 表名
-    GROUP BY 列名1;
-    ```
+  ```sql
+  SELECT 列名1, {Function}(列名2) AS 别名
+  FROM 表名
+  GROUP BY 列名1;
+  ```
 
-    ```sql
-    SELECT gender, COUNT(name) AS student_count
-    FROM students
-    GROUP BY gender;
-    ```
+  ```sql
+  SELECT gender, COUNT(name) AS student_count
+  FROM students
+  GROUP BY gender;
+  ```
 
-    | gender | student_count |
-    | ------ | ------------- |
-    | male   | 3             |
-    | female | 2             |
+  | gender | student_count |
+  | ------ | ------------- |
+  | male   | 3             |
+  | female | 2             |
 
 # HAVING Clause
 
@@ -425,38 +425,38 @@ SELECT * FROM students
 
 - **Syntax**
 
-    ```sql
-    SELECT 列名1, {Function}(列名2) AS 别名
-    FROM 表名
-    GROUP BY 列名1
-    HAVING 条件;
-    ```
+  ```sql
+  SELECT 列名1, {Function}(列名2) AS 别名
+  FROM 表名
+  GROUP BY 列名1
+  HAVING 条件;
+  ```
 
-    ```sql
-    SELECT gender, COUNT(name) AS student_count
-    FROM students
-    GROUP BY gender
-    HAVING COUNT(name) > 2;
-    ```
+  ```sql
+  SELECT gender, COUNT(name) AS student_count
+  FROM students
+  GROUP BY gender
+  HAVING COUNT(name) > 2;
+  ```
 
-    | gender | student_count |
-    | ------ | ------------- |
-    | male   | 3             |
+  | gender | student_count |
+  | ------ | ------------- |
+  | male   | 3             |
 
 # Database
 
 - **基础命令**
 
-    ```sql
-    -- 查看所有
-    SHOW DATABASES; 
-    -- 进入
-    USE $DATABASE;
-    # 创建
-    CREATE DATABASE $DATABASE [DEFAULT CHARSET=utf8];
-    -- 删除
-    DROP DATABASE $DATABASE;
-    ```
+  ```sql
+  -- 查看所有
+  SHOW DATABASES;
+  -- 进入
+  USE $DATABASE;
+  # 创建
+  CREATE DATABASE $DATABASE [DEFAULT CHARSET=utf8];
+  -- 删除
+  DROP DATABASE $DATABASE;
+  ```
 
 # Table
 
@@ -464,42 +464,42 @@ SELECT * FROM students
 
 - **基础命令**
 
-    ```sql
-    -- 查看某个数据库中所有数据表
-    SHOW TABLES;
-    -- 查看表头
-    DESC $TABLE
-    -- 删除 TABLE
-    DROP TABLE $TABLE
-    -- 清空 TABLE
-    DELETE FROM $TABLE
-    ```
+  ```sql
+  -- 查看某个数据库中所有数据表
+  SHOW TABLES;
+  -- 查看表头
+  DESC $TABLE
+  -- 删除 TABLE
+  DROP TABLE $TABLE
+  -- 清空 TABLE
+  DELETE FROM $TABLE
+  ```
 
 - **创建数据表**（以 MySQL 为例）
 
-    ```sql
-    CREATE TABLE $TABLE(
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION,
-        $COLUMN $CONDITION
-    )DEFAULT CHARSET=utf8;
-    ```
+  ```sql
+  CREATE TABLE $TABLE(
+      $COLUMN $CONDITION,
+      $COLUMN $CONDITION,
+      $COLUMN $CONDITION,
+      $COLUMN $CONDITION
+  )DEFAULT CHARSET=utf8;
+  ```
 
-    ```sql
-    CREATE TABLE tb_users (
-        id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-        username VARCHAR(16) NOT NULL UNIQUE,
-        password VARCHAR(255) NOT NULL
-    ) DEFAULT CHARSET=utf8;
-    ```
+  ```sql
+  CREATE TABLE tb_users (
+      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+      username VARCHAR(16) NOT NULL UNIQUE,
+      password VARCHAR(255) NOT NULL
+  ) DEFAULT CHARSET=utf8;
+  ```
 
-    **在以上代码中**：
+  **在以上代码中**：
 
-    1. **`INT`**：整型
-    2. **`NOT NULL`**：非空
-    3. **`AUTO_INCREMENT`**：
-    4. **`PRIMARY KEY`**：主键
+  - **`INT`**：整型
+  - **`NOT NULL`**：非空
+  - **`AUTO_INCREMENT`**：
+  - **`PRIMARY KEY`**：主键
 
 # Field
 
@@ -523,13 +523,13 @@ SELECT * FROM students
 
 - [PRIMARY KEY](https://www.w3cschool.cn/sql/vle8zfpd.html)：主键
 
-    - 主键必须包含唯一的值。
-    - 主键列不能包含 NULL 值。
-    - 每个表都应该有一个主键，并且只能有一个主键。
+  - 主键必须包含唯一的值。
+  - 主键列不能包含 NULL 值。
+  - 每个表都应该有一个主键，并且只能有一个主键。
 
 - [FOREIGN KEY](https://www.w3cschool.cn/sql/5dycsfpf.html)：外键
 
-    - 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
+  - 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
 
 - [NOT NULL](https://www.w3cschool.cn/sql/6tlpzfpb.html)：非空
 - [DEFAULT](https://www.w3cschool.cn/sql/jm8e9fpj.html)：默认
@@ -541,50 +541,50 @@ SELECT * FROM students
 
 - **基础命令**
 
-    ```sql
-    -- 查看 row
-    SELECT * FROM $TABLE [where id=1];
-    -- 删除 row
-    DELETE FROM $TABLE [where $CONDITION];
-    -- 添加 row
-    INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
-    ```
+  ```sql
+  -- 查看 row
+  SELECT * FROM $TABLE [where id=1];
+  -- 删除 row
+  DELETE FROM $TABLE [where $CONDITION];
+  -- 添加 row
+  INSERT INTO $TABLE($COLUMN1, $COLUMN2, ...) values('$VALUE1', '$VALUE2', ...);
+  ```
 
 # Column
 
 - **基础命令**
 
-    ```sql
-    -- 删除 COLUMN
-    ALTER TABLE $TABLE DROP COLUMN $COLUMN
-    ```
+  ```sql
+  -- 删除 COLUMN
+  ALTER TABLE $TABLE DROP COLUMN $COLUMN
+  ```
 
 # Data
 
 - **查看数据**
 
-    ```sql
-    -- 查看数据行的所有字段数据
-    SELECT * FROM $TABLE WHERE $CONDITION;
-    
-    -- 查看数据行的某些字段数据
-    SELECT $COLUMN[, $COLUMN2...] FROM $TABLE WHERE $CONDITION;
-    ```
+  ```sql
+  -- 查看数据行的所有字段数据
+  SELECT * FROM $TABLE WHERE $CONDITION;
+
+  -- 查看数据行的某些字段数据
+  SELECT $COLUMN[, $COLUMN2...] FROM $TABLE WHERE $CONDITION;
+  ```
 
 - **更新数据**
 
-    ```sql
-    UPDATE $TABLE SET $COLUMN = $VALUE WHERE $CONDITION;
-    ```
+  ```sql
+  UPDATE $TABLE SET $COLUMN = $VALUE WHERE $CONDITION;
+  ```
 
-    ```SQL
-    UPDATE tb1 SET mobile = '1999999999' WHERE name = 'zhangsan';
-    
-    UPDATE tb1 SET 
-        name = 'zhangsan', 
-        mobile = '1999999999' 
-    WHERE name = 'zhaoliu';
-    ```
+  ```SQL
+  UPDATE tb1 SET mobile = '1999999999' WHERE name = 'zhangsan';
+
+  UPDATE tb1 SET
+      name = 'zhangsan',
+      mobile = '1999999999'
+  WHERE name = 'zhaoliu';
+  ```
 
 # 其它
 

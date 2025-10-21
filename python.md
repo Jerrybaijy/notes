@@ -24,7 +24,7 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 ### Windows 系统
 
 - [Python 官网下载安装包](https://www.python.org/downloads/)
-- 勾选 `管理员权限` 和 `添加系统变量`，自定义安装（新台式机选择 `Install Now`）
+- 勾选 `管理员权限` 和 `添加系统变量`，自定义安装（新台式机选择 `Install Now`）。
 
   <img src="assets/image-20250223141439176.png" alt="image-20250223141439176" style="width:50%;" />
 
@@ -2519,9 +2519,9 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 - **创建模块**
 
-  1. 项目已创建
-  2. 在项目中创建包 `.py文件`
-  3. 在 `.py文件` 中写模块
+  - 项目已创建
+  - 在项目中创建包 `.py文件`
+  - 在 `.py文件` 中写模块
 
 - **引入和使用模块**：引入模块本质上就是在一个 Python 文件中引入另一个 Python 文件
 
@@ -2883,8 +2883,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   - 序列化支持以下类型
   ```
 
-    <!-- prettier-ignore -->
-
+  <!-- prettier-ignore -->
   |   Python    | JSON     |
   | :---------: | -------- |
   |    dict     | object   |
@@ -2918,8 +2917,8 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   **解释**：
 
-  1. 禁止使用 `str()` 将 Python 数据转换成字符串，否则获取结果花括号里面会变单引号。
-  2. `ensure_ascii=False` 表示禁止 Ascii 转换，就是禁止将中文的“张三”转换成字节。
+  - 禁止使用 `str()` 将 Python 数据转换成字符串，否则获取结果花括号里面会变单引号。
+  - `ensure_ascii=False` 表示禁止 Ascii 转换，就是禁止将中文的“张三”转换成字节。
 
 ### JSON 转 Python
 
@@ -3272,11 +3271,11 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
   **在以上代码中**：
 
-  1. **`create_engine()`**：创建数据库引擎，用于连接到数据库。
-  2. **`declarative_base()`**：用于创建基础类，所有的映射类都应该继承自这个基类。
-  3. **`sessionmaker()`**：创建会话工厂，生成用于与数据库交互的会话对象（`Session`）。
-  4. **`class User(Base)`**：定义模型类（映射到数据库表）
-  5. **`Session()`**：创建一个会话对象（类似于游标），用于后续与数据库的交互。
+  - **`create_engine()`**：创建数据库引擎，用于连接到数据库。
+  - **`declarative_base()`**：用于创建基础类，所有的映射类都应该继承自这个基类。
+  - **`sessionmaker()`**：创建会话工厂，生成用于与数据库交互的会话对象（`Session`）。
+  - **`class User(Base)`**：定义模型类（映射到数据库表）
+  - **`Session()`**：创建一个会话对象（类似于游标），用于后续与数据库的交互。
 
 - **函数模板（以 SQLite 为例）**
 
@@ -3360,15 +3359,13 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
   **在以上代码中**：
 
-  1. **`DATABASE_URL`**：连接地址
-
-     - **`mysql`**：数据库的类型
-     - **`pymysql`**：数据库驱动，需 pip 安装 `pymysql`。
-
-  2. **`username:password`**：MySQL 数据库登录用户名和密码。
-  3. **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
-  4. **`3306`**：端口号
-  5. **`my_database`**：数据库名称
+  - **`DATABASE_URL`**：连接地址
+    - **`mysql`**：数据库的类型
+    - **`pymysql`**：数据库驱动，需 pip 安装 `pymysql`。
+  - **`username:password`**：MySQL 数据库登录用户名和密码。
+  - **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
+  - **`3306`**：端口号
+  - **`my_database`**：数据库名称
 
 ## `pymysql` 交互 MySQL
 
@@ -3410,13 +3407,12 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
   **在以上代码中**：
 
-  1. `host="localhost"`：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
-  2. **`port=3306`**：端口号，注意数字是整型。
-  3. **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
-  4. **`cursor=DictCursor`**：查询结果为列表嵌套字典，否则为元祖嵌套元祖。
-
-     - 用户名和密码应优先使用元祖，详见[元祖特性](../code-general/code-general.md#元祖)。
-     - 用户资料（如性别、年龄、邮箱、电话号码等）优先使用列表，可用键索引值。
+  - `host="localhost"`：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
+  - **`port=3306`**：端口号，注意数字是整型。
+  - **`database="db_test"`**：可提前连接某个特定数据库，以减少后期进入数据库的步骤。
+  - **`cursor=DictCursor`**：查询结果为列表嵌套字典，否则为元祖嵌套元祖。
+    - 用户名和密码应优先使用元祖，详见[元祖特性](../code-general/code-general.md#元祖)。
+    - 用户资料（如性别、年龄、邮箱、电话号码等）优先使用列表，可用键索引值。
 
 - **函数模板**
 
@@ -3778,11 +3774,11 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 **Jinja2 的核心特性**：
 
-1. **变量替换**：使用 `{{ ... }}` 输出变量值。
-2. **控制结构**：支持循环、条件语句等逻辑控制结构。
-3. **过滤器**：对变量进行操作，比如格式化、转换等。
-4. **宏与模板继承**：可以创建可重用的模板块和继承模板。
-5. **上下文操作**：可以传递数据到模板，并在模板中动态处理。
+- **变量替换**：使用 `{{ ... }}` 输出变量值。
+- **控制结构**：支持循环、条件语句等逻辑控制结构。
+- **过滤器**：对变量进行操作，比如格式化、转换等。
+- **宏与模板继承**：可以创建可重用的模板块和继承模板。
+- **上下文操作**：可以传递数据到模板，并在模板中动态处理。
 
 ## Jinja2 变量
 
@@ -3900,9 +3896,9 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 **Flask 核心功能**：
 
-1. **模板引擎**：通常使用 Jinja2。
-2. **URL 路由**：在视图中直接定义路由。
-3. **ORM（对象关系映射）**：使用 SQLAlchemy（可选）。
+- **模板引擎**：通常使用 Jinja2。
+- **URL 路由**：在视图中直接定义路由。
+- **ORM（对象关系映射）**：使用 SQLAlchemy（可选）。
 
 ## Flask 结构
 
@@ -3948,15 +3944,15 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
   **在以上代码中**：
 
-  1. **`Flask`**：类，用于创建应用实例。
-  2. **`__name__`**：用于确定应用的根路径；Flask 使用这个路径来查找资源和模板。
-  3. **`@app.route('/')`**：路由装饰器，用于定义访问路径。
-  4. **`render_template`**：用于渲染 HTML 模板。
-  5. 当用户访问应用的根路径 `/` 时，调用 `home()` 函数。
-  6. **`home()`** 函数通过 **`render_template('index.html')`** 渲染并返回名为 `index.html` 的模板文件。
-  7. **`if __name__ == '__main__':`**：这部分代码保证了当脚本作为主程序运行时启动 Flask 应用。
-  8. **`app.run(debug=True)`**：启动 Flask 服务器。
-  9. **`debug=True`**：开启 **调试模式**，即 **热重载**，这样可以实时查看更改并调试错误。
+  - **`Flask`**：类，用于创建应用实例。
+  - **`__name__`**：用于确定应用的根路径；Flask 使用这个路径来查找资源和模板。
+  - **`@app.route('/')`**：路由装饰器，用于定义访问路径。
+  - **`render_template`**：用于渲染 HTML 模板。
+  - 当用户访问应用的根路径 `/` 时，调用 `home()` 函数。
+  - **`home()`** 函数通过 **`render_template('index.html')`** 渲染并返回名为 `index.html` 的模板文件。
+  - **`if __name__ == '__main__':`**：这部分代码保证了当脚本作为主程序运行时启动 Flask 应用。
+  - **`app.run(debug=True)`**：启动 Flask 服务器。
+  - **`debug=True`**：开启 **调试模式**，即 **热重载**，这样可以实时查看更改并调试错误。
 
 - **模板文件**：`index.html`
 
@@ -3984,7 +3980,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
   **在以上代码中**：
 
-  1. **`{{ url_for('static', filename='script.js') }}`**：动态引用静态文件，详见[动态路径 `url_for`](#动态路径 `url_for`)。
+  - **`{{ url_for('static', filename='script.js') }}`**：动态引用静态文件，详见[动态路径 `url_for`](#动态路径 `url_for`)。
 
 #### Flask 简单结构初始化脚本
 
@@ -4042,7 +4038,6 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
       else:
           # Linux/Mac
           command = f"source {activate_script} && pip install flask"
-
 
       # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
       # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
@@ -4397,10 +4392,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 - **蓝图完整的流程**（以路由为例）
 
   ```
-  1. routes.py:     创建蓝图对象 (main = Blueprint('main', __name__))
-          ↓
+  1. routes.py:     创建蓝图对象 (main = Blueprint('main', __name__)
   2. __init__.py:   导入蓝图对象 (from app.routes import main)
-          ↓
   3. __init__.py:   注册到应用   (app.register_blueprint(main))
   ```
 
@@ -4420,12 +4413,12 @@ Django 是一个强大的 Python Web 框架，适用于开发复杂和可扩展�
 
 **Django 核心功能**：
 
-1. **模板引擎**：`Django 模板引擎`，支持模板继承和动态数据渲染。
-2. **URL 路由**：使用 `urls.py`，集中管理。
-3. **ORM（对象关系映射）**：内置，强大。
-4. **认证和权限系统**：内置用户认证、登录、注册和权限控制功能。
-5. **Admin 后台**：自动生成的管理页面，方便管理数据。
-6. **中间件**：处理请求和响应的钩子，用于添加自定义逻辑。
+- **模板引擎**：`Django 模板引擎`，支持模板继承和动态数据渲染。
+- **URL 路由**：使用 `urls.py`，集中管理。
+- **ORM（对象关系映射）**：内置，强大。
+- **认证和权限系统**：内置用户认证、登录、注册和权限控制功能。
+- **Admin 后台**：自动生成的管理页面，方便管理数据。
+- **中间件**：处理请求和响应的钩子，用于添加自定义逻辑。
 
 ## Django 基础
 
@@ -4466,126 +4459,123 @@ myproject/                   # 项目根目录
 
 ### 创建 Django 项目
 
-1. **安装 Django**
+- **安装 Django**
 
-   ```bash
-   pip install django
-   ```
+  ```bash
+  pip install django
+  ```
 
-2. **创建项目**：在想存放项目的目录中执行以下命令
+- **创建项目**：在想存放项目的目录中执行以下命令
 
-   ```bash
-   django-admin startproject myproject
-   ```
+  ```bash
+  django-admin startproject myproject
+  ```
 
-   ```
-   # 这会生成以下目录结构：
+  ```
+  # 这会生成以下目录结构：
 
-   myproject/
-   ├── manage.py
-   └── myproject/
-       ├── __init__.py
-       ├── settings.py
-       ├── urls.py
-       └── wsgi.py
-   ```
+  myproject/
+  ├── manage.py
+  └── myproject/
+      ├── __init__.py
+      ├── settings.py
+      ├── urls.py
+      └── wsgi.py
+  ```
 
-3. 将项目文件夹 `myproject` 加入 VSCode 工作区。
-4. 创建并激活虚拟环境
-5. 在虚拟环境中安装 `django`
-6. **创建应用**
+- 将项目文件夹 `myproject` 加入 VSCode 工作区。
+- 创建并激活虚拟环境
+- 在虚拟环境中安装 `django`
+- **创建应用**
 
-   ```bash
-   python manage.py startapp myapp
-   ```
+  ```bash
+  python manage.py startapp myapp
+  ```
 
-   ```
-   # 目录结构更新为：
+  ```
+  # 目录结构更新为：
 
-   myproject/
-   └── myapp/
-       ├── migrations/
-       ├── __init__.py
-       ├── admin.py
-       ├── apps.py
-       ├── models.py
-       ├── tests.py
-       └── views.py
-   ```
+  myproject/
+  └── myapp/
+      ├── migrations/
+      ├── __init__.py
+      ├── admin.py
+      ├── apps.py
+      ├── models.py
+      ├── tests.py
+      └── views.py
+  ```
 
-7. **配置应用**：在 `settings.py` 中添加应用
+- **配置应用**：在 `settings.py` 中添加应用
 
-   ```python
-   INSTALLED_APPS = [
-       # 默认应用
-       'django.contrib.admin',
-       'django.contrib.auth',
-       ...
-       # 自定义应用
-       'myapp',
-   ]
-   ```
+  ```python
+  INSTALLED_APPS = [
+      # 默认应用
+      'django.contrib.admin',
+      'django.contrib.auth',
+      ...
+      # 自定义应用
+      'myapp',
+  ]
+  ```
 
-8. **创建视图和模板**
+- **创建视图和模板**
 
-   1. **配置 URL**：`myproject/urls.py`
+  - **配置 URL**：`myproject/urls.py`
 
-      ```python
-      from django.contrib import admin
-      from django.urls import path
-      from myapp import views
+    ```python
+    from django.contrib import admin
+    from django.urls import path
+    from myapp import views
 
-      urlpatterns = [
-          path('admin/', admin.site.urls),
-          path('', views.index, name='index'),  # 首页路由
-      ]
-      ```
+    urlpatterns = [
+        path('admin/', admin.site.urls),
+        path('', views.index, name='index'),  # 首页路由
+    ]
+    ```
 
-   2. **编写视图**：`myapp/views.py`
+  - **编写视图**：`myapp/views.py`
 
-      ```python
-      from django.shortcuts import render
+    ```python
+    from django.shortcuts import render
 
-      def index(request):
-          context = {
-              'name': 'Alice',
-              'items': ['Apple', 'Banana', 'Cherry']
-          }
-          return render(request, 'index.html', context)
-      ```
+    def index(request):
+        context = {
+            'name': 'Alice',
+            'items': ['Apple', 'Banana', 'Cherry']
+        }
+        return render(request, 'index.html', context)
+    ```
 
-   3. **创建模板**：`myapp/templates/index.html`
+  - **创建模板**：`myapp/templates/index.html`
 
-      ```html
-      <!DOCTYPE html>
-      <html lang="en">
-        <head>
-          <meta charset="UTF-8" />
-          <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0"
-          />
-          <title>Django Example</title>
-        </head>
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Django Example</title>
+      </head>
 
-        <body>
-          <h1>Hello, {{ name }}!</h1>
-          <ul>
-            {% for item in items %}
-            <li>{{ item }}</li>
-            {% endfor %}
-          </ul>
-        </body>
-      </html>
-      ```
+      <body>
+        <h1>Hello, {{ name }}!</h1>
+        <ul>
+          {% for item in items %}
+          <li>{{ item }}</li>
+          {% endfor %}
+        </ul>
+      </body>
+    </html>
+    ```
 
-9. **启动服务器**
+- **启动服务器**
 
-   ```bash
-   python manage.py runserver
-   ```
+  ```bash
+  python manage.py runserver
+  ```
 
-10. **访问应用**：http://127.0.0.1:8000/
+- **访问应用**：http://127.0.0.1:8000/
 
 # Django 框架（旧）
 
@@ -5434,27 +5424,27 @@ html 模板就是存放 html 文件的文件夹
 
 ## Music Crawler
 
-1. 抓包
+- 抓包
 
    <img src="assets/image-20240405214854742.png" alt="图片1" style="width: 50%;">
 
-   1. 浏览器打开音乐播放页面
-   2. `F12` 进入开发者工具
-   3. 如上图找到“请求网址”
-   4. 此网址可以打开直接下载，也可以放在下面脚本中获取音乐文件
+  - 浏览器打开音乐播放页面
+  - `F12` 进入开发者工具
+  - 如上图找到“请求网址”
+  - 此网址可以打开直接下载，也可以放在下面脚本中获取音乐文件
 
-2. Script
+- Script
 
-   ```python
-   import requests
+  ```python
+  import requests
 
-   # 抓包获取音乐的链接
-   url = "$URL"
+  # 抓包获取音乐的链接
+  url = "$URL"
 
-   # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
-   data = requests.get(url).content
+  # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
+  data = requests.get(url).content
 
-   # 写入到本地
-   with open(r"E:\labs\以后的以后.mp4", "wb") as f:
-       f.write(data)
-   ```
+  # 写入到本地
+  with open(r"E:\labs\以后的以后.mp4", "wb") as f:
+      f.write(data)
+  ```

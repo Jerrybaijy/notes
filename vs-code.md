@@ -24,6 +24,7 @@ tags:
 
 > [VS Code 快捷键](https://code.visualstudio.com/docs/reference/default-keybindings)
 
+<!-- prettier-ignore -->
 | 操作 | [VS Code 快捷键](https://code.visualstudio.com/docs/reference/default-keybindings) |
 | :---: | :---: |
 | ==软件配置== |  |
@@ -45,15 +46,14 @@ tags:
 - **设置快捷键**：左下角 `管理` - `键盘快捷方式`
 - `Ctrl + ,` 快捷键失效
 
-    - 与搜狗输入法冲突！
-    - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
+  - 与搜狗输入法冲突！
+  - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
 
 # 配置文件
 
 `settings.json` 是用户自定义配置文件，以下任意方式打开：
 
 - [打开配置文件](C:\Users\jerry\AppData\Roaming\Code\User\settings.json)
-
 - `设置` > 右上角点击 `打开设置 (json)`
 
 VS Code 的 `settings.json` 是一种 `JSONC` 模式。
@@ -82,14 +82,14 @@ VS Code 的 `settings.json` 是一种 `JSONC` 模式。
 
 ```json
 "workbench.colorCustomizations": {
-    "editor.background": "#3B4352",  // 编辑区背景色
-    "sideBar.background": "#3B4352",  // 侧边栏背景色
-    "statusBar.background": "#5c5d61", // 状态栏背景色
-    "editorGutter.background": "#3B4352",  // 行号背景色
-    "editor.selectionHighlightBackground": "#4c4948",  // 选中代码高亮背景色
-    "editor.selectionBackground": "#000000",  // 选中区域背景色
-    "editor.findMatchBackground": "#000000",  // 查找结果高亮背景色
-    "editor.lineHighlightBackground": "#000000",  // 当前光标所在行的背景色
+  "editor.background": "#3B4352",  // 编辑区背景色
+  "sideBar.background": "#3B4352",  // 侧边栏背景色
+  "statusBar.background": "#5c5d61", // 状态栏背景色
+  "editorGutter.background": "#3B4352",  // 行号背景色
+  "editor.selectionHighlightBackground": "#4c4948",  // 选中代码高亮背景色
+  "editor.selectionBackground": "#000000",  // 选中区域背景色
+  "editor.findMatchBackground": "#000000",  // 查找结果高亮背景色
+  "editor.lineHighlightBackground": "#000000",  // 当前光标所在行的背景色
 }
 ```
 
@@ -150,13 +150,13 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 
 ```json
 "editor.tokenColorCustomizations": {
-    "textMateRules",  // 作用域样式
-    "comments": "#519657",  // 注释
-    "strings": "#7e3648",  // 字符串
-    "functions": "#1c7887",  // 函数
-    "keywords": "#a207fc", // 关键字
-    "variables": "#0720fc",  // 变量
-    "numbers": "#e21d1d"   // 数字
+  "textMateRules",  // 作用域样式
+  "comments": "#519657",  // 注释
+  "strings": "#7e3648",  // 字符串
+  "functions": "#1c7887",  // 函数
+  "keywords": "#a207fc", // 关键字
+  "variables": "#0720fc",  // 变量
+  "numbers": "#e21d1d"   // 数字
 }
 ```
 
@@ -172,30 +172,27 @@ textMateRules
   └─ settings
 ```
 
-| 属性 | 值类型 |
-| :---: | :---: |
+|      属性       |                 值类型                  |
+| :-------------: | :-------------------------------------: |
 | `textMateRules` | 一个值：`object`<br/>多个值：`object[]` |
-| `scope` | 一个值：`string`<br>多个值：`string[]` |
-| `settings` | `object` |
+|     `scope`     | 一个值：`string`<br>多个值：`string[]`  |
+|   `settings`    |                `object`                 |
 
 ```json
 "editor.tokenColorCustomizations": {
-    "textMateRules": [
-        {
-            // 目标作用域：各种编程语言的关键字
-            "scope": [
-                "keyword",
-                "storage.type"
-            ],
-            // 设置要应用的样式
-            "settings": {
-                "foreground": "#ff0000",
-                "fontStyle": "bold"
-            }
-        },
-        // 其它 scope 和 settings
-    ],
-    // 其它 editor.tokenColorCustomizations 设置
+  "textMateRules": [
+    {
+      // 目标作用域：各种编程语言的关键字
+      "scope": ["keyword", "storage.type"],
+      // 设置要应用的样式
+      "settings": {
+        "foreground": "#ff0000",
+        "fontStyle": "bold"
+      }
+    }
+    // 其它 scope 和 settings
+  ]
+  // 其它 editor.tokenColorCustomizations 设置
 }
 ```
 
@@ -215,9 +212,9 @@ textMateRules
 // 默认终端
 "terminal.integrated.defaultProfile.windows": "Git Bash",
 "terminal.integrated.profiles.windows": {
-    "Git Bash": {
-        "path": "C:\\Program Files\\Git\\bin\\bash.exe"
-    }
+  "Git Bash": {
+    "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+  }
 }
 ```
 
@@ -272,12 +269,12 @@ textMateRules
 
 ## 选择解释器虚拟环境
 
-1. 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
-2. 每次进入项目目录都应该检查；
-3. 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
-4. 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
+- 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
+- 每次进入项目目录都应该检查；
+- 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
+- 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
 
-    - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
+  - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
 
-5. 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
-6. 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
+- 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
+- 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。

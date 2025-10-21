@@ -101,28 +101,28 @@ Introduce how to Extend the Salesforce Platform:
 - Create a Custom Field: **Price**
 - Create a Record: **Jerry's house**
 
-**Challenge**: 
+**Challenge**:
 
 - Create a custom object
-    - Label: **Offer**
-    - Object Name: `Offer`
-    - Record Name: **Offer Name**
-    - Data Type: **Auto Number**
-    - Display Format: **OF-{0000}**
-    - Starting Number: **1**
+  - Label: **Offer**
+  - Object Name: `Offer`
+  - Record Name: **Offer Name**
+  - Data Type: **Auto Number**
+  - Display Format: **OF-{0000}**
+  - Starting Number: **1**
 - Create a custom currency field on the Offer object
-    - Data Type: **Currency**
-    - Field Label: **Offer Amount**
-    - Field Name: `Offer_Amount`
+  - Data Type: **Currency**
+  - Field Label: **Offer Amount**
+  - Field Name: `Offer_Amount`
 - Create a custom date field on the Offer object
-    - Data Type: **Date**
-    - Field Label: **Target Close Date**
-    - Field Name: `Target_Close_Date`
+  - Data Type: **Date**
+  - Field Label: **Target Close Date**
+  - Field Name: `Target_Close_Date`
 
 ## [Create Object Relationships](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
 - Create a Custom Object: **Favorite**
-    - Use the TP you created in the previous unit: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
+  - Use the TP you created in the previous unit: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
 - Create a Lookup Relationship: **Contact**
 - Create a Master-Detail Relationship: **Property**
 - Add a Favorite Property: Add a detail record **Jerry's house - Related**.
@@ -141,21 +141,21 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 **Challenge Requirements:**
 
 - Create a custom Master-Detail field on the Offer object
-    - Data Type: **Master-Detail**
-    - Related To: **Property**
-    - Field Label: **Property**
-    - Field Name: `Property`
+  - Data Type: **Master-Detail**
+  - Related To: **Property**
+  - Field Label: **Property**
+  - Field Name: `Property`
 - Create a custom Lookup Relationship field on the Offer object
-    - Data Type: **Lookup Relationship**
-    - Related To: **Contact**
-    - Field Label: **Contact**
-    - Field Name: `Contact`
+  - Data Type: **Lookup Relationship**
+  - Related To: **Contact**
+  - Field Label: **Contact**
+  - Field Name: `Contact`
 
 ## [Work with Schema Builder](https://trailhead.salesforce.com/content/learn/modules/data_modeling/schema_builder?trail_id=force_com_dev_beginner)
 
 - Based on the previous unit.
-    - Learning
-    - Challenge: the object **Offer**
+  - Learning
+  - Challenge: the object **Offer**
 - See Your Data Model in Action: **Schema Builder**
 - Create an Object with Schema Builder. Any Name: **Object - Schema Builder**
 - Create Fields with Schema Builder. Any Name: **Email - Schema Builder**
@@ -183,10 +183,10 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Create and Customize List Views](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 
 - Create a List View: **Channel Customers**
-    - Set up some filters.
+  - Set up some filters.
 - Create a List View Chart: **Pipeline Total Value**
 - Challenge
-    - Create a List View: **High Probability Opportunities**
+  - Create a List View: **High Probability Opportunities**
 
 ## [Customize Record Highlights with Compact Layouts](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_compact_layouts?trail_id=force_com_dev_beginner)
 
@@ -253,9 +253,9 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 - The Flow Builder User Interface
 - Continue the previous TP: **Use Formula Fields - learning**
 - Flow Building Blocks
-    - Elements
-    - Connectors
-    - Resources
+  - Elements
+  - Connectors
+  - Resources
 - Keyboard Shortcuts
 
 ## [Learn About Flow Variables](https://trailhead.salesforce.com/content/learn/modules/flow-basics/learn-about-flow-variables?trail_id=force_com_dev_beginner)
@@ -263,9 +263,9 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 - What Can I Store in a Variable?
 - Create a Variable
 - Things Similar to Variables
-    - Constants
-    - Formulas
-    - Text Templates
+  - Constants
+  - Formulas
+  - Text Templates
 - Challenge: Create some variables and a formular.
 - Continue learning: [Build Flows with Flow Builder](https://trailhead.salesforce.com/content/learn/trails/build-flows-with-flow-builder) trail.
 
@@ -290,11 +290,11 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 - Data Types Overview
 - Apex Collections: List
 - Apex Classes
-    - Continue the previous TP: **Use Formula Fields -learning**
-    - Save an Apex Class: **EmailManager**
-    - Call a Method to Send an Email
-    - Inspect Debug Logs
-    - Call a Static Method
+  - Continue the previous TP: **Use Formula Fields -learning**
+  - Save an Apex Class: **EmailManager**
+  - Call a Method to Send an Email
+  - Inspect Debug Logs
+  - Call a Static Method
 
 ## [Use sObjects](https://trailhead.salesforce.com/content/learn/modules/apex_database/apex_database_sobjects?trail_id=force_com_dev_beginner)
 
@@ -317,37 +317,37 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Get Started with Apex Triggers](https://trailhead.salesforce.com/content/learn/modules/apex_triggers/apex_triggers_intro?trail_id=force_com_dev_beginner)
 
 - Insert the previous modules
-    - [SOQL for Admins](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins)
-        - Get Started with SOQL Queries
-        - Create SOQL Queries in Apex Classes
-        - Create Relationship Queries with Standard Objects
-        - Create Relationship Queries with Custom Objects
-            - Creat a new TP: **Create Relationship Queries with Custom Objects - challenge**
-            - Install a Package: **DreamHouse** `04t3h000004mBpiAAE`
-        - Use Bind Variables and Aggregate Functions
-            - Bind Variables
-            - Aggregate Functions
-            - Group the Results of Aggregate Functions
-            - Filter the Results of Aggregate Functions
-    - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
-        - Get Started with the Developer Console
-        - Navigate and Edit Source Code
-            - Create an Apex Class
-            - Execute an Apex Class
-            - What Are Lightning Components?
-            - Create an Aura Component
-            - Create Visualforce Pages and Components
-        - Generate and Analyze Logs
-            - View Logs in the Text Editor
-            - Use the Log Inspector
-            - Perspective Manager
-            - Log Levels
-        - Inspect Objects at Checkpoints
-            - Set Checkpoints in Your Apex Code
-            - Checkpoints Tab
-        - Execute SOQL and SOSL Queries
-            - What Is a SOQL Query?
-            - What Is a SOSL Search?
+  - [SOQL for Admins](https://trailhead.salesforce.com/content/learn/modules/soql-for-admins)
+    - Get Started with SOQL Queries
+    - Create SOQL Queries in Apex Classes
+    - Create Relationship Queries with Standard Objects
+    - Create Relationship Queries with Custom Objects
+      - Creat a new TP: **Create Relationship Queries with Custom Objects - challenge**
+      - Install a Package: **DreamHouse** `04t3h000004mBpiAAE`
+    - Use Bind Variables and Aggregate Functions
+      - Bind Variables
+      - Aggregate Functions
+      - Group the Results of Aggregate Functions
+      - Filter the Results of Aggregate Functions
+  - [Developer Console Basics](https://trailhead.salesforce.com/content/learn/modules/developer_console)
+    - Get Started with the Developer Console
+    - Navigate and Edit Source Code
+      - Create an Apex Class
+      - Execute an Apex Class
+      - What Are Lightning Components?
+      - Create an Aura Component
+      - Create Visualforce Pages and Components
+    - Generate and Analyze Logs
+      - View Logs in the Text Editor
+      - Use the Log Inspector
+      - Perspective Manager
+      - Log Levels
+    - Inspect Objects at Checkpoints
+      - Set Checkpoints in Your Apex Code
+      - Checkpoints Tab
+    - Execute SOQL and SOSL Queries
+      - What Is a SOQL Query?
+      - What Is a SOSL Search?
 - Trigger Syntax
 - Creat a Trigger
 - Trigger Events
@@ -368,16 +368,16 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 ## [Discover Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/discover-lightning-web-components?trail_id=force_com_dev_beginner)
 
 - Insert the previous modules: [Quick Start: Lightning Web Components](https://trailhead.salesforce.com/content/learn/projects/quick-start-lightning-web-components)
-    - Set Up Your Salesforce DX Environment
-        - Create a new TP: **Quick Start: Lightning Web Components**
-        - Set Up Your Trailhead Playground
-        - Get Your Trailhead Playground Username and Password
-        - Install the Command Line Interface (CLI)
-    - Set Up Visual Studio Code
-    - Create a Hello World Lightning Web Component
-        - Create a Salesforce DX Project
-        - Authorize Your Trailhead Playground
-        - Create a Lightning Web Component
+  - Set Up Your Salesforce DX Environment
+    - Create a new TP: **Quick Start: Lightning Web Components**
+    - Set Up Your Trailhead Playground
+    - Get Your Trailhead Playground Username and Password
+    - Install the Command Line Interface (CLI)
+  - Set Up Visual Studio Code
+  - Create a Hello World Lightning Web Component
+    - Create a Salesforce DX Project
+    - Authorize Your Trailhead Playground
+    - Create a Lightning Web Component
 
 ## [Create Lightning Web Components](https://trailhead.salesforce.com/content/learn/modules/lightning-web-components-basics/create-lightning-web-components?trail_id=force_com_dev_beginner)
 
@@ -402,8 +402,7 @@ Even if you're completing this module as part of the Admin Beginner trail, be su
 
 - Add a Custom Object: **Event Registration**
 - Add Custom Fields for **Event Registration**
-    - **Registration ID**
-    - **Master-Detail Relationship**
+  - **Registration ID**
+  - **Master-Detail Relationship**
 
 ## [Add Automation to Your App](https://trailhead.salesforce.com/content/learn/projects/build-an-event-registration-app/add-automation-to-your-app)
-

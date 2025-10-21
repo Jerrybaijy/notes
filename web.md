@@ -34,14 +34,12 @@ tags:
 [**Web 服务器**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_web_server)可以代指硬件或软件，或者是它们协同工作的整体。
 
 - **硬件部分**，web 服务器是一台存储了 web 服务器软件以及网站的组成文件（比如，HTML 文档、图片、CSS 样式表和 JavaScript 文件）的计算机。它接入到互联网并且支持与其他连接到互联网的设备进行物理数据的交互。
-- **软件部分**，web 服务器包括控制网络用户如何访问托管文件的几个部分，至少是一台 *HTTP 服务器*。一台 HTTP 服务器是一种能够理解 [URL](https://developer.mozilla.org/zh-CN/docs/Glossary/URL)（网络地址）和 [HTTP](https://developer.mozilla.org/zh-CN/docs/Glossary/HTTP)（浏览器用来查看网页的协议）的软件。一个 HTTP 服务器可以通过它所存储的网站域名进行访问，并将这些托管网站的内容传递给最终用户的设备。
+- **软件部分**，web 服务器包括控制网络用户如何访问托管文件的几个部分，至少是一台 _HTTP 服务器_。一台 HTTP 服务器是一种能够理解 [URL](https://developer.mozilla.org/zh-CN/docs/Glossary/URL)（网络地址）和 [HTTP](https://developer.mozilla.org/zh-CN/docs/Glossary/HTTP)（浏览器用来查看网页的协议）的软件。一个 HTTP 服务器可以通过它所存储的网站域名进行访问，并将这些托管网站的内容传递给最终用户的设备。
 
 静态或动态服务器：
 
 - **静态 web 服务器**（static web server）由一个计算机（硬件）和一个 HTTP 服务器（软件）组成。我们称它为“静态”是因为这个服务器把它托管文件的“保持原样”地传送到你的浏览器。
 - **动态 web 服务器**（dynamic web server）由一个静态的网络服务器加上额外的软件组成，最普遍的是一个*应用服务器*和一个*数据库*。我们称它为“动态”是因为这个应用服务器会在通过 HTTP 服务器把托管文件传送到你的浏览器之前会对这些托管文件进行更新。
-
-
 
 # 浏览器开发者工具
 
@@ -214,7 +212,7 @@ p label {
 [**无障碍**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility)是一种让尽可能多的用户可以使用你的网站的做法。所有用户包括但不限于：残疾人士、使用移动设备的人、使用低速网络连接的人。
 
 - 使用严格的语义化 HTML 元素
-- 使用 [WAI-ARIA](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics#进入_wai-aria) 规范，如 `<nav role="navigation">` 中的 `role` 属性。
+- 使用 [WAI-ARIA](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics#进入_wai-aria) 规范，如 `<nav role="navigation">`  中的 `role`  属性。
 - 更多...
 
 # 跨浏览器测试

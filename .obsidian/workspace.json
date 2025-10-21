@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "java.md",
+                "file": "markdown.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "java"
+              "title": "markdown"
             }
           },
           {
@@ -133,7 +133,8 @@
               "title": "code-general"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -165,7 +166,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "bash",
+                "query": "markd",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -255,13 +256,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "java.md",
+                "file": "typora.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "java 的大纲"
+              "title": "typora 的大纲"
             }
           }
         ],
@@ -282,13 +283,14 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "0225cb405dc13bdb",
+  "active": "cbf3a3c7f7ca1f90",
   "lastOpenFiles": [
     "markdown.md",
+    "java.md",
+    "其它格式未转换/obsidian-themes/claude-底板-标题.css",
     "typora.md",
     "vs-code.md",
     "software.md",
-    "java.md",
     "prettier.md",
     "0000.json",
     "新建 Markdown File.md",
@@ -328,7 +330,6 @@
     "bom.md",
     "node-js.md",
     "未命名",
-    "html-elements.pdf",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

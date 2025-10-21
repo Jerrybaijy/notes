@@ -1,0 +1,14 @@
+/* 删除线颜色 */
+del {
+  text-decoration-color: red;
+}
+
+/* Sidebar 当前文件颜色 */
+.file-list-item.active {
+  color: green;
+}
+
+/* Sidebar 当前大纲标题颜色 */
+.outline-active {
+  color: green;
+}

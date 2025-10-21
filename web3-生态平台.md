@@ -9,21 +9,21 @@ tags:
 
 # BTC
 
-[比特币](https://bitcoin.org/zh_CN/)（Bitconin，简称 BTC）是一种去中心化加密货币，由一个化名为中本聪（ Satoshi Nakamoto ）的人或组织在2009年创建，但中本聪的真实身份至今未知。比特币是第一个应用区块链技术的加密货币。
+[比特币](https://bitcoin.org/zh_CN/)（Bitconin，简称 BTC）是一种去中心化加密货币，由一个化名为中本聪（ Satoshi Nakamoto ）的人或组织在 2009 年创建，但中本聪的真实身份至今未知。比特币是第一个应用区块链技术的加密货币。
 
 # ETH
 
 以太坊（Ethereum，简称 ETH）是一个开源的、去中心化的区块链平台，它不仅支持原生的加密货币：以太币（ ETH ），还提供了一个运行去中心化应用程序（ DApps ）的生态系统。这些应用程序通过智能合约来实现，运行在以太坊虚拟机（ EVM ）上。
 
-| 对比维度 | 比特币 | 以太坊 |
-| :---: | :---: | :---: |
-| 愿景 |  全球去中心化加密货币系统 |  全球去中心化计算机 |
-| 创始人 |  中本聪 |  Vitalik Buterin |
-| 创建时间 |  2009年 |  2015年 |
-| 共识机制 |  PoW |  PoW —> PoS |
-| 核心功能 |  货币交易 |  货币交易 + 智能合约 |
-| 出块时间 |  10分钟 |  12秒 |
-| 编程语言 |  比特币脚本 |  Solidity |
+| 对比维度 |          比特币          |       以太坊        |
+| :------: | :----------------------: | :-----------------: |
+|   愿景   | 全球去中心化加密货币系统 | 全球去中心化计算机  |
+|  创始人  |          中本聪          |   Vitalik Buterin   |
+| 创建时间 |         2009 年          |       2015 年       |
+| 共识机制 |           PoW            |     PoW —> PoS      |
+| 核心功能 |         货币交易         | 货币交易 + 智能合约 |
+| 出块时间 |         10 分钟          |        12 秒        |
+| 编程语言 |        比特币脚本        |      Solidity       |
 
 # Binance
 
@@ -50,9 +50,10 @@ YouTube 博主介绍：
 #### 积分组成
 
 - 资产余额：以下各项的总和
-    - 币安交易所各账户资产余额
-    - 币安无私钥钱包资产余额
-    - 流动性
+
+  - 币安交易所各账户资产余额
+  - 币安无私钥钱包资产余额
+  - 流动性
 
 - 交易量：每日买入 Alpha 代币的总交易额。
 
@@ -67,30 +68,30 @@ YouTube 博主介绍：
 交易量积分规则（每日计算）
 
 | 日总交易额 | 积分 |
-| :----: | :--: |
-|   $2   |  1   |
-|   $4   |  2   |
-|   $8   |  3   |
-|  $16   |  4   |
-|  $32   |  5   |
-| ... | ... |
+| :--------: | :--: |
+|     $2     |  1   |
+|     $4     |  2   |
+|     $8     |  3   |
+|    $16     |  4   |
+|    $32     |  5   |
+|    ...     | ...  |
 
-以下两种方式购买 Alpha 代币，计算交易量时自动翻倍，每天可**多**获得1个交易量积分：
+以下两种方式购买 Alpha 代币，计算交易量时自动翻倍，每天可**多**获得 1 个交易量积分：
 
-- 购买 **BSC链**的 Alpha 代币
+- 购买 **BSC 链**的 Alpha 代币
 - 在任何链中通过**限价**购买 Alpha 代币
 - 以上两种方式不可叠加翻倍
 
 #### 积分时效
 
 - 每天 UTC 23:59:59 (UTC+8 07:59:59) 更新当日积分，即北京时间 8:00 前的交易，计入前一日的积分。
-- 当前积分为过去15天的累积积分，每天 14:00 (UTC+8) 之前更新。
+- 当前积分为过去 15 天的累积积分，每天 14:00 (UTC+8) 之前更新。
 
 #### 消耗积分
 
-- 每日积分的窗口有效期为15天
-- 参与 TGE 活动消耗15积分
-- 参与 Alpha 空投消耗15积分
+- 每日积分的窗口有效期为 15 天
+- 参与 TGE 活动消耗 15 积分
+- 参与 Alpha 空投消耗 15 积分
 
 #### 其它事宜
 
@@ -100,26 +101,33 @@ YouTube 博主介绍：
 ### 刷积分
 
 - 币种选择
-    - 优先选择 BSC 链（交易量翻倍），市价买卖（买卖迅速，控制风险）
-    - 其次选择其它链，限价买卖（交易量翻倍）
-    - 币价必须稳定：只选择 24 小时交易量排名靠前的币
-    - 尽量不要刷 Sonic 链，损耗大
-    - 目前使用 ZKJ 刷积分
+
+  - 优先选择 BSC 链（交易量翻倍），市价买卖（买卖迅速，控制风险）
+  - 其次选择其它链，限价买卖（交易量翻倍）
+  - 币价必须稳定：只选择 24 小时交易量排名靠前的币
+  - 尽量不要刷 Sonic 链，损耗大
+  - 目前使用 ZKJ 刷积分
+
 - 时间选择
-    - UTC+8 早8点前，流动性低，币价波动大，不要刷
+
+  - UTC+8 早 8 点前，流动性低，币价波动大，不要刷
+
 - 滑点设置 0.1%
 - 网络费用选择“正常”
 - 关于磨损
-    - 网络费用和交易金额无关，可适当增加单次交易金额
-    - 使用币安钱包刷分，磨损更低，共计约 1.5U/9000U
+
+  - 网络费用和交易金额无关，可适当增加单次交易金额
+  - 使用币安钱包刷分，磨损更低，共计约 1.5U/9000U
 
 - 如果能达到 1000U 网络费用 0.16U，磨损约为 0.02%
-    - 每天需要刷8192$，每次1000U，即9次/天
-    - 每天获得积分为 2 + 14 = 16
-    - 刷到 240 分需要 8192 * 0.02% \* 15 ≈ 25U 的网络费用，总磨损费用控制在50U，那这样的损耗还是比较可观的
-- 注意：如果当前窗口期已经获得了3次空投，会消耗 15 * 3 = 45分，此时如果还按既定策略刷分，那接下来的积分将会一直是 240 - 45 =195，直到有空投的那天滚动出当前窗口期。
-- 如果每15天参加3次空投，刷分总损耗为 50U，平均奖励为100U/次，纯利润为100 * 3 - 50 = 250U/半月 = 500U/月。
-- 刷分可结合 BSC Alpha 交易竞赛，每15天可交易120,000交易额。可获得 Alpha 空投和交易竞赛的双重奖励。
+
+  - 每天需要刷 8192$，每次 1000U，即 9 次/天
+  - 每天获得积分为 2 + 14 = 16
+  - 刷到 240 分需要 8192 \* 0.02% \* 15 ≈ 25U 的网络费用，总磨损费用控制在 50U，那这样的损耗还是比较可观的
+
+- 注意：如果当前窗口期已经获得了 3 次空投，会消耗 15 \* 3 = 45 分，此时如果还按既定策略刷分，那接下来的积分将会一直是 240 - 45 =195，直到有空投的那天滚动出当前窗口期。
+- 如果每 15 天参加 3 次空投，刷分总损耗为 50U，平均奖励为 100U/次，纯利润为 100 \* 3 - 50 = 250U/半月 = 500U/月。
+- 刷分可结合 BSC Alpha 交易竞赛，每 15 天可交易 120,000 交易额。可获得 Alpha 空投和交易竞赛的双重奖励。
 
 # Fantom
 
@@ -129,13 +137,13 @@ Fantom 是一个 Layer-1 区块链平台，致力于克服区块链的“不可�
 
 - **主网名**：Opera
 - **原生代币**：
-    - FTM 是 Fantom 网络的核心代币
-    - S Token 是 Sonic 链的原生代币
+  - FTM 是 Fantom 网络的核心代币
+  - S Token 是 Sonic 链的原生代币
 - **生态优势**：兼容 EVM
 - **产品线**：
-    - Fantom 是区块链平台
-    - Sonic 是技术升级
-    - Sonic Labs 是项目孵化器，基于 Sonic 技术栈开发。
+  - Fantom 是区块链平台
+  - Sonic 是技术升级
+  - Sonic Labs 是项目孵化器，基于 Sonic 技术栈开发。
 
 Sonic 资源：
 
@@ -146,7 +154,7 @@ Sonic 资源：
 
 ## FeeM
 
-[FeeM](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-81d4-bc3c-ecba462d4c14) (Fee Monetization)  本质上是一种 Gas 费用分润机制，Fantom 中初始分成比例为 **15%**，而在 Sonic 中这一比例将逐步提高到 **90%**。
+[FeeM](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-81d4-bc3c-ecba462d4c14) (Fee Monetization) 本质上是一种 Gas 费用分润机制，Fantom 中初始分成比例为 **15%**，而在 Sonic 中这一比例将逐步提高到 **90%**。
 
 ## Sonic Gateway
 
@@ -162,14 +170,14 @@ Sonic 资源：
 
 ### DAG
 
-[有向无环图](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-81d4-8953-fedad75099c0)（Directed Acyclic Graphs，简称  DAG）支持多个交易并行执行，而非严格按顺序。
+[有向无环图](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/14ae7446-5ed5-81d4-8953-fedad75099c0)（Directed Acyclic Graphs，简称 DAG）支持多个交易并行执行，而非严格按顺序。
 
 ## 部署合约
 
 - [在 Sonic 测试链部署合约](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-8180-9f87-e410c6d883f8)
 - [编译的版本选择](https://www.hackquest.io/zh-cn/learn/146e7446-5ed5-8122-a9c3-c9cb1bad6031/146e7446-5ed5-816b-8473-ee95220ac535)
-    - **编译器版本**：指的是用于将 Solidity 源代码编译为字节码的编译器版本。
-    - **EVM 版本**指的是合约生成的字节码将针对的以太坊虚拟机版本，即区块链节点运行的程序执行环境。它的作用是执行智能合约代码并确保所有节点就区块链的状态达成共识。
+  - **编译器版本**：指的是用于将 Solidity 源代码编译为字节码的编译器版本。
+  - **EVM 版本**指的是合约生成的字节码将针对的以太坊虚拟机版本，即区块链节点运行的程序执行环境。它的作用是执行智能合约代码并确保所有节点就区块链的状态达成共识。
 
 ## [Sonic Airdrop](https://docs.soniclabs.com/funding/sonic-airdrop)
 
@@ -180,7 +188,5 @@ Sonic 资源：
 - **Passive Points**: Earn passive points by **holding** [whitelisted assets](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-points#whitelisted-assets) directly in their Web3 wallets.
 
 - **Activity Points**: Earn activity points by **deploying** [whitelisted assets](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-points#whitelisted-assets) as liquidity on participating apps.
-
 - **App Points (Gems)**: Earn **S token** on DApp. Similar to [Sonic Gems](https://docs.soniclabs.com/funding/sonic-airdrop/sonic-gems).
-
 - ~~**Sonic Arcade Points**: Earn **airdrop points** by **playing games**. Similar to [Game Gems](https://docs.soniclabs.com/funding/sonic-airdrop/game-gems). **Closed!**~~
