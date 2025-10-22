@@ -1,13 +1,14 @@
-body {
+:root {
+  /* write 区 */
+  --bg-color: #2d333b;
+
   /* 侧边栏，代码块外圈，语言建议 */
-  /* 在 github-night.css:984 中，
-  侧边栏指定为 var(--item-hover-bg-color) */
   --item-hover-bg-color: #22272e;
 
-  /* write 区 */
-  /* 在 github-night.css:161 中，
-  此处指定为 var(--bg-color) !important */
-  --bg-color: #2d333b;
+  --text-color: #adbac7;
+
+  /* 自定义：sidebar 当前文件和标题 */
+  --sidebar-active-color: green;
 }
 
 /* 删除线颜色 */
@@ -18,16 +19,6 @@ del {
 /* 使用更高的加粗文本粗细 */
 strong {
   font-weight: 1000 !important;
-}
-
-/* Sidebar 当前文件颜色 */
-.file-list-item.active {
-  color: white;
-}
-
-/* Sidebar 当前大纲标题颜色 */
-.outline-active {
-  color: white;
 }
 
 /* 语言建议区选中背景色 */
@@ -41,27 +32,41 @@ strong {
 }
 
 /* 代码块内的选中行 */
-/* 在 github-night.css:56 中，
-此处指定为 rgba(255, 255, 255, 0.1) */
 .md-fences.md-focus .cm-s-inner .CodeMirror-activeline-background {
   background-color: #ffffff1a;
 }
 
 /* 行内代码 */
-/* 在 github-night.css:535 中，
-此处指定为 rgba(240, 246, 252, 0.15) */
 code {
   background-color: #ffffff1a;
 }
 
 /* 元数据 */
-/* 在 github-night.css:579 中，
-此处指定为 #fff */
 #write pre.md-meta-block {
-  color: #adbac7;
+  color: var(--text-color);
 }
 
 /* write 区滚动条 */
 ::-webkit-scrollbar-thumb {
   background-color: #ffffff1a;
+}
+
+/* Sidebar 当前文件颜色 */
+.file-list-item.active {
+  color: var(--sidebar-active-color);
+}
+
+/* Sidebar 当前大纲标题颜色 */
+.outline-active {
+  color: var(--sidebar-active-color);
+}
+
+/* <kbd> */
+kbd {
+  box-shadow: inset 0 -2px 0 #c6cbd1;
+  background-color: #000000;
+  color: #adbac7;
+  font-size: 1.1em;
+  /* 增加内边距，使元素更大 */
+  padding: 12px 12px;
 }

@@ -1,14 +1,60 @@
-/* 删除线颜色 */
+/* github.css 没设置自定义变量 */
+:root {
+  /* write 区 */
+  --bg-color: #ffffff;
+
+  /* 自定义：sidebar、行内代码、代码块 */
+  --section-color: #f3f4f4;
+
+  /* 自定义：sidebar 当前文件和标题 */
+  --sidebar-active-color: green;
+}
+
+/* 删除线 */
 del {
   text-decoration-color: red;
 }
 
-/* Sidebar 当前文件颜色 */
-.file-list-item.active {
-  color: green;
+/* 行内代码 */
+code {
+  background-color: var(--section-color);
+  padding: 0.2em 0.4em;
+  margin: 0;
+  font-size: 1.105rem;
+  border-radius: 6px;
+  font-family: "SFMono-Regular", "Fira Code", Nunito, monospace;
 }
 
-/* Sidebar 当前大纲标题颜色 */
+/* 代码块 */
+pre {
+  background-color: var(--section-color) !important;
+}
+
+/* sidebar */
+#typora-sidebar {
+  background-color: var(--section-color);
+}
+
+/* Sidebar 当前文件 */
+.file-list-item.active {
+  color: var(--sidebar-active-color);
+}
+
+/* Sidebar 当前大纲标题 */
 .outline-active {
-  color: green;
+  color: var(--sidebar-active-color);
+}
+
+/* <kbd> */
+kbd {
+  box-shadow: inset 0 -2px 0 #c6cbd1;
+  background-color: #000000;
+  color: #ffffff;
+  font-size: 1.1em;
+  /* 增加内边距，使元素更大 */
+  padding: 12px 12px;
+}
+
+table th,table td {
+  padding: 18px;
 }

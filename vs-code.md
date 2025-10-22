@@ -60,7 +60,7 @@ tags:
 
 - `Ctrl + ,` 快捷键失效
   - 与搜狗输入法冲突！
-  - `搜狗输入法设置` - `管理输入法` - 将 `搜狗输入法快捷键` 设置为其它
+  - `搜狗输入法设置` > `管理输入法` > 将 `搜狗输入法快捷键` 设置为其它
 
 # `settings.json`
 
@@ -104,13 +104,13 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 }
 ```
 
-## 主题
+# 主题
 
 > [VS Code 主题](https://vscode.github.net.cn/docs/getstarted/themes)
 >
 > [主题颜色参考](https://vscode.github.net.cn/api/references/theme-color)
 
-### 自动主题
+## 自动主题
 
 [**自动主题**](https://vscode.github.net.cn/docs/getstarted/themes#_auto-switch-based-on-os-color-scheme)：VS Code 侦听操作系统的配色方案自动切换到事先设定的颜色主题。
 
@@ -120,7 +120,7 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 "workbench.preferredLightColorTheme": "GitHub Light", // 启用自动主题时的浅色主题
 ```
 
-### 普通主题
+## 普通主题
 
 **普通主题**：未启用自动主题时的颜色主题。
 
@@ -128,11 +128,11 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 "workbench.colorTheme": "GitHub Dark Dimmed"  // 未启用自动主题时的颜色主题
 ```
 
-### 自定义主题
+## 自定义主题
 
 [**自定义主题**](https://vscode.github.net.cn/docs/getstarted/themes#_customizing-a-color-theme)：可以对颜色主题进行部分覆盖。
 
-#### 工作台颜色
+### 工作台颜色
 
 ```json
 "workbench.colorCustomizations": {
@@ -155,7 +155,7 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 }
 ```
 
-#### 编辑器语法颜色
+### 编辑器语法颜色
 
 ```json
 "editor.tokenColorCustomizations": {
@@ -175,7 +175,7 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 }
 ```
 
-##### `textMateRules`
+#### `textMateRules`
 
 **TextMate** 是一种用于语法高亮的语言定义格式。VS Code 沿用了这套系统来解析代码并确定代码中每个部分的**作用域（Scope）**。
 
@@ -211,7 +211,7 @@ textMateRules
 }
 ```
 
-#### 编辑器语义颜色
+### 编辑器语义颜色
 
 ```json
 "editor.semanticTokenColorCustomizations": {
@@ -219,7 +219,7 @@ textMateRules
 }
 ```
 
-#### 特定主题
+### 特定主题
 
 ```json
 "workbench.colorCustomizations": {
@@ -240,13 +240,13 @@ textMateRules
 }
 ```
 
-### 图标主题
+## 图标主题
 
 ```json
 "workbench.iconTheme": "vscode-icons", // 文件图标主题
 ```
 
-## 工作台
+# 工作台
 
 ```json
 "workbench.startupEditor": "none", // 启动时默认打开项
@@ -254,16 +254,16 @@ textMateRules
 
 工作台主题详见主题章节。
 
-## 编辑器
+# 编辑器
 
-### 格式化
+## 格式化
 
 格式化由两方面控制：
 
 - VS Code 控制动态输入时的 Tab 宽度
 - Prettier 控制格式化时的 Tab 宽度
 
-#### VS Code
+### VS Code
 
 VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空格数量 <img src="assets/image-20251020122212688.png" alt="image-20251020122212688" style="zoom:67%;" />，它控制以下两方面。
 
@@ -277,7 +277,7 @@ VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空
 "editor.tabSize": 2, // 默认 1 个 Tab 的宽度为 2 个空格
 ```
 
-#### Prettier
+### Prettier
 
 Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 
@@ -286,7 +286,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 "editor.formatOnSave": true, // 在手动保存后，会自动触发 Prettier 对代码格式化
 ```
 
-#### 特定语言
+### 特定语言
 
 如果想让特定语言有特殊设置：
 
@@ -299,7 +299,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 
 **注意**：在实际项目中，应该在 Prettier 的 `.prettierrc` 文件中设置格式化，详见 `.prettierrc`。
 
-### 编辑器其它
+## 编辑器其它
 
 ```json
 "files.autoSave": "afterDelay", // 实时自动保存
@@ -314,6 +314,8 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 "editor.unicodeHighlight.invisibleCharacters": false, // 禁用不可见字符的 Unicode 高亮
 "editor.quickSuggestions": {}, // 自动补全建议
 ```
+
+# `settings.json` 其它
 
 ## 窗口
 
