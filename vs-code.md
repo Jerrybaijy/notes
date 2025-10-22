@@ -347,7 +347,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 ## 其它设置
 
 ```json
-"markdown.styles": ["vs-code-md-style.css"], // Markdown 预览模式的样式
+"markdown.styles": ["vscode-md-pre.css"], // Markdown 预览模式的样式
 "diffEditor.ignoreTrimWhitespace": false, // 在 diff 比较时，不忽略尾部空白字符
 "salesforcedx-vscode-apex.java.home": "C:\\\\Program Files\\\\Java\\\\jdk-21", // Salesforce 相关设置
 "git.autofetch": true, // 自动获取远程仓库信息，但不会自动合并到本地
@@ -418,6 +418,77 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `SQLite Viewer`：在 VSCode 中查看 SQLite 数据库
 - `Prettier`：代码格式化
 
+# Markdown
+
+在 Markdown 页面右上角，有预览模式按钮。
+
+可以对预览模式进行样式覆盖：
+
+- 在项目根目录创建样式文件，如 `vscode-md-pre.css`。
+- 此样式文件在 Git 有备份。
+
+按如下方式进行自动编号：
+
+```css
+h1,
+h2,
+h3,
+h4 {
+  font-weight: 600;
+}
+
+body {
+  counter-reset: h1;
+}
+
+h1 {
+  text-align: center;
+  counter-reset: h2;
+}
+
+h2 {
+  counter-reset: h3;
+}
+
+h3 {
+  counter-reset: h4;
+}
+
+h4 {
+  counter-reset: h5;
+}
+
+h5 {
+  counter-reset: h6;
+}
+
+h2::before {
+  counter-increment: h2;
+  content: counter(h2) ". ";
+}
+
+h3::before {
+  counter-increment: h3;
+  content: counter(h2) "." counter(h3) " ";
+}
+
+h4::before {
+  counter-increment: h4;
+  content: counter(h2) "." counter(h3) "." counter(h4) " ";
+}
+
+h5::before {
+  counter-increment: h5;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) " ";
+}
+
+h6::before {
+  counter-increment: h6;
+  content: counter(h2) "." counter(h3) "." counter(h4) "." counter(h5) "."
+    counter(h6) " ";
+}
+```
+
 # 其它
 
 ## Emmet
@@ -430,8 +501,51 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - 每次进入项目目录都应该检查；
 - 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
 - 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
-
   - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
-
 - 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 - 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
+
+## Markdown 硬换行
+
+**Markdown 硬换行**：即连续输入 `Space` `Space` `Enter`，可实现同一段落内换行。
+
+在 VS Code 中可按以下方法实现一键硬换行。
+
+- 安装 `multi-command` 扩展
+- 在 `settings.json` 文件中添加命令
+
+  - `设置` > 右上角点击 `打开设置 (json)`，打开 `settings.json` 文件
+  - 添加以下配置
+
+    ```json
+    // ---------------## multi-command---------------
+    "multiCommand.commands": [
+      {
+        "command": "multiCommand.markdownHardBreak",
+        "sequence": [
+          {
+            "command": "type",
+            "args": { "text": "  " } // 插入两个空格
+          },
+          "editor.action.insertLineAfter" // 换行
+        ]
+      }
+    ]
+    ```
+  
+- 在 `keybindings.json` 文件中绑定快捷键
+
+  - `文件` > `首选项` > `键盘快捷方式` > 右上角点击 `打开键盘快捷方式 (json)`，打开 `keybindings.json` 文件
+  - 添加以下配置
+
+    ```json
+    // -----### Markdown 软换行-----
+    {
+      "key": "ctrl+enter", // Mac 为 "cmd+enter"
+      "command": "multiCommand.markdownHardBreak",
+      "when": "editorLangId == markdown"
+    }
+    ```
+  
+- 重启 VS Code
+- 编辑 Markdown 文件，按下 `Ctrl + Enter` 键（Mac 为 `Cmd + Enter`），即可实现一键硬换行。

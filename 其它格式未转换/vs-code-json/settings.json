@@ -79,7 +79,7 @@
   "git.openRepositoryInParentFolders": "never", // 禁止在打开的文件夹的父级目录中搜索 Git 仓库
 
   // -------------------------# 其它设置-------------------------
-  "markdown.styles": ["vs-code-md-style.css"], // Markdown 预览模式的样式
+  "markdown.styles": ["vscode-md-pre.css"], // Markdown 预览模式的样式
   // -------------------------# 扩展-------------------------
   "redhat.telemetry.enabled": true, // 禁止 Red Hat 收集匿名使用数据
   "vsicons.dontShowNewVersionMessage": true, // 禁用图标扩展更新弹窗提醒
@@ -89,6 +89,19 @@
   "liveServer.settings.donotVerifyTags": true, // 禁用 Live Server 在启动时对 HTML 标签的验证
   "liveServer.settings.donotShowInfoMsg": true, // 禁用 Live Server 在运行时弹出的各种信息通知
 
+  // ---------------## multi-command---------------
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.markdownHardBreak",
+      "sequence": [
+        {
+          "command": "type",
+          "args": { "text": "  " } // 插入两个空格
+        },
+        "editor.action.insertLineAfter" // 换行
+      ]
+    }
+  ],
   // ------------------|| 文件嵌套和关联，稳定以后再删除---------------------------
   // "explorer.fileNesting.patterns": {
   //     "*.ts": "${capture}.js",

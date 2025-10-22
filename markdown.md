@@ -12,11 +12,12 @@ tags:
 
 ## 概述
 
-Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。Markdown 由 John Gruber 于 2004 年创建，如今已成为世界上最受欢迎的标记语言之一。
+[Markdown](https://commonmark.org/) 是一种轻量级的标记语言，可用于在纯文本文档中添加格式化元素。Markdown 由 John Gruber 于 2004 年创建，如今已成为世界上最受欢迎的标记语言之一。
 
 **Markdown 资源**：
 
 - [John Gruber 的 Markdown 文档](https://daringfireball.net/projects/markdown/)：Markdown 的创建者编写的原始指南。
+- [CommonMark](https://spec.commonmark.org/)：现代 Markdown 标准
 - [GitHub Flavored Markdown (GFM)](https://docs.github.com/zh/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax)：GitHub 关于 Markdown 扩展的介绍。
 - [Markdown 中文网](https://markdown.p2hp.com/index.html)
 - [Markdown 中文教程](https://markdown.com.cn/basic-syntax/)
@@ -24,6 +25,7 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
 
 **Markdown 工具**：
 
+- [commonmark.js](https://spec.commonmark.org/dingus/)：Commonmark 的 Markdown 和 HTML 对比编辑器
 - [在线 Markdown 编辑器](https://markdown.com.cn/editor/)
 - [Markdown 转思维导图](https://markdown.p2hp.com/index.html)
 
@@ -152,11 +154,20 @@ Markdown 是一种轻量级的标记语言，可用于在纯文本文档中添�
 
 ## 代码风格
 
-- 缩进：缩进 2 个空格
+- 缩进：轻微影响，一般缩进 2 个空格。
 
-  - 原生代码块缩进 4 个空格
+  - 缩进代码块缩进 4 个空格
 
-- 空行：不同块之间必须有空行，比如*图片*、*围栏代码块*和*同级列表项*。
+- 空行：仅对*新段落*和*列表的松紧*有影响。
+
+## 块
+
+[块](https://spec.commonmark.org/0.31.2/#blocks-and-inlines) 构成了 Markdown 文档的结构：
+
+-  [Container blocks](https://spec.commonmark.org/0.31.2/#container-blocks)：可以包含其他块
+- [Leaf blocks](https://spec.commonmark.org/0.31.2/#leaf-blocks)：不能包含其他块
+
+块的优先级大于内联。
 
 ## 转义
 
@@ -218,105 +229,66 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
 # 标题
 
-**语法**：不同数量的 `#` 可以完成不同级别的标题，`#` 和标题内容之间留一个空格。
+[ATX 标题](https://spec.commonmark.org/0.31.2/#atx-heading)：不同数量的 `#` 完成不同级别的标题，`#` 和标题内容之间留一个空格。
 
-<table style="text-align: center;">
-  <tr>
-    <th>Markdown语法</th>
-    <th>HTML</th>
-    <th>预览效果</th>
-  </tr>
-  <tr>
-    <td>#&nbsp;一级标题</td>
-    <td>&lt;h1&gt;一级标题&lt;/h1&gt;</td>
-    <td>
-      <h1>
-      一级标题
-      </h1>
-    </td>
-  </tr>
-  <tr>
-    <td>##&nbsp;二级标题</td>
-    <td>&lt;h2&gt;二级标题&lt;/h2&gt;</td>
-    <td>
-      <h2>
-      二级标题
-      </h2>
-    </td>
-  </tr>
-  <tr>
-    <td>###&nbsp;三级标题</td>
-    <td>&lt;h3&gt;三级标题&lt;/h3&gt;</td>
-    <td>
-      <h3>
-      三级标题
-      </h3>
-    </td>
-  </tr>
-</table>
+```markdown
+# 一级标题
+
+## 二级标题
+
+```
+
+```html
+<h1>一级标题</h1>
+<h2>二级标题</h2>
+```
+
+此外，还有 [Setext 标题](https://spec.commonmark.org/0.31.2/#setext-headings)。
 
 # 段落
 
 **段落**只是一行或多行连续的文本，由一个或多个空行分隔。（空行是任何看起来像空行的行 — 只包含空格或制表符的行被视为空白。）普通段落不应使用空格或制表符缩进。
 
-- **语法**：使用 `空白行` 将一行或多行文本进行分隔。
+**语法**：使用 `空白行` 将一行或多行文本进行分隔。
 
-  <table style="text-align: center;">
-    <tr>
-      <th>Markdown语法</th>
-      <th>HTML</th>
-      <th>预览效果</th>
-    </tr>
-    <tr>
-      <td>
-        <p>这是第一段，下面有一个空行。</p>
-        <p>这是第二段，上面有一个空行。</p>
-      </td>
-      <td>
-        <p>&lt;p&gt;这是第一段，下面有一个空行。&lt;/p&gt;</p>
-        <p>&lt;p&gt;这是第二段，上面有一个空行。&lt;/p&gt;</p>
-      </td>
-      <td>
-        <p>这是第一段，下面有一个空行。</p>
-        <p>这是第二段，上面有一个空行。</p>
-      </td>
-    </tr>
-  </table>
+```markdown
+这是第一段，下面有一个空行。
 
-- **注意**
+这是第二段，上面有一个空行。
+```
 
-  - 不要用空格 (Spaces)或制表符 (Tab) 缩进段落。
-  - 要始终保持文本左对齐。
+```html
+<p>这是第一段，下面有一个空行。</p>
+<p>这是第二段，上面有一个空行。</p>
+```
+
+**注意**：
+
+- 不要用空格（Spaces）或制表符（Tab）缩进段落。
+- 要始终保持文本左对齐。
 
 # 换行
 
-## 换行
+## 硬换行
 
-- **语法**：使用 <kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd> 在一个段落内创建换行。
+使用 <kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd> 在一个段落内创建换行。
 
-  <table style="text-align: center;">
-    <tr>
-      <th>Markdown语法</th>
-      <th>HTML</th>
-      <th>预览效果</th>
-    </tr>
-    <tr>
-      <td style="text-align: left">这是第一行<kbd>Space</kbd><kbd>Space</kbd><kbd>Enter</kbd><br>
-        这是第二行
-      </td>
-      <td>
-        <p>&lt;p&gt;这是第一行&lt;br /&gt;这是第二行&lt;/p&gt;</p>
-      </td>
-      <td>这是第一行<br>这是第二行</td>
-    </tr>
-  </table>
+```markdown
+第一行  
+第二行
+```
 
-- **说明**：**同一个段落内**，不要使用 <kbd>Enter</kbd> 换行，这仅仅会添加**单换行符**。
-- **技巧**：可以使用 HTML 的 `<br />` 元素代替 Markdown 的换行方式。
+```html
+<p>第一行<br />第二行</p>
+```
 
-## 单换行符
+**说明**：**同一个段落内**，不要使用 <kbd>Enter</kbd> 换行，这仅仅会添加**单换行符**。
 
-- **单换行符**：文本中每一行结束时按一次 <kbd>Enter</kbd>，在代码或文本编辑中用来分隔内容的一种方式。
+**技巧**：可以使用 HTML 的 `<br />` 元素代替 Markdown 的换行方式。
+
+## 软换行
+
+- **软换行**：即**单换行符**，文本中每一行结束时按一次 <kbd>Enter</kbd>，在代码或文本编辑中用来分隔内容的一种方式。
 - 不要使用单换行符进行换行。
 - **语法**：同一个段落内使用单换行符，渲染时不会真的分成两行，而是在换行符处表现为一个空格。
 - **源码模式**
@@ -330,6 +302,15 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
   > 这是第一行
   > 这是第二行
+
+## 空行
+
+Markdown 中的空行仅对以下两方面有实际影响：
+
+- 新的段落
+- 列表的紧密和松散。
+
+块级元素之间的空行将被忽略，但最好在所有块元素之间添加一个空行（列表按实际需求添加）。
 
 # 强调
 
@@ -426,9 +407,9 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
   </tr>
 </table>
 
-## 代码块
+## 缩进代码块
 
-- 要创建代码块，请将代码块的每一行缩进**至少**4 个空格或一个制表符。
+- 要创建缩进代码块，请将缩进代码块的每一行缩进**至少**4 个空格或一个制表符。
 - **段落之间**的代码块，相对于段首缩进 4 个空格。
 
   ```markdown
@@ -459,13 +440,13 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 
   ```markdown
   - 第一个列表项,下面是第一个列表项之内的 JSON 代码块（相对于段首缩进 8 个空格）
-
+  
           {
           "firstName": "John",
           "lastName": "Smith",
           "age": 25
           }
-
+  
   - 第二个列表项
   ```
 
@@ -484,7 +465,7 @@ Markdown 原生语法没有注释功能，但可以使用 HTML 实现注释效�
 ## 围栏代码块
 
 - 围栏代码块属于 Markdown 的**扩展语法**。
-- **语法**：在代码块之前和之后的行上使用**三个反引号**（<code>\`\`\`</code>）。  
+- **语法**：在代码块之前和之后的行上使用**至少三个反引号**（<code>\`\`\`</code>）。  
   如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
 
   ````markdown
@@ -612,7 +593,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
   ```markdown
   <span id="example">第一部分</span>
-
+  
   [点击跳转至百度](#example)
   ```
 
@@ -695,149 +676,206 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 **语法**：在每个列表项前添加**数字**并紧跟一个**英文句点**，然后空格。
 
-<table style="text-align: center;">
-  <tr>
-    <th>Markdown语法</th>
-    <th>HTML</th>
-    <th>预览效果</th>
-  </tr>
-  <tr>
-    <td>
-      1. 第一个有序列表<br>
-      2. 第二个有序列表<br>
-      3. 第三个有序列表
-    </td>
-    <td style="text-align:left">
-      &lt;ol&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第一个有序列表&lt;/li&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第二个有序列表&lt;/li&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第三个有序列表&lt;/li&gt;<br>
-      &lt;/ol&gt;
-    </td>
-    <td style="text-align:left">
-      <ol>
-        <li>第一个有序列表</li>
-        <li>第二个有序列表</li>
-        <li>第三个有序列表</li>
-      </ol>
-    </td>
-  </tr>
-</table>
+```markdown
+1. 列表项 1
+2. 列表项 2
+3. 列表项 3
+```
+
+```html
+<ol>
+  <li>列表项 1</li>
+  <li>列表项 2</li>
+  <li>列表项 3</li>
+</ol>
+```
+
+> 1. 列表项 1
+> 2. 列表项 2
+> 3. 列表项 3
+
 
 ## 无序列表
 
 **创建无序列表**：在每个列表项前添加**减号**并紧跟一个**英文句点**，然后空格。
 
-<table style="text-align: center;">
-  <tr>
-    <th>Markdown语法</th>
-    <th>HTML</th>
-    <th>预览效果</th>
-  </tr>
-  <tr>
-    <td>
-      - 第一个无序列表<br>
-      - 第二个无序列表<br>
-      - 第三个无序列表
-    </td>
-    <td style="text-align:left">
-      &lt;ul&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第一个无序列表&lt;/li&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第二个无序列表&lt;/li&gt;<br>
-      &nbsp;&nbsp;&lt;li&gt;第三个无序列表&lt;/li&gt;<br>
-      &lt;/ul&gt;
-    </td>
-    <td style="text-align:left">
-      <ul>
-        <li>第一个无序列表</li>
-        <li>第二个无序列表</li>
-        <li>第三个无序列表</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+```markdown
+- 列表项 1
+- 列表项 2
+- 列表项 3
+```
 
-## 列表说明
+```html
+<ul>
+  <li>列表项 1</li>
+  <li>列表项 2</li>
+  <li>列表项 3</li>
+</ul>
+```
 
-- 可以随意写列表编号，但不会影响 Markdown 生成的 HTML 输出。
-- **缩进**：列表项内的文字，有无缩进都可以
+> - 列表项 1
+> - 列表项 2
+> - 列表项 3
 
-  ```markdown
-  - Lorem ipsum dolor sit amet, consectetuer adipiscing elit.  
-    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,  
-    viverra nec, fringilla in, laoreet vitae, risus.
+## 紧密列表和松散列表
 
-  - Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-    Suspendisse id sem consectetuer libero luctus adipiscing.
-  ```
+同级别的列表项之间如果没有空行，则称为**紧密列表**，否则为**松散列表**。
 
-- **项间空行**：项间有空行时，渲染的行间距增加
+### 紧密列表
 
-  - **无空行**
+同级别的列表项之间如果没有空行，则称为**紧密列表**。
 
-    ```markdown
-    - 第一列表项
-    - 第二列表项
-    - 第三列表项
-    ```
+紧密列表的列表项内容不会被 `<p>` 元素包围，且在渲染时表现的更紧密。
 
-    ```html
+```markdown
+- 列表项 1
+- 列表项 2
+- 列表项 3
+- 列表项 4
+```
+
+```html
+<ul>
+  <li>列表项 1</li>
+  <li>列表项 2</li>
+  <li>列表项 3</li>
+  <li>列表项 4</li>
+</ul>
+```
+
+<img src="assets/image-20251022210502509.png" alt="image-20251022210502509" style="zoom:50%;" />
+
+### 松散列表
+
+同级别的列表项之间如果有空行，则称为**松散列表**。
+
+松散列表的列表项内容会被 `<p>` 元素包围，且在渲染时表现的更松散。
+
+```markdown
+- 列表项 1
+- 列表项 2
+
+- 列表项 3
+- 列表项 4
+```
+
+```html
+<ul>
+  <li>
+    <p>列表项 1</p>
+  </li>
+  <li>
+    <p>列表项 2</p>
+  </li>
+  <li>
+    <p>列表项 3</p>
+  </li>
+  <li>
+    <p>列表项 4</p>
+  </li>
+</ul>
+```
+
+<img src="assets/image-20251022210421199.png" alt="image-20251022210421199" style="zoom:50%;" />
+
+### 嵌套的松散列表
+
+#### 松散的次级列表
+
+次级列表项将被 `<p>` 元素包围，且在渲染时表现的更松散。
+
+<img src="assets/image-20251022211721500.png" alt="image-20251022211721500" style="zoom:50%;" />
+
+```markdown
+- 列表项 1
+- 列表项 2
+  - 列表项 2.1
+
+  - 列表项 2.2
+- 列表项 3
+- 列表项 4
+```
+
+```html
+<ul>
+  <li>列表项 1</li>
+  <li>
+    列表项 2
     <ul>
-      <li>第一列表项</li>
-      <li>第二列表项</li>
-      <li>第三列表项</li>
+      <li>
+        <p>列表项 2.1</p>
+      </li>
+      <li>
+        <p>列表项 2.2</p>
+      </li>
     </ul>
-    ```
+  </li>
+  <li>列表项 3</li>
+  <li>列表项 4</li>
+</ul>
+```
 
-  - **有空行**
+#### 松散的顶级列表
 
-    ```markdown
-    - 第一列表项
+顶级列表项将被 `<p>` 元素包围，且在渲染时表现的更松散。
 
-    - 第二列表项
+<img src="assets/image-20251022211629670.png" alt="image-20251022211629670" style="zoom:50%;" />
 
-    - 第三列表项
-    ```
+```markdown
+- 列表项 1
+- 列表项 2
 
-    ```html
+  - 列表项 2.1
+  - 列表项 2.2
+- 列表项 3
+- 列表项 4
+```
+
+```html
+<ul>
+  <li>
+    <p>列表项 1</p>
+  </li>
+  <li>
+    <p>列表项 2</p>
     <ul>
-      <li><p>第一列表项</p></li>
-      <li><p>第二列表项</p></li>
-      <li><p>第三列表项</p></li>
+      <li>列表项 2.1</li>
+      <li>列表项 2.2</li>
     </ul>
-    ```
+  </li>
+  <li>
+    <p>列表项 3</p>
+  </li>
+  <li>
+    <p>列表项 4</p>
+  </li>
+</ul>
+```
 
 ## 列表嵌套
 
-- 在嵌套一种元素时，为了**保证列表连续性**，应保证以下两点：
+列表嵌套时的空行处理：
 
-  - 嵌套元素独占一个段落，即**上下各空一行**。
-  - 嵌套元素缩进 `四个空格`（或一个制表符）。
-
-- 嵌套元素独占一个段落的影响
-
-  - 如果独占一个段落，其它列表项行间距会增加。
-  - 如果不独占一个段落，渲染可能异常。
+- 嵌套块元素时，上下各空一行。
+- 嵌套列表时，根据松散或紧密，按需添加空行。
 
 ### 嵌套列表
+
+这是嵌套紧密列表示例。
 
 ```markdown
 - 第一个列表项
 - 第二个列表项
-
   - 第一个嵌套列表项
   - 第二个嵌套列表项
-
 - 第三个列表项
 - 第四个列表项
 ```
 
 > - 第一个列表项
 > - 第二个列表项
->
 >   - 第一个嵌套列表项
 >   - 第二个嵌套列表项
->
 > - 第三个列表项
 > - 第四个列表项
 
@@ -1114,7 +1152,7 @@ Second Term
 >      <dd>This is another definition of the second term.</dd>
 > </dl>
 
-# 分隔线
+# 主题分割
 
 **语法**：在**单独一个段落**（即前后都有空白行）使用三个或多个星号 (`***`)、破折号 (`---`) 或下划线 (`___`) ，并且不能包含其他内容。
 
