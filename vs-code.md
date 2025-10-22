@@ -420,6 +420,8 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 
 # Markdown
 
+## Markdown 预览
+
 在 Markdown 页面右上角，有预览模式按钮。
 
 可以对预览模式进行样式覆盖：
@@ -489,22 +491,6 @@ h6::before {
 }
 ```
 
-# 其它
-
-## Emmet
-
-**Emmet** 可通过**缩写语法**快速生成 HTML 和 CSS 代码片段，详见 [`software | Emmet`](software.md#emmet) 笔记。
-
-## 选择解释器虚拟环境
-
-- 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
-- 每次进入项目目录都应该检查；
-- 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
-- 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
-  - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
-- 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
-- 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
-
 ## Markdown 硬换行
 
 **Markdown 硬换行**：即连续输入 `Space` `Space` `Enter`，可实现同一段落内换行。
@@ -512,9 +498,11 @@ h6::before {
 在 VS Code 中可按以下方法实现一键硬换行。
 
 - 安装 `multi-command` 扩展
+
 - 在 `settings.json` 文件中添加命令
 
   - `设置` > 右上角点击 `打开设置 (json)`，打开 `settings.json` 文件
+
   - 添加以下配置
 
     ```json
@@ -532,10 +520,11 @@ h6::before {
       }
     ]
     ```
-  
+
 - 在 `keybindings.json` 文件中绑定快捷键
 
   - `文件` > `首选项` > `键盘快捷方式` > 右上角点击 `打开键盘快捷方式 (json)`，打开 `keybindings.json` 文件
+
   - 添加以下配置
 
     ```json
@@ -546,6 +535,23 @@ h6::before {
       "when": "editorLangId == markdown"
     }
     ```
-  
+
 - 重启 VS Code
+
 - 编辑 Markdown 文件，按下 `Ctrl + Enter` 键（Mac 为 `Cmd + Enter`），即可实现一键硬换行。
+
+# 其它
+
+## Emmet
+
+**Emmet** 可通过**缩写语法**快速生成 HTML 和 CSS 代码片段，详见 [`software | Emmet`](software.md#emmet) 笔记。
+
+## 选择解释器虚拟环境
+
+- 如果项目根目录有虚拟环境，解释器会默认选择虚拟环境；
+- 每次进入项目目录都应该检查；
+- 如果没有默认选择虚拟环境，可手动选择，以 Python 为例；
+- 点击 VSCode 右下角 `python` 右侧的 `3.12.1 64-bit`，会在上方弹出选项；
+  - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
+- 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
+- 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
