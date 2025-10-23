@@ -134,7 +134,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -256,13 +256,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "typora.md",
+                "file": "javascript.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "typora 的大纲"
+              "title": "javascript 的大纲"
             }
           }
         ],
@@ -283,8 +283,9 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "cbf3a3c7f7ca1f90",
+  "active": "e90fa85f3d608a82",
   "lastOpenFiles": [
+    "typora.md",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
     "其它格式未转换/vs-code-json/README.md",
     "其它格式未转换/vs-code-json/新建 Markdown File.md",
@@ -297,7 +298,6 @@
     "markdown.md",
     "java.md",
     "其它格式未转换/obsidian-themes/claude-底板-标题.css",
-    "typora.md",
     "vs-code.md",
     "software.md",
     "prettier.md",
@@ -307,7 +307,6 @@
     "新建 文本文档.txt",
     "其它格式未转换/vs-code-settings/settings.json",
     "其它格式未转换/vs-code-settings/keybindings.json",
-    "其它格式未转换/vs-code-settings",
     "prettier-test.md",
     "html.md",
     "vscode.md",

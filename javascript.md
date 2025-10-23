@@ -219,7 +219,7 @@ console.log(age); // 20
   ```javascript
   let num1 = 07;
   console.log(num1); // 7
-  
+
   let num2 = 010;
   console.log(num2); // 8
   ```
@@ -283,7 +283,7 @@ console.log(6 < 2); // false
 - `null`
 - `0`
 - `NaN`
-- `''` 空字符串
+- `""` 空字符串
 
 ## `string`
 
@@ -657,11 +657,11 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
   ```javascript
   // ITEM也许可以是任意数据类型
-  
+
   let res1 = 10 + "5"; // 将数字 10 转为字符串 "10"
   console.log(res1); // 105
   console.log(typeof res1); // string
-  
+
   let res2 = true + ""; // 将布尔值 true 自动转换为字符串 "true"
   console.log(res2); // true
   console.log(typeof res2); // string
@@ -777,251 +777,166 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 # 运算符
 
-> [表达式和运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators)
+> [表达式和运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators)
+>
+> [表达式和运算符参考](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators)
 
 ## 算术运算符
 
-- JS 是一门弱类型语言，当进行数学运算时，除了字符串的加法，其它都会自动转换成数值来完成运算。
+> [算术运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators#算术运算符)
 
-  - **`+`**：加
-  - **`-`**：减
-  - **`*`**：乘
-  - **`/`**：除
-  - **`**`\*\*：幂
-  - **`//`**：向下取整除（除法保留整数）
-  - **`%`**：取模（除法获取余数）
+### 数学运算
 
-- JS 中的算术运算符的几点说明
+JavaScript 是一门弱类型语言，当进行数学运算时，会对非数值类型进行隐式转换（字符串加法例外）：
 
-  - JS 中，`Infiny` 参与数学运算
+```javascript
+10 + "5"; // "105"，数字 10 转为字符串 "10"
+10 - "5"; // 5，字符串 "5" 转为数字 5
+10 + true; // 11，布尔值 true 转为数字 1
+10 + false; // 10，布尔值 false 转为数字 0
+10 + null; // 10，空值 null 转为数字 0
+10 + NaN; // NaN，number 类型的特殊值 NaN 与任何数据类型相加都等于 NaN
+```
 
-    - 作为加减乘除的第一个数，会返回 `Infiny`
-    - 作为取余的第一个数，会返回 `NaN`
+**其它说明**：
 
-  - JS 中，`10/0` 会返回 `Infiny`
-  - JS 中，`NaN` 参与的算术运算，都会返回 `NaN`
+- `Infiny` 参与数学运算会返回以下值：
+  - 作为加减乘除的第一个数，会返回 `Infiny`。
+  - 作为取余的第一个数，会返回 `NaN`。
+- `10/0` 会返回 `Infiny`。
 
-- **非数字参与算术运算**：其它数据类型将自动转换为数字类型（[字符串加法](#string-addition)例外），进行算术运算。
+### 一元正值
 
-  ```javascript
-  let data = 10 - "5";  // 字符串 "5" 转为数字 5
-  console.log(res);  // 5
-  console.log(typeof res);  // number
-  
-  let data = 10 + true;  // 布尔值 true 转为数字 1
-  console.log(res);  // 11
-  console.log(typeof res);  // number
-  
-  let data = 10 + NaN;  // number 类型的特殊值 NaN 与任何数据类型相加都等于 NaN
-  console.log(res);  // NaN
-  console.log(typeof res);  // number
-  
-  # 字符串加法：将不是字符串的数据类型转为字符串，然后拼接。
-  let data = 10 + "5";  // 数字 10 转为字符串 "10"
-  console.log(res);  // 105
-  console.log(typeof res);  // string
-  ```
+JavaScript 中的[一元正值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_plus)操作符会将非数值类型的操作数转换为数值；[一元负值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_negation)同理。
+
+```javascript
++"5" + // 5，字符串 "5" 转为数字 5
+  function (val) {
+    return val;
+  } + // NaN
+  1n; // throws TypeError: Cannot convert BigInt value to number
+```
 
 ## 赋值运算符
 
-- **基本赋值运算符**
+> [赋值运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators#赋值运算符)
 
-  - **`=`**：赋值
+变量的值为 `null` 和 `undefined` 时，可以进行空赋值。
 
-- **复合赋值运算符**
-
-  - **`+=`**：加赋值
-  - **`-=`**：减赋值
-  - **`*=`**：乘赋值
-  - **`/=`**：除赋值
-  - **`**=`\*\*：幂赋值
-  - **`++`**：自增，即在自身的基础加 1
-  - **`--`**：自减，即在自身的基础减 1
-  - **`%=`**：求余赋值
-  - **`??=`**：空赋值
-  - `<<=`：左移赋值
-  - `>>=`：右移赋值
-  - `>>>=`：无符号右移赋值
-  - JS 中没有取整除 `//=`
-
-- **解构赋值运算符**
-
-  ```javascript
-  let [x, y] = [10, 20];
-  console.log(x); // 输出: 10
-  console.log(y); // 输出: 20
-  ```
-
-- **函数默认参数赋值运算符**
-
-  ```javascript
-  function greet(name = "Guest") {
-    console.log(`Hello, ${name}`);
-  }
-
-  greet(); // 输出: "Hello, Guest"
-  greet("Alice"); // 输出: "Hello, Alice"
-  ```
-
-- 变量的值为 `null` 和 `undefined` 时，可以进行空赋值
-
-  ```javascript
-  let a = null;
-  a ??= 5;
-  console.log(a); // 5
-  console.log(typeof a); // number
-  ```
-
-## 一元运算符
-
-### `+` 和 `-`
-
-- **数值的一元运算符**
-
-  - `+`：取当前符号
-  - `-`：取相反符号
-
-  ```javascript
-  let a = -10;
-  a = +a;
-  console.log(a); // -10
-  console.log(typeof a); // number
-
-  let b = -10;
-  b = -b;
-  console.log(b); // 10
-  console.log(typeof b); // number
-  ```
-
-- **字符串的一元运算符**
-
-  - `+`：自动转换为数值，并取当前符号
-  - `-`：自动转换为数值，并取相反符号
-
-  ```javascript
-  let a = "-10";
-  a = +a;
-  console.log(a); // -10
-  console.log(typeof a); // number
-  
-  let b = "-10";
-  b = -b;
-  console.log(b); // 10
-  console.log(typeof b); // number
-  ```
-
-### 自增和自减
-
-- 自增和自减无需再对原变量进行赋值，会立即改变原变量的值
-- **自增运算符**：`++`，原变量的值在自身基础上加 1
-
-  - `++a`：前自增
-  - `a++`：后自增
-  - 二者对于原变量 `a` 的自增效果一样，都是在自身基础上加 1
-  - 二者对于 `自增表达式` 返回的值不同，了解即可
-
-    - `++a` 返回 a 自增后的值
-    - `a++` 返回 a 自增前的值
-
-  ```javascript
-  // 自增基础用法
-
-  let a = 1;
-  a++; // 无需再对a进行赋值，即可改变a的值
-  console.log(a); // 2
-  console.log(typeof a); // number
-  ```
-
-  ```javascript
-  // 前自增和后自增对比
-
-  let a = 1;
-  console.log(a); // 1
-  console.log(++a); // 2，返回a自增后的值
-  console.log(a); // 2，经过上一个++a，a变为2
-
-  let b = 1;
-  console.log(b); // 1
-  console.log(b++); // 1，返回a自增前的值
-  console.log(b); // 2，经过上一个b++，b变为2
-  ```
-
-- **练习**
-
-  ```javascript
-  let n = 5;
-  let result = n++ + ++n + n;
-  console.log(result); // 19
-  ```
-
-  **解释**：
-
-  1. 最开始 n = 5；
-  2. 调用第 1 步的 n = 5，n++ = 5，但此时 n = 6；
-  3. 调用第 2 步的 n = 6，++n = 7，此时 n = 7；
-  4. n++ + ++n + n = 5 + 7 +7 = 19。
-
-- **自减运算符**：原变量的值在自身基础上减 1，其它同自增运算符
-
-  ```javascript
-  let a = 1;
-  a--; // 无需再对a进行赋值，即可改变a的值
-  console.log(a); // 0
-  console.log(typeof a); // number
-  ```
+```javascript
+let a = null;
+a ??= 5;
+console.log(a); // 5
+console.log(typeof a); // number
+```
 
 ## 关系运算符
 
-- **关系运算符**：用来检查两个值之间的关系是否成立，关系运算符运算的结果是**布尔值**
+> [比较运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators#比较运算符)
+>
+> [关系运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators#关系运算符)
 
-  - **`>`**：大于
-  - **`<`**：小于
-  - **`>=`**：大于等于
-  - **`<=`**：小于等于
-  - **`==`**：相等（值相等，类型忽略，返回 `真`）
-  - **`!=`**：不等（值不相等，类型忽略，返回 `真`）
-  - **`===`**：全等（值相等，类型也相同，返回 `真`）
-  - **`!==`**：不全等（值和类型至少有一个相等，返回 `真`）
+### JS 特例
 
-- 当两个值都是数值类型时，即根据数学运算判断得出布尔值
+- 当两个值都是数值类型时，即根据数学运算判断得出布尔值。
 
   ```javascript
   let a = 5 > 6;
   console.log(a, typeof a); // false 'boolean'
   ```
 
-- 当两个值都是字符串时，不会自动转换为数值，而是逐位比较字符的 `Unicode编码` 再得出布尔值
+- 当两个值都是字符串时，不会自动转换为数值，而是逐位比较字符的 `Unicode编码` 再得出布尔值。
 
   ```javascript
   let a = "15" > "6"; // "15"中1的Unicode码在"6"的前面
   console.log(a, typeof a); // false 'boolean'
   ```
 
-- 当两个值不全是数值/字符串类型时，先自动转换为数值，再进行数学判断得出布尔值
+- 当两个值不全是数值/字符串类型时，先自动转换为数值，再进行数学判断得出布尔值。
 
   ```javascript
   let a = 5 > "6"; // 先自动将"6"转换成6
   console.log(a, typeof a); // false 'boolean'
   ```
 
-- **特例**
+**其它特例**：
 
-  - `===` 和 `!==` 运算不会进行自动数据类型转换，如果两个值类型不同，则直接返回 `false`，其它同理。
-  - `null`
+- `===` 和 `!==` 运算不会进行自动数据类型转换；对于 `===`，如果两个值类型不同，则直接返回 `false`，其它同理。
+- `null`
 
-    - `null` 与其它作比较，会自动转换为 `0`
-    - `null` 与 `0` 作比较，只有 `>=` 和 `<=` 会返回 `true`，其余都是 `false`
-    - `null == undefined` 会返回 `true`
+  - `null` 与其它作比较，会自动转换为 `0`
+  - `null` 与 `0` 作比较，只有 `>=` 和 `<=` 会返回 `true`，其余都是 `false`
+  - `null == undefined` 会返回 `true`
 
-  - `NaN` 不与任何值（包括本身）等于/相等/全等，都会返回 `false`
+- `NaN` 不与任何值（包括本身）等于/相等/全等，都会返回 `false`
+
+### `in`
+
+如果指定的属性在指定的对象或其原型链中，则 [`in`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in) 运算符返回 `true`。
 
 ## 逻辑运算符
 
 > [逻辑运算符](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#逻辑运算符：与、或、非)
 
-### 逻辑非 `!`
+### `&&`
 
-**基础示例**：
+> [逻辑与 `&&`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_AND)
+
+```javascript
+let a = 5 > 3 && 6 < 3;
+console.log(a, typeof a); // false 'boolean'
+```
+
+**短路运算**：如果第一个值为 `false`，则第二个值不执行，直接返回 `false`；否则执行第二个值。
+
+```javascript
+let res = false && alert(123);
+console.log(res); // false 不执行alert(123)
+```
+
+```javascript
+let res = true && alert(123);
+console.log(res)；  // 执行alert(123)
+```
+
+如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
+
+```javascript
+let a = 1 && 2; // 2 'number'
+a = 1 && 0; // 0 'number'
+a = 0 && NaN; // 0 'number'
+console.log(a, typeof a);
+```
+
+### `||`
+
+> [逻辑或 `||`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_OR)
+
+```javascript
+let a = 5 > 3 || 6 < 3;
+console.log(a, typeof a); // true 'boolean'
+```
+
+**短路运算**：如果第一个值为 `true`，则第二个值不执行，直接返回 `true`；否则执行第二个。
+
+```javascript
+let res = true || alert(123);  // true 不执行alert(123)
+res = false || alert(123);  // 执行alert(123)
+console.log(res)；
+```
+
+如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
+
+```javascript
+let a = 1 || 2; // 1 'number'
+a = 0 || 1; // 0 'number'
+a = 0 || NaN; // NaN 'number'
+console.log(a, typeof a);
+```
+
+### `!`
+
+> [逻辑非 `!`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Logical_NOT)
 
 ```javascript
 let a = 5;
@@ -1051,65 +966,9 @@ b = !!b;
 console.log(b, typeof b); // true 'boolean'
 ```
 
-### 逻辑与 `&&`
+## 位运算符
 
-**基础示例**：
-
-```javascript
-let a = 5 > 3 && 6 < 3;
-console.log(a, typeof a); // false 'boolean'
-```
-
-**短路运算**：如果第一个值为 `false`，则第二个值不执行，直接返回 `false`；否则执行第二个值。
-
-```javascript
-let res = false && alert(123);
-console.log(res); // false 不执行alert(123)
-```
-
-```javascript
-let res = true && alert(123);
-console.log(res)；  // 执行alert(123)
-```
-
-如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
-
-```javascript
-let a = 1 && 2; // 2 'number'
-a = 1 && 0; // 0 'number'
-a = 0 && NaN; // 0 'number'
-console.log(a, typeof a);
-```
-
-### 逻辑或 `||`
-
-**基础示例**：
-
-```javascript
-let a = 5 > 3 || 6 < 3;
-console.log(a, typeof a); // true 'boolean'
-```
-
-**短路运算**：如果第一个值为 `true`，则第二个值不执行，直接返回 `true`；否则执行第二个。
-
-```javascript
-let res = true || alert(123);  // true 不执行alert(123)
-res = false || alert(123);  // 执行alert(123)
-console.log(res)；
-```
-
-如果对其它数据类型进行与运算，系统会先将其转换为布尔值，然后进行与运算，但最终会返回原值。
-
-```javascript
-let a = 1 || 2; // 1 'number'
-a = 0 || 1; // 0 'number'
-a = 0 || NaN; // NaN 'number'
-console.log(a, typeof a);
-```
-
-## 三元条件运算符
-
-详见[三元表达式](#三元表达式)。
+> [位运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Expressions_and_operators#位运算符)
 
 ## 运算符优先级
 
@@ -1258,9 +1117,9 @@ switch (day) {
 }
 ```
 
-## 三元表达式
+## 三元条件运算符
 
-> [三元表达式](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#三元运算符)
+> [三元条件运算符](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Conditional_operator)
 
 ```javascript
 条件表达式 ? 真值 : 假值;
@@ -1486,8 +1345,6 @@ function sum(...theArgs) {
 console.log(sum(1, 2, 3)); // 6
 ```
 
-
-
 ### `arguments`
 
 #### 语法
@@ -1557,7 +1414,7 @@ console.log(myConcat("，", "中国", "上海", "北京")); // "中国，上海�
 
 ## 函数嵌套
 
-[**函数嵌套**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#[嵌套函数和闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#嵌套函数和闭包))是在一个函数里面嵌套的另外一个函数。
+[**函数嵌套**](<https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#[嵌套函数和闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#嵌套函数和闭包)>)是在一个函数里面嵌套的另外一个函数。
 
 - 内部函数只可以在外部函数中访问。不能在其它作用域调用。
 - 内部函数形成了一个闭包：它可以访问外部函数作用域的参数和变量，但是外部函数却不能使用它的参数和变量。
@@ -1595,7 +1452,6 @@ function outside(x) {
 const fnInside = outside(3); // fnInside 是 x 为 3 的 'inside' 函数
 console.log(fnInside(5)); // 8
 console.log(outside(3)(5)); // 8
-
 ```
 
 ## 函数递归
@@ -1794,13 +1650,13 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   const person = {
     name: "Alice", // 定义属性
     age: 25,
-  
+
     // 定义方法
     introduce: function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-  
+
   // 使用对象调用方法
   person.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
@@ -1814,17 +1670,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   function Person(name, age) {
     this.name = name; // 初始化 name 属性
     this.age = age; // 初始化 age 属性
-  
+
     // 添加一个方法
     this.introduce = function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     };
   }
-  
+
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-  
+
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1842,17 +1698,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       this.name = name; // 初始化 name 属性
       this.age = age; // 初始化 age 属性
     }
-  
+
     // 定义方法
     introduce() {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     }
   }
-  
+
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-  
+
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1874,11 +1730,11 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       },
     };
   }
-  
+
   // 使用工厂函数创建对象
   const person1 = createPerson("Alice", 25);
   const person2 = createPerson("Bob", 30);
-  
+
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1895,12 +1751,12 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-  
+
   // 使用 Object.create 创建一个新对象
   const person1 = Object.create(personPrototype);
   person1.name = "Alice";
   person1.age = 25;
-  
+
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
 
@@ -1912,10 +1768,10 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice", age: 25 };
-  
+
   // 使用点操作符
   console.log(obj.name); // "Alice"
-  
+
   // 使用方括号
   console.log(obj["age"]); // 25
   ```
@@ -1926,16 +1782,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice" };
-  
+
   // 更新已有属性
   obj.name = "Bob";
-  
+
   // 添加新属性
   obj.age = 25;
-  
+
   // 删除属性
   delete obj.age;
-  
+
   // 检查属性是否存在
   console.log("name" in obj); // false
   ```
@@ -2147,11 +2003,11 @@ console.log(typeof res3); // object
 ### 其它操作
 
 - 嵌套
-- [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)：合并，用法同 [`concat()`](#`concat()`)。
+- [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)：合并，用法同 [`concat()`](<#`concat()`>)。
 - `for-in`：遍历，返回的是数组的索引（键名），而不是数组的值。
 - `for-of`：遍历
 - [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)：表示数组长度的属性，用法同 [`length`](#`length`)。
-- [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)：切片，用法同 [`slice()`](#`slice()`)。
+- [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)：切片，用法同 [`slice()`](<#`slice()`>)。
 
 ## `Function`
 
