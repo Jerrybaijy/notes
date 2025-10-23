@@ -231,6 +231,11 @@ h6.md-focus:before {
   padding-bottom: 100px;
 }
 
+/* 源码模式加宽 */
+#typora-source .CodeMirror-lines {
+    max-width: 1200px;
+}
+
 /* 一级标题居中 */
 h1 {
   text-align: center;

@@ -417,7 +417,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `autopep8`：Python 格式化（备用）
 - `SQLite Viewer`：在 VSCode 中查看 SQLite 数据库
 - `Prettier`：代码格式化
-- `multi-command`：执行多命令，详见 `Markdown 硬换行` 章节。
+- `multi-command`：执行多命令，详见 `Markdown 硬换行` 章节。
 
 # Markdown
 
@@ -499,12 +499,7 @@ h6::before {
 在 VS Code 中可按以下方法实现一键硬换行。
 
 - 安装 `multi-command` 扩展
-
 - 在 `settings.json` 文件中添加命令
-
-  - `设置` > 右上角点击 `打开设置 (json)`，打开 `settings.json` 文件
-
-  - 添加以下配置
 
     ```json
     // ---------------## multi-command---------------
@@ -524,22 +519,17 @@ h6::before {
 
 - 在 `keybindings.json` 文件中绑定快捷键
 
-  - `文件` > `首选项` > `键盘快捷方式` > 右上角点击 `打开键盘快捷方式 (json)`，打开 `keybindings.json` 文件
-
-  - 添加以下配置
-
     ```json
-    // -----### Markdown 软换行-----
+    // -----### Markdown 硬换行-----
     {
-      "key": "ctrl+enter", // Mac 为 "cmd+enter"
+      "key": "ctrl+enter",
       "command": "multiCommand.markdownHardBreak",
       "when": "editorLangId == markdown"
     }
     ```
 
 - 重启 VS Code
-
-- 编辑 Markdown 文件，按下 `Ctrl + Enter` 键（Mac 为 `Cmd + Enter`），即可实现一键硬换行。
+- 编辑 Markdown 文件，按下 `Ctrl + Enter` 键，即可实现一键硬换行。
 
 # 其它
 

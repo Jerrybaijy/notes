@@ -593,6 +593,11 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     background-color: #ffffff1a;
   }
   
+  /* 源码模式加宽 */
+  #typora-source .CodeMirror-lines {
+      max-width: 1200px;
+  }
+  
   /* ---------------------- 标题 ---------------- */
   /* 一级标题居中 */
   h1 {

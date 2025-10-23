@@ -219,7 +219,7 @@ console.log(age); // 20
   ```javascript
   let num1 = 07;
   console.log(num1); // 7
-
+  
   let num2 = 010;
   console.log(num2); // 8
   ```
@@ -289,7 +289,7 @@ console.log(6 < 2); // false
 
 **字符串** [`string`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#string_类型) 属于原始值。
 
-### 基础
+### 语法
 
 ```javascript
 // 字面量方式
@@ -303,11 +303,47 @@ let str = new String(); // String 首字母大写，此处 new 可以省略
 
 **基本包装类型**： JS 中，只有对象数据类型才有属性和方法，原始值没有。但通过基本类型包装，会暂时将字符串包装成一个对象，可以使字符串暂时拥有属性和方法，结束后对象再被销毁。
 
-### 字符串索引
+### 模板字符串
+
+**语法**：用反引号 <code>\`</code> 包围字符串
+
+```javascript
+let a = `Hello World`;
+```
+
+**跨行输出**：
+
+```javascript
+// 用双引号包围的字符串，每行后面加反斜杠，可以分多行书写，但在一行输出
+let a =
+  "今天天气真不错\
+真不错啊\
+真不错";
+console.log(a); // 天气真不错真不错啊真不错
+
+// 用反引号包围的字符串，分多行书写，在多行输出
+let b = `今天天气真不错
+真不错啊
+真不错`;
+console.log(b); // 分多行输出
+// 天气真不错
+// 真不错啊
+// 真不错
+```
+
+**嵌套变量 + 拼接**：
+
+```javascript
+let a = "你好"; // a 可以是任意数据类型
+let b = `${a}世界`; // 注意此处的 $ 是语法的一部分
+console.log(b); // 你好世界
+```
+
+### `String[i]`
 
 #### 语法
 
-**语法**：`STR[索引号]`，返回 `string`。
+**语法**：`String[索引号]`，返回 `string`。
 
 ```javascript
 //         0 1 2 3 4 5，正向索引号
@@ -354,42 +390,6 @@ while (index < str.length) {
 // 依次打印“中国江西联通”
 ```
 
-### 模板字符串
-
-**语法**：用反引号 <code>\`</code> 包围字符串
-
-```javascript
-let a = `Hello World`;
-```
-
-**跨行输出**：
-
-```javascript
-// 用双引号包围的字符串，每行后面加反斜杠，可以分多行书写，但在一行输出
-let a =
-  "今天天气真不错\
-真不错啊\
-真不错";
-console.log(a); // 天气真不错真不错啊真不错
-
-// 用反引号包围的字符串，分多行书写，在多行输出
-let b = `今天天气真不错
-真不错啊
-真不错`;
-console.log(b); // 分多行输出
-// 天气真不错
-// 真不错啊
-// 真不错
-```
-
-**嵌套变量 + 拼接**：
-
-```javascript
-let a = "你好"; // a 可以是任意数据类型
-let b = `${a}世界`; // 注意此处的 $ 是语法的一部分
-console.log(b); // 你好世界
-```
-
 ### `concat()`
 
 [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split) 方法用于合并字符串。
@@ -425,7 +425,7 @@ console.log(res); // true
 
 **找下标** [`indexOf()`](http://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) 用于找字符串中某个字符的索引号。
 
-**语法**：`STR.indexOf("匹配项")`，返回 `number`。
+**语法**：`String.indexOf("匹配项")`，返回 `number`。
 
 ```javascript
 let str = "中国江西联通中国";
@@ -441,11 +441,11 @@ console.log(str.lastIndexOf("国")); // 7
 console.log(str.indexOf("海")); // -1
 ```
 
-### `length`
+### `String.length`
 
 `length` 属性用于表示字符串长度。
 
-**语法**：`STR.length`，返回 `number`。
+**语法**：`String.length`，返回 `number`。
 
 ```javascript
 let str = "中国江西联通";
@@ -657,11 +657,11 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
   ```javascript
   // ITEM也许可以是任意数据类型
-
+  
   let res1 = 10 + "5"; // 将数字 10 转为字符串 "10"
   console.log(res1); // 105
   console.log(typeof res1); // string
-
+  
   let res2 = true + ""; // 将布尔值 true 自动转换为字符串 "true"
   console.log(res2); // true
   console.log(typeof res2); // string
@@ -807,15 +807,15 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   let data = 10 - "5";  // 字符串 "5" 转为数字 5
   console.log(res);  // 5
   console.log(typeof res);  // number
-
+  
   let data = 10 + true;  // 布尔值 true 转为数字 1
   console.log(res);  // 11
   console.log(typeof res);  // number
-
+  
   let data = 10 + NaN;  // number 类型的特殊值 NaN 与任何数据类型相加都等于 NaN
   console.log(res);  // NaN
   console.log(typeof res);  // number
-
+  
   # 字符串加法：将不是字符串的数据类型转为字符串，然后拼接。
   let data = 10 + "5";  // 数字 10 转为字符串 "10"
   console.log(res);  // 105
@@ -903,7 +903,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   a = +a;
   console.log(a); // -10
   console.log(typeof a); // number
-
+  
   let b = "-10";
   b = -b;
   console.log(b); // 10
@@ -1276,7 +1276,7 @@ console.log(result); // 及格
 
 JS 中有 `for`、`for-in`、`for-of`、`while` 和 `do-while` 五种[循环结构](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Loops_and_iteration)。
 
-## for 语句
+## `for`
 
 ```javascript
 for (初始化表达式; 条件表达式; 更新表达式) {
@@ -1300,7 +1300,7 @@ for (let i = 0; i < arr.length; i++) {
 }
 ```
 
-## for-of 语句
+## `for-of`
 
 ```javascript
 for (let 变量名 of 可迭代对象) {
@@ -1315,7 +1315,9 @@ for (let data of arr) {
 }
 ```
 
-## for-in 语句
+## `for-in`
+
+[`for-in`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/for...in) 语句迭代一个对象的所有[可枚举字符串属性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Enumerability_and_ownership_of_properties)。
 
 ```javascript
 for (let 变量名 in 对象) {
@@ -1331,9 +1333,7 @@ for (let k in user) {
 }
 ```
 
-**注意**：在 JS 中，`for-in` 语句在遍历数组时，返回的是数组的索引（键名），而不是数组的值。
-
-## while 语句
+## `while`
 
 ```javascript
 while (条件表达式) {
@@ -1349,7 +1349,7 @@ while (i <= 3) {
 }
 ```
 
-## do-while 语句
+## `do-while`
 
 ```javascript
 do {
@@ -1412,15 +1412,13 @@ for (let year = 1; year < 11; year++) {
 
 # 函数
 
-在 JS 中，函数是一个 [`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function) 对象，使用 `typeof` 获取到的数据类型为 `function`。
+在 JS 中，[**函数**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions)是一个 [`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function) 对象，使用 `typeof` 获取到的数据类型为 `function`。
 
-## 定义函数
+## 函数声明
 
-### 函数声明
+### 语法
 
 [**函数声明**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/function)：使用 `function` 关键字声明一个绑定到给定名称的 `Function` 对象。
-
-**注意**：函数声明创建的函数，存在变量提升。
 
 ```javascript
 function 函数名(形参列表) {
@@ -1442,7 +1440,202 @@ getSum(1, 1); // 2
 console.log(typeof getSum); // function
 ```
 
-### 匿名函数
+### 函数提升
+
+函数声明会被[提升](https://developer.mozilla.org/zh-CN/docs/Glossary/Hoisting)到其所在作用域的最前面。可以在声明之前使用函数：
+
+```javascript
+getSum(1, 1); // 2
+
+function getSum(a, b) {
+  let res = console.log(a + b);
+  return res;
+}
+```
+
+## 函数参数
+
+有两种特殊的参数语法：*默认参数*和*剩余参数*。
+
+### 默认参数
+
+[**函数默认参数**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Default_parameters)允许在没有值或 `undefined` 被传入时使用默认形参。
+
+```javascript
+function multiply(a, b = 1) {
+  return a * b;
+}
+
+console.log(multiply(5, 2)); // 10
+console.log(multiply(5)); // 5
+```
+
+### 剩余参数
+
+[**剩余参数**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/rest_parameters)语法允许将一个不定数量的参数表示为一个数组。
+
+```javascript
+function sum(...theArgs) {
+  let total = 0;
+  for (const arg of theArgs) {
+    total += arg;
+  }
+  return total;
+}
+
+console.log(sum(1, 2, 3)); // 6
+```
+
+
+
+### `arguments`
+
+#### 语法
+
+[`arguments`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments) 对象是一个对应于*传递给函数的*参数的**类数组对象**。
+
+`arguments` 对象不是一个 `Array` 。它类似于 `Array`，但除了 `length` 属性和索引元素之外没有任何 `Array` 属性。
+
+```javascript
+arguments[参数序号];
+```
+
+```javascript
+function func1(a, b, c) {
+  console.log(arguments);
+  console.log(typeof arguments);
+}
+
+func1(1, 2, 3);
+// Arguments(3) [1, 2, 3, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+// object
+```
+
+#### `arguments[i]`
+
+`arguments` 索引的用法同 [`Array[i]`](#`Array[i]`)。
+
+```javascript
+function func1(a, b, c) {
+  console.log(arguments[1]);
+}
+
+func1(1, 2, 3); // 2
+```
+
+#### `arguments.length`
+
+`length`：表示*传递给函数的*参数的长度属性，用法同 [`String.length`](#`String.length`)。
+
+**注意**：如果要确定函数[签名](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function)中（输入）参数的数量，请使用 [`Function.length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/length) 属性。
+
+```javascript
+function func1(a, b, c) {
+  console.log(arguments.length);
+}
+
+func1(1, 2, 3); // 3
+```
+
+#### 使用 `arguments`
+
+[使用 `arguments` 对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#使用_arguments_对象)，你可以处理比声明更多的参数来调用函数。
+
+例如，声明一个用来连接字符串的函数。唯一正式的参数是在连接后的字符串中用来分隔各个连接部分的字符。该函数定义如下：
+
+```javascript
+function myConcat(separator) {
+  var result = "";
+  for (let i = 1; i < arguments.length; i++) {
+    result += arguments[i] + separator;
+  }
+  return result;
+}
+
+console.log(myConcat("，", "中国", "上海", "北京")); // "中国，上海，北京，"
+```
+
+## 函数嵌套
+
+[**函数嵌套**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#[嵌套函数和闭包](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#嵌套函数和闭包))是在一个函数里面嵌套的另外一个函数。
+
+- 内部函数只可以在外部函数中访问。不能在其它作用域调用。
+- 内部函数形成了一个闭包：它可以访问外部函数作用域的参数和变量，但是外部函数却不能使用它的参数和变量。
+
+```javascript
+function 外部函数名(外部参数列表) {
+  function 嵌套函数名(内部参数列表) {
+    // 嵌套函数的函数体
+  }
+  return 返回值;
+}
+```
+
+```javascript
+function addSquares(a, b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+}
+
+console.log(addSquares(2, 3)); // 13
+```
+
+由于内部函数形成了闭包（类似封装），因此你可以调用外部函数并为外部函数和内部函数指定参数：
+
+```javascript
+function outside(x) {
+  function inside(y) {
+    return x + y;
+  }
+  return inside;
+}
+
+const fnInside = outside(3); // fnInside 是 x 为 3 的 'inside' 函数
+console.log(fnInside(5)); // 8
+console.log(outside(3)(5)); // 8
+
+```
+
+## 函数递归
+
+在函数内部调用自身称为[**函数递归**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Functions#递归)。有三种方法可以达到这个目的：
+
+- 函数名
+- [`arguments.callee`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments/callee)
+- 作用域内一个指向该函数的变量名
+
+```javascript
+const foo = function bar() {
+  // 函数体
+};
+```
+
+在这个函数体内，以下的语句是等价的：
+
+- `bar()`
+- `arguments.callee()`
+- `foo()`
+
+**示例**：定义一个函数，如果传入的参数是 1，则返回 1；如果传入的数字是 1 以上的数字，则返回参数 + 函数调用上一项。
+
+```javascript
+function fun(a) {
+  if (a < 1) {
+    alert("请输入0以上的整数");
+  } else if (a === 1) {
+    return 1;
+  } else {
+    return a + fun(a - 1); // 函数内部调用自身
+  }
+}
+
+console.log(fun(1));
+console.log(fun(3));
+```
+
+## 匿名函数
 
 ```javascript
 function(参数列表) {函数体;}
@@ -1458,11 +1651,9 @@ numbers.forEach(function (element) {
 });
 ```
 
-### 函数表达式
+## 函数表达式
 
-[**函数表达式**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function)：
-
-使用变量接收匿名函数。
+[**函数表达式**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/function)：使用变量接收函数。
 
 ```javascript
 const 变量名 = function (参数列表) {
@@ -1481,7 +1672,20 @@ getSum(1, 1); // 2
 console.log(typeof getSum); // function
 ```
 
-### 箭头函数
+## 箭头函数
+
+[**箭头函数表达式**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/Arrow_functions)的语法比传统的函数表达式更简洁，但在语义上有一些差异，在用法上也有一些限制：
+
+- 箭头函数没有自己的 `this`，`this` 继承自外层作用域。
+- 箭头函数没有自己的 `arguments`，它会使用外层函数的 `arguments` 对象。
+- 箭头函数不能使用 `yield` 关键字，因此不能用作生成器函数。
+- 箭头函数适合用作回调函数。
+
+```javascript
+const materials = ["Hydrogen", "Helium", "Lithium", "Beryllium"];
+
+console.log(materials.map((material) => material.length)); // [8, 6, 7, 9]
+```
 
 箭头函数的语法形式较为灵活，根据 _参数数量_ 和 _函数体语句数量_ 有不同的写法。
 
@@ -1507,16 +1711,9 @@ const calculate = (num) => {
 };
 ```
 
-**说明**
+## `Function()`
 
-- 箭头函数没有自己的 `this`，`this` 继承自外层作用域。
-- 箭头函数没有自己的 `arguments`，它会使用外层函数的 `arguments` 对象。
-- 箭头函数不能使用 `yield` 关键字，因此不能用作生成器函数。
-- 箭头函数适合用作回调函数。
-
-### `Function()`
-
-**构造函数** [Function()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/Function) 用于创建一个新的 `Function` 对象。
+[`Function()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/Function) 构造函数用于创建一个新的 `Function` 对象。
 
 ```javascript
 const 函数名 = new Function("参数1", "参数2", "函数体");
@@ -1529,13 +1726,11 @@ getSum(1, 1); // 2
 console.log(typeof getSum); // function
 ```
 
-- **扩展**：函数体作为字符串传入，可以动态创建函数，但安全性较低。
+**扩展**：函数体作为字符串传入，可以动态创建函数，但安全性较低。
 
-### 立即调用函数表达式 (IIFE)
+## 立即调用函数表达式 (IIFE)
 
 **立即调用函数表达式**（**I**mmediately-**I**nvoked **F**unction **E**xpression，简称 IIFE），也叫做自调用函数，表示函数在定义时就立即调用。
-
-**语法**：
 
 - 如果声明函数想实现自调用，可以想办法将声明函数矮化成函数表达式
 
@@ -1578,30 +1773,9 @@ let foo = (function () {
 })(1); // 1
 ```
 
-### 方法定义
+## 方法定义
 
-### 生成器函数
-
-## 函数递归
-
-函数内部可以通过函数名调用函数自身的方式，就是**函数递归**。
-
-**示例**：定义一个函数，如果传入的参数是 1，则返回 1；如果传入的数字是 1 以上的数字，则返回参数 + 函数调用上一项。
-
-```javascript
-function fun(a) {
-  if (a < 1) {
-    alert("请输入0以上的整数");
-  } else if (a === 1) {
-    return 1;
-  } else {
-    return a + fun(a - 1); // 函数内部调用自身
-  }
-}
-
-console.log(fun(1));
-console.log(fun(3));
-```
+## 生成器函数
 
 # [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
 
@@ -1620,13 +1794,13 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   const person = {
     name: "Alice", // 定义属性
     age: 25,
-
+  
     // 定义方法
     introduce: function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-
+  
   // 使用对象调用方法
   person.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
@@ -1640,17 +1814,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   function Person(name, age) {
     this.name = name; // 初始化 name 属性
     this.age = age; // 初始化 age 属性
-
+  
     // 添加一个方法
     this.introduce = function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     };
   }
-
+  
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1668,17 +1842,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       this.name = name; // 初始化 name 属性
       this.age = age; // 初始化 age 属性
     }
-
+  
     // 定义方法
     introduce() {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     }
   }
-
+  
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1700,11 +1874,11 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       },
     };
   }
-
+  
   // 使用工厂函数创建对象
   const person1 = createPerson("Alice", 25);
   const person2 = createPerson("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1721,12 +1895,12 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-
+  
   // 使用 Object.create 创建一个新对象
   const person1 = Object.create(personPrototype);
   person1.name = "Alice";
   person1.age = 25;
-
+  
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
 
@@ -1738,10 +1912,10 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice", age: 25 };
-
+  
   // 使用点操作符
   console.log(obj.name); // "Alice"
-
+  
   // 使用方括号
   console.log(obj["age"]); // 25
   ```
@@ -1752,16 +1926,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice" };
-
+  
   // 更新已有属性
   obj.name = "Bob";
-
+  
   // 添加新属性
   obj.age = 25;
-
+  
   // 删除属性
   delete obj.age;
-
+  
   // 检查属性是否存在
   console.log("name" in obj); // false
   ```
@@ -1774,7 +1948,7 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
 ### 语法
 
-**数组** [`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) 对象可以存储**不同**数据类型的元素，是一个特殊的**对象**，数据类型为 `object`。
+**数组** [`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) 对象可以存储**不同**数据类型的元素，数据类型为 `object`。
 
 对数组操作以后，原数组会改变。
 
@@ -1794,48 +1968,13 @@ console.log(arr); // ['中国', '上海', 123]
 console.log(typeof arr); // object
 ```
 
-**公共功能**：
-
-- 以下功能详见字符串
-- 获取长度 `.length`
-- 索引（JS 不可索引切片）
-- 遍历 `for-of 语句`
-- ~~JS 中数组没有 `in` 包含功能~~
-- 嵌套
-- 切片 `.slice()`
-- 合并 `.concat()`
-
-**其它功能**：
-
-```javascript
-let arr = [1, 2, 3, 4];
-
-arr[0] = 5; // 修改
-
-arr.push(5); // 追加
-
-arr.splice(1, 0, "北京", "上海"); // 插入
-
-arr.splice(1, 2, "北京", "上海"); // 替换
-
-arr.remove(1, 2); // 删除
-
-arr.length = 0; // 清空
-
-arr.reverse(); // 反转
-
-arr.sort(); // 排序
-
-strr = arr.join("_"); // join 连接
-```
-
-### 数组索引
+### `Array[i]`
 
 #### 语法
 
-数组索引的基础用法同[字符串索引](#字符串索引)。
+数组索引的基础用法同 [`String[i]`](#`String[i]`)。
 
-#### 数组索引赋值
+#### 索引赋值
 
 **语法**：`数组名[索引号] = 元素`，原数组被改变。
 
@@ -1855,11 +1994,25 @@ console.log(arr[4], arr[5]); // undefined undefined
 console.log(arr.length); // 7
 ```
 
-### 数组长度
+### `forEach()`
 
-数组长度 [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 基础用法同字符串 [`length`](#`length`)。
+[`forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 方法对数组的每个元素执行一次给定的函数。
 
-通过数组长度删除元素：`ARRAY.length = 长度值;`，原数组被改变。
+**语法**：`forEach(callbackFn)`
+
+```javascript
+let numbers = [1, 2, 3, 4];
+// 使用匿名函数作为 forEach 的回调函数，这里对每个元素进行翻倍操作
+numbers.forEach(function (element) {
+  console.log(element * 2);
+});
+```
+
+### `Array.length`
+
+数组长度 [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 基础用法同 [`String.length`](#`String.length`)。
+
+通过数组长度删除元素：`Array.length = 长度值;`，原数组长度被改变。
 
 ```javascript
 let arr = [1, 2, 3, 4];
@@ -1907,6 +2060,10 @@ console.log(arr); // [1, 2, 3, 4]
 console.log(arrStart); // [1, 2, 3, 4, 5, 6, 7, 8]
 console.log(arrEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
 ```
+
+### `remove()`
+
+[`remove()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/remove) 方法用于把对象从它所属的 DOM 树中删除。
 
 ### `reverse()`
 
@@ -1989,7 +2146,12 @@ console.log(typeof res3); // object
 
 ### 其它操作
 
+- 嵌套
+- [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)：合并，用法同 [`concat()`](#`concat()`)。
+- `for-in`：遍历，返回的是数组的索引（键名），而不是数组的值。
+- `for-of`：遍历
 - [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)：表示数组长度的属性，用法同 [`length`](#`length`)。
+- [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)：切片，用法同 [`slice()`](#`slice()`)。
 
 ## `Function`
 

@@ -77,7 +77,7 @@
     "command": "workbench.action.openGlobalSettings"
   },
   // ---------------## multi-command ---------------
-  // -----### Markdown 软换行-----
+  // -----### Markdown 硬换行-----
   {
     "key": "ctrl+enter",
     "command": "multiCommand.markdownHardBreak",
