@@ -3,9 +3,9 @@
   "enabledCssSnippets": [
     "0",
     "obsidian-heading-numbering",
-    "user-base",
     "主题实验",
-    "边框实验"
+    "边框实验",
+    "user-base"
   ],
   "theme": "system",
   "accentColor": "#adbac7",
