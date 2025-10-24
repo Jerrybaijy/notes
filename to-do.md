@@ -10,22 +10,18 @@ tags:
 
 - [ ] **Typora**
   - [ ] [导入和导出](https://support.typoraio.cn/Export/#other-pandoc-options)
-- [ ] MDN
+- [ ] **MDN**
   - [ ] [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
     - [ ] [Git](https://developer.mozilla.org/zh-CN/docs/Learn/Tools_and_testing/GitHub)
   - [ ] [浏览器扩展](https://developer.mozilla.org/zh-CN/docs/Mozilla/Add-ons/WebExtensions)
-- [ ] [Prettier](https://prettier.io/docs/index.html)
-  - [ ] markdown 嵌套前后加空行
-
-- [ ] VS Code
-  - [ ] 自定义主题
-    - [ ] 浅色主题
-      - [ ] 滚动条
+- [ ] **VS Code**
   - [ ] VS code 的 mpe 插件能识别出格式规不规范，如果不规范可能会有提示
-- [ ] Obsidian
+- [ ] **Obsidian**
   - [ ] 浅色主题
+- [ ] **JavaScript**
+  - [ ] 将数据类型中的方法，转移到相关对象中
 
-- [ ] 其它
+- [ ] **其它**
 
 # Andy's Suggestion
 

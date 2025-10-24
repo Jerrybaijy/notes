@@ -219,7 +219,7 @@ console.log(age); // 20
   ```javascript
   let num1 = 07;
   console.log(num1); // 7
-
+  
   let num2 = 010;
   console.log(num2); // 8
   ```
@@ -657,11 +657,11 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
   ```javascript
   // ITEM也许可以是任意数据类型
-
+  
   let res1 = 10 + "5"; // 将数字 10 转为字符串 "10"
   console.log(res1); // 105
   console.log(typeof res1); // string
-
+  
   let res2 = true + ""; // 将布尔值 true 自动转换为字符串 "true"
   console.log(res2); // true
   console.log(typeof res2); // string
@@ -874,6 +874,10 @@ console.log(typeof a); // number
 
 如果指定的属性在指定的对象或其原型链中，则 [`in`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/in) 运算符返回 `true`。
 
+### 判断相等
+
+> [如何正确判断相等性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Equality_comparisons_and_sameness)
+
 ## 逻辑运算符
 
 > [逻辑运算符](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Scripting/Conditionals#逻辑运算符：与、或、非)
@@ -972,17 +976,15 @@ console.log(b, typeof b); // true 'boolean'
 
 ## 运算符优先级
 
-- **括号** `()`
-- **一元运算符** `+`, `-`, `++`, `--`, `!`, `~`, `typeof`, `void`, `delete`
-- **算数运算符**
-  - **指数运算符** `**`
-  - **乘法、除法、取余、取整除** `*`, `/`, `%`
-  - **加法、减法** `+`, `-`
-- **位移运算符** `<<`, `>>`, `>>>`
-- **比较运算符** `==`, `!=`, `===`, `!==`, `<`, `>`, `<=`, `>=`, `instanceof`, `in`
-- **逻辑运算符** `&&`, `||`
-- **赋值运算符** `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `**=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
-- **逗号运算符** `,`
+> [运算符优先级](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_precedence)
+
+<iframe
+  src="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Operator_precedence#汇总表"
+  width="300"
+  height="500"
+  title="运算符优先级"
+  >降级文本
+</iframe>
 
 # 选择结构
 
@@ -1650,13 +1652,13 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   const person = {
     name: "Alice", // 定义属性
     age: 25,
-
+  
     // 定义方法
     introduce: function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-
+  
   // 使用对象调用方法
   person.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
@@ -1670,17 +1672,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   function Person(name, age) {
     this.name = name; // 初始化 name 属性
     this.age = age; // 初始化 age 属性
-
+  
     // 添加一个方法
     this.introduce = function () {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     };
   }
-
+  
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1698,17 +1700,17 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       this.name = name; // 初始化 name 属性
       this.age = age; // 初始化 age 属性
     }
-
+  
     // 定义方法
     introduce() {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     }
   }
-
+  
   // 创建对象
   const person1 = new Person("Alice", 25);
   const person2 = new Person("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1730,11 +1732,11 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       },
     };
   }
-
+  
   // 使用工厂函数创建对象
   const person1 = createPerson("Alice", 25);
   const person2 = createPerson("Bob", 30);
-
+  
   // 调用方法
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
@@ -1751,12 +1753,12 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-
+  
   // 使用 Object.create 创建一个新对象
   const person1 = Object.create(personPrototype);
   person1.name = "Alice";
   person1.age = 25;
-
+  
   person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
   ```
 
@@ -1768,10 +1770,10 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice", age: 25 };
-
+  
   // 使用点操作符
   console.log(obj.name); // "Alice"
-
+  
   // 使用方括号
   console.log(obj["age"]); // 25
   ```
@@ -1782,16 +1784,16 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
   ```javascript
   const obj = { name: "Alice" };
-
+  
   // 更新已有属性
   obj.name = "Bob";
-
+  
   // 添加新属性
   obj.age = 25;
-
+  
   // 删除属性
   delete obj.age;
-
+  
   // 检查属性是否存在
   console.log("name" in obj); // false
   ```
@@ -2012,3 +2014,19 @@ console.log(typeof res3); // object
 ## `Function`
 
 [`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+# 其它
+
+## 正则表达式
+
+在 JavaScript 中，[正则表达式](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_expressions)也是对象。这些模式被用于 `RegExp` 的 `exec` 和 `test` 方法，以及 `String` 的 `match`、`matchAll`、`replace`、`search` 和 `split` 方法。
+
+在接下来的例子中，脚本将使用 exec 方法在一个字符串中查找一个匹配。
+
+```javascript
+var myRe = /d(b+)d/g;
+var myArray = myRe.exec("cdbbdbsbz");
+console.log(myArray); // ['dbbd', 'bb', index: 1, input: 'cdbbdbsbz', groups: undefined]
+console.log(typeof myArray); // object
+```
+

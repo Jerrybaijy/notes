@@ -4,11 +4,10 @@
     "0",
     "obsidian-heading-numbering",
     "user-base",
-    "user-color",
     "主题实验",
     "边框实验"
   ],
-  "theme": "obsidian",
+  "theme": "system",
   "accentColor": "#adbac7",
   "baseFontSize": 18,
   "baseFontSizeAction": true
