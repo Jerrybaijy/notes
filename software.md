@@ -175,6 +175,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 - **划词翻译**
 - **沉浸式翻译**
 - **Markdown Viewer**
+- **Material Simple Dark Grey**：黑色主题
 - **OneTab**：把不活动的网页暂时冻结在一起
 - **Screenshot YouTube**：YouTube 截屏
 - **YouTube Summary with ChatGPT & Claude**：总结 YouTube 视频内容

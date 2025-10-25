@@ -289,296 +289,6 @@ console.log(6 < 2); // false
 
 **字符串** [`string`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#string_类型) 属于原始值。
 
-### 语法
-
-```javascript
-// 字面量方式
-let str1 = "hello world"; // 文本形式的字符串
-let str2 = ""; // 空字符串
-let str3 = "6"; // 数值形式的字符串
-
-// 构造函数方式
-let str = new String(); // String 首字母大写，此处 new 可以省略
-```
-
-**基本包装类型**： JS 中，只有对象数据类型才有属性和方法，原始值没有。但通过基本类型包装，会暂时将字符串包装成一个对象，可以使字符串暂时拥有属性和方法，结束后对象再被销毁。
-
-### 模板字符串
-
-**语法**：用反引号 <code>\`</code> 包围字符串
-
-```javascript
-let a = `Hello World`;
-```
-
-**跨行输出**：
-
-```javascript
-// 用双引号包围的字符串，每行后面加反斜杠，可以分多行书写，但在一行输出
-let a =
-  "今天天气真不错\
-真不错啊\
-真不错";
-console.log(a); // 天气真不错真不错啊真不错
-
-// 用反引号包围的字符串，分多行书写，在多行输出
-let b = `今天天气真不错
-真不错啊
-真不错`;
-console.log(b); // 分多行输出
-// 天气真不错
-// 真不错啊
-// 真不错
-```
-
-**嵌套变量 + 拼接**：
-
-```javascript
-let a = "你好"; // a 可以是任意数据类型
-let b = `${a}世界`; // 注意此处的 $ 是语法的一部分
-console.log(b); // 你好世界
-```
-
-### `String[i]`
-
-#### 语法
-
-**语法**：`String[索引号]`，返回 `string`。
-
-```javascript
-//         0 1 2 3 4 5，正向索引号
-let str = "中国江西联通";
-console.log(str[0]); // 中
-console.log(str[-5]); // undefined
-console.log(typeof str[0]); // string
-```
-
-**注意**：JS 不支持直接逆向索引，会返回 `undefined`。
-
-#### 多级索引
-
-`Arry[一级索引号][二级索引号]...`，返回 `string`。
-
-```javascript
-let arr = ["中国", ["上海", "北京", "深圳"], 123];
-let str1 = arr[1][0];
-let str2 = arr[1][0][0];
-console.log(str1); // 上海
-console.log(str2); // 上
-```
-
-#### 扩展
-
-**变相逆向索引**：`STR[STR.length - 索引号]`，返回 `string`。
-
-```javascript
-let str = "中国江西联通";
-console.log(str[str.length - 5]); // 国
-```
-
-**示例**：
-
-```javascript
-let str = "中国江西联通";
-let index = 0; // index 为索引号
-while (index < str.length) {
-  let strNew = str[index];
-  console.log(strNew);
-  index += 1;
-}
-
-// 依次打印“中国江西联通”
-```
-
-### `concat()`
-
-[`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split) 方法用于合并字符串。
-
-**语法**：`STR.concat(任意数据类型)`，返回 `string`。
-
-```javascript
-let str1 = "abc";
-
-let str2 = str1.concat("def"); // 参数为字符串字面量
-let str3 = str1.concat(null, 4, "f"); // 参数为零散的任意数据类型
-
-console.log(str2); // abcdef
-console.log(typeof str2); // string
-
-console.log(str3); // abcnull4f
-console.log(typeof str3); // string
-```
-
-### `includes()`
-
-[`includes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/includes) 方法用于判断是否可以在一个字符串中找到另一个字符串。
-
-**语法**：`STR.includes(元素)`，返回 `boolean`。
-
-```javascript
-let str = "中国联通";
-let res = str.includes("中国");
-console.log(res); // true
-```
-
-### `indexOf()`
-
-**找下标** [`indexOf()`](http://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) 用于找字符串中某个字符的索引号。
-
-**语法**：`String.indexOf("匹配项")`，返回 `number`。
-
-```javascript
-let str = "中国江西联通中国";
-
-// 第一个匹配项
-console.log(str.indexOf("国")); // 1
-console.log(typeof str.indexOf("国")); // number
-
-// 最后一个匹配项
-console.log(str.lastIndexOf("国")); // 7
-
-// 错误的匹配项
-console.log(str.indexOf("海")); // -1
-```
-
-### `String.length`
-
-`length` 属性用于表示字符串长度。
-
-**语法**：`String.length`，返回 `number`。
-
-```javascript
-let str = "中国江西联通";
-let res = str.length;
-console.log(res); // 6
-console.log(typeof res); // number
-```
-
-### `replace()`
-
-[`replace()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace) 方法用于替换字符串中的一段序列。
-
-**语法**：`STR.replace("旧元素", "新元素")`，返回 `string`。
-
-```javascript
-let str = " 中国 联通 联通 ";
-let res = str.replace("联通", "移动");
-console.log(res); // " 中国 移动 联通 "
-```
-
-**说明**：JS 中，`replace()` 只能替换一个符合要求元素（最左侧一个）。
-
-### `slice()`
-
-**切片** [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/slice) 用于提取字符串的一部分。
-
-**语法**：`STR.slice(INDEX_START, INDEX_END)`，返回 `string`。
-
-```javascript
-//      0 1 2 3 4 5，正向索引号
-let str = "中国江西联通";
-
-console.log(str.slice(2, 4)); // 江西
-console.log(str.slice(2)); // 江西联通（可省略终结索引号）
-```
-
-**扩展**：`slice()` 支持逆向索引。
-
-**注意**：JS 不支持索引直接切片。
-
-### `split()`
-
-**切割** [`split()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split) 方法用于根据切割标识切割字符串。
-
-**语法**：`STR.split(切割标识)`，返回 `Arry`。
-
-```javascript
-let str = "马化腾,40,XXXX@qq.com";
-let res = str.split(","); // ","为切割标识
-
-console.log(res); // ['马化腾', '40', 'XXXX@qq.com']
-```
-
-**综合示例**：
-
-```javascript
-let str = "马化腾,40,XXXX@qq.com";
-let res1 = str.split(","); // 把所有序列都切割，分别放入子字符串，逗号是切割标识依据
-let res2 = str.split("."); // "."为切割标识
-let res3 = str.split(",", 1); // 从左到右，保留1个子字符串
-
-console.log(res1); // ['马化腾', '40', 'XXXX@qq.com']
-console.log(res1[0]); // 马化腾
-console.log(res2); // ['马化腾,40,XXXX@qq', 'com']
-console.log(res3); // ['马化腾']
-```
-
-### `startsWith()`
-
-[`startsWith()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith) 方法用来判断当前字符串是否以另外一个给定的子字符串开头。
-
-**语法**：`STR.startsWith()`，返回 `boolean`。
-
-```javascript
-let str = "中国联通";
-let res = str.startsWith("中国");
-console.log(res); // true
-```
-
-### `toUpperCase()`
-
-[`toUpperCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) 方法用于将字符串转换为大写形式。
-
-[`toLowerCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) 方法用于将字符串转换为小写形式。
-
-**语法**：`STR.toUpperCase()`，返回 `string`。
-
-```javascript
-let str = "abc";
-let res = str.toUpperCase();
-console.log(res); // ABC
-```
-
-### `trim()`
-
-[`trim()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trim) 方法用于去除字符串两端的空格 ` ` 或换行符 `\n`。
-
-**语法**：`STR.trim()`，返回 `string`。
-
-```javascript
-let str = " 中国 联通 ";
-
-// 去除开头和结尾的空格
-let res1 = str.trim();
-console.log(res1); // "中国 联通"
-
-// 去除开头的空格
-let res2 = str.trimStart();
-console.log(res2); // "中国 联通 "
-
-// 去除结尾的空格
-let res3 = str.trimEnd();
-console.log(res3); // " 中国 联通"
-```
-
-```javascript
-// 去除换行
-let str = "中国联通\n";
-console.log(str); // 中国联通（后面有换行）
-
-let res4 = str.trim();
-console.log(res4); // 中国联通（后面没有换行）
-```
-
-**扩展**：`trim()` 不能去除中间的空格，去除中间空格应使用 `str.replace(" ", "")`，将空格替换成空白。
-
-### 其它操作
-
-- 遍历：详见 [for-of 语句](#for-of 语句)
-- 判断数字：
-  - JS 中没有方法直接判断一个字符串是否是数字形式的字符串
-  - 可以结合正则表达式判断
-
 ## `null`
 
 JS 中，**空值** [`null`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#null_类型) 的字面量是 `null`，数据类型是 `object`，[点击查看原因](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#typeof_null)，属于原始值。
@@ -610,8 +320,8 @@ console.log(a == b); // false
 [`typeof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof) 运算符返回一个字符串，表示操作数的类型。
 
 ```javascript
-let str = "中国江西联通";
-console.log(typeof str); // string
+const myString = "中国江西联通";
+console.log(typeof myString); // string
 ```
 
 `typeof` [可能的返回值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#描述)：
@@ -653,7 +363,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   console.log(typeof res); // string
   ```
 
-- **<span id="string-addition">语法 3</span>**：`ITEM + STR`，字符串加法，隐式转换。
+- **<span id="string-addition">语法 3</span>**：`ITEM + String`，字符串加法，隐式转换。
 
   ```javascript
   // ITEM也许可以是任意数据类型
@@ -672,8 +382,8 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 - **语法 1**：`Number(ITEM)`，调用函数，显式转换。
 
   ```javascript
-  let str = "5";
-  res = Number(str);
+  const myString = "5";
+  res = Number(myString);
 
   console.log(res); // 5
   console.log(typeof res); // number
@@ -1154,10 +864,10 @@ for (let i = 0; i <= 5; i++) {
 **扩展**：可用“for 循环 + 索引”进行遍历
 
 ```javascript
-let arr = ["中国", "上海", "北京"];
+let myArray = ["中国", "上海", "北京"];
 
-for (let i = 0; i < arr.length; i++) {
-  console.log(arr[i]); // 依次输出：中国 上海 北京
+for (let i = 0; i < myArray.length; i++) {
+  console.log(myArray[i]); // 依次输出：中国 上海 北京
 }
 ```
 
@@ -1170,8 +880,8 @@ for (let 变量名 of 可迭代对象) {
 ```
 
 ```javascript
-let arr = ["中国", "上海", 123];
-for (let data of arr) {
+let myArray = ["中国", "上海", 123];
+for (let data of myArray) {
   console.log(data); // 依次输出：中国 上海 123
 }
 ```
@@ -1384,7 +1094,7 @@ func1(1, 2, 3); // 2
 
 #### `arguments.length`
 
-`length`：表示*传递给函数的*参数的长度属性，用法同 [`String.length`](#`String.length`)。
+`length`：表示*传递给函数的*参数的长度属性，用法同 [`Array.length`](#`Array.length`)。
 
 **注意**：如果要确定函数[签名](https://developer.mozilla.org/zh-CN/docs/Glossary/Signature/Function)中（输入）参数的数量，请使用 [`Function.length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function/length) 属性。
 
@@ -1806,55 +1516,111 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
 ### 语法
 
-**数组** [`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) 对象可以存储**不同**数据类型的元素，数据类型为 `object`。
+**数组对象** [`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) 可以存储**不同**数据类型的元素，数据类型为 `object`。
 
 对数组操作以后，原数组会改变。
 
-**语法**：`[元素1, 元素2, ..., 元素n]`
-
 ```javascript
 // 字面量方式
-let arr = ["中国", "上海", 123];
+let myArray1 = ["中国", "上海", 123];
+console.log(myArray1); // [ '中国', '上海', 123 ]
+console.log(typeof myArray1); // object
 
 // 构造函数方式
-let arr = Array(); // []
-```
-
-```javascript
-let arr = ["中国", "上海", 123];
-console.log(arr); // ['中国', '上海', 123]
-console.log(typeof arr); // object
+let myArray2 = new Array("中国", "上海", 123);
+console.log(myArray2); // [ '中国', '上海', 123 ]
+console.log(typeof myArray2); // object
 ```
 
 ### `Array[i]`
 
 #### 语法
 
-数组索引的基础用法同 [`String[i]`](#`String[i]`)。
+```javascript
+数组名[索引号]
+```
+
+```javascript
+// 正向索引号： 0  1  2  3
+let myArray = [1, 2, 3, 4];
+
+console.log(myArray[0]); // 1
+console.log(myArray[-2]); // undefined
+console.log(typeof myArray[0]); // number
+```
+
+#### 逆向索引
+
+JS 不支持直接逆向索引，会返回 `undefined`。但可以通过以下方法变相逆向索引：
+
+`数组名[数组名.length - 索引号]`
+
+```javascript
+let myArray = [1, 2, 3, 4];
+console.log(myArray[myArray.length - 2]); // 3
+```
 
 #### 索引赋值
 
 **语法**：`数组名[索引号] = 元素`，原数组被改变。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-arr[0] = 5;
-console.log(arr); // [5, 2, 3, 4]
+let myArray = [1, 2, 3, 4];
+myArray[0] = 5;
+console.log(myArray); // [5, 2, 3, 4]
 ```
 
 **扩展**：如果索引号超过数组最大项，会创建新元素，并在新元素与旧元素之间创建空属性，同时被动增加数组长度。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-arr[6] = 5; // 索引号超过数组最大项
-console.log(arr); // [1, 2, 3, 4, 空属性 × 2, 5]
-console.log(arr[4], arr[5]); // undefined undefined
-console.log(arr.length); // 7
+let myArray = [1, 2, 3, 4];
+myArray[6] = 5; // 索引号超过数组最大项
+console.log(myArray); // [1, 2, 3, 4, 空属性 × 2, 5]
+console.log(myArray[4], myArray[5]); // undefined undefined
+console.log(myArray.length); // 7
 ```
 
-### `forEach()`
+#### 索引遍历
 
-[`forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 方法对数组的每个元素执行一次给定的函数。
+```javascript
+let myArray = [1, 2, 3, 4];
+let i = 0;
+while (i < myArray.length) {
+    console.log(myArray[i]);
+    i++;
+}
+
+// 依次打印数组中的每个元素：1, 2, 3, 4
+```
+
+#### 多级索引
+
+`Arry[一级索引号][二级索引号]...`
+
+```javascript
+let myArray = ["中国", ["上海", "北京", "深圳"], 123];
+const myString1 = myArray[1][0];
+const myString2 = myArray[1][0][0];
+console.log(myString1); // 上海
+console.log(myString2); // 上
+```
+
+### `Array.concat()`
+
+**合并方法** [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) 用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
+
+```javascript
+let myArray1 = [1, 2, 3, 4];
+let myArray2 = [5, 6, 7, 8];
+let combinedArray = myArray1.concat(myArray2);
+
+console.log(combinedArray); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(myArray1); // [1, 2, 3, 4]
+```
+
+### `Array.forEach()`
+
+[`Array.forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 方法对数组的每个元素执行一次给定的函数。
 
 **语法**：`forEach(callbackFn)`
 
@@ -1868,41 +1634,48 @@ numbers.forEach(function (element) {
 
 ### `Array.length`
 
-数组长度 [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 基础用法同 [`String.length`](#`String.length`)。
-
-通过数组长度删除元素：`Array.length = 长度值;`，原数组长度被改变。
+**长度属性** [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 用于表示数组中元素的个数。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-arr.length = 2;
-console.log(arr); // [1, 2]
-console.log(arr.length); // 2
+let myArray = [1, 2, 3, 4];
+
+console.log(myArray.length); // 4
+console.log(typeof myArray.length); // number
 ```
 
-### `join()`
+通过   [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 删除数组元素：`Array.length = 长度值;`，原数组长度被改变。
+
+```javascript
+let myArray = [1, 2, 3, 4];
+myArray.length = 2;
+console.log(myArray); // [1, 2]
+console.log(myArray.length); // 2
+```
+
+### `Array.join()`
 
 [`join()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/join) 方法用于将一个数组的所有元素连接成一个字符串并返回这个字符串，用逗号或指定的分隔符对字符串进行分隔。如果数组只有一个元素，那么将返回该元素而不使用分隔符。
 
-**语法**：`ARRAY.join(["SEPARATION"])`，返回字符串 `str`。
+**语法**：`Array.join(["SEPARATION"])`，返回 `string`。
 
 ```javascript
-let arr = ["中国", "上海", 123];
-let res = arr.join("_"); // "_"为分隔符
+let myArray = ["中国", "上海", 123];
+let res = myArray.join("_"); // "_"为分隔符
 console.log(res); // 中国_上海_123
-console.log(arr); // ["中国", "上海", 123]
+console.log(myArray); // ["中国", "上海", 123]
 ```
 
-### `push()`
+### `Array.push()`
 
 [`push()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/push) 方法将指定的元素添加到数组的末尾，并返回新的数组长度。
 
-**语法**：`ARRAY.push(元素1, 元素2, ..., 元素n)`，原数组被改变，返回原数组被改变之后的长度 `number`。
+**语法**：`Array.push(元素1, 元素2, ..., 元素n)`，原数组被改变，返回原数组被改变之后的长度 `number`。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-let res = arr.push(5, 6, 7, 8);
+let myArray = [1, 2, 3, 4];
+let res = myArray.push(5, 6, 7, 8);
 
-console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(myArray); // [1, 2, 3, 4, 5, 6, 7, 8]
 console.log(res); // 8  // 返回原数组被改变之后的长度
 console.log(typeof res); // number
 ```
@@ -1910,47 +1683,63 @@ console.log(typeof res); // number
 **扩展**：使用扩展运算符添加元素 `[...数组名, 元素1, 元素2, ...]`，原数组不被改变。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-let arrStart = [...arr, 5, 6, 7, 8];
-let arrEnd = [5, 6, 7, 8, ...arr];
+let myArray = [1, 2, 3, 4];
+let myArrayStart = [...myArray, 5, 6, 7, 8];
+let myArrayEnd = [5, 6, 7, 8, ...myArray];
 
-console.log(arr); // [1, 2, 3, 4]
-console.log(arrStart); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(arrEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
+console.log(myArray); // [1, 2, 3, 4]
+console.log(myArrayStart); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(myArrayEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
 ```
 
-### `remove()`
+### `Array.remove()`
 
 [`remove()`](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/remove) 方法用于把对象从它所属的 DOM 树中删除。
 
-### `reverse()`
+### `Array.reverse()`
 
 [`reverse()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/reverse) 方法用于反转数组中的元素，并返回同一数组的引用。
 
 **语法**：`数组名.reverse()`，原数组被改变，返回同一数组的引用。
 
 ```javascript
-let arr = [1, 2, 3, 4];
-let res = arr.reverse();
+let myArray = [1, 2, 3, 4];
+let res = myArray.reverse();
 
-console.log(arr); // [4, 3, 2, 1]
+console.log(myArray); // [4, 3, 2, 1]
 console.log(res); // [4, 3, 2, 1]
 console.log(typeof res); // object
 ```
 
 **扩展**：`数组名.toReversed()` 方法，原数组不被改变。
 
-### `sort()`
+### `Array.slice()`
 
-[`sort()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 方法用于对数组的元素进行排序，并返回对相同数组的引用。
+**切片方法** [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) 用于提取数组的一部分，返回一个新数组。
+
+```javascript
+Array.slice(开始索引, 终止索引) // 左闭右开
+```
+
+```javascript
+let myArray = [1, 2, 3, 4];
+let res = myArray.slice(0, 2);
+
+console.log(myArray); // [1, 2, 3, 4]
+console.log(res); // [1, 2]
+```
+
+### `Array.sort()`
+
+**排序方法** [`sort()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/sort) 用于对数组的元素进行排序，并返回对相同数组的引用。
 
 **语法**：`数组名.sort()`
 
 ```javascript
-let arr = ["80", "9", "700", 40, 1, 5, 200];
-let res = arr.sort();
+let myArray = ["80", "9", "700", 40, 1, 5, 200];
+let res = myArray.sort();
 
-console.log(arr); // [1, 200, 40, 5, '700', '80', '9']
+console.log(myArray); // [1, 200, 40, 5, '700', '80', '9']
 console.log(res); // [1, 200, 40, 5, '700', '80', '9']  // 返回升序之后的原数组
 ```
 
@@ -1961,41 +1750,41 @@ console.log(res); // [1, 200, 40, 5, '700', '80', '9']  // 返回升序之后的
 **扩展**：以下方法按数字大小进行升序排序
 
 ```javascript
-let arr = ["80", "9", "700", 40, 1, 5, 200];
+let myArray = ["80", "9", "700", 40, 1, 5, 200];
 function compareFn(a, b) {
   return a - b;
 }
-let res = arr.sort(compareFn);
+let res = myArray.sort(compareFn);
 
-console.log(arr); // [1, 5, '9', 40, '80', 200, '700']
+console.log(myArray); // [1, 5, '9', 40, '80', 200, '700']
 console.log(res); // [1, 5, '9', 40, '80', 200, '700']
 ```
 
-### `splice()`
+### `Array.splice()`
 
 [`splice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) 方法用于在数组中插入、替换和删除元素。
 
-**语法**：`ARRAY.splice(开始索引, 删除数量[, 元素1, 元素2, ..., 元素n])`，原数组被改变，返回被删除元素组成的 `Array`。
+**语法**：`Array.splice(开始索引, 删除数量[, 元素1, 元素2, ..., 元素n])`，原数组被改变，返回被删除元素组成的 `Array`。
 
 ```javascript
 // 插入
-let arr1 = [1, 2, 3, 4];
-let res1 = arr1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入 5, 6, 7, 8
-console.log(arr1); // [5, 6, 7, 8, 1, 2, 3, 4]
+let myArray1 = [1, 2, 3, 4];
+let res1 = myArray1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入 5, 6, 7, 8
+console.log(myArray1); // [5, 6, 7, 8, 1, 2, 3, 4]
 console.log(res1); // []  // 返回被删除元素组成的数组
 console.log(typeof res1); // object
 
 // 替换
-let arr2 = [1, 2, 3, 4];
-let res2 = arr2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入 22, 33
-console.log(arr2); // [1, 22, 33, 4]
+let myArray2 = [1, 2, 3, 4];
+let res2 = myArray2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入 22, 33
+console.log(myArray2); // [1, 22, 33, 4]
 console.log(res2); // [2, 3]  // 返回被删除元素组成的数组
 console.log(typeof res2); // object
 
 // 删除
-let arr3 = [1, 2, 3, 4];
-let res3 = arr3.splice(1, 2); // 从第1索引号删除2个，不插入新元素
-console.log(arr3); // [1, 4]
+let myArray3 = [1, 2, 3, 4];
+let res3 = myArray3.splice(1, 2); // 从第1索引号删除2个，不插入新元素
+console.log(myArray3); // [1, 4]
 console.log(res3); // [2, 3]  // 返回被删除元素组成的数组
 console.log(typeof res3); // object
 ```
@@ -2005,15 +1794,358 @@ console.log(typeof res3); // object
 ### 其它操作
 
 - 嵌套
-- [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat)：合并，用法同 [`concat()`](<#`concat()`>)。
 - `for-in`：遍历，返回的是数组的索引（键名），而不是数组的值。
-- `for-of`：遍历
-- [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)：表示数组长度的属性，用法同 [`length`](#`length`)。
+- `for-of`：遍历，详见 [for-of 语句](#for-of 语句)。
 - [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice)：切片，用法同 [`slice()`](<#`slice()`>)。
 
 ## `Function`
 
-[`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+**函数对象** [`Function`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Function)
+
+## `Map`
+
+**映射对象** [`Map`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map) 用于保存键值对，并且能够记住键的原始插入顺序。任何值（对象或者原始值）都可以作为键或值。
+
+### 语法
+
+```javascript
+// 类似字面量方式
+const myMap1 = new Map([
+  ["name", "Alice"],
+  ["age", 30],
+  [true, "Boolean Key"],
+]);
+console.log(myMap1); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
+console.log(typeof myMap1); // object
+
+// 构造函数方式
+const myMap2 = new Map();
+myMap2.set("name", "Alice");
+myMap2.set("age", 30);
+myMap2.set(true, "Boolean Key");
+
+console.log(myMap2); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
+console.log(typeof myMap2); // object
+```
+
+### `Map.delete()`
+
+[`Map.delete()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/delete) 方法用于从 `Map` 对象中删除指定键的元素。
+
+```javascript
+const myMap = new Map();
+myMap.set("a", 1);
+myMap.set("b", 2);
+myMap.set("c", 3);
+
+// 删除键为 "a" 的元素
+myMap.delete("a");
+console.log(myMap); // {'b' => 2, 'c' => 3}
+```
+
+### `Map.forEach()`
+
+[`Map.forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/forEach) 方法按插入顺序对该 `Map` 对象中的每个键/值对执行一次提供的函数；使用方法同 [`Array.forEach()`](#`Array.forEach()`)。
+
+### `Map.get()`
+
+[`Map.get()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/get) 方法用于获取 `Map` 对象某个键对应的值。
+
+```javascript
+const myMap = new Map();
+myMap.set("a", 1);
+myMap.set("b", 2);
+myMap.set("c", 3);
+
+// 获取键 "a" 对应的值
+console.log(myMap.get("a")); // 1
+```
+
+### `Map.has()`
+
+[`Map.has()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/has) 方法用于检查 `Map` 对象中是否有指定的键，返回布尔值。
+
+```javascript
+const myMap = new Map();
+myMap.set("a", 1);
+myMap.set("b", 2);
+myMap.set("c", 3);
+
+// 检查 "d" 键是否存在
+console.log(myMap.has("d")); // false
+```
+
+### `Map.keys()`
+
+[`Map.keys()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/keys) 方法用于迭代 `Map` 对象中的所有键，返回一个新的[*迭代器*](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Iterator)对象，键按插入顺序排列。
+
+```javascript
+const myMap = new Map();
+myMap.set("a", 1);
+myMap.set("b", 2);
+myMap.set("c", 3);
+
+// 获取 Map 对象的所有键
+console.log(myMap.keys()); // {'a', 'b', 'c'}
+```
+
+### `Map.set()`
+
+[`Map.set()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/set) 方法用于向 `Map` 对象添加或更新一个指定的键值对。
+
+```javascript
+const myMap = new Map();
+
+// 添加键值对
+myMap.set("a", 1);
+myMap.set("b", 2);
+myMap.set("c", 3);
+console.log(myMap); // {'a' => 1, 'b' => 2, 'c' => 3}
+
+// 更新键 "a" 的值
+myMap.set("a", 4);
+console.log(myMap); // {'a' => 4, 'b' => 2, 'c' => 3}
+```
+
+### 其它操作
+
+[实例方法](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map#实例方法)
+
+## `Set`
+
+**集合对象** [`Set`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set) 允许你存储任何类型（无论是原始值还是对象引用）的**唯一值**。
+
+### 语法
+
+```javascript
+// 类似字面量方式
+const mySet1 = new Set(["中国", "上海", 1]);
+console.log(mySet1); // Set(3) { '中国', '上海', 1 }
+console.log(typeof mySet1); // object
+
+// 构造函数方式
+const mySet2 = new Set();
+mySet2.add("中国");
+mySet2.add("上海");
+mySet2.add(1);
+console.log(mySet2); // Set(3) { '中国', '上海', 1 }
+console.log(typeof mySet2); // object
+```
+
+## `String`
+
+**字符串对象** [`String`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String) 用于表示和操作字符序列。
+
+### 语法
+
+```javascript
+// 字面量方式
+const myString1 = "hello world"; // 文本形式的字符串
+const myString2 = ""; // 空字符串
+const myString3 = "6"; // 数值形式的字符串
+
+// 构造函数方式
+const myString = new String();
+```
+
+**不推荐**使用 `new String()` 构造函数来创建字符串。
+
+### 模板字符串
+
+**语法**：用反引号 <code>\`</code> 包围字符串
+
+```javascript
+const a = `Hello World`;
+```
+
+**跨行输出**：
+
+```javascript
+// 用双引号包围的字符串，每行后面加反斜杠，可以分多行书写，但在一行输出
+const a =
+  "今天天气真不错\
+真不错啊\
+真不错";
+console.log(a); // 天气真不错真不错啊真不错
+
+// 用反引号包围的字符串，分多行书写，在多行输出
+const b = `今天天气真不错
+真不错啊
+真不错`;
+console.log(b); // 分多行输出
+// 天气真不错
+// 真不错啊
+// 真不错
+```
+
+**嵌套变量 + 拼接**：
+
+```javascript
+let const = "你好"; // a 可以是任意数据类型
+let const = `${a}世界`; // 注意此处的 $ 是语法的一部分
+console.log(b); // 你好世界
+```
+
+### `String.concat()`
+
+**合并方法** [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/concat) 方法用于将字符串连接到调用的字符串上，并返回一个新的字符串。
+
+`String.concat(任意数据类型)`
+
+```javascript
+const myString1 = "abc";
+
+const myString2 = myString1.concat("def"); // 参数为字符串字面量
+const myString3 = myString1.concat(null, 4, "f"); // 参数为零散的任意数据类型
+
+console.log(myString2); // abcdef
+console.log(typeof myString2); // string
+
+console.log(myString3); // abcnull4f
+console.log(typeof myString3); // string
+```
+
+### `includes()`
+
+[`includes()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/includes) 方法用于判断是否可以在一个字符串中找到另一个字符串。
+
+**语法**：`String.includes(元素)`，返回 `boolean`。
+
+```javascript
+const myString = "中国联通";
+let res = myString.includes("中国");
+console.log(res); // true
+```
+
+### `indexOf()`
+
+**找下标** [`indexOf()`](http://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf) 用于找字符串中某个字符的索引号。
+
+**语法**：`String.indexOf("匹配项")`，返回 `number`。
+
+```javascript
+const myString = "中国江西联通中国";
+
+// 第一个匹配项
+console.log(myString.indexOf("国")); // 1
+console.log(typeof myString.indexOf("国")); // number
+
+// 最后一个匹配项
+console.log(myString.lastIndexOf("国")); // 7
+
+// 错误的匹配项
+console.log(myString.indexOf("海")); // -1
+```
+
+### `replace()`
+
+[`replace()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/replace) 方法用于替换字符串中的一段序列。
+
+**语法**：`String.replace("旧元素", "新元素")`，返回 `string`。
+
+```javascript
+const myString = " 中国 联通 联通 ";
+let res = myString.replace("联通", "移动");
+console.log(res); // " 中国 移动 联通 "
+```
+
+**说明**：JS 中，`replace()` 只能替换一个符合要求元素（最左侧一个）。
+
+### `split()`
+
+**切割** [`split()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/split) 方法用于根据切割标识切割字符串。
+
+**语法**：`String.split(切割标识)`，返回 `Arry`。
+
+```javascript
+const myString = "马化腾,40,XXXX@qq.com";
+let res = myString.split(","); // ","为切割标识
+
+console.log(res); // ['马化腾', '40', 'XXXX@qq.com']
+```
+
+**综合示例**：
+
+```javascript
+const myString = "马化腾,40,XXXX@qq.com";
+let res1 = myString.split(","); // 把所有序列都切割，分别放入子字符串，逗号是切割标识依据
+let res2 = myString.split("."); // "."为切割标识
+let res3 = myString.split(",", 1); // 从左到右，保留1个子字符串
+
+console.log(res1); // ['马化腾', '40', 'XXXX@qq.com']
+console.log(res1[0]); // 马化腾
+console.log(res2); // ['马化腾,40,XXXX@qq', 'com']
+console.log(res3); // ['马化腾']
+```
+
+### `startsWith()`
+
+[`startsWith()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/startsWith) 方法用来判断当前字符串是否以另外一个给定的子字符串开头。
+
+**语法**：`String.startsWith()`，返回 `boolean`。
+
+```javascript
+const myString = "中国联通";
+let res = myString.startsWith("中国");
+console.log(res); // true
+```
+
+### `toUpperCase()`
+
+[`toUpperCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toUpperCase) 方法用于将字符串转换为大写形式。
+
+[`toLowerCase()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/toLowerCase) 方法用于将字符串转换为小写形式。
+
+**语法**：`String.toUpperCase()`，返回 `string`。
+
+```javascript
+const myString = "abc";
+let res = myString.toUpperCase();
+console.log(res); // ABC
+```
+
+### `trim()`
+
+[`trim()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/trim) 方法用于去除字符串两端的空格 ` ` 或换行符 `\n`。
+
+**语法**：`String.trim()`，返回 `string`。
+
+```javascript
+const myString = " 中国 联通 ";
+
+// 去除开头和结尾的空格
+let res1 = myString.trim();
+console.log(res1); // "中国 联通"
+
+// 去除开头的空格
+let res2 = myString.trimStart();
+console.log(res2); // "中国 联通 "
+
+// 去除结尾的空格
+let res3 = myString.trimEnd();
+console.log(res3); // " 中国 联通"
+```
+
+```javascript
+// 去除换行
+const myString = "中国联通\n";
+console.log(myString); // 中国联通（后面有换行）
+
+let res4 = myString.trim();
+console.log(res4); // 中国联通（后面没有换行）
+```
+
+**扩展**：`trim()` 不能去除中间的空格，去除中间空格应使用 `myString.replace(" ", "")`，将空格替换成空白。
+
+### 其它操作
+
+- `String[i]`：字符串索引，用法同 [`Array[i]`](#`Array[i]`)，但不支持修改。
+- [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/length)：长度属性，表示字符串长度，用法同 [`Array.length`](#`Array.length`)，但不支持修改。
+- `for-of`：遍历，详见 [for-of 语句](#for-of 语句)。
+- [`slice()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String/slice)：切片方法，用于提取字符串的一部分，用法同 [`Array.slice()`](#`Array.slice()`)。
+- 判断数字：
+  - JS 中没有方法直接判断一个字符串是否是数字形式的字符串
+  - 可以结合正则表达式判断
 
 # 其它
 
