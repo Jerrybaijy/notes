@@ -16,7 +16,6 @@ tags:
 ## 基本构建
 
 - 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境)。
-
 - 安装 LangChain Agent 核心库
 
   ```bash
@@ -30,7 +29,6 @@ tags:
   ```
 
 - 准备大模型 API，此处使用免费的 [Google AI Studio 的 API](https://aistudio.google.com/api-keys)。
-
 - 设置环境变量
 
   ```bash
@@ -78,7 +76,6 @@ tags:
   ```
 
 - 此时运行 `agent_example.py`，可返回一个非交互的结果。
-
 - 定义系统提示词
 
   ```python
