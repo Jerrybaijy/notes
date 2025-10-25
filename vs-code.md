@@ -418,6 +418,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `SQLite Viewer`：在 VSCode 中查看 SQLite 数据库
 - `Prettier`：代码格式化
 - `multi-command`：执行多命令，详见 `Markdown 硬换行` 章节。
+- `cline`：AI 编程 + MCP 调用
 
 # Markdown
 

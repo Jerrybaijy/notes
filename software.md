@@ -1838,6 +1838,16 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
 
   - 如果收到警告无法连接，原因是远程主机的公钥已经发生了变化，而 `known_hosts` 文件中的条目与之前保存的公钥不匹配。应该删除 `known_hosts` 文件的冲突条目，重新连接。
 
+# Trae
+
+TRAE 是由字节跳动推出的一款 IDE。它不仅仅是在传统编辑器上增加 AI 功能，而是从底层开始就以 AI 为核心构建的。
+
+- Chat：使用**自然语言**与 AI  交互
+- Builder：使用**内置工具**借助 AI 自动开发
+- Builder with MCP：调用**第三方 MCP 工具**借助 AI 自动开发
+
+> [Trae 文档](https://docs.trae.cn/ide/what-is-trae?_lang=zh)
+
 # [TranslucentTB](https://translucenttb.com/)
 
 **TranslucentTB** 是一款免费的 Windows 桌面工具，主要用于自定义 Windows 任务栏的外观，特别是实现任务栏的透明效果。
