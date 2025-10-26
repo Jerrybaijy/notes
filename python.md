@@ -182,6 +182,8 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
 ## 虚拟环境
 
+### 官方方法
+
 - 确认 Python 已安装；
 - 终端进入项目目录；
 - 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
@@ -234,6 +236,10 @@ Python 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Py
 
   - 如果不是 VSCode 的终端，每次都应该重新激活一次虚拟环境；
   - VSCode 默认每次自动选择虚拟环境，但每次进入注意查看一下；
+
+### Conda 命令
+
+使用 `conda` 命令创建，更好，详见 [`Anaconda`](anaconda.md#conda)。
 
 ## 编辑器
 
@@ -2555,7 +2561,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
     - 推荐用法
       - from 同级文件夹.文件夹2…文件夹n import 模块名
       - 使用：模块名.函数名()
-  
+    
     - 另一用法，繁琐
       - import 同级文件夹.文件夹2…文件夹n.模块名
       - 使用：同级文件夹.文件夹2…文件夹n.模块名.函数名()
@@ -4561,7 +4567,7 @@ myproject/                   # 项目根目录
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Django Example</title>
       </head>
-  
+    
       <body>
         <h1>Hello, {{ name }}!</h1>
         <ul>

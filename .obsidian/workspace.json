@@ -8,35 +8,49 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0225cb405dc13bdb",
+            "id": "0f6d7b9d90840466",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "markdown.md",
+                "file": "obsidian.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "markdown"
+              "title": "obsidian"
             }
           },
           {
-            "id": "cbf3a3c7f7ca1f90",
+            "id": "bc85150cc7ad66d2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "typora.md",
+                "file": "it-basics.md",
                 "mode": "preview",
-                "source": false
+                "source": true
               },
               "icon": "lucide-file",
-              "title": "typora"
+              "title": "it-basics"
             }
           },
           {
-            "id": "9b00c59566390b2e",
+            "id": "df5d4c0e662ef279",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "python.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "python"
+            }
+          },
+          {
+            "id": "f223ccd4c54a9526",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,91 +64,21 @@
             }
           },
           {
-            "id": "a7763c7a019261a0",
+            "id": "34a123a827cfd94e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "web.md",
+                "file": "anaconda.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "web"
-            }
-          },
-          {
-            "id": "858665a3e503c57b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "html.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "html"
-            }
-          },
-          {
-            "id": "58a59b4606024ebf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "css.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "css"
-            }
-          },
-          {
-            "id": "e90fa85f3d608a82",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "javascript.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "javascript"
-            }
-          },
-          {
-            "id": "9477e3cc114d297a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "code-general.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "code-general"
-            }
-          },
-          {
-            "id": "0f6d7b9d90840466",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "windows.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "windows"
+              "title": "anaconda"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -166,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:wind",
+                "query": "requirements.txt",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -256,13 +200,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "windows.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "windows 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -283,10 +227,19 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "0f6d7b9d90840466",
+  "active": "df5d4c0e662ef279",
   "lastOpenFiles": [
-    "prettier.md",
     "code-general.md",
+    "python.md",
+    "anaconda.md",
+    "software.md",
+    "it-basics.md",
+    "obsidian.md",
+    "其它格式未转换/obsidian-themes/user-light-color.css",
+    "其它格式未转换/obsidian-themes/user-dark-color.css",
+    "git.md",
+    "windows.md",
+    "prettier.md",
     "html.md",
     "javascript.md",
     "typora.md",
@@ -303,13 +256,10 @@
     "java.md",
     "其它格式未转换/obsidian-themes/claude-底板-标题.css",
     "vs-code.md",
-    "software.md",
     "0000.json",
     "assets/image-20251020122212688.png",
     "assets/image-20251020122105636.png",
     "新建 文本文档.txt",
-    "其它格式未转换/vs-code-settings/settings.json",
-    "其它格式未转换/vs-code-settings/keybindings.json",
     "prettier-test.md",
     "vscode.md",
     "vue.md",
@@ -324,12 +274,7 @@
     "assets/image-20251018172154170.png",
     "assets/image-20251018172118200.png",
     "assets/image-20251018171650819.png",
-    "it-basics.md",
     "html-attributes.md",
-    "html-elements.md",
-    "network.md",
-    "无障碍.md",
-    "web.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

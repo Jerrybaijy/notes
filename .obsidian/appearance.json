@@ -5,10 +5,12 @@
     "obsidian-heading-numbering",
     "主题实验",
     "边框实验",
-    "user-base"
+    "user-base",
+    "user-dark-color"
   ],
   "theme": "system",
   "accentColor": "#adbac7",
   "baseFontSize": 18,
-  "baseFontSizeAction": true
+  "baseFontSizeAction": true,
+  "showViewHeader": true
 }

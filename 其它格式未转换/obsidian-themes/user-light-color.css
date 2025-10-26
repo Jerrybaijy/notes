@@ -1,0 +1,5 @@
+/* 选中文本 */
+::selection {
+  background: #3367d1; /* 浅蓝色 */
+  color: #ffffff;
+}

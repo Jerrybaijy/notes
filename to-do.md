@@ -18,6 +18,7 @@ tags:
   - [ ] VS code 的 mpe 插件能识别出格式规不规范，如果不规范可能会有提示
 - [ ] **Obsidian**
   - [ ] 浅色主题
+    - [ ] 选中文本背景色
 - [ ] **JavaScript**
   - [ ] 将数据类型中的方法，转移到相关对象中
 
@@ -58,7 +59,3 @@ tags:
   - [Google Colab](https://colab.google/ "https://colab.google/")：谷歌合作实验室
 - [Everything Free You Can Do With Gemini](https://www.youtube.com/watch?v=NDf0p5hgjvk)
   - imagen：
-
-## Q
-
-- 资讯搜寻汇总还是要上 `perplexity`，左手 perplexity 搜索资讯，右手 Claude code 干活！？？？？

@@ -423,8 +423,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
     - `null`：0
 
   - **未定义转换为数值**
-
-    - `undefined`：`NaN`
+- `undefined`：`NaN`
 
 ### 转换成布尔值
 
@@ -1360,7 +1359,8 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   ```javascript
   // 创建一个对象
   const person = {
-    name: "Alice", // 定义属性
+    // 定义属性
+    name: "Alice",
     age: 25,
   
     // 定义方法
@@ -1370,7 +1370,7 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
   };
   
   // 使用对象调用方法
-  person.introduce(); // 输出: My name is Alice, and I am 25 years old.
+  person.introduce(); // My name is Alice, and I am 25 years old.
   ```
 
 ### 构造函数方式
@@ -1514,11 +1514,9 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
 ## `Array`
 
-### 语法
-
 **数组对象** [`Array`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array) 可以存储**不同**数据类型的元素，数据类型为 `object`。
 
-对数组操作以后，原数组会改变。
+### 声明
 
 ```javascript
 // 字面量方式
@@ -1620,7 +1618,7 @@ console.log(myArray1); // [1, 2, 3, 4]
 
 ### `Array.forEach()`
 
-[`Array.forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 方法对数组的每个元素执行一次给定的函数。
+[`Array.forEach()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach) 方法对数组的每个元素执行一次给定的函数，原数组不变。
 
 **语法**：`forEach(callbackFn)`
 
@@ -1630,11 +1628,21 @@ let numbers = [1, 2, 3, 4];
 numbers.forEach(function (element) {
   console.log(element * 2);
 });
+
+console.log(numbers); // [1, 2, 3, 4]
+```
+
+### `Array.isArray()`
+
+[`Array.isArray()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/isArray)，静态方法，用于确定传递的值是否是一个数组，返回布尔值。
+
+```javascript
+console.log(Array.isArray([1, 2, 3, 4])); // true
 ```
 
 ### `Array.length`
 
-**长度属性** [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 用于表示数组中元素的个数。
+[`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)，实例属性，用于表示数组中元素的个数。
 
 ```javascript
 let myArray = [1, 2, 3, 4];
@@ -1806,7 +1814,7 @@ console.log(typeof res3); // object
 
 **映射对象** [`Map`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map) 用于保存键值对，并且能够记住键的原始插入顺序。任何值（对象或者原始值）都可以作为键或值。
 
-### 语法
+### 声明
 
 ```javascript
 // 类似字面量方式
@@ -1815,7 +1823,7 @@ const myMap1 = new Map([
   ["age", 30],
   [true, "Boolean Key"],
 ]);
-console.log(myMap1); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
+console.log(myMap1); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
 console.log(typeof myMap1); // object
 
 // 构造函数方式
@@ -1824,7 +1832,7 @@ myMap2.set("name", "Alice");
 myMap2.set("age", 30);
 myMap2.set(true, "Boolean Key");
 
-console.log(myMap2); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
+console.log(myMap2); // Map(3) {'name' => 'Alice', 'age' => 30, true => 'Boolean Key'}
 console.log(typeof myMap2); // object
 ```
 
@@ -1833,10 +1841,11 @@ console.log(typeof myMap2); // object
 [`Map.delete()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/delete) 方法用于从 `Map` 对象中删除指定键的元素。
 
 ```javascript
-const myMap = new Map();
-myMap.set("a", 1);
-myMap.set("b", 2);
-myMap.set("c", 3);
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
 
 // 删除键为 "a" 的元素
 myMap.delete("a");
@@ -1852,10 +1861,11 @@ console.log(myMap); // {'b' => 2, 'c' => 3}
 [`Map.get()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/get) 方法用于获取 `Map` 对象某个键对应的值。
 
 ```javascript
-const myMap = new Map();
-myMap.set("a", 1);
-myMap.set("b", 2);
-myMap.set("c", 3);
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
 
 // 获取键 "a" 对应的值
 console.log(myMap.get("a")); // 1
@@ -1866,10 +1876,11 @@ console.log(myMap.get("a")); // 1
 [`Map.has()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/has) 方法用于检查 `Map` 对象中是否有指定的键，返回布尔值。
 
 ```javascript
-const myMap = new Map();
-myMap.set("a", 1);
-myMap.set("b", 2);
-myMap.set("c", 3);
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
 
 // 检查 "d" 键是否存在
 console.log(myMap.has("d")); // false
@@ -1880,10 +1891,11 @@ console.log(myMap.has("d")); // false
 [`Map.keys()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/keys) 方法用于迭代 `Map` 对象中的所有键，返回一个新的[*迭代器*](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Iterator)对象，键按插入顺序排列。
 
 ```javascript
-const myMap = new Map();
-myMap.set("a", 1);
-myMap.set("b", 2);
-myMap.set("c", 3);
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
 
 // 获取 Map 对象的所有键
 console.log(myMap.keys()); // {'a', 'b', 'c'}
@@ -1894,17 +1906,34 @@ console.log(myMap.keys()); // {'a', 'b', 'c'}
 [`Map.set()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/set) 方法用于向 `Map` 对象添加或更新一个指定的键值对。
 
 ```javascript
-const myMap = new Map();
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
 
 // 添加键值对
-myMap.set("a", 1);
-myMap.set("b", 2);
-myMap.set("c", 3);
-console.log(myMap); // {'a' => 1, 'b' => 2, 'c' => 3}
+myMap.set("d", 4);
+console.log(myMap); // {'a' => 1, 'b' => 2, 'c' => 3, 'd' => 4}
 
 // 更新键 "a" 的值
 myMap.set("a", 4);
-console.log(myMap); // {'a' => 4, 'b' => 2, 'c' => 3}
+console.log(myMap); // {'a' => 4, 'b' => 2, 'c' => 3, 'd' => 4}
+```
+
+### `Map.size`
+
+属性 [`Map.size`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Map/size) 用于返回此 `Map` 中元素的数量。
+
+```javascript
+const myMap = new Map([
+  ["a", 1],
+  ["b", 2],
+  ["c", 3],
+]);
+
+// 获取元素数量
+console.log(myMap.size); // 3
 ```
 
 ### 其它操作
@@ -1915,7 +1944,7 @@ console.log(myMap); // {'a' => 4, 'b' => 2, 'c' => 3}
 
 **集合对象** [`Set`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set) 允许你存储任何类型（无论是原始值还是对象引用）的**唯一值**。
 
-### 语法
+### 声明
 
 ```javascript
 // 类似字面量方式
@@ -1932,11 +1961,30 @@ console.log(mySet2); // Set(3) { '中国', '上海', 1 }
 console.log(typeof mySet2); // object
 ```
 
+### `Set.add()`
+
+[`Set.add()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/add)，实例方法，用于在集合中添加一个不重复的元素。
+
+```javascript
+const mySet = new Set([1, 2, 3]);
+
+// 添加一个新元素
+mySet.add(4);
+console.log(mySet); // Set(4) { 1, 2, 3, 4 }
+```
+
+### 其它操作
+
+- [`delete()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/delete)，实例方法，用于删除集合中指定的元素，用法同 [`Map.delete()`](#`Map.delete()`)。
+- [`has()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/has)，实例方法，用于检查集合中是否有指定的键，返回布尔值，用法同 [`Map.has()`](#`Map.has()`)。
+- [`size`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set/size)：实例属性，用于获取集合中唯一元素的个数，用法同 [`Map.size`](#`Map.size`)。
+- [更多...](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Set)
+
 ## `String`
 
 **字符串对象** [`String`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/String) 用于表示和操作字符序列。
 
-### 语法
+### 声明
 
 ```javascript
 // 字面量方式
