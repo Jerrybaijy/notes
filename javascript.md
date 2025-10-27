@@ -320,8 +320,8 @@ console.log(a == b); // false
 [`typeof`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof) 运算符返回一个字符串，表示操作数的类型。
 
 ```javascript
-const myString = "中国江西联通";
-console.log(typeof myString); // string
+const str = "中国江西联通";
+console.log(typeof str); // string
 ```
 
 `typeof` [可能的返回值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/typeof#描述)：
@@ -382,8 +382,8 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 - **语法 1**：`Number(ITEM)`，调用函数，显式转换。
 
   ```javascript
-  const myString = "5";
-  res = Number(myString);
+  const str = "5";
+  res = Number(str);
 
   console.log(res); // 5
   console.log(typeof res); // number
@@ -863,10 +863,10 @@ for (let i = 0; i <= 5; i++) {
 **扩展**：可用“for 循环 + 索引”进行遍历
 
 ```javascript
-let myArray = ["中国", "上海", "北京"];
+let arr = ["中国", "上海", "北京"];
 
-for (let i = 0; i < myArray.length; i++) {
-  console.log(myArray[i]); // 依次输出：中国 上海 北京
+for (let i = 0; i < arr.length; i++) {
+  console.log(arr[i]); // 依次输出：中国 上海 北京
 }
 ```
 
@@ -879,8 +879,8 @@ for (let 变量名 of 可迭代对象) {
 ```
 
 ```javascript
-let myArray = ["中国", "上海", 123];
-for (let data of myArray) {
+let arr = ["中国", "上海", 123];
+for (let data of arr) {
   console.log(data); // 依次输出：中国 上海 123
 }
 ```
@@ -1344,173 +1344,173 @@ let foo = (function () {
 
 ## 生成器函数
 
-# [对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object)
+# 对象
 
-**对象**是 JS 中一种复合数据类型 `object`；它用于存储各种键值集合（形式类似于 Python 中的字典）。
+**对象** [`object`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object) 是 JS 中一种复合数据类型；它用于存储各种键值集合（形式类似于 Python 中的字典）。
 
 JS 中的对象：自定义对象，内置对象，浏览器对象。
+
+> [使用对象](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Working_with_objects)
 
 ## 创建对象
 
 ### 字面量方式
 
-- **语法**：`const 对象名 = {属性名1: 属性值1, 属性名2: 属性值2, ...};`
+`const 对象名 = {属性名1: 属性值1, 属性名2: 属性值2, ...};`
 
-  ```javascript
-  // 创建一个对象
-  const person = {
-    // 定义属性
-    name: "Alice",
-    age: 25,
-  
-    // 定义方法
-    introduce: function () {
-      console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-    },
-  };
-  
-  // 使用对象调用方法
-  person.introduce(); // My name is Alice, and I am 25 years old.
-  ```
+```javascript
+// 创建一个对象
+const Person = {
+  // 定义属性
+  name: "Alice",
+  age: 25,
+
+  // 定义方法
+  introduce: function () {
+    console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+  },
+};
+
+// 使用对象调用方法
+Person.introduce(); // My name is Alice, and I am 25 years old.
+```
 
 ### 构造函数方式
 
-- **语法**：`const 对象名 = new OBJECT();`
+`const 对象名 = new 对象名();`
 
-  ```javascript
-  // 定义构造函数
-  function Person(name, age) {
-    this.name = name; // 初始化 name 属性
-    this.age = age; // 初始化 age 属性
-  
-    // 添加一个方法
-    this.introduce = function () {
-      console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-    };
-  }
-  
-  // 创建对象
-  const person1 = new Person("Alice", 25);
-  const person2 = new Person("Bob", 30);
-  
-  // 调用方法
-  person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
-  person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
-  ```
+```javascript
+// 定义构造函数
+function Person(name, age) {
+  this.name = name; // 初始化 name 属性
+  this.age = age; // 初始化 age 属性
+
+  // 添加一个方法
+  this.introduce = function () {
+    console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+  };
+}
+
+// 创建对象实例
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+// 调用方法
+person1.introduce(); // My name is Alice, and I am 25 years old.
+person2.introduce(); // My name is Bob, and I am 30 years old.
+```
 
 ### 面向对象方式
 
-- **语法**：`const 对象名 = new 类名(属性值1, 属性值2， ...)`
+`const 对象名 = new 类名(属性值1, 属性值2， ...)`
 
-  ```javascript
-  // 定义类
-  class Person {
-    // 构造函数
-    constructor(name, age) {
-      this.name = name; // 初始化 name 属性
-      this.age = age; // 初始化 age 属性
-    }
-  
-    // 定义方法
-    introduce() {
-      console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-    }
+```javascript
+// 定义类
+class Person {
+  // 构造函数
+  constructor(name, age) {
+    this.name = name; // 初始化 name 属性
+    this.age = age; // 初始化 age 属性
   }
-  
-  // 创建对象
-  const person1 = new Person("Alice", 25);
-  const person2 = new Person("Bob", 30);
-  
-  // 调用方法
-  person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
-  person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
-  ```
+
+  // 定义方法
+  introduce() {
+    console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+  }
+}
+
+// 创建对象
+const person1 = new Person("Alice", 25);
+const person2 = new Person("Bob", 30);
+
+// 调用方法
+person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
+person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
+```
 
 ### 工厂函数方式
 
-- **语法**：`function 函数名(属性1, 属性2, ...) {return {返回值};}`
+`function 函数名(属性1, 属性2, ...) {return {返回值};}`
 
-  ```javascript
-  // 定义工厂函数
-  function createPerson(name, age) {
-    // 返回一个包含属性和方法的对象
-    return {
-      name: name,
-      age: age,
-      introduce() {
-        console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
-      },
-    };
-  }
-  
-  // 使用工厂函数创建对象
-  const person1 = createPerson("Alice", 25);
-  const person2 = createPerson("Bob", 30);
-  
-  // 调用方法
-  person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
-  person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
-  ```
-
-### `Object.create` 方式
-
-- **语法**：`c`
-
-  ```javascript
-  // 定义一个原型对象
-  const personPrototype = {
+```javascript
+// 定义工厂函数
+function createPerson(name, age) {
+  // 返回一个包含属性和方法的对象
+  return {
+    name: name,
+    age: age,
     introduce() {
       console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
     },
   };
-  
-  // 使用 Object.create 创建一个新对象
-  const person1 = Object.create(personPrototype);
-  person1.name = "Alice";
-  person1.age = 25;
-  
-  person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
-  ```
+}
+
+// 使用工厂函数创建对象
+const person1 = createPerson("Alice", 25);
+const person2 = createPerson("Bob", 30);
+
+// 调用方法
+person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
+person2.introduce(); // 输出: My name is Bob, and I am 30 years old.
+```
+
+### `Object.create` 方式
+
+```javascript
+// 定义一个原型对象
+const personPrototype = {
+  introduce() {
+    console.log(`My name is ${this.name}, and I am ${this.age} years old.`);
+  },
+};
+
+// 使用 Object.create 创建一个新对象
+const person1 = Object.create(personPrototype);
+person1.name = "Alice";
+person1.age = 25;
+
+person1.introduce(); // 输出: My name is Alice, and I am 25 years old.
+```
 
 ## 操作属性
 
 ### 读取属性
 
-- **语法**：可以通过 **点操作符** (`.`) 或 **方括号** (`[]`) 来访问对象的属性。
+可以通过 **点操作符** (`.`) 或 **方括号** (`[]`) 来访问对象的属性。
 
-  ```javascript
-  const obj = { name: "Alice", age: 25 };
-  
-  // 使用点操作符
-  console.log(obj.name); // "Alice"
-  
-  // 使用方括号
-  console.log(obj["age"]); // 25
-  ```
+```javascript
+const obj = { name: "Alice", age: 25 };
+
+// 使用点操作符
+console.log(obj.name); // "Alice"
+
+// 使用方括号
+console.log(obj["age"]); // 25
+```
 
 ### 增删改查属性
 
-- **以 `.` 为例，`[]` 同理**
+以 `.` 为例，`[]` 同理
 
-  ```javascript
-  const obj = { name: "Alice" };
-  
-  // 更新已有属性
-  obj.name = "Bob";
-  
-  // 添加新属性
-  obj.age = 25;
-  
-  // 删除属性
-  delete obj.age;
-  
-  // 检查属性是否存在
-  console.log("name" in obj); // false
-  ```
+```javascript
+const obj = { name: "Alice" };
+
+// 更新已有属性
+obj.name = "Bob";
+
+// 添加新属性
+obj.age = 25;
+
+// 删除属性
+delete obj.age;
+
+// 检查属性是否存在
+console.log("name" in obj); // false
+```
 
 ### 遍历对象
 
-- 详见 [`for-in` 语句](#`for-in` 语句)
+详见 [`for-in` 语句](#`for-in` 语句)
 
 ## `Array`
 
@@ -1520,14 +1520,14 @@ JS 中的对象：自定义对象，内置对象，浏览器对象。
 
 ```javascript
 // 字面量方式
-let myArray1 = ["中国", "上海", 123];
-console.log(myArray1); // [ '中国', '上海', 123 ]
-console.log(typeof myArray1); // object
+let arr1 = ["中国", "上海", 123];
+console.log(arr1); // [ '中国', '上海', 123 ]
+console.log(typeof arr1); // object
 
 // 构造函数方式
-let myArray2 = new Array("中国", "上海", 123);
-console.log(myArray2); // [ '中国', '上海', 123 ]
-console.log(typeof myArray2); // object
+let arr2 = new Array("中国", "上海", 123);
+console.log(arr2); // [ '中国', '上海', 123 ]
+console.log(typeof arr2); // object
 ```
 
 ### `Array[i]`
@@ -1540,11 +1540,11 @@ console.log(typeof myArray2); // object
 
 ```javascript
 // 正向索引号： 0  1  2  3
-let myArray = [1, 2, 3, 4];
+let arr = [1, 2, 3, 4];
 
-console.log(myArray[0]); // 1
-console.log(myArray[-2]); // undefined
-console.log(typeof myArray[0]); // number
+console.log(arr[0]); // 1
+console.log(arr[-2]); // undefined
+console.log(typeof arr[0]); // number
 ```
 
 #### 逆向索引
@@ -1554,8 +1554,8 @@ JS 不支持直接逆向索引，会返回 `undefined`。但可以通过以下�
 `数组名[数组名.length - 索引号]`
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-console.log(myArray[myArray.length - 2]); // 3
+let arr = [1, 2, 3, 4];
+console.log(arr[arr.length - 2]); // 3
 ```
 
 #### 索引赋值
@@ -1563,28 +1563,28 @@ console.log(myArray[myArray.length - 2]); // 3
 **语法**：`数组名[索引号] = 元素`，原数组被改变。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-myArray[0] = 5;
-console.log(myArray); // [5, 2, 3, 4]
+let arr = [1, 2, 3, 4];
+arr[0] = 5;
+console.log(arr); // [5, 2, 3, 4]
 ```
 
 **扩展**：如果索引号超过数组最大项，会创建新元素，并在新元素与旧元素之间创建空属性，同时被动增加数组长度。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-myArray[6] = 5; // 索引号超过数组最大项
-console.log(myArray); // [1, 2, 3, 4, 空属性 × 2, 5]
-console.log(myArray[4], myArray[5]); // undefined undefined
-console.log(myArray.length); // 7
+let arr = [1, 2, 3, 4];
+arr[6] = 5; // 索引号超过数组最大项
+console.log(arr); // [1, 2, 3, 4, 空属性 × 2, 5]
+console.log(arr[4], arr[5]); // undefined undefined
+console.log(arr.length); // 7
 ```
 
 #### 索引遍历
 
 ```javascript
-let myArray = [1, 2, 3, 4];
+let arr = [1, 2, 3, 4];
 let i = 0;
-while (i < myArray.length) {
-    console.log(myArray[i]);
+while (i < arr.length) {
+    console.log(arr[i]);
     i++;
 }
 
@@ -1596,11 +1596,11 @@ while (i < myArray.length) {
 `Arry[一级索引号][二级索引号]...`
 
 ```javascript
-let myArray = ["中国", ["上海", "北京", "深圳"], 123];
-const myString1 = myArray[1][0];
-const myString2 = myArray[1][0][0];
-console.log(myString1); // 上海
-console.log(myString2); // 上
+let arr = ["中国", ["上海", "北京", "深圳"], 123];
+const str1 = arr[1][0];
+const str2 = arr[1][0][0];
+console.log(str1); // 上海
+console.log(str2); // 上
 ```
 
 ### `Array.concat()`
@@ -1608,12 +1608,12 @@ console.log(myString2); // 上
 **合并方法** [`concat()`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/concat) 用于合并两个或多个数组。此方法不会更改现有数组，而是返回一个新数组。
 
 ```javascript
-let myArray1 = [1, 2, 3, 4];
-let myArray2 = [5, 6, 7, 8];
-let combinedArray = myArray1.concat(myArray2);
+let arr1 = [1, 2, 3, 4];
+let arr2 = [5, 6, 7, 8];
+let combinedArray = arr1.concat(arr2);
 
 console.log(combinedArray); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(myArray1); // [1, 2, 3, 4]
+console.log(arr1); // [1, 2, 3, 4]
 ```
 
 ### `Array.forEach()`
@@ -1645,19 +1645,19 @@ console.log(Array.isArray([1, 2, 3, 4])); // true
 [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length)，实例属性，用于表示数组中元素的个数。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
+let arr = [1, 2, 3, 4];
 
-console.log(myArray.length); // 4
-console.log(typeof myArray.length); // number
+console.log(arr.length); // 4
+console.log(typeof arr.length); // number
 ```
 
 通过   [`length`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/length) 删除数组元素：`Array.length = 长度值;`，原数组长度被改变。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-myArray.length = 2;
-console.log(myArray); // [1, 2]
-console.log(myArray.length); // 2
+let arr = [1, 2, 3, 4];
+arr.length = 2;
+console.log(arr); // [1, 2]
+console.log(arr.length); // 2
 ```
 
 ### `Array.join()`
@@ -1667,10 +1667,10 @@ console.log(myArray.length); // 2
 **语法**：`Array.join(["SEPARATION"])`，返回 `string`。
 
 ```javascript
-let myArray = ["中国", "上海", 123];
-let res = myArray.join("_"); // "_"为分隔符
+let arr = ["中国", "上海", 123];
+let res = arr.join("_"); // "_"为分隔符
 console.log(res); // 中国_上海_123
-console.log(myArray); // ["中国", "上海", 123]
+console.log(arr); // ["中国", "上海", 123]
 ```
 
 ### `Array.push()`
@@ -1680,10 +1680,10 @@ console.log(myArray); // ["中国", "上海", 123]
 **语法**：`Array.push(元素1, 元素2, ..., 元素n)`，原数组被改变，返回原数组被改变之后的长度 `number`。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-let res = myArray.push(5, 6, 7, 8);
+let arr = [1, 2, 3, 4];
+let res = arr.push(5, 6, 7, 8);
 
-console.log(myArray); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(arr); // [1, 2, 3, 4, 5, 6, 7, 8]
 console.log(res); // 8  // 返回原数组被改变之后的长度
 console.log(typeof res); // number
 ```
@@ -1691,13 +1691,13 @@ console.log(typeof res); // number
 **扩展**：使用扩展运算符添加元素 `[...数组名, 元素1, 元素2, ...]`，原数组不被改变。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-let myArrayStart = [...myArray, 5, 6, 7, 8];
-let myArrayEnd = [5, 6, 7, 8, ...myArray];
+let arr = [1, 2, 3, 4];
+let arrStart = [...arr, 5, 6, 7, 8];
+let arrEnd = [5, 6, 7, 8, ...arr];
 
-console.log(myArray); // [1, 2, 3, 4]
-console.log(myArrayStart); // [1, 2, 3, 4, 5, 6, 7, 8]
-console.log(myArrayEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
+console.log(arr); // [1, 2, 3, 4]
+console.log(arrStart); // [1, 2, 3, 4, 5, 6, 7, 8]
+console.log(arrEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
 ```
 
 ### `Array.remove()`
@@ -1711,10 +1711,10 @@ console.log(myArrayEnd); // [5, 6, 7, 8, 1, 2, 3, 4]
 **语法**：`数组名.reverse()`，原数组被改变，返回同一数组的引用。
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-let res = myArray.reverse();
+let arr = [1, 2, 3, 4];
+let res = arr.reverse();
 
-console.log(myArray); // [4, 3, 2, 1]
+console.log(arr); // [4, 3, 2, 1]
 console.log(res); // [4, 3, 2, 1]
 console.log(typeof res); // object
 ```
@@ -1730,10 +1730,10 @@ Array.slice(开始索引, 终止索引) // 左闭右开
 ```
 
 ```javascript
-let myArray = [1, 2, 3, 4];
-let res = myArray.slice(0, 2);
+let arr = [1, 2, 3, 4];
+let res = arr.slice(0, 2);
 
-console.log(myArray); // [1, 2, 3, 4]
+console.log(arr); // [1, 2, 3, 4]
 console.log(res); // [1, 2]
 ```
 
@@ -1744,10 +1744,10 @@ console.log(res); // [1, 2]
 **语法**：`数组名.sort()`
 
 ```javascript
-let myArray = ["80", "9", "700", 40, 1, 5, 200];
-let res = myArray.sort();
+let arr = ["80", "9", "700", 40, 1, 5, 200];
+let res = arr.sort();
 
-console.log(myArray); // [1, 200, 40, 5, '700', '80', '9']
+console.log(arr); // [1, 200, 40, 5, '700', '80', '9']
 console.log(res); // [1, 200, 40, 5, '700', '80', '9']  // 返回升序之后的原数组
 ```
 
@@ -1758,13 +1758,13 @@ console.log(res); // [1, 200, 40, 5, '700', '80', '9']  // 返回升序之后的
 **扩展**：以下方法按数字大小进行升序排序
 
 ```javascript
-let myArray = ["80", "9", "700", 40, 1, 5, 200];
+let arr = ["80", "9", "700", 40, 1, 5, 200];
 function compareFn(a, b) {
   return a - b;
 }
-let res = myArray.sort(compareFn);
+let res = arr.sort(compareFn);
 
-console.log(myArray); // [1, 5, '9', 40, '80', 200, '700']
+console.log(arr); // [1, 5, '9', 40, '80', 200, '700']
 console.log(res); // [1, 5, '9', 40, '80', 200, '700']
 ```
 
@@ -1776,23 +1776,23 @@ console.log(res); // [1, 5, '9', 40, '80', 200, '700']
 
 ```javascript
 // 插入
-let myArray1 = [1, 2, 3, 4];
-let res1 = myArray1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入 5, 6, 7, 8
-console.log(myArray1); // [5, 6, 7, 8, 1, 2, 3, 4]
+let arr1 = [1, 2, 3, 4];
+let res1 = arr1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入 5, 6, 7, 8
+console.log(arr1); // [5, 6, 7, 8, 1, 2, 3, 4]
 console.log(res1); // []  // 返回被删除元素组成的数组
 console.log(typeof res1); // object
 
 // 替换
-let myArray2 = [1, 2, 3, 4];
-let res2 = myArray2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入 22, 33
-console.log(myArray2); // [1, 22, 33, 4]
+let arr2 = [1, 2, 3, 4];
+let res2 = arr2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入 22, 33
+console.log(arr2); // [1, 22, 33, 4]
 console.log(res2); // [2, 3]  // 返回被删除元素组成的数组
 console.log(typeof res2); // object
 
 // 删除
-let myArray3 = [1, 2, 3, 4];
-let res3 = myArray3.splice(1, 2); // 从第1索引号删除2个，不插入新元素
-console.log(myArray3); // [1, 4]
+let arr3 = [1, 2, 3, 4];
+let res3 = arr3.splice(1, 2); // 从第1索引号删除2个，不插入新元素
+console.log(arr3); // [1, 4]
 console.log(res3); // [2, 3]  // 返回被删除元素组成的数组
 console.log(typeof res3); // object
 ```
@@ -1988,12 +1988,12 @@ console.log(mySet); // Set(4) { 1, 2, 3, 4 }
 
 ```javascript
 // 字面量方式
-const myString1 = "hello world"; // 文本形式的字符串
-const myString2 = ""; // 空字符串
-const myString3 = "6"; // 数值形式的字符串
+const str1 = "hello world"; // 文本形式的字符串
+const str2 = ""; // 空字符串
+const str3 = "6"; // 数值形式的字符串
 
 // 构造函数方式
-const myString = new String();
+const str = new String();
 ```
 
 **不推荐**使用 `new String()` 构造函数来创建字符串。
@@ -2041,16 +2041,16 @@ console.log(b); // 你好世界
 `String.concat(任意数据类型)`
 
 ```javascript
-const myString1 = "abc";
+const str1 = "abc";
 
-const myString2 = myString1.concat("def"); // 参数为字符串字面量
-const myString3 = myString1.concat(null, 4, "f"); // 参数为零散的任意数据类型
+const str2 = str1.concat("def"); // 参数为字符串字面量
+const str3 = str1.concat(null, 4, "f"); // 参数为零散的任意数据类型
 
-console.log(myString2); // abcdef
-console.log(typeof myString2); // string
+console.log(str2); // abcdef
+console.log(typeof str2); // string
 
-console.log(myString3); // abcnull4f
-console.log(typeof myString3); // string
+console.log(str3); // abcnull4f
+console.log(typeof str3); // string
 ```
 
 ### `includes()`
@@ -2060,8 +2060,8 @@ console.log(typeof myString3); // string
 **语法**：`String.includes(元素)`，返回 `boolean`。
 
 ```javascript
-const myString = "中国联通";
-let res = myString.includes("中国");
+const str = "中国联通";
+let res = str.includes("中国");
 console.log(res); // true
 ```
 
@@ -2072,17 +2072,17 @@ console.log(res); // true
 **语法**：`String.indexOf("匹配项")`，返回 `number`。
 
 ```javascript
-const myString = "中国江西联通中国";
+const str = "中国江西联通中国";
 
 // 第一个匹配项
-console.log(myString.indexOf("国")); // 1
-console.log(typeof myString.indexOf("国")); // number
+console.log(str.indexOf("国")); // 1
+console.log(typeof str.indexOf("国")); // number
 
 // 最后一个匹配项
-console.log(myString.lastIndexOf("国")); // 7
+console.log(str.lastIndexOf("国")); // 7
 
 // 错误的匹配项
-console.log(myString.indexOf("海")); // -1
+console.log(str.indexOf("海")); // -1
 ```
 
 ### `replace()`
@@ -2092,8 +2092,8 @@ console.log(myString.indexOf("海")); // -1
 **语法**：`String.replace("旧元素", "新元素")`，返回 `string`。
 
 ```javascript
-const myString = " 中国 联通 联通 ";
-let res = myString.replace("联通", "移动");
+const str = " 中国 联通 联通 ";
+let res = str.replace("联通", "移动");
 console.log(res); // " 中国 移动 联通 "
 ```
 
@@ -2106,8 +2106,8 @@ console.log(res); // " 中国 移动 联通 "
 **语法**：`String.split(切割标识)`，返回 `Arry`。
 
 ```javascript
-const myString = "马化腾,40,XXXX@qq.com";
-let res = myString.split(","); // ","为切割标识
+const str = "马化腾,40,XXXX@qq.com";
+let res = str.split(","); // ","为切割标识
 
 console.log(res); // ['马化腾', '40', 'XXXX@qq.com']
 ```
@@ -2115,10 +2115,10 @@ console.log(res); // ['马化腾', '40', 'XXXX@qq.com']
 **综合示例**：
 
 ```javascript
-const myString = "马化腾,40,XXXX@qq.com";
-let res1 = myString.split(","); // 把所有序列都切割，分别放入子字符串，逗号是切割标识依据
-let res2 = myString.split("."); // "."为切割标识
-let res3 = myString.split(",", 1); // 从左到右，保留1个子字符串
+const str = "马化腾,40,XXXX@qq.com";
+let res1 = str.split(","); // 把所有序列都切割，分别放入子字符串，逗号是切割标识依据
+let res2 = str.split("."); // "."为切割标识
+let res3 = str.split(",", 1); // 从左到右，保留1个子字符串
 
 console.log(res1); // ['马化腾', '40', 'XXXX@qq.com']
 console.log(res1[0]); // 马化腾
@@ -2133,8 +2133,8 @@ console.log(res3); // ['马化腾']
 **语法**：`String.startsWith()`，返回 `boolean`。
 
 ```javascript
-const myString = "中国联通";
-let res = myString.startsWith("中国");
+const str = "中国联通";
+let res = str.startsWith("中国");
 console.log(res); // true
 ```
 
@@ -2147,8 +2147,8 @@ console.log(res); // true
 **语法**：`String.toUpperCase()`，返回 `string`。
 
 ```javascript
-const myString = "abc";
-let res = myString.toUpperCase();
+const str = "abc";
+let res = str.toUpperCase();
 console.log(res); // ABC
 ```
 
@@ -2159,31 +2159,31 @@ console.log(res); // ABC
 **语法**：`String.trim()`，返回 `string`。
 
 ```javascript
-const myString = " 中国 联通 ";
+const str = " 中国 联通 ";
 
 // 去除开头和结尾的空格
-let res1 = myString.trim();
+let res1 = str.trim();
 console.log(res1); // "中国 联通"
 
 // 去除开头的空格
-let res2 = myString.trimStart();
+let res2 = str.trimStart();
 console.log(res2); // "中国 联通 "
 
 // 去除结尾的空格
-let res3 = myString.trimEnd();
+let res3 = str.trimEnd();
 console.log(res3); // " 中国 联通"
 ```
 
 ```javascript
 // 去除换行
-const myString = "中国联通\n";
-console.log(myString); // 中国联通（后面有换行）
+const str = "中国联通\n";
+console.log(str); // 中国联通（后面有换行）
 
-let res4 = myString.trim();
+let res4 = str.trim();
 console.log(res4); // 中国联通（后面没有换行）
 ```
 
-**扩展**：`trim()` 不能去除中间的空格，去除中间空格应使用 `myString.replace(" ", "")`，将空格替换成空白。
+**扩展**：`trim()` 不能去除中间的空格，去除中间空格应使用 `str.replace(" ", "")`，将空格替换成空白。
 
 ### 其它操作
 
@@ -2205,8 +2205,8 @@ console.log(res4); // 中国联通（后面没有换行）
 
 ```javascript
 var myRe = /d(b+)d/g;
-var myArray = myRe.exec("cdbbdbsbz");
-console.log(myArray); // ['dbbd', 'bb', index: 1, input: 'cdbbdbsbz', groups: undefined]
-console.log(typeof myArray); // object
+var arr = myRe.exec("cdbbdbsbz");
+console.log(arr); // ['dbbd', 'bb', index: 1, input: 'cdbbdbsbz', groups: undefined]
+console.log(typeof arr); // object
 ```
 
