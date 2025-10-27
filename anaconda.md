@@ -36,9 +36,18 @@ tags:
 # conda create -n 环境名称 python=版本 -y
 conda create -n medibot python=3.10 -y
 
+# 查看虚拟环境列表
+conda env list
+
 # 激活虚拟环境
 # conda activate 环境名称
 conda activate medibot
+
+# 退出虚拟环境
+conda deactivate
+
+# 删除虚拟环境
+conda remove -n medibot --all -y
 ```
 
 ## 在 Git Bash 中启用 `conda` 命令
@@ -51,7 +60,7 @@ conda activate medibot
   conda init bash
   ```
 - 重启 Git Bash 生效
-- 默认所有命令的输出会以 `(base)` 结尾，除非有虚拟环境。
+- 默认所有命令的输出会以 `(base)` 结尾，除非有虚拟环境。
 
 ## 创建虚拟环境
 
@@ -73,4 +82,4 @@ conda deactivate
 - 激活虚拟环境以后：
   - 所有命令的输出会以环境名称结尾，如 `(medibot)`。
   - VS Code 需手动选择虚拟环境
-  - 所有通过 `conda` 和 `pip` 安装的包，都会安装到虚拟环境的存储目录。
+  - 所有通过 `conda` 和 `pip` 安装的包，都会安装到虚拟环境的存储目录。

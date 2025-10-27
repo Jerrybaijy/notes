@@ -1505,7 +1505,7 @@ obj.age = 25;
 delete obj.age;
 
 // 检查属性是否存在
-console.log("name" in obj); // false
+console.log("age" in obj); // false
 ```
 
 ### 遍历对象

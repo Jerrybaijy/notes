@@ -50,6 +50,34 @@
             }
           },
           {
+            "id": "577d1d23adf76ec3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "anaconda.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "anaconda"
+            }
+          },
+          {
+            "id": "b84d9779ba6823aa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "anaconda.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "anaconda"
+            }
+          },
+          {
             "id": "f223ccd4c54a9526",
             "type": "leaf",
             "state": {
@@ -110,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "requirements.txt",
+                "query": "file:python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -188,7 +216,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "code"
+                "searchQuery": "data"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -229,9 +257,11 @@
   },
   "active": "df5d4c0e662ef279",
   "lastOpenFiles": [
-    "code-general.md",
-    "python.md",
     "anaconda.md",
+    "python.md",
+    "pinecone.md",
+    "sql.md",
+    "code-general.md",
     "software.md",
     "it-basics.md",
     "obsidian.md",
@@ -265,7 +295,6 @@
     "vue.md",
     "react.md",
     "jquery.md",
-    "css.md",
     "assets/image-20251018172454085.png",
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",
@@ -274,7 +303,6 @@
     "assets/image-20251018172154170.png",
     "assets/image-20251018172118200.png",
     "assets/image-20251018171650819.png",
-    "html-attributes.md",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
