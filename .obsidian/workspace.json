@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "python.md",
+                "file": "docker.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "python"
+              "title": "docker"
             }
           },
           {
@@ -138,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:python",
+                "query": "docker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -228,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python.md",
+                "file": "docker.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "python 的大纲"
+              "title": "docker 的大纲"
             }
           }
         ],
@@ -257,17 +257,19 @@
   },
   "active": "df5d4c0e662ef279",
   "lastOpenFiles": [
-    "anaconda.md",
+    "git.md",
+    "software.md",
+    "salesforce.md",
+    "flask.md",
     "python.md",
+    "anaconda.md",
     "pinecone.md",
     "sql.md",
     "code-general.md",
-    "software.md",
     "it-basics.md",
     "obsidian.md",
     "其它格式未转换/obsidian-themes/user-light-color.css",
     "其它格式未转换/obsidian-themes/user-dark-color.css",
-    "git.md",
     "windows.md",
     "prettier.md",
     "html.md",
@@ -293,8 +295,6 @@
     "prettier-test.md",
     "vscode.md",
     "vue.md",
-    "react.md",
-    "jquery.md",
     "assets/image-20251018172454085.png",
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",

@@ -143,13 +143,13 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   ```bash
   # 查看 Docker 版本信息
   docker -v
-
+  
   # 显示 Docker 详细版本信息
   docker version
-
+  
   # 显示 Docker 系统信息
   docker info
-
+  
   # 登录和登出
   docker login
   docker logout
@@ -290,43 +290,63 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - [**`-t $IMAGE_NAME[:$TAG]`**](https://docs.docker.com/reference/cli/docker/image/build/#tag)：命名镜像（-t / --tag），可一次使用多个 `-t`
 
-# [Dockerfile](https://docs.docker.com/reference/dockerfile/#dockerfile-reference)
+# `Dockerfile`
 
-Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种配置信息。
+[`Dockerfile`](https://docs.docker.com/reference/dockerfile/#dockerfile-reference) 文件用于构建 docker 镜像，文件中包含了镜像的各种配置信息。
 
-## 命令说明
+## 格式
 
-- **常用命令**
+Dockerfile 的[格式](https://docs.docker.com/reference/dockerfile/#format)如下：
 
-  ```dockerfile
-  FROM node:latest
-  WORKDIR /app
-  COPY ./build .
-  RUN npm install -g http-server
-  CMD ["http-server", "-p", "8080"]
-  ```
+```dockerfile
+# Comment
+INSTRUCTION arguments
+```
+
+- 指令不区分大小写。但是，为了更容易与参数区分开来，通常将它们大写。
+- 注释：BuildKit 将以 开头的行 `#` 视为注释，除非该行是有效的[解析器指令](https://docs.docker.com/reference/dockerfile/#parser-directives)。
+- 空格：注释和指令前的空格会被忽略，但是，指令参数中的空格不会被忽略。
+
+## 语法
+
+```dockerfile
+FROM python:3.10-slim-buster
+WORKDIR /app
+COPY . /app
+RUN pip install -r requirements.txt
+CMD ["python3", "app.py"]
+```
+
+- `FROM`：程序运行的基础镜像
+- `WORKDIR /app`：程序工作目录，如果没有回自动创建。
+- `COPY . /app`：将本地 `.` 目录下的文件复制到容器的 `/app` 目录下。
+- `RUN pip install -r requirements.txt`：在构建镜像时，执行 `pip install -r requirements.txt` 命令。
+- `CMD ["python3", "app.py"]`：启动时执行 `python3 app.py` 命令。
+
+## `WORKDIR`
+
+[`WORKDIR`](https://docs.docker.com/reference/dockerfile/#workdir)：工作目录是进入容器的默认目录，后续指令的工作目录。
+
+```dockerfile
+WORKDIR /path/to/workdir
+```
+
+- 如该目录不存在，WORKDIR 会自动创建。
+- 每一个 RUN 指令都是新建的一层，只有通过 WORKDIR 创建的目录才会一直存在。
+- 可以有多个 WORKDIR，对应多阶段的指令。
+
+## 其它指令
+
+>  [Dockerfile 支持的指令](https://docs.docker.com/reference/dockerfile/#overview)
 
 - **FROM**：基础镜像
-
-- **WORKDIR**：工作目录
-
-  - 如该目录不存在，WORKDIR 会自动创建
-  - 工作目录是进入容器的默认目录，后续指令的工作目录
-  - 每一个 RUN 命令都是新建的一层，只有通过 WORKDIR 创建的目录才会一直存在
-  - 可以有多个 WORKDIR，对应多阶段的命令
-
 - **EXPOSE**：对外暴露出的端口（只是声明）
-
 - **ADD**：从本地复制文件到容器（还可从 URL 下载）
-
 - **COPY**：从本地复制文件到容器
-
 - **ENV**：设置环境变量
 
   - `ENV $KEY $VALUE`
-
 - **CMD**：指定容器创建时的默认命令。（可以被覆盖）
-
 - **ENTRYPOINT**：指定容器创建时的默认命令。（不可以被覆盖）
 
 ## 相关项目
@@ -388,7 +408,7 @@ Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种�
     RUN go mod init hello-app
     COPY *.go ./
     RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-
+  
     FROM gcr.io/distroless/base-debian11
     WORKDIR /
     COPY --from=builder /hello-app /hello-app
@@ -461,4 +481,13 @@ Dockerfile 文件用于构建 docker 镜像，文件中包含了镜像的各种�
   # 随后即可访问
   ```
 
-# 其它
+# `.dockerignore`
+
+[`.dockerignore`](https://docs.docker.com/build/concepts/context/#dockerignore-files) 文件用于从构建上下文中排除文件或目录。
+
+```
+# .dockerignore
+node_modules
+bar
+```
+
