@@ -133,15 +133,15 @@ tags:
   ```bash
   # 创建一个 Local Repo，并设置默认分支名为 main。
   git init --initial-branch=main
-
+  
   # 网页创建 Remote Repo，
-
+  
   # 添加默认 Remote Repo
   git remote add origin $REMOTE_REPO
-
+  
   # 设置 upstream（前提是已经commit过）
   git push -u origin main
-
+  
   # 其它与正常操作同理
   ```
 
@@ -214,7 +214,7 @@ tags:
   git merge $BRANCH_NAME
   # 重命名目前分支
   git branch -m $BRANCH_NAME
-
+  
   # 删除远程分支
   git push origin --delete $REMOTE_BRANCH_NAME
   ```
@@ -227,7 +227,7 @@ tags:
   # 关联分支
   git push -u origin $BRANCH_NAME
   git pull -u origin $BRANCH_NAME
-
+  
   # 清除关联
   git remote rm origin
   ```
@@ -240,7 +240,7 @@ tags:
   - 设置上游分支以后，本地分支与上游分支建立关联，以后可在本分支下直接使用 `git push`
   - 每次新生成分支需将新分支与远程分支建立一次关联
 
-# Version Control
+# 版本控制
 
 - **基础命令**
 
@@ -249,7 +249,7 @@ tags:
   git reset --hard SHA # SHA哈希值
   ```
 
-# Git Ignore
+# `.gitignore`
 
 `.gitignore` 文件是版本控制中的 Ignore 配置文件。通常，这些文件包括编译生成的文件、临时文件、日志文件、依赖库等，因为它们不应该被提交到版本库中，或者它们可以通过其他途径重新生成。创建一个 `.gitignore` 文件可以帮助确保你的代码仓库保持整洁，只包含必要的文件。
 
@@ -267,23 +267,23 @@ tags:
   *.class
   *.o
   *.pyc
-
+  
   # Ignore build output directories
   build/
   dist/
   bin/
-
+  
   # Ignore log files
   *.log
-
+  
   # Ignore IDE and editor-specific files
   .idea/
   .vscode/
-
+  
   # Ignore dependency directories
   node_modules/
   venv/
-
+  
   # Ignore configuration files with sensitive information
   config.ini
   secrets.json
@@ -322,6 +322,185 @@ Git LFS（Large File Storage）是 Git 的扩展，用于版本控制大文件�
 
 - 单个 LFS 文件：限制 1GB
 - 每月 LFS 带宽限制：GitHub 1GB，GitLab 10GB。
+
+# CI/CD
+
+## 推送至 Docker Hub
+
+**GitLab CI/CD** 是 GitLab 内置的 **CI/CD** 工具。
+
+### `.gitlab-ci.yml`
+
+- 核心配置文件，位于项目的根目录。
+- 用于定义 CI/CD 流程，包括构建、测试、部署等步骤。
+
+### Pipeline
+
+- 一个完整的 CI/CD 流程，包含多个 **阶段（stages）**，如 `build`、`test`、`deploy`。
+- 每次代码提交或合并请求时，GitLab 会自动触发 Pipeline。
+
+#### Pipeline 运行流程
+
+- 代码提交
+- GitLab 触发 Pipeline
+- Runner 拉取代码并执行 Job
+- 每个阶段按顺序执行
+- 生成构建产物或部署代码
+
+### Stages
+
+- Pipeline 中的阶段，按顺序依次执行。常见的阶段有：
+  - `build`：代码构建。
+  - `test`：运行测试。
+  - `deploy`：部署到指定环境。
+
+### Jobs
+
+- 每个阶段包含多个 Job，代表具体的任务。
+- 每个 Job 都在独立的环境中执行（如 Docker 容器）。
+
+### Runner
+
+- 执行 CI/CD 任务的代理。
+- 两种类型
+  - **Shared Runner**：由 GitLab 提供，适合公共项目。
+  - **Specific Runner**：自建 Runner，适合私有项目或自定义环境。
+
+### 常见最佳实践
+
+- 使用 Docker 容器作为执行环境，确保一致性。
+- 将敏感信息存储为 CI/CD 变量，避免硬编码。
+- 配置 `only` 和 `except` 规则，避免不必要的 Pipeline 运行。
+- 使用 `artifacts` 和 `caching` 提升效率。
+- 在 `deploy` 阶段加入手动审批，确保安全性。
+
+### 基本 `.gitlab-ci.yml` 示例
+
+```yaml
+stages:
+  - build
+  - test
+  - deploy
+
+# 构建阶段
+build-job:
+  stage: build
+  script:
+    - echo "Building the application..."
+    - npm install
+    - npm run build
+  artifacts:
+    paths:
+      - dist/ # 将构建产物保存下来，供后续阶段使用
+
+# 测试阶段
+test-job:
+  stage: test
+  script:
+    - echo "Running tests..."
+    - npm test
+
+# 部署阶段
+deploy-job:
+  stage: deploy
+  script:
+    - echo "Deploying application..."
+    - scp -r dist/ user@server:/var/www/html
+  only:
+    - main # 仅当推送到 main 分支时才部署
+```
+
+**关键配置说明**
+
+- `stages`：定义 Pipeline 的执行顺序。
+- `script`：每个 Job 执行的具体命令。
+- `artifacts`：保存构建产物，用于下一个阶段。
+- `only`：指定在哪些分支或条件下执行 Job。
+- `before_script` / `after_script`：在 Job 运行前后自动执行的命令。
+
+### 自己的示例
+
+目的是根据用户自己编写的应用文件 `main.go`、`Dockerfile`、 `.gitlab-ci.yml`，在将文件 push 到 Gitlab 时，通过 Pipeline 自动生成 Docker image 并推送到 Dockerhub。
+
+#### 配置文件
+
+- .gitlab-ci.yml
+
+  ```yaml
+  variables:
+    IMAGE_NAME: jerrybaijy/jerry-image
+    IMAGE_TAG: v1.0
+  
+  stages:
+    - build
+  
+  build_image:
+    stage: build
+    image: docker:20.10.20
+    services:
+      - docker:20.10.20-dind
+    variables:
+      DOCKER_TLS_CERTDIR: "/certs"
+    before_script:
+      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
+    script:
+      - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+      - docker push $IMAGE_NAME:$IMAGE_TAG
+  ```
+
+#### 基本流程
+
+- 远程创建仓库 clone 至本地
+- 项目目录创建 `main.go`, `Dockerfile` 和 `.gitlab-ci.yml` 文件
+- GitLab 仓库项目配置环境变量
+
+  - 在配置文件中可能需要某些敏感信息（如密码），可在文件中使用 `$VARIABLE_NAME` 代替，在托管平台中设置这个变量信息，然后在 Pipeline 执行配置文件时，平台会自动处理。
+  - 进入项目设置页面
+  - 左下角 `Settings` > `CI/CD`
+  - 选择 `Variables` > `添加变量信息`
+    - 不要选择 `Protect variable` 选项，否则在非 main 分支无法完成 CI。
+    - 注意一定要选择 `Masked variable` 选项，否则在 log 日志时会打印出来。
+
+- 推送至 GitLab
+
+  - 项目文件推送至远程仓库
+  - GitLab 在 Pipeline 中自动生成 Image 并推送至 DockerHub
+
+### 项目
+
+- GitLab CI Image
+
+## 推送至云服务器并部署
+
+>  此部分参考自 [medi-chatbot-full-stack](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13) 项目
+
+### 源代码
+
+- `Dockerfile`
+- `.github/workflows/cicd.yaml`
+
+### 云服务器
+
+- 创建实例
+  - 升级 `apt`
+  - 安装 Docker
+- 创建镜像仓库：用来存储 Docker Image
+
+### GitHub
+
+#### 创建 Self-hosted Runner
+
+- 远程仓库 > `Settings` > `Actins` > `Runners`
+- 新建自托管：`New self-hosted runner`
+- 在云服务虚拟机实例中执行 GitHub 推荐的命令，详见具体页面，以连接到 GitHub。
+
+#### 第三方
+
+- 远程仓库 > `Settings` > `Secrets and variables` > `Actions`
+- 创建各种密钥变量
+  - 云服务器
+  - 云服务器镜像仓库
+  - 源代码的环境变量
 
 # GitHub
 
@@ -478,7 +657,7 @@ jobs:
   ```
   # 原地址
   https://github.com/Jerrybaijy/blog-flak-sqlite-html
-
+  
   # 原地址
   https://github.dev/Jerrybaijy/blog-flak-sqlite-html
   ```
@@ -499,151 +678,6 @@ GitLab 网页创建 Remote Repo
 ## 存储库限制
 
 - [GitLab 官方关于存储库大小的限制](https://docs.gitlab.com/ee/user/gitlab_com/#account-and-limit-settings)
-
-## GitLab CI/CD
-
-**GitLab CI/CD** 是 GitLab 内置的 **CI/CD** 工具。
-
-### `.gitlab-ci.yml`
-
-- 核心配置文件，位于项目的根目录。
-- 用于定义 CI/CD 流程，包括构建、测试、部署等步骤。
-
-### Pipeline
-
-- 一个完整的 CI/CD 流程，包含多个 **阶段（stages）**，如 `build`、`test`、`deploy`。
-- 每次代码提交或合并请求时，GitLab 会自动触发 Pipeline。
-
-#### Pipeline 运行流程
-
-- 代码提交
-- GitLab 触发 Pipeline
-- Runner 拉取代码并执行 Job
-- 每个阶段按顺序执行
-- 生成构建产物或部署代码
-
-### Stages
-
-- Pipeline 中的阶段，按顺序依次执行。常见的阶段有：
-  - `build`：代码构建。
-  - `test`：运行测试。
-  - `deploy`：部署到指定环境。
-
-### Jobs
-
-- 每个阶段包含多个 Job，代表具体的任务。
-- 每个 Job 都在独立的环境中执行（如 Docker 容器）。
-
-### Runner
-
-- 执行 CI/CD 任务的代理。
-- 两种类型
-  - **Shared Runner**：由 GitLab 提供，适合公共项目。
-  - **Specific Runner**：自建 Runner，适合私有项目或自定义环境。
-
-### 常见最佳实践
-
-- 使用 Docker 容器作为执行环境，确保一致性。
-- 将敏感信息存储为 CI/CD 变量，避免硬编码。
-- 配置 `only` 和 `except` 规则，避免不必要的 Pipeline 运行。
-- 使用 `artifacts` 和 `caching` 提升效率。
-- 在 `deploy` 阶段加入手动审批，确保安全性。
-
-### 基本 `.gitlab-ci.yml` 示例
-
-```yaml
-stages:
-  - build
-  - test
-  - deploy
-
-# 构建阶段
-build-job:
-  stage: build
-  script:
-    - echo "Building the application..."
-    - npm install
-    - npm run build
-  artifacts:
-    paths:
-      - dist/ # 将构建产物保存下来，供后续阶段使用
-
-# 测试阶段
-test-job:
-  stage: test
-  script:
-    - echo "Running tests..."
-    - npm test
-
-# 部署阶段
-deploy-job:
-  stage: deploy
-  script:
-    - echo "Deploying application..."
-    - scp -r dist/ user@server:/var/www/html
-  only:
-    - main # 仅当推送到 main 分支时才部署
-```
-
-**关键配置说明**
-
-- `stages`：定义 Pipeline 的执行顺序。
-- `script`：每个 Job 执行的具体命令。
-- `artifacts`：保存构建产物，用于下一个阶段。
-- `only`：指定在哪些分支或条件下执行 Job。
-- `before_script` / `after_script`：在 Job 运行前后自动执行的命令。
-
-### 自己的示例
-
-目的是根据用户自己编写的应用文件 `main.go`、`Dockerfile`、 `.gitlab-ci.yml`，在将文件 push 到 Gitlab 时，通过 Pipeline 自动生成 Docker image 并推送到 Dockerhub。
-
-#### 配置文件
-
-- .gitlab-ci.yml
-
-  ```yaml
-  variables:
-    IMAGE_NAME: jerrybaijy/jerry-image
-    IMAGE_TAG: v1.0
-
-  stages:
-    - build
-
-  build_image:
-    stage: build
-    image: docker:20.10.20
-    services:
-      - docker:20.10.20-dind
-    variables:
-      DOCKER_TLS_CERTDIR: "/certs"
-    before_script:
-      - docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
-    script:
-      - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-      - docker push $IMAGE_NAME:$IMAGE_TAG
-  ```
-
-#### 基本流程
-
-- 远程创建仓库 clone 至本地
-- 项目目录创建 `main.go`, `Dockerfile` 和 `.gitlab-ci.yml` 文件
-- GitLab 仓库项目配置环境变量
-
-  - 在配置文件中可能需要某些敏感信息（如密码），可在文件中使用 `$VARIABLE_NAME` 代替，在托管平台中设置这个变量信息，然后在 Pipeline 执行配置文件时，平台会自动处理。
-  - 进入项目设置页面
-  - 左下角 `Settings` > `CI/CD`
-  - 选择 `Variables` > `添加变量信息`
-    - 不要选择 `Protect variable` 选项，否则在非 main 分支无法完成 CI。
-    - 注意一定要选择 `Masked variable` 选项，否则在 log 日志时会打印出来。
-
-- 推送至 GitLab
-
-  - 项目文件推送至远程仓库
-  - GitLab 在 Pipeline 中自动生成 Image 并推送至 DockerHub
-
-### 项目
-
-- GitLab CI Image
 
 # 解决办法
 

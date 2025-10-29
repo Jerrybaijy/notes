@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "docker.md",
+                "file": "flask.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "docker"
+              "title": "flask"
             }
           },
           {
@@ -138,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "docker",
+                "query": "tag:#python",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -216,7 +216,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "data"
+                "searchQuery": "ai"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -228,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docker.md",
+                "file": "flask.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "docker 的大纲"
+              "title": "flask 的大纲"
             }
           }
         ],
@@ -257,13 +257,17 @@
   },
   "active": "df5d4c0e662ef279",
   "lastOpenFiles": [
-    "git.md",
-    "software.md",
-    "salesforce.md",
-    "flask.md",
     "python.md",
     "anaconda.md",
     "pinecone.md",
+    "langchain.md",
+    "ai-agent.md",
+    "cli.md",
+    "git.md",
+    "docker.md",
+    "software.md",
+    "salesforce.md",
+    "flask.md",
     "sql.md",
     "code-general.md",
     "it-basics.md",
@@ -287,14 +291,10 @@
     "markdown.md",
     "java.md",
     "其它格式未转换/obsidian-themes/claude-底板-标题.css",
-    "vs-code.md",
     "0000.json",
     "assets/image-20251020122212688.png",
     "assets/image-20251020122105636.png",
     "新建 文本文档.txt",
-    "prettier-test.md",
-    "vscode.md",
-    "vue.md",
     "assets/image-20251018172454085.png",
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",
