@@ -6,11 +6,12 @@
     "主题实验",
     "边框实验",
     "user-base",
-    "user-dark-color"
+    "user-dark-color",
+    "标题实验"
   ],
   "theme": "system",
   "accentColor": "#adbac7",
-  "baseFontSize": 18,
+  "baseFontSize": 15,
   "baseFontSizeAction": true,
   "showViewHeader": true
 }

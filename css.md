@@ -612,7 +612,7 @@ a[href="https://example.org"]
 }
 ```
 
-## ID 选择器
+## 选择器
 
 [**ID 选择器**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/ID_selectors)通过**元素 ID**选择元素。
 

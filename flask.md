@@ -7,6 +7,7 @@ tags:
   - code-language
   - python
   - framework
+  - flask
 ---
 
 # Flask
@@ -23,9 +24,9 @@ tags:
 
 ## Flask 简单结构
 
-此结构是 Flask 框架最基础的结构，用于开发小型项目。
-
 ### Flask 简单结构基础
+
+此结构是 Flask 框架最基础的结构，用于开发小型项目。
 
 - **特点**
 

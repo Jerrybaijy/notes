@@ -1,0 +1,215 @@
+/*
+ * 自动编号标题
+ *
+ * 此CSS片段用于在Obsidian中自动为Markdown标题 (H1-H6) 添加序号。
+ * 它兼容两种视图模式：
+ * 1. 阅读视图 (Reading View): 用户查看笔记时的渲染效果。
+ * 2. 编辑视图 (Live Preview): 用户编辑笔记时所见的实时预览效果。
+ *
+ * 编号格式为多级嵌套，例如：1.、1.1.、1.1.1. 等。
+ * 每当遇到更高级别的标题时，所有子级标题的计数器都会重置，确保编号的正确性。
+ *
+ * 如何使用：
+ * 1. 在Obsidian设置中，进入 "外观" -> "CSS片段"。
+ * 2. 创建一个新的`.css`文件（例如：`auto-number-headings.css`）。
+ * 3. 将此代码粘贴到该文件中并保存。
+ * 4. 在CSS片段列表中启用该片段。
+ */
+
+/*
+ * --------------------------------------
+ * 全局计数器重置
+ * --------------------------------------
+ *
+ * 在文档的根部重置所有标题计数器，确保每个文档的编号从1开始。
+ * 针对阅读视图和Live Preview编辑视图生效。
+ */
+.markdown-reading-view,
+.markdown-source-view.mod-cm6 {
+  counter-reset: h1-counter h2-counter h3-counter h4-counter h5-counter h6-counter;
+}
+
+/*
+ * --------------------------------------
+ * 阅读视图 (Reading View) 样式
+ * --------------------------------------
+ *
+ * 为渲染后的Markdown标题添加编号。
+ */
+
+/* H1 标题 */
+.markdown-reading-view h1 {
+  /* 遇到H1时，重置所有子级标题（H2-H6）的计数器 */
+  counter-reset: h2-counter h3-counter h4-counter h5-counter h6-counter;
+  /* 递增H1计数器 */
+  counter-increment: h1-counter;
+}
+/* H1 标题前添加编号 */
+.markdown-reading-view h1::before {
+  /* 显示H1计数器的值，并在后面加一个点和空格 */
+  content: counter(h1-counter) ". ";
+  /* 为编号和标题文字之间添加一点间距 */
+  margin-right: 0.25em;
+}
+
+/* H2 标题 */
+.markdown-reading-view h2 {
+  /* 遇到H2时，重置所有子级标题（H3-H6）的计数器 */
+  counter-reset: h3-counter h4-counter h5-counter h6-counter;
+  /* 递增H2计数器 */
+  counter-increment: h2-counter;
+}
+/* H2 标题前添加编号 */
+.markdown-reading-view h2::before {
+  /* 显示H1和H2计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H3 标题 */
+.markdown-reading-view h3 {
+  /* 遇到H3时，重置所有子级标题（H4-H6）的计数器 */
+  counter-reset: h4-counter h5-counter h6-counter;
+  /* 递增H3计数器 */
+  counter-increment: h3-counter;
+}
+/* H3 标题前添加编号 */
+.markdown-reading-view h3::before {
+  /* 显示H1、H2和H3计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H4 标题 */
+.markdown-reading-view h4 {
+  /* 遇到H4时，重置所有子级标题（H5-H6）的计数器 */
+  counter-reset: h5-counter h6-counter;
+  /* 递增H4计数器 */
+  counter-increment: h4-counter;
+}
+/* H4 标题前添加编号 */
+.markdown-reading-view h4::before {
+  /* 显示H1、H2、H3和H4计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H5 标题 */
+.markdown-reading-view h5 {
+  /* 遇到H5时，重置所有子级标题（H6）的计数器 */
+  counter-reset: h6-counter;
+  /* 递增H5计数器 */
+  counter-increment: h5-counter;
+}
+/* H5 标题前添加编号 */
+.markdown-reading-view h5::before {
+  /* 显示H1、H2、H3、H4和H5计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H6 标题 */
+.markdown-reading-view h6 {
+  /* 递增H6计数器 */
+  counter-increment: h6-counter;
+}
+/* H6 标题前添加编号 */
+.markdown-reading-view h6::before {
+  /* 显示H1、H2、H3、H4、H5和H6计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "." counter(h6-counter) ". ";
+  margin-right: 0.25em;
+}
+
+
+/*
+ * --------------------------------------
+ * 编辑视图 (Live Preview) 样式
+ * --------------------------------------
+ *
+ * 为Live Preview模式下的标题添加编号。
+ * 注意：Live Preview的DOM结构与阅读视图不同，需要使用特定的选择器。
+ * Obsidian使用`HyperMD-header`类来标识Live Preview中的标题。
+ */
+
+/* H1 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-1 {
+  /* 遇到H1时，重置所有子级标题（H2-H6）的计数器 */
+  counter-reset: h2-counter h3-counter h4-counter h5-counter h6-counter;
+  /* 递增H1计数器 */
+  counter-increment: h1-counter;
+}
+/* H1 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-1::before {
+  /* 显示H1计数器的值，并在后面加一个点和空格 */
+  content: counter(h1-counter) ". ";
+  /* 为编号和标题文字之间添加一点间距 */
+  margin-right: 0.25em;
+}
+
+/* H2 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-2 {
+  /* 遇到H2时，重置所有子级标题（H3-H6）的计数器 */
+  counter-reset: h3-counter h4-counter h5-counter h6-counter;
+  /* 递增H2计数器 */
+  counter-increment: h2-counter;
+}
+/* H2 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-2::before {
+  /* 显示H1和H2计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H3 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-3 {
+  /* 遇到H3时，重置所有子级标题（H4-H6）的计数器 */
+  counter-reset: h4-counter h5-counter h6-counter;
+  /* 递增H3计数器 */
+  counter-increment: h3-counter;
+}
+/* H3 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-3::before {
+  /* 显示H1、H2和H3计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H4 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-4 {
+  /* 遇到H4时，重置所有子级标题（H5-H6）的计数器 */
+  counter-reset: h5-counter h6-counter;
+  /* 递增H4计数器 */
+  counter-increment: h4-counter;
+}
+/* H4 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-4::before {
+  /* 显示H1、H2、H3和H4计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H5 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-5 {
+  /* 遇到H5时，重置所有子级标题（H6）的计数器 */
+  counter-reset: h6-counter;
+  /* 递增H5计数器 */
+  counter-increment: h5-counter;
+}
+/* H5 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-5::before {
+  /* 显示H1、H2、H3、H4和H5计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) ". ";
+  margin-right: 0.25em;
+}
+
+/* H6 标题 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-6 {
+  /* 递增H6计数器 */
+  counter-increment: h6-counter;
+}
+/* H6 标题前添加编号 */
+.markdown-source-view.mod-cm6 .cm-editor .HyperMD-header.HyperMD-header-6::before {
+  /* 显示H1、H2、H3、H4、H5和H6计数器的值，用点连接 */
+  content: counter(h1-counter) "." counter(h2-counter) "." counter(h3-counter) "." counter(h4-counter) "." counter(h5-counter) "." counter(h6-counter) ". ";
+  margin-right: 0.25em;
+}
