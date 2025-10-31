@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -152,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ai-a",
+                "query": "file:lang",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -242,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "html.md",
+                "file": "anaconda.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "html 的大纲"
+              "title": "anaconda 的大纲"
             }
           }
         ],
@@ -269,10 +269,10 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "9c4a129a85da927c",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "python.md",
     "html.md",
+    "python.md",
     "anaconda.md",
     "0000标题实验.md",
     "flask.md",

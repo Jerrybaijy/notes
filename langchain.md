@@ -173,3 +173,46 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   print(response["structured_response"])
   # 预期输出示例：ResponseFormat(punny_response="You're 'thund-erfully' welcome!...", weather_conditions=None)
   ```
+
+## Langchain 框架
+
+## 环境变量
+
+```bash
+pip install python-dotenv
+```
+
+```
+# .env
+# 将 YOUR_API_KEY_HERE 替换为您真实的 Gemini API 密钥
+GEMINI_API_KEY="YOUR_API_KEY_HERE"
+```
+
+```python
+import os
+from dotenv import load_dotenv
+
+# 这将读取 .env 文件并将 GEMINI_API_KEY 加载到环境中
+load_dotenv()
+# 检查 API 密钥是否已加载
+if not os.getenv("GEMINI_API_KEY"):
+    raise ValueError("GEMINI_API_KEY 未在环境变量中设置。请检查您的 .env 文件。")
+```
+
+## Gemini
+
+```bash
+pip install -U langchain-google-genai
+```
+
+```python
+from langchain_google_genai import ChatGoogleGenerativeAI
+
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro")
+
+```
+
+
+
+
+
