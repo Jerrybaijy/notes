@@ -518,6 +518,8 @@ console.log("External JavaScript file");
 
 - VS Code Emmet 快速创建文档结构：`!`
 
+- 在 HTML 中，[**文档类型声明**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)是必要的。在所有文档的头部，你都将会看到 “`<!DOCTYPE html>`” 序言。这个声明的目的是防止浏览器在渲染文档时，切换到我们称为[“怪异模式”](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode)的渲染模式。“`<!DOCTYPE html>`” 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
+
 ### 网页结构
 
 一个典型的网页结构应该是：
@@ -779,10 +781,6 @@ footer {
 ```
 
 > <img src="assets/image-20251008171559475.png" alt="image-20251008171559475" style="zoom: 50%;" />
-
-## 文档类型
-
-在 HTML 中，[**文档类型声明**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)是必要的。在所有文档的头部，你都将会看到 “`<!DOCTYPE html>`” 序言。这个声明的目的是防止浏览器在渲染文档时，切换到我们称为[“怪异模式”](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Guides/Quirks_mode_and_standards_mode)的渲染模式。“`<!DOCTYPE html>`” 确保浏览器按照最佳的相关规范进行渲染，而不是使用一个不符合规范的渲染模式。
 
 # 元素索引
 

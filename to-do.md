@@ -17,8 +17,11 @@ tags:
 - [ ] **VS Code**
   - [ ] VS code 的 mpe 插件能识别出格式规不规范，如果不规范可能会有提示
 - [ ] **Obsidian**
+  - [ ] 浅色模式
+    - [ ] 选中文本背景
+
 - [ ] **JavaScript**
-  
+
 - [ ] **其它**
 
 # Andy's Suggestion

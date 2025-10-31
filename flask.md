@@ -22,87 +22,89 @@ tags:
 
 # Flask 结构
 
-## Flask 简单结构
-
-### Flask 简单结构基础
+## 简单结构
 
 此结构是 Flask 框架最基础的结构，用于开发小型项目。
 
 - **特点**
-
   - 直接使用 Flask 的默认目录结构
   - 路由、模型、配置都在 `app.py` 一个文件里
-
-- **目录结构**
-
-  ```
-  my_project/           # 项目根目录
-  ├── templates/        # 模板目录：存放所有HTML模板
-  ├── static/           # 静态文件目录：存放CSS、JS、图片等
-  └── app.py            # 主程序文件
-  ```
-
-- **主程序文件**：`app.py`
-
-  ```python
-  # 导入 Flask 类和 render_template 函数
-  from flask import Flask, render_template
   
-  # 创建 Flask 应用实例
-  app = Flask(__name__)
-  
-  # 定义主页路由
-  @app.route('/')  # 路由装饰器
-  def home():  # 视图函数
-      # 渲染index.html模板
-      return render_template('index.html')
-  
-  # 运行主程序
-  if __name__ == '__main__':
-      app.run(debug=True)
-  ```
 
-  **在以上代码中**：
+### 目录结构
 
-  - **`Flask`**：类，用于创建应用实例。
-  - **`__name__`**：用于确定应用的根路径；Flask 使用这个路径来查找资源和模板。
-  - **`@app.route('/')`**：路由装饰器，用于定义访问路径。
-  - **`render_template`**：用于渲染 HTML 模板。
-  - 当用户访问应用的根路径 `/` 时，调用 `home()` 函数。
-  - **`home()`** 函数通过 **`render_template('index.html')`** 渲染并返回名为 `index.html` 的模板文件。
-  - **`if __name__ == '__main__':`**：这部分代码保证了当脚本作为主程序运行时启动 Flask 应用。
-  - **`app.run(debug=True)`**：启动 Flask 服务器。
-  - **`debug=True`**：开启 **调试模式**，即 **热重载**，这样可以实时查看更改并调试错误。
+```
+my_project/           # 项目根目录
+├── templates/        # 模板目录：存放所有HTML模板
+├── static/           # 静态文件目录：存放CSS、JS、图片等
+└── app.py            # 主程序文件
+```
 
-- **模板文件**：`index.html`
+### 主程序文件
 
-  ```html
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Home</title>
-      <!-- 动态引入 CSS 样式表 -->
-      <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='styles.css') }}"
-      />
-    </head>
-  
-    <body>
-      <h1>Welcome to Flask</h1>
-      <!-- 动态引入 JavaScript 脚本 -->
-      <script src="{{ url_for('static', filename='script.js') }}"></script>
-    </body>
-  </html>
-  ```
+`app.py`
 
-  **在以上代码中**：
+```python
+# 导入 Flask 类和 render_template 函数
+from flask import Flask, render_template
 
-  - **`{{ url_for('static', filename='script.js') }}`**：动态引用静态文件，详见[动态路径 `url_for`](#动态路径 `url_for`)。
+# 创建 Flask 应用实例
+app = Flask(__name__)
 
-### Flask 简单结构初始化脚本
+# 定义主页路由
+@app.route('/')  # 路由装饰器
+def home():  # 视图函数
+    # 渲染index.html模板
+    return render_template('index.html')
+
+# 运行主程序
+if __name__ == '__main__':
+    app.run(debug=True)
+```
+
+**在以上代码中**：
+
+- **`Flask`**：类，用于创建应用实例。
+- **`__name__`**：用于确定应用的根路径；Flask 使用这个路径来查找资源和模板。
+- **`@app.route('/')`**：路由装饰器，用于定义访问路径。
+- **`render_template`**：用于渲染 HTML 模板。
+- 当用户访问应用的根路径 `/` 时，调用 `home()` 函数。
+- **`home()`** 函数通过 **`render_template('index.html')`** 渲染并返回名为 `index.html` 的模板文件。
+- **`if __name__ == '__main__':`**：这部分代码保证了当脚本作为主程序运行时启动 Flask 应用。
+- **`app.run(debug=True)`**：启动 Flask 服务器。
+- **`debug=True`**：开启 **调试模式**，即 **热重载**，这样可以实时查看更改并调试错误。
+
+### 模板文件
+
+`index.html`
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <!-- 动态引入 CSS 样式表 -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+
+  <body>
+    <h1>Welcome to Flask</h1>
+    <!-- 动态引入 JavaScript 脚本 -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+  </body>
+</html>
+```
+
+**在以上代码中**：
+
+- **`{{ url_for('static', filename='script.js') }}`**：动态引用静态文件，详见[动态路径 `url_for`](jinja2.md#动态路径 `url_for`)。
+
+### 初始化脚本
 
 - 此初始化脚本是自己创建的，用于自动创建虚拟环境和 Flask 框架简单结构。
 
@@ -247,89 +249,93 @@ tags:
       main()
   ```
 
-## Flask 工厂结构
+## 工厂结构
 
 此结构是 Flask 框架的工厂结构，用于开发中大型项目。
 
-### Flask 工厂结构基础
-
 - **特点**
-
   - 工厂结构将简单结构中的 `app.py` 拆解成各个模块化的 `.py` 文件。
   - 将除了 `config.py` 和 `run.py` 的文件，放入 `app` 目录下，组成一个应用包。
-
-- **目录结构**
-
-  ```
-  my_project/                           # 项目根目录
-  ├── app/                              # 应用包目录
-  │   ├── __init__.py                   # 初始化文件：创建Flask应用，初始化扩展
-  │   ├── models.py                     # 数据库模型：定义User类等数据库表结构
-  │   ├── routes.py                     # 路由文件：处理所有URL请求（登录、注册等）
-  │   ├── templates/                    # 模板目录：存放所有HTML模板
-  │   └── static/                       # 静态文件目录：存放CSS、JS、图片等
-  ├── config.py                         # 配置文件：数据库配置，密钥等
-  └── run.py                            # 启动文件：运行Flask应用的入口点
-  ```
-
-- **初始文件 `app/_init_.py`**
-
-  ```python
-  # 导入必要的模块
-  from flask import Flask  # Flask核心类
-  from config import Config  # 导入配置类
   
-  def create_app():
-      # 创建Flask应用实例
-      app = Flask(__name__)
-      # 从配置类加载配置
-      app.config.from_object(Config)
-  
-      # 导入并注册蓝图（路由）
-      from app.routes import main  # 导入routes.py创建的蓝图对象
-      app.register_blueprint(main)  # 注册到应用
-  
-      return app
-  ```
 
-- **路由文件 `routes.py`**
+### 目录结构
 
-  ```python
-  from flask import Blueprint, render_template
-  
-  # 创建蓝图对象
-  main = Blueprint('main', __name__)
-  
-  # 定义主页路由
-  @main.route('/')  # 路由装饰器
-  def home():
-      return render_template('index.html')
-  ```
+```
+my_project/                           # 项目根目录
+├── app/                              # 应用包目录
+│   ├── __init__.py                   # 初始化文件：创建Flask应用，初始化扩展
+│   ├── models.py                     # 数据库模型：定义User类等数据库表结构
+│   ├── routes.py                     # 路由文件：处理所有URL请求（登录、注册等）
+│   ├── templates/                    # 模板目录：存放所有HTML模板
+│   └── static/                       # 静态文件目录：存放CSS、JS、图片等
+├── config.py                         # 配置文件：数据库配置，密钥等
+└── run.py                            # 启动文件：运行Flask应用的入口点
+```
 
-- **配置文件 `config.py`**
+### 初始文件
 
-  ```python
-  class Config:
-      # 基础配置
-      SECRET_KEY = 'dev'  # 用于加密session和cookies的密钥
-  ```
+`app/_init_.py`
 
-- **启动文件 `run.py`**
+```python
+# 导入必要的模块
+from flask import Flask  # Flask核心类
+from config import Config  # 导入配置类
 
-  ```python
-  # 从app包中导入create_app函数
-  from app import create_app
-  
-  # 创建应用实例
-  app = create_app()
-  
-  # 只有直接运行此文件时才执行
-  if __name__ == '__main__':
-      # 启动Flask开发服务器，开启调试模式
-      app.run(debug=True)
-  ```
+def create_app():
+    # 创建Flask应用实例
+    app = Flask(__name__)
+    # 从配置类加载配置
+    app.config.from_object(Config)
 
-### Flask 工厂结构初始化脚本
+    # 导入并注册蓝图（路由）
+    from app.routes import main  # 导入routes.py创建的蓝图对象
+    app.register_blueprint(main)  # 注册到应用
+
+    return app
+```
+
+### 路由文件
+
+`routes.py`
+
+```python
+from flask import Blueprint, render_template
+
+# 创建蓝图对象
+main = Blueprint('main', __name__)
+
+# 定义主页路由
+@main.route('/')  # 路由装饰器
+def home():
+    return render_template('index.html')
+```
+
+### 配置文件
+
+`config.py`
+
+```python
+class Config:
+    # 基础配置
+    SECRET_KEY = 'dev'  # 用于加密session和cookies的密钥
+```
+
+启动文件 `run.py`
+
+```python
+# 从app包中导入create_app函数
+from app import create_app
+
+# 创建应用实例
+app = create_app()
+
+# 只有直接运行此文件时才执行
+if __name__ == '__main__':
+    # 启动Flask开发服务器，开启调试模式
+    app.run(debug=True)
+```
+
+### 初始化脚本
 
 - 此初始化脚本是自己创建的，用于自动创建虚拟环境和 Flask 框架工厂结构。
 
@@ -522,6 +528,16 @@ tags:
   2. __init__.py:   导入蓝图对象 (from app.routes import main)
   3. __init__.py:   注册到应用   (app.register_blueprint(main))
   ```
+
+# 常用扩展
+
+| 扩展名               | 功能             | 描述                                |
+| -------------------- | ---------------- | ----------------------------------- |
+| **Flask-SQLAlchemy** | 数据库 ORM       | 简化数据库操作和模型定义。          |
+| **Flask-Migrate**    | 数据库迁移       | 管理数据库结构变更 (基于 Alembic)。 |
+| **Flask-WTF**        | 表单处理         | 简化表单的创建、渲染和验证。        |
+| **Flask-Login**      | 用户认证         | 管理用户登录状态和会话。            |
+| **Flask-RESTful**    | 构建 RESTful API | 简化资源路由和序列化。              |
 
 # Flask 项目
 

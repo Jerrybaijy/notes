@@ -41,26 +41,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "css.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "css"
-            }
-          },
-          {
-            "id": "6ee48d67851a4c9b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "0000标题实验.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
               "title": "0000标题实验"
+            }
+          },
+          {
+            "id": "700469aac43a78c5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "python.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "python"
             }
           },
           {
@@ -104,9 +104,23 @@
               "icon": "lucide-file",
               "title": "anaconda"
             }
+          },
+          {
+            "id": "9c4a129a85da927c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "html.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "html"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -138,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "ai-a",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -159,7 +173,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -227,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "css.md",
+                "file": "html.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "css 的大纲"
+              "title": "html 的大纲"
             }
           }
         ],
@@ -254,16 +269,18 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "40c53d69846fcdd2",
+  "active": "9c4a129a85da927c",
   "lastOpenFiles": [
+    "python.md",
+    "html.md",
+    "anaconda.md",
     "0000标题实验.md",
+    "flask.md",
+    "jupyter.md",
     "css.md",
     "it-basics.md",
-    "python.md",
     "0000.md",
-    "flask.md",
     "typora.md",
-    "anaconda.md",
     "Jinja2.md",
     "pinecone.md",
     "langchain.md",
@@ -280,11 +297,9 @@
     "其它格式未转换/obsidian-themes/user-dark-color.css",
     "windows.md",
     "prettier.md",
-    "html.md",
     "javascript.md",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
     "其它格式未转换/vs-code-json/README.md",
-    "其它格式未转换/vs-code-json/新建 Markdown File.md",
     "其它格式未转换/vs-code-json/settings.json",
     "其它格式未转换/vs-code-json/keybindings.json",
     "其它格式未转换/vs-code-json",
