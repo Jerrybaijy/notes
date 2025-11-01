@@ -36,20 +36,6 @@
             }
           },
           {
-            "id": "40c53d69846fcdd2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "0000标题实验.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "0000标题实验"
-            }
-          },
-          {
             "id": "700469aac43a78c5",
             "type": "leaf",
             "state": {
@@ -120,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -242,13 +228,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "anaconda.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "anaconda 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -269,11 +255,11 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "700469aac43a78c5",
   "lastOpenFiles": [
-    "html.md",
-    "python.md",
     "anaconda.md",
+    "python.md",
+    "html.md",
     "0000标题实验.md",
     "flask.md",
     "jupyter.md",
