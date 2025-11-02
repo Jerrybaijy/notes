@@ -13,6 +13,10 @@ tags:
 
 [LangChain](https://docs.langchain.com/oss/python/langchain/overview) 是一个应用框架，旨在简化使用大型语言模型的应用程序。
 
+> [LangChain 文档](https://docs.langchain.com/oss/python/langchain/overview)
+>
+> [LangChain 参考](https://reference.langchain.com/python/langchain/)
+
 LangChain 的核心价值在于**模块化**，主要组件包括：
 
 - **Models**：提供统一的接口，让你可以轻松切换不同的大模型（如OpenAI、本地模型）。
@@ -24,7 +28,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 
 ## 基本实现
 
-- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境) 并激活。
+- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境) 并激活。
 
 - 安装必要库
 
@@ -84,7 +88,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 
 ## 标准实现
 
-- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境) 并激活。
+- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境) 并激活。
 
 - 安装必要库
 
@@ -209,6 +213,21 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 
 [Agents](https://docs.langchain.com/oss/python/langchain/agents) 组件用于创建 Agent。让大模型具备使用外部工具（如计算器、搜索引擎）的能力，以完成更复杂的任务。
 
+```mermaid
+flowchart TD
+    %% 节点
+    input([input])
+    model{model}
+    tools(tools)
+    output([output])
+
+    %% 结构
+    input --> model
+    model -- action --> tools
+    tools -- observation --> model
+    model -- finish --> output
+```
+
 ## 基本实现
 
 ```
@@ -233,12 +252,13 @@ agent.invoke(
 
 **在以上代码中：**
 
+- [`create_agent()`](https://reference.langchain.com/python/langchain/agents/?_gl=1*z2ejvz*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIwODQyMDAkbzI4JGcxJHQxNzYyMDg0MzczJGo2MCRsMCRoMA..#langchain.agents.create_agent)：用于创建 Agent。
 - `model=llm` ：`llm` 为之前创建的实例化模型。
 - `tools=[get_weather]` ：`get_weather` 为之前创建的工具。
 
 ## `checkpointer`
 
-[`checkpointer`](https://docs.langchain.com/oss/python/langgraph/add-memory#add-short-term-memory) 用于定义内存存储器，允许 Agent  记住之前的对话和上下文，即**短期记忆**。
+[`checkpointer`](https://reference.langchain.com/python/langchain/agents/?h=checkpointer#langchain.agents.create_agent(checkpointer)) 用于持久化单个线程（例如，单个对话）的 graph 状态（例如，作为聊天内存）。
 
 ```python
 from langgraph.checkpoint.memory import InMemorySaver
@@ -388,7 +408,7 @@ llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API
 **在以上代码中：**
 
 - `GEMINI_API_KEY` 为从 `.env` 文件读取到的 API。
-- 不要使用 `gemini-2.5-pro` 模型，以防配额超限。
+- 不要使用 `gemini-2.5-pro` 模型，以防配额超限。
 
 # Prompts
 

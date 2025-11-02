@@ -50,6 +50,34 @@
             }
           },
           {
+            "id": "424fb85ce12c2f24",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "mermaid.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "mermaid"
+            }
+          },
+          {
+            "id": "e5e0177dcf855652",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "langchain.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "langchain"
+            }
+          },
+          {
             "id": "8c640f3356f99cd0",
             "type": "leaf",
             "state": {
@@ -78,20 +106,6 @@
             }
           },
           {
-            "id": "34a123a827cfd94e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "anaconda.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "anaconda"
-            }
-          },
-          {
             "id": "9c4a129a85da927c",
             "type": "leaf",
             "state": {
@@ -106,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -228,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python.md",
+                "file": "langchain.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "python 的大纲"
+              "title": "langchain 的大纲"
             }
           }
         ],
@@ -255,10 +269,11 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "700469aac43a78c5",
+  "active": "e5e0177dcf855652",
   "lastOpenFiles": [
-    "anaconda.md",
+    "mermaid.md",
     "python.md",
+    "anaconda.md",
     "html.md",
     "0000标题实验.md",
     "flask.md",
@@ -285,7 +300,6 @@
     "prettier.md",
     "javascript.md",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
-    "其它格式未转换/vs-code-json/README.md",
     "其它格式未转换/vs-code-json/settings.json",
     "其它格式未转换/vs-code-json/keybindings.json",
     "其它格式未转换/vs-code-json",
