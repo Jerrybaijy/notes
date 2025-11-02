@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -242,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "langchain.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "langchain 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -269,8 +269,9 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "e5e0177dcf855652",
+  "active": "700469aac43a78c5",
   "lastOpenFiles": [
+    "langchain.md",
     "mermaid.md",
     "python.md",
     "anaconda.md",
@@ -284,7 +285,6 @@
     "typora.md",
     "Jinja2.md",
     "pinecone.md",
-    "langchain.md",
     "ai-agent.md",
     "cli.md",
     "git.md",
