@@ -267,7 +267,7 @@ echo $GOOGLE_API_KEY
 
 [**初始化模型**](https://docs.langchain.com/oss/python/langchain/models#initialize-a-model)，即使用 [`init_chat_model`](https://reference.langchain.com/python/langchain/models/?_gl=1*1gysoxw*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIxMDUzMjYkbzMwJGcxJHQxNzYyMTA1NzA1JGo1NSRsMCRoMA..#langchain.chat_models.init_chat_model) 实例化一个模型。通常用于模型的独立运行。
 
-调用 `langchain_google_genai` 失败！
+实验时调用 `langchain_google_genai` 失败！以下是官方文档示例：
 
 ```python
 import os
@@ -504,40 +504,6 @@ agent = create_agent(
 )
 ```
 
-## `checkpointer`
-
-[`checkpointer`](https://reference.langchain.com/python/langchain/agents/?h=checkpointer#langchain.agents.create_agent(checkpointer)) 用于持久化单个线程（例如，单个对话）的 graph 状态（例如，作为聊天内存）。
-
-```python
-from langgraph.checkpoint.memory import InMemorySaver
-
-# 定义内存存储器
-checkpointer = InMemorySaver()
-
-# `thread_id` 是一个唯一标识符，用于 Checkpointer 存储和检索特定的会话历史。
-config = {"configurable": {"thread_id": "1"}}
-
-# 向 Agent 传入 checkpointer
-agent = create_agent(
-    # ... 其他参数
-    checkpointer=checkpointer
-)
-
-# 运行 Agent，传入 config
-response = agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather outside?"}]},
-    config=config,  # 传入会话 ID，让 Agent 知道去哪里加载/存储记忆。
-    context=Context(user_id="1"),
-)
-
-# 再次运行 Agent，使用相同的 `thread_id`，Agent 会自动加载第一次调用的历史记录。
-response = agent.invoke(
-    {"messages": [{"role": "user", "content": "thank you!"}]},
-    config=config,  # 相同 config，继续会话 ID "1" 的历史。
-    context=Context(user_id="1"),
-)
-```
-
 ## `context_schema`
 
 `context_schema` 上下文模式，用于定义用户的**元数据**，Agent 在运行时可以识别用户。
@@ -593,6 +559,268 @@ agent = create_agent(
 )
 ```
 
+# Memory
+
+**记忆系统**能够记住以往交互的信息。
+
+## Short-term Memory
+
+[**Short-term Memory**](https://docs.langchain.com/oss/python/langchain/short-term-memory)（短期记忆）：关注于**单个对话会话**（或“线程”）中的**即时上下文**。它的主要目标是让 LLM 能够记住最近的互动，从而实现流畅、多轮次的对话。
+
+### 基本用法
+
+在创建 Agent 时指定 [`checkpointer`](https://reference.langchain.com/python/langchain/agents/?h=checkpointer#langchain.agents.create_agent(checkpointer)) 属性，在调用 Agent 时使用 `thread_id`。
+
+数据存储在内存中，它只在当前程序运行期间有效。一旦程序结束或重启，这些记忆就会丢失。
+
+```python
+from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver
+
+agent = create_agent(
+    model=model,
+    checkpointer=InMemorySaver(),
+    # 其它属性
+)
+
+agent.invoke(
+    {"messages": [{"role": "user", "content": "Hi! My name is Bob."}]},
+    {"configurable": {"thread_id": "1"}},  
+)
+```
+
+**在以上示例中：**
+
+- `checkpointer=InMemorySaver()`：`InMemorySaver` 充当了 Agent 的**记忆存储介质**。它将 Agent 的整个执行历史保存在**内存**中。
+- `thread_id`：用于区分会话，告诉 `InMemorySaver` 将当前这次 `invoke` 调用的状态和历史，保存到 ID 为 "1" 的这个特定会话（或线程）中。
+
+### 生产用法
+
+在生产环境中，使用由数据库支持的检查点。
+
+数据存储在数据库中，即使程序崩溃、重启或部署到不同的环境中，记忆也不会丢失。
+
+```bash
+pip install langgraph-checkpoint-postgres
+```
+
+```python
+from langchain.agents import create_agent
+from langgraph.checkpoint.postgres import PostgresSaver  
+
+DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable"
+with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
+    checkpointer.setup() # auto create tables in PostgresSql
+    agent = create_agent(
+        "gpt-5",
+        [get_user_info],
+        checkpointer=checkpointer,  
+    )
+```
+
+**在以上示例中：**
+
+- `with 语句`：建立与数据库的连接
+
+### 防止超限
+
+长时间的对话可能会超出 LLM 的上下文窗口。常见的解决方案包括：
+
+- [修剪消息](https://docs.langchain.com/oss/python/langchain/short-term-memory#trim-messages)
+- [删除消息](https://docs.langchain.com/oss/python/langchain/short-term-memory#delete-messages)
+- [消息摘要](https://docs.langchain.com/oss/python/langchain/short-term-memory#summarize-messages)
+
+### 访问存储器
+
+[**访问存储器**](https://docs.langchain.com/oss/python/langchain/short-term-memory#access-memory)：可以通过多种方式访问和修改智能体的短期记忆（状态）。
+
+## Long-term Memory
+
+[**Long-term Memory**](https://docs.langchain.com/oss/python/langchain/long-term-memory)（长期记忆）：关注**跨会话**和**跨时间**保留信息，让系统能够学习用户偏好、维护用户档案或访问广泛的领域知识。
+
+LangChain 使用 [LangGraph 持久化](https://docs.langchain.com/oss/python/langgraph/persistence#memory-store)来实现长期记忆。
+
+# Messages
+
+[**Messages**](https://docs.langchain.com/oss/python/langchain/messages) 是模型的基本上下文单元。它们代表模型的输入和输出，携带与 LLM 交互时表示对话状态所需的内容和元数据。
+
+## 基本用法
+
+### 文本提示
+
+[**文本提示**](https://docs.langchain.com/oss/python/langchain/messages#text-prompts)是字符串——非常适合简单的生成任务，无需保留对话历史记录。
+
+```python
+response = model.invoke("Write a haiku about spring")
+```
+
+### 消息提示
+
+[**消息提示**](https://docs.langchain.com/oss/python/langchain/messages#message-prompts)通过提供消息对象列表，将消息列表传递给模型。
+
+```python
+from langchain.messages import SystemMessage, HumanMessage, AIMessage
+
+messages = [
+    SystemMessage("You are a poetry expert"),
+    HumanMessage("Write a haiku about spring"),
+    AIMessage("Cherry blossoms bloom...")
+]
+response = model.invoke(messages)
+```
+
+### 字典格式
+
+[**字典格式**](https://docs.langchain.com/oss/python/langchain/messages#dictionary-format)以自动补全格式指定消息。
+
+```python
+messages = [
+    {"role": "system", "content": "You are a poetry expert"},
+    {"role": "user", "content": "Write a haiku about spring"},
+    {"role": "assistant", "content": "Cherry blossoms bloom..."}
+]
+response = model.invoke(messages)
+```
+
+## 消息类型
+
+[**消息类型**](https://docs.langchain.com/oss/python/langchain/messages#message-types)：
+
+-  [SystemMessage()](https://docs.langchain.com/oss/python/langchain/messages#system-message)：系统消息，告诉模型如何运行，并为交互提供上下文。
+-  [HumanMessage()](https://docs.langchain.com/oss/python/langchain/messages#human-message)：人类消息，代表用户输入以及与模型的交互。
+-  [AIMessage()](https://docs.langchain.com/oss/python/langchain/messages#ai-message)：AI 消息，模型生成的响应，包括文本内容、工具调用和元数据。
+-  [ToolMessage()](https://docs.langchain.com/oss/python/langchain/messages#tool-message)：工具消息，工具调用的输出。
+
+# Middleware
+
+[**Middleware**](https://docs.langchain.com/oss/python/langchain/middleware)，中间件，提供了一种更严格地控制代理内部运行方式的方法。
+
+> [中间件指南](https://docs.langchain.com/oss/python/langchain/middleware)
+>
+> [中间件 API 参考](https://reference.langchain.com/python/langchain/middleware/?_gl=1*7nl9a8*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIxNjg1MDEkbzM2JGcxJHQxNzYyMTcwOTc5JGo0JGwwJGgw)
+
+中间件有以下类型：
+
+- [内置中间件](https://docs.langchain.com/oss/python/langchain/middleware#built-in-middleware)
+- [自定义中间件](https://docs.langchain.com/oss/python/langchain/middleware#custom-middleware)
+  - [基于装饰器的中间件](https://docs.langchain.com/oss/python/langchain/middleware#decorator-based-middleware)
+  - [基于类的中间件](https://docs.langchain.com/oss/python/langchain/middleware#class-based-middleware)
+
+## 基本实现
+
+```python
+from langchain.agents import create_agent
+from langchain.agents.middleware import SummarizationMiddleware, HumanInTheLoopMiddleware
+
+agent = create_agent(
+    model="gpt-4o",
+    tools=[...],
+    middleware=[SummarizationMiddleware(), HumanInTheLoopMiddleware()],
+)
+```
+
+**在以上示例中：**
+
+- [`middleware`](https://reference.langchain.com/python/langchain/agents/?_gl=1*z2ejvz*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIwODQyMDAkbzI4JGcxJHQxNzYyMDg0MzczJGo2MCRsMCRoMA..#langchain.agents.create_agent(middleware))：中间件
+
+## 基于装饰器的中间件
+
+[**基于装饰器的中间件**](https://docs.langchain.com/oss/python/langchain/middleware#decorator-based-middleware)是一种自定义中间件。
+
+```python
+from langchain.agents.middleware import before_model, after_model, wrap_model_call
+from langchain.agents.middleware import AgentState, ModelRequest, ModelResponse, dynamic_prompt
+from langchain.messages import AIMessage
+from langchain.agents import create_agent
+from langgraph.runtime import Runtime
+from typing import Any, Callable
+
+# Node-style: logging before model calls
+@before_model
+def log_before_model(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+    print(f"About to call model with {len(state['messages'])} messages")
+    return None
+
+# Node-style: validation after model calls
+@after_model(can_jump_to=["end"])
+def validate_output(state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+    last_message = state["messages"][-1]
+    if "BLOCKED" in last_message.content:
+        return {
+            "messages": [AIMessage("I cannot respond to that request.")],
+            "jump_to": "end"
+        }
+    return None
+
+# Wrap-style: retry logic
+@wrap_model_call
+def retry_model(
+    request: ModelRequest,
+    handler: Callable[[ModelRequest], ModelResponse],
+) -> ModelResponse:
+    for attempt in range(3):
+        try:
+            return handler(request)
+        except Exception as e:
+            if attempt == 2:
+                raise
+            print(f"Retry {attempt + 1}/3 after error: {e}")
+
+# Wrap-style: dynamic prompts
+@dynamic_prompt
+def personalized_prompt(request: ModelRequest) -> str:
+    user_id = request.runtime.context.get("user_id", "guest")
+    return f"You are a helpful assistant for user {user_id}. Be concise and friendly."
+
+# Use decorators in agent
+agent = create_agent(
+    model="gpt-4o",
+    middleware=[log_before_model, validate_output, retry_model, personalized_prompt],
+    tools=[...],
+)
+```
+
+## 基于类的中间件
+
+[**基于类的中间件**](https://docs.langchain.com/oss/python/langchain/middleware#class-based-middleware)是一种自定义中间件。
+
+```python
+from langchain.agents.middleware import AgentMiddleware, AgentState
+from langgraph.runtime import Runtime
+from langchain.agents import create_agent
+from typing import Any
+
+# 定义基于类的中间件 (LoggingMiddleware)
+class LoggingMiddleware(AgentMiddleware):
+    """
+    这个类实现了两个钩子：before_model 和 after_model。
+    它负责在模型调用前后打印日志信息。
+    """
+    
+    # 钩子 1: 在模型调用之前触发
+    def before_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+        print(f"状态中包含 {len(state['messages'])} 条消息。")
+        return None
+
+    # 钩子 2: 在模型调用之后触发
+    def after_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
+        last_message_content = state['messages'][-1].content
+        print(f"模型已返回（部分内容）: {last_message_content[:30]}...")
+        return None
+
+# 实例化基于类的中间件
+logging_instance = LoggingMiddleware() 
+
+agent = create_agent(
+    model="gpt-4o",
+    middleware=[logging_instance],
+)
+
+# 提示：实际运行时，这两个钩子会在 Agent 内部调用 LLM 时自动执行。
+print("\nAgent 创建完成。")
+print("当 Agent 运行时，LoggingMiddleware 中的 before_model 和 after_model 将自动被调用。")
+```
+
 # Prompts
 
 Prompts 用于管理提示词模板，使交互更可控。
@@ -640,6 +868,27 @@ If a user asks you for the weather, make sure you know the location. If you can 
 
 **在以上示例中：**
 
-- `"""Get weather for a given city."""`：文档字符串，代替函数体，告诉模型将执行的操作。
+- 使用 [`@tool`](https://reference.langchain.com/python/langchain/tools/#langchain.tools.tool) 装饰器
+- `"""Get weather for a given city."""`：默认情况下，函数的文档字符串会成为工具的描述，帮助模型理解何时使用该工具。
 - 在提示词中告诉模型，用这个工具干什么。
+
+# Streaming
+
+[Streaming](https://docs.langchain.com/oss/python/langchain/streaming)，流式传输，用于显示各个节点的实时更新，而不是单纯显示最终结果。
+
+# Structured Output
+
+[**Structured output**](https://docs.langchain.com/oss/python/langchain/structured-output)（结构化输出）允许代理以特定且可预测的格式返回数据。
+
+## 基本实现
+
+```python
+def create_agent(
+    # ...
+    response_format: Union[
+        ToolStrategy[StructuredResponseT],
+        ProviderStrategy[StructuredResponseT],
+        type[StructuredResponseT],
+    ]
+```
 
