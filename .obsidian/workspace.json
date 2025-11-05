@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -242,13 +242,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "langchain.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "langchain 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -269,15 +269,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "e5e0177dcf855652",
+  "active": "700469aac43a78c5",
   "lastOpenFiles": [
-    "python.md",
     "langchain.md",
+    "flask.md",
+    "python.md",
     "mermaid.md",
     "anaconda.md",
     "html.md",
     "0000标题实验.md",
-    "flask.md",
     "jupyter.md",
     "css.md",
     "it-basics.md",

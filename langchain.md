@@ -33,8 +33,8 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 - 安装必要库
 
   ```bash
-  pip install -U langchain
-  pip install -U langchain-google-genai
+  pip install langchain
+  pip install langchain-google-genai
   pip install python-dotenv
   ```
 
@@ -53,7 +53,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   from dotenv import load_dotenv
   from langchain_google_genai import ChatGoogleGenerativeAI
   
-  # ---------------调用大模型---------------------
+  # ---------------指定模型---------------------
   # 读取 .env 文件并将 GEMINI_API_KEY 加载到环境中
   load_dotenv()
   
@@ -72,13 +72,14 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
       """Get weather for a given city."""
       return f"It's always sunny in {city}!"
   
-  # ----------------创建并运行代理-------------------------
+  # ----------------创建代理-------------------------
   agent = create_agent(
       model=llm,
       tools=[get_weather],
       system_prompt="You are a helpful assistant",
   )
   
+  # ----------------调用代理-------------------------
   result = agent.invoke(
       {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
   )
@@ -127,7 +128,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   如果用户询问天气，请确保你知道地点。如果用户的问题暗示的是他们当前所在的位置，则使用 get_user_location 工具来查找他们的位置。
   **请注意：你的所有回复都必须是中文的，并且应包含中文的双关语或有趣的谐音梗。**"""
   
-  # ---------------调用大模型---------------------
+  # ---------------指定模型---------------------
   # 读取 .env 文件并将 GEMINI_API_KEY 加载到环境中
   load_dotenv()
   
@@ -251,6 +252,11 @@ if not GEMINI_API_KEY:
     raise ValueError("GEMINI_API_KEY 未在环境变量中设置。请检查您的 .env 文件。")
 ```
 
+**在以上代码中：**
+
+- `GEMINI_API_KEY` 为从 `.env` 文件读取到的 API。
+- 不要使用 `gemini-2.5-pro` 模型，以防配额超限。
+
 ### 终端加载
 
 ```bash
@@ -263,33 +269,53 @@ echo $GOOGLE_API_KEY
 
 ## 指定模型
 
+指定 Model 有两种方法：
+
+- 初始化模型
+- 模型类
+
 ### 初始化模型
 
-[**初始化模型**](https://docs.langchain.com/oss/python/langchain/models#initialize-a-model)，即使用 [`init_chat_model`](https://reference.langchain.com/python/langchain/models/?_gl=1*1gysoxw*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIxMDUzMjYkbzMwJGcxJHQxNzYyMTA1NzA1JGo1NSRsMCRoMA..#langchain.chat_models.init_chat_model) 实例化一个模型。通常用于模型的独立运行。
+[**初始化模型**](https://docs.langchain.com/oss/python/langchain/models#initialize-a-model)，即使用 [`init_chat_model`](https://reference.langchain.com/python/langchain/models/?_gl=1*1gysoxw*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIxMDUzMjYkbzMwJGcxJHQxNzYyMTA1NzA1JGo1NSRsMCRoMA..#langchain.chat_models.init_chat_model) 初始化一个 Model。通常用于 Model 的独立运行，而不是借助 Agent。
 
-实验时调用 `langchain_google_genai` 失败！以下是官方文档示例：
+```bash
+pip install langchain
+pip install langchain-google-genai
+```
 
 ```python
-import os
 from langchain.chat_models import init_chat_model
 
-os.environ["OPENAI_API_KEY"] = "sk-..."
-model = init_chat_model("gpt-4.1")
-response = model.invoke("Why do parrots talk?")
+# ======================
+# 还应该设定 API 密钥等环境变量
+# ======================
+
+# 初始化模型
+model = init_chat_model(
+    model="gemini-2.5-flash",
+    api_key=GEMINI_API_KEY,
+)
+
+# 调用模型
+response = model.invoke("为什么鹦鹉会说话？")
 ```
 
 ### 模型类
 
+通过 `ChatGoogleGenerativeAI()` 类实例化一个 Model。
+
+```bash
+pip install langchain
+pip install langchain-google-genai
+```
+
 ```python
 from langchain.agents import create_agent
-import os
-from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# ---------------指定模型---------------------
-# 设置 API
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# ======================
+# 还应该设定 API 密钥等环境变量
+# ======================
 
 # 实例化模型
 model = ChatGoogleGenerativeAI(
@@ -297,21 +323,19 @@ model = ChatGoogleGenerativeAI(
     api_key=GEMINI_API_KEY
 )
 
-# ----------------创建代理-------------------------
+# 创建代理
 agent = create_agent(
     model=model
     # 其它参数
 )
+
+# 调用代理
+response = agent.invoke("为什么鹦鹉会说话？")
 ```
-
-**在以上代码中：**
-
-- `GEMINI_API_KEY` 为从 `.env` 文件读取到的 API。
-- 不要使用 `gemini-2.5-pro` 模型，以防配额超限。
 
 ### 本地模型
 
-[Ollama](https://docs.langchain.com/oss/python/integrations/chat/ollama) 允许您在本地运行开源的大型语言模型
+[Ollama](https://docs.langchain.com/oss/python/integrations/chat/ollama) 允许您在本地运行开源的大型语言模型。
 
 ## 调用模型
 
@@ -433,28 +457,24 @@ agent.invoke(
 - [`create_agent()`](https://reference.langchain.com/python/langchain/agents/?_gl=1*z2ejvz*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIwODQyMDAkbzI4JGcxJHQxNzYyMDg0MzczJGo2MCRsMCRoMA..#langchain.agents.create_agent)：用于创建 Agent。
 - `model=model` ：`model` 为之前创建的实例化模型。
 
-## `model`
+## 静态和动态模型
 
 ### 静态模型
 
-[**静态模型**](https://docs.langchain.com/oss/python/langchain/agents#static-model)在创建代理时配置一次，并在整个执行过程中保持不变。这是最常见、最直接的方法。
+[**静态模型**](https://docs.langchain.com/oss/python/langchain/agents#static-model)在创建代理时配置一次，并在整个执行过程中保持不变。
 
 ```bash
-pip install -U langchain
-pip install -U langchain-google-genai
-pip install python-dotenv
+pip install langchain
+pip install langchain-google-genai
 ```
 
 ```python
 from langchain.agents import create_agent
-import os
-from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-# ---------------指定模型---------------------
-# 设置 API
-load_dotenv()
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+# ======================
+# 还应该设定 API 密钥等环境变量
+# ======================
 
 # 实例化模型
 model = ChatGoogleGenerativeAI(
@@ -462,11 +482,14 @@ model = ChatGoogleGenerativeAI(
     api_key=GEMINI_API_KEY
 )
 
-# ----------------创建代理-------------------------
+# 创建代理
 agent = create_agent(
     model=model
     # 其它参数
 )
+
+# 调用代理
+response = agent.invoke("为什么鹦鹉会说话？")
 ```
 
 ### 动态模型
