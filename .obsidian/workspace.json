@@ -50,6 +50,20 @@
             }
           },
           {
+            "id": "d71de04bd5a46c42",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "git.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "git"
+            }
+          },
+          {
             "id": "424fb85ce12c2f24",
             "type": "leaf",
             "state": {
@@ -118,9 +132,23 @@
               "icon": "lucide-file",
               "title": "html"
             }
+          },
+          {
+            "id": "ad90560223d311cc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docker.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "docker"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -152,7 +180,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:lang",
+                "query": "file:docker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -242,13 +270,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python.md",
+                "file": "docker.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "python 的大纲"
+              "title": "docker 的大纲"
             }
           }
         ],
@@ -269,11 +297,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "700469aac43a78c5",
+  "active": "ad90560223d311cc",
   "lastOpenFiles": [
     "langchain.md",
-    "flask.md",
+    "assets/image-20251106230113201.png",
+    "assets/image-20251106224646037.png",
+    "docker.md",
+    "git.md",
     "python.md",
+    "flask.md",
     "mermaid.md",
     "anaconda.md",
     "html.md",
@@ -287,8 +319,6 @@
     "pinecone.md",
     "ai-agent.md",
     "cli.md",
-    "git.md",
-    "docker.md",
     "software.md",
     "salesforce.md",
     "sql.md",
@@ -298,7 +328,6 @@
     "其它格式未转换/obsidian-themes/user-dark-color.css",
     "windows.md",
     "prettier.md",
-    "javascript.md",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
     "其它格式未转换/vs-code-json/settings.json",
     "其它格式未转换/vs-code-json/keybindings.json",
@@ -315,8 +344,6 @@
     "assets/image-20251018172247616.png",
     "assets/image-20251018172218622.png",
     "assets/image-20251018172154170.png",
-    "assets/image-20251018172118200.png",
-    "assets/image-20251018171650819.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

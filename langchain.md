@@ -418,8 +418,8 @@ flowchart TD
 ## 基本实现
 
 ```
-pip install -U langchain
-pip install -U langchain-google-genai
+pip install langchain
+pip install langchain-google-genai
 pip install python-dotenv
 ```
 
@@ -915,3 +915,98 @@ def create_agent(
     ]
 ```
 
+# 多轮对话
+
+## 只使用模型的脚本
+
+```bash
+pip install langchain
+pip install langchain-google-genai
+pip install python-dotenv
+```
+
+```python
+import os
+from dotenv import load_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_core.messages import HumanMessage, AIMessage, BaseMessage
+from typing import List
+
+# ---------------指定模型---------------------
+# 设置 API
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# 实例化模型
+model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    api_key=GEMINI_API_KEY
+)
+
+# ----------------初始化对话历史-------------------------
+# 用于存储完整的对话历史
+chat_history: List[BaseMessage] = []
+
+# ----------------运行多轮对话循环-------------------------
+def chat_loop():
+    """
+    运行一个命令行交互循环，实现持续的多轮对话。
+    """
+    global chat_history
+    
+    print("--- 🤖 Gemini 命令行聊天助手已启动 ---")
+    print("输入您的提问。输入 '退出' 或 'q' 结束会话。")
+    
+    # 将一个系统指令添加到历史记录的开头，设置 AI 的角色
+    system_instruction = "你是一个友好且乐于助人的 AI 助手。请记住用户的上下文和之前的对话。"
+    
+    # 循环等待用户输入
+    while True:
+        try:
+            # 获取用户输入
+            user_input = input("👤 您: ").strip()
+            
+            # 检查退出命令
+            if user_input.lower() in ["退出", "q", "exit", "quit", "exit()"]:
+                print("\n👋 谢谢使用，再见！")
+                break
+                
+            if not user_input:
+                continue
+
+            # 1. 创建代表当前用户输入的消息
+            current_human_message = HumanMessage(content=user_input)
+            
+            # 2. 构建完整的输入消息列表：历史记录 + 当前输入
+            full_messages = chat_history + [current_human_message]
+            
+            # 3. 调用模型
+            # 注意：模型调用是阻塞的，可能需要一些时间
+            ai_response_message = model.invoke(full_messages)
+            
+            # 获取 AI 的文本回复
+            ai_response_text = ai_response_message.content
+            
+            # 4. 打印回复并更新对话历史
+            print(f"🤖 AI: {ai_response_text}")
+            
+            # 将用户的输入添加到历史记录
+            chat_history.append(current_human_message)
+            # 将 AI 的回复消息添加到历史记录
+            chat_history.append(ai_response_message)
+            
+        except Exception as e:
+            print(f"\n❌ 发生了一个错误: {e}")
+            print("会话结束。")
+            break
+
+# 启动聊天循环
+if __name__ == "__main__":
+    chat_loop()
+```
+
+## 模型+Flask
+
+详见项目：Build a Chatbot in Web Page with Flask & Langchain
+
+<img src="assets/image-20251106230113201.png" alt="image-20251106230113201" style="zoom:50%;" />
