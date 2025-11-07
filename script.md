@@ -43,25 +43,39 @@ exec $SHELL
 
 - 保存文件并关闭；
 
-- 将文件后缀名 `.txt` 改为 `.sh`，例如 `git-push.sh`；
+- 将文件后缀名 `.txt` 改为 `.sh`，例如 `python-env.sh`；
 
 
 ## 使用脚本
 
 以下几种方法都可以使用脚本：
 
-- 双击 `git-push.sh` 文件。
+- 双击 `python-env.sh` 文件。
 
-- 在 Bash 终端调用 `Bash` 解释器
+- 在 Bash 终端调用 `Bash` 解释器，不可以停在基本激活的 python 虚拟环境。
 
   ```bash
-  bash git-push.sh
+  # 标准写法
+  bash python-env.sh
+  
+  # 简写
+  ./python-env.sh
   ```
 
-- 在 Bash 终端调用 `sh` 解释器
+- 在 Bash 终端调用 `sh` 解释器，不可以停在基本激活的 python 虚拟环境。
 
   ```bash
-  sh git-push.sh
+  sh python-env.sh
+  ```
+
+- 在 Bash 终端调用 `source`，可以停在基本激活的 python 虚拟环境。
+
+  ```bash
+  # 标准写法
+  source python-env.sh
+  
+  # 简写
+  . python-env.sh
   ```
 
 ##  Shebang

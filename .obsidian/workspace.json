@@ -50,31 +50,17 @@
             }
           },
           {
-            "id": "d9af732dc0bfd21c",
+            "id": "f909c545e3fda39d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "it-basics.md",
+                "file": "script.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "it-basics"
-            }
-          },
-          {
-            "id": "c2c9b0f9be5d53ba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "windows.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "windows"
+              "title": "script"
             }
           },
           {
@@ -176,7 +162,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -208,7 +194,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:linu",
+                "query": "file:scri",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -229,7 +215,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -297,13 +284,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "windows.md",
+                "file": "script.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "windows 的大纲"
+              "title": "script 的大纲"
             }
           }
         ],
@@ -324,8 +311,11 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "c2c9b0f9be5d53ba",
+  "active": "f909c545e3fda39d",
   "lastOpenFiles": [
+    "python.md",
+    "it-basics.md",
+    "windows.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
@@ -334,10 +324,8 @@
     "其它格式未转换/scripts/python-env",
     "其它格式未转换/scripts",
     "其它格式未转换/新建文件夹",
-    "python.md",
     "shell.md",
     "assets/image-20251107191551704.png",
-    "it-basics.md",
     "docker.md",
     "langchain.md",
     "assets/image-20251106230113201.png",
@@ -364,7 +352,6 @@
     "其它格式未转换/obsidian-themes/user-light-color.css",
     "其它格式未转换/obsidian-themes/user-dark-color.css",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
-    "其它格式未转换/vs-code-json/settings.json",
     "assets/image-20251020122212688.png",
     "assets/image-20251020122105636.png",
     "assets/image-20251018172454085.png",
