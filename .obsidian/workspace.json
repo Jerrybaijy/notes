@@ -50,6 +50,34 @@
             }
           },
           {
+            "id": "d9af732dc0bfd21c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "it-basics.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "it-basics"
+            }
+          },
+          {
+            "id": "c2c9b0f9be5d53ba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "windows.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "windows"
+            }
+          },
+          {
             "id": "d71de04bd5a46c42",
             "type": "leaf",
             "state": {
@@ -148,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -180,7 +208,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:docker",
+                "query": "file:linu",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -201,8 +229,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -270,13 +297,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "docker.md",
+                "file": "windows.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "docker 的大纲"
+              "title": "windows 的大纲"
             }
           }
         ],
@@ -297,14 +324,25 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "ad90560223d311cc",
+  "active": "c2c9b0f9be5d53ba",
   "lastOpenFiles": [
+    "git-push.sh",
+    "0000000.txt",
+    "新建 文本文档.txt",
+    "script.md",
+    "其它格式未转换/scripts/git-push.sh",
+    "其它格式未转换/scripts/python-env",
+    "其它格式未转换/scripts",
+    "其它格式未转换/新建文件夹",
+    "python.md",
+    "shell.md",
+    "assets/image-20251107191551704.png",
+    "it-basics.md",
+    "docker.md",
     "langchain.md",
     "assets/image-20251106230113201.png",
     "assets/image-20251106224646037.png",
-    "docker.md",
     "git.md",
-    "python.md",
     "flask.md",
     "mermaid.md",
     "anaconda.md",
@@ -312,7 +350,6 @@
     "0000标题实验.md",
     "jupyter.md",
     "css.md",
-    "it-basics.md",
     "0000.md",
     "typora.md",
     "Jinja2.md",
@@ -326,24 +363,15 @@
     "obsidian.md",
     "其它格式未转换/obsidian-themes/user-light-color.css",
     "其它格式未转换/obsidian-themes/user-dark-color.css",
-    "windows.md",
-    "prettier.md",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
     "其它格式未转换/vs-code-json/settings.json",
-    "其它格式未转换/vs-code-json/keybindings.json",
-    "其它格式未转换/vs-code-json",
-    "vs-code-style.css",
-    "其它格式未转换/obsidian-themes/claude-底板-标题.css",
-    "0000.json",
     "assets/image-20251020122212688.png",
     "assets/image-20251020122105636.png",
-    "新建 文本文档.txt",
     "assets/image-20251018172454085.png",
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",
     "assets/image-20251018172247616.png",
     "assets/image-20251018172218622.png",
-    "assets/image-20251018172154170.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
