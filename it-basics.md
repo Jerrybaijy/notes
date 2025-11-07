@@ -252,44 +252,6 @@ tags:
   $1年—
   ```
 
-# Shell Script
-
-## Script 基础
-
-**Shell 脚本**（Shell Script） 用于通过 `Unix/Linux shell` 自动运行程序，例如 `Bash`。它包含了一系列 `shell命令`，就像你在命令行里输入它们一样。
-
-### 创建脚本
-
-- 使用记事本创建一个 `.txt` 文件；
-- 在记事本中输入想要的命令，以 `Git push` 为例；
-
-  ```bash
-  git add .
-  git commit -m "Daily preservation"
-  git push
-  exec $SHELL
-  ```
-
-- 保存文件并关闭；
-- 将文件后缀名改为 `.sh`，例如 `git-push.sh`；
-- 双击文件就会依次执行上述命令。
-
-### 常用命令
-
-- **`#`**：注释，例如 `exec $SHELL  # 执行完毕保持窗口`；
-- **`exec $SHELL`**：执行完毕保持窗口；
-
-## Scripts
-
-- **Git push**
-
-  ```bash
-  git add .
-  git commit -m "Daily preservation"
-  git push
-  exec $SHELL  # 执行完毕保持窗口
-  ```
-
 # 二进制
 
 - **二进制**
@@ -362,7 +324,7 @@ tags:
   ```python
   data = "这是第一行！\n这是第二行！"  # \n换行符
   print(data)
-
+  
   # 这是第一行！
   # 这是第二行！
   ```

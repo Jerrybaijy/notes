@@ -185,7 +185,9 @@ pip3 install $MODULE_NAME
 ### 官方方法
 
 - 确认 Python 已安装；
+
 - 终端进入项目目录；
+
 - 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
 
   ```bash
@@ -217,7 +219,18 @@ pip3 install $MODULE_NAME
   - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
   - 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
 
+- 对新的虚拟环境进行初步设置：
+
+  ```bash
+  # 升级 pip
+  python.exe -m pip install --upgrade pip
+  
+  # 安装格式化工具
+  pip install black
+  ```
+
 - 创建 `requirements.txt` 文件：你可以将项目的所有依赖包列在 `requirements.txt` 文件中，方便其他开发者安装；
+
 - 生成 `requirements.txt`
 
   ```bash
