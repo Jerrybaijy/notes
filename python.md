@@ -61,6 +61,70 @@ tags:
   sudo apt install python3.11
   ```
 
+## Pyenv-win
+
+[Pyenv-win](https://github.com/pyenv-win/pyenv-win) 是 [Pyenv](https://github.com/pyenv/pyenv) 的 Windows 版本。[Pyenv](https://github.com/pyenv/pyenv) 是一个 Python 版本管理工具， 可以让您在多个 Python 版本之间切换。
+
+### 安装
+
+- 在当前 PowerShell 会话中临时允许运行脚本（关闭窗口后自动恢复默认安全模式）。
+
+  ```shell
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  ```
+
+- 在 PowerShell 中安装 pyenv-win。
+
+  ```shell
+  Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+  ```
+
+- 重启终端，在 GitBash 中运行 `pyenv --version` 以检查安装是否成功。
+
+- 运行 `pyenv install <version>` 以安装受支持的版本
+
+  ```bash
+  pyenv install 3.13.6
+  ```
+
+  安装路径：`C:\Users\jerry\.pyenv\pyenv-win\versions`
+
+- 如果想设置全局 python 版本：
+
+  ```bash
+  pyenv global 3.13.6
+  ```
+
+- 如果只希望在一个**特定项目文件夹**中使用 **Python 3.13.6**，请进入该文件夹并执行以下命令：
+
+  ```bash
+  pyenv local 3.13.6
+  ```
+
+  执行后，`pyenv-win` 会在该文件夹下创建一个 `.python-version` 文件，仅对该文件夹及其子目录生效。
+
+### 命令
+
+```bash
+# 查看 pyenv 版本
+pyenv --version
+
+# 查看所有通过 Python 安装的 python 版本
+pyenv versions
+
+# 查看当前正在使用的 Python 版本及其路径
+pyenv version
+
+# pyenv-win 支持的 Python 版本列表
+pyenv install -l
+
+# 安装 <version> 版本的 python
+pyenv install <version>
+
+# 卸载 <version> 版本的 python
+pyenv uninstall <version>
+```
+
 ## 配置
 
 **关于安装目录：**
@@ -182,13 +246,19 @@ pip3 install $MODULE_NAME
 
 ## 虚拟环境
 
+有三种方法创建虚拟环境：
+
+- 官方方法
+- Conda 命令
+- 脚本创建
+
 ### 官方方法
 
 - 确认 Python 已安装；
 
-- 终端进入项目目录；
+- 终端进入项目根目录；
 
-- 创建虚拟环境，会在项目目录生成 `venv` 文件夹；
+- 创建虚拟环境，会在项目根目录生成 `venv` 文件夹；
 
   ```bash
   python -m venv 安装目录
@@ -256,7 +326,21 @@ pip3 install $MODULE_NAME
 
 ### Conda 命令
 
-使用 `conda` 命令创建，更好，详见 [`Anaconda`](anaconda.md#conda)。
+使用 `conda` 命令创建，更好，详见 [`Anaconda`](anaconda.md#conda) 笔记。
+
+### 脚本创建
+
+- 确认 Python 已安装；
+
+- 复制 `python-env` 脚本至项目根目录；
+
+- 终端进入项目根目录；
+
+- 执行以下命令创建并激活虚拟环境：
+
+  ```bash
+  source python-env
+  ```
 
 ## 编辑器
 

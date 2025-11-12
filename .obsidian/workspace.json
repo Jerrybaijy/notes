@@ -78,20 +78,6 @@
             }
           },
           {
-            "id": "424fb85ce12c2f24",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "mermaid.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "mermaid"
-            }
-          },
-          {
             "id": "e5e0177dcf855652",
             "type": "leaf",
             "state": {
@@ -162,7 +148,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -284,13 +270,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "script.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "script 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -311,15 +297,16 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "f909c545e3fda39d",
+  "active": "700469aac43a78c5",
   "lastOpenFiles": [
+    "langchain.md",
     "python.md",
+    "script.md",
     "it-basics.md",
     "windows.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
-    "script.md",
     "其它格式未转换/scripts/git-push.sh",
     "其它格式未转换/scripts/python-env",
     "其它格式未转换/scripts",
@@ -327,7 +314,6 @@
     "shell.md",
     "assets/image-20251107191551704.png",
     "docker.md",
-    "langchain.md",
     "assets/image-20251106230113201.png",
     "assets/image-20251106224646037.png",
     "git.md",

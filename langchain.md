@@ -65,7 +65,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
       raise ValueError("GEMINI_API_KEY 未在环境变量中设置。请检查您的 .env 文件。")
   
   # 实例化模型
-  llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API_KEY)
+  model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API_KEY)
   
   # ----------------定义工具-------------------------
   def get_weather(city: str) -> str:
@@ -74,7 +74,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   
   # ----------------创建代理-------------------------
   agent = create_agent(
-      model=llm,
+      model=model,
       tools=[get_weather],
       system_prompt="You are a helpful assistant",
   )
@@ -219,6 +219,45 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 - **独立运行**：可以直接调用模型（在代理循环之外）来执行文本生成、分类或提取等任务，而无需代理框架。
 - **使用代理**：通过 Agent 引入。
 
+## 基本实现
+
+下面是一个实现多轮循环问答的模型（无记忆）
+
+```
+# 将 YOUR_API_KEY_HERE 替换为您真实的 Gemini API 密钥
+GEMINI_API_KEY="YOUR_API_KEY_HERE"
+```
+
+```bash
+pip install python-dotenv
+pip install langchain
+pip install langchain-google-genai
+```
+
+```python
+import os
+from dotenv import load_dotenv
+from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.agents import create_agent
+
+# 设置 API
+load_dotenv()
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+# 实例化模型
+model = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    api_key=GEMINI_API_KEY
+)
+
+# 调用模型 & 多轮问答
+while True:
+    question = input("用户：")
+    response = model.invoke(question)
+    print("AI：" + response.content)
+    print("=" * 60)
+```
+
 ## 设置 API
 
 LLM 的 API，此处使用 [免费的 Google AI Studio 的 API](https://aistudio.google.com/api-keys)，有两种设置方法：
@@ -297,7 +336,8 @@ model = init_chat_model(
 )
 
 # 调用模型
-response = model.invoke("为什么鹦鹉会说话？")
+response = model.invoke("你是谁？")
+print(response.content)
 ```
 
 ### 模型类
@@ -323,14 +363,9 @@ model = ChatGoogleGenerativeAI(
     api_key=GEMINI_API_KEY
 )
 
-# 创建代理
-agent = create_agent(
-    model=model
-    # 其它参数
-)
-
-# 调用代理
-response = agent.invoke("为什么鹦鹉会说话？")
+# 调用模型
+response = model.invoke("你是谁？")
+print(response.content) # 我是一个大型语言模型，由 Google 训练。
 ```
 
 ### 本地模型
@@ -377,6 +412,21 @@ for response in responses:
     print(response)
 ```
 
+## 多轮问答
+
+```python
+# ======================
+# 设定 API，指定模型
+# ======================
+
+# 多轮问答
+while True:
+    question = input("用户：")
+    response = model.invoke(question)
+    print("AI：" + response.content)
+    print("=" * 60)
+```
+
 ## 多模态
 
 [多模态](https://docs.langchain.com/oss/python/langchain/models#multimodal)，某些模型可以处理并返回**非文本数据**，例如图像、音频和视频。您可以通过提供内容块将非文本数据传递给模型。
@@ -417,17 +467,25 @@ flowchart TD
 
 ## 基本实现
 
+下面是一个实现多轮循环问答的代理（有记忆）
+
 ```
+# 将 YOUR_API_KEY_HERE 替换为您真实的 Gemini API 密钥
+GEMINI_API_KEY="YOUR_API_KEY_HERE"
+```
+
+```
+pip install python-dotenv
 pip install langchain
 pip install langchain-google-genai
-pip install python-dotenv
 ```
 
 ```python
-from langchain.agents import create_agent
 import os
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain.agents import create_agent
+from langgraph.checkpoint.memory import InMemorySaver
 
 # ---------------指定模型---------------------
 # 设置 API
@@ -435,21 +493,23 @@ load_dotenv()
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 # 实例化模型
-model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
-    api_key=GEMINI_API_KEY
-)
+model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", api_key=GEMINI_API_KEY)
 
 # ----------------创建代理-------------------------
 agent = create_agent(
-    model=model
-    # 其它参数
+    model=model,
+    checkpointer=InMemorySaver() # 实现记忆
 )
 
-# 运行 Agent
-agent.invoke(
-    {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
-)
+# ----------------调用代理 & 多轮问答----------------
+while True:
+    question = input("用户：")
+    response = agent.invoke(
+        {"messages": [{"role": "user", "content": question}]},
+        {"configurable": {"thread_id": "1"}}, # 实现记忆
+    )
+    print("AI：" + response["messages"][-1].content)
+    print("=" * 60)
 ```
 
 **在以上代码中：**
@@ -461,36 +521,7 @@ agent.invoke(
 
 ### 静态模型
 
-[**静态模型**](https://docs.langchain.com/oss/python/langchain/agents#static-model)在创建代理时配置一次，并在整个执行过程中保持不变。
-
-```bash
-pip install langchain
-pip install langchain-google-genai
-```
-
-```python
-from langchain.agents import create_agent
-from langchain_google_genai import ChatGoogleGenerativeAI
-
-# ======================
-# 还应该设定 API 密钥等环境变量
-# ======================
-
-# 实例化模型
-model = ChatGoogleGenerativeAI(
-    model="gemini-2.5-flash",
-    api_key=GEMINI_API_KEY
-)
-
-# 创建代理
-agent = create_agent(
-    model=model
-    # 其它参数
-)
-
-# 调用代理
-response = agent.invoke("为什么鹦鹉会说话？")
-```
+[**静态模型**](https://docs.langchain.com/oss/python/langchain/agents#static-model)在创建代理时配置一次，并在整个执行过程中保持不变。详见 Agent 的基本实现。
 
 ### 动态模型
 
@@ -537,7 +568,7 @@ from dataclasses import dataclass
 # 定义 schema
 @dataclass
 class Context:
-    """Custom runtime context schema."""
+    """Custom runtime context schema.""" 
 
     user_id: str
 
@@ -600,16 +631,27 @@ agent = create_agent(
 from langchain.agents import create_agent
 from langgraph.checkpoint.memory import InMemorySaver
 
+# ======================
+# 设定 API，指定模型
+# ======================
+
+# ----------------创建代理-------------------------
 agent = create_agent(
     model=model,
-    checkpointer=InMemorySaver(),
-    # 其它属性
+    # 指定 checkpointer 参数
+    checkpointer=InMemorySaver()
 )
 
-agent.invoke(
-    {"messages": [{"role": "user", "content": "Hi! My name is Bob."}]},
-    {"configurable": {"thread_id": "1"}},  
-)
+# 调用代理 & 多轮问答
+while True:
+    question = input("用户：")
+    response = agent.invoke(
+        {"messages": [{"role": "user", "content": question}]},
+        # 指定线程
+        {"configurable": {"thread_id": "1"}},
+    )
+    print("AI：" + response["messages"][-1].content)
+    print("=" * 60)
 ```
 
 **在以上示例中：**
