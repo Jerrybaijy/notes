@@ -2123,236 +2123,225 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ## 文件读写基础
 
-- **基础步骤**
+**基础步骤：**
 
-  ```python
-  data = "Hello world!"  # 确认要写入的内容并用data接收
-  data = data.encode(utf-8)  # 将“Hello world!”编码，转为字节型数据
-  f = open (r"demo.txt", "a")  # 获取文件对象
-  f.write(data)  # 写入
-  # f.flush()  # 将数据强刷进硬盘，防止关闭文件前电脑死机数据不保存
-  f.close()  # 关闭文件，不关不影响程序运行，但会耗内存
-  ```
+```python
+data = "Hello world!"  # 确认要写入的内容并用data接收
+data = data.encode(utf-8)  # 将“Hello world!”编码，转为字节型数据
+f = open (r"demo.txt", "a")  # 获取文件对象，路径加 r 取消转义
+f.write(data)  # 写入
+# f.flush()  # 将数据强刷进硬盘，防止关闭文件前电脑死机数据不保存
+f.close()  # 关闭文件，不关不影响程序运行，但会耗内存
+```
 
-- **文件**
+**访问模式：**
 
-  - **文本文件**：也称字符型文件，只保存字符串的文本文档，如 txt，JSON，css 等。文本文件从本质上也是二进制文件。
-  - **二进制文件**：也称字节型文件，可以保存任意格式的多媒体数据，如图片，音频，视频等。
-
-- **文件路径**
-
-  - 路径加 r 取消转义
-  - 绝对/相对路径
-  - 路径可以是变量，尤其是以文件名的相对路径
-
-- **访问模式**
-
-  - 读：r / rb
-  - 写：w / wb
-  - 追加：a
-  - 文本文件为 r / w，二进制文件为 rb / wb。
+- 读：r / rb
+- 写：w / wb
+- 追加：a
+- 文本文件为 r / w，二进制文件为 rb / wb。
 
 ## 读文件
 
-- **基本示例**
+**基本示例：**
 
-  ```python
-  f = open(r"demo.txt", "r", encoding = "utf-8")  # 二进制文件访问模式为 rb，不解码
-  data = f.read()
-  f.close()
-  ```
+```python
+f = open(r"demo.txt", "r", encoding = "utf-8")
+data = f.read()
+f.close()
+```
 
-- **读大体积文本文件**
+**读大体积文本文件：**
 
-  ```python
-  f = open(r"demo.txt", "r", encoding = "utf-8")
-  for line in f:  # 防止一次性读完，内存不够，所以逐行读
-      data = line
-  f.close()
-  ```
+```python
+f = open(r"demo.txt", "r", encoding = "utf-8")
+for line in f:  # 防止一次性读完，内存不够，所以逐行读
+    data = line
+f.close()
+```
 
-- **读大体积二进制文件**
+**读大体积二进制文件：**
 
-  ```python
-  import os
-  
-  total_size = os.stat(r"英雄.mp4").st_size  # 获取总字节数
-  f = open(r"英雄.mp4", "rb")
-  has_read_size = 0
-  while has_read_size < total_size:
-      chunk = f.read(3)  # 每次读3个字节，防止一次性读完，内存不够
-      print(chunk)
-      has_read_size += len(chunk)
-  f.close()
-  ```
+```python
+import os
+
+total_size = os.stat(r"英雄.mp4").st_size  # 获取总字节数
+f = open(r"英雄.mp4", "rb")   # 二进制文件访问模式为 rb，不解码
+has_read_size = 0
+while has_read_size < total_size:
+    chunk = f.read(3)  # 每次读3个字节，防止一次性读完，内存不够
+    print(chunk)
+    has_read_size += len(chunk)
+f.close()
+```
 
 ## 写文件
 
-- 如果文件不存在，则创建新文件再写入；如果存在，则直接写入。
+如果文件不存在，则创建新文件再写入；如果存在，则直接写入。
 
-  - 覆盖写入 `w/wb`
-  - 追加写入 `a/ab`
+- 覆盖写入 `w/wb`
+- 追加写入 `a/ab`
 
-- **基本示例**
-
-  ```python
-  data = "你好，长春！"
-  f = open(r"demo.txt", "w"或"a", encoding = "utf-8")
-  f.write(data)
-  f.close()
-  ```
+```python
+data = "你好，长春！"
+f = open(r"demo.txt", "w", encoding = "utf-8")
+f.write(data)
+f.close()
+```
 
 ## `with open()` 语句
 
-- 使用 `with open()` 语句简化读写操作，且不必关闭
+使用 `with open()` 语句简化读写操作，且不必关闭。
 
-  ```python
-  # 读
-  with open(r"demo.txt", "r", encoding="utf-8") as f:
-      data = f.read()
-  
-  # 写
-  with open(r"demo.txt", "a", encoding="utf-8") as f:
-      f.write("Hello world!")
-  ```
+```python
+# 读
+with open(r"demo.txt", "r", encoding="utf-8") as f:
+    data = f.read()
+
+# 写
+with open(r"demo.txt", "a", encoding="utf-8") as f:
+    f.write("Hello world!")
+```
 
 ## 文件处理
 
 ### 批量写入
 
-- 批量写入示例
+```python
+dict_a = {"zhangsan": 111, "lisi": 222, "wangwu": 333}
+lines_to_write = []
 
-  ```python
-  dict_a = {"zhangsan": 111, "lisi": 222, "wangwu": 333}
-  for user, pwd in dict_a.items():
-      with open(r"demo.txt", "a", encoding="utf-8") as f:
-          line = "{}-{}\n".format(user, pwd)
-          f.write(line)
-  ```
+# 1. 在内存中构建好所有行
+for user, pwd in dict_a.items():
+    line = f"{user}-{pwd}\n"
+    lines_to_write.append(line)
+
+# 2. 一次性写入文件
+with open(r"demo.txt", "a", encoding="utf-8") as f:
+    f.writelines(lines_to_write)
+```
 
 ### 复制粘贴
 
-- 复制粘贴示例
-
-  ```python
-  with open(r"cat.jpg", "rb") as file1, open(r"cat-2.jpg", "wb") as file2:  # 用逗号连接，同时执行两次读写
-      data = file1.read()
-      file2.write(data)
-  ```
+```python
+with open(r"cat.jpg", "rb") as file1, open(r"cat-2.jpg", "wb") as file2:  # 用逗号连接，同时执行两次读写
+    data = file1.read()
+    file2.write(data)
+```
 
 ### 处理 TXT 文件
 
-- 要求：得到一个 TXT 文件，把文件名和网址作为键值对放入一个字典中。
+要求：得到一个 TXT 文件，把文件名和网址作为键值对放入一个字典中。
 
-  ```
-  # file.txt
-  # 开头多个换行
-  123.jpg,汽车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+```
+# file.txt
+# 开头多个换行
+123.jpg,汽车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
 
-  456.jpg,卡车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+456.jpg,卡车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
 
-  789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
-  # 结尾多个换行
-  ```
+789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+# 结尾多个换行
+```
 
-  ```python
-  with open(r"file.txt", "r", encoding="utf-8") as f:
-      # 获取到去除首尾空白行的文件内容
-      data = f.read().strip()
+```python
+with open(r"file.txt", "r", encoding="utf-8") as f:
+    # 获取到去除首尾空白行的文件内容
+    data = f.read().strip()
 
-  # 根据"\n"切割，获取到一个列表，文件每行内容为列表的一个元素
-  lst = data.split("\n")
-  dict_a = {}
-  for line in lst:
-      # 去除中间空白行
-      if not line:
-          continue
-      # 根据","切割原列表的元素，切割之后的部分组成一个新列表，每个信息为新列表的一个元素
-      list_new = line.split(",")  # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
-      # 向字典添加键值对
-      dict_a[list_new[0]] = list_new[2]
-  print(dict_a)
-  ```
+# 根据"\n"切割，获取到一个列表，文件每行内容为列表的一个元素
+lst = data.split("\n")
+dict_a = {}
+for line in lst:
+    # 去除中间空白行
+    if not line:
+        continue
+    # 根据","切割原列表的元素，切割之后的部分组成一个新列表，每个信息为新列表的一个元素
+    list_new = line.split(",")  # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
+    # 向字典添加键值对
+    dict_a[list_new[0]] = list_new[2]
+print(dict_a)
+```
 
-- 要求：得到一个 TXT 格式的字幕文件，只提取字幕部分
+要求：得到一个 TXT 格式的字幕文件，只提取字幕部分。
 
-  ```txt
-  Dialogue: 0,0:00:33.27,0:00:34.96,Default,NTP,0,0,0,,即使哥伦布在海上迷失\N{\rEng}So, even Columbus got lost,
-  Dialogue: 0,0:00:34.96,0:00:36.68,Default,NTP,0,0,0,,没成为首位发现美洲大陆的人\N{\rEng}and wasn't the first who discovered America,
-  # 删除“}”之前多余内容，变成如下
-  So, even Columbus got lost,
-  and wasn't the first who discovered America,
-  ```
+```txt
+Dialogue: 0,0:00:33.27,0:00:34.96,Default,NTP,0,0,0,,即使哥伦布在海上迷失\N{\rEng}So, even Columbus got lost,
+Dialogue: 0,0:00:34.96,0:00:36.68,Default,NTP,0,0,0,,没成为首位发现美洲大陆的人\N{\rEng}and wasn't the first who discovered America,
+# 删除“}”之前多余内容，变成如下
+So, even Columbus got lost,
+and wasn't the first who discovered America,
+```
 
-  ```python
-  # 读取文件内容
-  with open(r'hanchi_original.txt', 'r', encoding='utf-8') as file:
-      lines = file.readlines()
-  
-  # 提取“}”后面的内容
-  extracted_lines = [line.split('}', 1)[1].strip() if '}' in line else '' for line in lines]
-  
-  # 写入新文件
-  with open(r'hanchi_new.txt', 'w', encoding='utf-8') as output_file:
-      output_file.write('\n'.join(extracted_lines))
-  ```
+```python
+# 读取文件内容
+with open(r'hanchi_original.txt', 'r', encoding='utf-8') as file:
+    lines = file.readlines()
+
+# 提取“}”后面的内容
+extracted_lines = [line.split('}', 1)[1].strip() if '}' in line else '' for line in lines]
+
+# 写入新文件
+with open(r'hanchi_new.txt', 'w', encoding='utf-8') as output_file:
+    output_file.write('\n'.join(extracted_lines))
+```
 
 ### 下载图片
 
-- **语法**
+**语法：**
 
-  ```python
-  import requests
-  res = requests. get("$URL")  # 发送请求并用res接收数据
-  data = res.content  # content解码
-  # 接下来进行文件读写处理数据
-  ```
+```python
+import requests
+res = requests. get("$URL")  # 发送请求并用res接收数据
+data = res.content  # content解码
+# 接下来进行文件读写处理数据
+```
 
-- **下载图片示例**
+**下载图片示例：**
 
-  ```python
-  import requests
+```python
+import requests
 
-  url = " https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg"
-  data = requests.get(url)
-  image = data.content
+url = " https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg"
+data = requests.get(url)
+image = data.content
 
-  with open("Benz.png", "wb") as f:
-      f.write(image)
-  ```
+with open("Benz.png", "wb") as f:
+    f.write(image)
+```
 
-- **批量下载图片示例**
+**批量下载图片示例：**
 
-  ```
-  # file.txt
-  # 开头多个换行
-  123.jpg,汽车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
-  456.jpg,卡车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
-  789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
-  # 接尾多个换行
-  ```
+```
+# file.txt
+# 开头多个换行
+123.jpg,汽车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+456.jpg,卡车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+789.jpg,轿车,https://club2.autoimg.cn/album/g26/M0A/2C/E9/userphotos/2023/09/03/22/820_ChxkjmT0lFqAcBBbAAvcbidXiqQ277.jpg
+# 接尾多个换行
+```
 
-  ```python
-  import requests
-  
-  # 处理文件，详见处理 txt 文件
-  with open(r"file.txt", "r", encoding="utf-8") as f:
-      data = f.read()
-  data = data.strip()
-  lst = data.split("\n")
-  dict_a = {}
-  for row in lst:
-      list_new = row.split(",")
-      dict_a[list_new[0]] = list_new[2]
-  
-      # 详见下载图片
-      # 批量下载，list_new[2]为之前获取到的 url
-      data = requests.get(list_new[2])
-      image = data.content
-      # list_new[0]为之前获取到的文件名
-      with open(list_new[0], "wb") as f:
-          f.write(image)
-  ```
+```python
+import requests
+
+# 处理文件，详见处理 txt 文件
+with open(r"file.txt", "r", encoding="utf-8") as f:
+    data = f.read()
+data = data.strip()
+lst = data.split("\n")
+dict_a = {}
+for row in lst:
+    list_new = row.split(",")
+    dict_a[list_new[0]] = list_new[2]
+
+    # 详见下载图片
+    # 批量下载，list_new[2]为之前获取到的 url
+    data = requests.get(list_new[2])
+    image = data.content
+    # list_new[0]为之前获取到的文件名
+    with open(list_new[0], "wb") as f:
+        f.write(image)
+```
 
 # 函数
 
@@ -2360,60 +2349,56 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### `def` 语句
 
-- **语法**
+```python
+def 函数名(形参列表):
+    函数体
+    return 返回值
+```
 
-  ```python
-  def 函数名(形参列表):
-      函数体
-      return 返回值
-  ```
+```python
+def get_sum(a, b):
+    result = a + b
+    return result
 
-  ```python
-  def get_sum(a, b):
-      result = a + b
-      return result
-  
-  res = get_sum(1, 1)
-  print(res)  # 2
-  print(type(get_sum))  # <class 'function'>
-  ```
+res = get_sum(1, 1)
+print(res)  # 2
+print(type(get_sum))  # <class 'function'>
+```
 
 ### 匿名函数
 
-- **语法**：`函数名 = lambda 形参列表: 返回值`
+**语法**：`函数名 = lambda 形参列表: 返回值`
 
-  ```python
-  get_sum = lambda x, y: x + y
-  
-  res = get_sum(1, 1)
-  print(res)  # 2
-  print(type(get_sum))  # <class 'function'>
-  ```
+```python
+get_sum = lambda x, y: x + y
+
+res = get_sum(1, 1)
+print(res)  # 2
+print(type(get_sum))  # <class 'function'>
+```
 
 ### `__init__` 方式
 
-- **语法**
+```python
+class 类名:
+    def __init__(self, 形参列表):
+        self.形参列表 = 形参列表
 
-  ```python
-  class 类名:
-      def __init__(self, 形参列表):
-          self.形参列表 = 形参列表
-  
-  对象名 = 类名(实参列表)
-  print(对象名.形参)
-  ```
+对象名 = 类名(实参列表)
+print(对象名.形参)
+```
 
-  ```python
-  class Person:
-      def __init__(self, name, age):
-          self.name = name
-          self.age = age
-  
-  # 创建对象时，构造函数会被调用
-  person = Person("Alice", 25)
-  print(person.name)  # 输出：Alice
-  print(person.age)   # 输出：25
-  ```
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+# 创建对象时，构造函数会被调用
+person = Person("Alice", 25)
+print(person.name)  # 输出：Alice
+print(person.age)   # 输出：25
+```
 
 ## Python 函数说明
 
@@ -3082,7 +3067,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   
   # 写入文件
   with open("db.txt", 'a', encoding = 'utf-8') as f:
-      line = "{}|{}\n".format(user, pwd_md5)
+      line = f"{user}-{pwd_md5}\n"
       f.write(line)
   ```
 
@@ -3748,8 +3733,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   
   # 5.文件处理
   for user in user_list:
-      line = "{}, {}, {}\n".format(
-          user['username'], user['password'], user['mobile'])
+      line = f"{user['username']}, {user['password']}, {user['mobile']}\n"
       with open('users.txt', 'a', encoding='utf-8') as f:
           f.write(line)
   print("导出数据成功！")

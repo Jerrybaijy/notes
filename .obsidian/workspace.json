@@ -50,20 +50,6 @@
             }
           },
           {
-            "id": "f909c545e3fda39d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "script.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "script"
-            }
-          },
-          {
             "id": "d71de04bd5a46c42",
             "type": "leaf",
             "state": {
@@ -299,9 +285,10 @@
   },
   "active": "700469aac43a78c5",
   "lastOpenFiles": [
+    "git.md",
+    "script.md",
     "langchain.md",
     "python.md",
-    "script.md",
     "it-basics.md",
     "windows.md",
     "git-push.sh",
@@ -316,7 +303,6 @@
     "docker.md",
     "assets/image-20251106230113201.png",
     "assets/image-20251106224646037.png",
-    "git.md",
     "flask.md",
     "mermaid.md",
     "anaconda.md",
