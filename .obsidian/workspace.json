@@ -55,12 +55,54 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git.md",
+                "file": "地域史.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "git"
+              "title": "地域史"
+            }
+          },
+          {
+            "id": "a6de2d1457d935c8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "朝鲜半岛.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "朝鲜半岛"
+            }
+          },
+          {
+            "id": "469cd6141dfebb34",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "世界史.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "世界史"
+            }
+          },
+          {
+            "id": "9f997544b10fb724",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中国史主线.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "中国史主线"
             }
           },
           {
@@ -134,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -166,7 +208,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:scri",
+                "query": "file:typo",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -187,8 +229,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -256,13 +297,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python.md",
+                "file": "中国史主线.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "python 的大纲"
+              "title": "中国史主线 的大纲"
             }
           }
         ],
@@ -283,8 +324,14 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "700469aac43a78c5",
+  "active": "9f997544b10fb724",
   "lastOpenFiles": [
+    "朝鲜半岛.md",
+    "地域史.md",
+    "software.md",
+    "html.md",
+    "中国史主线.md",
+    "世界史.md",
     "git.md",
     "script.md",
     "langchain.md",
@@ -306,7 +353,6 @@
     "flask.md",
     "mermaid.md",
     "anaconda.md",
-    "html.md",
     "0000标题实验.md",
     "jupyter.md",
     "css.md",
@@ -316,11 +362,6 @@
     "pinecone.md",
     "ai-agent.md",
     "cli.md",
-    "software.md",
-    "salesforce.md",
-    "sql.md",
-    "code-general.md",
-    "obsidian.md",
     "其它格式未转换/obsidian-themes/user-light-color.css",
     "其它格式未转换/obsidian-themes/user-dark-color.css",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",
