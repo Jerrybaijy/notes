@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "python.md",
+                "file": "software.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "python"
+              "title": "software"
             }
           },
           {
@@ -176,7 +176,7 @@
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -208,7 +208,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:typo",
+                "query": "file:java",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -229,7 +229,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -285,7 +286,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": ""
+                "searchQuery": "it"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -297,13 +298,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "中国史主线.md",
+                "file": "langchain.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "中国史主线 的大纲"
+              "title": "langchain 的大纲"
             }
           }
         ],
@@ -324,20 +325,34 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "9f997544b10fb724",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "朝鲜半岛.md",
-    "地域史.md",
+    "web.md",
     "software.md",
-    "html.md",
-    "中国史主线.md",
-    "世界史.md",
-    "git.md",
+    "vmware-workstation.md",
+    "trailhead-sample-beginner.md",
+    "sql.md",
+    "solidity.md",
+    "shell.md",
     "script.md",
-    "langchain.md",
+    "salesforce.md",
+    "react.md",
     "python.md",
+    "projects.md",
+    "prettier.md",
+    "pinecone.md",
+    "pine-script.md",
+    "mermaid.md",
+    "markdown.md",
+    "lwc.md",
+    "langchain.md",
+    "jquery.md",
+    "Jinja2.md",
+    "java.md",
+    "javascript.md",
     "it-basics.md",
-    "windows.md",
+    "git.md",
+    "frontend.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
@@ -345,23 +360,9 @@
     "其它格式未转换/scripts/python-env",
     "其它格式未转换/scripts",
     "其它格式未转换/新建文件夹",
-    "shell.md",
     "assets/image-20251107191551704.png",
-    "docker.md",
     "assets/image-20251106230113201.png",
     "assets/image-20251106224646037.png",
-    "flask.md",
-    "mermaid.md",
-    "anaconda.md",
-    "0000标题实验.md",
-    "jupyter.md",
-    "css.md",
-    "0000.md",
-    "typora.md",
-    "Jinja2.md",
-    "pinecone.md",
-    "ai-agent.md",
-    "cli.md",
     "其它格式未转换/obsidian-themes/user-light-color.css",
     "其它格式未转换/obsidian-themes/user-dark-color.css",
     "其它格式未转换/vs-code-json/vs-code-md-style.css",

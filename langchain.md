@@ -28,7 +28,7 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
 
 ## 基本实现
 
-- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境) 并激活。
+- 在项目根目录创建 [Python 虚拟环境](python.md#虚拟环境)并激活。
 
 - 安装必要库
 
@@ -260,7 +260,7 @@ while True:
 
 ## 设置 API
 
-LLM 的 API，此处使用 [免费的 Google AI Studio 的 API](https://aistudio.google.com/api-keys)，有两种设置方法：
+LLM 的 API，此处使用[免费的 Google AI Studio 的 API](https://aistudio.google.com/api-keys)，有两种设置方法：
 
 - 在 `.env` 文件中设置
 - 在本地当前环境的终端中设置
