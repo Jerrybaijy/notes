@@ -208,7 +208,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:java",
+                "query": "file:projec",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,

@@ -532,12 +532,12 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
     podLabels: {}
     podSecurityContext: {}
     securityContext: {}
-  
+    
     service:
       type: LoadBalancer
       port: 80
       targetPort: 8080
-  
+    
     ingress:
       enabled: false
       className: ""
@@ -3472,21 +3472,21 @@ async function sendMessage() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>登录</title>
       </head>
-  
+    
       <body>
         <h1>登录页面</h1>
-  
+    
         <!-- 登录表单 -->
         <form action="#" method="POST">
           <label for="user">用户名:</label>
           <input type="text" id="user" name="user" required /><br /><br />
-  
+    
           <label for="pwd">密码:</label>
           <input type="password" id="pwd" name="pwd" required /><br /><br />
-  
+    
           <button type="submit">登录</button>
         </form>
-  
+    
         <a href="/">返回首页</a>
       </body>
     </html>
@@ -3509,7 +3509,7 @@ async function sendMessage() {
 
 - **来源**：[YouTube 博主 Arjun Full Stack web application using Spring Boot and React | REST API | MySQL | React Hooks](https://www.youtube.com/watch?v=O_XL9oQ1_To)
 - **项目概述**：这是一个全栈 Web 应用项目，主要功能是网页端与数据库的数据交互。
-- **前端**：使用 Java Script 的 React 框架搭建
+- **前端**：使用 JavaScript 的 React 框架搭建
 - **后端**：使用 Java 的 Spring Boot 框架搭建
 - **数据库**：使用 XAMPP 集成的 MySQL
 - **代码存储**：前后端和数据库以三个分项目形式分别存储在托管平台
