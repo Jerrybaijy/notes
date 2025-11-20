@@ -35,9 +35,9 @@ tags:
 
 #### [Labels](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/common-labels/)
 
-# [Control Plane](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#control-plane-components)
+# Control Plane
 
-Control Plane is one of the cluster's basic components, and make global decisions about the cluster.
+[**Control Plane**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#control-plane-components) is one of the cluster's basic components, and make global decisions about the cluster.
 
 # Cluster
 
@@ -45,7 +45,7 @@ Control Plane is one of the cluster's basic components, and make global decision
 
 - A Kubernetes cluster consists of two types of resources:
 
-  - **Control Plane**: The Control Plane is responsible for managing the cluster
+  - **Control Plane**: The Control Plane is responsible for managing the cluster.
   - **Node**: A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster.
 
 - [All the required components in a complete and working cluster.](https://kubernetes.io/zh-cn/docs/concepts/overview/components/)
@@ -85,7 +85,7 @@ Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控�
 - **基础命令**
 
   ```bash
-  # 查看deployment
+  # 查看 deployment
   kubectl get deployment
   # 手动创建 deployment
   kubectl create deployment DEPLOYMENT_NAME --image=IMAGE
@@ -184,9 +184,9 @@ Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控�
         volumes:
   ```
 
-# [Kubectl](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
+# Kubectl
 
-kubectl 命令行工具用于与集群交互
+[**Kubectl**](https://kubernetes.io/zh-cn/docs/reference/kubectl/) 命令行工具用于与集群交互。
 
 ## Install
 
@@ -208,9 +208,9 @@ kubectl 命令行工具用于与集群交互
   - `--classic` 用于允许 kubectl 访问系统上的文件系统。
   - `--client` 用于告诉 kubectl 仅显示客户端版本信息，而不连接到 Kubernetes 集群来获取服务器版本信息。
 
-## [Commands](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
+## Commands
 
-- Commands
+- [Commands](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
 
   ```bash
   # 列出资源
@@ -229,11 +229,11 @@ kubectl 命令行工具用于与集群交互
 
   - `-n $NAMESPACE`：指定命名空间
 
-# [Minikube](https://minikube.sigs.k8s.io/docs/)
+# Minikube
 
-Minikube 用于创建本地集群，供学习使用，不能用于生产环境。
+[**Minikube**](https://minikube.sigs.k8s.io/docs/) 用于创建本地集群，供学习使用，不能用于生产环境。
 
-- **Install**
+- [**Install**](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
 
   ```bash
   curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
@@ -560,10 +560,10 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   ```bash
   # 查看 helm 版本
   helm version
-
+  
   # 查看 chart 配置值（values.yaml 文件中的值）
   helm show values .
-
+  
   # 重置 index
   helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
   ```
@@ -629,17 +629,17 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
 
   ```bash
   # UI 界面创建 Git 仓库，clone 至本地，进入 repo 目录
-
+  
   helm create argocd-helm-chart
   helm package argocd-helm-chart
   helm repo index .
-
+  
   # Git 推送，GitHub 设置 Pages - Branch（一定不要提前设置）
-
+  
   helm repo index . --url https://jerrybaijy.github.io/argocd-helm/
-
+  
   # Git 推送
-
+  
   # 1.以下是本地使用远程 Helm Charts
   helm repo add argocd-helm https://jerrybaijy.github.io/argocd-helm/
   kubectl create namespace argocd-helm
@@ -647,7 +647,7 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   kubectl get pod -n argocd-helm
   kubectl get svc -n argocd-helm
   kubectl delete namespace argocd-helm
-
+  
   # 2.以下是 Argo CD 使用远程 Helm Charts
   kubectl apply -f application.yaml
   kubectl get namespace
@@ -714,16 +714,16 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   ```yaml
   # 副本数量
   replicaCount: 2
-
+  
   image:
     repository: jerrybaijy/jerry-image
     tag: "v1.0"
     pullPolicy: IfNotPresent
-
+  
   imagePullSecrets: []
   nameOverride: ""
   fullnameOverride: ""
-
+  
   serviceAccount:
     # Specifies whether a service account should be created
     create: true
@@ -734,14 +734,14 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
     # The name of the service account to use.
     # If not set and create is true, a name is generated using the fullname template
     name: ""
-
+  
   podAnnotations: {}
   podLabels: {}
-
+  
   podSecurityContext:
     {}
     # fsGroup: 2000
-
+  
   securityContext:
     {}
     # capabilities:
@@ -750,11 +750,11 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
     # readOnlyRootFilesystem: true
     # runAsNonRoot: true
     # runAsUser: 1000
-
+  
   service:
     type: ClusterIP
     port: 80
-
+  
   ingress:
     enabled: false
     className: ""
@@ -771,7 +771,7 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
     #  - secretName: chart-example-tls
     #    hosts:
     #      - chart-example.local
-
+  
   resources:
     {}
     # We usually recommend not to specify default resources and to leave this as a conscious
@@ -784,7 +784,7 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
     # requests:
     #   cpu: 100m
     #   memory: 128Mi
-
+  
   livenessProbe:
     httpGet:
       path: /
@@ -793,31 +793,31 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
     httpGet:
       path: /
       port: http
-
+  
   autoscaling:
     enabled: false
     minReplicas: 1
     maxReplicas: 100
     targetCPUUtilizationPercentage: 80
     # targetMemoryUtilizationPercentage: 80
-
+  
   # Additional volumes on the output Deployment definition.
   volumes: []
   # - name: foo
   #   secret:
   #     secretName: mysecret
   #     optional: false
-
+  
   # Additional volumeMounts on the output Deployment definition.
   volumeMounts: []
   # - name: foo
   #   mountPath: "/etc/foo"
   #   readOnly: true
-
+  
   nodeSelector: {}
-
+  
   tolerations: []
-
+  
   affinity: {}
   ```
 

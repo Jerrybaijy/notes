@@ -8,175 +8,91 @@
         "type": "tabs",
         "children": [
           {
-            "id": "0f6d7b9d90840466",
+            "id": "1d0cc1969c4b8d70",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "obsidian.md",
+                "file": "python.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "obsidian"
+              "title": "python"
             }
           },
           {
-            "id": "bc85150cc7ad66d2",
+            "id": "857c0e897c8b3694",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "it-basics.md",
+                "file": "git.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "it-basics"
+              "title": "git"
             }
           },
           {
-            "id": "700469aac43a78c5",
+            "id": "bfec6275199d8567",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software.md",
+                "file": "projects.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "software"
+              "title": "projects"
             }
           },
           {
-            "id": "d71de04bd5a46c42",
+            "id": "56968e4fc4f01f72",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "地域史.md",
+                "file": "java.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "地域史"
+              "title": "java"
             }
           },
           {
-            "id": "a6de2d1457d935c8",
+            "id": "eb7e8b972cb81ac7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "朝鲜半岛.md",
+                "file": "mermaid.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "朝鲜半岛"
+              "title": "mermaid"
             }
           },
           {
-            "id": "469cd6141dfebb34",
+            "id": "7a362dff5ebb68a4",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "世界史.md",
+                "file": "kubernetes.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "世界史"
-            }
-          },
-          {
-            "id": "9f997544b10fb724",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国史主线.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "中国史主线"
-            }
-          },
-          {
-            "id": "e5e0177dcf855652",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "langchain.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "langchain"
-            }
-          },
-          {
-            "id": "8c640f3356f99cd0",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "flask.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "flask"
-            }
-          },
-          {
-            "id": "f223ccd4c54a9526",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "software.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "software"
-            }
-          },
-          {
-            "id": "9c4a129a85da927c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "html.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "html"
-            }
-          },
-          {
-            "id": "ad90560223d311cc",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "docker.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "docker"
+              "title": "kubernetes"
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -208,7 +124,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:projec",
+                "query": "boots",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -286,7 +202,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "it"
+                "searchQuery": "pro"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -298,13 +214,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "langchain.md",
+                "file": "projects.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "langchain 的大纲"
+              "title": "projects 的大纲"
             }
           }
         ],
@@ -325,10 +241,24 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "bfec6275199d8567",
   "lastOpenFiles": [
-    "web.md",
+    "kubernetes.md",
+    "bootstrap.md",
+    "mermaid.md",
+    "java.md",
+    "projects.md",
+    "vs-code.md",
+    "ai-agent.md",
+    "python.md",
+    "git.md",
     "software.md",
+    "medical-chatbot-full-stack.md",
+    "assets/image-20251029210729119.png",
+    "web-projects.md",
+    "docker.md",
+    "langchain.md",
+    "web.md",
     "vmware-workstation.md",
     "trailhead-sample-beginner.md",
     "sql.md",
@@ -337,22 +267,9 @@
     "script.md",
     "salesforce.md",
     "react.md",
-    "python.md",
-    "projects.md",
     "prettier.md",
     "pinecone.md",
     "pine-script.md",
-    "mermaid.md",
-    "markdown.md",
-    "lwc.md",
-    "langchain.md",
-    "jquery.md",
-    "Jinja2.md",
-    "java.md",
-    "javascript.md",
-    "it-basics.md",
-    "git.md",
-    "frontend.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
@@ -372,7 +289,6 @@
     "assets/image-20251018172418759.png",
     "assets/image-20251018172317503.png",
     "assets/image-20251018172247616.png",
-    "assets/image-20251018172218622.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
