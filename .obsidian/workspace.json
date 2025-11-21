@@ -22,6 +22,34 @@
             }
           },
           {
+            "id": "71685f1d7eae5e40",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "node-js.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "node-js"
+            }
+          },
+          {
+            "id": "1dfeda29a6f5107c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "flask.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "flask"
+            }
+          },
+          {
             "id": "857c0e897c8b3694",
             "type": "leaf",
             "state": {
@@ -36,7 +64,7 @@
             }
           },
           {
-            "id": "bfec6275199d8567",
+            "id": "3293d19678225992",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,49 +78,21 @@
             }
           },
           {
-            "id": "56968e4fc4f01f72",
+            "id": "5c2ed3976493a985",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "java.md",
+                "file": "software.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "java"
-            }
-          },
-          {
-            "id": "eb7e8b972cb81ac7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "mermaid.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "mermaid"
-            }
-          },
-          {
-            "id": "7a362dff5ebb68a4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "kubernetes.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "kubernetes"
+              "title": "software"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -124,7 +124,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "boots",
+                "query": "mysql",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -166,7 +166,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "IT/code-language/markdown/markdown.md",
+                "file": "software.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -176,7 +176,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "markdown 的反向链接列表"
+              "title": "software 的反向链接列表"
             }
           },
           {
@@ -214,13 +214,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects.md",
+                "file": "software.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "projects 的大纲"
+              "title": "software 的大纲"
             }
           }
         ],
@@ -241,21 +241,28 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "bfec6275199d8567",
+  "active": "5c2ed3976493a985",
   "lastOpenFiles": [
+    "projects.md",
+    "todo-flask-mysql-react-fullstack.md",
+    "tasks-flask-mysql-react-fullstack.md",
+    "git.md",
+    "todo.md",
+    "新建 Markdown File.md",
+    "flask.md",
+    "node-js.md",
+    "python.md",
+    "javascript.md",
+    "software.md",
+    "web-projects.md",
     "kubernetes.md",
     "bootstrap.md",
     "mermaid.md",
     "java.md",
-    "projects.md",
     "vs-code.md",
     "ai-agent.md",
-    "python.md",
-    "git.md",
-    "software.md",
     "medical-chatbot-full-stack.md",
     "assets/image-20251029210729119.png",
-    "web-projects.md",
     "docker.md",
     "langchain.md",
     "web.md",
@@ -263,13 +270,6 @@
     "trailhead-sample-beginner.md",
     "sql.md",
     "solidity.md",
-    "shell.md",
-    "script.md",
-    "salesforce.md",
-    "react.md",
-    "prettier.md",
-    "pinecone.md",
-    "pine-script.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",

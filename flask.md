@@ -12,7 +12,7 @@ tags:
 
 # Flask
 
-**Flask** 是一个轻量级的 Python Web 框架，适用于构建小型到中型规模的 Web 应用程序和 API。
+[**Flask**](https://flask.palletsprojects.com/zh-cn/stable/) 是一个轻量级的 WSGI（Web Server Gateway Interface）Web 应用程序框架，适用于构建小型到中型规模的 Web 应用程序和 API。
 
 **Flask 核心功能**：
 
