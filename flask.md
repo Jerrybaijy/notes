@@ -529,6 +529,102 @@ if __name__ == '__main__':
   3. __init__.py:   注册到应用   (app.register_blueprint(main))
   ```
 
+# 数据库
+
+在 Flask 框架中，使用 SQLAlchemy 交互关系型数据库。以 MySQL 为例：
+
+```python
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import exc
+
+app = Flask(__name__)
+CORS(app) 
+
+# 1. 连接 MySQL 数据库
+# 格式: mysql+pymysql://<user>:<password>@<host>:<port>/<db_name>
+app.config['SQLALCHEMY_DATABASE_URI'] = \
+    'mysql+pymysql://root:000000@localhost:3306/tasks_db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+# 2. 创建 Flask-SQLAlchemy 实例
+db = SQLAlchemy(app)
+
+# 3. 定义数据库模型
+class Task(db.Model):
+    # table 名称
+    __tablename__ = 'tasks_tb'
+    
+    # table 字段
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    done = db.Column(db.Boolean, default=False)
+
+    def to_dict(self):
+        # 转换为字典，方便 JSON 序列化
+        return {
+            'id': self.id,
+            'title': self.title,
+            'done': self.done
+        }
+
+# --------- 4. 按需定义 API 路由，增删改查 -------
+
+# 获取所有任务 (GET /api/tasks)
+@app.route('/api/tasks', methods=['GET'])
+def get_tasks():
+    tasks = Task.query.all()
+    # 使用列表推导式将所有 Task 对象转换为字典列表
+    return jsonify([task.to_dict() for task in tasks])
+
+# 创建新任务 (POST /api/tasks)
+@app.route('/api/tasks', methods=['POST'])
+def add_task():
+    if not request.json or 'title' not in request.json:
+        return jsonify({'message': 'Missing title'}), 400
+    
+    new_task = Task(title=request.json['title'])
+    db.session.add(new_task)
+    db.session.commit()
+    return jsonify(new_task.to_dict()), 201 # 201 Created
+
+# 更新任务状态 (PUT /api/tasks/<id>)
+@app.route('/api/tasks/<int:task_id>', methods=['PUT'])
+def update_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    
+    if 'title' in request.json:
+        task.title = request.json['title']
+    if 'done' in request.json:
+        task.done = request.json['done']
+    
+    db.session.commit()
+    return jsonify(task.to_dict())
+
+# 删除任务 (DELETE /api/tasks/<id>)
+@app.route('/api/tasks/<int:task_id>', methods=['DELETE'])
+def delete_task(task_id):
+    task = Task.query.get_or_404(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return jsonify({'message': 'Task deleted'}), 204 # 204 No Content
+
+# ----------------------------------------
+
+if __name__ == '__main__':
+    # 5. 初始化数据库，创建 table（如果没有）。
+    try:
+        with app.app_context():
+            db.create_all()
+        print("Database tables created or already exist.")
+    except exc.OperationalError as e:
+        print(f"Error connecting to database. Is the Docker MySQL container running? Error: {e}")
+        # 即使连接失败，应用也可能继续运行，但 API 调用会失败
+    
+    app.run(debug=True)
+```
+
 # 常用扩展
 
 | 扩展名               | 功能             | 描述                                |

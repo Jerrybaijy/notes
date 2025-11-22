@@ -76,23 +76,8 @@
               "icon": "lucide-file",
               "title": "projects"
             }
-          },
-          {
-            "id": "5c2ed3976493a985",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "software.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "software"
-            }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -124,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mysql",
+                "query": "react",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -214,13 +199,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software.md",
+                "file": "python.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software 的大纲"
+              "title": "python 的大纲"
             }
           }
         ],
@@ -241,19 +226,21 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "5c2ed3976493a985",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
+    "flask.md",
+    "python.md",
     "projects.md",
+    "software.md",
+    "navicat.md",
+    "新建 Markdown File.md",
+    "mysql.md",
     "todo-flask-mysql-react-fullstack.md",
     "tasks-flask-mysql-react-fullstack.md",
     "git.md",
     "todo.md",
-    "新建 Markdown File.md",
-    "flask.md",
     "node-js.md",
-    "python.md",
     "javascript.md",
-    "software.md",
     "web-projects.md",
     "kubernetes.md",
     "bootstrap.md",
@@ -268,8 +255,6 @@
     "web.md",
     "vmware-workstation.md",
     "trailhead-sample-beginner.md",
-    "sql.md",
-    "solidity.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",

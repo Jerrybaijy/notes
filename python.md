@@ -3326,6 +3326,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 在 Python 中，可以使用第三方模块 `sqlalchemy` 通过 ORM 与任意关系型数据库（如 MySQL 和 SQLite）进行交互。
 
+在 Flask 框架中，有更高效的方法，详见 Flask 框架。
+
 ### `sqlalchemy` 语法
 
 - **基础语法（以 SQLite 为例）**
@@ -3337,8 +3339,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   from sqlalchemy import Column, String
 
   # 1.创建数据库引擎，连接数据库
-  DATABASE_URL = 'sqlite:///users.db'
-  engine = create_engine('DATABASE_URL', echo=True)
+  DATABASE_URI = 'sqlite:///users.db'
+  engine = create_engine('DATABASE_URI', echo=True)
 
   # 2.创建基类
   Base = declarative_base()
@@ -3382,8 +3384,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   from sqlalchemy.exc import IntegrityError
   
   # 连接数据库
-  DATABASE_URL = 'sqlite:///users.db'
-  engine = create_engine(DATABASE_URL, echo=True)
+  DATABASE_URI = 'sqlite:///users.db'
+  engine = create_engine(DATABASE_URI, echo=True)
   
   # 创建基类
   Base = declarative_base()
@@ -3432,8 +3434,8 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   from argon2 import PasswordHasher
 
   # 创建数据库引擎，连接 SQLite 数据库，如果不存在，则会自动创建
-  DATABASE_URL = 'sqlite:///users.db'
-  engine = create_engine(DATABASE_URL, echo=True)
+  DATABASE_URI = 'sqlite:///users.db'
+  engine = create_engine(DATABASE_URI, echo=True)
 
   # 其余同基础函数模板
   ```
@@ -3447,18 +3449,18 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   from argon2 import PasswordHasher
   
   # 创建数据库引擎，连接 MySQL 数据库
-  DATABASE_URL = 'mysql+pymysql://username:password@localhost:3306/my_database'
-  engine = create_engine(DATABASE_URL, echo=True)
+  DATABASE_URI = 'mysql+pymysql://username:password@localhost:3306/my_database'
+  engine = create_engine(DATABASE_URI, echo=True)
   
   # 其余同基础函数模板
   ```
 
   **在以上代码中**：
 
-  - **`DATABASE_URL`**：连接地址
+  - **`DATABASE_URI`**：连接地址
     - **`mysql`**：数据库的类型
     - **`pymysql`**：数据库驱动，需 pip 安装 `pymysql`。
-  - **`username:password`**：MySQL 数据库登录用户名和密码。
+  - **`username:password`**：替换成 MySQL 数据库登录用户名和密码。
   - **`localhost`**：数据库所在的主机地址（也可以写成`127.0.0.1`），如果要连接远程数据库，需填写对应数据库 IP 地址。
   - **`3306`**：端口号
   - **`my_database`**：数据库名称
