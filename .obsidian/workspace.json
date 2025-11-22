@@ -22,17 +22,31 @@
             }
           },
           {
-            "id": "71685f1d7eae5e40",
+            "id": "6ed9fc964c50a6fd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "node-js.md",
+                "file": "docker.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "node-js"
+              "title": "docker"
+            }
+          },
+          {
+            "id": "d003d831e68e2224",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "java.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "java"
             }
           },
           {
@@ -77,7 +91,8 @@
               "title": "projects"
             }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -109,7 +124,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "react",
+                "query": "docker",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -199,13 +214,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "python.md",
+                "file": "projects.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "python 的大纲"
+              "title": "projects 的大纲"
             }
           }
         ],
@@ -226,35 +241,35 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "3293d19678225992",
   "lastOpenFiles": [
-    "flask.md",
-    "python.md",
+    "docker.md",
     "projects.md",
+    "java.md",
+    "node-js.md",
+    "python.md",
+    "git.md",
+    "react.md",
+    "flask.md",
     "software.md",
     "navicat.md",
     "新建 Markdown File.md",
     "mysql.md",
     "todo-flask-mysql-react-fullstack.md",
     "tasks-flask-mysql-react-fullstack.md",
-    "git.md",
     "todo.md",
-    "node-js.md",
     "javascript.md",
     "web-projects.md",
     "kubernetes.md",
     "bootstrap.md",
     "mermaid.md",
-    "java.md",
     "vs-code.md",
     "ai-agent.md",
     "medical-chatbot-full-stack.md",
     "assets/image-20251029210729119.png",
-    "docker.md",
     "langchain.md",
     "web.md",
     "vmware-workstation.md",
-    "trailhead-sample-beginner.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",

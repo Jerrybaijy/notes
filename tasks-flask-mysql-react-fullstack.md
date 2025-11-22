@@ -15,7 +15,7 @@ tags:
 
 ## 概述
 
-## 后端
+## 后端及数据库
 
 ### 环境和依赖
 
@@ -128,12 +128,12 @@ if __name__ == '__main__':
     app.run(debug=True)
 ```
 
-## 数据库
+### 数据库
 
 **创建容器化 MySQL：**
 
 ```bash
-docker run --name tasks-flask-mysql-react-fullstack \
+docker run --name tasks-flask-mysql-react-db \
 -e MYSQL_ROOT_PASSWORD=000000 \
 -e MYSQL_DATABASE=tasks_db \
 -p 3306:3306 \
@@ -145,6 +145,92 @@ docker run --name tasks-flask-mysql-react-fullstack \
 ```python
 python app.py
 ```
+
+### `Dockerfile`
+
+```dockerfile
+# 使用官方的 Python 瘦身版作为基础镜像
+FROM python:3.10-slim
+
+# 设置工作目录
+WORKDIR /app
+
+# 复制 requirements.txt 并安装依赖
+# 这一步优先执行，可以利用 Docker 缓存
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 复制所有的源代码
+COPY . .
+
+# 暴露 Flask 应用的默认端口
+EXPOSE 5000
+
+# 运行 Gunicorn 或其他生产级 WSGI 服务器是最佳实践，
+# 但为了保持简单性，我们使用您代码中的开发模式启动方式
+# 假设您的主文件是 app.py
+CMD ["python", "app.py"]
+```
+
+### `.gitlab-ci.yml`
+
+```yaml
+variables:
+  # 您的 Docker Hub 用户名
+  DOCKER_USER: $DOCKER_HUB_USERNAME 
+  # 您的 Docker Hub 密码/令牌
+  DOCKER_PASSWORD: $DOCKER_HUB_PASSWORD 
+  # 镜像名称（例如：jerrybaijy/tasks-backend-image）
+  IMAGE_NAME: $DOCKER_IMAGE_NAME 
+  # 使用动态标签：[分支名]-[短提交SHA]，确保版本唯一性
+  IMAGE_TAG: $CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA 
+  # DIND 必要的配置
+  DOCKER_TLS_CERTDIR: ""
+
+stages:
+  - build_and_push
+
+build_backend_image:
+  stage: build_and_push
+  # 沿用您指定的 Docker 镜像版本
+  image: docker:20.10.20
+  services:
+    - docker:20.10.20-dind
+  
+  # 仅在主分支或打 Tag 时运行
+  only:
+    - main
+    - master
+    - tags
+
+  before_script:
+    # 1. 安全登录 Docker Hub（将密码通过标准输入传递）
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USER" --password-stdin
+  
+  script:
+    # 2. 构建 Docker 镜像
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+    
+    # 3. 推送带版本号的镜像
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+    
+    # 4. 额外步骤：如果是在 main/master 分支，推送 :latest 标签
+    - |
+      if [ "$CI_COMMIT_REF_NAME" = "main" ] || [ "$CI_COMMIT_REF_NAME" = "master" ]; then
+        LATEST_TAG=$IMAGE_NAME:latest
+        docker tag $IMAGE_NAME:$IMAGE_TAG $LATEST_TAG
+        echo "Pushing latest tag..."
+        docker push $LATEST_TAG
+      fi
+
+  after_script:
+    # 安全登出
+    - docker logout
+```
+
+### GitLab CI
+
+根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
 
 ## 前端
 
@@ -164,6 +250,8 @@ npm install
 ```
 
 ### `src/App.js`
+
+主组件 `src/App.js`
 
 ```javascript
 import React, { useState, useEffect } from 'react';
@@ -280,7 +368,48 @@ export default App;
 
 ### `src/index.js`
 
+入口文件 `src/index.js`
+
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
+
+reportWebVitals();
+```
+
+**在以上代码中：**
+
+- `<App />`：引入主组件
+
 ### `src/reportWebVitals.js`
+
+性能报告
+
+```javascript
+const reportWebVitals = onPerfEntry => {
+  if (onPerfEntry && onPerfEntry instanceof Function) {
+    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
+      getCLS(onPerfEntry);
+      getFID(onPerfEntry);
+      getFCP(onPerfEntry);
+      getLCP(onPerfEntry);
+      getTTFB(onPerfEntry);
+    });
+  }
+};
+
+export default reportWebVitals;
+```
 
 ### 启动前端
 
@@ -288,5 +417,162 @@ export default App;
 npm run dev
 ```
 
+### `Dockerfile`
 
+```dockerfile
+# === 阶段 1: 构建阶段 (Build Stage) ===
+# 使用 Node.js 镜像来构建 React 应用
+FROM node:20-alpine AS build
 
+# 设置工作目录
+WORKDIR /app
+
+# 复制 package.json 和 package-lock.json
+COPY package*.json ./
+
+# 安装依赖
+RUN npm install
+
+# 复制所有项目文件
+COPY . .
+
+# 执行构建，生成静态文件 (通常是 /build 或 /dist 目录)
+RUN npm run build
+
+# === 阶段 2: 运行阶段 (Run Stage) ===
+# 使用一个轻量级的 Web 服务器镜像，例如 Nginx
+FROM nginx:stable-alpine
+
+# 将构建阶段生成的静态文件复制到 Nginx 的默认静态文件目录
+# 确保 'build' 目录的路径与您的 npm run build 输出的路径一致
+COPY --from=build /app/build /usr/share/nginx/html
+
+# 暴露端口
+EXPOSE 80
+
+# 启动 Nginx
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+### `.gitlab-ci.yml`
+
+```yaml
+# 默认使用 Docker 镜像来执行 CI 任务
+image: docker:latest
+
+# 引入 docker:dind (Docker in Docker) 服务，允许 CI/CD 任务内部执行 Docker 命令
+services:
+  - docker:dind
+
+# 定义阶段
+stages:
+  - build_and_push
+
+# 定义全局变量
+variables:
+  # 确保 Docker 容器环境是干净的
+  DOCKER_TLS_CERTDIR: ""
+  # 定义镜像标签，使用分支名或短的 commit SHA
+  IMAGE_TAG: $CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA 
+  # 完整镜像路径
+  FULL_IMAGE_NAME: $DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:$IMAGE_TAG
+
+# 构建并推送任务
+docker_build_and_push:
+  stage: build_and_push
+  
+  # 仅在 master/main 分支或打 tag 时运行此任务
+  only:
+    - main
+    - master
+    - tags
+
+  before_script:
+    # 1. 登录 Docker Hub
+    # 使用之前设置的 GitLab CI/CD 变量进行认证
+    - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_USERNAME" --password-stdin
+
+  script:
+    # 2. 构建 Docker 镜像
+    # -t 用于给镜像打标签
+    - docker build -t $FULL_IMAGE_NAME .
+    
+    # 3. 推送带版本号的镜像到 Docker Hub
+    - docker push $FULL_IMAGE_NAME
+    
+    # --- 额外的步骤: 推送 latest 标签 (仅在 master/main 分支时) ---
+    - | # 使用多行脚本语法
+      if [ "$CI_COMMIT_REF_NAME" = "main" ] || [ "$CI_COMMIT_REF_NAME" = "master" ]; then
+        LATEST_TAG=$DOCKER_HUB_USERNAME/$DOCKER_IMAGE_NAME:latest
+        docker tag $FULL_IMAGE_NAME $LATEST_TAG
+        echo "Pushing $LATEST_TAG tag..."
+        docker push $LATEST_TAG
+      fi
+
+  # 清理步骤：确保无论脚本是否成功都退出 Docker Hub 登录
+  after_script:
+    - docker logout
+```
+
+### GitLab CI
+
+根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
+
+## 前后端通信测试
+
+- 数据库：容器化 MySQL
+
+- 后端：http://127.0.0.1:5000
+
+  ```bash
+  python app.py
+  ```
+
+- 前端：http://localhost:3000
+
+  ```bash
+  npm start
+  ```
+
+## 容器化运行
+
+### 加入同一网络
+
+```bash
+docker network create tasks-flask-mysql-react-fullstack
+```
+
+### 数据库
+
+```bash
+docker run --name tasks-flask-mysql-react-db \
+-e MYSQL_ROOT_PASSWORD=000000 \
+-e MYSQL_DATABASE=tasks_db \
+--network tasks-flask-mysql-react-fullstack \
+-p 3306:3306 \
+-d mysql:8.0
+```
+
+### 后端
+
+```bash
+docker run --name tasks-flask-mysql-react-backend \
+  --network tasks-flask-mysql-react-fullstack \
+  -p 5000:5000 \
+  -e DATABASE_URI="mysql+pymysql://root:000000@tasks-flask-mysql-react-db:3306/tasks_db" \
+  -d jerrybaijy/tasks-react-flask-mysql-backend:latest
+```
+
+### 前端
+
+```bash
+docker run --name tasks-flask-mysql-react-frontend \
+  --network tasks-flask-mysql-react-fullstack \
+  -p 3000:80 \
+  -e API_HOST="tasks-flask-mysql-react-backend" \
+  -d jerrybaijy/tasks-react-flask-mysql-frontend:latest
+```
+
+### 访问
+
+前端：http://localhost:3000
