@@ -14,7 +14,7 @@ tags:
 
 # React
 
-用于构建用户界面的 JavaScript 库，由 Facebook 开发。
+[**React**](https://zh-hans.react.dev/) 是一个用于构建用户界面的 JavaScript 库，由 Facebook 开发。
 
 ## 基本流程
 
@@ -138,14 +138,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   import Appbar from "./components/Appbar";
   // 引入 Student.js 文件
   import Student from "./components/Student";
-
+  
   // APP 主函数
   function App() {
     return (
       <div className="App">
         {/* 调用 Appbar.js 中的 Appbar 函数 */}
         <Appbar />
-
+  
         {/* 调用 Student.js 中的 Student 函数 */}
         <Student />
       </div>
@@ -171,14 +171,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   } from "react-router-dom";
   import Login from "./components/Login";
   import Home from "./components/Home";
-
+  
   const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
     const handleLoginSuccess = () => {
       setIsLoggedIn(true);
     };
-
+  
     return (
       <Router>
         <Routes>
@@ -201,7 +201,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
       </Router>
     );
   };
-
+  
   export default App;
   ```
 
@@ -213,7 +213,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
 
   ```js
   const paperStyle = { padding: "50px 20px", width: 600, margin: "20px auto" };
-
+  
   // POST
   const [name, setName] = React.useState("");
   const [address, setAddress] = React.useState("");
@@ -229,7 +229,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
       console.log("New Student added");
     });
   };
-
+  
   // GET
   const [students, setStudents] = React.useState([]);
   React.useEffect(() => {

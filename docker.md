@@ -304,7 +304,7 @@ INSTRUCTION arguments
 ```
 
 - 指令不区分大小写。但是，为了更容易与参数区分开来，通常将它们大写。
-- 注释：BuildKit 将以 开头的行 `#` 视为注释，除非该行是有效的[解析器指令](https://docs.docker.com/reference/dockerfile/#parser-directives)。
+- 注释：BuildKit 将以 开头的行 `#` 视为注释，除非该行是有效的[解析器指令](https://docs.docker.com/reference/dockerfile/#parser-directives)。
 - 空格：注释和指令前的空格会被忽略，但是，指令参数中的空格不会被忽略。
 
 ## 语法
@@ -408,7 +408,7 @@ WORKDIR /path/to/workdir
     RUN go mod init hello-app
     COPY *.go ./
     RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-  
+    
     FROM gcr.io/distroless/base-debian11
     WORKDIR /
     COPY --from=builder /hello-app /hello-app
@@ -491,3 +491,18 @@ node_modules
 bar
 ```
 
+# Docker Hub
+
+[**Docker Hub**](https://hub.docker.com/) 是全球最大的公共/私有镜像库。
+
+## Access Token
+
+为了安全起见，我们在 CI/CD 中**不要使用你的登录密码**，而是使用 **Access Token**。
+
+1. 登录 https://hub.docker.com/。
+2. 点击右上角头像 > `Account Settings`。
+3. 点击左侧 `Personal access tokens`。
+4. 点击 `Generate access token` 按钮。
+   - **Description**: 随便填，为了方便区分，自己会填写项目名称。
+   - **Access permissions**: 选择 `Read & Write`。
+5. **复制生成的 Token**。注意：这个 Token 只显示一次，一定要复制好！
