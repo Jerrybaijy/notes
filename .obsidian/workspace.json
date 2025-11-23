@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -214,13 +214,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects.md",
+                "file": "git.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "projects 的大纲"
+              "title": "git 的大纲"
             }
           }
         ],
@@ -241,10 +241,10 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "3293d19678225992",
+  "active": "857c0e897c8b3694",
   "lastOpenFiles": [
-    "docker.md",
     "projects.md",
+    "docker.md",
     "java.md",
     "node-js.md",
     "python.md",

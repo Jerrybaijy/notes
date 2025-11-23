@@ -258,36 +258,50 @@ tags:
 - 大致语法同 ignore 语法，详见：code-general.md > 忽略规则
 - `.gitignore` 有一些默认的忽略规则，比如会自动忽略一些与版本控制相关的临时文件和目录，如 `.git` 目录本身
 
-## Template
+## 模板
 
-- .gitignore
+`.gitignore`
 
-  ```tex
-  # Ignore compiled files
-  *.class
-  *.o
-  *.pyc
-  
-  # Ignore build output directories
-  build/
-  dist/
-  bin/
-  
-  # Ignore log files
-  *.log
-  
-  # Ignore IDE and editor-specific files
-  .idea/
-  .vscode/
-  
-  # Ignore dependency directories
-  node_modules/
-  venv/
-  
-  # Ignore configuration files with sensitive information
-  config.ini
-  secrets.json
-  ```
+```
+# Ignore compiled files
+*.class
+*.o
+*.pyc
+
+# Ignore build output directories
+build/
+dist/
+bin/
+
+# Ignore log files
+*.log
+
+# Ignore IDE and editor-specific files
+.idea/
+.vscode/
+
+# Ignore dependency directories
+node_modules/
+venv/
+
+# Ignore configuration files with sensitive information
+config.ini
+secrets.json
+```
+
+## 创建命令
+
+一次性执行以下命令，会自动创建一个 `.gitignore` 文件。
+
+```bash
+echo "venv/" >> .gitignore
+echo "node_modules/" >> .gitignore
+echo ".env" >> .gitignore
+echo "__pycache__/" >> .gitignore
+echo ".pytest_cache/" >> .gitignore
+echo "dist/" >> .gitignore
+echo ".DS_Store" >> .gitignore
+```
 
 # Git LFS
 
@@ -472,7 +486,7 @@ deploy-job:
 
 ## 推送至云服务器并部署
 
->  此部分参考自 [medi-chatbot-full-stack](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13) 项目
+>  此部分参考自 [medi-chatbot-full-stack](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13) 项目
 
 ### 源代码
 
@@ -490,7 +504,7 @@ deploy-job:
 
 #### 创建 Self-hosted Runner
 
-- 远程仓库 > `Settings` > `Actins` > `Runners`
+- 远程仓库 > `Settings` > `Actins` > `Runners`
 - 新建自托管：`New self-hosted runner`
 - 在云服务虚拟机实例中执行 GitHub 推荐的命令，详见具体页面，以连接到 GitHub。
 
