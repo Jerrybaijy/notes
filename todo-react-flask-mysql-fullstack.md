@@ -1,4 +1,4 @@
-# todo-react-flask-mysql-fullstack
+# Todo React Flask MySQL Fullstack
 
 我是一个初学者，你应该详细完整地告诉我开发步骤，比如：.gitlab-ci.yml 里的环境变量，都代表什么，我应该去哪配置这些环境变量，还有，我应该怎么创建项目，如何安装依赖，从头到尾，都给我详细说一下。另外，每个文件都要完整代码，不要有类似其它同理的说法
 
@@ -320,7 +320,7 @@ ENTRYPOINT ["./boot.sh"]
 
 ### 数据库
 
-在容器编排时，会自动创建容器化 MySQL，并在 `本地测试` 时进行初始化。
+在容器编排时，会自动创建容器化 MySQL，并在 `本地测试` 时进行初始化。
 
 ## 前端
 
@@ -634,14 +634,14 @@ networks:
 2. **初始化数据库迁移** (这是第一次运行必须做的)： 现在容器都启动了，但是数据库是空的，也没有迁移记录。我们需要进入后端容器执行初始化。
 
    ```bash
-# 进入后端容器
+   # 进入后端容器
    docker-compose exec backend bash
-   
+
    # 在容器内部执行以下命令
    flask db init
    flask db migrate -m "Initial migration"
    flask db upgrade
-   
+
    # 退出容器
    exit
    ```
@@ -652,7 +652,7 @@ networks:
 
 ## GitLab CI
 
-在 GitLab 配置环境变量：`DOCKER_HUB_USER` 和 `DOCKER_HUB_PASS`
+在 GitLab 配置环境变量：`DOCKER_HUB_USER` 和 `DOCKER_HUB_PASS`
 
 GitLab CI: `todo-react-flask-mysql-fullstack/.gitlab-ci.yml`
 
@@ -707,7 +707,7 @@ build_frontend:
 
     - docker push $IMAGE_PREFIX/todo-react-flask-mysql-frontend:$CI_COMMIT_SHORT_SHA
     - docker push $IMAGE_PREFIX/todo-react-flask-mysql-frontend:latest
-```
+   ```
 
 ## 总结
 

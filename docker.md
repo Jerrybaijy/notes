@@ -8,7 +8,7 @@ tags:
   - dev-ops
 ---
 
-# Docker 基础
+# Docker
 
 Docker 是一个开源的平台，用于开发、交付和运行应用程序。它使用容器技术，通过将应用程序及其依赖项打包到一个容器中，提供了轻量级、可移植和自包含的环境。
 
@@ -172,7 +172,9 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
    - 从本地 image 运行容器
    - 从 DockerHub 拉取 image 运行容器
 
-# [镜像](https://docs.docker.com/reference/cli/docker/image/)
+# Image
+
+[镜像](https://docs.docker.com/reference/cli/docker/image/)
 
 ## 镜像基础
 
@@ -202,7 +204,9 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
   ```
 
-# [容器](https://docs.docker.com/reference/cli/docker/container/)
+# Container
+
+[容器](https://docs.docker.com/reference/cli/docker/container/)
 
 ## 容器基础
 
@@ -255,6 +259,16 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
   ```bash
   docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH
   ```
+
+# Network
+
+```bash
+# 查看所有网络
+docker network ls
+
+# 查看某个网络的详细信息
+docker network inspect $NETWORK_NAME
+```
 
 # 命令选项
 
