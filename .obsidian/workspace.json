@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -180,20 +180,6 @@
             }
           },
           {
-            "id": "b74ba09379dc27a6",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "IT/code-language/markdown/markdown.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "markdown 的出链列表"
-            }
-          },
-          {
             "id": "72b02655792079c5",
             "type": "leaf",
             "state": {
@@ -214,17 +200,17 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "flask.md",
+                "file": "git.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "flask 的大纲"
+              "title": "git 的大纲"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -236,17 +222,18 @@
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": false,
+      "templates:插入模板": true,
       "command-palette:打开命令面板": false,
       "bases:创建新数据库": false
     }
   },
-  "active": "1dfeda29a6f5107c",
+  "active": "857c0e897c8b3694",
   "lastOpenFiles": [
+    "todos-react-flask-mysql-fullstack.md",
+    "flask.md",
     "gitlab.md",
     "新建 Markdown File.md",
     "docker.md",
-    "flask.md",
     "java.md",
     "git.md",
     "react.md",
@@ -269,7 +256,6 @@
     "medical-chatbot-full-stack.md",
     "assets/image-20251029210729119.png",
     "langchain.md",
-    "web.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",

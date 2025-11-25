@@ -178,31 +178,33 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 ## 镜像基础
 
-- **基础命令**
+**基础命令**
 
-  ```bash
-  # 查看镜像
-  docker images
-  # 从 Dockerfile 创建镜像
-  docker build -t $IMAGE_NAME[:$TAG] $PATH
-  # 从容器提交创建镜像
-  docker commit $CONTAINER_NAME $IMAGE_NAME[:$TAG]
-  # 删除镜像
-  docker rmi $IMAGE_NAME[:$TAG]
-  # 删除全部镜像
-  docker rmi -f $(docker images -aq)
-  # 拉取镜像
-  docker pull $REPO_NAME/$IMAGE_NAME:$TAG
-  # 推送镜像
-  docker push $REPO_NAME/$IMAGE_NAME:$TAG
-  ```
+```bash
+# 查看镜像
+docker images
+# 从 Dockerfile 创建镜像
+docker build -t $IMAGE_NAME[:$TAG] $PATH
+# 从容器提交创建镜像
+docker commit $CONTAINER_NAME $IMAGE_NAME[:$TAG]
+# 删除镜像
+docker rmi $IMAGE_NAME[:$TAG]
+# 删除全部镜像
+docker rmi -f $(docker images -aq)
+# 拉取镜像
+docker pull $REPO_NAME/$IMAGE_NAME:$TAG
+# 推送镜像
+docker push $REPO_NAME/$IMAGE_NAME:$TAG
+```
 
-- **标签**
+**标签**
 
-  ```bash
-  # 加标签
-  docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
-  ```
+```bash
+# 加标签
+docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
+```
+
+Docker Hub 的镜像命名规则是 `用户名/仓库名:标签`，如 `jerrybaijy/my-image:latest`。
 
 # Container
 

@@ -37,9 +37,9 @@ GitLab 网页创建 Remote Repo
 
 - 进入**项目设置**页面
 - 左下角 `Settings` > `CI/CD`
-- 选择 `Variables` > `添加变量信息`
+- 选择 `Variables` > `Add variables`
   - 不要选择 `Protect variable` 选项，否则在非 main 分支无法完成 CI。
-  - 注意一定要选择 `Masked variable` 选项，否则在 log 日志时会打印出来。
+  - 添加敏感变量（如密码）注意一定要选择 `Masked variable` 选项，否则在 log 日志时会打印出来。
 
 ## 推送至 Docker Hub
 
@@ -62,7 +62,7 @@ GitLab 网页创建 Remote Repo
 
 - 推送至 Docker Hub 的 `.gitlab-ci.yml` 模板文件：
 
-  >  此 `.gitlab-ci.yml` 模板文件源自于 [Todo React Flask MySQL Fullstack](Todo React Flask MySQL Fullstack.md) 项目
+  >  此 `.gitlab-ci.yml` 模板文件源自于 [Todos React Flask MySQL Fullstack](todos-react-flask-mysql-fullstack.md) 项目
 
   ```yaml
   # 定义变量
@@ -80,8 +80,8 @@ GitLab 网页创建 Remote Repo
     IMAGE_PREFIX: $DOCKER_HUB_USER
     
     # 后端和前端名称
-    BACKEND_NAME: todo-react-flask-mysql-backend
-    FRONTEND_NAME: todo-react-flask-mysql-frontend
+    BACKEND_NAME: todos-react-flask-mysql-backend
+    FRONTEND_NAME: todos-react-flask-mysql-frontend
   
   # 定义阶段
   stages:
@@ -129,7 +129,7 @@ GitLab 网页创建 Remote Repo
 
 - 相关项目
 
-  - Todo React Flask MySQL Fullstack
+  - [Todo React Flask MySQL Fullstack](todos-react-flask-mysql-fullstack.md)
   - GitLab CI Image
 
 

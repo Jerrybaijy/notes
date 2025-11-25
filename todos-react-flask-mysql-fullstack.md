@@ -1,9 +1,5 @@
 # Todo React Flask MySQL Fullstack
 
-我是一个初学者，你应该详细完整地告诉我开发步骤，比如：.gitlab-ci.yml 里的环境变量，都代表什么，我应该去哪配置这些环境变量，还有，我应该怎么创建项目，如何安装依赖，从头到尾，都给我详细说一下。另外，每个文件都要完整代码，不要有类似其它同理的说法
-
-------
-
 ## 准备
 
 ### 准备工作
@@ -20,12 +16,12 @@
 打开你的终端（Terminal 或 PowerShell），执行以下命令：
 
 ```bash
-# 1. 创建总项目文件夹
-mkdir todo-react-flask-mysql-fullstack
-cd todo-react-flask-mysql-fullstack
+# 1. 创建总项目目录
+mkdir todos-react-flask-mysql-fullstack
+cd todos-react-flask-mysql-fullstack
 
 # 2. 初始化 Git
-git init
+git init --initial-branch=main
 
 # 3. 创建 .gitignore 文件
 # 下面是创建该文件的命令，你也可以手动新建一个 .gitignore 文件，填入以下内容
@@ -40,12 +36,12 @@ echo ".DS_Store" >> .gitignore
 
 ### 配置环境变量
 
-配置环境变量：`todo-react-flask-mysql-fullstack/.env`
+配置环境变量：`todos-react-flask-mysql-fullstack/.env`
 
 ```toml
 # MySQL 数据库配置
 MYSQL_ROOT_PASSWORD=123456
-MYSQL_DATABASE=todo_db
+MYSQL_DATABASE=todos_db
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
 
@@ -56,6 +52,10 @@ DB_HOST=db
 FLASK_APP=run.py
 FLASK_ENV=production
 SECRET_KEY=change_this_to_a_very_long_random_string
+
+# 项目名称
+BACKEND_NAME=todos-react-flask-mysql-backend
+FRONTEND_NAME=todos-react-flask-mysql-frontend
 ```
 
 同时，为了让协作者知道需要配什么，创建一个 `.env.example` (不含真实密码)：
@@ -63,7 +63,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 ```toml
 # MySQL 数据库配置
 MYSQL_ROOT_PASSWORD=
-MYSQL_DATABASE=todo_db
+MYSQL_DATABASE=todos_db
 MYSQL_USER=
 MYSQL_PASSWORD=
 
@@ -76,20 +76,24 @@ FLASK_ENV=production
 
 # change_this_to_a_very_long_random_string
 SECRET_KEY=
+
+# 项目名称
+BACKEND_NAME=todos-react-flask-mysql-backend
+FRONTEND_NAME=todos-react-flask-mysql-frontend
 ```
 
 ## 后端
 
 ### 依赖文件
 
-创建后端目录：`todo-react-flask-mysql-fullstack/backend`
+创建后端目录：`todos-react-flask-mysql-fullstack/todos-react-flask-mysql-backend`
 
 ```bash
-cd todo-react-flask-mysql-fullstack
-mkdir backend
+cd todos-react-flask-mysql-fullstack
+mkdir todos-react-flask-mysql-backend
 ```
 
-依赖文件：`backend/requirements.txt`
+依赖文件：`todos-react-flask-mysql-backend/requirements.txt`
 
 ```txt
 flask==3.0.0
@@ -103,7 +107,7 @@ python-dotenv==1.0.0
 
 ### 配置加载器
 
-配置加载器：`backend/config.py`
+配置加载器：`todos-react-flask-mysql-backend/config.py`
 
 ```python
 import os
@@ -131,9 +135,9 @@ class Config:
 
 ### 扩展插件
 
-先创建 `backend/app` 文件夹。
+先创建 `todos-react-flask-mysql-backend/app` 目录。
 
-扩展插件：`backend/app/extensions.py`
+扩展插件：`todos-react-flask-mysql-backend/app/extensions.py`
 
 ```python
 from flask_sqlalchemy import SQLAlchemy
@@ -146,7 +150,7 @@ migrate = Migrate()
 
 ### 数据库模型
 
-数据库模型：`backend/app/models.py`
+数据库模型：`todos-react-flask-mysql-backend/app/models.py`
 
 ```python
 from app.extensions import db
@@ -168,9 +172,9 @@ class Todo(db.Model):
 
 ### 业务路由
 
-先创建 `backend/app/api` 文件夹。 
+先创建 `todos-react-flask-mysql-backend/app/api` 目录。 
 
-业务路由：`backend/app/api/todo.py`
+业务路由：`todos-react-flask-mysql-backend/app/api/todo.py`
 
 ```python
 from flask import Blueprint, jsonify, request
@@ -215,7 +219,7 @@ def delete_todo(id):
 
 ### 蓝图注册
 
-蓝图注册：`backend/app/api/__init__.py`
+蓝图注册：`todos-react-flask-mysql-backend/app/api/__init__.py`
 
 ```python
 from app.api.todo import bp
@@ -223,7 +227,7 @@ from app.api.todo import bp
 
 ### 应用工厂
 
-应用工厂：`backend/app/__init__.py`
+应用工厂：`todos-react-flask-mysql-backend/app/__init__.py`
 
 ```python
 from flask import Flask
@@ -247,7 +251,7 @@ def create_app(config_class=Config):
 
 ### 启动入口
 
-启动入口：`backend/run.py`
+启动入口：`todos-react-flask-mysql-backend/run.py`
 
 ```python
 from app import create_app
@@ -262,7 +266,7 @@ if __name__ == '__main__':
 
 **解释**：这个脚本非常关键。因为 Docker 启动时，MySQL 可能还没准备好。这个脚本会等待数据库迁移完成后再启动 Web 服务。
 
-生产环境启动脚本：`backend/boot.sh`
+生产环境启动脚本：`todos-react-flask-mysql-backend/boot.sh`
 
 ```bash
 #!/bin/sh
@@ -287,7 +291,7 @@ exec gunicorn -b :5000 --access-logfile - --error-logfile - run:app
 
 ### 后端镜像构建
 
-后端镜像构建：`backend/Dockerfile`
+后端镜像构建：`todos-react-flask-mysql-backend/Dockerfile`
 
 ```dockerfile
 FROM python:3.9-slim
@@ -320,7 +324,7 @@ ENTRYPOINT ["./boot.sh"]
 
 ### 数据库
 
-在容器编排时，会自动创建容器化 MySQL，并在 `本地测试` 时进行初始化。
+在容器编排时，会自动创建容器化 MySQL 及 database，并在 `本地测试` 时进行初始化创建 table。
 
 ## 前端
 
@@ -328,18 +332,18 @@ ENTRYPOINT ["./boot.sh"]
 
 ```bash
 # 创建 React 项目
-cd todo-react-flask-mysql-fullstack
-npm create vite@latest frontend
+cd todos-react-flask-mysql-fullstack
+npm create vite@latest todos-react-flask-mysql-frontend
 
 # 安装依赖
-cd frontend
+cd todos-react-flask-mysql-frontend
 npm install
 
 # 启动项目
 npm run dev
 ```
 
-### `frontend/vite.config.js`
+### `todos-react-flask-mysql-frontend/vite.config.js`
 
 配置开发环境代理。
 
@@ -364,7 +368,7 @@ export default defineConfig({
 })
 ```
 
-### `frontend/index.html`
+### `todos-react-flask-mysql-frontend/index.html`
 
 ```html
 <!doctype html>
@@ -381,7 +385,7 @@ export default defineConfig({
 </html>
 ```
 
-### `frontend/src/App.css`
+### `todos-react-flask-mysql-frontend/src/App.css`
 
 ```css
 .container {
@@ -405,9 +409,9 @@ li.completed span { text-decoration: line-through; color: #888; }
 .delete-btn:hover { background: #a71d2a; }
 ```
 
-### `frontend/src/main.jsx`
+### `todos-react-flask-mysql-frontend/src/main.jsx`
 
-React 入口：`frontend/src/main.jsx`
+React 入口：`todos-react-flask-mysql-frontend/src/main.jsx`
 
 ```javascript
 import React from 'react'
@@ -421,9 +425,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
-### `frontend/src/App.jsx`
+### `todos-react-flask-mysql-frontend/src/App.jsx`
 
-React 主组件：`frontend/src/App.jsx`
+React 主组件：`todos-react-flask-mysql-frontend/src/App.jsx`
 
 ```javascript
 import { useState, useEffect } from 'react'
@@ -510,9 +514,9 @@ function App() {
 export default App
 ```
 
-### `frontend/nginx.conf`
+### `todos-react-flask-mysql-frontend/nginx.conf`
 
-Nginx 配置：`frontend/nginx.conf`
+Nginx 配置：`todos-react-flask-mysql-frontend/nginx.conf`
 
 ```nginx
 server {
@@ -534,9 +538,9 @@ server {
 }
 ```
 
-### `frontend/Dockerfile`
+### `todos-react-flask-mysql-frontend/Dockerfile`
 
-前端镜像构建：`frontend/Dockerfile`
+前端镜像构建：`todos-react-flask-mysql-frontend/Dockerfile`
 
 ```dockerfile
 # 阶段一：构建阶段
@@ -562,7 +566,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## 容器编排
 
-Docker Compose: `todo-react-flask-mysql-fullstack/docker-compose.yml`
+Docker Compose: `todos-react-flask-mysql-fullstack/docker-compose.yml`
 
 ```yaml
 services:
@@ -575,6 +579,11 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+
+    # 使用旧的密码认证方式，防止 Navicat/DBeaver 连接报错
+    command: --default-authentication-plugin=mysql_native_password
     volumes:
       - db_data:/var/lib/mysql
     networks:
@@ -584,10 +593,9 @@ services:
       timeout: 20s
       retries: 10
 
-  # === 2. 后端服务 (本地构建) ===
+  # === 2. 后端服务 ===
   backend:
-    # 注意这里：本地开发用 build，不要用 image
-    build: ./backend 
+    build: ./${BACKEND_NAME}
     restart: always
     environment:
       MYSQL_USER: ${MYSQL_USER}
@@ -601,10 +609,192 @@ services:
     networks:
       - app-network
 
-  # === 3. 前端服务 (本地构建) ===
+  # === 3. 前端服务 ===
   frontend:
-    # 注意这里：本地开发用 build，不要用 image
-    build: ./frontend
+    build: ./${FRONTEND_NAME}
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+# 数据库挂载卷
+volumes:
+  db_data:
+
+# 定义网络
+networks:
+  app-network:
+    driver: bridge
+```
+
+## 本地测试
+
+1. **启动项目**：
+
+   ```bash
+   cd todos-react-flask-mysql-fullstack
+   docker-compose up -d --build
+   ```
+
+   *(这需要几分钟时间下载镜像和构建)*
+
+2. **初始化数据库迁移** (这是第一次运行必须做的)： 现在容器都启动了，但是数据库是空的，也没有迁移记录。我们需要进入后端容器执行初始化。
+
+   ```bash
+   # 进入后端容器
+   docker-compose exec backend bash
+   
+   # 在容器内部执行以下命令
+   flask db init
+   flask db migrate -m "Initial migration"
+   flask db upgrade
+   
+   # 退出容器
+   exit
+   ```
+
+   *注意：之后的每次代码更新，`boot.sh` 会自动运行 `flask db upgrade`，不需要你手动搞了，只有第一次初始化需要手动。*
+
+3. **验证**： 打开浏览器访问 http://localhost。你应该能看到 Todo List 页面，并且可以添加、删除数据。
+
+4. 本地测试通过，第一次将源代码推送至代码托管平台。
+
+## GitLab CI
+
+**在 GitLab 配置环境变量：**
+
+- `DOCKER_HUB_USER`
+- `DOCKER_HUB_PASS`
+
+GitLab CI: `todos-react-flask-mysql-fullstack/.gitlab-ci.yml`
+
+```yaml
+# 定义变量
+variables:
+  # Docker 版本号
+  DOCKER_VERSION: 24.0.5
+
+  # 告诉 Docker 使用 overlay2 驱动，性能更好
+  DOCKER_DRIVER: overlay2
+
+  # 禁用 TLS 证书生成，防止 dind 连接报错
+  DOCKER_TLS_CERTDIR: ""
+  
+  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
+  IMAGE_PREFIX: $DOCKER_HUB_USER
+  
+  # 后端和前端名称
+  BACKEND_NAME: todos-react-flask-mysql-backend
+  FRONTEND_NAME: todos-react-flask-mysql-frontend
+
+# 定义阶段
+stages:
+  - build
+
+# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
+services:
+  - docker:$DOCKER_VERSION-dind
+
+# 登录 Docker Hub
+before_script:
+  # 使用 stdin 输入密码，更加安全
+  - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+
+build_backend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  script:
+    # 进入后端目录
+    - cd $BACKEND_NAME
+    
+    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
+    - docker build -t $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$BACKEND_NAME:latest .
+    
+    # 推送到 Docker Hub
+    - docker push $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$BACKEND_NAME:latest
+  rules:
+    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
+    - changes:
+        - $BACKEND_NAME/**/*
+
+build_frontend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  script:
+    - cd $FRONTEND_NAME
+    - docker build -t $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$FRONTEND_NAME:latest .
+    - docker push $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$FRONTEND_NAME:latest
+  rules:
+    - changes:
+        - $FRONTEND_NAME/**/*
+```
+
+## 生产环境
+
+此部分实现在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，运行 `docker-compose up -d` 命令，即可启动容器化应用。
+
+### 创建目录
+
+先创建 `todos` 目录，在此目录分别创建：
+
+- `todos/docker-compose.yml`
+- `todos/.env`
+
+### `todos/docker-compose.yml`
+
+生产环境的 `docker-compose.yml` 与本地测试时有两处不同：
+
+- 需要指定 Docker Compose 文件版本
+- 后端和前端由 build image 变为指定 image 名称
+
+```yaml
+# 指定 Docker Compose 文件版本
+version: '3.8'
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  backend:
+    # 指定镜像名称
+    image: jerrybaijy/$BACKEND_NAME:latest
+    restart: always
+    environment:
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      DB_HOST: db
+      SECRET_KEY: ${SECRET_KEY}
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  frontend:
+    # 指定前端镜像名称
+    image: jerrybaijy/$FRONTEND_NAME:latest
     ports:
       - "80:80"
     depends_on:
@@ -620,218 +810,52 @@ networks:
     driver: bridge
 ```
 
-## 本地测试
+### `todos/.env`
 
-1. **启动项目**：
+```toml
+# MySQL 数据库配置
+MYSQL_ROOT_PASSWORD=123456
+MYSQL_DATABASE=todos_db
+MYSQL_USER=jerry
+MYSQL_PASSWORD=000000
+
+# 在 Docker 网络内部，数据库服务的名字叫 'db'
+DB_HOST=db
+
+# Flask 配置
+FLASK_APP=run.py
+FLASK_ENV=production
+SECRET_KEY=change_this_to_a_very_long_random_string
+
+# 项目名称
+BACKEND_NAME=todos-react-flask-mysql-backend
+FRONTEND_NAME=todos-react-flask-mysql-frontend
+```
+
+### 启动
+
+1. 删除本地测试时的 Image、Container 和 Volumes，余下操作与 `本地测试` 相同。
+
+3. **启动项目**：
 
    ```bash
-   cd todo-react-flask-mysql-fullstack
+   cd todos
    docker-compose up -d --build
    ```
 
-   *(这需要几分钟时间下载镜像和构建)*
-
-2. **初始化数据库迁移** (这是第一次运行必须做的)： 现在容器都启动了，但是数据库是空的，也没有迁移记录。我们需要进入后端容器执行初始化。
+4. **初始化数据库迁移**
 
    ```bash
    # 进入后端容器
    docker-compose exec backend bash
-
+   
    # 在容器内部执行以下命令
    flask db init
    flask db migrate -m "Initial migration"
    flask db upgrade
-
+   
    # 退出容器
    exit
    ```
-   
-   *注意：之后的每次代码更新，`boot.sh` 会自动运行 `flask db upgrade`，不需要你手动搞了，只有第一次初始化需要手动。*
 
-3. **验证**： 打开浏览器访问 http://localhost。你应该能看到 Todo List 页面，并且可以添加、删除数据。
-
-## GitLab CI
-
-在 GitLab 配置环境变量：`DOCKER_HUB_USER` 和 `DOCKER_HUB_PASS`
-
-GitLab CI: `todo-react-flask-mysql-fullstack/.gitlab-ci.yml`
-
-**修改逻辑说明**：
-
-- `docker login`: 改为使用上面配置的变量。
-- `image name`: Docker Hub 的镜像命名规则是 `用户名/仓库名:标签`。我们将分别构建 `用户名/todo-react-flask-mysql-backend` 和 `用户名/todo-react-flask-mysql-frontend`。
-
-```yaml
-# 定义阶段：这里只有构建阶段
-stages:
-  - build
-
-# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
-services:
-  - docker:20.10.16-dind
-
-variables:
-  # 使用 overlay2 驱动以提高性能
-  DOCKER_DRIVER: overlay2
-  # 定义你的 Docker Hub 镜像名称前缀
-  # 最终会生成: $DOCKER_HUB_USER/todo-react-flask-mysql-backend 和 $DOCKER_HUB_USER/todo-react-flask-mysql-frontend
-  # 这里的 $DOCKER_HUB_USER 就是你在 GitLab 里配的变量
-  IMAGE_PREFIX: $DOCKER_HUB_USER
-
-# 所有任务执行前的通用步骤：登录 Docker Hub
-before_script:
-  - echo "Logging in to Docker Hub..."
-  # -u 用户名 -p 密码(Token)
-  - docker login -u $DOCKER_HUB_USER -p $DOCKER_HUB_PASS
-
-build_backend:
-  stage: build
-  image: docker:20.10.16
-  script:
-    - cd backend
-    
-    # 构建两个标签：一个是具体的 commit hash (用于回滚)，一个是 latest (用于生产)
-    - docker build -t $IMAGE_PREFIX/todo-react-flask-mysql-backend:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/todo-react-flask-mysql-backend:latest .
-    
-    # 推送到 Docker Hub
-    - docker push $IMAGE_PREFIX/todo-react-flask-mysql-backend:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/todo-react-flask-mysql-backend:latest
-
-build_frontend:
-  stage: build
-  image: docker:20.10.16
-  script:
-    - cd frontend
-    
-    - docker build -t $IMAGE_PREFIX/todo-react-flask-mysql-frontend:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/todo-react-flask-mysql-frontend:latest .
-
-    - docker push $IMAGE_PREFIX/todo-react-flask-mysql-frontend:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/todo-react-flask-mysql-frontend:latest
-   ```
-
-## 总结
-
-你现在已经拥有了一个完整的流程：
-
-1. **开发**：在本地修改代码。
-2. **测试**：使用 `docker-compose up` 在本地运行查看效果。
-3. **发布**：执行 `git add .`, `git commit -m "update"`, `git push`。
-4. **自动构建**：GitLab 收到推送后，会根据 `.gitlab-ci.yml` 自动打包出新的 Docker 镜像。
-
-## 如何改到 Docker Hub？
-
-要改到 Docker Hub（全球最大的公共/私有镜像库），我们需要做三件事：
-
-1. **注册/准备**：在 Docker Hub 获取访问令牌（Access Token）。
-2. **配置**：在 GitLab 中填入 Docker Hub 的账号密码变量。
-3. **修改**：更新 `.gitlab-ci.yml` 指向 Docker Hub。
-
-下面是手把手的详细步骤：
-
-### 第一步：在 Docker Hub 准备账号与令牌
-
-为了安全起见，我们在 CI/CD 中**不要使用你的登录密码**，而是使用 **Access Token**。
-
-1. 登录 [hub.docker.com](https://hub.docker.com/)。
-2. 点击右上角头像 -> **Account Settings** (账户设置)。
-3. 点击左侧 **Security** (安全)。
-4. 点击 **New Access Token** 按钮。
-   - **Description**: 随便填，比如 `GitLab CI`。
-   - **Access permissions**: 选择 `Read & Write`。
-5. **复制生成的 Token**。注意：这个 Token 只显示一次，一定要复制好！
-
-------
-
-### 第二步：在 GitLab 配置环境变量
-
-回到你的 GitLab 项目页面：
-
-1. 点击左侧菜单 **Settings** -> **CI/CD**。
-2. 找到 **Variables** 区域，点击 **Expand**。
-3. 点击 **Add variable**，我们需要添加两个变量：
-
-**变量 1：用户名**
-
-- **Key**: `DOCKER_HUB_USER`
-- **Value**: 你的 Docker Hub 用户名 (比如 `zhangsan`)
-- *Type 选 Variable，Flags 都不用勾选*
-
-**变量 2：密码/令牌**
-
-- **Key**: `DOCKER_HUB_PASS`
-- **Value**: **刚才复制的那串 Access Token**
-- *Type 选 Variable，建议勾选 Mask variable (这样在日志里会显示为 `*****`，不会泄露)*
-
-### 第四步：验证
-
-1. 修改完代码后，执行 `git add .`, `git commit`, `git push`。
-2. 去 GitLab 查看 **Build -> Jobs**，观察流水线是否成功。
-3. 如果成功，去 [hub.docker.com](https://hub.docker.com/) 查看你的个人主页，你会发现多出了两个仓库：`todo-backend` 和 `todo-frontend`。
-
-## 总结流程
-
-1. 你写代码，推送到 GitLab。
-2. GitLab 根据 `.gitlab-ci.yml` 自动打包，利用你在 GitLab 设置的变量登录 Docker Hub，并把镜像推送到 Docker Hub。
-3. 你在云服务器上，只需要有 `.env` 和 `docker-compose.yml`，运行 `docker-compose up -d`。
-4. Docker 会自动从 Docker Hub 下载刚才打包好的 `latest` 镜像并运行。
-
-## 生产环境
-
-Docker Compose: `todo-react-flask-mysql-fullstack/docker-compose.yml`
-
-```yaml
-version: '3.8'
-
-services:
-  db:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - db_data:/var/lib/mysql
-    networks:
-      - prod-net
-    healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-      timeout: 20s
-      retries: 10
-
-  backend:
-    # === 变化在这里 ===
-    # 不再是 build，而是 image
-    image: jerrybaijy/todo-react-flask-mysql-backend:latest
-    restart: always
-    environment:
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      DB_HOST: db
-      SECRET_KEY: ${SECRET_KEY}
-    depends_on:
-      db:
-        condition: service_healthy
-    networks:
-      - prod-net
-
-  frontend:
-    # === 变化在这里 ===
-    image: jerrybaijy/todo-react-flask-mysql-frontend:latest
-    restart: always
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    networks:
-      - prod-net
-
-volumes:
-  db_data:
-
-networks:
-  prod-net:
-```
-
+5. **验证**： 打开浏览器访问 http://localhost。你应该能看到 Todo List 页面，并且可以添加、删除数据。
