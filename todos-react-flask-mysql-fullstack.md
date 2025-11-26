@@ -16,20 +16,40 @@ tags:
 ![image-20251126075702455](assets/image-20251126075702455.png)
 
 - **概述**：这是一个全栈应用的原型项目。
+
 - **来源**：自己搭建
+
 - **功能**：Todo list
+
 - **技术栈**：
   - 前端：React
   - 后端：Flask
   - 数据库：容器化 MySQL
   - CI：GitLab CI
   - CD：Docker Compose
+  
 - **项目仓库**
   - GitLab: https://gitlab.com/jerrybai/todos-react-flask-mysql-fullstack
   - GitHub: https://github.com/Jerrybaijy/todos-react-flask-mysql-fullstack
+  
 - **镜像仓库**
   - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todos-react-flask-mysql-backend
   - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todos-react-flask-mysql-frontend/general
+  
+- **项目结构**
+
+  ```
+  todos-react-flask-mysql-fullstack/
+  ├── todos-react-flask-mysql-backend/
+  ├── todos-react-flask-mysql-frontend/
+  │
+  ├── dev/
+  ├── application.yaml
+  │   └── blog.html
+  │   └── chat_widget.html
+  │
+  └── 其它
+  ```
 
 # 项目准备
 
@@ -424,18 +444,55 @@ export default defineConfig({
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-h1 { text-align: center; color: #333; }
-.input-group { display: flex; gap: 10px; margin-bottom: 20px; }
-input { flex: 1; padding: 10px; font-size: 16px; }
-button { padding: 10px 20px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 4px; }
-button:hover { background: #0056b3; }
-ul { list-style: none; padding: 0; }
-li { display: flex; justify-content: space-between; align-items: center; padding: 10px; border-bottom: 1px solid #eee; }
-li.completed span { text-decoration: line-through; color: #888; }
-.delete-btn { background: #dc3545; margin-left: 10px; }
-.delete-btn:hover { background: #a71d2a; }
+h1 {
+  text-align: center;
+  color: #333;
+}
+.input-group {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+input {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+}
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+}
+button:hover {
+  background: #0056b3;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+li.completed span {
+  text-decoration: line-through;
+  color: #888;
+}
+.delete-btn {
+  background: #dc3545;
+  margin-left: 10px;
+}
+.delete-btn:hover {
+  background: #a71d2a;
+}
 ```
 
 ## `todos-react-flask-mysql-frontend/src/main.jsx`
@@ -888,3 +945,252 @@ FRONTEND_NAME=todos-react-flask-mysql-frontend
    ```
 
 5. **验证**： 打开浏览器访问 http://localhost。你应该能看到 Todo List 页面，并且可以添加、删除数据。
+
+# Argo CD
+
+## 目录结构
+
+```
+todos-react-flask-mysql-fullstack/
+├── todos-react-flask-mysql-backend/
+├── todos-react-flask-mysql-frontend/
+│
+├── dev/
+│   ├── mysql-db.yaml
+│   ├── backend.yaml
+│   └── frontend.yaml
+│
+├── application.yaml
+│
+└── 其它文件
+```
+
+
+
+## `mysql-config.yaml`
+
+为了保证数据持久化和密码安全，使用 `PVC` 和 `Secret`。
+
+**注意：** 实际操作时，需要使用 Base64 编码 `.env` 文件中的用户名和密码，例如：运行 `echo -n '123456' | base64` 来获取 `MYSQL_ROOT_PASSWORD` 的值。
+
+```yaml
+# Secret
+apiVersion: v1
+kind: Secret
+metadata:
+  name: todos-mysql-secret
+type: Opaque
+data:
+  # 这里的用户名和密码需要是 Base64 编码后的值
+  # MYSQL_ROOT_PASSWORD
+  mysql-root-password: MTIzNDU2
+  # MYSQL_USER
+  mysql-user: amVycnk=
+  # MYSQL_PASSWORD
+  mysql-password: MDAwMDAw
+---
+# PVC
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: todos-mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+
+
+## `mysql-deployment.yaml`
+
+Deployment 和 Service
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-db-deployment
+  labels:
+    app: mysql-db
+spec:
+  selector:
+    matchLabels:
+      app: mysql-db
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql-db
+    spec:
+      containers:
+      - name: mysql
+        image: mysql:8.0
+        ports:
+        - containerPort: 3306
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-root-password
+        - name: MYSQL_DATABASE
+          # 数据库名直接写死或从 configmap 引用，这里直接写死
+          value: todos_db
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
+        # 对应 Docker Compose 中的命令
+        command: ["--default-authentication-plugin=mysql_native_password"]
+        volumeMounts:
+        - name: mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pvc
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db  # 这里的名称 'db' 很重要，对应后端服务中的 DB_HOST
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: mysql-db
+```
+
+## `mysql-pvc.yaml`
+
+持久卷声明
+
+```yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+```
+
+## `backend-deployment.yaml`
+
+为后端服务 (backend) 创建清单
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  labels:
+    app: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        # ⚠️ 部署到 Minikube 时，通常需要先将镜像构建到 Minikube 的环境中
+        # 但为了简化，我们假设您已经有一个可用的 Dockerfile 和上下文
+        # 在实际 GitOps 部署中，您可能需要使用公有/私有镜像仓库
+        # 这里的 build: ./${BACKEND_NAME} 步骤被 Docker 构建/镜像仓库取代
+        image: backend-image:latest # 替换为您实际的镜像名称
+        ports:
+        - containerPort: 5000 # 假设后端服务在 5000 端口运行
+        env:
+        - name: DB_HOST
+          value: db # 对应 MySQL Service 的名称
+        # 从 Secret 引用数据库用户和密码
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-user
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: mysql-password
+        - name: MYSQL_DATABASE
+          value: todos_db
+        - name: SECRET_KEY
+          value: "change_this_to_a_very_long_random_string" # 建议也放入 Secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+spec:
+  selector:
+    app: backend
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000
+```
+
+## `frontend-deployment.yaml`
+
+为前端服务 (frontend) 创建清单
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  labels:
+    app: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend
+        # 同样，替换为您实际的镜像名称
+        image: frontend-image:latest 
+        ports:
+        - containerPort: 80 # 前端服务通常是 Nginx，使用 80 端口
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  selector:
+    app: frontend
+  # 使用 NodePort/LoadBalancer 以便在 Minikube 外部访问
+  type: NodePort 
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      # NodePort 会分配一个 30000-32767 之间的端口
+```
+

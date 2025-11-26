@@ -113,47 +113,22 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - 初始配置详见包管理器安装
 
-## Docker Compose
-
-- Docker Compose 是一个用于管理 Docker 容器的工具。
-
-- Install
-
-  ```bash
-  sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-  docker-compose --version
-  ```
-
-- Command
-
-  ```bash
-  # Build and run all containers
-  cd $DOCKER_COMPOSE_FOLDER
-  docker-compose up
-  # Remove all containers
-  cd $DOCKER_COMPOSE_FOLDER
-  docker-compose down
-  ```
-
 ## Docker 管理
 
-- **Docker 管理**
+```bash
+# 查看 Docker 版本信息
+docker -v
 
-  ```bash
-  # 查看 Docker 版本信息
-  docker -v
-  
-  # 显示 Docker 详细版本信息
-  docker version
-  
-  # 显示 Docker 系统信息
-  docker info
-  
-  # 登录和登出
-  docker login
-  docker logout
-  ```
+# 显示 Docker 详细版本信息
+docker version
+
+# 显示 Docker 系统信息
+docker info
+
+# 登录和登出
+docker login
+docker logout
+```
 
 ## 基本流程
 
@@ -197,14 +172,12 @@ docker pull $REPO_NAME/$IMAGE_NAME:$TAG
 docker push $REPO_NAME/$IMAGE_NAME:$TAG
 ```
 
-**标签**
+Docker Hub 的镜像命名规则是 `用户名/仓库名:标签`，如 `jerrybaijy/my-image:latest`。
 
 ```bash
 # 加标签
 docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
 ```
-
-Docker Hub 的镜像命名规则是 `用户名/仓库名:标签`，如 `jerrybaijy/my-image:latest`。
 
 # Container
 
@@ -344,7 +317,7 @@ CMD ["python3", "app.py"]
 [`WORKDIR`](https://docs.docker.com/reference/dockerfile/#workdir)：工作目录是进入容器的默认目录，后续指令的工作目录。
 
 ```dockerfile
-WORKDIR /path/to/workdir
+WORKDIR /app
 ```
 
 - 如该目录不存在，WORKDIR 会自动创建。
@@ -506,6 +479,29 @@ WORKDIR /path/to/workdir
 node_modules
 bar
 ```
+
+# Docker Compose
+
+Docker Compose 是一个用于管理 Docker 容器的工具。
+
+- Install
+
+  ```bash
+  sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+  sudo chmod +x /usr/local/bin/docker-compose
+  docker-compose --version
+  ```
+
+- Command
+
+  ```bash
+  # Build and run all containers
+  cd $DOCKER_COMPOSE_FOLDER
+  docker-compose up
+  # Remove all containers
+  cd $DOCKER_COMPOSE_FOLDER
+  docker-compose down
+  ```
 
 # Docker Hub
 

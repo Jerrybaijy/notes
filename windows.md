@@ -20,7 +20,7 @@ tags:
 
 Chocolatey 是一个功能强大的 Windows 包管理工具。
 
-- **安装**：应该在 PowerShell 中安装，但可以在 Bash 中使用。
+- **安装**：应该以管理员身份运行 PowerShell 安装，但可以在 Bash 中使用。
 
   ```shell
   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -707,13 +707,23 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
 ## 环境变量
 
-- 在终端执行软件操作时，正常需填写软件路径（如 `C:\...Programs\Python\Python311\python.exe test.py`）
-- 为了方便输入，可直接填写 `python test.py`，但前提是必须将 Python 加入系统环境变量，其它软件同理。
-- 具体方法如下：
+### 用户变量
 
-  - 右键点击 `此电脑` > `属性` > `高级系统设置` > `高级` > `环境变量`；
-  - 在 `用户变量` 中选中 `Path`，点击 `编辑` > `新建` > 在输入框填入软件执行文件（.exe）所在文件夹路径 `C:\...Programs\Python\Python311`；
-  - 所有窗口点击确定。
+在终端执行软件操作时，正常需填写软件路径（如 `C:\...Programs\Python\Python311\python.exe test.py`），为了方便输入，可直接填写 `python test.py`，但前提是必须将 Python 加入系统环境变量，其它软件同理。
+
+具体方法如下：
+
+- 在 Windows 搜索栏输入 `环境变量`，选择 `编辑系统环境变量` > 点击 `环境变量` 按钮。
+- 在 `用户变量` 中选中 `Path`，点击 `编辑` > `新建` > 在输入框填入软件执行文件（.exe）所在文件夹路径 `C:\...Programs\Python\Python311`；
+- 所有窗口点击确定。
+
+### 系统变量
+
+系统在命令行中识别到的变量顺序与此有关
+
+- 在 Windows 搜索栏输入 `环境变量`，选择 `编辑系统环境变量` > 点击 `环境变量` 按钮。
+- 在 `系统变量` 中选中 `Path` 变量，双击编辑。
+- 哪个变量在上面，系统就会先识别哪个。
 
 ## 卓越性能
 

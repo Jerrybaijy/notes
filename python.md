@@ -190,6 +190,8 @@ pip install --upgrade $MODULE_NAME
 pip install $MODULE_NAME
 # 卸载第三方模块
 pip uninstall $MODULE_NAME
+# 一键卸载除 pip 以外的所有第三方模块
+pip freeze | grep -v "pip==" | cut -d "=" -f 1 | xargs pip uninstall -y
 # 显示模块信息
 pip show $MODULE_NAME
 

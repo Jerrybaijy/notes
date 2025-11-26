@@ -6,11 +6,12 @@ tags:
   - it
   - software
   - dev-ops
+  - k8s
 ---
 
 # Kubernetes
 
-**K8S**（Kubernetes，集群）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
+[**K8S**](https://kubernetes.io/zh-cn/docs/home/)（Kubernetes，集群）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
 
 ## 环境搭建
 
@@ -190,96 +191,128 @@ Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控�
 
 ## Install
 
-### [On Linux](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux/#install-using-other-package-management)
+kubectl 可安装在各种 Linux 平台、 macOS 和 Windows 上。 在下面找到你喜欢的操作系统。
 
-- Install on Linux
+- [在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
+- [在 macOS 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-macos)
+- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)
+
+### Linux
+
+[在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
+
+```bash
+# 安装 kubectl
+sudo snap install kubectl --classic
+# 添加环境变量
+export PATH=$PATH:/snap/bin
+# 验证安装
+kubectl version --client
+```
+
+### Windows
+
+- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)，以下是使用 Chocolatey 方法安装 Kubectl。
+- 已在 Windows 系统中安装 [Chocolatey](windows.md#chocolatey)。
+- 以管理员身份运行 PowerShell 安装，但重启所有终端后可以在 Bash 中使用。
 
   ```bash
   # 安装 kubectl
-  sudo snap install kubectl --classic
-  # 添加环境变量
-  export PATH=$PATH:/snap/bin
+  choco install kubernetes-cli
   # 验证安装
   kubectl version --client
   ```
 
-  解释：
-
-  - `--classic` 用于允许 kubectl 访问系统上的文件系统。
-  - `--client` 用于告诉 kubectl 仅显示客户端版本信息，而不连接到 Kubernetes 集群来获取服务器版本信息。
+- 将 `系统环境变量` 中的 `C:\ProgramData\chocolatey\bin` 移至顶部，详见 [Windows 笔记](windows.md#系统变量)。
 
 ## Commands
 
-- [Commands](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
+[**Commands**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
 
-  ```bash
-  # 列出资源
-  kubectl get $RESOURCE
-  # 删除资源
-  kubectl delete $RESOURCE
-  # 应用 apply
-  kubectl apply -f $YAML # `-f` 指定路径
-  # 查看资源日志
-  kubectl logs $RESOURCE
-  # 查看资源详细信息
-  kubectl describe $RESOURCE
-  ```
+```bash
+# 列出资源
+kubectl get $RESOURCE
+# 删除资源
+kubectl delete $RESOURCE
+# 应用 apply
+kubectl apply -f $YAML # `-f` 指定路径
+# 查看资源日志
+kubectl logs $RESOURCE
+# 查看资源详细信息
+kubectl describe $RESOURCE
+```
 
-- Options
+**Options**
 
-  - `-n $NAMESPACE`：指定命名空间
+- `-n $NAMESPACE`：指定命名空间
 
 # Minikube
 
-[**Minikube**](https://minikube.sigs.k8s.io/docs/) 用于创建本地集群，供学习使用，不能用于生产环境。
+[**Minikube**](https://minikube.sigs.k8s.io/docs/) 是本地 Kubernetes，供学习使用，不能用于生产环境。
+
+## 环境搭建
+
+[安装 Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
+
+### Windows
+
+- Docker 和 Kubectl 已安装
+
+- [官网下载安装程序并安装。](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
+
+- 以管理员身份运行 PowerShell，并将二进制文件 minikube.exe 添加到 PATH 目录中。
+
+  ```shell
+  $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+  if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+    [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+  }
+  ```
+
+### Linux
 
 - [**Install**](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
 
   ```bash
-  curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
-  sudo install minikube-linux-amd64 /usr/local/bin/minikube
+  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
   ```
 
-- **Manage**
 
-  ```bash
-  # 列出 minkube 配置文件
-  minikube profile list
-  ```
+## 命令
 
-- **基础命令**
+```bash
+# 查看集群
+minikube status
+# 创建集群
+minikube start
+# 停止集群
+minikube stop
+# 删除集群
+minikube delete
+```
 
-  ```bash
-  # 查看集群
-  minikube status
-  # 创建集群
-  minikube start
-  # 删除集群
-  minikube delete
-  ```
-
-# [Namespace](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/)
+# Namespace
 
 ## Namespace 基础
 
-Namespace（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
+[**Namespace**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/)（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
 
-- **基础命令**
+```bash
+# 创建 namespace
+kubectl create namespace NAMESPACE_NAME
+# 删除 namespace
+kubectl delete namespace NAMESPACE_NAME
+```
 
-  ```bash
-  # 创建 namespace
-  kubectl create namespace NAMESPACE_NAME
-  # 删除 namespace
-  kubectl delete namespace NAMESPACE_NAME
-  ```
+# Node
 
-# [Node](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/)
+[**Node**](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/) 是...
 
 - [**Node Component**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#node-components)
-
   - Node component is one of the cluster's basic components.
   - Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
-
+  
 - Node 可以是一个虚拟机或者物理机器，取决于所在的集群配置。 每个节点包含运行 Pod 所需的服务； Kubernetes 通过将容器放入在 Node 上运行的 Pod 中来执行你的工作负载。
 
 - 所有 Node 由 Control Plane 负责管理。
@@ -290,20 +323,18 @@ Namespace（命名空间）是 Kubernetes 中用于隔离和组织资源的虚�
 
 ![module_03_pods](assets/module_03_pods.svg)
 
-- Command
-
-  ```bash
-  # 列出 pod
-  kubectl get pod
-  # 删除 pod
-  kubectl delete pod
-  # 查看 pod 日志
-  kubectl logs pod
-  # 查看 pod 详细信息
-  kubectl describe pod $POD
-  # Exit pod
-  kubectl exec -it $POD -- /bin/bash
-  ```
+```bash
+# 列出 pod
+kubectl get pod
+# 删除 pod
+kubectl delete pod
+# 查看 pod 日志
+kubectl logs pod
+# 查看 pod 详细信息
+kubectl describe pod $POD
+# Exit pod
+kubectl exec -it $POD -- /bin/bash
+```
 
 # Service
 
@@ -368,458 +399,7 @@ Namespace（命名空间）是 Kubernetes 中用于隔离和组织资源的虚�
     kubectl port-forward deployment/nginx 80:8080
     ```
 
-# Argo CD
-
-## Argo CD 基础
-
-Argo CD 是一个持续部署工具，可以通过修改 yaml 文件，改变应用的运行。
-
-![argo-cd](assets/argo-cd.png)
-
-### 环境搭建
-
-- Linux 系统，Docker 已安装，kubectl 已安装，启动一个集群。
-- 安装 Argo CD
-
-  ```bash
-  kubectl create namespace argocd
-  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-  ```
-
-- 查看 pod 状态，直到全部运行
-
-  ```bash
-  kubectl get pod -n argocd
-  ```
-
-- 将端口转发至本地或公网即可查看 Argo CD UI 界面
-
-  ```bash
-  kubectl get svc -n argocd
-  # 本地
-  kubectl port-forward -n argocd svc/argocd-server 8080:443
-  # 公网
-  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-  ```
-
-- 获取密码
-
-  ```bash
-  # 获取密码
-  kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
-  # 解码，PASSWORD为上一步获取到的加密密码
-  echo $PASSWORD== | base64 --decode
-
-  # 上次密码OaVoMpufPwfd-X-9
-  ```
-
-- 在本地或公网通过 IP 访问 Argo CD 页面登录，用户名为 admin，公网访问需要科学上网
-
-## 基本流程
-
-- Argo CD 已安装
-- UI 界面创建 Git 仓库，clone 至本地
-- Repo 根目录创建 dev 目录
-- dev 目录创建 deployment.yaml 和 service.yaml
-
-  - 注意云上的集群有节点限制，试用时只能创建一个副本
-  - deployment.yaml 和 service.yaml 见 Kubenetes
-
-- Repo 根目录创建 application.yaml
-
-  ```yaml
-  apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    name: student-springboot-react-frontend
-    namespace: argocd
-
-  spec:
-    project: default
-    source:
-      repoURL: https://github.com/Jerrybaijy/student-springboot-react-frontend.git
-      targetRevision: HEAD
-      path: dev
-
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: student-springboot-react-frontend
-
-    syncPolicy:
-      syncOptions:
-        - CreateNamespace=true
-      automated:
-        selfHeal: true
-        prune: true
-  ```
-
-- 推送仓库
-- 部署应用
-
-  ```bash
-  kubectl apply -f application.yaml
-  ```
-
-- 在 Argo CD 页面查看应用已启动
-- 查看 IP 即可访问应用（如有需要可进行端口转发）
-
-  ```bash
-  kubectl get svc -n myapp
-  ```
-
-- 以后若想更改应用，只需需改 yaml 文件并推送至 Git 仓库，Argo CD 可自动识别自动部署。
-- 删除应用
-
-  - 不要直接在集群删除应用，要先在 Argo CD 页面删除应用（因为已配置自愈，Argo CD 会自动创建应用）
-  - 再删除应用的命名空间
-
-- 删除 Argo CD
-
-  - **删除 ArgoCD 自定义资源定义（CRD）**
-
-    ```bash
-    kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
-    ```
-
-  - **删除 ArgoCD 的命名空间**
-
-    ```bash
-    kubectl delete namespace
-    ```
-
-## 相关项目
-
-- Argo CD Git
-- Argo CD Helm
-
-## 解决方案
-
-### OutOfSync
-
-- 当使用 ArgoCD 部署好应用以后，一切运行正常，但 UI 页面一直显示 OutOfSync，即使状态不同步，应用程序实际上也是同步的，但看到它不同步很烦人。若要消除此问题，有一种解决方案是使用资源排除。
-
-  ![image-20240329143514361](assets/image-20240329143514361.png)
-
-- [以下方法由博主提供](https://medium.com/@rojenshrestha100/argo-cd-out-of-sync-due-to-cilium-identity-f9d6188aa056)
-- 访问 Argo CD 的 configmap
-
-  ```bash
-  kubectl get cm -n argocd
-  ```
-
-  ![image-20240329143851461](assets/image-20240329143851461.png)
-
-- 使用 nano 编辑器编辑此配置图
-
-  ```bash
-  KUBE_EDITOR="nano" kubectl edit cm argocd-cm -n argocd
-  ```
-
-- 文末在第一层级添加以下数据并保存
-
-  ```yaml
-  data:
-    resource.exclusions: |
-      - apiGroups:
-        - cilium.io
-        kinds:
-        - CiliumIdentity
-        clusters:
-        - "*"
-  ```
-
 # Grafana
-
-# Helm
-
-Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Kubernetes 资源的集合，使得部署和管理应用程序变得更加简单和可重复。
-
-## 环境搭建
-
-- 集群已运行，Kubectl 已安装
-
-- Linux 安装（Debian / Ubuntu）
-
-  ```bash
-  sudo snap install helm --classic
-  # 添加环境变量
-  export PATH="$PATH:/snap/bin"
-  ```
-
-- Windows 安装
-
-  ```bash
-  # 提前安装包管理器 Chocolatey，详见 Windows
-  choco install kubernetes-helm
-  ```
-
-## Helm 基础
-
-- **命令**
-
-  ```bash
-  # 查看 helm 版本
-  helm version
-  
-  # 查看 chart 配置值（values.yaml 文件中的值）
-  helm show values .
-  
-  # 重置 index
-  helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
-  ```
-
-## 基本流程
-
-### 建立远程仓库
-
-- UI 界面创建 Git 仓库，clone 至本地
-
-- Repo 根目录创建创建 Chart
-
-  ```bash
-  helm create $CHART_NAME
-  ```
-
-- 配置 Chart
-
-  - 编辑模板 `mychart/templates`
-  - 编辑 values `mychart/values.yaml`
-
-- 封装 Chart
-
-  ```bash
-  helm package $CHART_PATH
-  ```
-
-- 重置 index
-
-  ```bash
-  helm repo index $CHART_PATH
-  ```
-
-- Git 推送，GitHub 设置 Pages - Branch（一定不要提前设置）
-
-- 重置 index
-
-  ```bash
-  helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
-  ```
-
-- Git 推送
-
-- 至此，远程 Helm Chart 仓库已建好，可供其它调用：https://jerrybaijy.github.io/$REPO/
-
-### 使用远程仓库
-
-- 添加本地 Helm 仓库，与远程仓库关联
-
-  ```bash
-  helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
-  ```
-
-- 使用 Helm Charts
-
-  ```bash
-  helm install $RELEASE $HELM_REPO/$CHART_NAME
-  ```
-
-### 流程实例
-
-- 这是项目 Argo CD Git 的步骤留存，最后两大步取一个操作
-
-  ```bash
-  # UI 界面创建 Git 仓库，clone 至本地，进入 repo 目录
-  
-  helm create argocd-helm-chart
-  helm package argocd-helm-chart
-  helm repo index .
-  
-  # Git 推送，GitHub 设置 Pages - Branch（一定不要提前设置）
-  
-  helm repo index . --url https://jerrybaijy.github.io/argocd-helm/
-  
-  # Git 推送
-  
-  # 1.以下是本地使用远程 Helm Charts
-  helm repo add argocd-helm https://jerrybaijy.github.io/argocd-helm/
-  kubectl create namespace argocd-helm
-  helm install argocd-helm-app argocd-helm/argocd-helm-chart -n argocd-helm
-  kubectl get pod -n argocd-helm
-  kubectl get svc -n argocd-helm
-  kubectl delete namespace argocd-helm
-  
-  # 2.以下是 Argo CD 使用远程 Helm Charts
-  kubectl apply -f application.yaml
-  kubectl get namespace
-  kubectl get pod -n argocd-helm
-  kubectl get svc -n argocd-helm
-  kubectl delete namespace argocd-helm
-  ```
-
-## Helm Repo
-
-- **基础命令**
-
-  ```bash
-  # 查看 Helm Repo
-  helm repo list
-  # 添加 Helm Repo
-  helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
-  helm repo add arldka https://arldka.github.io/helm-charts
-  helm repo update
-  # 删除 Helm Repo
-  helm repo remove $HELM_REPO
-  # 删除所有 Helm Repo
-  rm ~/.config/helm/repositories.yaml
-  ```
-
-- Helm Repo 实际只是一个 YAML 文件，存储于 `~/.config/helm/repositories.yaml`，里面声明了各个 Helm Repo 与 Remote Repo 的对应关系。
-
-## Chart
-
-- **基础命令**
-
-  ```bash
-  # 查看 chart 信息
-  helm show chart .
-  # 创建 chart
-  helm create $CHART_NAME
-  # 封装 chart
-  helm package $CHART_PATH
-  # 发布 chart，没用过
-  helm push $CHART $CHART_REPO
-  # 测试 chart
-  helm lint $CHART
-  ```
-
-## Release
-
-- **基础命令**
-
-  ```bash
-  # 查看 release
-  helm list
-  # 部署 release
-  helm install $RELEASE $HELM_REPO/$CHART_NAME
-  # 删除 release
-  helm delete $RELEASE
-  # 测试 release
-  helm test $RELEASE
-  ```
-
-## Values
-
-- values.yaml
-
-  ```yaml
-  # 副本数量
-  replicaCount: 2
-  
-  image:
-    repository: jerrybaijy/jerry-image
-    tag: "v1.0"
-    pullPolicy: IfNotPresent
-  
-  imagePullSecrets: []
-  nameOverride: ""
-  fullnameOverride: ""
-  
-  serviceAccount:
-    # Specifies whether a service account should be created
-    create: true
-    # Automatically mount a ServiceAccount's API credentials?
-    automount: true
-    # Annotations to add to the service account
-    annotations: {}
-    # The name of the service account to use.
-    # If not set and create is true, a name is generated using the fullname template
-    name: ""
-  
-  podAnnotations: {}
-  podLabels: {}
-  
-  podSecurityContext:
-    {}
-    # fsGroup: 2000
-  
-  securityContext:
-    {}
-    # capabilities:
-    #   drop:
-    #   - ALL
-    # readOnlyRootFilesystem: true
-    # runAsNonRoot: true
-    # runAsUser: 1000
-  
-  service:
-    type: ClusterIP
-    port: 80
-  
-  ingress:
-    enabled: false
-    className: ""
-    annotations:
-      {}
-      # kubernetes.io/ingress.class: nginx
-      # kubernetes.io/tls-acme: "true"
-    hosts:
-      - host: chart-example.local
-        paths:
-          - path: /
-            pathType: ImplementationSpecific
-    tls: []
-    #  - secretName: chart-example-tls
-    #    hosts:
-    #      - chart-example.local
-  
-  resources:
-    {}
-    # We usually recommend not to specify default resources and to leave this as a conscious
-    # choice for the user. This also increases chances charts run on environments with little
-    # resources, such as Minikube. If you do want to specify resources, uncomment the following
-    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-    # limits:
-    #   cpu: 100m
-    #   memory: 128Mi
-    # requests:
-    #   cpu: 100m
-    #   memory: 128Mi
-  
-  livenessProbe:
-    httpGet:
-      path: /
-      port: http
-  readinessProbe:
-    httpGet:
-      path: /
-      port: http
-  
-  autoscaling:
-    enabled: false
-    minReplicas: 1
-    maxReplicas: 100
-    targetCPUUtilizationPercentage: 80
-    # targetMemoryUtilizationPercentage: 80
-  
-  # Additional volumes on the output Deployment definition.
-  volumes: []
-  # - name: foo
-  #   secret:
-  #     secretName: mysecret
-  #     optional: false
-  
-  # Additional volumeMounts on the output Deployment definition.
-  volumeMounts: []
-  # - name: foo
-  #   mountPath: "/etc/foo"
-  #   readOnly: true
-  
-  nodeSelector: {}
-  
-  tolerations: []
-  
-  affinity: {}
-  ```
 
 # How to deploy Kubernetes on bare metal
 
