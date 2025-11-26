@@ -1,17 +1,46 @@
-# Todo React Flask MySQL Fullstack
+---
+title: todos-react-flask-mysql-fullstack
+author: Jerry.Baijy
+tags:
+  - 应用科学
+  - it
+  - projects
+  - react
+  - flask
+  - mysql
+  - fullstack
+---
 
-## 准备
+# 项目概述
 
-### 准备工作
+![image-20251126075702455](assets/image-20251126075702455.png)
 
-在开始写代码之前，请确保你安装了以下软件：
+- **概述**：这是一个全栈应用的原型项目。
+- **来源**：自己搭建
+- **功能**：Todo list
+- **技术栈**：
+  - 前端：React
+  - 后端：Flask
+  - 数据库：容器化 MySQL
+  - CI：GitLab CI
+  - CD：Docker Compose
+- **项目仓库**
+  - GitLab: https://gitlab.com/jerrybai/todos-react-flask-mysql-fullstack
+  - GitHub: https://github.com/Jerrybaijy/todos-react-flask-mysql-fullstack
+- **镜像仓库**
+  - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todos-react-flask-mysql-backend
+  - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todos-react-flask-mysql-frontend/general
 
-1. **Git**: 用于代码版本控制。
-2. **Docker Desktop**: 用于运行容器。
-3. **Node.js (版本 18+)**: 用于生成前端项目框架。
-4. **VS Code**: 推荐的代码编辑器。
+# 项目准备
 
-### 创建项目根目录与 Git 初始化
+## 开发工具
+
+- **Node.js (版本 18+)**：React 运行环境。
+- **Python**：Flask 运行环境
+- **Docker Desktop**：容器运行环境。
+- **Git**：版本控制。
+
+## 创建项目根目录与 Git 初始化
 
 打开你的终端（Terminal 或 PowerShell），执行以下命令：
 
@@ -34,7 +63,7 @@ echo "dist/" >> .gitignore
 echo ".DS_Store" >> .gitignore
 ```
 
-### 配置环境变量
+## 配置环境变量
 
 配置环境变量：`todos-react-flask-mysql-fullstack/.env`
 
@@ -82,9 +111,9 @@ BACKEND_NAME=todos-react-flask-mysql-backend
 FRONTEND_NAME=todos-react-flask-mysql-frontend
 ```
 
-## 后端
+# 后端
 
-### 依赖文件
+## 依赖文件
 
 创建后端目录：`todos-react-flask-mysql-fullstack/todos-react-flask-mysql-backend`
 
@@ -105,7 +134,7 @@ gunicorn==21.2.0
 python-dotenv==1.0.0
 ```
 
-### 配置加载器
+## 配置加载器
 
 配置加载器：`todos-react-flask-mysql-backend/config.py`
 
@@ -133,7 +162,7 @@ class Config:
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 ```
 
-### 扩展插件
+## 扩展插件
 
 先创建 `todos-react-flask-mysql-backend/app` 目录。
 
@@ -148,7 +177,7 @@ db = SQLAlchemy()
 migrate = Migrate()
 ```
 
-### 数据库模型
+## 数据库模型
 
 数据库模型：`todos-react-flask-mysql-backend/app/models.py`
 
@@ -170,7 +199,7 @@ class Todo(db.Model):
         }
 ```
 
-### 业务路由
+## 业务路由
 
 先创建 `todos-react-flask-mysql-backend/app/api` 目录。 
 
@@ -217,7 +246,7 @@ def delete_todo(id):
     return jsonify({'message': 'Deleted successfully'})
 ```
 
-### 蓝图注册
+## 蓝图注册
 
 蓝图注册：`todos-react-flask-mysql-backend/app/api/__init__.py`
 
@@ -225,7 +254,7 @@ def delete_todo(id):
 from app.api.todo import bp
 ```
 
-### 应用工厂
+## 应用工厂
 
 应用工厂：`todos-react-flask-mysql-backend/app/__init__.py`
 
@@ -249,7 +278,7 @@ def create_app(config_class=Config):
     return app
 ```
 
-### 启动入口
+## 启动入口
 
 启动入口：`todos-react-flask-mysql-backend/run.py`
 
@@ -262,7 +291,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
 ```
 
-### 生产环境启动脚本
+## 生产环境启动脚本
 
 **解释**：这个脚本非常关键。因为 Docker 启动时，MySQL 可能还没准备好。这个脚本会等待数据库迁移完成后再启动 Web 服务。
 
@@ -289,7 +318,7 @@ echo "Starting Gunicorn..."
 exec gunicorn -b :5000 --access-logfile - --error-logfile - run:app
 ```
 
-### 后端镜像构建
+## 后端镜像构建
 
 后端镜像构建：`todos-react-flask-mysql-backend/Dockerfile`
 
@@ -322,13 +351,13 @@ EXPOSE 5000
 ENTRYPOINT ["./boot.sh"]
 ```
 
-### 数据库
+## 数据库
 
 在容器编排时，会自动创建容器化 MySQL 及 database，并在 `本地测试` 时进行初始化创建 table。
 
-## 前端
+# 前端
 
-### 创建 React 项目
+## 创建 React 项目
 
 ```bash
 # 创建 React 项目
@@ -343,7 +372,7 @@ npm install
 npm run dev
 ```
 
-### `todos-react-flask-mysql-frontend/vite.config.js`
+## `todos-react-flask-mysql-frontend/vite.config.js`
 
 配置开发环境代理。
 
@@ -368,7 +397,7 @@ export default defineConfig({
 })
 ```
 
-### `todos-react-flask-mysql-frontend/index.html`
+## `todos-react-flask-mysql-frontend/index.html`
 
 ```html
 <!doctype html>
@@ -385,7 +414,7 @@ export default defineConfig({
 </html>
 ```
 
-### `todos-react-flask-mysql-frontend/src/App.css`
+## `todos-react-flask-mysql-frontend/src/App.css`
 
 ```css
 .container {
@@ -409,7 +438,7 @@ li.completed span { text-decoration: line-through; color: #888; }
 .delete-btn:hover { background: #a71d2a; }
 ```
 
-### `todos-react-flask-mysql-frontend/src/main.jsx`
+## `todos-react-flask-mysql-frontend/src/main.jsx`
 
 React 入口：`todos-react-flask-mysql-frontend/src/main.jsx`
 
@@ -425,7 +454,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 ```
 
-### `todos-react-flask-mysql-frontend/src/App.jsx`
+## `todos-react-flask-mysql-frontend/src/App.jsx`
 
 React 主组件：`todos-react-flask-mysql-frontend/src/App.jsx`
 
@@ -514,7 +543,7 @@ function App() {
 export default App
 ```
 
-### `todos-react-flask-mysql-frontend/nginx.conf`
+## `todos-react-flask-mysql-frontend/nginx.conf`
 
 Nginx 配置：`todos-react-flask-mysql-frontend/nginx.conf`
 
@@ -538,7 +567,7 @@ server {
 }
 ```
 
-### `todos-react-flask-mysql-frontend/Dockerfile`
+## `todos-react-flask-mysql-frontend/Dockerfile`
 
 前端镜像构建：`todos-react-flask-mysql-frontend/Dockerfile`
 
@@ -564,7 +593,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-## 容器编排
+# 容器编排
 
 Docker Compose: `todos-react-flask-mysql-fullstack/docker-compose.yml`
 
@@ -629,7 +658,7 @@ networks:
     driver: bridge
 ```
 
-## 本地测试
+# 本地测试
 
 1. **启动项目**：
 
@@ -661,7 +690,7 @@ networks:
 
 4. 本地测试通过，第一次将源代码推送至代码托管平台。
 
-## GitLab CI
+# GitLab CI
 
 **在 GitLab 配置环境变量：**
 
@@ -733,18 +762,18 @@ build_frontend:
         - $FRONTEND_NAME/**/*
 ```
 
-## 生产环境
+# 生产环境
 
-此部分实现在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，运行 `docker-compose up -d` 命令，即可启动容器化应用。
+此部分实现在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，运行 `docker-compose up -d` 命令，即可启动容器化应用。
 
-### 创建目录
+## 创建目录
 
 先创建 `todos` 目录，在此目录分别创建：
 
 - `todos/docker-compose.yml`
 - `todos/.env`
 
-### `todos/docker-compose.yml`
+## `todos/docker-compose.yml`
 
 生产环境的 `docker-compose.yml` 与本地测试时有两处不同：
 
@@ -810,7 +839,7 @@ networks:
     driver: bridge
 ```
 
-### `todos/.env`
+## `todos/.env`
 
 ```toml
 # MySQL 数据库配置
@@ -832,9 +861,9 @@ BACKEND_NAME=todos-react-flask-mysql-backend
 FRONTEND_NAME=todos-react-flask-mysql-frontend
 ```
 
-### 启动
+## 启动
 
-1. 删除本地测试时的 Image、Container 和 Volumes，余下操作与 `本地测试` 相同。
+1. 删除本地测试时的 Image、Container 和 Volumes，余下操作与 `本地测试` 相同。
 
 3. **启动项目**：
 

@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -200,13 +200,27 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git.md",
+                "file": "projects.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "git 的大纲"
+              "title": "projects 的大纲"
+            }
+          },
+          {
+            "id": "caba1b44275696ee",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "projects.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "projects 的出链列表"
             }
           }
         ],
@@ -227,15 +241,16 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "857c0e897c8b3694",
+  "active": "3293d19678225992",
   "lastOpenFiles": [
+    "assets/image-20251126075702455.png",
+    "git.md",
     "todos-react-flask-mysql-fullstack.md",
     "flask.md",
     "gitlab.md",
     "新建 Markdown File.md",
     "docker.md",
     "java.md",
-    "git.md",
     "react.md",
     "projects.md",
     "node-js.md",
@@ -255,7 +270,6 @@
     "ai-agent.md",
     "medical-chatbot-full-stack.md",
     "assets/image-20251029210729119.png",
-    "langchain.md",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
