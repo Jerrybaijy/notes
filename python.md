@@ -69,13 +69,13 @@ tags:
 
 - 在当前 PowerShell 会话中临时允许运行脚本（关闭窗口后自动恢复默认安全模式）。
 
-  ```shell
+  ```powershell
   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
   ```
 
 - 在 PowerShell 中安装 pyenv-win。
 
-  ```shell
+  ```powershell
   Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
   ```
 

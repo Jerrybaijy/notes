@@ -216,7 +216,7 @@ kubectl version --client
 - 已在 Windows 系统中安装 [Chocolatey](windows.md#chocolatey)。
 - 以管理员身份运行 PowerShell 安装，但重启所有终端后可以在 Bash 中使用。
 
-  ```bash
+  ```powershell
   # 安装 kubectl
   choco install kubernetes-cli
   # 验证安装
@@ -262,7 +262,7 @@ kubectl describe $RESOURCE
 
 - 以管理员身份运行 PowerShell，并将二进制文件 minikube.exe 添加到 PATH 目录中。
 
-  ```shell
+  ```powershell
   $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
   if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
     [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)

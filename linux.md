@@ -286,17 +286,17 @@ GRUB 的工作过程大致如下：
   ```
   # 启动 Ubuntu
   Ubuntu
-
+  
   # 选择 Ubuntu 其它内核
   Advanced options for Ubuntu
-
+  
   # 启动内存检测
   Memory test (memtest86+x64.efi)
   Memory test (memtest86+x64.efi, serial console)
-
+  
   # 启动 Windows 引导加载程序
   Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
-
+  
   # 进入固件
   UEFI Firmware Settings
   ```
@@ -383,10 +383,10 @@ GRUB 的工作过程大致如下：
   ```bash
   # 查看当前用户
   whoami
-
+  
   # 创建用户
   sudo adduser $NEW_USER
-
+  
   # 切换用户
   su - $USER
   ```
@@ -414,30 +414,30 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
   ```bash
   # 更新软件包列表
   sudo apt update
-
+  
   # 升级所有软件包
   sudo apt upgrade
   # 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
   sudo apt full-upgrade
-
+  
   # 安装新软件包
   sudo apt install <package_name>
   # 安装本地软件包
   sudo apt install path/to/package/<package_name>
-
+  
   # 删除已安装的软件包（保留配置文件）
   sudo apt remove <package_name>
   # 删除已安装的软件包（包括配置文件）
   sudo apt purge <package_name>
   # 删除不再需要的依赖包
   sudo apt autoremove
-
+  
   # 查看已安装的软件包
   apt list --installed
-
+  
   # 搜索软件包
   apt search <package_name>
-
+  
   # 查看软件包信息
   apt show <package_name>
   ```
@@ -493,6 +493,69 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 - **APT / DPKG (Debian / Ubuntu)**：这些传统的包管理工具更依赖于操作系统的软件仓库和软件源，包通常不包含依赖，依赖库必须单独处理。
 - **Snap**：相比之下，Snap 包包含所有必需的依赖，并且是跨发行版的兼容格式。Snap 的安装、更新和沙箱化提供了更高的便捷性和安全性，但可能在性能上有所牺牲。
+
+# Vim
+
+**Vi**（Vi IMproved）是 Unix 系统上最早的文本编辑器之一，**Vim**（Vi IMproved）是 Vi 的增强版。
+
+## Basics
+
+```bash
+# show version
+vi / vim
+# open / create file
+vim $FILE
+# into insert mode
+i
+# back to command mode
+`Esc`
+# exit
+:q
+# save and exit
+:wq
+```
+
+## Command mode
+
+- Default enter into command mode.
+
+  ![image-20240406160608629](assets/image-20240406160608629.png)
+
+- `Esc`: Back to command mode
+
+- `dd`: Cut cursor line. `2dd`: Cut cursor and next line
+
+- `yy`: Copy cursor line. `2yy`: Copy cursor and next line
+
+- `p`: Paste at next line of cursor. `2p`: Paste at next line of cursor 2 times
+
+- `Ctrl + F`: Page Up. `Ctrl + U`: Page Up Half.
+
+- `Ctrl + B`: Page Down. `Ctrl + D`: Page Down Half.
+
+## Insert mode
+
+- Into insert mode
+
+  - `i`: before cursor
+  - `I`: line beginning
+  - `a`: after cursor
+  - `A`: line end
+  - `o`: next new line
+  - `O`: previous new line
+
+- Edit
+
+  - `^`: jump to line beginning
+  - `$`: jump to line end
+
+## Last line mode
+
+- `:`: Into last line mode
+- `:q`: exit
+- `:wq`: save and exit
+- `:set nu`: show line number
+- `:set nonu`: close line number
 
 # 解决方法
 

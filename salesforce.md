@@ -732,7 +732,7 @@ Any configuration done in the admin UI can be retrieved as **XML** formatted dat
 
 - Execute the following command in the root directory of the project with **PowerShell**.
 
-  ```bash
+  ```powershell
   sf project retrieve start --metadata CustomApplication:Dreamhouse CustomTab:House__c "Layout:House__c-House Layout"
   ```
 

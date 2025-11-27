@@ -22,7 +22,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 
 - **安装**：应该以管理员身份运行 PowerShell 安装，但可以在 Bash 中使用。
 
-  ```shell
+  ```powershell
   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
   ```
 
@@ -304,7 +304,7 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - 双击下载好的 ISO 文件
 - 在文件目录里打开 CMD 或 PowerShell，执行以下命令
 
-  ```shell
+  ```powershell
   setup /product server
   ```
 
@@ -339,7 +339,7 @@ KMS 是一种通过本地服务器管理激活的方式，通常用于企业环�
 
 - **激活方法**：以管理员身份运行 PowerShell
 
-  ```shell
+  ```powershell
   slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
   slmgr /skms kms.0t.net.cn
   slmgr /ato
@@ -370,7 +370,7 @@ MAK 是一种通过一个单独的密钥进行激活的方式，通常用于企�
 
 以管理员身份运行 PowerShell
 
-```shell
+```powershell
 slmgr /dli
 slmgr /dlv
 ```
@@ -730,7 +730,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 - 系统默认没有 `卓越性能` 选项。
 - 以管理员身份运行 PowerShell，输入以下代码，开启 `卓越性能` 选项。
 
-  ```shell
+  ```powershell
   powercfg -duplicatescheme e9a42b02-d5df-448d-aa00-03f14749eb61
   ```
 
@@ -850,7 +850,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 - `SFC /scannow` 是 Windows 操作系统中的一个命令，用于扫描系统文件的完整性并修复损坏的文件。
 - 以管理员身份运行 PowerShell，运行以下代码：
 
-  ```shell
+  ```powershell
   sfc /scannow
   ```
 
