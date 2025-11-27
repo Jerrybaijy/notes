@@ -258,9 +258,9 @@ pip3 install $MODULE_NAME
 
 - 确认 Python 已安装；
 
-- 终端进入项目根目录；
+- 终端进入项目后端目录；
 
-- 创建虚拟环境，会在项目根目录生成 `venv` 文件夹；
+- 创建虚拟环境，会在项目后端目录生成 `venv` 文件夹；
 
   ```bash
   python -m venv 安装目录
@@ -334,9 +334,9 @@ pip3 install $MODULE_NAME
 
 - 确认 Python 已安装；
 
-- 复制 `python-env` 脚本至项目根目录；
+- 复制 `python-env` 脚本至项目后端目录；
 
-- 终端进入项目根目录；
+- 终端进入项目后端目录；
 
 - 执行以下命令创建并激活虚拟环境：
 
