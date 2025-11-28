@@ -788,6 +788,7 @@ before_script:
   # 使用 stdin 输入密码，更加安全
   - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
 
+# 构建后端镜像
 build_backend:
   stage: build
   image: docker:$DOCKER_VERSION
@@ -806,6 +807,7 @@ build_backend:
     - changes:
         - $BACKEND_NAME/**/*
 
+# 构建前端镜像
 build_frontend:
   stage: build
   image: docker:$DOCKER_VERSION
@@ -969,7 +971,7 @@ todos-react-flask-mysql-fullstack/
 
 ## `mysql-config.yaml`
 
-为了保证数据持久化和密码安全，使用 `PVC` 和 `Secret`。
+为了保证数据持久化和密码安全，使用 `PVC` 和 `Secret`。
 
 **注意：** 实际操作时，需要使用 Base64 编码 `.env` 文件中的用户名和密码，例如：运行 `echo -n '123456' | base64` 来获取 `MYSQL_ROOT_PASSWORD` 的值。
 

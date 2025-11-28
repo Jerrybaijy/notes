@@ -45,6 +45,12 @@ pre {
   color: var(--sidebar-active-color);
 }
 
+/* 语言建议区选中背景色 */
+.auto-suggest-container li.active,
+.auto-suggest-container li:hover {
+  background-color: var(--section-color);
+}
+
 /* <kbd> */
 kbd {
   box-shadow: inset 0 -2px 0 #c6cbd1;

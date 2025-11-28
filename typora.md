@@ -184,7 +184,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 
   - `<script>` 元素可以放在 `<iframe>` 元素内，但无法访问本地文件。
 
-- 并非所有属性都受支持。HTML 中的 `id`、`class` 和 `data-*` 及未知属性在渲染时将不会包含在内（导出/打印时将包含它们）。
+- 并非所有属性都受支持。HTML 中的 `id`、`class` 和 `data-*` 及未知属性在渲染时将不会包含在内（导出/打印时将包含它们）。
 
 # 主题
 
@@ -752,7 +752,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
   - github-night-high-contrast.css
   
 - **注意**：github-night-dimmed.css 引入了 github-night.css 的样式
-- 编写自定义主题文件 **github-night-dimmed.user.css**，复制到主题文件夹。
+- 编写自定义主题文件 **github-night-dimmed.user.css**，复制到主题文件夹，该文件已保存至代码仓库。
 
 
 ## 颜色备忘

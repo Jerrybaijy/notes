@@ -230,7 +230,7 @@ build_backend_image:
 
 ### GitLab CI
 
-根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
+根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
 
 ## 前端
 
@@ -366,9 +366,9 @@ function App() {
 export default App;
 ```
 
-### `src/index.js`
+### `src/main.jsx`
 
-入口文件 `src/index.js`
+入口文件 `src/main.jsx`
 
 ```javascript
 import React from 'react';
@@ -409,6 +409,31 @@ const reportWebVitals = onPerfEntry => {
 };
 
 export default reportWebVitals;
+```
+
+### `vite.config.js`
+
+配置代理 `frontend/vite.config.js`
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    host: true, // 监听所有 IP，Docker 需要
+    proxy: {
+      // 把 /api 开头的请求转发给后端
+      '/api': {
+        target: 'http://backend:5000', // Docker 内部服务名
+        changeOrigin: true,
+        secure: false,
+      }
+    }
+  }
+})
 ```
 
 ### 启动前端
@@ -516,7 +541,7 @@ docker_build_and_push:
 
 ### GitLab CI
 
-根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
+根据 `Dockerfile` 和 `.gitlab-ci.yml` 进行 CI，构建镜像并推送至 Docker Hub。
 
 ## 前后端通信测试
 
