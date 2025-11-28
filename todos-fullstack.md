@@ -123,17 +123,16 @@ MYSQL_DATABASE=todos_db
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
 
-# 在 Docker 网络内部，数据库服务的名字叫 'db'
-DB_HOST=db
+DB_HOST=localhost
 
-# Flask 配置
+# 数据库迁移
 FLASK_APP=run.py
-FLASK_ENV=production
+FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
 
 # 项目名称
-BACKEND_NAME=todos-react-flask-mysql-backend
-FRONTEND_NAME=todos-react-flask-mysql-frontend
+BACKEND_NAME=todos-backend
+FRONTEND_NAME=todos-frontend
 ```
 
 同时，为了让协作者知道需要配什么，创建一个 `todos-fullstack/.env.example` (不含真实密码)：
@@ -177,6 +176,8 @@ mkdir -p backend/app/api
 
 ```bash
 cd backend
+
+# 提前复制 python-env 脚本到 backend 目录
 source python-env
 ```
 
@@ -231,7 +232,7 @@ class Config:
 
 ## `__init__.py`
 
-创建后端应用初始化文件 `__init__.py`
+创建后端应用初始化文件 `app/__init__.py`
 
 ```python
 from flask import Flask
@@ -255,6 +256,9 @@ def create_app(config_class=Config):
     # 初始化迁移
     migrate.init_app(app, db)
 
+    # 导入模型，确保SQLAlchemy知道所有模型
+    from app import models
+    
     # 注册蓝图
     from app.api import bp as api_bp
     app.register_blueprint(api_bp, url_prefix='/api')
@@ -269,6 +273,7 @@ def create_app(config_class=Config):
 ```python
 from app import db
 
+# 数据库模型
 class Todo(db.Model):
     # 表名
     __tablename__ = 'todos'
@@ -364,7 +369,7 @@ from app import create_app
 app = create_app()
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 ```
 
 ## `boot.sh`
@@ -425,14 +430,53 @@ EXPOSE 5000
 CMD ["boot.sh"]
 ```
 
+## MySQL
+
+创建容器化 MySQL，详见 [MySQL 笔记](mysql.md#容器化-mysql)。
+
+```bash
+docker run --name mysql-container \
+-e MYSQL_ROOT_PASSWORD=123456 \
+-e MYSQL_USER=jerry \
+-e MYSQL_PASSWORD=000000 \
+-e MYSQL_DATABASE=todos_db \
+-p 3306:3306 \
+-d mysql:8.0
+```
+
 ## 初始化数据库迁移
 
 ```bash
 # 确保虚拟环境已激活
+# 确保数据库已正常运行
+
+cd backend
+
+# 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 文件夹
 flask db init
+
+# 创建迁移脚本：根据 models.py 中的模型定义生成迁移脚本
 flask db migrate -m "Initial migration"
+
+# 应用迁移（创建表）：执行迁移脚本，在数据库中创建表结构
 flask db upgrade
 ```
+
+## 请求测试
+
+- 使用 Postman 模仿前端向后端发送请求测试，详见 [Postman  笔记](postman.md#使用方法)。
+
+- 请求方法：POST
+
+- 请求地址：http://localhost:5000/api/todos
+
+- 请求体
+
+  ```json
+  {
+    "content": "111"
+  }
+  ```
 
 # 前端
 

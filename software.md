@@ -1312,25 +1312,6 @@ Ollama 是一个**本地运行的大模型推理框架**，用于在个人电脑
   podman --version
   ```
 
-# Postman
-
-Postman 是一个 API 开发工具，用于创建、测试和调试 API。它可以用来发送 HTTP 请求到特定的 API 端点，并查看响应。
-
-## 环境搭建
-
-[官网下载 Postman](https://www.postman.com/downloads/?utm_source=postman-home)
-
-## 使用方法
-
-- 模拟浏览器向后端发送请求
-
-  ![image-20240321193038122](assets/image-20240321193038122.png)
-
-- **请求方法**：例 `PUT`，对应前端的 `method`；
-- **请求地址**：对应后端的接口，例子中 `/student` 是类，`/update/{studentId}` 由 `controller` 定义；
-- **Body**：即用户要发送的请求内容，以 JSON 格式发送；
-- 最后一行是反馈结果，类似于 `console`。
-
 # PowerToys
 
 [PowerToys](https://learn.microsoft.com/zh-cn/windows/powertoys/) 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。

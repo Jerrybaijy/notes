@@ -94,7 +94,9 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
 
   ```bash
   docker run --name mysql-container \
-  -e MYSQL_ROOT_PASSWORD=000000 \
+  -e MYSQL_ROOT_PASSWORD=123456 \
+  -e MYSQL_USER=jerry \
+  -e MYSQL_PASSWORD=000000 \
   -e MYSQL_DATABASE=mysql_db \
   -p 3306:3306 \
   -d mysql:8.0
@@ -128,6 +130,10 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
     ```bash
     mysql>
     ```
+
+### XAMPP
+
+使用 XAMPP 可以模拟一个 MySQL 数据库，详见 [XAMPP 笔记](software.md#xampp)。
 
 ## MySQL 交互方式
 
