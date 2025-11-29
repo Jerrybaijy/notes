@@ -131,6 +131,113 @@ MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发�
     mysql>
     ```
 
+### Minikube 中的 MySQL
+
+#### `mysql.yaml`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: todos
+
+data:
+  MYSQL_DATABASE: todos_db
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-secret
+  namespace: todos
+type: Opaque
+stringData:
+  MYSQL_ROOT_PASSWORD: rootpassword
+  MYSQL_USER: todosuser
+  MYSQL_PASSWORD: todospassword
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: todos
+  labels:
+    app: mysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mysql
+  template:
+    metadata:
+      labels:
+        app: mysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:8.0
+          envFrom:
+            - configMapRef:
+                name: mysql-config
+            - secretRef:
+                name: mysql-secret
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          args:
+            - --default-authentication-plugin=mysql_native_password
+          readinessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: mysql-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: todos
+  labels:
+    app: mysql
+spec:
+  selector:
+    app: mysql
+  ports:
+    - port: 3306
+      targetPort: 3306
+  clusterIP: None
+```
+
+#### 本地访问
+
+将 MySQL 服务端口转发至本地，其余同理
+
+```yaml
+kubectl port-forward service/$SERVICE_NAME 3306:3306 -n $NAMESPACE
+```
+
 ### XAMPP
 
 使用 XAMPP 可以模拟一个 MySQL 数据库，详见 [XAMPP 笔记](software.md#xampp)。

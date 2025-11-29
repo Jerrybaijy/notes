@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -96,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:docker",
+                "query": "端口转发",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -172,13 +172,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "react.md",
+                "file": "software.md",
                 "followCursor": false,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "react 的大纲"
+              "title": "software 的大纲"
             }
           },
           {
@@ -215,9 +215,11 @@
   },
   "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
+    "argo-cd.md",
+    "python.md",
+    "react.md",
     "software.md",
     "git.md",
-    "python.md",
     "mysql.md",
     "network.md",
     "postman.md",
@@ -241,11 +243,9 @@
     "todos-fullstack.md",
     "项目步骤.md",
     "helm.md",
-    "argo-cd.md",
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",
-    "flask.md",
     "assets/image-20251126075702455.png",
     "assets/image-20251029210729119.png",
     "git-push.sh",

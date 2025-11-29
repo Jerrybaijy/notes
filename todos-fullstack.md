@@ -9,6 +9,10 @@ tags:
   - flask
   - mysql
   - fullstack
+  - docker
+  - docker-compose
+  - k8s
+  - argo-cd
 ---
 
 # 项目概述
@@ -54,7 +58,7 @@ todos-fullstack/
 │   │   └── main.jsx       # 数据库模型文件
 │   │
 │   ├── .env               # 前端环境变量(未推送至代码仓库)
-│   ├── index.html         # 前端入口HTML文件
+│   ├── index.html         # 前端入口 HTML 文件
 │   ├── vite.config.js     # 开发环境跨域代理
 │   ├── package.json       # 前端依赖配置
 │   ├── nginx.conf         # Nginx 配置（用于前端静态文件服务）
@@ -80,6 +84,14 @@ todos-fullstack/
 ```
 
 ## 项目存储
+
+- **项目仓库**
+  - GitLab: https://gitlab.com/jerrybai/todos-fullstack
+  - GitHub: https://github.com/Jerrybaijy/todos-fullstack
+
+- **镜像仓库**
+  - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todos-fullstack-backend
+  - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todos-fullstack-frontend
 
 # 项目准备
 
@@ -157,10 +169,6 @@ DB_HOST=localhost
 FLASK_APP=run.py
 FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
-
-# 项目名称
-BACKEND_NAME=todos-backend
-FRONTEND_NAME=todos-frontend
 ```
 
 同时，为了让协作者知道需要配什么，创建一个 `todos-fullstack/.env.example` (不含真实密码)：
@@ -186,10 +194,6 @@ FLASK_ENV=production
 
 # change_this_to_a_very_long_random_string
 SECRET_KEY=
-
-# 项目名称
-BACKEND_NAME=todos-react-flask-mysql-backend
-FRONTEND_NAME=todos-react-flask-mysql-frontend
 ```
 
 # 后端开发
@@ -857,6 +861,7 @@ CMD ["nginx", "-g", "daemon off;"]
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 
 ```yaml
+# 指定 Docker Compose 文件版本
 version: '3.8'
 
 services:
@@ -923,7 +928,6 @@ volumes:
 networks:
   todo-network:
     driver: bridge
-
 ```
 
 ## 容器编排
@@ -941,21 +945,7 @@ networks:
   - 前端应用：http://localhost
   - 后端 API：http://localhost:5000/api/todos
 
-- 查看日志
-
-  ```bash
-  # 查看所有服务日志
-  docker-compose logs -f
-
-  # 查看特定服务日志
-  docker-compose logs -f frontend
-  docker-compose logs -f backend
-  docker-compose logs -f db
-  ```
-
 - 停止项目
-
-  这会删除 `docker-compose.yml` 中定义的 Containers 和 Networks，但不会移除 Images、Volumes、Configs，可手动删除。
 
   ```bash
   cd todos-fullstack
@@ -1048,43 +1038,229 @@ build_frontend:
   - `DOCKER_HUB_PASS`
 - 推送代码至仓库，Pipeline 完成以后查看 Docker Hub。
 
-# 创建 Kubernetes 部署配置
+# CD
 
-## 创建开发环境目录
+此项目实验了两种部署方式，使用其中一个即可：
 
-```bash
-mkdir -p dev argocd
+- Docker Compose
+- Argo CD
+
+## Docker Compose
+
+### 创建目录
+
+先创建 `todos-remote` 目录，在此目录分别创建：
+
+- `todos-remote/docker-compose.yml`
+- `todos-remote/.env`
+
+### `docker-compose.yml`
+
+```yaml
+# 指定 Docker Compose 文件版本
+version: '3.8'
+
+services:
+  # MySQL 数据库服务
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password  
+    networks:
+      - todo-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        
+      timeout: 20s
+      retries: 10
+
+  # 后端服务
+  backend:
+    # 指定镜像名称
+    image: jerrybaijy/todos-fullstack-backend:latest
+    restart: always
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      DB_HOST: db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      FLASK_APP: ${FLASK_APP}
+      FLASK_ENV: ${FLASK_ENV}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    networks:
+      - todo-network
+
+  # 前端服务
+  frontend:
+    # 指定镜像名称
+    image: jerrybaijy/todos-fullstack-frontend:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - todo-network
+
+# 数据库挂载卷
+volumes:
+  mysql_data:
+    driver: local
+
+# 定义网络
+networks:
+  todo-network:
+    driver: bridge
+
 ```
 
-## 创建 MySQL 数据库 Kubernetes 配置 dev/mysql-db.yaml
+### `.env`
+
+```toml
+# MySQL 数据库配置
+MYSQL_ROOT_PASSWORD=123456
+MYSQL_DATABASE=todos_db
+MYSQL_USER=jerry
+MYSQL_PASSWORD=000000
+
+# 在 Docker 网络内部，数据库服务的名字叫 'db'
+DB_HOST=db
+
+# Flask 配置
+FLASK_APP=run.py
+FLASK_ENV=production
+SECRET_KEY=change_this_to_a_very_long_random_string
+```
+
+### 启动
+
+- 删除**多容器集成测试**时的 Image、Container 和 Volumes，余下操作相同。
+
+- 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
+
+  ```bash
+  cd todos-remote
+  docker-compose up -d
+  ```
+
+- 访问应用
+
+  - 前端应用：http://localhost
+  - 后端 API：http://localhost:5000/api/todos
+
+- 停止项目
+
+  ```bash
+  cd todos-remote
+  docker-compose down
+  ```
+
+## Argo CD
+
+### 准备
+
+- Minikube、Kubectl、Argo CD 已安装
+
+- 创建开发环境目录
+
+  ```bash
+  cd todos-fullstack
+  mkdir k8s
+  ```
+
+### `namespace.yaml`
+
+命名空间 `k8s/namespace.yaml`
 
 ```yaml
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: Namespace
 metadata:
-  name: mysql-pvc
+  name: todos
+  labels:
+    name: todos
+```
+
+### `argocd-application.yaml`
+
+ArgoCD 应用定义 `k8s/argocd-application.yaml`
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todos-app
+  namespace: argocd
 spec:
-  accessModes:
-    - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
+  project: default
+  source:
+    repoURL: https://github.com/Jerrybaijy/todos-fullstack.git
+    targetRevision: HEAD
+    path: k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: todos
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff: {
+        duration: "5s",
+        factor: 2,
+        maxDuration: "3m"
+      }
+```
+
+### `mysql.yaml`
+
+数据库部署和服务 `k8s/mysql.yaml`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-config
+  namespace: todos
+
+data:
+  MYSQL_DATABASE: todos_db
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
+  namespace: todos
 type: Opaque
-data:
-  root-password: cm9vdF9wYXNzd29yZA== # base64 encoded "root_password"
-  mysql-user: dG9kb191c2Vy # base64 encoded "todo_user"
-  mysql-password: dG9kb19wYXNzd29yZA== # base64 encoded "todo_password"
-  mysql-database: dG9kb3NfZGI= # base64 encoded "todos_db"
+stringData:
+  MYSQL_ROOT_PASSWORD: rootpassword
+  MYSQL_USER: todosuser
+  MYSQL_PASSWORD: todospassword
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
+  namespace: todos
+  labels:
+    app: mysql
 spec:
   replicas: 1
   selector:
@@ -1098,56 +1274,82 @@ spec:
       containers:
         - name: mysql
           image: mysql:8.0
-          env:
-            - name: MYSQL_ROOT_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: root-password
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-database
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-user
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-password
+          envFrom:
+            - configMapRef:
+                name: mysql-config
+            - secretRef:
+                name: mysql-secret
           ports:
             - containerPort: 3306
           volumeMounts:
-            - name: mysql-persistent-storage
+            - name: mysql-data
               mountPath: /var/lib/mysql
+          args:
+            - --default-authentication-plugin=mysql_native_password
+          readinessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
       volumes:
-        - name: mysql-persistent-storage
-          persistentVolumeClaim:
-            claimName: mysql-pvc
+        - name: mysql-data
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: mysql
+  namespace: todos
+  labels:
+    app: mysql
 spec:
   selector:
     app: mysql
   ports:
     - port: 3306
       targetPort: 3306
+  clusterIP: None
+
 ```
 
-## 创建后端 Kubernetes 配置 dev/backend.yaml
+### `backend.yaml`
+
+后端部署和服务 `k8s/backend.yaml`
 
 ```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: backend-secret
+  namespace: todos
+type: Opaque
+stringData:
+  SECRET_KEY: your-secret-key
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  namespace: todos
+  labels:
+    app: backend
 spec:
   replicas: 1
   selector:
@@ -1159,65 +1361,81 @@ spec:
         app: backend
     spec:
       containers:
-        - name: backend
-          image: registry.gitlab.com/<your-namespace>/todos-fullstack/backend:latest
-          env:
-            - name: MYSQL_USER
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-user
-            - name: MYSQL_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-password
-            - name: DB_HOST
-              value: mysql
-            - name: MYSQL_DATABASE
-              valueFrom:
-                secretKeyRef:
-                  name: mysql-secret
-                  key: mysql-database
-            - name: SECRET_KEY
-              value: your-secret-key
-          ports:
-            - containerPort: 5000
-          command: ["/bin/sh", "-c"]
-          args:
-            - |
-              # 等待数据库可用
-              echo "Waiting for database..."
-              while ! nc -z $DB_HOST 3306; do
-                sleep 1
-              done
-              echo "Database is ready!"
-
-              # 执行数据库迁移
-              flask db upgrade
-
-              # 启动应用
-              gunicorn -b 0.0.0.0:5000 run:app
+      - name: backend
+        image: jerrybaijy/todos-fullstack-backend:latest
+        env:
+        - name: SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: backend-secret
+              key: SECRET_KEY
+        - name: MYSQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_USER
+        - name: MYSQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: MYSQL_PASSWORD
+        - name: DB_HOST
+          value: mysql
+        - name: MYSQL_DATABASE
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-config
+              key: MYSQL_DATABASE
+        ports:
+        - containerPort: 5000
+        readinessProbe:
+          httpGet:
+            path: /api/todos
+            port: 5000
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /api/todos
+            port: 5000
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+      initContainers:
+      - name: wait-for-mysql
+        image: busybox:1.31
+        command: ["sh", "-c", "until nslookup mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;"]
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: backend
+  namespace: todos
+  labels:
+    app: backend
 spec:
   selector:
     app: backend
   ports:
-    - port: 5000
-      targetPort: 5000
+  - port: 5000
+    targetPort: 5000
 ```
 
-## 创建前端 Kubernetes 配置 dev/frontend.yaml
+### `frontend.yaml`
+
+前端部署和服务 `k8s/frontend.yaml`
 
 ```yaml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
+  namespace: todos
+  labels:
+    app: frontend
 spec:
   replicas: 1
   selector:
@@ -1229,248 +1447,73 @@ spec:
         app: frontend
     spec:
       containers:
-        - name: frontend
-          image: registry.gitlab.com/<your-namespace>/todos-fullstack/frontend:latest
-          ports:
-            - containerPort: 80
+      - name: frontend
+        image: jerrybaijy/todos-fullstack-frontend:latest
+        ports:
+        - containerPort: 80
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          timeoutSeconds: 3
+          failureThreshold: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
+  namespace: todos
+  labels:
+    app: frontend
 spec:
-  type: NodePort
   selector:
     app: frontend
   ports:
-    - port: 80
-      targetPort: 80
-      nodePort: 30080
+  - port: 80
+    targetPort: 80
+  # 如果公网访问，应将服务类型改为 LoadBalancer
+  type: ClusterIP
 ```
 
-## 创建 Argo CD 应用配置 argocd/application.yaml
+### 部署
 
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: todos-fullstack
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: "https://gitlab.com/<your-namespace>/todos-fullstack.git"
-    targetRevision: HEAD
-    path: dev
-  destination:
-    server: "https://kubernetes.default.svc"
-    namespace: default
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
-    syncOptions:
-      - CreateNamespace=true
-```
+- 将源代码推送至代码仓库
 
-## 创建 Ingress 配置（可选） argocd/ingress.yaml
+- 部署
 
-```yaml
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: todos-ingress
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /
-spec:
-  rules:
-    - host: todos.example.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: frontend
-                port:
-                  number: 80
-          - path: /api
-            pathType: Prefix
-            backend:
-              service:
-                name: backend
-                port:
-                  number: 5000
-```
+  ```bash
+  cd k8s
+  kubectl apply -f application.yaml
+  ```
 
-# 使用 Argo CD 部署到 Kubernetes
+- 端口转发
 
-## 前提条件
+  ```bash
+  # 前端
+  kubectl port-forward svc/frontend 8081:80 -n todos
+  ```
 
-- Kubernetes 集群已安装 Argo CD
-- 已配置好 Argo CD 访问权限
-- GitLab 仓库已配置好 CI/CD 权限
+- 访问：http://localhost:8081/
 
-## 安装 Argo CD（如果尚未安装）
+- 如有调试需要，也可将后端和数据库进行端口转发
 
-```bash
-# 创建 Argo CD 命名空间
-kubectl create namespace argocd
-
-# 安装 Argo CD
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
-
-# 获取 Argo CD 初始密码
-kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
-
-# 访问 Argo CD UI
-# 首先将 Argo CD 服务暴露为 NodePort
-kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "NodePort"}}'
-
-# 获取 Argo CD UI 访问地址
-kubectl get svc argocd-server -n argocd
-```
-
-## 通过 Argo CD UI 创建应用
-
-- 登录 Argo CD UI
-- 点击 "NEW APP" 按钮
-- 填写应用信息：
-  - Application Name: `todos-fullstack`
-  - Project: `default`
-  - Repository URL: `https://gitlab.com/<your-namespace>/todos-fullstack.git`
-  - Path: `dev`
-  - Cluster URL: `https://kubernetes.default.svc`
-  - Namespace: `default`
-- 点击 "CREATE" 按钮创建应用
-- 点击 "SYNC" 按钮同步应用
-
-## 通过 Argo CD CLI 创建应用
-
-```bash
-# 登录 Argo CD CLI
-argocd login <argocd-server-address> --username admin --password <initial-password>
-
-# 创建应用
-argocd app create todos-fullstack \
-  --repo https://gitlab.com/<your-namespace>/todos-fullstack.git \
-  --path dev \
-  --dest-server https://kubernetes.default.svc \
-  --dest-namespace default
-
-# 同步应用
-argocd app sync todos-fullstack
-```
-
-## 配置自动同步
-
-- 在 Argo CD UI 中，进入应用详情页
-- 点击 "APP DETAILS" 标签
-- 找到 "SYNC POLICY" 部分，点击 "EDIT"
-- 勾选 "Automated" 和 "Self Heal" 选项
-- 点击 "SAVE"
-
-这样，当 GitLab 仓库中的代码发生变更时，Argo CD 会自动检测并同步部署。
-
-## 查看部署状态
-
-```bash
-# 查看 Argo CD 应用状态
-argocd app get todos-fullstack
-
-# 查看 Kubernetes Pod 状态
-kubectl get pods
-
-# 查看 Kubernetes Service 状态
-kubectl get services
-
-# 查看部署日志
-kubectl logs -f deployment/frontend
-kubectl logs -f deployment/backend
-kubectl logs -f deployment/mysql
-```
-
-## 访问部署的应用
-
-```bash
-# 获取前端服务的外部 IP 或 NodePort
-kubectl get service frontend
-```
-
-然后通过 http://<外部 IP>:30080 或 http://<节点 IP>:<NodePort> 访问应用
-
-## 删除部署
-
-```bash
-# 通过 Argo CD 删除应用
-argocd app delete todos-fullstack
-```
-
-```
-
-```
-
-# 常见问题及解决方案
-
-1. **数据库连接失败**
-
-   - 检查环境变量是否正确配置
-   - 确保数据库服务已启动
-   - 检查数据库用户权限
-
-2. **迁移命令失败**
-
-   - 确保已安装 flask-migrate
-   - 确保数据库已创建
-   - 检查数据库连接字符串是否正确
-
-3. **前端无法访问后端 API**
-
-   - 检查 CORS 配置（如果有）
-   - 确保后端服务已启动
-   - 检查 API 地址是否正确
-
-4. **Docker 构建失败**
-
-   - 检查 Dockerfile 语法是否正确
-   - 确保依赖文件存在
-   - 检查网络连接
-
-5. **Kubernetes 部署失败**
-   - 检查 YAML 语法是否正确
-   - 确保 Docker 镜像已正确构建
-   - 检查资源配额是否足够
-
-# 开发建议
-
-1. **使用 Git 进行版本控制**
-
-   - 定期提交代码
-   - 使用分支管理功能
-   - 编写有意义的提交信息
-
-2. **编写单元测试**
-
-   - 为后端 API 编写测试
-   - 为前端组件编写测试
-
-3. **使用 CI/CD 自动化部署**
-
-   - 配置 GitLab CI 或 GitHub Actions
-   - 实现自动构建和部署
-
-4. **监控和日志**
-
-   - 添加日志记录
-   - 配置监控系统
-   - 设置告警
-
-5. **安全最佳实践**
-   - 使用 HTTPS
-   - 定期更新依赖
-   - 实现身份认证和授权
-   - 防止 SQL 注入和 XSS 攻击
+  ```bash
+  # 数据库
+  kubectl port-forward svc/mysql 3306:3306 -n todos
+  
+  # 后端
+  kubectl port-forward svc/backend 5000:5000 -n todos
+  ```
 
 # 总结
 

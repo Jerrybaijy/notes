@@ -482,6 +482,8 @@ bar
 
 # Docker Compose
 
+## Docker Compose
+
 Docker Compose 是一个用于管理 Docker 容器的工具。
 
 - Install
@@ -500,6 +502,230 @@ Docker Compose 是一个用于管理 Docker 容器的工具。
   docker-compose up
   # Remove all containers
   cd $DOCKER_COMPOSE_FOLDER
+  docker-compose down
+  ```
+
+- 查看日志
+
+  ```bash
+  # 查看所有服务日志
+  docker-compose logs -f
+  
+  # 查看特定服务日志
+  docker-compose logs -f $SERVICE_NAME
+  ```
+
+## 多容器集成测试
+
+使用 `docker-compose.yml` 和 `Dockerfile` 构建多个镜像并启动容器。
+
+源自 `todos-fullstack` 项目。
+
+### `docker-compose.yml`
+
+存放位置：`todos-fullstack/docker-compose.yml`
+
+此文件的环境变量取自项目的 `.env` 文件
+
+```yaml
+# 指定 Docker Compose 文件版本
+version: '3.8'
+
+services:
+  # MySQL 数据库服务
+  db:
+    # 拉取 MySQL 镜像
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password  
+    networks:
+      - todo-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        
+      timeout: 20s
+      retries: 10
+
+  # 后端服务
+  backend:
+    # 构建后端镜像
+    build:
+      context: ./backend
+    restart: always
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      # 与开发环境不同，容器里的 DB_HOST 应该是 db
+      DB_HOST: db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      FLASK_APP: ${FLASK_APP}
+      FLASK_ENV: ${FLASK_ENV}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    networks:
+      - todo-network
+
+  # 前端服务
+  frontend:
+    # 构建前端镜像
+    build:
+      context: ./frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - todo-network
+
+# 数据库挂载卷
+volumes:
+  mysql_data:
+    driver: local
+
+# 定义网络
+networks:
+  todo-network:
+    driver: bridge
+```
+
+### 容器编排
+
+- 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
+
+  ```bash
+  cd todos-fullstack
+  docker-compose up -d
+  ```
+
+- 访问应用（以 React 为例）：http://localhost
+
+- 停止项目
+
+  这会删除 `docker-compose.yml` 中定义的 Containers 和 Networks，但不会移除 Images、Volumes、Configs，可手动删除。
+
+  ```bash
+  cd todos-fullstack
+  docker-compose down
+  ```
+
+## 部署应用
+
+在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
+
+源自 `todos-fullstack` 项目。
+
+### 创建目录
+
+先创建 `todos-remote` 目录，在此目录分别创建：
+
+- `todos-remote/docker-compose.yml`
+- `todos-remote/.env`
+
+### `docker-compose.yml`
+
+此文件的环境变量取自项目的 `.env` 文件
+
+**生产环境**的 `docker-compose.yml` 与本地**多容器集成测试**时不同：
+
+- 后端和前端由 build image 变为指定 image 名称
+
+```yaml
+version: '3.8'
+
+services:
+  # MySQL 数据库服务
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    command: --default-authentication-plugin=mysql_native_password  
+    networks:
+      - todo-network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        
+      timeout: 20s
+      retries: 10
+
+  # 后端服务
+  backend:
+    # 指定镜像名称
+    image: jerrybaijy/todos-fullstack-backend:latest
+    restart: always
+    environment:
+      SECRET_KEY: ${SECRET_KEY}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      DB_HOST: db
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      FLASK_APP: ${FLASK_APP}
+      FLASK_ENV: ${FLASK_ENV}
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    networks:
+      - todo-network
+
+  # 前端服务
+  frontend:
+    # 指定镜像名称
+    image: jerrybaijy/todos-fullstack-frontend:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - todo-network
+
+# 数据库挂载卷
+volumes:
+  mysql_data:
+    driver: local
+
+# 定义网络
+networks:
+  todo-network:
+    driver: bridge
+```
+
+### 启动
+
+- 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
+
+  ```bash
+  cd todos-remote
+  docker-compose up -d
+  ```
+
+- 访问应用（以 React 为例）：http://localhost
+
+- 停止项目
+
+  ```bash
+  cd todos-remote
   docker-compose down
   ```
 

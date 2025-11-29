@@ -11,20 +11,23 @@ tags:
 
 # Argo CD
 
-## Argo CD 基础
+## Argo CD
 
 [**Argo CD**](https://argo-cd.readthedocs.io/en/stable/) 是一个面向 Kubernetes 的声明式 GitOps 持续交付工具。
 
 ![argo-cd](assets/argo-cd.png)
 
-### 环境搭建
+## 环境搭建
 
-- Docker 和 kubectl 已安装，集群/Minikube已启动。
+- Docker 和 kubectl 已安装，集群 / Minikube 已启动。
 
 - 安装 Argo CD
 
   ```bash
+  # 创建 Argo CD 命名空间
   kubectl create namespace argocd
+  
+  # 安装 Argo CD
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   ```
 
@@ -37,9 +40,12 @@ tags:
 - 将端口转发至本地或公网即可查看 Argo CD UI 界面
 
   ```bash
+  # 查看网络服务
   kubectl get svc -n argocd
-  # 转发端口到本地，访问：127.0.0.1:8080
-  kubectl port-forward -n argocd svc/argocd-server 8080:443
+  
+  # 本地：转发端口到本地（临时），访问：127.0.0.1:8080
+  kubectl port-forward svc/argocd-server 8080:443 -n argocd
+  
   # 公网
   kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
   ```
@@ -47,12 +53,9 @@ tags:
 - 获取密码
 
   ```bash
-  # 获取密码
-  kubectl get secret argocd-initial-admin-secret -n argocd -o yaml
-  # 解码，PASSWORD为上一步获取到的加密密码
-  echo $PASSWORD== | base64 --decode
+  kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
   
-  # 上次密码：z1JL378fQ-G45D1C
+  # 上次密码：dAlsKbgZa4FvVT6V
   ```
 
 - 在本地或公网通过 IP 访问 Argo CD 页面登录，用户名为 admin，公网访问需要科学上网。
@@ -118,31 +121,75 @@ tags:
 
 - 删除应用
 
-  - 不要直接在集群删除应用，要先在 Argo CD 页面删除应用（因为已配置自愈，Argo CD 会自动创建应用）
-  - 再删除应用的命名空间
+  - 不要直接在集群删除应用，要先在 UI 页面删除应用（因为已配置自愈，Argo CD 会自动创建应用）
+  - 再在集群中删除应用的命名空间
 
-- 删除 Argo CD
 
-  - **删除 ArgoCD 自定义资源定义（CRD）**
+## 删除 Argo CD
 
-    ```bash
-    kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
-    ```
+- **删除 ArgoCD 自定义资源定义（CRD）**
 
-  - **删除 ArgoCD 的命名空间**
+  ```bash
+  kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
+  ```
 
-    ```bash
-    kubectl delete namespace
-    ```
+- **删除 ArgoCD 的命名空间**
 
-## 相关项目
+  ```bash
+  kubectl delete namespace
+  ```
+
+## 创建应用
+
+目前已知有三种方法创建应用：
+
+- Argo CD UI
+- Argo CD CLI
+- `kubectl apply -f application.yaml`
+
+### 通过 Argo CD UI 创建应用
+
+- 登录 Argo CD UI
+- 点击 "NEW APP" 按钮
+- 填写应用信息：
+  - Application Name: `todos-fullstack`
+  - Project: `default`
+  - Repository URL: `https://gitlab.com/<your-namespace>/todos-fullstack.git`
+  - Path: `dev`
+  - Cluster URL: `https://kubernetes.default.svc`
+  - Namespace: `default`
+- 点击 "CREATE" 按钮创建应用
+- 点击 "SYNC" 按钮同步应用
+
+### 通过 Argo CD CLI 创建应用
+
+```bash
+# 登录 Argo CD CLI
+argocd login <argocd-server-address> --username admin --password <initial-password>
+
+# 创建应用
+argocd app create todos-fullstack \
+  --repo https://gitlab.com/<your-namespace>/todos-fullstack.git \
+  --path dev \
+  --dest-server https://kubernetes.default.svc \
+  --dest-namespace default
+
+# 同步应用
+argocd app sync todos-fullstack
+```
+
+# 命令
+
+
+
+# 相关项目
 
 - Argo CD Git
 - Argo CD Helm
 
-## 解决方案
+# 解决方案
 
-### OutOfSync
+## OutOfSync
 
 - 当使用 ArgoCD 部署好应用以后，一切运行正常，但 UI 页面一直显示 OutOfSync，即使状态不同步，应用程序实际上也是同步的，但看到它不同步很烦人。若要消除此问题，有一种解决方案是使用资源排除。
 
