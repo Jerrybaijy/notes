@@ -57,7 +57,7 @@ todos-fullstack/
 │   │   ├── App.css        # 主组件样式表
 │   │   └── main.jsx       # 数据库模型文件
 │   │
-│   ├── .env               # 前端环境变量(未推送至代码仓库)
+│   ├── .env               # 前端环境变量（未推送至代码仓库）
 │   ├── index.html         # 前端入口 HTML 文件
 │   ├── vite.config.js     # 开发环境跨域代理
 │   ├── package.json       # 前端依赖配置
@@ -66,16 +66,14 @@ todos-fullstack/
 │
 ├── assets/                # README 资源文件
 │
-├── dev/                   # 开发环境 Kubernetes 配置
+├── k8s/                   # Kubernetes 配置
+│   ├── namespace.yaml     # 命名空间
+│   ├── mysql.yaml         # MySQL 数据库部署配置
 │   ├── backend.yaml       # 后端服务部署配置
 │   ├── frontend.yaml      # 前端服务部署配置
-│   └── mysql-db.yaml      # MySQL 数据库部署配置
+│   └── application.yaml   # Argo CD 应用配置
 │
-├── argocd/                # Argo CD 配置文件
-│   ├── application.yaml   # Argo CD 应用配置
-│   └── ingress.yaml       # Ingress 配置（可选）
-│
-├── .env                   # 环境变量(未推送至代码仓库)
+├── .env                   # 环境变量（未推送至代码仓库）
 ├── .env.example           # 环境变量示例文件
 ├── .gitignore             # Git 忽略文件配置
 ├── .gitlab-ci.yml         # GitLab CI/CD 配置

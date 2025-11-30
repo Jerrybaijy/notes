@@ -11,187 +11,328 @@ tags:
 
 # Kubernetes
 
-[**K8S**](https://kubernetes.io/zh-cn/docs/home/)（Kubernetes，集群）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。
+[**Kubernetes**](https://kubernetes.io/zh-cn)（K8s，“舵手”）是一个可移植、可扩展的开源平台，用于管理容器化的工作负载和服务，方便进行声明式配置和自动化。
+
+> [K8s 文档](https://kubernetes.io/zh-cn/docs/home/)
+>
+> [K8s 参考](https://kubernetes.io/zh-cn/docs/reference/)
 
 ## 环境搭建
 
-- K8S 需运行在 Docker 基础上
+- K8s 需运行在 Docker 基础上
 - 在本地使用 Minikube 搭建集群
 - 在 Cloud 中搭建集群
 - 其它
 
-## K8S 架构
+## 概念
+
+### K8s 组件
+
+K8s 集群主要以下两种[**组件**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/)：
+
+- **Control Plane**（控制平面）
+- **Node**（节点）
+
+![components-of-kubernetes](assets/components-of-kubernetes.svg)
+
+![Kubernetes 的组件](assets/components-of-kubernetes-1764489607053-1.svg)
+
+### K8s 对象
+
+[**K8s 对象**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/)是 K8s 系统中的持久性实体。 K8s 使用这些实体表示你的集群状态。
+
+### K8s API
+
+[**K8s API**](https://kubernetes.io/zh-cn/docs/concepts/overview/kubernetes-api/) 使你可以查询和操纵 K8s 中对象的状态。
+
+### K8s 架构
+
+[**K8s 架构**](https://kubernetes.io/zh-cn/docs/concepts/architecture/)
 
 ![Kubernetes架构图](assets/Kubernetes架构图.png)
 
-## [K8S Objects](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/)
+### Control Plane
 
-- _Kubernetes objects_ are persistent entities in the Kubernetes system.
+[**Control Plane**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#control-plane-components)（控制平面）用于管理集群的整体状态。
 
-### [Manifest File](https://kubernetes.io/docs/concepts/overview/working-with-objects/#describing-a-kubernetes-object)
+### Node
 
-#### [Fields](https://kubernetes.io/docs/concepts/overview/working-with-objects/#required-fields)
+[**Node**](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/)（节点）可以是一个虚拟机或者物理机器，取决于所在的集群配置。 
 
-#### [Field Selectors](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/field-selectors/)
+- 每个节点包含运行 Pod 所需的服务； Kubernetes 通过将容器放入在 Node 上运行的 Pod 中来执行你的工作负载。
+- 所有 Node 由 Control Plane 负责管理。
 
-#### [Labels](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/common-labels/)
+- Node 上的组件包括 [kubelet](https://kubernetes.io/docs/reference/generated/kubelet)、 [container runtime](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes) 以及 [kube-proxy](https://kubernetes.io/zh-cn/docs/reference/command-line-tools-reference/kube-proxy/)。
 
-# Control Plane
+## 清单
 
-[**Control Plane**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#control-plane-components) is one of the cluster's basic components, and make global decisions about the cluster.
+[**Manifest**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/#describing-a-kubernetes-object)（清单）是一个 YAML 配置文件（也可用 JSON），用于描述一个 K8s 对象。
 
-# Cluster
+一个清单必须包含以下字段：
 
-## Cluster basics
+- `apiVersion`：K8s API 版本
+- `kind`：对象类型
+- `metadata`：元数据，帮助唯一标识对象的一些数据，包括一个 `name`和其它。
+- `spec`：规约，即规格，期望状态。
 
-- A Kubernetes cluster consists of two types of resources:
+不同对象的 spec 格式各不不同，详见  [Kubernetes API 参考](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/)。
 
-  - **Control Plane**: The Control Plane is responsible for managing the cluster.
-  - **Node**: A node is a VM or a physical computer that serves as a worker machine in a Kubernetes cluster.
+下面是一个 Deployment 清单示例：
 
-- [All the required components in a complete and working cluster.](https://kubernetes.io/zh-cn/docs/concepts/overview/components/)
+```yaml
+# K8s API 版本
+apiVersion: apps/v1
 
-  ![components-of-kubernetes](assets/components-of-kubernetes.svg)
+# 对象类型
+kind: Deployment
 
-- Basic commands
+# 元数据
+metadata:
+  name: nginx-deployment
 
-  ```bash
-  # Show cluster
-  kubectl cluster-info
-  # Stop Cluster
-  systemctl stop kubelet
-  ```
-
-## Build cluster
-
-搭建集群需要一些步骤，主要是配置和安装相关软件。以下是 GPT 在一台空服务器上搭建集群的一般步骤：
-
-- **选择操作系统**：选择适合您需求的操作系统。常见的选择包括 Ubuntu、CentOS、或者其他 Linux 发行版。
-- **安装必要软件**：安装必要的软件，包括 SSH 服务器（用于远程连接）和基本的网络配置。
-- **配置主机名和 IP 地址**：为您的服务器配置主机名和静态 IP 地址，这样其他服务器可以通过主机名或 IP 地址访问它。
-- **安装容器化平台**：选择并安装适合您的容器化平台，比如 Docker 或者 Kubernetes。这些平台可以帮助您管理和运行应用程序容器。
-- **配置容器化平台**：配置您的容器化平台，包括设置网络、存储和其他必要的配置。
-- **创建集群**：使用容器化平台工具创建一个集群，将多台服务器连接在一起。
-- **部署应用程序**：将您的应用程序容器化，并在集群中部署它们。您可以使用 Docker 镜像或者 Kubernetes 部署描述文件来简化这个过程。
-- **监控和维护**：设置监控和日志记录，确保您的集群正常运行。定期进行维护和更新以确保安全性和性能。
+# 规约
+spec:
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
 
 # Deployment
 
-## Deployment 基础
+## Deployment
 
-Deployment（部署）是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控制器。它定义了您希望部署的应用程序的期望状态，并负责确保集群中的实际状态与所定义的状态匹配。
+[**Deployment**](https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/)（部署）用于管理运行一个应用负载的一组 Pod，是 Kubernetes 中用于管理 Pod 和 ReplicaSet 的控制器。
 
 ![module_02_first_app](assets/module_02_first_app.svg)
 
-- **基础命令**
+**基础命令**
+
+```bash
+# 手动创建 deployment
+kubectl create deployment DEPLOYMENT_NAME --image=IMAGE
+
+# 使用清单文件创建 deployment
+kubectl apply -f deployment.yaml
+```
+
+## deployment.yaml
+
+`deployment.yaml` 是部署 Deployment 的清单文件。
+
+> [Deployment API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/deployment-v1/)
+
+[**编写 Deployment `spec`**](https://kubernetes.io/zh-cn/docs/concepts/workloads/controllers/deployment/#writing-a-deployment-spec):
+
+- **selector**：[标签选择器](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/common-definitions/label-selector/#LabelSelector)（必需）
+- **template**：模板（必需），即 [PodTemplateSpec](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-template-v1/#PodTemplateSpec)，描述将要创建的 Pod。
+  - **metadata**：元数据
+  - **spec**：即 [PodSpec](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)，Pod 的 spec。
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  # 标签选择器（必需）
+  selector:
+    matchLabels:
+      app: nginx
+  replicas: 2
+  
+  # Pod 模板（必需）
+  template:
+    
+    # Pod 元数据
+    metadata:
+      labels:
+        app: nginx
+    
+    # Pod 规约
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+下面是一个说明留存：
+
+```yaml
+apiVersion: apps/v1 # API 版本
+kind: Deployment # 资源类型
+metadata: # 资源元数据
+  labels: # 资源标签
+    $KEY: $VLUE # 资源的标签键值对，可以用来标识和分类资源
+  name: # Deploymnet 名称
+  namespace: # Deploymnet 命名空间
+spec: # Deploymnet 规格
+  replicas: # Pod 数量
+  selector: # 标签选择器，用于选择要管理的 Pod
+    matchLabels: # 匹配标签
+      $KEY: $VLUE # 标签选择器中用于匹配的标签键值对
+  template: # Pod 模板
+    metadata: # Pod 元数据
+      labels: # Pod 标签
+        $KEY: $VLUE # Pod 的标签键值对
+    spec: # Pod 规格
+      containers: # Container 列表
+        - image: # Image 地址
+          imagePullSecrets: # Image 下载策略
+          name: # Container 名称
+          args: # ENTRYPOINT 参数
+          commnd: # 执行命令
+          ports: # Container 公开端口
+          env: # 环境变量
+          resources: # 容器资源限制和请求
+            requests: # 请求资源
+              memory: "1Gi" # 请求内存为 1Gi
+              cpu: "500m" # 请求 CPU 为 500m
+              ephemeral-storage: "1Gi" # 请求临时存储为 1Gi
+            limits: # 资源限制
+              memory: "1Gi" # 内存限制为 1Gi
+              cpu: "500m" # CPU 限制为 500m
+              ephemeral-storage: "1Gi" # 临时存储限制为 1Gi
+          livenessProbe: # 存活检查
+          readinessProbe: # 就绪检查
+          startupProbe: # 启动检查
+          volumeMounts: # 卷挂载
+          securityContext: # 安全上下文
+          lifecycle: # 容器生命周期回调
+      volumes: # Pod 的卷列表
+```
+
+# Pod
+
+## Pod
+
+[**Pod**](https://kubernetes.io/zh-cn/docs/concepts/workloads/pods/) 是可以在 K8s 中创建和管理的、最小的可部署的计算单元。Pod 运行在 Node 上，管理一组 Container。
+
+```bash
+# 进入 pod
+kubectl exec -it $POD -- /bin/bash
+```
+
+## pod.yaml
+
+`pod.yaml` 是部署 Pod 的清单文件。
+
+> [Pod API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/)
+
+[**编写 Pod `spec`**](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec)：
+
+- [**containers**](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)：容器
+  - **name**：容器名称（必需）
+  - **image**：镜像
+  - **ports**：端口
+    - **containerPort**：容器端口（必需）
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  # 容器（必需）
+  containers:
+  
+  # 容器名称（必需）
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+```
+
+# Service
+
+## Service
+
+[**Service**](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/) 是将应用程序公开为网络服务的方法。
+
+## service.yaml
+
+`service.yaml` 是配置 Service 的清单文件。
+
+> [Service API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/service-resources/service-v1/)
+
+[**编写 Service `spec`**](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#defining-a-service)：
+
+- **ports**：此 Service 公开的端口列表
+  - **port**：Service 将公开的端口（必需）
+  - **targetPort**：在 Service 所针对的 Pod 上要访问的端口号或名称。
+- [**type**](https://kubernetes.io/zh-cn/docs/concepts/services-networking/service/#publishing-services-service-types)：Service 的公开方式，默认为 ClusterIP。
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: $SERVICE_NAME
+spec:
+  selector:
+    $KEY: $VALUE
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 8080
+```
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: myapp-service
+spec:
+  selector:
+    app: myapp
+  type: LoadBalancer # 如本地访问服务类型为 ClusterIP
+  ports: # 服务监听的端口列表
+    - port: 80 # 公网端口 80
+      targetPort: 8080 # Pod 端口 8080
+```
+
+## port
+
+- **公开至公网**
+
+  方法一：将现有服务的类型更改为 LoadBalancer 类型
 
   ```bash
-  # 查看 deployment
-  kubectl get deployment
-  # 手动创建 deployment
-  kubectl create deployment DEPLOYMENT_NAME --image=IMAGE
-  # YAML 文件创建 deployment
-  kubectl apply -f deployment.yaml
-  # 删除 deployment
-  kubectl delete deployment DEPLOYMENT_NAME
+  kubectl patch svc $SERVICE_NAME -n $NAMESPACE -p '{"spec": {"type": "LoadBalancer"}}'
   ```
 
-- **deployment.yaml**
+  方法二：为 Deployment 创建一个新的 Service，并将其类型设置为 LoadBalancer
 
-  ```yaml
-  apiVersion: apps/v1 # API 版本
-  kind: Deployment # 资源类型
-  metadata: # 资源元数据
-    labels: # 资源标签
-      $KEY: $VLUE # 资源的标签键值对，可以用来标识和分类资源
-    name: # Deploymnet 名称
-    namespace: # Deploymnet 命名空间
-  spec: # Deploymnet 规格
-    replicas: # Pod 数量
-    selector: # 标签选择器，用于选择要管理的 Pod
-      matchLabels: # 匹配标签
-        $KEY: $VLUE # 标签选择器中用于匹配的标签键值对
-    template: # Pod 模板
-      metadata: # Pod 元数据
-        labels: # Pod 标签
-          $KEY: $VLUE # Pod 的标签键值对
-      spec: # Container 规格
-        containers: # Container 列表
-          - image: # Image 地址
-            imagePullSecrets: # Image 下载策略
-            name: # Container 名称
-            args: # ENTRYPOINT 参数
-            commnd: # 执行命令
-            ports: # Container 公开端口
-            env: # 环境变量
-            resources: # 容器资源限制和请求
-              requests: # 请求资源
-                memory: "1Gi" # 请求内存为 1Gi
-                cpu: "500m" # 请求 CPU 为 500m
-                ephemeral-storage: "1Gi" # 请求临时存储为 1Gi
-              limits: # 资源限制
-                memory: "1Gi" # 内存限制为 1Gi
-                cpu: "500m" # CPU 限制为 500m
-                ephemeral-storage: "1Gi" # 临时存储限制为 1Gi
-            livenessProbe: # 存活检查
-            readinessProbe: # 就绪检查
-            startupProbe: # 启动检查
-            volumeMounts: # 卷挂载
-            securityContext: # 安全上下文
-            lifecycle: # 容器生命周期回调
-        volumes: # Pod 的卷列表
+  ```bash
+  kubectl expose deployment $DEPLOYMENT_NAME --type LoadBalancer --port 80 --target-port 8080
   ```
 
-  ```yaml
-  apiVersion: apps/v1
-  kind: Deployment
-  metadata:
-    labels:
-      app: jerry-app
-    name:
-    namespace:
-  spec:
-    replicas:
-    selector:
-      matchLabels:
-        app: jerry-app
-    template:
-      metadata:
-        labels:
-          app: jerry-app
-      spec:
-        containers:
-          - image:
-            imagePullSecrets:
-            name:
-            args:
-            commnd:
-            ports:
-            env:
-            resources:
-              requests:
-                memory: "1Gi"
-                cpu: "500m"
-                ephemeral-storage: "1Gi"
-              limits:
-                memory: "1Gi"
-                cpu: "500m"
-                ephemeral-storage: "1Gi"
-            livenessProbe:
-            readinessProbe:
-            volumeMounts:
-            securityContext:
-            lifecycle:
-        volumes:
+- **公开至本地**
+
+  ```bash
+  kubectl port-forward deployment/$DEPLOYMENT_NAME $HOST_PORT:$POD_PORT
+  # eg
+  kubectl port-forward deployment/nginx 80:8080
   ```
 
 # Kubectl
 
-[**Kubectl**](https://kubernetes.io/zh-cn/docs/reference/kubectl/) 命令行工具用于与集群交互。
+[**Kubectl**](https://kubernetes.io/zh-cn/docs/reference/kubectl/) 是 K8s 的命令行工具，用于与集群交互。
 
-## Install
+## 安装
 
-kubectl 可安装在各种 Linux 平台、 macOS 和 Windows 上。 在下面找到你喜欢的操作系统。
+[安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/#kubectl)：
 
 - [在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
 - [在 macOS 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-macos)
@@ -212,7 +353,7 @@ kubectl version --client
 
 ### Windows
 
-- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)，以下是使用 Chocolatey 方法安装 Kubectl。
+- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)，以下是使用 Chocolatey 方法安装 kubectl。
 - 已在 Windows 系统中安装 [Chocolatey](windows.md#chocolatey)。
 - 以管理员身份运行 PowerShell 安装，但重启所有终端后可以在 Bash 中使用。
 
@@ -225,38 +366,59 @@ kubectl version --client
 
 - 将 `系统环境变量` 中的 `C:\ProgramData\chocolatey\bin` 移至顶部，详见 [Windows 笔记](windows.md#系统变量)。
 
-## Commands
+## 语法
 
-[**Commands**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)
+### 语法
+
+[**Kubectl 语法**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：
 
 ```bash
-# 列出资源
-kubectl get $RESOURCE
-# 删除资源
-kubectl delete $RESOURCE
-# 应用 apply
-kubectl apply -f $YAML # `-f` 指定路径
-# 查看资源日志
-kubectl logs $RESOURCE
-# 查看资源详细信息
-kubectl describe $RESOURCE
+kubectl [command] [TYPE] [NAME] [flags]
+
+kubectl get pod my-pod -n my-namespace
 ```
 
-**Options**
+- **command**：[操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
+- **TYPE**：[资源类型](https://kubernetes.io/zh-cn/docs/reference/kubectl/#resource-types)
+- **NAME**：资源名称
+- **flags**：[可选参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
 
-- `-n $NAMESPACE`：指定命名空间
+### 操作
+
+> [Kubectl 操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
+>
+> [Kubectl 参考](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/)
+
+- kubectl help：获取帮助
+- [kubectl get](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_get/)：列出资源
+- [kubectl apply](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_apply/)：将配置清单应用于资源
+- [kubectl create](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_create/)：创建资源
+- [kubectl delete](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_delete/)：删除资源
+- [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：打印资源日志
+- [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：描述资源细节
+
+### 参数
+
+> [Kubectl 参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
+
+- `-n <namespace_name>`：指定命名空间
+- [`-o <output_format>`](https://kubernetes.io/zh-cn/docs/reference/kubectl/#formatting-output)：格式化输出
 
 # Minikube
 
-[**Minikube**](https://minikube.sigs.k8s.io/docs/) 是本地 Kubernetes，供学习使用，不能用于生产环境。
+[**Minikube**](https://minikube.sigs.k8s.io/docs/) 是一个工具，可以在本地运行 K8s，供学习使用。
 
-## 环境搭建
+> [Minikube 文档](https://minikube.sigs.k8s.io/docs/)
+>
+> [Minikube 教程](https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/)
+
+## 安装
 
 [安装 Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
 
 ### Windows
 
-- Docker 和 Kubectl 已安装
+- Docker 和 kubectl 已安装
 
 - [官网下载安装程序并安装。](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
 
@@ -284,17 +446,23 @@ kubectl describe $RESOURCE
 ```bash
 # 查看集群
 minikube status
+# 打开仪表盘
+minikube dashboard
+
 # 创建集群
 minikube start
 # 停止集群
 minikube stop
 # 删除集群
 minikube delete
+
+# 访问应用
+minikube service <service_name>
 ```
 
 # Namespace
 
-## Namespace 基础
+## Namespace
 
 [**Namespace**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/)（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
 
@@ -305,101 +473,14 @@ kubectl create namespace NAMESPACE_NAME
 kubectl delete namespace NAMESPACE_NAME
 ```
 
-# Node
-
-[**Node**](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/) 是...
-
-- [**Node Component**](https://kubernetes.io/zh-cn/docs/concepts/overview/components/#node-components)
-  - Node component is one of the cluster's basic components.
-  - Node components run on every node, maintaining running pods and providing the Kubernetes runtime environment.
-  
-- Node 可以是一个虚拟机或者物理机器，取决于所在的集群配置。 每个节点包含运行 Pod 所需的服务； Kubernetes 通过将容器放入在 Node 上运行的 Pod 中来执行你的工作负载。
-
-- 所有 Node 由 Control Plane 负责管理。
-
-- Node 上的组件包括 [kubelet](https://kubernetes.io/docs/reference/generated/kubelet)、 [container runtime](https://kubernetes.io/zh-cn/docs/setup/production-environment/container-runtimes) 以及 [kube-proxy](https://kubernetes.io/zh-cn/docs/reference/command-line-tools-reference/kube-proxy/)。
-
-# Pod
-
-![module_03_pods](assets/module_03_pods.svg)
+# 集中保存
 
 ```bash
-# 列出 pod
-kubectl get pod
-# 删除 pod
-kubectl delete pod
-# 查看 pod 日志
-kubectl logs pod
-# 查看 pod 详细信息
-kubectl describe pod $POD
-# Exit pod
-kubectl exec -it $POD -- /bin/bash
+# Show cluster
+kubectl cluster-info
+# Stop Cluster
+systemctl stop kubelet
 ```
-
-# Service
-
-- **基础命令**
-
-  ```bash
-  # 查看 service
-  kubectl get svc [-n NAMESPACE]
-  ```
-
-- **service.yaml**
-
-  ```yaml
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: $SERVICE_NAME
-  spec:
-    selector:
-      $KEY: $VALUE
-    type: LoadBalancer
-    ports:
-      - port: 80
-        targetPort: 8080
-  ```
-
-  ```yaml
-  apiVersion: v1
-  kind: Service
-  metadata:
-    name: myapp-service
-  spec:
-    selector:
-      app: myapp
-    type: LoadBalancer # 如本地访问服务类型为 ClusterIP
-    ports: # 服务监听的端口列表
-      - port: 80 # 公网端口 80
-        targetPort: 8080 # Pod 端口 8080
-  ```
-
-- **port**
-
-  - **公开至公网**
-
-    方法一：将现有服务的类型更改为 LoadBalancer 类型
-
-    ```bash
-    kubectl patch svc $SERVICE_NAME -n $NAMESPACE -p '{"spec": {"type": "LoadBalancer"}}'
-    ```
-
-    方法二：为 Deployment 创建一个新的 Service，并将其类型设置为 LoadBalancer
-
-    ```bash
-    kubectl expose deployment $DEPLOYMENT_NAME --type LoadBalancer --port 80 --target-port 8080
-    ```
-
-  - **公开至本地**
-
-    ```bash
-    kubectl port-forward deployment/$DEPLOYMENT_NAME $HOST_PORT:$POD_PORT
-    # eg
-    kubectl port-forward deployment/nginx 80:8080
-    ```
-
-# Grafana
 
 # How to deploy Kubernetes on bare metal
 
