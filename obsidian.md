@@ -38,24 +38,55 @@ tags:
 
 # 主题
 
-## 主题
+## 自定义主题
 
-- 下载主题：`设置 / 外观 / 主题`
-- 自定义部分：`设置 / 外观 / CSS 代码片段`，相当于 `base.user`。
-- 当前文件夹下的 `claude-底板.css` 文件是 Claude Code 生成的代码片段，没解决重置问题。
+- `设置` > `外观`
+
+  - **基础颜色**：选择 `跟随系统`
+
+  - **主题**：选择 `默认`
+
+- `设置` > `外观` > `CSS 代码片段`，创建 CSS 文件，这里的样式会覆盖掉当前主题。
+
+  **注意**：这个文件只作用于当前 Obsidian 仓库。
+
+- 创建 `user.css`，相当于 Typora 中的 `base.user`。
+
+  ```css
+  /* 这里不要使用 :root，否则可能会被覆盖 */
+  body {
+    /* 作用于所有主题 */
+  }
+  
+  .theme-dark {
+    /* 作用于深色主题 */
+  }
+  
+  .theme-light {
+    /* 作用于浅色主题 */
+    --table-border-color: gray;
+  }
+  
+  /* -------------------其它部分----------------- */
+  ```
+
+  
 
 ## 主题变量
 
 > [CSS 变量](https://docs.obsidian.md/Reference/CSS+variables/CSS+variables)
 
-- 颜色
+```css
+/* 内容区 */
+--background-primary: #2d333b;
 
-  ```css
-  .theme-dark {
-    --background-primary: #22272e;
-    --background-secondary: #2d333b;
-  }
-  ```
+/* 其它区 */
+--background-secondary: #22272e;
+
+/* HTML 属性值 */
+--code-property: #a5d6ff;
+--code-function: #a5d6ff;
+```
 
 # 插件
 

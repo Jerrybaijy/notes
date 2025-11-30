@@ -128,6 +128,16 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 "workbench.colorTheme": "GitHub Dark Dimmed"  // 未启用自动主题时的颜色主题
 ```
 
+### 主题文件
+
+- 以 `GitHub Light` 主题为例
+- VS Code 扩展通常安装在用户目录下的 `.vscode/extensions` 文件夹中。
+- 类似 `github.github-vscode-theme-6.3.5` 标识符的文件夹既是 GitHub 主题文件夹。
+- 进入该文件夹，主题定义文件通常位于 `themes/` 目录下，文件名为 `light.json` 或类似名称。
+- 打开这个 JSON 文件，您会看到两个主要的颜色部分：
+  - `colors`: 定义了 VS Code UI 界面（如侧边栏、状态栏、输入框）的颜色。
+  - `tokenColors` / `tokenColors.settings`: 定义了代码编辑器中各种语法元素（如关键字、字符串、变量）的高亮颜色。
+
 ## 自定义主题
 
 [**自定义主题**](https://vscode.github.net.cn/docs/getstarted/themes#_customizing-a-color-theme)：可以对颜色主题进行部分覆盖。
