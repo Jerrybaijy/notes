@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "2ebaa87e6754bc48",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todos-fullstack.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "todos-fullstack"
+            }
+          },
+          {
             "id": "dc87395bc91f54e9",
             "type": "leaf",
             "state": {
@@ -47,6 +61,20 @@
               },
               "icon": "lucide-file",
               "title": "argo-cd"
+            }
+          },
+          {
+            "id": "cf0f1f6a7eef950b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "kubernetes.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "kubernetes"
             }
           },
           {
@@ -78,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -110,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "argo",
+                "query": "docker",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -228,13 +256,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "343a6c058cda682a",
   "lastOpenFiles": [
-    "python.md",
+    "0000-to-do.md",
+    "todos-fullstack.md",
     "kubernetes.md",
+    "python.md",
+    "argo-cd.md",
     "k8s.md",
     "software.md",
-    "0000-to-do.md",
     "assets/components-of-kubernetes-1764489607053-1.svg",
     "assets/components-of-kubernetes-1764489607053-1-1764489607053-2.svg",
     "mysql.md",
@@ -246,7 +276,6 @@
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "其它格式未转换/obsidian-themes/user.css",
-    "argo-cd.md",
     "git.md",
     "network.md",
     "postman.md",
@@ -262,7 +291,6 @@
     "code-general.md",
     "projects.md",
     "windows.md",
-    "todos-react-flask-mysql-fullstack.md",
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",

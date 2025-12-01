@@ -368,8 +368,6 @@ kubectl version --client
 
 ## 语法
 
-### 语法
-
 [**Kubectl 语法**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：
 
 ```bash
@@ -383,7 +381,7 @@ kubectl get pod my-pod -n my-namespace
 - **NAME**：资源名称
 - **flags**：[可选参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
 
-### 操作
+## 操作
 
 > [Kubectl 操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
 >
@@ -397,7 +395,7 @@ kubectl get pod my-pod -n my-namespace
 - [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：打印资源日志
 - [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：描述资源细节
 
-### 参数
+## 参数
 
 > [Kubectl 参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
 

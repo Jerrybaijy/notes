@@ -601,7 +601,7 @@ networks:
     driver: bridge
 ```
 
-### 容器编排
+### Docker Compose 构建和部署
 
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
@@ -621,7 +621,7 @@ networks:
   docker-compose down
   ```
 
-## 部署应用
+## Docker Compose 部署
 
 在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
 

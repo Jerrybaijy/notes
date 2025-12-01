@@ -650,7 +650,12 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
     background-color: #ffffff1a;
   }
   
-  /* 元数据 */
+  /* YAML 字段 */
+  .cm-s-inner .cm-atom {
+    color: #7ee787 !important;
+  }
+  
+  /* 文档元数据 */
   /* 在 github-night.css:579 中，
   此处指定为 #fff */
   #write pre.md-meta-block {
@@ -769,7 +774,6 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 | 主要浅色 |          |  `#2d333b`  |
 |   文本   |          |  `#adbac7`  |
 |   代码   |          | `#ffffff1a` |
-|          |          |             |
 
 
 

@@ -13,6 +13,8 @@ tags:
   - docker-compose
   - k8s
   - argo-cd
+  - nginx
+  - vite
 ---
 
 # 项目概述
@@ -57,21 +59,20 @@ todos-fullstack/
 │   │   ├── App.css        # 主组件样式表
 │   │   └── main.jsx       # 数据库模型文件
 │   │
-│   ├── .env               # 前端环境变量（未推送至代码仓库）
 │   ├── index.html         # 前端入口 HTML 文件
-│   ├── vite.config.js     # 开发环境跨域代理
+│   ├── vite.config.js     # 前端请求代理（本地环境）
 │   ├── package.json       # 前端依赖配置
-│   ├── nginx.conf         # Nginx 配置（用于前端静态文件服务）
+│   ├── nginx.conf         # 前端请求代理（容器化环境）
 │   └── Dockerfile         # 前端 Docker 镜像构建文件
 │
 ├── assets/                # README 资源文件
 │
-├── k8s/                   # Kubernetes 配置
-│   ├── namespace.yaml     # 命名空间
-│   ├── mysql.yaml         # MySQL 数据库部署配置
-│   ├── backend.yaml       # 后端服务部署配置
-│   ├── frontend.yaml      # 前端服务部署配置
-│   └── application.yaml   # Argo CD 应用配置
+├── k8s/                   # Kubernetes 部署文件
+│   ├── namespace.yaml     # 命名空间定义
+│   ├── mysql.yaml         # MySQL 部署和服务
+│   ├── backend.yaml       # 后端部署和服务
+│   ├── frontend.yaml      # 前端部署和服务
+│   └── application.yaml   # Argo CD 应用定义
 │
 ├── .env                   # 环境变量（未推送至代码仓库）
 ├── .env.example           # 环境变量示例文件
@@ -270,12 +271,15 @@ class Config:
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
+from flask_cors import CORS
 from config import Config
 
 # 创建数据库实例
 db = SQLAlchemy()
 # 创建迁移实例
 migrate = Migrate()
+# 创建 CORS 实例，使用 flask-cors 库启用了跨域资源共享，允许前端跨域请求
+cors = CORS()
 
 def create_app(config_class=Config):
     # 创建 Flask 应用
@@ -287,6 +291,8 @@ def create_app(config_class=Config):
     db.init_app(app)
     # 初始化迁移
     migrate.init_app(app, db)
+    # 初始化CORS
+    cors.init_app(app)
 
     # 导入模型，确保SQLAlchemy知道所有模型
     from app import models
@@ -334,6 +340,7 @@ class Todo(db.Model):
 from flask import Blueprint
 
 # 创建 API 蓝图
+# 注册了 /api 前缀，即 routes.py 中的 /todos 实际路径为 /api/todos
 bp = Blueprint('api', __name__)
 
 # 导入路由
@@ -343,6 +350,9 @@ from app.api import routes
 ## `routes.py`
 
 后端 API 路由文件 `app/api/routes.py`
+
+- 在 `__init__.py` 创建 API 蓝图时添加了 `/api` 前缀
+- 后端的路由 `/todos` 实际上对应的完整相对路径是 `/api/todos`
 
 ```python
 from flask import jsonify, request
@@ -357,6 +367,7 @@ def get_todos():
     return jsonify([todo.to_dict() for todo in todos])
 
 # 创建新 TODO
+# 在 __init__.py 中注册了 /api 前缀，此处实际路径为 /api/todos
 @bp.route('/todos', methods=['POST'])
 def create_todo():
     data = request.get_json() or {}
@@ -480,6 +491,9 @@ npm install axios
 
 前端环境变量 `frontend/.env`
 
+- 没有这个文件也行，只是为了留存一种方法。
+- 对于此项目，如果有这个文件，前端发送请求就不走 Vite 代理
+
 ```toml
 VITE_API_BASE_URL=http://localhost:5000/api
 ```
@@ -492,55 +506,77 @@ VITE_API_BASE_URL=http://localhost:5000/api
 import { useState, useEffect } from "react";
 import "./App.css";
 
-// 使用环境变量管理API地址
+// 允许使用环境变量管理 API 地址，默认值为"/api"
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "/api";
 
+/**
+ * Todo列表应用的主组件
+ * 实现了Todo的增删改查功能
+ */
 function App() {
+  // todos状态：存储所有Todo项的数据
   const [todos, setTodos] = useState([]);
+  // input状态：存储用户输入的新Todo内容
   const [input, setInput] = useState("");
 
+  // 组件挂载时，从API获取初始Todo列表
   useEffect(() => {
-    fetchTodos();
+    // 在effect中直接定义异步函数并执行
+    const fetchInitialTodos = async () => {
+      try {
+        const res = await fetch(`${API_BASE_URL}/todos`);
+        if (res.ok) {
+          const data = await res.json();
+          setTodos(data);
+        }
+      } catch (error) {
+        console.error("Failed to fetch todos", error);
+      }
+    };
+
+    fetchInitialTodos();
   }, []);
 
-  const fetchTodos = async () => {
-    try {
-      const res = await fetch(`${API_BASE_URL}/todos`);
-      if (res.ok) {
-        const data = await res.json();
-        setTodos(data);
-      }
-    } catch (error) {
-      console.error("Failed to fetch todos", error);
-    }
-  };
-
+  // 添加新的Todo项
   const handleAdd = async () => {
+    // 验证输入不为空
     if (!input.trim()) return;
+
+    // 发送POST请求添加Todo
     const res = await fetch(`${API_BASE_URL}/todos`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ content: input }),
     });
+
+    // 添加成功后更新状态
     if (res.ok) {
       const newTodo = await res.json();
       setTodos([...todos, newTodo]);
-      setInput("");
+      setInput(""); // 清空输入框
     }
   };
 
+  // 切换Todo项的完成状态
   const handleToggle = async (id) => {
+    // 发送PUT请求切换完成状态
     const res = await fetch(`${API_BASE_URL}/todos/${id}`, { method: "PUT" });
+
+    // 更新成功后更新状态
     if (res.ok) {
       const updated = await res.json();
       setTodos(todos.map((t) => (t.id === id ? updated : t)));
     }
   };
 
+  // 删除指定ID的Todo项
   const handleDelete = async (id) => {
+    // 发送DELETE请求删除Todo
     const res = await fetch(`${API_BASE_URL}/todos/${id}`, {
       method: "DELETE",
     });
+
+    // 删除成功后更新状态
     if (res.ok) {
       setTodos(todos.filter((t) => t.id !== id));
     }
@@ -549,6 +585,8 @@ function App() {
   return (
     <div className="container">
       <h1>My Todo List</h1>
+
+      {/* 输入区域：添加新Todo */}
       <div className="input-group">
         <input
           value={input}
@@ -558,15 +596,19 @@ function App() {
         />
         <button onClick={handleAdd}>Add</button>
       </div>
+
+      {/* Todo列表展示 */}
       <ul>
         {todos.map((todo) => (
           <li key={todo.id} className={todo.completed ? "completed" : ""}>
+            {/* Todo内容，点击可切换完成状态 */}
             <span
               onClick={() => handleToggle(todo.id)}
               style={{ cursor: "pointer", flex: 1 }}
             >
               {todo.content}
             </span>
+            {/* 删除按钮 */}
             <button
               className="delete-btn"
               onClick={() => handleDelete(todo.id)}
@@ -685,7 +727,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ## `vite.config.js`
 
-跨域代理 `frontend/vite.config.js`，用于开发环境前后端通信。
+Vite 跨域代理 `frontend/vite.config.js`，用于直接本地运行（**非容器化部署**）时的前后端通信，将前端 `/api` 开头的请求转发到 http://localhost:5000 后端服务。
+
+1. 前端请求: `/api/todos`
+2. Vite 代理匹配到 `/api` 前缀
+3. 转发到: http://localhost:5000/api/todos
 
 ```javascript
 import { defineConfig } from 'vite'
@@ -709,7 +755,7 @@ export default defineConfig({
 
 - 确保 MySQL 已正常运行，初始化数据库迁移已完成。
 
-- 启动后端
+- 后端已启动
 
   ```bash
   cd backend
@@ -719,6 +765,7 @@ export default defineConfig({
 - 启动前端
 
   ```bash
+  cd frontend
   npm run dev
   ```
 
@@ -787,7 +834,12 @@ CMD ["boot.sh"]
 
 ## `nginx.conf`
 
-前端 Nginx 配置文件 `frontend/nginx.conf`
+Nginx 反向代理 `frontend/nginx.conf`，用于**容器化部署**时的前后端通信，将前端 `/api` 开头的请求转发到 http://backend:5000 后端服务。
+
+1. 前端请求: `/api/todos`
+2. Nginx 反向代理匹配到 `/api` 前缀
+3. 转发到: http://backend:5000/api/todos
+4. 通过 Docker 网络访问后端容器
 
 ```nginx
 server {
@@ -928,9 +980,10 @@ networks:
     driver: bridge
 ```
 
-## 容器编排
+## Docker Compose 构建和部署
 
 - 停止开发环境的 MySQL
+
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
@@ -938,10 +991,11 @@ networks:
   docker-compose up -d
   ```
 
-- 访问应用
+- 外部访问 ：
 
-  - 前端应用：http://localhost
-  - 后端 API：http://localhost:5000/api/todos
+  - 前端： http://localhost:80
+  - 后端：http://localhost:5000/api/todos
+  - 数据库： http://localhost:3306
 
 - 停止项目
 
@@ -1023,7 +1077,7 @@ build_frontend:
 
 ## GitLab CI
 
-- 多容器集成测试已完成
+- Docker Compose 测试已完成
 - 确认以下文件已创建
   - 后端启动脚本 `backend/boot.sh`
   - 后端镜像构建文件 `backend/Dockerfile`
@@ -1043,7 +1097,7 @@ build_frontend:
 - Docker Compose
 - Argo CD
 
-## Docker Compose
+## Docker Compose 部署
 
 ### 创建目录
 
@@ -1122,7 +1176,6 @@ volumes:
 networks:
   todo-network:
     driver: bridge
-
 ```
 
 ### `.env`
@@ -1145,7 +1198,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 
 ### 启动
 
-- 删除**多容器集成测试**时的 Image、Container 和 Volumes，余下操作相同。
+- 删除**Docker Compose 测试**时的 Image、Container 和 Volumes，余下操作相同。
 
 - 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
 
@@ -1166,7 +1219,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   docker-compose down
   ```
 
-## Argo CD
+## Argo CD 部署
 
 ### 准备
 
@@ -1494,6 +1547,12 @@ spec:
   kubectl apply -f application.yaml
   ```
 
+- 外部访问 ：
+
+  - 前端：通过 NodePort、LoadBalancer 或端口转发访问
+  - 后端：仅集群内部访问，或通过端口转发临时访问
+  - 数据库：仅集群内部访问，或通过端口转发临时访问
+  
 - 端口转发
 
   ```bash
@@ -1501,17 +1560,67 @@ spec:
   kubectl port-forward svc/frontend 8081:80 -n todos
   ```
 
-- 访问：http://localhost:8081/
+- 访问前端：http://localhost:8081/
 
 - 如有调试需要，也可将后端和数据库进行端口转发
 
   ```bash
   # 数据库
   kubectl port-forward svc/mysql 3306:3306 -n todos
-  
   # 后端
   kubectl port-forward svc/backend 5000:5000 -n todos
   ```
+
+# 通信
+
+## 本地开发阶段
+### 通信流程
+
+前端发送请求 `/api/todos` → Vite 代理 → 后端 (http://localhost:5000) → 容器化 MySQL (端口映射)
+
+### 前端通信配置
+
+- **运行地址** ：本地 http://localhost:5173/
+- **代理配置**：在 `vite.config.js` 中配置了 API 代理
+- **通信方式** ：Vite 代理将前端请求 `/api/todos` 转发至 http://localhost:5000/api/todos 直接访问后端。
+
+### 后端通信配置
+
+- **运行地址** ：本地 http://localhost:5000
+- **后端到数据库** ：直接连接本地经端口转发后的容器化 MySQL
+
+### 数据库通信配置
+
+- **端口转发**：在启动容器化 MySQL 时设置端口转发至本地
+
+## Docker Compose 阶段
+
+### 通信流程
+
+外部请求 → 前端容器 (80端口) → Nginx 反向代理 → 后端容器 (5000端口)
+
+### 网络配置
+
+- 所有服务（前端、后端、数据库）都在同一个 Docker 网络 todo-network 中
+- 服务间通过服务名进行通信
+
+### 通信方式
+
+- **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
+- **后端到数据库** ：后端通过 db:3306 访问 MySQL 数据库
+
+## ArgoCD 阶段
+
+### 通信流程
+
+外部请求 → 前端 Service → 前端 Pod → Nginx 反向代理 → 后端 Service → 后端 Pod
+
+### 网络配置
+- 所有服务（前端、后端、数据库）都在 todos 命名空间中
+- 服务间通过 Kubernetes Service 名进行通信
+### 通信方式
+- 前端到后端 ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
+- 后端到数据库 ：后端通过 mysql 服务名访问 MySQL 数据库
 
 # 总结
 
