@@ -108,6 +108,154 @@ spec:
         - containerPort: 80
 ```
 
+# Kubectl
+
+[**Kubectl**](https://kubernetes.io/zh-cn/docs/reference/kubectl/) 是 K8s 的命令行工具，用于与集群交互。
+
+## 安装
+
+[安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/#kubectl)：
+
+- [在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
+- [在 macOS 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-macos)
+- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)
+
+### Linux
+
+[在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
+
+```bash
+# 安装 kubectl
+sudo snap install kubectl --classic
+# 添加环境变量
+export PATH=$PATH:/snap/bin
+# 验证安装
+kubectl version --client
+```
+
+### Windows
+
+- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)，以下是使用 Chocolatey 方法安装 kubectl。
+
+- 已在 Windows 系统中安装 [Chocolatey](windows.md#chocolatey)。
+
+- 以管理员身份运行 PowerShell 安装，但重启所有终端后可以在 Bash 中使用。
+
+  ```powershell
+  # 安装 kubectl
+  choco install kubernetes-cli
+  # 验证安装
+  kubectl version --client
+  ```
+
+- 将 `系统环境变量` 中的 `C:\ProgramData\chocolatey\bin` 移至顶部，详见 [Windows 笔记](windows.md#系统变量)。
+
+## 语法
+
+[**Kubectl 语法**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：
+
+```bash
+kubectl [command] [TYPE] [NAME] [flags]
+
+kubectl get pod my-pod -n my-namespace
+```
+
+- **command**：[操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
+- **TYPE**：[资源类型](https://kubernetes.io/zh-cn/docs/reference/kubectl/#resource-types)
+- **NAME**：资源名称
+- **flags**：[可选参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
+
+## 操作
+
+> [Kubectl 操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
+>
+> [Kubectl 参考](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/)
+
+- kubectl help：获取帮助
+- [kubectl get](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_get/)：列出资源
+- [kubectl apply](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_apply/)：将配置清单应用于资源
+- [kubectl create](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_create/)：创建资源
+- [kubectl delete](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_delete/)：删除资源
+- [kubectl logs](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_logs/)：打印资源日志
+- [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：描述资源细节
+- [kubectl exec](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_exec/)：进入容器执行命令
+
+## 参数
+
+> [Kubectl 参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
+
+- `-n <namespace_name>`：指定命名空间
+- [`-o <output_format>`](https://kubernetes.io/zh-cn/docs/reference/kubectl/#formatting-output)：格式化输出
+
+# Minikube
+
+[**Minikube**](https://minikube.sigs.k8s.io/docs/) 是一个工具，可以在本地运行 K8s，供学习使用。
+
+> [Minikube 文档](https://minikube.sigs.k8s.io/docs/)
+>
+> [Minikube 教程](https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/)
+
+## 安装
+
+[安装 Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
+
+### Windows
+
+- Docker 和 kubectl 已安装
+
+- [官网下载安装程序并安装。](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
+
+- 以管理员身份运行 PowerShell，并将二进制文件 minikube.exe 添加到 PATH 目录中。
+
+  ```powershell
+  $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
+  if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
+    [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
+  }
+  ```
+
+### Linux
+
+- [**Install**](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
+
+  ```bash
+  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+  ```
+
+
+## 命令
+
+```bash
+# 查看集群
+minikube status
+# 打开仪表盘
+minikube dashboard
+
+# 创建集群
+minikube start
+# 停止集群
+minikube stop
+# 删除集群
+minikube delete
+
+# 访问应用
+minikube service <service_name>
+```
+
+# Namespace
+
+## Namespace
+
+[**Namespace**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/)（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
+
+```bash
+# 创建 namespace
+kubectl create namespace NAMESPACE_NAME
+# 删除 namespace
+kubectl delete namespace NAMESPACE_NAME
+```
+
 # Deployment
 
 ## Deployment
@@ -255,6 +403,46 @@ spec:
     - containerPort: 80
 ```
 
+# Container
+
+[**Container**](https://kubernetes.io/zh-cn/docs/concepts/containers/) 运行在 Pod 中。
+
+> [Container API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/workload-resources/pod-v1/#Container)
+
+## 环境变量
+
+**设置环境变量：**
+
+- **ConfigMap：**普通环境变量，详见 [ConfigMap](#configmap)。
+- **Secret：**敏感环境变量，详见 [Secret](#secret)。
+
+**有两种方法在容器中使用环境变量：**
+
+- 直接设置
+- 从对象中注入
+
+```yaml
+# 可以直接设置
+env:
+  - name: DB_HOST # 容器内的环境变量名
+    value: mysql  # 变量值
+
+# 从对象中指定注入
+env:
+  - name: MY_DB_USER # 容器内的环境变量名
+    valueFrom:
+      secretKeyRef:
+        name: mysql-secret # Secret 对象名
+        key: MYSQL_USER    # Secret 中的键名
+
+# 从对象中批量注入
+envFrom:
+  - secretRef:
+      name: mysql-secret # Secret 对象名
+  - configMapRef:
+      name: mysql-config # ConfigMap 对象名
+```
+
 # Service
 
 ## Service
@@ -326,150 +514,82 @@ spec:
   kubectl port-forward deployment/nginx 80:8080
   ```
 
-# Kubectl
+# ConfigMap
 
-[**Kubectl**](https://kubernetes.io/zh-cn/docs/reference/kubectl/) 是 K8s 的命令行工具，用于与集群交互。
+[**ConfigMap**](https://kubernetes.io/zh-cn/docs/concepts/configuration/configmap/) 是一种对象，用来将非机密性的数据保存到键值对中。`configmap.yaml` 是部署 ConfigMap 的清单文件。
 
-## 安装
+可以使用四种方式来使用 ConfigMap 配置 Pod 中的容器：
 
-[安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/#kubectl)：
+1. 在容器命令和参数内
+2. 容器的环境变量
+3. 在只读卷里面添加一个文件，让应用来读取
+4. 编写代码在 Pod 中运行，使用 Kubernetes API 来读取 ConfigMap
 
-- [在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
-- [在 macOS 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-macos)
-- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)
+> [ConfigMap API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/config-and-storage-resources/config-map-v1/)
 
-### Linux
+[**编写 ConfigMap **](https://kubernetes.io/zh-cn/docs/concepts/configuration/configmap/#configmaps-and-pods):
 
-[在 Linux 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-linux)
+- `configmap.yaml`：设置环境变量
 
-```bash
-# 安装 kubectl
-sudo snap install kubectl --classic
-# 添加环境变量
-export PATH=$PATH:/snap/bin
-# 验证安装
-kubectl version --client
-```
+  ```yaml
+  apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: mysql-config
+    namespace: todos
 
-### Windows
-
-- [在 Windows 上安装 kubectl](https://kubernetes.io/zh-cn/docs/tasks/tools/install-kubectl-windows)，以下是使用 Chocolatey 方法安装 kubectl。
-- 已在 Windows 系统中安装 [Chocolatey](windows.md#chocolatey)。
-- 以管理员身份运行 PowerShell 安装，但重启所有终端后可以在 Bash 中使用。
-
-  ```powershell
-  # 安装 kubectl
-  choco install kubernetes-cli
-  # 验证安装
-  kubectl version --client
+  data:
+    MYSQL_DATABASE: todos_db
   ```
 
-- 将 `系统环境变量` 中的 `C:\ProgramData\chocolatey\bin` 移至顶部，详见 [Windows 笔记](windows.md#系统变量)。
+- `deployment.yaml`：使用环境变量
 
-## 语法
-
-[**Kubectl 语法**](https://kubernetes.io/zh-cn/docs/reference/kubectl/)：
-
-```bash
-kubectl [command] [TYPE] [NAME] [flags]
-
-kubectl get pod my-pod -n my-namespace
-```
-
-- **command**：[操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
-- **TYPE**：[资源类型](https://kubernetes.io/zh-cn/docs/reference/kubectl/#resource-types)
-- **NAME**：资源名称
-- **flags**：[可选参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
-
-## 操作
-
-> [Kubectl 操作](https://kubernetes.io/zh-cn/docs/reference/kubectl/#operations)
->
-> [Kubectl 参考](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/)
-
-- kubectl help：获取帮助
-- [kubectl get](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_get/)：列出资源
-- [kubectl apply](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_apply/)：将配置清单应用于资源
-- [kubectl create](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_create/)：创建资源
-- [kubectl delete](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_delete/)：删除资源
-- [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：打印资源日志
-- [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：描述资源细节
-
-## 参数
-
-> [Kubectl 参数](https://kubernetes.io/zh-cn/docs/reference/kubectl/kubectl/#选项)
-
-- `-n <namespace_name>`：指定命名空间
-- [`-o <output_format>`](https://kubernetes.io/zh-cn/docs/reference/kubectl/#formatting-output)：格式化输出
-
-# Minikube
-
-[**Minikube**](https://minikube.sigs.k8s.io/docs/) 是一个工具，可以在本地运行 K8s，供学习使用。
-
-> [Minikube 文档](https://minikube.sigs.k8s.io/docs/)
->
-> [Minikube 教程](https://kubernetes.io/zh-cn/docs/tutorials/hello-minikube/)
-
-## 安装
-
-[安装 Minikube](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
-
-### Windows
-
-- Docker 和 kubectl 已安装
-
-- [官网下载安装程序并安装。](https://minikube.sigs.k8s.io/docs/start/?arch=%2Fwindows%2Fx86-64%2Fstable%2F.exe+download)
-
-- 以管理员身份运行 PowerShell，并将二进制文件 minikube.exe 添加到 PATH 目录中。
-
-  ```powershell
-  $oldPath = [Environment]::GetEnvironmentVariable('Path', [EnvironmentVariableTarget]::Machine)
-  if ($oldPath.Split(';') -inotcontains 'C:\minikube'){
-    [Environment]::SetEnvironmentVariable('Path', $('{0};C:\minikube' -f $oldPath), [EnvironmentVariableTarget]::Machine)
-  }
+  ```yaml
+  # Pod 规约
+  spec:
+    containers:
+      - name: mysql
+        # 通过 `envFrom` 字段引用 ConfigMap
+        envFrom:
+          - configMapRef:
+              name: mysql-config # ConfigMap 对象名
   ```
 
-### Linux
+# Secret
 
-- [**Install**](https://minikube.sigs.k8s.io/docs/start/?arch=%2Flinux%2Fx86-64%2Fstable%2Fbinary+download)
+[**Secret**](https://kubernetes.io/zh-cn/docs/concepts/configuration/secret/) 是一种对象，类似于 ConfigMap，但专门用于保存机密数据。
 
-  ```bash
-  curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
-  sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
+> [Secret API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/config-and-storage-resources/secret-v1/)
+
+**编写 ConfigMap **:
+
+- `secret.yaml`：设置环境变量
+
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: mysql-secret
+    namespace: todos
+  type: Opaque
+  stringData:
+    MYSQL_ROOT_PASSWORD: "123456"
+    MYSQL_USER: jerry
+    MYSQL_PASSWORD: 000000
   ```
 
+- `deployment.yaml`：使用环境变量
 
-## 命令
-
-```bash
-# 查看集群
-minikube status
-# 打开仪表盘
-minikube dashboard
-
-# 创建集群
-minikube start
-# 停止集群
-minikube stop
-# 删除集群
-minikube delete
-
-# 访问应用
-minikube service <service_name>
-```
-
-# Namespace
-
-## Namespace
-
-[**Namespace**](https://kubernetes.io/zh-cn/docs/concepts/overview/working-with-objects/namespaces/)（命名空间）是 Kubernetes 中用于隔离和组织资源的虚拟工作空间。它是一种在逻辑上划分集群资源的方式，允许在同一集群内创建多个虚拟的独立环境。Namespace 作用域仅针对同一 Namespace 的对象，对集群范围的对象不适用。
-
-```bash
-# 创建 namespace
-kubectl create namespace NAMESPACE_NAME
-# 删除 namespace
-kubectl delete namespace NAMESPACE_NAME
-```
+  ```yaml
+  # Pod 规约
+  spec:
+    containers:
+      - name: mysql
+        # 通过 `envFrom` 字段引用 Secret
+        envFrom:
+          - secretRef:
+              name: mysql-secret # Secret 对象名
+  ```
 
 # 集中保存
 

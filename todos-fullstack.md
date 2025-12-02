@@ -161,10 +161,9 @@ MYSQL_ROOT_PASSWORD=123456
 MYSQL_DATABASE=todos_db
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
-
 DB_HOST=localhost
 
-# 数据库迁移
+# 数据库迁移, flask db init 中的 flask 对应 FLASK_APP
 FLASK_APP=run.py
 FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
@@ -249,18 +248,19 @@ load_dotenv()
 
 class Config:
     # Flask 配置
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'your-secret-key'  
+    SECRET_KEY = os.environ.get("SECRET_KEY") or "your-secret-key"
 
     # 获取数据库连接信息
-    DB_USER = os.environ.get('MYSQL_USER') or 'root'
-    DB_PASS = os.environ.get('MYSQL_PASSWORD') or 'password'        
-    DB_HOST = os.environ.get('DB_HOST') or 'localhost'
-    DB_NAME = os.environ.get('MYSQL_DATABASE') or 'todos_db'        
+    DB_USER = os.environ.get("MYSQL_USER") or "root"
+    DB_PASS = os.environ.get("MYSQL_PASSWORD") or "password"
+    DB_HOST = os.environ.get("DB_HOST") or "localhost"
+    DB_NAME = os.environ.get("MYSQL_DATABASE") or "todos_db"
 
     # SQLAlchemy 配置
-    SQLALCHEMY_DATABASE_URI = f'mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8mb4'
+    SQLALCHEMY_DATABASE_URI = (
+        f"mysql+pymysql://{DB_USER}:{DB_PASS}@{DB_HOST}/{DB_NAME}?charset=utf8mb4"
+    )
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-
 ```
 
 ## `__init__.py`
@@ -296,10 +296,11 @@ def create_app(config_class=Config):
 
     # 导入模型，确保SQLAlchemy知道所有模型
     from app import models
-    
+
     # 注册蓝图
     from app.api import bp as api_bp
-    app.register_blueprint(api_bp, url_prefix='/api')
+
+    app.register_blueprint(api_bp, url_prefix="/api")
 
     return app
 ```
@@ -314,7 +315,7 @@ from app import db
 # 数据库模型
 class Todo(db.Model):
     # 表名
-    __tablename__ = 'todos'
+    __tablename__ = "todos"
 
     # 主键
     id = db.Column(db.Integer, primary_key=True)
@@ -325,11 +326,7 @@ class Todo(db.Model):
 
     def to_dict(self):
         # 转换为字典格式，用于 API 返回
-        return {
-            'id': self.id,
-            'content': self.content,
-            'completed': self.completed
-        }
+        return {"id": self.id, "content": self.content, "completed": self.completed}
 ```
 
 ## `__init__.py`
@@ -341,7 +338,7 @@ from flask import Blueprint
 
 # 创建 API 蓝图
 # 注册了 /api 前缀，即 routes.py 中的 /todos 实际路径为 /api/todos
-bp = Blueprint('api', __name__)
+bp = Blueprint("api", __name__)
 
 # 导入路由
 from app.api import routes
@@ -361,45 +358,45 @@ from app.models import Todo
 from app.api import bp
 
 # 获取所有 TODOs
-@bp.route('/todos', methods=['GET'])
+# 在 __init__.py 中注册了 /api 前缀，此处实际路径为 /api/todos
+@bp.route("/todos", methods=["GET"])
 def get_todos():
     todos = Todo.query.all()
     return jsonify([todo.to_dict() for todo in todos])
 
 # 创建新 TODO
-# 在 __init__.py 中注册了 /api 前缀，此处实际路径为 /api/todos
-@bp.route('/todos', methods=['POST'])
+@bp.route("/todos", methods=["POST"])
 def create_todo():
     data = request.get_json() or {}
-    if 'content' not in data:
-        return jsonify({'error': 'Content is required'}), 400
+    if "content" not in data:
+        return jsonify({"error": "Content is required"}), 400
 
-    todo = Todo(content=data['content'])
+    todo = Todo(content=data["content"])
     db.session.add(todo)
     db.session.commit()
     return jsonify(todo.to_dict()), 201
 
 # 更新 TODO
-@bp.route('/todos/<int:id>', methods=['PUT'])
+@bp.route("/todos/<int:id>", methods=["PUT"])
 def update_todo(id):
     todo = Todo.query.get_or_404(id)
     data = request.get_json() or {}
 
-    if 'content' in data:
-        todo.content = data['content']
-    if 'completed' in data:
-        todo.completed = data['completed']
+    if "content" in data:
+        todo.content = data["content"]
+    if "completed" in data:
+        todo.completed = data["completed"]
 
     db.session.commit()
     return jsonify(todo.to_dict())
 
 # 删除 TODO
-@bp.route('/todos/<int:id>', methods=['DELETE'])
+@bp.route("/todos/<int:id>", methods=["DELETE"])
 def delete_todo(id):
     todo = Todo.query.get_or_404(id)
     db.session.delete(todo)
     db.session.commit()
-    return jsonify({'message': 'Todo deleted successfully'}), 200
+    return jsonify({"message": "Todo deleted successfully"}), 200
 ```
 
 ## `run.py`
@@ -411,8 +408,8 @@ from app import create_app
 
 app = create_app()
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000, debug=True)
 ```
 
 ## MySQL
@@ -1245,9 +1242,9 @@ metadata:
     name: todos
 ```
 
-### `argocd-application.yaml`
+### `application.yaml`
 
-ArgoCD 应用定义 `k8s/argocd-application.yaml`
+ArgoCD 应用定义 `k8s/application.yaml`
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1269,15 +1266,14 @@ spec:
       selfHeal: true
       prune: true
     syncOptions:
-    - CreateNamespace=true
-    - ApplyOutOfSyncOnly=true
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
     retry:
       limit: 5
-      backoff: {
-        duration: "5s",
-        factor: 2,
-        maxDuration: "3m"
-      }
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
 ```
 
 ### `mysql.yaml`
@@ -1293,6 +1289,7 @@ metadata:
 
 data:
   MYSQL_DATABASE: todos_db
+  DB_HOST: mysql
 ---
 apiVersion: v1
 kind: Secret
@@ -1301,9 +1298,9 @@ metadata:
   namespace: todos
 type: Opaque
 stringData:
-  MYSQL_ROOT_PASSWORD: rootpassword
-  MYSQL_USER: todosuser
-  MYSQL_PASSWORD: todospassword
+  MYSQL_ROOT_PASSWORD: "123456"
+  MYSQL_USER: jerry
+  MYSQL_PASSWORD: "000000"
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -1377,7 +1374,6 @@ spec:
     - port: 3306
       targetPort: 3306
   clusterIP: None
-
 ```
 
 ### `backend.yaml`
@@ -1412,53 +1408,42 @@ spec:
         app: backend
     spec:
       containers:
-      - name: backend
-        image: jerrybaijy/todos-fullstack-backend:latest
-        env:
-        - name: SECRET_KEY
-          valueFrom:
-            secretKeyRef:
-              name: backend-secret
-              key: SECRET_KEY
-        - name: MYSQL_USER
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: MYSQL_USER
-        - name: MYSQL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: mysql-secret
-              key: MYSQL_PASSWORD
-        - name: DB_HOST
-          value: mysql
-        - name: MYSQL_DATABASE
-          valueFrom:
-            configMapKeyRef:
-              name: mysql-config
-              key: MYSQL_DATABASE
-        ports:
-        - containerPort: 5000
-        readinessProbe:
-          httpGet:
-            path: /api/todos
-            port: 5000
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /api/todos
-            port: 5000
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
+        - name: backend
+          image: jerrybaijy/todos-fullstack-backend:latest
+          envFrom:
+            - secretRef:
+                name: backend-secret
+            - configMapRef:
+                name: mysql-config
+            - secretRef:
+                name: mysql-secret
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /api/todos
+              port: 5000
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/todos
+              port: 5000
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
       initContainers:
-      - name: wait-for-mysql
-        image: busybox:1.31
-        command: ["sh", "-c", "until nslookup mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;"]
+        - name: wait-for-mysql
+          image: busybox:1.31
+          command:
+            [
+              "sh",
+              "-c",
+              "until nslookup mysql.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;",
+            ]
 ---
 apiVersion: v1
 kind: Service
@@ -1471,8 +1456,8 @@ spec:
   selector:
     app: backend
   ports:
-  - port: 5000
-    targetPort: 5000
+    - port: 5000
+      targetPort: 5000
 ```
 
 ### `frontend.yaml`
@@ -1498,26 +1483,26 @@ spec:
         app: frontend
     spec:
       containers:
-      - name: frontend
-        image: jerrybaijy/todos-fullstack-frontend:latest
-        ports:
-        - containerPort: 80
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          timeoutSeconds: 3
-          failureThreshold: 3
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 80
-          initialDelaySeconds: 20
-          periodSeconds: 10
-          timeoutSeconds: 5
-          failureThreshold: 3
+        - name: frontend
+          image: jerrybaijy/todos-fullstack-frontend:latest
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
 ---
 apiVersion: v1
 kind: Service
@@ -1530,8 +1515,8 @@ spec:
   selector:
     app: frontend
   ports:
-  - port: 80
-    targetPort: 80
+    - port: 80
+      targetPort: 80
   # 如果公网访问，应将服务类型改为 LoadBalancer
   type: ClusterIP
 ```
@@ -1571,58 +1556,87 @@ spec:
   kubectl port-forward svc/backend 5000:5000 -n todos
   ```
 
-# 通信
+# 项目总结
 
-## 本地开发阶段
-### 通信流程
+## 通信
+
+### 本地开发阶段
+#### 通信流程
 
 前端发送请求 `/api/todos` → Vite 代理 → 后端 (http://localhost:5000) → 容器化 MySQL (端口映射)
 
-### 前端通信配置
+#### 前端通信配置
 
 - **运行地址** ：本地 http://localhost:5173/
 - **代理配置**：在 `vite.config.js` 中配置了 API 代理
 - **通信方式** ：Vite 代理将前端请求 `/api/todos` 转发至 http://localhost:5000/api/todos 直接访问后端。
 
-### 后端通信配置
+#### 后端通信配置
 
 - **运行地址** ：本地 http://localhost:5000
 - **后端到数据库** ：直接连接本地经端口转发后的容器化 MySQL
 
-### 数据库通信配置
+#### 数据库通信配置
 
 - **端口转发**：在启动容器化 MySQL 时设置端口转发至本地
 
-## Docker Compose 阶段
+### Docker Compose 阶段
 
-### 通信流程
+#### 通信流程
 
 外部请求 → 前端容器 (80端口) → Nginx 反向代理 → 后端容器 (5000端口)
 
-### 网络配置
+#### 网络配置
 
 - 所有服务（前端、后端、数据库）都在同一个 Docker 网络 todo-network 中
 - 服务间通过服务名进行通信
 
-### 通信方式
+#### 通信方式
 
 - **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - **后端到数据库** ：后端通过 db:3306 访问 MySQL 数据库
 
-## ArgoCD 阶段
+### ArgoCD 阶段
 
-### 通信流程
+#### 通信流程
 
 外部请求 → 前端 Service → 前端 Pod → Nginx 反向代理 → 后端 Service → 后端 Pod
 
-### 网络配置
+#### 网络配置
 - 所有服务（前端、后端、数据库）都在 todos 命名空间中
 - 服务间通过 Kubernetes Service 名进行通信
-### 通信方式
+#### 通信方式
 - 前端到后端 ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - 后端到数据库 ：后端通过 mysql 服务名访问 MySQL 数据库
 
-# 总结
+## 环境变量
+
+### 本地开发阶段
+
+通过 `.env` 文件
+
+### Docker Compose 阶段
+
+通过 `.env` 文件
+
+### ArgoCD 阶段
+
+在 `backend.yaml` 中创建 backend-secret 对象，创建以下环境变量：
+
+- SECRET_KEY
+
+在 `mysql.yaml` 中创建 mysql-config 对象，创建以下环境变量：
+
+- MYSQL_DATABASE
+- DB_HOST
+
+在 `mysql.yaml` 中创建 mysql-secret对象，创建以下环境变量：
+
+- MYSQL_ROOT_PASSWORD
+- MYSQL_USER
+- MYSQL_PASSWORD
+
+## 总结
 
 本项目是一个完整的 React + Flask + MySQL 全栈应用，支持 Docker 容器化和使用 Argo CD 进行 Kubernetes 部署。通过本教程，你可以学习到：
 

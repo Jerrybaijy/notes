@@ -146,7 +146,7 @@ tags:
 - 删除应用
 
   ```bash
-  cd todos
+  cd k8s
   kubectl delete -f application.yaml
   kubectl delete ns todos
   ```
