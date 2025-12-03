@@ -17,7 +17,7 @@ tags:
 
 ![argo-cd](assets/argo-cd.png)
 
-## 安装
+## 安装 Argo CD
 
 - Docker 和 kubectl 已安装，集群已启动。
 
@@ -61,11 +61,23 @@ tags:
 - 在本地或公网通过 IP 访问 Argo CD 页面登录，用户名为 admin，公网访问需要科学上网。
 - 端口转发以后，当前终端要保持打开，否则访问不到 https://127.0.0.1:8080
 
-## 基本流程
+## 部署应用
+
+### 部署方式
+
+有三种方式部署应用：
+
+- Argo CD UI
+- Argo CD CLI
+- `kubectl`
+
+### Kubectl
 
 - Argo CD 已安装并初始化
 
-- 此流程以推送至 Git 仓库为例
+- 此部分的目录和文件源自 `todos-fullstack` 项目
+
+- 此部分以推送至 Git 仓库为例
 
 - 项目根目录创建 `k8s` 目录，并创建以下配置清单文件：
   
@@ -77,7 +89,7 @@ tags:
   - `frontend.yaml`：前端
   - `application.yaml`：Argo CD
   
-- `application.yaml`，该文件源自 `todos-fullstack` 项目。
+- `application.yaml`
 
   ```yaml
   apiVersion: argoproj.io/v1alpha1
@@ -120,6 +132,9 @@ tags:
 
 - 在 Argo CD 页面查看应用已启动
 
+
+## 访问应用
+
 - 端口转发
 
   ```bash
@@ -143,13 +158,14 @@ tags:
 
 - 以后若想更改应用，只需需改配置清单文件并推送至 Git 仓库，Argo CD 可自动识别并更改自动部署。
 
-- 删除应用
 
-  ```bash
-  cd k8s
-  kubectl delete -f application.yaml
-  kubectl delete ns todos
-  ```
+## 删除应用
+
+```bash
+cd k8s
+kubectl delete -f application.yaml
+kubectl delete ns todos
+```
 
 
 ## 删除 Argo CD
@@ -165,45 +181,6 @@ tags:
   ```bash
   kubectl delete ns argocd
   ```
-
-## 创建应用
-
-目前已知有三种方法创建应用：
-
-- Argo CD UI
-- Argo CD CLI
-- `kubectl apply -f application.yaml`
-
-### 通过 Argo CD UI 创建应用
-
-- 登录 Argo CD UI
-- 点击 "NEW APP" 按钮
-- 填写应用信息：
-  - Application Name: `todos-fullstack`
-  - Project: `default`
-  - Repository URL: `https://gitlab.com/<your-namespace>/todos-fullstack.git`
-  - Path: `dev`
-  - Cluster URL: `https://kubernetes.default.svc`
-  - Namespace: `default`
-- 点击 "CREATE" 按钮创建应用
-- 点击 "SYNC" 按钮同步应用
-
-### 通过 Argo CD CLI 创建应用
-
-```bash
-# 登录 Argo CD CLI
-argocd login <argocd-server-address> --username admin --password <initial-password>
-
-# 创建应用
-argocd app create todos-fullstack \
-  --repo https://gitlab.com/<your-namespace>/todos-fullstack.git \
-  --path dev \
-  --dest-server https://kubernetes.default.svc \
-  --dest-namespace default
-
-# 同步应用
-argocd app sync todos-fullstack
-```
 
 # application.yaml
 

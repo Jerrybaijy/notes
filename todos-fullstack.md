@@ -21,6 +21,8 @@ tags:
 
 这是一个使用 React + Flask + MySQL 构建的全栈 TODO 应用，支持 Docker 容器化和 Kubernetes 部署。
 
+![image-20251128210905428](assets/image-20251128210905428.png)
+
 ## 技术栈
 
 - **前端**: React 18 + Vite + Axios
@@ -432,7 +434,7 @@ docker run --name mysql-container \
 
 ```bash
 # 确保虚拟环境已激活
-# 确保数据库已正常运行
+# 确保全新数据库已正常运行
 
 cd backend
 
@@ -482,17 +484,6 @@ cd frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
-```
-
-## `.env`
-
-前端环境变量 `frontend/.env`
-
-- 没有这个文件也行，只是为了留存一种方法。
-- 对于此项目，如果有这个文件，前端发送请求就不走 Vite 代理
-
-```toml
-VITE_API_BASE_URL=http://localhost:5000/api
 ```
 
 ## `App.jsx`
@@ -1613,11 +1604,12 @@ spec:
 
 ### 本地开发阶段
 
-通过 `.env` 文件
+环境变量获取自 `todos-fullstack/.env`
 
 ### Docker Compose 阶段
 
-通过 `.env` 文件
+- 环境变量获取自 `todos-fullstack/.env`
+- 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 
 ### ArgoCD 阶段
 

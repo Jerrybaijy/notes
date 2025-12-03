@@ -13,11 +13,13 @@ tags:
 
 Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Kubernetes 资源的集合，使得部署和管理应用程序变得更加简单和可重复。
 
-## 环境搭建
+> [Helm 文档](https://helm.sh/zh/docs/)
+
+## 安装 Helm
 
 - 集群已运行，Kubectl 已安装
 
-- Linux 安装（Debian / Ubuntu）
+- [Linux 安装（Debian / Ubuntu）](https://helm.sh/zh/docs/intro/install#from-snap)
 
   ```bash
   sudo snap install helm --classic
@@ -25,27 +27,28 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   export PATH="$PATH:/snap/bin"
   ```
 
-- Windows 安装
+- [Windows 安装](https://helm.sh/zh/docs/intro/install#from-chocolatey-windows)
 
+  提前安装包管理器 Chocolatey，详见 Windows
+  
+  以管理员身份运行 Git Bash
+  
   ```bash
-  # 提前安装包管理器 Chocolatey，详见 Windows
   choco install kubernetes-helm
   ```
 
 ## Helm 基础
 
-- **命令**
+```bash
+# 查看 helm 版本
+helm version
 
-  ```bash
-  # 查看 helm 版本
-  helm version
-  
-  # 查看 chart 配置值（values.yaml 文件中的值）
-  helm show values .
-  
-  # 重置 index
-  helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
-  ```
+# 查看 chart 配置值（values.yaml 文件中的值）
+helm show values .
+
+# 重置 index
+helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
+```
 
 ## 基本流程
 

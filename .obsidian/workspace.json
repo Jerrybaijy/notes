@@ -36,6 +36,20 @@
             }
           },
           {
+            "id": "fd08bfd3e2b5141c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "git.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "git"
+            }
+          },
+          {
             "id": "12c9e48b684ce6ff",
             "type": "leaf",
             "state": {
@@ -106,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -138,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "yaml",
+                "query": "git",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -155,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "todos-fullstack.md",
+                "file": "git.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "todos-fullstack 的大纲"
+              "title": "git 的大纲"
             }
           },
           {
@@ -180,7 +194,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -256,12 +270,13 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "2ebaa87e6754bc48",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
+    "todos-fullstack.md",
+    "assets/image-20251128210905428.png",
+    "argo-cd.md",
     "0000-to-do.md",
     "yaml.md",
-    "todos-fullstack.md",
-    "argo-cd.md",
     "python.md",
     "kubernetes.md",
     "langchain.md",
@@ -290,7 +305,6 @@
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
     "shell.md",
-    "linux.md",
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",
@@ -303,7 +317,6 @@
     "其它格式未转换/scripts/python-env",
     "其它格式未转换/scripts",
     "其它格式未转换/新建文件夹",
-    "assets/image-20251107191551704.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
