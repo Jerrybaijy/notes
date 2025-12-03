@@ -118,9 +118,37 @@
               "icon": "lucide-file",
               "title": "argo-cd"
             }
+          },
+          {
+            "id": "4db082000521b033",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "helm.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "helm"
+            }
+          },
+          {
+            "id": "e55363bee0d1229d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "projects.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "projects"
+            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 9
       }
     ],
     "direction": "vertical"
@@ -152,7 +180,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git",
+                "query": "proj",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -169,13 +197,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git.md",
+                "file": "projects.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "git 的大纲"
+              "title": "projects 的大纲"
             }
           },
           {
@@ -270,8 +298,11 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "e55363bee0d1229d",
   "lastOpenFiles": [
+    "helm.md",
+    "projects.md",
+    "git.md",
     "todos-fullstack.md",
     "assets/image-20251128210905428.png",
     "argo-cd.md",
@@ -296,7 +327,6 @@
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "其它格式未转换/obsidian-themes/user.css",
-    "git.md",
     "network.md",
     "postman.md",
     "it-basics.md",
@@ -304,7 +334,6 @@
     "navicat.md",
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
-    "shell.md",
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",

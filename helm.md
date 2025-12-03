@@ -37,7 +37,9 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   choco install kubernetes-helm
   ```
 
-## Helm 基础
+## Helm 命令
+
+> [Helm 命令](https://helm.sh/docs/helm/)
 
 ```bash
 # 查看 helm 版本
@@ -138,26 +140,28 @@ helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
   kubectl delete namespace argocd-helm
   ```
 
-## Helm Repo
+## Repository
 
-- **基础命令**
+[**Repository**](https://helm.sh/zh/docs/topics/chart_repository/) 存放和分享 Chart 的地方。
 
-  ```bash
-  # 查看 Helm Repo
-  helm repo list
-  # 添加 Helm Repo
-  helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
-  helm repo add arldka https://arldka.github.io/helm-charts
-  helm repo update
-  # 删除 Helm Repo
-  helm repo remove $HELM_REPO
-  # 删除所有 Helm Repo
-  rm ~/.config/helm/repositories.yaml
-  ```
+```bash
+# 查看 Helm Repo
+helm repo list
+# 添加 Helm Repo
+helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
+helm repo add arldka https://arldka.github.io/helm-charts
+helm repo update
+# 删除 Helm Repo
+helm repo remove $HELM_REPO
+# 删除所有 Helm Repo
+rm ~/.config/helm/repositories.yaml
+```
 
 - Helm Repo 实际只是一个 YAML 文件，存储于 `~/.config/helm/repositories.yaml`，里面声明了各个 Helm Repo 与 Remote Repo 的对应关系。
 
 ## Chart
+
+[**Chart**](https://helm.sh/zh/docs/topics/charts) 是 Helm 的包格式，包含一个应用所需的所有 Kubernetes 资源定义。
 
 - **基础命令**
 
@@ -176,20 +180,22 @@ helm repo index $CHART_PATH --url https://jerrybaijy.github.io/$REPO/
 
 ## Release
 
-- **基础命令**
+Release 是 Chart 部署到 Kubernetes 集群后的实例。
 
-  ```bash
-  # 查看 release
-  helm list
-  # 部署 release
-  helm install $RELEASE $HELM_REPO/$CHART_NAME
-  # 删除 release
-  helm delete $RELEASE
-  # 测试 release
-  helm test $RELEASE
-  ```
+```bash
+# 查看 release
+helm list
+# 部署 release
+helm install $RELEASE $HELM_REPO/$CHART_NAME
+# 删除 release
+helm delete $RELEASE
+# 测试 release
+helm test $RELEASE
+```
 
 ## Values
+
+[**Values**](https://helm.sh/zh/docs/chart_best_practices/values/) 用于自定义 Chart 部署时的配置参数。
 
 - values.yaml
 
