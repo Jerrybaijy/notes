@@ -148,7 +148,7 @@
             }
           }
         ],
-        "currentTab": 9
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -197,13 +197,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "projects.md",
+                "file": "argo-cd.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "projects 的大纲"
+              "title": "argo-cd 的大纲"
             }
           },
           {
@@ -298,8 +298,9 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "e55363bee0d1229d",
+  "active": "de22994c2dad377c",
   "lastOpenFiles": [
+    "kubernetes.md",
     "helm.md",
     "projects.md",
     "git.md",
@@ -309,7 +310,6 @@
     "0000-to-do.md",
     "yaml.md",
     "python.md",
-    "kubernetes.md",
     "langchain.md",
     "ai-agent.md",
     "ai-tools-collection.md",

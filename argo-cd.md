@@ -69,11 +69,13 @@ tags:
 
 - Argo CD UI
 - Argo CD CLI
-- `kubectl`
+- K8s 配置文件
 
-### Kubectl
+### K8s 配置文件
 
 - Argo CD 已安装并初始化
+
+- 源代码开发完成，已将镜像推送至镜像仓库。
 
 - 此部分的目录和文件源自 `todos-fullstack` 项目
 

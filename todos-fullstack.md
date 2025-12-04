@@ -76,6 +76,17 @@ todos-fullstack/
 │   ├── frontend.yaml      # 前端部署和服务
 │   └── application.yaml   # Argo CD 应用定义
 │
+├── todo-chart/                  # Helm Chart 目录
+│   ├── Chart.yaml               # Chart 元数据
+│   ├── values.yaml              # 模板文件参数配置
+│   ├── .helmignore              # 忽略不需要打包的文件
+│   └── templates/               # Kubernetes 资源模板目录
+│       ├── namespace.yaml       # 命名空间
+│       ├── _helpers.tpl         # 模板函数
+│       ├── mysql.yaml           # 数据库模板
+│       ├── backend.yaml         # 后端模板
+│       └── frontend.yaml        # 前端模板
+│
 ├── .env                   # 环境变量（未推送至代码仓库）
 ├── .env.example           # 环境变量示例文件
 ├── .gitignore             # Git 忽略文件配置
@@ -900,7 +911,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ```yaml
 # 指定 Docker Compose 文件版本
-version: '3.8'
+version: "3.8"
 
 services:
   # MySQL 数据库服务
@@ -916,11 +927,11 @@ services:
       - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
-    command: --default-authentication-plugin=mysql_native_password  
+    command: --default-authentication-plugin=mysql_native_password
     networks:
       - todo-network
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       timeout: 20s
       retries: 10
 
@@ -1080,21 +1091,22 @@ build_frontend:
 
 # CD
 
-此项目实验了两种部署方式，使用其中一个即可：
+此项目实验了三种部署方式，使用其中一个即可：
 
 - Docker Compose
-- Argo CD
+- K8s + Argo CD
+- Helm + Argo CD
 
-## Docker Compose 部署
+# Docker Compose 部署
 
-### 创建目录
+## 创建目录
 
 先创建 `todos-remote` 目录，在此目录分别创建：
 
 - `todos-remote/docker-compose.yml`
 - `todos-remote/.env`
 
-### `docker-compose.yml`
+## `docker-compose.yml`
 
 ```yaml
 # 指定 Docker Compose 文件版本
@@ -1166,7 +1178,7 @@ networks:
     driver: bridge
 ```
 
-### `.env`
+## `.env`
 
 ```toml
 # MySQL 数据库配置
@@ -1184,9 +1196,9 @@ FLASK_ENV=production
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-### 启动
+## 启动
 
-- 删除**Docker Compose 测试**时的 Image、Container 和 Volumes，余下操作相同。
+- 删除 **Docker Compose 测试**时的 Image、Container 和 Volumes，余下操作相同。
 
 - 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
 
@@ -1207,9 +1219,9 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   docker-compose down
   ```
 
-## Argo CD 部署
+# K8s + Argo CD 部署
 
-### 准备
+## 准备
 
 - Minikube、Kubectl、Argo CD 已安装
 
@@ -1220,7 +1232,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   mkdir k8s
   ```
 
-### `namespace.yaml`
+## `namespace.yaml`
 
 命名空间 `k8s/namespace.yaml`
 
@@ -1233,7 +1245,7 @@ metadata:
     name: todos
 ```
 
-### `application.yaml`
+## `application.yaml`
 
 ArgoCD 应用定义 `k8s/application.yaml`
 
@@ -1267,7 +1279,7 @@ spec:
         maxDuration: 3m
 ```
 
-### `mysql.yaml`
+## `mysql.yaml`
 
 数据库部署和服务 `k8s/mysql.yaml`
 
@@ -1367,7 +1379,7 @@ spec:
   clusterIP: None
 ```
 
-### `backend.yaml`
+## `backend.yaml`
 
 后端部署和服务 `k8s/backend.yaml`
 
@@ -1451,7 +1463,7 @@ spec:
       targetPort: 5000
 ```
 
-### `frontend.yaml`
+## `frontend.yaml`
 
 前端部署和服务 `k8s/frontend.yaml`
 
@@ -1512,7 +1524,7 @@ spec:
   type: ClusterIP
 ```
 
-### 部署
+## 部署
 
 - 将源代码推送至代码仓库
 
@@ -1546,6 +1558,561 @@ spec:
   # 后端
   kubectl port-forward svc/backend 5000:5000 -n todos
   ```
+
+# Helm + Argo CD 部署
+
+此步骤是部署方式的其中一种，现在需要将其打包为 Helm Chart 并部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
+
+## 准备
+
+- Helm 已安装
+
+- 源代码开发完成，已将镜像推送至镜像仓库。
+
+- 创建 Chart
+
+  ```bash
+  cd d:/projects/todos-helm
+  helm create todo-chart
+  ```
+
+- 删除 `templates` 目录下的全部默认文件
+
+- 保留并修改以下必要文件：
+
+  - `Chart.yaml`：Chart 元数据
+  - `values.yaml`：配置值
+  - `.helmignore`：忽略不需要打包的文件
+  - `templates/`：我们将创建自己的模板文件目录
+
+- 在 `templates` 目录创建以下文件
+
+  ```bash
+  cd d:/projects/todos-helm/todo-chart/templates/
+  touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
+  ```
+
+## Chart.yaml
+
+Chart 的元数据 `todos-helm/Chart.yaml`
+
+```yaml
+apiVersion: v2
+name: todo-chart
+description: A Helm chart for Todo application
+version: 0.1.0
+type: application
+appVersion: "1.0.0"
+```
+
+## values.yaml
+
+参数配置 `todos-helm/values.yaml`
+
+```yaml
+# 全局配置
+global:
+  namespace: todos-helm
+
+# MySQL配置
+mysql:
+  image: mysql
+  tag: 8.0
+  imagePullPolicy: IfNotPresent
+  rootPassword: "123456"
+  database: todos_db
+  user: jerry
+  password: "000000"
+  replicaCount: 1
+  persistence:
+    enabled: true
+    size: 1Gi
+  service:
+    type: ClusterIP
+    port: 3306
+
+# Backend配置
+backend:
+  replicaCount: 1
+  image:
+    repository: jerrybaijy/todos-helm-backend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: ClusterIP
+    port: 5000
+  env:
+    SECRET_KEY: your_secret_key_here
+
+# Frontend配置
+frontend:
+  replicaCount: 1
+  image:
+    repository: jerrybaijy/todos-helm-frontend
+    tag: latest
+    pullPolicy: IfNotPresent
+  service:
+    type: NodePort
+    port: 80
+    nodePort: 30080
+```
+
+## namespace.yaml
+
+命名空间 `templates/namespace.yaml`
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.global.namespace }}
+  labels:
+    name: {{ .Values.global.namespace }}
+```
+
+## _helpers.tpl
+
+模板函数 `templates/_helpers.tpl`
+
+```tpl
+{{/* 定义 Chart 的名称，优先使用 Values.nameOverride，如果不存在则使用 Chart.Name */}}
+{{- define "todo-chart.name" }}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整标识，格式为 Chart.Name-Chart.Version */}}
+{{- define "todo-chart.chart" }}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整发布名称，优先使用 Values.fullnameOverride，如果不存在则根据 Release.Name 和 Chart.Name 生成 */}}
+{{- define "todo-chart.fullname" }}
+{{- if .Values.fullnameOverride }}
+{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $name := default .Chart.Name .Values.nameOverride }}
+{{- if contains $name .Release.Name }}
+{{- .Release.Name | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/* 定义 MySQL 组件的完整名称 */}}
+{{- define "todo-chart.mysql.fullname" }}
+{{- printf "%s-mysql" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Backend 组件的完整名称 */}}
+{{- define "todo-chart.backend.fullname" }}
+{{- printf "%s-backend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Frontend 组件的完整名称 */}}
+{{- define "todo-chart.frontend.fullname" }}
+{{- printf "%s-frontend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义基础的标签集合，包含 Chart 信息和 Release 信息 */}}
+{{- define "todo-chart.labels" }}
+helm.sh/chart: {{ include "todo-chart.chart" . }}
+helm.sh/version: {{ .Chart.Version | quote }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.commonLabels }}
+{{- toYaml .Values.commonLabels | nindent 2 }}
+{{- end }}
+{{- end }}
+
+{{/* 定义 MySQL 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.mysql.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-mysql
+app.kubernetes.io/component: mysql
+{{- end }}
+
+{{/* 定义 MySQL 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.mysql.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-mysql
+app.kubernetes.io/component: mysql
+{{- end }}
+
+{{/* 定义 Backend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.backend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Backend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.backend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Frontend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.frontend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+
+{{/* 定义 Frontend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.frontend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+```
+
+## mysql.yaml
+
+数据库模板文件 `templates/mysql.yaml`
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "todo-chart.mysql.fullname" . }}-config
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.mysql.labels" . | nindent 4 }}
+
+data:
+  MYSQL_DATABASE: {{ .Values.mysql.database | quote }}
+  DB_HOST: {{ include "todo-chart.mysql.fullname" . }}
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "todo-chart.mysql.fullname" . }}-secret
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.mysql.labels" . | nindent 4 }}
+
+type: Opaque
+stringData:
+  MYSQL_ROOT_PASSWORD: {{ .Values.mysql.rootPassword | quote }}
+  MYSQL_USER: {{ .Values.mysql.user }}
+  MYSQL_PASSWORD: {{ .Values.mysql.password | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.mysql.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.mysql.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.mysql.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.mysql.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.mysql.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: mysql
+          image: "{{ .Values.mysql.image }}:{{ .Values.mysql.tag }}"
+          envFrom:
+            - configMapRef:
+                name: {{ include "todo-chart.mysql.fullname" . }}-config
+            - secretRef:
+                name: {{ include "todo-chart.mysql.fullname" . }}-secret
+          ports:
+            - containerPort: {{ .Values.mysql.service.port }}
+          volumeMounts:
+            - name: mysql-data
+              mountPath: /var/lib/mysql
+          # args:
+          #   - --default-authentication-plugin=mysql_native_password
+          readinessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            exec:
+              command:
+                - mysqladmin
+                - ping
+                - -h
+                - localhost
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: mysql-data
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.mysql.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.mysql.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.mysql.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.mysql.service.port }}
+      targetPort: {{ .Values.mysql.service.port }}
+  clusterIP: None
+```
+
+## backend.yaml
+
+后端模板文件 `templates/backend.yaml`
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}-secret
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  SECRET_KEY: {{ .Values.backend.env.SECRET_KEY | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.backend.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "todo-chart.backend.fullname" . }}-secret
+            - configMapRef:
+                name: {{ include "todo-chart.mysql.fullname" . }}-config
+            - secretRef:
+                name: {{ include "todo-chart.mysql.fullname" . }}-secret
+          ports:
+            - containerPort: {{ .Values.backend.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      initContainers:
+        - name: wait-for-mysql
+          image: busybox:1.31
+          command:
+            [
+              "sh",
+              "-c",
+              "until nslookup {{ include "todo-chart.mysql.fullname" . }}.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local; do echo waiting for mysql; sleep 2; done;"
+            ]
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.backend.service.port }}
+      targetPort: {{ .Values.backend.service.port }}
+```
+
+## frontend.yaml
+
+前端模板文件 `templates/frontend.yaml`
+
+由于前端源码把 Nginx 反向代理的后端服务名写死了，而 Helm 是动态生成的后端服务名，所以此处添加了 Nginx 配置的覆盖。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+data:
+  default.conf: |
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+            try_files $uri $uri/ /index.html;
+        }
+
+        # 反向代理 API 请求到后端容器
+        location /api {
+            proxy_pass http://{{ include "todo-chart.backend.fullname" . }}:{{ .Values.backend.service.port }};
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.frontend.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: frontend
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.frontend.service.port }}
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.service.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.service.port }}
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.frontend.service.port }}
+      targetPort: {{ .Values.frontend.service.port }}
+  type: {{ .Values.frontend.service.type }}
+```
+
+## 本地测试 Chart
+
+- 检查语法
+
+  ```bash
+  cd /d/projects/todos-helm
+  helm lint ./todo-chart
+  ```
+
+- 部署 Helm Release
+
+  ```yaml
+  cd /d/projects/todos-helm
+  helm install todo-app ./todo-chart
+  ```
+
+- 查看，所有资源运行正常
+
+  ```yaml
+  kubectl get all -n todos-helm
+  ```
+
+- 端口转发
+
+  ```bash
+  # 前端
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todos-helm
+  ```
+
+- 访问前端：http://localhost:8081/
+
+- 如有调试需要，也可将后端和数据库进行端口转发
+
+  ```bash
+  # 数据库
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todos-helm
+  # 后端
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todos-helm
+  ```
+
+- 卸载 Helm Release
+
+  ```bash
+  helm uninstall todo-app
+  ```
+
+## 封装 Chart
 
 # 项目总结
 
