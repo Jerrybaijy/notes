@@ -78,20 +78,6 @@
             }
           },
           {
-            "id": "343a6c058cda682a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "langchain.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "langchain"
-            }
-          },
-          {
             "id": "cf0f1f6a7eef950b",
             "type": "leaf",
             "state": {
@@ -134,6 +120,20 @@
             }
           },
           {
+            "id": "3f17b5e68acc1f01",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gitlab.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gitlab"
+            }
+          },
+          {
             "id": "e55363bee0d1229d",
             "type": "leaf",
             "state": {
@@ -148,7 +148,7 @@
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -180,7 +180,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "proj",
+                "query": "shell",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -197,13 +197,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "argo-cd.md",
+                "file": "todos-fullstack.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "argo-cd 的大纲"
+              "title": "todos-fullstack 的大纲"
             }
           },
           {
@@ -298,15 +298,17 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "de22994c2dad377c",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
-    "kubernetes.md",
+    "gitlab.md",
     "helm.md",
     "projects.md",
+    "harbor.md",
+    "argo-cd.md",
+    "kubernetes.md",
     "git.md",
     "todos-fullstack.md",
     "assets/image-20251128210905428.png",
-    "argo-cd.md",
     "0000-to-do.md",
     "yaml.md",
     "python.md",
@@ -330,8 +332,6 @@
     "network.md",
     "postman.md",
     "it-basics.md",
-    "html.md",
-    "navicat.md",
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
     "assets/image-20240329143514361-1764121708210-2.png",

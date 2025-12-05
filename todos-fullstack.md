@@ -1024,6 +1024,9 @@ variables:
   # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
+  # 项目名称
+  PROJECT_NAME: todos-fullstack
+
   # 后端和前端名称
   BACKEND_NAME: backend
   FRONTEND_NAME: frontend
@@ -1050,11 +1053,11 @@ build_backend:
     - cd $BACKEND_NAME
     
     # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
-    - docker build -t $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$BACKEND_NAME:latest .
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
     
     # 推送到 Docker Hub
-    - docker push $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$BACKEND_NAME:latest
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
   rules:
     # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
     - changes:
@@ -1066,9 +1069,77 @@ build_frontend:
   image: docker:$DOCKER_VERSION
   script:
     - cd $FRONTEND_NAME
-    - docker build -t $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$FRONTEND_NAME:latest .
-    - docker push $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$FRONTEND_NAME:latest
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
+  rules:
+    - changes:
+        - $FRONTEND_NAME/**/*
+```
+
+```yaml
+# 定义变量
+variables:
+  # Docker 版本号
+  DOCKER_VERSION: 24.0.5
+
+  # 告诉 Docker 使用 overlay2 驱动，性能更好
+  DOCKER_DRIVER: overlay2
+
+  # 禁用 TLS 证书生成，防止 dind 连接报错
+  DOCKER_TLS_CERTDIR: ""
+  
+  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
+  IMAGE_PREFIX: $DOCKER_HUB_USER
+  
+  # 项目名称
+  PROJECT_NAME: todos-helm
+
+  # 后端和前端名称
+  BACKEND_NAME: backend
+  FRONTEND_NAME: frontend
+
+# 定义阶段
+stages:
+  - build
+
+# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
+services:
+  - docker:$DOCKER_VERSION-dind
+
+# 登录 Docker Hub
+before_script:
+  # 使用 stdin 输入密码，更加安全
+  - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+
+# 构建后端镜像
+build_backend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  script:
+    # 进入后端目录
+    - cd $BACKEND_NAME
+    
+    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
+    
+    # 推送到 Docker Hub
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
+  rules:
+    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
+    - changes:
+        - $BACKEND_NAME/**/*
+
+# 构建前端镜像
+build_frontend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  script:
+    - cd $FRONTEND_NAME
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
   rules:
     - changes:
         - $FRONTEND_NAME/**/*
@@ -1561,7 +1632,7 @@ spec:
 
 # Helm + Argo CD 部署
 
-此步骤是部署方式的其中一种，现在需要将其打包为 Helm Chart 并部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
+此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
 
 ## 准备
 
@@ -2066,7 +2137,7 @@ spec:
   type: {{ .Values.frontend.service.type }}
 ```
 
-## 本地测试 Chart
+## 测试 Chart 文件
 
 - 检查语法
 
@@ -2113,6 +2184,178 @@ spec:
   ```
 
 ## 封装 Chart
+
+这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
+
+```bash
+cd /d/projects/todos-helm/todo-chart
+helm package .
+```
+
+## 测试本地 Chart 包
+
+```bash
+cd /d/projects/todos-helm/todo-chart
+helm install todo-app todo-chart-0.1.0.tgz
+
+# 卸载
+helm uninstall todo-app
+```
+
+## 推送 Chart 包
+
+- 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
+
+- Helm 登录到 GitLab Registry，详见 [Helm 笔记](helm.md#推送-chart)。
+
+- 推送 Chart 包
+
+  ```bash
+  cd /d/projects/todos-helm/todo-chart
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todos-helm
+  ```
+
+## 测试远程 Chart 包
+
+```bash
+helm install todo-app oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart --version 0.1.0
+
+# 卸载
+helm uninstall todo-app
+```
+
+## `.gitlab-ci.yml`
+
+在 GitLab CI 时，自动构建 Chart 并推送至 GitLab Container Registry。
+
+- 修改之前的 `.gitlab-ci.yml`
+- 添加 Chart 部分
+- 将 `before_script` 从全局移到前后端。
+
+```yaml
+# 定义变量
+variables:
+  # Docker 版本号
+  DOCKER_VERSION: 24.0.5
+
+  # 告诉 Docker 使用 overlay2 驱动，性能更好
+  DOCKER_DRIVER: overlay2
+
+  # 禁用 TLS 证书生成，防止 dind 连接报错
+  DOCKER_TLS_CERTDIR: ""
+  
+  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
+  IMAGE_PREFIX: $DOCKER_HUB_USER
+  
+  # 项目名称
+  PROJECT_NAME: todos-helm
+
+  # 后端和前端名称
+  BACKEND_NAME: backend
+  FRONTEND_NAME: frontend
+
+  # Helm Chart 名称
+  CHART_NAME: todo-chart
+
+  # OCI 仓库地址
+  OCI_REGISTRY: registry.gitlab.com/jerrybai/$PROJECT_NAME
+
+# 定义阶段
+stages:
+  - build
+  - chart-publish
+
+# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
+services:
+  - docker:$DOCKER_VERSION-dind
+
+# 构建后端镜像
+build_backend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  # 登录 Docker Hub
+  before_script:
+    # 使用 stdin 输入密码，更加安全
+    - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  script:
+    # 进入后端目录
+    - cd $BACKEND_NAME
+    
+    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
+    
+    # 推送到 Docker Hub
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
+  rules:
+    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
+    - changes:
+        - $BACKEND_NAME/**/*
+
+# 构建前端镜像
+build_frontend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  # 登录 Docker Hub
+  before_script:
+    # 使用 stdin 输入密码，更加安全
+    - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  script:
+    - cd $FRONTEND_NAME
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
+  rules:
+    - changes:
+        - $FRONTEND_NAME/**/*
+
+# 构建并推送 Helm Chart
+publish_chart:
+  stage: chart-publish
+  image:
+    name: alpine/helm:3.12.3
+    # 设置正确的 entrypoint 以便执行 shell 命令
+    entrypoint: ["/bin/sh", "-c"]
+  # 依赖于前后端镜像构建完成
+  needs:
+    - job: build_backend
+      # 如果后端镜像构建失败，则跳过此 Job，否则都执行此 Job
+      optional: true
+    - job: build_frontend
+      optional: true
+  script:
+    # 进入 Helm Chart 目录
+    - cd $CHART_NAME
+    
+    # 配置 Helm 使用 GitLab Container Registry
+    - helm registry login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    
+    # 检查 Chart 语法
+    - helm lint .
+    
+    # 安装 yq 工具用于解析 Chart.yaml
+    - apk add --no-cache yq
+    
+    # 从 Chart.yaml 中读取基础版本号
+    - CHART_VERSION=$(yq e '.version' Chart.yaml)
+    
+    # 生成最终版本号（基础版本号 + 提交短哈希）
+    - FINAL_VERSION="${CHART_VERSION}+${CI_COMMIT_SHORT_SHA}"
+    
+    # 打包 Chart
+    - helm package . --version "${FINAL_VERSION}"
+    
+    # 推送 Chart 到 GitLab Container Registry
+    - helm push ${CHART_NAME}-${FINAL_VERSION}.tgz oci://${OCI_REGISTRY}
+  rules:
+    # 当 Helm Chart 相关文件变化，或者前后端镜像更新时，都运行此 Job
+    - changes:
+        - $CHART_NAME/**/*
+    - changes:
+        - $BACKEND_NAME/**/*
+    - changes:
+        - $FRONTEND_NAME/**/*
+```
 
 # 项目总结
 
@@ -2207,3 +2450,66 @@ spec:
 6. 如何使用 Argo CD 进行 GitOps 风格的 Kubernetes 部署和管理
 
 希望本教程对你有所帮助，祝你学习愉快！
+
+# 问 AI
+
+本项目前后端已开发完成并通过测试，不要再动我的源代码。
+
+你把接下来的步骤写成一个 `新教程.md` 放在项目根目录：
+
+- 创建一个 Chart 目录，目录名为 todo-chart
+- 完善 chart 内的各个文件，把前端、后端和数据库的各个配置都放在各自的同一个文件里
+  - frontend.yaml
+  - backend.yaml
+  - mysql.yaml
+  - chart 目录内的所有文件，哪个有用，哪个没有，需要删除或修改哪个，你都给我说清楚。
+- 数据库
+  - Root 密码：123456
+  - 用户名：jerry
+  - 密码：000000
+- 编写完文件，要本地部署测试一下，测试通过以后删除清理
+- 本地 Helm Chart 打包
+- 推送 Chart 到私有 Harbor 仓库
+- 使用 helm 命令安装一下这个 Chart，测试一下，测试通过以后删除清理
+- 编写 argo cd 的应用定义文件 argocd-application.yaml，引用的就是这个 Harbor 仓库的 chart
+- 根据这个 argocd-application.yaml 去在 minikube 中部署应用
+- 在 GitLab CI 时，能自动构建 chart 并推送至私有 Harbor 仓库，所以要创建 `.gitlab-ci.yml` 文件
+- 最后实现，推送代码到 Git 仓库时：
+  - 能自动构建 chart 并推送至私有 Harbor 仓库
+  - argo cd 能监测这个 chart 的变化并调整部署
+
+我是一个初学者，所以你的步骤务必要详细。
+
+我的表述未必准确，你帮我组织语言。
+
+我的步骤可能有错误或缺失，你帮我完善。
+
+你不需要有任何操作，只帮我生成教程即可！！！！！
+
+教程文档要求：
+
+- 所有标题不需要数字编号
+
+# Deploy 结构
+
+```
+# 推荐的目录结构
+todos-helm/
+├── argocd/                     # Argo CD 应用定义
+│   ├── application-k8s.yaml    # Argo CD 引用 k8s 的 Application CRD
+│   └── application-chart.yaml  # Argo CD 引用 helm-chart 的 Application CRD
+├── k8s/                        # k8s 配置文件
+├── helm-chart/                 # Helm Chart 文件
+└── .gitlab-ci.yml              # CI/CD 配置
+```
+
+```
+todos-helm/
+├── argocd/                     # Argo CD 应用管理配置
+│   ├── app-k8s.yaml            # 引用原生 K8s 配置的 Argo CD 应用定义
+│   └── app-helm.yaml           # 引用 Helm Chart 的 Argo CD 应用定义
+├── k8s/                        # 原生 K8s 资源配置
+├── helm-chart/                 # Helm Chart 包（需将当前 todo-chart 重命名）
+└── .gitlab-ci.yml              # CI/CD 流水线配置
+```
+

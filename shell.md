@@ -399,11 +399,37 @@ echo "Hello, $NAME"
 
 ## 环境变量
 
-使用 `export` 关键字将变量提升为环境变量。
+使用 `export` 关键字将变量提升为环境变量。仅在当前的 **Shell 会话**（或当前终端窗口）及其派生出的子进程中有效。
 
 ```bash
 export PATH="/usr/local/bin:$PATH"
 ```
+
+### 用户名和密码
+
+避免在历史记录 (Shell History) 或脚本中直接暴露敏感的用户名和 Token。虽然它们不是永久的，但对于单次会话中的多次操作非常实用。
+
+以下是一个 Helm 登录 GitLab Container Registry 的示例：
+
+**慎用！！！第一次用就导致网页端无法登录！！！**
+
+- 设置环境变量
+
+  ```bash
+  export GL_USERNAME="<Your_GitLab_Username>"
+  export GL_TOKEN="<Your_Personal_Access_Token>"
+  ```
+
+- 使用环境变量
+
+  ```bash
+  helm registry login registry.gitlab.com \
+    --username "${GL_USERNAME}" \
+    --password-stdin <<< "${GL_TOKEN}"
+  # 如果您没有使用环境变量，您可以直接输入：
+  # helm registry login registry.gitlab.com -u <Your_GitLab_Username>
+  # (然后会提示您输入密码/PAT)
+  ```
 
 # 控制结构
 

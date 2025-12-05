@@ -170,6 +170,36 @@ GitLab 网页创建 Remote Repo
   - **Shared Runner**：由 GitLab 提供，适合公共项目。
   - **Specific Runner**：自建 Runner，适合私有项目或自定义环境。
 
+# GitLab Personal Access Tokens
+
+- 右上角个人头像 > `Edit profile` > 左侧边栏 `Personal access tokens` > `Add new token`
+- 名称随意（尽可能写项目名称）
+- 勾选 `read_registry` 和 `write_registry` 权限
+- 日期尽可能调整到最长（一年）
+- Generate 生成 token
+- 请务必保存生成的 Token，它只显示一次！
+- 用户名为 `jerrybai`
+
+# GitLab Registry
+
+**GitLab Registry** 是 GitLab 的镜像仓库，可以存储 Docker Image, Helm Chart ...
+
+- **公共 GitLab.com：** `registry.gitlab.com`
+- **自建/私有 GitLab：** 您的实例地址，例如 `gitlab.example.com:4567`
+
+**如何查看**：进入项目 > 左侧边栏 > `Deploy` > `Container registry`
+
+**OCI 仓库地址：**
+
+```bash
+oci://<Registry_Host>/<Namespace>/<Repository_Name>
+oci://registry.gitlab.com/jerrybai/todos-helm
+```
+
+- **`<Registry_Host>`**: **注册中心的主机名**，每个仓库平台固定，GitLab 是 `registry.gitlab.com`。
+- **`<Namespace>`**: **命名空间**，通常是组织名、用户名或项目名。
+- **`<Repository Name>`**: **仓库名称**，无需设置，在推送时自动生成，但最好和项目名保持一致。
+
 # 解决办法
 
 ## 远程仓库改名
