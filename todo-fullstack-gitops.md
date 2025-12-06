@@ -22,6 +22,8 @@ tags:
 
 这是一个使用 React + Flask + MySQL 构建的全栈 TODO 应用，支持 Docker 容器化和 Kubernetes 部署。
 
+![image-20251206152340962](assets/image-20251206152340962.png)
+
 ## 技术栈
 
 - **前端**: React 18 + Vite + Axios

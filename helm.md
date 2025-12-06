@@ -337,7 +337,7 @@ helm uninstall <Release_Name>
 ### 部署 Release（远程 Chart 包）
 
 ```bash
-helm install <Release_Name> oci://<Registry_Host>/<Group>/<Project>/<Chart_Name> --version <Chart_Version>
+helm install <Release_Name> oci://<Registry_Host>/<Namespace>/<Repository_Name>/<Chart_Name> --version <Chart_Version>
 
 helm install todo-app oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart --version 0.1.0
 ```

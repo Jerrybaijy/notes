@@ -106,6 +106,20 @@
             }
           },
           {
+            "id": "51fc8197587d60e4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo-fullstack-gitops.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "todo-fullstack-gitops"
+            }
+          },
+          {
             "id": "4db082000521b033",
             "type": "leaf",
             "state": {
@@ -148,7 +162,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -197,13 +211,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "todos-fullstack.md",
+                "file": "todo-fullstack-gitops.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "todos-fullstack 的大纲"
+              "title": "todo-fullstack-gitops 的大纲"
             }
           },
           {
@@ -221,8 +235,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -298,16 +311,18 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "51fc8197587d60e4",
   "lastOpenFiles": [
-    "gitlab.md",
+    "argo-cd.md",
+    "todo-fullstack-gitops.md",
+    "assets/image-20251206152340962.png",
     "helm.md",
+    "todos-fullstack.md",
+    "gitlab.md",
     "projects.md",
     "harbor.md",
-    "argo-cd.md",
     "kubernetes.md",
     "git.md",
-    "todos-fullstack.md",
     "assets/image-20251128210905428.png",
     "0000-to-do.md",
     "yaml.md",
@@ -331,14 +346,12 @@
     "其它格式未转换/obsidian-themes/user.css",
     "network.md",
     "postman.md",
-    "it-basics.md",
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",
     "assets/image-20251126075702455.png",
-    "assets/image-20251029210729119.png",
     "git-push.sh",
     "0000000.txt",
     "新建 文本文档.txt",
