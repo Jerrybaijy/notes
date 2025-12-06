@@ -1,5 +1,5 @@
 ---
-title: todos-fullstack
+title: todo-fullstack-gitops
 author: Jerry.Baijy
 tags:
   - 应用科学
@@ -36,7 +36,7 @@ tags:
 ## 项目结构
 
 ```
-todos-fullstack/
+todo-fullstack-gitops/
 │
 ├── backend/               # 后端代码目录
 │   ├── app/               # 后端应用代码
@@ -60,7 +60,7 @@ todos-fullstack/
 │   ├── src/               # 前端应用代码
 │   │   ├── App.jsx        # 主组件
 │   │   ├── App.css        # 主组件样式表
-│   │   └── main.jsx       # 数据库模型文件
+│   │   └── main.jsx       # 前端入口文件
 │   │
 │   ├── index.html         # 前端入口 HTML 文件
 │   ├── vite.config.js     # 前端请求代理（本地环境）
@@ -99,26 +99,26 @@ todos-fullstack/
 ## 项目存储
 
 - **项目仓库**
-  - GitLab: https://gitlab.com/jerrybai/todos-fullstack
-  - GitHub: https://github.com/Jerrybaijy/todos-fullstack
+  - GitLab: https://gitlab.com/jerrybai/todo-fullstack-gitops
+  - GitHub: https://github.com/Jerrybaijy/todo-fullstack-gitops
 
 - **镜像仓库**
-  - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todos-fullstack-backend
-  - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todos-fullstack-frontend
+  - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-backend
+  - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-frontend
+  - Chart: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
 
 # 项目准备
 
 ## 创建项目根目录
 
 ```bash
-cd projects
-mkdir todos-fullstack
+mkdir d:/projects/todo-fullstack-gitops
 ```
 
 ## 初始化 Git 仓库
 
 ```bash
-cd todos-fullstack
+cd d:/projects/todo-fullstack-gitops
 git init --initial-branch=main
 touch .gitignore
 ```
@@ -162,17 +162,17 @@ logs/
 
 ## 配置环境变量
 
-配置环境变量：`todos-fullstack/.env`
+配置环境变量：`todo-fullstack-gitops/.env`
 
 ```bash
-cd todos-fullstack
+cd d:/projects/todo-fullstack-gitops
 touch .env
 ```
 
 ```toml
 # MySQL 数据库配置
 MYSQL_ROOT_PASSWORD=123456
-MYSQL_DATABASE=todos_db
+MYSQL_DATABASE=todo_db
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
 DB_HOST=localhost
@@ -183,17 +183,17 @@ FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-同时，为了让协作者知道需要配什么，创建一个 `todos-fullstack/.env.example` (不含真实密码)：
+同时，为了让协作者知道需要配什么，创建一个 `todo-fullstack-gitops/.env.example` (不含真实密码)：
 
 ```bash
-cd todos-fullstack
+cd d:/projects/todo-fullstack-gitops
 touch .env.example
 ```
 
 ```toml
 # MySQL 数据库配置
 MYSQL_ROOT_PASSWORD=
-MYSQL_DATABASE=todos_db
+MYSQL_DATABASE=todo_db
 MYSQL_USER=
 MYSQL_PASSWORD=
 
@@ -213,13 +213,14 @@ SECRET_KEY=
 ## 目录结构
 
 ```bash
-mkdir -p todos-fullstack/backend/app/api
+cd d:/projects/todo-fullstack-gitops
+mkdir -p backend/app/api
 ```
 
 ## 虚拟环境
 
 ```bash
-cd todos-fullstack/backend
+cd d:/projects/todo-fullstack-gitops/backend
 
 # 提前复制 python-env 脚本到 backend 目录
 source python-env
@@ -228,7 +229,7 @@ source python-env
 ## 安装依赖
 
 ```bash
-cd backend
+cd d:/projects/todo-fullstack-gitops/backend
 touch requirements.txt
 ```
 
@@ -268,7 +269,7 @@ class Config:
     DB_USER = os.environ.get("MYSQL_USER") or "root"
     DB_PASS = os.environ.get("MYSQL_PASSWORD") or "password"
     DB_HOST = os.environ.get("DB_HOST") or "localhost"
-    DB_NAME = os.environ.get("MYSQL_DATABASE") or "todos_db"
+    DB_NAME = os.environ.get("MYSQL_DATABASE") or "todo_db"
 
     # SQLAlchemy 配置
     SQLALCHEMY_DATABASE_URI = (
@@ -435,7 +436,7 @@ docker run --name mysql-container \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -e MYSQL_USER=jerry \
 -e MYSQL_PASSWORD=000000 \
--e MYSQL_DATABASE=todos_db \
+-e MYSQL_DATABASE=todo_db \
 -p 3306:3306 \
 -d mysql:8.0
 ```
@@ -448,7 +449,7 @@ docker run --name mysql-container \
 # 确保虚拟环境已激活
 # 确保全新数据库已正常运行
 
-cd backend
+cd d:/projects/todo-fullstack-gitops/backend
 
 # 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 文件夹
 flask db init
@@ -466,7 +467,9 @@ flask db upgrade
 - 启动后端
 
   ```bash
-  cd backend
+  cd d:/projects/todo-fullstack-gitops/backend
+  source venv/Scripts/activate
+  
   python run.py
   ```
 
@@ -488,19 +491,21 @@ flask db upgrade
 
 ```bash
 # 使用 Vite 创建 React 项目
-cd todos-fullstack
+cd d:/projects/todo-fullstack-gitops
 npm create vite@latest frontend -- --template react
 
 # 安装依赖
-cd frontend
+cd d:/projects/todo-fullstack-gitops/frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
+
+# 删除 frontend/src 目录中的 assets 目录和 index.css 文件
 ```
 
 ## `App.jsx`
 
-主组件 `src/App.jsx`
+修改主组件 `src/App.jsx`
 
 ```jsx
 import { useState, useEffect } from "react";
@@ -623,12 +628,11 @@ function App() {
 }
 
 export default App;
-
 ```
 
 ## `App.css`
 
-主组件样式表 `src/App.css`
+修改主组件样式表 `src/App.css`
 
 ```css
 .container {
@@ -687,11 +691,12 @@ li.completed span {
 .delete-btn:hover {
   background: #a71d2a;
 }
+
 ```
 
 ## `main.jsx`
 
-前端入口文件 `main.jsx`
+修改前端入口文件 `main.jsx`
 
 ```jsx
 import React from 'react'
@@ -707,7 +712,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 ## `index.html`
 
-`frontend/index.html`
+修改前端入口 HTML 文件 `frontend/index.html`
 
 ```html
 <!doctype html>
@@ -758,14 +763,14 @@ export default defineConfig({
 - 后端已启动
 
   ```bash
-  cd backend
+  cd d:/projects/todo-fullstack-gitops/backend
   python run.py
   ```
 
 - 启动前端
 
   ```bash
-  cd frontend
+  cd d:/projects/todo-fullstack-gitops/frontend
   npm run dev
   ```
 
@@ -905,9 +910,9 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## `docker-compose.yml`
 
-容器编排文件 `todos-fullstack/docker-compose.yml`
+容器编排文件 `todo-fullstack-gitops/docker-compose.yml`
 
-- 环境变量获取自 `todos-fullstack/.env`
+- 环境变量获取自 `todo-fullstack-gitops/.env`
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 
 ```yaml
@@ -987,7 +992,7 @@ networks:
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd todos-fullstack
+  cd d:/projects/todo-fullstack-gitops
   docker-compose up -d
   ```
 
@@ -999,8 +1004,10 @@ networks:
 
 - 停止项目
 
+  停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
+  
   ```bash
-  cd todos-fullstack
+  cd d:/projects/todo-fullstack-gitops
   docker-compose down
   ```
 
@@ -1008,7 +1015,7 @@ networks:
 
 ## `.gitlab-ci.yml`
 
-GitLab CI `todos-fullstack/.gitlab-ci.yml`
+GitLab CI `todo-fullstack-gitops/.gitlab-ci.yml`
 
 ```yaml
 # 定义变量
@@ -1026,75 +1033,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todos-fullstack
-
-  # 后端和前端名称
-  BACKEND_NAME: backend
-  FRONTEND_NAME: frontend
-
-# 定义阶段
-stages:
-  - build
-
-# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
-services:
-  - docker:$DOCKER_VERSION-dind
-
-# 登录 Docker Hub
-before_script:
-  # 使用 stdin 输入密码，更加安全
-  - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-
-# 构建后端镜像
-build_backend:
-  stage: build
-  image: docker:$DOCKER_VERSION
-  script:
-    # 进入后端目录
-    - cd $BACKEND_NAME
-    
-    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
-    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
-    
-    # 推送到 Docker Hub
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
-  rules:
-    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
-    - changes:
-        - $BACKEND_NAME/**/*
-
-# 构建前端镜像
-build_frontend:
-  stage: build
-  image: docker:$DOCKER_VERSION
-  script:
-    - cd $FRONTEND_NAME
-    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
-  rules:
-    - changes:
-        - $FRONTEND_NAME/**/*
-```
-
-```yaml
-# 定义变量
-variables:
-  # Docker 版本号
-  DOCKER_VERSION: 24.0.5
-
-  # 告诉 Docker 使用 overlay2 驱动，性能更好
-  DOCKER_DRIVER: overlay2
-
-  # 禁用 TLS 证书生成，防止 dind 连接报错
-  DOCKER_TLS_CERTDIR: ""
-  
-  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
-  IMAGE_PREFIX: $DOCKER_HUB_USER
-  
-  # 项目名称
-  PROJECT_NAME: todos-helm
+  PROJECT_NAME: todo-fullstack-gitops
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -1154,12 +1093,13 @@ build_frontend:
   - 后端镜像构建文件 `backend/Dockerfile`
   - 前端 Nginx 配置文件 `frontend/nginx.conf`
   - 前端镜像构建文件 `frontend/Dockerfile`
-  - 容器编排文件 `todos-fullstack/docker-compose.yml`
-  - GitLab CI `todos-fullstack/.gitlab-ci.yml`
+  - 容器编排文件 `todo-fullstack-gitops/docker-compose.yml`
+  - GitLab CI `todo-fullstack-gitops/.gitlab-ci.yml`
+- 配置 Docker Hub Token
 - 配置 GitLab 环境变量
   - `DOCKER_HUB_USER`
-  - `DOCKER_HUB_PASS`
-- 推送代码至仓库，Pipeline 完成以后查看 Docker Hub。
+  - `DOCKER_HUB_TOKEN`
+- 推送代码至仓库（注意前后端要有变化，以适应管道文件的规则要求），Pipeline 完成以后查看 Docker Hub。
 
 # CD
 
@@ -1173,10 +1113,10 @@ build_frontend:
 
 ## 创建目录
 
-先创建 `todos-remote` 目录，在此目录分别创建：
+先创建其它目录 `todo-remote` 目录，在此目录分别创建：
 
-- `todos-remote/docker-compose.yml`
-- `todos-remote/.env`
+- `todo-remote/docker-compose.yml`
+- `todo-remote/.env`
 
 ## `docker-compose.yml`
 
@@ -1209,7 +1149,7 @@ services:
   # 后端服务
   backend:
     # 指定镜像名称
-    image: jerrybaijy/todos-fullstack-backend:latest
+    image: jerrybaijy/todo-fullstack-gitops-backend:latest
     restart: always
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -1230,7 +1170,7 @@ services:
   # 前端服务
   frontend:
     # 指定镜像名称
-    image: jerrybaijy/todos-fullstack-frontend:latest
+    image: jerrybaijy/todo-fullstack-gitops-frontend:latest
     restart: always
     ports:
       - "80:80"
@@ -1255,7 +1195,7 @@ networks:
 ```toml
 # MySQL 数据库配置
 MYSQL_ROOT_PASSWORD=123456
-MYSQL_DATABASE=todos_db
+MYSQL_DATABASE=todo_db
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
 
@@ -1268,14 +1208,14 @@ FLASK_ENV=production
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-## 启动
+## 部署
 
 - 删除 **Docker Compose 测试**时的 Image、Container 和 Volumes，余下操作相同。
 
 - 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd todos-remote
+  cd todo-remote
   docker-compose up -d
   ```
 
@@ -1286,8 +1226,10 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 
 - 停止项目
 
+  停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
+  
   ```bash
-  cd todos-remote
+  cd todo-remote
   docker-compose down
   ```
 
@@ -1297,11 +1239,11 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 
 - Minikube、Kubectl、Argo CD 已安装
 
-- 创建开发环境目录
+- 创建 K8s 和 Argo CD 目录
 
   ```bash
-  cd todos-fullstack
-  mkdir k8s
+  cd d:/projects/todo-fullstack-gitops
+  mkdir k8s argo-cd
   ```
 
 ## `namespace.yaml`
@@ -1312,30 +1254,30 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: todos
+  name: todo
   labels:
-    name: todos
+    name: todo
 ```
 
-## `application.yaml`
+## `k8s-app.yaml`
 
-ArgoCD 应用定义 `k8s/application.yaml`
+ArgoCD 应用定义 `argo-cd/k8s-app.yaml`，这个文件引用的是 `k8s` 目录中的 K8s 配置清单文件。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: todos-app
+  name: todo-app
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/Jerrybaijy/todos-fullstack.git
+    repoURL: https://gitlab.com/jerrybai/todo-fullstack-gitops.git
     targetRevision: HEAD
     path: k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: todos
+    namespace: todo
   syncPolicy:
     automated:
       selfHeal: true
@@ -1360,17 +1302,17 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-config
-  namespace: todos
+  namespace: todo
 
 data:
-  MYSQL_DATABASE: todos_db
+  MYSQL_DATABASE: todo_db
   DB_HOST: mysql
 ---
 apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
-  namespace: todos
+  namespace: todo
 type: Opaque
 stringData:
   MYSQL_ROOT_PASSWORD: "123456"
@@ -1381,7 +1323,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: todos
+  namespace: todo
   labels:
     app: mysql
 spec:
@@ -1439,7 +1381,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: todos
+  namespace: todo
   labels:
     app: mysql
 spec:
@@ -1460,7 +1402,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backend-secret
-  namespace: todos
+  namespace: todo
 type: Opaque
 stringData:
   SECRET_KEY: your-secret-key
@@ -1469,11 +1411,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: todos
+  namespace: todo
   labels:
     app: backend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: backend
@@ -1484,7 +1426,8 @@ spec:
     spec:
       containers:
         - name: backend
-          image: jerrybaijy/todos-fullstack-backend:latest
+          image: jerrybaijy/todo-fullstack-gitops-backend:latest
+          imagePullPolicy: Always
           envFrom:
             - secretRef:
                 name: backend-secret
@@ -1524,7 +1467,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
-  namespace: todos
+  namespace: todo
   labels:
     app: backend
 spec:
@@ -1544,11 +1487,11 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: todos
+  namespace: todo
   labels:
     app: frontend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: frontend
@@ -1559,7 +1502,8 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jerrybaijy/todos-fullstack-frontend:latest
+          image: jerrybaijy/todo-fullstack-gitops-frontend:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           readinessProbe:
@@ -1583,7 +1527,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
-  namespace: todos
+  namespace: todo
   labels:
     app: frontend
 spec:
@@ -1603,8 +1547,8 @@ spec:
 - 部署
 
   ```bash
-  cd k8s
-  kubectl apply -f application.yaml
+  cd d:/projects/todo-fullstack-gitops
+  kubectl apply -f argo-cd/k8s-app.yaml
   ```
 
 - 外部访问 ：
@@ -1612,12 +1556,12 @@ spec:
   - 前端：通过 NodePort、LoadBalancer 或端口转发访问
   - 后端：仅集群内部访问，或通过端口转发临时访问
   - 数据库：仅集群内部访问，或通过端口转发临时访问
-  
+
 - 端口转发
 
   ```bash
   # 前端
-  kubectl port-forward svc/frontend 8081:80 -n todos
+  kubectl port-forward svc/frontend 8081:80 -n todo
   ```
 
 - 访问前端：http://localhost:8081/
@@ -1626,12 +1570,21 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/mysql 3306:3306 -n todos
+  kubectl port-forward svc/mysql 3306:3306 -n todo
   # 后端
-  kubectl port-forward svc/backend 5000:5000 -n todos
+  kubectl port-forward svc/backend 5000:5000 -n todo
   ```
 
-# Helm + Argo CD 部署
+- 卸载
+
+  ```bash
+  cd d:/projects/todo-fullstack-gitops/argo-cd
+  
+  kubectl delete -f k8s-app.yaml
+  kubectl delete ns todo
+  ```
+
+# Chart + Argo CD 部署
 
 此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
 
@@ -1644,7 +1597,7 @@ spec:
 - 创建 Chart
 
   ```bash
-  cd d:/projects/todos-helm
+  cd d:/projects/todo-fullstack-gitops
   helm create todo-chart
   ```
 
@@ -1653,20 +1606,20 @@ spec:
 - 保留并修改以下必要文件：
 
   - `Chart.yaml`：Chart 元数据
-  - `values.yaml`：配置值
+  - `values.yaml`：模板文件的参数值
   - `.helmignore`：忽略不需要打包的文件
-  - `templates/`：我们将创建自己的模板文件目录
+  - `templates/`：模板文件目录
 
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todos-helm/todo-chart/templates/
+  cd d:/projects/todo-fullstack-gitops/todo-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
 ## `Chart.yaml`
 
-Chart 的元数据 `todos-helm/Chart.yaml`
+Chart 的元数据 `todo-fullstack-gitops/Chart.yaml`
 
 ```yaml
 apiVersion: v2
@@ -1679,12 +1632,12 @@ appVersion: "1.0.0"
 
 ## `values.yaml`
 
-参数配置 `todos-helm/values.yaml`
+模板文件的参数值 `todo-fullstack-gitops/values.yaml`
 
 ```yaml
 # 全局配置
 global:
-  namespace: todos-helm
+  namespace: todo-fullstack-gitops
 
 # MySQL配置
 mysql:
@@ -1692,7 +1645,7 @@ mysql:
   tag: 8.0
   imagePullPolicy: IfNotPresent
   rootPassword: "123456"
-  database: todos_db
+  database: todo_db
   user: jerry
   password: "000000"
   replicaCount: 2
@@ -1707,7 +1660,7 @@ mysql:
 backend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todos-helm-backend
+    repository: jerrybaijy/todo-fullstack-gitops-backend
     tag: latest
     pullPolicy: Always
   service:
@@ -1720,7 +1673,7 @@ backend:
 frontend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todos-helm-frontend
+    repository: jerrybaijy/todo-fullstack-gitops-frontend
     tag: latest
     pullPolicy: Always
   service:
@@ -2143,28 +2096,28 @@ spec:
 - 检查语法
 
   ```bash
-  cd /d/projects/todos-helm
+  cd /d/projects/todo-fullstack-gitops
   helm lint ./todo-chart
   ```
 
 - 部署 Helm Release
 
-  ```yaml
-  cd /d/projects/todos-helm
+  ```bash
+  cd /d/projects/todo-fullstack-gitops
   helm install todo-app ./todo-chart
   ```
 
 - 查看，所有资源运行正常
 
-  ```yaml
-  kubectl get all -n todos-helm
+  ```bash
+  kubectl get all -n todo
   ```
 
 - 端口转发
 
   ```bash
   # 前端
-  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
   ```
 
 - 访问前端：http://localhost:8081/
@@ -2173,9 +2126,9 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
   # 后端
-  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
   ```
 
 - 卸载 Helm Release
@@ -2189,14 +2142,14 @@ spec:
 这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
 
 ```bash
-cd /d/projects/todos-helm/todo-chart
+cd /d/projects/todo-fullstack-gitops/todo-chart
 helm package .
 ```
 
 ## 测试本地 Chart 包
 
 ```bash
-cd /d/projects/todos-helm/todo-chart
+cd /d/projects/todo-fullstack-gitops/todo-chart
 helm install todo-app todo-chart-0.1.0.tgz
 
 # 卸载
@@ -2212,14 +2165,14 @@ helm uninstall todo-app
 - 推送 Chart 包
 
   ```bash
-  cd /d/projects/todos-helm/todo-chart
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todos-helm
+  cd /d/projects/todo-fullstack-gitops/todo-chart
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
   ```
 
 ## 测试远程 Chart 包
 
 ```bash
-helm install todo-app oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart --version 0.1.0
+helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
 
 # 卸载
 helm uninstall todo-app
@@ -2249,7 +2202,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todos-helm
+  PROJECT_NAME: todo-fullstack-gitops
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -2277,7 +2230,7 @@ build_backend:
   # 登录 Docker Hub
   before_script:
     # 使用 stdin 输入密码，更加安全
-    - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
   script:
     # 进入后端目录
     - cd $BACKEND_NAME
@@ -2363,9 +2316,9 @@ publish_chart:
         - $FRONTEND_NAME/**/*
 ```
 
-## `application.yaml`
+## `chart-app.yaml`
 
-ArgoCD 应用定义 `todos-helm/application.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
+ArgoCD 应用定义 `argo-cd/chart-app.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -2377,7 +2330,7 @@ spec:
   project: default
   source:
     # GitLab Container Registry 地址，注意要带上 chart 名称
-    repoURL: oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart
+    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
     # Chart 名称
@@ -2385,7 +2338,7 @@ spec:
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: todos-helm
+    namespace: todo
   syncPolicy:
     automated:
       selfHeal: true
@@ -2408,15 +2361,15 @@ spec:
 - 部署
 
   ```bash
-  cd todos-helm
-  kubectl apply -f application.yaml
+  cd d:/projects/todo-fullstack-gitops/argo-cd
+  kubectl apply -f chart-app.yaml
   ```
 
 - 端口转发
 
   ```bash
   # 前端
-  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
   ```
 
 - 访问前端：http://localhost:8081/
@@ -2425,17 +2378,17 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
   # 后端
-  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todos-helm
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
   ```
 
 - 卸载 App
 
   ```bash
-  cd todos-helm
-  kubectl delete -f application.yaml
-  kubectl delete ns todos-helm
+  cd d:/projects/todo-fullstack-gitops/argo-cd
+  kubectl delete -f chart-app.yaml
+  kubectl delete ns todo
   ```
 
 # 项目总结
@@ -2478,7 +2431,7 @@ spec:
 - **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - **后端到数据库** ：后端通过 db:3306 访问 MySQL 数据库
 
-### ArgoCD 阶段
+### K8s + Argo CD 阶段
 
 #### 通信流程
 
@@ -2491,18 +2444,20 @@ spec:
 - 前端到后端 ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - 后端到数据库 ：后端通过 mysql 服务名访问 MySQL 数据库
 
+### Chart + Argo CD 阶段
+
 ## 环境变量
 
 ### 本地开发阶段
 
-环境变量获取自 `todos-fullstack/.env`
+环境变量获取自 `todo-fullstack-gitops/.env`
 
 ### Docker Compose 阶段
 
-- 环境变量获取自 `todos-fullstack/.env`
+- 环境变量获取自 `todo-fullstack-gitops/.env`
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 
-### ArgoCD 阶段
+### K8s + Argo CD 阶段
 
 在 `backend.yaml` 中创建 backend-secret 对象，创建以下环境变量：
 
@@ -2518,6 +2473,8 @@ spec:
 - MYSQL_ROOT_PASSWORD
 - MYSQL_USER
 - MYSQL_PASSWORD
+
+### Chart + Argo CD 阶段
 
 ## 总结
 
@@ -2575,7 +2532,7 @@ spec:
 
 ```
 # 推荐的目录结构
-todos-helm/
+todo-fullstack-gitops/
 ├── argocd/                     # Argo CD 应用定义
 │   ├── application-k8s.yaml    # Argo CD 引用 k8s 的 Application CRD
 │   └── application-chart.yaml  # Argo CD 引用 helm-chart 的 Application CRD
@@ -2585,7 +2542,7 @@ todos-helm/
 ```
 
 ```
-todos-helm/
+todo-fullstack-gitops/
 ├── argocd/                     # Argo CD 应用管理配置
 │   ├── app-k8s.yaml            # 引用原生 K8s 配置的 Argo CD 应用定义
 │   └── app-helm.yaml           # 引用 Helm Chart 的 Argo CD 应用定义

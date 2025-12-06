@@ -205,9 +205,37 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   export default App;
   ```
 
-## 处理方法
+# Vite
 
-### POST 和 GET
+Vite 跨域代理 `vite.config.js`，用于直接本地运行（**非容器化部署**）时的前后端通信。
+
+`todo-fullstack-gitops` 项目中的示例：将前端 `/api` 开头的请求转发到 http://localhost:5000 后端服务。
+
+1. 前端请求: `/api/todos`
+2. Vite 代理匹配到 `/api` 前缀
+3. 转发到: http://localhost:5000/api/todos
+
+```javascript
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+// https://vite.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true
+      }
+    }
+  }
+})
+```
+
+# 处理方法
+
+## POST 和 GET
 
 - 源自项目 student-springboot-react-frontend
 
@@ -241,7 +269,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   });
   ```
 
-## React 项目
+# React 项目
 
 - Student Spring Boot React Full Stack
 - Login Flask React

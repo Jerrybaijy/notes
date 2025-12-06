@@ -744,3 +744,6 @@ networks:
    - **Description**: 随便填，为了方便区分，自己会填写项目名称。
    - **Access permissions**: 选择 `Read & Write`。
 5. **复制生成的 Token**。注意：这个 Token 只显示一次，一定要复制好！
+6. 使用 Docker Hub 用户名和 Token 的规范变量（个人风格）
+   - **用户名**：DOCKER_HUB_USER
+   - **令牌**：DOCKER_HUB_TOKEN
