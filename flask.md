@@ -635,6 +635,21 @@ if __name__ == '__main__':
 | **Flask-Login**      | 用户认证         | 管理用户登录状态和会话。            |
 | **Flask-RESTful**    | 构建 RESTful API | 简化资源路由和序列化。              |
 
+# Flask-Migrate
+
+Flask-Migrate 是基于 Alembic (SQLAlchemy 的迁移工具) 构建的 Flask 扩展。
+
+## 迁移的工作流程
+
+- **模型定义**：在 `backend/app/models.py` 中定义数据库模型
+- **迁移生成**：使用 `flask db migrate` 自动生成迁移脚本
+- **迁移应用**：使用 `flask db upgrade` 应用迁移到数据库
+- **容器启动**：在 `boot.sh` 脚本中自动执行数据库迁移，确保数据库结构与代码一致
+
+## 相关项目
+
+- [Todo Fullstack GitOps](todo-fullstack-gitops.md)
+
 # Flask 项目
 
 ## [Login Flask Txt HTML](projects.md#Login Flask Txt HTML)

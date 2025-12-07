@@ -16,77 +16,101 @@ tags:
   - argo-cd
   - nginx
   - vite
+  - flask-migrate
+  - gitlab-ci
 ---
 
 # 项目概述
 
-这是一个使用 React + Flask + MySQL 构建的全栈 TODO 应用，支持 Docker 容器化和 Kubernetes 部署。
+## 项目概述
+
+Todo Fullstack GitOps 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
 
 ![image-20251206152340962](assets/image-20251206152340962.png)
 
+## 项目特点
+
+- **模块化设计**：前后端分离，便于独立开发和部署
+- **容器化实现**：所有组件均容器化，确保环境一致性
+- **GitOps 实践**：代码即基础设施，自动化部署和同步
+- **多环境支持**：支持开发、测试和生产环境的部署
+- **支持多种部署方式**：Docker Compose、Kubernetes、Helm Chart
+- **可扩展性**：使用 Kubernetes 和 Helm 实现应用的水平扩展
+
 ## 技术栈
 
-- **前端**: React 18 + Vite + Axios
-- **后端**: Flask 3.0 + SQLAlchemy + Flask-Migrate
-- **数据库**: MySQL 8.0
-- **容器化**: Docker + Docker Compose
-- **编排工具**: Kubernetes
-- **GitOps 工具**: Argo CD
+### 前端技术栈
+
+- **框架**：React
+- **构建工具**：Vite
+- **样式**：CSS
+- **容器化**：Docker + Nginx
+
+### 后端技术栈
+
+- **框架**：Flask (Python)
+- **数据库**：MySQL
+- **ORM**：SQLAlchemy
+- **迁移工具**：Flask-Migrate (Alembic)
+- **API**：RESTful API
+- **容器化**：Docker
+
+### 部署技术栈
+
+- **容器编排**：Docker Compose, Kubernetes
+- **GitOps**：Argo CD
+- **包管理**：Helm
+- **CI/CD**：GitLab CI
 
 ## 项目结构
 
 ```
 todo-fullstack-gitops/
 │
+├── argo-cd/               # Argo CD 部署配置
+│   ├── chart-app.yaml     # Helm Chart Argo CD 应用配置
+│   └── k8s-app.yaml       # Kubernetes Argo CD 应用配置
+│
 ├── backend/               # 后端代码目录
-│   ├── app/               # 后端应用代码
-│   │   ├── api/           # api 代码
+│   ├── app/               # 后端应用目录
+│   │   ├── api/           # API 路由目录
 │   │   │   ├── __init__.py   # API 蓝图文件
 │   │   │   └── rutes.py      # API 路由文件
 │   │   ├── __init__.py    # 后端应用初始化文件
 │   │   └── models.py      # 数据库模型文件
-│   │
-│   ├── migrations/        # 数据库迁移文件夹
-│   │
-│   ├── config.py          # 后端配置文件
-│   ├── run.py             # 后端入口文件
-│   ├── requirements.txt   # 后端依赖列表
+│   ├── migrations/        # 数据库迁移目录
 │   ├── boot.sh            # 后端启动脚本
-│   └── Dockerfile         # 后端 Docker 镜像构建文件
+│   ├── config.py          # 后端配置文件
+│   ├── Dockerfile         # 后端 Docker 镜像构建文件
+│   ├── requirements.txt   # 后端依赖列表
+│   └── run.py             # 后端入口文件
 │
 ├── frontend/              # 前端代码目录
-│   ├── node_modules/      # 前端依赖存储
-│   ├── public/            # 前端静态资源
 │   ├── src/               # 前端应用代码
-│   │   ├── App.jsx        # 主组件
 │   │   ├── App.css        # 主组件样式表
+│   │   ├── App.jsx        # 主组件
 │   │   └── main.jsx       # 前端入口文件
-│   │
+│   ├── Dockerfile         # 前端 Docker 镜像构建文件
 │   ├── index.html         # 前端入口 HTML 文件
-│   ├── vite.config.js     # 前端请求代理（本地环境）
-│   ├── package.json       # 前端依赖配置
-│   ├── nginx.conf         # 前端请求代理（容器化环境）
-│   └── Dockerfile         # 前端 Docker 镜像构建文件
-│
-├── assets/                # README 资源文件
+│   ├── nginx.conf         # 前端请求反向代理（容器化环境）
+│   ├── package.json       # npm 依赖
+│   └── vite.config.js     # 前端请求代理（本地环境）
 │
 ├── k8s/                   # Kubernetes 部署文件
-│   ├── namespace.yaml     # 命名空间定义
-│   ├── mysql.yaml         # MySQL 部署和服务
-│   ├── backend.yaml       # 后端部署和服务
-│   ├── frontend.yaml      # 前端部署和服务
-│   └── application.yaml   # Argo CD 应用定义
+│   ├── backend.yaml       # 后端部署配置
+│   ├── frontend.yaml      # 前端部署配置
+│   ├── mysql.yaml         # MySQL 部署配置
+│   └── namespace.yaml     # 命名空间配置
 │
 ├── todo-chart/                  # Helm Chart 目录
+│   ├── templates/               # Kubernetes 资源模板目录
+│   │   ├── namespace.yaml       # 命名空间配置模板
+│   │   ├── _helpers.tpl         # 模板函数
+│   │   ├── mysql.yaml           # MySQL 部署配置模板
+│   │   ├── backend.yaml         # 后端部署配置模板
+│   │   └── frontend.yaml        # 前端部署配置模板
 │   ├── Chart.yaml               # Chart 元数据
-│   ├── values.yaml              # 模板文件参数配置
-│   ├── .helmignore              # 忽略不需要打包的文件
-│   └── templates/               # Kubernetes 资源模板目录
-│       ├── namespace.yaml       # 命名空间
-│       ├── _helpers.tpl         # 模板函数
-│       ├── mysql.yaml           # 数据库模板
-│       ├── backend.yaml         # 后端模板
-│       └── frontend.yaml        # 前端模板
+│   └── values.yaml              # 模板文件参数配置
 │
 ├── .env                   # 环境变量（未推送至代码仓库）
 ├── .env.example           # 环境变量示例文件
@@ -98,14 +122,14 @@ todo-fullstack-gitops/
 
 ## 项目存储
 
-- **项目仓库**
-  - GitLab: https://gitlab.com/jerrybai/todo-fullstack-gitops
-  - GitHub: https://github.com/Jerrybaijy/todo-fullstack-gitops
+- **代码仓库**
+  - **GitLab:** https://gitlab.com/jerrybai/todo-fullstack-gitops
+  - **GitHub:** https://github.com/Jerrybaijy/todo-fullstack-gitops
 
 - **镜像仓库**
-  - 后端：https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-backend
-  - 前端：https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-frontend
-  - Chart: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
+  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-backend
+  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-frontend
+  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
 
 # 项目准备
 
@@ -198,7 +222,7 @@ MYSQL_USER=
 MYSQL_PASSWORD=
 
 # 在 Docker 网络内部，数据库服务的名字叫 'db'
-DB_HOST=db
+DB_HOST=localhost
 
 # Flask 配置
 FLASK_APP=run.py
@@ -451,7 +475,7 @@ docker run --name mysql-container \
 
 cd d:/projects/todo-fullstack-gitops/backend
 
-# 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 文件夹
+# 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 目录
 flask db init
 
 # 创建迁移脚本：根据 models.py 中的模型定义生成迁移脚本
@@ -782,7 +806,7 @@ export default defineConfig({
 
 ## `boot.sh`
 
-后端启动脚本 `backend/boot.sh`
+后端启动脚本 `backend/boot.sh`，首先进行数据库迁移。
 
 ```bash
 #!/bin/bash
@@ -1095,30 +1119,30 @@ build_frontend:
   - 前端镜像构建文件 `frontend/Dockerfile`
   - 容器编排文件 `todo-fullstack-gitops/docker-compose.yml`
   - GitLab CI `todo-fullstack-gitops/.gitlab-ci.yml`
-- 配置 Docker Hub Token
+- 生成 Docker Hub Token
 - 配置 GitLab 环境变量
   - `DOCKER_HUB_USER`
   - `DOCKER_HUB_TOKEN`
-- 推送代码至仓库（注意前后端要有变化，以适应管道文件的规则要求），Pipeline 完成以后查看 Docker Hub。
+- 推送代码至仓库（注意前后端要有变化，以适应 CI/CD 文件的规则要求），Pipeline 完成以后查看 Docker Hub。
 
 # CD
 
-此项目实验了三种部署方式，使用其中一个即可：
+此项目列出了三种部署方式，使用其中一个即可：
 
 - Docker Compose
 - K8s + Argo CD
-- Helm + Argo CD
+- Chart + Argo CD
 
-# Docker Compose 部署
+## Docker Compose 部署
 
-## 创建目录
+### 创建目录
 
 先创建其它目录 `todo-remote` 目录，在此目录分别创建：
 
 - `todo-remote/docker-compose.yml`
 - `todo-remote/.env`
 
-## `docker-compose.yml`
+### `docker-compose.yml`
 
 ```yaml
 # 指定 Docker Compose 文件版本
@@ -1190,7 +1214,7 @@ networks:
     driver: bridge
 ```
 
-## `.env`
+### `.env`
 
 ```toml
 # MySQL 数据库配置
@@ -1208,7 +1232,7 @@ FLASK_ENV=production
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-## 部署
+### 部署
 
 - 删除 **Docker Compose 测试**时的 Image、Container 和 Volumes，余下操作相同。
 
@@ -1233,9 +1257,9 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   docker-compose down
   ```
 
-# K8s + Argo CD 部署
+## K8s + Argo CD 部署
 
-## 准备
+### 准备
 
 - Minikube、Kubectl、Argo CD 已安装
 
@@ -1246,7 +1270,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   mkdir k8s argo-cd
   ```
 
-## `namespace.yaml`
+### `namespace.yaml`
 
 命名空间 `k8s/namespace.yaml`
 
@@ -1259,7 +1283,7 @@ metadata:
     name: todo
 ```
 
-## `k8s-app.yaml`
+### `k8s-app.yaml`
 
 ArgoCD 应用定义 `argo-cd/k8s-app.yaml`，这个文件引用的是 `k8s` 目录中的 K8s 配置清单文件。
 
@@ -1293,7 +1317,7 @@ spec:
         maxDuration: 3m
 ```
 
-## `mysql.yaml`
+### `mysql.yaml`
 
 数据库部署和服务 `k8s/mysql.yaml`
 
@@ -1393,7 +1417,7 @@ spec:
   clusterIP: None
 ```
 
-## `backend.yaml`
+### `backend.yaml`
 
 后端部署和服务 `k8s/backend.yaml`
 
@@ -1478,7 +1502,7 @@ spec:
       targetPort: 5000
 ```
 
-## `frontend.yaml`
+### `frontend.yaml`
 
 前端部署和服务 `k8s/frontend.yaml`
 
@@ -1540,7 +1564,7 @@ spec:
   type: ClusterIP
 ```
 
-## 部署
+### 部署
 
 - 将源代码推送至代码仓库
 
@@ -1584,11 +1608,11 @@ spec:
   kubectl delete ns todo
   ```
 
-# Chart + Argo CD 部署
+## Chart + Argo CD 部署
 
 此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
 
-## 准备
+### 准备
 
 - Helm 已安装
 
@@ -1617,7 +1641,7 @@ spec:
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
-## `Chart.yaml`
+### `Chart.yaml`
 
 Chart 的元数据 `todo-fullstack-gitops/Chart.yaml`
 
@@ -1630,7 +1654,7 @@ type: application
 appVersion: "1.0.0"
 ```
 
-## `values.yaml`
+### `values.yaml`
 
 模板文件的参数值 `todo-fullstack-gitops/values.yaml`
 
@@ -1682,7 +1706,7 @@ frontend:
     nodePort: 30080
 ```
 
-## `namespace.yaml`
+### `namespace.yaml`
 
 命名空间 `templates/namespace.yaml`
 
@@ -1695,7 +1719,7 @@ metadata:
     name: {{ .Values.global.namespace }}
 ```
 
-## `_helpers.tpl`
+### `_helpers.tpl`
 
 模板函数 `templates/_helpers.tpl`
 
@@ -1793,7 +1817,7 @@ app.kubernetes.io/component: frontend
 {{- end }}
 ```
 
-## `mysql.yaml`
+### `mysql.yaml`
 
 数据库模板文件 `templates/mysql.yaml`
 
@@ -1900,7 +1924,7 @@ spec:
   clusterIP: None
 ```
 
-## `backend.yaml`
+### `backend.yaml`
 
 后端模板文件 `templates/backend.yaml`
 
@@ -1989,7 +2013,7 @@ spec:
       targetPort: {{ .Values.backend.service.port }}
 ```
 
-## `frontend.yaml`
+### `frontend.yaml`
 
 前端模板文件 `templates/frontend.yaml`
 
@@ -2091,7 +2115,7 @@ spec:
   type: {{ .Values.frontend.service.type }}
 ```
 
-## 测试 Chart 文件
+### 测试 Chart 文件
 
 - 检查语法
 
@@ -2137,7 +2161,7 @@ spec:
   helm uninstall todo-app
   ```
 
-## 封装 Chart
+### 封装 Chart
 
 这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
 
@@ -2146,7 +2170,7 @@ cd /d/projects/todo-fullstack-gitops/todo-chart
 helm package .
 ```
 
-## 测试本地 Chart 包
+### 测试本地 Chart 包
 
 ```bash
 cd /d/projects/todo-fullstack-gitops/todo-chart
@@ -2156,7 +2180,7 @@ helm install todo-app todo-chart-0.1.0.tgz
 helm uninstall todo-app
 ```
 
-## 推送 Chart 包
+### 推送 Chart 包
 
 - 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
 
@@ -2169,7 +2193,7 @@ helm uninstall todo-app
   helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
   ```
 
-## 测试远程 Chart 包
+### 测试远程 Chart 包
 
 ```bash
 helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
@@ -2178,7 +2202,7 @@ helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/t
 helm uninstall todo-app
 ```
 
-## `.gitlab-ci.yml`
+### `.gitlab-ci.yml`
 
 在 GitLab CI 时，自动构建 Chart 并推送至 GitLab Container Registry。
 
@@ -2316,7 +2340,7 @@ publish_chart:
         - $FRONTEND_NAME/**/*
 ```
 
-## `chart-app.yaml`
+### `chart-app.yaml`
 
 ArgoCD 应用定义 `argo-cd/chart-app.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
 
@@ -2354,7 +2378,7 @@ spec:
         maxDuration: 3m
 ```
 
-## 部署
+### 部署
 
 - 将源代码推送至代码仓库
 
@@ -2391,163 +2415,81 @@ spec:
   kubectl delete ns todo
   ```
 
-# 项目总结
+# 通信管理
 
-## 通信
-
-### 本地开发阶段
-#### 通信流程
+## 本地开发阶段
+### 通信流程
 
 前端发送请求 `/api/todos` → Vite 代理 → 后端 (http://localhost:5000) → 容器化 MySQL (端口映射)
 
-#### 前端通信配置
+### 前端通信配置
 
 - **运行地址** ：本地 http://localhost:5173/
 - **代理配置**：在 `vite.config.js` 中配置了 API 代理
 - **通信方式** ：Vite 代理将前端请求 `/api/todos` 转发至 http://localhost:5000/api/todos 直接访问后端。
 
-#### 后端通信配置
+### 后端通信配置
 
 - **运行地址** ：本地 http://localhost:5000
 - **后端到数据库** ：直接连接本地经端口转发后的容器化 MySQL
 
-#### 数据库通信配置
+### 数据库通信配置
 
 - **端口转发**：在启动容器化 MySQL 时设置端口转发至本地
 
-### Docker Compose 阶段
+## Docker Compose 阶段
 
-#### 通信流程
+外部请求 → 前端容器 (80端口) → Nginx 反向代理 → 后端容器 (5000端口) → MySQL 容器 (3306端口)
 
-外部请求 → 前端容器 (80端口) → Nginx 反向代理 → 后端容器 (5000端口)
-
-#### 网络配置
-
-- 所有服务（前端、后端、数据库）都在同一个 Docker 网络 todo-network 中
-- 服务间通过服务名进行通信
-
-#### 通信方式
+- 所有服务（前端、后端、数据库）都在同一个 Docker 网络 `todo-network` 中
+- 服务间通过服务名进行服务发现
 
 - **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
-- **后端到数据库** ：后端通过 db:3306 访问 MySQL 数据库
+- **后端到数据库** ：后端通过 `db:3306` 访问 MySQL 数据库
 
-### K8s + Argo CD 阶段
-
-#### 通信流程
+## K8s + Argo CD 阶段
 
 外部请求 → 前端 Service → 前端 Pod → Nginx 反向代理 → 后端 Service → 后端 Pod
 
-#### 网络配置
-- 所有服务（前端、后端、数据库）都在 todos 命名空间中
-- 服务间通过 Kubernetes Service 名进行通信
-#### 通信方式
-- 前端到后端 ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
-- 后端到数据库 ：后端通过 mysql 服务名访问 MySQL 数据库
+- 所有服务（前端、后端、数据库）都在同一个命名空间 `todo` 中
+- 服务间通过 Kubernetes Service 名进行服务发现
+- **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
+- **后端到数据库** ：后端通过 `mysql` 服务名访问 MySQL 数据库
 
-### Chart + Argo CD 阶段
+## Chart + Argo CD 阶段
 
-## 环境变量
+与 K8s + Argo CD 阶段相同
 
-### 本地开发阶段
+# 环境变量管理
+
+## 本地开发阶段
 
 环境变量获取自 `todo-fullstack-gitops/.env`
 
-### Docker Compose 阶段
+## Docker Compose 阶段
 
-- 环境变量获取自 `todo-fullstack-gitops/.env`
+- 从 `todo-fullstack-gitops/.env` 中加载环境变量
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
+- 环境变量通过 `environment` 字段注入到各个服务容器中
 
-### K8s + Argo CD 阶段
+## K8s + Argo CD 阶段
 
-在 `backend.yaml` 中创建 backend-secret 对象，创建以下环境变量：
+- 使用 Kubernetes ConfigMap 和 Secret 管理环境变量
+  - `mysql-config` ConfigMap：存储 `MYSQL_DATABASE` 和 `DB_HOST`
+  - `mysql-secret` Secret：存储 `MYSQL_ROOT_PASSWORD`, `MYSQL_USER`, `MYSQL_PASSWORD`
+  - `backend-secret` Secret：存储 `SECRET_KEY`
+- 通过 `envFrom` 字段将 ConfigMap 和 Secret 注入到容器中
 
-- SECRET_KEY
+## Chart + Argo CD 阶段
 
-在 `mysql.yaml` 中创建 mysql-config 对象，创建以下环境变量：
+- **Values.yaml 配置**：环境变量通过 Helm Chart 的 `values.yaml` 集中管理
+- **模板函数**：通过 Helm 模板函数将配置值渲染到 Kubernetes 资源文件中
+- **ConfigMap 和 Secret**：与 K8s + Argo CD 部署方式相同，使用 ConfigMap 和 Secret 存储和注入环境变量
 
-- MYSQL_DATABASE
-- DB_HOST
+# 数据库管理
 
-在 `mysql.yaml` 中创建 mysql-secret对象，创建以下环境变量：
-
-- MYSQL_ROOT_PASSWORD
-- MYSQL_USER
-- MYSQL_PASSWORD
-
-### Chart + Argo CD 阶段
-
-## 总结
-
-本项目是一个完整的 React + Flask + MySQL 全栈应用，支持 Docker 容器化和使用 Argo CD 进行 Kubernetes 部署。通过本教程，你可以学习到：
-
-1. 如何创建 React 前端应用
-2. 如何创建 Flask 后端 API
-3. 如何设计和使用 MySQL 数据库
-4. 如何使用 Docker 和 Docker Compose 进行容器化部署
-5. 如何使用 GitLab CI/CD 进行自动化构建
-6. 如何使用 Argo CD 进行 GitOps 风格的 Kubernetes 部署和管理
-
-希望本教程对你有所帮助，祝你学习愉快！
-
-# 问 AI
-
-本项目前后端已开发完成并通过测试，不要再动我的源代码。
-
-你把接下来的步骤写成一个 `新教程.md` 放在项目根目录：
-
-- 创建一个 Chart 目录，目录名为 todo-chart
-- 完善 chart 内的各个文件，把前端、后端和数据库的各个配置都放在各自的同一个文件里
-  - frontend.yaml
-  - backend.yaml
-  - mysql.yaml
-  - chart 目录内的所有文件，哪个有用，哪个没有，需要删除或修改哪个，你都给我说清楚。
-- 数据库
-  - Root 密码：123456
-  - 用户名：jerry
-  - 密码：000000
-- 编写完文件，要本地部署测试一下，测试通过以后删除清理
-- 本地 Helm Chart 打包
-- 推送 Chart 到私有 Harbor 仓库
-- 使用 helm 命令安装一下这个 Chart，测试一下，测试通过以后删除清理
-- 编写 argo cd 的应用定义文件 argocd-application.yaml，引用的就是这个 Harbor 仓库的 chart
-- 根据这个 argocd-application.yaml 去在 minikube 中部署应用
-- 在 GitLab CI 时，能自动构建 chart 并推送至私有 Harbor 仓库，所以要创建 `.gitlab-ci.yml` 文件
-- 最后实现，推送代码到 Git 仓库时：
-  - 能自动构建 chart 并推送至私有 Harbor 仓库
-  - argo cd 能监测这个 chart 的变化并调整部署
-
-我是一个初学者，所以你的步骤务必要详细。
-
-我的表述未必准确，你帮我组织语言。
-
-我的步骤可能有错误或缺失，你帮我完善。
-
-你不需要有任何操作，只帮我生成教程即可！！！！！
-
-教程文档要求：
-
-- 所有标题不需要数字编号
-
-# Deploy 结构
-
-```
-# 推荐的目录结构
-todo-fullstack-gitops/
-├── argocd/                     # Argo CD 应用定义
-│   ├── application-k8s.yaml    # Argo CD 引用 k8s 的 Application CRD
-│   └── application-chart.yaml  # Argo CD 引用 helm-chart 的 Application CRD
-├── k8s/                        # k8s 配置文件
-├── helm-chart/                 # Helm Chart 文件
-└── .gitlab-ci.yml              # CI/CD 配置
-```
-
-```
-todo-fullstack-gitops/
-├── argocd/                     # Argo CD 应用管理配置
-│   ├── app-k8s.yaml            # 引用原生 K8s 配置的 Argo CD 应用定义
-│   └── app-helm.yaml           # 引用 Helm Chart 的 Argo CD 应用定义
-├── k8s/                        # 原生 K8s 资源配置
-├── helm-chart/                 # Helm Chart 包（需将当前 todo-chart 重命名）
-└── .gitlab-ci.yml              # CI/CD 流水线配置
-```
+- **模型定义**：在 `backend/app/models.py` 中定义数据库模型
+- **迁移生成**：使用 `flask db migrate` 自动生成迁移脚本
+- **迁移应用**：使用 `flask db upgrade` 应用迁移到数据库
+- **容器启动**：在 `boot.sh` 脚本中自动执行数据库迁移，确保数据库结构与代码一致
 
