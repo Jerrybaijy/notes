@@ -14,7 +14,7 @@
               "type": "markdown",
               "state": {
                 "file": "0000-to-do.md",
-                "mode": "preview",
+                "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "币本位",
+                "query": "gitlab",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,

@@ -12,6 +12,10 @@ tags:
 
 # GitLab
 
+> [GitLab Docs](https://docs.gitlab.com/)
+>
+> [GitLab 极狐文档](https://docs.gitlab.cn/docs/jh/user/get_started/)
+
 ## GitLab 基础
 
 ## 创建远程 GitLab 仓库
@@ -29,7 +33,76 @@ GitLab 网页创建 Remote Repo
 
 # GitLab CI/CD
 
-**GitLab CI/CD** 是 GitLab 内置的 **CI/CD** 工具。
+**GitLab CI/CD** 是 GitLab 提供的**一体化工具**，在代码提交时根据 `.gitlab-ci.yml` 文件触发 **Pipeline**，自动执行 CI/CD 流程。
+
+## Pipeline
+
+[**Pipeline**](https://docs.gitlab.com/ci/pipelines/)（流水线）是 GitLab CI/CD 的基础组件，由一系列 Stages 和 Jobs 组成，通过 YAML 关键字在 `.gitlab-ci.yml` 文件中进行配置。
+
+**Pipeline 运行流程**：
+
+- 代码提交
+- GitLab 触发 Pipeline
+- Runner 拉取代码并执行 Job
+- 每个阶段按顺序执行
+- 生成构建产物或部署代码
+
+## Stage
+
+**Stage**（阶段）是 Pipeline 的逻辑分组点，它按顺序（从上到下）执行，包含一组 Job。
+
+## Job
+
+[**Job**](https://docs.gitlab.com/ci/jobs/)（作业）是 Pipeline 的基础组成部分，用于完成构建、测试或部署代码等任务，通过 YAML 关键字在 `.gitlab-ci.yml` 文件中进行配置。
+
+- 每个 Stage 包含多个 Job，代表具体的任务。
+- 同一个 Stage 内的多个 Job 同时执行。
+
+## `.gitlab-ci.yml`
+
+`.gitlab-ci.yml` 用于定义 Pipeline 的所有**阶段**、**作业**及其执行逻辑。GitLab CI/CD 系统会默认在仓库的根目录查找这个文件，并将其作为 CI/CD 流水线的配置文件。
+
+```yaml
+# 定义变量
+variables:
+  # <Variable_NAME>: <Variable_VALUE>
+  DOCKER_VERSION: 24.0.5
+
+# 定义阶段（stages）
+stages:
+  # 阶段1
+  - build
+  # 阶段2
+  - chart-publish
+
+# 定义作业（jobs）
+build_backend:
+  # 当前作业所属阶段
+  stage: build
+  
+  # 当前作业执行的脚本
+  script:
+    # 脚本内容
+
+# 定义作业（jobs）
+build_frontend:
+  stage: build
+  script:
+    # 脚本内容
+
+# 定义作业（jobs）
+publish_chart:
+  stage: chart-publish
+  script:
+    # 脚本内容
+```
+
+## Variable
+
+[**Variable**](https://docs.gitlab.com/ci/variables/)
+
+- [预定义变量](https://docs.gitlab.com/ci/variables/predefined_variables/)
+- [自定义变量](https://docs.gitlab.com/ci/yaml/#variables)
 
 ## 配置环境变量
 
@@ -54,7 +127,7 @@ GitLab 网页创建 Remote Repo
 
 - 在 GitLab 配置环境变量。
   - DOCKER_HUB_USER: jerrybaijy
-  - DOCKER_HUB_PASS: Docker Hub 的 **Access Token**
+  - DOCKER_HUB_TOKEN: Docker Hub 的 **Access Token**
 
 - 推送至 GitLab
   - 将项目文件推送至 GitLab 仓库
@@ -62,7 +135,7 @@ GitLab 网页创建 Remote Repo
 
 - 推送至 Docker Hub 的 `.gitlab-ci.yml` 模板文件：
 
-  >  此 `.gitlab-ci.yml` 模板文件源自于 [Todos React Flask MySQL Fullstack](todos-react-flask-mysql-fullstack.md) 项目
+  >  此 `.gitlab-ci.yml` 模板文件源自于 [Todo Fullstack GitOps](todos-fullstack-gitops.md) 项目
 
   ```yaml
   # 定义变量
@@ -79,9 +152,16 @@ GitLab 网页创建 Remote Repo
     # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
     IMAGE_PREFIX: $DOCKER_HUB_USER
     
+    # 项目名称
+    PROJECT_NAME: todo-fullstack-gitops
+  
     # 后端和前端名称
-    BACKEND_NAME: todos-react-flask-mysql-backend
-    FRONTEND_NAME: todos-react-flask-mysql-frontend
+    BACKEND_NAME: backend
+    FRONTEND_NAME: frontend
+    
+    # 后端和前端目录
+    BACKEND_DIR: backend
+    FRONTEND_DIR: frontend
   
   # 定义阶段
   stages:
@@ -94,81 +174,73 @@ GitLab 网页创建 Remote Repo
   # 登录 Docker Hub
   before_script:
     # 使用 stdin 输入密码，更加安全
-    - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
   
+  # 构建后端镜像
   build_backend:
     stage: build
     image: docker:$DOCKER_VERSION
     script:
       # 进入后端目录
-      - cd $BACKEND_NAME
+      - cd $BACKEND_DIR
       
       # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
-      - docker build -t $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$BACKEND_NAME:latest .
+      - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
       
       # 推送到 Docker Hub
-      - docker push $IMAGE_PREFIX/$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
-      - docker push $IMAGE_PREFIX/$BACKEND_NAME:latest
+      - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+      - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
     rules:
       # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
       - changes:
-          - $BACKEND_NAME/**/*
+          - $BACKEND_DIR/**/*
   
+  # 构建前端镜像
   build_frontend:
     stage: build
     image: docker:$DOCKER_VERSION
     script:
-      - cd $FRONTEND_NAME
-      - docker build -t $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$FRONTEND_NAME:latest .
-      - docker push $IMAGE_PREFIX/$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
-      - docker push $IMAGE_PREFIX/$FRONTEND_NAME:latest
+      - cd $FRONTEND_DIR
+      - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
+      - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+      - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
     rules:
       - changes:
-          - $FRONTEND_NAME/**/*
+          - $FRONTEND_DIR/**/*
   ```
 
 - 相关项目
 
-  - [Todo React Flask MySQL Fullstack](todos-react-flask-mysql-fullstack.md)
+  - [Todo Fullstack GitOps](todos-fullstack-gitops.md)
   - GitLab CI Image
 
+# CI/CD YAML 语法
 
-## `.gitlab-ci.yml`
+> [CI/CD YAML 语法参考](CI/CD YAML 语法参考)
+>
+> [CI/CD YAML 语法参考（极狐）](CI/CD YAML 语法参考（极狐）)
 
-- 核心配置文件，位于项目的根目录。
-- 用于定义 CI/CD 流程，包括构建、测试、部署等步骤。
+## 基础模板
 
-## Pipeline
+## 关键词
 
-- 一个完整的 CI/CD 流程，包含多个 **阶段（stages）**，如 `build`、`test`、`deploy`。
-- 每次代码提交或合并请求时，GitLab 会自动触发 Pipeline。
+[**关键词**](https://docs.gitlab.com/ci/yaml/#keywords)用于配置 Pipeline，包括：
 
-## Pipeline 运行流程
+- [Global keywords](https://docs.gitlab.com/ci/yaml/#global-keywords): 如 `stages`
+- [Header keywords](https://docs.gitlab.com/ci/yaml/#header-keywords): 如 `spec`
+- [Job keywords](https://docs.gitlab.com/ci/yaml/#job-keywords): 如 `script`
 
-- 代码提交
-- GitLab 触发 Pipeline
-- Runner 拉取代码并执行 Job
-- 每个阶段按顺序执行
-- 生成构建产物或部署代码
+## `stages`
 
-## Stages
+[`stages`](https://docs.gitlab.com/ci/yaml/#stages) 关键字用于包含一组 `jobs`，所有定义的 `stage` 按顺序依次执行。常见的阶段有：
 
-- Pipeline 中的阶段，按顺序依次执行。常见的阶段有：
-  - `build`：代码构建。
-  - `test`：运行测试。
-  - `deploy`：部署到指定环境。
+- `build`：代码构建。
+- `test`：运行测试。
+- `deploy`：部署到指定环境。
 
-## Jobs
+## `variables`
 
-- 每个阶段包含多个 Job，代表具体的任务。
-- 每个 Job 都在独立的环境中执行（如 Docker 容器）。
-
-## Runner
-
-- 执行 CI/CD 任务的代理。
-- 两种类型
-  - **Shared Runner**：由 GitLab 提供，适合公共项目。
-  - **Specific Runner**：自建 Runner，适合私有项目或自定义环境。
+[`variables`](https://docs.gitlab.com/ci/yaml/#variables) 
 
 # GitLab Personal Access Tokens
 

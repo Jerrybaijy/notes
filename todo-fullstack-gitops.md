@@ -1062,6 +1062,10 @@ variables:
   # 后端和前端名称
   BACKEND_NAME: backend
   FRONTEND_NAME: frontend
+  
+  # 后端和前端目录
+  BACKEND_DIR: backend
+  FRONTEND_DIR: frontend
 
 # 定义阶段
 stages:
@@ -1074,7 +1078,7 @@ services:
 # 登录 Docker Hub
 before_script:
   # 使用 stdin 输入密码，更加安全
-  - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
 
 # 构建后端镜像
 build_backend:
@@ -1082,7 +1086,7 @@ build_backend:
   image: docker:$DOCKER_VERSION
   script:
     # 进入后端目录
-    - cd $BACKEND_NAME
+    - cd $BACKEND_DIR
     
     # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
     - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
@@ -1093,20 +1097,20 @@ build_backend:
   rules:
     # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
     - changes:
-        - $BACKEND_NAME/**/*
+        - $BACKEND_DIR/**/*
 
 # 构建前端镜像
 build_frontend:
   stage: build
   image: docker:$DOCKER_VERSION
   script:
-    - cd $FRONTEND_NAME
+    - cd $FRONTEND_DIR
     - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
     - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
     - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
   rules:
     - changes:
-        - $FRONTEND_NAME/**/*
+        - $FRONTEND_DIR/**/*
 ```
 
 ## GitLab CI
@@ -2468,7 +2472,7 @@ spec:
 
 ## Docker Compose 阶段
 
-- 从 `todo-fullstack-gitops/.env` 中加载环境变量
+- 从 `todo-fullstack-gitops/.env` 中加载环境变量
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 - 环境变量通过 `environment` 字段注入到各个服务容器中
 
