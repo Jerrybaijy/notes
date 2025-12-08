@@ -591,6 +591,23 @@ spec:
               name: mysql-secret # Secret 对象名
   ```
 
+# CR
+
+[**CR**](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/)（Custom Resource, 定制资源）是对 Kubernetes API 的扩展，是 CRD 的实例。
+
+Kubernetes 提供了**两种对象**向集群中[添加定制资源](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/#adding-custom-resources)：
+
+- [CRD](https://kubernetes.io/zh-cn/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) (自定义资源定义)
+- [API Aggregation Layer](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/apiserver-aggregation/) (API 聚合层)
+
+## CRD
+
+[**CRD**](https://kubernetes.io/zh-cn/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)（CustomResourceDefinition，自定义资源定义）用于将 CR 添加到集群中。
+
+> [CRD API](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/extend-resources/custom-resource-definition-v1/)
+>
+> [使用 CRD 扩展 Kubernetes API](https://kubernetes.io/zh-cn/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/)
+
 # 集中保存
 
 ```bash

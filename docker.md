@@ -12,6 +12,8 @@ tags:
 
 Docker 是一个开源的平台，用于开发、交付和运行应用程序。它使用容器技术，通过将应用程序及其依赖项打包到一个容器中，提供了轻量级、可移植和自包含的环境。
 
+> [Docker Docs](https://docs.docker.com/)
+
 ## 环境搭建
 
 ### Windows 环境
@@ -482,48 +484,130 @@ bar
 
 # Docker Compose
 
-## Docker Compose
+[Docker Compose](https://docs.docker.com/compose/) 是一个多容器编排工具，通过 YAML 文件（默认 `docker-compose.yml`）定义多个服务（容器）的配置，并一键实现多个容器的生命周期管理。
 
-Docker Compose 是一个用于管理 Docker 容器的工具。
+## 安装 Docker Compose
 
-- Install
+- 安装 Docker Compose 的[不同方法](https://docs.docker.com/compose/install)。
 
-  ```bash
-  sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-  sudo chmod +x /usr/local/bin/docker-compose
-  docker-compose --version
-  ```
+- Docker Desktop 包括 Docker Compose 以及 Docker Engine 和 Docker CLI，而 Docker Engine 和 Docker CLI 是 Compose 的先决条件。
 
-- Command
+- 查看 Docker Compose 版本
 
   ```bash
-  # Build and run all containers
-  cd $DOCKER_COMPOSE_FOLDER
-  docker-compose up
-  # Remove all containers
-  cd $DOCKER_COMPOSE_FOLDER
-  docker-compose down
+  docker compose version
   ```
 
-- 查看日志
+## Compose 命令
 
-  ```bash
-  # 查看所有服务日志
-  docker-compose logs -f
-  
-  # 查看特定服务日志
-  docker-compose logs -f $SERVICE_NAME
-  ```
+```bash
+# 查看 Docker Compose 版本
+docker compose version
 
-## 多容器集成测试
+# ----------------------------------------
+# 所有操作都在 docker-compose.yml 目录中进行
+# ----------------------------------------
 
-使用 `docker-compose.yml` 和 `Dockerfile` 构建多个镜像并启动容器。
+# 后台启动容器
+docker-compose up -d
 
-源自 `todos-fullstack` 项目。
+# 构建镜像（当 build 配置变更时）
+docker-compose build
+
+# 移除容器（加 -v 同时删除数据卷）
+docker-compose down
+
+# 查看所有服务日志
+docker-compose logs -f
+# 查看特定服务日志
+docker-compose logs -f $SERVICE_NAME
+```
+
+## Compose 文件
+
+Compose 文件 `docker-compose.yml` 用于执行 Docker Compose。
+
+> [Compose 文件参考](https://docs.docker.com/reference/compose-file/)
+
+### 基本实现
+
+```yaml
+# 指定 Docker Compose 文件版本
+version: "3.8"
+
+# 定义服务，每个服务对应一个容器
+services:
+  # MySQL 数据库服务
+  db:
+    # 指定容器使用的镜像
+    image: mysql:8.0
+    # 环境变量
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    # 数据卷挂载
+    volumes:
+      - mysql_data:/var/lib/mysql
+    # 端口映射（宿主端口：容器端口）
+    ports:
+      - "3306:3306"
+    # 此服务加入的网络
+    networks:
+      - todo-network
+    # 其它配置...
+
+  # 后端服务
+  backend:
+    # 本地构建镜像
+    build:
+      # Dockerfile 所在目录
+      context: ./backend
+    # 服务依赖
+    depends_on:
+      db:
+        condition: service_healthy
+    # 端口映射（宿主端口：容器端口）
+    ports:
+      - "5000:5000"
+    networks:
+      - todo-network
+    # 其它配置...
+
+  # 前端服务
+  frontend:
+    # 本地构建镜像
+    build:
+      # Dockerfile 所在目录
+      context: ./frontend
+    # 服务依赖
+    depends_on:
+      - backend
+    # 端口映射（宿主端口：容器端口）
+    ports:
+      - "80:80"
+    networks:
+      - todo-network
+    # 其它配置...
+
+# 数据库挂载卷
+volumes:
+  mysql_data:
+    driver: local
+
+# 定义网络
+networks:
+  todo-network:
+    driver: bridge
+```
+
+## 构建镜像并部署应用
+
+使用 `docker-compose.yml` 和 `Dockerfile` 在本地构建多个镜像并启动容器，用于多容器集成测试。
+
+>  源自 [Todo Fullstack GitOps](todo-fullstack-gitops.md) 项目。
 
 ### `docker-compose.yml`
 
-存放位置：`todos-fullstack/docker-compose.yml`
+存放位置：`todo-fullstack-gitops/docker-compose.yml`
 
 此文件的环境变量取自项目的 `.env` 文件
 
@@ -601,12 +685,12 @@ networks:
     driver: bridge
 ```
 
-### Docker Compose 构建和部署
+### 构建和部署
 
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd todos-fullstack
+  cd todo-fullstack-gitops
   docker-compose up -d
   ```
 
@@ -617,15 +701,15 @@ networks:
   这会删除 `docker-compose.yml` 中定义的 Containers 和 Networks，但不会移除 Images、Volumes、Configs，可手动删除。
 
   ```bash
-  cd todos-fullstack
+  cd todo-fullstack-gitops
   docker-compose down
   ```
 
-## Docker Compose 部署
+## 部署应用
 
-在无代码情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
+在只有镜像（无源代码）情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
 
-源自 `todos-fullstack` 项目。
+>  源自 [Todo Fullstack GitOps](todo-fullstack-gitops.md) 项目。
 
 ### 创建目录
 
@@ -636,11 +720,11 @@ networks:
 
 ### `docker-compose.yml`
 
-此文件的环境变量取自项目的 `.env` 文件
+**说明**：
 
-**生产环境**的 `docker-compose.yml` 与本地**多容器集成测试**时不同：
+- 此文件的环境变量取自项目的 `.env` 文件
 
-- 后端和前端由 build image 变为指定 image 名称
+- 与构建镜像并部署应用不同，如果只部署应用，后端和前端由构建 image 变为**指定** image 名称。
 
 ```yaml
 version: '3.8'
@@ -648,57 +732,19 @@ version: '3.8'
 services:
   # MySQL 数据库服务
   db:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    volumes:
-      - mysql_data:/var/lib/mysql
-    ports:
-      - "3306:3306"
-    command: --default-authentication-plugin=mysql_native_password  
-    networks:
-      - todo-network
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]        
-      timeout: 20s
-      retries: 10
+    # 数据库配置...
 
   # 后端服务
   backend:
     # 指定镜像名称
-    image: jerrybaijy/todos-fullstack-backend:latest
-    restart: always
-    environment:
-      SECRET_KEY: ${SECRET_KEY}
-      MYSQL_USER: ${MYSQL_USER}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      DB_HOST: db
-      MYSQL_DATABASE: ${MYSQL_DATABASE}
-      FLASK_APP: ${FLASK_APP}
-      FLASK_ENV: ${FLASK_ENV}
-    depends_on:
-      db:
-        condition: service_healthy
-    ports:
-      - "5000:5000"
-    networks:
-      - todo-network
+    image: jerrybaijy/todo-fullstack-gitops-backend:latest
+    # 后端其它配置...
 
   # 前端服务
   frontend:
     # 指定镜像名称
-    image: jerrybaijy/todos-fullstack-frontend:latest
-    restart: always
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-    networks:
-      - todo-network
+    image: jerrybaijy/todo-fullstack-gitops-frontend:latest
+    # 前端其它配置...
 
 # 数据库挂载卷
 volumes:

@@ -2236,8 +2236,14 @@ variables:
   BACKEND_NAME: backend
   FRONTEND_NAME: frontend
 
+  # 后端和前端目录
+  BACKEND_DIR: backend
+  FRONTEND_DIR: frontend
+
   # Helm Chart 名称
   CHART_NAME: todo-chart
+  # Helm Chart 目录
+  CHART_DIR: todo-chart
 
   # OCI 仓库地址
   OCI_REGISTRY: registry.gitlab.com/jerrybai/$PROJECT_NAME
@@ -2251,7 +2257,7 @@ stages:
 services:
   - docker:$DOCKER_VERSION-dind
 
-# 构建后端镜像
+# 构建并推送后端镜像
 build_backend:
   stage: build
   image: docker:$DOCKER_VERSION
@@ -2261,7 +2267,7 @@ build_backend:
     - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
   script:
     # 进入后端目录
-    - cd $BACKEND_NAME
+    - cd $BACKEND_DIR
     
     # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
     - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
@@ -2272,24 +2278,24 @@ build_backend:
   rules:
     # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
     - changes:
-        - $BACKEND_NAME/**/*
+        - $BACKEND_DIR/**/*
 
-# 构建前端镜像
+# 构建并推送前端镜像
 build_frontend:
   stage: build
   image: docker:$DOCKER_VERSION
   # 登录 Docker Hub
   before_script:
     # 使用 stdin 输入密码，更加安全
-    - echo "$DOCKER_HUB_PASS" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
   script:
-    - cd $FRONTEND_NAME
+    - cd $FRONTEND_DIR
     - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
     - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
     - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
   rules:
     - changes:
-        - $FRONTEND_NAME/**/*
+        - $FRONTEND_DIR/**/*
 
 # 构建并推送 Helm Chart
 publish_chart:
@@ -2298,16 +2304,16 @@ publish_chart:
     name: alpine/helm:3.12.3
     # 设置正确的 entrypoint 以便执行 shell 命令
     entrypoint: ["/bin/sh", "-c"]
-  # 依赖于前后端镜像构建完成
   needs:
+    # 如果 build_backend 的结果为 Passed 或 Skipped，都可以执行 publish_chart
+    # 否则 publish_chart 的结果直接为 Skipped
     - job: build_backend
-      # 如果后端镜像构建失败，则跳过此 Job，否则都执行此 Job
       optional: true
     - job: build_frontend
       optional: true
   script:
     # 进入 Helm Chart 目录
-    - cd $CHART_NAME
+    - cd $CHART_DIR
     
     # 配置 Helm 使用 GitLab Container Registry
     - helm registry login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
@@ -2335,13 +2341,13 @@ publish_chart:
     - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz oci://${OCI_REGISTRY}
 
   rules:
-    # 当 Helm Chart 相关文件变化，或者前后端镜像更新时，都运行此 Job
+    # 以下任何一个目录更新时，都运行此 Job（前提是满足 needs 条件）
     - changes:
-        - $CHART_NAME/**/*
+        - $CHART_DIR/**/*
     - changes:
-        - $BACKEND_NAME/**/*
+        - $BACKEND_DIR/**/*
     - changes:
-        - $FRONTEND_NAME/**/*
+        - $FRONTEND_DIR/**/*
 ```
 
 ### `chart-app.yaml`

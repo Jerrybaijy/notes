@@ -207,7 +207,7 @@ helm create <Chart_Dir>
 ```
 # 默认结构和配置文件
 
-todos-helm/                      # 项目根目录
+todo-fullstack-gitops/                      # 项目根目录
 │
 ├── todo-chart/                  # Chart 目录（存放 Chart 的文件夹）
 │   ├── Chart.yaml               # Chart 元数据（名称、版本等）
@@ -230,7 +230,7 @@ todos-helm/                      # 项目根目录
 
 ```
 # 必要保留结构和配置文件
-todos-helm/                      # 项目根目录
+todo-fullstack-gitops/                      # 项目根目录
 │
 ├── todo-chart/                  # Chart 目录（存放 Chart 的文件夹）
 │   ├── Chart.yaml               # Chart 元数据（名称、版本等）
@@ -266,10 +266,15 @@ helm package .
 - 登录 GitLab Registry
 
   ```bash
-  # 登录
+  # 登录 GitLab Container Registry
   helm registry login registry.gitlab.com -u jerrybai
   # 输入 Token（注意 Token 不会显示）
   Password:
+  ```
+
+  ```bash
+  # 登录 Docker Hub，此处与步骤无关，只作为记录。
+  helm registry login registry-1.docker.io -u <YOUR_DOCKER_HUB_USERNAME>
   ```
 
 - 推送
@@ -278,7 +283,7 @@ helm package .
   # 有关 OCI 仓库地址的格式详见 GitLab 笔记
   
   helm push <Chart> oci://<Registry_Host>/<Namespace>/<Repository_Name>
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todos-helm
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
   ```
 
 # Release
@@ -294,7 +299,7 @@ helm list
 # 部署 release
 helm install $RELEASE $HELM_REPO/$CHART_NAME
 # 根据 oci 仓库部署
-helm install todo oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart --version 0.1.0
+helm install todo oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
 
 # 更新 Chart（当修改了应用代码或配置后，可以使用 Helm 更新部署）
 helm upgrade <Release_Name> <Chart_Dir>
@@ -320,7 +325,7 @@ helm install <Release_Name> <Chart_Dir>
 ```
 
 ```bash
-cd /d/projects/todos-helm
+cd /d/projects/todo-fullstack-gitops
 helm install todo-app ./todo-chart
 ```
 
@@ -339,7 +344,7 @@ helm uninstall <Release_Name>
 ```bash
 helm install <Release_Name> oci://<Registry_Host>/<Namespace>/<Repository_Name>/<Chart_Name> --version <Chart_Version>
 
-helm install todo-app oci://registry.gitlab.com/jerrybai/todos-helm/todo-chart --version 0.1.0
+helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
 ```
 
 ## 卸载 Release
@@ -362,7 +367,7 @@ helm uninstall <Release_Name>
   # values.yaml
   
   global:
-    namespace: todos-helm
+    namespace: todo-fullstack-gitops
   ```
 
 - 使用变量
