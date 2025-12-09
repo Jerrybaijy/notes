@@ -12,7 +12,7 @@ tags:
 
 # CI/CD
 
-**CI/CD** 是软件开发中的一组最佳实践，代表 **持续集成（Continuous Integration）** 和 **持续交付/部署（Continuous Delivery/Deployment）**。它们的目标是提高软件开发效率，减少发布风险，并加速产品迭代。
+**CI/CD** 是软件开发中的一组最佳实践，代表 **持续集成（Continuous Integration）**和 **持续交付/部署（Continuous Delivery/Deployment）**。它们的目标是提高软件开发效率，减少发布风险，并加速产品迭代。
 
 ## 持续集成（CI）
 
@@ -564,6 +564,46 @@ tags:
 ### GUI 工具
 
 **GUI 工具**（Graphical User Interface Tools）指的是图形用户界面工具，如 `Navicat`。
+
+# OCI
+
+## OCI 仓库
+
+**OCI Registry**（OCI 仓库）是一个用于存储、管理和分发符合 OCI 规范的云原生制品（如容器镜像和 Helm Chart）的服务器端点（域名或地址）。
+
+### OCI 仓库种类
+
+- 公有 OCI 仓库：Docker Hub、Amazon ECR、Azure Container Registry、Google Artifact Registry 等
+
+- 私有 OCI 仓库：Harbor、Helm Chart 等
+
+### OCI 仓库地址
+
+```bash
+oci://<registry>/<namespace>
+oci://registry-1.docker.io/jerrybaijy
+```
+
+- `oci://`：OCI 协议标识
+- `<registry>`：仓库服务地址
+- `<namespace>`：用户名或组织名
+
+## OCI 占位符规范
+
+- 使用 `<>`
+- 使用小写字母
+- 多个词使用连字符 `-` 连接
+
+## OCI 制品
+
+**OCI 制品**是遵循 OCI 分发规范（OCI Distribution Spec）的标准化可分发文件，核心是 “跨平台、跨工具兼容”，常见种类及典型用途如下：
+
+- **容器镜像**：最基础的 OCI 制品，包含应用运行所需的代码、依赖、环境配置，是 Docker、K8s 等容器平台的核心运行单元。
+- **Helm Chart**：K8s 应用的打包格式，Helm 3.8+ 支持以 OCI 制品形式存储 / 分发，可推送到 Docker Hub、GitLab、GHCR 等 OCI 仓库。
+- **SBOM（软件物料清单）**：记录制品的依赖组件、版本、许可证等信息，用于供应链安全审计，支持以 OCI 格式附着在镜像 / Chart 上同步存储。
+- **OCI 索引（Image Index）**：类似 “多架构镜像清单”，可关联不同系统架构（如 x86、ARM）的镜像，方便工具自动匹配对应架构的制品。
+- **自定义二进制制品**：如编译后的应用二进制文件、配置包等，通过 ORAS 工具（OCI Registry as Storage）推送到 OCI 仓库，实现版本化管理。
+- **其他标准化制品**：如 CNI 插件包、Kustomize 配置包等，只要遵循 OCI 格式规范，均可作为 OCI 制品存储和分发。
 
 # 固件类型
 

@@ -14,7 +14,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 > [Docker Docs](https://docs.docker.com/)
 
-## 环境搭建
+## 安装 Docker
 
 ### Windows 环境
 
@@ -115,6 +115,23 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - 初始配置详见包管理器安装
 
+## 基本实现
+
+1. 本地已安装并启动登录 Docker
+2. 创建项目
+3. 项目根目录创建 Dockerfile
+
+4. 终端进入项目根目录
+5. 构建镜像
+
+6. 更改镜像标签（如果构建时未指定）
+
+7. 推送镜像至镜像仓库
+
+8. 运行容器
+   - 从本地 image 运行容器
+   - 从镜像仓库拉取 image 运行容器
+
 ## Docker 管理
 
 ```bash
@@ -132,36 +149,15 @@ docker login
 docker logout
 ```
 
-## 基本流程
-
-1. 本地已安装并启动登录 Docker
-2. 创建项目
-3. 项目根目录创建 Dockerfile
-
-4. 终端进入文件夹 HelloDocker 目录
-5. 构建推送镜像
-
-   - 手动构建构建镜像保存至本地，加标签，然后手动推送至 DockerHub
-   - 通过 GitLab Pipeline 自动构建镜像并自动推送至 DockerHub
-
-6. 运行容器
-
-   - 从本地 image 运行容器
-   - 从 DockerHub 拉取 image 运行容器
-
 # Image
 
 [镜像](https://docs.docker.com/reference/cli/docker/image/)
 
-## 镜像基础
-
-**基础命令**
+## 镜像命令
 
 ```bash
 # 查看镜像
 docker images
-# 从 Dockerfile 创建镜像
-docker build -t $IMAGE_NAME[:$TAG] $PATH
 # 从容器提交创建镜像
 docker commit $CONTAINER_NAME $IMAGE_NAME[:$TAG]
 # 删除镜像
@@ -174,39 +170,75 @@ docker pull $REPO_NAME/$IMAGE_NAME:$TAG
 docker push $REPO_NAME/$IMAGE_NAME:$TAG
 ```
 
-Docker Hub 的镜像命名规则是 `用户名/仓库名:标签`，如 `jerrybaijy/my-image:latest`。
+## 构建镜像
 
 ```bash
-# 加标签
-docker tag $IMAGE_NAME:$TAG $REPO_NAME/$IMAGE_NAME:$TAG
+cd $DOCKERFILE_DIR
+
+# 未指定 OCI Registry
+docker build -t $IMAGE_NAME[:$TAG] .
+docker build -t my-image:1.0 .
+
+# 指定 OCI Registry
+docker build -t $OCI_REGISTRY/$IMAGE_NAME[:$TAG] .
+# GitLab Container Registry
+docker build -t registry.gitlab.com/jerrybai/my-project/my-image:1.0 .
+# Docker Hub
+docker build -t jerrybaijy/my-image:1.0 .
+```
+
+**在以上示例中**：
+
+- 如果未指定 `$TAG`，默认为 `latest`。
+- 对于 Docker 向 Docker Hub 推送镜像，可省略 OCI 仓库的服务地址。（可能因为使用 `docker login` 登录）
+
+## 更改标签
+
+如果想更改 Image 的标签：
+
+```
+docker tag $IMAGE_NAME:$TAG $OCI_REGISTRY/$IMAGE_NAME:$TAG
+docker tag my-image:1.0 jerrybaijy/my-image:1.0
+```
+
+## 推送镜像
+
+```bash
+docker push $OCI_REGISTRY/$IMAGE_NAME:$TAG
+docker push jerrybaijy/my-image:1.0
+```
+
+## 拉取镜像
+
+```bash
+docker pull $OCI_REGISTRY/$IMAGE_NAME:$TAG
+docker pull jerrybaijy/my-image:1.0
 ```
 
 # Container
 
 [容器](https://docs.docker.com/reference/cli/docker/container/)
 
-## 容器基础
+## 容器命令
 
-- **基础命令**
-
-  ```bash
-  # 查看容器
-  docker ps [-a] # -a表示全部，包含未运行
-  # 创建容器
-  docker create $IMAGE
-  # 启动容器
-  docker start $CONTAINER_NAME
-  # 创建并启动容器
-  docker run [-d] [-it] --name $CONTAINER_NAME $IMAGE
-  # 重启容器
-  docker restart $CONTAINER_NAME
-  # 停止容器
-  docker stop $CONTAINER_NAME
-  # 删除容器
-  docker rm $CONTAINER_NAME
-  # 删除全部容器
-  docker rm $(docker ps -aq)
-  ```
+```bash
+# 查看容器
+docker ps [-a] # -a表示全部，包含未运行
+# 创建容器
+docker create $IMAGE
+# 启动容器
+docker start $CONTAINER_NAME
+# 创建并启动容器
+docker run [-d] [-it] --name $CONTAINER_NAME $IMAGE
+# 重启容器
+docker restart $CONTAINER_NAME
+# 停止容器
+docker stop $CONTAINER_NAME
+# 删除容器
+docker rm $CONTAINER_NAME
+# 删除全部容器
+docker rm $(docker ps -aq)
+```
 
 ## 其它
 
@@ -279,7 +311,7 @@ docker network inspect $NETWORK_NAME
   -p 80:8080
   ```
 
-- [**`-t $IMAGE_NAME[:$TAG]`**](https://docs.docker.com/reference/cli/docker/image/build/#tag)：命名镜像（-t / --tag），可一次使用多个 `-t`
+- [**`-t $IMAGE_NAME[:$TAG]`**](https://docs.docker.com/reference/cli/docker/image/build/#tag)：加标签（`-t` / ` --tag`），可一次使用多个 `-t`
 
 # `Dockerfile`
 
@@ -525,7 +557,7 @@ docker-compose logs -f $SERVICE_NAME
 
 ## Compose 文件
 
-Compose 文件 `docker-compose.yml` 用于执行 Docker Compose。
+Compose 文件 `docker-compose.yml` 用于执行 Docker Compose。
 
 > [Compose 文件参考](https://docs.docker.com/reference/compose-file/)
 
@@ -777,7 +809,7 @@ networks:
 
 # Docker Hub
 
-[**Docker Hub**](https://hub.docker.com/) 是全球最大的公共/私有镜像库。
+[**Docker Hub**](https://hub.docker.com/) 是 一个完全兼容 OCI 规范的容器镜像仓库，是全球最大的公共/私有镜像库。
 
 ## Access Token
 
@@ -793,3 +825,15 @@ networks:
 6. 使用 Docker Hub 用户名和 Token 的规范变量（个人风格）
    - **用户名**：DOCKER_HUB_USER
    - **令牌**：DOCKER_HUB_TOKEN
+
+## OCI
+
+`<oci-registry>` 格式：
+
+```
+oci://<registry>/<namespace>
+oci://registry-1.docker.io/jerrybaijy
+```
+
+# FAQ
+

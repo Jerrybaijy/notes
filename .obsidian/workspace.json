@@ -48,6 +48,20 @@
               "icon": "lucide-file",
               "title": "todo-fullstack-gitops"
             }
+          },
+          {
+            "id": "6bfba0e9a0d987a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gitlab.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gitlab"
+            }
           }
         ]
       }
@@ -81,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "gitlab",
+                "query": "Personal Access Tokens",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -201,12 +215,13 @@
   },
   "active": "88dd12a47c3542f6",
   "lastOpenFiles": [
-    "argo-cd.md",
-    "helm.md",
+    "gitlab.md",
     "0000-to-do.md",
     "todo-fullstack-gitops.md",
+    "windows.md",
+    "argo-cd.md",
+    "helm.md",
     "kubernetes.md",
-    "gitlab.md",
     "卫大仑交易法.md",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",
@@ -235,7 +250,6 @@
     "obsidian.md",
     "typora.md",
     "0000-标题实验.md",
-    "css.md",
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "其它格式未转换/obsidian-themes/user.css",

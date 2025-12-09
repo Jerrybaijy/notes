@@ -253,18 +253,13 @@ source:
 ```yaml
 # Helm Chart 源
 source:
-  # OCI 仓库地址
+  # <oci-registry>/<chart-name>
   repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart
   # Chart 版本号
   targetRevision: "99.99.99-latest"
   # Chart 名称
   chart: todo-chart
 ```
-
-**关于 OCI 仓库地址**：
-
-- 如果是 Docker Hub / Bitnami，则使用标准 OCI 仓库地址即可。
-- 如果是 GitLab Container Registry，则必须额外再加上 chart 名称。
 
 # 同步
 

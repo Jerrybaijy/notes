@@ -369,6 +369,8 @@ script:
 
 # GitLab Personal Access Tokens
 
+用于将 OCI 制品推送至 GitLab Registry：
+
 - 右上角个人头像 > `Edit profile` > 左侧边栏 `Personal access tokens` > `Add new token`
 - 名称随意（尽可能写项目名称）
 - 勾选 `read_registry` 和 `write_registry` 权限
@@ -377,25 +379,21 @@ script:
 - 请务必保存生成的 Token，它只显示一次！
 - 用户名为 `jerrybai`
 
-# GitLab Registry
+# GitLab Container Registry
 
-**GitLab Registry** 是 GitLab 的镜像仓库，可以存储 Docker Image, Helm Chart ...
+**GitLab Container Registry** 是 GitLab 的镜像仓库，兼容 OCI 标准。每个项目有各自的项目级仓库。
 
 - **公共 GitLab.com：** `registry.gitlab.com`
 - **自建/私有 GitLab：** 您的实例地址，例如 `gitlab.example.com:4567`
 
 **如何查看**：进入项目 > 左侧边栏 > `Deploy` > `Container registry`
 
-**OCI 仓库地址：**
+`<oci-registry>` 格式：比[标准 `<oci-registry>`](it-basics.md#oci-registry) 多了 `<project-name>`
 
-```bash
-oci://<Registry_Host>/<Namespace>/<Repository_Name>
+```
+oci://<registry>/<namespace>/<project-name>
 oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
 ```
-
-- **`<Registry_Host>`**: **注册中心的主机名**，每个仓库平台固定，GitLab 是 `registry.gitlab.com`。
-- **`<Namespace>`**: **命名空间**，通常是组织名、用户名或项目名。
-- **`<Repository Name>`**: **仓库名称**，无需设置，在推送时自动生成，但最好和项目名保持一致。
 
 # 解决办法
 

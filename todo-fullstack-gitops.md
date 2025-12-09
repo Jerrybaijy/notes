@@ -1622,7 +1622,7 @@ spec:
 
 - 源代码开发完成，已将镜像推送至镜像仓库。
 
-- 创建 Chart
+- 创建 Chart 目录
 
   ```bash
   cd d:/projects/todo-fullstack-gitops
@@ -2246,7 +2246,7 @@ variables:
   CHART_DIR: todo-chart
 
   # OCI 仓库地址
-  OCI_REGISTRY: registry.gitlab.com/jerrybai/$PROJECT_NAME
+  OCI_REGISTRY: oci://registry.gitlab.com/jerrybai/$PROJECT_NAME
 
 # 定义阶段
 stages:
@@ -2337,8 +2337,8 @@ publish_chart:
     - helm package . --version "${LATEST_VERSION}"
     
     # 推送 Chart 到 GitLab Container Registry
-    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz oci://${OCI_REGISTRY}
-    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz oci://${OCI_REGISTRY}
+    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz $OCI_REGISTRY
+    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz $OCI_REGISTRY
 
   rules:
     # 以下任何一个目录更新时，都运行此 Job（前提是满足 needs 条件）
@@ -2363,7 +2363,7 @@ metadata:
 spec:
   project: default
   source:
-    # GitLab Container Registry 地址，注意要带上 chart 名称
+    # <oci-registry>/<chart-name>
     repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
