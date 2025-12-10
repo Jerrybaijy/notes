@@ -8,6 +8,12 @@ body {
   /* 行高 */
   --line-height-normal: 1.8;
 
+  /* 针对 Show Whitespace 插件 */
+  /* 覆盖行尾软换行样式为 ↲ */
+  --line-end: "↲" !important;
+  /* 覆盖行尾硬换行样式为 ↓ */
+  --line-break: "↓" !important;
+
   /* 字体 */
   --font-text: "Nunito", sans-serif;
 

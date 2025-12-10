@@ -4,8 +4,8 @@ author: Jerry.Baijy
 tags:
   - 应用科学
   - it
-  - frontend
   - web
+  - frontend
 ---
 
 # 前端基础

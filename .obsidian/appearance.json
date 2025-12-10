@@ -7,11 +7,12 @@
     "边框实验",
     "00",
     "user",
-    "标题实验"
+    "标题实验",
+    "user-test"
   ],
   "theme": "system",
   "accentColor": "#adbac7",
-  "baseFontSize": 16,
+  "baseFontSize": 18,
   "baseFontSizeAction": true,
   "showViewHeader": true
 }

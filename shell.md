@@ -277,6 +277,7 @@ mkdir a b
 
 - **路径符号**
 
+  - 显示当前工作目录的绝对路径：`pwd`
   - 根目录：
 
     - Linux：`cd /`
@@ -284,12 +285,12 @@ mkdir a b
 
   - User 目录：
 
-    - Linux：`cd ~` 或 `Home/USER_NAME`
-    - Windows：`cd ~` 或 `C:/Users/USER_NAME`
+    - Linux：`cd ~` 或 `Home/$USER_NAME`
+    - Windows：`cd ~` 或 `C:/Users/#USER_NAME`
 
   - 当前目录：`cd .` （在当前目录操作可省略路径）
   - 上级目录：`cd ..`
-  - 显示当前工作目录的绝对路径：`pwd`
+  - 上一次工作目录：`cd -`
 
 - **引用文件**
 

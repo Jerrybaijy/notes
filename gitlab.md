@@ -369,14 +369,26 @@ script:
 
 # GitLab Personal Access Tokens
 
-用于将 OCI 制品推送至 GitLab Registry：
+这是用户级别的 Token，用于在系统内登录账户：
 
 - 右上角个人头像 > `Edit profile` > 左侧边栏 `Personal access tokens` > `Add new token`
-- 名称随意（尽可能写项目名称）
-- 勾选 `read_registry` 和 `write_registry` 权限
+- 名称随意
+- 尽可能给予最大权限
 - 日期尽可能调整到最长（一年）
 - Generate 生成 token
-- 请务必保存生成的 Token，它只显示一次！
+- 请务必保存生成的 token，它只显示一次！
+- 用户名为 `jerrybai`
+
+# Project Access Tokens
+
+这是项目级别的 Token，用于将各类资源（如 OCI 制品）推送至 GitLab Container Registry：
+
+- 进入项目 > 左侧边栏 `Settings | Access tokens` > `Add new token`
+- 名称随意（尽可能写项目名称）
+- 按需勾选权限，如 OCI 制品，就勾选 `read_registry` 和 `write_registry` 权限
+- 日期尽可能调整到最长（一年）
+- `Create project access token`
+- 请务必保存生成的 token，它只显示一次！
 - 用户名为 `jerrybai`
 
 # GitLab Container Registry

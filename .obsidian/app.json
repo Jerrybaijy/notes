@@ -12,5 +12,6 @@
   "attachmentFolderPath": "assets",
   "defaultViewMode": "preview",
   "livePreview": false,
-  "readableLineLength": false
+  "readableLineLength": false,
+  "tabSize": 2
 }
