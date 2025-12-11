@@ -20,8 +20,37 @@
               "icon": "lucide-file",
               "title": "0000-to-do"
             }
+          },
+          {
+            "id": "21e3e0f88fb8e075",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "software.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "software"
+            }
+          },
+          {
+            "id": "e04d6ae82b010994",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "web.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "web"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -53,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "software",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -70,13 +99,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "react.md",
+                "file": "software.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "react 的大纲"
+              "title": "software 的大纲"
             }
           },
           {
@@ -94,7 +123,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -169,11 +199,13 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "3ca6f7f6d2a69837",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
+    "0000-to-do.md",
+    "software.md",
+    "web.md",
     "markdown.md",
     "react.md",
-    "0000-to-do.md",
     "en-grammer.md",
     "en-辨析词.md",
     "typora.md",
@@ -202,8 +234,6 @@
     "projects.md",
     "harbor.md",
     "assets/image-20251128210905428.png",
-    "yaml.md",
-    "langchain.md",
     "assets/components-of-kubernetes-1764489607053-1.svg",
     "assets/components-of-kubernetes-1764489607053-1-1764489607053-2.svg",
     "其它格式未转换/obsidian-themes/标题实验.css",

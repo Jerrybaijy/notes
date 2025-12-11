@@ -454,11 +454,19 @@ oci://registry-1.docker.io/jerrybaijy
 - **自定义二进制制品**：如编译后的应用二进制文件、配置包等，通过 ORAS 工具（OCI Registry as Storage）推送到 OCI 仓库，实现版本化管理。
 - **其他标准化制品**：如 CNI 插件包、Kustomize 配置包等，只要遵循 OCI 格式规范，均可作为 OCI 制品存储和分发。
 
-# CI/CD
+# DevOps
+
+**DevOps**（**Dev**elopment **Op**eration**s**）是一种文化理念，旨在促进开发（Dev）和运维（Ops）团队之间的协作和沟通，以自动化软件交付过程，从而更快、更可靠地发布软件。
+
+- DevOps 是 “指导思想”
+- CI/CD 是 “具体做事的流程”
+- GitOps 是 “用 Git 驱动这个流程的落地方式”
+
+## CI/CD
 
 **CI/CD** 是软件开发中的一组最佳实践，代表**持续集成（Continuous Integration）**和**持续交付/部署（Continuous Delivery/Deployment）**。它们的目标是提高软件开发效率，减少发布风险，并加速产品迭代。
 
-## 持续集成（CI）
+### 持续集成（CI）
 
 **持续集成**（CI）是一种开发实践，指的是开发人员频繁地（通常是每天多次）将代码集成到主分支，并自动化地执行构建和测试。
 
@@ -469,7 +477,7 @@ oci://registry-1.docker.io/jerrybaijy
 - **自动测试**：自动运行单元测试、集成测试，确保新代码不会破坏现有功能。
 - **反馈**：构建或测试失败时，系统立即通知开发人员。
 
-## 持续交付（CD - Continuous Delivery）
+### 持续交付（CD - Continuous Delivery）
 
 持续交付是在 CI 基础上，确保代码在任何时候都可以安全地发布到生产环境，但发布过程是**手动触发**的。
 
@@ -479,7 +487,7 @@ oci://registry-1.docker.io/jerrybaijy
 - **更多测试**：执行更高级别的测试，如用户验收测试（UAT）、安全扫描等。
 - **人工批准发布**：在所有测试通过后，人工决定是否将代码发布到生产环境。
 
-## 持续部署（CD - Continuous Deployment）
+### 持续部署（CD - Continuous Deployment）
 
 持续部署比持续交付更进一步，一旦通过测试，代码会**自动部署到生产环境**，无需人工干预。
 
@@ -488,7 +496,7 @@ oci://registry-1.docker.io/jerrybaijy
 - 自动化程度更高，任何通过测试的变更都会直接发布。
 - 必须确保测试流程非常严谨，避免将不稳定的代码部署到生产。
 
-## CI/CD 工具链示例
+### CI/CD 工具链示例
 
 - **代码托管**：GitHub、GitLab、Bitbucket
 - **CI/CD 平台**：Jenkins、GitLab CI/CD、GitHub Actions、CircleCI、Azure DevOps
@@ -496,7 +504,7 @@ oci://registry-1.docker.io/jerrybaijy
 - **测试工具**：JUnit、PyTest、Selenium
 - **部署工具**：Ansible、Docker、Kubernetes、Terraform
 
-## CI/CD 示例流程
+### CI/CD 示例流程
 
 - 开发者提交代码
 - CI 工具自动拉取代码
@@ -505,6 +513,26 @@ oci://registry-1.docker.io/jerrybaijy
 - 运行集成和验收测试
 - **持续交付：人工审批后发布** 或 **持续部署：自动发布**
 - **监控和回滚机制**（如有问题，快速回滚）
+
+## GitOps
+
+**GitOps** 是 DevOps 的一种具体落地实践，核心是将 **Git 仓库作为整个系统的 “单一真实来源”**—— 所有基础设施配置、应用部署规则、环境配置都存储在 Git 中，通过 Git 的版本控制、分支管理、PR/MR 流程来驱动部署和运维操作。
+
+GitOps 以 Git 为中心：通过提交代码、合并分支来修改配置，工具（如 Argo CD、Flux）会自动监听 Git 仓库变化，将配置同步到目标环境（如 K8s 集群），无需手动执行部署命令，实现 “代码即配置、提交即部署”。
+
+GitOps 是云原生场景下的 DevOps 最佳实践，专门适配 K8s 等云原生工具的配置管理与部署需求。
+
+# 云原生
+
+**云原生（Cloud Native）** 是一套让应用 “生于云、长于云” 的技术体系与设计理念，核心是让应用适配云环境（公有云、私有云、混合云），实现 **弹性伸缩、高可用、易部署、可观测** 的目标。
+
+简单说，云原生不是单一技术，而是 “理念 + 工具栈” 的集合，核心支柱包括：
+
+- **容器化**（如 Docker）：应用及依赖打包成容器，实现 “一次构建、到处运行”；
+- **容器编排**（如 Kubernetes）：自动化管理海量容器的部署、伸缩、调度；
+- **微服务**：将应用拆分成独立小服务，按需迭代、独立部署；
+- **DevOps/CI/CD/GitOps**：通过自动化流程支撑快速迭代；
+- **可观测性**（如 Prometheus、ELK）：实时监控应用状态。
 
 # FAQ
 
