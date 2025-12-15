@@ -22,7 +22,21 @@
             }
           },
           {
-            "id": "21e3e0f88fb8e075",
+            "id": "07bc8079bc2a5126",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp"
+            }
+          },
+          {
+            "id": "9843683495888603",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -33,6 +47,20 @@
               },
               "icon": "lucide-file",
               "title": "software"
+            }
+          },
+          {
+            "id": "6199fc7bcb20e502",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "kubernetes.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "kubernetes"
             }
           },
           {
@@ -50,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -99,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software.md",
+                "file": "kubernetes.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software 的大纲"
+              "title": "kubernetes 的大纲"
             }
           },
           {
@@ -199,10 +227,13 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "6199fc7bcb20e502",
   "lastOpenFiles": [
-    "0000-to-do.md",
     "software.md",
+    "gcp.md",
+    "assets/image-20251215223439473.png",
+    "kubernetes.md",
+    "0000-to-do.md",
     "web.md",
     "markdown.md",
     "react.md",
@@ -219,7 +250,6 @@
     "gitlab.md",
     "windows.md",
     "helm.md",
-    "kubernetes.md",
     "卫大仑交易法.md",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",
@@ -231,8 +261,6 @@
     "git.md",
     "todos-fullstack.md",
     "assets/image-20251206152340962.png",
-    "projects.md",
-    "harbor.md",
     "assets/image-20251128210905428.png",
     "assets/components-of-kubernetes-1764489607053-1.svg",
     "assets/components-of-kubernetes-1764489607053-1-1764489607053-2.svg",
@@ -244,7 +272,6 @@
     "assets/image-20240329143514361-1764121708210-2.png",
     "assets/image-20240329143851461-1764121708210-3.png",
     "assets/argo-cd-1764121708210-1.png",
-    "assets/image-20251126075702455.png",
     "git-push.sh",
     "0000000.txt",
     "未命名 1.canvas",

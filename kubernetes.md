@@ -179,6 +179,19 @@ kubectl get pod my-pod -n my-namespace
 - [kubectl logs](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_logs/)：打印资源日志
 - [kubectl describe](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_describe/)：描述资源细节
 - [kubectl exec](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_exec/)：进入容器执行命令
+- [kubectl config](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_config/)：修改 kubeconfig 文件
+
+### `kubectl config`
+
+[`kubectl config $SUBCOMMAND`](https://kubernetes.io/zh-cn/docs/reference/kubectl/generated/kubectl_config/) 命令用于修改 kubeconfig 文件。
+
+```bash
+# 显示当前上下文
+kubectl config current-context
+
+# 显示所有上下文
+kubectl config get-contexts
+```
 
 ## 参数
 
