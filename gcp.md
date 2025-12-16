@@ -17,14 +17,9 @@ tags:
 >
 > [Google Cloud 产品](https://cloud.google.com/products?hl=zh-cn&_gl=1*xq66jx*_ga*MTYwMDY0NjE4Ni4xNzYxNTY3Mjky*_ga_WH2QY8WWF5*czE3NjU4MDQ4MDkkbzgkZzEkdDE3NjU4MDc0NTQkajI5JGwwJGgw)
 
-## Quick Start
-
-- 安装 Google Cloud CLI
-- 
-
 # Google Cloud CLI
 
-[Google Cloud CLI](https://cloud.google.com/sdk/gcloud?hl=zh-cn) 是 Google Cloud 的命令行工具。
+[**Google Cloud CLI**](https://cloud.google.com/sdk/gcloud?hl=zh-cn) 是 Google Cloud 的命令行工具。
 
 ## Install
 
@@ -34,19 +29,23 @@ tags:
 
 - 下载并安装 [Google Cloud CLI](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe?hl=zh-cn)
 
-  如果电脑已安装 Python，可以不选择 `Bundled Python`。
-
-  <img src="assets/image-20251215223439473.png" alt="image-20251215223439473" style="zoom:60%;" />
+  尽量不要选择为所有用户安装
 
 - 安装之后会出现 Google Cloud SDK Shell 应用
 
-- 关闭 SDK Shell 和全部 Terminal，重新打开 Terminal 初始化 Google Cloud。
+- 关闭 SDK Shell 和全部 Terminal，重新打开 Terminal，验证安装：
+
+  ```bash
+  gcloud version
+  ```
+
+- 初始化 Google Cloud
 
   ```bash
   gcloud init
   ```
 
-- 根据提示选择并在浏览器中登录 Google
+- 根据提示选择选项，最后跳转到浏览器中登录 Google 账号。
 
 ### Linux
 
@@ -106,19 +105,18 @@ tags:
 ## Uninstall
 
 - [卸载 Google Cloud CLI](https://cloud.google.com/sdk/docs/uninstall-cloud-sdk?hl=zh-cn)
-
+- 以下两个命令需要在 **Google Cloud CLI** 或 **CMD** 中执行
 - 运行以下命令查找您的安装目录；
 
   ```bash
-  gcloud info --format='value(installation.sdk_root)'
+gcloud info --format="value(installation.sdk_root)"
   ```
 
 - 手动打开安装目录，点击 `unistall` 卸载；
-
 - 运行以下命令查找您的用户配置目录；
 
   ```bash
-   gcloud info --format='value(config.paths.global_config_dir)'
+gcloud info --format="value(config.paths.global_config_dir)"
   ```
 
 - 手动删除用户配置目录。
@@ -324,12 +322,54 @@ gcloud compute instances list --project=$PROJECT_ID
 
 ## GKE Quick Start
 
-- Google Cloud CLI 已安装并完成初始化
+- 前提条件
 
-- 以**管理员身份**安装 `gke-gcloud-auth-plugin` 插件，否则无法使用 `kubectl` 命令来管理您的集群
+  - Google Cloud CLI 已安装并完成初始化
+  - 本地 kubectl 已安装
+  - Google Cloud 项目已创建
+
+- 创建集群
 
   ```bash
+  # 创建集群
+  gcloud container clusters create-auto $CLUSTER_NAME --region=$REGION
+  # e.g.
+  gcloud container clusters create-auto my-cluster --region=asia-east2
+  # 查看集群
+  gcloud container clusters list
+  ```
+
+- 安装 `gke-gcloud-auth-plugin` 插件，否则无法使用 `kubectl` 命令管理集群
+
+  ```bash
+  # 安装
   gcloud components install gke-gcloud-auth-plugin
+  # 验证
+  gke-gcloud-auth-plugin --version
+  ```
+
+- 更新 `kubectl` 配置以使用 `gke-gcloud-auth-plugin` 插件
+
+  ```bash
+  gcloud container clusters get-credentials $CLUSTER_NAME \
+      --location=$CONTROL_PLANE_LOCATION
+  
+  # 更新配置
+  gcloud container clusters get-credentials my-cluster \
+      --location asia-east2 \
+      --project project-60addf72-be9c-4c26-8db
+  
+  # 验证配置
+  kubectl get namespaces
+  ```
+
+- 接下来操作同 K8s
+
+- 删除集群
+
+  ```bash
+  gcloud container clusters delete $CLUSTER_NAME --region=$REGION
+  gcloud container clusters delete my-cluster --region=asia-east2
   ```
 
 ## 手动部署

@@ -56,7 +56,8 @@ tags:
   ```bash
   kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
   
-  # 上次密码：dAlsKbgZa4FvVT6V
+  # 本地上次密码：dAlsKbgZa4FvVT6V
+  # GCP 上次密码：DTQfcWvxnM1UWyJG
   ```
 
 - 在本地或公网通过 IP 访问 Argo CD 页面登录，用户名为 admin，公网访问需要科学上网。

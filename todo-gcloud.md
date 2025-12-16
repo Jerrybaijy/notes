@@ -1,5 +1,5 @@
 ---
-title: todo-fullstack-gitops
+title: todo-gcloud
 author: Jerry.Baijy
 tags:
   - 应用科学
@@ -18,13 +18,14 @@ tags:
   - vite
   - flask-migrate
   - gitlab-ci
+
 ---
 
 # 项目概述
 
 ## 项目概述
 
-Todo Fullstack GitOps 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
+Todo Gcloud 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
 
 ![image-20251206152340962](assets/image-20251206152340962.png)
 
@@ -65,7 +66,7 @@ Todo Fullstack GitOps 是一个完整的全栈 Web 应用原型，采用 GitOps 
 ## 项目结构
 
 ```
-todo-fullstack-gitops/
+todo-gcloud/
 │
 ├── argo-cd/               # Argo CD 部署配置
 │   ├── chart-app.yaml     # Helm Chart Argo CD 应用配置
@@ -123,26 +124,26 @@ todo-fullstack-gitops/
 ## 项目存储
 
 - **代码仓库**
-  - **GitLab:** https://gitlab.com/jerrybai/todo-fullstack-gitops
-  - **GitHub:** https://github.com/Jerrybaijy/todo-fullstack-gitops
+  - **GitLab:** https://gitlab.com/jerrybai/todo-gcloud
+  - **GitHub:** https://github.com/Jerrybaijy/todo-gcloud
 
 - **镜像仓库**
-  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-backend
-  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-gitops-frontend
-  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
+  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcloud-backend
+  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcloud-frontend
+  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-gcloud
 
 # 项目准备
 
 ## 创建项目根目录
 
 ```bash
-mkdir d:/projects/todo-fullstack-gitops
+mkdir d:/projects/todo-gcloud
 ```
 
 ## 初始化 Git 仓库
 
 ```bash
-cd d:/projects/todo-fullstack-gitops
+cd d:/projects/todo-gcloud
 git init --initial-branch=main
 touch .gitignore
 ```
@@ -186,20 +187,20 @@ logs/
 
 ## 配置环境变量
 
-配置环境变量：`todo-fullstack-gitops/.env`
+配置环境变量：`todo-gcloud/.env`
 
 ```bash
-cd d:/projects/todo-fullstack-gitops
+cd d:/projects/todo-gcloud
 touch .env
 ```
 
 ```toml
 # MySQL 数据库配置
-MYSQL_ROOT_PASSWORD=123456
+DB_HOST=localhost
 MYSQL_DATABASE=todo_db
+MYSQL_ROOT_PASSWORD=123456
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
-DB_HOST=localhost
 
 # 数据库迁移, flask db init 中的 flask 对应 FLASK_APP
 FLASK_APP=run.py
@@ -207,22 +208,20 @@ FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-同时，为了让协作者知道需要配什么，创建一个 `todo-fullstack-gitops/.env.example` (不含真实密码)：
+同时，为了让协作者知道需要配什么，创建一个 `todo-gcloud/.env.example` (不含真实密码)：
 
 ```bash
-cd d:/projects/todo-fullstack-gitops
+cd d:/projects/todo-gcloud
 touch .env.example
 ```
 
 ```toml
 # MySQL 数据库配置
-MYSQL_ROOT_PASSWORD=
+DB_HOST=
 MYSQL_DATABASE=todo_db
+MYSQL_ROOT_PASSWORD=
 MYSQL_USER=
 MYSQL_PASSWORD=
-
-# 在 Docker 网络内部，数据库服务的名字叫 'db'
-DB_HOST=localhost
 
 # Flask 配置
 FLASK_APP=run.py
@@ -237,14 +236,14 @@ SECRET_KEY=
 ## 目录结构
 
 ```bash
-cd d:/projects/todo-fullstack-gitops
+cd d:/projects/todo-gcloud
 mkdir -p backend/app/api
 ```
 
 ## 虚拟环境
 
 ```bash
-cd d:/projects/todo-fullstack-gitops/backend
+cd d:/projects/todo-gcloud/backend
 
 # 提前复制 python-env 脚本到 backend 目录
 source python-env
@@ -253,7 +252,7 @@ source python-env
 ## 安装依赖
 
 ```bash
-cd d:/projects/todo-fullstack-gitops/backend
+cd d:/projects/todo-gcloud/backend
 touch requirements.txt
 ```
 
@@ -288,12 +287,11 @@ load_dotenv()
 class Config:
     # Flask 配置
     SECRET_KEY = os.environ.get("SECRET_KEY") or "your-secret-key"
-
     # 获取数据库连接信息
-    DB_USER = os.environ.get("MYSQL_USER") or "root"
-    DB_PASS = os.environ.get("MYSQL_PASSWORD") or "password"
     DB_HOST = os.environ.get("DB_HOST") or "localhost"
     DB_NAME = os.environ.get("MYSQL_DATABASE") or "todo_db"
+    DB_USER = os.environ.get("MYSQL_USER") or "root"
+    DB_PASS = os.environ.get("MYSQL_PASSWORD") or "password"
 
     # SQLAlchemy 配置
     SQLALCHEMY_DATABASE_URI = (
@@ -456,11 +454,11 @@ if __name__ == "__main__":
 创建容器化 MySQL 用于开发环境测试，详见 [MySQL 笔记](mysql.md#容器化-mysql)。
 
 ```bash
-docker run --name mysql-container \
+docker run --name todo-mysql-local \
+-e MYSQL_DATABASE=todo_db \
 -e MYSQL_ROOT_PASSWORD=123456 \
 -e MYSQL_USER=jerry \
 -e MYSQL_PASSWORD=000000 \
--e MYSQL_DATABASE=todo_db \
 -p 3306:3306 \
 -d mysql:8.0
 ```
@@ -473,7 +471,7 @@ docker run --name mysql-container \
 # 确保虚拟环境已激活
 # 确保全新数据库已正常运行
 
-cd d:/projects/todo-fullstack-gitops/backend
+cd d:/projects/todo-gcloud/backend
 
 # 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 目录
 flask db init
@@ -488,10 +486,11 @@ flask db upgrade
 ## 后端测试
 
 - 确保 MySQL 已正常运行，初始化数据库迁移已完成。
+
 - 启动后端
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/backend
+  cd d:/projects/todo-gcloud/backend
   source venv/Scripts/activate
   
   python run.py
@@ -500,7 +499,9 @@ flask db upgrade
 - 使用 Postman 模仿前端向后端发送请求，详见 [Postman  笔记](postman.md#使用方法)。
 
   - 请求方法：POST
+
   - 请求地址：http://localhost:5000/api/todos
+
   - 请求体
 
     ```json
@@ -515,11 +516,11 @@ flask db upgrade
 
 ```bash
 # 使用 Vite 创建 React 项目
-cd d:/projects/todo-fullstack-gitops
+cd d:/projects/todo-gcloud
 npm create vite@latest frontend -- --template react
 
 # 安装依赖
-cd d:/projects/todo-fullstack-gitops/frontend
+cd d:/projects/todo-gcloud/frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
@@ -787,14 +788,14 @@ export default defineConfig({
 - 后端已启动
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/backend
+  cd d:/projects/todo-gcloud/backend
   python run.py
   ```
 
 - 启动前端
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/frontend
+  cd d:/projects/todo-gcloud/frontend
   npm run dev
   ```
 
@@ -932,12 +933,29 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
+## 配置环境变量
+
+修改环境变量：`todo-gcloud/.env`
+
+由于 `docker-compose.yml` 中 MySQL 的服务名变更为 `db`，所以要将 `.env` 中的 `DB_HOST` 由 `localhost` 改为 `db`。
+
+```toml
+# MySQL 数据库配置
+DB_HOST=db
+MYSQL_DATABASE=todo_db
+MYSQL_ROOT_PASSWORD=123456
+MYSQL_USER=jerry
+MYSQL_PASSWORD=000000
+
+# 数据库迁移, flask db init 中的 flask 对应 FLASK_APP
+FLASK_APP=run.py
+FLASK_ENV=development
+SECRET_KEY=change_this_to_a_very_long_random_string
+```
+
 ## `docker-compose.yml`
 
-容器编排文件 `todo-fullstack-gitops/docker-compose.yml`
-
-- 环境变量获取自 `todo-fullstack-gitops/.env`
-- 但 DB_HOST 在 `docker-compose.yml` 中硬编码
+容器编排文件 `todo-gcloud/docker-compose.yml`，环境变量获取自 `todo-gcloud/.env`。
 
 ```yaml
 # 指定 Docker Compose 文件版本
@@ -974,7 +992,7 @@ services:
       SECRET_KEY: ${SECRET_KEY}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-      DB_HOST: db
+      DB_HOST: ${DB_HOST}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       FLASK_APP: ${FLASK_APP}
       FLASK_ENV: ${FLASK_ENV}
@@ -1016,7 +1034,7 @@ networks:
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-gcloud
   docker-compose up -d
   ```
 
@@ -1029,17 +1047,40 @@ networks:
 - 停止项目
 
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
-  
+
   ```bash
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-gcloud
   docker-compose down
   ```
+
+# 创建集群
+
+```bash
+gcloud container clusters create-auto todo-cluster --region=asia-east2
+```
+
+# Cloud Build CI/CD 流水线配置
+
+## 创建 Artifact Registry 仓库
+
+创建 Docker 仓库：
+
+```bash
+gcloud artifacts repositories create todo-docker \
+  --repository-format=docker \
+  --location=asia-east2 \
+  --description="Docker repository for todo app images and charts"
+```
+
+
+
+
 
 # CI
 
 ## `.gitlab-ci.yml`
 
-GitLab CI `todo-fullstack-gitops/.gitlab-ci.yml`
+GitLab CI `todo-gcloud/.gitlab-ci.yml`
 
 ```yaml
 # 定义变量
@@ -1057,7 +1098,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todo-fullstack-gitops
+  PROJECT_NAME: todo-gcloud
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -1121,8 +1162,8 @@ build_frontend:
   - 后端镜像构建文件 `backend/Dockerfile`
   - 前端 Nginx 配置文件 `frontend/nginx.conf`
   - 前端镜像构建文件 `frontend/Dockerfile`
-  - 容器编排文件 `todo-fullstack-gitops/docker-compose.yml`
-  - GitLab CI `todo-fullstack-gitops/.gitlab-ci.yml`
+  - 容器编排文件 `todo-gcloud/docker-compose.yml`
+  - GitLab CI `todo-gcloud/.gitlab-ci.yml`
 - 生成 Docker Hub Token
 - 配置 GitLab 环境变量
   - `DOCKER_HUB_USER`
@@ -1177,7 +1218,7 @@ services:
   # 后端服务
   backend:
     # 指定镜像名称
-    image: jerrybaijy/todo-fullstack-gitops-backend:latest
+    image: jerrybaijy/todo-gcloud-backend:latest
     restart: always
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -1198,7 +1239,7 @@ services:
   # 前端服务
   frontend:
     # 指定镜像名称
-    image: jerrybaijy/todo-fullstack-gitops-frontend:latest
+    image: jerrybaijy/todo-gcloud-frontend:latest
     restart: always
     ports:
       - "80:80"
@@ -1222,17 +1263,15 @@ networks:
 
 ```toml
 # MySQL 数据库配置
-MYSQL_ROOT_PASSWORD=123456
+DB_HOST=db
 MYSQL_DATABASE=todo_db
+MYSQL_ROOT_PASSWORD=123456
 MYSQL_USER=jerry
 MYSQL_PASSWORD=000000
 
-# 在 Docker 网络内部，数据库服务的名字叫 'db'
-DB_HOST=db
-
-# Flask 配置
+# 数据库迁移, flask db init 中的 flask 对应 FLASK_APP
 FLASK_APP=run.py
-FLASK_ENV=production
+FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
@@ -1255,7 +1294,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 - 停止项目
 
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
-  
+
   ```bash
   cd todo-remote
   docker-compose down
@@ -1270,7 +1309,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 - 创建 K8s 和 Argo CD 目录
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-gcloud
   mkdir k8s argo-cd
   ```
 
@@ -1300,7 +1339,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://gitlab.com/jerrybai/todo-fullstack-gitops.git
+    repoURL: https://gitlab.com/jerrybai/todo-gcloud.git
     targetRevision: HEAD
     path: k8s
   destination:
@@ -1454,7 +1493,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: jerrybaijy/todo-fullstack-gitops-backend:latest
+          image: jerrybaijy/todo-gcloud-backend:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:
@@ -1530,7 +1569,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jerrybaijy/todo-fullstack-gitops-frontend:latest
+          image: jerrybaijy/todo-gcloud-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -1575,7 +1614,7 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-gcloud
   kubectl apply -f argo-cd/k8s-app.yaml
   ```
 
@@ -1606,7 +1645,7 @@ spec:
 - 卸载
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/argo-cd
+  cd d:/projects/todo-gcloud/argo-cd
   
   kubectl delete -f k8s-app.yaml
   kubectl delete ns todo
@@ -1625,7 +1664,7 @@ spec:
 - 创建 Chart 目录
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-gcloud
   helm create todo-chart
   ```
 
@@ -1641,13 +1680,13 @@ spec:
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/todo-chart/templates/
+  cd d:/projects/todo-gcloud/todo-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
 ### `Chart.yaml`
 
-Chart 的元数据 `todo-fullstack-gitops/Chart.yaml`
+Chart 的元数据 `todo-gcloud/Chart.yaml`
 
 ```yaml
 apiVersion: v2
@@ -1660,12 +1699,12 @@ appVersion: "1.0.0"
 
 ### `values.yaml`
 
-模板文件的参数值 `todo-fullstack-gitops/values.yaml`
+模板文件的参数值 `todo-gcloud/values.yaml`
 
 ```yaml
 # 全局配置
 global:
-  namespace: todo-fullstack-gitops
+  namespace: todo-gcloud
 
 # MySQL配置
 mysql:
@@ -1688,7 +1727,7 @@ mysql:
 backend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-fullstack-gitops-backend
+    repository: jerrybaijy/todo-gcloud-backend
     tag: latest
     pullPolicy: Always
   service:
@@ -1701,14 +1740,14 @@ backend:
 frontend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-fullstack-gitops-frontend
+    repository: jerrybaijy/todo-gcloud-frontend
     tag: latest
     pullPolicy: Always
   service:
     type: NodePort
     port: 80
     nodePort: 30080
-    # 如果在云服务中，切换到以下配置
+    # 如果是公网，切换到以下配置
     # type: LoadBalancer
     # port: 80
 ```
@@ -2127,14 +2166,14 @@ spec:
 - 检查语法
 
   ```bash
-  cd /d/projects/todo-fullstack-gitops
+  cd /d/projects/todo-gcloud
   helm lint ./todo-chart
   ```
 
 - 部署 Helm Release
 
   ```bash
-  cd /d/projects/todo-fullstack-gitops
+  cd /d/projects/todo-gcloud
   helm install todo-app ./todo-chart
   ```
 
@@ -2173,14 +2212,14 @@ spec:
 这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
 
 ```bash
-cd /d/projects/todo-fullstack-gitops/todo-chart
+cd /d/projects/todo-gcloud/todo-chart
 helm package .
 ```
 
 ### 测试本地 Chart 包
 
 ```bash
-cd /d/projects/todo-fullstack-gitops/todo-chart
+cd /d/projects/todo-gcloud/todo-chart
 helm install todo-app todo-chart-0.1.0.tgz
 
 # 卸载
@@ -2196,14 +2235,14 @@ helm uninstall todo-app
 - 推送 Chart 包
 
   ```bash
-  cd /d/projects/todo-fullstack-gitops/todo-chart
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
+  cd /d/projects/todo-gcloud/todo-chart
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-gcloud
   ```
 
 ### 测试远程 Chart 包
 
 ```bash
-helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
+helm install todo-app oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart --version 0.1.0
 
 # 卸载
 helm uninstall todo-app
@@ -2233,7 +2272,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todo-fullstack-gitops
+  PROJECT_NAME: todo-gcloud
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -2367,7 +2406,7 @@ spec:
   project: default
   source:
     # <oci-registry>/<chart-name>
-    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart
+    repoURL: oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
     # Chart 名称
@@ -2398,7 +2437,7 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/argo-cd
+  cd d:/projects/todo-gcloud/argo-cd
   kubectl apply -f chart-app.yaml
   ```
 
@@ -2423,7 +2462,7 @@ spec:
 - 卸载 App
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/argo-cd
+  cd d:/projects/todo-gcloud/argo-cd
   kubectl delete -f chart-app.yaml
   kubectl delete ns todo
   ```
@@ -2431,6 +2470,7 @@ spec:
 # 通信管理
 
 ## 本地开发阶段
+
 ### 通信流程
 
 前端发送请求 `/api/todos` → Vite 代理 → 后端 (http://localhost:5000) → 容器化 MySQL (端口映射)
@@ -2477,11 +2517,11 @@ spec:
 
 ## 本地开发阶段
 
-环境变量获取自 `todo-fullstack-gitops/.env`
+环境变量获取自 `todo-gcloud/.env`
 
 ## Docker Compose 阶段
 
-- 从 `todo-fullstack-gitops/.env` 中加载环境变量
+- 从 `todo-gcloud/.env` 中加载环境变量
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 - 环境变量通过 `environment` 字段注入到各个服务容器中
 
