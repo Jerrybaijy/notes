@@ -272,9 +272,11 @@ kubectl port-forward service/$SERVICE_NAME 3306:3306 -n $NAMESPACE
   SET PASSWORD = PASSWORD('$PASSWORD');
   
   -- 查看所有用户
-  SELECT USER, HOST FROM MYSQL.USER;
+  SELECT user, host FROM mysql.user;
   -- 使用 root 登录，并授权 jerry，否则 jerry 不能操作数据库
   GRANT ALL PRIVILEGES ON `$DATABASE`.`$TABLE` TO 'jerry'@'%';
+  -- 删除用户
+  DROP USER 'your-db-username'@'%';
   ```
 
 - **其它问题**

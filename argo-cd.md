@@ -38,7 +38,17 @@ tags:
   kubectl get pod -n argocd
   ```
 
-- 将端口转发至本地或公网即可查看 Argo CD UI 界面
+- 获取密码
+
+  ```bash
+  kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+  
+  # 用户名：admin
+  # 本地上次密码：dAlsKbgZa4FvVT6V
+  # GCP 上次密码：LgdylgMYqMOHYbV8
+  ```
+
+- 配置网络之后即可查看 Argo CD UI 界面
 
   ```bash
   # 查看网络服务
@@ -51,17 +61,16 @@ tags:
   kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
   ```
 
-- 获取密码
+- 本地访问
 
-  ```bash
-  kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
-  
-  # 本地上次密码：dAlsKbgZa4FvVT6V
-  # GCP 上次密码：DTQfcWvxnM1UWyJG
-  ```
+  - 端口转发以后，当前终端要保持打开，否则访问不到
+  - 访问地址：https://127.0.0.1:8080
 
-- 在本地或公网通过 IP 访问 Argo CD 页面登录，用户名为 admin，公网访问需要科学上网。
-- 端口转发以后，当前终端要保持打开，否则访问不到 https://127.0.0.1:8080
+- 公网访问
+
+  - 需要科学上网
+  - 访问地址：$EXTERNAL-IP
+
 
 ## 部署应用
 

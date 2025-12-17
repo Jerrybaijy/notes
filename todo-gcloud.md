@@ -18,7 +18,9 @@ tags:
   - vite
   - flask-migrate
   - gitlab-ci
-
+  - gcp
+  - gke
+  - cloud-sql
 ---
 
 # 项目概述
@@ -937,7 +939,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 修改环境变量：`todo-gcloud/.env`
 
-由于 `docker-compose.yml` 中 MySQL 的服务名变更为 `db`，所以要将 `.env` 中的 `DB_HOST` 由 `localhost` 改为 `db`。
+由于 `docker-compose.yml` 中 MySQL 的服务名变更为 `db`，所以要将 `.env` 中的 `DB_HOST` 由 `localhost` 改为 `db`。
 
 ```toml
 # MySQL 数据库配置
@@ -1053,29 +1055,6 @@ networks:
   docker-compose down
   ```
 
-# 创建集群
-
-```bash
-gcloud container clusters create-auto todo-cluster --region=asia-east2
-```
-
-# Cloud Build CI/CD 流水线配置
-
-## 创建 Artifact Registry 仓库
-
-创建 Docker 仓库：
-
-```bash
-gcloud artifacts repositories create todo-docker \
-  --repository-format=docker \
-  --location=asia-east2 \
-  --description="Docker repository for todo app images and charts"
-```
-
-
-
-
-
 # CI
 
 ## `.gitlab-ci.yml`
@@ -1172,11 +1151,12 @@ build_frontend:
 
 # CD
 
-此项目列出了三种部署方式，使用其中一个即可：
+此项目列出了四种部署方式，使用其中一个即可：
 
 - Docker Compose
 - K8s + Argo CD
 - Chart + Argo CD
+- Chart + Argo CD + GCP
 
 ## Docker Compose 部署
 
@@ -2465,6 +2445,709 @@ spec:
   cd d:/projects/todo-gcloud/argo-cd
   kubectl delete -f chart-app.yaml
   kubectl delete ns todo
+  ```
+
+## Chart + Argo CD + GCP 部署
+
+此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 GKE 集群，同时实现 CI/CD 自动化流程。
+
+### 准备
+
+- Helm 已安装
+
+- 源代码开发完成，已将镜像推送至镜像仓库。
+
+- 创建 Cloud SQL 实例并完成初始化，详见 [GCP 笔记](gcp.md#Cloud SQL)。
+
+
+### 初始化 Helm Chart
+
+- 创建 Chart 目录
+
+  ```bash
+  cd d:/projects/todo-gcloud
+  helm create todo-chart
+  ```
+
+- 删除 `templates` 目录下的全部默认文件
+
+- 保留并修改以下必要文件：
+
+  - `Chart.yaml`：Chart 元数据
+  - `values.yaml`：模板文件的参数值
+  - `.helmignore`：忽略不需要打包的文件
+  - `templates/`：模板文件目录
+
+- 在 `templates` 目录创建以下文件
+
+  ```bash
+  cd d:/projects/todo-gcloud/todo-chart/templates/
+  touch namespace.yaml _helpers.tpl backend.yaml frontend.yaml
+  ```
+
+### `Chart.yaml`
+
+Chart 的元数据 `todo-gcloud/Chart.yaml`
+
+```yaml
+apiVersion: v2
+name: todo-chart
+description: A Helm chart for Todo application
+version: 0.1.0
+type: application
+appVersion: "1.0.0"
+```
+
+### `values.yaml`
+
+模板文件的参数值 `todo-gcloud/values.yaml`
+
+```yaml
+# 全局配置
+global:
+  namespace: todo
+
+# Backend 配置
+backend:
+  replicaCount: 2
+  image:
+    repository: jerrybaijy/todo-gcloud-backend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 5000
+  env:
+    SECRET_KEY: your_secret_key_here
+    MYSQL_HOST: "34.92.167.20"  # Cloud SQL 实例的公共 IP 地址
+    MYSQL_PORT: "3306"          # MySQL 端口
+    MYSQL_DATABASE: "todo_db"   # 数据库名称
+    MYSQL_USER: "jerry"         # 数据库用户名
+    MYSQL_PASSWORD: "000000"    # 数据库密码
+
+# Frontend 配置
+frontend:
+  replicaCount: 2
+  image:
+    repository: jerrybaijy/todo-gcloud-frontend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: LoadBalancer
+    port: 80
+```
+
+### `namespace.yaml`
+
+命名空间 `templates/namespace.yaml`
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{ .Values.global.namespace }}
+  labels:
+    name: {{ .Values.global.namespace }}
+```
+
+### `_helpers.tpl`
+
+模板函数 `templates/_helpers.tpl`
+
+```tpl
+{{/* 定义 Chart 的名称，优先使用 Values.nameOverride，如果不存在则使用 Chart.Name */}}
+{{- define "todo-chart.name" }}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整标识，格式为 Chart.Name-Chart.Version */}}
+{{- define "todo-chart.chart" }}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整发布名称，优先使用 Values.fullnameOverride，如果不存在则根据 Release.Name 和 Chart.Name 生成 */}}
+{{- define "todo-chart.fullname" }}
+{{- if .Values.fullnameOverride }}
+{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $name := default .Chart.Name .Values.nameOverride }}
+{{- if contains $name .Release.Name }}
+{{- .Release.Name | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/* 定义 Backend 组件的完整名称 */}}
+{{- define "todo-chart.backend.fullname" }}
+{{- printf "%s-backend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Frontend 组件的完整名称 */}}
+{{- define "todo-chart.frontend.fullname" }}
+{{- printf "%s-frontend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义基础的标签集合，包含 Chart 信息和 Release 信息 */}}
+{{- define "todo-chart.labels" }}
+helm.sh/chart: {{ include "todo-chart.chart" . }}
+helm.sh/version: {{ .Chart.Version | quote }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.commonLabels }}
+{{- toYaml .Values.commonLabels | nindent 2 }}
+{{- end }}
+{{- end }}
+
+{{/* 定义 Backend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.backend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Backend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.backend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Frontend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.frontend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+
+{{/* 定义 Frontend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.frontend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+```
+
+### `backend.yaml`
+
+后端模板文件 `templates/backend.yaml`
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}-secret
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  SECRET_KEY: {{ .Values.backend.env.SECRET_KEY | quote }}
+  MYSQL_HOST: {{ .Values.backend.env.MYSQL_HOST | quote }}
+  MYSQL_PORT: {{ .Values.backend.env.MYSQL_PORT | quote }}
+  MYSQL_DATABASE: {{ .Values.backend.env.MYSQL_DATABASE | quote }}
+  MYSQL_USER: {{ .Values.backend.env.MYSQL_USER | quote }}
+  MYSQL_PASSWORD: {{ .Values.backend.env.MYSQL_PASSWORD | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.backend.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: backend
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "todo-chart.backend.fullname" . }}-secret
+          ports:
+            - containerPort: {{ .Values.backend.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.backend.service.port }}
+      targetPort: {{ .Values.backend.service.port }}
+```
+
+### `frontend.yaml`
+
+前端模板文件 `templates/frontend.yaml`
+
+由于前端源码把 Nginx 反向代理的后端服务名写死了，而 Helm 是动态生成的后端服务名，所以此处添加了 Nginx 配置的覆盖。
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+data:
+  default.conf: |
+    server {
+        listen 80;
+        server_name localhost;
+
+        location / {
+            root /usr/share/nginx/html;
+            index index.html index.htm;
+            try_files $uri $uri/ /index.html;
+        }
+
+        # 反向代理 API 请求到后端容器
+        location /api {
+            proxy_pass http://{{ include "todo-chart.backend.fullname" . }}:{{ .Values.backend.service.port }};
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection 'upgrade';
+            proxy_set_header Host $host;
+            proxy_cache_bypass $http_upgrade;
+        }
+    }
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.frontend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.frontend.labels" . | nindent 8 }}
+    spec:
+      containers:
+        - name: frontend
+          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
+          ports:
+            - containerPort: {{ .Values.frontend.service.port }}
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.service.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            timeoutSeconds: 3
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.frontend.service.port }}
+            initialDelaySeconds: 20
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.frontend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.frontend.service.port }}
+      targetPort: {{ .Values.frontend.service.port }}
+  type: {{ .Values.frontend.service.type }}
+```
+
+### 测试 Chart 文件
+
+- 检查语法
+
+  ```bash
+  cd /d/projects/todo-gcloud
+  helm lint ./todo-chart
+  ```
+
+- 部署 Helm Release
+
+  ```bash
+  cd /d/projects/todo-gcloud
+  helm install todo-app ./todo-chart
+  ```
+
+- 查看，所有资源运行正常
+
+  ```bash
+  kubectl get all -n todo
+  ```
+
+- 端口转发
+
+  ```bash
+  # 前端
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
+  ```
+
+- 访问前端：http://localhost:8081/
+
+- 如有调试需要，也可将后端和数据库进行端口转发
+
+  ```bash
+  # 数据库
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
+  # 后端
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
+  ```
+
+- 卸载 Helm Release
+
+  ```bash
+  helm uninstall todo-app
+  ```
+
+### 封装 Chart
+
+这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
+
+```bash
+cd /d/projects/todo-gcloud/todo-chart
+helm package .
+```
+
+### 测试本地 Chart 包
+
+```bash
+cd /d/projects/todo-gcloud/todo-chart
+helm install todo-app todo-chart-0.1.0.tgz
+
+# 卸载
+helm uninstall todo-app
+```
+
+### 推送 Chart 包
+
+- 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
+
+- Helm 登录到 GitLab Registry，详见 [Helm 笔记](helm.md#推送-chart)。
+
+- 推送 Chart 包
+
+  ```bash
+  cd /d/projects/todo-gcloud/todo-chart
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-gcloud
+  ```
+
+### 测试远程 Chart 包
+
+```bash
+helm install todo-app oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart --version 0.1.0
+
+# 卸载
+helm uninstall todo-app
+```
+
+### `.gitlab-ci.yml`
+
+在 GitLab CI 时，自动构建 Chart 并推送至 GitLab Container Registry。
+
+- 修改之前的 `.gitlab-ci.yml`
+- 添加 Chart 部分
+- 将 `before_script` 从全局移到前后端。
+
+```yaml
+# 定义变量
+variables:
+  # Docker 版本号
+  DOCKER_VERSION: 24.0.5
+
+  # 告诉 Docker 使用 overlay2 驱动，性能更好
+  DOCKER_DRIVER: overlay2
+
+  # 禁用 TLS 证书生成，防止 dind 连接报错
+  DOCKER_TLS_CERTDIR: ""
+  
+  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
+  IMAGE_PREFIX: $DOCKER_HUB_USER
+  
+  # 项目名称
+  PROJECT_NAME: todo-gcloud
+
+  # 后端和前端名称
+  BACKEND_NAME: backend
+  FRONTEND_NAME: frontend
+
+  # 后端和前端目录
+  BACKEND_DIR: backend
+  FRONTEND_DIR: frontend
+
+  # Helm Chart 名称
+  CHART_NAME: todo-chart
+  # Helm Chart 目录
+  CHART_DIR: todo-chart
+
+  # OCI 仓库地址
+  OCI_REGISTRY: oci://registry.gitlab.com/jerrybai/$PROJECT_NAME
+
+# 定义阶段
+stages:
+  - build
+  - chart-publish
+
+# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
+services:
+  - docker:$DOCKER_VERSION-dind
+
+# 构建并推送后端镜像
+build_backend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  # 登录 Docker Hub
+  before_script:
+    # 使用 stdin 输入密码，更加安全
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  script:
+    # 进入后端目录
+    - cd $BACKEND_DIR
+    
+    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
+    
+    # 推送到 Docker Hub
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
+  rules:
+    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
+    - changes:
+        - $BACKEND_DIR/**/*
+
+# 构建并推送前端镜像
+build_frontend:
+  stage: build
+  image: docker:$DOCKER_VERSION
+  # 登录 Docker Hub
+  before_script:
+    # 使用 stdin 输入密码，更加安全
+    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
+  script:
+    - cd $FRONTEND_DIR
+    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
+    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
+  rules:
+    - changes:
+        - $FRONTEND_DIR/**/*
+
+# 构建并推送 Helm Chart
+publish_chart:
+  stage: chart-publish
+  image:
+    name: alpine/helm:3.12.3
+    # 设置正确的 entrypoint 以便执行 shell 命令
+    entrypoint: ["/bin/sh", "-c"]
+  needs:
+    # 如果 build_backend 的结果为 Passed 或 Skipped，都可以执行 publish_chart
+    # 否则 publish_chart 的结果直接为 Skipped
+    - job: build_backend
+      optional: true
+    - job: build_frontend
+      optional: true
+  script:
+    # 进入 Helm Chart 目录
+    - cd $CHART_DIR
+    
+    # 配置 Helm 使用 GitLab Container Registry
+    - helm registry login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
+    
+    # 检查 Chart 语法
+    - helm lint .
+    
+    # 安装 yq 工具用于解析 Chart.yaml
+    - apk add --no-cache yq
+    
+    # 从 Chart.yaml 中读取基础版本号
+    - CHART_VERSION=$(yq e '.version' Chart.yaml)
+    
+    # 生成最终版本号（基础版本号 + SHA）
+    - SHA_VERSION="${CHART_VERSION}-${CI_COMMIT_SHORT_SHA}"
+    # latest 版本号（最大版本号 + latest）
+    - LATEST_VERSION="99.99.99-latest"
+    
+    # 打包 Chart
+    - helm package . --version "${SHA_VERSION}"
+    - helm package . --version "${LATEST_VERSION}"
+    
+    # 推送 Chart 到 GitLab Container Registry
+    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz $OCI_REGISTRY
+    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz $OCI_REGISTRY
+
+  rules:
+    # 以下任何一个目录更新时，都运行此 Job（前提是满足 needs 条件）
+    - changes:
+        - $CHART_DIR/**/*
+    - changes:
+        - $BACKEND_DIR/**/*
+    - changes:
+        - $FRONTEND_DIR/**/*
+```
+
+### `chart-app-gcloud.yaml`
+
+ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # <oci-registry>/<chart-name>
+    repoURL: oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart
+    # Chart 版本号
+    targetRevision: "99.99.99-latest"
+    # Chart 名称
+    chart: todo-chart
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: todo
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+```
+
+### 创建 GKE
+
+再创建时使用 `项目指导.md` 中的方法试一下
+
+```bash
+gcloud container clusters create todo-cluster \
+    --region=asia-east2 \
+    --node-locations=asia-east2-a \
+    --num-nodes=2 \
+    --machine-type=e2-medium \
+    --disk-size=40 \
+    --disk-type=pd-standard \
+    --enable-autoscaling \
+    --min-nodes=1 \
+    --max-nodes=5 \
+    --scopes=cloud-platform
+```
+
+### 安装 Argo CD
+
+详见 Argo CD 笔记
+
+### 部署
+
+- 将源代码推送至代码仓库
+
+- 部署
+
+  ```bash
+  cd d:/projects/todo-gcloud/argo-cd
+  kubectl apply -f chart-app-gcloud.yaml
+  ```
+
+- 获取前端访问地址
+
+  ```bash
+  kubectl get svc -n todo
+  ```
+
+- 访问前端：http://$EXTERNAL-IP
+
+- 如有调试需要，可本地连接 Cloud SQL，详见 [GCP 笔记](gcp.md#Cloud SQL)。
+
+- 卸载 App
+
+  ```bash
+  cd d:/projects/todo-gcloud/argo-cd
+  kubectl delete -f chart-app-gcloud.yaml
+  kubectl delete ns todo
+  ```
+
+- 删除 GKE
+
+  ```bash
+  # 删除
+  gcloud container clusters delete todo-cluster --region=asia-east2
+  # 验证
+  gcloud container clusters list
+  ```
+
+- 删除 Cloud SQL
+
+  ```bash
+  # 删除
+  gcloud sql instances delete todo-db-instance
+  # 验证
+  gcloud sql instances list
   ```
 
 # 通信管理

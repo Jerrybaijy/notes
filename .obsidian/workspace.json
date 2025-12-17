@@ -50,6 +50,34 @@
             }
           },
           {
+            "id": "a74822b9e7a9f669",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo-gcloud.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "todo-gcloud"
+            }
+          },
+          {
+            "id": "893f88021ab6cae0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "mysql.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "mysql"
+            }
+          },
+          {
             "id": "1c5f814f97bdc765",
             "type": "leaf",
             "state": {
@@ -76,23 +104,9 @@
               "icon": "lucide-file",
               "title": "git"
             }
-          },
-          {
-            "id": "33c01bef287ce4cf",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "projects.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "projects"
-            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -124,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ai 提问",
+                "query": "todo",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -141,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kubernetes.md",
+                "file": "gcp.md",
                 "followCursor": true,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "kubernetes 的大纲"
+              "title": "gcp 的大纲"
             }
           },
           {
@@ -241,14 +255,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "6199fc7bcb20e502",
+  "active": "07bc8079bc2a5126",
   "lastOpenFiles": [
+    "todo-gcloud.md",
     "gcp.md",
+    "kubernetes.md",
     "argo-cd.md",
+    "mysql.md",
     "projects.md",
     "git.md",
-    "todo-gcloud.md",
-    "kubernetes.md",
     "software.md",
     "assets/image-20251215223439473.png",
     "0000-to-do.md",
@@ -274,7 +289,6 @@
     "其它格式未转换/简历/Andyshao_CV_Splunk_202404.docx",
     "其它格式未转换/简历",
     "python.md",
-    "nginx.md",
     "assets/image-20251206152340962.png",
     "assets/image-20251128210905428.png",
     "assets/components-of-kubernetes-1764489607053-1.svg",
