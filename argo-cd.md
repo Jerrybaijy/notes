@@ -45,7 +45,7 @@ tags:
   
   # 用户名：admin
   # 本地上次密码：dAlsKbgZa4FvVT6V
-  # GCP 上次密码：LgdylgMYqMOHYbV8
+  # GCP 上次密码：E9snWUwj9ec9KXhf
   ```
 
 - 配置网络之后即可查看 Argo CD UI 界面
@@ -69,7 +69,7 @@ tags:
 - 公网访问
 
   - 需要科学上网
-  - 访问地址：$EXTERNAL-IP
+  - 访问地址：http://$EXTERNAL-IP
 
 
 ## 部署应用
@@ -87,14 +87,14 @@ tags:
 - 前提条件
 
   - Argo CD 已安装并初始化
-  - 源代码开发完成，已将引用的 Chart 或 Image 推送至镜像仓库。
+  - 源代码开发完成，已将引用的 Image 推送至镜像仓库。
 
-- 说明：此部分的目录和文件源自 [Todo Fullstack GitOps](todos-fullstack-gitops.md) 项目
+- 说明：此部分的目录和文件源自 [Todo Fullstack](todo-fullstack.md) 项目
 
 - 创建 K8s 和 Argo CD 目录
 
   ```
-  cd d:/projects/todo-fullstack-gitops
+  cd d:/projects/todo-fullstack
   mkdir k8s argo-cd
   ```
 
@@ -118,7 +118,7 @@ tags:
   spec:
     project: default
     source:
-      repoURL: https://gitlab.com/jerrybai/todo-fullstack-gitops.git
+      repoURL: https://gitlab.com/jerrybai/todo-fullstack.git
       targetRevision: HEAD
       path: k8s
     destination:
@@ -144,7 +144,7 @@ tags:
 - 部署应用
 
   ```bash
-  cd d:/projects/todo-fullstack-gitops/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   kubectl apply -f application.yaml
   ```
 
@@ -180,7 +180,7 @@ tags:
 ## 删除应用
 
 ```bash
-cd d:/projects/todo-fullstack-gitops/argo-cd
+cd d:/projects/todo-fullstack/argo-cd
 kubectl delete -f application.yaml
 kubectl delete ns todo
 ```
@@ -230,7 +230,7 @@ metadata:                         # 应用程序元数据
 spec:                             # 规约
   project: default
   source:                         # 仓库源
-    repoURL: https://github.com/Jerrybaijy/todo-fullstack-gitops.git # 仓库地址
+    repoURL: https://github.com/Jerrybaijy/todo-fullstack.git # 仓库地址
     targetRevision: HEAD  # 版本指针，HEAD 为当前选定分支的最新提交
     path: k8s             # 配置文件在 Git 仓库中的路径
   destination:
@@ -253,7 +253,7 @@ spec:                             # 规约
 # K8s 清单源
 source:
   # Git 仓库地址
-  repoURL: https://github.com/Jerrybaijy/todo-fullstack-gitops.git
+  repoURL: https://github.com/Jerrybaijy/todo-fullstack.git
   # 版本指针，HEAD 为当前选定分支的最新提交
   targetRevision: HEAD
   # K8s 配置文件在 Git 仓库中的路径
@@ -264,7 +264,7 @@ source:
 # Helm Chart 源
 source:
   # <oci-registry>/<chart-name>
-  repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart
+  repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
   # Chart 版本号
   targetRevision: "99.99.99-latest"
   # Chart 名称

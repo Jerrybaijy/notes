@@ -635,7 +635,7 @@ networks:
 
 使用 `docker-compose.yml` 和 `Dockerfile` 在本地构建多个镜像并启动容器，用于多容器集成测试。
 
->  源自 [Todo Fullstack GitOps](todo-fullstack-gitops.md) 项目。
+>  源自 [Todo Fullstack](todo-fullstack.md) 项目。
 
 ### `docker-compose.yml`
 
@@ -741,7 +741,7 @@ networks:
 
 在只有镜像（无源代码）情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
 
->  源自 [Todo Fullstack GitOps](todo-fullstack-gitops.md) 项目。
+>  源自 [Todo Fullstack](todo-fullstack.md) 项目。
 
 ### 创建目录
 

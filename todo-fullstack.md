@@ -1,5 +1,5 @@
 ---
-title: todo-gcloud
+title: todo-fullstack
 author: Jerry.Baijy
 tags:
   - 应用科学
@@ -18,6 +18,7 @@ tags:
   - vite
   - flask-migrate
   - gitlab-ci
+  - cloud-service
   - gcp
   - gke
   - cloud-sql
@@ -27,9 +28,9 @@ tags:
 
 ## 项目概述
 
-Todo Gcloud 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
+Todo Fullstack 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
 
-![image-20251206152340962](assets/image-20251206152340962.png)
+![image-20251218161021572](assets/image-20251218161021572.png)
 
 ## 项目特点
 
@@ -64,15 +65,17 @@ Todo Gcloud 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设�
 - **GitOps**：Argo CD
 - **包管理**：Helm
 - **CI/CD**：GitLab CI
+- **Cloud**：GCP, Cloud SQL
 
 ## 项目结构
 
 ```
-todo-gcloud/
+todo-fullstack/
 │
-├── argo-cd/               # Argo CD 部署配置
-│   ├── chart-app.yaml     # Helm Chart Argo CD 应用配置
-│   └── k8s-app.yaml       # Kubernetes Argo CD 应用配置
+├── argo-cd/                   # Argo CD 部署配置
+│   ├── chart-app.yaml         # Helm Chart Argo CD 应用配置
+│   ├── chart-app-gcloud.yaml  # Helm Chart GCP Argo CD 应用配置
+│   └── k8s-app.yaml           # Kubernetes Argo CD 应用配置
 │
 ├── backend/               # 后端代码目录
 │   ├── app/               # 后端应用目录
@@ -126,26 +129,26 @@ todo-gcloud/
 ## 项目存储
 
 - **代码仓库**
-  - **GitLab:** https://gitlab.com/jerrybai/todo-gcloud
-  - **GitHub:** https://github.com/Jerrybaijy/todo-gcloud
+  - **GitLab:** https://gitlab.com/jerrybai/todo-fullstack
+  - **GitHub:** https://github.com/Jerrybaijy/todo-fullstack
 
 - **镜像仓库**
-  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcloud-backend
-  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcloud-frontend
-  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-gcloud
+  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-backend
+  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-fullstack-frontend
+  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-fullstack
 
 # 项目准备
 
 ## 创建项目根目录
 
 ```bash
-mkdir d:/projects/todo-gcloud
+mkdir d:/projects/todo-fullstack
 ```
 
 ## 初始化 Git 仓库
 
 ```bash
-cd d:/projects/todo-gcloud
+cd d:/projects/todo-fullstack
 git init --initial-branch=main
 touch .gitignore
 ```
@@ -189,10 +192,10 @@ logs/
 
 ## 配置环境变量
 
-配置环境变量：`todo-gcloud/.env`
+配置环境变量：`todo-fullstack/.env`
 
 ```bash
-cd d:/projects/todo-gcloud
+cd d:/projects/todo-fullstack
 touch .env
 ```
 
@@ -210,10 +213,10 @@ FLASK_ENV=development
 SECRET_KEY=change_this_to_a_very_long_random_string
 ```
 
-同时，为了让协作者知道需要配什么，创建一个 `todo-gcloud/.env.example` (不含真实密码)：
+同时，为了让协作者知道需要配什么，创建一个 `todo-fullstack/.env.example` (不含真实密码)：
 
 ```bash
-cd d:/projects/todo-gcloud
+cd d:/projects/todo-fullstack
 touch .env.example
 ```
 
@@ -238,14 +241,14 @@ SECRET_KEY=
 ## 目录结构
 
 ```bash
-cd d:/projects/todo-gcloud
+cd d:/projects/todo-fullstack
 mkdir -p backend/app/api
 ```
 
 ## 虚拟环境
 
 ```bash
-cd d:/projects/todo-gcloud/backend
+cd d:/projects/todo-fullstack/backend
 
 # 提前复制 python-env 脚本到 backend 目录
 source python-env
@@ -254,7 +257,7 @@ source python-env
 ## 安装依赖
 
 ```bash
-cd d:/projects/todo-gcloud/backend
+cd d:/projects/todo-fullstack/backend
 touch requirements.txt
 ```
 
@@ -457,12 +460,12 @@ if __name__ == "__main__":
 
 ```bash
 docker run --name todo-mysql-local \
--e MYSQL_DATABASE=todo_db \
--e MYSQL_ROOT_PASSWORD=123456 \
--e MYSQL_USER=jerry \
--e MYSQL_PASSWORD=000000 \
--p 3306:3306 \
--d mysql:8.0
+    -e MYSQL_DATABASE=todo_db \
+    -e MYSQL_ROOT_PASSWORD=123456 \
+    -e MYSQL_USER=jerry \
+    -e MYSQL_PASSWORD=000000 \
+    -p 3306:3306 \
+    -d mysql:8.0
 ```
 
 ## 初始化数据库迁移
@@ -473,7 +476,7 @@ docker run --name todo-mysql-local \
 # 确保虚拟环境已激活
 # 确保全新数据库已正常运行
 
-cd d:/projects/todo-gcloud/backend
+cd d:/projects/todo-fullstack/backend
 
 # 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 目录
 flask db init
@@ -492,7 +495,7 @@ flask db upgrade
 - 启动后端
 
   ```bash
-  cd d:/projects/todo-gcloud/backend
+  cd d:/projects/todo-fullstack/backend
   source venv/Scripts/activate
   
   python run.py
@@ -518,11 +521,11 @@ flask db upgrade
 
 ```bash
 # 使用 Vite 创建 React 项目
-cd d:/projects/todo-gcloud
+cd d:/projects/todo-fullstack
 npm create vite@latest frontend -- --template react
 
 # 安装依赖
-cd d:/projects/todo-gcloud/frontend
+cd d:/projects/todo-fullstack/frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
@@ -790,14 +793,15 @@ export default defineConfig({
 - 后端已启动
 
   ```bash
-  cd d:/projects/todo-gcloud/backend
+  cd d:/projects/todo-fullstack/backend
+  source venv/Scripts/activate
   python run.py
   ```
 
 - 启动前端
 
   ```bash
-  cd d:/projects/todo-gcloud/frontend
+  cd d:/projects/todo-fullstack/frontend
   npm run dev
   ```
 
@@ -937,7 +941,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ## 配置环境变量
 
-修改环境变量：`todo-gcloud/.env`
+修改环境变量：`todo-fullstack/.env`
 
 由于 `docker-compose.yml` 中 MySQL 的服务名变更为 `db`，所以要将 `.env` 中的 `DB_HOST` 由 `localhost` 改为 `db`。
 
@@ -957,7 +961,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 
 ## `docker-compose.yml`
 
-容器编排文件 `todo-gcloud/docker-compose.yml`，环境变量获取自 `todo-gcloud/.env`。
+容器编排文件 `todo-fullstack/docker-compose.yml`，环境变量获取自 `todo-fullstack/.env`。
 
 ```yaml
 # 指定 Docker Compose 文件版本
@@ -1036,7 +1040,7 @@ networks:
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd d:/projects/todo-gcloud
+  cd d:/projects/todo-fullstack
   docker-compose up -d
   ```
 
@@ -1051,7 +1055,7 @@ networks:
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
 
   ```bash
-  cd d:/projects/todo-gcloud
+  cd d:/projects/todo-fullstack
   docker-compose down
   ```
 
@@ -1059,7 +1063,7 @@ networks:
 
 ## `.gitlab-ci.yml`
 
-GitLab CI `todo-gcloud/.gitlab-ci.yml`
+GitLab CI `todo-fullstack/.gitlab-ci.yml`
 
 ```yaml
 # 定义变量
@@ -1077,7 +1081,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todo-gcloud
+  PROJECT_NAME: todo-fullstack
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -1141,13 +1145,12 @@ build_frontend:
   - 后端镜像构建文件 `backend/Dockerfile`
   - 前端 Nginx 配置文件 `frontend/nginx.conf`
   - 前端镜像构建文件 `frontend/Dockerfile`
-  - 容器编排文件 `todo-gcloud/docker-compose.yml`
-  - GitLab CI `todo-gcloud/.gitlab-ci.yml`
+  - GitLab CI `todo-fullstack/.gitlab-ci.yml`
 - 生成 Docker Hub Token
 - 配置 GitLab 环境变量
   - `DOCKER_HUB_USER`
   - `DOCKER_HUB_TOKEN`
-- 推送代码至仓库（注意前后端要有变化，以适应 CI/CD 文件的规则要求），Pipeline 完成以后查看 Docker Hub。
+- 推送代码至仓库（注意前后端要有变化，以适应 `.gitlab-ci.yml` 文件的规则要求），Pipeline 完成以后查看 Docker Hub。
 
 # CD
 
@@ -1160,12 +1163,15 @@ build_frontend:
 
 ## Docker Compose 部署
 
+此种部署方式使用 `docker-compose.yml` 和 `.env` 文件，将应用部署到本地容器中。
+
 ### 创建目录
 
-先创建其它目录 `todo-remote` 目录，在此目录分别创建：
-
-- `todo-remote/docker-compose.yml`
-- `todo-remote/.env`
+```
+mkdir d:/projects/0000-tests/todo-remote
+cd d:/projects/0000-tests/todo-remote
+touch docker-compose.yml .env
+```
 
 ### `docker-compose.yml`
 
@@ -1198,7 +1204,7 @@ services:
   # 后端服务
   backend:
     # 指定镜像名称
-    image: jerrybaijy/todo-gcloud-backend:latest
+    image: jerrybaijy/todo-fullstack-backend:latest
     restart: always
     environment:
       SECRET_KEY: ${SECRET_KEY}
@@ -1219,7 +1225,7 @@ services:
   # 前端服务
   frontend:
     # 指定镜像名称
-    image: jerrybaijy/todo-gcloud-frontend:latest
+    image: jerrybaijy/todo-fullstack-frontend:latest
     restart: always
     ports:
       - "80:80"
@@ -1262,7 +1268,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 - 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd todo-remote
+  cd d:/projects/0000-tests/todo-remote
   docker-compose up -d
   ```
 
@@ -1276,11 +1282,13 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
 
   ```bash
-  cd todo-remote
+  cd d:/projects/0000-tests/todo-remote
   docker-compose down
   ```
 
 ## K8s + Argo CD 部署
+
+此种部署方式将 K8s 的资源清单推送至 GitLab 代码仓库，使用 Argo CD 部署到 Minikube 集群，同时实现 CI/CD 自动化流程。
 
 ### 准备
 
@@ -1289,8 +1297,14 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 - 创建 K8s 和 Argo CD 目录
 
   ```bash
-  cd d:/projects/todo-gcloud
+  cd d:/projects/todo-fullstack
   mkdir k8s argo-cd
+  
+  cd d:/projects/todo-fullstack/k8s
+  touch namespace.yaml mysql.yaml backend.yaml frontend.yaml
+  
+  cd d:/projects/todo-fullstack/argo-cd
+  touch k8s-app.yaml
   ```
 
 ### `namespace.yaml`
@@ -1304,40 +1318,6 @@ metadata:
   name: todo
   labels:
     name: todo
-```
-
-### `k8s-app.yaml`
-
-ArgoCD 应用定义 `argo-cd/k8s-app.yaml`，这个文件引用的是 `k8s` 目录中的 K8s 配置清单文件。
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: todo-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    repoURL: https://gitlab.com/jerrybai/todo-gcloud.git
-    targetRevision: HEAD
-    path: k8s
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: todo
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-    syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
-    retry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
 ```
 
 ### `mysql.yaml`
@@ -1473,7 +1453,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: jerrybaijy/todo-gcloud-backend:latest
+          image: jerrybaijy/todo-fullstack-backend:latest
           imagePullPolicy: Always
           envFrom:
             - secretRef:
@@ -1549,7 +1529,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: jerrybaijy/todo-gcloud-frontend:latest
+          image: jerrybaijy/todo-fullstack-frontend:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -1587,6 +1567,40 @@ spec:
   type: ClusterIP
 ```
 
+### `k8s-app.yaml`
+
+ArgoCD 应用定义 `argo-cd/k8s-app.yaml`，这个文件引用的是 Git 仓库中 `k8s` 目录中的 K8s 配置文件。
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: todo-app
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://gitlab.com/jerrybai/todo-fullstack.git
+    targetRevision: HEAD
+    path: k8s
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: todo
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+```
+
 ### 部署
 
 - 将源代码推送至代码仓库
@@ -1594,8 +1608,8 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-gcloud
-  kubectl apply -f argo-cd/k8s-app.yaml
+  cd d:/projects/todo-fullstack/argo-cd
+  kubectl apply -f k8s-app.yaml
   ```
 
 - 外部访问 ：
@@ -1625,7 +1639,7 @@ spec:
 - 卸载
 
   ```bash
-  cd d:/projects/todo-gcloud/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   
   kubectl delete -f k8s-app.yaml
   kubectl delete ns todo
@@ -1633,7 +1647,7 @@ spec:
 
 ## Chart + Argo CD 部署
 
-此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 Kubernetes 集群，同时实现 CI/CD 自动化流程。
+此种部署方式将 K8s 的资源清单打包为 Helm Chart，并推送至 GitLab Container Registry，使用 Argo CD 部署到 Minikube 集群，同时实现 CI/CD 自动化流程。
 
 ### 准备
 
@@ -1644,7 +1658,7 @@ spec:
 - 创建 Chart 目录
 
   ```bash
-  cd d:/projects/todo-gcloud
+  cd d:/projects/todo-fullstack
   helm create todo-chart
   ```
 
@@ -1660,13 +1674,13 @@ spec:
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todo-gcloud/todo-chart/templates/
+  cd d:/projects/todo-fullstack/todo-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
 ### `Chart.yaml`
 
-Chart 的元数据 `todo-gcloud/Chart.yaml`
+Chart 的元数据 `todo-fullstack/Chart.yaml`
 
 ```yaml
 apiVersion: v2
@@ -1679,12 +1693,12 @@ appVersion: "1.0.0"
 
 ### `values.yaml`
 
-模板文件的参数值 `todo-gcloud/values.yaml`
+模板文件的参数值 `todo-fullstack/values.yaml`
 
 ```yaml
 # 全局配置
 global:
-  namespace: todo-gcloud
+  namespace: todo
 
 # MySQL配置
 mysql:
@@ -1695,7 +1709,7 @@ mysql:
   database: todo_db
   user: jerry
   password: "000000"
-  replicaCount: 2
+  replicaCount: 1
   persistence:
     enabled: true
     size: 1Gi
@@ -1707,7 +1721,7 @@ mysql:
 backend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-gcloud-backend
+    repository: jerrybaijy/todo-fullstack-backend
     tag: latest
     pullPolicy: Always
   service:
@@ -1720,7 +1734,7 @@ backend:
 frontend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-gcloud-frontend
+    repository: jerrybaijy/todo-fullstack-frontend
     tag: latest
     pullPolicy: Always
   service:
@@ -2146,14 +2160,14 @@ spec:
 - 检查语法
 
   ```bash
-  cd /d/projects/todo-gcloud
+  cd /d/projects/todo-fullstack
   helm lint ./todo-chart
   ```
 
 - 部署 Helm Release
 
   ```bash
-  cd /d/projects/todo-gcloud
+  cd /d/projects/todo-fullstack
   helm install todo-app ./todo-chart
   ```
 
@@ -2192,14 +2206,14 @@ spec:
 这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
 
 ```bash
-cd /d/projects/todo-gcloud/todo-chart
+cd /d/projects/todo-fullstack/todo-chart
 helm package .
 ```
 
 ### 测试本地 Chart 包
 
 ```bash
-cd /d/projects/todo-gcloud/todo-chart
+cd /d/projects/todo-fullstack/todo-chart
 helm install todo-app todo-chart-0.1.0.tgz
 
 # 卸载
@@ -2215,14 +2229,14 @@ helm uninstall todo-app
 - 推送 Chart 包
 
   ```bash
-  cd /d/projects/todo-gcloud/todo-chart
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-gcloud
+  cd /d/projects/todo-fullstack/todo-chart
+  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack
   ```
 
 ### 测试远程 Chart 包
 
 ```bash
-helm install todo-app oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart --version 0.1.0
+helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart --version 0.1.0
 
 # 卸载
 helm uninstall todo-app
@@ -2252,7 +2266,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todo-gcloud
+  PROJECT_NAME: todo-fullstack
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -2386,7 +2400,7 @@ spec:
   project: default
   source:
     # <oci-registry>/<chart-name>
-    repoURL: oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart
+    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
     # Chart 名称
@@ -2417,7 +2431,7 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-gcloud/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   kubectl apply -f chart-app.yaml
   ```
 
@@ -2442,52 +2456,27 @@ spec:
 - 卸载 App
 
   ```bash
-  cd d:/projects/todo-gcloud/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app.yaml
   kubectl delete ns todo
   ```
 
 ## Chart + Argo CD + GCP 部署
 
-此步骤是部署方式的其中一种，将 K8s 的资源清单打包为 Helm Chart 并推送至 GitLab Container Registry，使用 Argo CD 部署到 GKE 集群，同时实现 CI/CD 自动化流程。
+此种部署方式使用 Cloud SQL 代替原来的容器化 MySQL，并且使用 Argo CD 将应用部署到 GKE 中。
 
 ### 准备
 
 - Helm 已安装
+- 源代码开发完成，已将 image 推送至镜像仓库。
+- 由于现在想使用 GCP 的 Gcloud SQL，所以在 Chart 的配置文件中，不用再部署 MySQL。
+  - 删除 `templates/mysql.yaml` 文件
+  - 同时也要修改其它文件
 
-- 源代码开发完成，已将镜像推送至镜像仓库。
-
-- 创建 Cloud SQL 实例并完成初始化，详见 [GCP 笔记](gcp.md#Cloud SQL)。
-
-
-### 初始化 Helm Chart
-
-- 创建 Chart 目录
-
-  ```bash
-  cd d:/projects/todo-gcloud
-  helm create todo-chart
-  ```
-
-- 删除 `templates` 目录下的全部默认文件
-
-- 保留并修改以下必要文件：
-
-  - `Chart.yaml`：Chart 元数据
-  - `values.yaml`：模板文件的参数值
-  - `.helmignore`：忽略不需要打包的文件
-  - `templates/`：模板文件目录
-
-- 在 `templates` 目录创建以下文件
-
-  ```bash
-  cd d:/projects/todo-gcloud/todo-chart/templates/
-  touch namespace.yaml _helpers.tpl backend.yaml frontend.yaml
-  ```
 
 ### `Chart.yaml`
 
-Chart 的元数据 `todo-gcloud/Chart.yaml`
+Chart 的元数据 `todo-fullstack/Chart.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
 
 ```yaml
 apiVersion: v2
@@ -2500,7 +2489,11 @@ appVersion: "1.0.0"
 
 ### `values.yaml`
 
-模板文件的参数值 `todo-gcloud/values.yaml`
+模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 **Chart + Argo CD 部署**相比有修改：
+
+- **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
+- **backend**：引入了 Cloud SQL 的环境变量。
+- **frontend**：`service` 类型改成了 `LoadBalancer`
 
 ```yaml
 # 全局配置
@@ -2511,7 +2504,7 @@ global:
 backend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-gcloud-backend
+    repository: jerrybaijy/todo-fullstack-backend
     tag: latest
     pullPolicy: Always
   service:
@@ -2519,7 +2512,7 @@ backend:
     port: 5000
   env:
     SECRET_KEY: your_secret_key_here
-    MYSQL_HOST: "34.92.167.20"  # Cloud SQL 实例的公共 IP 地址
+    DB_HOST: "35.220.229.85"    # Cloud SQL 实例的公共 IP 地址
     MYSQL_PORT: "3306"          # MySQL 端口
     MYSQL_DATABASE: "todo_db"   # 数据库名称
     MYSQL_USER: "jerry"         # 数据库用户名
@@ -2529,7 +2522,7 @@ backend:
 frontend:
   replicaCount: 2
   image:
-    repository: jerrybaijy/todo-gcloud-frontend
+    repository: jerrybaijy/todo-fullstack-frontend
     tag: latest
     pullPolicy: Always
   service:
@@ -2539,7 +2532,7 @@ frontend:
 
 ### `namespace.yaml`
 
-命名空间 `templates/namespace.yaml`
+命名空间 `templates/namespace.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
 
 ```yaml
 apiVersion: v1
@@ -2552,7 +2545,9 @@ metadata:
 
 ### `_helpers.tpl`
 
-模板函数 `templates/_helpers.tpl`
+模板函数 `templates/_helpers.tpl`，此文件与 **Chart + Argo CD 部署**相比有修改：
+
+- 删除了 MySQL 部分以及其它改变
 
 ```tpl
 {{/* 定义 Chart 的名称，优先使用 Values.nameOverride，如果不存在则使用 Chart.Name */}}
@@ -2631,7 +2626,9 @@ app.kubernetes.io/component: frontend
 
 ### `backend.yaml`
 
-后端模板文件 `templates/backend.yaml`
+后端模板文件 `templates/backend.yaml`，此文件与 **Chart + Argo CD 部署**相比有改变。
+
+- 在**数据库依赖管理**和**环境变量注入方式**上有所改变。
 
 ```yaml
 apiVersion: v1
@@ -2644,7 +2641,7 @@ metadata:
 type: Opaque
 stringData:
   SECRET_KEY: {{ .Values.backend.env.SECRET_KEY | quote }}
-  MYSQL_HOST: {{ .Values.backend.env.MYSQL_HOST | quote }}
+  DB_HOST: {{ .Values.backend.env.DB_HOST | quote }}
   MYSQL_PORT: {{ .Values.backend.env.MYSQL_PORT | quote }}
   MYSQL_DATABASE: {{ .Values.backend.env.MYSQL_DATABASE | quote }}
   MYSQL_USER: {{ .Values.backend.env.MYSQL_USER | quote }}
@@ -2712,9 +2709,7 @@ spec:
 
 ### `frontend.yaml`
 
-前端模板文件 `templates/frontend.yaml`
-
-由于前端源码把 Nginx 反向代理的后端服务名写死了，而 Helm 是动态生成的后端服务名，所以此处添加了 Nginx 配置的覆盖。
+前端模板文件 `templates/frontend.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
 
 ```yaml
 apiVersion: v1
@@ -2812,100 +2807,19 @@ spec:
   type: {{ .Values.frontend.service.type }}
 ```
 
-### 测试 Chart 文件
+### 省略步骤
 
-- 检查语法
+由于此部署方式旨在应用 GCP + Cloud SQL，所以省略以下步骤：
 
-  ```bash
-  cd /d/projects/todo-gcloud
-  helm lint ./todo-chart
-  ```
-
-- 部署 Helm Release
-
-  ```bash
-  cd /d/projects/todo-gcloud
-  helm install todo-app ./todo-chart
-  ```
-
-- 查看，所有资源运行正常
-
-  ```bash
-  kubectl get all -n todo
-  ```
-
-- 端口转发
-
-  ```bash
-  # 前端
-  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
-  ```
-
-- 访问前端：http://localhost:8081/
-
-- 如有调试需要，也可将后端和数据库进行端口转发
-
-  ```bash
-  # 数据库
-  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
-  # 后端
-  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
-  ```
-
-- 卸载 Helm Release
-
-  ```bash
-  helm uninstall todo-app
-  ```
-
-### 封装 Chart
-
-这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
-
-```bash
-cd /d/projects/todo-gcloud/todo-chart
-helm package .
-```
-
-### 测试本地 Chart 包
-
-```bash
-cd /d/projects/todo-gcloud/todo-chart
-helm install todo-app todo-chart-0.1.0.tgz
-
-# 卸载
-helm uninstall todo-app
-```
-
-### 推送 Chart 包
-
-- 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
-
-- Helm 登录到 GitLab Registry，详见 [Helm 笔记](helm.md#推送-chart)。
-
+- 测试 Chart 文件
+- 封装 Chart
+- 测试本地 Chart 包
 - 推送 Chart 包
-
-  ```bash
-  cd /d/projects/todo-gcloud/todo-chart
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-gcloud
-  ```
-
-### 测试远程 Chart 包
-
-```bash
-helm install todo-app oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart --version 0.1.0
-
-# 卸载
-helm uninstall todo-app
-```
+- 测试远程 Chart 包
 
 ### `.gitlab-ci.yml`
 
-在 GitLab CI 时，自动构建 Chart 并推送至 GitLab Container Registry。
-
-- 修改之前的 `.gitlab-ci.yml`
-- 添加 Chart 部分
-- 将 `before_script` 从全局移到前后端。
+GitLab CI 文件 `.gitlab-ci.yml`，此文件与 **Chart + Argo CD 部署**相比不变。
 
 ```yaml
 # 定义变量
@@ -2923,7 +2837,7 @@ variables:
   IMAGE_PREFIX: $DOCKER_HUB_USER
   
   # 项目名称
-  PROJECT_NAME: todo-gcloud
+  PROJECT_NAME: todo-fullstack
 
   # 后端和前端名称
   BACKEND_NAME: backend
@@ -3045,7 +2959,7 @@ publish_chart:
 
 ### `chart-app-gcloud.yaml`
 
-ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
+ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，此文件与 `chart-app.yaml` 相比不变。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -3057,7 +2971,7 @@ spec:
   project: default
   source:
     # <oci-registry>/<chart-name>
-    repoURL: oci://registry.gitlab.com/jerrybai/todo-gcloud/todo-chart
+    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
     # Chart 名称
@@ -3083,8 +2997,6 @@ spec:
 
 ### 创建 GKE
 
-再创建时使用 `项目指导.md` 中的方法试一下
-
 ```bash
 gcloud container clusters create todo-cluster \
     --region=asia-east2 \
@@ -3101,16 +3013,20 @@ gcloud container clusters create todo-cluster \
 
 ### 安装 Argo CD
 
-详见 Argo CD 笔记
+在 GKE 中安装 Argo CD，详见 [Argo CD 笔记](argo-cd.md)。
+
+### 创建 Cloud SQL 实例
+
+创建 Cloud SQL 实例并完成初始化，详见 [GCP 笔记](gcp.md#Cloud SQL)。
 
 ### 部署
 
-- 将源代码推送至代码仓库
+- 将源代码推送至代码仓库，改变 chart。
 
 - 部署
 
   ```bash
-  cd d:/projects/todo-gcloud/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   kubectl apply -f chart-app-gcloud.yaml
   ```
 
@@ -3127,7 +3043,7 @@ gcloud container clusters create todo-cluster \
 - 卸载 App
 
   ```bash
-  cd d:/projects/todo-gcloud/argo-cd
+  cd d:/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app-gcloud.yaml
   kubectl delete ns todo
   ```
@@ -3200,11 +3116,11 @@ gcloud container clusters create todo-cluster \
 
 ## 本地开发阶段
 
-环境变量获取自 `todo-gcloud/.env`
+环境变量获取自 `todo-fullstack/.env`
 
 ## Docker Compose 阶段
 
-- 从 `todo-gcloud/.env` 中加载环境变量
+- 从 `todo-fullstack/.env` 中加载环境变量
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 - 环境变量通过 `environment` 字段注入到各个服务容器中
 

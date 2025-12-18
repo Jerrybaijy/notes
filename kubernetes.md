@@ -194,6 +194,9 @@ kubectl config get-contexts
 
 # 删除上下文
 kubectl config delete-context $CONTEXT_NAME
+
+# 设置当前上下文
+kubectl config use-context $CONTEXT_NAME
 ```
 
 ## 参数

@@ -648,7 +648,7 @@ Flask-Migrate 是基于 Alembic (SQLAlchemy 的迁移工具) 构建的 Flask 扩
 
 ## 相关项目
 
-- [Todo Fullstack GitOps](todo-fullstack-gitops.md)
+- [Todo Fullstack](todo-fullstack.md)
 
 # Flask 项目
 

@@ -5,6 +5,7 @@ tags:
   - 应用科学
   - it
   - cloud-service
+  - gcp
 ---
 
 # GCP
@@ -343,7 +344,17 @@ gcloud compute instances list --project=$PROJECT_ID
   # 创建集群
   gcloud container clusters create-auto $CLUSTER_NAME --region=$REGION
   # e.g.
-  gcloud container clusters create-auto my-cluster --region=asia-east2
+  gcloud container clusters create todo-cluster \
+      --region=asia-east2 \
+      --node-locations=asia-east2-a \
+      --num-nodes=2 \
+      --machine-type=e2-medium \
+      --disk-size=40 \
+      --disk-type=pd-standard \
+      --enable-autoscaling \
+      --min-nodes=1 \
+      --max-nodes=5 \
+      --scopes=cloud-platform
   # 查看集群
   gcloud container clusters list
   ```
@@ -761,6 +772,7 @@ EXIT;
 ```bash
 gcloud sql instances describe $INSTANCE_NAME --format='value(ipAddresses.ipAddress)'
 gcloud sql instances describe todo-db-instance --format='value(ipAddresses.ipAddress)'
+# 上次公网 IP：35.220.229.85
 ```
 
 仅仅拿到公共 IP 是无法直接连接的，出于安全考虑，Google Cloud 默认会拦截所有外部连接。
@@ -770,9 +782,13 @@ gcloud sql instances describe todo-db-instance --format='value(ipAddresses.ipAdd
 ```bash
 # 获取本地公网 IP
 curl ifconfig.me
+# 本地公网 IP：5.181.21.188
 
 # 获取 GKE 节点公网 IP（EXTERNAL-IP）
 kubectl get nodes -o wide
+# 上次公网 IP：
+# 34.150.83.115
+# 34.96.197.161
 ```
 
 #### 添加授权网络
@@ -785,7 +801,7 @@ kubectl get nodes -o wide
 gcloud sql instances patch $INSTANCE_NAME \
   --authorized-networks=[本地公网IP]/32,[GKE 节点1公网IP]/32,[GKE 节点2公网IP]/32
 gcloud sql instances patch todo-db-instance \
-    --authorized-networks=5.181.21.188/32,34.92.62.152/32,35.241.122.230/32
+    --authorized-networks=5.181.21.188/32,34.150.83.115/32,34.96.197.161/32
 ```
 
 在 [Google Cloud Console](https://console.cloud.google.com/) 中执行以下命令验证本地公网 IP 是否加入到白名单：
