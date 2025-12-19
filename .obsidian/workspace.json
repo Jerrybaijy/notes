@@ -36,7 +36,7 @@
             }
           },
           {
-            "id": "07bc8079bc2a5126",
+            "id": "c69d94ae7db637a1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -50,7 +50,21 @@
             }
           },
           {
-            "id": "39c226e9935f21f4",
+            "id": "ac2d90ff86d5f9cd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cloud-sql.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "cloud-sql"
+            }
+          },
+          {
+            "id": "29c462b581d1e848",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -62,8 +76,51 @@
               "icon": "lucide-file",
               "title": "todo-fullstack"
             }
+          },
+          {
+            "id": "222b6dccbafb34a7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "terraform"
+            }
+          },
+          {
+            "id": "a4bfaa0e5035ac77",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gke.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gke"
+            }
+          },
+          {
+            "id": "2529956d1a8ef1da",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "argo-cd.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "argo-cd"
+            }
           }
-        ]
+        ],
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -95,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "python",
+                "query": "cloud",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -112,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "terraform.md",
                 "followCursor": true,
-                "showSearch": false,
+                "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "0000-to-do 的大纲"
+              "title": "terraform 的大纲"
             }
           },
           {
@@ -137,7 +194,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -157,7 +214,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "terraform.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +224,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "0000-to-do 的反向链接列表"
+              "title": "terraform 的反向链接列表"
             }
           },
           {
@@ -176,12 +233,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "argo-cd.md",
+                "file": "terraform.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "argo-cd 的出链列表"
+              "title": "terraform 的出链列表"
             }
           },
           {
@@ -212,12 +269,24 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "3ca6f7f6d2a69837",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
     "todo-fullstack.md",
+    "terraform.md",
+    "cloud-sql.md",
+    "assets/regions-zones.svg",
     "gcp.md",
-    "0000-to-do.md",
+    "markdown.md",
+    "html.md",
+    "gke.md",
+    "cloud-computing.md",
+    "cad.md",
+    "crypto.md",
+    "vite.md",
+    "cloud-service.md",
+    "obsidian.md",
     "argo-cd.md",
+    "0000-to-do.md",
     "sql.md",
     "todo-fullstack-gitops.md",
     "mysql.md",
@@ -231,18 +300,7 @@
     "assets/image-20251218161021572.png",
     "todo-gcloud.md",
     "projects.md",
-    "software.md",
     "assets/image-20251215223439473.png",
-    "web.md",
-    "markdown.md",
-    "react.md",
-    "en-grammer.md",
-    "en-辨析词.md",
-    "typora.md",
-    "frontend.md",
-    "it-basics.md",
-    "ci-cd.md",
-    "shell.md",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",
     "其它格式未转换/简历/Jinyu Bai.docx",
@@ -257,7 +315,6 @@
     "其它格式未转换/obsidian-themes/user.css",
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
-    "assets/image-20240329143514361-1764121708210-2.png",
     "git-push.sh",
     "0000000.txt",
     "未命名 1.canvas",

@@ -18,7 +18,7 @@ tags:
   - vite
   - flask-migrate
   - gitlab-ci
-  - cloud-service
+  - cloud-computing
   - gcp
   - gke
   - cloud-sql
@@ -1163,7 +1163,7 @@ build_frontend:
 
 ## Docker Compose 部署
 
-此种部署方式使用 `docker-compose.yml` 和 `.env` 文件，将应用部署到本地容器中。
+此种部署方式使用 `docker-compose.yml` 和 `.env` 文件，将应用部署到本地容器中。
 
 ### 创建目录
 
@@ -2470,7 +2470,7 @@ spec:
 - Helm 已安装
 - 源代码开发完成，已将 image 推送至镜像仓库。
 - 由于现在想使用 GCP 的 Gcloud SQL，所以在 Chart 的配置文件中，不用再部署 MySQL。
-  - 删除 `templates/mysql.yaml` 文件
+  - 删除 `templates/mysql.yaml` 文件
   - 同时也要修改其它文件
 
 
@@ -2959,7 +2959,7 @@ publish_chart:
 
 ### `chart-app-gcloud.yaml`
 
-ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，此文件与 `chart-app.yaml` 相比不变。
+ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，此文件与 `chart-app.yaml` 相比不变。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -3017,7 +3017,7 @@ gcloud container clusters create todo-cluster \
 
 ### 创建 Cloud SQL 实例
 
-创建 Cloud SQL 实例并完成初始化，详见 [GCP 笔记](gcp.md#Cloud SQL)。
+创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL>)。
 
 ### 部署
 

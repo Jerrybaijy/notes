@@ -7,9 +7,9 @@ tags:
   - markdown
 ---
 
-# [Obsidian](https://obsidian.md/)
+# Obsidian
 
-**Obsidian** 是一个 Markdown 笔记工具。目前用它作为 Typora 的辅助。
+[**Obsidian**](https://obsidian.md/) 是一个 Markdown 笔记工具。目前用它作为 Typora 的辅助。
 
 ## 特点
 
@@ -89,7 +89,9 @@ tags:
 --code-function: #a5d6ff;
 ```
 
-# 插件
+# Plugins
+
+## Plugins Quick Start
 
 - 插件分为官方插件和第三方插件，以下是第三方插件的安装方法。
 - `设置` > `第三方插件`
@@ -97,6 +99,12 @@ tags:
 - 搜索插件，安装，启用。
 - 优秀插接件：
   - Tag Wrangler：元数据标签管理
+
+## Tag Wrangler
+
+Tag Wrangler 是一个元数据标签管理工具。
+
+右键单击标签进行重命名。
 
 ## Show Whitespace
 

@@ -518,6 +518,10 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
   >
   > 这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "关于链接的解释")。
 
+- 为了消除 Markdown 在不同解析器下的歧义，CommonMark 规范规定，链接目标如果包含空格，则必须用尖括号 `< >` 包裹。
+
+  > [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL>)
+
 ## 引用链接
 
 - 引用链接可以增加文章连续性和可读性。以链接为例，图片同理。

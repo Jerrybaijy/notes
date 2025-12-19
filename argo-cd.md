@@ -279,7 +279,7 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
 
 - Argo CD Git
 - Argo CD Helm
-- [Todos Fullstack GitOps](todos-fullstack-gitops.md)
+- [Todo Fullstack](todo-fullstack.md)
 
 # FAQ
 
