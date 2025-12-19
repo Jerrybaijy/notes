@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "9df357f6bcbad773",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "cloud-computing.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "cloud-computing"
+            }
+          },
+          {
             "id": "6199fc7bcb20e502",
             "type": "leaf",
             "state": {
@@ -61,20 +75,6 @@
               },
               "icon": "lucide-file",
               "title": "cloud-sql"
-            }
-          },
-          {
-            "id": "29c462b581d1e848",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "todo-fullstack.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "todo-fullstack"
             }
           },
           {
@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 7
       }
     ],
     "direction": "vertical"
@@ -152,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "cloud",
+                "query": "vs",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -169,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terraform.md",
+                "file": "argo-cd.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "terraform 的大纲"
+              "title": "argo-cd 的大纲"
             }
           },
           {
@@ -193,8 +193,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -269,23 +268,28 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "2529956d1a8ef1da",
   "lastOpenFiles": [
-    "todo-fullstack.md",
+    "hul.md",
+    "gke.md",
+    "gcp.md",
+    "shell.md",
+    "windows.md",
+    "web.md",
+    "kubernetes.md",
+    "cloud-computing.md",
+    "argo-cd.md",
     "terraform.md",
+    "todo-fullstack.md",
     "cloud-sql.md",
     "assets/regions-zones.svg",
-    "gcp.md",
     "markdown.md",
     "html.md",
-    "gke.md",
-    "cloud-computing.md",
     "cad.md",
     "crypto.md",
     "vite.md",
     "cloud-service.md",
     "obsidian.md",
-    "argo-cd.md",
     "0000-to-do.md",
     "sql.md",
     "todo-fullstack-gitops.md",
@@ -293,13 +297,8 @@
     "git.md",
     "docker.md",
     "flask.md",
-    "todos-fullstack-gitops.md",
-    "kubernetes.md",
-    "python.md",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",
-    "todo-gcloud.md",
-    "projects.md",
     "assets/image-20251215223439473.png",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",

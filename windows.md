@@ -14,7 +14,7 @@ tags:
 
 - **目录结构**：`cd C:/Users/USER_NAME`
 - **路径分隔符**：默认`\`，绝大多数时候都支持正斜杠 `/`
-- 其它详见 [`web-basics` > `路径`](../../web-basics/web-basics.md#路径)
+- 其它详见 [Shell 笔记](shell.md#路径)
 
 ## Chocolatey
 

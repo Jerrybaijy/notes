@@ -130,7 +130,7 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 
 ### 主题文件
 
-- 以 `GitHub Light` 主题为例
+- 以 `GitHub Light` 主题为例
 - VS Code 扩展通常安装在用户目录下的 `.vscode/extensions` 文件夹中。
 - 类似 `github.github-vscode-theme-6.3.5` 标识符的文件夹既是 GitHub 主题文件夹。
 - 进入该文件夹，主题定义文件通常位于 `themes/` 目录下，文件名为 `light.json` 或类似名称。
@@ -380,6 +380,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `Auto Rename Tag`：自动同步更改 HTML 或 XML 标签对的标签名
 - `Python`：支持 Python
 - `Black`：Python 格式化（首选）
+- `HashiCorp Terraform`：Terraform 插件，含格式化
 
 ## Live Server
 
@@ -513,7 +514,7 @@ h6::before {
 - 在 `settings.json` 文件中添加命令
 
     ```json
-    // ---------------## multi-command---------------
+    // ---------------## multi-command，为了实现 Markdown 一键硬换行---------------
     "multiCommand.commands": [
       {
         "command": "multiCommand.markdownHardBreak",
