@@ -62,7 +62,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
     --location=$CONTROL_PLANE_LOCATION
 
 # 更新配置
-gcloud container clusters get-credentials my-cluster \
+gcloud container clusters get-credentials todo-cluster \
     --location asia-east2 \
     --project project-60addf72-be9c-4c26-8db
 

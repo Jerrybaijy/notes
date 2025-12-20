@@ -112,6 +112,37 @@ gcloud sql instances delete todo-db-instance
 gcloud sql instances list
 ```
 
+# Cloud SQL Auth
+
+[**Cloud SQL Auth**](https://docs.cloud.google.com/sql/docs/mysql/sql-proxy?hl=zh-cn) 是 Google Cloud 提供的一套安全连接 Cloud SQL 实例的认证机制，在不暴露数据库公网 IP、不使用静态数据库密码的前提下，安全地连接 Cloud SQL。它通过 **IAM 身份认证 + 临时凭证** 来完成数据库访问控制。
+
+## 在本地连接
+
+- [下载 Cloud SQL Auth](https://docs.cloud.google.com/sql/docs/mysql/sql-proxy?hl=zh-cn#install)，将文件重命名为 `cloud-sql-proxy.exe`。
+
+- 在终端执行以下命令（确保已经配置了 `gcloud auth login`）
+
+  ```bash
+  cd /d/下载/综合下载
+  
+  ./cloud-sql-proxy 项目ID:区域:数据库实例名称
+  ./cloud-sql-proxy project-60addf72-be9c-4c26-8db:asia-east2:todo-db-instance
+  ```
+
+  保持终端打开，代理默认会监听本地的 `127.0.0.1:3306`。
+
+## 在集群中连接
+
+详见 [Todo Fullstack](<todo-fullstack.md#Chart + Argo CD + GCP + Terraform 部署>) 项目
+
+- GKE
+  - 在 GKE 中启用 Workload Identity
+  - 配置权限（Workload Identity 绑定）
+- 后端
+  - 指定 GCP 的 serviceAccountName
+  - 注入 Sidecar 容器：添加 cloud-sql-proxy 容器
+- Chart：创建一个 ServiceAccount 资源
+
 # Reference
 
 ## 语法

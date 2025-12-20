@@ -74,7 +74,6 @@ todo-fullstack/
 │
 ├── argo-cd/                   # Argo CD 部署配置
 │   ├── chart-app.yaml         # Helm Chart Argo CD 应用配置
-│   ├── chart-app-gcloud.yaml  # Helm Chart GCP Argo CD 应用配置
 │   └── k8s-app.yaml           # Kubernetes Argo CD 应用配置
 │
 ├── backend/               # 后端代码目录
@@ -107,6 +106,10 @@ todo-fullstack/
 │   ├── frontend.yaml      # 前端部署配置
 │   ├── mysql.yaml         # MySQL 部署配置
 │   └── namespace.yaml     # 命名空间配置
+│
+├── terraform/             # GCP 的 Terraform 部署文件
+│   ├── main.tf            # Terraform 主文件
+│   └── variables.tf       # Terraform 变量
 │
 ├── todo-chart/                  # Helm Chart 目录
 │   ├── templates/               # Kubernetes 资源模板目录
@@ -1154,12 +1157,13 @@ build_frontend:
 
 # CD
 
-此项目列出了四种部署方式，使用其中一个即可：
+此项目列出了五种部署方式，使用其中一个即可：
 
 - Docker Compose
 - K8s + Argo CD
 - Chart + Argo CD
 - Chart + Argo CD + GCP
+- Chart + Argo CD + GCP + Terraform
 
 ## Docker Compose 部署
 
@@ -2473,23 +2477,9 @@ spec:
   - 删除 `templates/mysql.yaml` 文件
   - 同时也要修改其它文件
 
-
-### `Chart.yaml`
-
-Chart 的元数据 `todo-fullstack/Chart.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
-
-```yaml
-apiVersion: v2
-name: todo-chart
-description: A Helm chart for Todo application
-version: 0.1.0
-type: application
-appVersion: "1.0.0"
-```
-
 ### `values.yaml`
 
-模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 **Chart + Argo CD 部署**相比有修改：
+修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
 - **backend**：引入了 Cloud SQL 的环境变量。
@@ -2530,22 +2520,9 @@ frontend:
     port: 80
 ```
 
-### `namespace.yaml`
-
-命名空间 `templates/namespace.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
-
-```yaml
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: {{ .Values.global.namespace }}
-  labels:
-    name: {{ .Values.global.namespace }}
-```
-
 ### `_helpers.tpl`
 
-模板函数 `templates/_helpers.tpl`，此文件与 **Chart + Argo CD 部署**相比有修改：
+修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - 删除了 MySQL 部分以及其它改变
 
@@ -2626,7 +2603,7 @@ app.kubernetes.io/component: frontend
 
 ### `backend.yaml`
 
-后端模板文件 `templates/backend.yaml`，此文件与 **Chart + Argo CD 部署**相比有改变。
+修改后端模板文件 `templates/backend.yaml`，此文件与 `Chart + Argo CD 部署` 相比有改变。
 
 - 在**数据库依赖管理**和**环境变量注入方式**上有所改变。
 
@@ -2707,106 +2684,6 @@ spec:
       targetPort: {{ .Values.backend.service.port }}
 ```
 
-### `frontend.yaml`
-
-前端模板文件 `templates/frontend.yaml`，此文件与 **Chart + Argo CD 部署**相比不变。
-
-```yaml
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
-  namespace: {{ .Values.global.namespace }}
-  labels:
-    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
-data:
-  default.conf: |
-    server {
-        listen 80;
-        server_name localhost;
-
-        location / {
-            root /usr/share/nginx/html;
-            index index.html index.htm;
-            try_files $uri $uri/ /index.html;
-        }
-
-        # 反向代理 API 请求到后端容器
-        location /api {
-            proxy_pass http://{{ include "todo-chart.backend.fullname" . }}:{{ .Values.backend.service.port }};
-            proxy_http_version 1.1;
-            proxy_set_header Upgrade $http_upgrade;
-            proxy_set_header Connection 'upgrade';
-            proxy_set_header Host $host;
-            proxy_cache_bypass $http_upgrade;
-        }
-    }
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: {{ include "todo-chart.frontend.fullname" . }}
-  namespace: {{ .Values.global.namespace }}
-  labels:
-    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
-
-spec:
-  replicas: {{ .Values.frontend.replicaCount }}
-  selector:
-    matchLabels:
-      {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
-  template:
-    metadata:
-      labels:
-        {{- include "todo-chart.frontend.labels" . | nindent 8 }}
-    spec:
-      containers:
-        - name: frontend
-          image: "{{ .Values.frontend.image.repository }}:{{ .Values.frontend.image.tag | default .Chart.AppVersion }}"
-          imagePullPolicy: {{ .Values.frontend.image.pullPolicy }}
-          ports:
-            - containerPort: {{ .Values.frontend.service.port }}
-          volumeMounts:
-            - name: nginx-config
-              mountPath: /etc/nginx/conf.d
-          readinessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.frontend.service.port }}
-            initialDelaySeconds: 10
-            periodSeconds: 5
-            timeoutSeconds: 3
-            failureThreshold: 3
-          livenessProbe:
-            httpGet:
-              path: /
-              port: {{ .Values.frontend.service.port }}
-            initialDelaySeconds: 20
-            periodSeconds: 10
-            timeoutSeconds: 5
-            failureThreshold: 3
-      volumes:
-        - name: nginx-config
-          configMap:
-            name: {{ include "todo-chart.frontend.fullname" . }}-nginx-config
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: {{ include "todo-chart.frontend.fullname" . }}
-  namespace: {{ .Values.global.namespace }}
-  labels:
-    {{- include "todo-chart.frontend.labels" . | nindent 4 }}
-
-spec:
-  selector:
-    {{- include "todo-chart.frontend.selectorLabels" . | nindent 6 }}
-  ports:
-    - port: {{ .Values.frontend.service.port }}
-      targetPort: {{ .Values.frontend.service.port }}
-  type: {{ .Values.frontend.service.type }}
-```
-
 ### 省略步骤
 
 由于此部署方式旨在应用 GCP + Cloud SQL，所以省略以下步骤：
@@ -2816,184 +2693,6 @@ spec:
 - 测试本地 Chart 包
 - 推送 Chart 包
 - 测试远程 Chart 包
-
-### `.gitlab-ci.yml`
-
-GitLab CI 文件 `.gitlab-ci.yml`，此文件与 **Chart + Argo CD 部署**相比不变。
-
-```yaml
-# 定义变量
-variables:
-  # Docker 版本号
-  DOCKER_VERSION: 24.0.5
-
-  # 告诉 Docker 使用 overlay2 驱动，性能更好
-  DOCKER_DRIVER: overlay2
-
-  # 禁用 TLS 证书生成，防止 dind 连接报错
-  DOCKER_TLS_CERTDIR: ""
-  
-  # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
-  IMAGE_PREFIX: $DOCKER_HUB_USER
-  
-  # 项目名称
-  PROJECT_NAME: todo-fullstack
-
-  # 后端和前端名称
-  BACKEND_NAME: backend
-  FRONTEND_NAME: frontend
-
-  # 后端和前端目录
-  BACKEND_DIR: backend
-  FRONTEND_DIR: frontend
-
-  # Helm Chart 名称
-  CHART_NAME: todo-chart
-  # Helm Chart 目录
-  CHART_DIR: todo-chart
-
-  # OCI 仓库地址
-  OCI_REGISTRY: oci://registry.gitlab.com/jerrybai/$PROJECT_NAME
-
-# 定义阶段
-stages:
-  - build
-  - chart-publish
-
-# 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
-services:
-  - docker:$DOCKER_VERSION-dind
-
-# 构建并推送后端镜像
-build_backend:
-  stage: build
-  image: docker:$DOCKER_VERSION
-  # 登录 Docker Hub
-  before_script:
-    # 使用 stdin 输入密码，更加安全
-    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-  script:
-    # 进入后端目录
-    - cd $BACKEND_DIR
-    
-    # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
-    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
-    
-    # 推送到 Docker Hub
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
-  rules:
-    # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
-    - changes:
-        - $BACKEND_DIR/**/*
-
-# 构建并推送前端镜像
-build_frontend:
-  stage: build
-  image: docker:$DOCKER_VERSION
-  # 登录 Docker Hub
-  before_script:
-    # 使用 stdin 输入密码，更加安全
-    - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-  script:
-    - cd $FRONTEND_DIR
-    - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest .
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:$CI_COMMIT_SHORT_SHA
-    - docker push $IMAGE_PREFIX/$PROJECT_NAME-$FRONTEND_NAME:latest
-  rules:
-    - changes:
-        - $FRONTEND_DIR/**/*
-
-# 构建并推送 Helm Chart
-publish_chart:
-  stage: chart-publish
-  image:
-    name: alpine/helm:3.12.3
-    # 设置正确的 entrypoint 以便执行 shell 命令
-    entrypoint: ["/bin/sh", "-c"]
-  needs:
-    # 如果 build_backend 的结果为 Passed 或 Skipped，都可以执行 publish_chart
-    # 否则 publish_chart 的结果直接为 Skipped
-    - job: build_backend
-      optional: true
-    - job: build_frontend
-      optional: true
-  script:
-    # 进入 Helm Chart 目录
-    - cd $CHART_DIR
-    
-    # 配置 Helm 使用 GitLab Container Registry
-    - helm registry login registry.gitlab.com -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD
-    
-    # 检查 Chart 语法
-    - helm lint .
-    
-    # 安装 yq 工具用于解析 Chart.yaml
-    - apk add --no-cache yq
-    
-    # 从 Chart.yaml 中读取基础版本号
-    - CHART_VERSION=$(yq e '.version' Chart.yaml)
-    
-    # 生成最终版本号（基础版本号 + SHA）
-    - SHA_VERSION="${CHART_VERSION}-${CI_COMMIT_SHORT_SHA}"
-    # latest 版本号（最大版本号 + latest）
-    - LATEST_VERSION="99.99.99-latest"
-    
-    # 打包 Chart
-    - helm package . --version "${SHA_VERSION}"
-    - helm package . --version "${LATEST_VERSION}"
-    
-    # 推送 Chart 到 GitLab Container Registry
-    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz $OCI_REGISTRY
-    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz $OCI_REGISTRY
-
-  rules:
-    # 以下任何一个目录更新时，都运行此 Job（前提是满足 needs 条件）
-    - changes:
-        - $CHART_DIR/**/*
-    - changes:
-        - $BACKEND_DIR/**/*
-    - changes:
-        - $FRONTEND_DIR/**/*
-```
-
-### `chart-app-gcloud.yaml`
-
-ArgoCD 应用定义 `argo-cd/chart-app-gcloud.yaml`，此文件与 `chart-app.yaml` 相比不变。
-
-```yaml
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: todo-app
-  namespace: argocd
-spec:
-  project: default
-  source:
-    # <oci-registry>/<chart-name>
-    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
-    # Chart 版本号
-    targetRevision: "99.99.99-latest"
-    # Chart 名称
-    chart: todo-chart
-
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: todo
-  syncPolicy:
-    automated:
-      selfHeal: true
-      prune: true
-    syncOptions:
-      - CreateNamespace=true
-      - ApplyOutOfSyncOnly=true
-    retry:
-      limit: 5
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
-```
 
 ### 创建 GKE
 
@@ -3017,7 +2716,7 @@ gcloud container clusters create todo-cluster \
 
 ### 创建 Cloud SQL 实例
 
-创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL>)。
+创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL>)。
 
 ### 部署
 
@@ -3025,9 +2724,11 @@ gcloud container clusters create todo-cluster \
 
 - 部署
 
+  使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
+
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
-  kubectl apply -f chart-app-gcloud.yaml
+  kubectl apply -f chart-app.yaml
   ```
 
 - 获取前端访问地址
@@ -3044,7 +2745,7 @@ gcloud container clusters create todo-cluster \
 
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
-  kubectl delete -f chart-app-gcloud.yaml
+  kubectl delete -f chart-app.yaml
   kubectl delete ns todo
   ```
 
@@ -3064,6 +2765,464 @@ gcloud container clusters create todo-cluster \
   gcloud sql instances delete todo-db-instance
   # 验证
   gcloud sql instances list
+  ```
+
+## Chart + Argo CD + GCP + Terraform 部署
+
+此种部署方式使用 Terraform 代替原来的手动部署 GCP 资源，其余与 `Chart + Argo CD + GCP 部署` 相同。
+
+### 初始化 Terraform
+
+Terraform 的安装和初始化详见 [Terraform 笔记](<terraform.md#Quick Start>)。
+
+### `main.tf`
+
+```hcl
+# 1. 定义 Provider 和项目信息
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# --- GKE 集群配置 ---
+
+resource "google_container_cluster" "todo_cluster" {
+  name     = "todo-cluster"
+  location = var.zone # 使用 Region 实现高可用，或者改为 asia-east2-a 指定 Zone
+
+  # 我们在这里删除默认节点池，并创建一个独立的节点池
+  remove_default_node_pool = true
+  initial_node_count       = 1
+
+  # 启用 Workload Identity，这是安全连接的关键
+  workload_identity_config {
+    workload_pool = "${var.project_id}.svc.id.goog"
+  }
+}
+
+resource "google_container_node_pool" "primary_nodes" {
+  name       = "todo-node-pool"
+  location   = var.zone
+  cluster    = google_container_cluster.todo_cluster.name
+  node_count = 2 # 对应 --num-nodes=2
+
+  autoscaling {
+    min_node_count = 1 # 对应 --min-nodes=1
+    max_node_count = 5 # 对应 --max-nodes=5
+  }
+
+  node_config {
+    machine_type = "e2-medium"   # 对应 --machine-type
+    disk_type    = "pd-standard" # 对应 --disk-type
+    disk_size_gb = 40            # 对应 --disk-size=40
+
+    # 启用 GKE 节点的 Workload Identity 
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
+
+    # 对应 --scopes=cloud-platform
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+
+    # 指定特定可用区 (对应 --node-locations=asia-east2-a)
+    # 注意：如果 cluster location 是 region，通常不需要手动指定，GCP 会自动分配
+  }
+}
+
+# --- Cloud SQL 配置 (移除 IP 白名单) ---
+
+resource "google_sql_database_instance" "todo_db_instance" {
+  name             = "todo-db-instance"
+  database_version = "MYSQL_8_0" # 对应 --database-version
+  region           = var.region
+
+  settings {
+    tier            = "db-n1-standard-2" # 对应 --tier
+    disk_autoresize = true               # 对应 --storage-auto-increase
+    disk_type       = "PD_SSD"
+    disk_size       = 10 # 对应 --storage-size=10GB
+
+    ip_configuration {
+      ipv4_enabled = true # 启用公网 IP
+
+      # 注意：这里我们移除了 authorized_networks 块
+      # 即使 IP 变化，Auth Proxy 也能通过内部加密隧道连接
+    }
+  }
+
+  # 防止误删（生产环境建议开启）
+  deletion_protection = false
+}
+
+# 创建数据库 (对应 CREATE DATABASE todo_db)
+resource "google_sql_database" "todo_db" {
+  name      = "todo_db"
+  instance  = google_sql_database_instance.todo_db_instance.name
+  charset   = "utf8mb4"
+  collation = "utf8mb4_unicode_ci"
+}
+
+# 创建 root 用户密码 (对应 gcloud sql users set-password)
+resource "google_sql_user" "root_user" {
+  name     = "root"
+  instance = google_sql_database_instance.todo_db_instance.name
+  password = "123456"
+  host     = "%"
+}
+
+# 创建应用用户 jerry (对应 CREATE USER 'jerry')
+resource "google_sql_user" "jerry_user" {
+  name     = "jerry"
+  instance = google_sql_database_instance.todo_db_instance.name
+  password = "000000"
+  host     = "%"
+}
+
+# --- 权限配置 (Workload Identity 绑定) ---
+
+# 1. 创建一个专门给 Pod 用的 GCP 服务账号
+resource "google_service_account" "sql_proxy_sa" {
+  account_id   = "sql-proxy-sa"
+  display_name = "Service Account for SQL Auth Proxy"
+}
+
+# 2. 给该账号授予 Cloud SQL Client 权限
+resource "google_project_iam_member" "sql_client_role" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.sql_proxy_sa.email}"
+}
+
+# 3. 允许 K8s 服务账号使用该 GCP 服务账号
+resource "google_service_account_iam_member" "workload_identity_user" {
+  service_account_id = google_service_account.sql_proxy_sa.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${var.project_id}.svc.id.goog[todo/todo-k8s-sa]"
+}
+```
+
+### `variables.tf`
+
+```hcl
+variable "project_id" {
+  description = "Google Cloud 项目的 ID"
+  type        = string
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  description = "GCP 资源的默认部署区域"
+  type        = string
+  default     = "asia-east2"
+}
+
+variable "zone" {
+  description = "GKE 节点的具体可用区"
+  type        = string
+  default     = "asia-east2-a"
+}
+```
+
+### 部署 GCP
+
+```bash
+cd d:/projects/todo-fullstack/terraform-config
+terraform apply
+```
+
+### `values.yaml`
+
+修改模板文件的参数值 `todo-fullstack/values.yaml` 中的 `DB_HOST` 值。
+
+由于 Cloud SQL 实例已配置 Cloud SQL Auth Proxy，因此数据库主机地址指向本地回环地址和默认端。
+
+```yaml
+# 全局配置
+global:
+  namespace: todo
+  serviceAccountName: "todo-k8s-sa"
+
+gcp:
+  projectId: "project-60addf72-be9c-4c26-8db"
+  region: "asia-east2"
+  sqlInstanceName: "todo-db-instance"
+  sqlProxySaEmail: "sql-proxy-sa@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com"
+
+# Backend 配置
+backend:
+  replicaCount: 2
+  image:
+    repository: jerrybaijy/todo-fullstack-backend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: ClusterIP
+    port: 5000
+  env:
+    SECRET_KEY: your_secret_key_here
+    # 由于 Cloud SQL 实例已配置 Cloud SQL Auth Proxy，
+    # 因此数据库主机地址指向本地回环地址和默认端
+    DB_HOST: "127.0.0.1"        # 本地回环地址
+    MYSQL_PORT: "3306"          # MySQL 端口
+    MYSQL_DATABASE: "todo_db"   # 数据库名称
+    MYSQL_USER: "jerry"         # 数据库用户名
+    MYSQL_PASSWORD: "000000"    # 数据库密码
+
+# Frontend 配置
+frontend:
+  replicaCount: 2
+  image:
+    repository: jerrybaijy/todo-fullstack-frontend
+    tag: latest
+    pullPolicy: Always
+  service:
+    type: LoadBalancer
+    port: 80
+```
+
+### `_helpers.tpl`
+
+修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD + GCP 部署` 相比有修改：
+
+- 生成 Cloud SQL 实例连接名称
+
+```yaml
+{{/* 定义 Chart 的名称，优先使用 Values.nameOverride，如果不存在则使用 Chart.Name */}}
+{{- define "todo-chart.name" }}
+{{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整标识，格式为 Chart.Name-Chart.Version */}}
+{{- define "todo-chart.chart" }}
+{{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Chart 的完整发布名称，优先使用 Values.fullnameOverride，如果不存在则根据 Release.Name 和 Chart.Name 生成 */}}
+{{- define "todo-chart.fullname" }}
+{{- if .Values.fullnameOverride }}
+{{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- $name := default .Chart.Name .Values.nameOverride }}
+{{- if contains $name .Release.Name }}
+{{- .Release.Name | trunc 63 | trimSuffix "-" }}
+{{- else }}
+{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- end }}
+{{- end }}
+{{- end }}
+
+{{/* 生成 Cloud SQL 实例连接名称 */}}
+{{- define "todo-chart.sqlInstanceConnectionName" -}}
+{{- printf "%s:%s:%s" .Values.gcp.projectId .Values.gcp.region .Values.gcp.sqlInstanceName -}}
+{{- end -}}
+
+{{/* 定义 Backend 组件的完整名称 */}}
+{{- define "todo-chart.backend.fullname" }}
+{{- printf "%s-backend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义 Frontend 组件的完整名称 */}}
+{{- define "todo-chart.frontend.fullname" }}
+{{- printf "%s-frontend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+{{- end }}
+
+{{/* 定义基础的标签集合，包含 Chart 信息和 Release 信息 */}}
+{{- define "todo-chart.labels" }}
+helm.sh/chart: {{ include "todo-chart.chart" . }}
+helm.sh/version: {{ .Chart.Version | quote }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- if .Values.commonLabels }}
+{{- toYaml .Values.commonLabels | nindent 2 }}
+{{- end }}
+{{- end }}
+
+{{/* 定义 Backend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.backend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Backend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.backend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-backend
+app.kubernetes.io/component: backend
+{{- end }}
+
+{{/* 定义 Frontend 组件的标签集合，继承基础标签并添加组件特定标签 */}}
+{{- define "todo-chart.frontend.labels" }}
+{{- include "todo-chart.labels" . }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+
+{{/* 定义 Frontend 组件的选择器标签，用于 Pod 选择 */}}
+{{- define "todo-chart.frontend.selectorLabels" }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+app.kubernetes.io/name: {{ include "todo-chart.name" . }}-frontend
+app.kubernetes.io/component: frontend
+{{- end }}
+```
+
+### `backend.yaml`
+
+修改后端模板文件 `templates/backend.yaml`：
+
+- 指定 Service Account 以支持 Workload Identity
+- 注入 Sidecar 容器：添加 cloud-sql-proxy 容器。
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}-secret
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+type: Opaque
+stringData:
+  SECRET_KEY: {{ .Values.backend.env.SECRET_KEY | quote }}
+  DB_HOST: {{ .Values.backend.env.DB_HOST | quote }}
+  MYSQL_PORT: {{ .Values.backend.env.MYSQL_PORT | quote }}
+  MYSQL_DATABASE: {{ .Values.backend.env.MYSQL_DATABASE | quote }}
+  MYSQL_USER: {{ .Values.backend.env.MYSQL_USER | quote }}
+  MYSQL_PASSWORD: {{ .Values.backend.env.MYSQL_PASSWORD | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  replicas: {{ .Values.backend.replicaCount }}
+  selector:
+    matchLabels:
+      {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "todo-chart.backend.labels" . | nindent 8 }}
+    spec:
+      # 1. 关键：指定 Service Account 以支持 Workload Identity
+      serviceAccountName: todo-k8s-sa
+      containers:
+        - name: backend
+          image: "{{ .Values.backend.image.repository }}:{{ .Values.backend.image.tag }}"
+          imagePullPolicy: {{ .Values.backend.image.pullPolicy }}
+          envFrom:
+            - secretRef:
+                name: {{ include "todo-chart.backend.fullname" . }}-secret
+          ports:
+            - containerPort: {{ .Values.backend.service.port }}
+          readinessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+          livenessProbe:
+            httpGet:
+              path: /api/todos
+              port: {{ .Values.backend.service.port }}
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+        # 2. 关键：注入 Sidecar 容器：添加 cloud-sql-proxy 容器。
+        - name: cloud-sql-proxy
+          image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
+          args:
+            - "--port=3306"
+            - {{ include "todo-chart.sqlInstanceConnectionName" . | quote }}
+          securityContext:
+            runAsNonRoot: true
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "todo-chart.backend.fullname" . }}
+  namespace: {{ .Values.global.namespace }}
+  labels:
+    {{- include "todo-chart.backend.labels" . | nindent 4 }}
+
+spec:
+  selector:
+    {{- include "todo-chart.backend.selectorLabels" . | nindent 6 }}
+  ports:
+    - port: {{ .Values.backend.service.port }}
+      targetPort: {{ .Values.backend.service.port }}
+```
+
+### `serviceaccount.yaml`
+
+新建 `serviceaccount.yaml` 文件，创建 ServiceAccount 资源，以支持 Workload Identity。
+
+```yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.global.serviceAccountName }}
+  namespace: {{ .Values.global.namespace }}
+  annotations:
+    iam.gke.io/gcp-service-account: {{ .Values.gcp.sqlProxySaEmail | quote }}
+```
+
+### 部署应用
+
+- 安装 Argo CD 和部署应用与 `Chart + Argo CD + GCP 部署` 基本相同。
+
+- 修改 `.gitignore` 文件，添加如下忽略，否则文件太大，不让推送。
+
+  ```
+  # 忽略 Terraform 运行时的目录
+  .terraform/
+  *.tfstate
+  *.tfstate.backup
+  ```
+
+- 将源代码推送至代码仓库，改变 chart。
+
+- 部署
+
+  使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
+
+  ```bash
+  cd d:/projects/todo-fullstack/argo-cd
+  kubectl apply -f chart-app.yaml
+  ```
+
+- 获取前端访问地址
+
+  ```bash
+  kubectl get svc -n todo
+  ```
+
+- 访问前端：http://$EXTERNAL-IP
+
+- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL Auth>)。
+
+- 卸载 App
+
+  ```bash
+  cd d:/projects/todo-fullstack/argo-cd
+  kubectl delete -f chart-app.yaml
+  kubectl delete ns todo
+  ```
+
+- 清理 GCP
+
+  ```bash
+  cd d:/projects/todo-fullstack/terraform-config
+  terraform destroy
   ```
 
 # 通信管理

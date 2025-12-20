@@ -237,16 +237,22 @@ terraform $COMMAND -help
 ```hcl
 # variables.tf
 
-variable "project" {
-  default = "project-60addf72-be9c-4c26-8db"
+variable "project_id" {
+  description = "Google Cloud 项目的 ID"
+  type        = string
+  default     = "project-60addf72-be9c-4c26-8db"
 }
 
 variable "region" {
-  default = "asia-east2"
+  description = "GCP 资源的默认部署区域"
+  type        = string
+  default     = "asia-east2"
 }
 
 variable "zone" {
-  default = "asia-east2-b"
+  description = "GKE 节点的具体可用区"
+  type        = string
+  default     = "asia-east2-b"
 }
 ```
 
@@ -254,7 +260,7 @@ variable "zone" {
 # main.tf
 
 provider "google" {
-  project = var.project
+  project = var.project_id
   region  = var.region
   zone    = var.zone
 }
