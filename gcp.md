@@ -44,15 +44,22 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 
 # Quick Start
 
+## 准备工作
+
+- 注册 Google 并开通结算
 - 安装 Google Cloud CLI
-- 创建项目
-- 
 
-# Google Cloud SDK
+## 创建项目
 
-[**Google Cloud SDK**](https://docs.cloud.google.com/sdk/docs/overview?hl=zh-cn) 是一套用于与Google Cloud 服务交互的库和工具。它包括命令行工具、特定于语言的客户端库、IDE 扩展程序和模拟器，可帮助您在 Google Cloud上管理资源和自动执行任务。
+- ...
+
+## 部署资源
+
+[使用 Terraform 部署 GCP 资源](<terraform.md#Quick Start>)
 
 # Google Cloud CLI
+
+[**Google Cloud SDK**](https://docs.cloud.google.com/sdk/docs/overview?hl=zh-cn) 是一套用于与Google Cloud 服务交互的库和工具。它包括命令行工具、特定于语言的客户端库、IDE 扩展程序和模拟器，可帮助您在 Google Cloud上管理资源和自动执行任务。
 
 [**Google Cloud CLI**](https://cloud.google.com/sdk/gcloud?hl=zh-cn) 是 Google Cloud 的命令行工具。
 
@@ -207,9 +214,9 @@ gcloud artifacts repositories delete $REPO_NAME --location=$LOACATION
 
 ## Config Overview
 
-## Config Preference
+## Config Reference
 
-> [Config Preference](https://docs.cloud.google.com/sdk/gcloud/reference/config)
+> [Config Reference](https://docs.cloud.google.com/sdk/gcloud/reference/config)
 
 [`gcloud config`](https://docs.cloud.google.com/sdk/gcloud/reference/config) 用于查看和编辑 Google Cloud CLI 属性。
 
@@ -257,9 +264,9 @@ gcloud config list project
 - 项目 ID，您可以提供或 Google Cloud 可以为您提供。
 - 项目编号，由 Google Cloud 提供。
 
-## Projects Preference
+## Projects Reference
 
-> [Projects Preference](https://docs.cloud.google.com/sdk/gcloud/reference/projects)
+> [Projects Reference](https://docs.cloud.google.com/sdk/gcloud/reference/projects)
 
 ```bash
 # 列出所有项目

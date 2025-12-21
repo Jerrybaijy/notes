@@ -38,7 +38,7 @@ Todo Fullstack 是一个完整的全栈 Web 应用原型，采用 GitOps 理念�
 - **容器化实现**：所有组件均容器化，确保环境一致性
 - **GitOps 实践**：代码即基础设施，自动化部署和同步
 - **多环境支持**：支持开发、测试和生产环境的部署
-- **支持多种部署方式**：Docker Compose、Kubernetes、Helm Chart
+- **支持多种部署方式**：Docker Compose、Kubernetes、Helm Chart、Argo CD
 - **可扩展性**：使用 Kubernetes 和 Helm 实现应用的水平扩展
 
 ## 技术栈
@@ -65,7 +65,7 @@ Todo Fullstack 是一个完整的全栈 Web 应用原型，采用 GitOps 理念�
 - **GitOps**：Argo CD
 - **包管理**：Helm
 - **CI/CD**：GitLab CI
-- **Cloud**：GCP, Cloud SQL
+- **Cloud**：GCP, Cloud SQL, Terraform
 
 ## 项目结构
 
@@ -108,7 +108,10 @@ todo-fullstack/
 │   └── namespace.yaml     # 命名空间配置
 │
 ├── terraform/             # GCP 的 Terraform 部署文件
-│   ├── main.tf            # Terraform 主文件
+│   ├── providers.tf       # Provider 配置文件
+│   ├── gke.tf             # GKE 配置文件
+│   ├── iam.tf             # GCP 权限配置文件
+│   ├── sql.tf             # Cloud SQL 配置文件
 │   └── variables.tf       # Terraform 变量
 │
 ├── todo-chart/                  # Helm Chart 目录
@@ -2771,21 +2774,36 @@ gcloud container clusters create todo-cluster \
 
 此种部署方式使用 Terraform 代替原来的手动部署 GCP 资源，其余与 `Chart + Argo CD + GCP 部署` 相同。
 
-### 初始化 Terraform
+### 创建 Terraform 目录和配置文件
 
-Terraform 的安装和初始化详见 [Terraform 笔记](<terraform.md#Quick Start>)。
+```bash
+cd d:/projects/todo-fullstack
+mkdir terraform-config
 
-### `main.tf`
+cd d:/projects/todo-fullstack/terraform-config
+touch providers.tf gke.tf iam.tf sql.tf variables.tf
+```
+
+### `providers.tf`
+
+Provider 配置文件 `terraform-config/providers.tf`
 
 ```hcl
-# 1. 定义 Provider 和项目信息
+# 定义 Provider 和项目信息
 provider "google" {
   project = var.project_id
   region  = var.region
 }
+```
 
-# --- GKE 集群配置 ---
+### `gke.tf`
 
+GKE 配置文件 `terraform-config/gke.tf`
+
+```hcl
+# --- Cluster 配置 ---
+
+# cluster 配置
 resource "google_container_cluster" "todo_cluster" {
   name     = "todo-cluster"
   location = var.zone
@@ -2803,6 +2821,7 @@ resource "google_container_cluster" "todo_cluster" {
   }
 }
 
+# node 配置
 resource "google_container_node_pool" "primary_nodes" {
   name       = "todo-node-pool"
   location   = var.zone
@@ -2828,14 +2847,46 @@ resource "google_container_node_pool" "primary_nodes" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
-
-    # 指定特定可用区 (对应 --node-locations=asia-east2-a)
-    # 注意：如果 cluster location 是 region，通常不需要手动指定，GCP 会自动分配
   }
 }
+```
 
-# --- Cloud SQL 配置 (移除 IP 白名单) ---
+### `iam.tf`
 
+ GCP 权限配置文件 `terraform-config/iam.tf`
+
+```hcl
+# --- 权限配置 (Workload Identity 绑定) ---
+
+# 创建一个专门给 Pod 用的 GCP 服务账号
+resource "google_service_account" "sql_proxy_sa" {
+  account_id   = "sql-proxy-sa"
+  display_name = "Service Account for SQL Auth Proxy"
+}
+
+# 给该账号授予 Cloud SQL Client 权限
+resource "google_project_iam_member" "sql_client_role" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.sql_proxy_sa.email}"
+}
+
+# 允许 K8s 服务账号使用该 GCP 服务账号
+resource "google_service_account_iam_member" "workload_identity_user" {
+  service_account_id = google_service_account.sql_proxy_sa.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${var.project_id}.svc.id.goog[todo/todo-k8s-sa]"
+}
+```
+
+### `sql.tf`
+
+ Cloud SQL 配置文件 `terraform-config/sql.tf`
+
+```hcl
+# --- Cloud SQL 配置 ---
+
+# 创建 Cloud SQL 实例
 resource "google_sql_database_instance" "todo_db_instance" {
   name             = "todo-db-instance"
   database_version = "MYSQL_8_0" # 对应 --database-version
@@ -2849,9 +2900,6 @@ resource "google_sql_database_instance" "todo_db_instance" {
 
     ip_configuration {
       ipv4_enabled = true # 启用公网 IP
-
-      # 注意：这里我们移除了 authorized_networks 块
-      # 即使 IP 变化，Auth Proxy 也能通过内部加密隧道连接
     }
   }
 
@@ -2859,7 +2907,7 @@ resource "google_sql_database_instance" "todo_db_instance" {
   deletion_protection = false
 }
 
-# 创建数据库 (对应 CREATE DATABASE todo_db)
+# 创建 DATABASE
 resource "google_sql_database" "todo_db" {
   name      = "todo_db"
   instance  = google_sql_database_instance.todo_db_instance.name
@@ -2867,7 +2915,7 @@ resource "google_sql_database" "todo_db" {
   collation = "utf8mb4_unicode_ci"
 }
 
-# 创建 root 用户密码 (对应 gcloud sql users set-password)
+# 创建 root 用户密码
 resource "google_sql_user" "root_user" {
   name     = "root"
   instance = google_sql_database_instance.todo_db_instance.name
@@ -2875,57 +2923,44 @@ resource "google_sql_user" "root_user" {
   host     = "%"
 }
 
-# 创建应用用户 jerry (对应 CREATE USER 'jerry')
+# 创建普通用户 jerry
 resource "google_sql_user" "jerry_user" {
   name     = "jerry"
   instance = google_sql_database_instance.todo_db_instance.name
   password = "000000"
   host     = "%"
 }
-
-# --- 权限配置 (Workload Identity 绑定) ---
-
-# 1. 创建一个专门给 Pod 用的 GCP 服务账号
-resource "google_service_account" "sql_proxy_sa" {
-  account_id   = "sql-proxy-sa"
-  display_name = "Service Account for SQL Auth Proxy"
-}
-
-# 2. 给该账号授予 Cloud SQL Client 权限
-resource "google_project_iam_member" "sql_client_role" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.sql_proxy_sa.email}"
-}
-
-# 3. 允许 K8s 服务账号使用该 GCP 服务账号
-resource "google_service_account_iam_member" "workload_identity_user" {
-  service_account_id = google_service_account.sql_proxy_sa.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${var.project_id}.svc.id.goog[todo/todo-k8s-sa]"
-}
 ```
 
 ### `variables.tf`
 
+变量配置文件 `terraform-config/variables.tf`
+
 ```hcl
 variable "project_id" {
-  description = "Google Cloud 项目的 ID"
+  description = "GCP Project ID"
   type        = string
   default     = "project-60addf72-be9c-4c26-8db"
 }
 
 variable "region" {
-  description = "GCP 资源的默认部署区域"
+  description = "GCP Region"
   type        = string
   default     = "asia-east2"
 }
 
 variable "zone" {
-  description = "GKE 节点的具体可用区"
+  description = "GKE Zone"
   type        = string
   default     = "asia-east2-a"
 }
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/todo-fullstack/terraform-config
+terraform init
 ```
 
 ### 部署 GCP
@@ -2933,6 +2968,14 @@ variable "zone" {
 ```bash
 cd d:/projects/todo-fullstack/terraform-config
 terraform apply
+```
+
+部署之后要[更新 `kubectl` 配置](<gcp-gke.md#更新 `kubectl` 配置>)
+
+```bash
+gcloud container clusters get-credentials todo-cluster \
+    --location asia-east2-a \
+    --project project-60addf72-be9c-4c26-8db
 ```
 
 ### `values.yaml`
@@ -3183,13 +3226,17 @@ metadata:
 
 - 安装 Argo CD 和部署应用与 `Chart + Argo CD + GCP 部署` 基本相同。
 
-- 修改 `.gitignore` 文件，添加如下忽略，否则文件太大，不让推送。
+- 修改 `.gitignore` 文件，添加如下忽略。
 
   ```
-  # 忽略 Terraform 运行时的目录
+  # Terraform
   .terraform/
   *.tfstate
   *.tfstate.backup
+  .terraform.tfstate.lock.info
+  *.tfplan
+  *.tfvars
+  *.tfvars.json
   ```
 
 - 将源代码推送至代码仓库，改变 chart。
@@ -3213,7 +3260,7 @@ metadata:
 
 - 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
 
-- 卸载 App
+- 卸载 App（可选）
 
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
@@ -3228,30 +3275,32 @@ metadata:
   terraform destroy
   ```
 
-# 通信管理
+# 项目总结
 
-## 本地开发阶段
+## 通信管理
 
-### 通信流程
+### 本地开发阶段
+
+#### 通信流程
 
 前端发送请求 `/api/todos` → Vite 代理 → 后端 (http://localhost:5000) → 容器化 MySQL (端口映射)
 
-### 前端通信配置
+#### 前端通信配置
 
 - **运行地址** ：本地 http://localhost:5173/
 - **代理配置**：在 `vite.config.js` 中配置了 API 代理
 - **通信方式** ：Vite 代理将前端请求 `/api/todos` 转发至 http://localhost:5000/api/todos 直接访问后端。
 
-### 后端通信配置
+#### 后端通信配置
 
 - **运行地址** ：本地 http://localhost:5000
 - **后端到数据库** ：直接连接本地经端口转发后的容器化 MySQL
 
-### 数据库通信配置
+#### 数据库通信配置
 
 - **端口转发**：在启动容器化 MySQL 时设置端口转发至本地
 
-## Docker Compose 阶段
+### Docker Compose 阶段
 
 外部请求 → 前端容器 (80端口) → Nginx 反向代理 → 后端容器 (5000端口) → MySQL 容器 (3306端口)
 
@@ -3261,7 +3310,7 @@ metadata:
 - **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - **后端到数据库** ：后端通过 `db:3306` 访问 MySQL 数据库
 
-## K8s + Argo CD 阶段
+### K8s + Argo CD 阶段
 
 外部请求 → 前端 Service → 前端 Pod → Nginx 反向代理 → 后端 Service → 后端 Pod
 
@@ -3270,23 +3319,23 @@ metadata:
 - **前端到后端** ：前端容器内的 Nginx 将 `/api` 请求反向代理到 http://backend:5000/api/todos
 - **后端到数据库** ：后端通过 `mysql` 服务名访问 MySQL 数据库
 
-## Chart + Argo CD 阶段
+### Chart + Argo CD 阶段
 
 与 K8s + Argo CD 阶段相同
 
-# 环境变量管理
+## 环境变量管理
 
-## 本地开发阶段
+### 本地开发阶段
 
 环境变量获取自 `todo-fullstack/.env`
 
-## Docker Compose 阶段
+### Docker Compose 阶段
 
 - 从 `todo-fullstack/.env` 中加载环境变量
 - 但 DB_HOST 在 `docker-compose.yml` 中硬编码
 - 环境变量通过 `environment` 字段注入到各个服务容器中
 
-## K8s + Argo CD 阶段
+### K8s + Argo CD 阶段
 
 - 使用 Kubernetes ConfigMap 和 Secret 管理环境变量
   - `mysql-config` ConfigMap：存储 `MYSQL_DATABASE` 和 `DB_HOST`
@@ -3294,16 +3343,23 @@ metadata:
   - `backend-secret` Secret：存储 `SECRET_KEY`
 - 通过 `envFrom` 字段将 ConfigMap 和 Secret 注入到容器中
 
-## Chart + Argo CD 阶段
+### Chart + Argo CD 阶段
 
 - **Values.yaml 配置**：环境变量通过 Helm Chart 的 `values.yaml` 集中管理
 - **模板函数**：通过 Helm 模板函数将配置值渲染到 Kubernetes 资源文件中
 - **ConfigMap 和 Secret**：与 K8s + Argo CD 部署方式相同，使用 ConfigMap 和 Secret 存储和注入环境变量
 
-# 数据库管理
+## 数据库管理
 
 - **模型定义**：在 `backend/app/models.py` 中定义数据库模型
 - **迁移生成**：使用 `flask db migrate` 自动生成迁移脚本
 - **迁移应用**：使用 `flask db upgrade` 应用迁移到数据库
 - **容器启动**：在 `boot.sh` 脚本中自动执行数据库迁移，确保数据库结构与代码一致
 
+## GitOps 工作流
+
+1. **代码变更**：开发者提交代码到 Git 仓库
+2. **CI 触发**：GitLab CI 自动构建和测试
+3. **镜像推送**：构建成功后推送 Docker 镜像和 Helm Chart
+4. **Argo CD 同步**：Argo CD 监控 Git 仓库变更
+5. **自动部署**：Argo CD 自动将变更部署到 GKE 集群

@@ -8,7 +8,7 @@
         "type": "tabs",
         "children": [
           {
-            "id": "3ca6f7f6d2a69837",
+            "id": "28f2beca91b64d1f",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -22,17 +22,31 @@
             }
           },
           {
-            "id": "7d881ccb6c9d1310",
+            "id": "941df719b2641df3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "todo-fullstack.md",
+                "file": "gcp-cloud-sql.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "todo-fullstack"
+              "title": "gcp-cloud-sql"
+            }
+          },
+          {
+            "id": "55fe77ea79446e7f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "terraform"
             }
           },
           {
@@ -78,20 +92,6 @@
             }
           },
           {
-            "id": "0412e1d17e0a6d71",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-cloud-sql.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-cloud-sql"
-            }
-          },
-          {
             "id": "2b735ca0d72bb84b",
             "type": "leaf",
             "state": {
@@ -105,8 +105,7 @@
               "title": "argo-cd"
             }
           }
-        ],
-        "currentTab": 6
+        ]
       }
     ],
     "direction": "vertical"
@@ -138,7 +137,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "vs",
+                "query": "navi",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -155,13 +154,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "argo-cd.md",
+                "file": "0000-to-do.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "argo-cd 的大纲"
+              "title": "0000-to-do 的大纲"
             }
           },
           {
@@ -179,7 +178,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -254,19 +254,19 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "2b735ca0d72bb84b",
+  "active": "28f2beca91b64d1f",
   "lastOpenFiles": [
-    "gcp-cloud-sql.md",
-    "gcp.md",
     "gcp-gke.md",
-    "todo-fullstack.md",
+    "gcp.md",
     "0000-to-do.md",
-    "terraform.md",
+    "gcp-cloud-sql.md",
     "argo-cd.md",
+    "hcl.md",
+    "terraform.md",
+    "todo-fullstack.md",
     "kubernetes.md",
     "cloud-computing.md",
     "markdown.md",
-    "hul.md",
     "shell.md",
     "windows.md",
     "web.md",

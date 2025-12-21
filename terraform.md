@@ -30,58 +30,24 @@ tags:
 
 # Quick Start
 
-此 [Quick Start](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started) 以 GCP 为例
+此 [Quick Start](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started) 以在 GCP 部署一个 VPC 资源为例。
 
-## 注册 HCP
+## 准备工作
 
-[Sign up for HCP Terraform](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up)
+- [注册 HCP](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up)
 
-## 创建组织
+- [创建组织](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up#create-an-organization)
 
-[Create an organization](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up#create-an-organization)
+- 安装 Terraform
 
-## 安装 Terraform
+- [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
 
-### 安装 Terraform
+  - 创建一个项目
 
-以管理员身份启动终端，使用 Chocolatey [安装 Terraform](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli)，重启终端生效。
+  - 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
 
-```bash
-# 安装（安装完成后需重启所有终端）
-choco install terraform
-# 查看版本
-terraform version
-```
 
-### 开启命令补全
-
-- 在 `/c/Users/jerry/.bashrc` 文件中添加如下内容，重启终端生效。
-- 例：输入 `terrform pl`，然后按 `Tab` 会补全至 `terrform plan`。
-- 注：如果有多个子命令符合条件，连按两次 `Tab` 会返回全部可用子命令。
-
-```bash
-# Terraform 别名和自动补全
-alias terraform='terraform.exe'
-complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terraform
-```
-
-### VS Code Plugin
-
-在 VS Code 中安装 `HashiCorp Terraform` 插件。
-
-- 语法高亮
-- 代码格式化（需在 VS Code 的 `settings.json` 文件中设置）
-
-## 设置 GCP
-
-提前[设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
-
-- 创建一个项目
-- 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
-
-## 创建 configuration
-
-### 创建目录和配置文件
+## 创建 Terraform 目录和配置文件
 
 ```bash
 mkdir /d/projects/0000-tests/learn-terraform-gcp
@@ -89,9 +55,11 @@ cd /d/projects/0000-tests/learn-terraform-gcp
 touch main.tf
 ```
 
-### `main.tf`
+## `main.tf`
 
 ```hcl
+# main.tf
+
 terraform {
   required_providers {
     google = {
@@ -104,29 +72,13 @@ terraform {
 provider "google" {
   project = "project-60addf72-be9c-4c26-8db"
   region  = "asia-east2"
-  zone    = "asia-east2-b"
+  zone    = "asia-east2-a"
 }
 
 resource "google_compute_network" "vpc_network" {
   name = "terraform-network"
 }
 ```
-
-### 代码格式化
-
-有两种方法进行格式化：
-
-- VS Code 插件 `HashiCorp Terraform`（需在 VS Code 的 `settings.json` 文件中设置）
-
-- 使用 Terraform 命令
-
-  ```bash
-  cd /d/projects/0000-tests/learn-terraform-gcp
-  # 格式化
-  terraform fmt
-  # 验证格式化时有效的
-  terraform validate
-  ```
 
 ## 初始化目录
 
@@ -137,8 +89,10 @@ cd /d/projects/0000-tests/learn-terraform-gcp
 terraform init
 ```
 
-- 这一步会下载配置中定义 Google provider，并将其安装在当前工作目录的一个隐藏子目录中，名为 `.terraform`。
-- 还创建了一个名为 `.terraform.lock.hcl` 的锁文件，指定了所使用的具体提供者版本，以确保每次 Terraform 运行一致。这也让你能够控制何时升级配置中使用的供应商。
+当执行 `terraform init` 后，Terraform 会根据 `.tf` 文件进行初始化工作，会在配置根目录出现：
+
+- `.terraform`：本地缓存目录，详见 [`.terraform`](<#`.terraform`>)。
+- `.terraform.lock.hcl`：依赖锁定文件，详见 [`.terraform.lock.hcl`](<#`.terraform.lock.hcl`>)。
 
 ## 部署资源
 
@@ -156,14 +110,24 @@ terraform show
 
 执行 `terraform apply` 命令以后，看到的是 Terraform 的 **Plan**，输入 `yes`（必须完整输入这三个字母）并按回车。
 
-目录多出一个 **`terraform.tfstate`** 文件，这是 Terraform 的状态文件。
+当执行 `terraform apply` 后，会在配置根目录出现：
 
-- Terraform 会将它管理的资源的 ID 和属性存储在这个文件中，以便未来更新或销毁这些资源。
-- 注意这个文件中包含敏感信息。
+- `terraform.tfstate`：状态文件，详见 [`terraform.tfstate`](<#`terraform.tfstate`>)。
+- `terraform.tfstate.backup`：状态备份文件，详见 [`terraform.tfstate.backup`](<#`terraform.tfstate.backup`>)。
 
-登录 Google Cloud 控制台，会发现多了一个名为 `terraform-network` 的 VPC。
+登录 Google Cloud 控制台，可以查看新部署的 GCP 资源。
 
-## 修改配置
+## 更新 `kubectl` 配置
+
+使用 Terraform 部署 GCP 资源后要[更新 `kubectl` 配置](<gcp-gke.md#更新 `kubectl` 配置>)。
+
+```bash
+gcloud container clusters get-credentials todo-cluster \
+    --location asia-east2-a \
+    --project project-60addf72-be9c-4c26-8db
+```
+
+## 修改配置（可选）
 
 向 `main.tf` 中添加一个 Compute Engine 实例，并执行 `terraform apply` 命令部署。
 
@@ -182,7 +146,7 @@ terraform {
 provider "google" {
   project = "project-60addf72-be9c-4c26-8db"
   region  = "asia-east2"
-  zone    = "asia-east2-b"
+  zone    = "asia-east2-a"
 }
 
 resource "google_compute_network" "vpc_network" {
@@ -207,12 +171,60 @@ resource "google_compute_instance" "vm_instance" {
 }
 ```
 
-## 清理部署
+## 销毁部署
 
 ```bash
 cd /d/projects/0000-tests/learn-terraform-gcp
 terraform destroy
 ```
+
+# Install
+
+## 安装 Terraform
+
+以管理员身份启动终端，使用 Chocolatey [安装 Terraform](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli)，重启终端生效。
+
+```bash
+# 安装（安装完成后需重启所有终端）
+choco install terraform
+# 查看版本
+terraform version
+```
+
+## 开启命令补全
+
+- 在 `/c/Users/jerry/.bashrc` 文件中添加如下内容，重启终端生效。
+- 例：输入 `terrform pl`，然后按 `Tab` 会补全至 `terrform plan`。
+- 注：如果有多个子命令符合条件，连按两次 `Tab` 会返回全部可用子命令。
+
+```bash
+# Terraform 别名和自动补全
+alias terraform='terraform.exe'
+complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terraform
+```
+
+## VS Code Plugin
+
+在 VS Code 中安装 `HashiCorp Terraform` 插件。
+
+- 语法高亮
+- 代码格式化（需在 VS Code 的 `settings.json` 文件中设置）
+
+## 代码格式化
+
+有两种方法进行格式化：
+
+- VS Code 插件 `HashiCorp Terraform`（需在 VS Code 的 `settings.json` 文件中设置）
+
+- 使用 Terraform 命令
+
+  ```bash
+  cd /d/projects/0000-tests/learn-terraform-gcp
+  # 格式化
+  terraform fmt
+  # 验证格式化时有效的
+  terraform validate
+  ```
 
 # Command
 
@@ -276,5 +288,85 @@ output "ip" {
 }
 ```
 
+# Terraform 文件
 
+## 配置文件
+
+如果资源少，可以将所有配置写入 `main.tf` 文件。
+
+如果资源多，可以将 `main.tf` 拆分重构为多个文件，以 GCP 为例：
+
+- `providers.tf`：Provider 配置文件
+- `gke.tf`：GKE 配置文件
+- `iam.tf`：GCP 权限配置文件
+- `sql.tf`：Cloud SQL 配置文件
+- `variables.tf`：变量配置文件 
+
+## Git 忽略
+
+将以下添加到 `.gitignore` 文件：
+
+```
+# Terraform
+.terraform/
+*.tfstate
+.terraform.tfstate.lock.info
+*.tfplan
+*.tfvars
+*.tfvars.json
+*.tfstate.backup
+```
+
+## `.terraform`
+
+这是一个**本地缓存目录**，它是 Terraform 运行的“工作间”。
+
+- 会在执行 `terraform init` 后自动生成。
+- **存放 Provider 插件**：Terraform 会根据你在 `providers.tf` 中定义的 `google` provider，从官方仓库下载对应的二进制驱动文件并存放在这里 。
+- **存放 Module**：如果你在代码中引用了外部模块，它们也会被下载到这里。
+- **注意**：这个文件夹通常很大，**绝对不要**将其提交到 Git 仓库。你应该在 `.gitignore` 文件中忽略它。
+
+## `.terraform.lock.hcl`
+
+这是**依赖锁定文件**（Dependency Lock File），类似于 Node.js 的 `package-lock.json` 或 Python 的 `poetry.lock`。
+
+- 会在执行 `terraform init` 后自动生成。
+- **版本锁定**：它记录了你当前使用的 Provider 插件的具体版本号和校验和（Hashes） 。
+- **团队一致性**：如果你把这个文件提交到 Git，团队中的其他成员在执行 `terraform init` 时，Terraform 会确保下载完全相同版本的插件，避免因为 Provider 版本升级导致的基础设施变更不一致。
+- **建议**：行业最佳实践是**将其提交到 Git**。
+
+## `.terraform.tfstate.lock.info`
+
+这是**状态锁文件**，作用是**防止多人同时修改**同一套资源。
+
+- **原理**：当你运行 `terraform plan` 或 `apply` 时，Terraform 会创建一个“锁”。如果此时你的同事也尝试运行命令，Terraform 会报错并阻止他，直到你运行结束。
+- **消失的原因**：一旦命令执行完毕（无论成功或失败），锁就会被自动释放，文件随之删除。
+- 如果命令意外崩溃导致这个文件没有消失，下次运行会报错。这时通常使用 `terraform force-unlock` 命令，而不是手动删除文件。
+- **注意**：这个文件**不要**提交到公共代码仓库。
+
+## `terraform.tfstate`
+
+这是**状态文件**，是 Terraform 的“记忆库”。
+
+- **原理**：它记录了云端资源的真实状态。
+- **消失/变化的原因**：如果你是第一次运行且没有实际创建资源，它可能只是一个临时占位符。正常情况下，执行完 `terraform apply` 后，它会变成一个持久化的文件。
+- **注意**：这个文件包含敏感信息，**不要**提交到公共代码仓库。
+
+## `terraform.tfstate.backup`
+
+这是**状态备份文件**，每当执行一次会改变状态的操作（如 `terraform apply` 或 `terraform destroy`）时，Terraform 会遵循以下流程：
+
+1. **读取**当前的 `terraform.tfstate` 文件。
+2. **备份**：将这个旧的状态保存为 `terraform.tfstate.backup`。
+3. **更新**：将云端最新的真实状态和变更结果写入新的 `terraform.tfstate` 。
+
+如果这次 `apply` 过程中发生了严重错误（比如网络中断导致状态文件损坏），可以通过这个备份文件恢复到上一个稳定的状态。
+
+状态备份文件包含敏感信息，不要提交到 Git。
+
+## `$PLAN_NAME.tfplan`
+
+这个**锁定计划文件**是在执行 `terraform plan -out=$PLAN_NAME.tfplan` 后自动生成，锁定了当前的代码逻辑和云端状态。
+
+稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
 

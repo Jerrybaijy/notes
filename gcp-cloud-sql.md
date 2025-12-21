@@ -57,7 +57,27 @@ EXIT;
 
 ## 连接 Cloud SQL
 
-### 获取 Cloud SQL 实例的公网 IP
+使用 [Cloud SQL Auth](<#Cloud SQL Auth>) 机制连接 Cloud SQL。
+
+## 删除 Cloud SQL 实例
+
+```bash
+# 删除
+gcloud sql instances delete todo-db-instance
+# 验证
+gcloud sql instances list
+```
+
+# 连接 Cloud SQL
+
+有两种方式连接 Cloud SQL：
+
+- [Cloud SQL Auth](<#Cloud SQL Auth>) (推荐)
+- 添加白名单
+
+此处记录如何添加白名单：
+
+## 获取 Cloud SQL 实例的公网 IP
 
 在 [Google Cloud Shell](https://console.cloud.google.com/) 中执行以下命令：
 
@@ -69,7 +89,7 @@ gcloud sql instances describe todo-db-instance --format='value(ipAddresses.ipAdd
 
 仅仅拿到公共 IP 是无法直接连接的，出于安全考虑，Google Cloud 默认会拦截所有外部连接。
 
-### 获取本地电脑和 GKE 节点公网 IP
+## 获取本地电脑和 GKE 节点公网 IP
 
 ```bash
 # 获取本地公网 IP
@@ -83,7 +103,7 @@ kubectl get nodes -o wide
 # 34.96.197.161
 ```
 
-### 添加授权网络
+## 添加授权网络
 
 如果想从本地电脑和 GKE 节点连接，需要把相应的公网 IP 加入到白名单。
 
@@ -106,15 +126,6 @@ gcloud sql instances describe todo-db-instance \
 本地公网 IP 加入到白名单以后，即可使用本地客户端（如 Navicate）通过 Cloud SQL 的公网 IP 连接它。
 
 GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQL 的公网 IP 连接它。
-
-## 删除 Cloud SQL 实例
-
-```bash
-# 删除
-gcloud sql instances delete todo-db-instance
-# 验证
-gcloud sql instances list
-```
 
 # Cloud SQL Auth
 
