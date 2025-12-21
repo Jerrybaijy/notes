@@ -42,6 +42,12 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
   - [Cloud Shell](https://docs.cloud.google.com/shell/docs/features?hl=zh-cn)
 - [客户端库](https://docs.cloud.google.com/sdk/cloud-client-libraries?hl=zh-cn)
 
+# Quick Start
+
+- 安装 Google Cloud CLI
+- 创建项目
+- 
+
 # Google Cloud SDK
 
 [**Google Cloud SDK**](https://docs.cloud.google.com/sdk/docs/overview?hl=zh-cn) 是一套用于与Google Cloud 服务交互的库和工具。它包括命令行工具、特定于语言的客户端库、IDE 扩展程序和模拟器，可帮助您在 Google Cloud上管理资源和自动执行任务。
@@ -209,7 +215,7 @@ gcloud artifacts repositories delete $REPO_NAME --location=$LOACATION
 
 ### `gcloud config set`
 
-[`gcloud config set`](https://docs.cloud.google.com/sdk/gcloud/reference/config/set) 用于设置 Google Cloud CLI 属性。
+[`gcloud config set`](https://docs.cloud.google.com/sdk/gcloud/reference/config/set) 用于设置 Google Cloud CLI 属性。
 
 ```bash
 # 设置登录账户
@@ -243,7 +249,7 @@ gcloud config list project
 
 ## Projects Overview
 
-分配和使用的任何 Google Cloud 资源都必须属于一个[**项目**](https://docs.cloud.google.com/docs/overview?hl=zh-cn#projects)。除您使用[共享 VPC](https://docs.cloud.google.com/vpc/docs/shared-vpc?hl=zh-cn) 或 [VPC 网络对等互连](https://docs.cloud.google.com/vpc/docs/vpc-peering?hl=zh-cn)，否则一个项目无法访问其他项目的资源。
+[**项目**](https://docs.cloud.google.com/docs/overview?hl=zh-cn#projects)是所有资源的“容器”。在 GCP 中，任何资源都必须归属于某个项目。除您使用[共享 VPC](https://docs.cloud.google.com/vpc/docs/shared-vpc?hl=zh-cn) 或 [VPC 网络对等互连](https://docs.cloud.google.com/vpc/docs/vpc-peering?hl=zh-cn)，否则一个项目无法访问其他项目的资源。
 
 每个 Google Cloud 项目都具有以下内容：
 

@@ -9,28 +9,127 @@ tags:
   - web
 ---
 
-# Git
+# VCS
 
-## Git 基础
+## VCS Overview
 
-- [Git - 官方中文文档](https://git-scm.com/book/zh/v2/起步-关于版本控制)
-- [Git 菜鸟教程](https://www.runoob.com/git/git-tutorial.html)
+**VCS** （Version Control System，版本控制系统），简单来说，它就像是代码或文档的“时光机”，能够记录文件随时间变化的所有修改历史。VCS 主要分为两大类：
 
-### 环境搭建
+- 集中式版本控制系统（CVCS）
+  - 所有的版本数据都保存在单一的**中央服务器**上
+  - 代表有 SVN (Subversion), CVS
+- 分布式版本控制系统（DVCS）
+  - 每个人的电脑都是一个完整的代码库。你本地就拥有全部的历史记录。
+  - 代表有 Git (目前最主流), Mercurial
 
-#### Windows
+## VCS 托管平台
+
+这些平台为 VCS（主要是 Git）提供了可视化的界面和在线协作功能：
+
+- **GitHub**：全球最大的开源代码社区。
+- **GitLab**：企业常用的私有化部署方案，集成度极高。
+- **Gitee**：国内访问速度较快的代码托管平台。
+
+云原生代码仓库：
+
+| **云服务商**        | **代码仓库产品名称**          | **底层使用的 VCS** |
+| ------------------- | ----------------------------- | ------------------ |
+| **AWS**             | AWS CodeCommit                | Git                |
+| **Google Cloud**    | Cloud Source Repositories     | Git                |
+| **Microsoft Azure** | Azure Repos                   | Git / TFVC         |
+| **阿里云**          | 云效 Codeup                   | Git                |
+| **腾讯云**          | 腾讯云开发者代码分析 / CODING | Git                |
+| **华为云**          | CodeArts Repo                 | Git                |
+
+# Overview
+
+[**Git**](https://git-scm.com/) 是一个**分布式版本控制系统**（DVCS）。
+
+> [Git Docs](https://git-scm.com/book/zh/v2)
+>
+> [Git Reference](https://git-scm.com/docs)
+
+![git02](assets/git02.png)
+
+# Quick Start
+
+- 安装 Git
+
+- 新建本地仓库目录
+
+  ```bash
+  mkdir $REPO_NAME
+  cd $REPO_NAME
+  ```
+
+- 初始化本地仓库，并设置默认分支名为 `main`。
+
+  ```bash
+  git init --initial-branch=main
+  ```
+
+- 创建远程托管仓库，如 GitHub 或 GitLab
+
+- 添加默认 Remote Repo
+
+  ```bash
+  git remote add origin $REMOTE_REPO
+  ```
+
+- 添加另一个 Remote Repo，后添加的只能 `push`；
+
+  ```bash
+  git remote set-url --add origin $REMOTE_REPO
+  ```
+
+- 检查添加两个 Remote Repo 成功
+
+  ```bash
+  git remote -v
+  ```
+
+  ```
+  origin  https://gitlab.com/jerrybai/notes.git (fetch)
+  origin  https://gitlab.com/jerrybai/notes.git (push)
+  origin  https://github.com/Jerrybaijy/notes.git (push)
+  ```
+
+- 向本地仓库目录 `$REPO_NAME` 添加任何文件，否则接下来无法 `commit`；
+
+- 添加两个 Remote Repo 的默认分支并关联，同时完成第一次推送；
+
+  ```bash
+  git add .
+  git commit -m "1st commit"
+  git push -u origin main
+  ```
+
+- 检查远程托管仓库已推送成功；
+
+- 其它操作同正常操作。
+
+# Install
+
+## Windows
 
 - 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
+
 - 安装时注意
   - 选择 `main` 分支
   - 将 `Open Git UI Here` 从上下文菜单中取消勾选
   - 可以将 Git Bash 添加到 Windows Terminal（添加后需在 Windows Terminal 配置中添加样式，详见 Windows Terminal）
 
-#### Debian
+- 验证安装
+
+  ```bash
+  git -v
+  ```
+
+## Debian
 
 - `sudo apt-get install git`
 
-#### 配置
+## 配置
 
 - 配置用户名和邮箱，此处的用户名和邮箱并不是登录用的
 
@@ -54,7 +153,7 @@ tags:
   - GitLab 可以用户名密码登录。
   - GitHub 需使用令牌登录，详见 GitHub。
 
-#### 网络代理
+## 网络代理
 
 - 由于网络原因，在执行 `git push` 时，经常推送失败；
 - 应设置网络代理代理
@@ -81,117 +180,41 @@ tags:
   git config --global --unset https.proxy
   ```
 
-### 其它基础
-
-- **Git 管理**
-
-  ```bash
-  # 查看git版本信息
-  git -v
-  ```
-
-- **基本流程**
-
-  ![git02](assets/git02.png)
-
 # Repo
 
-- **基础命令**
+## 基础命令
 
-  ```bash
-  # 查看仓库状态
-  git status
-  # 下载
-  git clone PATH
-  # 跟踪
-  git add .
-  # 提交
-  git commit -m "MESAGE"
-  # 推送
-  git push
-  # 拉取
-  git pull
-  ```
+```bash
+# 查看仓库状态
+git status
+# 下载
+git clone $REMOTE_REPO
+# 跟踪
+git add .
+# 提交
+git commit -m "MESAGE"
+# 推送
+git push
+# 拉取
+git pull $REMOTE_REPO
+# 初始化本地仓库，并设置默认分支名为 `main`。
+git init --initial-branch=main
+```
 
-- **两个 Remote Repo**
+## 多个 Remote Repo
 
-  ```bash
-  # 查看本地 Repo 配置的 Remote Repo
-  git remote -v
-  # 添加默认 Remote Repo（本地没有 Remote Repo 的操作，添加后需设置 Upstream）
-  git remote add origin $REMOTE_REPO
-  # 添加另一个 Remote Repo，后添加的只能 push
-  git remote set-url --add origin $REMOTE_REPO
-  # 移除一个 Remote Repo
-  git remote set-url --delete origin $REMOTE_REPO
-  # 移除所有 Remote Repo
-  git remote rm origin
-  ```
-
-- **git init 步骤**
-
-  ```bash
-  # 创建一个 Local Repo，并设置默认分支名为 main。
-  git init --initial-branch=main
-  
-  # 网页创建 Remote Repo，
-  
-  # 添加默认 Remote Repo
-  git remote add origin $REMOTE_REPO
-  
-  # 设置 upstream（前提是已经commit过）
-  git push -u origin main
-  
-  # 其它与正常操作同理
-  ```
-
-## 本地创建仓库
-
-- 本地新建文件夹 `FOLDER_NAME`；
-
-- 终端进入文件夹 `FOLDER_NAME`；
-- 本地创建 Local Repo，并设置默认分支名为 `main`；
-
-  ```bash
-  git init --initial-branch=main
-  ```
-
-- GitLab 和 GitHub 网页端分别创建 Remote Repo；
-- 添加默认 Remote Repo
-
-  ```bash
-  git remote add origin $REMOTE_REPO
-  ```
-
-- 添加另一个 Remote Repo，后添加的只能 `push`；
-
-  ```bash
-  git remote set-url --add origin $REMOTE_REPO
-  ```
-
-- 检查添加两个仓库成功
-
-  ```bash
-  git remote -v
-  ```
-
-  ```
-  origin  https://gitlab.com/jerrybai/notes.git (fetch)
-  origin  https://gitlab.com/jerrybai/notes.git (push)
-  origin  https://github.com/Jerrybaijy/notes.git (push)
-  ```
-
-- 向文件夹 `FOLDER_NAME` 添加任何文件，否则接下来无法 `commit`；
-- 添加两个 Remote Repo 的默认分支并关联，同时完成第一次推送；
-
-  ```bash
-  git add .
-  git commit -m "1st commit"
-  git push -u origin main
-  ```
-
-- 网页检查已推送成功；
-- 其它操作同正常操作。
+```bash
+# 查看本地 Repo 配置的 Remote Repo
+git remote -v
+# 设置默认 Remote Repo（本地没有 Remote Repo 的操作，添加后需设置 Upstream）
+git remote add origin $REMOTE_REPO
+# 添加另一个 Remote Repo，后添加的只能 push
+git remote set-url --add origin $REMOTE_REPO
+# 移除一个 Remote Repo
+git remote set-url --delete origin $REMOTE_REPO
+# 移除所有 Remote Repo
+git remote rm origin
+```
 
 # Branch
 
@@ -199,55 +222,49 @@ tags:
 
 安装 Git 时，有选项选择本地仓库默认分支为 main。
 
-- **基础命令**
+```bash
+# 查看分支
+git branch
+# 创建分支
+git branch $BRANCH_NAME # 使用-d删除
+# 切换分支
+git checkout $BRANCH_NAME # 使用-b创建并切换新分支
+# 关联分支
+git push -u origin $BRANCH_NAME # git pull -u origin BRANCH_NAME
+# 合并分支
+git merge $BRANCH_NAME
+# 重命名目前分支
+git branch -m $BRANCH_NAME
 
-  ```bash
-  # 查看分支
-  git branch
-  # 创建分支
-  git branch $BRANCH_NAME # 使用-d删除
-  # 切换分支
-  git checkout $BRANCH_NAME # 使用-b创建并切换新分支
-  # 关联分支
-  git push -u origin $BRANCH_NAME # git pull -u origin BRANCH_NAME
-  # 合并分支
-  git merge $BRANCH_NAME
-  # 重命名目前分支
-  git branch -m $BRANCH_NAME
-  
-  # 删除远程分支
-  git push origin --delete $REMOTE_BRANCH_NAME
-  ```
+# 删除远程分支
+git push origin --delete $REMOTE_BRANCH_NAME
+```
 
-## 其它
+## 关联 Branch
 
-- **关联 Branch**
+```bash
+# 关联分支
+git push -u origin $BRANCH_NAME
+git pull -u origin $BRANCH_NAME
 
-  ```bash
-  # 关联分支
-  git push -u origin $BRANCH_NAME
-  git pull -u origin $BRANCH_NAME
-  
-  # 清除关联
-  git remote rm origin
-  ```
+# 清除关联
+git remote rm origin
+```
 
-  **解释**：
+**解释**：
 
-  - **-u**：等价于 `--set-upstream`，设置上游分支
-  - **origin**：远程仓库的别名；当克隆一个远程仓库时，Git 会默认创建一个名为 `origin` 的远程仓库别名，指向远程仓库地址。
-  - **BRANCH_NAME**：远程分支名字
-  - 设置上游分支以后，本地分支与上游分支建立关联，以后可在本分支下直接使用 `git push`
-  - 每次新生成分支需将新分支与远程分支建立一次关联
+- **-u**：等价于 `--set-upstream`，设置上游分支
+- **origin**：远程仓库的别名；当克隆一个远程仓库时，Git 会默认创建一个名为 `origin` 的远程仓库别名，指向远程仓库地址。
+- **BRANCH_NAME**：远程分支名字
+- 设置上游分支以后，本地分支与上游分支建立关联，以后可在本分支下直接使用 `git push`
+- 每次新生成分支需将新分支与远程分支建立一次关联
 
 # 版本控制
 
-- **基础命令**
-
-  ```bash
-  # 追溯
-  git reset --hard SHA # SHA哈希值
-  ```
+```bash
+# 追溯
+git reset --hard SHA # SHA哈希值
+```
 
 # `.gitignore`
 

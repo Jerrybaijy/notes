@@ -45,7 +45,7 @@ tags:
   
   # 用户名：admin
   # 本地上次密码：dAlsKbgZa4FvVT6V
-  # GCP 上次密码：aOdibCAidYq0WBoJ
+  # GCP 上次密码：QaoZBvwjn7YQgEs9
   ```
 
 - 配置网络之后即可查看 Argo CD UI 界面

@@ -2479,7 +2479,7 @@ spec:
 
 ### `values.yaml`
 
-修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
+修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
 - **backend**：引入了 Cloud SQL 的环境变量。
@@ -2522,7 +2522,7 @@ frontend:
 
 ### `_helpers.tpl`
 
-修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD 部署` 相比有修改：
+修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - 删除了 MySQL 部分以及其它改变
 
@@ -2716,7 +2716,7 @@ gcloud container clusters create todo-cluster \
 
 ### 创建 Cloud SQL 实例
 
-创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL>)。
+创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Quick Start>)。
 
 ### 部署
 
@@ -2788,7 +2788,10 @@ provider "google" {
 
 resource "google_container_cluster" "todo_cluster" {
   name     = "todo-cluster"
-  location = var.zone # 使用 Region 实现高可用，或者改为 asia-east2-a 指定 Zone
+  location = var.zone
+
+  # 关闭防止误删
+  deletion_protection = false
 
   # 我们在这里删除默认节点池，并创建一个独立的节点池
   remove_default_node_pool = true
@@ -2852,7 +2855,7 @@ resource "google_sql_database_instance" "todo_db_instance" {
     }
   }
 
-  # 防止误删（生产环境建议开启）
+  # 关闭防止误删（生产环境建议开启）
   deletion_protection = false
 }
 
@@ -2984,7 +2987,7 @@ frontend:
 
 ### `_helpers.tpl`
 
-修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD + GCP 部署` 相比有修改：
+修改模板函数 `templates/_helpers.tpl`，此文件与 `Chart + Argo CD + GCP 部署` 相比有修改：
 
 - 生成 Cloud SQL 实例连接名称
 
@@ -3193,7 +3196,7 @@ metadata:
 
 - 部署
 
-  使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
+  使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
 
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
@@ -3208,7 +3211,7 @@ metadata:
 
 - 访问前端：http://$EXTERNAL-IP
 
-- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL Auth>)。
+- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
 
 - 卸载 App
 

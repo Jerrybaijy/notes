@@ -1,5 +1,5 @@
 ---
-title: cloud-sql
+title: gcp-cloud-sql
 author: Jerry.Baijy
 tags:
   - 应用科学
@@ -11,7 +11,11 @@ tags:
 
 # Overview
 
-Cloud SQL 是 Google Cloud 提供的数据库服务。
+[**Cloud SQL**](https://docs.cloud.google.com/sql/docs?hl=zh-cn) 是由 GCP 提供的、适用于 [MySQL](https://docs.cloud.google.com/sql/docs/mysql?hl=zh-cn)、[PostgreSQL](https://docs.cloud.google.com/sql/docs/postgres?hl=zh-cn) 和 [SQL Server](https://docs.cloud.google.com/sql/docs/sqlserver?hl=zh-cn) 的**全代管式数据库服务**。
+
+> [Cloud SQL Docs](https://docs.cloud.google.com/sql/docs?hl=zh-cn)
+>
+> [Cloud SQL Reference](https://docs.cloud.google.com/sdk/gcloud/reference/sql)
 
 # Quick Start
 
@@ -133,7 +137,7 @@ gcloud sql instances list
 
 ## 在集群中连接
 
-详见 [Todo Fullstack](<todo-fullstack.md#Chart + Argo CD + GCP + Terraform 部署>) 项目
+详见 [Todo Fullstack](<todo-fullstack.md#Chart + Argo CD + GCP + Terraform 部署>) 项目
 
 - GKE
   - 在 GKE 中启用 Workload Identity

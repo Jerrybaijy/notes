@@ -22,17 +22,17 @@
             }
           },
           {
-            "id": "9df357f6bcbad773",
+            "id": "7d881ccb6c9d1310",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cloud-computing.md",
+                "file": "todo-fullstack.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "cloud-computing"
+              "title": "todo-fullstack"
             }
           },
           {
@@ -69,44 +69,30 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "gke.md",
+                "file": "gcp-gke.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "gke"
+              "title": "gcp-gke"
             }
           },
           {
-            "id": "ac2d90ff86d5f9cd",
+            "id": "0412e1d17e0a6d71",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "cloud-sql.md",
+                "file": "gcp-cloud-sql.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "cloud-sql"
+              "title": "gcp-cloud-sql"
             }
           },
           {
-            "id": "222b6dccbafb34a7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "terraform"
-            }
-          },
-          {
-            "id": "2529956d1a8ef1da",
+            "id": "2b735ca0d72bb84b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -117,20 +103,6 @@
               },
               "icon": "lucide-file",
               "title": "argo-cd"
-            }
-          },
-          {
-            "id": "3cbdd8feca9a553d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "todo-fullstack.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "todo-fullstack"
             }
           }
         ],
@@ -183,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terraform.md",
+                "file": "argo-cd.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "terraform 的大纲"
+              "title": "argo-cd 的大纲"
             }
           },
           {
@@ -207,8 +179,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -228,7 +199,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "terraform.md",
+                "file": "argo-cd.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -238,7 +209,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "terraform 的反向链接列表"
+              "title": "argo-cd 的反向链接列表"
             }
           },
           {
@@ -283,29 +254,29 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "222b6dccbafb34a7",
+  "active": "2b735ca0d72bb84b",
   "lastOpenFiles": [
-    "cloud-sql.md",
+    "gcp-cloud-sql.md",
+    "gcp.md",
+    "gcp-gke.md",
+    "todo-fullstack.md",
+    "0000-to-do.md",
+    "terraform.md",
+    "argo-cd.md",
     "kubernetes.md",
     "cloud-computing.md",
-    "argo-cd.md",
-    "todo-fullstack.md",
-    "terraform.md",
-    "gke.md",
-    "gcp.md",
+    "markdown.md",
     "hul.md",
     "shell.md",
     "windows.md",
     "web.md",
     "assets/regions-zones.svg",
-    "markdown.md",
     "html.md",
     "cad.md",
     "crypto.md",
     "vite.md",
     "cloud-service.md",
     "obsidian.md",
-    "0000-to-do.md",
     "sql.md",
     "todo-fullstack-gitops.md",
     "mysql.md",
