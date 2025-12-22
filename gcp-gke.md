@@ -55,7 +55,7 @@ gke-gcloud-auth-plugin --version
 
 ## 更新 `kubectl` 配置
 
-以使用 `gke-gcloud-auth-plugin` 插件
+用以使用 `gke-gcloud-auth-plugin` 插件交互集群
 
 ```bash
 gcloud container clusters get-credentials $CLUSTER_NAME \
@@ -72,7 +72,7 @@ kubectl get ns
 
 ## 交互 GKE
 
-将 kubectl 上下文切换至 GKE，使用 kubectl 交互 GKE
+[将 kubectl cnotext 切换至 GKE](<kubernetes.md#`kubectl config`>)
 
 ## 删除 GKE
 

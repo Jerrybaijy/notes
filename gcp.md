@@ -20,18 +20,6 @@ tags:
 >
 > [Google Cloud 产品](https://cloud.google.com/products?hl=zh-cn&_gl=1*xq66jx*_ga*MTYwMDY0NjE4Ni4xNzYxNTY3Mjky*_ga_WH2QY8WWF5*czE3NjU4MDQ4MDkkbzgkZzEkdDE3NjU4MDc0NTQkajI5JGwwJGgw)
 
-## 资源范围
-
-[GCP 资源范围](https://docs.cloud.google.com/docs/overview?hl=zh-cn#global_regional_and_zonal_resources)：
-
-- **全球资源**：可以由跨区域和地区的其他任何资源访问的资源，包括预配置的磁盘映像、磁盘快照和网络。
-- **区域资源**：只能由同一区域内的资源访问的资源，包括静态外部 IP 地址。
-- **地区资源**：只能由同一地区内的资源访问的资源，包括虚拟机实例、机器类型和磁盘。
-
-下图显示了全球范围、地区和区域及其部分资源之间的关系：
-
-![regions-zones](assets/regions-zones.svg)
-
 ## 交互方式
 
 Google Cloud 为您提供了三种与服务和资源[交互的基本方式](https://docs.cloud.google.com/docs/overview?hl=zh-cn#ways_to_interact_with_the_services)。
@@ -49,13 +37,18 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 - 注册 Google 并开通结算
 - 安装 Google Cloud CLI
 
-## 创建项目
+## 创建 GCP Project
 
-- ...
+[创建 GCP Project](<gcp-project.md#Quick Start>)
 
-## 部署资源
+## 管理 GCP 服务资源
 
-[使用 Terraform 部署 GCP 资源](<terraform.md#Quick Start>)
+- [使用 Terraform 管理 GCP 服务资源](<terraform.md#Quick Start>)
+- 或者使用其它方式（例如 CLI）管理 GCP 服务资源
+
+## 删除 GCP Project
+
+[删除 GCP Project](<gcp-project.md#Quick Start>)
 
 # Google Cloud CLI
 
@@ -163,6 +156,43 @@ gcloud info --format="value(config.paths.global_config_dir)"
 
 - 手动删除用户配置目录。
 
+# Resource Manager
+
+Google Cloud 提供组织和项目等容器资源，可对其他 Google Cloud 资源进行分组和分层整理。
+
+> [Resource Manager Docs](https://docs.cloud.google.com/resource-manager/docs?hl=zh-cn)
+
+## 地理架构
+
+[地理架构](https://docs.cloud.google.com/docs/geography-and-regions?hl=zh-cn)：指资源的可用地理范围。资源只能被同范围内的资源访问。
+
+```
+Location: 通用
+
+Multi-region(多区域)
+└── Region (区域)
+    └── Zone (可用区)
+```
+
+- **Location (位置)**：一个通用的概念，指部署资源的地理范围。可以是 Multi-region、Region 和 Zone。
+- **Multi-region (多区域)**：大洲级别，例如 `ASIA` （台湾），由多个 Region 组成，会跨 Region 备份。
+- **Region (区域)**：城市级别，例如 `asia-east1` （台湾），由多个 Zone 组成，会跨 Zone 备份。
+- **Zone (可用区)**：机房级别，例如 `asia-east1-a`（台湾 A 区），不备份。
+
+## 资源层次结构
+
+[**资源层次结构**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn)：Google Cloud 资源以分层方式进行整理。
+
+```
+Organization
+└── Folder (可选)
+    └── Project
+```
+
+- [**Organization**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn#organizations) 资源是Google Cloud 资源层次结构中的**根节点**，通常对应一个公司或域名（如 `yourcompany.com`）。
+- [**Folder**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn#folders) 资源是 Organization 和 Project 之间的可选层级，可对项目进行分组。
+- [**Project**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn#projects) 资源是 GCP 最基础的实体，是所有服务资源的“容器”。
+
 # Gcloud Reference
 
 ## 语法
@@ -227,7 +257,7 @@ gcloud artifacts repositories delete $REPO_NAME --location=$LOACATION
 ```bash
 # 设置登录账户
 gcloud config set account $YOUR_ACCOUNT
-# 设置项目
+# 设置默认项目
 gcloud config set project $PROJECT_ID
 ```
 
@@ -250,29 +280,6 @@ gcloud config get-value project
 gcloud config list [SECTION/PROPERTY] [Flags]
 # 列出当前项目
 gcloud config list project
-```
-
-# GCP Projects
-
-## Projects Overview
-
-[**项目**](https://docs.cloud.google.com/docs/overview?hl=zh-cn#projects)是所有资源的“容器”。在 GCP 中，任何资源都必须归属于某个项目。除您使用[共享 VPC](https://docs.cloud.google.com/vpc/docs/shared-vpc?hl=zh-cn) 或 [VPC 网络对等互连](https://docs.cloud.google.com/vpc/docs/vpc-peering?hl=zh-cn)，否则一个项目无法访问其他项目的资源。
-
-每个 Google Cloud 项目都具有以下内容：
-
-- 项目名称，由您提供。
-- 项目 ID，您可以提供或 Google Cloud 可以为您提供。
-- 项目编号，由 Google Cloud 提供。
-
-## Projects Reference
-
-> [Projects Reference](https://docs.cloud.google.com/sdk/gcloud/reference/projects)
-
-```bash
-# 列出所有项目
-gcloud projects list
-# 删除项目
-gcloud projects delete $PROJECT_ID
 ```
 
 # GCP Bare Metal

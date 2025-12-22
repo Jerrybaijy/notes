@@ -78,6 +78,20 @@
             }
           },
           {
+            "id": "e3a0238e92146e8c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp-project.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp-project"
+            }
+          },
+          {
             "id": "a4bfaa0e5035ac77",
             "type": "leaf",
             "state": {
@@ -137,7 +151,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "navi",
+                "query": "hcl",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -256,15 +270,16 @@
   },
   "active": "28f2beca91b64d1f",
   "lastOpenFiles": [
-    "gcp-gke.md",
     "gcp.md",
-    "0000-to-do.md",
-    "gcp-cloud-sql.md",
-    "argo-cd.md",
-    "hcl.md",
-    "terraform.md",
-    "todo-fullstack.md",
+    "gcp-gke.md",
     "kubernetes.md",
+    "gcp-cloud-sql.md",
+    "gcp-project.md",
+    "argo-cd.md",
+    "0000-to-do.md",
+    "todo-fullstack.md",
+    "terraform.md",
+    "hcl.md",
     "cloud-computing.md",
     "markdown.md",
     "shell.md",
@@ -282,7 +297,6 @@
     "mysql.md",
     "git.md",
     "docker.md",
-    "flask.md",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",
     "assets/image-20251215223439473.png",
