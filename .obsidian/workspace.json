@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform.md",
+                "file": "gcp.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "terraform"
+              "title": "gcp"
             }
           },
           {
@@ -92,6 +92,20 @@
             }
           },
           {
+            "id": "c045176f5fd8c3e1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "terraform"
+            }
+          },
+          {
             "id": "a4bfaa0e5035ac77",
             "type": "leaf",
             "state": {
@@ -119,7 +133,8 @@
               "title": "argo-cd"
             }
           }
-        ]
+        ],
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -168,13 +183,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "terraform.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "0000-to-do 的大纲"
+              "title": "terraform 的大纲"
             }
           },
           {
@@ -213,7 +228,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "argo-cd.md",
+                "file": "terraform.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -223,7 +238,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "argo-cd 的反向链接列表"
+              "title": "terraform 的反向链接列表"
             }
           },
           {
@@ -254,8 +269,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
-    "collapsed": true
+    "width": 300.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -268,18 +282,18 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "28f2beca91b64d1f",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
-    "gcp.md",
     "gcp-gke.md",
+    "hcl.md",
+    "terraform.md",
+    "gcp.md",
+    "gcp-project.md",
+    "0000-to-do.md",
     "kubernetes.md",
     "gcp-cloud-sql.md",
-    "gcp-project.md",
     "argo-cd.md",
-    "0000-to-do.md",
     "todo-fullstack.md",
-    "terraform.md",
-    "hcl.md",
     "cloud-computing.md",
     "markdown.md",
     "shell.md",

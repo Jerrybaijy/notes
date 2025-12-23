@@ -10,11 +10,17 @@ tags:
 
 # Overview
 
-[**Terraform**](https://developer.hashicorp.com/terraform) 是一种由 HashiCorp 公司开发的开源的**基础设施即代码（IaC）工具**。
+[**Terraform**](https://developer.hashicorp.com/terraform) 是一个由 HashiCorp 公司开发的开源的**基础设施即代码（IaC）工具**。
 
 > [Terraform Docs](http://developer.hashicorp.com/terraform/docs)
 >
+> [Terraform HCL Docs](https://developer.hashicorp.com/terraform/language)
+>
 > [Terraform on Google Cloud](https://docs.cloud.google.com/docs/terraform?hl=zh-cn)
+>
+> [Write Terraform Configuration](https://developer.hashicorp.com/terraform/tutorials/configuration-language)
+>
+> [Terraform provider for Google Cloud](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 
 ## Workflow
 
@@ -41,25 +47,21 @@ tags:
 - 安装 Terraform
 
 - [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
-
-  - 创建一个项目
-
-  - 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
-
+- 创建一个项目
+  
+- 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
 
 ## 创建 Terraform 目录和配置文件
 
 ```bash
 mkdir /d/projects/0000-tests/learn-terraform-gcp
 cd /d/projects/0000-tests/learn-terraform-gcp
-touch main.tf
+touch providers.tf variables.tf vpc.tf output.tf
 ```
 
-## `main.tf`
+## 编写 `providers.tf`
 
 ```hcl
-# main.tf
-
 terraform {
   required_providers {
     google = {
@@ -70,17 +72,51 @@ terraform {
 }
 
 provider "google" {
-  project = "project-60addf72-be9c-4c26-8db"
-  region  = "asia-east2"
-  zone    = "asia-east2-a"
-}
-
-resource "google_compute_network" "vpc_network" {
-  name = "terraform-network"
+  project = var.gcp_project_id
+  region  = var.gcp_region
+  zone    = var.gcp_zone
 }
 ```
 
-## 初始化目录
+## 编写 `variables.tf`
+
+```hcl
+variable "gcp_project_id" {
+  description = "GCP Project ID"
+  type        = string
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "gcp_region" {
+  description = "GCP Region"
+  type        = string
+  default     = "asia-east2"
+}
+
+variable "gcp_zone" {
+  description = "GKE Zone"
+  type        = string
+  default     = "asia-east2-a"
+}
+
+variable "vpc_network_name" {
+  description = "VPC 网络的名称"
+  type        = string
+  default     = "terraform-network"
+}
+```
+
+## 编写 `vpc.tf`
+
+```hcl
+resource "google_compute_network" "vpc_network" {
+  name = var.vpc_network_name
+}
+```
+
+## 编写 `output.tf`
+
+## 初始化 Terraform
 
 [初始化目录](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#initialize-the-directory)
 
@@ -94,7 +130,7 @@ terraform init
 - `.terraform`：本地缓存目录，详见 [`.terraform`](<#`.terraform`>)。
 - `.terraform.lock.hcl`：依赖锁定文件，详见 [`.terraform.lock.hcl`](<#`.terraform.lock.hcl`>)。
 
-## 部署资源
+## 应用部署
 
 ```bash
 # 使用 gcloud CLI 授权
@@ -119,7 +155,7 @@ terraform show
 
 ## 更新 `kubectl` 配置
 
-使用 Terraform 部署 GCP 资源后要[更新 `kubectl` 配置](<gcp-gke.md#更新 `kubectl` 配置>)。
+使用 Terraform 部署 GKE 资源后要[更新 `kubectl` 配置](<gcp-gke.md#更新 `kubectl` 配置>)。
 
 ```bash
 gcloud container clusters get-credentials todo-cluster \
@@ -127,7 +163,7 @@ gcloud container clusters get-credentials todo-cluster \
     --project project-60addf72-be9c-4c26-8db
 ```
 
-## 修改配置（可选）
+## 修改 Terraform 配置（可选）
 
 向 `main.tf` 中添加一个 Compute Engine 实例，并执行 `terraform apply` 命令部署。
 
@@ -226,6 +262,10 @@ complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terrafor
   terraform validate
   ```
 
+# Init
+
+
+
 # Command
 
 ```bash
@@ -238,7 +278,23 @@ terraform plan -help
 terraform $COMMAND -help
 ```
 
+# Providers
+
+> [Providers](https://developer.hashicorp.com/terraform/language/providers)
+
+# Resources
+
+> [Resources](https://developer.hashicorp.com/terraform/language/resources)
+>
+> 
+
 # Variables
+
+> [管理模块中的值](https://developer.hashicorp.com/terraform/language/values)
+>
+> [变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables)
+>
+> [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
 
 ## `variable`
 
@@ -250,21 +306,21 @@ terraform $COMMAND -help
 # variables.tf
 
 variable "project_id" {
-  description = "Google Cloud 项目的 ID"
   type        = string
   default     = "project-60addf72-be9c-4c26-8db"
+  description = "Google Cloud 项目的 ID"
 }
 
 variable "region" {
-  description = "GCP 资源的默认部署区域"
   type        = string
   default     = "asia-east2"
+  description = "GCP 资源的默认部署区域"
 }
 
 variable "zone" {
-  description = "GKE 节点的具体可用区"
   type        = string
   default     = "asia-east2-b"
+  description = "GKE 节点的具体可用区"
 }
 ```
 
@@ -277,6 +333,8 @@ provider "google" {
   zone    = var.zone
 }
 ```
+
+# Output
 
 ## `output`
 
@@ -300,7 +358,8 @@ output "ip" {
 - `gke.tf`：GKE 配置文件
 - `iam.tf`：GCP 权限配置文件
 - `sql.tf`：Cloud SQL 配置文件
-- `variables.tf`：变量配置文件 
+- `variables.tf`：输入变量配置文件
+- `output.tf`：输出变量配置文件
 
 ## Git 忽略
 
@@ -368,5 +427,5 @@ output "ip" {
 
 这个**锁定计划文件**是在执行 `terraform plan -out=$PLAN_NAME.tfplan` 后自动生成，锁定了当前的代码逻辑和云端状态。
 
-稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
+稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
 
