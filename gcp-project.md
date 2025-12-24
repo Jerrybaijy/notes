@@ -131,35 +131,7 @@ gcloud projects create project-jerry-111111 \
 
 ## Create a Project with Terraform
 
-```hcl
-# 定义 Provider
-provider "google" {
-  # 初始配置时可以先不指定 project，或者指定一个已存在的管理用项目
-  region = "asia-east1"
-}
-
-# 创建项目
-resource "google_project" "my_new_project" {
-  project_id = "project-jerry-terraform-999"
-  name       = "My Terraform Project"
-  org_id = "123456789012" 
-  
-  # 关联账单账号（可选，但推荐）
-  # billing_account = "012345-678901-ABCDEF"
-
-  # 是否自动创建默认网络（建议设为 false，保持项目整洁）
-  auto_create_network = false
-}
-
-# 启用 API (以 Compute Engine 为例)
-resource "google_project_service" "compute_api" {
-  project = google_project.my_new_project.project_id
-  service = "compute.googleapis.com"
-
-  # 确保项目创建后再启用服务
-  depends_on = [google_project.my_new_project]
-}
-```
+详见 [Terraform-GCP 笔记](<terraform-gcp.md#Project>)
 
 # Project Reference
 

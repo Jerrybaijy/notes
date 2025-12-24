@@ -15,11 +15,11 @@ tags:
 
 # Quick Start
 
-## 前提条件
+## 准备工作
 
-- Google Cloud CLI 已安装并完成初始化
-- 本地 kubectl 已安装
-- Google Cloud 项目已创建
+- [Google Cloud CLI](<gcp.md#Google Cloud CLI>) 已安装并完成初始化
+- [本地 kubectl](<kubernetes.md#kubectl>) 已安装
+- [GCP project](<gcp-project.md#Quick Start>) 已创建
 
 ## 创建 GKE
 

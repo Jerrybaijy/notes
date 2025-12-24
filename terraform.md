@@ -4,6 +4,7 @@ author: Jerry.Baijy
 tags:
   - 应用科学
   - it
+  - cloud
   - iac
   - terraform
 ---
@@ -12,11 +13,11 @@ tags:
 
 [**Terraform**](https://developer.hashicorp.com/terraform) 是一个由 HashiCorp 公司开发的开源的**基础设施即代码（IaC）工具**。
 
-> [Terraform Docs](http://developer.hashicorp.com/terraform/docs)
+> [Terraform Docs](http://developer.hashicorp.com/terraform/docs)：Terraform 官方文档
 >
-> [Terraform HCL Docs](https://developer.hashicorp.com/terraform/language)
+> [Terraform HCL Docs](https://developer.hashicorp.com/terraform/language)：适用于 Terraform 的 HCL 语言
 >
-> [Terraform on Google Cloud](https://docs.cloud.google.com/docs/terraform?hl=zh-cn)
+> [Terraform Registry](https://registry.terraform.io/)
 >
 > [Write Terraform Configuration](https://developer.hashicorp.com/terraform/tutorials/configuration-language)
 >
@@ -59,7 +60,7 @@ cd /d/projects/0000-tests/learn-terraform-gcp
 touch providers.tf variables.tf vpc.tf output.tf
 ```
 
-## 编写 `providers.tf`
+## 编写 `terraform.tf`
 
 ```hcl
 terraform {
@@ -70,7 +71,11 @@ terraform {
     }
   }
 }
+```
 
+## 编写 `providers.tf`
+
+```hcl
 provider "google" {
   project = var.gcp_project_id
   region  = var.gcp_region
@@ -264,8 +269,6 @@ complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terrafor
 
 # Init
 
-
-
 # Command
 
 ```bash
@@ -280,59 +283,25 @@ terraform $COMMAND -help
 
 # Providers
 
+Terraform 依赖于 [Provider](https://developer.hashicorp.com/terraform/language/providers)（插件）与云提供商、SaaS 提供商和其他 API 进行交互。
+
 > [Providers](https://developer.hashicorp.com/terraform/language/providers)
+>
+> [Provider Registry](https://registry.terraform.io/browse/providers)
 
 # Resources
 
 > [Resources](https://developer.hashicorp.com/terraform/language/resources)
->
-> 
 
 # Variables
 
+> [`variable`](<terraform-hcl.md#`variable`>)
+>
 > [管理模块中的值](https://developer.hashicorp.com/terraform/language/values)
 >
 > [变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables)
 >
 > [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
-
-## `variable`
-
-[`variable`](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-variables)：类似环境变量
-
-如果声明的变量为空值，在部署时会被要求输入变量值。
-
-```hcl
-# variables.tf
-
-variable "project_id" {
-  type        = string
-  default     = "project-60addf72-be9c-4c26-8db"
-  description = "Google Cloud 项目的 ID"
-}
-
-variable "region" {
-  type        = string
-  default     = "asia-east2"
-  description = "GCP 资源的默认部署区域"
-}
-
-variable "zone" {
-  type        = string
-  default     = "asia-east2-b"
-  description = "GKE 节点的具体可用区"
-}
-```
-
-```hcl
-# main.tf
-
-provider "google" {
-  project = var.project_id
-  region  = var.region
-  zone    = var.zone
-}
-```
 
 # Output
 

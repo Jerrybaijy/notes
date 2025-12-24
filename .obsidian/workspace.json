@@ -92,6 +92,20 @@
             }
           },
           {
+            "id": "98bccf1fe470e6ad",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo-fullstack.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "todo-fullstack"
+            }
+          },
+          {
             "id": "c045176f5fd8c3e1",
             "type": "leaf",
             "state": {
@@ -103,6 +117,34 @@
               },
               "icon": "lucide-file",
               "title": "terraform"
+            }
+          },
+          {
+            "id": "073ccfd30f4b2d66",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform-hcl.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "terraform-hcl"
+            }
+          },
+          {
+            "id": "d791a2f6892dcaf1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "terraform-gcp.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "terraform-gcp"
             }
           },
           {
@@ -183,13 +225,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terraform.md",
+                "file": "todo-fullstack.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "terraform 的大纲"
+              "title": "todo-fullstack 的大纲"
             }
           },
           {
@@ -201,7 +243,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "react"
+                "searchQuery": "cloud"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -228,7 +270,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "terraform.md",
+                "file": "todo-fullstack.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -238,7 +280,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "terraform 的反向链接列表"
+              "title": "todo-fullstack 的反向链接列表"
             }
           },
           {
@@ -269,7 +311,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5
+    "width": 300.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -282,18 +325,20 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "98bccf1fe470e6ad",
   "lastOpenFiles": [
     "gcp-gke.md",
-    "hcl.md",
-    "terraform.md",
-    "gcp.md",
     "gcp-project.md",
-    "0000-to-do.md",
+    "terraform-gcp.md",
+    "todo-fullstack.md",
+    "gcp.md",
+    "terraform.md",
     "kubernetes.md",
+    "terraform-hcl.md",
+    "hcl.md",
+    "0000-to-do.md",
     "gcp-cloud-sql.md",
     "argo-cd.md",
-    "todo-fullstack.md",
     "cloud-computing.md",
     "markdown.md",
     "shell.md",
@@ -309,8 +354,6 @@
     "sql.md",
     "todo-fullstack-gitops.md",
     "mysql.md",
-    "git.md",
-    "docker.md",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",
     "assets/image-20251215223439473.png",
