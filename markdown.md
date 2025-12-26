@@ -498,6 +498,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 ## 内联链接
 
 - **链接文本**放在方括号内，**链接地址**放在后面的圆括号中。
+
 - **语法**：`[alt](SRC/URL)`
 
   ```markdown
@@ -517,10 +518,6 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
   > 这是一个基本链接：[Markdown 语法](https://markdown.com.cn)。
   >
   > 这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "关于链接的解释")。
-
-- 为了消除 Markdown 在不同解析器下的歧义，CommonMark 规范规定，链接目标如果包含空格，则必须用尖括号 `< >` 包裹。
-
-  > [Cloud SQL 笔记](<gcp-cloud-sql.md#Quick Start>)
 
 ## 引用链接
 
@@ -576,7 +573,7 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 ## 锚点
 
-- 锚点属于 Markdown 的**扩展语法**。
+锚点属于 Markdown 的**扩展语法**。
 
 ### 标题锚点
 
@@ -591,31 +588,59 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 - 也许可以通过 `### 标题名 {#custom-id}` 自定义标题锚点，但至今没有在任何一个 Markdown 处理器成功过。
 
-### 自定义锚点
-
-- 通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`html-elements | 锚点`](../html/html-elements.md#锚点) 笔记。
-
-  ```markdown
-  <span id="example">第一部分</span>
-  
-  [点击跳转至百度](#example)
-  ```
-
 ### 跨文件锚点
 
-- **语法**
+```markdown
+<!-- target.md -->
 
-  ```html
-  <span id="anchor">锚点</span>
-  ```
+# Overview
+```
 
-  ```markdown
-  详见 [`HTML` > `锚点`](../frontend/html/html.md#anchor)
-  ```
+```markdown
+<!-- test.md -->
 
-  **在以上示例中**：
+详见[Target 笔记](target.md#Overview)
+```
 
-  1. 如果 `html.md` 文件事先处于关闭状态，要点击两次才能直达锚点。
+**注意**：如果 `target.md` 文件事先处于关闭状态，要点击两次才能直达锚点。
+
+### 自定义锚点
+
+通过内嵌 HTML 标签为非标题内容自定义锚点，详见 [`html | 锚点`](html.md#锚点) 笔记。
+
+```markdown
+<span id="example">第一部分</span>
+
+[点击跳转至百度](#example)
+```
+
+### 锚点中的空格
+
+为了消除 Markdown 在不同解析器下的歧义，CommonMark 规范规定，链接目标如果包含空格，则必须用尖括号 `< >` 包裹。
+
+> 例如：[Cloud SQL 笔记](<gcp-cloud-sql.md#Quick Start>)
+
+### 锚点冲突
+
+同一个 Markdown 文档，可能有多个同名标题，会引起锚点冲突，可在具体标题添加 `<a id="$ANCHOR"></a>`。
+
+**注意**：此方法不适用于 Obsidian
+
+```markdown
+# 第一章
+
+## 第一节
+
+# 第二章
+
+## 第一节<a id="第二章第一节"></a>
+
+# 第三章
+
+## 第一节
+
+请参照[第二章第一节](<#第二章第一节>)
+```
 
 # 图片
 

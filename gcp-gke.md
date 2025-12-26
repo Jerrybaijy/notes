@@ -17,7 +17,7 @@ tags:
 
 ## 准备工作
 
-- [Google Cloud CLI](<gcp.md#Google Cloud CLI>) 已安装并完成初始化
+- [GCP 准备工作](<gcp.md#准备工作>)已完成
 - [本地 kubectl](<kubernetes.md#kubectl>) 已安装
 - [GCP project](<gcp-project.md#Quick Start>) 已创建
 
@@ -27,7 +27,7 @@ tags:
 # 创建标准集群
 gcloud container clusters create $CLUSTER_NAME --region=$REGION
 # e.g.
-gcloud container clusters create todo-cluster \
+gcloud container clusters create my-cluster \
     --region=asia-east2 \
     --node-locations=asia-east2-a \
     --num-nodes=2 \
@@ -62,7 +62,7 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
     --location=$CONTROL_PLANE_LOCATION
 
 # 更新配置
-gcloud container clusters get-credentials todo-cluster \
+gcloud container clusters get-credentials my-cluster \
     --location asia-east2 \
     --project project-60addf72-be9c-4c26-8db
 
@@ -78,8 +78,28 @@ kubectl get ns
 
 ```bash
 gcloud container clusters delete $CLUSTER_NAME --region=$REGION
-gcloud container clusters delete todo-cluster --region=asia-east2
+gcloud container clusters delete my-cluster --region=asia-east2
 ```
+
+# Create a GKE
+
+## Create a GKE with `gcloud projects create`
+
+- [准备工作](<#准备工作>)已完成
+
+- 开启 GKE 必需 API
+
+  ```bash
+  gcloud services enable compute.googleapis.com container.googleapis.com \
+      --project $PROJECT_ID
+  
+  gcloud services enable compute.googleapis.com container.googleapis.com \
+      --project project-60addf72-be9c-4c26-8db
+  ```
+
+- 尽快了
+
+## Create a GKE with Terraform
 
 # GKE Reference
 
@@ -89,7 +109,7 @@ gcloud container clusters delete todo-cluster --region=asia-east2
 # 创建标准集群
 gcloud container clusters create $CLUSTER_NAME [Flags]
 # e.g.
-gcloud container clusters create todo-cluster \
+gcloud container clusters create my-cluster \
     --region=asia-east2 \
     --node-locations=asia-east2-a \
     --num-nodes=2 \
@@ -107,6 +127,8 @@ gcloud container clusters delete $CLUSTER_NAME [Flags]
 # 停止集群
 gcloud container clusters resize $CLUSTER_NAME [Flags]
 ```
+
+
 
 # 手动部署
 

@@ -35,11 +35,11 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 ## 准备工作
 
 - 注册 Google 并开通结算
-- 安装 Google Cloud CLI
+- [安装和配置 Google Cloud CLI](<#Install>)
 
 ## 创建 GCP Project
 
-[创建 GCP Project](<gcp-project.md#Quick Start>)
+[创建 GCP Project](<gcp-project.md#Create a Project with `gcloud projects create`>)
 
 ## 管理 GCP 服务资源
 
@@ -48,7 +48,8 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 
 ## 删除 GCP Project
 
-[删除 GCP Project](<gcp-project.md#Quick Start>)
+- [使用 Terraform 删除 GCP Project](<gcp-project.md#Quick Start>)
+- 或者使用其它方式（例如 CLI）删除 GCP Project
 
 # Google Cloud CLI
 
@@ -81,6 +82,17 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
   ```
 
 - 根据提示选择选项，最后跳转到浏览器中登录 Google 账号。
+
+- 配置 Google Cloud CLI 的默认选项
+
+  ```bash
+  # 设置默认项目
+  gcloud config set project $PROJECT_ID
+  # 设置默认 region (zone 同理)
+  gcloud config set compute/region $REGION
+  # 列出默认配置
+  gcloud config list
+  ```
 
 ### Linux
 
@@ -176,7 +188,7 @@ Multi-region(多区域)
 
 - **Location (位置)**：一个通用的概念，指部署资源的地理范围。可以是 Multi-region、Region 和 Zone。
 - **Multi-region (多区域)**：大洲级别，例如 `ASIA` （台湾），由多个 Region 组成，会跨 Region 备份。
-- **Region (区域)**：城市级别，例如 `asia-east1` （台湾），由多个 Zone 组成，会跨 Zone 备份。
+- **Region (区域)**：城市级别，例如 `asia-east1` （台湾），由多个 Zone 组成，会跨 Zone 备份。
 - **Zone (可用区)**：机房级别，例如 `asia-east1-a`（台湾 A 区），不备份。
 
 ## 资源层次结构
@@ -240,46 +252,60 @@ gcloud artifacts repositories list
 gcloud artifacts repositories delete $REPO_NAME --location=$LOACATION
 ```
 
-# GCP Config
-
-## Config Overview
-
-## Config Reference
-
-> [Config Reference](https://docs.cloud.google.com/sdk/gcloud/reference/config)
+# `gcloud config`
 
 [`gcloud config`](https://docs.cloud.google.com/sdk/gcloud/reference/config) 用于查看和编辑 Google Cloud CLI 属性。
 
-### `gcloud config set`
+## `gcloud config set`
 
-[`gcloud config set`](https://docs.cloud.google.com/sdk/gcloud/reference/config/set) 用于设置 Google Cloud CLI 属性。
+[`gcloud config set`](https://docs.cloud.google.com/sdk/gcloud/reference/config/set) 用于设置 Google Cloud CLI 的默认属性。
 
 ```bash
 # 设置登录账户
 gcloud config set account $YOUR_ACCOUNT
 # 设置默认项目
 gcloud config set project $PROJECT_ID
+# 设置默认 region (zone 同理)
+gcloud config set compute/region $REGION
 ```
 
-### `gcloud config get`
+## `gcloud config get`
 
-[`gcloud config get`](https://docs.cloud.google.com/sdk/gcloud/reference/config/get) 用于获取一个 Google Cloud CLI 属性值。
+[`gcloud config get`](https://docs.cloud.google.com/sdk/gcloud/reference/config/get) 用于获取一个 Google Cloud CLI 默认属性值。
 
 ```bash
-# 查看当前区域
+# 查看默认 region (zone 同理)
 gcloud config get-value compute/region
-# 查看当前项目ID
+# 查看默认项目 ID
 gcloud config get-value project
 ```
 
-### `gcloud config list`
+## `gcloud config list`
 
-[`gcloud config list`](https://docs.cloud.google.com/sdk/gcloud/reference/config/list) 列出 Google Cloud CLI 属性的当前活跃配置。
+[`gcloud config list`](https://docs.cloud.google.com/sdk/gcloud/reference/config/list) 列出 Google Cloud CLI 的默认属性。
 
 ```bash
 gcloud config list [SECTION/PROPERTY] [Flags]
 # 列出当前项目
 gcloud config list project
+```
+
+# `gcloud services`
+
+[`gcloud services`](https://docs.cloud.google.com/sdk/gcloud/reference/services) 用于管理 API 和服务。
+
+## `gcloud services enable` 
+
+[`gcloud services enable`](https://docs.cloud.google.com/sdk/gcloud/reference/services/enable) 用于为 project 启用 API 和服务。
+
+```bash
+gcloud services enable $API
+
+# 为默认项目启用 API（可同时启用多个）
+gcloud services enable compute.googleapis.com
+
+# 强制为默认项目停用 API（可同时停用多个）
+gcloud services disable compute.googleapis.com container.googleapis.com --force
 ```
 
 # GCP Bare Metal

@@ -43,6 +43,21 @@ resource "aws_vpc" "main" {
 
 # Blocks
 
+## `data`
+
+[`data`](https://developer.hashicorp.com/terraform/language/block/data) block 用于从 provider 获取 resource 的数据。可以引用数据源属性来配置其他 resource，保持配置动态，防止硬编码。
+
+```hcl
+data "<TYPE>" "<LABEL>" {
+  # ...
+}
+```
+
+```hcl
+# 获取 google_project.project 资源的数据
+data "google_project" "project" {}
+```
+
 ## `output`
 
 [`output`](https://developer.hashicorp.com/terraform/language/block/output) block 用于公开有关基础设施的信息。主要有四个用途：
@@ -111,7 +126,7 @@ provider "google" {
 }
 ```
 
-- 如果在 `provider` 中指定的 `region` 和 `zone`，会被 `resource` 继承。
+- 如果在 `provider` 中指定的 `region` 和 `zone`，会被 `resource` 继承。
 
 - 如果在 resource 中不想继承 `provider` 中指定的 `region` 和 `zone`，则可进行覆盖：
 

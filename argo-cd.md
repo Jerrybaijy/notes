@@ -200,6 +200,14 @@ kubectl delete ns todo
   kubectl delete ns argocd
   ```
 
+# Install
+
+Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/)。
+
+## 声明式清单安装
+
+## Helm Chart 安装
+
 # CR 清单
 
 ## 概述

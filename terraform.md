@@ -15,6 +15,8 @@ tags:
 
 > [Terraform Docs](http://developer.hashicorp.com/terraform/docs)：Terraform 官方文档
 >
+> [Terraform CLI Docs](https://developer.hashicorp.com/terraform/cli)：Terraform CLI 官方文档
+>
 > [Terraform HCL Docs](https://developer.hashicorp.com/terraform/language)：适用于 Terraform 的 HCL 语言
 >
 > [Terraform Registry](https://registry.terraform.io/)
@@ -42,15 +44,12 @@ tags:
 ## 准备工作
 
 - [注册 HCP](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up)
-
 - [创建组织](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up#create-an-organization)
-
-- 安装 Terraform
-
+- [Terraform 安装](<terraform-cli.md#Install>)已完成
 - [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
-- 创建一个项目
-  
-- 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
+  - 创建一个项目
+  - 为此项目启用 [Compute Engine API](https://console.developers.google.com/apis/library/compute.googleapis.com)
+
 
 ## 创建 Terraform 目录和配置文件
 
@@ -219,67 +218,55 @@ cd /d/projects/0000-tests/learn-terraform-gcp
 terraform destroy
 ```
 
-# Install
+# Dependencies
 
-## 安装 Terraform
+## Overview
 
-以管理员身份启动终端，使用 Chocolatey [安装 Terraform](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/install-cli)，重启终端生效。
+[**Dependencies**](https://developer.hashicorp.com/terraform/tutorials/configuration-language/dependencies)：Terraform 资源和模块之间的依赖关系。
 
-```bash
-# 安装（安装完成后需重启所有终端）
-choco install terraform
-# 查看版本
-terraform version
+- 显示依赖
+- 隐式依赖
+
+在配置文件中资源的声明顺序不会影响 Terraform 创建或销毁它们的顺序。
+
+被依赖的资源会被先销毁。
+
+## Implicit Dependencies
+
+### 天然依赖
+
+Terraform 会根据资源的天然依赖顺序创建资源。
+
+例如：先创建 cluster，再创建 node pool。
+
+### 引用依赖
+
+只要一个资源的参数引用了另一个资源的属性，Terraform 就会自动建立依赖。
+
+```hcl
+# 创建 GSA
+resource "google_service_account" "workload_identity" {
+  account_id   = var.service_account_id
+  display_name = "GSA for Workload Identity"
+}
+
+# 为 Pod 创建 KSA 并绑定 GSA
+resource "kubernetes_service_account_v1" "my_app_ksa" {
+  metadata {
+    name      = var.app_ksa
+    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
+    annotations = {
+      
+      # 这里引用了 GSA 的 email
+      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+    }
+  }
+}
 ```
 
-## 开启命令补全
+## Explicit Dependencies
 
-- 在 `/c/Users/jerry/.bashrc` 文件中添加如下内容，重启终端生效。
-- 例：输入 `terrform pl`，然后按 `Tab` 会补全至 `terrform plan`。
-- 注：如果有多个子命令符合条件，连按两次 `Tab` 会返回全部可用子命令。
-
-```bash
-# Terraform 别名和自动补全
-alias terraform='terraform.exe'
-complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terraform
-```
-
-## VS Code Plugin
-
-在 VS Code 中安装 `HashiCorp Terraform` 插件。
-
-- 语法高亮
-- 代码格式化（需在 VS Code 的 `settings.json` 文件中设置）
-
-## 代码格式化
-
-有两种方法进行格式化：
-
-- VS Code 插件 `HashiCorp Terraform`（需在 VS Code 的 `settings.json` 文件中设置）
-
-- 使用 Terraform 命令
-
-  ```bash
-  cd /d/projects/0000-tests/learn-terraform-gcp
-  # 格式化
-  terraform fmt
-  # 验证格式化时有效的
-  terraform validate
-  ```
-
-# Init
-
-# Command
-
-```bash
-# 查看版本
-terraform version
-# 帮助
-terraform -help
-# 特定命令帮助
-terraform plan -help
-terraform $COMMAND -help
-```
+通过 [`depends_on`](<terraform-hcl.md#`depends_on`>) 参数手动指定的依赖关系。
 
 # Providers
 
@@ -302,18 +289,6 @@ Terraform 依赖于 [Provider](https://developer.hashicorp.com/terraform/languag
 > [变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables)
 >
 > [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
-
-# Output
-
-## `output`
-
-[`output`](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-outputs)：在部署完成后会输出，也可使用 `terraform output` 命令进行查询。
-
-```hcl
-output "ip" {
-  value = google_compute_instance.vm_instance.network_interface.0.network_ip
-}
-```
 
 # Terraform 文件
 
