@@ -119,6 +119,14 @@ IPv6 取消了私有 IP 和 NAT，设备可以直接分配全球唯一的 IP 地
 - **静态路由**：手动配置的路由规则。
 - **动态路由**：使用协议（如 BGP、OSPF）自动选择最优路径。
 
+## FAQ
+
+### 获取自己的 IP
+
+```bash
+curl ifconfig.me
+```
+
 # 重要协议
 
 - **HTTP vs HTTPS**（HTTPS 加密更安全）

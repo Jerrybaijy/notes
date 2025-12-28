@@ -268,18 +268,6 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 
 通过 [`depends_on`](<terraform-hcl.md#`depends_on`>) 参数手动指定的依赖关系。
 
-# Providers
-
-Terraform 依赖于 [Provider](https://developer.hashicorp.com/terraform/language/providers)（插件）与云提供商、SaaS 提供商和其他 API 进行交互。
-
-> [Providers](https://developer.hashicorp.com/terraform/language/providers)
->
-> [Provider Registry](https://registry.terraform.io/browse/providers)
-
-# Resources
-
-> [Resources](https://developer.hashicorp.com/terraform/language/resources)
-
 # Variables
 
 > [`variable`](<terraform-hcl.md#`variable`>)

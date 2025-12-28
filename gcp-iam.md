@@ -65,6 +65,19 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 
 ## `iam.tf`
 
+### 通信链条
+
+```
+Pod
+ └─ 使用 KSA：<app_namespace>/<app_ksa>
+     └─ 通过 Workload Identity
+         └─ 绑定到 GSA：<service_account_id>@<project>.iam.gserviceaccount.com
+             └─ GSA 拥有 roles/cloudsql.client
+                 └─ Pod 可以访问 Cloud SQL
+```
+
+### `iam.tf`
+
 ```hcl
 # 获取当前 Project ID
 data "google_project" "project" {}
@@ -75,21 +88,14 @@ resource "google_service_account" "workload_identity" {
   display_name = "GSA for Workload Identity"
 }
 
-# 防止因 namespace 不存在而导致创建 IAM 失败
+# 创建 namespace，防止因 namespace 不存在而导致创建 IAM 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
     name = var.app_namespace
   }
 }
 
-# 向 KSA 进行 GSA 授权
-resource "google_service_account_iam_member" "workload_identity_binding" {
-  service_account_id = google_service_account.workload_identity.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${var.app_namespace}/${var.app_ksa}]"
-}
-
-# 为 Pod 创建 KSA 并绑定 GSA
+# 创建 KSA，并绑定到 GSA
 resource "kubernetes_service_account_v1" "my_app_ksa" {
   metadata {
     name      = var.app_ksa
@@ -99,6 +105,65 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
     }
   }
 }
+
+# 允许 KSA 以 GSA 身份运行
+resource "google_service_account_iam_member" "workload_identity_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${var.app_namespace}/${var.app_ksa}]"
+}
+
+# 允许 GSA 访问 Cloud SQL
+resource "google_project_iam_member" "mysql_client" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+```
+
+### 创建 KSA 的两种方式
+
+```hcl
+# iam.tf
+
+# 创建 KSA，并绑定到 GSA
+resource "kubernetes_service_account_v1" "my_app_ksa" {
+  metadata {
+    name      = var.app_ksa
+    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
+    annotations = {
+      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+    }
+  }
+}
+```
+
+也可以使用 Helm Chart 创建 ServiceAccount 资源：
+
+需在 Chart 模板中创建一个名为 `my-k8s-sa` 的 ServiceAccount，并且要在它的 **Annotations（注解）** 里写上对应的 GCP serviceAccountName。
+
+```yaml
+# serviceaccount.yaml
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ .Values.global.serviceAccountName }}
+  namespace: {{ .Values.global.namespace }}
+  annotations:
+    iam.gke.io/gcp-service-account: {{ .Values.gcp.sqlProxySaEmail | quote }}
+```
+
+```yaml
+# values.yaml
+
+global:
+  namespace: my-namespace
+  serviceAccountName: "my-app-ksa"
+
+gcp:
+  projectId: "project-60addf72-be9c-4c26-8db"
+  sqlProxySaEmail: "my-service-account-id@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com"
 ```
 
 ## `gke.tf`

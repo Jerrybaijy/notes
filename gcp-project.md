@@ -115,9 +115,9 @@ gcloud projects delete $PROJECT_ID
 gcloud projects delete project-jerry-111111
 ```
 
-# Create a Project
+# 创建 GCP 项目
 
-## Create a Project with `gcloud projects create`
+## 使用 `gcloud` 命令创建 GCP 项目
 
 如果不指定 `--name`，默认会使用项目 ID 作为名称。
 
@@ -129,9 +129,120 @@ gcloud projects create project-jerry-111111 \
     --organization 338307828462
 ```
 
-## Create a Project with Terraform
+## 使用 Terraform 创建 GCP 项目
 
-详见 [Terraform-GCP 笔记](<terraform-gcp.md#Project>)
+> [`google_project`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project)
+
+尽量在 GCP 控制台创建项目：
+
+- 每个 billing account 链接到 project 的次数是有上限的，学习时要注意节约，尽量少创建项目。
+- ...
+
+本部分笔记在之前创建项目时没有指定依赖 API，待重新实验以后应加入。
+
+由于 billing account 连接次数限制（12.26 左右），一个月以后再重试！
+
+### 准备工作
+
+
+
+### `terraform.tf`
+
+```
+terraform {
+  required_providers {
+    google = {
+      version = ">= 5.0.0"
+      source  = "hashicorp/google"
+    }
+  }
+}
+```
+
+### `provider.tf`
+
+```hcl
+provider "google" {
+  project = var.gcp_project_id
+  region  = var.gcp_region
+  zone    = var.gcp_zone
+}
+```
+
+### `gcp-project.tf`
+
+```hcl
+# 创建项目
+resource "google_project" "my_project" {
+  project_id          = var.gcp_project_id
+  name                = var.gcp_project_name
+  org_id              = var.gcp_org_id
+  billing_account     = var.gcp_billing_account_id
+  auto_create_network = false
+  # 允许删除（生产环境不应设置此参数）
+  deletion_policy = "DELETE"
+}
+
+# 启用 API，以 Compute Engine 为例
+resource "google_project_service" "compute_api" {
+  project = google_project.my_project.project_id
+  service = "compute.googleapis.com"
+
+  # 依赖项目创建完成
+  depends_on = [google_project.my_project]
+}
+
+output "gcp_project_id" {
+  description = "GCP project ID"
+  value       = google_project.my_project.project_id
+}
+```
+
+- [`billing_account`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project.html?q=#billing_account-1)：关联账单账号（可选，但推荐）。
+- [`auto_create_network`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project.html?q=#auto_create_network-1)：是否自动创建默认网络（建议设为 false，保持项目整洁）。
+- [`deletion_policy`](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_project.html?q=#deletion_policy-1)：删除政策，为了方便调试在开发环境可设置为 `DELETE`。
+
+### `variable.tf`
+
+```hcl
+# --- GCP Provider ---
+variable "gcp_region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+variable "gcp_zone" {
+  type        = string
+  description = "GCP Zone"
+  default     = "asia-east2-a"
+}
+
+# --- GCP Project ---
+variable "gcp_org_id" {
+  type        = string
+  description = "GCP Organization ID"
+  default     = "338307828462"
+}
+
+variable "gcp_project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-jerry-555555"
+}
+
+variable "gcp_project_name" {
+  type        = string
+  description = "GCP Project 名称"
+  default     = "My Project"
+}
+
+variable "gcp_billing_account_id" {
+  type        = string
+  description = "GCP 账单账号ID"
+  default     = "01716E-392C40-6E5B41"
+}
+```
 
 # Project Reference
 

@@ -380,7 +380,23 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `Auto Rename Tag`：自动同步更改 HTML 或 XML 标签对的标签名
 - `Python`：支持 Python
 - `Black`：Python 格式化（首选）
-- `HashiCorp Terraform`：Terraform 插件，含格式化
+
+## HashiCorp Terraform
+
+Terraform 插件，含格式化。
+
+```json
+"[terraform]": {
+  "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+},
+"[terraform-vars]": {
+  "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2
+}
+```
 
 ## Live Server
 

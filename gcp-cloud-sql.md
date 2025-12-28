@@ -68,6 +68,122 @@ gcloud sql instances delete todo-db-instance
 gcloud sql instances list
 ```
 
+# 创建 Cloud SQL
+
+## 使用 Terraform 创建 Cloud SQL
+
+[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)，添加或修改以下文件：
+
+### `api.tf`
+
+```hcl
+locals {
+  services = [
+    # ...
+    
+    "sqladmin.googleapis.com"
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+### `iam.tf`
+
+```hcl
+# 允许 GSA 访问 Cloud SQL
+resource "google_project_iam_member" "mysql_client" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+```
+
+### `cloud-sql.tf`
+
+```hcl
+# 创建 Cloud SQL 实例
+resource "google_sql_database_instance" "mysql_instance" {
+  name             = "my-mysql-instance"
+  database_version = "MYSQL_8_0"
+  region           = var.region
+
+  settings {
+    tier            = "db-f1-micro" # 测试环境使用的最小规格
+    disk_type       = "PD_SSD"
+    disk_size       = 10   # 初始 10GB
+    disk_autoresize = true # 硬盘满了自动扩容
+
+    # 开启公网 IP，但会通过 IAM 权限锁定访问，仅允许通过授权代理访问
+    ip_configuration {
+      ipv4_enabled = true
+    }
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 DATABASE
+resource "google_sql_database" "my_app_db" {
+  name      = "my_app_db"
+  instance  = google_sql_database_instance.mysql_instance.name
+  charset   = "utf8mb4"
+  collation = "utf8mb4_unicode_ci"
+}
+
+# 创建 root 用户
+resource "google_sql_user" "root_user" {
+  name     = "root"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_root_password
+  host     = "%"
+}
+
+# 创建普通账户
+resource "google_sql_user" "jerry_user" {
+  name     = "jerry"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_jerry_password
+  host     = "%"
+}
+
+output "cloud_sql_connection_name" {
+  description = "Cloud SQL 实例连接名称"
+  value       = google_sql_database_instance.mysql_instance.connection_name
+}
+```
+
+### `variables.tf`
+
+```hcl
+# --- Cloud SQL ---
+variable "mysql_root_password" {
+  type        = string
+  description = "MySQL root 用户的密码"
+  default     = ""
+  sensitive   = true
+}
+
+variable "mysql_jerry_password" {
+  type        = string
+  description = "MySQL jerry 用户的密码"
+  default     = ""
+  sensitive   = true
+}
+```
+
+### `terraform.tfvars`
+
+```hcl
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+```
+
 # 连接 Cloud SQL
 
 有两种方式连接 Cloud SQL：
@@ -150,13 +266,41 @@ GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQ
 
 详见 [Todo Fullstack](<todo-fullstack.md#Chart + Argo CD + GCP + Terraform 部署>) 项目
 
-- GKE
-  - 在 GKE 中启用 Workload Identity
-  - 配置权限（Workload Identity 绑定）
-- 后端
-  - 指定 GCP 的 serviceAccountName
-  - 注入 Sidecar 容器：添加 cloud-sql-proxy 容器
-- Chart：创建一个 ServiceAccount 资源
+- 在 GKE 中[启用 Workload Identity](<gcp-iam.md#Workload Identity>)
+- 在后端添加 cloud-sql-proxy 容器
+
+### 允许 GSA 访问 Cloud SQL
+
+```hcl
+# iam.tf
+
+# 允许 GSA 访问 Cloud SQL
+resource "google_project_iam_member" "mysql_client" {
+  project = var.project_id
+  role    = "roles/cloudsql.client"
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+```
+
+### 添加 cloud-sql-proxy 容器
+
+在后端 Chart 模板中添加一个 Cloud SQL Auth Proxy 容器
+
+```yaml
+# backend.yaml
+
+containers:
+  - name: backend
+    # ... 省略其他配置 ...
+  # 2. 关键：注入 Sidecar 容器：添加 cloud-sql-proxy 容器。
+  - name: cloud-sql-proxy
+    image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
+    args:
+      - "--port=3306"
+      - {{ include "todo-chart.sqlInstanceConnectionName" . | quote }}
+    securityContext:
+      runAsNonRoot: true
+```
 
 # Reference
 

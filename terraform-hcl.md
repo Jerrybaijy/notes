@@ -90,6 +90,14 @@ output "gcp_project_id" {
 
 ## `provider`
 
+Terraform 依赖于 [Provider](https://developer.hashicorp.com/terraform/language/providers)（插件）与云提供商、SaaS 提供商和其他 API 进行交互。
+
+> [Provider Registry](https://registry.terraform.io/browse/providers)
+>
+> [Terraform provider for Google Cloud Docs](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
+>
+> [Terraform on Google Cloud](https://docs.cloud.google.com/docs/terraform?hl=zh-cn)
+
 [`provider`](https://developer.hashicorp.com/terraform/language/block/provider) block 用于声明和配置 [Providers](<terraform.md#Providers>)。
 
 ```hcl
@@ -145,6 +153,8 @@ provider "google" {
   ```
 
 ## `resource`
+
+> [Resources](https://developer.hashicorp.com/terraform/language/resources)
 
 [`resource`](https://developer.hashicorp.com/terraform/language/block/resource) block 用于定义一段 infrastracture。各个 resource 支持的参数由提供程序决定。
 

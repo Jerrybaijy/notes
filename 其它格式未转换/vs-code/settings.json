@@ -9,8 +9,6 @@
   "workbench.iconTheme": "vscode-icons", // 文件图标主题
   // 颜色主题覆盖
   "workbench.colorCustomizations": {
-
-
     "[GitHub Light]": {
       "scrollbarSlider.background": "#a0a0a0aa", // 滚动条背景色
       "scrollbarSlider.hoverBackground": "#7a7a7aaa" // 悬停滚动条背景色
@@ -62,12 +60,12 @@
     "editor.defaultFormatter": "mikoz.black-py" // Python 默认格式化工具
   },
   "[terraform]": {
-    "editor.defaultFormatter": "hashicorp.terraform",  // HCL 默认格式化工具
+    "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
     "editor.formatOnSave": true,
     "editor.tabSize": 2
   },
   "[terraform-vars]": {
-    "editor.defaultFormatter": "hashicorp.terraform",  // HCL 默认格式化工具
+    "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
     "editor.formatOnSave": true,
     "editor.tabSize": 2
   },
@@ -130,5 +128,5 @@
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "docker.extension.enableComposeLanguageServer": false,
-  "python.createEnvironment.trigger": "off"
+  "python.createEnvironment.trigger": "off",
 }

@@ -18,7 +18,7 @@ tags:
 
 # Quick Start
 
-## 安装 Argo CD
+## 安装和配置 Argo CD
 
 - Docker 和 kubectl 已安装，集群已启动。
 
@@ -63,7 +63,7 @@ tags:
 
 - 本地访问
 
-  - 端口转发以后，当前终端要保持打开，否则访问不到
+  - 端口转发以后，当前终端要保持打开，否则访问不到。
   - 访问地址：https://127.0.0.1:8080
 
 - 公网访问
@@ -74,17 +74,7 @@ tags:
 
 ## 部署应用
 
-### 部署方式
-
-有三种方式部署应用：
-
-- Argo CD UI
-- Argo CD CLI
-- K8s 原生部署
-
-### K8s 原生部署
-
-- 前提条件
+- 准备工作
 
   - Argo CD 已安装并初始化
   - 源代码开发完成，已将引用的 Image 推送至镜像仓库。
@@ -100,13 +90,11 @@ tags:
 
 - 在 `k8s` 目录创建以下 K8s 配置文件：
 
-  **注意云上的集群有节点限制，试用时只能创建一个副本！**
-
   - `namespace.yaml`：应用的命名空间
   - `mysql.yaml`：数据库
   - `backend.yaml`：后端
   - `frontend.yaml`：前端
-
+  
 - 在 `argo-cd` 目录创建 Argo CD 的自定义应用配置文件 `application.yaml`
 
   ```yaml
@@ -204,9 +192,102 @@ kubectl delete ns todo
 
 Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operator-manual/installation/)。
 
-## 声明式清单安装
+## 使用声明式清单安装 Argo CD
 
-## Helm Chart 安装
+- Docker 和 kubectl 已安装，集群已启动。
+
+- [安装 Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
+
+  ```bash
+  # 创建 Argo CD 命名空间
+  kubectl create namespace argocd
+  
+  # 安装 Argo CD
+  kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
+  ```
+
+## 使用 Helm Chart 安装 Argo CD
+
+## 使用 Terraform 安装 Argo CD
+
+[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)，添加 `argo-cd.tf` 文件：
+
+```hcl
+# 添加 Helm Provider
+provider "helm" {
+  kubernetes = {
+    host                   = "https://${google_container_cluster.primary.endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth[0].cluster_ca_certificate)
+  }
+}
+
+# 创建 Argo CD 命名空间
+resource "kubernetes_namespace_v1" "argocd" {
+  metadata {
+    name = "argocd"
+  }
+  depends_on = [google_container_node_pool.primary_preemptible_nodes]
+}
+
+# 安装 Argo CD
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = kubernetes_namespace_v1.argocd.metadata[0].name
+  version    = "7.7.1"
+
+  set = [
+    # 设置服务类型为 LoadBalancer
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    },
+    # 允许 HTTP 访问
+    {
+      name  = "server.extraArgs"
+      value = "{--insecure}"
+    },
+    # 仅允许自己的 IP 访问
+    {
+      name  = "server.service.loadBalancerSourceRanges"
+      value = "{5.181.21.188/32}" 
+    }
+  ]
+}
+
+# 获取 Argo CD 服务数据 (用于 Output)
+data "kubernetes_service_v1" "argocd_server" {
+  metadata {
+    name      = "${helm_release.argocd.name}-server"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 获取初始密码 Secret 数据
+data "kubernetes_secret_v1" "argocd_initial_admin_secret" {
+  metadata {
+    name      = "argocd-initial-admin-secret"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 输出 Argo CD 公网 IP
+output "argocd_loadbalancer_ip" {
+  description = "Argo CD UI 的公网访问 IP"
+  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
+}
+
+# 输出初始管理员密码
+output "argocd_initial_admin_password" {
+  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
+  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
+  sensitive   = true
+}
+```
 
 # CR 清单
 
@@ -282,6 +363,185 @@ source:
 # 同步
 
 Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/)。
+
+# 访问管理页面
+
+## Kubectl 方式创建时访问管理页面
+
+### 本地
+
+端口转发：
+
+```bash
+# 查看网络服务
+kubectl get svc -n argocd
+
+# 本地：转发端口到本地
+kubectl port-forward svc/argocd-server 8080:443 -n argocd
+```
+
+本地访问：
+
+- 端口转发以后，当前终端要保持打开，否则访问不到
+- 访问地址：https://127.0.0.1:8080
+
+### 公网
+
+改变 `argocd-server` 的类型为 `LoadBalancer`：
+
+```bash
+# 查看网络服务
+kubectl get svc -n argocd
+
+# 公网
+kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+```
+
+公网访问：
+
+- 需要科学上网
+- 访问地址：http://$EXTERNAL-IP
+
+## Terraform 方式创建时访问管理页面
+
+### 通过设置 LoadBalancer
+
+在 Argo CD 资源块中添加如下：
+
+- 设置服务类型为 LoadBalancer
+- 且仅允许自己的 IP 访问
+
+```hcl
+set = [
+  # 设置服务类型为 LoadBalancer
+  {
+    name  = "server.service.type"
+    value = "LoadBalancer"
+  },
+  # 允许 HTTP 访问
+  {
+    name  = "server.extraArgs"
+    value = "{--insecure}"
+  },
+  # 仅允许自己的 IP 访问
+  {
+    name  = "server.service.loadBalancerSourceRanges"
+    value = "{5.181.21.188/32}" 
+  }
+]
+```
+
+公网访问：
+
+- 需要科学上网
+- 访问地址：http://$EXTERNAL-IP
+
+### GKE Ingress + Identity-Aware Proxy (IAP) (生产级推荐)
+
+这套方案虽然配置复杂，但它利用了 Google 的全球负载均衡和身份验证体系，是目前 GKE 上管理后台最安全的做法。
+
+1.  准备工作：配置 OAuth 同意屏幕
+2. 创建 Google 托管证书 (Managed Certificate)
+3. 配置 BackendConfig 以启用 IAP
+4. 修改 Argo CD 服务 (Service)
+5. 创建 Ingress 暴露服务
+6. 配置 IAM 权限
+7.  域名解析 (DNS)
+
+# 获取初始密码
+
+**注意**：登录以后应在 `User Info` 中及时修改密码！
+
+Kubectl 创建时获取初始密码：
+
+```bash
+kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
+
+# 用户名：admin
+# 本地上次密码：dAlsKbgZa4FvVT6V
+```
+
+Terraform 方式创建时获取初始密码：
+
+```bash
+terraform output -raw argocd_initial_admin_password
+```
+
+# 部署应用
+
+有三种方式部署应用：
+
+- Argo CD UI
+- Argo CD CLI
+- K8s 原生部署
+
+## K8s 原生部署
+
+- 准备工作
+
+  - Argo CD 已安装并初始化
+  - 源代码开发完成，已将引用的 Image 推送至镜像仓库。
+
+- 说明：此部分的目录和文件源自 [Todo Fullstack](todo-fullstack.md) 项目
+
+- 创建 K8s 和 Argo CD 目录
+
+  ```
+  cd d:/projects/todo-fullstack
+  mkdir k8s argo-cd
+  ```
+
+- 在 `k8s` 目录创建以下 K8s 配置文件：
+
+  **注意云上的集群有节点限制，试用时只能创建一个副本！**
+
+  - `namespace.yaml`：应用的命名空间
+  - `mysql.yaml`：数据库
+  - `backend.yaml`：后端
+  - `frontend.yaml`：前端
+
+- 在 `argo-cd` 目录创建 Argo CD 的自定义应用配置文件 `application.yaml`
+
+  ```yaml
+  apiVersion: argoproj.io/v1alpha1
+  kind: Application
+  metadata:
+    name: todo-app
+    namespace: argocd
+  spec:
+    project: default
+    source:
+      repoURL: https://gitlab.com/jerrybai/todo-fullstack.git
+      targetRevision: HEAD
+      path: k8s
+    destination:
+      server: https://kubernetes.default.svc
+      namespace: todo
+    syncPolicy:
+      automated:
+        selfHeal: true
+        prune: true
+      syncOptions:
+        - CreateNamespace=true
+        - ApplyOutOfSyncOnly=true
+      retry:
+        limit: 5
+        backoff:
+          duration: 5s
+          factor: 2
+          maxDuration: 3m
+  ```
+
+- 推送至 Git 仓库
+
+- 部署应用
+
+  ```bash
+  cd d:/projects/todo-fullstack/argo-cd
+  kubectl apply -f application.yaml
+  ```
+
+- 在 Argo CD 页面查看应用已启动
 
 # 相关项目
 

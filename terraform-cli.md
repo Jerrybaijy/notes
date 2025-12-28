@@ -53,7 +53,7 @@ complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terrafor
 
 有两种方法进行格式化：
 
-- VS Code 插件 `HashiCorp Terraform`（需在 VS Code 的 `settings.json` 文件中设置）
+- VS Code 插件 [`HashiCorp Terraform`](<vs-code.md#HashiCorp Terraform>)（需在 VS Code 的 `settings.json` 文件中设置）
 
 - 使用 Terraform 命令
 

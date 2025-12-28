@@ -2915,7 +2915,7 @@ resource "google_sql_database" "todo_db" {
   collation = "utf8mb4_unicode_ci"
 }
 
-# 创建 root 用户密码
+# 创建 root 用户
 resource "google_sql_user" "root_user" {
   name     = "root"
   instance = google_sql_database_instance.todo_db_instance.name
