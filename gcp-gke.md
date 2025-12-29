@@ -142,12 +142,12 @@ touch terraform.tf provider.tf api.tf iam.tf gke.tf variable.tf
 terraform {
   required_providers {
     google = {
-      version = ">= 5.0.0"
+      version = "~> 7.14.0"
       source  = "hashicorp/google"
     }
     kubernetes = {
       source  = "hashicorp/kubernetes"
-      version = ">= 2.0.0"
+      version = "~> 3.0.0"
     }
   }
 }
@@ -180,21 +180,21 @@ data "google_project" "project" {}
 
 # 创建 GSA
 resource "google_service_account" "workload_identity" {
-  account_id   = var.service_account_id
+  account_id   = local.sa_id
   display_name = "GSA for Workload Identity"
 }
 
 # 创建 namespace，防止因 namespace 不存在而导致创建 IAM 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
-    name = var.app_namespace
+    name = local.app_ns
   }
 }
 
 # 创建 KSA，并绑定到 GSA
-resource "kubernetes_service_account_v1" "my_app_ksa" {
+resource "kubernetes_service_account_v1" "my_ksa" {
   metadata {
-    name      = var.app_ksa
+    name      = local.ksa_name
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
       "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
@@ -206,7 +206,7 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.workload_identity.name
   role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${var.app_namespace}/${var.app_ksa}]"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
 }
 
 # 允许 GSA 访问 Cloud SQL
@@ -216,8 +216,6 @@ resource "google_project_iam_member" "mysql_client" {
   member  = "serviceAccount:${google_service_account.workload_identity.email}"
 }
 ```
-
-
 
 ### `gke.tf`
 
@@ -232,14 +230,14 @@ provider "google" {
 # 添加 Kubernetes Provider
 data "google_client_config" "default" {}
 provider "kubernetes" {
-  host                   = "https://${google_container_cluster.primary.endpoint}"
+  host                   = "https://${google_container_cluster.my_cluster.endpoint}"
   token                  = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth[0].cluster_ca_certificate)
+  cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
 }
 
 # 创建 GKE 集群
-resource "google_container_cluster" "primary" {
-  name                     = var.gke_name
+resource "google_container_cluster" "my_cluster" {
+  name                     = local.gke_name
   location                 = var.region
   remove_default_node_pool = true
   initial_node_count       = 1
@@ -255,10 +253,10 @@ resource "google_container_cluster" "primary" {
 }
 
 # 创建 Node Pool
-resource "google_container_node_pool" "primary_preemptible_nodes" {
-  name       = var.node_pool_name
+resource "google_container_node_pool" "my_node_pool" {
+  name       = local.node_pool_name
   location   = var.region
-  cluster    = google_container_cluster.primary.name
+  cluster    = google_container_cluster.my_cluster.name
   node_count = 1
 
   autoscaling {
@@ -283,7 +281,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 # 输出 GKE 集群名称
 output "gke_name" {
   description = "GKE name"
-  value       = google_container_cluster.primary.name
+  value       = google_container_cluster.my_cluster.name
 }
 ```
 
@@ -297,7 +295,22 @@ output "gke_name" {
 ### `variable.tf`
 
 ```hcl
-# --- GCP Provider ---
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+locals {
+  gke_name       = "${var.prefix}-cluster"
+  node_pool_name = "${var.prefix}-node-pool"
+  app_ns         = "${var.prefix}-ns"
+  sa_id          = "${var.prefix}-sa-id"
+  ksa_name       = "${var.prefix}-ksa"
+}
+
+# --- GCP ---
 variable "project_id" {
   type        = string
   description = "GCP Project ID"
@@ -316,37 +329,6 @@ variable "zone" {
   default     = "asia-east2-a"
 }
 
-# --- GKE ---
-variable "gke_name" {
-  type        = string
-  description = "GKE name"
-  default     = "my-cluster"
-}
-
-variable "node_pool_name" {
-  type        = string
-  description = "GKE Node Pool name"
-  default     = "my-node-pool"
-}
-
-# --- IAM ---
-variable "service_account_id" {
-  type        = string
-  description = "Service Account ID"
-  default     = "my-service-account-id"
-}
-
-variable "app_namespace" {
-  type        = string
-  description = "Kubernetes namespace for the application"
-  default     = "my-namespace"
-}
-
-variable "app_ksa" {
-  type        = string
-  description = "Kubernetes Service Account name for the application"
-  default     = "my-app-ksa"
-}
 ```
 
 # GKE Reference

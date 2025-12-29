@@ -50,6 +50,34 @@
             }
           },
           {
+            "id": "d84a9500cfd3726a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp"
+            }
+          },
+          {
+            "id": "bb36cf454065d938",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "kubernetes.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "kubernetes"
+            }
+          },
+          {
             "id": "5c8573fb52d13810",
             "type": "leaf",
             "state": {
@@ -141,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terraform-gcp.md",
+                "file": "kubernetes.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "terraform-gcp 的大纲"
+              "title": "kubernetes 的大纲"
             }
           },
           {
@@ -165,7 +193,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -185,6 +214,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "kubernetes.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -194,7 +224,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "反向链接"
+              "title": "kubernetes 的反向链接列表"
             }
           },
           {
@@ -238,23 +268,23 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
-    "terraform-kubernetes.md",
-    "terraform-gcp.md",
+    "gcp.md",
+    "gcp-cloud-sql.md",
+    "kubernetes.md",
+    "terraform.md",
     "gcp-gke.md",
     "terraform-cli.md",
-    "gcp-cloud-sql.md",
-    "terraform.md",
+    "terraform-kubernetes.md",
+    "terraform-gcp.md",
     "todo-fullstack.md",
     "terraform-hcl.md",
     "0000-to-do.md",
     "argo-cd.md",
     "gcp-project.md",
-    "kubernetes.md",
     "gcp-iam.md",
     "html.md",
-    "gcp.md",
     "hcl.md",
     "cloud-computing.md",
     "markdown.md",

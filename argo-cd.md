@@ -210,15 +210,36 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ## 使用 Terraform 安装 Argo CD
 
-[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)，添加 `argo-cd.tf` 文件：
+### 准备工作
+
+[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
+
+### `terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    
+    # ... 其它配置 ...
+    
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 3.1.0"
+    }
+  }
+}
+
+```
+
+### `argo-cd.tf`
 
 ```hcl
 # 添加 Helm Provider
 provider "helm" {
   kubernetes = {
-    host                   = "https://${google_container_cluster.primary.endpoint}"
+    host                   = "https://${google_container_cluster.my_cluster.endpoint}"
     token                  = data.google_client_config.default.access_token
-    cluster_ca_certificate = base64decode(google_container_cluster.primary.master_auth[0].cluster_ca_certificate)
+    cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
   }
 }
 
@@ -227,7 +248,7 @@ resource "kubernetes_namespace_v1" "argocd" {
   metadata {
     name = "argocd"
   }
-  depends_on = [google_container_node_pool.primary_preemptible_nodes]
+  depends_on = [google_container_node_pool.my_node_pool]
 }
 
 # 安装 Argo CD
@@ -252,7 +273,7 @@ resource "helm_release" "argocd" {
     # 仅允许自己的 IP 访问
     {
       name  = "server.service.loadBalancerSourceRanges"
-      value = "{5.181.21.188/32}" 
+      value = "{${var.my_external_ip}/32}"
     }
   ]
 }
@@ -287,6 +308,23 @@ output "argocd_initial_admin_password" {
   value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
   sensitive   = true
 }
+```
+
+### `variables.tf`
+
+```hcl
+# --- Argo CD ---
+variable "my_external_ip" {
+  type        = string
+  description = "My external IP access to Argo CD"
+  sensitive   = true
+}
+```
+
+### `terraform.tfvars`
+
+```hcl
+my_external_ip = "5.181.21.188"
 ```
 
 # CR 清单
@@ -426,14 +464,21 @@ set = [
   # 仅允许自己的 IP 访问
   {
     name  = "server.service.loadBalancerSourceRanges"
-    value = "{5.181.21.188/32}" 
+    value = "{${var.my_external_ip}/32}"
   }
 ]
 ```
 
-公网访问：
+**公网访问**：
 
 - 需要科学上网
+
+- 获取 Argo CO 管理页面 IP
+
+  ```bash
+  terraform output argocd_loadbalancer_ip
+  ```
+
 - 访问地址：http://$EXTERNAL-IP
 
 ### GKE Ingress + Identity-Aware Proxy (IAP) (生产级推荐)
@@ -452,7 +497,7 @@ set = [
 
 **注意**：登录以后应在 `User Info` 中及时修改密码！
 
-Kubectl 创建时获取初始密码：
+Kubectl 方式创建时获取初始密码：
 
 ```bash
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
@@ -475,7 +520,7 @@ terraform output -raw argocd_initial_admin_password
 - Argo CD CLI
 - K8s 原生部署
 
-## K8s 原生部署
+## K8s 原生部署应用
 
 - 准备工作
 
@@ -493,13 +538,11 @@ terraform output -raw argocd_initial_admin_password
 
 - 在 `k8s` 目录创建以下 K8s 配置文件：
 
-  **注意云上的集群有节点限制，试用时只能创建一个副本！**
-
   - `namespace.yaml`：应用的命名空间
   - `mysql.yaml`：数据库
   - `backend.yaml`：后端
   - `frontend.yaml`：前端
-
+  
 - 在 `argo-cd` 目录创建 Argo CD 的自定义应用配置文件 `application.yaml`
 
   ```yaml
@@ -542,6 +585,96 @@ terraform output -raw argocd_initial_admin_password
   ```
 
 - 在 Argo CD 页面查看应用已启动
+
+## 使用 Terraform 部署应用
+
+此种方法没有成功！暂时仍然使用 `kubectl apply -f application.yaml` 命令部署应用。
+
+```
+Error: Failed to construct REST client
+│
+│   with kubernetes_manifest.my_app,
+│   on app.tf line 10, in resource "kubernetes_manifest" "my_app":
+│   10: resource "kubernetes_manifest" "my_app" {
+│
+│ cannot create REST client: no client config
+```
+
+### 准备工作
+
+- [已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
+- [已通过 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
+- [已通过 Terraform 配置 Argo CD 的安装](<argo-cd.md#使用 Terraform 安装 Argo CD>)
+
+### `argo-cd.tf`
+
+```hcl
+# 使用 kubernetes_manifest 部署 Argo CD Application
+resource "kubernetes_manifest" "my_app" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "Application"
+    "metadata" = {
+      "name"      = local.app_name
+      "namespace" = kubernetes_namespace_v1.argocd.metadata[0].name
+    }
+    "spec" = {
+      "project" = "default"
+      "source" = {
+        "repoURL"        = local.chart_repo_pull
+        "targetRevision" = "99.99.99-latest"
+        "chart"          = local.chart_name
+      }
+      "destination" = {
+        "server"    = "https://kubernetes.default.svc"
+        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
+      }
+      "syncPolicy" = {
+        "automated" = {
+          "selfHeal" = true
+          "prune"    = true
+        }
+        "syncOptions" = [
+          "CreateNamespace=true",
+          "ApplyOutOfSyncOnly=true"
+        ]
+        "retry" = {
+          "limit" = 5
+          "backoff" = {
+            "duration"    = "5s"
+            "factor"      = 2
+            "maxDuration" = "3m"
+          }
+        }
+      }
+    }
+  }
+  depends_on = [
+    google_container_node_pool.my_node_pool,
+    helm_release.argocd
+  ]
+}
+```
+
+### `variables.tf`
+
+```hcl
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "todo"
+}
+
+locals {
+  
+  #... 其它配置 ...
+  
+  project_name    = "${var.prefix}-fullstack"
+  app_name        = "${var.prefix}-app"
+  chart_name      = "${var.prefix}-chart"
+  chart_repo_pull = "oci://registry.gitlab.com/jerrybai/${local.project_name}/${local.chart_name}"
+}
+```
 
 # 相关项目
 

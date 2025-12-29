@@ -72,7 +72,9 @@ gcloud sql instances list
 
 ## 使用 Terraform 创建 Cloud SQL
 
-[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)，添加或修改以下文件：
+### 准备工作
+
+[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
 
 ### `api.tf`
 
@@ -81,7 +83,7 @@ locals {
   services = [
     # ...
     
-    "sqladmin.googleapis.com"
+    "sqladmin.googleapis.com" # Cloud SQL API
   ]
 }
 
@@ -108,7 +110,7 @@ resource "google_project_iam_member" "mysql_client" {
 ```hcl
 # 创建 Cloud SQL 实例
 resource "google_sql_database_instance" "mysql_instance" {
-  name             = "my-mysql-instance"
+  name             = local.db_instance
   database_version = "MYSQL_8_0"
   region           = var.region
 
@@ -129,8 +131,8 @@ resource "google_sql_database_instance" "mysql_instance" {
 }
 
 # 创建 DATABASE
-resource "google_sql_database" "my_app_db" {
-  name      = "my_app_db"
+resource "google_sql_database" "my_db" {
+  name      = local.db_name
   instance  = google_sql_database_instance.mysql_instance.name
   charset   = "utf8mb4"
   collation = "utf8mb4_unicode_ci"
@@ -161,18 +163,30 @@ output "cloud_sql_connection_name" {
 ### `variables.tf`
 
 ```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+locals {
+  # ...
+  
+  db_instance    = "${var.prefix}-db-instance"
+  db_name        = "${var.prefix}_db"
+}
+
 # --- Cloud SQL ---
 variable "mysql_root_password" {
   type        = string
-  description = "MySQL root 用户的密码"
-  default     = ""
+  description = "MySQL root user password"
   sensitive   = true
 }
 
 variable "mysql_jerry_password" {
   type        = string
-  description = "MySQL jerry 用户的密码"
-  default     = ""
+  description = "MySQL jerry user password"
   sensitive   = true
 }
 ```
@@ -257,7 +271,7 @@ GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQ
   cd /d/下载/综合下载
   
   ./cloud-sql-proxy 项目ID:区域:数据库实例名称
-  ./cloud-sql-proxy project-60addf72-be9c-4c26-8db:asia-east2:todo-db-instance
+  ./cloud-sql-proxy project-60addf72-be9c-4c26-8db:asia-east2:my-db-instance
   ```
 
   保持终端打开，代理默认会监听本地的 `127.0.0.1:3306`。
@@ -297,9 +311,31 @@ containers:
     image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
     args:
       - "--port=3306"
-      - {{ include "todo-chart.sqlInstanceConnectionName" . | quote }}
+      - {{ include "my-chart.sqlInstanceConnectionName" . | quote }}
     securityContext:
       runAsNonRoot: true
+```
+
+```
+# _helpers.tpl
+
+# ... 省略其他配置 ...
+
+{{/* 生成 Cloud SQL 实例连接名称 */}}
+{{- define "my-chart.sqlInstanceConnectionName" -}}
+{{- printf "%s:%s:%s" .Values.gcp.projectId .Values.gcp.region .Values.gcp.sqlInstanceName -}}
+{{- end -}}
+```
+
+```yaml
+# values.yaml
+
+# ... 省略其他配置 ...
+
+gcp:
+  projectId: "project-60addf72-be9c-4c26-8db"
+  region: "asia-east2"
+  sqlInstanceName: "my-db-instance"
 ```
 
 # Reference
