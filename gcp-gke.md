@@ -65,14 +65,25 @@ gcloud container clusters get-credentials $CLUSTER_NAME \
 gcloud container clusters get-credentials my-cluster \
     --location asia-east2 \
     --project project-60addf72-be9c-4c26-8db
-
-# 验证配置
-kubectl get ns
 ```
 
 ## 交互 GKE
 
 [将 kubectl cnotext 切换至 GKE](<kubernetes.md#`kubectl config`>)
+
+```bash
+# 显示当前上下文
+kubectl config current-context
+
+# 显示所有上下文
+kubectl config get-contexts
+
+# 设置当前上下文
+kubectl config use-context $CONTEXT_NAME
+
+# 验证配置
+kubectl get ns
+```
 
 ## 删除 GKE
 
@@ -214,6 +225,16 @@ resource "google_project_iam_member" "mysql_client" {
   project = var.project_id
   role    = "roles/cloudsql.client"
   member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+output "app_namespace" {
+  description = "Kubernetes Namespace Name"
+  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
+}
+
+output "ksa_name" {
+  description = "Kubernetes Service Account Name"
+  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
 }
 ```
 

@@ -63,6 +63,16 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 
 > [Workload Identity](https://docs.cloud.google.com/iam/docs/workload-identity-federation?hl=zh-cn)
 
+为了使 Workload Identity 生效并让后端可以连接到 Cloud SQL：
+
+- **GCP 侧**
+  - `iam.tf`
+  - `gke.tf`
+- **后端 Helm Chart 侧**
+  - `backend.yaml`
+  - `_helpers.tpl`
+  - `values.yaml`
+
 ## `iam.tf`
 
 ### 通信链条
@@ -120,9 +130,20 @@ resource "google_project_iam_member" "mysql_client" {
   member  = "serviceAccount:${google_service_account.workload_identity.email}"
 }
 
+output "app_namespace" {
+  description = "Kubernetes Namespace Name"
+  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
+}
+
+output "ksa_name" {
+  description = "Kubernetes Service Account Name"
+  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
+}
 ```
 
 ### 创建 KSA 的两种方式
+
+#### 在 Terraform 中声明 KSA 资源
 
 ```hcl
 # iam.tf
@@ -139,7 +160,25 @@ resource "kubernetes_service_account_v1" "my_ksa" {
 }
 ```
 
-也可以使用 Helm Chart 创建 ServiceAccount 资源：
+**注意**：此种方法创建的 KSA：
+
+- 在删除命名空间后，需要重新执行 `terraform apply` 以恢复 KSA，否则后端会部署失败。
+
+- 在执行 `terraform destroy` 时，会发生如下错误：
+
+  > Error: context deadline exceeded
+
+  ```bash
+  kubectl get ns
+  # app-ns 命名空间的状态为 Terminating
+  # 执行 terraform apply，此步仍会出错。
+  # app-ns 命名空间的状态变为 Active
+  # 一直重复执行 terraform apply，直到没有变化。
+  # 最后执行 terraform destroy
+  # 下次试试先 terraform init，terraform apply，然后再 terraform destroy
+  ```
+
+#### 在 Helm Chart 中声明 KSA 资源
 
 需在 Chart 模板中创建一个名为 `my-ksa` 的 ServiceAccount，并且要在它的 **Annotations（注解）** 里写上对应的 GCP serviceAccountName。
 
@@ -163,7 +202,6 @@ global:
   serviceAccountName: "my-ksa"
 
 gcp:
-  projectId: "project-60addf72-be9c-4c26-8db"
   sqlProxySaEmail: "my-sa-id@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com"
 ```
 
@@ -198,4 +236,50 @@ resource "google_container_node_pool" "my-node-pool" {
   }
 }
 ```
+
+## `backend.yaml`
+
+```yaml
+# 1. 关键：指定 ksa 以支持 Workload Identity
+serviceAccountName: {{ .Values.global.ksaName }}
+
+containers:
+- name: backend
+  # ... 后端配置
+
+# 2. 关键：添加 cloud-sql-proxy 容器，连接到 Cloud SQL 实例
+- name: cloud-sql-proxy
+  image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
+  args:
+    - "--port=3306"
+    - {{ include "my-chart.sqlInstanceConnectionName" . | quote }}
+  securityContext:
+    runAsNonRoot: true
+```
+
+## `values.yaml`
+
+```yaml
+# 全局配置
+global:
+  ksaName: todo-ksa
+
+# 用于模板函数中生成 Cloud SQL 实例连接名称
+gcp:
+  projectId: "project-60addf72-be9c-4c26-8db"
+  region: "asia-east2"
+  sqlInstanceName: "my-db-instance"
+```
+
+## `_helpers.tpl`
+
+```tpl
+{{/* 生成 Cloud SQL 实例连接名称 */}}
+
+{{- define "my-chart.sqlInstanceConnectionName" -}}
+{{- printf "%s:%s:%s" .Values.gcp.projectId .Values.gcp.region .Values.gcp.sqlInstanceName -}}
+{{- end -}}
+```
+
+
 

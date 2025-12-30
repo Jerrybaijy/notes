@@ -120,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -169,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "kubernetes.md",
+                "file": "gcp-cloud-sql.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "kubernetes 的大纲"
+              "title": "gcp-cloud-sql 的大纲"
             }
           },
           {
@@ -193,8 +193,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -214,7 +213,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "kubernetes.md",
+                "file": "gcp-cloud-sql.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -224,7 +223,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "kubernetes 的反向链接列表"
+              "title": "gcp-cloud-sql 的反向链接列表"
             }
           },
           {
@@ -268,14 +267,14 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "9ee99384ebeb0c69",
   "lastOpenFiles": [
+    "gcp-gke.md",
     "gcp.md",
     "gcp-cloud-sql.md",
     "kubernetes.md",
-    "terraform.md",
-    "gcp-gke.md",
     "terraform-cli.md",
+    "terraform.md",
     "terraform-kubernetes.md",
     "terraform-gcp.md",
     "todo-fullstack.md",

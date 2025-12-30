@@ -145,19 +145,19 @@ tags:
 
   ```bash
   # 查看应用服务
-  kubectl get svc -n todos
+  kubectl get svc -n todo
   
   # 将前端服务 80 端口到本地 8081 端口
-  kubectl port-forward svc/frontend 8081:80 -n todos
+  kubectl port-forward svc/frontend 8081:80 -n todo
   ```
 
   如有调试需要，也可将后端和数据库进行端口转发
 
   ```bash
   # 数据库
-  kubectl port-forward svc/mysql 3306:3306 -n todos
+  kubectl port-forward svc/mysql 3306:3306 -n todo
   # 后端
-  kubectl port-forward svc/backend 5000:5000 -n todos
+  kubectl port-forward svc/backend 5000:5000 -n todo
   ```
 
 - 访问应用：http://localhost:8081/
@@ -176,17 +176,17 @@ kubectl delete ns todo
 
 ## 删除 Argo CD
 
-- **删除 ArgoCD 自定义资源定义（CRD）**
+删除 ArgoCD 自定义资源定义（CRD）
 
-  ```bash
-  kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
-  ```
+```bash
+kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
+```
 
-- **删除 ArgoCD 的命名空间**
+删除 ArgoCD 的命名空间
 
-  ```bash
-  kubectl delete ns argocd
-  ```
+```bash
+kubectl delete ns argocd
+```
 
 # Install
 
@@ -209,6 +209,10 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 ## 使用 Helm Chart 安装 Argo CD
 
 ## 使用 Terraform 安装 Argo CD
+
+**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。
+
+> Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = error fetching chart: failed to fetch chart: failed to get command args to log: `helm pull --destination /tmp/8d5b8c2d-e724-4d3e-9eb0-34404edd1547 --version 99.99.99-latest --repo oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart todo-chart` failed exit status 1: Error: looks like "oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart" is not a valid chart repository or cannot be reached: object required
 
 ### 准备工作
 
@@ -352,7 +356,7 @@ my_external_ip = "5.181.21.188"
 apiVersion: argoproj.io/v1alpha1  # Argo CD API 版本
 kind: Application                 # 自定义资源类型
 metadata:                         # 应用程序元数据
-  name: todos-app                 # 应用程序名称
+  name: todo-app                 # 应用程序名称
   namespace: argocd               # Argo CD 所在命名空间
 spec:                             # 规约
   project: default
@@ -588,7 +592,7 @@ terraform output -raw argocd_initial_admin_password
 
 ## 使用 Terraform 部署应用
 
-此种方法没有成功！暂时仍然使用 `kubectl apply -f application.yaml` 命令部署应用。
+此种方法没有成功！暂时仍然使用 `kubectl apply -f application.yaml` 命令部署应用。
 
 ```
 Error: Failed to construct REST client
