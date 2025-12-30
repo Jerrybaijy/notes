@@ -115,3 +115,41 @@ terraform destroy -target=google_container_cluster.primary
 # `plan`
 
 [`plan`](https://developer.hashicorp.com/terraform/cli/commands/plan)
+
+# FAQ
+
+## 通过 `kubectl` 安装 Argo CD 并部署应用的特殊说明
+
+- 在删除命名空间后，如果想再次部署应用，需要重新执行 `terraform apply` 以恢复 KSA，否则后端会部署失败。
+
+- 清理资源步骤
+
+  - 卸载应用
+
+    ```bash
+    kubectl delete -f application.yaml
+    ```
+
+  - 删除命名空间
+
+    ```
+    kubectl delete ns argocd
+    kubectl delete ns my-ns
+    ```
+
+  - 重复执行 `terraform apply`，直到 terraform 提示 no changes。
+
+    ```bash
+    terraform apply
+    ```
+
+- 如在执行 `terraform destroy` 时，发生如下错误：
+
+  > Error: context deadline exceeded
+  >
+  > 此时 app-ns 命名空间的状态会变为 Terminating
+
+  - 执行 `kubectl delete ns argocd` 和 `kubectl delete ns my-ns`
+  - 重复执行 `terraform appy`，直到 terraform 提示 no changes。
+  - 执行 `terraform destroy`，第一次执行可能还会出错。
+  - 重复执行上述步骤，直到销毁成功。

@@ -59,7 +59,7 @@ cd /d/projects/0000-tests/learn-terraform-gcp
 touch providers.tf variables.tf vpc.tf output.tf
 ```
 
-## 编写 `terraform.tf`
+## `terraform.tf`
 
 ```hcl
 terraform {
@@ -72,7 +72,7 @@ terraform {
 }
 ```
 
-## 编写 `providers.tf`
+## `providers.tf`
 
 ```hcl
 provider "google" {
@@ -82,7 +82,7 @@ provider "google" {
 }
 ```
 
-## 编写 `variables.tf`
+## `variables.tf`
 
 ```hcl
 variable "gcp_project_id" {
@@ -110,7 +110,7 @@ variable "vpc_network_name" {
 }
 ```
 
-## 编写 `vpc.tf`
+## `vpc.tf`
 
 ```hcl
 resource "google_compute_network" "vpc_network" {
@@ -118,7 +118,7 @@ resource "google_compute_network" "vpc_network" {
 }
 ```
 
-## 编写 `output.tf`
+## `output.tf`
 
 ## 初始化 Terraform
 
@@ -167,7 +167,7 @@ gcloud container clusters get-credentials todo-cluster \
     --project project-60addf72-be9c-4c26-8db
 ```
 
-## 修改 Terraform 配置（可选）
+## 修改 Terraform 配置
 
 向 `main.tf` 中添加一个 Compute Engine 实例，并执行 `terraform apply` 命令部署。
 
@@ -212,6 +212,10 @@ resource "google_compute_instance" "vm_instance" {
 ```
 
 ## 销毁部署
+
+**注意**：如果有通过 CLI 部署的资源，应先通过 CLI 清理，然后再进行销毁。
+
+如清理失败，详见 [Terraform CLI 笔记](<terraform-cli#通过 `kubectl` 安装 Argo CD 并部署应用的特殊说明>)。
 
 ```bash
 cd /d/projects/0000-tests/learn-terraform-gcp
@@ -277,6 +281,48 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 > [变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables)
 >
 > [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
+
+## `terraform.tfvars`
+
+`terraform.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
+
+- `terraform.tfvars` 应在 `.gitignore` 中添加忽略。
+
+`variables.tf` 文件中：
+
+- 声明变量但不赋值
+- 标记为敏感
+
+```hcl
+# variables.tf
+
+variable "mysql_jerry_password" {
+  type        = string
+  description = "MySQL jerry user password"
+  sensitive   = true # 标记为敏感
+}
+```
+
+变量赋值文件中添加变量值：
+
+```hcl
+# terraform.tfvars
+
+mysql_jerry_password = "000000"
+```
+
+资源文件中引用变量：
+
+```hcl
+# cloud-sql.tf
+
+resource "google_sql_user" "jerry_user" {
+  name     = "jerry"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_jerry_password
+  host     = "%"
+}
+```
 
 # Terraform 文件
 
@@ -360,4 +406,3 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 这个**锁定计划文件**是在执行 `terraform plan -out=$PLAN_NAME.tfplan` 后自动生成，锁定了当前的代码逻辑和云端状态。
 
 稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
-

@@ -72,7 +72,7 @@ gcloud sql instances list
 
 ## 使用 `gcloud` 创建 Cloud SQL
 
-详见 [Quick Start](<gcp-cloud-sql.md#Quick Start>)
+详见 [Quick Start](<gcp-cloud-sql.md#Quick Start>)
 
 ## 使用 Terraform 创建 Cloud SQL
 
@@ -212,7 +212,7 @@ mysql_root_password  = "123456"
 mysql_jerry_password = "000000"
 ```
 
-# 连接 Cloud SQL
+# 连接 Cloud SQL (白名单)
 
 有两种方式连接 Cloud SQL：
 
@@ -289,6 +289,8 @@ GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQ
   ```
 
   保持终端打开，代理默认会监听本地的 `127.0.0.1:3306`。
+
+- 使用 Navicate 连接 Cloud SQL，`127.0.0.1:3306`。
 
 ## 在集群中连接
 

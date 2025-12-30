@@ -38,6 +38,19 @@ tags:
   kubectl get pod -n argocd
   ```
 
+- 配置网络
+
+  ```bash
+  # 本地：转发端口到本地（临时），访问：127.0.0.1:8080
+  kubectl port-forward svc/argocd-server 8080:443 -n argocd
+  
+  # 公网
+  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
+  
+  # 查看网络服务
+  kubectl get svc -n argocd
+  ```
+
 - 获取密码
 
   ```bash
@@ -46,19 +59,6 @@ tags:
   # 用户名：admin
   # 本地上次密码：dAlsKbgZa4FvVT6V
   # GCP 上次密码：BKgY5d5oEQCoMNFx
-  ```
-
-- 配置网络之后即可查看 Argo CD UI 界面
-
-  ```bash
-  # 查看网络服务
-  kubectl get svc -n argocd
-  
-  # 本地：转发端口到本地（临时），访问：127.0.0.1:8080
-  kubectl port-forward svc/argocd-server 8080:443 -n argocd
-  
-  # 公网
-  kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
   ```
 
 - 本地访问
@@ -210,7 +210,7 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ## 使用 Terraform 安装 Argo CD
 
-**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。
+**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。所以目前仍采用 `kubectl` 的方式安装 Argo CD。
 
 > Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = error fetching chart: failed to fetch chart: failed to get command args to log: `helm pull --destination /tmp/8d5b8c2d-e724-4d3e-9eb0-34404edd1547 --version 99.99.99-latest --repo oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart todo-chart` failed exit status 1: Error: looks like "oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart" is not a valid chart repository or cannot be reached: object required
 

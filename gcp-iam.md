@@ -160,24 +160,6 @@ resource "kubernetes_service_account_v1" "my_ksa" {
 }
 ```
 
-**注意**：此种方法创建的 KSA：
-
-- 在删除命名空间后，需要重新执行 `terraform apply` 以恢复 KSA，否则后端会部署失败。
-
-- 在执行 `terraform destroy` 时，会发生如下错误：
-
-  > Error: context deadline exceeded
-
-  ```bash
-  kubectl get ns
-  # app-ns 命名空间的状态为 Terminating
-  # 执行 terraform apply，此步仍会出错。
-  # app-ns 命名空间的状态变为 Active
-  # 一直重复执行 terraform apply，直到没有变化。
-  # 最后执行 terraform destroy
-  # 下次试试先 terraform init，terraform apply，然后再 terraform destroy
-  ```
-
 #### 在 Helm Chart 中声明 KSA 资源
 
 需在 Chart 模板中创建一个名为 `my-ksa` 的 ServiceAccount，并且要在它的 **Annotations（注解）** 里写上对应的 GCP serviceAccountName。

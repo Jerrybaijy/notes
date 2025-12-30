@@ -352,6 +352,43 @@ variable "zone" {
 
 ```
 
+### `.gitignore`
+
+添加如下忽略：
+
+```
+# Terraform
+.terraform/
+*.tfstate
+.terraform.tfstate.lock.info
+*.tfplan
+*.tfvars
+*.tfvars.json
+*.tfstate.backup
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/todo-fullstack/terraform
+terraform init
+```
+
+### 部署 GCP
+
+```bash
+cd d:/projects/todo-fullstack/terraform
+terraform apply
+```
+
+### 更新 kubectl 配置
+
+```bash
+gcloud container clusters get-credentials todo-cluster \
+    --location asia-east2 \
+    --project project-60addf72-be9c-4c26-8db
+```
+
 # GKE Reference
 
 > [GKE Reference](https://docs.cloud.google.com/sdk/gcloud/reference/container/clusters)

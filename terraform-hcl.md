@@ -58,6 +58,37 @@ data "<TYPE>" "<LABEL>" {
 data "google_project" "project" {}
 ```
 
+## `locals`
+
+[`locals`](https://developer.hashicorp.com/terraform/language/block/locals) block 用于在单个 block 中定义多个变量的值，尤其适用于前缀。
+
+定义变量：
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "todo"
+}
+
+locals {
+  app_ns = "${var.prefix}-ns"
+
+  # ... 其它变量 ...
+}
+```
+
+使用变量：
+
+```hcl
+resource "kubernetes_namespace_v1" "app_ns" {
+  metadata {
+    name = local.app_ns
+  }
+}
+```
+
 ## `output`
 
 [`output`](https://developer.hashicorp.com/terraform/language/block/output) block 用于公开有关基础设施的信息。主要有四个用途：
@@ -278,6 +309,10 @@ provider "google" {
 ### 说明
 
 如果声明的变量为空值，在部署时会被要求输入变量值。
+
+### `*.tfvars`
+
+`*.tfvars`
 
 # Arguments
 
