@@ -4,6 +4,7 @@ author: Jerry.Baijy
 tags:
   - 应用科学
   - it
+  - dev-ops
   - cloud-computing
   - gcp
 ---
