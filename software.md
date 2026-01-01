@@ -189,7 +189,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 ### `Auto Dark Mode for Web Contents`
 
-`Auto Dark Mode for Web Contents` 选项用于设置强制将浏览器背景色设置为深色，目前使用 `Enabled with selective image inversion` 效果，抵抗 Google Cloud Docs 无法调整背景色的问题。
+`Auto Dark Mode for Web Contents` 选项用于设置强制将浏览器背景色设置为深色，目前使用 `Enabled with selective image inversion` 效果，抵抗 Google Cloud Docs 无法调整背景色的问题。
 
 # Grafana
 
@@ -1177,7 +1177,7 @@ Windows Terminal 是 Windows 系统下的终端集合工具。
 
 - 保存以后直接在下拉菜单打开 Git Bash。
 
-## 解决办法
+## FAQ
 
 ### 无法读取历史命令
 

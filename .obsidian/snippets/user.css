@@ -1,10 +1,6 @@
 /* -------------------所有主题----------------- */
 
 body {
-  /* 选中文本（自定义） */
-  --select-bg-color: #3367d1;
-  --select-text-color: #ffffff;
-
   /* 行高 */
   --line-height-normal: 1.8;
 
@@ -16,6 +12,10 @@ body {
 
   /* 字体 */
   --font-text: "Nunito", sans-serif;
+
+  /* 选中文本（自定义） */
+  --select-bg-color: #3367d1;
+  --select-text-color: #ffffff;
 
   /* 链接颜色 */
   --link-external-color: #58a6ff;
@@ -83,7 +83,7 @@ body {
   --code-string: #6f42c1;
 }
 
-/* -------------------其它不分----------------- */
+/* -------------------其它部分----------------- */
 
 /* 行内代码（深色主题），不影响代码块内的代码 */
 /* 由于默认使用 --code-background，
@@ -93,26 +93,41 @@ body {
   background-color: #ffffff1a;
 }
 
+/* 选中文本（源码模式和实时预览模式） */
+.cm-selectionBackground, 
+::selection {
+    background-color: var(--select-bg-color) !important;
+    color: var(--select-text-color) !important;
+}
+
+/* 选中文本（阅读模式） */
+.markdown-rendered ::selection {
+    background-color: var(--select-bg-color) !important;
+    color: var(--select-text-color) !important;
+}
+
+/* ----------------- 稳定后删除 ----------------------- */
 /* 选中文本：阅读模式、实时预览（中间两行）、源码模式 */
-.markdown-preview-view ::selection,
+/* .markdown-preview-view ::selection,
 .markdown-source-view.mod-cm6 .cm-content ::selection,
 .markdown-source-view.mod-cm6 .cm-line ::selection,
 .markdown-source-view.mod-cm5 textarea::selection {
   background: var(--select-bg-color);
   color: var(--select-text-color);
-}
+} */
 
 /* 全局搜索的选中文本 */
-.search-input-container input::selection {
+/* .search-input-container input::selection {
   background-color: var(--select-bg-color);
   color: var(--select-text-color);
-}
+} */
 
 /* 文档内搜索的选中文本 */
-.cm-search input::selection {
+/* .cm-search input::selection {
   background-color: var(--select-bg-color);
   color: var(--select-text-color);
-}
+} */
+/* ---------------------------------------------- */
 
 /* 标签页 */
 .workspace-tab-header.is-active,
