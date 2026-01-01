@@ -94,26 +94,25 @@ GitOps 是云原生场景下的 DevOps 最佳实践，专门适配 K8s 等云原
 
 **OCI**（Open Container Initiative，开放容器计划）旨在制定一套全球统一的容器**格式**和**运行时**标准。
 
-## OCI 仓库
+## OCI Registry
 
-**OCI Registry**（OCI 仓库）是一个用于存储、管理和分发符合 OCI 规范的云原生制品（如容器镜像和 Helm Chart）的服务器端点（域名或地址）。
+**OCI Registry**（OCI 注册表）是一个用于存储、管理和分发符合 OCI 规范的云原生制品（如容器镜像和 Helm Chart）的服务器端点（域名或地址）。
 
-### OCI 仓库种类
+### OCI Registry 种类
 
 - 公有 OCI 仓库：Docker Hub、Amazon ECR、Azure Container Registry、Google Artifact Registry 等
 
 - 私有 OCI 仓库：Harbor、Helm Chart 等
 
-### OCI 仓库地址
+### OCI Registry 地址格式
 
 ```bash
-oci://<registry>/<namespace>
+oci://<oci-registry>
 oci://registry-1.docker.io/jerrybaijy
 ```
 
 - `oci://`：OCI 协议标识
-- `<registry>`：仓库服务地址
-- `<namespace>`：用户名或组织名
+- `<oci-registry>`：OCI Registry 服务地址
 
 ## OCI 占位符规范
 

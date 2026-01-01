@@ -13,9 +13,7 @@ tags:
 
 # Overview
 
-[**Repositories**](https://console.cloud.google.com/cloud-build/repositories) 用于链接到其它代码托管平台（如 GitHub）。
-
-[Cloud Build Repositories (2nd gen)](https://docs.cloud.google.com/build/docs/repositories?hl=zh-cn#2nd-gen-repos) 是 Google Cloud Build 目前推荐的源代码连接方式。
+[**Repositories**](https://console.cloud.google.com/cloud-build/repositories) 用于链接到其它源代码仓库（如 GitLab）。
 
 > [Repositories Docs](https://docs.cloud.google.com/build/docs/repositories)
 
@@ -24,17 +22,19 @@ tags:
 - [Developer Connect](https://docs.cloud.google.com/build/docs/repositories?hl=zh-cn#dc-repo)
 - [Cloud Build repositories (2nd gen)](https://docs.cloud.google.com/build/docs/repositories?hl=zh-cn#2nd-gen-repos)（推荐）
 
-# Quick Start
+[Cloud Build repositories (2nd gen)](https://docs.cloud.google.com/build/docs/repositories#2nd-gen-repos) 是 Google Cloud Build 推荐的源代码仓库连接方式。
 
-# Connect to GitLab
+如无特殊说明，此笔记默认使用 Cloud Build repositories (2nd gen) 进行链接。
+
+# GitLab
 
 分三步连接到 GitLab：
 
-1. [Connect to a GitLab Host](#Connect to a GitLab Host)
-2. [Connect to a GitLab Repository](#Connect to a GitLab Repository)
-3. [Build Repositories from GitLab](#Build Repositories from GitLab)
+1. [连接到 GitLab 主机](#连接到 GitLab 主机)
+2. [链接到 GitLab Repository](#链接到 GitLab Repository)
+3. [创建触发器](#创建触发器)
 
-## Connect to a GitLab Host
+## 连接到 GitLab 主机
 
 > [Connect to a GitLab host](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab)
 
@@ -67,7 +67,7 @@ tags:
 
 - [轮换旧的或过期的 GitLab 访问令牌](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab?hl=zh-cn#rotate-token)
 
-## Connect to a GitLab Repository
+## 链接到 GitLab Repository
 
 > [Connect to a GitLab Repository](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-repo-gitlab)
 
@@ -83,11 +83,23 @@ tags:
   - **Repositories name**：可选择 `Generated` 自动生成
 - 点击 `Link`，将代码库与连接相关联。
 
-## Build Repositories from GitLab
+## 创建触发器
 
 > [Build Repositories from GitLab](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/build-repos-from-gitlab)
 
 - [启用相关 APIs](https://console.cloud.google.com/apis/enableflow;apiid=cloudbuild.googleapis.com,secretmanager.googleapis.com;redirect=https:%2F%2Fcloud.google.com%2Fbuild%2Fdocs%2Fautomating-builds%2Fgitlab%2Fconnect-host-gitlab)
   - Cloud Build API
   - Secret Manager API
-- 打开 [Repositories](https://console.cloud.google.com/cloud-build/repositories/2nd-gen) 页面
+- 打开 [Triggers](https://console.cloud.google.com/cloud-build/triggers) 页面
+- 在顶部栏的项目选择器中，选择您的 Google Cloud 项目。
+- 点击 `Create trigger`
+  - **Name**：触发器名称
+  - **Region**：为触发器选择区域（**注意**：代码库的区域必须与触发器的区域一致。）
+  - **Event**：触发事件，选 `Push to a branch`。
+  - **Source**
+    - **Repository service**：`Cloud Build respotories`
+    - **Repository generation**：`2nd gen`
+    - **Repository**：选择 [`Connect to a GitLab Repository`](<#Connect to a GitLab Repository>) 中链接的仓库
+    - **Branch**： 监控的分支名称（通常是 `^main$`，支持正则）。
+  -  **Configuration**
+    - **Type**：`Cloud Build configuration file (yaml/json)`

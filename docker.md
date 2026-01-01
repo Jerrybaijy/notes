@@ -190,7 +190,7 @@ docker build -t jerrybaijy/my-image:1.0 .
 **在以上示例中**：
 
 - 如果未指定 `$TAG`，默认为 `latest`。
-- 对于 Docker 向 Docker Hub 推送镜像，可省略 OCI 仓库的服务地址。（可能因为使用 `docker login` 登录）
+- 对于 Docker 向 Docker Hub 推送镜像，可省略 OCI 仓库的服务地址。（可能因为使用 `docker login` 登录）
 
 ## 更改标签
 
@@ -828,12 +828,10 @@ networks:
 
 ## OCI
 
-`<oci-registry>` 格式：
+[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
 
 ```
 oci://<registry>/<namespace>
 oci://registry-1.docker.io/jerrybaijy
 ```
-
-# FAQ
 

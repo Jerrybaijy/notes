@@ -1068,7 +1068,30 @@ networks:
   docker-compose down
   ```
 
+# 创建 Chart
+
+
+
 # Cloud Build
+
+## 关联 Repositories
+
+[将 Repositories 关联到 GitLab](gcp-repositories.md#GitLab)
+
+## 创建 Docker Repository
+
+```bash
+# 启用 Artifact Registry API
+gcloud services enable artifactregistry.googleapis.com
+
+# 创建 Docker Repository
+gcloud artifacts repositories create todo-docker-repo \
+    --repository-format=docker \
+    --location=asia-east2 \
+
+# 为 Docker 配置身份验证
+gcloud auth configure-docker asia-east2-docker.pkg.dev
+```
 
 
 

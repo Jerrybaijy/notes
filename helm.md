@@ -163,14 +163,14 @@ helm package .
 - 推送
 
   ```bash
-  helm push <chart-name>-<chart-version>.tgz <oci-registry>
+  helm push <chart-name>-<chart-version>.tgz oci://<oci-registry>
   helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
   ```
 
 ## 拉取 Chart
 
 ```bash
-helm pull <oci-registry>/<chart-name> --version <chart-version>
+helm pull oci://<oci-registry>/<chart-name> --version <chart-version>
 helm pull oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
 ```
 
@@ -179,7 +179,7 @@ helm pull oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --
 ## Helm 仓库种类
 
 - **Helm 传统仓库**：GitHub Pages 等
-- **OCI 仓库**：Docker Hub、GitLab Container Registry 等
+- **OCI 仓库**：Docker Hub、GitLab Container Registry、Google Artifact Registry 等
 - **Helm 专属仓库**：ChartMuseum 等
 - **国内特色仓库**：像阿里云容器仓库等，适配国内网络环境。
 
@@ -319,6 +319,8 @@ helm test $RELEASE
 - 使用本地 Chart 包
 - 使用远程 Chart 包
 
+`Helm install` 命令会将 Release 部署到当前 Kubectl Context 指向的集群。
+
 ### 部署 Release（本地 Chart 目录）
 
 ```bash
@@ -328,7 +330,7 @@ helm install <Release_Name> <chart-dir>
 
 ```bash
 cd /d/projects/todo-fullstack-gitops
-helm install todo-app ./todo-chart
+helm install my-release ./todo-chart
 ```
 
 ### 部署 Release（本地 Chart 包）
@@ -346,7 +348,7 @@ helm uninstall <Release_Name>
 ```bash
 helm install <Release_Name> oci://<Registry_Host>/<Namespace>/<Repository_Name>/<Chart_Name> --version <Chart_Version>
 
-helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
+helm install my-release oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
 ```
 
 ## 卸载 Release
@@ -354,6 +356,12 @@ helm install todo-app oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/t
 ```bash
 helm uninstall <Release_Name>
 ```
+
+```bash
+helm uninstall my-release
+```
+
+
 
 # `Chart.yaml`
 

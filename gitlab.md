@@ -262,7 +262,7 @@ publish_chart:
 
 **如何查看**：进入项目 > 左侧边栏 > `Deploy` > `Container registry`
 
-`<oci-registry>` 格式：比[标准 `<oci-registry>`](it-basics.md#oci-registry) 多了 `<project-name>`
+[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
 
 ```
 oci://<registry>/<namespace>/<project-name>

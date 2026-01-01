@@ -13,8 +13,243 @@ tags:
 
 # Overview
 
-**Artifact Registry** 
+[**Artifact Registry**](https://console.cloud.google.com/artifacts) 是 GCP 的制品仓库。
 
 > [Artifact Registry Docs](https://docs.cloud.google.com/artifact-registry/docs)
 
-# Quick Start
+每个项目有自己的 Artifact Registry，Artifact Registry 中创建 Repostories 以存储制品。
+
+```
+Project
+└── Artifact Registry  # 制品注册表
+    └── Repostories    # 具体制品仓库
+```
+
+[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
+
+```
+oci://<docker-repo-region>-docker.pkg.dev/<project-id>/<docker-repo-name>
+oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
+```
+
+其中：
+
+- `<docker-repo-region>`：Docker Repository 位置
+- `<docker-repo-region>-docker.pkg.dev`：Docker Repository 主机名
+- `<project-id>`：GCP 项目 ID
+- `<docker-repo-name>`：Docker Repository 名称
+
+# Quickstart
+
+## 准备工作
+
+- [选择项目](https://console.cloud.google.com/projectselector2/home/dashboard)
+- 开启 [Artifact Registry API](https://console.cloud.google.com/marketplace/product/google/artifactregistry.googleapis.com)
+- 打开 [Artifact Registry](https://console.cloud.google.com/artifacts) 页面
+- 以 Docker Repository 为例
+
+## 创建 Docker Repository
+
+- 点击 `Create repository`
+  - **Name**：Docker Repository 名称
+  - **Format**：Docker Repository 类型
+  - **Region**：Docker Repository 区域
+
+## 为 Docker 配置身份验证
+
+如需为区域 `asia-east2` 中的 Docker 代码库设置身份验证：
+
+```bash
+gcloud auth configure-docker asia-east2-docker.pkg.dev
+```
+
+该命令将更新 Docker 配置，允许 Docker 向 Artifact Registry 推送 Image。
+
+## 拉取镜像
+
+随意拉取一个 image，以备使用：
+
+```bash
+docker pull us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+```
+
+## 标记镜像
+
+```bash
+docker tag us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0 \
+asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+其中：
+
+- `$DOCKER_REPO_REGION`：Docker Repository 位置
+- `$DOCKER_REPO_REGION-docker.pkg.dev`：Docker Repository 主机名
+- `$PROJECT_ID`：GCP 项目 ID
+- `$DOCKER_REPO_NAME`：Docker Repository 名称
+
+## 向 Docker Repository 推送镜像
+
+```bash
+docker push asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+## 从 Docker Repository 拉取镜像
+
+```bash
+docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+## 删除 Docker Repository
+
+```bash
+gcloud artifacts repositories delete my-docker-repo --location=asia-east2
+```
+
+# Docker
+
+> [容器概念](https://docs.cloud.google.com/artifact-registry/docs/container-concepts)
+>
+> [快速入门：在 Artifact Registry 中存储 Docker 容器映像](https://docs.cloud.google.com/artifact-registry/docs/docker/store-docker-container-images)
+
+## 启用 Artifact Registry API
+
+```bash
+gcloud services enable artifactregistry.googleapis.com
+```
+
+## 创建 Docker Repository
+
+```bash
+gcloud artifacts repositories create $REPO_NAME \
+    --repository-format=docker \
+    --location=$DOCKER_REPO_REGION \
+```
+
+```bash
+gcloud artifacts repositories create my-docker-repo \
+    --repository-format=docker \
+    --location=asia-east2 \
+```
+
+## 为 Docker 配置身份验证
+
+如需为区域 `asia-east2` 中的 Docker 代码库设置身份验证：
+
+```bash
+gcloud auth configure-docker asia-east2-docker.pkg.dev
+```
+
+该命令将更新 Docker 配置，允许 Docker 向 Artifact Registry 推送 Image。
+
+## 拉取镜像
+
+随意拉取一个 image，以备使用：
+
+```bash
+docker pull us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+```
+
+## 标记镜像
+
+```bash
+docker tag us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0 \
+asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+其中：
+
+- `$DOCKER_REPO_REGION`：Docker Repository 位置
+- `$DOCKER_REPO_REGION-docker.pkg.dev`：Docker Repository 主机名
+- `$PROJECT_ID`：GCP 项目 ID
+- `$DOCKER_REPO_NAME`：Docker Repository 名称
+
+## 向 Docker Repository 推送镜像
+
+```bash
+docker push asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+## 从 Docker Repository 拉取镜像
+
+```bash
+docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+# Helm
+
+> [快速入门：在 Artifact Registry 中存储 Helm 图表](https://docs.cloud.google.com/artifact-registry/docs/helm/store-helm-charts)
+
+## 启用 Artifact Registry API
+
+```bash
+gcloud services enable artifactregistry.googleapis.com
+```
+
+## 创建 Docker Repository
+
+Artifact Registry 使用 Docker Repository 存储 Helm Chart，同属 OCI 标准。
+
+```bash
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
+    --repository-format=docker \
+    --location=$DOCKER_REPO_REGION \
+```
+
+```bash
+gcloud artifacts repositories create my-docker-repo \
+    --repository-format=docker \
+    --location=asia-east2 \
+```
+
+## 为 Helm 配置身份验证
+
+如果 Docker 已经配置身份验证，则 Helm 可以使用 Docker 的身份验证向 Artifact Registry 推送 Chart。
+
+否则，可以按以下方式为 Helm 获取身份验证。
+
+```bash
+gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
+    --password-stdin $DOCKER_REPO_REGION-docker.pkg.dev
+```
+
+```bash
+gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
+    --password-stdin asia-east2-docker.pkg.dev
+```
+
+- 官方文档未更新，应去掉 `https://`。
+- `$DOCKER_REPO_REGION`：Docker Repository 位置
+
+## 创建 Chart
+
+```bash
+# 创建
+cd /d/projects/0000-tests
+helm create hello-chart
+
+# 封装
+helm package hello-chart/
+```
+
+## 推送 Chart
+
+```bash
+helm push hello-chart-0.1.0.tgz oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
+```
+
+## 部署 Release
+
+```bash
+helm install hello-chart \
+    oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/hello-chart \
+    --version 0.1.0
+
+# 卸载 Release
+helm uninstall hello-chart
+```
+
+## 删除 Docker Repository
+
+```bash
+gcloud artifacts repositories delete my-docker-repo --location=asia-east2
+```

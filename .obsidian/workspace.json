@@ -78,17 +78,31 @@
             }
           },
           {
-            "id": "b3e4b4be2c6762b0",
+            "id": "5fb85fa6dd4fcc44",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "harbor.md",
-                "mode": "source",
+                "file": "gcp-artifact-registry.md",
+                "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "harbor"
+              "title": "gcp-artifact-registry"
+            }
+          },
+          {
+            "id": "52699e7055971015",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gitlab.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gitlab"
             }
           },
           {
@@ -256,8 +270,10 @@
   },
   "active": "ecd9c04224d43e55",
   "lastOpenFiles": [
-    "gcp-cloud-build.md",
+    "gcp-artifact-registry.md",
     "gcp-repositories.md",
+    "gitlab.md",
+    "gcp-cloud-build.md",
     "git.md",
     "gcp.md",
     "todo-fullstack.md",
@@ -266,13 +282,11 @@
     "0000-to-do.md",
     "todo-gcp.md",
     "harbor.md",
-    "gcp-artifact-registry.md",
     "dev-ops.md",
     "gitlab-ci-cd-yaml.md",
     "gcp-secure-source-manager.md",
     "gcp-project.md",
     "software.md",
-    "gitlab.md",
     "terraform-hcl.md",
     "terraform.md",
     "terraform-cli.md",
