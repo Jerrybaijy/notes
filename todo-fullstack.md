@@ -117,7 +117,7 @@ todo-fullstack/
 │   ├── terraform.tf        # Provider 版本配置文件
 │   └── variables.tf        # Terraform 变量
 │
-├── todo-chart/             # Helm Chart 目录
+├── helm-chart/             # Helm Chart 目录
 │   ├── templates/          # Kubernetes 资源模板目录
 │   │   ├── namespace.yaml  # 命名空间配置模板
 │   │   ├── _helpers.tpl    # 模板函数
@@ -1669,7 +1669,7 @@ spec:
 
   ```bash
   cd d:/projects/todo-fullstack
-  helm create todo-chart
+  helm create helm-chart
   ```
 
 - 删除 `templates` 目录下的全部默认文件
@@ -1690,7 +1690,7 @@ spec:
 
 ### `Chart.yaml`
 
-Chart 的元数据 `todo-fullstack/Chart.yaml`
+Chart 的元数据 `helm-chart/Chart.yaml`
 
 ```yaml
 apiVersion: v2
@@ -1703,7 +1703,7 @@ appVersion: "1.0.0"
 
 ### `values.yaml`
 
-模板文件的参数值 `todo-fullstack/values.yaml`
+模板文件的参数值 `helm-chart/values.yaml`
 
 ```yaml
 # 全局配置
@@ -2171,14 +2171,14 @@ spec:
 
   ```bash
   cd /d/projects/todo-fullstack
-  helm lint ./todo-chart
+  helm lint ./helm-chart
   ```
 
 - 部署 Helm Release
 
   ```bash
   cd /d/projects/todo-fullstack
-  helm install todo-app ./todo-chart
+  helm install todo-app ./helm-chart
   ```
 
 - 查看，所有资源运行正常
@@ -2213,17 +2213,17 @@ spec:
 
 ### 封装 Chart
 
-这会在 `todo-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
+这会在 `helm-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
 
 ```bash
-cd /d/projects/todo-fullstack/todo-chart
-helm package .
+cd /d/projects/todo-fullstack
+helm package ./helm-chart
 ```
 
 ### 测试本地 Chart 包
 
 ```bash
-cd /d/projects/todo-fullstack/todo-chart
+cd /d/projects/todo-fullstack//helm-chart
 helm install todo-app todo-chart-0.1.0.tgz
 
 # 卸载
@@ -2239,7 +2239,7 @@ helm uninstall todo-app
 - 推送 Chart 包
 
   ```bash
-  cd /d/projects/todo-fullstack/todo-chart
+  cd /d/projects/todo-fullstack//helm-chart
   helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack
   ```
 
@@ -2289,10 +2289,10 @@ variables:
   # Helm Chart 名称
   CHART_NAME: todo-chart
   # Helm Chart 目录
-  CHART_DIR: todo-chart
+  CHART_DIR: helm-chart
 
   # OCI 仓库地址
-  OCI_REGISTRY: oci://registry.gitlab.com/jerrybai/$PROJECT_NAME
+  OCI_REGISTRY: registry.gitlab.com/jerrybai/$PROJECT_NAME
 
 # 定义阶段
 stages:
@@ -2383,8 +2383,8 @@ publish_chart:
     - helm package . --version "${LATEST_VERSION}"
     
     # 推送 Chart 到 GitLab Container Registry
-    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz $OCI_REGISTRY
-    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz $OCI_REGISTRY
+    - helm push ${CHART_NAME}-${SHA_VERSION}.tgz oci://${OCI_REGISTRY}
+    - helm push ${CHART_NAME}-${LATEST_VERSION}.tgz oci://${OCI_REGISTRY}
 
   rules:
     # 以下任何一个目录更新时，都运行此 Job（前提是满足 needs 条件）
@@ -2482,7 +2482,7 @@ spec:
 
 ### `values.yaml`
 
-修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
+修改模板文件的参数值 `helm-chart/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
 - **gcp**：用于 `_helpers.tpl` 中生成 Cloud SQL 实例连接名称。
@@ -2813,7 +2813,7 @@ kubectl config current-context
 
 ### `values.yaml`
 
-修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
+修改模板文件的参数值 `helm-chart/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
 
 - **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
 - **gcp**：用于 `_helpers.tpl` 中生成 Cloud SQL 实例连接名称。
@@ -3442,19 +3442,21 @@ kubectl config current-context
 - 卸载应用
 
   ```bash
-  kubectl delete -f application.yaml
+  cd d:/projects/todo-fullstack/argo-cd
+  kubectl delete -f chart-app.yaml
   ```
 
 - 删除命名空间
 
   ```
   kubectl delete ns argocd
-  kubectl delete ns my-ns
+  kubectl delete ns todo
   ```
 
 - 重复执行 `terraform apply`，直到 terraform 提示 no changes。
 
   ```bash
+  cd d:/projects/todo-fullstack/terraform
   terraform apply
   ```
 
