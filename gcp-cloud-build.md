@@ -19,7 +19,60 @@ tags:
 # Quick Start
 
 - 启用 [Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com?referrer=search&project=project-60addf72-be9c-4c26-8db&returnUrl=%2Fcloud-build%2Fbuilds%3Freferrer%3Dsearch%26project%3Dproject-60addf72-be9c-4c26-8db%26inv%3D%26invt%3DAcFoRQ)
-- 
+
+- [将 Repositories 关联到 GitLab](gcp-repositories.md#GitLab)
+
+- 创建 Docker Repository
+
+  ```bash
+  # 启用 Artifact Registry API
+  gcloud services enable artifactregistry.googleapis.com
+  
+  # 创建 Docker Repository
+  gcloud artifacts repositories create todo-docker-repo \
+      --repository-format=docker \
+      --location=asia-east2 \
+  
+  # 为 Docker 配置身份验证
+  gcloud auth configure-docker asia-east2-docker.pkg.dev
+  ```
+
+- 为触发器添加条件
+
+  ```bash
+  Included files filter
+  backend/**
+  frontend/**
+  helm-chart/**
+  
+  gcloud builds triggers list --region=asia-east2
+  
+  gcloud builds triggers update [TRIGGER_NAME] \
+      --included-files="test/**"
+  
+  gcloud builds triggers update e951e607-ec8b-4720-8157-58ad8710a732 \
+      --region=asia-east2 \
+      --included-files="test/**"
+  
+  gcloud builds triggers update gitlab todo-trigger \
+      --region=asia-east2 \
+      --included-files=["test/**"]
+  
+  gcloud builds triggers update \
+      --region=asia-east2 \
+      --name="todo-trigger" \
+      --included-files="test/**"
+  ```
+
+- 给服务账号添加角色
+
+  ```bash
+  378042797368-compute@developer.gserviceaccount.com
+  Artifact Registry Writer
+  Logs Writer
+  ```
+
+- 定数等分
 
 
 

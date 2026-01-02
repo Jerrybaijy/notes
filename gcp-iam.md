@@ -263,5 +263,13 @@ gcp:
 {{- end -}}
 ```
 
+# FAQ
 
+```
+# 查看 Argo CD 的 argocd-repo-server 是否绑定到 GSA
+kubectl get sa argocd-repo-server -n argocd -o yaml
+
+# 查看 GSA 是否给 Argo CD 的 argocd-repo-server 授权
+gcloud iam service-accounts get-iam-policy todo-sa-id@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com
+```
 

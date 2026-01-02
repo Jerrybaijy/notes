@@ -180,6 +180,9 @@ kubectl delete ns todo
 
 ```bash
 kubectl delete crd applications.argoproj.io appprojects.argoproj.io argocds.argoproj.io
+
+# 或者（与安装对应）
+kubectl delete -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 ```
 
 删除 ArgoCD 的命名空间
@@ -210,7 +213,7 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ## 使用 Terraform 安装 Argo CD
 
-**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。所以目前仍采用 `kubectl` 的方式安装 Argo CD。
+**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。所以目前仍采用 `kubectl` 的方式安装 Argo CD。
 
 > Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = error fetching chart: failed to fetch chart: failed to get command args to log: `helm pull --destination /tmp/8d5b8c2d-e724-4d3e-9eb0-34404edd1547 --version 99.99.99-latest --repo oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart todo-chart` failed exit status 1: Error: looks like "oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart" is not a valid chart repository or cannot be reached: object required
 
@@ -610,7 +613,7 @@ Error: Failed to construct REST client
 - [已通过 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
 - [已通过 Terraform 配置 Argo CD 的安装](<argo-cd.md#使用 Terraform 安装 Argo CD>)
 
-### `argo-cd.tf`
+### `todo-app.tf`
 
 ```hcl
 # 使用 kubernetes_manifest 部署 Argo CD Application

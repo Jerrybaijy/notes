@@ -95,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "software",
+                "query": "networ",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -212,7 +212,7 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "28f2beca91b64d1f",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
