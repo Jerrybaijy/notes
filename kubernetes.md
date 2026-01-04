@@ -255,8 +255,11 @@ minikube dashboard
 minikube start
 # 停止集群
 minikube stop
-# 删除集群
+
+# 仅删除当前实例，保留下载缓存
 minikube delete
+# 强制删除所有实例及全局缓存配置
+minikube delete --all --purge
 
 # 访问应用
 minikube service <service_name>
@@ -612,7 +615,7 @@ spec:
 
 # CR
 
-[**CR**](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/)（Custom Resource, 定制资源）是对 Kubernetes API 的扩展，是 CRD 的实例。
+[**CR**](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/)（Custom Resource，定制资源）是对 Kubernetes API 的扩展，是 CRD 的实例。
 
 Kubernetes 提供了**两种对象**向集群中[添加定制资源](https://kubernetes.io/zh-cn/docs/concepts/extend-kubernetes/api-extension/custom-resources/#adding-custom-resources)：
 

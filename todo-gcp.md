@@ -1417,7 +1417,7 @@ gcloud container clusters get-credentials todo-cluster \
 kubectl config current-context
 
 # 切换上下文
-kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cluster
 ```
 
 ## 关联 Repositories
@@ -1466,7 +1466,7 @@ gcloud auth configure-docker asia-east2-docker.pkg.dev
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
-### `Chart.yaml`
+## `Chart.yaml`
 
 Chart 的元数据 `helm-chart/Chart.yaml`
 
@@ -1479,7 +1479,7 @@ type: application
 appVersion: "1.0.0"
 ```
 
-### `values.yaml`
+## `values.yaml`
 
 模板文件的参数值 `helm-chart/values.yaml`
 
@@ -1530,7 +1530,7 @@ frontend:
     port: 80
 ```
 
-### `namespace.yaml`
+## `namespace.yaml`
 
 命名空间 `templates/namespace.yaml`
 
@@ -1543,7 +1543,7 @@ metadata:
     name: {{ .Values.global.namespace }}
 ```
 
-### `_helpers.tpl`
+## `_helpers.tpl`
 
 模板函数 `templates/_helpers.tpl`
 
@@ -1627,7 +1627,7 @@ app.kubernetes.io/component: frontend
 {{- end }}
 ```
 
-### `backend.yaml`
+## `backend.yaml`
 
 后端模板文件 `templates/backend.yaml`
 
@@ -1719,7 +1719,7 @@ spec:
       targetPort: {{ .Values.backend.service.port }}
 ```
 
-### `frontend.yaml`
+## `frontend.yaml`
 
 前端模板文件 `templates/frontend.yaml`
 
@@ -1935,7 +1935,8 @@ metadata:
 spec:
   project: default
   source:
-    # <oci-registry>/<chart-name>
+    # GitLab Container Registry 地址
+    # repoURL: registry.gitlab.com/jerrybai/todo-fullstack
     repoURL: oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart
     # Chart 版本号
     targetRevision: "99.99.99-latest"
@@ -1971,10 +1972,12 @@ spec:
   kubectl apply -f todo-app.yaml
   ```
 
+  > Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = error pulling OCI chart: failed to pull OCI chart: failed to get command args to log: `helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart --version 99.99.99-latest --destination /tmp/1d97d728-d028-40a4-80e4-cf03fc51afb2` failed exit status 1: Error: failed to authorize: failed to fetch anonymous token: unexpected status from GET request to https://asia-east2-docker.pkg.dev/v2/token?scope=repository%3Aproject-60addf72-be9c-4c26-8db%2Ftodo-docker-repo%2Ftodo-chart%3Apull&service=asia-east2-docker.pkg.dev: 403 Forbidden
+
 - 获取前端访问地址
 
   ```bash
-  kubectl get svc -n todo
+  kubectl get svc -n todo-ns
   ```
 
 - 访问前端：http://$EXTERNAL-IP

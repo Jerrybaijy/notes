@@ -111,10 +111,12 @@ todo-fullstack/
 ├── terraform/              # GCP 的 Terraform 部署文件
 │   ├── .terraform.lock.hcl # 依赖锁定文件
 │   ├── api.tf              # GCP API
+│   ├── argo-cd.tf          # Argo CD 配置文件
 │   ├── cloud-sql.tf        # Cloud SQL 配置文件
 │   ├── gke.tf              # GKE 配置文件
 │   ├── iam.tf              # GCP 权限配置文件
 │   ├── terraform.tf        # Provider 版本配置文件
+│   ├── todo-app.tf         # Argo CD 的 CR 资源配置文件
 │   └── variables.tf        # Terraform 变量
 │
 ├── helm-chart/             # Helm Chart 目录
@@ -1300,22 +1302,27 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 
 此种部署方式将 K8s 的资源清单推送至 GitLab 代码仓库，使用 Argo CD 部署到 Minikube 集群，同时实现 CI/CD 自动化流程。
 
-### 准备
+### 准备工作
 
-- Minikube、Kubectl、Argo CD 已安装
+- Minikube 已安装
 
-- 创建 K8s 和 Argo CD 目录
+- Kubectl 已安装
 
-  ```bash
-  cd d:/projects/todo-fullstack
-  mkdir k8s argo-cd
-  
-  cd d:/projects/todo-fullstack/k8s
-  touch namespace.yaml mysql.yaml backend.yaml frontend.yaml
-  
-  cd d:/projects/todo-fullstack/argo-cd
-  touch k8s-app.yaml
-  ```
+- Argo CD 已安装
+
+
+### 创建 K8s 和 Argo CD 目录
+
+```bash
+cd d:/projects/todo-fullstack
+mkdir k8s argo-cd
+
+cd d:/projects/todo-fullstack/k8s
+touch namespace.yaml mysql.yaml backend.yaml frontend.yaml
+
+cd d:/projects/todo-fullstack/argo-cd
+touch k8s-app.yaml
+```
 
 ### `namespace.yaml`
 
@@ -1325,9 +1332,9 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: todo
+  name: todo-ns
   labels:
-    name: todo
+    name: todo-ns
 ```
 
 ### `mysql.yaml`
@@ -1339,7 +1346,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: mysql-config
-  namespace: todo
+  namespace: todo-ns
 
 data:
   MYSQL_DATABASE: todo_db
@@ -1349,7 +1356,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: mysql-secret
-  namespace: todo
+  namespace: todo-ns
 type: Opaque
 stringData:
   MYSQL_ROOT_PASSWORD: "123456"
@@ -1360,7 +1367,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: mysql
 spec:
@@ -1418,7 +1425,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mysql
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: mysql
 spec:
@@ -1439,7 +1446,7 @@ apiVersion: v1
 kind: Secret
 metadata:
   name: backend-secret
-  namespace: todo
+  namespace: todo-ns
 type: Opaque
 stringData:
   SECRET_KEY: your-secret-key
@@ -1448,7 +1455,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: backend
 spec:
@@ -1504,7 +1511,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: backend
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: backend
 spec:
@@ -1524,7 +1531,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: frontend
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: frontend
 spec:
@@ -1564,7 +1571,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend
-  namespace: todo
+  namespace: todo-ns
   labels:
     app: frontend
 spec:
@@ -1579,7 +1586,7 @@ spec:
 
 ### `k8s-app.yaml`
 
-ArgoCD 应用定义 `argo-cd/k8s-app.yaml`，这个文件引用的是 Git 仓库中 `k8s` 目录中的 K8s 配置文件。
+ArgoCD 的 CR 配置文件 `argo-cd/k8s-app.yaml`，这个文件引用的是 Git 仓库中 `k8s` 目录中的 K8s 配置文件。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -1587,6 +1594,8 @@ kind: Application
 metadata:
   name: todo-app
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
@@ -1595,7 +1604,7 @@ spec:
     path: k8s
   destination:
     server: https://kubernetes.default.svc
-    namespace: todo
+    namespace: todo-ns
   syncPolicy:
     automated:
       selfHeal: true
@@ -1632,7 +1641,7 @@ spec:
 
   ```bash
   # 前端
-  kubectl port-forward svc/frontend 8081:80 -n todo
+  kubectl port-forward svc/frontend 8081:80 -n todo-ns
   ```
 
 - 访问前端：http://localhost:8081/
@@ -1641,18 +1650,16 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/mysql 3306:3306 -n todo
+  kubectl port-forward svc/mysql 3306:3306 -n todo-ns
   # 后端
-  kubectl port-forward svc/backend 5000:5000 -n todo
+  kubectl port-forward svc/backend 5000:5000 -n todo-ns
   ```
 
 - 卸载
 
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
-  
   kubectl delete -f k8s-app.yaml
-  kubectl delete ns todo
   ```
 
 ## Chart + Argo CD 部署
@@ -1663,7 +1670,10 @@ spec:
 
 - Helm 已安装
 
-- 源代码开发完成，已将镜像推送至镜像仓库。
+- 源代码开发完成，已将 image 推送至 Docker Hub。
+
+
+### 创建 Chart 目录
 
 - 创建 Chart 目录
 
@@ -1684,7 +1694,7 @@ spec:
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todo-fullstack/todo-chart/templates/
+  cd d:/projects/todo-fullstack/helm-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
@@ -1708,7 +1718,7 @@ appVersion: "1.0.0"
 ```yaml
 # 全局配置
 global:
-  namespace: todo
+  namespace: todo-ns
 
 # MySQL配置
 mysql:
@@ -2171,27 +2181,27 @@ spec:
 
   ```bash
   cd /d/projects/todo-fullstack
-  helm lint ./helm-chart
+  helm lint helm-chart
   ```
 
 - 部署 Helm Release
 
   ```bash
   cd /d/projects/todo-fullstack
-  helm install todo-app ./helm-chart
+  helm install todo-app helm-chart
   ```
 
 - 查看，所有资源运行正常
 
   ```bash
-  kubectl get all -n todo
+  kubectl get all -n todo-ns
   ```
 
 - 端口转发
 
   ```bash
   # 前端
-  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo-ns
   ```
 
 - 访问前端：http://localhost:8081/
@@ -2200,9 +2210,9 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo-ns
   # 后端
-  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo-ns
   ```
 
 - 卸载 Helm Release
@@ -2213,17 +2223,15 @@ spec:
 
 ### 封装 Chart
 
-这会在 `helm-chart` 目录生成 `todo-chart-0.1.0.tgz` Chart 包
-
 ```bash
 cd /d/projects/todo-fullstack
-helm package ./helm-chart
+helm package helm-chart
 ```
 
 ### 测试本地 Chart 包
 
 ```bash
-cd /d/projects/todo-fullstack//helm-chart
+cd /d/projects/todo-fullstack
 helm install todo-app todo-chart-0.1.0.tgz
 
 # 卸载
@@ -2239,7 +2247,7 @@ helm uninstall todo-app
 - 推送 Chart 包
 
   ```bash
-  cd /d/projects/todo-fullstack//helm-chart
+  cd /d/projects/todo-fullstack
   helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack
   ```
 
@@ -2398,7 +2406,7 @@ publish_chart:
 
 ### `chart-app.yaml`
 
-ArgoCD 应用定义 `argo-cd/chart-app.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
+Argo CD 的 CR 配置文件 `argo-cd/chart-app.yaml`，这个文件引用的是 GitLab Container Registry 中的 Helm Chart 包。
 
 ```yaml
 apiVersion: argoproj.io/v1alpha1
@@ -2406,19 +2414,18 @@ kind: Application
 metadata:
   name: todo-app
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    # <oci-registry>/<chart-name>
-    repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
-    # Chart 版本号
+    repoURL: registry.gitlab.com/jerrybai/todo-fullstack
     targetRevision: "99.99.99-latest"
-    # Chart 名称
     chart: todo-chart
 
   destination:
     server: https://kubernetes.default.svc
-    namespace: todo
+    namespace: todo-ns
   syncPolicy:
     automated:
       selfHeal: true
@@ -2449,7 +2456,7 @@ spec:
 
   ```bash
   # 前端
-  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-frontend 8081:80 -n todo-ns
   ```
 
 - 访问前端：http://localhost:8081/
@@ -2458,9 +2465,9 @@ spec:
 
   ```bash
   # 数据库
-  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-mysql 3306:3306 -n todo-ns
   # 后端
-  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo
+  kubectl port-forward svc/todo-app-todo-chart-backend 5000:5000 -n todo-ns
   ```
 
 - 卸载 App
@@ -2468,17 +2475,15 @@ spec:
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app.yaml
-  kubectl delete ns todo
   ```
 
 ## Chart + Argo CD + GCP 部署
 
-此种部署方式使用 Cloud SQL 代替原来的容器化 MySQL，并且使用 Argo CD 将应用部署到 GKE 中。
+此种部署方式使用 Cloud SQL 代替原来的容器化 MySQL，并且将资源部署到 GCP 中。
 
 ### 准备工作
 
-- Helm 已安装
-- 源代码开发完成，已将 image 推送至镜像仓库。
+源代码开发和 GitLab CI 已完成，已将 image 推送至 Docker Hub。
 
 ### `values.yaml`
 
@@ -2491,16 +2496,10 @@ spec:
   - 添加 Cloud SQL 的环境变量
 - **frontend**：前端服务类型改为 LoadBalancer 以支持公网访问
 
-修改模板文件的参数值 `todo-fullstack/values.yaml`，此文件与 `Chart + Argo CD 部署` 相比有修改：
-
-- **mysql**：由于使用 Cloud SQL，所以删除了 MySQL 部分。
-- **backend**：引入了 Cloud SQL 的环境变量。
-- **frontend**：`service` 类型改成了 `LoadBalancer`
-
 ```yaml
 # 全局配置
 global:
-  namespace: todo
+  namespace: todo-ns
 
 # Backend 配置
 backend:
@@ -2701,6 +2700,10 @@ spec:
       targetPort: {{ .Values.backend.service.port }}
 ```
 
+### 更新 Chart
+
+将源代码推送至代码仓库，改变 chart。
+
 ### 省略步骤
 
 由于此部署方式旨在应用 GCP + Cloud SQL，所以省略以下步骤：
@@ -2712,6 +2715,10 @@ spec:
 - 测试远程 Chart 包
 
 ### 创建 GKE
+
+准备工作：
+
+- 已创建 GCP 项目
 
 ```bash
 gcloud container clusters create todo-cluster \
@@ -2735,14 +2742,12 @@ gcloud container clusters get-credentials todo-cluster \
     --project project-60addf72-be9c-4c26-8db
 ```
 
-### 切换 kubectl 上下文
-
 ```bash
-# 切换上下文
-kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo
-
 # 查看当前上下文
 kubectl config current-context
+
+# 切换上下文
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cluster
 ```
 
 ### 创建 Cloud SQL 实例
@@ -2755,19 +2760,19 @@ kubectl config current-context
 
 ### 部署应用
 
-- 将源代码推送至代码仓库，改变 chart。
+部署：使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
 
-- 部署：使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
+```bash
+cd d:/projects/todo-fullstack/argo-cd
+kubectl apply -f chart-app.yaml
+```
 
-  ```bash
-  cd d:/projects/todo-fullstack/argo-cd
-  kubectl apply -f chart-app.yaml
-  ```
-  
+### 访问应用
+
 - 获取前端访问地址
 
   ```bash
-  kubectl get svc -n todo
+  kubectl get svc -n todo-ns
   ```
 
 - 访问前端：http://$EXTERNAL-IP
@@ -2781,9 +2786,8 @@ kubectl config current-context
   ```bash
   cd d:/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app.yaml
-  kubectl delete ns todo
   ```
-
+  
 - 删除 GKE
 
   ```bash
@@ -2804,12 +2808,11 @@ kubectl config current-context
 
 ## Chart + Argo CD + GCP + Terraform 部署
 
-此种部署方式使用 Terraform 部署 GKE 和 Cloud SQL，其余与 `Chart + Argo CD + GCP 部署` 相同。
+此种部署方式使用 Terraform 将 GKE、Cloud SQL、Argo CD 和 my-app 部署到 GCP 中。
 
 ### 准备工作
 
-- Helm 已安装
-- 源代码开发完成，已将 image 推送至镜像仓库。
+源代码开发和 GitLab CI 已完成，已将 image 推送至 Docker Hub。
 
 ### `values.yaml`
 
@@ -2825,7 +2828,7 @@ kubectl config current-context
 ```yaml
 # 全局配置
 global:
-  namespace: todo
+  namespace: todo-ns
 
 # 1. 关键：用于模板函数中生成 Cloud SQL 实例连接名称
 gcp:
@@ -3057,6 +3060,10 @@ spec:
       targetPort: {{ .Values.backend.service.port }}
 ```
 
+### 更新 Chart
+
+将源代码推送至代码仓库，改变 chart。
+
 ### 创建 Terraform 目录和配置文件
 
 ```bash
@@ -3064,7 +3071,7 @@ cd d:/projects/todo-fullstack
 mkdir terraform
 
 cd d:/projects/todo-fullstack/terraform
-touch terraform.tf api.tf iam.tf gke.tf cloud-sql.tf variables.tf terraform.tfvars
+touch terraform.tf api.tf iam.tf gke.tf cloud-sql.tf argo-cd.tf variables.tf terraform.tfvars
 ```
 
 ### `terraform.tf`
@@ -3079,6 +3086,14 @@ terraform {
     kubernetes = {
       source  = "hashicorp/kubernetes"
       version = "~> 3.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 3.1.0"
+    }
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.11.1"
     }
   }
 }
@@ -3118,10 +3133,30 @@ resource "google_service_account" "workload_identity" {
   display_name = "GSA for Workload Identity"
 }
 
-# 创建 namespace，防止因 namespace 不存在而导致创建 IAM 失败
+# 为 GSA 分配 Cloud SQL Client 角色
+resource "google_project_iam_member" "gsa_roles" {
+  for_each = toset([
+    "roles/cloudsql.client", # Cloud SQL Client
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
     name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].labels # 忽略标签变化
+    ]
   }
 }
 
@@ -3132,6 +3167,8 @@ resource "kubernetes_service_account_v1" "my_ksa" {
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
       "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
     }
   }
 }
@@ -3141,13 +3178,6 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.workload_identity.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
-}
-
-# 允许 GSA 访问 Cloud SQL
-resource "google_project_iam_member" "mysql_client" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
 }
 
 output "app_namespace" {
@@ -3224,7 +3254,6 @@ resource "google_container_node_pool" "my_node_pool" {
   }
 }
 
-# 输出 GKE 集群名称
 output "gke_name" {
   description = "GKE name"
   value       = google_container_cluster.my_cluster.name
@@ -3288,13 +3317,153 @@ output "cloud_sql_connection_name" {
 }
 
 output "sql_instance_name" {
-  description = "Cloud SQL 实例的名称"
+  description = "Cloud SQL instance name"
   value       = google_sql_database_instance.mysql_instance.name
 }
 
 output "database_name" {
   description = "Cloud SQL database name"
   value       = google_sql_database.my_db.name
+}
+```
+
+### `argo-cd.tf`
+
+```hcl
+# 添加 Helm Provider
+provider "helm" {
+  kubernetes = {
+    host                   = "https://${google_container_cluster.my_cluster.endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
+  }
+}
+
+# 创建 Argo CD 命名空间
+resource "kubernetes_namespace_v1" "argocd_ns" {
+  metadata {
+    name = "argocd"
+  }
+  depends_on = [google_container_node_pool.my_node_pool]
+}
+
+# 安装 Argo CD
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+  version    = "7.7.1"
+
+  set = [
+    # 设置服务类型为 LoadBalancer
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    },
+    # 允许 HTTP 访问
+    {
+      name  = "server.extraArgs"
+      value = "{--insecure}"
+    },
+    # 仅允许自己的 IP 访问
+    {
+      name  = "server.service.loadBalancerSourceRanges"
+      value = "{${var.my_external_ip}/32}"
+    }
+  ]
+}
+
+# 获取 Argo CD 服务数据 (用于 Output)
+data "kubernetes_service_v1" "argocd_server" {
+  metadata {
+    name      = "${helm_release.argocd.name}-server"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 获取初始密码 Secret 数据
+data "kubernetes_secret_v1" "argocd_initial_admin_secret" {
+  metadata {
+    name      = "argocd-initial-admin-secret"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 输出 Argo CD 公网 IP
+output "argocd_loadbalancer_ip" {
+  description = "Argo CD UI 的公网访问 IP"
+  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
+}
+
+# 输出初始管理员密码
+output "argocd_initial_admin_password" {
+  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
+  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
+  sensitive   = true
+}
+```
+
+### `todo-app.tf`
+
+Argo CD 的 CR 资源配置文件 `terraform/todo-app.tf`
+
+```hcl
+# 增加一个睡眠资源
+resource "time_sleep" "wait_for_argocd" {
+  depends_on = [helm_release.argocd]
+  create_duration = "30s"
+}
+
+# 使用 kubernetes_manifest 部署 Argo CD Application
+resource "kubernetes_manifest" "my_app" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "Application"
+    "metadata" = {
+      "name"      = local.app_name
+      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+      "finalizers" = [
+        "resources-finalizer.argocd.argoproj.io"
+      ]
+    }
+    "spec" = {
+      "project" = "default"
+      "source" = {
+        "repoURL"        = local.chart_repo
+        "targetRevision" = "99.99.99-latest"
+        "chart"          = local.chart_name
+      }
+      "destination" = {
+        "server"    = "https://kubernetes.default.svc"
+        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
+      }
+      "syncPolicy" = {
+        "automated" = {
+          "selfHeal" = true
+          "prune"    = true
+        }
+        "syncOptions" = [
+          "ApplyOutOfSyncOnly=true"
+        ]
+        "retry" = {
+          "limit" = 5
+          "backoff" = {
+            "duration"    = "5s"
+            "factor"      = 2
+            "maxDuration" = "3m"
+          }
+        }
+      }
+    }
+  }
+  depends_on = [
+    helm_release.argocd,
+    time_sleep.wait_for_argocd,
+    google_sql_user.root_user
+  ]
 }
 ```
 
@@ -3313,11 +3482,15 @@ variable "prefix" {
 locals {
   gke_name       = "${var.prefix}-cluster"
   node_pool_name = "${var.prefix}-node-pool"
-  app_ns         = "${var.prefix}"
+  app_ns         = "${var.prefix}-ns"
   sa_id          = "${var.prefix}-sa-id"
   ksa_name       = "${var.prefix}-ksa"
   db_instance    = "${var.prefix}-db-instance"
   db_name        = "${var.prefix}_db"
+  project_name   = "${var.prefix}-fullstack"
+  app_name       = "${var.prefix}-app"
+  chart_name     = "${var.prefix}-chart"
+  chart_repo     = "registry.gitlab.com/jerrybai/${local.project_name}"
 }
 
 # --- GCP ---
@@ -3351,15 +3524,23 @@ variable "mysql_jerry_password" {
   description = "MySQL jerry user password"
   sensitive   = true
 }
+
+# --- Argo CD ---
+variable "my_external_ip" {
+  type        = string
+  description = "My external IP access to Argo CD"
+  sensitive   = true
+}
 ```
 
 ### `terraform.tfvars`
 
-变量覆盖文件 `terraform/terraform.tfvars`
+敏感变量的赋值文件 `terraform/terraform.tfvars`
 
 ```hcl
 mysql_root_password  = "123456"
 mysql_jerry_password = "000000"
+my_external_ip       = "5.181.21.188"
 ```
 
 ### `.gitignore`
@@ -3384,10 +3565,15 @@ cd d:/projects/todo-fullstack/terraform
 terraform init
 ```
 
-### 部署 GCP
+### 部署资源
 
 ```bash
 cd d:/projects/todo-fullstack/terraform
+
+# 先安装 Argo CD 及其依赖
+terraform apply -target=helm_release.argocd
+
+# 再部署 my-app.tf 及其它资源
 terraform apply
 ```
 
@@ -3399,37 +3585,20 @@ gcloud container clusters get-credentials todo-cluster \
     --project project-60addf72-be9c-4c26-8db
 ```
 
-### 切换 kubectl 上下文
-
 ```bash
-# 切换上下文
-kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo
-
 # 查看当前上下文
 kubectl config current-context
+
+# 切换上下文
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cluster
 ```
 
-### 安装 Argo CD
+### 访问应用
 
-在 GKE 中安装 Argo CD，详见 [Argo CD 笔记](argo-cd.md)。
-
-### 部署应用
-
-- 部署应用与 `Chart + Argo CD + GCP 部署` 基本相同。
-
-- 将源代码推送至代码仓库，改变 chart。
-
-- 部署：使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
-
-  ```bash
-  cd d:/projects/todo-fullstack/argo-cd
-  kubectl apply -f chart-app.yaml
-  ```
-  
 - 获取前端访问地址
 
   ```bash
-  kubectl get svc -n todo
+  kubectl get svc -n todo-ns
   ```
 
 - 访问前端：http://$EXTERNAL-IP
@@ -3439,33 +3608,10 @@ kubectl config current-context
 
 ### 销毁资源
 
-- 卸载应用
-
-  ```bash
-  cd d:/projects/todo-fullstack/argo-cd
-  kubectl delete -f chart-app.yaml
-  ```
-
-- 删除命名空间
-
-  ```
-  kubectl delete ns argocd
-  kubectl delete ns todo
-  ```
-
-- 重复执行 `terraform apply`，直到 terraform 提示 no changes。
-
-  ```bash
-  cd d:/projects/todo-fullstack/terraform
-  terraform apply
-  ```
-
-- 销毁 GCP 资源，如清理失败，详见 [Terraform CLI 笔记](<terraform-cli#通过 `kubectl` 安装 Argo CD 并部署应用的特殊说明>)。
-
-  ```bash
-  cd d:/projects/todo-fullstack/terraform
-  terraform destroy
-  ```
+```bash
+cd d:/projects/todo-fullstack/terraform
+terraform destroy
+```
 
 # 项目总结
 

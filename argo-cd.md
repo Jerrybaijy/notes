@@ -6,6 +6,8 @@ tags:
   - it
   - software
   - dev-ops
+  - git-ops
+  - ci-cd
   - k8s
   - argo-cd
 ---
@@ -18,9 +20,13 @@ tags:
 
 # Quick Start
 
-## 安装和配置 Argo CD
+## 准备工作
 
-- Docker 和 kubectl 已安装，集群已启动。
+- Docker 已安装
+- Kubectl 已安装
+- 集群已启动
+
+## 安装及初始化
 
 - [安装 Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
 
@@ -38,7 +44,7 @@ tags:
   kubectl get pod -n argocd
   ```
 
-- 配置网络
+- 配置 Argo CD Server
 
   ```bash
   # 本地：转发端口到本地（临时），访问：127.0.0.1:8080
@@ -71,106 +77,59 @@ tags:
   - 需要科学上网
   - 访问地址：http://$EXTERNAL-IP
 
+## 编写配置文件
+
+编写 Chart 配置文件
+
+[编写 CR 配置文件](<#编写 CR 配置文件>)
 
 ## 部署应用
 
-- 准备工作
-
-  - Argo CD 已安装并初始化
-  - 源代码开发完成，已将引用的 Image 推送至镜像仓库。
-
-- 说明：此部分的目录和文件源自 [Todo Fullstack](todo-fullstack.md) 项目
-
-- 创建 K8s 和 Argo CD 目录
-
-  ```
-  cd d:/projects/todo-fullstack
-  mkdir k8s argo-cd
-  ```
-
-- 在 `k8s` 目录创建以下 K8s 配置文件：
-
-  - `namespace.yaml`：应用的命名空间
-  - `mysql.yaml`：数据库
-  - `backend.yaml`：后端
-  - `frontend.yaml`：前端
-  
-- 在 `argo-cd` 目录创建 Argo CD 的自定义应用配置文件 `application.yaml`
-
-  ```yaml
-  apiVersion: argoproj.io/v1alpha1
-  kind: Application
-  metadata:
-    name: todo-app
-    namespace: argocd
-  spec:
-    project: default
-    source:
-      repoURL: https://gitlab.com/jerrybai/todo-fullstack.git
-      targetRevision: HEAD
-      path: k8s
-    destination:
-      server: https://kubernetes.default.svc
-      namespace: todo
-    syncPolicy:
-      automated:
-        selfHeal: true
-        prune: true
-      syncOptions:
-        - CreateNamespace=true
-        - ApplyOutOfSyncOnly=true
-      retry:
-        limit: 5
-        backoff:
-          duration: 5s
-          factor: 2
-          maxDuration: 3m
-  ```
-
-- 推送至 Git 仓库
-
-- 部署应用
-
-  ```bash
-  cd d:/projects/todo-fullstack/argo-cd
-  kubectl apply -f application.yaml
-  ```
-
-- 在 Argo CD 页面查看应用已启动
-
+```bash
+cd d:/projects/my-project/argo-cd
+kubectl apply -f my-app.yaml
+```
 
 ## 访问应用
 
-- 端口转发
+### 本地
 
-  ```bash
-  # 查看应用服务
-  kubectl get svc -n todo
-  
-  # 将前端服务 80 端口到本地 8081 端口
-  kubectl port-forward svc/frontend 8081:80 -n todo
-  ```
+前端端口转发：
 
-  如有调试需要，也可将后端和数据库进行端口转发
+```bash
+# 查看应用服务
+kubectl get svc -n my-ns
 
-  ```bash
-  # 数据库
-  kubectl port-forward svc/mysql 3306:3306 -n todo
-  # 后端
-  kubectl port-forward svc/backend 5000:5000 -n todo
-  ```
+# 将前端服务 80 端口到本地 8081 端口
+kubectl port-forward svc/frontend 8081:80 -n my-ns
+```
 
-- 访问应用：http://localhost:8081/
+如有调试需要，也可将后端和数据库进行端口转发：
 
-- 以后若想更改应用，只需需改 K8s 配置文件并推送至 Git 仓库，Argo CD 可自动识别并更改部署。
+```bash
+# 数据库
+kubectl port-forward svc/mysql 3306:3306 -n my-ns
+# 后端
+kubectl port-forward svc/backend 5000:5000 -n my-ns
+```
 
+访问应用：http://localhost:8081/
+
+### 公网
+
+查看前端公网 IP：
+
+```bash
+kubectl get svc -n my-ns
+```
+
+访问应用：http://$EXTERNAL-IP
 
 ## 删除应用
 
 ```bash
-cd d:/projects/todo-fullstack/argo-cd
-kubectl delete -f application.yaml
-kubectl delete ns todo
+cd d:/projects/my-project/argo-cd
+kubectl delete -f my-app.yaml
 ```
 
 
@@ -197,7 +156,12 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ## 使用声明式清单安装 Argo CD
 
-- Docker 和 kubectl 已安装，集群已启动。
+- 准备工作
+
+  - Docker 已安装
+
+  - Kubectl 已安装
+  - 集群已启动
 
 - [安装 Argo CD](https://argo-cd.readthedocs.io/en/stable/getting_started/#1-install-argo-cd)
 
@@ -209,13 +173,15 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   ```
 
+- 查看 pod 状态，直到全部运行
+
+  ```bash
+  kubectl get pod -n argocd
+  ```
+
 ## 使用 Helm Chart 安装 Argo CD
 
 ## 使用 Terraform 安装 Argo CD
-
-**出现问题**：此种方法安装 Argo CD 之后，通过 `kubectl apply -f application.yaml` 部署应用时，一直提示找不到仓库。所以目前仍采用 `kubectl` 的方式安装 Argo CD。
-
-> Failed to load target state: failed to generate manifest for source 1 of 1: rpc error: code = Unknown desc = error fetching chart: failed to fetch chart: failed to get command args to log: `helm pull --destination /tmp/8d5b8c2d-e724-4d3e-9eb0-34404edd1547 --version 99.99.99-latest --repo oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart todo-chart` failed exit status 1: Error: looks like "oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart" is not a valid chart repository or cannot be reached: object required
 
 ### 准备工作
 
@@ -251,7 +217,7 @@ provider "helm" {
 }
 
 # 创建 Argo CD 命名空间
-resource "kubernetes_namespace_v1" "argocd" {
+resource "kubernetes_namespace_v1" "argocd_ns" {
   metadata {
     name = "argocd"
   }
@@ -263,7 +229,7 @@ resource "helm_release" "argocd" {
   name       = "argocd"
   repository = "https://argoproj.github.io/argo-helm"
   chart      = "argo-cd"
-  namespace  = kubernetes_namespace_v1.argocd.metadata[0].name
+  namespace  = kubernetes_namespace_v1.argocd_ns.metadata[0].name
   version    = "7.7.1"
 
   set = [
@@ -333,81 +299,6 @@ variable "my_external_ip" {
 ```hcl
 my_external_ip = "5.181.21.188"
 ```
-
-# CR 清单
-
-## 概述
-
-[`application.yaml`](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/) 是一个 Kubernetes CR 清单，它声明式地定义了 Argo CD 如何将 Git 仓库中指定的应用配置同步到目标 Kubernetes 集群。
-
-- Argo CD 的安装过程已经在 Kubernetes 集群中配置并部署了 CRD，这个 CRD 就是 `Application` 对象的蓝图。
-- 通过 `kubectl apply -f application.yaml` 命令所创建的 YAML 文件，正是该 [CRD](kubernetes.md#CRD) 定义的 [CR](kubernetes.md#CR) 的一个实例。
-
-## 字段
-
-> [官方字段规范](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/)
-
-[**Go 结构体**](https://pkg.go.dev/github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1)是 Argo CD Application CRD 字段的定义来源，Go 结构直接对应于 YAML 或 JSON 中的字段。
-
-1. **查找字段：** 您可以在页面上找到名为 **`ApplicationSpec`** 的结构体（Struct）。这就是 `application.yaml` 文件中 **`.spec`** 字段对应的全部内容。
-2. **字段名称：** 结构体中的每个字段名称（例如 `Source`、`Destination`、`SyncPolicy`）都对应于 YAML 中的键名（例如 `source`、`destination`、`syncPolicy`）。
-3. **类型：** 字段旁边的类型（例如 `ApplicationSource`、`Destination`）表明该字段是一个**嵌套结构**。您需要点击这些类型名称，跳转到下一层结构体，才能看到子字段的完整列表。
-
-## 常规写法
-
-```yaml
-apiVersion: argoproj.io/v1alpha1  # Argo CD API 版本
-kind: Application                 # 自定义资源类型
-metadata:                         # 应用程序元数据
-  name: todo-app                 # 应用程序名称
-  namespace: argocd               # Argo CD 所在命名空间
-spec:                             # 规约
-  project: default
-  source:                         # 仓库源
-    repoURL: https://github.com/Jerrybaijy/todo-fullstack.git # 仓库地址
-    targetRevision: HEAD  # 版本指针，HEAD 为当前选定分支的最新提交
-    path: k8s             # 配置文件在 Git 仓库中的路径
-  destination:
-    server: https://kubernetes.default.svc # 目标集群 API 地址
-    namespace: todo                        # 资源所在命名空间
-  syncPolicy:         # 同步策略
-    automated:        # 自动同步配置
-      selfHeal: true  # 自愈
-      prune: true     # 修剪
-    syncOptions:                   # 同步选项
-      - CreateNamespace=true       # 自动创建命名空间
-      - ApplyOutOfSyncOnly=true    # 仅同步未同步的资源，而不是所有资源
-```
-
-## `source`
-
-`source` 用于指定 CR 的仓库源。
-
-```yaml
-# K8s 清单源
-source:
-  # Git 仓库地址
-  repoURL: https://github.com/Jerrybaijy/todo-fullstack.git
-  # 版本指针，HEAD 为当前选定分支的最新提交
-  targetRevision: HEAD
-  # K8s 配置文件在 Git 仓库中的路径
-  path: k8s
-```
-
-```yaml
-# Helm Chart 源
-source:
-  # <oci-registry>/<chart-name>
-  repoURL: oci://registry.gitlab.com/jerrybai/todo-fullstack/todo-chart
-  # Chart 版本号
-  targetRevision: "99.99.99-latest"
-  # Chart 名称
-  chart: todo-chart
-```
-
-# 同步
-
-Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/)。
 
 # 访问管理页面
 
@@ -493,11 +384,11 @@ set = [
 这套方案虽然配置复杂，但它利用了 Google 的全球负载均衡和身份验证体系，是目前 GKE 上管理后台最安全的做法。
 
 1.  准备工作：配置 OAuth 同意屏幕
-2. 创建 Google 托管证书 (Managed Certificate)
-3. 配置 BackendConfig 以启用 IAP
-4. 修改 Argo CD 服务 (Service)
-5. 创建 Ingress 暴露服务
-6. 配置 IAM 权限
+2.  创建 Google 托管证书 (Managed Certificate)
+3.  配置 BackendConfig 以启用 IAP
+4.  修改 Argo CD 服务 (Service)
+5.  创建 Ingress 暴露服务
+6.  配置 IAM 权限
 7.  域名解析 (DNS)
 
 # 获取初始密码
@@ -519,6 +410,191 @@ Terraform 方式创建时获取初始密码：
 terraform output -raw argocd_initial_admin_password
 ```
 
+# 编写 K8s 配置文件
+
+## 准备工作
+
+- Argo CD 已安装并初始化
+
+- 源代码开发完成，已将引用的 Image 推送至镜像仓库。
+
+- 创建 K8s 配置文件和目录
+
+  ```
+  cd d:/projects/my-project
+  mkdir k8s
+  touch namespace.yaml mysql.yaml backend.yaml frontend.yaml
+  ```
+
+## `namespace.yaml`
+
+创建命名空间 `k8s/namespace.yaml`
+
+## `mysql.yaml`
+
+创建数据库配置文件 `k8s/mysql.yaml`
+
+## `backend.yaml`
+
+创建后端配置文件 `k8s/backend.yaml`
+
+## `frontend.yaml`
+
+创建前端配置文件 `k8s/frontend.yaml`
+
+# CR 配置文件
+
+## Overview
+
+[`application.yaml`](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/) 是 Argo CD 的 [Kubernetes CR](kubernetes.md#CR) 配置文件，它声明式地定义了 Argo CD 如何将**K8s 配置文件**或 **Helm Chart** 中指定的应用配置同步到目标 Kubernetes 集群。
+
+- Argo CD 的安装过程已经在 Kubernetes 集群中配置并部署了 CRD，这个 CRD 就是 `Application` 对象的蓝图。
+- 通过 `kubectl apply -f application.yaml` 命令所创建的 YAML 文件，正是该 [CRD](kubernetes.md#CRD) 定义的 [CR](kubernetes.md#CR) 的一个实例。
+
+## 编写 CR 配置文件
+
+在 `argo-cd` 目录创建 Argo CD 的 CR 配置文件 `my-app.yaml`
+
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-app
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    # <oci-registry>
+    repoURL: registry.gitlab.com/jerrybai/my-project
+    targetRevision: "99.99.99-latest"
+    chart: my-chart
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: my-ns
+  syncPolicy:
+    automated:
+      selfHeal: true
+      prune: true
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    retry:
+      limit: 5
+      backoff:
+        duration: 5s
+        factor: 2
+        maxDuration: 3m
+```
+
+## 常规写法
+
+```yaml
+apiVersion: argoproj.io/v1alpha1  # Argo CD API 版本
+kind: Application                 # 自定义资源类型
+metadata:                         # 应用程序元数据
+  name: my-app                    # 应用程序名称
+  namespace: argocd               # Argo CD 所在命名空间
+  finalizers:                     # 终结器
+    - resources-finalizer.argocd.argoproj.io # 前台级联删除
+spec:                             # 规约
+  project: default
+  source:                         # 仓库源
+    repoURL: registry.gitlab.com/jerrybai/my-project # OCI Registry
+    targetRevision: "99.99.99-latest" # Chart 版本号
+    chart: my-chart                   # Chart 名称
+  destination:
+    server: https://kubernetes.default.svc # 目标集群 API 地址
+    namespace: my-ns                        # 资源所在命名空间
+  syncPolicy:         # 同步策略
+    automated:        # 自动同步配置
+      selfHeal: true  # 自愈
+      prune: true     # 修剪
+    syncOptions:                   # 同步选项
+      - CreateNamespace=true       # 自动创建命名空间
+      - ApplyOutOfSyncOnly=true    # 仅同步未同步的资源，而不是所有资源
+```
+
+## 字段
+
+> [官方字段规范](https://argo-cd.readthedocs.io/en/stable/user-guide/application-specification/)
+
+[**Go 结构体**](https://pkg.go.dev/github.com/argoproj/argo-cd/v2/pkg/apis/application/v1alpha1)是 Argo CD Application CRD 字段的定义来源，Go 结构直接对应于 YAML 或 JSON 中的字段。
+
+1. **查找字段：** 您可以在页面上找到名为 **`ApplicationSpec`** 的结构体（Struct）。这就是 `application.yaml` 文件中 **`.spec`** 字段对应的全部内容。
+2. **字段名称：** 结构体中的每个字段名称（例如 `Source`、`Destination`、`SyncPolicy`）都对应于 YAML 中的键名（例如 `source`、`destination`、`syncPolicy`）。
+3. **类型：** 字段旁边的类型（例如 `ApplicationSource`、`Destination`）表明该字段是一个**嵌套结构**。您需要点击这些类型名称，跳转到下一层结构体，才能看到子字段的完整列表。
+
+## `source`
+
+`source` 用于指定 CR 的仓库源。
+
+```yaml
+# K8s 清单源
+source:
+  # Git 仓库地址
+  repoURL: https://gitlab.com/jerrybai/my-project.git
+  # 版本指针，HEAD 为当前选定分支的最新提交
+  targetRevision: HEAD
+  # K8s 配置文件在 Git 仓库中的路径
+  path: k8s
+```
+
+```yaml
+# Helm Chart 源
+source:
+  # <oci-registry>，不需要加 oci:// 前缀
+  repoURL: registry.gitlab.com/jerrybai/my-project
+  # Chart 版本号
+  targetRevision: "99.99.99-latest"
+  # Chart 名称
+  chart: my-chart
+```
+
+## `finalizers`
+
+[`finalizers`](https://argo-cd.readthedocs.io/en/stable/user-guide/app_deletion/#about-the-deletion-finalizer) 终结器，用于级联删除。
+
+```yaml
+metadata:
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+```
+
+上述代码在执行 `kubectl delete -f my-app.yaml` 时，会执行前台级联删除，即先删除 my-ns 中的业务资源（如 Pod），再删除 argocd 命名空间中的 app。
+
+注意：如果 `my-ns` 中有 Terraform 部署的 SA 资源，应在 Terraform 中给相应资源加注解，否则会误删 `my-ns` 和 SA 资源。
+
+```hcl
+resource "kubernetes_namespace_v1" "app_ns" {
+  metadata {
+    name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+}
+
+resource "kubernetes_service_account_v1" "my_ksa" {
+  metadata {
+    name      = local.ksa_name
+    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
+    annotations = {
+      "iam.gke.io/gcp-service-account"  = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+}
+```
+
+# 同步
+
+Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](https://argo-cd.readthedocs.io/en/stable/user-guide/sync-options/)。
+
 # 部署应用
 
 有三种方式部署应用：
@@ -539,7 +615,7 @@ terraform output -raw argocd_initial_admin_password
 - 创建 K8s 和 Argo CD 目录
 
   ```
-  cd d:/projects/todo-fullstack
+  cd d:/projects/my-project
   mkdir k8s argo-cd
   ```
 
@@ -550,23 +626,25 @@ terraform output -raw argocd_initial_admin_password
   - `backend.yaml`：后端
   - `frontend.yaml`：前端
   
-- 在 `argo-cd` 目录创建 Argo CD 的自定义应用配置文件 `application.yaml`
+- 在 `argo-cd` 目录创建 Argo CD 的 CR 配置文件 `my-app.yaml`
 
   ```yaml
   apiVersion: argoproj.io/v1alpha1
   kind: Application
   metadata:
-    name: todo-app
+    name: my-app
     namespace: argocd
+    finalizers:
+      - resources-finalizer.argocd.argoproj.io
   spec:
     project: default
     source:
-      repoURL: https://gitlab.com/jerrybai/todo-fullstack.git
+      repoURL: https://gitlab.com/jerrybai/my-project.git
       targetRevision: HEAD
       path: k8s
     destination:
       server: https://kubernetes.default.svc
-      namespace: todo
+      namespace: my-ns
     syncPolicy:
       automated:
         selfHeal: true
@@ -587,35 +665,57 @@ terraform output -raw argocd_initial_admin_password
 - 部署应用
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
-  kubectl apply -f application.yaml
+  cd d:/projects/my-project/argo-cd
+  kubectl apply -f my-app.yaml
   ```
 
 - 在 Argo CD 页面查看应用已启动
 
 ## 使用 Terraform 部署应用
 
-此种方法没有成功！暂时仍然使用 `kubectl apply -f application.yaml` 命令部署应用。
-
-```
-Error: Failed to construct REST client
-│
-│   with kubernetes_manifest.my_app,
-│   on app.tf line 10, in resource "kubernetes_manifest" "my_app":
-│   10: resource "kubernetes_manifest" "my_app" {
-│
-│ cannot create REST client: no client config
-```
-
 ### 准备工作
 
 - [已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
 - [已通过 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
-- [已通过 Terraform 配置 Argo CD 的安装](<argo-cd.md#使用 Terraform 安装 Argo CD>)
+- [已通过 Terraform 配置 Argo CD](<argo-cd.md#使用 Terraform 安装 Argo CD>)
 
-### `todo-app.tf`
+### `terraform.tf`
 
 ```hcl
+terraform {
+  required_providers {
+    
+    # ... 其它配置 ...
+    
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.11.1"
+    }
+  }
+}
+```
+
+### `my-app.tf`
+
+与 `my-app.yaml` 对比，修改如下：
+
+- 由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
+- 增加一个睡眠资源 `wait_for_argocd`
+  - 保证 Argo CD 的 Pod 启动后再部署 `my-app`
+  - 暂时没用，因为 `my-app` 依赖数据库，创建数据库是在第二步，需要约 10 分钟。
+  - 为以后能一步安装做准备。
+- 添加 `depends_on`
+  - `google_sql_user.root_user`：保证数据库就绪后再部署 `my-app`
+  - `helm_release.argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
+  - `time_sleep.wait_for_argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
+
+```hcl
+# 增加一个睡眠资源
+resource "time_sleep" "wait_for_argocd" {
+  depends_on = [helm_release.argocd]
+  create_duration = "30s"
+}
+
 # 使用 kubernetes_manifest 部署 Argo CD Application
 resource "kubernetes_manifest" "my_app" {
   manifest = {
@@ -623,12 +723,15 @@ resource "kubernetes_manifest" "my_app" {
     "kind"       = "Application"
     "metadata" = {
       "name"      = local.app_name
-      "namespace" = kubernetes_namespace_v1.argocd.metadata[0].name
+      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+      "finalizers" = [
+        "resources-finalizer.argocd.argoproj.io"
+      ]
     }
     "spec" = {
       "project" = "default"
       "source" = {
-        "repoURL"        = local.chart_repo_pull
+        "repoURL"        = local.chart_repo
         "targetRevision" = "99.99.99-latest"
         "chart"          = local.chart_name
       }
@@ -642,7 +745,6 @@ resource "kubernetes_manifest" "my_app" {
           "prune"    = true
         }
         "syncOptions" = [
-          "CreateNamespace=true",
           "ApplyOutOfSyncOnly=true"
         ]
         "retry" = {
@@ -657,8 +759,9 @@ resource "kubernetes_manifest" "my_app" {
     }
   }
   depends_on = [
-    google_container_node_pool.my_node_pool,
-    helm_release.argocd
+    helm_release.argocd,
+    time_sleep.wait_for_argocd,
+    google_sql_user.root_user
   ]
 }
 ```
@@ -669,25 +772,41 @@ resource "kubernetes_manifest" "my_app" {
 variable "prefix" {
   type        = string
   description = "Project prefix"
-  default     = "todo"
+  default     = "my"
 }
 
 locals {
   
   #... 其它配置 ...
   
-  project_name    = "${var.prefix}-fullstack"
-  app_name        = "${var.prefix}-app"
-  chart_name      = "${var.prefix}-chart"
-  chart_repo_pull = "oci://registry.gitlab.com/jerrybai/${local.project_name}/${local.chart_name}"
+  project_name   = "${var.prefix}-project"
+  app_name       = "${var.prefix}-app"
+  chart_name     = "${var.prefix}-chart"
+  chart_repo     = "registry.gitlab.com/jerrybai/${local.project_name}"
 }
 ```
 
-# 相关项目
+### 部署应用
 
-- Argo CD Git
-- Argo CD Helm
-- [Todo Fullstack](todo-fullstack.md)
+```
+│ Error: Failed to construct REST client
+│
+│   with kubernetes_manifest.my_app,
+│   on todo-app.tf line 8, in resource "kubernetes_manifest" "my_app":
+│    8: resource "kubernetes_manifest" "my_app" {
+│
+│ cannot create REST client: no client config
+```
+
+如果使用 `terraform apply` 一次性部署（包括 `my-app.tf`），会因为 Argo CD 还未安装导致上述错误，所以暂时分两步部署。
+
+```bash
+# 先安装 Argo CD 及其依赖
+terraform apply -target=helm_release.argocd
+
+# 再部署 my-app.tf 及其它资源
+terraform apply
+```
 
 # FAQ
 
@@ -725,4 +844,44 @@ locals {
         clusters:
         - "*"
   ```
+
+## 使用 Terraform 创建 Argo CD 的受信任仓库
+
+```hcl
+resource "kubernetes_secret_v1" "argocd_gcr_repo" {
+  metadata {
+    name      = "google-artifact-registry"
+    namespace = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    type      = "helm"
+    url       = "asia-east2-docker.pkg.dev/${data.google_project.project.project_id}/my-docker-repo"
+    enableOCI = "true"
+    name      = "my-docker-repo"
+    project   = "default"
+  }
+}
+```
+
+## 在安装 Argo CD 时为 argocd-repo-server SA 添加注解
+
+```hcl
+resource "helm_release" "argocd" {
+  # ... 其它配置 ...
+
+  set = [
+    # 设置 argocd-repo-server 的 GSA 注解，以启用 Workload Identity
+    {
+      name  = "repoServer.serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account"
+      value = google_service_account.workload_identity.email
+    },
+    
+    # ... 其它配置 ...
+  ]
+}
+```
 

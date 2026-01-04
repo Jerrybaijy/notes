@@ -98,7 +98,21 @@ resource "google_service_account" "workload_identity" {
   display_name = "GSA for Workload Identity"
 }
 
-# 创建 namespace，防止因 namespace 不存在而导致创建 IAM 失败
+# 为 GSA 分配多个角色
+resource "google_project_iam_member" "gsa_roles" {
+  for_each = toset([
+    "roles/cloudsql.client", # Cloud SQL Client
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader", # Artifact Registry Reader
+    "roles/logging.logWriter",       # Logs Writer
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
     name = local.app_ns
@@ -111,7 +125,9 @@ resource "kubernetes_service_account_v1" "my_ksa" {
     name      = local.ksa_name
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
-      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      "iam.gke.io/gcp-service-account"  = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
     }
   }
 }
@@ -121,23 +137,6 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.workload_identity.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
-}
-
-# 允许 GSA 访问 Cloud SQL
-resource "google_project_iam_member" "mysql_client" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
-}
-
-output "app_namespace" {
-  description = "Kubernetes Namespace Name"
-  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
-}
-
-output "ksa_name" {
-  description = "Kubernetes Service Account Name"
-  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
 }
 ```
 
@@ -265,11 +264,23 @@ gcp:
 
 # FAQ
 
+由于 Argo CD 无法拉取 Google Artifat Registry，下面是一些留存验证方法。
+
 ```
 # 查看 Argo CD 的 argocd-repo-server 是否绑定到 GSA
 kubectl get sa argocd-repo-server -n argocd -o yaml
 
 # 查看 GSA 是否给 Argo CD 的 argocd-repo-server 授权
 gcloud iam service-accounts get-iam-policy todo-sa-id@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com
+
+kubectl rollout restart deployment argocd-repo-server -n argocd
+
+kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-repo-server
+```
+
+```
+kubectl exec -n argocd deploy/argocd-repo-server -it -- sh
+
+helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart --version 99.99.99-latest
 ```
 

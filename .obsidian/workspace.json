@@ -95,7 +95,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "networ",
+                "query": "network",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -112,13 +112,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "gcp-repositories.md",
+                "file": "0000-to-do.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "gcp-repositories 的大纲"
+              "title": "0000-to-do 的大纲"
             }
           },
           {
@@ -136,8 +136,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -198,8 +197,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
-    "collapsed": true
+    "width": 300.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -212,21 +210,24 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "28f2beca91b64d1f",
   "lastOpenFiles": [
+    "gcp-cloud-build.md",
+    "git.md",
+    "helm.md",
+    "0000-to-do.md",
+    "0000-标题实验.md",
+    "gcp-iam.md",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
     "gcp-repositories.md",
     "gcp-artifact-registry.md",
     "gitlab.md",
-    "gcp-cloud-build.md",
-    "git.md",
     "gcp.md",
     "todo-fullstack.md",
     "web.md",
     "python.md",
-    "0000-to-do.md",
     "todo-gcp.md",
     "harbor.md",
     "dev-ops.md",
@@ -240,8 +241,6 @@
     "gcp-gke.md",
     "gcp-cloud-sql.md",
     "kubernetes.md",
-    "terraform-kubernetes.md",
-    "terraform-gcp.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",
@@ -257,7 +256,6 @@
     "assets/components-of-kubernetes-1764489607053-1-1764489607053-2.svg",
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
-    "其它格式未转换/obsidian-themes/user.css",
     "assets/image-20251128085027839.png",
     "assets/image-20251128084754902.png",
     "未命名 1.canvas",

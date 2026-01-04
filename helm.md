@@ -9,13 +9,41 @@ tags:
   - k8s
 ---
 
-# Helm
+# Overview
 
 Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Kubernetes 资源的集合，使得部署和管理应用程序变得更加简单和可重复。
 
 > [Helm 文档](https://helm.sh/zh/docs/)
+>
+> [Helm 命令](https://helm.sh/docs/helm/)
 
-## 安装 Helm
+```bash
+# 查看 helm 版本
+helm version
+
+# 查看 chart 配置值（values.yaml 文件中的值）
+helm show values .
+
+# 重置 index
+helm repo index <chart-dir> --url https://jerrybaijy.github.io/<repo_name>/
+
+# 检查本地 Chart 语法
+helm lint <chart-dir>
+```
+
+# Quickstart
+
+1. 安装 Helm
+2. 创建 Chart
+3. 配置  Chart
+4. 使用本地 Chart 目录部署 Release
+5. 封装 Chart
+6. 使用本地封装的 Chart 包部署 Release
+7. 推送本地封装的 Chart 包至远程仓库
+8. 使用远程 Chart 包部署 Release
+9. 卸载 Release
+
+# Install
 
 - 集群已运行，Kubectl 已安装
 
@@ -35,36 +63,6 @@ Helm 是 Kubernetes 的包管理器，使用 "chart" 的打包格式来描述 Ku
   choco install kubernetes-helm
   ```
 
-## Helm 命令
-
-> [Helm 命令](https://helm.sh/docs/helm/)
-
-```bash
-# 查看 helm 版本
-helm version
-
-# 查看 chart 配置值（values.yaml 文件中的值）
-helm show values .
-
-# 重置 index
-helm repo index <chart-dir> --url https://jerrybaijy.github.io/<repo_name>/
-
-# 检查本地 Chart 语法
-helm lint <chart-dir>
-```
-
-## 基本流程
-
-1. 安装 Helm
-2. 创建 Chart
-3. 配置  Chart
-4. 使用本地 Chart 目录部署 Release
-5. 封装 Chart
-6. 使用本地封装的 Chart 包部署 Release
-7. 推送本地封装的 Chart 包至远程仓库
-8. 使用远程 Chart 包部署 Release
-9. 卸载 Release
-
 # Helm Chart
 
 ## Chart
@@ -77,7 +75,7 @@ helm lint <chart-dir>
 
 ```bash
 # 查看 chart 信息
-helm show chart .
+helm show chart <chart-dir>
 # 测试 chart
 helm lint <chart-dir>
 ```
@@ -87,16 +85,18 @@ helm lint <chart-dir>
 这会创建一个名为 `<chart-dir>` 的 Chart 目录，其中包含了 Helm Chart 的默认结构和配置文件。
 
 ```bash
-cd <project-root-dir>
+cd /d/projects/my-project
+
 helm create <chart-dir>
+helm create helm-chart
 ```
 
 ```
 # 默认结构和配置文件
 
-todo-fullstack-gitops/                      # 项目根目录
+my-project/                      # 项目根目录
 │
-├── todo-chart/                  # Chart 目录（存放 Chart 的文件夹）
+├── helm-chart/                  # Chart 目录（存放 Chart 的文件夹）
 │   ├── Chart.yaml               # Chart 元数据（名称、版本等）
 │   ├── values.yaml              # 部署参数配置（镜像、端口、环境变量等）
 │   ├── .helmignore              # 忽略不需要打包的文件
@@ -117,9 +117,9 @@ todo-fullstack-gitops/                      # 项目根目录
 
 ```
 # 必要保留结构和配置文件
-todo-fullstack-gitops/                      # 项目根目录
+my-project/                      # 项目根目录
 │
-├── todo-chart/                  # Chart 目录（存放 Chart 的文件夹）
+├── helm-chart/                  # Chart 目录（存放 Chart 的文件夹）
 │   ├── Chart.yaml               # Chart 元数据（名称、版本等）
 │   ├── values.yaml              # 模板文件参数配置（镜像、端口、环境变量等）
 │   ├── .helmignore              # 忽略不需要打包的文件
@@ -140,8 +140,10 @@ todo-fullstack-gitops/                      # 项目根目录
 这会在 Chart 目录生成 `.tgz` 格式的 Chart 包（文件名格式：`<chart-name>-<chart-version>.tgz`，版本号在 `Chart.yaml` 中定义）。
 
 ```bash
-cd <chart-dir>
-helm package .
+cd /d/projects/my-project
+
+helm package <chart-dir>
+helm package helm-chart
 ```
 
 ## 推送 Chart
@@ -163,15 +165,17 @@ helm package .
 - 推送
 
   ```bash
+  # Helm 推送时，不能省略 oci:// 前缀
   helm push <chart-name>-<chart-version>.tgz oci://<oci-registry>
-  helm push todo-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
+  helm push my-chart-0.1.0.tgz oci://registry.gitlab.com/jerrybai/my-project
   ```
 
 ## 拉取 Chart
 
 ```bash
+# Helm 拉取时，不能省略 oci:// 前缀
 helm pull oci://<oci-registry>/<chart-name> --version <chart-version>
-helm pull oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
+helm pull oci://registry.gitlab.com/jerrybai/my-project/my-chart --version 0.1.0
 ```
 
 # Helm Repository
@@ -179,9 +183,8 @@ helm pull oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --
 ## Helm 仓库种类
 
 - **Helm 传统仓库**：GitHub Pages 等
-- **OCI 仓库**：Docker Hub、GitLab Container Registry、Google Artifact Registry 等
+- **OCI 仓库**：Docker Hub、GitLab Container Registry、Google Artifact Registry、阿里云容器仓库等
 - **Helm 专属仓库**：ChartMuseum 等
-- **国内特色仓库**：像阿里云容器仓库等，适配国内网络环境。
 
 ## Helm 传统仓库
 
@@ -193,11 +196,11 @@ Helm Repo 实际只是一个 YAML 文件，存储于 `~/.config/helm/repositorie
 # 查看 Helm Repo
 helm repo list
 # 添加 Helm Repo
-helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
+helm repo add <helm-repo> https://jerrybaijy.github.io/$REPO
 helm repo add arldka https://arldka.github.io/helm-charts
 helm repo update
 # 删除 Helm Repo
-helm repo remove $HELM_REPO
+helm repo remove <helm-repo>
 # 删除所有 Helm Repo
 rm ~/.config/helm/repositories.yaml
 ```
@@ -209,7 +212,7 @@ rm ~/.config/helm/repositories.yaml
 - Repo 根目录创建创建 Chart
 
   ```bash
-  helm create $CHART_NAME
+  helm create <chart-dir>
   ```
 
 - 配置 Chart
@@ -220,7 +223,7 @@ rm ~/.config/helm/repositories.yaml
 - 封装 Chart
 
   ```bash
-  helm package $CHART_PATH
+  helm package <chart-dir>
   ```
 
 - 重置 index
@@ -246,13 +249,13 @@ rm ~/.config/helm/repositories.yaml
 - 添加本地 Helm 仓库，与远程仓库关联
 
   ```bash
-  helm repo add $HELM_REPO https://jerrybaijy.github.io/$REPO
+  helm repo add <helm-repo> https://jerrybaijy.github.io/<repo>
   ```
 
 - 部署 Release
 
   ```bash
-  helm install $RELEASE $HELM_REPO/$CHART_NAME
+  helm install <release-name> <helm-repo>/<chart-name>
   ```
 
 ### Helm 传统仓库实例
@@ -299,16 +302,16 @@ Release 是 Chart 部署到 Kubernetes 集群后的实例。
 helm list
 
 # 部署 release
-helm install $RELEASE $HELM_REPO/$CHART_NAME
+helm install <release-name> <repo>/<chart-name>
 # 根据 oci 仓库部署
-helm install todo oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
+helm install todo-release oci://registry.gitlab.com/jerrybai/my-project/my-chart --version 99.99.99-latest
 
 # 更新 Chart（当修改了应用代码或配置后，可以使用 Helm 更新部署）
-helm upgrade <Release_Name> <chart-dir>
+helm upgrade <release-name> <chart-dir>
 # 卸载 release
-helm uninstall <Release_Name>
+helm uninstall <release-name>
 # 测试 release
-helm test $RELEASE
+helm test <release>
 ```
 
 ## 部署 Release
@@ -324,44 +327,38 @@ helm test $RELEASE
 ### 部署 Release（本地 Chart 目录）
 
 ```bash
-cd <Project_Root_Dir>
-helm install <Release_Name> <chart-dir>
-```
+cd /d/projects/my-project
 
-```bash
-cd /d/projects/todo-fullstack-gitops
-helm install my-release ./todo-chart
+helm install <release-name> <chart-dir>
+helm install my-release helm-chart
 ```
 
 ### 部署 Release（本地 Chart 包）
 
 ```bash
-cd <chart-dir>
-helm install <Release_Name> <Chart_Name>
+cd /d/projects/my-project
 
-# 卸载
-helm uninstall <Release_Name>
+helm install <release-name> <chart>
+helm install my-release my-chart-0.1.0.tgz
 ```
 
 ### 部署 Release（远程 Chart 包）
 
 ```bash
-helm install <Release_Name> oci://<Registry_Host>/<Namespace>/<Repository_Name>/<Chart_Name> --version <Chart_Version>
+helm install <release-name> oci://<oci-registry>/<chart-name> --version <chart-version>
 
-helm install my-release oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops/todo-chart --version 0.1.0
+helm install my-release oci://registry.gitlab.com/jerrybai/my-project/my-chart --version 0.1.0
 ```
 
 ## 卸载 Release
 
 ```bash
-helm uninstall <Release_Name>
+helm uninstall <release-name>
 ```
 
 ```bash
 helm uninstall my-release
 ```
-
-
 
 # `Chart.yaml`
 
@@ -377,7 +374,7 @@ helm uninstall my-release
   # values.yaml
   
   global:
-    namespace: todo-fullstack-gitops
+    namespace: my-project
   ```
 
 - 使用变量
@@ -409,8 +406,8 @@ metadata:
   {{/* _helpers.tpl */}}
   
   {{/* 定义 Frontend 组件的完整名称 */}}
-  {{- define "todo-chart.frontend.fullname" }}
-  {{- printf "%s-frontend" (include "todo-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
+  {{- define "my-chart.frontend.fullname" }}
+  {{- printf "%s-frontend" (include "my-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
   {{- end }}
   ```
 
@@ -419,7 +416,7 @@ metadata:
   ```yaml
   # templates/example.yaml
   
-  name: {{ include "todo-chart.frontend.fullname" . }}
+  name: {{ include "my-chart.frontend.fullname" . }}
   ```
 
 # 模板文件

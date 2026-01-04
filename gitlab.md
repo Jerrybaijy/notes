@@ -262,11 +262,11 @@ publish_chart:
 
 **如何查看**：进入项目 > 左侧边栏 > `Deploy` > `Container registry`
 
-[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
+[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
 
 ```
 oci://<registry>/<namespace>/<project-name>
-oci://registry.gitlab.com/jerrybai/todo-fullstack-gitops
+oci://registry.gitlab.com/jerrybai/todo-fullstack
 ```
 
 # 解决办法

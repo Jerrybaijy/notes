@@ -140,11 +140,11 @@ gcloud container clusters delete my-cluster --region=asia-east2
 参考 [Terraform Quick Start](<terraform.md#Quick Start>)
 
 ```bash
-cd /d/projects/0000-tests
-mkdir terraform-test
+cd /d/projects/my-project
+mkdir terraform
 
-cd /d/projects/0000-tests/terraform-test
-touch terraform.tf provider.tf api.tf iam.tf gke.tf variable.tf
+cd /d/projects/my-project/terraform
+touch terraform.tf api.tf iam.tf gke.tf variable.tf
 ```
 
 ### `terraform.tf`
@@ -195,10 +195,33 @@ resource "google_service_account" "workload_identity" {
   display_name = "GSA for Workload Identity"
 }
 
-# 创建 namespace，防止因 namespace 不存在而导致创建 IAM 失败
+# 为 GSA 分配多个角色
+resource "google_project_iam_member" "gsa_roles" {
+  for_each = toset([
+    "roles/cloudsql.client", # Cloud SQL Client
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader", # Artifact Registry Reader
+    "roles/logging.logWriter",       # Logs Writer
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
     name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].labels # 忽略标签变化，防止 Argo CD 标签变更引起冲突
+    ]
   }
 }
 
@@ -208,7 +231,9 @@ resource "kubernetes_service_account_v1" "my_ksa" {
     name      = local.ksa_name
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
-      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      "iam.gke.io/gcp-service-account"  = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
     }
   }
 }
@@ -218,13 +243,6 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.workload_identity.name
   role               = "roles/iam.workloadIdentityUser"
   member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
-}
-
-# 允许 GSA 访问 Cloud SQL
-resource "google_project_iam_member" "mysql_client" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
 }
 
 output "app_namespace" {
@@ -262,7 +280,7 @@ resource "google_container_cluster" "my_cluster" {
   location                 = var.region
   remove_default_node_pool = true
   initial_node_count       = 1
-  depends_on = [google_project_service.project_services]
+  depends_on               = [google_project_service.project_services]
 
   # 启用 Workload Identity
   workload_identity_config {
@@ -291,7 +309,7 @@ resource "google_container_node_pool" "my_node_pool" {
     oauth_scopes = [
       "https://www.googleapis.com/auth/cloud-platform"
     ]
-    
+
     # 使用 Workload Identity 暴露元数据
     workload_metadata_config {
       mode = "GKE_METADATA"
@@ -299,7 +317,6 @@ resource "google_container_node_pool" "my_node_pool" {
   }
 }
 
-# 输出 GKE 集群名称
 output "gke_name" {
   description = "GKE name"
   value       = google_container_cluster.my_cluster.name
@@ -349,7 +366,6 @@ variable "zone" {
   description = "GCP Zone"
   default     = "asia-east2-a"
 }
-
 ```
 
 ### `.gitignore`
@@ -370,23 +386,31 @@ variable "zone" {
 ### 初始化 Terraform
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd d:/projects/my-project/terraform
 terraform init
 ```
 
 ### 部署 GCP
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd d:/projects/my-project/terraform
 terraform apply
 ```
 
 ### 更新 kubectl 配置
 
 ```bash
-gcloud container clusters get-credentials todo-cluster \
+gcloud container clusters get-credentials my-cluster \
     --location asia-east2 \
     --project project-60addf72-be9c-4c26-8db
+```
+
+```bash
+# 查看当前上下文
+kubectl config current-context
+
+# 切换上下文
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_my-cluster
 ```
 
 # GKE Reference
