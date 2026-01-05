@@ -3329,6 +3329,8 @@ output "database_name" {
 
 ### `argo-cd.tf`
 
+Argo CD 配置文件 `terraform/argo-cd.tf`
+
 ```hcl
 # 添加 Helm Provider
 provider "helm" {
@@ -3535,7 +3537,7 @@ variable "my_external_ip" {
 
 ### `terraform.tfvars`
 
-敏感变量的赋值文件 `terraform/terraform.tfvars`
+敏感变量赋值文件 `terraform/terraform.tfvars`
 
 ```hcl
 mysql_root_password  = "123456"
@@ -3551,11 +3553,11 @@ my_external_ip       = "5.181.21.188"
 # Terraform
 .terraform/
 *.tfstate
+*.tfstate.*
 .terraform.tfstate.lock.info
 *.tfplan
 *.tfvars
 *.tfvars.json
-*.tfstate.backup
 ```
 
 ### 初始化 Terraform

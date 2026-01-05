@@ -17,7 +17,7 @@ tags:
 
 > [Artifact Registry Docs](https://docs.cloud.google.com/artifact-registry/docs)
 
-每个项目有自己的 Artifact Registry，Artifact Registry 中创建 Repostories 以存储制品。
+每个项目有自己的 Artifact Registry，Artifact Registry 中创建各种类型的 Repostory 以存储制品。
 
 ```
 Project
@@ -25,7 +25,7 @@ Project
     └── Repostories    # 具体制品仓库
 ```
 
-[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
+[`<oci-registry>` 格式](<dev-ops.md#OCI 地址格式>)：
 
 ```
 oci://<docker-repo-region>-docker.pkg.dev/<project-id>/<docker-repo-name>
@@ -35,7 +35,7 @@ oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
 其中：
 
 - `<docker-repo-region>`：Docker Repository 位置
-- `<docker-repo-region>-docker.pkg.dev`：Docker Repository 主机名
+- `<docker-repo-region>-docker.pkg.dev>`：Docker Repository 主机名
 - `<project-id>`：GCP 项目 ID
 - `<docker-repo-name>`：Docker Repository 名称
 
@@ -50,10 +50,10 @@ oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
 
 ## 创建 Docker Repository
 
-- 点击 `Create repository`
-  - **Name**：Docker Repository 名称
-  - **Format**：Docker Repository 类型
-  - **Region**：Docker Repository 区域
+点击 `Create repository`
+- **Name**：Docker Repository 名称
+- **Format**：Docker Repository 类型
+- **Region**：Docker Repository 区域
 
 ## 为 Docker 配置身份验证
 
@@ -105,22 +105,40 @@ docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-r
 gcloud artifacts repositories delete my-docker-repo --location=asia-east2
 ```
 
-# Docker
+# 创建 Docker Repository
 
 > [容器概念](https://docs.cloud.google.com/artifact-registry/docs/container-concepts)
 >
 > [快速入门：在 Artifact Registry 中存储 Docker 容器映像](https://docs.cloud.google.com/artifact-registry/docs/docker/store-docker-container-images)
 
-## 启用 Artifact Registry API
+## 使用 Console 创建 Docker Repository
+
+### 准备工作
+
+- [选择项目](https://console.cloud.google.com/projectselector2/home/dashboard)
+- 开启 [Artifact Registry API](https://console.cloud.google.com/marketplace/product/google/artifactregistry.googleapis.com)
+- 打开 [Artifact Registry](https://console.cloud.google.com/artifacts) 页面
+
+### 创建 Docker Repository
+
+点击 `Create repository`
+
+- **Name**：Docker Repository 名称
+- **Format**：Docker Repository 类型
+- **Region**：Docker Repository 区域
+
+## 使用 CLI 创建 Docker Repository
+
+### 启用 Artifact Registry API
 
 ```bash
 gcloud services enable artifactregistry.googleapis.com
 ```
 
-## 创建 Docker Repository
+### 创建 Docker Repository
 
 ```bash
-gcloud artifacts repositories create $REPO_NAME \
+gcloud artifacts repositories create $DOCKER_REPO_NAME \
     --repository-format=docker \
     --location=$DOCKER_REPO_REGION \
 ```
@@ -131,7 +149,7 @@ gcloud artifacts repositories create my-docker-repo \
     --location=asia-east2 \
 ```
 
-## 为 Docker 配置身份验证
+### 为 Docker 配置身份验证
 
 如需为区域 `asia-east2` 中的 Docker 代码库设置身份验证：
 
@@ -141,7 +159,7 @@ gcloud auth configure-docker asia-east2-docker.pkg.dev
 
 该命令将更新 Docker 配置，允许 Docker 向 Artifact Registry 推送 Image。
 
-## 拉取镜像
+### 拉取镜像
 
 随意拉取一个 image，以备使用：
 
@@ -149,7 +167,7 @@ gcloud auth configure-docker asia-east2-docker.pkg.dev
 docker pull us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
 ```
 
-## 标记镜像
+### 标记镜像
 
 ```bash
 docker tag us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0 \
@@ -163,16 +181,140 @@ asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image
 - `$PROJECT_ID`：GCP 项目 ID
 - `$DOCKER_REPO_NAME`：Docker Repository 名称
 
-## 向 Docker Repository 推送镜像
+### 向 Docker Repository 推送镜像
 
 ```bash
 docker push asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
 ```
 
-## 从 Docker Repository 拉取镜像
+### 从 Docker Repository 拉取镜像
 
 ```bash
 docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-image:tag1
+```
+
+## 使用 Terraform 创建 Docker Repository
+
+> [GCP：使用 Terraform 预配 Artifact Registry 资源](https://docs.cloud.google.com/artifact-registry/docs/repositories/terraform)
+>
+> [Terraform：google_artifact_registry_repository](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/artifact_registry_repository)
+
+### 创建 Terraform 目录
+
+```bash
+mkdir -p /d/projects/my-project/terraform
+cd /d/projects/my-project/terraform
+touch terraform.tf api.tf docker-repo.tf variable.tf
+```
+
+### `terraform.tf`
+
+```
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
+### `api.tf`
+
+```hcl
+locals {
+  services = [
+    "artifactregistry.googleapis.com" # Artifact Registry API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+
+```
+
+### `docker-repo.tf`
+
+```hcl
+# GCP 提供商配置
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# 创建 Docker 仓库
+resource "google_artifact_registry_repository" "docker_repo" {
+  repository_id = local.chart_repo
+  format        = "DOCKER"
+  depends_on    = [google_project_service.project_services]
+}
+```
+
+### `variable.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+locals {
+  chart_repo = "${var.prefix}-docker-repo"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+variable "zone" {
+  type        = string
+  description = "GCP Zone"
+  default     = "asia-east2-a"
+}
+```
+
+### `.gitignore`
+
+添加如下忽略：
+
+```
+# Terraform
+.terraform/
+*.tfstate
+.terraform.tfstate.lock.info
+*.tfplan
+*.tfvars
+*.tfvars.json
+*.tfstate.backup
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/my-project/terraform
+terraform init
+```
+
+### 创建 Docker Repository
+
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
 ```
 
 # Helm
@@ -224,28 +366,28 @@ gcloud auth print-access-token | helm registry login -u oauth2accesstoken \
 
 ```bash
 # 创建
-cd /d/projects/0000-tests
-helm create hello-chart
+cd /d/projects/my-project
+helm create my-chart
 
 # 封装
-helm package hello-chart/
+helm package my-chart
 ```
 
 ## 推送 Chart
 
 ```bash
-helm push hello-chart-0.1.0.tgz oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
+helm push my-chart-0.1.0.tgz oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
 ```
 
 ## 部署 Release
 
 ```bash
-helm install hello-chart \
-    oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/hello-chart \
+helm install my-chart \
+    oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-chart \
     --version 0.1.0
 
 # 卸载 Release
-helm uninstall hello-chart
+helm uninstall my-chart
 ```
 
 ## 删除 Docker Repository
@@ -253,3 +395,4 @@ helm uninstall hello-chart
 ```bash
 gcloud artifacts repositories delete my-docker-repo --location=asia-east2
 ```
+

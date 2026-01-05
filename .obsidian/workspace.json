@@ -22,20 +22,6 @@
             }
           },
           {
-            "id": "efa77354316a2eac",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-cloud-build.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-cloud-build"
-            }
-          },
-          {
             "id": "ecd9c04224d43e55",
             "type": "leaf",
             "state": {
@@ -63,7 +49,8 @@
               "title": "gcp-artifact-registry"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -95,7 +82,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "network",
+                "query": "shell",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -112,13 +99,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "gcp-repositories.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "0000-to-do 的大纲"
+              "title": "gcp-repositories 的大纲"
             }
           },
           {
@@ -156,7 +143,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "gcp-repositories.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -166,7 +153,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "0000-to-do 的反向链接列表"
+              "title": "gcp-repositories 的反向链接列表"
             }
           },
           {
@@ -210,12 +197,16 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "28f2beca91b64d1f",
+  "active": "ecd9c04224d43e55",
   "lastOpenFiles": [
+    "terraform.md",
+    "gcp.md",
+    "shell.md",
+    "0000-to-do.md",
+    "terraform-cli.md",
     "gcp-cloud-build.md",
     "git.md",
     "helm.md",
-    "0000-to-do.md",
     "0000-标题实验.md",
     "gcp-iam.md",
     "其它格式未转换/windows-terminal/settings.json",
@@ -224,7 +215,6 @@
     "gcp-repositories.md",
     "gcp-artifact-registry.md",
     "gitlab.md",
-    "gcp.md",
     "todo-fullstack.md",
     "web.md",
     "python.md",
@@ -236,11 +226,8 @@
     "gcp-project.md",
     "software.md",
     "terraform-hcl.md",
-    "terraform.md",
-    "terraform-cli.md",
     "gcp-gke.md",
     "gcp-cloud-sql.md",
-    "kubernetes.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",

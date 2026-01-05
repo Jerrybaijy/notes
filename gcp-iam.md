@@ -284,3 +284,11 @@ kubectl exec -n argocd deploy/argocd-repo-server -it -- sh
 helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart --version 99.99.99-latest
 ```
 
+```
+gcloud container node-pools describe todo-node-pool \
+    --cluster todo-cluster \
+    --region asia-east2 \
+    --project project-60addf72-be9c-4c26-8db \
+    | grep workloadMetadataConfig
+```
+

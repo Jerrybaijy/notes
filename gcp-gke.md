@@ -140,9 +140,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
 参考 [Terraform Quick Start](<terraform.md#Quick Start>)
 
 ```bash
-cd /d/projects/my-project
-mkdir terraform
-
+mkdir -p /d/projects/my-project/terraform
 cd /d/projects/my-project/terraform
 touch terraform.tf api.tf iam.tf gke.tf variable.tf
 ```
@@ -370,17 +368,17 @@ variable "zone" {
 
 ### `.gitignore`
 
-添加如下忽略：
+添加[忽略内容](terraform.md#`.gitignore`)
 
 ```
 # Terraform
 .terraform/
 *.tfstate
+*.tfstate.*
 .terraform.tfstate.lock.info
 *.tfplan
 *.tfvars
 *.tfvars.json
-*.tfstate.backup
 ```
 
 ### 初始化 Terraform

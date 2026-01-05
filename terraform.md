@@ -54,8 +54,8 @@ tags:
 ## 创建 Terraform 目录和配置文件
 
 ```bash
-mkdir /d/projects/0000-tests/learn-terraform-gcp
-cd /d/projects/0000-tests/learn-terraform-gcp
+mkdir -p /d/projects/my-project/terraform
+cd /d/projects/my-project/terraform
 touch providers.tf variables.tf vpc.tf output.tf
 ```
 
@@ -125,7 +125,7 @@ resource "google_compute_network" "vpc_network" {
 [初始化目录](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#initialize-the-directory)
 
 ```bash
-cd /d/projects/0000-tests/learn-terraform-gcp
+cd /d/projects/my-project/terraform
 terraform init
 ```
 
@@ -141,7 +141,7 @@ terraform init
 gcloud auth application-default login
 
 # 部署
-cd /d/projects/0000-tests/learn-terraform-gcp
+cd /d/projects/my-project/terraform
 terraform apply
 
 # 检查状态
@@ -218,7 +218,7 @@ resource "google_compute_instance" "vm_instance" {
 如清理失败，详见 [Terraform CLI 笔记](<terraform-cli#通过 `kubectl` 安装 Argo CD 并部署应用的特殊说明>)。
 
 ```bash
-cd /d/projects/0000-tests/learn-terraform-gcp
+cd /d/projects/my-project/terraform
 terraform destroy
 ```
 
@@ -339,7 +339,7 @@ resource "google_sql_user" "jerry_user" {
 - `variables.tf`：输入变量配置文件
 - `output.tf`：输出变量配置文件
 
-## Git 忽略
+## `.gitignore`
 
 将以下添加到 `.gitignore` 文件：
 
@@ -347,11 +347,11 @@ resource "google_sql_user" "jerry_user" {
 # Terraform
 .terraform/
 *.tfstate
+*.tfstate.*
 .terraform.tfstate.lock.info
 *.tfplan
 *.tfvars
 *.tfvars.json
-*.tfstate.backup
 ```
 
 ## `.terraform`
