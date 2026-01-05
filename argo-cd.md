@@ -702,7 +702,7 @@ terraform {
 - 由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
 - 增加一个睡眠资源 `wait_for_argocd`
   - 保证 Argo CD 的 Pod 启动后再部署 `my-app`
-  - 暂时没用，因为 `my-app` 依赖数据库，创建数据库是在第二步，需要约 10 分钟。
+  - 暂时没用，因为 `my-app` 依赖数据库，创建数据库是在第二步，需要约 10 分钟。
   - 为以后能一步安装做准备。
 - 添加 `depends_on`
   - `google_sql_user.root_user`：保证数据库就绪后再部署 `my-app`
@@ -731,7 +731,7 @@ resource "kubernetes_manifest" "my_app" {
     "spec" = {
       "project" = "default"
       "source" = {
-        "repoURL"        = local.chart_repo
+        "repoURL"        = local.chart_repo_url
         "targetRevision" = "99.99.99-latest"
         "chart"          = local.chart_name
       }
@@ -776,13 +776,13 @@ variable "prefix" {
 }
 
 locals {
-  
+
   #... 其它配置 ...
-  
+
   project_name   = "${var.prefix}-project"
   app_name       = "${var.prefix}-app"
   chart_name     = "${var.prefix}-chart"
-  chart_repo     = "registry.gitlab.com/jerrybai/${local.project_name}"
+  chart_repo_url = "registry.gitlab.com/jerrybai/${local.project_name}"
 }
 ```
 

@@ -950,7 +950,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-## 修改环境变量
+## `.env`
 
 修改环境变量：`todo-fullstack/.env`
 
@@ -3492,7 +3492,7 @@ locals {
   project_name   = "${var.prefix}-fullstack"
   app_name       = "${var.prefix}-app"
   chart_name     = "${var.prefix}-chart"
-  chart_repo     = "registry.gitlab.com/jerrybai/${local.project_name}"
+  chart_repo_url = "registry.gitlab.com/jerrybai/${local.project_name}"
 }
 
 # --- GCP ---

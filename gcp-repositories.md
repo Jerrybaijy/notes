@@ -28,13 +28,15 @@ tags:
 
 # GitLab
 
+## 通过 Gcloud Console 连接到 GitLab
+
 分三步连接到 GitLab：
 
 1. [连接到 GitLab 主机](#连接到 GitLab 主机)
 2. [链接到 GitLab Repository](#链接到 GitLab Repository)
 3. [创建触发器](#创建触发器)
 
-## 连接到 GitLab 主机
+### 连接到 GitLab 主机
 
 > [Connect to a GitLab host](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab)
 
@@ -56,18 +58,18 @@ tags:
 
 - `Create host connection` > `GitLab`
 
-  - **Region**：项目区域
-  - **Name**：连接名称
+  - **Region**：`my-region`
+  - **Name**：`my-gitlab-host`
   - **Host details**：`GitLab.com`
   - **Personal access tokens**：分别对应填写此前创建的两个令牌
 
 - 点击 `Connect`
 
-  点击 `Connect` 按钮后，您的个人访问令牌会安全地存储在 [Secret Manager](https://docs.cloud.google.com/secret-manager/docs/overview?hl=zh-cn) 中。建立主机连接后，Cloud Build 还会代表您创建网络钩子密钥。您可以在 [Secret Manager 页面](https://console.cloud.google.com/security/secret-manager?hl=zh-cn)上查看和管理 Secret。
+  点击 `Connect` 按钮后，您的个人访问令牌会安全地存储在 [Secret Manager](https://docs.cloud.google.com/secret-manager/docs/overview) 中。建立主机连接后，Cloud Build 还会代表您创建网络钩子密钥。您可以在 [Secret Manager 页面](https://console.cloud.google.com/security/secret-manager)上查看和管理 Secret。
 
 - [轮换旧的或过期的 GitLab 访问令牌](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab?hl=zh-cn#rotate-token)
 
-## 链接到 GitLab Repository
+### 链接到 GitLab Repository
 
 > [Connect to a GitLab Repository](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-repo-gitlab)
 
@@ -83,7 +85,7 @@ tags:
   - **Repositories name**：可选择 `Generated` 自动生成
 - 点击 `Link`，将代码库与连接相关联。
 
-## 创建触发器
+### 创建触发器
 
 > [Build Repositories from GitLab](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/build-repos-from-gitlab)
 
@@ -93,13 +95,264 @@ tags:
 - 打开 [Triggers](https://console.cloud.google.com/cloud-build/triggers) 页面
 - 在顶部栏的项目选择器中，选择您的 Google Cloud 项目。
 - 点击 `Create trigger`
-  - **Name**：触发器名称
-  - **Region**：为触发器选择区域（**注意**：代码库的区域必须与触发器的区域一致。）
+  - **Name**：`my-trigger`
+  - **Region**：`my-region`（**注意**：代码库的区域必须与触发器的区域一致。）
   - **Event**：触发事件，选 `Push to a branch`。
   - **Source**
     - **Repository service**：`Cloud Build respotories`
     - **Repository generation**：`2nd gen`
     - **Repository**：选择 [`Connect to a GitLab Repository`](<#Connect to a GitLab Repository>) 中链接的仓库
     - **Branch**： 监控的分支名称（通常是 `^main$`，支持正则）。
-  -  **Configuration**
+  - **Configuration**
     - **Type**：`Cloud Build configuration file (yaml/json)`
+    - **Service account**：选择当前项目的适当 GSA
+
+## 通过 Terraform 连接到 GitLab
+
+**遗留问题**：连接 GitLab 主机和代码仓库成功了，但触发器没创建成功。
+
+```
+google_cloudbuild_trigger.my_trigger: Creating...
+╷
+│ Error: Error creating Trigger: googleapi: Error 400: Request contains an invalid argument.
+│
+│   with google_cloudbuild_trigger.my_trigger,
+│   on code-repo.tf line 83, in resource "google_cloudbuild_trigger" "my_trigger":
+│   83: resource "google_cloudbuild_trigger" "my_trigger" {
+```
+
+### 创建 Terraform 配置文件
+
+```bash
+cd /d/projects/my-project/terraform
+touch terraform.tf api.tf iam.tf code-repo.tf variable.tf terraform.tfvars
+```
+
+### `terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
+### `api.tf`
+
+```hcl
+locals {
+  services = [
+    "cloudbuild.googleapis.com",          # Cloud Build API
+    "secretmanager.googleapis.com",       # Secret Manager API
+    "cloudresourcemanager.googleapis.com" # Cloud Resource Manager API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+### `iam.tf`
+
+```hcl
+# 获取当前 Project ID
+data "google_project" "project" {}
+
+# 授予 Cloud Build 服务账号访问 Secret Manager 的权限
+resource "google_secret_manager_secret_iam_member" "cb_sa_accessor" {
+  for_each = {
+    "api_token"  = google_secret_manager_secret.gitlab_api_token.secret_id
+    "read_token" = google_secret_manager_secret.gitlab_read_api_token.secret_id
+    "webhook"    = google_secret_manager_secret.webhook_secret.secret_id
+  }
+
+  project   = var.project_id
+  secret_id = each.value
+  role      = "roles/secretmanager.secretAccessor"
+  member    = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
+```
+
+### `code-repo.tf`
+
+```hcl
+# GCP 提供商配置
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# 1. 存储 Token 到 Secret Manager
+
+# 创建存储 API Token 的 Secret
+resource "google_secret_manager_secret" "gitlab_api_token" {
+  secret_id = "${var.code_repo}-api-token"
+  replication {
+    auto {}
+  }
+}
+
+# 存入具体的 API Token 值
+resource "google_secret_manager_secret_version" "api_token_version" {
+  secret      = google_secret_manager_secret.gitlab_api_token.id
+  secret_data = var.gitlab_personal_access_token_api
+}
+
+# 创建存储 Read API Token 的 Secret
+resource "google_secret_manager_secret" "gitlab_read_api_token" {
+  secret_id = "${var.code_repo}-read-api-token"
+  replication {
+    auto {}
+  }
+}
+
+# 存入具体的 Read API Token 值
+resource "google_secret_manager_secret_version" "read_api_token_version" {
+  secret      = google_secret_manager_secret.gitlab_read_api_token.id
+  secret_data = var.gitlab_personal_access_token_read_api
+}
+
+# 随机生成一个 Webhook 密钥
+resource "random_password" "webhook_secret_value" {
+  length  = 16
+  special = false
+}
+
+# 创建 Secret Manager 容器
+resource "google_secret_manager_secret" "webhook_secret" {
+  secret_id = "gitlab-webhook-secret"
+  replication {
+    auto {}
+  }
+}
+
+# 存入随机生成的密钥值
+resource "google_secret_manager_secret_version" "webhook_secret_version" {
+  secret      = google_secret_manager_secret.webhook_secret.id
+  secret_data = random_password.webhook_secret_value.result
+}
+
+# 2. 连接到 GitLab 主机 (2nd Gen)
+resource "google_cloudbuildv2_connection" "my_gitlab_connection" {
+  location = var.region
+  name     = local.code_repo_host
+
+  gitlab_config {
+    # 引用 Secret Manager 中的令牌
+    authorizer_credential {
+      user_token_secret_version = google_secret_manager_secret_version.api_token_version.id
+    }
+    read_authorizer_credential {
+      user_token_secret_version = google_secret_manager_secret_version.read_api_token_version.id
+    }
+    webhook_secret_secret_version = google_secret_manager_secret_version.webhook_secret_version.id
+  }
+}
+
+# 3. 链接具体的代码仓库
+resource "google_cloudbuildv2_repository" "my_repo" {
+  name              = "${var.repo_username}-${local.project_name}"
+  location          = var.region
+  parent_connection = google_cloudbuildv2_connection.my_gitlab_connection.id
+  remote_uri        = "https://gitlab.com/${var.repo_username}/${local.project_name}.git"
+}
+
+# 4. 创建触发器
+resource "google_cloudbuild_trigger" "my_trigger" {
+  name     = local.trigger_name
+  location = google_cloudbuildv2_repository.my_repo.location
+  repository_event_config {
+    repository = google_cloudbuildv2_repository.my_repo.id
+    push {
+      branch = "^main$"
+    }
+  }
+  filename = "cloudbuild.yaml"
+
+  included_files = [
+    "backend/**",
+    "frontend/**",
+    "helm-chart/**"
+  ]
+}
+```
+
+### `variable.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+locals {
+  code_repo_host = "${var.prefix}-${var.code_repo}-host"
+  project_name   = "${var.prefix}-project"
+  trigger_name   = "${var.prefix}-trigger"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+variable "zone" {
+  type        = string
+  description = "GCP Zone"
+  default     = "asia-east2-a"
+}
+
+# --- Repo ---
+variable "code_repo" {
+  type        = string
+  description = "Code repo"
+  default     = "gitlab"
+}
+
+variable "repo_username" {
+  type        = string
+  description = "Repo username"
+  default     = "jerrybai"
+}
+
+# --- Secrets ---
+variable "gitlab_personal_access_token_api" {
+  type        = string
+  description = "GitLab Personal Access Token for API"
+  sensitive = true
+}
+
+variable "gitlab_personal_access_token_read_api" {
+  type        = string
+  description = "GitLab Personal Access Token for Read"
+  sensitive = true
+}
+```
+
+### `terraform.tfvars`
+
+```hcl
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `.gitignore`
+
+添加[忽略内容](terraform.md#`.gitignore`)

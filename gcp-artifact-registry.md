@@ -111,7 +111,7 @@ gcloud artifacts repositories delete my-docker-repo --location=asia-east2
 >
 > [快速入门：在 Artifact Registry 中存储 Docker 容器映像](https://docs.cloud.google.com/artifact-registry/docs/docker/store-docker-container-images)
 
-## 使用 Console 创建 Docker Repository
+## 使用 Gcloud Console 创建 Docker Repository
 
 ### 准备工作
 

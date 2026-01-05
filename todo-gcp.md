@@ -948,7 +948,7 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-## 修改环境变量
+## `.env`
 
 修改环境变量：`todo-gcp/.env`
 
@@ -1067,531 +1067,6 @@ networks:
   cd d:/projects/todo-gcp
   docker-compose down
   ```
-
-# 部署资源
-
-## 创建 Terraform 目录和配置文件
-
-```bash
-mkdir -p d:/projects/todo-gcp/terraform
-cd d:/projects/todo-gcp/terraform
-touch terraform.tf api.tf iam.tf gke.tf docker-repo.tf cloud-sql.tf variables.tf terraform.tfvars
-```
-
-## `terraform.tf`
-
-```hcl
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 3.0.0"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 3.1.0"
-    }
-    time = {
-      source  = "hashicorp/time"
-      version = "~> 0.11.1"
-    }
-  }
-}
-```
-
-## `api.tf`
-
-```hcl
-locals {
-  services = [
-    "compute.googleapis.com",         # Compute Engine API
-    "container.googleapis.com",       # Kubernetes Engine API
-    "iam.googleapis.com",             # IAM API
-    "iamcredentials.googleapis.com",  # Workload Identity API
-    "sqladmin.googleapis.com",        # Cloud SQL API
-    "artifactregistry.googleapis.com" # Artifact Registry API
-  ]
-}
-
-resource "google_project_service" "project_services" {
-  for_each           = toset(local.services)
-  service            = each.key
-  disable_on_destroy = false
-}
-```
-
-## `iam.tf`
-
-GCP IAM 配置文件 `terraform/iam.tf`
-
-```hcl
-# 获取当前 Project ID
-data "google_project" "project" {}
-
-# 创建 GSA
-resource "google_service_account" "workload_identity" {
-  account_id   = local.sa_id
-  display_name = "GSA for Workload Identity"
-}
-
-# 为 GSA 分配多个角色
-resource "google_project_iam_member" "gsa_roles" {
-  for_each = toset([
-    "roles/cloudsql.client",         # Cloud SQL Client
-    "roles/artifactregistry.writer", # Artifact Registry Writer
-    "roles/artifactregistry.reader", # Artifact Registry Reader
-    "roles/logging.logWriter",       # Logs Writer
-  ])
-
-  project = var.project_id
-  role    = each.key
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
-}
-
-# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
-resource "kubernetes_namespace_v1" "app_ns" {
-  metadata {
-    name = local.app_ns
-    annotations = {
-      # 加注解，防止 Argo CD 删除该 Namespace
-      "argocd.argoproj.io/sync-options" = "Delete=false"
-    }
-  }
-  lifecycle {
-    ignore_changes = [
-      metadata[0].labels # 忽略标签变化
-    ]
-  }
-}
-
-# 创建 KSA，并绑定到 GSA
-resource "kubernetes_service_account_v1" "my_ksa" {
-  metadata {
-    name      = local.ksa_name
-    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
-    annotations = {
-      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
-      # 加注解，防止 Argo CD 删除该 KSA
-      "argocd.argoproj.io/sync-options" = "Delete=false"
-    }
-  }
-}
-
-# 允许 KSA 以 GSA 身份运行
-resource "google_service_account_iam_member" "workload_identity_binding" {
-  service_account_id = google_service_account.workload_identity.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
-}
-
-# 允许 argocd-repo-server SA 以 GSA 身份运行
-resource "google_service_account_iam_member" "argocd_repo_server_binding" {
-  service_account_id = google_service_account.workload_identity.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[argocd/argocd-repo-server]"
-}
-
-output "app_namespace" {
-  description = "Kubernetes Namespace Name"
-  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
-}
-
-output "ksa_name" {
-  description = "Kubernetes Service Account Name"
-  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
-}
-```
-
-## `gke.tf`
-
-GKE 配置文件 `terraform/gke.tf`
-
-```hcl
-# 添加 Google Provider
-provider "google" {
-  project = var.project_id
-  region  = var.region
-  zone    = var.zone
-}
-
-# 添加 Kubernetes Provider
-data "google_client_config" "default" {}
-provider "kubernetes" {
-  host                   = "https://${google_container_cluster.my_cluster.endpoint}"
-  token                  = data.google_client_config.default.access_token
-  cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
-}
-
-# 创建 GKE 集群
-resource "google_container_cluster" "my_cluster" {
-  name                     = local.gke_name
-  location                 = var.region
-  remove_default_node_pool = true
-  initial_node_count       = 1
-  depends_on               = [google_project_service.project_services]
-
-  # 启用 Workload Identity
-  workload_identity_config {
-    workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
-  }
-
-  # 关闭误删保护（生产环境不应设置此参数）
-  deletion_protection = false
-}
-
-# 创建 Node Pool
-resource "google_container_node_pool" "my_node_pool" {
-  name       = local.node_pool_name
-  location   = var.region
-  cluster    = google_container_cluster.my_cluster.name
-  node_count = 1
-
-  autoscaling {
-    min_node_count = 1
-    max_node_count = 5
-  }
-
-  node_config {
-    machine_type    = "e2-medium"
-    service_account = google_service_account.workload_identity.email
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ]
-
-    # 使用 Workload Identity 暴露元数据
-    workload_metadata_config {
-      mode = "GKE_METADATA"
-    }
-  }
-}
-
-output "gke_name" {
-  description = "GKE name"
-  value       = google_container_cluster.my_cluster.name
-}
-```
-
-## `docker-repo.tf`
-
-GAR 配置文件 `terraform/docker-repo.tf`
-
-```hcl
-# 创建 Docker 仓库
-resource "google_artifact_registry_repository" "docker_repo" {
-  repository_id = local.chart_repo
-  format        = "DOCKER"
-  depends_on    = [google_project_service.project_services]
-}
-```
-
-## `cloud-sql.tf`
-
-Cloud SQL 配置文件 `terraform/cloud-sql.tf`
-
-```hcl
-# 创建 Cloud SQL 实例
-resource "google_sql_database_instance" "mysql_instance" {
-  name             = local.db_instance
-  database_version = "MYSQL_8_0"
-  region           = var.region
-
-  settings {
-    tier            = "db-f1-micro" # 测试环境使用的最小规格
-    disk_type       = "PD_SSD"
-    disk_size       = 10   # 初始 10GB
-    disk_autoresize = true # 自动扩容
-
-    # 开启公网 IP，但会通过 IAM 权限锁定访问，仅允许通过授权代理访问
-    ip_configuration {
-      ipv4_enabled = true
-    }
-  }
-
-  # 关闭误删保护（生产环境不应设置此参数）
-  deletion_protection = false
-}
-
-# 创建 DATABASE
-resource "google_sql_database" "my_db" {
-  name      = local.db_name
-  instance  = google_sql_database_instance.mysql_instance.name
-  charset   = "utf8mb4"
-  collation = "utf8mb4_unicode_ci"
-}
-
-# 创建 root 用户
-resource "google_sql_user" "root_user" {
-  name     = "root"
-  instance = google_sql_database_instance.mysql_instance.name
-  password = var.mysql_root_password
-  host     = "%"
-}
-
-# 创建普通账户
-resource "google_sql_user" "jerry_user" {
-  name     = "jerry"
-  instance = google_sql_database_instance.mysql_instance.name
-  password = var.mysql_jerry_password
-  host     = "%"
-}
-
-output "cloud_sql_connection_name" {
-  description = "Cloud SQL instance connection name"
-  value       = google_sql_database_instance.mysql_instance.connection_name
-}
-
-output "sql_instance_name" {
-  description = "Cloud SQL 实例的名称"
-  value       = google_sql_database_instance.mysql_instance.name
-}
-
-output "database_name" {
-  description = "Cloud SQL database name"
-  value       = google_sql_database.my_db.name
-}
-```
-
-## `argo-cd.tf`
-
-Argo CD 配置文件 `terraform/argo-cd.tf`
-
-- 在安装 Argo CD 时添加 argocd-repo-server 的 GSA 注解
-- 创建 Argo CD 访问 GAR 的 Secret
-
-```hcl
-# 添加 Helm Provider
-provider "helm" {
-  kubernetes = {
-    host                   = "https://${google_container_cluster.my_cluster.endpoint}"
-    token                  = data.google_client_config.default.access_token
-    cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
-  }
-}
-
-# 创建 Argo CD 命名空间
-resource "kubernetes_namespace_v1" "argocd_ns" {
-  metadata {
-    name = "argocd"
-  }
-  depends_on = [google_container_node_pool.my_node_pool]
-}
-
-# 安装 Argo CD
-resource "helm_release" "argocd" {
-  name       = "argocd"
-  repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  namespace  = kubernetes_namespace_v1.argocd_ns.metadata[0].name
-  version    = "7.7.1"
-
-  set = [
-    # 添加 argocd-repo-server 的 GSA 注解，以启用 Workload Identity
-    {
-      name  = "repoServer.serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account"
-      value = google_service_account.workload_identity.email
-    },
-    # 设置服务类型为 LoadBalancer
-    {
-      name  = "server.service.type"
-      value = "LoadBalancer"
-    },
-    # 允许 HTTP 访问
-    {
-      name  = "server.extraArgs"
-      value = "{--insecure}"
-    },
-    # 仅允许自己的 IP 访问
-    {
-      name  = "server.service.loadBalancerSourceRanges"
-      value = "{${var.my_external_ip}/32}"
-    }
-  ]
-
-  depends_on = [
-    google_service_account.workload_identity,
-    google_service_account_iam_member.argocd_repo_server_binding
-  ]
-}
-
-# 创建 Argo CD 访问 GAR 的 Secret
-resource "kubernetes_secret_v1" "gar_repo_secret" {
-  metadata {
-    name      = "gar-repo-secret"
-    namespace = kubernetes_namespace_v1.argocd_ns.metadata[0].name
-    labels = {
-      "argocd.argoproj.io/secret-type" = "repository"
-    }
-  }
-
-  data = {
-    name      = "todo-docker-repo"
-    type      = "helm"
-    url       = "${var.region}-docker-pkg.dev/${var.project_id}/${var.gar_repo_name}"
-    enableOCI = "true"
-  }
-}
-
-# 获取 Argo CD 服务数据 (用于 Output)
-data "kubernetes_service_v1" "argocd_server" {
-  metadata {
-    name      = "${helm_release.argocd.name}-server"
-    namespace = helm_release.argocd.namespace
-  }
-  depends_on = [helm_release.argocd]
-}
-
-# 获取初始密码 Secret 数据
-data "kubernetes_secret_v1" "argocd_initial_admin_secret" {
-  metadata {
-    name      = "argocd-initial-admin-secret"
-    namespace = helm_release.argocd.namespace
-  }
-  depends_on = [helm_release.argocd]
-}
-
-# 输出 Argo CD 公网 IP
-output "argocd_loadbalancer_ip" {
-  description = "Argo CD UI 的公网访问 IP"
-  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
-}
-
-# 输出初始管理员密码
-output "argocd_initial_admin_password" {
-  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
-  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
-  sensitive   = true
-}
-```
-
-## `variables.tf`
-
-变量配置文件 `terraform/variables.tf`
-
-```hcl
-# --- Prefix ---
-variable "prefix" {
-  type        = string
-  description = "Project prefix"
-  default     = "todo"
-}
-
-locals {
-  gke_name       = "${var.prefix}-cluster"
-  node_pool_name = "${var.prefix}-node-pool"
-  app_ns         = "${var.prefix}-ns"
-  sa_id          = "${var.prefix}-sa-id"
-  ksa_name       = "${var.prefix}-ksa"
-  db_instance    = "${var.prefix}-db-instance"
-  db_name        = "${var.prefix}_db"
-  chart_repo     = "${var.prefix}-docker-repo"
-}
-
-# --- GCP ---
-variable "project_id" {
-  type        = string
-  description = "GCP Project ID"
-  default     = "project-60addf72-be9c-4c26-8db"
-}
-
-variable "region" {
-  type        = string
-  description = "GCP Region"
-  default     = "asia-east2"
-}
-
-variable "zone" {
-  type        = string
-  description = "GCP Zone"
-  default     = "asia-east2-a"
-}
-
-# --- Cloud SQL ---
-variable "mysql_root_password" {
-  type        = string
-  description = "MySQL root user password"
-  sensitive   = true
-}
-
-variable "mysql_jerry_password" {
-  type        = string
-  description = "MySQL jerry user password"
-  sensitive   = true
-}
-
-# --- Argo CD ---
-variable "my_external_ip" {
-  type        = string
-  description = "My external IP access to Argo CD"
-  sensitive   = true
-}
-
-# --- Artifact Registry ---
-variable "gar_repo_name" {
-  type        = string
-  description = "GAR Repository Name"
-  default     = "todo-docker-repo"
-}
-
-```
-
-## `terraform.tfvars`
-
-敏感变量赋值文件 `terraform/terraform.tfvars`
-
-```hcl
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-my_external_ip       = "5.181.21.188"
-```
-
-## `.gitignore`
-
-添加如下忽略：
-
-```
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.*
-.terraform.tfstate.lock.info
-*.tfplan
-*.tfvars
-*.tfvars.json
-```
-
-## 初始化 Terraform
-
-```bash
-cd d:/projects/todo-gcp/terraform
-terraform init
-```
-
-## 部署 GCP
-
-```bash
-cd d:/projects/todo-gcp/terraform
-terraform apply
-```
-
-## 更新 kubectl 配置
-
-```bash
-gcloud container clusters get-credentials todo-cluster \
-    --location asia-east2 \
-    --project project-60addf72-be9c-4c26-8db
-```
-
-```bash
-# 查看当前上下文
-kubectl config current-context
-
-# 切换上下文
-kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cluster
-```
 
 # Helm Chart
 
@@ -1973,11 +1448,575 @@ spec:
   type: {{ .Values.frontend.service.type }}
 ```
 
+# Terraform
+
+## 创建 Terraform 目录和配置文件
+
+```bash
+mkdir -p d:/projects/todo-gcp/terraform
+cd d:/projects/todo-gcp/terraform
+touch terraform.tf api.tf iam.tf gke.tf docker-repo.tf cloud-sql.tf variables.tf terraform.tfvars
+```
+
+## `terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 3.0.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 3.1.0"
+    }
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.11.1"
+    }
+  }
+}
+```
+
+## `api.tf`
+
+```hcl
+locals {
+  services = [
+    "compute.googleapis.com",         # Compute Engine API
+    "container.googleapis.com",       # Kubernetes Engine API
+    "iam.googleapis.com",             # IAM API
+    "iamcredentials.googleapis.com",  # Workload Identity API
+    "sqladmin.googleapis.com",        # Cloud SQL API
+    "artifactregistry.googleapis.com" # Artifact Registry API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+## `iam.tf`
+
+GCP IAM 配置文件 `terraform/iam.tf`
+
+```hcl
+# 获取当前 Project ID
+data "google_project" "project" {}
+
+# 创建 GSA
+resource "google_service_account" "workload_identity" {
+  account_id   = local.sa_id
+  display_name = "GSA for Workload Identity"
+}
+
+# 为 GSA 分配多个角色
+resource "google_project_iam_member" "gsa_roles" {
+  for_each = toset([
+    "roles/cloudsql.client",         # Cloud SQL Client
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader", # Artifact Registry Reader
+    "roles/logging.logWriter",       # Logs Writer
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
+resource "kubernetes_namespace_v1" "app_ns" {
+  metadata {
+    name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].labels # 忽略标签变化
+    ]
+  }
+}
+
+# 创建 KSA，并绑定到 GSA
+resource "kubernetes_service_account_v1" "my_ksa" {
+  metadata {
+    name      = local.ksa_name
+    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
+    annotations = {
+      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+}
+
+# 允许 KSA 以 GSA 身份运行
+resource "google_service_account_iam_member" "workload_identity_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
+}
+
+# 允许 argocd-repo-server SA 以 GSA 身份运行
+resource "google_service_account_iam_member" "argocd_repo_server_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[argocd/argocd-repo-server]"
+}
+
+output "app_namespace" {
+  description = "Kubernetes Namespace Name"
+  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
+}
+
+output "ksa_name" {
+  description = "Kubernetes Service Account Name"
+  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
+}
+```
+
+## `gke.tf`
+
+GKE 配置文件 `terraform/gke.tf`
+
+```hcl
+# 添加 Google Provider
+provider "google" {
+  project = var.project_id
+  region  = var.region
+  zone    = var.zone
+}
+
+# 添加 Kubernetes Provider
+data "google_client_config" "default" {}
+provider "kubernetes" {
+  host                   = "https://${google_container_cluster.my_cluster.endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
+}
+
+# 创建 GKE 集群
+resource "google_container_cluster" "my_cluster" {
+  name                     = local.gke_name
+  location                 = var.region
+  remove_default_node_pool = true
+  initial_node_count       = 1
+  depends_on               = [google_project_service.project_services]
+
+  # 启用 Workload Identity
+  workload_identity_config {
+    workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 Node Pool
+resource "google_container_node_pool" "my_node_pool" {
+  name       = local.node_pool_name
+  location   = var.region
+  cluster    = google_container_cluster.my_cluster.name
+  node_count = 1
+
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 5
+  }
+
+  node_config {
+    machine_type    = "e2-medium"
+    service_account = google_service_account.workload_identity.email
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+
+    # 使用 Workload Identity 暴露元数据
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
+  }
+}
+
+output "gke_name" {
+  description = "GKE name"
+  value       = google_container_cluster.my_cluster.name
+}
+```
+
+## `docker-repo.tf`
+
+GAR 配置文件 `terraform/docker-repo.tf`
+
+```hcl
+# 创建 Docker 仓库
+resource "google_artifact_registry_repository" "docker_repo" {
+  repository_id = local.chart_repo_name
+  format        = "DOCKER"
+  depends_on    = [google_project_service.project_services]
+}
+```
+
+## `cloud-sql.tf`
+
+Cloud SQL 配置文件 `terraform/cloud-sql.tf`
+
+```hcl
+# 创建 Cloud SQL 实例
+resource "google_sql_database_instance" "mysql_instance" {
+  name             = local.db_instance
+  database_version = "MYSQL_8_0"
+  region           = var.region
+
+  settings {
+    tier            = "db-f1-micro" # 测试环境使用的最小规格
+    disk_type       = "PD_SSD"
+    disk_size       = 10   # 初始 10GB
+    disk_autoresize = true # 自动扩容
+
+    # 开启公网 IP，但会通过 IAM 权限锁定访问，仅允许通过授权代理访问
+    ip_configuration {
+      ipv4_enabled = true
+    }
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 DATABASE
+resource "google_sql_database" "my_db" {
+  name      = local.db_name
+  instance  = google_sql_database_instance.mysql_instance.name
+  charset   = "utf8mb4"
+  collation = "utf8mb4_unicode_ci"
+}
+
+# 创建 root 用户
+resource "google_sql_user" "root_user" {
+  name     = "root"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_root_password
+  host     = "%"
+}
+
+# 创建普通账户
+resource "google_sql_user" "jerry_user" {
+  name     = "jerry"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_jerry_password
+  host     = "%"
+}
+
+output "cloud_sql_connection_name" {
+  description = "Cloud SQL instance connection name"
+  value       = google_sql_database_instance.mysql_instance.connection_name
+}
+
+output "sql_instance_name" {
+  description = "Cloud SQL 实例的名称"
+  value       = google_sql_database_instance.mysql_instance.name
+}
+
+output "database_name" {
+  description = "Cloud SQL database name"
+  value       = google_sql_database.my_db.name
+}
+```
+
+## `argo-cd.tf`
+
+Argo CD 配置文件 `terraform/argo-cd.tf`
+
+- 在安装 Argo CD 时添加 argocd-repo-server 的 GSA 注解
+- 创建 Argo CD 访问 GAR 的 Secret
+
+```hcl
+# 添加 Helm Provider
+provider "helm" {
+  kubernetes = {
+    host                   = "https://${google_container_cluster.my_cluster.endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate)
+  }
+}
+
+# 创建 Argo CD 命名空间
+resource "kubernetes_namespace_v1" "argocd_ns" {
+  metadata {
+    name = "argocd"
+  }
+  depends_on = [google_container_node_pool.my_node_pool]
+}
+
+# 安装 Argo CD
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+  version    = "7.7.1"
+
+  set = [
+    # 添加 argocd-repo-server 的 GSA 注解，以启用 Workload Identity
+    {
+      name  = "repoServer.serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account"
+      value = google_service_account.workload_identity.email
+    },
+    # 设置服务类型为 LoadBalancer
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    },
+    # 允许 HTTP 访问
+    {
+      name  = "server.extraArgs"
+      value = "{--insecure}"
+    },
+    # 仅允许自己的 IP 访问
+    {
+      name  = "server.service.loadBalancerSourceRanges"
+      value = "{${var.my_external_ip}/32}"
+    }
+  ]
+
+  depends_on = [
+    google_service_account.workload_identity,
+    google_service_account_iam_member.argocd_repo_server_binding
+  ]
+}
+
+# 创建 Argo CD 访问 GAR 的 Secret
+resource "kubernetes_secret_v1" "gar_repo_secret" {
+  metadata {
+    name      = "gar-repo-secret"
+    namespace = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    name      = "todo-docker-repo"
+    type      = "helm"
+    url       = local.chart_repo_url
+    enableOCI = "true"
+  }
+}
+
+# 获取 Argo CD 服务数据 (用于 Output)
+data "kubernetes_service_v1" "argocd_server" {
+  metadata {
+    name      = "${helm_release.argocd.name}-server"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 获取初始密码 Secret 数据
+data "kubernetes_secret_v1" "argocd_initial_admin_secret" {
+  metadata {
+    name      = "argocd-initial-admin-secret"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 输出 Argo CD 公网 IP
+output "argocd_loadbalancer_ip" {
+  description = "Argo CD UI 的公网访问 IP"
+  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
+}
+
+# 输出初始管理员密码
+output "argocd_initial_admin_password" {
+  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
+  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
+  sensitive   = true
+}
+```
+
+## `todo-app.tf`
+
+Argo CD 的 CR 资源配置文件 `terraform/todo-app.tf`
+
+```hcl
+# 增加一个睡眠资源
+resource "time_sleep" "wait_for_argocd" {
+  depends_on      = [helm_release.argocd]
+  create_duration = "30s"
+}
+
+# 使用 kubernetes_manifest 部署 Argo CD Application
+resource "kubernetes_manifest" "my_app" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "Application"
+    "metadata" = {
+      "name"      = local.app_name
+      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+      "finalizers" = [
+        "resources-finalizer.argocd.argoproj.io"
+      ]
+    }
+    "spec" = {
+      "project" = "default"
+      "source" = {
+        "repoURL"        = local.chart_repo_url
+        "targetRevision" = "99.99.99-latest"
+        "chart"          = local.chart_name
+      }
+      "destination" = {
+        "server"    = "https://kubernetes.default.svc"
+        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
+      }
+      "syncPolicy" = {
+        "automated" = {
+          "selfHeal" = true
+          "prune"    = true
+        }
+        "syncOptions" = [
+          "ApplyOutOfSyncOnly=true"
+        ]
+        "retry" = {
+          "limit" = 5
+          "backoff" = {
+            "duration"    = "5s"
+            "factor"      = 2
+            "maxDuration" = "3m"
+          }
+        }
+      }
+    }
+  }
+  depends_on = [
+    helm_release.argocd,
+    time_sleep.wait_for_argocd,
+    google_sql_user.root_user
+  ]
+}
+```
+
+## `variables.tf`
+
+变量配置文件 `terraform/variables.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "todo"
+}
+
+locals {
+  gke_name        = "${var.prefix}-cluster"
+  node_pool_name  = "${var.prefix}-node-pool"
+  app_ns          = "${var.prefix}-ns"
+  sa_id           = "${var.prefix}-sa-id"
+  ksa_name        = "${var.prefix}-ksa"
+  db_instance     = "${var.prefix}-db-instance"
+  db_name         = "${var.prefix}_db"
+  app_name        = "${var.prefix}-app"
+  chart_repo_name = "${var.prefix}-docker-repo"
+  chart_name      = "${var.prefix}-chart"
+  chart_repo_url  = "${var.region}-docker.pkg.dev/${var.project_id}/${local.chart_repo_name}"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+variable "zone" {
+  type        = string
+  description = "GCP Zone"
+  default     = "asia-east2-a"
+}
+
+# --- Cloud SQL ---
+variable "mysql_root_password" {
+  type        = string
+  description = "MySQL root user password"
+  sensitive   = true
+}
+
+variable "mysql_jerry_password" {
+  type        = string
+  description = "MySQL jerry user password"
+  sensitive   = true
+}
+
+# --- Argo CD ---
+variable "my_external_ip" {
+  type        = string
+  description = "My external IP access to Argo CD"
+  sensitive   = true
+}
+```
+
+## `terraform.tfvars`
+
+敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+my_external_ip       = "5.181.21.188"
+```
+
+## `.gitignore`
+
+添加如下忽略：
+
+```
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.tfstate.lock.info
+*.tfplan
+*.tfvars
+*.tfvars.json
+```
+
+## 初始化 Terraform
+
+```bash
+cd d:/projects/todo-gcp/terraform
+terraform init
+```
+
 # Cloud Build
 
 ## 关联 Repositories
 
 [将 Repositories 关联到 GitLab](gcp-repositories.md#GitLab)
+
+## 创建 Artifact Registry Repo
+
+```bash
+terraform apply -target=google_artifact_registry_repository.docker_repo
+```
 
 ## `cloudbuild.yaml`
 
@@ -2080,98 +2119,37 @@ options:
 
 # 部署应用
 
-## `todo-app.tf`
-
-Argo CD 的 CR 资源配置文件 `terraform/todo-app.tf`
-
-```hcl
-# 增加一个睡眠资源
-resource "time_sleep" "wait_for_argocd" {
-  depends_on = [helm_release.argocd]
-  create_duration = "30s"
-}
-
-# 使用 kubernetes_manifest 部署 Argo CD Application
-resource "kubernetes_manifest" "my_app" {
-  manifest = {
-    "apiVersion" = "argoproj.io/v1alpha1"
-    "kind"       = "Application"
-    "metadata" = {
-      "name"      = local.app_name
-      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
-      "finalizers" = [
-        "resources-finalizer.argocd.argoproj.io"
-      ]
-    }
-    "spec" = {
-      "project" = "default"
-      "source" = {
-        "repoURL"        = local.chart_repo
-        "targetRevision" = "99.99.99-latest"
-        "chart"          = local.chart_name
-      }
-      "destination" = {
-        "server"    = "https://kubernetes.default.svc"
-        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
-      }
-      "syncPolicy" = {
-        "automated" = {
-          "selfHeal" = true
-          "prune"    = true
-        }
-        "syncOptions" = [
-          "ApplyOutOfSyncOnly=true"
-        ]
-        "retry" = {
-          "limit" = 5
-          "backoff" = {
-            "duration"    = "5s"
-            "factor"      = 2
-            "maxDuration" = "3m"
-          }
-        }
-      }
-    }
-  }
-  depends_on = [
-    helm_release.argocd,
-    time_sleep.wait_for_argocd,
-    google_sql_user.root_user
-  ]
-}
-```
-
-## `variables.tf`
-
-添加如下：
-
-```hcl
-variable "prefix" {
-  type        = string
-  description = "Project prefix"
-  default     = "todo"
-}
-
-locals {
-  
-  #... 其它配置 ...
-  
-  app_name       = "${var.prefix}-app"
-  chart_name     = "${var.prefix}-chart"
-  chart_repo     = "${region}-docker.pkg.dev/${var.project_id}/${var.prefix}-docker-repo"
-}
-```
-
 ## 部署应用
 
 **遗留问题**：Argo CD 无法拉取 GAR 中的 chart
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd d:/projects/todo-gcp/terraform
+
+# 先安装 Argo CD 及其依赖
+terraform apply -target=helm_release.argocd
+
+# 再部署 my-app.tf 及其它资源
 terraform apply
 ```
 
-# 访问应用
+## 更新 kubectl 配置
+
+```bash
+gcloud container clusters get-credentials todo-cluster \
+    --location asia-east2 \
+    --project project-60addf72-be9c-4c26-8db
+```
+
+```bash
+# 查看当前上下文
+kubectl config current-context
+
+# 切换上下文
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cluster
+```
+
+## 访问应用
 
 - 获取前端访问地址
 
@@ -2184,13 +2162,12 @@ terraform apply
 - 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
 
 
-# 销毁资源
+## 销毁资源
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd d:/projects/todo-gcp/terraform
 terraform destroy
 ```
-
 
 
 
