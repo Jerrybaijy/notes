@@ -9,6 +9,7 @@ tags:
   - cloud-computing
   - gcp
   - repo
+  - gcp-repositories
 ---
 
 # Overview
@@ -36,7 +37,7 @@ tags:
 2. [链接到 GitLab Repository](#链接到 GitLab Repository)
 3. [创建触发器](#创建触发器)
 
-### 连接到 GitLab 主机
+### 连接到 GitLab Host
 
 > [Connect to a GitLab host](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab)
 
@@ -85,7 +86,7 @@ tags:
   - **Repositories name**：可选择 `Generated` 自动生成
 - 点击 `Link`，将代码库与连接相关联。
 
-### 创建触发器
+### 创建 Trigger
 
 > [Build Repositories from GitLab](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/build-repos-from-gitlab)
 
@@ -101,7 +102,7 @@ tags:
   - **Source**
     - **Repository service**：`Cloud Build respotories`
     - **Repository generation**：`2nd gen`
-    - **Repository**：选择 [`Connect to a GitLab Repository`](<#Connect to a GitLab Repository>) 中链接的仓库
+    - **Repository**：选择[链接到 GitLab Repository](<#链接到 GitLab Repository>) 中链接的仓库
     - **Branch**： 监控的分支名称（通常是 `^main$`，支持正则）。
   - **Configuration**
     - **Type**：`Cloud Build configuration file (yaml/json)`
@@ -109,21 +110,10 @@ tags:
 
 ## 通过 Terraform 连接到 GitLab
 
-**遗留问题**：连接 GitLab 主机和代码仓库成功了，但触发器没创建成功。
-
-```
-google_cloudbuild_trigger.my_trigger: Creating...
-╷
-│ Error: Error creating Trigger: googleapi: Error 400: Request contains an invalid argument.
-│
-│   with google_cloudbuild_trigger.my_trigger,
-│   on code-repo.tf line 83, in resource "google_cloudbuild_trigger" "my_trigger":
-│   83: resource "google_cloudbuild_trigger" "my_trigger" {
-```
-
 ### 创建 Terraform 配置文件
 
 ```bash
+mkdir -p /d/projects/my-project/terraform
 cd /d/projects/my-project/terraform
 touch terraform.tf api.tf iam.tf code-repo.tf variable.tf terraform.tfvars
 ```
@@ -146,9 +136,8 @@ terraform {
 ```hcl
 locals {
   services = [
-    "cloudbuild.googleapis.com",          # Cloud Build API
-    "secretmanager.googleapis.com",       # Secret Manager API
-    "cloudresourcemanager.googleapis.com" # Cloud Resource Manager API
+    "cloudbuild.googleapis.com",    # Cloud Build API
+    "secretmanager.googleapis.com", # Secret Manager API
   ]
 }
 
@@ -162,25 +151,60 @@ resource "google_project_service" "project_services" {
 ### `iam.tf`
 
 ```hcl
+# 创建 Cloud Build 的 GSA
+resource "google_service_account" "cloudbuild_worker" {
+  account_id   = "${var.prefix}-cloudbuild-worker"
+  display_name = "Cloud Build Worker Service Account"
+}
+
+# 为 GSA 分配角色
+resource "google_project_iam_member" "cloudbuild_worker_roles" {
+  for_each = toset([
+    "roles/logging.logWriter",       # Logs Writer
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader"  # Artifact Registry Reader
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.cloudbuild_worker.email}"
+}
+
 # 获取当前 Project ID
 data "google_project" "project" {}
 
-# 授予 Cloud Build 服务账号访问 Secret Manager 的权限
-resource "google_secret_manager_secret_iam_member" "cb_sa_accessor" {
+# 允许 Cloud Build 服务代理访问 Secret Manager 中的 Secrets
+resource "google_secret_manager_secret_iam_member" "cloudbuild_secret_accessor" {
   for_each = {
-    "api_token"  = google_secret_manager_secret.gitlab_api_token.secret_id
-    "read_token" = google_secret_manager_secret.gitlab_read_api_token.secret_id
-    "webhook"    = google_secret_manager_secret.webhook_secret.secret_id
+    api     = google_secret_manager_secret.gitlab_api_token.id
+    read    = google_secret_manager_secret.gitlab_read_api_token.id
+    webhook = google_secret_manager_secret.webhook_secret.id
   }
-
-  project   = var.project_id
   secret_id = each.value
   role      = "roles/secretmanager.secretAccessor"
-  member    = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+  # 必须使用 Cloud Build 的 Service Agent 账号
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
+
+# 允许 Cloud Build 服务代理以 GSA 身份运行
+# 否则 Cloud Build 服务代理无法代表 GSA 执行构建任务
+resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
+  service_account_id = google_service_account.cloudbuild_worker.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
 }
 ```
 
-### `code-repo.tf`
+在以上代码中：
+
+- 是给 Cloud Build 的 **Service Agent** 账号授权，而不是 **Service Account**。
+- 将权限授予在**具体的 Secret 资源**上，而不是整个 **Project（项目）** 上。
+- 点击 `gitlab_api_token` 这个具体的 Secret。
+- 查看右侧的 `Permissions` 面板。
+
+### `gitlab-repo.tf`
+
+Repositories 配置文件 `terraform/gitlab-repo.tf`：链接到 GitLab
 
 ```hcl
 # GCP 提供商配置
@@ -259,27 +283,45 @@ resource "google_cloudbuildv2_connection" "my_gitlab_connection" {
 # 3. 链接具体的代码仓库
 resource "google_cloudbuildv2_repository" "my_repo" {
   name              = "${var.repo_username}-${local.project_name}"
-  location          = var.region
+  location          = google_cloudbuildv2_connection.my_gitlab_connection.location
   parent_connection = google_cloudbuildv2_connection.my_gitlab_connection.id
   remote_uri        = "https://gitlab.com/${var.repo_username}/${local.project_name}.git"
 }
+```
 
-# 4. 创建触发器
-resource "google_cloudbuild_trigger" "my_trigger" {
-  name     = local.trigger_name
-  location = google_cloudbuildv2_repository.my_repo.location
+### `cloudbuild-trigger.tf`
+
+Trigger 配置文件 `terraform/cloudbuild-trigger.tf`：Cloud Build Trigger
+
+```hcl
+# 为 GitLab 仓库创建 Cloud Build 触发器
+resource "google_cloudbuild_trigger" "gitlab_trigger" {
+  name            = local.trigger_name
+  location        = google_cloudbuildv2_repository.my_repo.location
+  service_account = google_service_account.cloudbuild_worker.id
+
+  # 使用第 2 代连接 (v2 repository)
   repository_event_config {
     repository = google_cloudbuildv2_repository.my_repo.id
     push {
       branch = "^main$"
     }
   }
+
+  # 指定构建配置
   filename = "cloudbuild.yaml"
 
   included_files = [
     "backend/**",
     "frontend/**",
     "helm-chart/**"
+  ]
+
+  depends_on = [
+    google_cloudbuildv2_repository.my_repo,
+    google_secret_manager_secret_iam_member.cloudbuild_secret_accessor,
+    google_project_iam_member.cloudbuild_worker_roles,
+    google_service_account_iam_member.cloudbuild_worker_binding
   ]
 }
 ```
@@ -336,13 +378,13 @@ variable "repo_username" {
 variable "gitlab_personal_access_token_api" {
   type        = string
   description = "GitLab Personal Access Token for API"
-  sensitive = true
+  sensitive   = true
 }
 
 variable "gitlab_personal_access_token_read_api" {
   type        = string
   description = "GitLab Personal Access Token for Read"
-  sensitive = true
+  sensitive   = true
 }
 ```
 

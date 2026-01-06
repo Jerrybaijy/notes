@@ -374,7 +374,7 @@ helm uninstall my-release
   # values.yaml
   
   global:
-    namespace: my-project
+    namespace: my-ns
   ```
 
 - 使用变量

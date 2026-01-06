@@ -22,6 +22,8 @@ tags:
   - gke
   - cloud-build
   - cloud-sql
+  - artifact-registry
+  - gcp-repositories
   - terraform
 ---
 
@@ -65,7 +67,7 @@ Todo GCP 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计�
 - **容器编排**：Docker Compose, Kubernetes
 - **GitOps**：Argo CD
 - **包管理**：Helm
-- **CI/CD**：GitLab CI
+- **CI/CD**：Cloud Build
 - **Cloud**：GCP, Cloud SQL, Terraform
 
 ## 项目结构
@@ -111,10 +113,15 @@ todo-gcp/
 ├── terraform/              # GCP 的 Terraform 部署文件
 │   ├── .terraform.lock.hcl # 依赖锁定文件
 │   ├── api.tf              # GCP API
+│   ├── argo-cd.tf          # Argo CD 配置文件
 │   ├── cloud-sql.tf        # Cloud SQL 配置文件
+│   ├── cloudbuild-trigger.tf # Cloud Build Trigger 配置文件
+│   ├── docker-repo.tf      # Artifact Repository 配置文件
+│   ├── gitlab-repo.tf      # 链接到 GitLab 配置文件
 │   ├── gke.tf              # GKE 配置文件
 │   ├── iam.tf              # GCP 权限配置文件
 │   ├── terraform.tf        # Provider 版本配置文件
+│   ├── todo-app.tf         # Argo CD CR 配置文件
 │   └── variables.tf        # Terraform 变量
 │
 ├── helm-chart/             # Helm Chart 目录
@@ -142,16 +149,16 @@ todo-gcp/
   - **GitHub:** https://github.com/Jerrybaijy/todo-gcp
 
 - **镜像仓库**
-  - **后端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcp-backend
-  - **前端 Image:** https://hub.docker.com/repository/docker/jerrybaijy/todo-gcp-frontend
-  - **项目 Chart:** oci://registry.gitlab.com/jerrybai/todo-gcp
+  - **后端 Image:** oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-gcp-backend
+  - **前端 Image:** oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-gcp-frontend
+  - **项目 Chart:** oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart
 
 # 项目准备
 
 ## 创建项目根目录
 
 ```bash
-mkdir d:/projects/todo-gcp
+mkdir -p d:/projects/todo-gcp
 ```
 
 ## 初始化 Git 仓库
@@ -1488,12 +1495,14 @@ terraform {
 ```hcl
 locals {
   services = [
-    "compute.googleapis.com",         # Compute Engine API
-    "container.googleapis.com",       # Kubernetes Engine API
-    "iam.googleapis.com",             # IAM API
-    "iamcredentials.googleapis.com",  # Workload Identity API
-    "sqladmin.googleapis.com",        # Cloud SQL API
-    "artifactregistry.googleapis.com" # Artifact Registry API
+    "compute.googleapis.com",          # Compute Engine API
+    "container.googleapis.com",        # Kubernetes Engine API
+    "iam.googleapis.com",              # IAM API
+    "iamcredentials.googleapis.com",   # Workload Identity API
+    "sqladmin.googleapis.com",         # Cloud SQL API
+    "artifactregistry.googleapis.com", # Artifact Registry API
+    "cloudbuild.googleapis.com",       # Cloud Build API
+    "secretmanager.googleapis.com"     # Secret Manager API
   ]
 }
 
@@ -1584,6 +1593,46 @@ output "ksa_name" {
   description = "Kubernetes Service Account Name"
   value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
 }
+
+# 创建 Cloud Build 的 GSA
+resource "google_service_account" "cloudbuild_worker" {
+  account_id   = "${var.prefix}-cloudbuild-worker"
+  display_name = "Cloud Build Worker Service Account"
+}
+
+# 为 GSA 分配角色
+resource "google_project_iam_member" "cloudbuild_worker_roles" {
+  for_each = toset([
+    "roles/logging.logWriter",       # Logs Writer
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader"  # Artifact Registry Reader
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.cloudbuild_worker.email}"
+}
+
+# 允许 Cloud Build 服务代理访问 Secret Manager 中的 Secrets
+resource "google_secret_manager_secret_iam_member" "cloudbuild_secret_accessor" {
+  for_each = {
+    api     = google_secret_manager_secret.gitlab_api_token.id
+    read    = google_secret_manager_secret.gitlab_read_api_token.id
+    webhook = google_secret_manager_secret.webhook_secret.id
+  }
+  secret_id = each.value
+  role      = "roles/secretmanager.secretAccessor"
+  # 必须使用 Cloud Build 的 Service Agent 账号
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
+
+# 允许 Cloud Build 服务代理以 GSA 身份运行
+# 否则 Cloud Build 服务代理无法代表 GSA 执行构建任务
+resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
+  service_account_id = google_service_account.cloudbuild_worker.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
 ```
 
 ## `gke.tf`
@@ -1665,6 +1714,124 @@ resource "google_artifact_registry_repository" "docker_repo" {
   repository_id = local.chart_repo_name
   format        = "DOCKER"
   depends_on    = [google_project_service.project_services]
+}
+```
+
+## `gitlab-repo.tf`
+
+Repositories 配置文件 `terraform/gitlab-repo.tf`：链接到 GitLab
+
+```hcl
+# 1. 存储 Token 到 Secret Manager
+
+# 创建存储 API Token 的 Secret
+resource "google_secret_manager_secret" "gitlab_api_token" {
+  secret_id = "${var.code_repo}-api-token"
+  replication {
+    auto {}
+  }
+}
+
+# 存入具体的 API Token 值
+resource "google_secret_manager_secret_version" "api_token_version" {
+  secret      = google_secret_manager_secret.gitlab_api_token.id
+  secret_data = var.gitlab_personal_access_token_api
+}
+
+# 创建存储 Read API Token 的 Secret
+resource "google_secret_manager_secret" "gitlab_read_api_token" {
+  secret_id = "${var.code_repo}-read-api-token"
+  replication {
+    auto {}
+  }
+}
+
+# 存入具体的 Read API Token 值
+resource "google_secret_manager_secret_version" "read_api_token_version" {
+  secret      = google_secret_manager_secret.gitlab_read_api_token.id
+  secret_data = var.gitlab_personal_access_token_read_api
+}
+
+# 随机生成一个 Webhook 密钥
+resource "random_password" "webhook_secret_value" {
+  length  = 16
+  special = false
+}
+
+# 创建 Secret Manager 容器
+resource "google_secret_manager_secret" "webhook_secret" {
+  secret_id = "gitlab-webhook-secret"
+  replication {
+    auto {}
+  }
+}
+
+# 存入随机生成的密钥值
+resource "google_secret_manager_secret_version" "webhook_secret_version" {
+  secret      = google_secret_manager_secret.webhook_secret.id
+  secret_data = random_password.webhook_secret_value.result
+}
+
+# 2. 连接到 GitLab 主机 (2nd Gen)
+resource "google_cloudbuildv2_connection" "my_gitlab_connection" {
+  location = var.region
+  name     = local.code_repo_host
+
+  gitlab_config {
+    # 引用 Secret Manager 中的令牌
+    authorizer_credential {
+      user_token_secret_version = google_secret_manager_secret_version.api_token_version.id
+    }
+    read_authorizer_credential {
+      user_token_secret_version = google_secret_manager_secret_version.read_api_token_version.id
+    }
+    webhook_secret_secret_version = google_secret_manager_secret_version.webhook_secret_version.id
+  }
+}
+
+# 3. 链接具体的代码仓库
+resource "google_cloudbuildv2_repository" "my_repo" {
+  name              = "${var.repo_username}-${local.project_name}"
+  location          = google_cloudbuildv2_connection.my_gitlab_connection.location
+  parent_connection = google_cloudbuildv2_connection.my_gitlab_connection.id
+  remote_uri        = "https://gitlab.com/${var.repo_username}/${local.project_name}.git"
+}
+```
+
+## `cloudbuild-trigger.tf`
+
+Cloud Build Trigger 配置文件 `terraform/cloudbuild-trigger.tf`
+
+```hcl
+# 为 GitLab 仓库创建 Cloud Build 触发器
+resource "google_cloudbuild_trigger" "gitlab_trigger" {
+  name            = local.trigger_name
+  location        = google_cloudbuildv2_repository.my_repo.location
+  service_account = google_service_account.cloudbuild_worker.id
+
+  # 使用第 2 代连接 (v2 repository)
+  repository_event_config {
+    repository = google_cloudbuildv2_repository.my_repo.id
+    push {
+      branch = "^main$"
+    }
+  }
+
+  # 指定构建配置
+  filename = "cloudbuild.yaml"
+
+  included_files = [
+    "backend/**",
+    "frontend/**",
+    "helm-chart/**"
+  ]
+
+  depends_on = [
+    google_cloudbuildv2_repository.my_repo,
+    google_secret_manager_secret_iam_member.cloudbuild_secret_accessor,
+    google_project_iam_member.cloudbuild_worker_roles,
+    google_service_account_iam_member.cloudbuild_worker_binding
+  ]
 }
 ```
 
@@ -1932,6 +2099,9 @@ locals {
   chart_repo_name = "${var.prefix}-docker-repo"
   chart_name      = "${var.prefix}-chart"
   chart_repo_url  = "${var.region}-docker.pkg.dev/${var.project_id}/${local.chart_repo_name}"
+  code_repo_host  = "${var.prefix}-${var.code_repo}-host"
+  project_name    = "${var.prefix}-gcp"
+  trigger_name    = "${var.prefix}-trigger"
 }
 
 # --- GCP ---
@@ -1972,6 +2142,32 @@ variable "my_external_ip" {
   description = "My external IP access to Argo CD"
   sensitive   = true
 }
+
+# --- Repo ---
+variable "code_repo" {
+  type        = string
+  description = "Code repo"
+  default     = "gitlab"
+}
+
+variable "repo_username" {
+  type        = string
+  description = "Repo username"
+  default     = "jerrybai"
+}
+
+# --- Secrets ---
+variable "gitlab_personal_access_token_api" {
+  type        = string
+  description = "GitLab Personal Access Token for API"
+  sensitive   = true
+}
+
+variable "gitlab_personal_access_token_read_api" {
+  type        = string
+  description = "GitLab Personal Access Token for Read"
+  sensitive   = true
+}
 ```
 
 ## `terraform.tfvars`
@@ -1979,14 +2175,16 @@ variable "my_external_ip" {
 敏感变量赋值文件 `terraform/terraform.tfvars`
 
 ```hcl
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-my_external_ip       = "5.181.21.188"
+mysql_root_password                   = "123456"
+mysql_jerry_password                  = "000000"
+my_external_ip                        = "5.181.21.188"
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
 ```
 
 ## `.gitignore`
 
-添加如下忽略：
+添加[忽略内容](terraform.md#`.gitignore`)：
 
 ```
 # Terraform
@@ -2008,13 +2206,15 @@ terraform init
 
 # Cloud Build
 
-## 关联 Repositories
+## 创建 GAR 和链接 GitLab
 
-[将 Repositories 关联到 GitLab](gcp-repositories.md#GitLab)
-
-## 创建 Artifact Registry Repo
+需先创建 GitLab Personal Tokens
 
 ```bash
+# 链接到 GitLab 和创建 Trigger
+terraform apply -target=google_cloudbuild_trigger.gitlab_trigger
+
+# 创建 Artifact Registry Docker Repositoy
 terraform apply -target=google_artifact_registry_repository.docker_repo
 ```
 
@@ -2115,7 +2315,7 @@ options:
 
 ## 构建 Image 和 Chart
 
-将源代码推送至代码仓库，触发 Cloud Build 构建并推送 image 和 chart。
+将源代码推送至代码仓库，触发 Cloud Build 构建并推送 image 和 chart 到 GAR。
 
 # 部署应用
 
@@ -2159,7 +2359,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 
 - 访问前端：http://$EXTERNAL-IP
 
-- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
+- 在本地电脑使用 Cloud SQL Auth 代理连接 Cloud SQL，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
 
 
 ## 销毁资源

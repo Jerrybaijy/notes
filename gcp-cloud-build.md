@@ -26,11 +26,11 @@ tags:
 
 - 启用 [Cloud Build API](https://console.cloud.google.com/marketplace/product/google/cloudbuild.googleapis.com?referrer=search&project=project-60addf72-be9c-4c26-8db&returnUrl=%2Fcloud-build%2Fbuilds%3Freferrer%3Dsearch%26project%3Dproject-60addf72-be9c-4c26-8db%26inv%3D%26invt%3DAcFoRQ)
 
-- [将 Repositories 关联到 GitLab](gcp-repositories.md#GitLab)
+- [将 Repositories 关联到 GitLab 和创建 Trigger](gcp-repositories.md#GitLab)
 
 - [创建 Docker Repository](<gcp-artifact-registry.md#创建 Docker Repository>)
 
-- 给服务账号添加角色
+- 给 Trigger 的 GSA 添加角色
 
   ```bash
   378042797368-compute@developer.gserviceaccount.com

@@ -9,11 +9,12 @@ tags:
   - registry
   - cloud-computing
   - gcp
+  - artifact-registry
 ---
 
 # Overview
 
-[**Artifact Registry**](https://console.cloud.google.com/artifacts) 是 GCP 的制品仓库。
+[**Artifact Registry**](https://console.cloud.google.com/artifacts) 是 GCP 的制品仓库，是一个私有仓库。
 
 > [Artifact Registry Docs](https://docs.cloud.google.com/artifact-registry/docs)
 
@@ -123,9 +124,9 @@ gcloud artifacts repositories delete my-docker-repo --location=asia-east2
 
 点击 `Create repository`
 
-- **Name**：Docker Repository 名称
-- **Format**：Docker Repository 类型
-- **Region**：Docker Repository 区域
+- **Name**：my-docker-repo
+- **Format**：Docker
+- **Region**：asia-east2
 
 ## 使用 CLI 创建 Docker Repository
 
@@ -234,7 +235,6 @@ resource "google_project_service" "project_services" {
   service            = each.key
   disable_on_destroy = false
 }
-
 ```
 
 ### `docker-repo.tf`
