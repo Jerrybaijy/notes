@@ -368,7 +368,7 @@ variable "zone" {
 
 ### `.gitignore`
 
-添加[忽略内容](terraform.md#`.gitignore`)
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ```
 # Terraform

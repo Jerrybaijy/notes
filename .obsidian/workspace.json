@@ -22,45 +22,17 @@
             }
           },
           {
-            "id": "ecd9c04224d43e55",
+            "id": "ea6c35e88f83e7e0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "gcp-repositories.md",
+                "file": "terraform.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "gcp-repositories"
-            }
-          },
-          {
-            "id": "5fb85fa6dd4fcc44",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-artifact-registry.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-artifact-registry"
-            }
-          },
-          {
-            "id": "82948a64868999e6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-cloud-build.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-cloud-build"
+              "title": "terraform"
             }
           }
         ]
@@ -95,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "shell",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -112,13 +84,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "gcp-repositories.md",
+                "file": "0000-to-do.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "gcp-repositories 的大纲"
+              "title": "0000-to-do 的大纲"
             }
           },
           {
@@ -197,7 +169,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5
+    "width": 300.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -212,15 +185,19 @@
   },
   "active": "28f2beca91b64d1f",
   "lastOpenFiles": [
-    "gcp-repositories.md",
-    "gcp-artifact-registry.md",
-    "gcp-cloud-sql.md",
-    "0000-to-do.md",
-    "gcp-cloud-build.md",
     "terraform.md",
+    "0000-to-do.md",
+    "terraform-configuration-language.md",
+    "terraform-cli.md",
+    "todo-gcp.md",
+    "gcp-repositories.md",
+    "gcp-gke.md",
+    "gcp-cloud-sql.md",
+    "terraform-configuration-language00.md",
+    "gcp-artifact-registry.md",
+    "gcp-cloud-build.md",
     "gcp.md",
     "shell.md",
-    "terraform-cli.md",
     "git.md",
     "helm.md",
     "0000-标题实验.md",
@@ -232,15 +209,11 @@
     "todo-fullstack.md",
     "web.md",
     "python.md",
-    "todo-gcp.md",
     "harbor.md",
     "dev-ops.md",
     "gitlab-ci-cd-yaml.md",
     "gcp-secure-source-manager.md",
     "gcp-project.md",
-    "software.md",
-    "terraform-hcl.md",
-    "gcp-gke.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",

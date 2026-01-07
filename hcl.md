@@ -18,7 +18,7 @@ tags:
 >
 > [HCL 原生语法规范](https://github.com/hashicorp/hcl/blob/main/hclsyntax/spec.md)
 >
-> [Terraform HCL Docs](https://developer.hashicorp.com/terraform/language)
+> [Terraform Configuration Language Docs](https://developer.hashicorp.com/terraform/language)
 
 该语言由三个相互关联的子语言组成：
 

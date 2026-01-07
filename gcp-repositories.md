@@ -115,7 +115,7 @@ tags:
 ```bash
 mkdir -p /d/projects/my-project/terraform
 cd /d/projects/my-project/terraform
-touch terraform.tf api.tf iam.tf code-repo.tf variable.tf terraform.tfvars
+touch terraform.tf api.tf iam.tf gjtlab-repo.tf variables.tf terraform.tfvars
 ```
 
 ### `terraform.tf`
@@ -326,7 +326,7 @@ resource "google_cloudbuild_trigger" "gitlab_trigger" {
 }
 ```
 
-### `variable.tf`
+### `variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -397,4 +397,4 @@ gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
 
 ### `.gitignore`
 
-添加[忽略内容](terraform.md#`.gitignore`)
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)

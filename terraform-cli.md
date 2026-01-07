@@ -15,6 +15,16 @@ tags:
 
 > [Terraform CLI Docs](https://developer.hashicorp.com/terraform/cli)
 
+```bash
+# 查看版本
+terraform version
+# 帮助
+terraform -help
+# 特定命令帮助
+terraform plan -help
+terraform $COMMAND -help
+```
+
 # Install
 
 ## 安装 Terraform
@@ -64,20 +74,6 @@ complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terrafor
   # 验证格式化时有效的
   terraform validate
   ```
-
-# Reference
-
-> [Terraform CLI Docs](https://developer.hashicorp.com/terraform/cli)
-
-```bash
-# 查看版本
-terraform version
-# 帮助
-terraform -help
-# 特定命令帮助
-terraform plan -help
-terraform $COMMAND -help
-```
 
 # `init`
 
@@ -149,7 +145,7 @@ terraform destroy -target=google_container_cluster.primary
   >
   > 此时 app-ns 命名空间的状态会变为 Terminating
 
-  - 执行 `kubectl delete ns argocd` 和 `kubectl delete ns my-ns`
+  - 执行 `kubectl delete ns argocd` 和 `kubectl delete ns my-ns`
   - 重复执行 `terraform appy`，直到 terraform 提示 no changes。
   - 执行 `terraform destroy`，第一次执行可能还会出错。
   - 重复执行上述步骤，直到销毁成功。
