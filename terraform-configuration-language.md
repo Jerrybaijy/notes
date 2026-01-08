@@ -112,7 +112,7 @@ resource "aws_vpc" "main" {
 
 ## `.gitignore`
 
-将以下添加到 `.gitignore` 文件：
+将以下添加到 `my-project/.gitignore` 文件：
 
 ```
 # Terraform
@@ -141,17 +141,17 @@ terraform/
 ├── providers.tf         # Provider 文件
 ├── variables.tf         # 全局变量文件
 ├── terraform.tfvars     # 敏感变量赋值文件
-└── modules/
-    ├── module-a/
-    │   ├── module-a.tf  # 资源文件
-    │   ├── terraform.tf # Provider 版本号文件
-    │   ├── api.tf       # API 文件
-    │   ├── iam.tf       # IAM 文件
-    │   ├── variables.tf # 局部变量文件
-    │   └── outputs.tf   # 输出文件
-    │
-    └── module-b/
-        └── 同 module-a
+│
+├── module-a/
+│   ├── module-a.tf  # 资源文件
+│   ├── terraform.tf # Provider 版本号文件
+│   ├── api.tf       # API 文件
+│   ├── iam.tf       # IAM 文件
+│   ├── variables.tf # 局部变量文件
+│   └── outputs.tf   # 输出文件
+│
+└── module-b/
+    └── 同 module-a
 ```
 
 ## GCP Repositories 连接到 GitLab 示例
@@ -195,7 +195,7 @@ provider "google" {
 ```hcl
 # 调用 gitlab-repo 模块
 module "gitlab-repo" {
-  source = "./modules/gitlab-repo"
+  source = "./gitlab-repo"
 
   # 向局部变量传入全局变量的值
   prefix                                = var.prefix
@@ -206,7 +206,7 @@ module "gitlab-repo" {
 }
 ```
 
-### `terraform/variables.tf`
+### `variables.tf`
 
 `terraform/variables.tf`：全局变量
 
@@ -265,6 +265,12 @@ variable "gitlab_personal_access_token_read_api" {
 gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
 gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
 ```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `terraform.tf`
 
@@ -351,7 +357,7 @@ resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
 
 ### `gitlab-repo.tf`
 
-Repositories 配置文件 `terraform/gitlab-repo.tf`：链接到 GitLab
+Repositories 配置文件 `gitlab-repo/gitlab-repo.tf`：链接到 GitLab
 
 ```hcl
 # 1. 存储 Token 到 Secret Manager
@@ -459,7 +465,6 @@ resource "google_cloudbuild_trigger" "gitlab_trigger" {
     google_service_account_iam_member.cloudbuild_worker_binding
   ]
 }
-
 ```
 
 ### `variables.tf`
@@ -519,9 +524,19 @@ variable "gitlab_personal_access_token_read_api" {
 }
 ```
 
-### `.gitignore`
+### 初始化 Terraform
 
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+```bash
+cd d:/projects/my-project/terraform
+terraform init
+```
+
+### 创建 Resource
+
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
+```
 
 # Provider
 
@@ -608,7 +623,8 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 
 `terraform.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
 
-- `terraform.tfvars` 应在 `.gitignore` 中添加忽略。
+- 在 `.gitignore` 中添加忽略 `*.tfvars`。
+- 同时创建敏感变量的赋值文件的模板文件 `terraform.tfvars.example`
 
 `variables.tf` 文件中：
 

@@ -74,7 +74,7 @@ gcloud sql instances list
 
 详见 [Quick Start](<gcp-cloud-sql.md#Quick Start>)
 
-## 使用 Terraform 创建 Cloud SQL
+## 使用 Terraform 创建 Cloud SQL（旧）
 
 ### 准备工作
 
@@ -210,6 +210,281 @@ variable "mysql_jerry_password" {
 ```hcl
 mysql_root_password  = "123456"
 mysql_jerry_password = "000000"
+```
+
+## 使用 Terraform 创建 Cloud SQL
+
+### 创建 Terraform 目录
+
+```bash
+mkdir -p /d/projects/my-project/terraform/cloud-sql
+
+cd /d/projects/my-project/terraform
+touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
+
+cd /d/projects/my-project/terraform/cloud-sql
+touch terraform.tf api.tf iam.tf cloud-sql.tf variables.tf
+```
+
+### `providers.tf`
+
+`terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
+### `main.tf`
+
+`terraform/main.tf`
+
+```hcl
+# 调用 cloud-sql 模块
+module "cloud-sql" {
+  source = "./cloud-sql"
+
+  # 向局部变量传入全局变量的值
+  prefix               = var.prefix
+  project_id           = var.project_id
+  region               = var.region
+  mysql_root_password  = var.mysql_root_password
+  mysql_jerry_password = var.mysql_jerry_password
+}
+```
+
+### `variables.tf`
+
+`terraform/variables.tf`：全局变量
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+# --- Cloud SQL ---
+variable "mysql_root_password" {
+  type        = string
+  description = "MySQL root user password"
+  sensitive   = true
+}
+
+variable "mysql_jerry_password" {
+  type        = string
+  description = "MySQL jerry user password"
+  sensitive   = true
+}
+```
+
+### `terraform.tfvars`
+
+`terraform/terraform.tfvars`：全局敏感变量赋值
+
+```hcl
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+```
+
+### `terraform.tfvars.example`
+
+`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
+
+```hcl
+mysql_root_password = "mysql_root_password"
+mysql_jerry_password = "mysql_jerry_password"
+```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### `terraform.tf`
+
+`gar-docker-repo/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
+### `api.tf`
+
+`gar-docker-repo/api.tf`
+
+```hcl
+locals {
+  services = [
+    "sqladmin.googleapis.com", # Cloud SQL API
+    "iam.googleapis.com",      # IAM API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+### `iam.tf`
+
+`gar-docker-repo/iam.tf`
+
+```hcl
+# 若想让后端连接 Cloud SQL，则需要:
+  # 为集群开启 Workload Identity
+  # 创建 Workload Identity GSA 并为其分配 Cloud SQL Client 角色
+  # 创建 App KSA 并绑定到 Workload Identity GSA
+  # 允许 App KSA 以 Workload Identity GSA 身份运行
+  # 详见 GKE 模块中的 iam.tf 文件
+```
+
+### `cloud-sql.tf`
+
+`gar-docker-repo/cloud-sql.tf`
+
+```hcl
+# 创建 Cloud SQL 实例
+resource "google_sql_database_instance" "mysql_instance" {
+  name             = local.db_instance
+  database_version = "MYSQL_8_0"
+  region           = var.region
+
+  settings {
+    tier            = "db-f1-micro" # 测试环境使用的最小规格
+    disk_type       = "PD_SSD"
+    disk_size       = 10   # 初始 10GB
+    disk_autoresize = true # 自动扩容
+
+    # 开启公网 IP，但会通过 IAM 权限锁定访问，仅允许通过授权代理访问
+    ip_configuration {
+      ipv4_enabled = true
+    }
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 DATABASE
+resource "google_sql_database" "my_db" {
+  name      = local.db_name
+  instance  = google_sql_database_instance.mysql_instance.name
+  charset   = "utf8mb4"
+  collation = "utf8mb4_unicode_ci"
+}
+
+# 创建 root 用户
+resource "google_sql_user" "root_user" {
+  name     = "root"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_root_password
+  host     = "%"
+}
+
+# 创建普通账户
+resource "google_sql_user" "jerry_user" {
+  name     = "jerry"
+  instance = google_sql_database_instance.mysql_instance.name
+  password = var.mysql_jerry_password
+  host     = "%"
+}
+
+output "cloud_sql_connection_name" {
+  description = "Cloud SQL instance connection name"
+  value       = google_sql_database_instance.mysql_instance.connection_name
+}
+
+output "sql_instance_name" {
+  description = "Cloud SQL 实例的名称"
+  value       = google_sql_database_instance.mysql_instance.name
+}
+
+output "database_name" {
+  description = "Cloud SQL database name"
+  value       = google_sql_database.my_db.name
+}
+```
+
+### `variables.tf`
+
+`gar-docker-repo/variables.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+}
+
+locals {
+  db_instance    = "${var.prefix}-db-instance"
+  db_name        = "${var.prefix}_db"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+}
+
+# --- Cloud SQL ---
+variable "mysql_root_password" {
+  type        = string
+  description = "MySQL root user password"
+  sensitive   = true
+}
+
+variable "mysql_jerry_password" {
+  type        = string
+  description = "MySQL jerry user password"
+  sensitive   = true
+}
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/my-project/terraform
+terraform init
+```
+
+### 创建 Cloud SQL
+
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
 ```
 
 # 连接 Cloud SQL (白名单)

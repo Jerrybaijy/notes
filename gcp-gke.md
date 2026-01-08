@@ -126,7 +126,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
   gcloud container clusters list
   ```
 
-## 使用 Terraform 创建 GKE 集群
+## 使用 Terraform 创建 GKE 集群（旧）
 
 ### 准备工作
 
@@ -389,6 +389,341 @@ terraform init
 ```
 
 ### 部署 GCP
+
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
+```
+
+### 更新 kubectl 配置
+
+```bash
+gcloud container clusters get-credentials my-cluster \
+    --location asia-east2 \
+    --project project-60addf72-be9c-4c26-8db
+```
+
+```bash
+# 查看当前上下文
+kubectl config current-context
+
+# 切换上下文
+kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_my-cluster
+```
+
+## 使用 Terraform 创建 GKE 集群
+
+### 准备工作
+
+- [Terraform 安装](<terraform-cli.md#Install>)已完成
+- GCP 项目已创建并关联结算账号
+- [安装和配置 Google Cloud CLI](<gcp.md#Install>)
+- [Kubectl 已安装并完成配置](<gcp-gke.md#Quick Start>)
+
+### 创建 Terraform 目录
+
+```bash
+mkdir -p /d/projects/my-project/terraform/gke
+
+cd /d/projects/my-project/terraform
+touch providers.tf main.tf variables.tf
+
+cd /d/projects/my-project/terraform/gke
+touch terraform.tf iam.tf api.tf gke.tf variables.tf outputs.tf
+```
+
+### `providers.tf`
+
+`terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# 定义 GKE 客户端配置数据源（使根模块可直接访问）
+data "google_client_config" "default" {}
+
+provider "kubernetes" {
+  host                   = "https://${module.gke.cluster_endpoint}"
+  token                  = data.google_client_config.default.access_token
+  cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+}
+```
+
+### `main.tf`
+
+`terraform/main.tf`
+
+```hcl
+# 调用 gke 模块
+module "gke" {
+  source = "./gke"
+
+  # 向局部变量传入全局变量的值
+  prefix     = var.prefix
+  project_id = var.project_id
+  region     = var.region
+}
+```
+
+### `variables.tf`
+
+`terraform/variables.tf`：全局变量
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### `terraform.tf`
+
+`gke/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 3.0.0"
+    }
+  }
+}
+```
+
+### `api.tf`
+
+`gke/api.tf`
+
+```hcl
+locals {
+  services = [
+    "compute.googleapis.com",        # Compute Engine API
+    "container.googleapis.com",      # Kubernetes Engine API
+    "iam.googleapis.com",            # IAM API
+    "iamcredentials.googleapis.com", # Workload Identity API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+### `iam.tf`
+
+`gke/iam.tf`
+
+```hcl
+# 获取当前 Project ID
+data "google_project" "project" {}
+
+# 创建 Workload Identity GSA
+resource "google_service_account" "workload_identity" {
+  account_id   = local.workload_identity
+  display_name = "GSA for Workload Identity"
+}
+
+# 为 Workload Identity GSA 分配角色
+resource "google_project_iam_member" "workload_identity_roles" {
+  for_each = toset([
+    "roles/cloudsql.client", # Cloud SQL Client
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 App KSA 失败
+resource "kubernetes_namespace_v1" "app_ns" {
+  metadata {
+    name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].labels # 忽略标签变化，防止 Argo CD 标签变更引起冲突
+    ]
+  }
+}
+
+# 创建 App KSA，并绑定到 Workload Identity GSA
+resource "kubernetes_service_account_v1" "my_ksa" {
+  metadata {
+    name      = local.ksa_name
+    namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
+    annotations = {
+      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+}
+
+# 允许 App KSA 以 Workload Identity GSA 身份运行
+resource "google_service_account_iam_member" "workload_identity_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[${local.app_ns}/${local.ksa_name}]"
+}
+```
+
+### `gke.tf`
+
+`gke/gke.tf`
+
+```hcl
+# 创建 GKE 集群
+resource "google_container_cluster" "my_cluster" {
+  name                     = local.gke_name
+  location                 = var.region
+  remove_default_node_pool = true
+  initial_node_count       = 1
+  depends_on               = [google_project_service.project_services]
+
+  # 启用 Workload Identity
+  workload_identity_config {
+    workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 Node Pool
+resource "google_container_node_pool" "my_node_pool" {
+  name       = local.node_pool_name
+  location   = var.region
+  cluster    = google_container_cluster.my_cluster.name
+  node_count = 1
+
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 5
+  }
+
+  node_config {
+    machine_type    = "e2-medium"
+    service_account = google_service_account.workload_identity.email
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+
+    # 使用 Workload Identity 暴露元数据
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
+  }
+}
+```
+
+### `outputs.tf`
+
+`outputs/variables.tf`
+
+以下两个 `output ` block 用于根模块 `kubernetes` provider 调用，不可省略：
+
+- cluster_endpoint
+- cluster_endpoint
+
+```hcl
+output "cluster_endpoint" {
+  value = google_container_cluster.my_cluster.endpoint
+}
+
+output "cluster_ca_certificate" {
+  value = google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate
+}
+
+output "app_namespace" {
+  description = "Kubernetes Namespace Name"
+  value       = kubernetes_namespace_v1.app_ns.metadata[0].name
+}
+
+output "ksa_name" {
+  description = "Kubernetes Service Account Name"
+  value       = kubernetes_service_account_v1.my_ksa.metadata[0].name
+}
+
+output "gke_name" {
+  description = "GKE name"
+  value       = google_container_cluster.my_cluster.name
+}
+```
+
+### `variables.tf`
+
+`gke/variables.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+}
+
+locals {
+  gke_name          = "${var.prefix}-cluster"
+  node_pool_name    = "${var.prefix}-node-pool"
+  app_ns            = "${var.prefix}-ns"
+  workload_identity = "${var.prefix}-workload-identity"
+  ksa_name          = "${var.prefix}-ksa"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+}
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/my-project/terraform
+terraform init
+```
+
+### 创建 GKE
 
 ```bash
 cd d:/projects/my-project/terraform

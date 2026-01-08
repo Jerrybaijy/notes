@@ -203,12 +203,77 @@ docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-r
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform
+mkdir -p /d/projects/my-project/terraform/gar-docker-repo
+
 cd /d/projects/my-project/terraform
-touch terraform.tf api.tf docker-repo.tf variable.tf
+touch main.tf providers.tf variables.tf
+
+cd /d/projects/my-project/terraform/gar-docker-repo
+touch terraform.tf api.tf gar-docker-repo.tf variables.tf
 ```
 
+### `providers.tf`
+
+`terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
+### `main.tf`
+
+`terraform/main.tf`
+
+```hcl
+# 调用 gar-docker-repo 模块
+module "gar-docker-repo" {
+  source = "./gar-docker-repo"
+
+  # 向局部变量传入全局变量的值
+  prefix     = var.prefix
+  project_id = var.project_id
+  region     = var.region
+}
+```
+
+### `variables.tf`
+
+`terraform/variables.tf`：全局变量
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
 ### `terraform.tf`
+
+`gar-docker-repo/terraform.tf`
 
 ```
 terraform {
@@ -222,6 +287,8 @@ terraform {
 ```
 
 ### `api.tf`
+
+`gar-docker-repo/api.tf`
 
 ```hcl
 locals {
@@ -237,15 +304,11 @@ resource "google_project_service" "project_services" {
 }
 ```
 
-### `docker-repo.tf`
+### `gar-docker-repo.tf`
+
+`gar-docker-repo/gar-docker-repo.tf`
 
 ```hcl
-# GCP 提供商配置
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
 # 创建 Docker 仓库
 resource "google_artifact_registry_repository" "docker_repo" {
   repository_id = local.chart_repo
@@ -254,14 +317,15 @@ resource "google_artifact_registry_repository" "docker_repo" {
 }
 ```
 
-### `variable.tf`
+### `variables.tf`
+
+`gar-docker-repo/variables.tf`
 
 ```hcl
 # --- Prefix ---
 variable "prefix" {
   type        = string
   description = "Project prefix"
-  default     = "my"
 }
 
 locals {
@@ -272,35 +336,12 @@ locals {
 variable "project_id" {
   type        = string
   description = "GCP Project ID"
-  default     = "project-60addf72-be9c-4c26-8db"
 }
 
 variable "region" {
   type        = string
   description = "GCP Region"
-  default     = "asia-east2"
 }
-
-variable "zone" {
-  type        = string
-  description = "GCP Zone"
-  default     = "asia-east2-a"
-}
-```
-
-### `.gitignore`
-
-添加如下忽略：
-
-```
-# Terraform
-.terraform/
-*.tfstate
-.terraform.tfstate.lock.info
-*.tfplan
-*.tfvars
-*.tfvars.json
-*.tfstate.backup
 ```
 
 ### 初始化 Terraform

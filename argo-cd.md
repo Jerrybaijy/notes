@@ -181,7 +181,7 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ## 使用 Helm Chart 安装 Argo CD
 
-## 使用 Terraform 安装 Argo CD
+## 使用 Terraform 安装 Argo CD（旧）
 
 ### 准备工作
 
@@ -298,6 +298,309 @@ variable "my_external_ip" {
 
 ```hcl
 my_external_ip = "5.181.21.188"
+```
+
+## 使用 Terraform 安装 Argo CD
+
+### 准备工作
+
+建立在[使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)的基础上
+
+### 创建 Terraform 目录
+
+```bash
+mkdir -p /d/projects/my-project/terraform/argocd
+
+cd /d/projects/my-project/terraform
+touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
+
+cd /d/projects/my-project/terraform/argocd
+touch terraform.tf argocd.tf outputs.tf variables.tf
+```
+
+### `providers.tf`
+
+`terraform/providers.tf`
+
+```hcl
+provider "helm" {
+  kubernetes = {
+    host                   = "https://${module.gke.cluster_endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+  }
+}
+```
+
+### `main.tf`
+
+`terraform/main.tf`
+
+```hcl
+# 调用 argocd 模块
+module "argocd" {
+  source     = "./argocd"
+  depends_on = [module.gke]
+
+  # 传递 GSA email 给 argocd 模块
+  workload_identity_gsa_email = module.gke.workload_identity_gsa_email
+
+  # 向局部变量传入全局变量的值
+  prefix         = var.prefix
+  project_id     = var.project_id
+  region         = var.region
+  my_external_ip = var.my_external_ip
+}
+```
+
+### `variables.tf`
+
+`terraform/variables.tf`：全局变量
+
+```hcl
+# --- Argo CD ---
+variable "my_external_ip" {
+  type        = string
+  description = "My external IP access to Argo CD"
+  sensitive   = true
+}
+```
+
+### `terraform.tfvars`
+
+`terraform/terraform.tfvars`：全局敏感变量赋值
+
+```hcl
+my_external_ip = "5.181.21.188"
+```
+
+### `terraform.tfvars.example`
+
+`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
+
+```hcl
+my_external_ip = "my_external_ip"
+```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### `terraform.tf`
+
+`agocd/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 3.1.0"
+    }
+  }
+}
+```
+
+### `gke/iam.tf`
+
+在 `gke/iam.tf` 中添加如下配置，以允许 Argo CD 从 GAR 拉取 chart。
+
+```hcl
+# 为 Workload Identity GSA 分配角色
+resource "google_project_iam_member" "workload_identity_roles" {
+  for_each = toset([
+    
+    # ... 其它角色 ...
+    
+    "roles/artifactregistry.reader" # Artifact Registry Reader
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
+resource "google_service_account_iam_member" "argocd_repo_server_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[argocd/argocd-repo-server]"
+}
+```
+
+### `argocd/iam.tf`
+
+```hcl
+# 若想让 Argo CD 从 GKE 集群访问 GAR，则需要:
+  
+  # Argo CD 侧
+    # 在安装 Argo CD 时，为 argocd-repo-server KSA 添加注解，绑定到 Workload Identity GSA。
+    # 创建 Argo CD 访问 GAR 的 Secret
+  
+  # GKE 侧
+    # 为集群开启 Workload Identity
+    # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
+    # 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
+    # 详见 GKE 模块中的 iam.tf 文件
+```
+
+### `argocd.tf`
+
+`agocd/argocd.tf`
+
+```hcl
+# 创建 Argo CD 命名空间
+resource "kubernetes_namespace_v1" "argocd_ns" {
+  metadata {
+    name = "argocd"
+  }
+}
+
+# 安装 Argo CD
+resource "helm_release" "argocd" {
+  name       = "argocd"
+  repository = "https://argoproj.github.io/argo-helm"
+  chart      = "argo-cd"
+  namespace  = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+  version    = "7.7.1"
+
+  set = [
+    # 为 argocd-repo-server KSA 添加注解，绑定到 Workload Identity GSA
+    {
+      name  = "repoServer.serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account"
+      value = var.workload_identity_gsa_email
+    },
+    # 设置服务类型为 LoadBalancer
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    },
+    # 允许 HTTP 访问
+    {
+      name  = "server.extraArgs"
+      value = "{--insecure}"
+    },
+    # 仅允许自己的 IP 访问
+    {
+      name  = "server.service.loadBalancerSourceRanges"
+      value = "{${var.my_external_ip}/32}"
+    }
+  ]
+}
+
+# 创建 Argo CD 访问 GAR 的 Secret
+resource "kubernetes_secret_v1" "gar_repo_secret" {
+  metadata {
+    name      = "gar-repo-secret"
+    namespace = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+    labels = {
+      "argocd.argoproj.io/secret-type" = "repository"
+    }
+  }
+
+  data = {
+    name      = "${var.prefix}-docker-repo"
+    type      = "helm"
+    url       = local.chart_repo_url
+    enableOCI = "true"
+  }
+}
+```
+
+### `outputs.tf`
+
+`agocd/outputs.tf`
+
+```hcl
+# 获取 Argo CD 服务数据
+data "kubernetes_service_v1" "argocd_server" {
+  metadata {
+    name      = "${helm_release.argocd.name}-server"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 输出 Argo CD 公网 IP
+output "argocd_loadbalancer_ip" {
+  description = "Argo CD UI 的公网访问 IP"
+  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
+}
+
+# 获取初始密码 Secret 数据
+data "kubernetes_secret_v1" "argocd_initial_admin_secret" {
+  metadata {
+    name      = "argocd-initial-admin-secret"
+    namespace = helm_release.argocd.namespace
+  }
+  depends_on = [helm_release.argocd]
+}
+
+# 输出初始管理员密码
+output "argocd_initial_admin_password" {
+  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
+  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
+  sensitive   = true
+}
+```
+
+### `variables.tf`
+
+`agocd/variables.tf`
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+}
+
+# --- Argo CD ---
+variable "my_external_ip" {
+  type        = string
+  description = "My external IP access to Argo CD"
+  sensitive   = true
+}
+
+locals {
+  chart_repo_url = "${var.region}-docker.pkg.dev/${var.project_id}/${var.prefix}-docker-repo"
+}
+
+variable "workload_identity_gsa_email" {
+  type        = string
+  description = "Workload Identity GSA email"
+}
+```
+
+### 初始化 Terraform
+
+```bash
+cd d:/projects/my-project/terraform
+terraform init
+```
+
+### 安装 Argo CD
+
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
 ```
 
 # 访问管理页面
@@ -671,7 +974,7 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
 
 - 在 Argo CD 页面查看应用已启动
 
-## 使用 Terraform 部署应用
+## 使用 Terraform 部署应用（旧）
 
 ### 准备工作
 
@@ -693,6 +996,159 @@ terraform {
     }
   }
 }
+```
+
+### `my-app.tf`
+
+与 `my-app.yaml` 对比，修改如下：
+
+- 由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
+- 增加一个睡眠资源 `wait_for_argocd`
+  - 保证 Argo CD 的 Pod 启动后再部署 `my-app`
+  - 暂时没用，因为 `my-app` 依赖数据库，创建数据库是在第二步，需要约 10 分钟。
+  - 为以后能一步安装做准备。
+- 添加 `depends_on`
+  - `google_sql_user.root_user`：保证数据库就绪后再部署 `my-app`
+  - `helm_release.argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
+  - `time_sleep.wait_for_argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
+
+```hcl
+# 增加一个睡眠资源
+resource "time_sleep" "wait_for_argocd" {
+  depends_on = [helm_release.argocd]
+  create_duration = "30s"
+}
+
+# 使用 kubernetes_manifest 部署 Argo CD Application
+resource "kubernetes_manifest" "my_app" {
+  manifest = {
+    "apiVersion" = "argoproj.io/v1alpha1"
+    "kind"       = "Application"
+    "metadata" = {
+      "name"      = local.app_name
+      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+      "finalizers" = [
+        "resources-finalizer.argocd.argoproj.io"
+      ]
+    }
+    "spec" = {
+      "project" = "default"
+      "source" = {
+        "repoURL"        = local.chart_repo_url
+        "targetRevision" = "99.99.99-latest"
+        "chart"          = local.chart_name
+      }
+      "destination" = {
+        "server"    = "https://kubernetes.default.svc"
+        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
+      }
+      "syncPolicy" = {
+        "automated" = {
+          "selfHeal" = true
+          "prune"    = true
+        }
+        "syncOptions" = [
+          "ApplyOutOfSyncOnly=true"
+        ]
+        "retry" = {
+          "limit" = 5
+          "backoff" = {
+            "duration"    = "5s"
+            "factor"      = 2
+            "maxDuration" = "3m"
+          }
+        }
+      }
+    }
+  }
+  depends_on = [
+    helm_release.argocd,
+    time_sleep.wait_for_argocd,
+    google_sql_user.root_user
+  ]
+}
+```
+
+### `variables.tf`
+
+```hcl
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+locals {
+
+  #... 其它配置 ...
+
+  project_name   = "${var.prefix}-project"
+  app_name       = "${var.prefix}-app"
+  chart_name     = "${var.prefix}-chart"
+  chart_repo_url = "registry.gitlab.com/jerrybai/${local.project_name}"
+}
+```
+
+### 部署应用
+
+```
+│ Error: Failed to construct REST client
+│
+│   with kubernetes_manifest.my_app,
+│   on todo-app.tf line 8, in resource "kubernetes_manifest" "my_app":
+│    8: resource "kubernetes_manifest" "my_app" {
+│
+│ cannot create REST client: no client config
+```
+
+如果使用 `terraform apply` 一次性部署（包括 `my-app.tf`），会因为 Argo CD 还未安装导致上述错误，所以暂时分两步部署。
+
+```bash
+# 先安装 Argo CD 及其依赖
+terraform apply -target=helm_release.argocd
+
+# 再部署 my-app.tf 及其它资源
+terraform apply
+```
+
+## 使用 Terraform 部署应用
+
+### 准备工作
+
+建立在以下的基础上：
+
+- [通过 Terraform 连接到 GitLab](<gcp-repositories.md#通过 Terraform 连接到 GitLab>)
+- [使用 Terraform 创建 Docker Repository](<gcp-artifact-registry.md#使用 Terraform 创建 Docker Repository>)
+- 完成 Cloud Build 将 image 和 chart 推送至 GAR
+- [使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
+- [使用 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
+- [使用 Terraform 配置 Argo CD](<argo-cd.md#使用 Terraform 安装 Argo CD>)
+
+### `terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    
+    # ... 其它配置 ...
+    
+    time = {
+      source  = "hashicorp/time"
+      version = "~> 0.11.1"
+    }
+  }
+}
+```
+
+### `iam.tf`
+
+```
+# 若想让 Argo CD 读取 GAR，则需要:
+  # 为集群开启 Workload Identity
+  # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
+  # 创建 App KSA 并绑定到 Workload Identity GSA
+  # 允许 App KSA 以 Workload Identity GSA 身份运行
+  # 详见 GKE 模块中的 iam.tf 文件
 ```
 
 ### `my-app.tf`

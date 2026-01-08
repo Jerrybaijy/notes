@@ -110,15 +110,119 @@ tags:
 
 ## 通过 Terraform 连接到 GitLab
 
-### 创建 Terraform 配置文件
+### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform
+mkdir -p /d/projects/my-project/terraform/gitlab-repo
+
 cd /d/projects/my-project/terraform
-touch terraform.tf api.tf iam.tf gjtlab-repo.tf variables.tf terraform.tfvars
+touch main.tf providers.tf variables.tf terraform.tfvars
+
+cd /d/projects/my-project/terraform/gitlab-repo
+touch terraform.tf api.tf iam.tf gitlab-repo.tf variables.tf
 ```
 
+### `providers.tf`
+
+`terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
+### `main.tf`
+
+`terraform/main.tf`
+
+```hcl
+# 调用 gitlab-repo 模块
+module "gitlab-repo" {
+  source = "./gitlab-repo"
+
+  # 向局部变量传入全局变量的值
+  prefix                                = var.prefix
+  project_id                            = var.project_id
+  region                                = var.region
+  gitlab_personal_access_token_api      = var.gitlab_personal_access_token_api
+  gitlab_personal_access_token_read_api = var.gitlab_personal_access_token_read_api
+}
+```
+
+### `variables.tf`
+
+`terraform/variables.tf`：全局变量
+
+```hcl
+# --- Prefix ---
+variable "prefix" {
+  type        = string
+  description = "Project prefix"
+  default     = "my"
+}
+
+# --- GCP ---
+variable "project_id" {
+  type        = string
+  description = "GCP Project ID"
+  default     = "project-60addf72-be9c-4c26-8db"
+}
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+
+variable "zone" {
+  type        = string
+  description = "GCP Zone"
+  default     = "asia-east2-a"
+}
+
+# --- Secrets ---
+variable "gitlab_personal_access_token_api" {
+  type        = string
+  description = "GitLab Personal Access Token for API"
+  sensitive   = true
+}
+
+variable "gitlab_personal_access_token_read_api" {
+  type        = string
+  description = "GitLab Personal Access Token for Read"
+  sensitive   = true
+}
+```
+
+### `terraform.tfvars`
+
+`terraform/terraform.tfvars`：全局敏感变量赋值
+
+```hcl
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `terraform.tfvars.example`
+
+`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
+
+```hcl
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `.gitignore`
+
+`my-project/.gitignore`
+
+添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
 ### `terraform.tf`
+
+`gitlab-repo/terraform.tf`
 
 ```hcl
 terraform {
@@ -132,6 +236,8 @@ terraform {
 ```
 
 ### `api.tf`
+
+`gitlab-repo/api.tf`
 
 ```hcl
 locals {
@@ -149,6 +255,8 @@ resource "google_project_service" "project_services" {
 ```
 
 ### `iam.tf`
+
+`gitlab-repo/iam.tf`
 
 ```hcl
 # 创建 Cloud Build 的 GSA
@@ -195,24 +303,11 @@ resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
 }
 ```
 
-在以上代码中：
-
-- 是给 Cloud Build 的 **Service Agent** 账号授权，而不是 **Service Account**。
-- 将权限授予在**具体的 Secret 资源**上，而不是整个 **Project（项目）** 上。
-- 点击 `gitlab_api_token` 这个具体的 Secret。
-- 查看右侧的 `Permissions` 面板。
-
 ### `gitlab-repo.tf`
 
 Repositories 配置文件 `terraform/gitlab-repo.tf`：链接到 GitLab
 
 ```hcl
-# GCP 提供商配置
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-
 # 1. 存储 Token 到 Secret Manager
 
 # 创建存储 API Token 的 Secret
@@ -287,14 +382,8 @@ resource "google_cloudbuildv2_repository" "my_repo" {
   parent_connection = google_cloudbuildv2_connection.my_gitlab_connection.id
   remote_uri        = "https://gitlab.com/${var.repo_username}/${local.project_name}.git"
 }
-```
 
-### `cloudbuild-trigger.tf`
-
-Trigger 配置文件 `terraform/cloudbuild-trigger.tf`：Cloud Build Trigger
-
-```hcl
-# 为 GitLab 仓库创建 Cloud Build 触发器
+# 4. 为 GitLab 仓库创建 Cloud Build 触发器
 resource "google_cloudbuild_trigger" "gitlab_trigger" {
   name            = local.trigger_name
   location        = google_cloudbuildv2_repository.my_repo.location
@@ -324,16 +413,18 @@ resource "google_cloudbuild_trigger" "gitlab_trigger" {
     google_service_account_iam_member.cloudbuild_worker_binding
   ]
 }
+
 ```
 
 ### `variables.tf`
+
+`gitlab-repo/variables.tf`
 
 ```hcl
 # --- Prefix ---
 variable "prefix" {
   type        = string
   description = "Project prefix"
-  default     = "my"
 }
 
 locals {
@@ -346,19 +437,11 @@ locals {
 variable "project_id" {
   type        = string
   description = "GCP Project ID"
-  default     = "project-60addf72-be9c-4c26-8db"
 }
 
 variable "region" {
   type        = string
   description = "GCP Region"
-  default     = "asia-east2"
-}
-
-variable "zone" {
-  type        = string
-  description = "GCP Zone"
-  default     = "asia-east2-a"
 }
 
 # --- Repo ---
@@ -388,13 +471,17 @@ variable "gitlab_personal_access_token_read_api" {
 }
 ```
 
-### `terraform.tfvars`
+### 初始化 Terraform
 
-```hcl
-gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
-gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```bash
+cd d:/projects/my-project/terraform
+terraform init
 ```
 
-### `.gitignore`
+### 创建资源
 
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+```bash
+cd d:/projects/my-project/terraform
+terraform apply
+```
+
