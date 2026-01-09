@@ -303,12 +303,12 @@ helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-dock
 gcloud container clusters describe my-cluster \
     --region asia-east2 \
     --project project-60addf72-be9c-4c26-8db \
-    | grep workloadMetadataConfig
+    | grep -A 1 workloadMetadataConfig
 
 gcloud container node-pools describe my-node-pool \
     --cluster my-cluster \
     --region asia-east2 \
     --project project-60addf72-be9c-4c26-8db \
-    | grep workloadMetadataConfig
+    | grep -A 1 workloadMetadataConfig
 ```
 

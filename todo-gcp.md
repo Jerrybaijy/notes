@@ -31,17 +31,13 @@ tags:
 
 ## 项目概述
 
-Todo GCP 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
-
-
+Todo GCP 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署。
 
 ## 项目特点
 
 - **模块化设计**：前后端分离，便于独立开发和部署
 - **容器化实现**：所有组件均容器化，确保环境一致性
 - **GitOps 实践**：代码即基础设施，自动化部署和同步
-- **多环境支持**：支持开发、测试和生产环境的部署
-- **支持多种部署方式**：Docker Compose、Kubernetes、Helm Chart、Argo CD
 - **可扩展性**：使用 Kubernetes 和 Helm 实现应用的水平扩展
 
 ## 技术栈
@@ -68,7 +64,7 @@ Todo GCP 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计�
 - **GitOps**：Argo CD
 - **包管理**：Helm
 - **CI/CD**：Cloud Build
-- **Cloud**：GCP, Cloud SQL, Terraform
+- **Cloud**：GCP, Terraform
 
 ## 项目结构
 

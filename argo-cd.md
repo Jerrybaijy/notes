@@ -313,26 +313,12 @@ cd /d/projects/my-project/terraform
 touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
 
 DIR=/d/projects/my-project/terraform/argocd && mkdir -p $DIR && cd $DIR
-touch terraform.tf argocd.tf outputs.tf variables.tf
-```
-
-### `providers.tf`
-
-`terraform/providers.tf`
-
-```hcl
-provider "helm" {
-  kubernetes = {
-    host                   = "https://${module.gke.cluster_endpoint}"
-    token                  = data.google_client_config.default.access_token
-    cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
-  }
-}
+touch argocd.tf outputs.tf terraform.tf variables.tf
 ```
 
 ### `main.tf`
 
-`terraform/main.tf`
+根模块主文件 `terraform/main.tf`
 
 ```hcl
 # 调用 argocd 模块
@@ -351,9 +337,41 @@ module "argocd" {
 }
 ```
 
+### `providers.tf`
+
+根模块 provider 文件  `terraform/providers.tf`
+
+```hcl
+provider "helm" {
+  kubernetes = {
+    host                   = "https://${module.gke.cluster_endpoint}"
+    token                  = data.google_client_config.default.access_token
+    cluster_ca_certificate = base64decode(module.gke.cluster_ca_certificate)
+  }
+}
+```
+
+### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# # Argo CD management IP
+my_external_ip = "5.181.21.188"
+```
+
+### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
+
+```hcl
+# Argo CD management IP
+my_external_ip = ""
+```
+
 ### `variables.tf`
 
-`terraform/variables.tf`：全局变量
+根模块变量文件 `terraform/variables.tf`
 
 ```hcl
 # --- Argo CD ---
@@ -364,95 +382,13 @@ variable "my_external_ip" {
 }
 ```
 
-### `terraform.tfvars`
-
-`terraform/terraform.tfvars`：全局敏感变量赋值
-
-```hcl
-# # Argo CD management IP
-my_external_ip = "5.181.21.188"
-```
-
-### `terraform.tfvars.example`
-
-`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
-
-```hcl
-# Argo CD management IP
-my_external_ip = ""
-```
-
 ### `.gitignore`
 
-`my-project/.gitignore`
-
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
-
-### `terraform.tf`
-
-`agocd/terraform.tf`
-
-```hcl
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-    helm = {
-      source  = "hashicorp/helm"
-      version = "~> 3.1.0"
-    }
-  }
-}
-```
-
-### `gke/iam.tf`
-
-在 `gke/iam.tf` 中添加如下配置，以允许 Argo CD 从 GAR 拉取 chart。
-
-```hcl
-# 为 Workload Identity GSA 分配角色
-resource "google_project_iam_member" "workload_identity_roles" {
-  for_each = toset([
-    
-    # ... 其它角色 ...
-    
-    "roles/artifactregistry.reader" # Artifact Registry Reader
-  ])
-
-  project = var.project_id
-  role    = each.key
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
-}
-
-# 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
-resource "google_service_account_iam_member" "argocd_repo_server_binding" {
-  service_account_id = google_service_account.workload_identity.name
-  role               = "roles/iam.workloadIdentityUser"
-  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[argocd/argocd-repo-server]"
-}
-```
-
-### `argocd/iam.tf`
-
-```hcl
-# 若想让 Argo CD 从 GKE 集群访问 GAR，则需要:
-  
-  # Argo CD 侧
-    # 在安装 Argo CD 时，为 argocd-repo-server KSA 添加注解，绑定到 Workload Identity GSA。
-    # 创建 Argo CD 访问 GAR 的 Secret
-  
-  # GKE 侧
-    # 为集群开启 Workload Identity
-    # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
-    # 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
-    # 详见 GKE 模块中的 iam.tf 文件
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `argocd.tf`
 
-`agocd/argocd.tf`
+`argocd` 模块主文件 `argocd/argocd.tf`
 
 ```hcl
 # 创建 Argo CD 命名空间
@@ -513,11 +449,18 @@ resource "kubernetes_secret_v1" "gar_repo_secret" {
 }
 ```
 
+1
+
 ### `outputs.tf`
 
-`agocd/outputs.tf`
+`argocd` 模块输出文件 `argocd/outputs.tf`
 
 ```hcl
+output "argocd_ns" {
+  description = "ArgoCD 命名空间名称"
+  value       = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+}
+
 # 获取 Argo CD 服务数据
 data "kubernetes_service_v1" "argocd_server" {
   metadata {
@@ -550,9 +493,28 @@ output "argocd_initial_admin_password" {
 }
 ```
 
+### `terraform.tf`
+
+`argocd` 模块 provider version 文件 `argocd/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+    helm = {
+      source  = "hashicorp/helm"
+      version = "~> 3.1.0"
+    }
+  }
+}
+```
+
 ### `variables.tf`
 
-`agocd/variables.tf`
+`argocd` 模块变量文件 `argocd/variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -587,6 +549,49 @@ variable "workload_identity_gsa_email" {
   type        = string
   description = "Workload Identity GSA email"
 }
+```
+
+### `gke/iam.tf`
+
+在 `gke/iam.tf` 中添加如下配置，以允许 Argo CD 从 GAR 拉取 chart。
+
+```hcl
+# 为 Workload Identity GSA 分配角色
+resource "google_project_iam_member" "workload_identity_roles" {
+  for_each = toset([
+    
+    # ... 其它角色 ...
+    
+    "roles/artifactregistry.reader" # Artifact Registry Reader
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.workload_identity.email}"
+}
+
+# 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
+resource "google_service_account_iam_member" "argocd_repo_server_binding" {
+  service_account_id = google_service_account.workload_identity.name
+  role               = "roles/iam.workloadIdentityUser"
+  member             = "serviceAccount:${data.google_project.project.project_id}.svc.id.goog[argocd/argocd-repo-server]"
+}
+```
+
+### `argocd/iam.tf`
+
+```hcl
+# 若想让 Argo CD 从 GKE 集群访问 GAR，则需要:
+  
+  # Argo CD 侧
+    # 在安装 Argo CD 时，为 argocd-repo-server KSA 添加注解，绑定到 Workload Identity GSA。
+    # 创建 Argo CD 访问 GAR 的 Secret
+  
+  # GKE 侧
+    # 为集群开启 Workload Identity
+    # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
+    # 允许 argocd-repo-server KSA 以 Workload Identity GSA 身份运行
+    # 详见 GKE 模块中的 iam.tf 文件
 ```
 
 ### 初始化 Terraform
@@ -1130,12 +1135,12 @@ terraform apply
 
 ```bash
 DIR=/d/projects/my-project/terraform/my-app && mkdir -p $DIR && cd $DIR
-touch variables.tf my-app.tf
+touch my-app.tf variables.tf
 ```
 
 ### `main.tf`
 
-`terraform/main.tf`
+根模块主文件 `terraform/main.tf`
 
 ```hcl
 # 调用 my-app 模块
@@ -1157,7 +1162,7 @@ module "my-app" {
 
 ### `my-app.tf`
 
-`my-app/my-app.tf`
+`my-app` 模块主文件 `my-app/my-app.tf`
 
 与 `my-app.yaml` 对比，由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
 
@@ -1209,7 +1214,7 @@ resource "kubernetes_manifest" "my_app" {
 
 ### `variables.tf`
 
-`my-app/variables.tf`
+`my-app` 模块变量文件 `my-app/variables.tf`
 
 ```hcl
 variable "prefix" {
@@ -1221,7 +1226,7 @@ locals {
   project_name   = "${var.prefix}-project"
   app_name       = "${var.prefix}-app"
   chart_name     = "${var.prefix}-chart"
-  chart_repo_url = "registry.gitlab.com/jerrybai/${local.project_name}"
+  chart_repo_url = "asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/${var.prefix}-docker-repo"
 }
 
 variable "argocd_ns" {

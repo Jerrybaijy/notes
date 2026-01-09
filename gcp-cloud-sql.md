@@ -224,20 +224,9 @@ DIR=/d/projects/my-project/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf iam.tf cloud-sql.tf variables.tf
 ```
 
-### `providers.tf`
-
-`terraform/providers.tf`
-
-```hcl
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-```
-
 ### `main.tf`
 
-`terraform/main.tf`
+根模块主文件 `terraform/main.tf`
 
 ```hcl
 # 调用 cloud-sql 模块
@@ -253,9 +242,40 @@ module "cloud-sql" {
 }
 ```
 
+### `providers.tf`
+
+根模块 provider 文件 `terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
+### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# Cloud SQL password
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+```
+
+### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
+
+```hcl
+# Cloud SQL password
+mysql_root_password = ""
+mysql_jerry_password = ""
+```
+
 ### `variables.tf`
 
-`terraform/variables.tf`：全局变量
+根模块变量文件 `terraform/variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -292,50 +312,13 @@ variable "mysql_jerry_password" {
 }
 ```
 
-### `terraform.tfvars`
-
-`terraform/terraform.tfvars`：全局敏感变量赋值
-
-```hcl
-# Cloud SQL password
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-```
-
-### `terraform.tfvars.example`
-
-`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
-
-```hcl
-# Cloud SQL password
-mysql_root_password = ""
-mysql_jerry_password = ""
-```
-
 ### `.gitignore`
 
-`my-project/.gitignore`
-
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
-
-### `terraform.tf`
-
-`gar-docker-repo/terraform.tf`
-
-```hcl
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-  }
-}
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `api.tf`
 
-`gar-docker-repo/api.tf`
+`cloud-sql` 模块 API 文件 `cloud-sql/api.tf`
 
 ```hcl
 locals {
@@ -352,22 +335,9 @@ resource "google_project_service" "project_services" {
 }
 ```
 
-### `iam.tf`
-
-`gar-docker-repo/iam.tf`
-
-```hcl
-# 若想让后端连接 Cloud SQL，则需要:
-  # 为集群开启 Workload Identity
-  # 创建 Workload Identity GSA 并为其分配 Cloud SQL Client 角色
-  # 创建 App KSA 并绑定到 Workload Identity GSA
-  # 允许 App KSA 以 Workload Identity GSA 身份运行
-  # 详见 GKE 模块中的 iam.tf 文件
-```
-
 ### `cloud-sql.tf`
 
-`gar-docker-repo/cloud-sql.tf`
+`cloud-sql` 模块主文件 `cloud-sql/cloud-sql.tf`
 
 ```hcl
 # 创建 Cloud SQL 实例
@@ -415,7 +385,26 @@ resource "google_sql_user" "jerry_user" {
   password = var.mysql_jerry_password
   host     = "%"
 }
+```
 
+### `iam.tf`
+
+`cloud-sql` 模块 IAM 文件 `cloud-sql/iam.tf`
+
+```hcl
+# 若想让后端连接 Cloud SQL，则需要:
+  # 为集群开启 Workload Identity
+  # 创建 Workload Identity GSA 并为其分配 Cloud SQL Client 角色
+  # 创建 App KSA 并绑定到 Workload Identity GSA
+  # 允许 App KSA 以 Workload Identity GSA 身份运行
+  # 详见 GKE 模块中的 iam.tf 文件
+```
+
+### `outputs.tf`
+
+`cloud-sql` 模块输出文件 `argocd/outputs.tf`
+
+```hcl
 output "cloud_sql_connection_name" {
   description = "Cloud SQL instance connection name"
   value       = google_sql_database_instance.mysql_instance.connection_name
@@ -432,9 +421,24 @@ output "database_name" {
 }
 ```
 
+### `terraform.tf`
+
+`cloud-sql` 模块 provider version 文件 `cloud-sql/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
 ### `variables.tf`
 
-`gar-docker-repo/variables.tf`
+`cloud-sql` 模块变量文件 `cloud-sql/variables.tf`
 
 ```hcl
 # --- Prefix ---

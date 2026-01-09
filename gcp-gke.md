@@ -430,9 +430,25 @@ DIR=/d/projects/my-project/terraform/gke && mkdir -p $DIR && cd $DIR
 touch terraform.tf iam.tf api.tf gke.tf variables.tf outputs.tf
 ```
 
+### `main.tf`
+
+根模块主文件 `terraform/main.tf`
+
+```hcl
+# 调用 gke 模块
+module "gke" {
+  source = "./gke"
+
+  # 传递根模块的变量
+  prefix     = var.prefix
+  project_id = var.project_id
+  region     = var.region
+}
+```
+
 ### `providers.tf`
 
-`terraform/providers.tf`
+根模块 provider 文件 `terraform/providers.tf`
 
 ```hcl
 provider "google" {
@@ -450,25 +466,9 @@ provider "kubernetes" {
 }
 ```
 
-### `main.tf`
-
-`terraform/main.tf`
-
-```hcl
-# 调用 gke 模块
-module "gke" {
-  source = "./gke"
-
-  # 传递根模块的变量
-  prefix     = var.prefix
-  project_id = var.project_id
-  region     = var.region
-}
-```
-
 ### `variables.tf`
 
-`terraform/variables.tf`：全局变量
+根模块变量文件 `terraform/variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -494,32 +494,11 @@ variable "region" {
 
 ### `.gitignore`
 
-`my-project/.gitignore`
-
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
-
-### `terraform.tf`
-
-`gke/terraform.tf`
-
-```hcl
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-    kubernetes = {
-      source  = "hashicorp/kubernetes"
-      version = "~> 3.0.0"
-    }
-  }
-}
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `api.tf`
 
-`gke/api.tf`
+`gke` 模块 API 文件 `gke/api.tf`
 
 ```hcl
 locals {
@@ -538,9 +517,58 @@ resource "google_project_service" "project_services" {
 }
 ```
 
+### `gke.tf`
+
+`gke` 模块主文件 `gke/gke.tf`
+
+```hcl
+# 创建 GKE 集群
+resource "google_container_cluster" "my_cluster" {
+  name                     = local.gke_name
+  location                 = var.region
+  remove_default_node_pool = true
+  initial_node_count       = 1
+  depends_on               = [google_project_service.project_services]
+
+  # 启用 Workload Identity
+  workload_identity_config {
+    workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
+  }
+
+  # 关闭误删保护（生产环境不应设置此参数）
+  deletion_protection = false
+}
+
+# 创建 Node Pool
+resource "google_container_node_pool" "my_node_pool" {
+  name       = local.node_pool_name
+  location   = var.region
+  cluster    = google_container_cluster.my_cluster.name
+  node_count = 1
+
+  autoscaling {
+    min_node_count = 1
+    max_node_count = 5
+  }
+
+  node_config {
+    machine_type    = "e2-medium"
+    service_account = google_service_account.workload_identity.email
+    oauth_scopes = [
+      "https://www.googleapis.com/auth/cloud-platform"
+    ]
+
+    # 使用 Workload Identity 暴露元数据
+    workload_metadata_config {
+      mode = "GKE_METADATA"
+    }
+  }
+}
+```
+
 ### `iam.tf`
 
-`gke/iam.tf`
+`gke` 模块 IAM 文件 `gke/iam.tf`
 
 ```hcl
 # 获取当前 Project ID
@@ -600,63 +628,15 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
 }
 ```
 
-### `gke.tf`
-
-`gke/gke.tf`
-
-```hcl
-# 创建 GKE 集群
-resource "google_container_cluster" "my_cluster" {
-  name                     = local.gke_name
-  location                 = var.region
-  remove_default_node_pool = true
-  initial_node_count       = 1
-  depends_on               = [google_project_service.project_services]
-
-  # 启用 Workload Identity
-  workload_identity_config {
-    workload_pool = "${data.google_project.project.project_id}.svc.id.goog"
-  }
-
-  # 关闭误删保护（生产环境不应设置此参数）
-  deletion_protection = false
-}
-
-# 创建 Node Pool
-resource "google_container_node_pool" "my_node_pool" {
-  name       = local.node_pool_name
-  location   = var.region
-  cluster    = google_container_cluster.my_cluster.name
-  node_count = 1
-
-  autoscaling {
-    min_node_count = 1
-    max_node_count = 5
-  }
-
-  node_config {
-    machine_type    = "e2-medium"
-    service_account = google_service_account.workload_identity.email
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ]
-
-    # 使用 Workload Identity 暴露元数据
-    workload_metadata_config {
-      mode = "GKE_METADATA"
-    }
-  }
-}
-```
-
 ### `outputs.tf`
 
-`outputs/variables.tf`
+`gke` 模块输出文件 `gke/outputs.tf`
 
-以下两个 `output ` block 用于根模块 `kubernetes` provider 调用，不可省略：
+以下三个 `output ` block 用于根模块 `kubernetes` provider 调用，不可省略：
 
 - cluster_endpoint
 - cluster_endpoint
+- workload_identity_gsa_email
 
 ```hcl
 output "cluster_endpoint" {
@@ -689,12 +669,30 @@ output "gke_name" {
   description = "GKE name"
   value       = google_container_cluster.my_cluster.name
 }
+```
 
+### `terraform.tf`
+
+`gke` 模块 provider version 文件 `gke/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = "~> 3.0.0"
+    }
+  }
+}
 ```
 
 ### `variables.tf`
 
-`gke/variables.tf`
+`gke` 模块变量文件 `gke/variables.tf`
 
 ```hcl
 # --- Prefix ---

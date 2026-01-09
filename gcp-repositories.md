@@ -120,20 +120,9 @@ DIR=/d/projects/my-project/terraform/gitlab-repo && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf iam.tf gitlab-repo.tf variables.tf
 ```
 
-### `providers.tf`
-
-`terraform/providers.tf`
-
-```hcl
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-```
-
 ### `main.tf`
 
-`terraform/main.tf`
+根模块主文件 `terraform/main.tf`
 
 ```hcl
 # 调用 gitlab-repo 模块
@@ -149,9 +138,40 @@ module "gitlab-repo" {
 }
 ```
 
+### `providers.tf`
+
+根模块 provider 文件 `terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
+### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = ""
+gitlab_personal_access_token_read_api = ""
+```
+
 ### `variables.tf`
 
-`terraform/variables.tf`：全局变量
+根模块变量文件 `terraform/variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -194,50 +214,13 @@ variable "gitlab_personal_access_token_read_api" {
 }
 ```
 
-### `terraform.tfvars`
-
-`terraform/terraform.tfvars`：全局敏感变量赋值
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
-gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
-```
-
-### `terraform.tfvars.example`
-
-`terraform/terraform.tfvars.example`：全局敏感变量赋值模板
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = ""
-gitlab_personal_access_token_read_api = ""
-```
-
 ### `.gitignore`
 
-`my-project/.gitignore`
-
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
-
-### `terraform.tf`
-
-`gitlab-repo/terraform.tf`
-
-```hcl
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-  }
-}
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `api.tf`
 
-`gitlab-repo/api.tf`
+`gitlab-repo` 模块 API 文件 `gitlab-repo/api.tf`
 
 ```hcl
 locals {
@@ -254,58 +237,9 @@ resource "google_project_service" "project_services" {
 }
 ```
 
-### `iam.tf`
-
-`gitlab-repo/iam.tf`
-
-```hcl
-# 创建 Cloud Build 的 GSA
-resource "google_service_account" "cloudbuild_worker" {
-  account_id   = "${var.prefix}-cloudbuild-worker"
-  display_name = "Cloud Build Worker Service Account"
-}
-
-# 为 GSA 分配角色
-resource "google_project_iam_member" "cloudbuild_worker_roles" {
-  for_each = toset([
-    "roles/logging.logWriter",       # Logs Writer
-    "roles/artifactregistry.writer", # Artifact Registry Writer
-    "roles/artifactregistry.reader"  # Artifact Registry Reader
-  ])
-
-  project = var.project_id
-  role    = each.key
-  member  = "serviceAccount:${google_service_account.cloudbuild_worker.email}"
-}
-
-# 获取当前 Project ID
-data "google_project" "project" {}
-
-# 允许 Cloud Build 服务代理访问 Secret Manager 中的 Secrets
-resource "google_secret_manager_secret_iam_member" "cloudbuild_secret_accessor" {
-  for_each = {
-    api     = google_secret_manager_secret.gitlab_api_token.id
-    read    = google_secret_manager_secret.gitlab_read_api_token.id
-    webhook = google_secret_manager_secret.webhook_secret.id
-  }
-  secret_id = each.value
-  role      = "roles/secretmanager.secretAccessor"
-  # 必须使用 Cloud Build 的 Service Agent 账号
-  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
-}
-
-# 允许 Cloud Build 服务代理以 GSA 身份运行
-# 否则 Cloud Build 服务代理无法代表 GSA 执行构建任务
-resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
-  service_account_id = google_service_account.cloudbuild_worker.name
-  role               = "roles/iam.serviceAccountUser"
-  member             = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
-}
-```
-
 ### `gitlab-repo.tf`
 
-Repositories 配置文件 `terraform/gitlab-repo.tf`：链接到 GitLab
+`gitlab-repo` 模块主文件 `gitlab-repo/gitlab-repo.tf`
 
 ```hcl
 # 1. 存储 Token 到 Secret Manager
@@ -416,9 +350,73 @@ resource "google_cloudbuild_trigger" "gitlab_trigger" {
 
 ```
 
+### `iam.tf`
+
+`gitlab-repo` 模块 IAM 文件 `gitlab-repo/iam.tf`
+
+```hcl
+# 创建 Cloud Build 的 GSA
+resource "google_service_account" "cloudbuild_worker" {
+  account_id   = "${var.prefix}-cloudbuild-worker"
+  display_name = "Cloud Build Worker Service Account"
+}
+
+# 为 GSA 分配角色
+resource "google_project_iam_member" "cloudbuild_worker_roles" {
+  for_each = toset([
+    "roles/logging.logWriter",       # Logs Writer
+    "roles/artifactregistry.writer", # Artifact Registry Writer
+    "roles/artifactregistry.reader"  # Artifact Registry Reader
+  ])
+
+  project = var.project_id
+  role    = each.key
+  member  = "serviceAccount:${google_service_account.cloudbuild_worker.email}"
+}
+
+# 获取当前 Project ID
+data "google_project" "project" {}
+
+# 允许 Cloud Build 服务代理访问 Secret Manager 中的 Secrets
+resource "google_secret_manager_secret_iam_member" "cloudbuild_secret_accessor" {
+  for_each = {
+    api     = google_secret_manager_secret.gitlab_api_token.id
+    read    = google_secret_manager_secret.gitlab_read_api_token.id
+    webhook = google_secret_manager_secret.webhook_secret.id
+  }
+  secret_id = each.value
+  role      = "roles/secretmanager.secretAccessor"
+  # 必须使用 Cloud Build 的 Service Agent 账号
+  member = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
+
+# 允许 Cloud Build 服务代理以 GSA 身份运行
+# 否则 Cloud Build 服务代理无法代表 GSA 执行构建任务
+resource "google_service_account_iam_member" "cloudbuild_worker_binding" {
+  service_account_id = google_service_account.cloudbuild_worker.name
+  role               = "roles/iam.serviceAccountUser"
+  member             = "serviceAccount:service-${data.google_project.project.number}@gcp-sa-cloudbuild.iam.gserviceaccount.com"
+}
+```
+
+### `terraform.tf`
+
+`gitlab-repo` 模块 provider version 文件 `gitlab-repo/terraform.tf`
+
+```hcl
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
 ### `variables.tf`
 
-`gitlab-repo/variables.tf`
+`gitlab-repo` 模块变量文件 `gitlab-repo/variables.tf`
 
 ```hcl
 # --- Prefix ---

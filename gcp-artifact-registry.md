@@ -210,20 +210,9 @@ DIR=/d/projects/my-project/terraform/gar-docker-repo && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf gar-docker-repo.tf variables.tf
 ```
 
-### `providers.tf`
-
-`terraform/providers.tf`
-
-```hcl
-provider "google" {
-  project = var.project_id
-  region  = var.region
-}
-```
-
 ### `main.tf`
 
-`terraform/main.tf`
+根模块主文件 `terraform/main.tf`
 
 ```hcl
 # 调用 gar-docker-repo 模块
@@ -237,9 +226,20 @@ module "gar-docker-repo" {
 }
 ```
 
+### `providers.tf`
+
+根模块 provider 文件 `terraform/providers.tf`
+
+```hcl
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+```
+
 ### `variables.tf`
 
-`terraform/variables.tf`：全局变量
+根模块变量文件 `terraform/variables.tf`
 
 ```hcl
 # --- Prefix ---
@@ -265,28 +265,11 @@ variable "region" {
 
 ### `.gitignore`
 
-`my-project/.gitignore`
-
-添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
-
-### `terraform.tf`
-
-`gar-docker-repo/terraform.tf`
-
-```
-terraform {
-  required_providers {
-    google = {
-      source  = "hashicorp/google"
-      version = "~> 7.14.0"
-    }
-  }
-}
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `api.tf`
 
-`gar-docker-repo/api.tf`
+`gar-docker-repo` 模块 API 文件 `gar-docker-repo/api.tf`
 
 ```hcl
 locals {
@@ -304,7 +287,7 @@ resource "google_project_service" "project_services" {
 
 ### `gar-docker-repo.tf`
 
-`gar-docker-repo/gar-docker-repo.tf`
+`gar-docker-repo` 模块主文件 `gar-docker-repo/gar-docker-repo.tf`
 
 ```hcl
 # 创建 Docker 仓库
@@ -315,9 +298,24 @@ resource "google_artifact_registry_repository" "docker_repo" {
 }
 ```
 
+### `terraform.tf`
+
+`gar-docker-repo` 模块 provider version 文件 `gar-docker-repo/terraform.tf`
+
+```
+terraform {
+  required_providers {
+    google = {
+      source  = "hashicorp/google"
+      version = "~> 7.14.0"
+    }
+  }
+}
+```
+
 ### `variables.tf`
 
-`gar-docker-repo/variables.tf`
+`gar-docker-repo` 模块变量文件 `gar-docker-repo/variables.tf`
 
 ```hcl
 # --- Prefix ---

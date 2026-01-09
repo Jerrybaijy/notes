@@ -108,8 +108,6 @@ resource "aws_vpc" "main" {
 
 只能存储在根模块中，否则 Terraform 读取不到。
 
-
-
 ## `.gitignore`
 
 将以下添加到 `my-project/.gitignore` 文件：

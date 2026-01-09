@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "gcp-cloud-sql.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "0000-to-do"
+              "title": "gcp-cloud-sql"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "向局部变量传入全局变量的值",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -169,8 +169,9 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "980288d11dd94b7a",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "0000-to-do.md",
     "gcp-repositories.md",
     "gcp.md",
     "gcp-artifact-registry.md",
@@ -178,7 +179,6 @@
     "gcp-gke.md",
     "argo-cd.md",
     "terraform-configuration-language.md",
-    "0000-to-do.md",
     "terraform.md",
     "shell.md",
     "terraform-cli.md",
