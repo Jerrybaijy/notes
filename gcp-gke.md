@@ -423,12 +423,10 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_my-clus
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform/gke
-
 cd /d/projects/my-project/terraform
 touch providers.tf main.tf variables.tf
 
-cd /d/projects/my-project/terraform/gke
+DIR=/d/projects/my-project/terraform/gke && mkdir -p $DIR && cd $DIR
 touch terraform.tf iam.tf api.tf gke.tf variables.tf outputs.tf
 ```
 
@@ -461,7 +459,7 @@ provider "kubernetes" {
 module "gke" {
   source = "./gke"
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix     = var.prefix
   project_id = var.project_id
   region     = var.region
@@ -669,7 +667,15 @@ output "cluster_ca_certificate" {
   value = google_container_cluster.my_cluster.master_auth[0].cluster_ca_certificate
 }
 
-output "app_namespace" {
+# 用于传递给 argocd 模块
+output "workload_identity_gsa_email" {
+  description = "Workload Identity GSA email"
+  value       = google_service_account.workload_identity.email
+  sensitive   = false
+}
+
+# 用于传递给 argocd 模块
+output "app_ns" {
   description = "Kubernetes Namespace Name"
   value       = kubernetes_namespace_v1.app_ns.metadata[0].name
 }
@@ -683,6 +689,7 @@ output "gke_name" {
   description = "GKE name"
   value       = google_container_cluster.my_cluster.name
 }
+
 ```
 
 ### `variables.tf`

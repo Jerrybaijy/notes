@@ -203,12 +203,10 @@ docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-r
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform/gar-docker-repo
-
 cd /d/projects/my-project/terraform
 touch main.tf providers.tf variables.tf
 
-cd /d/projects/my-project/terraform/gar-docker-repo
+DIR=/d/projects/my-project/terraform/gar-docker-repo && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf gar-docker-repo.tf variables.tf
 ```
 
@@ -232,7 +230,7 @@ provider "google" {
 module "gar-docker-repo" {
   source = "./gar-docker-repo"
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix     = var.prefix
   project_id = var.project_id
   region     = var.region

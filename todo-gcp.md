@@ -2019,6 +2019,8 @@ output "argocd_initial_admin_password" {
 Argo CD 的 CR 资源配置文件 `terraform/todo-app.tf`
 
 ```hcl
+provider "time" {}
+
 # 增加一个睡眠资源
 resource "time_sleep" "wait_for_argocd" {
   depends_on      = [helm_release.argocd]
@@ -2206,7 +2208,7 @@ terraform init
 
 # Cloud Build
 
-## 创建 GAR 和链接 GitLab
+## 链接 GitLab 和创建 GAR
 
 需先创建 GitLab Personal Tokens
 

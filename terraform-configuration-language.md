@@ -161,7 +161,7 @@ terraform/
 - 全局变量的传递
   - 在根模块中声明并赋值全局变量
   - 在子模块中声明局部变量
-  - 在 `module` block 中向局部变量传入全局变量的值
+  - 在 `module` block 中向子模块传入根模块的值
   - 敏感变量必须在根模块中进行声明和赋值
 - 子模块可以声明并赋值局部变量
 
@@ -197,7 +197,7 @@ provider "google" {
 module "gitlab-repo" {
   source = "./gitlab-repo"
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix                                = var.prefix
   project_id                            = var.project_id
   region                                = var.region

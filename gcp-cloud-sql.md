@@ -217,12 +217,10 @@ mysql_jerry_password = "000000"
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform/cloud-sql
-
 cd /d/projects/my-project/terraform
 touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
 
-cd /d/projects/my-project/terraform/cloud-sql
+DIR=/d/projects/my-project/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf iam.tf cloud-sql.tf variables.tf
 ```
 
@@ -246,7 +244,7 @@ provider "google" {
 module "cloud-sql" {
   source = "./cloud-sql"
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix               = var.prefix
   project_id           = var.project_id
   region               = var.region
@@ -299,6 +297,7 @@ variable "mysql_jerry_password" {
 `terraform/terraform.tfvars`：全局敏感变量赋值
 
 ```hcl
+# Cloud SQL password
 mysql_root_password  = "123456"
 mysql_jerry_password = "000000"
 ```
@@ -308,8 +307,9 @@ mysql_jerry_password = "000000"
 `terraform/terraform.tfvars.example`：全局敏感变量赋值模板
 
 ```hcl
-mysql_root_password = "mysql_root_password"
-mysql_jerry_password = "mysql_jerry_password"
+# Cloud SQL password
+mysql_root_password = ""
+mysql_jerry_password = ""
 ```
 
 ### `.gitignore`

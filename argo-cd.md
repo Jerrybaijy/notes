@@ -309,12 +309,10 @@ my_external_ip = "5.181.21.188"
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform/argocd
-
 cd /d/projects/my-project/terraform
 touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
 
-cd /d/projects/my-project/terraform/argocd
+DIR=/d/projects/my-project/terraform/argocd && mkdir -p $DIR && cd $DIR
 touch terraform.tf argocd.tf outputs.tf variables.tf
 ```
 
@@ -342,10 +340,10 @@ module "argocd" {
   source     = "./argocd"
   depends_on = [module.gke]
 
-  # 传递 GSA email 给 argocd 模块
+  # 传递其它模块的输出
   workload_identity_gsa_email = module.gke.workload_identity_gsa_email
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix         = var.prefix
   project_id     = var.project_id
   region         = var.region
@@ -371,6 +369,7 @@ variable "my_external_ip" {
 `terraform/terraform.tfvars`：全局敏感变量赋值
 
 ```hcl
+# # Argo CD management IP
 my_external_ip = "5.181.21.188"
 ```
 
@@ -379,7 +378,8 @@ my_external_ip = "5.181.21.188"
 `terraform/terraform.tfvars.example`：全局敏感变量赋值模板
 
 ```hcl
-my_external_ip = "my_external_ip"
+# Argo CD management IP
+my_external_ip = ""
 ```
 
 ### `.gitignore`
@@ -409,7 +409,7 @@ terraform {
 
 ### `gke/iam.tf`
 
-在 `gke/iam.tf` 中添加如下配置，以允许 Argo CD 从 GAR 拉取 chart。
+在 `gke/iam.tf` 中添加如下配置，以允许 Argo CD 从 GAR 拉取 chart。
 
 ```hcl
 # 为 Workload Identity GSA 分配角色
@@ -1113,6 +1113,8 @@ terraform apply
 
 ## 使用 Terraform 部署应用
 
+**遗留问题**：由于某些权限问题，Argo CD 无法拉取 GAR 中的 chart。
+
 ### 准备工作
 
 建立在以下的基础上：
@@ -1124,54 +1126,42 @@ terraform apply
 - [使用 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
 - [使用 Terraform 配置 Argo CD](<argo-cd.md#使用 Terraform 安装 Argo CD>)
 
-### `terraform.tf`
+### 创建 Terraform 目录
+
+```bash
+DIR=/d/projects/my-project/terraform/my-app && mkdir -p $DIR && cd $DIR
+touch variables.tf my-app.tf
+```
+
+### `main.tf`
+
+`terraform/main.tf`
 
 ```hcl
-terraform {
-  required_providers {
-    
-    # ... 其它配置 ...
-    
-    time = {
-      source  = "hashicorp/time"
-      version = "~> 0.11.1"
-    }
-  }
+# 调用 my-app 模块
+module "my-app" {
+  source = "./my-app"
+  depends_on = [
+    module.argocd,
+    module.cloud-sql
+  ]
+
+  # 传递其它模块的输出
+  argocd_ns = module.argocd.argocd_ns
+  app_ns    = module.gke.app_ns
+
+  # 传递根模块的变量
+  prefix = var.prefix
 }
-```
-
-### `iam.tf`
-
-```
-# 若想让 Argo CD 读取 GAR，则需要:
-  # 为集群开启 Workload Identity
-  # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
-  # 创建 App KSA 并绑定到 Workload Identity GSA
-  # 允许 App KSA 以 Workload Identity GSA 身份运行
-  # 详见 GKE 模块中的 iam.tf 文件
 ```
 
 ### `my-app.tf`
 
-与 `my-app.yaml` 对比，修改如下：
+`my-app/my-app.tf`
 
-- 由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
-- 增加一个睡眠资源 `wait_for_argocd`
-  - 保证 Argo CD 的 Pod 启动后再部署 `my-app`
-  - 暂时没用，因为 `my-app` 依赖数据库，创建数据库是在第二步，需要约 10 分钟。
-  - 为以后能一步安装做准备。
-- 添加 `depends_on`
-  - `google_sql_user.root_user`：保证数据库就绪后再部署 `my-app`
-  - `helm_release.argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
-  - `time_sleep.wait_for_argocd`：保证 Argo CD 的 Pod 启动后再部署 `my-app`
+与 `my-app.yaml` 对比，由于 Terraform 创建了 `my-ns` 命名空间，所以删除 `CreateNamespace=true`。
 
 ```hcl
-# 增加一个睡眠资源
-resource "time_sleep" "wait_for_argocd" {
-  depends_on = [helm_release.argocd]
-  create_duration = "30s"
-}
-
 # 使用 kubernetes_manifest 部署 Argo CD Application
 resource "kubernetes_manifest" "my_app" {
   manifest = {
@@ -1179,7 +1169,7 @@ resource "kubernetes_manifest" "my_app" {
     "kind"       = "Application"
     "metadata" = {
       "name"      = local.app_name
-      "namespace" = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+      "namespace" = var.argocd_ns
       "finalizers" = [
         "resources-finalizer.argocd.argoproj.io"
       ]
@@ -1193,7 +1183,7 @@ resource "kubernetes_manifest" "my_app" {
       }
       "destination" = {
         "server"    = "https://kubernetes.default.svc"
-        "namespace" = kubernetes_namespace_v1.app_ns.metadata[0].name
+        "namespace" = var.app_ns
       }
       "syncPolicy" = {
         "automated" = {
@@ -1214,31 +1204,34 @@ resource "kubernetes_manifest" "my_app" {
       }
     }
   }
-  depends_on = [
-    helm_release.argocd,
-    time_sleep.wait_for_argocd,
-    google_sql_user.root_user
-  ]
 }
 ```
 
 ### `variables.tf`
 
+`my-app/variables.tf`
+
 ```hcl
 variable "prefix" {
   type        = string
   description = "Project prefix"
-  default     = "my"
 }
 
 locals {
-
-  #... 其它配置 ...
-
   project_name   = "${var.prefix}-project"
   app_name       = "${var.prefix}-app"
   chart_name     = "${var.prefix}-chart"
   chart_repo_url = "registry.gitlab.com/jerrybai/${local.project_name}"
+}
+
+variable "argocd_ns" {
+  type        = string
+  description = "Argo CD Namespace"
+}
+
+variable "app_ns" {
+  type        = string
+  description = "Kubernetes Namespace for the Application"
 }
 ```
 

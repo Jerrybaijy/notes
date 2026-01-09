@@ -57,25 +57,21 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 }
 ```
 
-# Workload Identity
+# Workload Identity（旧）
 
 [**Workload Identity**](https://docs.cloud.google.com/iam/docs/workload-identity-federation?hl=zh-cn) 是一种“无密钥”认证机制。
 
 > [Workload Identity](https://docs.cloud.google.com/iam/docs/workload-identity-federation?hl=zh-cn)
 
-为了使 Workload Identity 生效并让后端可以连接到 Cloud SQL：
+**Workload Identity 的核心为**：
 
-- **GCP 侧**
-  - `iam.tf`
-  - `gke.tf`
-- **后端 Helm Chart 侧**
-  - `backend.yaml`
-  - `_helpers.tpl`
-  - `values.yaml`
+- 创建一个 GSA
+  - 为 GSA 添加角色
+- 创建一个 KSA（或者已存在，如 `argocd-repo-server`）
+  - 将 KSA 绑定到 GSA
+  - 允许 KSA 以 GSA 运行
 
-## `iam.tf`
-
-### 通信链条
+**通信链条**：
 
 ```
 Pod
@@ -86,25 +82,35 @@ Pod
                  └─ Pod 可以访问 Cloud SQL
 ```
 
+**为了使 Workload Identity 生效并让后端可以连接到 Cloud SQL**：
+
+- **GCP 侧**
+  - `iam.tf`
+  - `gke.tf`
+- **后端 Helm Chart 侧**
+  - `backend.yaml`
+  - `_helpers.tpl`
+  - `values.yaml`
+
+## Service Account
+
 ### `iam.tf`
 
 ```hcl
 # 获取当前 Project ID
 data "google_project" "project" {}
 
-# 创建 GSA
+# 创建 Workload Identity GSA
 resource "google_service_account" "workload_identity" {
-  account_id   = local.sa_id
+  account_id   = local.workload_identity
   display_name = "GSA for Workload Identity"
 }
 
-# 为 GSA 分配多个角色
-resource "google_project_iam_member" "gsa_roles" {
+# 为 Workload Identity GSA 分配角色
+resource "google_project_iam_member" "workload_identity_roles" {
   for_each = toset([
-    "roles/cloudsql.client", # Cloud SQL Client
-    "roles/artifactregistry.writer", # Artifact Registry Writer
-    "roles/artifactregistry.reader", # Artifact Registry Reader
-    "roles/logging.logWriter",       # Logs Writer
+    "roles/cloudsql.client",        # Cloud SQL Client
+    "roles/artifactregistry.reader" # Artifact Registry Reader
   ])
 
   project = var.project_id
@@ -112,27 +118,36 @@ resource "google_project_iam_member" "gsa_roles" {
   member  = "serviceAccount:${google_service_account.workload_identity.email}"
 }
 
-# 创建 app_ns，防止因 app_ns 不存在而导致创建 KSA 失败
+# 创建 app_ns，防止因 app_ns 不存在而导致创建 App KSA 失败
 resource "kubernetes_namespace_v1" "app_ns" {
   metadata {
     name = local.app_ns
+    annotations = {
+      # 加注解，防止 Argo CD 删除该 Namespace
+      "argocd.argoproj.io/sync-options" = "Delete=false"
+    }
+  }
+  lifecycle {
+    ignore_changes = [
+      metadata[0].labels # 忽略标签变化，防止 Argo CD 标签变更引起冲突
+    ]
   }
 }
 
-# 创建 KSA，并绑定到 GSA
+# 创建 App KSA，并绑定到 Workload Identity GSA
 resource "kubernetes_service_account_v1" "my_ksa" {
   metadata {
     name      = local.ksa_name
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
-      "iam.gke.io/gcp-service-account"  = google_service_account.workload_identity.email
+      "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
       # 加注解，防止 Argo CD 删除该 KSA
       "argocd.argoproj.io/sync-options" = "Delete=false"
     }
   }
 }
 
-# 允许 KSA 以 GSA 身份运行
+# 允许 App KSA 以 Workload Identity GSA 身份运行
 resource "google_service_account_iam_member" "workload_identity_binding" {
   service_account_id = google_service_account.workload_identity.name
   role               = "roles/iam.workloadIdentityUser"
@@ -147,13 +162,15 @@ resource "google_service_account_iam_member" "workload_identity_binding" {
 ```hcl
 # iam.tf
 
-# 创建 KSA，并绑定到 GSA
+# 创建 App KSA，并绑定到 Workload Identity GSA
 resource "kubernetes_service_account_v1" "my_ksa" {
   metadata {
     name      = local.ksa_name
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
       "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
+      # 加注解，防止 Argo CD 删除该 KSA
+      "argocd.argoproj.io/sync-options" = "Delete=false"
     }
   }
 }
@@ -204,11 +221,7 @@ resource "google_container_node_pool" "my-node-pool" {
   # ...
 
   node_config {
-    machine_type    = "e2-medium"
-    service_account = google_service_account.workload_identity.email
-    oauth_scopes = [
-      "https://www.googleapis.com/auth/cloud-platform"
-    ]
+    # ...
     
     # 配置节点以使用 Workload Identity 暴露元数据
     workload_metadata_config {
@@ -243,7 +256,7 @@ containers:
 ```yaml
 # 全局配置
 global:
-  ksaName: todo-ksa
+  ksaName: my-ksa
 
 # 用于模板函数中生成 Cloud SQL 实例连接名称
 gcp:
@@ -271,7 +284,7 @@ gcp:
 kubectl get sa argocd-repo-server -n argocd -o yaml
 
 # 查看 GSA 是否给 Argo CD 的 argocd-repo-server 授权
-gcloud iam service-accounts get-iam-policy todo-sa-id@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com
+gcloud iam service-accounts get-iam-policy my-workload-identity@project-60addf72-be9c-4c26-8db.iam.gserviceaccount.com
 
 kubectl rollout restart deployment argocd-repo-server -n argocd
 
@@ -281,12 +294,19 @@ kubectl get pods -n argocd -l app.kubernetes.io/name=argocd-repo-server
 ```
 kubectl exec -n argocd deploy/argocd-repo-server -it -- sh
 
-helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/todo-docker-repo/todo-chart --version 99.99.99-latest
+helm pull oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo/my-chart --version 99.99.99-latest
 ```
 
 ```
-gcloud container node-pools describe todo-node-pool \
-    --cluster todo-cluster \
+# 检查 cluster 和 node pool 的 Workload Identity 配置
+
+gcloud container clusters describe my-cluster \
+    --region asia-east2 \
+    --project project-60addf72-be9c-4c26-8db \
+    | grep workloadMetadataConfig
+
+gcloud container node-pools describe my-node-pool \
+    --cluster my-cluster \
     --region asia-east2 \
     --project project-60addf72-be9c-4c26-8db \
     | grep workloadMetadataConfig

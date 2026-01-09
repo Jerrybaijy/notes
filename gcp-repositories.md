@@ -113,12 +113,10 @@ tags:
 ### 创建 Terraform 目录
 
 ```bash
-mkdir -p /d/projects/my-project/terraform/gitlab-repo
-
 cd /d/projects/my-project/terraform
 touch main.tf providers.tf variables.tf terraform.tfvars
 
-cd /d/projects/my-project/terraform/gitlab-repo
+DIR=/d/projects/my-project/terraform/gitlab-repo && mkdir -p $DIR && cd $DIR
 touch terraform.tf api.tf iam.tf gitlab-repo.tf variables.tf
 ```
 
@@ -142,7 +140,7 @@ provider "google" {
 module "gitlab-repo" {
   source = "./gitlab-repo"
 
-  # 向局部变量传入全局变量的值
+  # 传递根模块的变量
   prefix                                = var.prefix
   project_id                            = var.project_id
   region                                = var.region
@@ -182,7 +180,7 @@ variable "zone" {
   default     = "asia-east2-a"
 }
 
-# --- Secrets ---
+# --- GitLab repo token ---
 variable "gitlab_personal_access_token_api" {
   type        = string
   description = "GitLab Personal Access Token for API"
@@ -201,6 +199,7 @@ variable "gitlab_personal_access_token_read_api" {
 `terraform/terraform.tfvars`：全局敏感变量赋值
 
 ```hcl
+# GitLab repo token
 gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
 gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
 ```
@@ -210,8 +209,9 @@ gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
 `terraform/terraform.tfvars.example`：全局敏感变量赋值模板
 
 ```hcl
-gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
-gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+# GitLab repo token
+gitlab_personal_access_token_api      = ""
+gitlab_personal_access_token_read_api = ""
 ```
 
 ### `.gitignore`
@@ -457,7 +457,7 @@ variable "repo_username" {
   default     = "jerrybai"
 }
 
-# --- Secrets ---
+# --- GitLab repo token ---
 variable "gitlab_personal_access_token_api" {
   type        = string
   description = "GitLab Personal Access Token for API"
