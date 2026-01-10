@@ -102,9 +102,9 @@ resource "aws_vpc" "main" {
 
 稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
 
-## `terraform.tfvars`
+## `variables.tfvars`
 
-`terraform.tfvars` 是敏感变量的赋值文件。
+`variables.tfvars` 是敏感变量的赋值文件。
 
 只能存储在根模块中，否则 Terraform 读取不到。
 
@@ -138,7 +138,7 @@ terraform/
 ├── main.tf              # 入口文件：调用 module
 ├── providers.tf         # Provider 文件
 ├── variables.tf         # 全局变量文件
-├── terraform.tfvars     # 敏感变量赋值文件
+├── variables.tfvars     # 敏感变量赋值文件
 │
 ├── module-a/
 │   ├── module-a.tf  # 资源文件
@@ -169,7 +169,7 @@ terraform/
 mkdir -p /d/projects/my-project/terraform/gitlab-repo
 
 cd /d/projects/my-project/terraform
-touch main.tf providers.tf variables.tf terraform.tfvars
+touch main.tf providers.tf variables.tf variables.tfvars variables.tfvars.exmple
 
 cd /d/projects/my-project/terraform/gitlab-repo
 touch terraform.tf api.tf iam.tf gitlab-repo.tf variables.tf
@@ -253,9 +253,9 @@ variable "gitlab_personal_access_token_read_api" {
 }
 ```
 
-### `terraform.tfvars`
+### `variables.tfvars`
 
-`terraform/terraform.tfvars`：全局敏感变量赋值
+`terraform/variables.tfvars`：全局敏感变量赋值
 
 ```hcl
 # 在根模块中对敏感变量赋值
@@ -617,12 +617,12 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 >
 > [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
 
-## `terraform.tfvars`
+## `variables.tfvars`
 
-`terraform.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
+`variables.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
 
 - 在 `.gitignore` 中添加忽略 `*.tfvars`。
-- 同时创建敏感变量的赋值文件的模板文件 `terraform.tfvars.example`
+- 同时创建敏感变量的赋值文件的模板文件 `variables.tfvars.example`
 
 `variables.tf` 文件中：
 
@@ -642,7 +642,7 @@ variable "mysql_jerry_password" {
 变量赋值文件中添加变量值：
 
 ```hcl
-# terraform.tfvars
+# variables.tfvars
 
 mysql_jerry_password = "000000"
 ```

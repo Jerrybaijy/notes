@@ -80,7 +80,7 @@ gcloud sql instances list
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
+touch main.tf providers.tf variables.tf variables.tfvars variables.tfvars.example
 ```
 
 ### 创建 `cloud-sql` 模块目录
@@ -117,26 +117,6 @@ provider "google" {
   project = var.project_id
   region  = var.region
 }
-```
-
-### `terraform.tfvars`
-
-根模块敏感变量赋值文件 `terraform/terraform.tfvars`
-
-```hcl
-# Cloud SQL password
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-```
-
-### `terraform.tfvars.example`
-
-根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
-
-```hcl
-# Cloud SQL password
-mysql_root_password = ""
-mysql_jerry_password = ""
 ```
 
 ### `variables.tf`
@@ -176,6 +156,26 @@ variable "mysql_jerry_password" {
   description = "MySQL jerry user password"
   sensitive   = true
 }
+```
+
+### `variables.tfvars`
+
+根模块敏感变量赋值文件 `terraform/variables.tfvars`
+
+```hcl
+# Cloud SQL password
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+```
+
+### `variables.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/variables.tfvars.example`
+
+```hcl
+# Cloud SQL password
+mysql_root_password = ""
+mysql_jerry_password = ""
 ```
 
 ### `.gitignore`

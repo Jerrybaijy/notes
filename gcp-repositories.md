@@ -114,7 +114,7 @@ tags:
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf variables.tf terraform.tfvars
+touch main.tf providers.tf variables.tf variables.tfvars
 ```
 
 ### 创建 `gitlab-repo` 模块目录
@@ -151,26 +151,6 @@ provider "google" {
   project = var.project_id
   region  = var.region
 }
-```
-
-### `terraform.tfvars`
-
-根模块敏感变量赋值文件 `terraform/terraform.tfvars`
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
-gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
-```
-
-### `terraform.tfvars.example`
-
-根模块敏感变量赋值文件 `terraform/terraform.tfvars`
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = ""
-gitlab_personal_access_token_read_api = ""
 ```
 
 ### `variables.tf`
@@ -216,6 +196,26 @@ variable "gitlab_personal_access_token_read_api" {
   description = "GitLab Personal Access Token for Read"
   sensitive   = true
 }
+```
+
+### `variables.tfvars`
+
+根模块敏感变量赋值文件 `terraform/variables.tfvars`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `variables.tfvars.example`
+
+根模块敏感变量赋值文件 `terraform/variables.tfvars`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = ""
+gitlab_personal_access_token_read_api = ""
 ```
 
 ### `.gitignore`
