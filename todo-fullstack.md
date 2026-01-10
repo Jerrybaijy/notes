@@ -29,7 +29,7 @@ tags:
 
 ## 项目概述
 
-Todo Fullstack 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，涵盖了从开发到生产环境的全流程。
+Todo Fullstack 是一个完整的全栈 Web 应用原型，采用 GitOps 理念设计和部署，展示了如何使用现代 DevOps 工具链构建、部署和管理一个完整的 Web 应用，包含多种部署方式。
 
 ![image-20251218161021572](assets/image-20251218161021572.png)
 

@@ -488,4 +488,3 @@ terraform init
 cd d:/projects/my-project/terraform
 terraform apply
 ```
-

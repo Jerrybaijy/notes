@@ -8,6 +8,20 @@
         "type": "tabs",
         "children": [
           {
+            "id": "ac421873c70934db",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "0000-to-do.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "0000-to-do"
+            }
+          },
+          {
             "id": "980288d11dd94b7a",
             "type": "leaf",
             "state": {
@@ -49,8 +63,7 @@
               "title": "terraform-configuration-language"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "vertical"
@@ -99,13 +112,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "terraform-configuration-language.md",
+                "file": "0000-to-do.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "terraform-configuration-language 的大纲"
+              "title": "0000-to-do 的大纲"
             }
           },
           {
@@ -123,8 +136,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -144,7 +156,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "terraform-configuration-language.md",
+                "file": "0000-to-do.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -154,7 +166,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "terraform-configuration-language 的反向链接列表"
+              "title": "0000-to-do 的反向链接列表"
             }
           },
           {
@@ -199,15 +211,15 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "e1f9fe157340e4e7",
+  "active": "ac421873c70934db",
   "lastOpenFiles": [
-    "gcp-gke.md",
+    "gcp-cloud-sql.md",
+    "0000-to-do.md",
     "terraform-configuration-language.md",
+    "gcp-gke.md",
     "todo-gcp.md",
     "terraform.md",
     "gcp-artifact-registry.md",
-    "gcp-cloud-sql.md",
-    "0000-to-do.md",
     "gcp-repositories.md",
     "gcp.md",
     "argo-cd.md",
