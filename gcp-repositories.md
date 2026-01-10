@@ -113,11 +113,15 @@ tags:
 ### 创建 Terraform 目录
 
 ```bash
-cd /d/projects/my-project/terraform
+DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
 touch main.tf providers.tf variables.tf terraform.tfvars
+```
 
+### 创建 `gitlab-repo` 模块目录
+
+```bash
 DIR=/d/projects/my-project/terraform/gitlab-repo && mkdir -p $DIR && cd $DIR
-touch terraform.tf api.tf iam.tf gitlab-repo.tf variables.tf
+touch api.tf iam.tf gitlab-repo.tf terraform.tf variables.tf
 ```
 
 ### `main.tf`
@@ -240,6 +244,8 @@ resource "google_project_service" "project_services" {
 ### `gitlab-repo.tf`
 
 `gitlab-repo` 模块主文件 `gitlab-repo/gitlab-repo.tf`
+
+需先创建 GitLab Personal Tokens
 
 ```hcl
 # 1. 存储 Token 到 Secret Manager

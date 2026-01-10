@@ -203,11 +203,15 @@ docker pull asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-r
 ### 创建 Terraform 目录
 
 ```bash
-cd /d/projects/my-project/terraform
+DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
 touch main.tf providers.tf variables.tf
+```
 
+### 创建 `gar-docker-repo` 模块目录
+
+```bash
 DIR=/d/projects/my-project/terraform/gar-docker-repo && mkdir -p $DIR && cd $DIR
-touch terraform.tf api.tf gar-docker-repo.tf variables.tf
+touch api.tf gar-docker-repo.tf terraform.tf variables.tf
 ```
 
 ### `main.tf`

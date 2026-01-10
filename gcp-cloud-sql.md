@@ -74,154 +74,20 @@ gcloud sql instances list
 
 详见 [Quick Start](<gcp-cloud-sql.md#Quick Start>)
 
-## 使用 Terraform 创建 Cloud SQL（旧）
-
-### 准备工作
-
-[已通过 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
-
-### `api.tf`
-
-```hcl
-locals {
-  services = [
-    # ...
-    
-    "sqladmin.googleapis.com" # Cloud SQL API
-  ]
-}
-
-resource "google_project_service" "project_services" {
-  for_each           = toset(local.services)
-  service            = each.key
-  disable_on_destroy = false
-}
-```
-
-### `iam.tf`
-
-```hcl
-# 允许 GSA 访问 Cloud SQL
-resource "google_project_iam_member" "mysql_client" {
-  project = var.project_id
-  role    = "roles/cloudsql.client"
-  member  = "serviceAccount:${google_service_account.workload_identity.email}"
-}
-```
-
-### `cloud-sql.tf`
-
-```hcl
-# 创建 Cloud SQL 实例
-resource "google_sql_database_instance" "mysql_instance" {
-  name             = local.db_instance
-  database_version = "MYSQL_8_0"
-  region           = var.region
-
-  settings {
-    tier            = "db-f1-micro" # 测试环境使用的最小规格
-    disk_type       = "PD_SSD"
-    disk_size       = 10   # 初始 10GB
-    disk_autoresize = true # 自动扩容
-
-    # 开启公网 IP，但会通过 IAM 权限锁定访问，仅允许通过授权代理访问
-    ip_configuration {
-      ipv4_enabled = true
-    }
-  }
-
-  # 关闭误删保护（生产环境不应设置此参数）
-  deletion_protection = false
-}
-
-# 创建 DATABASE
-resource "google_sql_database" "my_db" {
-  name      = local.db_name
-  instance  = google_sql_database_instance.mysql_instance.name
-  charset   = "utf8mb4"
-  collation = "utf8mb4_unicode_ci"
-}
-
-# 创建 root 用户
-resource "google_sql_user" "root_user" {
-  name     = "root"
-  instance = google_sql_database_instance.mysql_instance.name
-  password = var.mysql_root_password
-  host     = "%"
-}
-
-# 创建普通账户
-resource "google_sql_user" "jerry_user" {
-  name     = "jerry"
-  instance = google_sql_database_instance.mysql_instance.name
-  password = var.mysql_jerry_password
-  host     = "%"
-}
-
-output "cloud_sql_connection_name" {
-  description = "Cloud SQL instance connection name"
-  value       = google_sql_database_instance.mysql_instance.connection_name
-}
-
-output "sql_instance_name" {
-  description = "Cloud SQL 实例的名称"
-  value       = google_sql_database_instance.mysql_instance.name
-}
-
-output "database_name" {
-  description = "Cloud SQL database name"
-  value       = google_sql_database.my_db.name
-}
-```
-
-### `variables.tf`
-
-```hcl
-# --- Prefix ---
-variable "prefix" {
-  type        = string
-  description = "Project prefix"
-  default     = "my"
-}
-
-locals {
-  # ...
-  
-  db_instance    = "${var.prefix}-db-instance"
-  db_name        = "${var.prefix}_db"
-}
-
-# --- Cloud SQL ---
-variable "mysql_root_password" {
-  type        = string
-  description = "MySQL root user password"
-  sensitive   = true
-}
-
-variable "mysql_jerry_password" {
-  type        = string
-  description = "MySQL jerry user password"
-  sensitive   = true
-}
-```
-
-### `terraform.tfvars`
-
-```hcl
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-```
-
 ## 使用 Terraform 创建 Cloud SQL
 
 ### 创建 Terraform 目录
 
 ```bash
-cd /d/projects/my-project/terraform
-touch providers.tf main.tf variables.tf terraform.tfvars terraform.tfvars.example
+DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
+touch main.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
+```
 
+### 创建 `cloud-sql` 模块目录
+
+```bash
 DIR=/d/projects/my-project/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
-touch terraform.tf api.tf iam.tf cloud-sql.tf variables.tf
+touch api.tf cloud-sql.tf iam.tf terraform.tf variables.tf
 ```
 
 ### `main.tf`
@@ -314,7 +180,7 @@ variable "mysql_jerry_password" {
 
 ### `.gitignore`
 
-Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ### `api.tf`
 
@@ -389,7 +255,7 @@ resource "google_sql_user" "jerry_user" {
 
 ### `iam.tf`
 
-`cloud-sql` 模块 IAM 文件 `cloud-sql/iam.tf`
+`cloud-sql` 模块 IAM 文件 `cloud-sql/iam.tf`
 
 ```hcl
 # 若想让后端连接 Cloud SQL，则需要:

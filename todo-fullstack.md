@@ -102,23 +102,6 @@ todo-fullstack/
 │   ├── package.json        # npm 依赖
 │   └── vite.config.js      # 前端请求代理（本地环境）
 │
-├── k8s/                    # Kubernetes 部署文件
-│   ├── backend.yaml        # 后端部署配置
-│   ├── frontend.yaml       # 前端部署配置
-│   ├── mysql.yaml          # MySQL 部署配置
-│   └── namespace.yaml      # 命名空间配置
-│
-├── terraform/              # GCP 的 Terraform 部署文件
-│   ├── .terraform.lock.hcl # 依赖锁定文件
-│   ├── api.tf              # GCP API
-│   ├── argo-cd.tf          # Argo CD 配置文件
-│   ├── cloud-sql.tf        # Cloud SQL 配置文件
-│   ├── gke.tf              # GKE 配置文件
-│   ├── iam.tf              # GCP 权限配置文件
-│   ├── terraform.tf        # Provider 版本配置文件
-│   ├── todo-app.tf         # Argo CD 的 CR 资源配置文件
-│   └── variables.tf        # Terraform 变量
-│
 ├── helm-chart/             # Helm Chart 目录
 │   ├── templates/          # Kubernetes 资源模板目录
 │   │   ├── namespace.yaml  # 命名空间配置模板
@@ -128,6 +111,43 @@ todo-fullstack/
 │   │   └── frontend.yaml   # 前端部署配置模板
 │   ├── Chart.yaml          # Chart 元数据
 │   └── values.yaml         # 模板文件参数配置
+│
+├── k8s/                    # Kubernetes 部署文件
+│   ├── backend.yaml        # 后端部署配置
+│   ├── frontend.yaml       # 前端部署配置
+│   ├── mysql.yaml          # MySQL 部署配置
+│   └── namespace.yaml      # 命名空间配置
+│
+├── terraform/              # Terraform 配置文件
+│   ├── argocd/             # argocd 模块
+│   │   ├── argocd.tf       # argocd 模块主文件
+│   │   ├── outputs.tf      # argocd 模块输出文件
+│   │   ├── Terraform.tf    # argocd 模块 provider version 文件
+│   │   └── variables.tf    # argocd 模块变量文件
+│   │
+│   ├── cloud-sql/          # cloud-sql 模块
+│   │   ├── api.tf          # cloud-sql 模块 API 文件
+│   │   ├── cloud-sql.tf    # cloud-sql 模块主文件
+│   │   ├── outputs.tf      # cloud-sql 模块输出文件
+│   │   ├── Terraform.tf    # cloud-sql 模块 provider version 文件
+│   │   └── variables.tf    # cloud-sql 模块变量文件
+│   │
+│   ├── gke/                # gke 模块
+│   │   ├── api.tf          # gke 模块 API 文件
+│   │   ├── gke.tf          # gke 模块主文件
+│   │   ├── iam.tf          # gke 模块 IAM 文件
+│   │   ├── outputs.tf      # gke 模块输出文件
+│   │   ├── Terraform.tf    # gke 模块 provider version 文件
+│   │   └── variables.tf    # gke 模块变量文件
+│   │
+│   ├── todo-app/           # todo-app 模块
+│   │   ├── todo-app.tf     # todo-app 模块主文件
+│   │   └── variables.tf    # todo-app 模块变量文件
+│   │
+│   ├── main.tf             # 根模块主文件
+│   ├── providers.tf        # 根模块 Provider 文件
+│   ├── terraform.tfvars.example # 根模块敏感变量赋值文件模板
+│   └── variables.tf        # 根模块变量文件
 │
 ├── .env                    # 环境变量（未推送至代码仓库）
 ├── .env.example            # 环境变量示例文件
@@ -3200,7 +3220,7 @@ variable "my_external_ip" {
 
 ```
 DIR=/d/projects/todo-fullstack/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
-touch terraform.tf api.tf iam.tf cloud-sql.tf variables.tf
+touch api.tf cloud-sql.tf iam.tf terraform.tf variables.tf
 ```
 
 #### `api.tf`
@@ -3357,7 +3377,7 @@ variable "mysql_jerry_password" {
 
 ```
 DIR=/d/projects/todo-fullstack/terraform/gke && mkdir -p $DIR && cd $DIR
-touch terraform.tf iam.tf api.tf gke.tf variables.tf outputs.tf
+touch api.tf iam.tf gke.tf outputs.tf terraform.tf variables.tf
 ```
 
 #### `api.tf`
@@ -3863,10 +3883,10 @@ terraform init
 ```bash
 cd d:/projects/todo-fullstack/terraform
 
-# 先安装 Argo CD 及其依赖
+# 先安装 Argo CD、Cloud SQL 及它们的依赖
 terraform apply -target=module.argocd -target=module.cloud-sql
 
-# 再部署 my-app.tf 及其它资源
+# 再部署 todo-app.tf 及其它资源
 terraform apply
 ```
 

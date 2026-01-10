@@ -423,11 +423,15 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_my-clus
 ### 创建 Terraform 目录
 
 ```bash
-cd /d/projects/my-project/terraform
-touch providers.tf main.tf variables.tf
+DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
+touch main.tf providers.tf variables.tf
+```
 
+### 创建 `gke` 模块目录
+
+```bash
 DIR=/d/projects/my-project/terraform/gke && mkdir -p $DIR && cd $DIR
-touch terraform.tf iam.tf api.tf gke.tf variables.tf outputs.tf
+touch api.tf iam.tf gke.tf outputs.tf terraform.tf variables.tf
 ```
 
 ### `main.tf`
