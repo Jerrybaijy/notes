@@ -102,12 +102,6 @@ resource "aws_vpc" "main" {
 
 稍后可以执行 `terraform apply "todo-infra.tfplan"` 命令以执行锁定计划。
 
-## `variables.tfvars`
-
-`variables.tfvars` 是敏感变量的赋值文件。
-
-只能存储在根模块中，否则 Terraform 读取不到。
-
 ## `.gitignore`
 
 将以下添加到 `my-project/.gitignore` 文件：
@@ -154,15 +148,6 @@ terraform/
 ```
 
 ## GCP Repositories 连接到 GitLab 示例
-
-关于变量的管理：
-
-- 全局变量的传递
-  - 在根模块中声明并赋值全局变量
-  - 在子模块中声明局部变量
-  - 在 `module` block 中向子模块传入全局变量的值
-  - 敏感变量必须在根模块中进行声明和赋值
-- 子模块可以独立声明并赋值局部变量
 
 示例详见[通过 Terraform 连接到 GitLab](<gcp-repositories.md#通过 Terraform 连接到 GitLab>)
 
@@ -237,24 +222,21 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 
 通过 [`depends_on`](<terraform-configuration-language.md#`depends_on`>) 参数手动指定的依赖关系。
 
-# Variable
+# Variables
+
+## Declare and Assign Variables
 
 > [`variable` block](<terraform-configuration-language.md#`variable`>)
+
+## Sensitive Variables
+
+> [Doc: Manage sensitive data](https://developer.hashicorp.com/terraform/language/manage-sensitive-data)
 >
-> [管理模块中的值](https://developer.hashicorp.com/terraform/language/values)
->
-> [变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/variables)
->
-> [敏感变量](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
+> [Tutorial: Sensitive variables](https://developer.hashicorp.com/terraform/tutorials/configuration-language/sensitive-variables)
 
-## `variables.tfvars`
+### Declare Sensitive Variables
 
-`variables.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
-
-- 在 `.gitignore` 中添加忽略 `*.tfvars`。
-- 同时创建敏感变量的赋值文件的模板文件 `variables.tfvars.example`
-
-`variables.tf` 文件中：
+在 `variables.tf` 文件中声明敏感变量：
 
 - 声明变量但不赋值
 - 标记为敏感
@@ -269,7 +251,13 @@ variable "mysql_jerry_password" {
 }
 ```
 
-变量赋值文件中添加变量值：
+### Assign Sensitive Variables
+
+`variables.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
+
+- 在 `.gitignore` 中添加忽略 `*.tfvars`。
+- 只能存储在根模块中，否则 Terraform 读取不到。
+- 同时创建敏感变量的赋值文件的模板文件 `variables.tfvars.example`
 
 ```hcl
 # variables.tfvars
@@ -277,7 +265,17 @@ variable "mysql_jerry_password" {
 mysql_jerry_password = "000000"
 ```
 
-资源文件中引用变量：
+`variables.tfvars.example` 是敏感变量的赋值文件的模板。
+
+```hcl
+# variables.tfvars.example
+
+mysql_jerry_password = ""
+```
+
+### Reference Sensitive Variables
+
+在资源文件中引用变量：
 
 ```hcl
 # cloud-sql.tf
@@ -288,6 +286,126 @@ resource "google_sql_user" "jerry_user" {
   password = var.mysql_jerry_password
   host     = "%"
 }
+```
+
+## Variables in Modules
+
+> [Manage values in modules](https://developer.hashicorp.com/terraform/language/values)
+
+### 声明和赋值子模块变量
+
+- 可以在子模块中声明并赋值变量，供当前模块内部使用。
+- 敏感变量必须在根模块中进行声明和赋值，再传递给子模块。
+
+### 传递根模块变量
+
+- 声明并赋值根模块变量
+- 声明子模块变量
+- 在 `module` block 中向子模块传递根模块变量值
+- 调用根模块变量
+
+#### 声明并赋值根模块变量
+
+```hcl
+# 根模块变量文件 terraform/variables.tf
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+  default     = "asia-east2"
+}
+```
+
+#### 声明子模块变量
+
+在子模块中声明变量，不赋值，用来接收根模块变量的值。
+
+```hcl
+# 子模块变量文件 my-module/variables.tf
+
+variable "region" {
+  type        = string
+  description = "GCP Region"
+}
+```
+
+#### 传递根模块变量
+
+在 `module` block 中，使用子模块中声明的变量，接收根模块变量的值。
+
+```hcl
+# 根模块主文件 `terraform/main.tf`
+
+# 调用 gitlab-repo 模块
+module "gitlab-repo" {
+  source = "./gitlab-repo"
+
+  # 传递根模块的变量
+  region = var.region
+}
+```
+
+#### 调用根模块变量
+
+```hcl
+# 子模块主文件 my-module/my-module.tf
+
+resource "google_cloudbuildv2_connection" "my_gitlab_connection" {
+  # 在子模块中调用全局变量
+  location = var.region
+}
+```
+
+### 模块之间传递变量
+
+模块与模块之间可以利用 `output` block 传递变量。
+
+#### 创建 `module-b` 模块 `output`
+
+在 `moudle-a` 模块中创建 `output` block
+
+```hcl
+# moudle-a/output.tf
+
+output "workload_identity_gsa_email" {
+  description = "Workload Identity GSA email"
+  value       = google_service_account.workload_identity.email
+  sensitive   = false
+}
+```
+
+#### 声明 `module-b` 模块变量
+
+在 `module-b` 模块中声明变量，不赋值，用来接收 `module-a` 模块 `output` 的值。
+
+```hcl
+variable "workload_identity_gsa_email" {
+  type        = string
+  description = "Workload Identity GSA email"
+}
+```
+
+#### 传递 `module-a` 模块 `output`
+
+在根模块主文件中引用 `module-b` 模块时，使用 `module-b` 模块中声明的变量，接收 `module-a` 模块 `output` 的值。
+
+```hcl
+# terraform/main.tf
+
+# 引用 module-b 模块
+module "module-b" {
+
+  # 传递 module-a 模块的输出
+  workload_identity_gsa_email = module.module-a.workload_identity_gsa_email
+}
+```
+
+#### 调用 `module-a` 模块 `output`
+
+```hcl
+# moudle-a/output.tf
+
+value = var.workload_identity_gsa_email
 ```
 
 # Blocks
@@ -315,6 +433,25 @@ data "google_project" "project" {}
 
 [`locals`](https://developer.hashicorp.com/terraform/language/block/locals) block 用于在单个 block 中定义多个变量的值，尤其适用于前缀。
 
+### 定义多个值
+
+```hcl
+locals {
+  services = [
+    "cloudbuild.googleapis.com",    # Cloud Build API
+    "secretmanager.googleapis.com", # Secret Manager API
+  ]
+}
+
+resource "google_project_service" "project_services" {
+  for_each           = toset(local.services)
+  service            = each.key
+  disable_on_destroy = false
+}
+```
+
+### 复用前缀
+
 定义变量：
 
 ```hcl
@@ -322,7 +459,7 @@ data "google_project" "project" {}
 variable "prefix" {
   type        = string
   description = "Project prefix"
-  default     = "todo"
+  default     = "my"
 }
 
 locals {
@@ -350,8 +487,6 @@ resource "kubernetes_namespace_v1" "app_ns" {
 
 - 新增 Module
 - 修改旧 Module 的 `source` 参数
-
-
 
 ## `output`
 
@@ -506,13 +641,13 @@ terraform {
 
 ### Overview
 
-[`variable`](https://developer.hashicorp.com/terraform/language/block/variable) block 用于定义 [Variable](<#Variable>)。
+[`variable`](https://developer.hashicorp.com/terraform/language/block/variable) block 用于定义 [Variable](<#Variables>)。
 
 ```hcl
 variable “<LABEL>” { 
-  type         = < TYPE >
+  type         = <TYPE>
   description  = "<DESCRIPTION>"
-  default      = < DEFAULT_VALUE >
+  default      = <DEFAULT_VALUE>
   
   # ...
 }
@@ -520,10 +655,6 @@ variable “<LABEL>” {
 
 **在以上示例中**：
 
-- `<LABEL>`：变量标识
-- `type`：类型
-- `description`：描述
-- `default`：默认值
 - [官方建议的参数顺序](https://developer.hashicorp.com/terraform/language/style#variables)
 
 定义变量：
@@ -531,22 +662,10 @@ variable “<LABEL>” {
 ```hcl
 # variables.tf
 
-variable "gcp_project_id" {
+variable "project_id" {
   type        = string
   description = "GCP Project ID"
   default     = "project-jerry-222222"
-}
-
-variable "gcp_region" {
-  type        = string
-  description = "GCP Region"
-  default     = "asia-east2"
-}
-
-variable "gcp_zone" {
-  type        = string
-  description = "GKE Zone"
-  default     = "asia-east2-a"
 }
 ```
 
@@ -557,14 +676,9 @@ variable "gcp_zone" {
 
 provider "google" {
   project = var.project_id
-  region  = var.gcp_region
-  zone    = var.gcp_zone
+  # ...
 }
 ```
-
-### 说明
-
-如果声明的变量为空值，在部署时会被要求输入变量值。
 
 # Arguments
 

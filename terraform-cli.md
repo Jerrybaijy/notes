@@ -83,6 +83,11 @@ complete -C /c/ProgramData/chocolatey/lib/terraform/tools/terraform.exe terrafor
 terraform init [options]
 ```
 
+当执行 `terraform init` 后，Terraform 会根据 `.tf` 文件进行初始化工作，会在配置根目录出现：
+
+- `.terraform`：本地缓存目录，详见 [`.terraform`](<terraform-configuration-language.md#`.terraform`>)。
+- `.terraform.lock.hcl`：依赖锁定文件，详见 [`.terraform.lock.hcl`](<terraform-configuration-language.md#`.terraform.lock.hcl`>)。
+
 修改 provider 配置以后，需要执行：
 
 ```bash
@@ -91,7 +96,32 @@ terraform init -upgrade
 
 # `apply`
 
-[`apply`](https://developer.hashicorp.com/terraform/cli/commands/apply)
+[`apply`](https://developer.hashicorp.com/terraform/cli/commands/apply) 用于部署资源。
+
+```hcl
+# 使用 gcloud CLI 授权
+gcloud auth application-default login
+
+# 部署
+cd /d/projects/my-project/terraform
+terraform apply
+```
+
+执行 `terraform apply` 命令以后，看到的是 Terraform 的 **Plan**，输入 `yes`（必须完整输入这三个字母）并按回车。
+
+当执行 `terraform apply` 后，会在配置根目录出现：
+
+- `terraform.tfstate`：状态文件，详见 [`terraform.tfstate`](<terraform-configuration-language.md#`terraform.tfstate`>)。
+- `terraform.tfstate.backup`：状态备份文件，详见 [`terraform.tfstate.backup`](<terraform-configuration-language.md#`terraform.tfstate.backup`>)。
+
+部署特定对象：
+
+```bash
+terraform apply -target=module.my-module
+terraform apply -target=google_container_cluster.primary
+```
+
+# `plan`
 
 # `destroy`
 
@@ -104,7 +134,7 @@ terraform destroy
 销毁特定对象：
 
 ```bash
-terraform destroy -target=$RESOURCE_TYPE.$RESOURCE_LABEL
+terraform destroy -target=module.my-module
 terraform destroy -target=google_container_cluster.primary
 ```
 

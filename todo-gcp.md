@@ -2699,7 +2699,7 @@ my_external_ip = ""
 
 ## `.gitignore`
 
-Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)：
+Git 忽略文件 `todo-gcp/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)：
 
 ```
 # Terraform
