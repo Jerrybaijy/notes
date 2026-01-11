@@ -2265,7 +2265,7 @@ helm uninstall todo-app
 
 ### 推送 Chart 包
 
-- 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
+- 配置 [GitLab Project Access Tokens](<gitlab.md#Project Access Tokens>)。
 
 - Helm 登录到 GitLab Registry，详见 [Helm 笔记](helm.md#推送-chart)。
 

@@ -37,7 +37,7 @@ tags:
 
 ## 创建远程 GitHub 仓库
 
-GitHub 网页创建 Remote Repo：
+GitHub 网页创建 Code Repo：
 
 - 仓库名填写本地文件夹名称 `FOLDER_NAME`，保证本地文件夹和远程仓库同名，便于管理；
 - `Repository name` 填写小写连字符文件名；

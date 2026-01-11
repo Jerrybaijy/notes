@@ -150,7 +150,7 @@ helm package helm-chart
 
 - 此部分记录推送 Chart 到 GitLab Container Registry
 
-- 配置 GitLab Personal Access Token，详见 [GitLab 笔记](gitlab.md#gitlab-personal-access-tokens)。
+- 配置 [GitLab Personal Access Token](<gitlab.md#Personal Access Tokens>)。
 
 - 登录 GitLab Registry
 

@@ -138,7 +138,7 @@ oci://registry-1.docker.io/jerrybaijy
 常见的源代码托管平台：
 
 - GitHub
-- [GitLab](gitlab.md#Repo)
+- [GitLab](<gitlab.md#Code Repo>)
 - Bitbucket
 - Google
   -  [Repositories](gcp-cloud-build.md#Repositories) (链接到其它代码托管平台)

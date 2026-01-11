@@ -27,40 +27,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "gcp-cloud-sql.md",
+                "file": "gitlab-ci-cd-yaml.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "gcp-cloud-sql"
+              "title": "gitlab-ci-cd-yaml"
             }
           },
           {
-            "id": "a92be237e9259010",
+            "id": "c5b76ee3f6cd3103",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "todo-gcp.md",
+                "file": "gitlab.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "todo-gcp"
-            }
-          },
-          {
-            "id": "e1f9fe157340e4e7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "terraform-configuration-language.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "terraform-configuration-language"
+              "title": "gitlab"
             }
           }
         ]
@@ -95,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "tag:#artifact-registry",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -197,8 +183,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
-    "collapsed": true
+    "width": 300.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -213,11 +198,17 @@
   },
   "active": "ac421873c70934db",
   "lastOpenFiles": [
+    "gitlab.md",
+    "gitlab-container-registry.md",
+    "gitlab-ci-cd-yaml.md",
+    "todo-fullstack.md",
+    "helm.md",
+    "todo-gcp.md",
+    "dev-ops.md",
     "gcp-cloud-sql.md",
     "0000-to-do.md",
     "terraform-configuration-language.md",
     "gcp-gke.md",
-    "todo-gcp.md",
     "terraform.md",
     "gcp-artifact-registry.md",
     "gcp-repositories.md",
@@ -228,20 +219,14 @@
     "terraform-configuration-language00.md",
     "gcp-cloud-build.md",
     "git.md",
-    "helm.md",
     "0000-标题实验.md",
     "gcp-iam.md",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
-    "gitlab.md",
-    "todo-fullstack.md",
     "web.md",
     "python.md",
     "harbor.md",
-    "dev-ops.md",
-    "gitlab-ci-cd-yaml.md",
-    "gcp-secure-source-manager.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",

@@ -16,7 +16,7 @@ tags:
 
 > [Configuration Language Docs](https://developer.hashicorp.com/terraform/language)：适用于 Terraform 的 HCL 语言
 >
-> [Write Terraform Configuration](https://developer.hashicorp.com/terraform/tutorials/configuration-language)
+> [Tutorials: Write Terraform Configuration](https://developer.hashicorp.com/terraform/tutorials/configuration-language)
 >
 > [Terraform provider for Google Cloud](https://registry.terraform.io/providers/hashicorp/google/latest/docs)
 
