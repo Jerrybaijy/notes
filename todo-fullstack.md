@@ -146,9 +146,9 @@ todo-fullstack/
 │   │
 │   ├── main.tf             # 根模块主文件
 │   ├── providers.tf        # 根模块 Provider 文件
-│   ├── variables.tf        # 根模块变量文件
-│   ├── variables.tfvars    # 根模块敏感变量赋值文件
-│   └── variables.tfvars.example # 根模块敏感变量赋值文件模板
+│   ├── terraform.tfvars    # 根模块敏感变量赋值文件
+│   ├── terraform.tfvars.example # 根模块敏感变量赋值文件模板
+│   └── variables.tf        # 根模块变量文件
 │
 ├── .env                    # 环境变量（未推送至代码仓库）
 ├── .env.example            # 环境变量示例文件
@@ -2776,7 +2776,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 
 ## 安装 Argo CD
 
-在 GKE 中安装 Argo CD，详见 [Argo CD 笔记](argo-cd.md)。
+在 GKE 中安装 Argo CD，详见 [Argo CD 笔记](<argo-cd.md#使用声明式清单安装 Argo CD>)。
 
 ## 部署应用
 
@@ -3702,7 +3702,7 @@ variable "app_ns" {
 
 ```bash
 DIR=/d/projects/todo-fullstack/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf variables.tfvars variables.tfvars.example variables.tf
+touch main.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
 ```
 
 #### `main.tf`
@@ -3785,6 +3785,32 @@ provider "helm" {
 }
 ```
 
+#### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# Cloud SQL password
+mysql_root_password  = "123456"
+mysql_jerry_password = "000000"
+
+# Argo CD management IP
+my_external_ip = "Your IP here"
+```
+
+#### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
+
+```hcl
+# Cloud SQL password
+mysql_root_password = ""
+mysql_jerry_password = ""
+
+# Argo CD management IP
+my_external_ip = ""
+```
+
 #### `variables.tf`
 
 根模块变量文件 `terraform/variables.tf`
@@ -3829,32 +3855,6 @@ variable "my_external_ip" {
   description = "My external IP access to Argo CD"
   sensitive   = true
 }
-```
-
-#### `variables.tfvars`
-
-根模块敏感变量赋值文件 `terraform/variables.tfvars`
-
-```hcl
-# Cloud SQL password
-mysql_root_password  = "123456"
-mysql_jerry_password = "000000"
-
-# Argo CD management IP
-my_external_ip = "Your IP here"
-```
-
-#### `variables.tfvars.example`
-
-根模块敏感变量赋值文件模板 `terraform/variables.tfvars.example`
-
-```hcl
-# Cloud SQL password
-mysql_root_password = ""
-mysql_jerry_password = ""
-
-# Argo CD management IP
-my_external_ip = ""
 ```
 
 ### `.gitignore`

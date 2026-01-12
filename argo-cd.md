@@ -229,6 +229,24 @@ provider "helm" {
 }
 ```
 
+### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# # Argo CD management IP
+my_external_ip = "5.181.21.188"
+```
+
+### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
+
+```hcl
+# Argo CD management IP
+my_external_ip = ""
+```
+
 ### `variables.tf`
 
 根模块变量文件 `terraform/variables.tf`
@@ -240,24 +258,6 @@ variable "my_external_ip" {
   description = "My external IP access to Argo CD"
   sensitive   = true
 }
-```
-
-### `variables.tfvars`
-
-根模块敏感变量赋值文件 `terraform/variables.tfvars`
-
-```hcl
-# # Argo CD management IP
-my_external_ip = "5.181.21.188"
-```
-
-### `variables.tfvars.example`
-
-根模块敏感变量赋值文件模板 `terraform/variables.tfvars.example`
-
-```hcl
-# Argo CD management IP
-my_external_ip = ""
 ```
 
 ### `.gitignore`

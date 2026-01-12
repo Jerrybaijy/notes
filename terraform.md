@@ -48,7 +48,7 @@ tags:
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf variables.tf variables.tfvars variables.tfvars.example
+touch main.tf providers.tf variables.tf terraform.tfvars terraform.tfvars.example
 ```
 
 ### `main.tf`
@@ -84,6 +84,26 @@ provider "google" {
 }
 ```
 
+### `terraform.tfvars`
+
+根模块敏感变量赋值文件 `terraform/terraform.tfvars`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
+gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
+```
+
+### `terraform.tfvars.example`
+
+根模块敏感变量赋值文件模板 `terraform/terraform.tfvars.example`
+
+```hcl
+# GitLab repo token
+gitlab_personal_access_token_api      = ""
+gitlab_personal_access_token_read_api = ""
+```
+
 ### `variables.tf`
 
 根模块变量文件 `terraform/variables.tf`
@@ -99,25 +119,9 @@ variable "prefix" {
 # --- 其它变量 ---
 ```
 
-### `variables.tfvars`
+## `.gitignore`
 
-根模块敏感变量赋值文件 `terraform/variables.tfvars`
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = "gitlab_personal_access_token_api"
-gitlab_personal_access_token_read_api = "gitlab_personal_access_token_read_api"
-```
-
-### `variables.tfvars.example`
-
-根模块敏感变量赋值文件模板 `terraform/variables.tfvars.example`
-
-```hcl
-# GitLab repo token
-gitlab_personal_access_token_api      = ""
-gitlab_personal_access_token_read_api = ""
-```
+Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
 
 ## 子模块
 
@@ -127,9 +131,9 @@ gitlab_personal_access_token_read_api = ""
 terraform/
 ├── main.tf                  # 根模块主文件：调用 module
 ├── providers.tf             # 根模块 Provider 文件
+├── terraform.tfvars         # 根模块敏感变量赋值文件
+├── terraform.tfvars.example # 根模块敏感变量赋值文件模板
 ├── variables.tf             # 根模块变量文件
-├── variables.tfvars         # 根模块敏感变量赋值文件
-├── variables.tfvars.example # 根模块敏感变量赋值文件模板
 │
 ├── module-a/                # module-a 模块目录
 │   ├── api.tf               # 子模块 API 文件
@@ -141,21 +145,6 @@ terraform/
 │
 └── module-b/                # module-a 模块目录
     └── 同 module-a
-```
-
-## `.gitignore`
-
-Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)：
-
-```
-# Terraform
-.terraform/
-*.tfstate
-*.tfstate.*
-.terraform.tfstate.lock.info
-*.tfplan
-*.tfvars
-*.tfvars.json
 ```
 
 ## 初始化 Terraform

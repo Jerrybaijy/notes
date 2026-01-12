@@ -131,9 +131,9 @@ resource "aws_vpc" "main" {
 terraform/
 ├── main.tf                  # 根模块主文件：调用 module
 ├── providers.tf             # 根模块 Provider 文件
+├── terraform.tfvars         # 根模块敏感变量赋值文件
+├── terraform.tfvars.example # 根模块敏感变量赋值文件模板
 ├── variables.tf             # 根模块变量文件
-├── variables.tfvars         # 根模块敏感变量赋值文件
-├── variables.tfvars.example # 根模块敏感变量赋值文件模板
 │
 ├── module-a/                # module-a 模块目录
 │   ├── api.tf               # 子模块 API 文件
@@ -253,22 +253,22 @@ variable "mysql_jerry_password" {
 
 ### Assign Sensitive Variables
 
-`variables.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
+`terraform.tfvars` 是 `variables.tf` 中敏感变量的赋值文件。
 
 - 在 `.gitignore` 中添加忽略 `*.tfvars`。
 - 只能存储在根模块中，否则 Terraform 读取不到。
-- 同时创建敏感变量的赋值文件的模板文件 `variables.tfvars.example`
+- 同时创建敏感变量的赋值文件的模板文件 `terraform.tfvars.example`
 
 ```hcl
-# variables.tfvars
+# terraform.tfvars
 
 mysql_jerry_password = "000000"
 ```
 
-`variables.tfvars.example` 是敏感变量的赋值文件的模板。
+`terraform.tfvars.example` 是敏感变量的赋值文件的模板。
 
 ```hcl
-# variables.tfvars.example
+# terraform.tfvars.example
 
 mysql_jerry_password = ""
 ```

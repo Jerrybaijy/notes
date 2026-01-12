@@ -53,8 +53,8 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
-                "matchingCase": true,
+                "query": "variables.tfvars",
+                "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
                 "extraContext": false,
@@ -70,13 +70,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "gcp.md",
+                "file": "0000-to-do.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "gcp 的大纲"
+              "title": "0000-to-do 的大纲"
             }
           },
           {
@@ -155,7 +155,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5
+    "width": 300.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -170,20 +171,21 @@
   },
   "active": "ac421873c70934db",
   "lastOpenFiles": [
+    "argo-cd.md",
+    "typora.md",
+    "todo-fullstack.md",
+    "0000-to-do.md",
     "gcp.md",
     "gcp-repositories.md",
     "gcp-gcloud-cli.md",
     "gcp-project.md",
     "terraform-configuration-language.md",
     "gcp-cloud-build.md",
-    "argo-cd.md",
     "terraform.md",
     "gcp-gke.md",
     "gitlab.md",
-    "0000-to-do.md",
     "gitlab-container-registry.md",
     "gitlab-ci-cd-yaml.md",
-    "todo-fullstack.md",
     "helm.md",
     "todo-gcp.md",
     "dev-ops.md",
@@ -198,7 +200,6 @@
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
-    "web.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",
