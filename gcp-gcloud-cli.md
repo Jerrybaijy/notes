@@ -30,7 +30,7 @@ tags:
 
   - 关闭 Gcloud SDK Shell 和全部 Terminal，重新打开 Windows Terminal。
 
-  - 使用 Windows Terminal 执行 `gcloud` 命令
+  - 使用 Windows Terminal 执行 `gcloud` 命令
 
 - 验证安装
 
@@ -160,9 +160,9 @@ gcloud container clusters get-credentials my-cluster \
     --project project-60addf72-be9c-4c26-8db
 ```
 
-## 为应用授权
+## 为其它应用授权
 
-其它应用程序（如 Terraform）交互 GCP 时，需先授权：
+其它应用（如 Terraform）交互 GCP 时，需先授权：
 
 ```bash
 gcloud auth application-default login

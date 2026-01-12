@@ -20,65 +20,8 @@
               "icon": "lucide-file",
               "title": "0000-to-do"
             }
-          },
-          {
-            "id": "b250ca0df0016a19",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp"
-            }
-          },
-          {
-            "id": "7396131bc2cd72a3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-gcloud-cli.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-gcloud-cli"
-            }
-          },
-          {
-            "id": "057df07a18a32a0d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-project.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-project"
-            }
-          },
-          {
-            "id": "20aa65e3d43a3513",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "gcp-gcloud-cli.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "gcp-gcloud-cli"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -171,7 +114,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "gcp.md",
+                "file": "0000-to-do.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -181,7 +124,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "gcp 的反向链接列表"
+              "title": "0000-to-do 的反向链接列表"
             }
           },
           {
@@ -225,16 +168,19 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "b250ca0df0016a19",
+  "active": "ac421873c70934db",
   "lastOpenFiles": [
-    "gcp-gcloud-cli.md",
     "gcp.md",
-    "terraform.md",
+    "gcp-repositories.md",
+    "gcp-gcloud-cli.md",
     "gcp-project.md",
+    "terraform-configuration-language.md",
+    "gcp-cloud-build.md",
+    "argo-cd.md",
+    "terraform.md",
     "gcp-gke.md",
     "gitlab.md",
     "0000-to-do.md",
-    "terraform-configuration-language.md",
     "gitlab-container-registry.md",
     "gitlab-ci-cd-yaml.md",
     "todo-fullstack.md",
@@ -243,12 +189,9 @@
     "dev-ops.md",
     "gcp-cloud-sql.md",
     "gcp-artifact-registry.md",
-    "gcp-repositories.md",
-    "argo-cd.md",
     "shell.md",
     "terraform-cli.md",
     "terraform-configuration-language00.md",
-    "gcp-cloud-build.md",
     "git.md",
     "0000-标题实验.md",
     "gcp-iam.md",

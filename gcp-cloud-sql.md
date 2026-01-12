@@ -19,10 +19,15 @@ tags:
 
 # Quick Start
 
+## 准备工作
+
+- 完成 [GCP 准备工作](gcp.md#准备工作)
+- [创建 GCP Project](<gcp-project.md#创建 GCP 项目>)
+
 ## 创建 Cloud SQL 实例
 
 ```bash
-gcloud sql instances create todo-db-instance \
+gcloud sql instances create my-db-instance \
   --database-version=MYSQL_8_0 \
   --tier=db-n1-standard-2 \
   --region=asia-east2 \
@@ -35,7 +40,7 @@ gcloud sql instances create todo-db-instance \
 ```bash
 gcloud sql users set-password root \
   --host=% \
-  --instance=todo-db-instance \
+  --instance=my-db-instance \
   --password=123456
 ```
 
@@ -44,7 +49,7 @@ gcloud sql users set-password root \
 在 [Google Cloud Shell](https://console.cloud.google.com/) 中执行以下命令：（或者本地电脑安装 MySQL 客户端）
 
 ```bash
-gcloud sql connect todo-db-instance --user=root
+gcloud sql connect my-db-instance --user=root
 ```
 
 ```sql
@@ -63,7 +68,7 @@ EXIT;
 
 ```bash
 # 删除
-gcloud sql instances delete todo-db-instance
+gcloud sql instances delete my-db-instance
 # 验证
 gcloud sql instances list
 ```
@@ -372,7 +377,7 @@ terraform apply
 
 ```bash
 gcloud sql instances describe $INSTANCE_NAME --format='value(ipAddresses.ipAddress)'
-gcloud sql instances describe todo-db-instance --format='value(ipAddresses.ipAddress)'
+gcloud sql instances describe my-db-instance --format='value(ipAddresses.ipAddress)'
 # 上次公网 IP：35.220.229.85
 ```
 
@@ -401,14 +406,14 @@ kubectl get nodes -o wide
 ```bash
 gcloud sql instances patch $INSTANCE_NAME \
   --authorized-networks=[本地公网IP]/32,[GKE 节点1公网IP]/32,[GKE 节点2公网IP]/32
-gcloud sql instances patch todo-db-instance \
+gcloud sql instances patch my-db-instance \
     --authorized-networks=5.181.21.188/32,34.150.83.115/32,34.96.197.161/32
 ```
 
 在 [Google Cloud Shell](https://console.cloud.google.com/) 中执行以下命令验证本地公网 IP 是否加入到白名单：
 
 ```bash
-gcloud sql instances describe todo-db-instance \
+gcloud sql instances describe my-db-instance \
     --format="value(settings.ipConfiguration.authorizedNetworks)"
 ```
 

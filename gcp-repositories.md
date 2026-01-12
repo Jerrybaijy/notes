@@ -29,7 +29,7 @@ tags:
 
 # GitLab
 
-## 通过 Gcloud Console 连接到 GitLab
+## 使用 Gcloud Console 连接到 GitLab
 
 分三步连接到 GitLab：
 
@@ -108,7 +108,7 @@ tags:
     - **Type**：`Cloud Build configuration file (yaml/json)`
     - **Service account**：选择当前项目的适当 GSA
 
-## 通过 Terraform 连接到 GitLab
+## 使用 Terraform 连接到 GitLab
 
 ### 创建 Terraform 目录
 

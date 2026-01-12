@@ -33,12 +33,13 @@ tags:
 
 - [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
   
-  - 创建一个项目
+  - 完成 [GCP 准备工作](gcp.md#准备工作)
   
-  - 授权
+  - [创建 GCP Project](<gcp-project.md#创建 GCP 项目>)
+  
+  - [为 Terraform 授权](gcp-gcloud-cli.md#为其它应用授权)
   
     ```bash
-    # 使用 gcloud CLI 授权
     gcloud auth application-default login
     ```
 

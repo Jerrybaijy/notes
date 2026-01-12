@@ -46,6 +46,8 @@ oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
 
 ## 准备工作
 
+- 完成 [GCP 准备工作](gcp.md#准备工作)
+- [创建 GCP Project](<gcp-project.md#创建 GCP 项目>)
 - [选择项目](https://console.cloud.google.com/projectselector2/home/dashboard)
 - 开启 [Artifact Registry API](https://console.cloud.google.com/marketplace/product/google/artifactregistry.googleapis.com)
 - 打开 [Artifact Registry](https://console.cloud.google.com/artifacts) 页面

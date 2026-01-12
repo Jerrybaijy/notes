@@ -149,7 +149,7 @@ terraform/
 
 ## GCP Repositories 连接到 GitLab 示例
 
-示例详见[通过 Terraform 连接到 GitLab](<gcp-repositories.md#通过 Terraform 连接到 GitLab>)
+示例详见[使用 Terraform 连接到 GitLab](<gcp-repositories.md#使用 Terraform 连接到 GitLab>)
 
 # Provider
 

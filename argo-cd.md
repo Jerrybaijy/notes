@@ -865,7 +865,7 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
 
 建立在以下的基础上：
 
-- [通过 Terraform 连接到 GitLab](<gcp-repositories.md#通过 Terraform 连接到 GitLab>)
+- [使用 Terraform 连接到 GitLab](<gcp-repositories.md#使用 Terraform 连接到 GitLab>)
 - [使用 Terraform 创建 Docker Repository](<gcp-artifact-registry.md#使用 Terraform 创建 Docker Repository>)
 - 完成 Cloud Build 将 image 和 chart 推送至 GAR
 - [使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
