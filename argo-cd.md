@@ -581,7 +581,7 @@ set = [
 
 **注意**：登录以后应在 `User Info` 中及时修改密码！
 
-Kubectl 方式创建时获取初始密码：
+使用 Kubectl CLI 获取初始密码：
 
 ```bash
 kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
@@ -590,10 +590,11 @@ kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.pas
 # 本地上次密码：dAlsKbgZa4FvVT6V
 ```
 
-Terraform 方式创建时获取初始密码：
+使用 Terraform CLI 获取初始密码：
 
 ```bash
-terraform output -raw argocd_initial_admin_password
+# sensitive_outputs 是根模块的 output 标签
+terraform output sensitive_outputs
 ```
 
 # 编写 K8s 配置文件

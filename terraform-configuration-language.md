@@ -490,11 +490,13 @@ resource "kubernetes_namespace_v1" "app_ns" {
 
 ## `output`
 
+### Overview
+
 [`output`](https://developer.hashicorp.com/terraform/language/block/output) block 用于公开有关基础设施的信息。主要有四个用途：
 
 - 根模块可以在 CLI 输出中显示值。
 - 子模块可以向父模块公开资源属性。
-- 其他使用[远程状态的](https://developer.hashicorp.com/terraform/language/state/remote)Terraform 配置可以通过数据源访问根模块的输出`terraform_remote_state`。
+- 其他使用[远程状态的](https://developer.hashicorp.com/terraform/language/state/remote)Terraform 配置可以通过数据源访问根模块的输出 `terraform_remote_state`。
 - 将信息从 Terraform 操作传递到自动化工具。
 
 ```hcl
@@ -515,6 +517,50 @@ output "<LABEL>" {
 output "gcp_project_id" {
   description = "GCP project ID"
   value       = google_project.my_project.project_id
+}
+```
+
+### 子模块的输出
+
+在 `argocd/outputs.tf` 中定义 output 变量：
+
+```hcl
+# argocd/outputs.tf
+
+output "argocd_ns" {
+  description = "ArgoCD 命名空间名称"
+  value       = kubernetes_namespace_v1.argocd_ns.metadata[0].name
+}
+
+output "argocd_loadbalancer_ip" {
+  description = "Argo CD UI 的公网访问 IP"
+  value       = data.kubernetes_service_v1.argocd_server.status[0].load_balancer[0].ingress[0].ip
+}
+
+output "argocd_initial_admin_password" {
+  description = "Argo CD 的初始管理员密码 (用户名为 admin)"
+  value       = data.kubernetes_secret_v1.argocd_initial_admin_secret.data["password"]
+  sensitive   = true
+}
+```
+
+在 `terraform/outputs.tf` 中透传：
+
+```hcl
+# 透传普通输出
+output "outputs" {
+  value = {
+    argocd_ns                 = module.argocd.argocd_ns
+    argocd_loadbalancer_ip    = module.argocd.argocd_loadbalancer_ip
+  }
+}
+
+# 透传敏感输出
+output "sensitive_outputs" {
+  value = {
+    argocd_initial_admin_password = module.argocd.argocd_initial_admin_password
+  }
+  sensitive = true # 标记敏感
 }
 ```
 
