@@ -21,9 +21,7 @@ tags:
 >
 > [Terraform Registry](https://registry.terraform.io/)
 
-# Quick Start
-
-此 [Quick Start](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started) 以在 GCP 部署一个 VPC 资源为例。
+# Quickstart
 
 ## 准备工作
 

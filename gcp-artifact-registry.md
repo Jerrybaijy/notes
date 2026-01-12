@@ -17,6 +17,8 @@ tags:
 [**Artifact Registry**](https://console.cloud.google.com/artifacts) 是 GCP 的制品仓库，是一个私有仓库。
 
 > [Artifact Registry Docs](https://docs.cloud.google.com/artifact-registry/docs)
+>
+> [`gcloud artifacts`](https://docs.cloud.google.com/sdk/gcloud/reference/artifacts): CLI Reference
 
 每个项目有自己的 Artifact Registry，Artifact Registry 中创建各种类型的 Repostory 以存储制品。
 

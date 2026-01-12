@@ -22,34 +22,63 @@
             }
           },
           {
-            "id": "b8a4a7b52972c9b0",
+            "id": "b250ca0df0016a19",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform.md",
+                "file": "gcp.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "terraform"
+              "title": "gcp"
             }
           },
           {
-            "id": "b3ebdc2abd089246",
+            "id": "7396131bc2cd72a3",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "terraform-configuration-language.md",
+                "file": "gcp-gcloud-cli.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "terraform-configuration-language"
+              "title": "gcp-gcloud-cli"
+            }
+          },
+          {
+            "id": "057df07a18a32a0d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp-project.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp-project"
+            }
+          },
+          {
+            "id": "20aa65e3d43a3513",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp-gcloud-cli.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp-gcloud-cli"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -81,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#artifact-registry",
+                "query": "",
                 "matchingCase": true,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -98,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "gcp.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "0000-to-do 的大纲"
+              "title": "gcp 的大纲"
             }
           },
           {
@@ -142,7 +171,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "gcp.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -152,7 +181,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "0000-to-do 的反向链接列表"
+              "title": "gcp 的反向链接列表"
             }
           },
           {
@@ -183,8 +212,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
-    "collapsed": true
+    "width": 300.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,12 +225,16 @@
       "bases:创建新数据库": false
     }
   },
-  "active": "ac421873c70934db",
+  "active": "b250ca0df0016a19",
   "lastOpenFiles": [
-    "terraform-configuration-language.md",
+    "gcp-gcloud-cli.md",
+    "gcp.md",
     "terraform.md",
-    "0000-to-do.md",
+    "gcp-project.md",
+    "gcp-gke.md",
     "gitlab.md",
+    "0000-to-do.md",
+    "terraform-configuration-language.md",
     "gitlab-container-registry.md",
     "gitlab-ci-cd-yaml.md",
     "todo-fullstack.md",
@@ -210,10 +242,8 @@
     "todo-gcp.md",
     "dev-ops.md",
     "gcp-cloud-sql.md",
-    "gcp-gke.md",
     "gcp-artifact-registry.md",
     "gcp-repositories.md",
-    "gcp.md",
     "argo-cd.md",
     "shell.md",
     "terraform-cli.md",
@@ -226,8 +256,6 @@
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
     "web.md",
-    "python.md",
-    "harbor.md",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
     "assets/image-20251218161021572.png",

@@ -29,7 +29,7 @@ tags:
   - 不得使用正在或以前使用过的项目 ID；这包括已删除的项目。
 - [**项目名称**](https://docs.cloud.google.com/resource-manager/docs/creating-managing-projects?hl=zh-cn#before_you_begin)，由您提供。
 
-# Quick Start
+# Quickstart
 
 ## 准备工作
 
@@ -117,7 +117,7 @@ gcloud projects delete project-jerry-111111
 
 # 创建 GCP 项目
 
-## 使用 `gcloud` 命令创建 GCP 项目
+## 使用 Gcloud CLI 创建 GCP 项目
 
 如果不指定 `--name`，默认会使用项目 ID 作为名称。
 

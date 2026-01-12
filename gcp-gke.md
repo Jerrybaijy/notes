@@ -13,13 +13,13 @@ tags:
 
 [**GKE**](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview?hl=zh-cn) (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服务，可以使用 Google 的基础架构大规模部署和运营容器化应用。
 
-# Quick Start
+# Quickstart
 
 ## 准备工作
 
 - [GCP 准备工作](<gcp.md#准备工作>)已完成
 - [本地 kubectl](<kubernetes.md#kubectl>) 已安装
-- [GCP project](<gcp-project.md#Quick Start>) 已创建
+- [GCP project](<gcp-project.md#Quickstart>) 已创建
 
 ## 创建 GKE
 
@@ -132,7 +132,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 - [Terraform 安装](<terraform-cli.md#Install>)已完成
 - GCP 项目已创建并关联结算账号
-- [安装和配置 Google Cloud CLI](<gcp.md#Install>)
+- [安装和配置 Google Cloud CLI](<gcp-gcloud-cli.md#Install>)
 - [Kubectl 已安装并完成配置](<gcp-gke.md#Quick Start>)
 
 ### 创建 Terraform 目录
