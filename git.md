@@ -112,12 +112,14 @@ tags:
 
 ## Windows
 
+- 最好先安装 Windows Terminal
+
 - 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
 
 - 安装时注意
   - 选择 `main` 分支
   - 将 `Open Git UI Here` 从上下文菜单中取消勾选
-  - 可以将 Git Bash 添加到 Windows Terminal（添加后需在 Windows Terminal 配置中添加样式，详见 Windows Terminal）
+  - 可以将 Git Bash 添加到 Windows Terminal
 
 - 验证安装
 

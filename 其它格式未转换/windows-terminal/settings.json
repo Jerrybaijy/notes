@@ -1,6 +1,32 @@
 {
+  // ---------------- Windows Terminal 全局设置 ----------------
+
+  // 帮助文档
   "$help": "https://aka.ms/terminal-documentation",
+  // 验证设置有效性的架构定义
   "$schema": "https://aka.ms/terminal-profiles-schema",
+
+  "theme": "system", // 主题设置：light、dark 或 system
+  "themes": [], // 自定义主题
+  "schemes": [], // 自定义配色方案
+
+  "copyFormatting": "none", // 复制时的格式
+  "copyOnSelect": false, // 选择时是否自动复制到剪贴板
+
+  // 启动终端时的默认配置文件 GUID（当前对应 Git Bash）
+  "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+  // 启动终端时窗口状态
+  "launchMode": "maximized", // 启动时窗口最大化
+  // 新建窗口时的行为
+  "windowingBehavior": "useAnyExisting",
+  // 新建标签页菜单的布局
+  "newTabMenu": [
+    {
+      "type": "remainingProfiles" // 在下拉菜单显示所有未隐藏配置文件
+    }
+  ],
+
+  // 动作定义：随后可以绑定到快捷键
   "actions": [
     {
       "command": {
@@ -14,79 +40,68 @@
       "id": "User.paste"
     },
     {
-      "command": {
-        "action": "splitPane",
-        "split": "auto",
-        "splitMode": "duplicate"
-      },
-      "id": "User.splitPane.A6751878"
-    },
-    {
       "command": "find",
       "id": "User.find"
     }
   ],
-  "copyFormatting": "none",
-  "copyOnSelect": false,
-  "defaultProfile": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+
+  // 快捷键绑定
   "keybindings": [
     {
       "id": "User.copy.644BA8F2",
       "keys": "ctrl+c"
     },
     {
-      "id": "User.find",
-      "keys": "ctrl+shift+f"
-    },
-    {
       "id": "User.paste",
       "keys": "ctrl+v"
     },
     {
-      "id": "User.splitPane.A6751878",
-      "keys": "alt+shift+d"
+      "id": "User.find",
+      "keys": "ctrl+f"
     }
   ],
-  "newTabMenu": [
-    {
-      "type": "remainingProfiles"
-    }
-  ],
+
+  // ---------------- 终端环境配置文件列表 ----------------
+
   "profiles": {
-    "defaults": {},
+    // 所有配置文件的默认值
+    "defaults": {
+      "colorScheme": {
+        "dark": "One Half Dark",
+        "light": "One Half Light"
+      },
+      "tabColor": "#515C6B",
+      "font": {
+        "face": "\u65b0\u5b8b\u4f53"
+      }
+    },
+
+    // 各个终端环境配置
     "list": [
       {
         "commandline": "%SystemRoot%\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
         "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
         "hidden": false,
-        "name": "Windows PowerShell"
+        "name": "PowerShell"
       },
       {
         "commandline": "%SystemRoot%\\System32\\cmd.exe",
         "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
         "hidden": false,
-        "name": "\u547d\u4ee4\u63d0\u793a\u7b26"
+        "name": "CMD"
+      },
+      {
+        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
+        "hidden": false,
+        "name": "Git Bash",
+        "source": "Git"
       },
       {
         "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
         "hidden": false,
         "name": "Azure Cloud Shell",
         "source": "Windows.Terminal.Azure"
-      },
-      {
-        "backgroundImage": null,
-        "colorScheme": "One Half Dark",
-        "font": {
-          "face": "\u65b0\u5b8b\u4f53"
-        },
-        "guid": "{2ece5bfe-50ed-5f3a-ab87-5cd4baafed2b}",
-        "hidden": false,
-        "name": "Git Bash",
-        "source": "Git"
       }
     ]
-  },
-  "schemes": [],
-  "theme": "dark",
-  "themes": []
+  }
 }
