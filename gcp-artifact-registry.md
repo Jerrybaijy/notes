@@ -211,13 +211,6 @@ DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
 touch main.tf providers.tf variables.tf
 ```
 
-### 创建 `gar-docker-repo` 模块目录
-
-```bash
-DIR=/d/projects/my-project/terraform/gar-docker-repo && mkdir -p $DIR && cd $DIR
-touch api.tf gar-docker-repo.tf terraform.tf variables.tf
-```
-
 ### `main.tf`
 
 根模块主文件 `terraform/main.tf`
@@ -274,6 +267,13 @@ variable "region" {
 ### `.gitignore`
 
 Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### 创建 `gar-docker-repo` 模块目录
+
+```bash
+DIR=/d/projects/my-project/terraform/gar-docker-repo && mkdir -p $DIR && cd $DIR
+touch api.tf gar-docker-repo.tf terraform.tf variables.tf
+```
 
 ### `api.tf`
 

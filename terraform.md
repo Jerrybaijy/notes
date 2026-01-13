@@ -48,7 +48,7 @@ tags:
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf variables.tf terraform.tfvars terraform.tfvars.example
+touch main.tf outputs.tf providers.tf variables.tf terraform.tfvars terraform.tfvars.example
 ```
 
 ### `main.tf`
@@ -70,6 +70,27 @@ module "moudle-b" {
 
   # 传递根模块的变量
   prefix = var.prefix
+}
+```
+
+### `outputs.tf`
+
+根模块输出文件 `terraform/outputs.tf`
+
+```hcl
+output "outputs" {
+  value = {
+    argocd_loadbalancer_ip = module.argocd.argocd_loadbalancer_ip
+    # ... 其它输出 ...
+  }
+}
+
+output "sensitive_outputs" {
+  value = {
+    argocd_initial_admin_password = module.argocd.argocd_initial_admin_password
+    # ... 其它敏感输出 ...
+  }
+  sensitive = true
 }
 ```
 

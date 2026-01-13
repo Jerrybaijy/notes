@@ -139,14 +139,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf variables.tf
-```
-
-### 创建 `gke` 模块目录
-
-```bash
-DIR=/d/projects/my-project/terraform/gke && mkdir -p $DIR && cd $DIR
-touch api.tf iam.tf gke.tf outputs.tf terraform.tf variables.tf
+touch main.tf outputs.tf providers.tf variables.tf
 ```
 
 ### `main.tf`
@@ -162,6 +155,19 @@ module "gke" {
   prefix     = var.prefix
   project_id = var.project_id
   region     = var.region
+}
+```
+
+### `outputs.tf`
+
+根模块输出文件 `terraform/outputs.tf`
+
+```hcl
+output "outputs" {
+  value = {
+    ksa_name = module.gke.ksa_name
+    gke_name = module.gke.gke_name
+  }
 }
 ```
 
@@ -214,6 +220,13 @@ variable "region" {
 ### `.gitignore`
 
 Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### 创建 `gke` 模块目录
+
+```bash
+DIR=/d/projects/my-project/terraform/gke && mkdir -p $DIR && cd $DIR
+touch api.tf iam.tf gke.tf outputs.tf terraform.tf variables.tf
+```
 
 ### `api.tf`
 

@@ -145,6 +145,7 @@ todo-fullstack/
 │   │   └── variables.tf    # todo-app 模块变量文件
 │   │
 │   ├── main.tf             # 根模块主文件
+│   ├── outputs.tf          # 根模块输出文件
 │   ├── providers.tf        # 根模块 Provider 文件
 │   ├── terraform.tfvars    # 根模块敏感变量赋值文件
 │   ├── terraform.tfvars.example # 根模块敏感变量赋值文件模板
@@ -3702,7 +3703,7 @@ variable "app_ns" {
 
 ```bash
 DIR=/d/projects/todo-fullstack/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
+touch main.tf outputs.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
 ```
 
 #### `main.tf`
@@ -3755,6 +3756,30 @@ module "todo-app" {
 
   # 传递根模块的变量
   prefix = var.prefix
+}
+```
+
+#### `outputs.tf`
+
+根模块输出文件 `terraform/outputs.tf`
+
+```hcl
+output "outputs" {
+  value = {
+    argocd_loadbalancer_ip    = module.argocd.argocd_loadbalancer_ip
+    cloud_sql_connection_name = module.cloud-sql.cloud_sql_connection_name
+    sql_instance_name         = module.cloud-sql.sql_instance_name
+    database_name             = module.cloud-sql.database_name
+    ksa_name                  = module.gke.ksa_name
+    gke_name                  = module.gke.gke_name
+  }
+}
+
+output "sensitive_outputs" {
+  value = {
+    argocd_initial_admin_password = module.argocd.argocd_initial_admin_password
+  }
+  sensitive = true
 }
 ```
 

@@ -85,14 +85,7 @@ gcloud sql instances list
 
 ```bash
 DIR=/d/projects/my-project/terraform && mkdir -p $DIR && cd $DIR
-touch main.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
-```
-
-### 创建 `cloud-sql` 模块目录
-
-```bash
-DIR=/d/projects/my-project/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
-touch api.tf cloud-sql.tf iam.tf terraform.tf variables.tf
+touch main.tf outputs.tf providers.tf terraform.tfvars terraform.tfvars.example variables.tf
 ```
 
 ### `main.tf`
@@ -110,6 +103,20 @@ module "cloud-sql" {
   region               = var.region
   mysql_root_password  = var.mysql_root_password
   mysql_jerry_password = var.mysql_jerry_password
+}
+```
+
+### `outputs.tf`
+
+根模块输出文件 `terraform/outputs.tf`
+
+```hcl
+output "outputs" {
+  value = {
+    cloud_sql_connection_name = module.cloud-sql.cloud_sql_connection_name
+    sql_instance_name         = module.cloud-sql.sql_instance_name
+    database_name             = module.cloud-sql.database_name
+  }
 }
 ```
 
@@ -186,6 +193,13 @@ variable "mysql_jerry_password" {
 ### `.gitignore`
 
 Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### 创建 `cloud-sql` 模块目录
+
+```bash
+DIR=/d/projects/my-project/terraform/cloud-sql && mkdir -p $DIR && cd $DIR
+touch api.tf cloud-sql.tf iam.tf terraform.tf variables.tf
+```
 
 ### `api.tf`
 

@@ -187,13 +187,6 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 建立在[使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)的基础上
 
-### 创建 `argocd` 模块目录
-
-```bash
-DIR=/d/projects/my-project/terraform/argocd && mkdir -p $DIR && cd $DIR
-touch argocd.tf outputs.tf terraform.tf variables.tf
-```
-
 ### `main.tf`
 
 根模块主文件 `terraform/main.tf`
@@ -212,6 +205,25 @@ module "argocd" {
   project_id     = var.project_id
   region         = var.region
   my_external_ip = var.my_external_ip
+}
+```
+
+### `outputs.tf`
+
+根模块输出文件 `terraform/outputs.tf`
+
+```hcl
+output "outputs" {
+  value = {
+    argocd_loadbalancer_ip = module.argocd.argocd_loadbalancer_ip
+  }
+}
+
+output "sensitive_outputs" {
+  value = {
+    argocd_initial_admin_password = module.argocd.argocd_initial_admin_password
+  }
+  sensitive = true
 }
 ```
 
@@ -263,6 +275,13 @@ variable "my_external_ip" {
 ### `.gitignore`
 
 Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-configuration-language.md#`.gitignore`)
+
+### 创建 `argocd` 模块目录
+
+```bash
+DIR=/d/projects/my-project/terraform/argocd && mkdir -p $DIR && cd $DIR
+touch argocd.tf outputs.tf terraform.tf variables.tf
+```
 
 ### `argocd.tf`
 
