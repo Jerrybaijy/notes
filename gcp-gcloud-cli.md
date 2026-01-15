@@ -244,7 +244,7 @@ gcloud config list project
 ```bash
 gcloud services enable $API
 
-# 为默认项目启用 API（可同时启用多个）
+# 为默认项目启用 Compute Engine API（可同时启用多个）
 gcloud services enable compute.googleapis.com
 
 # 强制为默认项目停用 API（可同时停用多个）

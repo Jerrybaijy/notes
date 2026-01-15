@@ -34,6 +34,48 @@
               "icon": "lucide-file",
               "title": "software"
             }
+          },
+          {
+            "id": "0d676580155d150a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp"
+            }
+          },
+          {
+            "id": "eda9234f4f038aab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "gcp-gce.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "gcp-gce"
+            }
+          },
+          {
+            "id": "b5722f8ea9c1b38a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "argo-cd.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "argo-cd"
+            }
           }
         ]
       }
@@ -67,7 +109,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "variables.tfvars",
+                "query": "ssh",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -185,32 +227,32 @@
   },
   "active": "ac421873c70934db",
   "lastOpenFiles": [
+    "gcp-gce.md",
+    "gcp-gke.md",
+    "argo-cd.md",
+    "gcp.md",
+    "openssh.md",
+    "windows.md",
+    "github.md",
     "software.md",
+    "network.md",
+    "0000-to-do.md",
     "musicbee.md",
     "windows-terminal.md",
-    "0000-to-do.md",
-    "argo-cd.md",
     "typora.md",
     "todo-fullstack.md",
-    "gcp.md",
     "gcp-repositories.md",
     "gcp-gcloud-cli.md",
     "gcp-project.md",
     "terraform-configuration-language.md",
     "gcp-cloud-build.md",
     "terraform.md",
-    "gcp-gke.md",
     "gitlab.md",
     "gitlab-container-registry.md",
     "gitlab-ci-cd-yaml.md",
     "helm.md",
     "todo-gcp.md",
     "dev-ops.md",
-    "gcp-cloud-sql.md",
-    "gcp-artifact-registry.md",
-    "shell.md",
-    "terraform-cli.md",
-    "terraform-configuration-language00.md",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",

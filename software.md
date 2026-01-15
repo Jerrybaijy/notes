@@ -915,39 +915,6 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
 
 ### Navicat Premium Lite
 
-# SSH
-
-## 连接 Google Cloud 实例
-
-- 全程都可以在 `Powershell` 中执行，无需切换目录
-- **创建 SSH 密钥对**
-
-  ```bash
-  ssh-keygen -t rsa -f C:\Users\<windows_user>\.ssh\<key_file_name> -C <linux_username> -b 2048
-  # e.g.
-  ssh-keygen -t rsa -f C:\Users\39331\.ssh\windows_key -C max_shaoych -b 2048
-  ```
-
-  解释：
-
-  - 新生成的密钥存储在`C:\Users\39331\.ssh\`
-  - 一个是私钥，另一个是同名的公钥（`.pub`）
-
-- **发送 SSH 密钥对**
-
-  - 创建 Google 实例时，在 `高级选项` > `安全` > `管理访问权限` 手动添加本地 `Windows公钥` 内容
-  - 记事本打开新生成的公钥，复制内容，粘贴至 Google
-
-- **连接虚机**
-
-  ```bash
-  ssh -i <PATH_TO_PRIVATE_KEY> <LINUX_USERNAME>@<LINUX_EXTERNAL_IP>
-  # eg
-  ssh -i ~/.ssh/windows_key max_shaoych@34.16.204.233
-  ```
-
-  - 如果收到警告无法连接，原因是远程主机的公钥已经发生了变化，而 `known_hosts` 文件中的条目与之前保存的公钥不匹配。应该删除 `known_hosts` 文件的冲突条目，重新连接。
-
 # Trae
 
 TRAE 是由字节跳动推出的一款 IDE。它不仅仅是在传统编辑器上增加 AI 功能，而是从底层开始就以 AI 为核心构建的。

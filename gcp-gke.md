@@ -11,7 +11,11 @@ tags:
 
 # Overview
 
-[**GKE**](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview?hl=zh-cn) (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服务，可以使用 Google 的基础架构大规模部署和运营容器化应用。
+[**GKE**](https://cloud.google.com/kubernetes-engine/docs/concepts/kubernetes-engine-overview) (Google Kubernetes Engine)，是由 Google 开发的代管式 Kubernetes 服务，可以使用 Google 的基础架构大规模部署和运营容器化应用。
+
+> [GKE Docs](https://docs.cloud.google.com/kubernetes-engine/docs)
+>
+> [GKE Instance](https://console.cloud.google.com/kubernetes)
 
 # Quickstart
 
@@ -94,20 +98,17 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 # 创建 GKE 集群
 
-## 使用 `gcloud projects create` 创建 GKE 集群
+## 使用 Gcloud CLI 创建 GKE 集群
 
 - [准备工作](<#准备工作>)已完成
 
 - 开启 GKE 必需 API
 
   ```bash
-  gcloud services enable compute.googleapis.com container.googleapis.com \
-      --project $PROJECT_ID
-  
-  gcloud services enable compute.googleapis.com container.googleapis.com \
-      --project project-60addf72-be9c-4c26-8db
+  gcloud services enable $APIs
+  gcloud services enable compute.googleapis.com container.googleapis.com
   ```
-
+  
 - 创建集群
 
   ```bash
