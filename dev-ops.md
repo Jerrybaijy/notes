@@ -149,3 +149,26 @@ oci://registry-1.docker.io/jerrybaijy
 - Gitee  (码云)
 - Coding (腾讯云)
 - Codeup (阿里云)
+
+# IaC
+
+**IaC** (Infrastructure as Code)，即**基础设施即代码**，是一种通过**代码**（而非手动流程或图形界面）来管理和配置基础设施（如服务器、网络、数据库、存储等）的 IT 实践。
+
+典型的 IaC 工作流通常包含以下步骤：
+
+1. **编写 (Write)**：使用特定语言（如 HCL, YAML, Python）定义资源。
+2. **计划 (Plan)**：预览代码将对现有环境做出的更改（Dry Run）。
+3. **应用 (Apply)**：执行代码，云服务商或本地服务器按指令变更。
+4. **销毁 (Destroy)**：不再需要时，一键删除所有相关资源，避免产生额外费用。
+
+主流工具对比：
+
+| **工具名称**           | **开发者** | **核心语言**      | **适用平台** | **特点**                                               |
+| ---------------------- | ---------- | ----------------- | ------------ | ------------------------------------------------------ |
+| **Terraform**          | HashiCorp  | HCL               | 全平台       | 开源、多云支持、使用 HCL 语言。                        |
+| **CloudFormation**     | AWS        | YAML / JSON       | 仅限 AWS     | AWS 原生，深度集成。                                   |
+| **Deployment Manager** | Google     | YAML / Python     | 仅限 GCP     | 支持 Python 和 Jinja2 模板，能编排几乎所有谷歌云资源。 |
+| **Azure Bicep**        | Microsoft  | Bicep (DSL)       | 仅限 Azure   | ARM 模板的简洁进化版，专注于 Azure 资源的声明式管理。  |
+| **Ansible**            | Red Hat    | YAML              | 跨平台       | 侧重于**配置管理**（在系统内装软件）。                 |
+| **Pulumi**             | Pulumi     | Python, Go, TS 等 | 多云         | 使用通用语言（Python, JS, Go）。                       |
+| **Kubernetes**         | CNCF       | YAML / JSON       | 跨平台       | 容器编排领域的“事实上的 IaC”。                         |
