@@ -557,7 +557,34 @@ i
 - `:set nu`: show line number
 - `:set nonu`: close line number
 
-# 解决方法
+# `grep`
+
+[`grep`](https://www.gnu.org/software/grep/manual/grep.html) 工具用于打印包含与一个或多个模式匹配的行。
+
+```bash
+grep [选项]... [模式] [文件]...
+```
+
+```bash
+grep "Hello" test.txt
+
+# 忽略大小写
+grep -i "hello" test.txt
+
+# 反向搜索
+grep -v "hello" test.txt
+
+# 显示行号
+grep -n "hello" test.txt
+
+# 结合管道符使用，过滤其他命令的输出。
+netstat -an | grep "LISTEN"
+
+# 结合正则表达式，搜索以 "I" 开头的行
+grep "^I" test.txt
+```
+
+# FAQ
 
 ## 密码反馈
 

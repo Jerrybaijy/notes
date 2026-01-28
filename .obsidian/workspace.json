@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -110,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "section:(URL)",
+                "query": "shell",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -127,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "web.md",
+                "file": "network.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "web 的大纲"
+              "title": "network 的大纲"
             }
           },
           {
@@ -151,8 +151,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -227,13 +226,14 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f5d553d67a5ddbc9",
+  "active": "9f6c24af79f51511",
   "lastOpenFiles": [
-    "assets/mdn-url-all.png",
-    "it-basics.md",
-    "web.md",
+    "中国政治.md",
     "network.md",
     "dev-ops.md",
+    "it-basics.md",
+    "web.md",
+    "assets/mdn-url-all.png",
     "README.md",
     "pine-script.md",
     "openssh.md",
@@ -274,7 +274,6 @@
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "assets/image-20251128085027839.png",
-    "assets/image-20251128084754902.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

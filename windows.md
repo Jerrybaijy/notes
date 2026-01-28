@@ -325,6 +325,14 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - 提前将主板网卡驱动在 U 盘中解压
 - 提示无法联网时，选择驱动程序文件夹，让系统自己安装。
 
+## 无人值守安装
+
+通过创建一个名为 `autounattend.xml` 的应答文件并放在安装 U 盘根目录，Windows 在安装时会自动跳过语言选择、分区、创建账号、隐私设置等环节。
+
+- **推荐工具：** [Schneegans Answer File Generator](https://schneegans.de/windows/unattend-generator/)
+- **操作方法：** 在这个网站上勾选你需要的设置（如：跳过 TPM 检查、自动创建本地用户、禁用小组件等），下载生成的 `.xml` 文件，直接丢进 U 盘即可。
+- **配合工具：** 使用 **Ventoy** 或 **Rufus** 制作启动盘。Rufus 本身也提供了一键跳过 Windows 11 硬件检测和强制登录微软账号的功能。
+
 # Windows 激活
 
 ## 激活方式
@@ -686,7 +694,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
   wsl -l
   ```
 
-# Windows 解决方法
+# FAQ
 
 ## 无法访问 Windows APP 文件夹
 
