@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -226,7 +226,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "9f6c24af79f51511",
+  "active": "ccac2be0237d4937",
   "lastOpenFiles": [
     "中国政治.md",
     "network.md",
