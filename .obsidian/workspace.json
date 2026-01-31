@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "web.md",
+                "file": "windows.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "web"
+              "title": "windows"
             }
           },
           {
@@ -113,13 +113,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "web.md",
+                "file": "windows.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "web 的大纲"
+              "title": "windows 的大纲"
             }
           },
           {
@@ -137,7 +137,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -212,8 +213,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
+    "web.md",
     "十字军东征.md",
     "中国史主线.md",
     "中国史支线.md",
@@ -229,7 +231,6 @@
     "it-basics.md",
     "network.md",
     "dev-ops.md",
-    "web.md",
     "assets/mdn-url-all.png",
     "README.md",
     "pine-script.md",
