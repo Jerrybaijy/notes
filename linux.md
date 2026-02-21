@@ -120,14 +120,22 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 ## 安装软件
 
 - 优先使用 `apt` 或 `snap` 在线安装
+
 - 其次官网下载 `.deb` 包至本地，使用 `apt` 安装
+
+  ```shell
+  cd ~/下载
+  sudo apt install ./google-chrome-stable_current_amd64.deb
+  ```
+
 - 如果官网只有 `.tar.xz` 包
 
   - 解压安装包 `tar -xf <package_name>`
   - 根据 `README` 文件说明安装。
 
 - 再次官网下载官方脚本至本地，使用 `sh` 运行安装脚本
-- 再次，手动安装，以 Docke 为例
+
+- 再次，手动安装，以 Docker 为例
 
   - 更新软件包列表
 

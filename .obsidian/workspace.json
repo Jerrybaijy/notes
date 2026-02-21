@@ -64,7 +64,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -113,13 +113,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "windows.md",
+                "file": "linux.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "windows 的大纲"
+              "title": "linux 的大纲"
             }
           },
           {
@@ -137,8 +137,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -213,8 +212,9 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "windows.md",
     "web.md",
     "十字军东征.md",
     "中国史主线.md",
@@ -241,7 +241,6 @@
     "gcp-gke.md",
     "argo-cd.md",
     "gcp.md",
-    "windows.md",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
