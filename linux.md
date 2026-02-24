@@ -412,43 +412,43 @@ Linux 包管理工具用于简化和管理软件包的安装、更新、卸载�
 
 `apt` 是一个用于在 Debian 及其衍生发行版（如 Ubuntu）中用于管理软件包的上层工具，它是 `dpkg` 的前端工具，简化了软件包的安装、升级、删除等操作。
 
-- **特点**：
+**特点**：
 
-  - **自动处理依赖**：安装本地 `.deb` 包时，`apt` 会从系统已配置的软件源（包括 `.deb` 包内自动添加的源）下载并安装缺失的依赖。
-  - **触发软件源更新**：如果 `.deb` 包内嵌了软件源配置（如 Chrome 的包），`apt` 会识别并更新源信息。
+- **自动处理依赖**：安装本地 `.deb` 包时，`apt` 会从系统已配置的软件源（包括 `.deb` 包内自动添加的源）下载并安装缺失的依赖。
+- **触发软件源更新**：如果 `.deb` 包内嵌了软件源配置（如 Chrome 的包），`apt` 会识别并更新源信息。
 
-- **命令**
+**命令**
 
-  ```bash
-  # 更新软件包列表
-  sudo apt update
-  
-  # 升级所有软件包
-  sudo apt upgrade
-  # 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
-  sudo apt full-upgrade
-  
-  # 安装新软件包
-  sudo apt install <package_name>
-  # 安装本地软件包
-  sudo apt install path/to/package/<package_name>
-  
-  # 删除已安装的软件包（保留配置文件）
-  sudo apt remove <package_name>
-  # 删除已安装的软件包（包括配置文件）
-  sudo apt purge <package_name>
-  # 删除不再需要的依赖包
-  sudo apt autoremove
-  
-  # 查看已安装的软件包
-  apt list --installed
-  
-  # 搜索软件包
-  apt search <package_name>
-  
-  # 查看软件包信息
-  apt show <package_name>
-  ```
+```bash
+# 更新软件包列表
+sudo apt update
+
+# 升级所有软件包
+sudo apt upgrade
+# 升级所有软件包，并且允许安装新的依赖包，同时自动删除不再需要的包
+sudo apt full-upgrade
+
+# 安装新软件包
+sudo apt install <package_name>
+# 安装本地软件包
+sudo apt install path/to/package/<package_name>
+
+# 删除已安装的软件包（保留配置文件）
+sudo apt remove <package_name>
+# 删除已安装的软件包（包括配置文件）
+sudo apt purge <package_name>
+# 删除不再需要的依赖包
+sudo apt autoremove
+
+# 查看已安装的软件包
+apt list --installed
+
+# 搜索软件包
+apt search <package_name>
+
+# 查看软件包信息
+apt show <package_name>
+```
 
 ## dpkg
 

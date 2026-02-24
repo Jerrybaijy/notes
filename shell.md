@@ -152,6 +152,13 @@ db/{sql,migrations,backup}
 
 `curl` 是一个用于与网络服务器进行数据交换的命令行工具。
 
+### Install
+
+```bash
+sudo apt  install curl
+curl --version
+```
+
 ### 下载文件
 
 - 下载并显示文件内容
