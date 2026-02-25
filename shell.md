@@ -155,7 +155,7 @@ db/{sql,migrations,backup}
 ### Install
 
 ```bash
-sudo apt  install curl
+sudo apt install curl
 curl --version
 ```
 
