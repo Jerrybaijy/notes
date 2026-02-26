@@ -41,12 +41,26 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "openclaw.md",
+                "file": "windows.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "openclaw"
+              "title": "windows"
+            }
+          },
+          {
+            "id": "34f64cf67d7062b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "备忘.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "备忘"
             }
           },
           {
@@ -64,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -96,7 +110,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "腾讯会议",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -113,13 +127,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "ollama.md",
+                "file": "powershell.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "ollama 的大纲"
+              "title": "powershell 的大纲"
             }
           },
           {
@@ -137,7 +151,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -212,17 +227,17 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "34f64cf67d7062b4",
   "lastOpenFiles": [
+    "powershell.md",
+    "windows.md",
+    "openclaw.md",
     "ollama.md",
     "script.md",
-    "openclaw.md",
-    "未命名.md",
     "shell.md",
     "network.md",
     "ai-tools-collection.md",
     "node-js.md",
-    "windows.md",
     "linux.md",
     "web.md",
     "十字军东征.md",

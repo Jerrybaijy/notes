@@ -17,26 +17,27 @@ openclaw dashboard
 
 # 使用 ollama 启动 openclaw
 ollama launch openclaw
+
+# 重启网关
+openclaw gateway start
+
+# 切换模型
+openclaw configure --section default_model
 ```
 
 # Install
 
-- Git 已安装
+[安装 OpenClaw](https://docs.openclaw.ai/install)
 
-- Node.js (≥22.0) 已安装
+> [阿里云教程](https://developer.aliyun.com/article/1709772)
 
-- [安装 OpenClaw](https://docs.openclaw.ai/install)
+```bash
+# Linux/MacOS
+curl -fsSL https://openclaw.ai/install.sh | bash
 
-  > [阿里云教程](https://developer.aliyun.com/article/1709772)
-  
-  ```bash
-  # 安装
-  curl -fsSL https://openclaw.ai/install.sh | bash
-  
-  # 浏览器面板
-  openclaw dashboard
-  ```
-  
+# Windows PowerShell (管理员)
+iwr -useb https://openclaw.ai/install.ps1 | iex
+```
 
 # Uninstall
 
@@ -48,7 +49,7 @@ openclaw uninstall --all --yes --non-interactive
 npm rm -g openclaw
 
 # 手动删除残留
-# C:\Users\jerry\.ollama
+# C:\Users\jerry\.openclaw
 ```
 
 # Channels
@@ -80,3 +81,14 @@ npm rm -g openclaw
   ```
 
   
+
+# 浏览器插件
+
+```bash
+# 安装插件
+openclaw browser extension install
+
+# OPENCLAW_GATEWAY_TOKEN
+openclaw configure --section gateway
+```
+
