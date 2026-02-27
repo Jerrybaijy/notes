@@ -28,6 +28,9 @@ ttps:/go.microsoft.com/fwlink/?LinkID=135170 中的 about_Execution_Policies。
 以**管理员身份**运行 PowerShell，执行以下命令，允许运行自己编写的脚本，以及来自互联网但由受信任发布者签名的脚本：
 
 ```shell
+# 临时允许（关闭窗口后自动恢复默认安全模式）
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+# 长期允许
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```
 

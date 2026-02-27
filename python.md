@@ -23,6 +23,8 @@ tags:
 
 ### Windows 系统
 
+- 优先使用 [Pyenv-win](#Pyenv-win) 安装
+- 以下为使用官方安装包安装
 - [Python 官网下载安装包](https://www.python.org/downloads/)
 - 勾选 `管理员权限` 和 `添加系统变量`，自定义安装（新台式机选择 `Install Now`）。
 
@@ -84,7 +86,7 @@ tags:
 - 运行 `pyenv install <version>` 以安装受支持的版本
 
   ```bash
-  pyenv install 3.13.6
+  pyenv install 3.13.7
   ```
 
   安装路径：`C:\Users\jerry\.pyenv\pyenv-win\versions`
@@ -92,13 +94,16 @@ tags:
 - 如果想设置全局 python 版本：
 
   ```bash
-  pyenv global 3.13.6
+  # 查看
+  pyenv global
+  # 设置
+  pyenv global 3.13.7
   ```
 
-- 如果只希望在一个**特定项目文件夹**中使用 **Python 3.13.6**，请进入该文件夹并执行以下命令：
+- 如果只希望在一个**特定项目文件夹**中使用 **Python 3.13.7**，请进入该文件夹并执行以下命令：
 
   ```bash
-  pyenv local 3.13.6
+  pyenv local 3.13.7
   ```
 
   执行后，`pyenv-win` 会在该文件夹下创建一个 `.python-version` 文件，仅对该文件夹及其子目录生效。
@@ -108,6 +113,8 @@ tags:
 ```bash
 # 查看 pyenv 版本
 pyenv --version
+# 升级 pyenv
+pip install --upgrade pyenv-win
 
 # 查看所有通过 Python 安装的 python 版本
 pyenv versions
@@ -124,6 +131,18 @@ pyenv install <version>
 # 卸载 <version> 版本的 python
 pyenv uninstall <version>
 ```
+
+### 执行别名
+
+在执行 `where python` 时，会多出一行 `C:\Users\jerry\AppData\Local\Microsoft\WindowsApps\python.exe`，这个是 Windows 自带的“Python 应用执行别名”，经常干扰 pyenv。
+
+关闭 Windows 的 Python App 执行别名：
+
+- 设置 > 应用 > 高级应用设置 > 应用执行别名
+- 把下面两个关掉：
+  - `python.exe`
+  - `python3.exe`
+- 重启所有终端
 
 ## 配置
 
@@ -263,24 +282,21 @@ pip3 install $MODULE_NAME
 - 创建虚拟环境，会在项目后端目录生成 `venv` 文件夹；
 
   ```bash
-  python -m venv 安装目录
+  # python -m venv 安装目录
+  python -m venv .venv
   ```
-
-  ```bash
-  python -m venv venv
-  ```
-
+  
 - 激活虚拟环境；
 
   ```bash
   # Windows
-  source venv/Scripts/activate
+  source .venv/Scripts/activate
 
   # Mac/Linux
-  source venv/bin/activate
+  source .venv/bin/activate
   ```
 
-- 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\labs-env\Scripts\python.exe`），说明激活成功；
+- 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\.venv\Scripts\python.exe`），说明激活成功；
 
   ```bash
   where python
@@ -288,7 +304,7 @@ pip3 install $MODULE_NAME
 
 - 如果没有，参照以下办法激活：
 
-  - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+  - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\.venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
   - 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
 
 - 对新的虚拟环境进行初步设置：

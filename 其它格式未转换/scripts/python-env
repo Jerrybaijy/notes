@@ -1,25 +1,41 @@
 #!/bin/bash
 
 # 1. 创建虚拟环境
-python -m venv venv
+python -m venv .venv
+
+echo ""
+echo -e "\033[1;32m✅ 已创建虚拟环境\033[0m"
+echo ""
 
 # 2. 激活虚拟环境 (根据操作系统选择正确的路径)
-if [ -f "venv/bin/activate" ]; then
+if [ -f ".venv/bin/activate" ]; then
     # Linux/macOS/Git Bash
-    source venv/bin/activate
-elif [ -f "venv/Scripts/activate" ]; then
+    source .venv/bin/activate
+elif [ -f ".venv/Scripts/activate" ]; then
     # Windows (WSL 或部分环境可能需要)
-    source venv/Scripts/activate
+    source .venv/Scripts/activate
 else
     echo "错误：无法找到虚拟环境激活脚本。"
     exit 1
 fi
 
+echo ""
+echo -e "\033[1;32m✅ 已激活虚拟环境\033[0m"
+echo ""
+
 # 3. 升级 pip
 python -m pip install --upgrade pip
 
+echo ""
+echo -e "\033[1;32m✅ 已升级 pip\033[0m"
+echo ""
+
 # 4. 安装 black
 pip install black
+
+echo ""
+echo -e "\033[1;32m✅ 已安装 black\033[0m"
+echo ""
 
 # 5. 查看当前 Python 解释器路径
 echo ""
