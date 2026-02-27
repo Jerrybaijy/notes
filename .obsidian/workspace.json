@@ -151,8 +151,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -227,7 +226,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "34f64cf67d7062b4",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
     "powershell.md",
     "windows.md",

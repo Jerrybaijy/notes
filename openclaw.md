@@ -21,7 +21,7 @@ ollama launch openclaw
 # 重启网关
 openclaw gateway start
 
-# 切换模型
+# 配置 sections
 openclaw configure --section default_model
 ```
 
