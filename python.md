@@ -296,7 +296,7 @@ pip3 install $MODULE_NAME
   source .venv/bin/activate
   ```
 
-- 检查激活：如果输出路径包含虚拟环境的目录（如 `E:\labs\.venv\Scripts\python.exe`），说明激活成功；
+- 检查激活：如果输出路径包含虚拟环境的目录（如 `D:\projects\my-projects\.venv\Scripts\python.exe`），说明激活成功；
 
   ```bash
   where python
@@ -304,7 +304,7 @@ pip3 install $MODULE_NAME
 
 - 如果没有，参照以下办法激活：
 
-  - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `E:\labs\projects\flask\.venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
+  - 将虚拟环境所在目录下的 `Scripts` 文件夹路径（例如 `D:\projects\my-projects\.venv\Scripts`）[添加到环境变量](../../operating-system/windows/windows.md#环境变量)。
   - 编辑器选择 Python 的虚拟环境，详见 [`VSCode` > `选择解释器虚拟环境`](../../software/software-collection/software-collection.md#选择解释器虚拟环境)；
 
 - 对新的虚拟环境进行初步设置：
