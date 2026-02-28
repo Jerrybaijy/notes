@@ -48,9 +48,37 @@
               "icon": "lucide-file",
               "title": "http"
             }
+          },
+          {
+            "id": "f8997bab5318f5c3",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "openclaw.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "openclaw"
+            }
+          },
+          {
+            "id": "b038eb3b041bd191",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "clawhub.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "clawhub"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -143,7 +171,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "python.md",
+                "file": "openclaw.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,7 +181,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "python 的反向链接列表"
+              "title": "openclaw 的反向链接列表"
             }
           },
           {
@@ -184,7 +212,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5
+    "width": 300.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -197,15 +226,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "f8997bab5318f5c3",
   "lastOpenFiles": [
-    "http.md",
+    "clawhub.md",
+    "openclaw.md",
     "python.md",
+    "http.md",
     "ollama.md",
     "备忘.md",
     "powershell.md",
     "windows.md",
-    "openclaw.md",
     "script.md",
     "shell.md",
     "network.md",
@@ -224,7 +254,6 @@
     "历史学.md",
     "民族史.md",
     "中国政治.md",
-    "世界史.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
