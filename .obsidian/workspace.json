@@ -36,6 +36,20 @@
             }
           },
           {
+            "id": "7e3bb5e7b086674f",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "software.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "software"
+            }
+          },
+          {
             "id": "9105c648c0e676f3",
             "type": "leaf",
             "state": {
@@ -64,6 +78,20 @@
             }
           },
           {
+            "id": "4a5a29146e2b33b0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "powershell.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "powershell"
+            }
+          },
+          {
             "id": "b038eb3b041bd191",
             "type": "leaf",
             "state": {
@@ -78,7 +106,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -110,7 +138,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git",
+                "query": "2925",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -127,13 +155,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "powershell.md",
+                "file": "software.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "powershell 的大纲"
+              "title": "software 的大纲"
             }
           },
           {
@@ -151,7 +179,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -226,15 +255,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "399d7728f549ca1a",
   "lastOpenFiles": [
-    "clawhub.md",
-    "openclaw.md",
     "python.md",
+    "powershell.md",
+    "assets/image-20260301203648402.png",
+    "assets/image-20260301201142072.png",
+    "assets/image-20260301201107031.png",
+    "apex.md",
+    "openclaw.md",
+    "clawhub.md",
     "http.md",
     "ollama.md",
     "备忘.md",
-    "powershell.md",
     "windows.md",
     "script.md",
     "shell.md",
@@ -252,8 +285,6 @@
     "封神演义.md",
     "历史文献.md",
     "历史学.md",
-    "民族史.md",
-    "中国政治.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
@@ -269,11 +300,8 @@
     "其它格式未转换/简历",
     "assets/image-20251206152340962.png",
     "assets/image-20251128210905428.png",
-    "assets/components-of-kubernetes-1764489607053-1.svg",
-    "assets/components-of-kubernetes-1764489607053-1-1764489607053-2.svg",
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
-    "assets/image-20251128085027839.png",
     "未命名 1.canvas",
     "未命名.canvas"
   ]

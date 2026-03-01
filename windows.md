@@ -884,3 +884,47 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
 - `设置` > `个性化` > `主题` > `桌面图标设置` > 选中 `回收站`
 - 桌面右键 > `查看` > `显示桌面图标`
+
+## 符号链接
+
+符号链接与快捷方式不同：
+
+- **快捷方式**：当你双击它，资源管理器的地址栏会**跳**到 `D:\projects\...`。
+- **符号链接**：当你双击它，资源管理器的地址栏依然显示 `C:\Users\jerry\.openclaw\skills\...`，就像这个文件夹真的长在那里一样。
+
+以从 `~/.openclaw/skills` 链接到 `D:\projects\antigravity-browser-claw\browser-claw-scraper` 为例。
+
+### Windows
+
+PowerShell (管理员)
+
+```shell
+# 创建
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\<path>" -Target "<target-path>"
+
+New-Item -ItemType SymbolicLink -Path "$env:USERPROFILE\.openclaw\skills\browser-claw-scraper" -Target "D:\projects\antigravity-browser-claw\browser-claw-scraper"
+
+# 查看
+ls -l ~/.openclaw/skills
+```
+
+PowerShell 执行 `ls -l ~/.openclaw/skills` 查看结果
+
+<img src="assets/image-20260301201107031.png" alt="image-20260301201107031" style="zoom:55%;" />
+
+GitBash 执行 `ls -l ~/.openclaw/skills` 查看结果
+
+![image-20260301203648402](assets/image-20260301203648402.png)
+
+资源管理器中查看
+
+<img src="assets/image-20260301201142072.png" alt="image-20260301201142072" style="zoom: 60%;" />
+
+### Linux
+
+此命令不适用于 Windows 中的 GitBash，在 Windows 中，不会创建符号链接，而是会直接复制。
+
+```bash
+ln -s "/d/projects/antigravity-browser-claw/browser-claw-scraper" "~/.openclaw/skills/browser-claw-scraper"
+```
+
