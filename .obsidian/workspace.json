@@ -69,6 +69,20 @@
             "state": {
               "type": "markdown",
               "state": {
+                "file": "git.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "git"
+            }
+          },
+          {
+            "id": "2694495a26fd2cf6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
                 "file": "openclaw.md",
                 "mode": "preview",
                 "source": true
@@ -106,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -155,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software.md",
+                "file": "openclaw.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software 的大纲"
+              "title": "openclaw 的大纲"
             }
           },
           {
@@ -179,8 +193,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -255,20 +268,22 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "399d7728f549ca1a",
+  "active": "2694495a26fd2cf6",
   "lastOpenFiles": [
-    "python.md",
+    "git.md",
+    "openclaw.md",
     "powershell.md",
+    "clawhub.md",
+    "windows.md",
+    "software.md",
+    "python.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",
     "apex.md",
-    "openclaw.md",
-    "clawhub.md",
     "http.md",
     "ollama.md",
     "备忘.md",
-    "windows.md",
     "script.md",
     "shell.md",
     "network.md",
@@ -284,7 +299,6 @@
     "朝鲜半岛.md",
     "封神演义.md",
     "历史文献.md",
-    "历史学.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
