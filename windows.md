@@ -12,8 +12,11 @@ tags:
 
 ## 路径
 
-- **目录结构**：`cd C:/Users/USER_NAME`
-- **路径分隔符**：默认`\`，绝大多数时候都支持正斜杠 `/`
+- **目录结构**：`C:\Users\jerry`
+  - PowerShell：`C:\Users\jerry`
+  - GitBash：`/c/Users/jerry` 或 `c:/Users/jerry`
+
+- **路径分隔符**：PowerShell 默认支持反斜杠 `\`，但绝大多数时候也支持正斜杠 `/`
 - 其它详见 [Shell 笔记](shell.md#路径)
 
 ## Chocolatey

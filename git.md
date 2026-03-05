@@ -302,7 +302,7 @@ git switch main
 git branch -d my-branch
 
 # 删除远程仓库分支
-git push origin --delete my-branch
+git push origin -d my-branch
 ```
 
 # 版本控制
@@ -310,6 +310,36 @@ git push origin --delete my-branch
 ```bash
 # 追溯
 git reset --hard SHA # SHA哈希值
+```
+
+# 文件
+
+## 撤销文件
+
+注：这里指“修改过”的且未执行 `git add` 的文件
+
+```bash
+# 撤销修改
+git restore .
+```
+
+## 删除文件和文件夹
+
+注：这里指“新建”的且未执行 `git add` 的文件和文件夹
+
+```bash
+# 参数前加 n，可预览会删除哪些文件或文件夹
+# 如：删除文件预览
+git clean -nf
+
+# 删除文件
+git clean -f
+# 删除文件和文件夹
+git clean -fd
+
+# 参数后加 x，可预览会删除哪些被 .gitignore 忽略的文件或文件夹
+# 如：删除被 .gitignore 忽略的文件预览
+git clean -nfx
 ```
 
 # `.gitignore`

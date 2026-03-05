@@ -175,13 +175,13 @@ todo-fullstack/
 ## 创建项目根目录
 
 ```bash
-mkdir d:/projects/todo-fullstack
+mkdir /d/projects/todo-fullstack
 ```
 
 ## 初始化 Git 仓库
 
 ```bash
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 git init --initial-branch=main
 touch .gitignore
 ```
@@ -228,7 +228,7 @@ logs/
 配置环境变量：`todo-fullstack/.env`
 
 ```bash
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 touch .env
 ```
 
@@ -249,7 +249,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 同时，为了让协作者知道需要配什么，创建一个 `todo-fullstack/.env.example` (不含真实密码)：
 
 ```bash
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 touch .env.example
 ```
 
@@ -274,14 +274,14 @@ SECRET_KEY=
 ## 创建后端目录结构
 
 ```bash
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 mkdir -p backend/app/api
 ```
 
 ## 虚拟环境
 
 ```bash
-cd d:/projects/todo-fullstack/backend
+cd /d/projects/todo-fullstack/backend
 
 # 提前复制 python-env 脚本到 backend 目录
 source python-env
@@ -290,7 +290,7 @@ source python-env
 ## 安装依赖
 
 ```bash
-cd d:/projects/todo-fullstack/backend
+cd /d/projects/todo-fullstack/backend
 touch requirements.txt
 ```
 
@@ -509,7 +509,7 @@ docker run --name todo-mysql-local \
 # 确保虚拟环境已激活
 # 确保全新数据库已正常运行
 
-cd d:/projects/todo-fullstack/backend
+cd /d/projects/todo-fullstack/backend
 
 # 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 目录
 flask db init
@@ -528,7 +528,7 @@ flask db upgrade
 - 启动后端
 
   ```bash
-  cd d:/projects/todo-fullstack/backend
+  cd /d/projects/todo-fullstack/backend
   source venv/Scripts/activate
   
   python run.py
@@ -554,11 +554,11 @@ flask db upgrade
 
 ```bash
 # 使用 Vite 创建 React 项目
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 npm create vite@latest frontend -- --template react
 
 # 安装依赖
-cd d:/projects/todo-fullstack/frontend
+cd /d/projects/todo-fullstack/frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
@@ -826,7 +826,7 @@ export default defineConfig({
 - 后端已启动
 
   ```bash
-  cd d:/projects/todo-fullstack/backend
+  cd /d/projects/todo-fullstack/backend
   source venv/Scripts/activate
   python run.py
   ```
@@ -834,7 +834,7 @@ export default defineConfig({
 - 启动前端
 
   ```bash
-  cd d:/projects/todo-fullstack/frontend
+  cd /d/projects/todo-fullstack/frontend
   npm run dev
   ```
 
@@ -1073,7 +1073,7 @@ networks:
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd d:/projects/todo-fullstack
+  cd /d/projects/todo-fullstack
   docker-compose up -d
   ```
 
@@ -1088,7 +1088,7 @@ networks:
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
 
   ```bash
-  cd d:/projects/todo-fullstack
+  cd /d/projects/todo-fullstack
   docker-compose down
   ```
 
@@ -1202,8 +1202,8 @@ build_frontend:
 ## 创建目录
 
 ```
-mkdir d:/projects/0000-tests/todo-remote
-cd d:/projects/0000-tests/todo-remote
+mkdir /d/projects/0000-tests/todo-remote
+cd /d/projects/0000-tests/todo-remote
 touch docker-compose.yml .env
 ```
 
@@ -1302,7 +1302,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 - 使用 Docker Compose 拉取前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd d:/projects/0000-tests/todo-remote
+  cd /d/projects/0000-tests/todo-remote
   docker-compose up -d
   ```
 
@@ -1316,7 +1316,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
 
   ```bash
-  cd d:/projects/0000-tests/todo-remote
+  cd /d/projects/0000-tests/todo-remote
   docker-compose down
   ```
 
@@ -1337,13 +1337,13 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 ### 创建 K8s 和 Argo CD 目录
 
 ```bash
-cd d:/projects/todo-fullstack
+cd /d/projects/todo-fullstack
 mkdir k8s argo-cd
 
-cd d:/projects/todo-fullstack/k8s
+cd /d/projects/todo-fullstack/k8s
 touch namespace.yaml mysql.yaml backend.yaml frontend.yaml
 
-cd d:/projects/todo-fullstack/argo-cd
+cd /d/projects/todo-fullstack/argo-cd
 touch k8s-app.yaml
 ```
 
@@ -1652,7 +1652,7 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
+  cd /d/projects/todo-fullstack/argo-cd
   kubectl apply -f k8s-app.yaml
   ```
 
@@ -1683,7 +1683,7 @@ spec:
 - 卸载
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
+  cd /d/projects/todo-fullstack/argo-cd
   kubectl delete -f k8s-app.yaml
   ```
 
@@ -1704,7 +1704,7 @@ spec:
 - 创建 Chart 目录
 
   ```bash
-  cd d:/projects/todo-fullstack
+  cd /d/projects/todo-fullstack
   helm create helm-chart
   ```
 
@@ -1720,7 +1720,7 @@ spec:
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todo-fullstack/helm-chart/templates/
+  cd /d/projects/todo-fullstack/helm-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
@@ -2474,7 +2474,7 @@ spec:
 - 部署
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
+  cd /d/projects/todo-fullstack/argo-cd
   kubectl apply -f chart-app.yaml
   ```
 
@@ -2499,7 +2499,7 @@ spec:
 - 卸载 App
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
+  cd /d/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app.yaml
   ```
 
@@ -2784,7 +2784,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 部署：使用 `Chart + Argo CD 部署` 的 `chart-app.yaml` 文件。
 
 ```bash
-cd d:/projects/todo-fullstack/argo-cd
+cd /d/projects/todo-fullstack/argo-cd
 kubectl apply -f chart-app.yaml
 ```
 
@@ -2805,7 +2805,7 @@ kubectl apply -f chart-app.yaml
 - 卸载 App
 
   ```bash
-  cd d:/projects/todo-fullstack/argo-cd
+  cd /d/projects/todo-fullstack/argo-cd
   kubectl delete -f chart-app.yaml
   ```
   
@@ -3900,14 +3900,14 @@ Git 忽略文件 `my-project/.gitignore` 中添加[忽略内容](terraform-confi
 ### 初始化 Terraform
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd /d/projects/todo-fullstack/terraform
 terraform init
 ```
 
 ## 部署资源
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd /d/projects/todo-fullstack/terraform
 
 # 先安装 Argo CD、Cloud SQL 及它们的依赖
 terraform apply -target=module.argocd -target=module.cloud-sql
@@ -3948,7 +3948,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 ## 销毁资源
 
 ```bash
-cd d:/projects/todo-fullstack/terraform
+cd /d/projects/todo-fullstack/terraform
 terraform destroy
 ```
 

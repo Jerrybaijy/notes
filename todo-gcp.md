@@ -192,13 +192,13 @@ todo-gcp/
 ## 创建项目根目录
 
 ```bash
-mkdir -p d:/projects/todo-gcp
+mkdir -p /d/projects/todo-gcp
 ```
 
 ## 初始化 Git 仓库
 
 ```bash
-cd d:/projects/todo-gcp
+cd /d/projects/todo-gcp
 git init --initial-branch=main
 touch .gitignore
 ```
@@ -245,7 +245,7 @@ logs/
 配置环境变量：`todo-gcp/.env`
 
 ```bash
-cd d:/projects/todo-gcp
+cd /d/projects/todo-gcp
 touch .env
 ```
 
@@ -266,7 +266,7 @@ SECRET_KEY=change_this_to_a_very_long_random_string
 同时，为了让协作者知道需要配什么，创建一个 `todo-gcp/.env.example` (不含真实密码)：
 
 ```bash
-cd d:/projects/todo-gcp
+cd /d/projects/todo-gcp
 touch .env.example
 ```
 
@@ -291,14 +291,14 @@ SECRET_KEY=
 ## 创建后端目录结构
 
 ```bash
-cd d:/projects/todo-gcp
+cd /d/projects/todo-gcp
 mkdir -p backend/app/api
 ```
 
 ## 虚拟环境
 
 ```bash
-cd d:/projects/todo-gcp/backend
+cd /d/projects/todo-gcp/backend
 
 # 提前复制 python-env 脚本到 backend 目录
 source python-env
@@ -307,7 +307,7 @@ source python-env
 ## 安装依赖
 
 ```bash
-cd d:/projects/todo-gcp/backend
+cd /d/projects/todo-gcp/backend
 touch requirements.txt
 ```
 
@@ -526,7 +526,7 @@ docker run --name todo-mysql-local \
 # 确保虚拟环境已激活
 # 确保全新数据库已正常运行
 
-cd d:/projects/todo-gcp/backend
+cd /d/projects/todo-gcp/backend
 
 # 初始化迁移仓库（仅首次需要）,这会在 backend 目录下创建 migrations 目录
 flask db init
@@ -545,7 +545,7 @@ flask db upgrade
 - 启动后端
 
   ```bash
-  cd d:/projects/todo-gcp/backend
+  cd /d/projects/todo-gcp/backend
   source venv/Scripts/activate
   
   python run.py
@@ -571,11 +571,11 @@ flask db upgrade
 
 ```bash
 # 使用 Vite 创建 React 项目
-cd d:/projects/todo-gcp
+cd /d/projects/todo-gcp
 npm create vite@latest frontend -- --template react
 
 # 安装依赖
-cd d:/projects/todo-gcp/frontend
+cd /d/projects/todo-gcp/frontend
 npm install
 # 安装 axios 用于 API 请求
 npm install axios
@@ -843,7 +843,7 @@ export default defineConfig({
 - 后端已启动
 
   ```bash
-  cd d:/projects/todo-gcp/backend
+  cd /d/projects/todo-gcp/backend
   source venv/Scripts/activate
   python run.py
   ```
@@ -851,7 +851,7 @@ export default defineConfig({
 - 启动前端
 
   ```bash
-  cd d:/projects/todo-gcp/frontend
+  cd /d/projects/todo-gcp/frontend
   npm run dev
   ```
 
@@ -1090,7 +1090,7 @@ networks:
 - 使用 Docker Compose 构建前端、后端镜像，并启动前端、后端和数据库容器。
 
   ```bash
-  cd d:/projects/todo-gcp
+  cd /d/projects/todo-gcp
   docker-compose up -d
   ```
 
@@ -1105,7 +1105,7 @@ networks:
   停止以后，需在 Docker Desktop 中删除相应的 Image 和 Volume。
 
   ```bash
-  cd d:/projects/todo-gcp
+  cd /d/projects/todo-gcp
   docker-compose down
   ```
 
@@ -1116,7 +1116,7 @@ networks:
 - 创建 Chart 目录
 
   ```bash
-  cd d:/projects/todo-gcp
+  cd /d/projects/todo-gcp
   helm create helm-chart
   ```
 
@@ -1132,7 +1132,7 @@ networks:
 - 在 `templates` 目录创建以下文件
 
   ```bash
-  cd d:/projects/todo-gcp/todo-chart/templates/
+  cd /d/projects/todo-gcp/todo-chart/templates/
   touch namespace.yaml _helpers.tpl mysql.yaml backend.yaml frontend.yaml
   ```
 
@@ -2740,7 +2740,7 @@ Git 忽略文件 `todo-gcp/.gitignore` 中添加[忽略内容](terraform-configu
 ## 初始化 Terraform
 
 ```bash
-cd d:/projects/todo-gcp/terraform
+cd /d/projects/todo-gcp/terraform
 terraform init
 ```
 
@@ -2860,7 +2860,7 @@ options:
 **遗留问题**：Argo CD 无法拉取 GAR 中的 chart
 
 ```bash
-cd d:/projects/todo-gcp/terraform
+cd /d/projects/todo-gcp/terraform
 
 # 先安装 Argo CD、Cloud SQL 及它们的依赖
 terraform apply -target=module.argocd -target=module.cloud-sql
@@ -2901,6 +2901,6 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 ## 销毁资源
 
 ```bash
-cd d:/projects/todo-gcp/terraform
+cd /d/projects/todo-gcp/terraform
 terraform destroy
 ```

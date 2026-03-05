@@ -245,6 +245,8 @@ curl --version
 ```bash
 # 创建目录
 mkdir [PATH] FOLDER_NAME
+# 创建并进入目录
+DIR=/d/projects/todo-fullstack/terraform/argocd && mkdir -p $DIR && cd $DIR
 # 删除空目录
 rmdir [PATH] FOLDER_NAME
 # 删除非空目录
@@ -275,30 +277,29 @@ mkdir a b
 - **分隔符**
 
   - `/`：Linux、Unix、Windows、macOS、Android、IOS、URL 等都支持
-  - `\`：仅 Windows 支持，且为默认
-
+  - `\`：仅 Windows PowerShell 支持，且为默认
 - **大小写敏感**
 
   - 敏感：Linux、Unix、Android、iOS
   - 不敏感：Windows、macOS
-
 - **路径符号**
-
   - 显示当前工作目录的绝对路径：`pwd`
   - 根目录：
-
+  
     - Linux：`cd /`
-    - Windows：`cd X:/`（`x` 为驱动器名称）
-
+    - Windows PowerShell
+      - `cd \`（当前磁盘根目录）
+      - `cd C:\`（C 盘根目录）
+    - Windows GitBash
+      - `cd /`（Git Bash 的虚拟根目录）
+      - `cd /c`（C 盘根目录）
   - User 目录：
-
-    - Linux：`cd ~` 或 `Home/$USER_NAME`
-    - Windows：`cd ~` 或 `C:/Users/#USER_NAME`
-
+  
+    - Linux：`cd ~` 或 `home/用户名`
+    - Windows：`cd ~` 或 `cd /c/Users/jerry` 或 `cd $HOME`
   - 当前目录：`cd .` （在当前目录操作可省略路径）
   - 上级目录：`cd ..`
   - 上一次工作目录：`cd -`
-
 - **引用文件**
 
   - 上级：`../my-image.jpg`

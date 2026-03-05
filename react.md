@@ -78,6 +78,13 @@ $FRONTEND_DIR
 
 ## 安装依赖
 
+这会发生以下变化：
+
+- 读取项目根目录的 `package.json`
+- 自动下载里面记录的所有依赖包
+- 把下载的包放到 `node_modules/` 文件夹里
+- 生成 / 更新 `package-lock.json`（锁定版本，保证所有人环境一致）
+
 ```bash
 cd $FRONTEND_DIR
 npm install
