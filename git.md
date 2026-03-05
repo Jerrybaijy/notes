@@ -227,27 +227,54 @@ git remote rm origin
 ```bash
 # 查看分支
 git branch
-# 创建分支
-git branch $BRANCH_NAME # 使用-d删除
-# 切换分支
-git checkout $BRANCH_NAME # 使用-b创建并切换新分支
-# 关联分支
-git push -u origin $BRANCH_NAME # git pull -u origin BRANCH_NAME
-# 合并分支
-git merge $BRANCH_NAME
-# 重命名目前分支
-git branch -m $BRANCH_NAME
 
-# 删除远程分支
-git push origin --delete $REMOTE_BRANCH_NAME
+# 创建分支
+git branch my-branch
+
+# 合并分支
+git merge my-branch
+
+# 重命名目前分支
+git branch -m my-branch
 ```
+
+## 切换 Branch
+
+### 切换 Branch
+
+以从 main 切换至 my-branch 分支为例
+
+```bash
+# 先推送 main 分支文件，否则未推送过的文件会被其它分支看见
+
+# 查看分支
+git branch # main
+
+# 创建并切换至 my-branch 分支
+git switch -c my-branch
+
+# 添加、提交、关联推送
+git add .
+git commit -m "初始化 my-branch 分支"
+git push -u origin my-branch
+```
+
+### `checkout` 和 `switch`
+
+`checkout` 和 `switch` 都可以管理分支
+
+| **操作功能**   | **老派做法 (checkout)**     | **现代做法 (switch)**     | **记忆点**                    |
+| -------------- | --------------------------- | ------------------------- | ----------------------------- |
+| **创建分支**   | `git branch my-branch`      | `git branch my-branch`    | `branch` 可以创建分支         |
+| **切换分支**   | `git checkout my-branch`    | `git switch my-branch`    | `switch` 就是“切换”的意思     |
+| **创建并切换** | `git checkout -b my-branch` | `git switch -c my-branch` | `-b` (branh) vs `-c` (create) |
 
 ## 关联 Branch
 
 ```bash
 # 关联分支
-git push -u origin $BRANCH_NAME
-git pull -u origin $BRANCH_NAME
+git push -u origin my-branch
+git pull -u origin my-branch
 
 # 清除关联
 git remote rm origin
@@ -260,6 +287,23 @@ git remote rm origin
 - **BRANCH_NAME**：远程分支名字
 - 设置上游分支以后，本地分支与上游分支建立关联，以后可在本分支下直接使用 `git push`
 - 每次新生成分支需将新分支与远程分支建立一次关联
+
+## 删除 Branch
+
+以删除 my-branch 分支为例
+
+```bash
+# 先推送 my-branch 分支文件，否则未推送过的文件会被其它分支看见
+
+# 先切换至其它分支
+git switch main
+
+# 删除本地分支
+git branch -d my-branch
+
+# 删除远程仓库分支
+git push origin --delete my-branch
+```
 
 # 版本控制
 
