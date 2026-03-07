@@ -85,7 +85,7 @@
               "state": {
                 "file": "software.md",
                 "mode": "preview",
-                "source": true
+                "source": false
               },
               "icon": "lucide-file",
               "title": "software"
@@ -165,7 +165,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -240,7 +241,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "a58db0977a4f857a",
   "lastOpenFiles": [
     "民族史.md",
     "git.md",

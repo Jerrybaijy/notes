@@ -604,6 +604,10 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
 
 [文本提取器](https://learn.microsoft.com/zh-cn/windows/powertoys/text-extractor)可复制图片中的文本。 可使用 `Win + Shift + T` 进行激活。
 
+- 框选图片上的文字
+- 松开左键，PowerToys 会自动识别框内的文字，并将其存入你的**剪贴板**。
+- 注意：使用 `Win + V` 查看剪贴板时，看不见这些内容。
+
 ## PowerToys Run
 
 [PowerToys Run](https://learn.microsoft.com/zh-cn/windows/powertoys/run) 可帮助立即搜索和打开应用。 可使用 `Alt + Space` 进行激活。
