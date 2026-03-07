@@ -22,6 +22,8 @@ tags:
 > [Typora 官方文档](https://support.typoraio.cn/)
 >
 > [Markdown 参考](https://support.typoraio.cn/zh/Markdown-Reference/)：Typora 的 Markdown 语法
+>
+> 本地参考文件：C:\Program Files\Typora\resources\Docs
 
 ## 环境搭建
 
@@ -68,10 +70,6 @@ tags:
 | 偏好设置 | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
 | 源码模式 | <kbd>Ctrl</kbd> + <kbd>/</kbd> |
 | 开发者工具 | <kbd>Shift</kbd> + <kbd>F12</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| ==文件== |  |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | ==编辑== |  |
 | 元数据 | `---` + <kbd>Enter</kbd> |
 | 增加 / 降低标题级别 | <kbd>Ctrl</kbd> + <kbd>+</kbd> \|<kbd>-</kbd> |
@@ -83,7 +81,6 @@ tags:
 | 移动该行 \| 列 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> \| <kbd>←</kbd> \| <kbd>→</kbd> |
 | 下方插入行 | <kbd>Ctrl</kbd> + <kbd>Enter</kbd> |
 | 删除行 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Backspace</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 | ==格式== |  |
 | 标题（Heading） | <kbd>Ctrl</kbd> + <kbd>Num</kbd> |
 | 粗体（Strong） | <kbd>Ctrl</kbd> + <kbd>B</kbd> |
@@ -91,7 +88,6 @@ tags:
 | 下划线（Underline） | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
 | 删除线（Strike） | <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>5</kbd> |
 | 清除**当前段落**或**选中段落**格式 | <kbd>Ctrl</kbd> + <kbd>\\</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
 
 ## 快捷键设定
 
@@ -109,9 +105,9 @@ tags:
 
 # Markdown
 
-此部分记录的是 [Typora 中 Markdown 语法](https://support.typoraio.cn/zh/Markdown-Reference/)的特殊之处。
+Markdown 的语法因不同的解析器或编辑器而异，Typora 使用 [GitHub Flavored Markdown](markdown.md#GFM)。
 
-Markdown 的语法因不同的解析器或编辑器而异。Typora 使用 [GitHub Flavored Markdown](https://help.github.com/articles/github-flavored-markdown/)，详见 `Markdown | 扩展语法 | GFM` 笔记。
+> [Typora 中 Markdown 语法](https://support.typoraio.cn/zh/Markdown-Reference/)：`帮助` > `Markdown Reference`
 
 Typora 仅支持 GFM 中的围栏代码块。不支持 Markdown 中的原始代码块。
 
@@ -920,64 +916,68 @@ style="display: block; margin-left: 0; margin-right: auto; width: 25%"
 
 # 表格
 
-- Typora 默认的是 Markdown 扩展语法的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
+Typora 支持 [Github 风格的 Markdown](https://guides.github.com/features/mastering-markdown/) 的表格语法。
 
-  ```html
-  <!-- 全文居中 -->
-  <table style="text-align: center;">
-    <tr>
-      <!-- 该单元格占2列 -->
-      <th colspan="2">表头1</th>
-      <th>表头2</th>
-      <th>表头3</th>
-      <th>表头4</th>
-    </tr>
-    <tr>
-      <!-- 该单元格占3行 -->
-      <td rowspan="3">内容</td>
-      <td>内容</td>
-      <td colspan="2">内容</td>
-      <td>内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td colspan="3">内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-  </table>
-  ```
+> 本地参考文件：C:\Program Files\Typora\resources\Docs
 
-- **HTML 表格模板**：
+Typora 默认的是 Markdown 扩展语法的表格，无合并单元格等复杂功能，所以使用 HTML 创建表格。
 
-  ```html
-  <table style="text-align: center;">
-    <tr>
-      <th>表头1</th>
-      <th>表头2</th>
-      <th>表头3</th>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-    <tr>
-      <td>内容</td>
-      <td>内容</td>
-      <td>内容</td>
-    </tr>
-  </table>
-  ```
+```html
+<!-- 全文居中 -->
+<table style="text-align: center;">
+  <tr>
+    <!-- 该单元格占2列 -->
+    <th colspan="2">表头1</th>
+    <th>表头2</th>
+    <th>表头3</th>
+    <th>表头4</th>
+  </tr>
+  <tr>
+    <!-- 该单元格占3行 -->
+    <td rowspan="3">内容</td>
+    <td>内容</td>
+    <td colspan="2">内容</td>
+    <td>内容</td>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td colspan="3">内容</td>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td>内容</td>
+    <td>内容</td>
+    <td>内容</td>
+  </tr>
+</table>
+```
+
+**HTML 表格模板**：
+
+```html
+<table style="text-align: center;">
+  <tr>
+    <th>表头1</th>
+    <th>表头2</th>
+    <th>表头3</th>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td>内容</td>
+    <td>内容</td>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td>内容</td>
+    <td>内容</td>
+  </tr>
+  <tr>
+    <td>内容</td>
+    <td>内容</td>
+    <td>内容</td>
+  </tr>
+</table>
+```
 
 # 学术
 
@@ -998,6 +998,8 @@ Typora 使用 LaTex 编辑公式时的几点说明：
 # 图表
 
 Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.typora.io/Draw-Diagrams-With-Markdown/)语法，使用前应先在 `偏好设置` 中启用 `图表` 功能。
+
+> 本地参考文件：C:\Program Files\Typora\resources\Docs
 
 ## Mermaid
 
@@ -1053,7 +1055,9 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.ty
 
 ## 导出
 
-Typora 自带[导出功能](https://support.typora.io/Export/)。
+在 Typora 中的导入功能和[导出功能](https://support.typora.io/Export/)由 Pandoc 提供支持。这些功能需要安装 Pandoc (≥ v2.0)。
+
+> 本地参考文件：C:\Program Files\Typora\resources\Docs
 
 ### 导出功能
 
@@ -1108,3 +1112,11 @@ Typora 自带[导出功能](https://support.typora.io/Export/)。
 
 可以在 Markdown 文件顶部使用 YAML Front Matter 嵌入元数据，详见 [`yaml | YAML Front Matter`](yaml.md#YAML Front Matter) 笔记。
 
+## 语法高亮
+
+在 <code>```{lang}</code> 中指定的语言对于 typora 选择相应的语法高亮是不区分大小写的。
+
+Typora 使用 CodeMirror 进行带有语法高亮的代码围栏，因此，如果您想要的语言在 Typora 中不受支持，您可以:
+
+1. 检查该语言是否在 <http://codemirror.net/mode/> 上受支持，如果是，请给我们发送电子邮件，我们将添加相关支持。
+2. 如果该语言在 <http://codemirror.net/mode/> 上不受支持，请查看 <https://github.com/codemirror/CodeMirror/wiki/Mode-wish-list> 以在 CodeMirror 上添加语法高亮。在 CodeMirror 支持它之后，Typora 将跟进。

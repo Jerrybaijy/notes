@@ -466,7 +466,7 @@ Markdown 中的空行仅对以下两方面有实际影响：
 
 - 围栏代码块属于 Markdown 的**扩展语法**。
 - **语法**：在代码块之前和之后的行上使用**至少三个反引号**（<code>\`\`\`</code>）。  
-  如果在前面的反引号后加上**语言名称**，即可实现**语法高亮**。
+  如果在前面的反引号后加上**语言别名**，即可实现**语法高亮**。
 
   ````markdown
   ```json
@@ -1228,9 +1228,9 @@ John Gruber 的原始设计文档中概述了 Markdown 的**基本语法**，后
 - [MultiMarkdown(opens new window)](https://fletcherpenney.net/multimarkdown/)
 - [R Markdown](https://rmarkdown.rstudio.com/)
 
-## [GFM](https://github.github.com/gfm/)
+## GFM
 
-**GFM**（**G**itHub **F**lavored **M**arkdown），是标准 Markdown 的一种扩展。
+[**GFM**](https://github.github.com/gfm/)（**G**itHub **F**lavored **M**arkdown），是标准 Markdown 的一种扩展。
 
 ## Markdown 处理器
 

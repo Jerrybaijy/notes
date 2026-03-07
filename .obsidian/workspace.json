@@ -36,34 +36,6 @@
             }
           },
           {
-            "id": "7e3bb5e7b086674f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "software.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "software"
-            }
-          },
-          {
-            "id": "9105c648c0e676f3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "http.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "http"
-            }
-          },
-          {
             "id": "f8997bab5318f5c3",
             "type": "leaf",
             "state": {
@@ -90,9 +62,37 @@
               "icon": "lucide-file",
               "title": "windows"
             }
+          },
+          {
+            "id": "2d229125e5b2daba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "民族史.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "民族史"
+            }
+          },
+          {
+            "id": "a58db0977a4f857a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "software.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "software"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -124,7 +124,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "路径",
+                "query": "Pandoc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git.md",
+                "file": "software.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "git 的大纲"
+              "title": "software 的大纲"
             }
           },
           {
@@ -240,15 +240,16 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "民族史.md",
+    "git.md",
     "windows.md",
     "powershell.md",
     "openclaw.md",
     "shell.md",
     "todo-gcp.md",
     "todo-fullstack.md",
-    "git.md",
     "clawhub.md",
     "software.md",
     "python.md",
@@ -270,7 +271,6 @@
     "中国史支线.md",
     "宗教史.md",
     "地域史.md",
-    "朝鲜半岛.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
