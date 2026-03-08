@@ -92,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -141,13 +141,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "software.md",
+                "file": "git.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "software 的大纲"
+              "title": "git 的大纲"
             }
           },
           {
@@ -165,8 +165,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -241,8 +240,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "a58db0977a4f857a",
+  "active": "f8997bab5318f5c3",
   "lastOpenFiles": [
+    "assets/image-20260308094729070.png",
+    "assets/image-20260308094623249.png",
+    "software.md",
     "民族史.md",
     "git.md",
     "windows.md",
@@ -252,7 +254,6 @@
     "todo-gcp.md",
     "todo-fullstack.md",
     "clawhub.md",
-    "software.md",
     "python.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
@@ -271,7 +272,6 @@
     "中国史主线.md",
     "中国史支线.md",
     "宗教史.md",
-    "地域史.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
@@ -286,7 +286,6 @@
     "其它格式未转换/简历/Andyshao_CV_Splunk_202404.docx",
     "其它格式未转换/简历",
     "assets/image-20251206152340962.png",
-    "assets/image-20251128210905428.png",
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "未命名 1.canvas",
