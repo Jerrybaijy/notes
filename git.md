@@ -117,7 +117,7 @@ tags:
 - 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
 
 - 安装时依次注意
-  - 尽量选择默认的 C 盘安装位置，否则 Windows Terminal 需要额外[特殊配置](windows-terminal.md#添加终端)。
+  - 尽量选择默认的 C 盘安装位置，否则 Windows Terminal 需要额外[特殊配置](win-terminal.md#添加终端)。
   - 将 `Open Git UI Here` 从上下文菜单中取消勾选
   - 选择 `Add a Git Bash Profile to Windows Terminal`
   - `Override the default branch name for new repositories`：选择 `main` 分支

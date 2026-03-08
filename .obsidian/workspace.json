@@ -64,17 +64,45 @@
             }
           },
           {
-            "id": "2d229125e5b2daba",
+            "id": "11a438647a26280a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "民族史.md",
+                "file": "win-scoop.md",
                 "mode": "preview",
                 "source": true
               },
               "icon": "lucide-file",
-              "title": "民族史"
+              "title": "win-scoop"
+            }
+          },
+          {
+            "id": "818c3beddb6b9bfa",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "win-powershell.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "win-powershell"
+            }
+          },
+          {
+            "id": "77001bc1f5e21d71",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "win-terminal.md",
+                "mode": "preview",
+                "source": true
+              },
+              "icon": "lucide-file",
+              "title": "win-terminal"
             }
           },
           {
@@ -92,7 +120,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -124,7 +152,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Pandoc",
+                "query": "tag:应用科学",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -141,13 +169,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git.md",
+                "file": "win-terminal.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "git 的大纲"
+              "title": "win-terminal 的大纲"
             }
           },
           {
@@ -159,13 +187,14 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "fram"
+                "searchQuery": "实验"
               },
               "icon": "lucide-tags",
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -185,7 +214,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "openclaw.md",
+                "file": "win-terminal.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,7 +224,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "openclaw 的反向链接列表"
+              "title": "win-terminal 的反向链接列表"
             }
           },
           {
@@ -240,15 +269,20 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "77001bc1f5e21d71",
   "lastOpenFiles": [
+    "win-powershell.md",
+    "win-terminal.md",
+    "software.md",
+    "git.md",
+    "win-scoop.md",
+    "windows.md",
+    "excel.md",
+    "word.md",
+    "ppt.md",
     "assets/image-20260308094729070.png",
     "assets/image-20260308094623249.png",
-    "software.md",
     "民族史.md",
-    "git.md",
-    "windows.md",
-    "powershell.md",
     "openclaw.md",
     "shell.md",
     "todo-gcp.md",
@@ -268,10 +302,6 @@
     "node-js.md",
     "linux.md",
     "web.md",
-    "十字军东征.md",
-    "中国史主线.md",
-    "中国史支线.md",
-    "宗教史.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
@@ -285,7 +315,6 @@
     "其它格式未转换/简历/Jinyu Bai.docx",
     "其它格式未转换/简历/Andyshao_CV_Splunk_202404.docx",
     "其它格式未转换/简历",
-    "assets/image-20251206152340962.png",
     "其它格式未转换/obsidian-themes/标题实验.css",
     "其它格式未转换/obsidian-themes/user-test.css",
     "未命名 1.canvas",

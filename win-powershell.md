@@ -1,10 +1,9 @@
 ---
-title: powershell
+title: win-powershell
 author: Jerry.Baijy
 tags:
   - 应用科学
   - it
-  - 微软
   - windows
 ---
 
@@ -37,5 +36,13 @@ Get-ExecutionPolicy -List
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 # 长期允许
 Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+```
+
+## 跨环境使用
+
+在 Git Bash 中使用启动一个新的 PowerShell 进程来执行引号内的指令
+
+```bash
+powershell -Command "<powershell-command>"
 ```
 

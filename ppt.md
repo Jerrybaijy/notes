@@ -6,7 +6,6 @@ tags:
   - it
   - software
   - 办公
-  - 微软
 ---
 
 # PPT 基础

@@ -1,5 +1,5 @@
 ---
-title: windows-terminal
+title: win-terminal
 author: Jerry.Baijy
 tags:
   - 应用科学
@@ -55,7 +55,6 @@ Microsoft Store 安装
   ```
 
   **在以上代码中**：
-
   - **`guid`**：唯一标识本命令行配置，可以使用[在线 guid 工具](http://tool.pfan.cn/guidgen)随机生成一个和 `list` 中其他配置不一样的 `guid` 即可。
   - **`name`**：本命令行配置的名字，会显示在菜单中。
   - **`commandline`**：表示如何启动一个命令行，前面是 Git Bash 的安装目录。
@@ -80,10 +79,10 @@ Microsoft Store 安装
   export HISTFILE=~/.bash_history
   export HISTFILESIZE=1000
   export HISTSIZE=1000
-  
+
   # 追加历史记录而不是覆盖
   shopt -s histappend
-  
+
   # 实时更新历史记录
   PROMPT_COMMAND="history -a;$PROMPT_COMMAND"
   ```

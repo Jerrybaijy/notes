@@ -5,7 +5,6 @@ tags:
   - 应用科学
   - it
   - os
-  - 微软
 ---
 
 # Windows 基础
@@ -32,13 +31,13 @@ Chocolatey 是一个功能强大的 Windows 包管理工具。
 - **验证安装**
 
   ```bash
-  choco --version
+  choco -v
   ```
 
 - **使用**
 
   ```bash
-  choco install APPLICATION
+  choco install <app>
   ```
 
 # 快捷键
