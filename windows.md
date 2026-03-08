@@ -18,27 +18,14 @@ tags:
 - **路径分隔符**：PowerShell 默认支持反斜杠 `\`，但绝大多数时候也支持正斜杠 `/`
 - 其它详见 [Shell 笔记](shell.md#路径)
 
-## Chocolatey
+## 包管理器
 
-Chocolatey 是一个功能强大的 Windows 包管理工具。
-
-- **安装**：应该以管理员身份运行 PowerShell 安装，但可以在 Bash 中使用。
-
-  ```powershell
-  Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.SecurityProtocolType]::Tls12; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-  ```
-
-- **验证安装**
-
-  ```bash
-  choco -v
-  ```
-
-- **使用**
-
-  ```bash
-  choco install <app>
-  ```
+- **winget**：Windows 原生，和手动安装软件的区别就是不用一直点下一步，静默安装。
+- [**scoop**](win-scoop.md)
+  - 社区维护
+  - **不污染系统**：默认安装在用户目录（`~/scoop`）绿色版本便携，不产生注册表，卸载干净。
+  - 专注于开发者工具。
+- [**Chocolatey**](win-chocolatey.md)：社区维护，历史最悠久。
 
 # 快捷键
 
@@ -675,10 +662,10 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
   ```bash
   # 运行 WSL
   wsl.exe
-
+  
   # 升级 WSL
   wsl.exe --update
-
+  
   # 查看已安装的 Linux 应用或分发版本
   wsl -l
   ```

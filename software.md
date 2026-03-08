@@ -451,10 +451,10 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   ```bash
   # 查看 document
   db.$COLLECTION_NAME.find()
-
+  
   # 操作第一个 document 用'~One'
   # 操作所有 document 用'~Many'
-
+  
   # 创建 Collection / document
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
   # 修改 document
@@ -501,7 +501,7 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
 
 # Pandoc
 
-- **Pandoc** 是一个文档转换工具，支持多种文档格式之间的转换。
+**Pandoc** 是一个文档转换工具，支持多种文档格式之间的转换。
 
 ## 环境搭建
 
@@ -561,52 +561,6 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
   ```bash
   podman --version
   ```
-
-# PowerToys
-
-[PowerToys](https://learn.microsoft.com/zh-cn/windows/powertoys/) 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。
-
-**安装方法**：
-
-- [在 GitHub 上下载](https://github.com/microsoft/PowerToys)
-- 或通过 Microsoft Store 搜索 “PowerToys” 安装最新版。
-- 安装后，会在系统托盘显示一个 PowerToys 图标。
-- [官方文档](https://learn.microsoft.com/zh-cn/windows/powertoys/)
-
-## PowerRename
-
-[PowerRename](https://learn.microsoft.com/zh-cn/windows/powertoys/powerrename) 用于执行批量重命名、搜索和替换文件名称。
-
-- 右键单击 File Explorer 中的一个或多个选定文件，并选择 **使用 PowerRename 重命名**。
-- 可以结合正则表达式批量修改文件名。
-
-## File Locksmith
-
-[File Locksmith](https://learn.microsoft.com/zh-cn/windows/powertoys/file-locksmith) 是一个 Windows shell 扩展，用于检查文件正在被哪些进程使用。
-
-- 有时候想删除一个文件，系统提示正在使用中，无法删除。
-- 右键单击 File Explorer 中的一个或多个选定文件，并选择**使用 Locksmith 解锁**。
-- 可结束进程。
-
-## Always On Top
-
-[Always On Top](https://learn.microsoft.com/zh-cn/windows/powertoys/always-on-top) 可将窗口固定在其他窗口之上。可使用 `Win + Ctrl + T` 进行激活。
-
-## 颜色选取器
-
-[颜色选取器](https://learn.microsoft.com/zh-cn/windows/powertoys/color-picker)可以提取屏幕中的颜色色值，可使用 `Win + Shift + C` 进行激活。
-
-## 文本提取器
-
-[文本提取器](https://learn.microsoft.com/zh-cn/windows/powertoys/text-extractor)可复制图片中的文本。 可使用 `Win + Shift + T` 进行激活。
-
-- 框选图片上的文字
-- 松开左键，PowerToys 会自动识别框内的文字，并将其存入你的**剪贴板**。
-- 注意：使用 `Win + V` 查看剪贴板时，看不见这些内容。
-
-## PowerToys Run
-
-[PowerToys Run](https://learn.microsoft.com/zh-cn/windows/powertoys/run) 可帮助立即搜索和打开应用。 可使用 `Alt + Space` 进行激活。
 
 # Prometheus
 
@@ -783,13 +737,13 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
   ```sql
   -- 退出 SQLite 交互界面
   .exit
-
+  
   -- 查看所有数据库
   .database
-
+  
   -- 查看数据库中的所有表
   .tables
-
+  
   -- 查看某个表的结构
   .schema tbl1
   ```
