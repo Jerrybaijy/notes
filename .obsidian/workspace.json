@@ -271,9 +271,9 @@
   },
   "active": "77001bc1f5e21d71",
   "lastOpenFiles": [
-    "win-powershell.md",
-    "win-terminal.md",
     "software.md",
+    "win-terminal.md",
+    "win-powershell.md",
     "git.md",
     "win-scoop.md",
     "windows.md",
