@@ -5,7 +5,6 @@ tags:
   - 应用科学
   - it
   - software
-  - 实验
 ---
 
 # 通用

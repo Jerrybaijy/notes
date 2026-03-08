@@ -6,7 +6,6 @@ tags:
   - it
   - software
   - terminal
-  - 实验
 ---
 
 # Overview
