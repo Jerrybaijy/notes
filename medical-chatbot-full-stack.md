@@ -2,7 +2,6 @@
 title: medical-chatbot-full-stack
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - projects
   - ai

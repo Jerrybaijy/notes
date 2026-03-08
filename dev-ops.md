@@ -2,7 +2,6 @@
 title: dev-ops
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -141,12 +140,12 @@ oci://registry-1.docker.io/jerrybaijy
 - [GitLab](<gitlab.md#Code Repo>)
 - Bitbucket
 - Google
-  -  [Repositories](gcp-cloud-build.md#Repositories) (链接到其它代码托管平台)
+  - [Repositories](gcp-cloud-build.md#Repositories) (链接到其它代码托管平台)
   - Cloud Source Repositories (新用户停用)
   - Secure Source Manager（$1000/月）
 - AWS CodeCommit
 - Azure Repos
-- Gitee  (码云)
+- Gitee (码云)
 - Coding (腾讯云)
 - Codeup (阿里云)
 

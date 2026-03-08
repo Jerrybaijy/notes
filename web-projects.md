@@ -2,7 +2,6 @@
 title: web-projects
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - web
   - projects
@@ -16,7 +15,6 @@ tags:
 ## 创建数据库和表结构
 
 - 使用终端创建
-
   - 创建数据库：`unicom`
   - 创建数据表：`admin`
   - 按格式先添加几条数据

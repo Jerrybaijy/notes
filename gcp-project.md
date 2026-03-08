@@ -2,7 +2,6 @@
 title: gcp-project
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud-computing
   - gcp
@@ -11,7 +10,7 @@ tags:
 
 # Overview
 
-[**Project**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn#projects) 资源是 GCP [资源层次结构](<gcp.md#资源层次结构>)中最基础的实体，是所有服务资源的“容器”，是一种 Global 资源。
+[**Project**](https://docs.cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy?hl=zh-cn#projects) 资源是 GCP [资源层次结构](gcp.md#资源层次结构)中最基础的实体，是所有服务资源的“容器”，是一种 Global 资源。
 
 在 GCP 中，任何服务资源都必须归属于某个项目。除您使用[共享 VPC](https://docs.cloud.google.com/vpc/docs/shared-vpc?hl=zh-cn) 或 [VPC 网络对等互连](https://docs.cloud.google.com/vpc/docs/vpc-peering?hl=zh-cn)，否则一个项目无法访问其他项目的资源。
 
@@ -33,7 +32,7 @@ tags:
 
 ## 准备工作
 
-[GCP 准备工作](<gcp.md#准备工作>)已完成
+[GCP 准备工作](gcp.md#准备工作)已完成
 
 ## 创建项目
 
@@ -144,8 +143,6 @@ gcloud projects create project-jerry-111111 \
 
 ### 准备工作
 
-
-
 ### `terraform.tf`
 
 ```
@@ -248,7 +245,7 @@ variable "gcp_billing_account_id" {
 
 ## 语法
 
-> [Project  Reference](https://docs.cloud.google.com/sdk/gcloud/reference/projects)
+> [Project Reference](https://docs.cloud.google.com/sdk/gcloud/reference/projects)
 
 gcloud projects [$COMMAND](https://docs.cloud.google.com/sdk/gcloud/reference/projects#COMMAND) [[FLAGS](https://docs.cloud.google.com/sdk/gcloud/reference/projects#GCLOUD-WIDE-FLAGS)]
 

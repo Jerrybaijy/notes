@@ -2,7 +2,6 @@
 title: node-js
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - node-js
   - javascript
@@ -116,4 +115,3 @@ http-server -p 8080
 ## 特殊版本安装
 
 详见 [nvm](#nvm) 工具
-

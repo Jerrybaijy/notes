@@ -2,7 +2,6 @@
 title: argo-cd
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - dev-ops
@@ -33,7 +32,7 @@ tags:
   ```bash
   # 创建 Argo CD 命名空间
   kubectl create namespace argocd
-  
+
   # 安装 Argo CD
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   ```
@@ -49,10 +48,10 @@ tags:
   ```bash
   # 本地：转发端口到本地（临时），访问：127.0.0.1:8080
   kubectl port-forward svc/argocd-server 8080:443 -n argocd
-  
+
   # 公网
   kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
-  
+
   # 查看网络服务
   kubectl get svc -n argocd
   ```
@@ -61,19 +60,17 @@ tags:
 
   ```bash
   kubectl get secret argocd-initial-admin-secret -n argocd -o jsonpath="{.data.password}" | base64 -d
-  
+
   # 用户名：admin
   # 本地上次密码：dAlsKbgZa4FvVT6V
   # GCP 上次密码：BKgY5d5oEQCoMNFx
   ```
 
 - 本地访问
-
   - 端口转发以后，当前终端要保持打开，否则访问不到。
   - 访问地址：https://127.0.0.1:8080
 
 - 公网访问
-
   - 需要科学上网
   - 访问地址：http://$EXTERNAL-IP
 
@@ -132,7 +129,6 @@ cd d:/projects/my-project/argo-cd
 kubectl delete -f my-app.yaml
 ```
 
-
 ## 删除 Argo CD
 
 删除 ArgoCD 自定义资源定义（CRD）
@@ -157,7 +153,6 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 ## 使用声明式清单安装 Argo CD
 
 - 准备工作
-
   - Docker 已安装
 
   - Kubectl 已安装
@@ -168,7 +163,7 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
   ```bash
   # 创建 Argo CD 命名空间
   kubectl create namespace argocd
-  
+
   # 安装 Argo CD
   kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
   ```
@@ -229,7 +224,7 @@ output "sensitive_outputs" {
 
 ### `providers.tf`
 
-根模块 provider 文件  `terraform/providers.tf`
+根模块 provider 文件 `terraform/providers.tf`
 
 ```hcl
 provider "helm" {
@@ -456,9 +451,9 @@ variable "workload_identity_gsa_email" {
 # 为 Workload Identity GSA 分配角色
 resource "google_project_iam_member" "workload_identity_roles" {
   for_each = toset([
-    
+
     # ... 其它角色 ...
-    
+
     "roles/artifactregistry.reader" # Artifact Registry Reader
   ])
 
@@ -479,11 +474,11 @@ resource "google_service_account_iam_member" "argocd_repo_server_binding" {
 
 ```hcl
 # 若想让 Argo CD 从 GKE 集群访问 GAR，则需要:
-  
+
   # Argo CD 侧
     # 在安装 Argo CD 时，为 argocd-repo-server KSA 添加注解，绑定到 Workload Identity GSA。
     # 创建 Argo CD 访问 GAR 的 Secret
-  
+
   # GKE 侧
     # 为集群开启 Workload Identity
     # 创建 Workload Identity GSA 并为其分配 Artifact Registry Reader 角色
@@ -698,29 +693,29 @@ spec:
 ## 常规写法
 
 ```yaml
-apiVersion: argoproj.io/v1alpha1  # Argo CD API 版本
-kind: Application                 # 自定义资源类型
-metadata:                         # 应用程序元数据
-  name: my-app                    # 应用程序名称
-  namespace: argocd               # Argo CD 所在命名空间
-  finalizers:                     # 终结器
+apiVersion: argoproj.io/v1alpha1 # Argo CD API 版本
+kind: Application # 自定义资源类型
+metadata: # 应用程序元数据
+  name: my-app # 应用程序名称
+  namespace: argocd # Argo CD 所在命名空间
+  finalizers: # 终结器
     - resources-finalizer.argocd.argoproj.io # 前台级联删除
-spec:                             # 规约
+spec: # 规约
   project: default
-  source:                         # 仓库源
+  source: # 仓库源
     repoURL: registry.gitlab.com/jerrybai/my-project # OCI Registry
     targetRevision: "99.99.99-latest" # Chart 版本号
-    chart: my-chart                   # Chart 名称
+    chart: my-chart # Chart 名称
   destination:
     server: https://kubernetes.default.svc # 目标集群 API 地址
-    namespace: my-ns                        # 资源所在命名空间
-  syncPolicy:         # 同步策略
-    automated:        # 自动同步配置
-      selfHeal: true  # 自愈
-      prune: true     # 修剪
-    syncOptions:                   # 同步选项
-      - CreateNamespace=true       # 自动创建命名空间
-      - ApplyOutOfSyncOnly=true    # 仅同步未同步的资源，而不是所有资源
+    namespace: my-ns # 资源所在命名空间
+  syncPolicy: # 同步策略
+    automated: # 自动同步配置
+      selfHeal: true # 自愈
+      prune: true # 修剪
+    syncOptions: # 同步选项
+      - CreateNamespace=true # 自动创建命名空间
+      - ApplyOutOfSyncOnly=true # 仅同步未同步的资源，而不是所有资源
 ```
 
 ## 字段
@@ -812,7 +807,6 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
 ## K8s 原生部署应用
 
 - 准备工作
-
   - Argo CD 已安装并初始化
   - 源代码开发完成，已将引用的 Image 推送至镜像仓库。
 
@@ -826,12 +820,11 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
   ```
 
 - 在 `k8s` 目录创建以下 K8s 配置文件：
-
   - `namespace.yaml`：应用的命名空间
   - `mysql.yaml`：数据库
   - `backend.yaml`：后端
   - `frontend.yaml`：前端
-  
+
 - 在 `argo-cd` 目录创建 Argo CD 的 CR 配置文件 `my-app.yaml`
 
   ```yaml
@@ -1094,9 +1087,8 @@ resource "helm_release" "argocd" {
       name  = "repoServer.serviceAccount.annotations.iam\\.gke\\.io/gcp-service-account"
       value = google_service_account.workload_identity.email
     },
-    
+
     # ... 其它配置 ...
   ]
 }
 ```
-

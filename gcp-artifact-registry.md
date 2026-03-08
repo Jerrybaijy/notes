@@ -2,7 +2,6 @@
 title: gcp-artifact-registry
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -56,6 +55,7 @@ oci://asia-east2-docker.pkg.dev/project-60addf72-be9c-4c26-8db/my-docker-repo
 ## 创建 Docker Repository
 
 点击 `Create repository`
+
 - **Name**：Docker Repository 名称
 - **Format**：Docker Repository 类型
 - **Region**：Docker Repository 区域
@@ -440,4 +440,3 @@ helm uninstall my-chart
 ```bash
 gcloud artifacts repositories delete my-docker-repo --location=asia-east2
 ```
-

@@ -2,7 +2,6 @@
 title: gcp
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - cloud-computing
@@ -45,12 +44,12 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 ## 管理 GCP 服务资源
 
 - 使用 Gcloud CLI 管理 GCP 服务资源
-- [使用 Terraform 管理 GCP 服务资源](<terraform.md#Quickstart>)
+- [使用 Terraform 管理 GCP 服务资源](terraform.md#Quickstart)
 
 ## 删除 GCP Project
 
 - 使用 Gcloud CLI 删除 GCP Project
-- [使用 Terraform 删除 GCP Project](<gcp-project.md#Quickstart>)
+- [使用 Terraform 删除 GCP Project](gcp-project.md#Quickstart)
 
 # Resource Manager
 
@@ -105,7 +104,7 @@ Organization
       --subnet-mode=auto \
       --bgp-routing-mode=$DYNAMIC_ROUTING_MODE \
       --mtu=$MTU
-  
+
   # 删除
   gcloud compute networks delete $VPC_NETWORK_NAME
   ```
@@ -137,7 +136,7 @@ Organization
       --network my-vpc-network-1 \
       --asn 16550 \
       --region us-central1
-  
+
   gcloud compute routers create my-router-2 \
       --network my-vpc-network-1 \
       --asn 16550 \
@@ -154,7 +153,7 @@ Organization
       --edge-availability-domain availability-domain-1 \
       --edge-availability-domain $AVAILABILITY_DOMAIN \
       --admin-enabled
-  
+
   # 删除
   gcloud compute interconnects attachments delete $ATTACHMENT_NAME --region=us-central1
   ```
@@ -166,7 +165,7 @@ Organization
       --router my-router-1 \
       --edge-availability-domain availability-domain-1 \
       --admin-enabled
-  
+
   gcloud compute interconnects attachments partner create my-attachment-2 \
       --region us-central1 \
       --router my-router-2 \
@@ -179,7 +178,7 @@ Organization
   ```bash
   gcloud compute interconnects attachments describe my-attachment-1 \
       --region us-central1
-  
+
   gcloud compute interconnects attachments describe my-attachment-2 \
   	--region us-central1
   ```
@@ -197,7 +196,7 @@ Organization
   gcloud compute interconnects attachments partner update my-attachment-1 \
       --region us-central1 \
       --admin-enabled
-  
+
   gcloud compute interconnects attachments partner update my-attachment-2 \
       --region us-central1 \
       --admin-enabled

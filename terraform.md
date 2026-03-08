@@ -2,7 +2,6 @@
 title: terraform
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud
   - iac
@@ -29,20 +28,16 @@ tags:
 
 - [创建组织](https://developer.hashicorp.com/terraform/tutorials/cloud-get-started/cloud-sign-up#create-an-organization)
 
-- [Terraform 安装](<terraform-cli.md#Install>)已完成
+- [Terraform 安装](terraform-cli.md#Install)已完成
 
 - [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
-  
   - 完成 [GCP 准备工作](gcp.md#准备工作)
-  
   - [创建 GCP Project](<gcp-project.md#创建 GCP 项目>)
-  
   - [为 Terraform 授权](gcp-gcloud-cli.md#为其它应用授权)
-  
+
     ```bash
     gcloud auth application-default login
     ```
-
 
 ## 创建 Terraform 目录
 
@@ -198,4 +193,3 @@ gcloud container clusters get-credentials todo-cluster \
 cd /d/projects/my-project/terraform
 terraform destroy
 ```
-

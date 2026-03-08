@@ -2,7 +2,6 @@
 title: html
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - html
   - code-language
@@ -177,12 +176,10 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 
 - **属性**：存在于开始标签内
 - **属性名称**：本例为 `class`
-
   - 与元素名称之间用 `空格` 分隔
   - 多个属性之间用 `空格` 分隔
 
 - **属性值**：本例为 `editor-note`
-
   - 通常使用双引号 `"` 包围属性值，其它详见[不带引号的属性值语法](https://html.spec.whatwg.org/multipage/syntax.html#attributes-2)。
   - 多个属性值之间用 `空格` 分隔
 
@@ -296,18 +293,15 @@ article.dataset.indexNumber; // "5"
 [`id` ](https://developer.mozilla.org/zh-CN/docs/Web/API/Element/id) 属性用于为元素指定唯一的标识符，属于全局属性。
 
 - **唯一性**
-
   - 每个 HTML 文档中的 `id` 属性值必须是唯一的，不同元素之间不能有相同的 `id` 值。
 
 - **命名规则**
-
   - 必须以字母（a-z，A-Z）开头。
   - 可以包含字母、数字（0-9）、连字符（-）、下划线（\_）和句点（.）。
   - 区分大小写。
   - 不应包含空格和其他特殊字符。
 
 - **应用**
-
   - 在 CSS 中通过 `#id` 方法，访问和操作元素。
   - 在 JS 中 通过 `document.getElementById` 方法，访问和操作元素。
 
@@ -510,7 +504,6 @@ console.log("External JavaScript file");
 ```
 
 - **基本结构包含：**
-
   - [**文档类型**](https://developer.mozilla.org/zh-CN/docs/Glossary/Doctype)：`<!DOCTYPE html>`
   - [**根元素**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/html)：`<html>`
   - [**元数据分区**](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element#文档元数据)：`<head>`
@@ -1203,7 +1196,9 @@ footer {
   height: 120px;
   align-items: center;
   justify-content: center;
-  font: bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script", fantasy;
+  font:
+    bold calc(1em + 2 * (100vw - 120px) / 100) "Dancing Script",
+    fantasy;
   color: #ff0083;
   text-shadow: #000 2px 2px 0.2rem;
 }
@@ -1274,7 +1269,9 @@ hgroup p {
 
 ```css
 header {
-  font: bold 7vw Arial, sans-serif;
+  font:
+    bold 7vw Arial,
+    sans-serif;
 }
 ```
 
@@ -3471,7 +3468,6 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 - 使用 `type="radio"` 类型的 `<input>` 元素创建**单选框**。
 - 使用 `name` 属性
-
   - 作为数据提交时键值对的**键**。
   - 将单选框分组在一起，确保用户只能从同一组中选择一个选项。
 

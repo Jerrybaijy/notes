@@ -2,7 +2,6 @@
 title: pinecone
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - database
   - vector-database

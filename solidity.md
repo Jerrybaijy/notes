@@ -2,7 +2,6 @@
 title: solidity
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - solidity
   - code-language

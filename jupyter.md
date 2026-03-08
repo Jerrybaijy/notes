@@ -2,7 +2,6 @@
 title: jupyter
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - python
   - software

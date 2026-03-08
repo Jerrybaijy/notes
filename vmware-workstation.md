@@ -2,7 +2,6 @@
 title: vmware-workstation
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - vm
@@ -19,7 +18,6 @@ tags:
 - [官网下载 `Vmware workstation`](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
 - 主板最好开启 `CSM` 功能，否则 `Linux` 可能进不去系统。
 - 以下是从网上找的 VMware Workstation Pro 密钥
-
   - 17 秘钥：`MC60H-DWHD5-H80U9-6V85M-8280D`
   - 15.5 秘钥：`YG5H2-ANZ0H-M8ERY-TXZZZ-YKRV8`
 
@@ -60,7 +58,6 @@ tags:
   <img src="assets/image-20250215043201031.png" alt="image-20250215043201031" style="zoom:50%;" />
 
 - 进入固件选择 CD 启动
-
   - 下拉 `电源` 图标 > `打开电源时进入固件`
   - 选择代表 CD 的选项启动进入 CD 启动
 
@@ -76,7 +73,6 @@ tags:
 ## U 盘安装系统
 
 - **挂载 U 盘**
-
   - `编辑虚拟机设置` > `添加硬盘` > `NVMe` > `使用物理磁盘` > 设备选最后一个
 
     <img src="assets/image-20250215044323641.png" alt="image-20250215044323641" style="zoom:50%;" />
@@ -85,7 +81,6 @@ tags:
   - `新添加的 U 盘` > `高级` > 勾选 `独立`，这样 U 盘不会被快照还原
 
 - 进入 BIOS 选择 U 盘启动
-
   - `菜单栏` > `虚拟机` > `电源` > 打开电源时进入固件
   - 选择代表 U 盘的选项启动进入 U 盘启动
 
@@ -95,7 +90,6 @@ tags:
 ## 安装 Mac OS
 
 - 由于 VMware 不自带 Mac OS 系统选项，所以先要添加 `unlocker.exe` 文件。
-
   - 网盘或仓库下载 `unlocker.exe` 文件。
   - 安装及破解完成以后，关闭科学上网，将 VMware 进程全部结束（注意会自动启动），管理员运行 `unlocker.exe` 文件，读取完成以后，虚拟机系统选项即可看见 Mac OS 系统选项。
 
@@ -111,7 +105,6 @@ tags:
 - 选完语言不要点继续，在空白处单击，客户机屏幕上方给虚拟机分区：`实用工具` > `磁盘工具` > 选择 VM 开头的磁盘 > `抹掉`；
 - `关闭磁盘工具` > `继续`；正常安系统，等进度条走完，开始配置电脑。
 - 网络配置
-
   - 主机：`网络和 Internet` > `高级网络设置` > 选择主机在用的网络，如 `以太网` > `更多适配器选项` > `共享` > `允许其它网络用户通过此计算机的internet连接来连接` > `家庭网络连接` 选择 `VMware net1`；
 
     <img src="assets/image-20250114184028232.png" alt="image-20250114184028232" style="zoom:50%;" />

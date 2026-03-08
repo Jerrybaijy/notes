@@ -2,7 +2,6 @@
 title: helm
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - dev-ops
@@ -35,7 +34,7 @@ helm lint <chart-dir>
 
 1. 安装 Helm
 2. 创建 Chart
-3. 配置  Chart
+3. 配置 Chart
 4. 使用本地 Chart 目录部署 Release
 5. 封装 Chart
 6. 使用本地封装的 Chart 包部署 Release
@@ -58,7 +57,7 @@ helm lint <chart-dir>
 - [Windows 安装](https://helm.sh/zh/docs/intro/install#from-chocolatey-windows)
 
   以管理员身份运行 Git Bash，使用 Chocolatey 包管理器安装
-  
+
   ```bash
   choco install kubernetes-helm
   ```
@@ -216,7 +215,6 @@ rm ~/.config/helm/repositories.yaml
   ```
 
 - 配置 Chart
-
   - 编辑模板 `mychart/templates`
   - 编辑 values `mychart/values.yaml`
 
@@ -372,7 +370,7 @@ helm uninstall my-release
 
   ```yaml
   # values.yaml
-  
+
   global:
     namespace: my-ns
   ```
@@ -381,8 +379,8 @@ helm uninstall my-release
 
   ```yaml
   # templates/example.yaml
-  
-  namespace: {{ .Values.global.namespace }}
+
+  namespace: { { .Values.global.namespace } }
   ```
 
 # `namespace.yaml`
@@ -391,9 +389,9 @@ helm uninstall my-release
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .Values.global.namespace }}
+  name: { { .Values.global.namespace } }
   labels:
-    name: {{ .Values.global.namespace }}
+    name: { { .Values.global.namespace } }
 ```
 
 # `_helpers.tpl`
@@ -404,7 +402,7 @@ metadata:
 
   ```
   {{/* _helpers.tpl */}}
-  
+
   {{/* 定义 Frontend 组件的完整名称 */}}
   {{- define "my-chart.frontend.fullname" }}
   {{- printf "%s-frontend" (include "my-chart.fullname" .) | trunc 63 | trimSuffix "-" }}
@@ -415,8 +413,8 @@ metadata:
 
   ```yaml
   # templates/example.yaml
-  
-  name: {{ include "my-chart.frontend.fullname" . }}
+
+  name: { { include "my-chart.frontend.fullname" . } }
   ```
 
 # 模板文件

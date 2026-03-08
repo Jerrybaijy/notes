@@ -2,7 +2,6 @@
 title: win-powershell
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - windows
 ---
@@ -45,4 +44,3 @@ Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```bash
 powershell -Command "<powershell-command>"
 ```
-

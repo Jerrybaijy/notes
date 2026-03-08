@@ -2,7 +2,6 @@
 title: dom
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - javascript
   - code-language
@@ -95,7 +94,6 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
   ```
 
   **解释**：
-
   - `console.log(divElements);`：打印一个伪数组
 
   - `console.log(divElements[0]);`：通过索引数组，打印元素
@@ -171,10 +169,10 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
   ```javascript
   // 添加至父节点顶部
   父节点.prepend(子节点);
-  
+
   // 添加至父节点尾部
   父节点.append(子节点);
-  
+
   // 将新节点插入至父节点的某个子节点之前
   父节点.insertBefore(新节点, 参考节点);
   ```
@@ -194,13 +192,13 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
   let childTag3 = document.getElementById("child3");
   let childTagx = document.createElement("li");
   childTagx.innerText = "x";
-  
+
   // 添加至父节点顶部
   parentTag.prepend(childTagx);
-  
+
   // 添加至父节点尾部
   parentTag.append(childTagx);
-  
+
   // 将新节点插入至父节点的某个子节点之前
   parentTag.insertBefore(childTagx, childTag2);
   ```
@@ -212,7 +210,7 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
   ```javascript
   // 删除节点本身
   节点.remove;
-  
+
   // 删除父节点的子节点
   父节点.removeChild(子节点);
   ```
@@ -230,10 +228,10 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
   let childTag1 = document.getElementById("child1");
   let childTag2 = document.getElementById("child2");
   let childTag3 = document.getElementById("child3");
-  
+
   // 删除节点本身
   childTag1.remove();
-  
+
   // 删除父节点的子节点
   parentTag.removeChild(childTag3);
   ```
@@ -277,20 +275,20 @@ JavaScript 通过选择器获取 HTML 元素，返回元素对象，或者由元
 
   ```javascript
   let cityList = ["上海", "广州", "深圳"];
-  
+
   // 循环数组
   for (let i in cityList) {
     // 获取到cityList的元素
     let city = cityList[i];
-  
+
     // 创建li标签
     let liTag = document.createElement("li");
     // 更改标签内容
     liTag.innerText = city;
-  
+
     // 获取ul标签
     let ulTag = document.getElementById("city");
-  
+
     // 将li标签添加到ul标签
     ulTag.append(liTag);
   }
@@ -492,7 +490,7 @@ searchInput.addEventListener("keydown", (event) => {
   <head>
     <link rel="stylesheet" href="styles.css" />
   </head>
-  
+
   <body>
     <input type="button" value="点击隐藏" id="btn" /><br />
     <div id="box"></div>
@@ -505,17 +503,17 @@ searchInput.addEventListener("keydown", (event) => {
     margin: 0;
     padding: 0;
   }
-  
+
   div {
     width: 200px;
     height: 200px;
     background-color: pink;
   }
-  
+
   .hide {
     display: none;
   }
-  
+
   .show {
     display: block;
   }
@@ -524,7 +522,7 @@ searchInput.addEventListener("keydown", (event) => {
   ```javascript
   let btn = document.getElementById("btn");
   let box = document.getElementById("box");
-  
+
   // 给按钮添加事件
   btn.onclick = function () {
     if (this.value == "点击隐藏") {

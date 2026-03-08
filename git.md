@@ -2,7 +2,6 @@
 title: git
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - dev-ops
@@ -121,7 +120,6 @@ tags:
   - 将 `Open Git UI Here` 从上下文菜单中取消勾选
   - 选择 `Add a Git Bash Profile to Windows Terminal`
   - `Override the default branch name for new repositories`：选择 `main` 分支
-  
 - 验证安装
 
   ```bash
@@ -151,7 +149,6 @@ tags:
   ```
 
 - 登录
-
   - 第一次 push，系统会要求输入平台用户名和密码。
   - GitLab 可以用户名密码登录。
   - GitHub 需使用令牌登录，详见 GitHub。

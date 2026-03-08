@@ -2,7 +2,6 @@
 title: salesforce
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - salesforce
@@ -20,7 +19,6 @@ tags:
 ### [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm)
 
 - [**Windows**](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm#sfdx_setup_install_cli_windows)
-
   - Download and install [Salesforce CLI](https://developer.salesforce.com/tools/salesforcecli) from the official website.
 
   - Confirm that the Salesforce CLI is correctly installed and up to date.
@@ -30,7 +28,6 @@ tags:
     ```
 
 - **Linux**
-
   - Install the **npm** package manager.
 
     ```bash
@@ -65,17 +62,14 @@ tags:
 **Salesforce Extension Pack** is a VS Code Extension.
 
 - **Install Salesforce Extension Pack (Expanded)**
-
   - Install the **Salesforce Extension Pack (Expanded)** extension in **VS Code**.
   - Press **Ctrl+Shift+P** in VS Code to open the command palette, type `SFDX`, and you can select commands provided by the Salesforce extensions.
   - If you can't find the command in the command palette, try to disable and then re-enable the extension.
 
 - **JDK**
-
   - Some features of the extension require JDK support, so you need to install JDK. For details, refer to the **Java Notes**.
 
   - [Configure the full path to the Java runtime for the Apex server:](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/java-setup.html)
-
     - Click the **Settings** button in the bottom-left corner.
 
     - Search for **apex**.
@@ -125,7 +119,6 @@ Salesforce provides different types of Orgs, including:
 - **Purpose**: Primarily used for Trailhead courses, challenges, and experiments.
 - **Pre-configured**: Some components required by Trailhead courses are pre-installed.
 - **Free**
-
   - Free, with no time limits.
   - Up to 10 TPs at a time.
 
@@ -206,7 +199,6 @@ Salesforce supports various types of objects, including:
 - Salesforce automatically detects the fields and populates all its record data.
 - Choose **House Name** as the Record Name field in the top right.
 - Click **Next** and enter the following settings.
-
   - Label: `House`
 
   - Plural Label: `Houses`
@@ -215,12 +207,10 @@ Salesforce supports various types of objects, including:
 - Click **Finish**. The House object is successfully created and data imported, all within minutes.
 - Check the new object in the **Object Manager**.
 - Check the records:
-
   - Select **Houses** From **App Launcher**.
   - Click **Recently Viewed**, then select **All Records** to view all of the records in the House object.
 
 - There're some other fertures in the Trailhead sample:
-
   - [Data Security](https://trailhead.salesforce.com/content/learn/modules/data_security)
   - REST API
   - [Salesforce APIs Postman collection](https://github.com/forcedotcom/postman-salesforce-apis)
@@ -256,7 +246,6 @@ Similar to a **foreign key**, it allows a non-strict relationship between object
 - Sample in Trailhead: [Create a Lookup Relationship](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
 - Based on:
-
   - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
   - Custom Object **Favorite**: [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
@@ -265,7 +254,6 @@ Similar to a **foreign key**, it allows a non-strict relationship between object
 - In the sidebar, click **Fields & Relationships**.
 
 - Click **New** in the top right.
-
   - For **data type**, Choose **Lookup Relationship** and click **Next**.
   - For **Related To**, choose **Contact**, then click **Next**.
   - For **Field Name**, enter `Contact`, then click **Next**.
@@ -284,7 +272,6 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 - Sample in Trailhead: [Create a Master-Detail Relationship](https://trailhead.salesforce.com/content/learn/modules/data_modeling/object_relationships?trail_id=force_com_dev_beginner)
 
 - Based on:
-
   - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
     - Custom Object: **Property**
     - Custom Field: **Price**
@@ -300,7 +287,6 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 - In the sidebar, click **Fields & Relationships**.
 
 - Click **New** in the top right.
-
   - For **data type**, Choose **Master-Detail Relationship** and click **Next**.
   - For **Related To**, choose the **master** object **Property**, then click **Next**.
   - Click **Next**, **Next**, and **Save**.
@@ -310,7 +296,6 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
     <img src="assets/image-20250319012633694.png" alt="image-20250319012633694" style="zoom:50%;" />
 
 - Add a **Detail Record**
-
   - From the **App Launcher** select **Sales**.
 
   - Click the **Properties** tab in the navigation bar.
@@ -377,7 +362,6 @@ A **Master-Detail Relationship** in Salesforce is a type of relationship. The **
 - Sample in Trailhead: [Create a Custom Record](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
 
 - Based on the sample:
-
   - [Create a Custom Object](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
   - [Create a Custom Field](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
 
@@ -600,14 +584,12 @@ More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.sal
 
 - Based on a new TP: **Use Formula Fields - learning**
 - Create a new **Contact** record.
-
   - Select **Contacts** from **App Launcher**.
   - For **Last Name**, enter any: **Bai**
   - For **Account Name**, enter an existing account such as `United Oil & Gas Corp`.
   - Click **Save**.
 
 - Create a formula
-
   - **Setup** > **Object Manager** > **Contact** > **Fields & Relationships** > **New**
   - For **Data Tyjpe**, select **Formula** and click **Next**.
   - For **Field Label**, type `Account Number`.
@@ -618,7 +600,6 @@ More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.sal
   - Click **Check Syntax**. If there are no syntax errors, click **Next**, **Next**, and **Save**.
 
 - Check the formular
-
   - Select **Contacts** from **App Launcher**.
   - Select the contact **Jerry Bai** from the contact list.
   - Click **Details** to check the formula **Account Number**.
@@ -630,7 +611,6 @@ More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.sal
 - Sample in Trailhead: [Example 2: Display the Number of Days Until an Opportunity Closes on a Report](https://trailhead.salesforce.com/content/learn/modules/point_click_business_logic/formula_fields?trail_id=force_com_dev_beginner#example-2-display-the-number-of-days-until-an-opportunity-closes-on-a-report)
 - Based on a new TP: **Use Formula Fields - learning**
 - Creat a opptunity: **Opportunity-Jerry**
-
   - **App Launcher** > **Opportunities** > **New**
   - For **Opportunity Name**, enter any value: **Opportunity-Jerry**
   - For **Stage**, select any: **Prospecting**
@@ -638,7 +618,6 @@ More about Flows to learn: [Build Flows with Flow Builder](https://trailhead.sal
   - Click **Save**.
 
 - Creat a formula: **Days to Close**
-
   - **Setup** > **Object Manager** > **Opportunity** > **Fields & Relationships** > **New**
   - For **Data Tyjpe**, select **Formula**.
   - For **Field Label**, type `Days to Close`.
@@ -922,7 +901,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
 - Click ![Action dropdown](assets/03ba3588c34c126bfc752714a836a39f_i.48.png) for the file you just uploaded and select **Share**.
 
 - Click **Who Can Access** to expand that section.
-
   - In the **Create Public Link** area, set the **Password** button to **Off**.
   - Click **Create Link**, then click **Create**. This generates a public URL for the file that you can share with others, or in this case, add as a URL to a custom button or link.
   - Click **Copy Link**, then click **Done**.
@@ -936,7 +914,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
 - Select **List Button**.
 
 - Paste the file URL into the large text box.
-
   - Because the file is local to your org, use everything after the domain portion of the URL to create the custom link.
 
       <img src="assets/image-20250320052545576.png" alt="image-20250320052545576" style="zoom:50%;" />
@@ -982,7 +959,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
 - Click **Save**, then click **OK**.
 
 - Add the link to **Account** page layout.
-
   - From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
 
   - From the **Custom Links** category in the palette, drag **Google This Account** into the **Custom Links** section of the layout.
@@ -994,7 +970,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
   - In the **Section Properties** window, select **Detail Page**, then click **OK**.
 
 - Check the link
-
   - From **App Launcher**, select **Accounts**.
   - Open an account record.
   - Click the **Details** tab and scroll to the bottom to find the **Custom Link**.
@@ -1016,7 +991,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
 - Click **Save**, then click **OK**.
 
 - Add the button to **Account** page layout.
-
   - From the **Account** object, click **Page Layouts** in the side bar, then **Account Layout**.
 
   - From the **Buttons** category in the palette, drag **Map Location** into the **Custom Buttons** section of the layout.
@@ -1024,7 +998,6 @@ There are two action sections on a page layout. The Quick Actions in the Salesfo
     ![image-20250321005751460](assets/image-20250321005751460.png)
 
 - Check the button
-
   - From **App Launcher**, select **Accounts**.
 
   - Open an account record.
@@ -1128,7 +1101,6 @@ Check the **New Energy Audit** action
 - Sample in Trailhead: [Create a List View](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_list?trail_id=force_com_dev_beginner)
 
 - Based on:
-
   - TP: [Optimize Customer Data with Standard and Custom Objects](https://trailhead.salesforce.com/content/learn/modules/data_modeling/objects_intro?trail_id=force_com_dev_beginner)
   - Sample: [Create a Lightning App](https://trailhead.salesforce.com/content/learn/modules/lex_customization/lex_customization_apps?trail_id=force_com_dev_beginner)
 
@@ -1143,7 +1115,6 @@ Check the **New Energy Audit** action
 - Click **Save**.
 
 - **Add Filter**
-
   - Click **Add Filter**.
   - From the **Field** dropdown menu, select **Type**.
   - Select the **equals** operator.
@@ -1151,7 +1122,6 @@ Check the **New Energy Audit** action
   - Add another filter where **Billing State/Province** equals **WA,OR,CA**.
 
 - Customize a List View
-
   - From the list view controls <img src="assets/0ce868631cd88aaf9e2ddfdac636fcee_i.20.png" alt="List View Controls" style="zoom: 25%;" />, you can custom your list view again.
 
 ## Create a List View Chart
@@ -1170,7 +1140,6 @@ Check the **New Energy Audit** action
 - In the Charts panel that appears, click ![list view charts gear icon](assets/22d51ae434c5c03addbc4f8853f34cfb_i.29.jpg) and select **New Chart**.
 
 - Name the chart `Pipeline Total Value` and give it these parameters.
-
   - Chart Type: **Donut Chart**
 
   - Aggregate Type: **Sum**
@@ -1192,7 +1161,6 @@ Check the **New Energy Audit** action
 - Sample in Trailhead: [Create a New Salesforce Project](https://trailhead.salesforce.com/content/learn/projects/get-started-with-salesforce-development/get-ready-to-develop?trail_id=force_com_dev_beginner)
 
 - **Precondition**
-
   - Create a new TP.
 
   - Install Salesforce CLI.
@@ -1202,7 +1170,6 @@ Check the **New Energy Audit** action
   - Install Node.js.
 
 - **Create a Project**
-
   - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type `SFDX`.
   - Select **SFDX: Create Project**.
   - Select **Standard**.
@@ -1210,14 +1177,12 @@ Check the **New Energy Audit** action
   - Set the project location.
 
 - **Authorize**
-
   - Press **Ctrl+Shift+P** in VS Code to open the command palette, and type `SFDX: Authorize an Org`.
   - Select **Production** and type the organization alias `myDevOrg`. Then press **Enter**.
   - A webpage will pop up for login.
   - **Notice**: Type the username and password of your **org**.
 
 - Ways to open an org.
-
   - **Command Line**：Run the command in the terminal at the project's root directory.
 
     ```bash

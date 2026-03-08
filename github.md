@@ -2,7 +2,6 @@
 title: github
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - dev-ops
@@ -15,7 +14,6 @@ tags:
 ## 登录
 
 - GitHub 不再支持密码登录，以下是使用令牌登录方法；
-
   - 后来，在使用验证器二次验证登录以后， GitHub 又支持网页登录了。
 
 - 网页登录到你的 GitHub 帐户；
@@ -24,14 +22,12 @@ tags:
 - 在左侧导航栏中，选择 `Generate new token`；
 - 点击 `Tokens (classic)`；
 - 在下拉菜单中选择 `Generate new token (classic)`；
-
   - `Note` 随便填，只是用于标记这个令牌想在哪用；
   - `Expiration` 使用期限；
   - 如果自己用，所有选项都打勾（实际经验只勾选 `repo` 大类也没影响目前使用）；
   - 创建令牌，会得到令牌，注意令牌内容只能看见这一次；
 
 - 当在 Bash 中要求输入用户名密码时；
-
   - 用户名依然是原来的用户名；
   - 密码用令牌代替；
 
@@ -150,7 +146,7 @@ jobs:
 
 ## 推送至云服务器并部署
 
->  此部分参考自 [medi-chatbot-full-stack](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13) 项目
+> 此部分参考自 [medi-chatbot-full-stack](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13) 项目
 
 ### 源代码
 

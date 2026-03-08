@@ -2,7 +2,6 @@
 title: nginx
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - web
   - nginx
@@ -43,4 +42,3 @@ server {
     }
 }
 ```
-

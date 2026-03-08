@@ -2,7 +2,6 @@
 title: gcp-gcloud-cli
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - cloud-computing
@@ -23,7 +22,6 @@ tags:
 ## Windows
 
 - 下载并安装 [Google Cloud CLI](https://dl.google.com/dl/cloudsdk/channels/rapid/GoogleCloudSDKInstaller.exe)
-
   - 保留 `Bundled Python`，否则 Gcloud SDK Shell 会出现警告信息
 
   - 安装之后会出现 Gcloud SDK Shell 应用
@@ -237,7 +235,7 @@ gcloud config list project
 
 [`gcloud services`](https://docs.cloud.google.com/sdk/gcloud/reference/services) 用于管理 API 和服务。
 
-## `gcloud services enable` 
+## `gcloud services enable`
 
 [`gcloud services enable`](https://docs.cloud.google.com/sdk/gcloud/reference/services/enable) 用于为 project 启用 API 和服务。
 

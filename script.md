@@ -2,7 +2,6 @@
 title: script
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - it-basics
   - script
@@ -45,7 +44,6 @@ exec $SHELL
 
 - 将文件后缀名 `.txt` 改为 `.sh`，例如 `python-env.sh`；
 
-
 ## 使用脚本
 
 以下几种方法都可以使用脚本：
@@ -57,7 +55,7 @@ exec $SHELL
   ```bash
   # 标准写法
   bash python-env.sh
-  
+
   # 简写
   ./python-env.sh
   ```
@@ -73,12 +71,12 @@ exec $SHELL
   ```bash
   # 标准写法
   source python-env.sh
-  
+
   # 简写
   . python-env.sh
   ```
 
-##  Shebang
+## Shebang
 
 **Shebang** 是一种告诉操作系统内核应该使用哪个**解释器**来执行该文件的机制。
 

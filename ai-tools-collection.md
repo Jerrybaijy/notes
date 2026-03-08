@@ -2,7 +2,6 @@
 title: ai-tools-collection
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - ai
 ---
@@ -29,7 +28,6 @@ tags:
 ### 环境搭建
 
 - 前提条件：
-
   - 安装 `Node.js 18` 或更新版本
   - 一个 [Claude.ai](https://claude.ai/)（推荐）或 [Claude Console](https://console.anthropic.com/) 账户
 
@@ -45,12 +43,10 @@ tags:
 
 - 执行 `claude` 命令启动，选择颜色主题。
 - 登录选项：
-
   - Claude account with subscription：各种付费账户
   - Anthropic Console account：接入 API
 
 - 为了接入 API
-
   - 这里不登录，应该退出终端。
   - 安装并配置 Claude Code Router，过程详见 `Claude Code Router` 章节。
 

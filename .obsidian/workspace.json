@@ -152,9 +152,9 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:应用科学",
+                "query": "markd",
                 "matchingCase": false,
-                "explainSearch": false,
+                "explainSearch": true,
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
@@ -187,7 +187,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "实验"
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -198,7 +198,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 219.5
   },
   "right": {
     "id": "9d47538a58fd4ff6",
@@ -271,12 +271,12 @@
   },
   "active": "77001bc1f5e21d71",
   "lastOpenFiles": [
-    "software.md",
-    "win-terminal.md",
     "win-powershell.md",
-    "git.md",
     "win-scoop.md",
     "windows.md",
+    "win-terminal.md",
+    "software.md",
+    "git.md",
     "excel.md",
     "word.md",
     "ppt.md",

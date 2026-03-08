@@ -2,7 +2,6 @@
 title: blockchain
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - web3
 ---

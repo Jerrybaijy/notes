@@ -2,7 +2,6 @@
 title: software
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
 ---
@@ -14,6 +13,7 @@ tags:
 - 这是一个软件学习笔记的合集。
 - 不是特别多的笔记内容都集中在这一个笔记中。
 - 每个 1 级标题都是一个软件，以首字母排序。
+  - 实验
 
 ## Task list
 

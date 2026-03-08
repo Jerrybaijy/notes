@@ -2,7 +2,6 @@
 title: hcl
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - iac
   - terraform
@@ -26,7 +25,7 @@ tags:
 - 表达式语言用于表达属性值，可以是字面值，也可以是其他值的派生值*。*
 - 模板语言用于将值组合成字符串，它是表达式语言中的几种表达式类型之一*。*
 
-HCL 的核心是两个主要概念：*attributes (属性)* 和 *blocks (块)*。在原生语法中，一个假想应用程序的配置文件可能如下所示：
+HCL 的核心是两个主要概念：_attributes (属性)_ 和 _blocks (块)_。在原生语法中，一个假想应用程序的配置文件可能如下所示：
 
 ```hcl
 # Attribute
@@ -35,7 +34,7 @@ io_mode = "async"
 # Block
 service "http" "web_proxy" {
   listen_addr = "127.0.0.1:8080"
-  
+
   process "main" {
     command = ["/usr/local/bin/awesome-app", "server"]
   }
@@ -45,4 +44,3 @@ service "http" "web_proxy" {
   }
 }
 ```
-

@@ -2,7 +2,6 @@
 title: python
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - python
@@ -29,7 +28,6 @@ tags:
 - **特点**
   - 直接使用 Flask 的默认目录结构
   - 路由、模型、配置都在 `app.py` 一个文件里
-  
 
 ### 目录结构
 
@@ -111,7 +109,6 @@ if __name__ == '__main__':
 - 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成虚拟环境和 Flask 框架简单结构。
 
 - **注意**：
-
   - 执行脚本前，关闭所有终端，重新进入终端，查看当前目录确实是本项目目录。
   - 执行脚本之后，手动激活虚拟环境（Bash）：`source venv/Scripts/activate`。
 
@@ -135,12 +132,12 @@ if __name__ == '__main__':
   import os
   import subprocess
   import sys
-  
+
   # 创建并激活虚拟环境
   def create_and_activate_virtual_environment():
       # 虚拟环境目录名称
       venv_dir = "venv"
-  
+
       # 检查虚拟环境是否已存在
       if os.path.exists(venv_dir):
           print(f"虚拟环境 '{venv_dir}' 已存在。")
@@ -148,11 +145,11 @@ if __name__ == '__main__':
           # 创建虚拟环境
           subprocess.run([sys.executable, "-m", "venv", venv_dir], check=True)
           print(f"虚拟环境 '{venv_dir}' 已创建")
-  
+
       # 激活虚拟环境
       activate_script = os.path.join(venv_dir, "Scripts", "activate") if os.name == "nt" else os.path.join(venv_dir, "bin", "activate")
       return activate_script
-  
+
   # 安装 Flask
   def install_flask(activate_script):
       if os.name == "nt":
@@ -162,15 +159,15 @@ if __name__ == '__main__':
       else:
           # Linux/Mac
           command = f"source {activate_script} && pip install flask"
-  
+
       # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
       # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
       # 为了在 Python 脚本中使用虚拟环境，可以通过执行一个子进程，同时激活虚拟环境并安装所需的包。
-  
+
       # 使用命令：激活虚拟环境，并安装 Flask
       subprocess.run(command, shell=True, check=True)
       print("Flask 已安装！")
-  
+
   # 创建目录结构
   def create_project_structure():
       # 定义目录结构
@@ -179,7 +176,7 @@ if __name__ == '__main__':
           "static",
           "static/img"
       ]
-  
+
       # 定义文件
       files = {
           "templates/base.html": (
@@ -216,35 +213,35 @@ if __name__ == '__main__':
               "    app.run(debug=True)\n"
           ),
       }
-  
+
       # 创建目录
       for folder in folders:
           os.makedirs(folder, exist_ok=True)
-  
+
       # 创建文件并写入内容
       for file_path, content in files.items():
           with open(file_path, "w", encoding="utf-8") as file:
               file.write(content)
-  
+
       print("目录结构已生成！")
-  
+
   def main():
       # 第一步：创建并定义激活虚拟环境
       activate_script = create_and_activate_virtual_environment()
-  
+
       # 第二步：激活虚拟环境，并安装 Flask
       install_flask(activate_script)
-  
+
       # 第三步：创建目录和文件
       create_project_structure()
-  
+
       # 添加使用提示
       print("\n项目已创建完成！")
       if os.name == "nt":
           print("\n请手动激活虚拟环境（Bash）：source venv/Scripts/activate")
       else:
           print("\n激活虚拟环境：source venv/bin/activate")
-  
+
   if __name__ == "__main__":
       main()
   ```
@@ -256,7 +253,6 @@ if __name__ == '__main__':
 - **特点**
   - 工厂结构将简单结构中的 `app.py` 拆解成各个模块化的 `.py` 文件。
   - 将除了 `config.py` 和 `run.py` 的文件，放入 `app` 目录下，组成一个应用包。
-  
 
 ### 目录结构
 
@@ -342,7 +338,6 @@ if __name__ == '__main__':
 - 在 `my_projects` 文件夹中随便创建一个 `.py` 文件，将如下脚本复制进去，运行脚本，会自动生成虚拟环境和 Flask 框架工厂结构。
 
 - **注意**：
-
   - 执行脚本前，关闭所有终端，重新进入终端，查看当前目录确实是本项目目录。
   - 执行脚本之后，手动激活虚拟环境（Bash）：`source venv/Scripts/activate`。
 
@@ -372,12 +367,12 @@ if __name__ == '__main__':
   import os
   import subprocess
   import sys
-  
+
   # 创建并激活虚拟环境
   def create_and_activate_virtual_environment():
       # 虚拟环境目录名称
       venv_dir = "venv"
-  
+
       # 检查虚拟环境是否已存在
       if os.path.exists(venv_dir):
           print(f"虚拟环境 '{venv_dir}' 已存在。")
@@ -385,11 +380,11 @@ if __name__ == '__main__':
           # 创建虚拟环境
           subprocess.run([sys.executable, "-m", "venv", venv_dir], check=True)
           print(f"虚拟环境 '{venv_dir}' 已创建")
-  
+
       # 激活虚拟环境
       activate_script = os.path.join(venv_dir, "Scripts", "activate") if os.name == "nt" else os.path.join(venv_dir, "bin", "activate")
       return activate_script
-  
+
   # 安装 Flask
   def install_flask(activate_script):
       if os.name == "nt":
@@ -399,15 +394,15 @@ if __name__ == '__main__':
       else:
           # Linux/Mac
           command = f"source {activate_script} && pip install flask"
-  
+
       # 在 Python 脚本中，不能像在命令行中那样使用 source venv/bin/activate 或 venv/Scripts/activate 来激活虚拟环境。
       # 因为一旦脚本执行完成，所有的环境变量变化（比如虚拟环境激活）都会丢失。
       # 为了在 Python 脚本中使用虚拟环境，可以通过执行一个子进程，同时激活虚拟环境并安装所需的包。
-  
+
       # 使用命令：激活虚拟环境，并安装 Flask
       subprocess.run(command, shell=True, check=True)
       print("Flask 已安装！")
-  
+
   # 创建目录结构
   def create_project_structure():
       # 定义目录结构
@@ -419,7 +414,7 @@ if __name__ == '__main__':
           "app/static/js",
           "app/static/img"
       ]
-  
+
       # 定义文件
       files = {
           "config.py": (
@@ -476,35 +471,35 @@ if __name__ == '__main__':
           "app/static/css/style.css": "",
           "app/static/js/script.js": ""
       }
-  
+
       # 创建目录
       for folder in folders:
           os.makedirs(folder, exist_ok=True)
-  
+
       # 创建文件并写入内容
       for file_path, content in files.items():
           with open(file_path, "w", encoding="utf-8") as file:
               file.write(content)
-  
+
       print("\n目录结构已生成！")
-  
+
   def main():
       # 第一步：创建并定义激活虚拟环境
       activate_script = create_and_activate_virtual_environment()
-  
+
       # 第二步：激活虚拟环境，并安装 Flask
       install_flask(activate_script)
-  
+
       # 第三步：创建目录和文件
       create_project_structure()
-  
+
       # 添加使用提示
       print("\n项目已创建完成！")
       if os.name == "nt":
           print("\n请手动激活虚拟环境（Bash）：source venv/Scripts/activate")
       else:
           print("\n激活虚拟环境：source venv/bin/activate")
-  
+
   if __name__ == "__main__":
       main()
   ```
@@ -516,7 +511,6 @@ if __name__ == '__main__':
 - 例如：可以把它理解为一个迷你的应用，包含了一组路由。
 
 - **蓝图的优点**
-
   - **模块化**：可以把不同功能的路由分组
   - **可重用**：蓝图可以在多个应用中重复使用
   - **URL 前缀**：可以为一组路由添加统一的 URL 前缀
@@ -540,7 +534,7 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import exc
 
 app = Flask(__name__)
-CORS(app) 
+CORS(app)
 
 # 1. 连接 MySQL 数据库
 # 格式: mysql+pymysql://<user>:<password>@<host>:<port>/<db_name>
@@ -555,7 +549,7 @@ db = SQLAlchemy(app)
 class Task(db.Model):
     # table 名称
     __tablename__ = 'tasks_tb'
-    
+
     # table 字段
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), nullable=False)
@@ -583,7 +577,7 @@ def get_tasks():
 def add_task():
     if not request.json or 'title' not in request.json:
         return jsonify({'message': 'Missing title'}), 400
-    
+
     new_task = Task(title=request.json['title'])
     db.session.add(new_task)
     db.session.commit()
@@ -593,12 +587,12 @@ def add_task():
 @app.route('/api/tasks/<int:task_id>', methods=['PUT'])
 def update_task(task_id):
     task = Task.query.get_or_404(task_id)
-    
+
     if 'title' in request.json:
         task.title = request.json['title']
     if 'done' in request.json:
         task.done = request.json['done']
-    
+
     db.session.commit()
     return jsonify(task.to_dict())
 
@@ -621,7 +615,7 @@ if __name__ == '__main__':
     except exc.OperationalError as e:
         print(f"Error connecting to database. Is the Docker MySQL container running? Error: {e}")
         # 即使连接失败，应用也可能继续运行，但 API 调用会失败
-    
+
     app.run(debug=True)
 ```
 
@@ -659,4 +653,3 @@ Flask-Migrate 是基于 Alembic (SQLAlchemy 的迁移工具) 构建的 Flask 扩
 ## [Login Flask React](projects.md#Login Flask React)
 
 <img src="assets/image-20241225231722788.png" alt="image-20241225231722788" style="width:70%;" />
-

@@ -2,7 +2,6 @@
 title: web
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - web
 ---
@@ -17,12 +16,12 @@ tags:
 
 ### 网络基础
 
-| 概念                    | 描述                                                         |
-| ----------------------- | ------------------------------------------------------------ |
-| **Client-Server Model** | 客户端（浏览器）请求资源，服务器响应并提供资源。             |
+| 概念                    | 描述                                                                                      |
+| ----------------------- | ----------------------------------------------------------------------------------------- |
+| **Client-Server Model** | 客户端（浏览器）请求资源，服务器响应并提供资源。                                          |
 | **HTTP / HTTPS**        | 超文本传输协议（HyperText Transfer Protocol），Web 数据传输标准，HTTPS 是加密安全的版本。 |
-| **URL / URI**           | 统一资源定位符（地址），用于识别资源位置。                   |
-| **DNS**                 | 域名系统（Domain Name System），将域名翻译成 IP 地址。       |
+| **URL / URI**           | 统一资源定位符（地址），用于识别资源位置。                                                |
+| **DNS**                 | 域名系统（Domain Name System），将域名翻译成 IP 地址。                                    |
 
 ### HTTP 工作机制
 
@@ -329,7 +328,7 @@ p label {
 [**无障碍**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility)是一种让尽可能多的用户可以使用你的网站的做法。所有用户包括但不限于：残疾人士、使用移动设备的人、使用低速网络连接的人。
 
 - 使用严格的语义化 HTML 元素
-- 使用 [WAI-ARIA](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics#进入_wai-aria) 规范，如 `<nav role="navigation">`  中的 `role`  属性。
+- 使用 [WAI-ARIA](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Accessibility/WAI-ARIA_basics#进入_wai-aria) 规范，如 `<nav role="navigation">` 中的 `role` 属性。
 - 更多...
 
 # 跨浏览器测试

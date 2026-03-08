@@ -2,7 +2,6 @@
 title: ollama
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - ai
 ---
@@ -49,7 +48,6 @@ ollama rm $LLM
 - 创建元数据文件目录 `deepseek`
 
 - 下载大模型的 `GGUF` 文件
-
   - 进入 [Hugging Face](https://huggingface.co/) 主页，搜索栏输入 `qwen GGUF`，下拉列表中选择 1.5B 版本的 GGUF，进入文件仓库
 
     <img src="assets/image-20250211203215231.png" alt="image-20250211203215231" style="zoom:50%;" />
@@ -73,7 +71,6 @@ ollama rm $LLM
   ```
 
   **在以上代码中**：
-
   - `deepseek-1.5b` 为自己命名的大模型名称
   - `modelfile.txt` 为上面创建的配置文件，但注意创建时没有扩展名，即 `modelfile`。
 

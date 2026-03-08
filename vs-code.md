@@ -2,7 +2,6 @@
 title: vs-code
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - software
@@ -529,32 +528,32 @@ h6::before {
 - 安装 `multi-command` 扩展
 - 在 `settings.json` 文件中添加命令
 
-    ```json
-    // ---------------## multi-command，为了实现 Markdown 一键硬换行---------------
-    "multiCommand.commands": [
-      {
-        "command": "multiCommand.markdownHardBreak",
-        "sequence": [
-          {
-            "command": "type",
-            "args": { "text": "  " } // 插入两个空格
-          },
-          "editor.action.insertLineAfter" // 换行
-        ]
-      }
-    ]
-    ```
+  ```json
+  // ---------------## multi-command，为了实现 Markdown 一键硬换行---------------
+  "multiCommand.commands": [
+    {
+      "command": "multiCommand.markdownHardBreak",
+      "sequence": [
+        {
+          "command": "type",
+          "args": { "text": "  " } // 插入两个空格
+        },
+        "editor.action.insertLineAfter" // 换行
+      ]
+    }
+  ]
+  ```
 
 - 在 `keybindings.json` 文件中绑定快捷键
 
-    ```json
-    // -----### Markdown 硬换行-----
-    {
-      "key": "ctrl+enter",
-      "command": "multiCommand.markdownHardBreak",
-      "when": "editorLangId == markdown"
-    }
-    ```
+  ```json
+  // -----### Markdown 硬换行-----
+  {
+    "key": "ctrl+enter",
+    "command": "multiCommand.markdownHardBreak",
+    "when": "editorLangId == markdown"
+  }
+  ```
 
 - 重启 VS Code
 - 编辑 Markdown 文件，按下 `Ctrl + Enter` 键，即可实现一键硬换行。

@@ -2,7 +2,6 @@
 title: anaconda
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - ai
@@ -59,6 +58,7 @@ conda remove -n medibot --all -y
   ```bash
   conda init bash
   ```
+
 - 重启 Git Bash 生效
 - 默认所有命令的输出会以 `(base)` 结尾，除非有虚拟环境。
 

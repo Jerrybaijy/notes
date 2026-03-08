@@ -2,7 +2,6 @@
 title: gcp-cloud-sql
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud-computing
   - gcp
@@ -447,7 +446,7 @@ GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQ
 
   ```bash
   cd /d/下载/综合下载
-  
+
   ./cloud-sql-proxy 项目ID:区域:数据库实例名称
   ./cloud-sql-proxy project-60addf72-be9c-4c26-8db:asia-east2:my-db-instance
   ```
@@ -491,7 +490,7 @@ containers:
     image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
     args:
       - "--port=3306"
-      - {{ include "my-chart.sqlInstanceConnectionName" . | quote }}
+      - { { include "my-chart.sqlInstanceConnectionName" . | quote } }
     securityContext:
       runAsNonRoot: true
 ```

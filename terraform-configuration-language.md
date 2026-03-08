@@ -2,7 +2,6 @@
 title: terraform-configuration-language
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - iac
   - terraform
@@ -167,7 +166,7 @@ terraform/
 
 # Resource
 
-[**Resource**](https://developer.hashicorp.com/terraform/language/resources) 是 Terraform 创建和管理的基础设施对象，[Provider](<#Provider>) 是提供资源类型的插件。
+[**Resource**](https://developer.hashicorp.com/terraform/language/resources) 是 Terraform 创建和管理的基础设施对象，[Provider](#Provider) 是提供资源类型的插件。
 
 # Dependency
 
@@ -210,7 +209,7 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
     name      = var.app_ksa
     namespace = kubernetes_namespace_v1.app_ns.metadata[0].name
     annotations = {
-      
+
       # 这里引用了 GSA 的 email
       "iam.gke.io/gcp-service-account" = google_service_account.workload_identity.email
     }
@@ -220,13 +219,13 @@ resource "kubernetes_service_account_v1" "my_app_ksa" {
 
 ## Explicit Dependencies
 
-通过 [`depends_on`](<terraform-configuration-language.md#`depends_on`>) 参数手动指定的依赖关系。
+通过 [`depends_on`](terraform-configuration-language.md#`depends_on`) 参数手动指定的依赖关系。
 
 # Variables
 
 ## Declare and Assign Variables
 
-> [`variable` block](<terraform-configuration-language.md#`variable`>)
+> [`variable` block](terraform-configuration-language.md#`variable`)
 
 ## Sensitive Variables
 
@@ -503,7 +502,7 @@ resource "kubernetes_namespace_v1" "app_ns" {
 output "<LABEL>" {
   description = "<STRING>"
   value       = <EXPRESSION>
-  
+
   # ...
 }
 ```
@@ -566,12 +565,12 @@ output "sensitive_outputs" {
 
 ## `provider`
 
-[`provider`](https://developer.hashicorp.com/terraform/language/block/provider) block 用于声明和配置 [Provider](<#Provider>) 插件。
+[`provider`](https://developer.hashicorp.com/terraform/language/block/provider) block 用于声明和配置 [Provider](#Provider) 插件。
 
 ```hcl
 provider "<PROVIDER_NAME>" {
   <PROVIDER_ARGUMENTS>
-  
+
   # ...
 }
 ```
@@ -610,11 +609,11 @@ provider "google" {
   # 以 Regional 集群为例
   resource "google_container_cluster" "primary" {
     name = "my-gke-cluster"
-    
+
     # 覆盖 provider 中指定的 region 和 zone，它会忽略 provider 里的 zone
     # 创建 Regional 集群
-    location = "us-central1" 
-  
+    location = "us-central1"
+
     initial_node_count = 1
     # ...
   }
@@ -651,7 +650,7 @@ resource "aws_instance" "web" {
 
 引用资源：
 
-```	hcl
+```hcl
 <TYPE>.<LABEL>.<ARGUMENT>
 aws_instance.web.ami
 ```
@@ -661,11 +660,11 @@ aws_instance.web.ami
 [`terraform`](https://developer.hashicorp.com/terraform/language/block/terraform) block 用于配置 Terraform 的行为，包括 Terraform 版本、后端、与 HCP Terraform 的集成以及所需的Provider。
 
 ```hcl
-terraform { 
-  required_providers { 
-    < PROVIDER > {} 
-  } 
-  
+terraform {
+  required_providers {
+    < PROVIDER > {}
+  }
+
   # ...
 }
 ```
@@ -687,14 +686,14 @@ terraform {
 
 ### Overview
 
-[`variable`](https://developer.hashicorp.com/terraform/language/block/variable) block 用于定义 [Variable](<#Variables>)。
+[`variable`](https://developer.hashicorp.com/terraform/language/block/variable) block 用于定义 [Variable](#Variables)。
 
 ```hcl
-variable “<LABEL>” { 
+variable “<LABEL>” {
   type         = <TYPE>
   description  = "<DESCRIPTION>"
   default      = <DEFAULT_VALUE>
-  
+
   # ...
 }
 ```

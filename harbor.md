@@ -2,7 +2,6 @@
 title: harbor
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -27,18 +26,18 @@ tags:
 
   ```yaml
   # 1. 填写你的 Windows 主机 IP（别用 localhost）
-  hostname: 192.168.1.100  # 替换成你电脑的实际 IP（可通过 Git Bsh 输入 ipconfig 查看）
-  
+  hostname: 192.168.1.100 # 替换成你电脑的实际 IP（可通过 Git Bsh 输入 ipconfig 查看）
+
   # 2. 关闭 HTTPS（测试用）
   https:
-    enabled: false  # 直接设为 false，把下面的 port/certificate/private_key 都注释掉
-  
+    enabled: false # 直接设为 false，把下面的 port/certificate/private_key 都注释掉
+
   # 3. 设置管理员密码
-  harbor_admin_password: 123456  # 自定义密码
-  
+  harbor_admin_password: 123456 # 自定义密码
+
   # 4. 数据存储路径
   data_volume: /d/harbor/data
-  
+
   # 5. 日志路径
   log:
     location: /d/harbor/logs
@@ -50,9 +49,7 @@ tags:
   cd /d/harbor
   # 给脚本加执行权限
   chmod +x install.sh prepare common.sh
-  
+
   # 执行预配置！！！！到这一步没有安装成功
   ./prepare
   ```
-
-  

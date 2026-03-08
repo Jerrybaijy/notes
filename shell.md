@@ -2,7 +2,6 @@
 title: shell
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - it-basics
   - code-language
@@ -232,7 +231,6 @@ curl --version
 # 命令选项
 
 - `-rf` 选项是 `-r` 和 `-f` 的组合
-
   - `-r` 选项，以确保递归删除子目录和文件。
   - `-f` 选项，强制删除。
 
@@ -275,17 +273,16 @@ mkdir a b
   - Linux：`cd /Home/USER_NAME`
   - Windows：`cd C:/Users/USER_NAME`
 - **分隔符**
-
   - `/`：Linux、Unix、Windows、macOS、Android、IOS、URL 等都支持
   - `\`：仅 Windows PowerShell 支持，且为默认
-- **大小写敏感**
 
+- **大小写敏感**
   - 敏感：Linux、Unix、Android、iOS
   - 不敏感：Windows、macOS
+
 - **路径符号**
   - 显示当前工作目录的绝对路径：`pwd`
   - 根目录：
-  
     - Linux：`cd /`
     - Windows PowerShell
       - `cd \`（当前磁盘根目录）
@@ -293,15 +290,16 @@ mkdir a b
     - Windows GitBash
       - `cd /`（Git Bash 的虚拟根目录）
       - `cd /c`（C 盘根目录）
+
   - User 目录：
-  
     - Linux：`cd ~` 或 `home/用户名`
     - Windows：`cd ~` 或 `cd /c/Users/jerry` 或 `cd $HOME`
+
   - 当前目录：`cd .` （在当前目录操作可省略路径）
   - 上级目录：`cd ..`
   - 上一次工作目录：`cd -`
-- **引用文件**
 
+- **引用文件**
   - 上级：`../my-image.jpg`
   - 同级：`./my-image.jpg` 或 `my-image.jpg`（基于当前目录的相对路径可省略 `./`）
   - 子目录：`./subdirectory/my-image.jpg` 或 `subdirectory/my-image.jpg`
@@ -313,16 +311,15 @@ mkdir a b
   ```bash
   # 使用反斜杠 \ 转义
   cd /media/jerry/VMware\ Tools
-  
+
   # 使用单引号 ' 转义
   cd '/media/jerry/VMware Tools'
-  
+
   # 使用双引号 " 转义
   cd "/media/jerry/VMware Tools"
   ```
 
 - 关于 `'` 和 `"` 的区别
-
   - `'` 会**完全保留**其中的字符，不进行任何特殊的处理或扩展（例如，变量不会被展开）。
   - `"` 会允许其中的变量进行扩展和某些特殊字符的处理（例如 `$HOME` 会被展开为实际路径）。
 
@@ -399,7 +396,7 @@ AGE=30
 
 ## 引用变量
 
- 使用 `$` 符号来引用变量的值。
+使用 `$` 符号来引用变量的值。
 
 ```bash
 NAME="World"

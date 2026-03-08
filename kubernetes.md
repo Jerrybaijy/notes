@@ -2,7 +2,6 @@
 title: kubernetes
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - software
   - dev-ops
@@ -57,7 +56,7 @@ K8s 集群主要以下两种[**组件**](https://kubernetes.io/zh-cn/docs/concep
 
 ### Node
 
-[**Node**](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/)（节点）可以是一个虚拟机或者物理机器，取决于所在的集群配置。 
+[**Node**](https://kubernetes.io/zh-cn/docs/concepts/architecture/nodes/)（节点）可以是一个虚拟机或者物理机器，取决于所在的集群配置。
 
 - 每个节点包含运行 Pod 所需的服务； Kubernetes 通过将容器放入在 Node 上运行的 Pod 中来执行你的工作负载。
 - 所有 Node 由 Control Plane 负责管理。
@@ -75,7 +74,7 @@ K8s 集群主要以下两种[**组件**](https://kubernetes.io/zh-cn/docs/concep
 - `metadata`：元数据，帮助唯一标识对象的一些数据，包括一个 `name`和其它。
 - `spec`：规约，即规格，期望状态。
 
-不同对象的 spec 格式各不不同，详见  [Kubernetes API 参考](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/)。
+不同对象的 spec 格式各不不同，详见 [Kubernetes API 参考](https://kubernetes.io/zh-cn/docs/reference/kubernetes-api/)。
 
 下面是一个 Deployment 清单示例：
 
@@ -102,10 +101,10 @@ spec:
         app: nginx
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
 ```
 
 # Kubectl
@@ -242,7 +241,6 @@ kubectl config use-context $CONTEXT_NAME
   sudo install minikube-linux-amd64 /usr/local/bin/minikube && rm minikube-linux-amd64
   ```
 
-
 ## 命令
 
 ```bash
@@ -320,22 +318,21 @@ spec:
     matchLabels:
       app: nginx
   replicas: 2
-  
+
   # Pod 模板（必需）
   template:
-    
     # Pod 元数据
     metadata:
       labels:
         app: nginx
-    
+
     # Pod 规约
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+            - containerPort: 80
 ```
 
 下面是一个说明留存：
@@ -417,12 +414,11 @@ metadata:
 spec:
   # 容器（必需）
   containers:
-  
-  # 容器名称（必需）
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
+    # 容器名称（必需）
+    - name: nginx
+      image: nginx:1.14.2
+      ports:
+        - containerPort: 80
 ```
 
 # Container

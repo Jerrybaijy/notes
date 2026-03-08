@@ -2,7 +2,6 @@
 title: gcp-iam
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud-computing
   - gcp
@@ -52,7 +51,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   node_config {
     # 使用 GSA
     service_account = google_service_account.default.email
-    
+
     # ...
 }
 ```
@@ -186,10 +185,10 @@ resource "kubernetes_service_account_v1" "my_ksa" {
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ .Values.global.serviceAccountName }}
-  namespace: {{ .Values.global.namespace }}
+  name: { { .Values.global.serviceAccountName } }
+  namespace: { { .Values.global.namespace } }
   annotations:
-    iam.gke.io/gcp-service-account: {{ .Values.gcp.sqlProxySaEmail | quote }}
+    iam.gke.io/gcp-service-account: { { .Values.gcp.sqlProxySaEmail | quote } }
 ```
 
 ```yaml
@@ -222,7 +221,7 @@ resource "google_container_node_pool" "my-node-pool" {
 
   node_config {
     # ...
-    
+
     # 配置节点以使用 Workload Identity 暴露元数据
     workload_metadata_config {
       mode = "GKE_METADATA"
@@ -235,20 +234,20 @@ resource "google_container_node_pool" "my-node-pool" {
 
 ```yaml
 # 1. 关键：指定 ksa 以支持 Workload Identity
-serviceAccountName: {{ .Values.global.ksaName }}
+serviceAccountName: { { .Values.global.ksaName } }
 
 containers:
-- name: backend
-  # ... 后端配置
+  - name: backend
+    # ... 后端配置
 
-# 2. 关键：添加 cloud-sql-proxy 容器，连接到 Cloud SQL 实例
-- name: cloud-sql-proxy
-  image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
-  args:
-    - "--port=3306"
-    - {{ include "my-chart.sqlInstanceConnectionName" . | quote }}
-  securityContext:
-    runAsNonRoot: true
+  # 2. 关键：添加 cloud-sql-proxy 容器，连接到 Cloud SQL 实例
+  - name: cloud-sql-proxy
+    image: gcr.io/cloud-sql-connectors/cloud-sql-proxy:2.14.1
+    args:
+      - "--port=3306"
+      - { { include "my-chart.sqlInstanceConnectionName" . | quote } }
+    securityContext:
+      runAsNonRoot: true
 ```
 
 ## `values.yaml`
@@ -311,4 +310,3 @@ gcloud container node-pools describe my-node-pool \
     --project project-60addf72-be9c-4c26-8db \
     | grep -A 1 workloadMetadataConfig
 ```
-

@@ -2,7 +2,6 @@
 title: langchain
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - ai
   - ai-agent
@@ -52,38 +51,38 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   import os
   from dotenv import load_dotenv
   from langchain_google_genai import ChatGoogleGenerativeAI
-  
+
   # ---------------指定模型---------------------
   # 读取 .env 文件并将 GEMINI_API_KEY 加载到环境中
   load_dotenv()
-  
+
   # 读取 API 密钥
   GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-  
+
   # 检查 API 密钥是否已加载
   if not GEMINI_API_KEY:
       raise ValueError("GEMINI_API_KEY 未在环境变量中设置。请检查您的 .env 文件。")
-  
+
   # 实例化模型
   model = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API_KEY)
-  
+
   # ----------------定义工具-------------------------
   def get_weather(city: str) -> str:
       """Get weather for a given city."""
       return f"It's always sunny in {city}!"
-  
+
   # ----------------创建代理-------------------------
   agent = create_agent(
       model=model,
       tools=[get_weather],
       system_prompt="You are a helpful assistant",
   )
-  
+
   # ----------------调用代理-------------------------
   result = agent.invoke(
       {"messages": [{"role": "user", "content": "what is the weather in sf"}]}
   )
-  
+
   print(result)
   ```
 
@@ -116,65 +115,65 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
   from langchain.tools import tool, ToolRuntime
   from dataclasses import dataclass
   from langgraph.checkpoint.memory import InMemorySaver
-  
+
   # ---------------定义系统提示语---------------------
   SYSTEM_PROMPT = """你是一位精通双关语的专业天气预报员，请始终使用**中文**回答。
-  
+
   你拥有以下两个工具：
-  
+
   - get_weather_for_location: 用于获取特定地点的天气
   - get_user_location: 用于获取用户当前所在地点
-  
+
   如果用户询问天气，请确保你知道地点。如果用户的问题暗示的是他们当前所在的位置，则使用 get_user_location 工具来查找他们的位置。
   **请注意：你的所有回复都必须是中文的，并且应包含中文的双关语或有趣的谐音梗。**"""
-  
+
   # ---------------指定模型---------------------
   # 读取 .env 文件并将 GEMINI_API_KEY 加载到环境中
   load_dotenv()
-  
+
   # 读取 API 密钥
   GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-  
+
   # 检查 API 密钥是否已加载
   if not GEMINI_API_KEY:
       raise ValueError("GEMINI_API_KEY 未在环境变量中设置。请检查您的 .env 文件。")
-  
+
   # 实例化模型
   llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash", google_api_key=GEMINI_API_KEY)
-  
+
   # ---------------定义上下文模式 context_schema---------------------
   @dataclass
   class Context:
       """Custom runtime context schema."""
-  
+
       user_id: str
-  
+
   # ---------------定义响应格式 response_format---------------------
   @dataclass
   class ResponseFormat:
       """Response schema for the agent."""
-  
+
       punny_response: str
       weather_conditions: str | None = None
-  
+
   # ---------------定义内存存储器---------------------
   checkpointer = InMemorySaver()
-  
+
   # 会话标识符
   config = {"configurable": {"thread_id": "1"}}
-  
+
   # ----------------定义工具-------------------------
   @tool
   def get_weather_for_location(city: str) -> str:
       """Get weather for a given city."""
       return f"It's always sunny in {city}!"
-  
+
   @tool
   def get_user_location(runtime: ToolRuntime[Context]) -> str:
       """Retrieve user information based on user ID."""
       user_id = runtime.context.user_id
       return "Florida" if user_id == "1" else "SF"
-  
+
   # ----------------创建代理-------------------------
   agent = create_agent(
       model=llm,
@@ -184,27 +183,27 @@ LangChain 的核心价值在于**模块化**，主要组件包括：
       response_format=ResponseFormat,
       checkpointer=checkpointer,
   )
-  
+
   # ----------------运行代理-------------------------
-  
+
   # 运行 Agent，传入用户消息和配置
   response = agent.invoke(
       {"messages": [{"role": "user", "content": "今天天气怎么样？"}]},
       config=config,  # 传入会话 ID，让 Agent 知道去哪里加载/存储记忆。
       context=Context(user_id="1"),  # 传入工具所需的运行时上下文数据（用户ID为 "1"）。
   )
-  
+
   # 打印 Agent 最终的结构化回复
   print(response["structured_response"])
   # 预期输出示例：ResponseFormat(punny_response="...", weather_conditions="...")
-  
+
   # 再次运行 Agent，使用相同的 `thread_id`，Agent 会自动加载第一次调用的历史记录。
   response = agent.invoke(
       {"messages": [{"role": "user", "content": "谢谢！"}]},
       config=config,  # 相同 config，继续会话 ID "1" 的历史。
       context=Context(user_id="1"),  # 仍然传入上下文数据。
   )
-  
+
   # 打印 Agent 最终的结构化回复
   print(response["structured_response"])
   # 预期输出示例：ResponseFormat(punny_response="You're 'thund-erfully' welcome!...", weather_conditions=None)
@@ -568,7 +567,7 @@ from dataclasses import dataclass
 # 定义 schema
 @dataclass
 class Context:
-    """Custom runtime context schema.""" 
+    """Custom runtime context schema."""
 
     user_id: str
 
@@ -588,7 +587,7 @@ agent = create_agent(
 # 在回应时，传入 schema
 response = agent.invoke(
     # ... 其它消息和配置
-    
+
     context=Context(user_id="1")
 )
 ```
@@ -623,7 +622,7 @@ agent = create_agent(
 
 ### 基本用法
 
-在创建 Agent 时指定 [`checkpointer`](https://reference.langchain.com/python/langchain/agents/?h=checkpointer#langchain.agents.create_agent(checkpointer)) 属性，在调用 Agent 时使用 `thread_id`。
+在创建 Agent 时指定 [`checkpointer`](<https://reference.langchain.com/python/langchain/agents/?h=checkpointer#langchain.agents.create_agent(checkpointer)>) 属性，在调用 Agent 时使用 `thread_id`。
 
 数据存储在内存中，它只在当前程序运行期间有效。一旦程序结束或重启，这些记忆就会丢失。
 
@@ -671,7 +670,7 @@ pip install langgraph-checkpoint-postgres
 
 ```python
 from langchain.agents import create_agent
-from langgraph.checkpoint.postgres import PostgresSaver  
+from langgraph.checkpoint.postgres import PostgresSaver
 
 DB_URI = "postgresql://postgres:postgres@localhost:5442/postgres?sslmode=disable"
 with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
@@ -679,7 +678,7 @@ with PostgresSaver.from_conn_string(DB_URI) as checkpointer:
     agent = create_agent(
         "gpt-5",
         [get_user_info],
-        checkpointer=checkpointer,  
+        checkpointer=checkpointer,
     )
 ```
 
@@ -751,10 +750,10 @@ response = model.invoke(messages)
 
 [**消息类型**](https://docs.langchain.com/oss/python/langchain/messages#message-types)：
 
--  [SystemMessage()](https://docs.langchain.com/oss/python/langchain/messages#system-message)：系统消息，告诉模型如何运行，并为交互提供上下文。
--  [HumanMessage()](https://docs.langchain.com/oss/python/langchain/messages#human-message)：人类消息，代表用户输入以及与模型的交互。
--  [AIMessage()](https://docs.langchain.com/oss/python/langchain/messages#ai-message)：AI 消息，模型生成的响应，包括文本内容、工具调用和元数据。
--  [ToolMessage()](https://docs.langchain.com/oss/python/langchain/messages#tool-message)：工具消息，工具调用的输出。
+- [SystemMessage()](https://docs.langchain.com/oss/python/langchain/messages#system-message)：系统消息，告诉模型如何运行，并为交互提供上下文。
+- [HumanMessage()](https://docs.langchain.com/oss/python/langchain/messages#human-message)：人类消息，代表用户输入以及与模型的交互。
+- [AIMessage()](https://docs.langchain.com/oss/python/langchain/messages#ai-message)：AI 消息，模型生成的响应，包括文本内容、工具调用和元数据。
+- [ToolMessage()](https://docs.langchain.com/oss/python/langchain/messages#tool-message)：工具消息，工具调用的输出。
 
 # Middleware
 
@@ -786,7 +785,7 @@ agent = create_agent(
 
 **在以上示例中：**
 
-- [`middleware`](https://reference.langchain.com/python/langchain/agents/?_gl=1*z2ejvz*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIwODQyMDAkbzI4JGcxJHQxNzYyMDg0MzczJGo2MCRsMCRoMA..#langchain.agents.create_agent(middleware))：中间件
+- [`middleware`](<https://reference.langchain.com/python/langchain/agents/?_gl=1*z2ejvz*_gcl_au*NDczNTIxMDkyLjE3NjEzODI3OTI.*_ga*MjE5MjYzNzI5LjE3NjE1NTY1MzU.*_ga_47WX3HKKY2*czE3NjIwODQyMDAkbzI4JGcxJHQxNzYyMDg0MzczJGo2MCRsMCRoMA..#langchain.agents.create_agent(middleware)>)：中间件
 
 ## 基于装饰器的中间件
 
@@ -861,7 +860,7 @@ class LoggingMiddleware(AgentMiddleware):
     这个类实现了两个钩子：before_model 和 after_model。
     它负责在模型调用前后打印日志信息。
     """
-    
+
     # 钩子 1: 在模型调用之前触发
     def before_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
         print(f"状态中包含 {len(state['messages'])} 条消息。")
@@ -874,7 +873,7 @@ class LoggingMiddleware(AgentMiddleware):
         return None
 
 # 实例化基于类的中间件
-logging_instance = LoggingMiddleware() 
+logging_instance = LoggingMiddleware()
 
 agent = create_agent(
     model="gpt-4o",
@@ -904,7 +903,7 @@ agent = create_agent(
     model=llm,
     # 传入 SYSTEM_PROMPT 组件
     system_prompt=SYSTEM_PROMPT,
-    
+
     # 传入其它组件
 )
 ```
@@ -995,48 +994,48 @@ def chat_loop():
     运行一个命令行交互循环，实现持续的多轮对话。
     """
     global chat_history
-    
+
     print("--- 🤖 Gemini 命令行聊天助手已启动 ---")
     print("输入您的提问。输入 '退出' 或 'q' 结束会话。")
-    
+
     # 将一个系统指令添加到历史记录的开头，设置 AI 的角色
     system_instruction = "你是一个友好且乐于助人的 AI 助手。请记住用户的上下文和之前的对话。"
-    
+
     # 循环等待用户输入
     while True:
         try:
             # 获取用户输入
             user_input = input("👤 您: ").strip()
-            
+
             # 检查退出命令
             if user_input.lower() in ["退出", "q", "exit", "quit", "exit()"]:
                 print("\n👋 谢谢使用，再见！")
                 break
-                
+
             if not user_input:
                 continue
 
             # 1. 创建代表当前用户输入的消息
             current_human_message = HumanMessage(content=user_input)
-            
+
             # 2. 构建完整的输入消息列表：历史记录 + 当前输入
             full_messages = chat_history + [current_human_message]
-            
+
             # 3. 调用模型
             # 注意：模型调用是阻塞的，可能需要一些时间
             ai_response_message = model.invoke(full_messages)
-            
+
             # 获取 AI 的文本回复
             ai_response_text = ai_response_message.content
-            
+
             # 4. 打印回复并更新对话历史
             print(f"🤖 AI: {ai_response_text}")
-            
+
             # 将用户的输入添加到历史记录
             chat_history.append(current_human_message)
             # 将 AI 的回复消息添加到历史记录
             chat_history.append(ai_response_message)
-            
+
         except Exception as e:
             print(f"\n❌ 发生了一个错误: {e}")
             print("会话结束。")

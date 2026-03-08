@@ -2,7 +2,6 @@
 title: frontend
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - web
   - frontend
@@ -14,7 +13,6 @@ tags:
 
 - 前端开发是创建 WEB 页面或 APP 等前端界面呈现给用户的过程，通过 HTML、CSS 及 JavaScript 以及衍生出来的各种技术、框架、解决方案，来实现互联网产品的用户界面交互。
 - 前端三剑客
-
   - **HTML**：结构层 从语义角度描述页面结构
   - **CSS**：样式层 从美观角度描述页面样式
   - **JavaScript**：行为层 从交互角度描述页面行为
@@ -24,7 +22,6 @@ tags:
 - 创建一个名为 `web-projects` 的新文件夹。这是你所有的网站项目的存放地。
 - 在 `web-projects` 中，创建名为 `test-site` 的文件夹来存放你的第一个网站。
 - 项目结构
-
   - **`index.html` 文件**
   - **`images` 文件夹**：存图片
   - **`styles` 文件夹**：存 CSS 文件

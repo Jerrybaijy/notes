@@ -2,7 +2,6 @@
 title: gcp-gke
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud-computing
   - gcp
@@ -21,9 +20,9 @@ tags:
 
 ## 准备工作
 
-- [GCP 准备工作](<gcp.md#准备工作>)已完成
-- [本地 kubectl](<kubernetes.md#kubectl>) 已安装
-- [GCP project](<gcp-project.md#Quickstart>) 已创建
+- [GCP 准备工作](gcp.md#准备工作)已完成
+- [本地 kubectl](kubernetes.md#kubectl) 已安装
+- [GCP project](gcp-project.md#Quickstart) 已创建
 
 ## 创建 GKE
 
@@ -100,7 +99,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 ## 使用 Gcloud CLI 创建 GKE 集群
 
-- [准备工作](<#准备工作>)已完成
+- [准备工作](#准备工作)已完成
 
 - 开启 GKE 必需 API
 
@@ -108,7 +107,7 @@ gcloud container clusters delete my-cluster --region=asia-east2
   gcloud services enable $APIs
   gcloud services enable compute.googleapis.com container.googleapis.com
   ```
-  
+
 - 创建集群
 
   ```bash
@@ -131,9 +130,9 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 ### 准备工作
 
-- [Terraform 安装](<terraform-cli.md#Install>)已完成
+- [Terraform 安装](terraform-cli.md#Install)已完成
 - GCP 项目已创建并关联结算账号
-- [安装和配置 Google Cloud CLI](<gcp-gcloud-cli.md#Install>)
+- [安装和配置 Google Cloud CLI](gcp-gcloud-cli.md#Install)
 - [Kubectl 已安装并完成配置](<gcp-gke.md#Quick Start>)
 
 ### 创建 Terraform 目录
@@ -511,8 +510,6 @@ gcloud container clusters delete $CLUSTER_NAME [Flags]
 gcloud container clusters resize $CLUSTER_NAME [Flags]
 ```
 
-
-
 # 手动部署
 
 - 来源：[部署容器化应用](https://cloud.google.com/kubernetes-engine/docs/deploy-app-cluster)
@@ -522,7 +519,6 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
 - 此练习没有使用 Yaml 文件部署
 
 - **准备**
-
   - Google Cloud CLI 环境搭建完成，详见 《Google Cloud》
 
   - 在 Google Cloud 中启用 API
@@ -534,7 +530,6 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
     ```
 
 - **创建集群**
-
   - 创建集群
 
     ```bash
@@ -548,7 +543,6 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
     ```
 
 - **部署应用**
-
   - 手动部署应用
 
     ```bash
@@ -576,7 +570,6 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
   ```
 
 - **清理**
-
   - 删除 Service
 
     ```bash
@@ -630,26 +623,26 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
 
   ```go
   package main
-  
+
   import (
           "fmt"
           "log"
           "net/http"
           "os"
   )
-  
+
   func main() {
           http.HandleFunc("/", handler)
-  
+
           port := os.Getenv("PORT")
           if port == "" {
                   port = "8080"
           }
-  
+
           log.Printf("Listening on localhost:%s", port)
           log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port), nil))
   }
-  
+
   func handler(w http.ResponseWriter, r *http.Request) {
           log.Print("Hello world received a request.")
           target := os.Getenv("TARGET")
@@ -672,17 +665,17 @@ gcloud container clusters resize $CLUSTER_NAME [Flags]
   RUN go mod init quickstart-go
   COPY *.go ./
   RUN CGO_ENABLED=0 GOOS=linux go build -o /quickstart-go
-  
+
   # 使用 Docker 多阶段构建来创建精简的生产镜像
   # https://docs.docker.com/develop/develop-images/multistage-build/#use-multi-stage-builds
   # 原文件不是这个image，导致容器无法启动
   FROM debian
   WORKDIR /
   COPY --from=builder /quickstart-go /quickstart-go
-  
+
   # 原文件没有这句，导致找不到nonroot用户，容器无法启动
   RUN groupadd -r nonroot && useradd -r -g nonroot nonroot
-  
+
   USER nonroot:nonroot
   ENTRYPOINT ["/quickstart-go"]
   ```

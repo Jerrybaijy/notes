@@ -2,7 +2,6 @@
 title: gitlab-ci-cd-yaml
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -23,7 +22,7 @@ tags:
 
 [**GitLab CI/CD**](https://docs.gitlab.com/topics/build_your_application/) 是 GitLab 提供的**一体化工具**，在代码提交时根据 `.gitlab-ci.yml` 文件触发 **Pipeline**，自动执行 CI/CD 流程。
 
-> [CI/CD YAML 语法（个人）](<gitlab-ci-cd-yaml.md>)
+> [CI/CD YAML 语法（个人）](gitlab-ci-cd-yaml.md)
 >
 > [CI/CD YAML syntax reference](https://docs.gitlab.com/ci/yaml/)
 >
@@ -56,7 +55,6 @@ tags:
   - Failed
   - Skipped
 
-
 ## `.gitlab-ci.yml`
 
 `.gitlab-ci.yml` 用于定义 Pipeline 的所有**阶段**、**作业**及其执行逻辑。GitLab CI/CD 系统会默认在仓库的根目录查找这个文件，并将其作为 CI/CD 流水线的配置文件。
@@ -78,7 +76,7 @@ stages:
 build_backend:
   # 当前作业所属阶段
   stage: build
-  
+
   # 当前作业执行的脚本
   script:
     # 脚本内容
@@ -118,19 +116,16 @@ publish_chart:
 - 目的是在将文件 push 到 Gitlab 时，通过 Pipeline 自动生成 Image 并推送到 Dockerhub。
 
 - 创建 `Dockerfile` 和 `.gitlab-ci.yml` 文件。
-
   - 项目根目录创建 `.gitlab-ci.yml` 文件。
   - 前/后端目录创建 `Dockerfile` 文件。
 
 - 在 Docker Hub 创建 Access Token，详见 Docker Hub 笔记。
 
 - 在 GitLab 配置环境变量。
-
   - DOCKER_HUB_USER: jerrybaijy
   - DOCKER_HUB_TOKEN: Docker Hub 的 **Access Token**
 
 - 推送至 GitLab
-
   - 将项目文件推送至 GitLab 仓库
   - GitLab 在 Pipeline 中自动生成 Image 并推送至 Docker Hub
 
@@ -141,40 +136,40 @@ publish_chart:
   variables:
     # Docker 版本号
     DOCKER_VERSION: 24.0.5
-  
+
     # 告诉 Docker 使用 overlay2 驱动，性能更好
     DOCKER_DRIVER: overlay2
-  
+
     # 禁用 TLS 证书生成，防止 dind 连接报错
     DOCKER_TLS_CERTDIR: ""
-    
+
     # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
     IMAGE_PREFIX: $DOCKER_HUB_USER
-    
+
     # 项目名称
     PROJECT_NAME: my-project
-  
+
     # 后端和前端名称
     BACKEND_NAME: backend
     FRONTEND_NAME: frontend
-    
+
     # 后端和前端目录
     BACKEND_DIR: backend
     FRONTEND_DIR: frontend
-  
+
   # 定义阶段
   stages:
     - build
-  
+
   # 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
   services:
     - docker:$DOCKER_VERSION-dind
-  
+
   # 登录 Docker Hub
   before_script:
     # 使用 stdin 输入密码，更加安全
     - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-  
+
   # 构建后端镜像
   build_backend:
     stage: build
@@ -182,10 +177,10 @@ publish_chart:
     script:
       # 进入后端目录
       - cd $BACKEND_DIR
-      
+
       # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
       - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
-      
+
       # 推送到 Docker Hub
       - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
       - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
@@ -193,7 +188,7 @@ publish_chart:
       # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
       - changes:
           - $BACKEND_DIR/**/*
-  
+
   # 构建前端镜像
   build_frontend:
     stage: build
@@ -304,7 +299,7 @@ rules:
 ```yaml
 variables:
   # 完整写法
-  BACKEND_NAME: 
+  BACKEND_NAME:
     value: "backend"
 
   # 简洁写法

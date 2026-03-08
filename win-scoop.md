@@ -2,10 +2,9 @@
 title: win-scoop
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
-  - software
   - 包管理工具
+  - windows
 ---
 
 # Overview
@@ -32,8 +31,6 @@ powershell -Command "iwr -useb get.scoop.sh | iex"
 # 查看版本（重启终端）
 scoop --version
 ```
-
-
 
 ```bash
 # 查看已安装软件
@@ -74,4 +71,3 @@ scoop bucket add scoopcn https://github.com/scoopcn/scoopcn.git
 
 scoop bucket list
 ```
-

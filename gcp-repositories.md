@@ -2,7 +2,6 @@
 title: gcp-repositories
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -42,12 +41,10 @@ tags:
 > [Connect to a GitLab host](https://docs.cloud.google.com/build/docs/automating-builds/gitlab/connect-host-gitlab)
 
 - [启用相关 APIs](https://console.cloud.google.com/apis/enableflow;apiid=cloudbuild.googleapis.com,secretmanager.googleapis.com;redirect=https:%2F%2Fcloud.google.com%2Fbuild%2Fdocs%2Fautomating-builds%2Fgitlab%2Fconnect-host-gitlab)
-
   - Cloud Build API
   - Secret Manager API
 
 - 创建两个 GitLab [Personal Access Tokens](https://gitlab.com/-/user_settings/personal_access_tokens)
-
   - 具有 `api` 范围的访问令牌，用于与代码库建立连接和断开连接。
   - 具有 `read_api` 范围的访问令牌，Cloud Build 触发器使用此令牌访问代码库中的源代码。
 
@@ -58,7 +55,6 @@ tags:
 - 选择 `2nd gen` 标签页。
 
 - `Create host connection` > `GitLab`
-
   - **Region**：`my-region`
   - **Name**：`my-gitlab-host`
   - **Host details**：`GitLab.com`

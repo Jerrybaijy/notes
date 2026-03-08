@@ -2,7 +2,6 @@
 title: mermaid
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - chart
@@ -28,7 +27,6 @@ tags:
 ```
 
 - 注释种类
-
   - `config` 内部使用 `#` 注释
   - 其余使用 `%%` 注释
 
@@ -208,13 +206,11 @@ xychart-beta
 - **分类值**是每个 Bar 的**名称**：`["名称1", "名称2", ... "名称n"]`
 - **数值范围值**是所有 Bar 的**数值范围**：`min --> max`
 - **x 轴和 y 轴**
-
   - x 轴主要用作**分类值**，但在需要时也可以用作数值范围值。
   - y 轴用于表示**数值范围值**，不能包含分类值。
   - **注意**：当图表方向是 `horizontal` 时，x 轴是垂直的，y 轴是水平的，各自用途不变。
 
 - **轴标题**：可省略
-
   - `x-axis "x轴标题" [分类值, 分类值, 分类值]`
   - `y-axis "y轴标题" min --> max`
 
@@ -745,7 +741,7 @@ flowchart LR
 
   ```
   %% 节点ID("<font color='red'>显示文本</font>")
-  
+
   A("<font color='red'>显示文本</font>")
   ```
 

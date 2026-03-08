@@ -2,7 +2,6 @@
 title: json
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - config

@@ -2,7 +2,6 @@
 title: gcp-cloud-build
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - dev-ops
   - ci-cd
@@ -19,7 +18,7 @@ tags:
 其它留存：
 
 - [使用 Cloud Build 构建镜像](https://cloud.google.com/build/docs/build-push-docker-image?hl=zh-cn)
-- [创建 Cloud Build 配置文件 (`cloudbuild.yaml`)](https://www.google.com/search?q=[https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration%3Fhl%3Dzh-cn](https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration%3Fhl%3Dzh-cn))
+- [创建 Cloud Build 配置文件 (`cloudbuild.yaml`)](<https://www.google.com/search?q=[https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration%3Fhl%3Dzh-cn](https://cloud.google.com/build/docs/configuring-builds/create-basic-configuration%3Fhl%3Dzh-cn)>)
 - [使用 Cloud Build 部署到 Kubernetes](https://www.google.com/search?q=https://cloud.google.com/build/docs/deploying-builds/deploy-gke%3Fhl%3Dzh-cn)
 
 # Quickstart
@@ -44,11 +43,11 @@ tags:
 
 # Build 配置文件
 
->  [创建 Build 配置文件](https://docs.cloud.google.com/build/docs/configuring-builds/create-basic-configuration)
+> [创建 Build 配置文件](https://docs.cloud.google.com/build/docs/configuring-builds/create-basic-configuration)
 
 ## `cloudbuild.yaml`
 
->  此文件源自 [Todo GCP](todo-gcp.md#`cloudbuild.yaml`) 项目
+> 此文件源自 [Todo GCP](todo-gcp.md#`cloudbuild.yaml`) 项目
 
 ```yaml
 steps:
@@ -149,7 +148,6 @@ options:
 - 配置监控变化目录需在 Trigger 中进行。
 
   **Show included and ignored | Included files filter**：按需填入触发 Cloud Build 的监控目录
-
-  - backend/**
-  - frontend/**
-  - helm-chart/**
+  - backend/\*\*
+  - frontend/\*\*
+  - helm-chart/\*\*

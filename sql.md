@@ -2,7 +2,6 @@
 title: sql
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - database
   - code-language
@@ -192,7 +191,6 @@ SELECT * FROM students
   ```
 
 - **Wildcard**
-
   - `%`：匹配任意数量（包含零个）字符。
   - `_`：匹配任意单个字符。
   - `[]`：用于指定一个字符范围或一组字符，只要匹配其中一个字符就算匹配成功。
@@ -356,7 +354,6 @@ SELECT * FROM students
   | male   | Jerry        |
 
 - **Notice**
-
   - Execution order: **FROM** > ... > **SELECT** > **ORDER BY**
   - So, the alias declared last in the behind clause shouldn't be used in the front ones.
 
@@ -388,7 +385,6 @@ SELECT * FROM students
   ```
 
 - Common Aggregate Function
-
   - **`COUNT()`**: Include the repeative values. Exclude NULL.
   - **`COUNT(DISTINCT {Field})`**: Exclude the repeative values. Exclude NULL.
   - **`MIN()`**: Also can handle date and time.
@@ -495,7 +491,6 @@ SELECT * FROM students
   ```
 
   **在以上代码中**：
-
   - **`INT`**：整型
   - **`NOT NULL`**：非空
   - **`AUTO_INCREMENT`**：
@@ -522,13 +517,11 @@ SELECT * FROM students
 **常用的约束**：
 
 - [PRIMARY KEY](https://www.w3cschool.cn/sql/vle8zfpd.html)：主键
-
   - 主键必须包含唯一的值。
   - 主键列不能包含 NULL 值。
   - 每个表都应该有一个主键，并且只能有一个主键。
 
 - [FOREIGN KEY](https://www.w3cschool.cn/sql/5dycsfpf.html)：外键
-
   - 一个表中的 `FOREIGN KEY` 指向另一个表中的 `PRIMARY KEY`。
 
 - [NOT NULL](https://www.w3cschool.cn/sql/6tlpzfpb.html)：非空

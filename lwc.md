@@ -2,7 +2,6 @@
 title: lwc
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - salesforce
@@ -346,7 +345,6 @@ HTML 绑定 `onclick` 事件：
   ```
 
 - **说明：**
-
   - `name="Custom Name"` 这一行表示 **父组件** 在 **HTML 中设置子组件的 `name` 值**。
   - LWC 会自动**将 `"Custom Name"` 传递到子组件的 `name` 变量**。
 
@@ -561,7 +559,6 @@ export default class ChildComponent extends LightningElement {
 **关键点**：子组件用 `@api` 公开 `childMethod()`，父组件通过 `this.template.querySelector()` 调用它。
 
 - **`this.template.querySelector('c-child-component')`**
-
   - `this` 指的是 `ParentComponent` 这个 LWC 组件的实例。
 
   - `this.template` 代表当前组件的模板 (`parentComponent.html` 的 `<template>` 部分)。
@@ -569,7 +566,6 @@ export default class ChildComponent extends LightningElement {
   - `querySelector('c-child-component')` 通过 CSS 选择器的方式，在当前组件的 HTML 模板中查找 `<c-child-component>` 这个子组件的实例。
 
 - **`.childMethod();`**
-
   - `querySelector` 返回 `<c-child-component>` 这个子组件的 JavaScript 实例。
   - `childMethod()` 是 `ChildComponent` 组件暴露的 `@api` 方法。
   - 由于 `childMethod` 是用 `@api` 标记的，它是**公开方法**，可以被父组件调用。

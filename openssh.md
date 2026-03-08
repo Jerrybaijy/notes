@@ -2,7 +2,6 @@
 title: openssh
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - it-basics
 ---
@@ -84,7 +83,6 @@ ssh-keygen -t rsa -b 2048 -f ~/.ssh/my_secret_key -C my-comment
   - `my_secret_key`：密钥基础名称
 - `-C my-comment`：
   - 给生成的公钥添加注释信息，注意 `C` 是大写。
-
 
 **命令结果**：
 

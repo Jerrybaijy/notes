@@ -2,7 +2,6 @@
 title: python
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - backend
@@ -108,13 +107,13 @@ tags:
 
   ```python
   from flask import Flask, render_template
-  
+
   app = Flask(__name__)
-  
+
   @app.route("/")
   def index():
       return render_template("index.html", name="Alice", items=["Apple", "Banana", "Cherry"])
-  
+
   if __name__ == "__main__":
       app.run(debug=True)
   ```

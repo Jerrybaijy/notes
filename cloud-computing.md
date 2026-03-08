@@ -2,7 +2,6 @@
 title: cloud-computing
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud-computing
 ---

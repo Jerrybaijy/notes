@@ -2,7 +2,6 @@
 title: prettier
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - code-language
   - software
@@ -30,7 +29,7 @@ npx prettier --write index.js
 
 ## VS Code 扩展
 
-使用方法详见 [`vs-code`](#vs-code)  笔记。
+使用方法详见 [`vs-code`](#vs-code) 笔记。
 
 # 配置
 
@@ -40,7 +39,7 @@ npx prettier --write index.js
 
 官方文档提及：Prettier 有意**不支持**任何类型的**全局配置**。
 
-学习环境使用 VS Code 的 `settings.json`  文件进行精细化配置，详见 [`vs-code`](vs-code.md) 笔记。
+学习环境使用 VS Code 的 `settings.json` 文件进行精细化配置，详见 [`vs-code`](vs-code.md) 笔记。
 
 ## 忽略代码
 

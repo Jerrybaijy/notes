@@ -2,7 +2,6 @@
 title: projects
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - projects
 ---
@@ -48,39 +47,39 @@ tags:
 
   ```
   # 老师操作步骤
-  
+
   1.构建整体结构
-  
+
   2.main中创建窗口对象
-  
+
   3.初始化定义属性
-  
+
   初始化Player
   初始化PlayerBullet
   初始化Enemy
   初始化EnemyrBullet
-  
+
   4.创建对象
-  
+
   创建background
   创建player
   创建enemy
-  
+
   5.显示对象
-  
+
   死循环while
   背景图片
   显示对象：调display
   未写敌机开火和Key_ctrol
-  
+
   5.1定义display
   玩家-不含子弹
   敌机-不含子弹
-  
+
   6.键盘控制
   编写键盘控制（只有退出）
   将Key_ctrol填入main()
-  
+
   7.定义敌机move和fire
   敌机move
   添加至main()
@@ -93,7 +92,7 @@ tags:
   from pygame.locals import *  # 检测事件，如监控键盘按键
   import sys  # 用来退出游戏
   import random  # 控制子弹随机发射
-  
+
   # 玩家类：
   # 属性：显示窗口、位置、图片、子弹列表、移动状态
   # 方法：显示、移动、开火
@@ -107,7 +106,7 @@ tags:
           self.bulletList = []  # 玩家子弹列表
           self.moveLeftState = 0  # 0不移动  1移动
           self.moveRightState = 0  # 0不移动  1移动
-  
+
       def display(self):
           # 当前对象所在的screen属性下，调blit函数
           self.screen.blit(self.img, (self.x, self.y))  # 将玩家显示到窗口
@@ -116,17 +115,17 @@ tags:
               b.move()  # 将玩家子弹移动状态显示到窗口
               if b.y <= 0:
                   self.bulletList.remove(b)  # 在子弹列表中移除b
-  
+
       def move(self):
           if self.moveLeftState == 1 and self.x > -30:
               self.x -= 5
           if self.moveRightState == 1 and self.x < 330:
               self.x += 5
-  
+
       def fire(self):
           b = PlayerBullet(self.screen, self.x, self.y)
           self.bulletList.append(b)
-  
+
   # 玩家子弹类：
   # 属性：显示窗口、位置、图片
   # 方法：显示、移动
@@ -136,13 +135,13 @@ tags:
           self.x = x + 40  # 玩家子弹初始位置，需要跟随玩家飞机
           self.y = y - 20
           self.img = pygame.image.load(r"feiji/bullet.png")
-  
+
       def display(self):
           self.screen.blit(self.img, (self.x, self.y))
-  
+
       def move(self):
           self.y -= 20
-  
+
   # 敌机类
   # 属性：显示窗口、位置、图片、子弹列表、移动状态
   # 方法：显示、移动、开火
@@ -154,7 +153,7 @@ tags:
           self.img = pygame.image.load(r"feiji/enemy0.png")
           self.bulletList = []
           self.moveState = 1
-  
+
       def display(self):
           # 当前对象所在的screen属性下，调blit函数
           self.screen.blit(self.img, (self.x, self.y))
@@ -163,7 +162,7 @@ tags:
               b.move()
               if b.y >= 600:
                   self.bulletList.remove(b)
-  
+
       def move(self):
           if self.moveState == 1:
               self.x += 5
@@ -173,11 +172,11 @@ tags:
               self.moveState = 1
           if self.x > 280:
               self.moveState = 0
-  
+
       def fire(self):
           b = EnemyBullet(self.screen, self.x, self.y)
           self.bulletList.append(b)
-  
+
   # 敌机子弹类
   # 属性：显示窗口、位置、图片
   # 方法：显示、移动
@@ -187,13 +186,13 @@ tags:
           self.x = x + 20  # 敌机子弹初始位置，需要跟随敌机飞机
           self.y = y + 30
           self.img = pygame.image.load(r"feiji/bullet2.png")
-  
+
       def display(self):
           self.screen.blit(self.img, (self.x, self.y))
-  
+
       def move(self):
           self.y += 20
-  
+
   # 捕捉用户操作
   def key_control(player):  # 传入玩家对象，只控制玩家
       for event in pygame.event.get():
@@ -215,7 +214,7 @@ tags:
                   player.moveLeftState = 0
               if event.key == K_RIGHT:
                   player.moveRightState = 0
-  
+
   # main方法
   class main():
       # 创建对象
@@ -223,25 +222,25 @@ tags:
       background = pygame.image.load(r"feiji/background.png")  # 创建背景
       player = Player(screen)  # 创建玩家，并将screen属性传入玩家
       enemy = Enemy(screen)  # 创建敌军，并将screen属性传入敌军
-  
+
       while 1 == 1:  # 在循环中显示所有对象并刷新，以实现对象的变化
           screen.blit(background, (0, 0))  # 将背景添加到屏幕，即显示背景
           player.display()  # 显示玩家，因为玩家还要显示其它操作。所以玩家的显示写在display中
           enemy.display()  # 显示敌机
           player.move()  # 玩家移动
           enemy.move()  # 敌机移动
-  
+
           # 敌机随机开火
           r = random.randint(1, 10)
           if r == 1:
               enemy.fire()
-  
+
           # 捕捉玩家操作
           key_control(player)
-  
+
           pygame.display.update()  # 刷新窗口
           time.sleep(0.05)  # 休眠0.05秒，减少内存消耗
-  
+
   # ---------------------------
   if __name__ == '__main__':
       main()
@@ -271,7 +270,7 @@ tags:
   cardslist = [card1, card2, card3]
   count = 0  # 记录输入错误的次数
   msg = 0  # 记录登录状态 0失败 1成功！
-  
+
   # 登录业务
   while 1 == 1:  # 输入账号和密码的无限循环
       cnum = input("请输入卡号：")
@@ -289,7 +288,7 @@ tags:
           elif count == 3:
               print("您已连续3次输入错误，银行卡已被锁定！")
               break
-  
+
       # 银行业务
       while 2 == 2:  # 选择业务的无限循环
           choice = int(input("请输入要办理的业务（1.存款 2.取款 3.退出）："))
@@ -452,7 +451,6 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 - 集群已运行，Argo CD 已安装。
 - UI 界面创建 Git 仓库 argocd-git-helm，clone 至本地
 - 创建 argocd-helm-chart.0.1.0.tgz。
-
   - `deployment.yaml`
 
     ```yaml
@@ -565,12 +563,12 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
     podLabels: {}
     podSecurityContext: {}
     securityContext: {}
-    
+
     service:
       type: LoadBalancer
       port: 80
       targetPort: 8080
-    
+
     ingress:
       enabled: false
       className: ""
@@ -754,7 +752,7 @@ def chat():
     处理用户的聊天请求，与 Gemini 模型交互。
     """
     global chat_history
-    
+
     data = request.get_json()
     user_input = data.get('message')
 
@@ -922,147 +920,149 @@ if __name__ == '__main__':
 
 /* ------------------- 基础和模拟博客样式 ------------------- */
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: #f4f7f6;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
+  background-color: #f4f7f6;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
 
 /* ------------------- 聊天组件容器样式 (固定定位) ------------------- */
 #chat-widget-container {
-    position: fixed; /* 固定在视口中 */
-    right: 20px; /* 距离右侧 20px */
-    bottom: 20px; /* 距离底部 20px */
-    z-index: 9999; /* 确保它在所有内容之上 */
+  position: fixed; /* 固定在视口中 */
+  right: 20px; /* 距离右侧 20px */
+  bottom: 20px; /* 距离底部 20px */
+  z-index: 9999; /* 确保它在所有内容之上 */
 }
 
 /* ------------------- 聊天图标样式 ------------------- */
 #chat-icon {
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 1.5em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s;
 }
 #chat-icon:hover {
-    transform: scale(1.05);
+  transform: scale(1.05);
 }
 
 /* ------------------- 聊天对话框样式 ------------------- */
 .chat-container {
-    width: 350px;
-    height: 500px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    position: absolute; /* 相对于 #chat-widget-container 定位 */
-    right: 0;
-    bottom: 70px; /* 向上抬高，不遮挡图标 */
-    transform-origin: bottom right;
-    transition: all 0.3s ease-in-out;
+  width: 350px;
+  height: 500px;
+  background-color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: absolute; /* 相对于 #chat-widget-container 定位 */
+  right: 0;
+  bottom: 70px; /* 向上抬高，不遮挡图标 */
+  transform-origin: bottom right;
+  transition: all 0.3s ease-in-out;
 }
 
 /* 隐藏和显示对话框的关键类 */
 .chat-container.hidden {
-    opacity: 0;
-    visibility: hidden;
-    transform: scale(0.8);
-    pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+  pointer-events: none;
 }
 .chat-container:not(.hidden) {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
 }
 
 /* ------------------- 头部和关闭按钮 ------------------- */
 .chat-header {
-    background-color: #4A90E2;
-    color: white;
-    padding: 15px;
-    font-size: 1.1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  background-color: #4a90e2;
+  color: white;
+  padding: 15px;
+  font-size: 1.1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .close-btn {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 1.5em;
-    cursor: pointer;
-    line-height: 1;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  cursor: pointer;
+  line-height: 1;
 }
 
 /* ------------------- 消息体样式 ------------------- */
 .chat-box {
-    flex-grow: 1;
-    padding: 15px;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  flex-grow: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 .message {
-    max-width: 85%;
-    padding: 10px 15px;
-    border-radius: 20px;
-    line-height: 1.4;
-    word-wrap: break-word;
+  max-width: 85%;
+  padding: 10px 15px;
+  border-radius: 20px;
+  line-height: 1.4;
+  word-wrap: break-word;
 }
 .user-message {
-    align-self: flex-end;
-    background-color: #DCF8C6;
-    color: #333;
-    border-bottom-right-radius: 5px;
+  align-self: flex-end;
+  background-color: #dcf8c6;
+  color: #333;
+  border-bottom-right-radius: 5px;
 }
 .ai-message {
-    align-self: flex-start;
-    background-color: #EAEAEA;
-    color: #333;
-    border-bottom-left-radius: 5px;
+  align-self: flex-start;
+  background-color: #eaeaea;
+  color: #333;
+  border-bottom-left-radius: 5px;
 }
 
 /* ------------------- 输入区样式 ------------------- */
 .input-area {
-    display: flex;
-    padding: 10px;
-    border-top: 1px solid #eee;
-    background-color: #f9f9f9;
+  display: flex;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background-color: #f9f9f9;
 }
 .input-area input {
-    flex-grow: 1;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 15px;
-    font-size: 0.9em;
-    outline: none;
-    margin-right: 8px;
+  flex-grow: 1;
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  font-size: 0.9em;
+  outline: none;
+  margin-right: 8px;
 }
 .input-area button {
-    background-color: #4A90E2;
-    color: white;
-    border: none;
-    padding: 8px 15px;
-    border-radius: 15px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  border-radius: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 .input-area button:hover:not(:disabled) {
-    background-color: #3A7CCF;
+  background-color: #3a7ccf;
 }
 .input-area button:disabled {
-    background-color: #AABBEA;
-    cursor: not-allowed;
+  background-color: #aabbea;
+  cursor: not-allowed;
 }
 ```
 
@@ -1071,111 +1071,111 @@ body {
 ```javascript
 // static/script.js
 
-const chatBox = document.getElementById('chat-box');
-const userInput = document.getElementById('user-input');
-const sendBtn = document.getElementById('send-btn');
-const chatIcon = document.getElementById('chat-icon'); // 聊天图标
-const chatMainContainer = document.getElementById('chat-box-main'); // 对话框主体
+const chatBox = document.getElementById("chat-box");
+const userInput = document.getElementById("user-input");
+const sendBtn = document.getElementById("send-btn");
+const chatIcon = document.getElementById("chat-icon"); // 聊天图标
+const chatMainContainer = document.getElementById("chat-box-main"); // 对话框主体
 
 // 切换聊天窗口显示/隐藏
 function toggleChat() {
-    // 切换 hidden 类
-    const isHidden = chatMainContainer.classList.toggle('hidden');
+  // 切换 hidden 类
+  const isHidden = chatMainContainer.classList.toggle("hidden");
 
-    // 切换图标的显示状态：如果对话框隐藏，则显示图标
-    chatIcon.style.display = isHidden ? 'block' : 'none';
+  // 切换图标的显示状态：如果对话框隐藏，则显示图标
+  chatIcon.style.display = isHidden ? "block" : "none";
 
-    // 如果显示了，则自动聚焦输入框
-    if (!isHidden) {
-        userInput.focus();
-    }
+  // 如果显示了，则自动聚焦输入框
+  if (!isHidden) {
+    userInput.focus();
+  }
 }
 
 // 处理键盘按键事件 (Enter 发送)
 function handleKeyPress(event) {
-    if (event.key === 'Enter') {
-        sendMessage();
-    }
+  if (event.key === "Enter") {
+    sendMessage();
+  }
 }
 
 // 创建消息元素的函数
 function createMessageElement(text, isUser) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message');
-    messageDiv.classList.add(isUser ? 'user-message' : 'ai-message');
-    messageDiv.textContent = text;
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight; // 滚动到底部
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("message");
+  messageDiv.classList.add(isUser ? "user-message" : "ai-message");
+  messageDiv.textContent = text;
+  chatBox.appendChild(messageDiv);
+  chatBox.scrollTop = chatBox.scrollHeight; // 滚动到底部
 }
 
 // 创建加载消息
 function createLoadingMessage() {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', 'ai-message');
-    messageDiv.innerHTML = '思考中...'; 
-    chatBox.appendChild(messageDiv);
-    chatBox.scrollTop = chatBox.scrollHeight;
-    return messageDiv;
+  const messageDiv = document.createElement("div");
+  messageDiv.classList.add("message", "ai-message");
+  messageDiv.innerHTML = "思考中...";
+  chatBox.appendChild(messageDiv);
+  chatBox.scrollTop = chatBox.scrollHeight;
+  return messageDiv;
 }
 
 // 发送消息的主函数
 async function sendMessage() {
-    const message = userInput.value.trim();
-    if (!message) return;
+  const message = userInput.value.trim();
+  if (!message) return;
 
-    // 1. 禁用输入和按钮
-    sendBtn.disabled = true;
-    userInput.disabled = true;
-    userInput.value = ''; 
+  // 1. 禁用输入和按钮
+  sendBtn.disabled = true;
+  userInput.disabled = true;
+  userInput.value = "";
 
-    // 2. 显示用户消息
-    createMessageElement(message, true);
+  // 2. 显示用户消息
+  createMessageElement(message, true);
 
-    // 3. 显示加载提示
-    const loadingMessage = createLoadingMessage();
+  // 3. 显示加载提示
+  const loadingMessage = createLoadingMessage();
 
-    try {
-        // 4. 调用后端 API
-        const response = await fetch('/api/chat', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ message: message })
-        });
+  try {
+    // 4. 调用后端 API
+    const response = await fetch("/api/chat", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: message }),
+    });
 
-        // 5. 处理响应
-        const data = await response.json();
-        
-        // 移除加载提示
-        chatBox.removeChild(loadingMessage);
+    // 5. 处理响应
+    const data = await response.json();
 
-        if (response.ok) {
-            createMessageElement(data.response, false);
-        } else {
-            createMessageElement(`[错误]: ${data.error || '服务器错误'}`, false);
-        }
+    // 移除加载提示
+    chatBox.removeChild(loadingMessage);
 
-    } catch (error) {
-        // 移除加载提示
-        chatBox.removeChild(loadingMessage);
-        createMessageElement(`[网络错误]: 无法连接到服务器 (${error.message})`, false);
-    } finally {
-        // 6. 重新启用输入和按钮并聚焦
-        sendBtn.disabled = false;
-        userInput.disabled = false;
-        
-        // 只有当对话框可见时才聚焦
-        if (!chatMainContainer.classList.contains('hidden')) {
-             userInput.focus(); 
-        }
+    if (response.ok) {
+      createMessageElement(data.response, false);
+    } else {
+      createMessageElement(`[错误]: ${data.error || "服务器错误"}`, false);
     }
+  } catch (error) {
+    // 移除加载提示
+    chatBox.removeChild(loadingMessage);
+    createMessageElement(
+      `[网络错误]: 无法连接到服务器 (${error.message})`,
+      false,
+    );
+  } finally {
+    // 6. 重新启用输入和按钮并聚焦
+    sendBtn.disabled = false;
+    userInput.disabled = false;
+
+    // 只有当对话框可见时才聚焦
+    if (!chatMainContainer.classList.contains("hidden")) {
+      userInput.focus();
+    }
+  }
 }
 ```
 
 ## 运行项目
-
-
 
 # Commodity Manage (Login)
 
@@ -1203,14 +1203,14 @@ async function sendMessage() {
   user2 = {"用户名": "bbb", "密码": "123", "姓名": "李四"}
   user3 = {"用户名": "ccc", "密码": "123", "姓名": "王五"}
   users_list = [user1, user2, user3]  # 用户列表
-  
+
   p1 = {"编号": "1001", "名称": "苹果", "价格": 5, "折扣": 1}
   p2 = {"编号": "1002", "名称": "香蕉", "价格": 3, "折扣": 1}
   p3 = {"编号": "1003", "名称": "牛奶", "价格": 4, "折扣": 1}
   p4 = {"编号": "1004", "名称": "白菜", "价格": 1, "折扣": 1}
   p5 = {"编号": "1008", "名称": "西瓜", "价格": 3, "折扣": 1}
   products_list = [p1, p2, p3, p4, p5]  # 商品列表
-  
+
   # 登录
   def login():
       msg = "失败"
@@ -1228,7 +1228,7 @@ async function sendMessage() {
           else:
               break
       return msg  # 返回登录结果
-  
+
   # 1.显示商品列表
   def show_procucts():
       print("-编号----名称----价格----折扣-")
@@ -1236,7 +1236,7 @@ async function sendMessage() {
           print(product["编号"] + "-----" + product["名称"] + "-----" + str(product["价格"]) + "-------" + str(
               product["折扣"]))
       print("-----------------------------")
-  
+
   # 2.增加商品信息
   def add_procuct():
       # 生成新编号
@@ -1250,7 +1250,7 @@ async function sendMessage() {
       products_list.append(new_product)
       print("-------商品", name, "添加成功！")
       show_procucts()
-  
+
   # 3.删除商品（通过编号删除）
   def del_product():
       while 1 == 1:
@@ -1273,7 +1273,7 @@ async function sendMessage() {
           else:
               show_procucts()
               break
-  
+
   # 4.设置商品折扣
   def set_discout():
       while 1 == 1:
@@ -1296,7 +1296,7 @@ async function sendMessage() {
           else:
               show_procucts()
               break
-  
+
   # 5.修改商品价格信息
   def set_rice():
       while 1 == 1:
@@ -1319,7 +1319,7 @@ async function sendMessage() {
           else:
               show_procucts()
               break
-  
+
   # 6.根据价格排序显示商品列表
   def sort():
       choice = int(input("请选择升序或者降序（1.升序  2.降序）："))
@@ -1327,7 +1327,7 @@ async function sendMessage() {
       for product in products_list:
           pList.append(product["价格"])
       pList = list(set(pList))  # 去掉重复价格
-  
+
       print("-编号----名称----价格----折扣-")
       if choice == 1:
           newList = sorted(pList)
@@ -1345,11 +1345,11 @@ async function sendMessage() {
                       print(
                           product["编号"] + "-----" + product["名称"] + "-----" + str(product["价格"]) + "-------" + str(
                               product["折扣"]))
-  
+
   # 模块化
   # -------------------------------------
   # 显示主菜单，调用已经写好的业务函数
-  
+
   while 0 == 0:
       result = login()
       if result == "成功":
@@ -1362,7 +1362,7 @@ async function sendMessage() {
               print("---5.修改商品信息")
               print("---6.按照价格排序显示")
               print("---7.退出")
-  
+
               choice = int(input("请选择业务编号（输入1-6）："))
               if choice == 1:
                   show_procucts()
@@ -1407,19 +1407,19 @@ async function sendMessage() {
   ```python
   # 数据库操作
   import pymysql
-  
+
   host = "localhost"
   port = 3306
   user = "root"
   password = "123456"
   dbname = "market"  # 数据库名称
   charset = "utf8"
-  
+
   # 连接数据库
   def get_connection():
       db = pymysql.Connect(host=host, port=port, user=user, passwd=password, db=dbname, charset=charset)
       return db
-  
+
   # 查询数据
   def get_data(sql):
       db = get_connection()  # 连接数据库
@@ -1435,7 +1435,7 @@ async function sendMessage() {
           cursor.close()
           db.close()
       return data
-  
+
   # 更新数据
   def write_data(sql):
       db = get_connection()  # 连接数据库
@@ -1461,7 +1461,7 @@ async function sendMessage() {
   # 编写业务方法
   import orm
   import random
-  
+
   # 查看商品列表
   def get_all_products():
       sql = "SELECT * FROM products;"
@@ -1471,7 +1471,7 @@ async function sendMessage() {
           for x in product:
               print(x, end="    ")
           print()  # 换行
-  
+
   # 根据编号查询商品
   def get_product():
       num = input("请输入商品编号：")
@@ -1483,7 +1483,7 @@ async function sendMessage() {
       else:
           print("-----商品不存在！")
           return None
-  
+
   # 添加商品
   def add_product():
       name = input("请输入商品名称：")
@@ -1493,7 +1493,7 @@ async function sendMessage() {
       # 由于 id 自动生成，所以 products 要指定添加内容
       r = orm.write_data(sql)  # 方便查看执行结果
       print(r)
-  
+
   # 根据编号删除商品
   def del_product():
       num = input("请输入商品编号：")
@@ -1503,7 +1503,7 @@ async function sendMessage() {
           print("删除失败！")
       else:
           print("商品", num, "已删除！")
-  
+
   # 商品打折（修改折扣）
   def set_discount():
       num = input("请输入要修改的商品编号：")
@@ -1517,7 +1517,7 @@ async function sendMessage() {
               print("商品", num, "折扣设置成功！")
       else:
           print("折扣输入错误！")
-  
+
   # 查看所有订单；
   def get_all_orders():
       sql = "SELECT * FROM orders;"
@@ -1527,7 +1527,7 @@ async function sendMessage() {
           for x in order:
               print(x, end="    ")
           print()
-  
+
   # 删除订单；（通过订单号删除）
   def del_order():
       num = input("请输入订单编号：")
@@ -1537,7 +1537,7 @@ async function sendMessage() {
           print("删除失败！")
       else:
           print("订单", num, "已删除！")
-  
+
   # 订单统计（总销量，销售额）；
   def accord_order():
       sql = "SELECT * FROM orders;"
@@ -1548,7 +1548,7 @@ async function sendMessage() {
           total_count += order[2]
           total_amount += order[3]
       print("总销量", total_count, "件！，销售额", total_amount, "元！")
-  
+
   # 商品结算
   def settle():
       order_count = 0
@@ -1572,7 +1572,7 @@ async function sendMessage() {
               print("--------------------------------------")
               break
       print("****您购买的总数量", order_count, "件！总金额", order_amount, "元！")
-  
+
       # 添加订单
       if msg == 1:
           oid = str(random.randint(1000, 9999))  # 随机引入编号
@@ -1589,7 +1589,7 @@ async function sendMessage() {
   ```python
   # 调用
   import market
-  
+
   def main():
       print("***********************超市管理系统*************************")
       print("***********************1.查看商品列表")
@@ -1624,7 +1624,7 @@ async function sendMessage() {
           market.settle()
       else:
           print("***********************************************************")
-  
+
   if __name__ == '__main__':
       main()
   ```
@@ -1795,7 +1795,6 @@ async function sendMessage() {
   ```
 
 - 推送至 GitLab
-
   - 项目文件推送至远程仓库
   - GitLab 在 Pipeline 中自动生成 Image 并推送至 DockerHub
 
@@ -1818,12 +1817,12 @@ async function sendMessage() {
   import json
   import datetime
   import time
-  
+
   # 创建数据库（先注释掉主函数创建数据库，然后注释掉此部分）
   users_data='[{"用户名": "admin", "密码": "123", "姓名": "张三"},{"用户名": "aaa", "密码": "123", "姓名": "李四"}]'
   with open(r"users.txt","w") as f:
       f.write(users_data)
-  
+
   books_data='[{"编号":1001, "书名": "<红楼梦>", "作者": "曹雪芹", "借出状态": "可借"},\
   {"编号":1002, "书名": "<java教程>","作者": "齐一天", "借出状态": "可借"},\
   {"编号":1003, "书名": "<圣经>","作者": "耶稣", "借出状态": "已借出"},\
@@ -1831,33 +1830,33 @@ async function sendMessage() {
   ]'
   with open(r"books.txt","w") as f:
       f.write(books_data)
-  
+
   # 读数据
   def read_users():
       with open(r"users.txt", "r") as f:
           json_data = f.read()
       data_list = json.loads(json_data)
       return data_list
-  
+
   def read_books():
       with open(r"books.txt", "r") as f:
           json_data = f.read()
       data_list = json.loads(json_data)
       return data_list
-  
+
   # 写数据
   def write_users(data_list):
       json_data = json.dumps(data_list, ensure_ascii=False)
       with open(r"users.txt", "w") as f:
           f.write(json_data)
           print("------数据写入成功！")
-  
+
   def write_books(data_list):
       json_data = json.dumps(data_list, ensure_ascii=False)
       with open(r"books.txt", "w") as f:
           f.write(json_data)
           print("------数据写入成功！")
-  
+
   # 用户登录
   def login():
       while 1 == 1:
@@ -1876,7 +1875,7 @@ async function sendMessage() {
           else:
               break
       return msg
-  
+
   # 1.显示图书列表
   def show_books():
       data_list = read_books()
@@ -1884,7 +1883,7 @@ async function sendMessage() {
       for book in data_list:
           print(book["编号"], "   ", book["书名"], "   ", book["作者"], "   ", book["借出状态"])
       print("---------------------------")
-  
+
   # 2.图书上架
   def add_book():
       data_list = read_books()
@@ -1899,7 +1898,7 @@ async function sendMessage() {
       new_book = {"编号": new_num, "书名": book_name, "作者": author, "借出状态": state}
       data_list.append(new_book)
       write_books(data_list)
-  
+
   # 3.图书下架
   def del_book():
       data_list = read_books()
@@ -1912,7 +1911,7 @@ async function sendMessage() {
               print("-----图书", book["书名"], "已下架！")
               write_books(data_list)
               show_books()
-  
+
   # 4.借书
   def lend_book():
       show_books()
@@ -1931,7 +1930,7 @@ async function sendMessage() {
       if msg == 0:
           print("-----没有此图书！")
       show_books()
-  
+
   # 5.还书
   def return_book():
       show_books()
@@ -1950,7 +1949,7 @@ async function sendMessage() {
       if msg == 0:
           print("-----没有此图书！")
       show_books()
-  
+
   # 主函数
   def main():
       msg = login()
@@ -1972,7 +1971,7 @@ async function sendMessage() {
                   return_book()
               else:
                   print("没有此业务！")
-  
+
   # 运行
   if __name__ == '__main__':
       main()
@@ -2003,13 +2002,13 @@ async function sendMessage() {
 
   ```python
   users_list = [{"username": "zhangsan", "password": "123"}]
-  
+
   # 用户信息
   def user_info():
       print("用户信息：")
       for user in users_list:
           print(f"用户名: {user['username']}, 密码: {user['password']}")
-  
+
   # 注册
   def register():
       while True:  # 循环注册
@@ -2018,18 +2017,18 @@ async function sendMessage() {
               return  # 输入 Q 退出注册
           password = input("请输入注册密码：")
           user = {"username": username, "password": password}
-  
+
           # 检查用户名是否已存在
           # 此处为了使下面的 continue 对 while 生效，减少一层 for 循环
           exists = any(user["username"] == user_exist["username"] for user_exist in users_list)
           if exists:
               print("用户名已存在，请重新输入！")
               continue  # 如果用户名存在，本次循环终止，重新执行 while 循环
-  
+
           # 用户名不存在，将新用户添加到列表中
           users_list.append(user)
           print("恭喜你，注册成功！")
-  
+
   # 登录
   def login():  # 循环登录
       while True:
@@ -2042,7 +2041,7 @@ async function sendMessage() {
                   print("恭喜你，登录成功！")
                   return user_exist  # 不返回 None 传回主函数，使登录成功，代替了 msg
           print("用户名或密码错误，请重新输入！")
-  
+
   def main():
       while True:
           if login():  # 登录并判断登录结果，以 login() 的返回值是不是 None 作为判定标准
@@ -2053,14 +2052,14 @@ async function sendMessage() {
                   print("3.查看用户信息")
                   print("4.退出")
                   choice = input("请选择业务编号：")
-  
+
                   # 将要执行函数的函数名放入字典
                   mapping = {
                       "1": register,
                       "2": login,
                       "3": user_info
                   }
-  
+
                   func = mapping.get(choice)  # func 即为 mapping 里的值，如果不能获取到键，func 为 None
                   if func:  # 即 func 不为 None，能获取键
                       func()  # func 为 mapping 里对应 choice 的值
@@ -2070,7 +2069,7 @@ async function sendMessage() {
                       print("输入错误，请重新选择！")
           else:
               return  # 如果输入的是 Q，login() 的返回值传回的是 None，则主函数终止
-  
+
   if __name__ == '__main__':
       main()
   ```
@@ -2081,7 +2080,7 @@ async function sendMessage() {
 
   ```python
   users_list = [{"username": "zhangsan", "password": "123"}]
-  
+
   def register():
       while True:
           username = input("请输入注册用户名/返回请按'Q'：")
@@ -2089,15 +2088,15 @@ async function sendMessage() {
               return
           password = input("请输入注册密码：")
           user = {"username": username, "password": password}
-  
+
           exists = any(user["username"] == user_exist["username"] for user_exist in users_list)
           if exists:
               print("用户名已存在，请重新输入！")
               continue
-  
+
           users_list.append(user)
           print("恭喜你，注册成功！")
-  
+
   def login():
       msg = 0  # msg 作为登录是否成功的标志，0失败，1成功
       while True:
@@ -2115,10 +2114,10 @@ async function sendMessage() {
           # if msg == 0:
           #     print("用户名密码错误，请重新输入！")
           #     continue
-  
+
   def user_info():
       print(users_list)
-  
+
   def main():
       while True:
           if login() == 1:  # 如果 login() 传回 1 代表登录成功
@@ -2129,7 +2128,7 @@ async function sendMessage() {
                   print("3.查看用户信息")
                   print("4.退出")
                   choice = input("请选择业务编号：")
-  
+
                   mapping = {
                       "1": register,
                       "2": login,
@@ -2147,7 +2146,7 @@ async function sendMessage() {
               # 如果输入的是 Q，login() 的返回值传回的是 None，则 while 循环终止，主函数终止
               # 此处最好使用 return，直接终止主函数，因为目的就是要直接终止主函数
               break
-  
+
   if __name__ == '__main__':
       main()
   ```
@@ -2169,26 +2168,26 @@ async function sendMessage() {
 
   ```python
   import hashlib
-  
+
   USERS_PATH = r"users.txt"  # 环境变量
-  
+
   def md5(data_string):
       obj = hashlib.md5("88888".encode('utf-8'))  # 加盐
       obj.update(data_string.encode('utf-8'))  # 括号里必须是字节
       return obj.hexdigest()  # 返回密文
-  
+
   def register():
       user = input("请输入注册用户名：")
       if user.upper() == "Q":
           return
       pwd = input("请输入注册密码：")
       pwd_md5 = md5(pwd)
-  
+
       with open(USERS_PATH, 'a', encoding='utf-8') as f:
           line = "{}|{}\n".format(user, pwd_md5)
           f.write(line)
       print("恭喜你，注册成功！")
-  
+
   def login():
       msg = 0
       while True:
@@ -2198,7 +2197,7 @@ async function sendMessage() {
               return msg
           pwd = input("请输入登录密码：")
           pwd_md5 = md5(pwd)
-  
+
           with open(USERS_PATH, 'r', encoding='utf-8') as f:
               for line in f:
                   line = line.strip()
@@ -2210,12 +2209,12 @@ async function sendMessage() {
           if msg == 0:
               print("用户名密码错误，请重新输入！")
               continue
-  
+
   def user_info():
       with open(USERS_PATH, 'r', encoding='utf-8') as f:
           for line in f:
               print(line)
-  
+
   def main():
       while True:
           result = login()
@@ -2232,7 +2231,7 @@ async function sendMessage() {
                   print("3.查看用户信息")
                   print("4.退出")
                   choice = input("请选择业务编号：")
-  
+
                   func = func_dict.get(choice)  # 如果获取不到键，func为None
                   if func:
                       func()
@@ -2243,7 +2242,7 @@ async function sendMessage() {
                       continue
           else:
               break  # 保证在login页面系统可以退出
-  
+
   if __name__ == '__main__':
       main()
   ```
@@ -2258,16 +2257,16 @@ async function sendMessage() {
 
   ```python
   import json
-  
+
   USERS_PATH = r"users.txt"  # 环境变量
-  
+
   # 1.创建数据库文件
   # 创建 TXT 文件，将数据信息以 JSON 格式保存在该文件中
   # 注意使用编程程序创建文本文件，否则会出现编码问题
   with open(USERS_PATH, "w") as f:
       users = '[{"name":"zhangsan","pwd":"123"},{"name":"lisi","pwd":"123"},{"name":"wangwu","pwd":"123"}]'
       f.write(users)
-  
+
   # 2.读数据（查询）
   # 获取数据库文件中的 JSON 数据，转换成 Python 数据 user_list，并返回至 Python 数据
   def read_data():
@@ -2275,7 +2274,7 @@ async function sendMessage() {
           data_json = f.read()  # 获取到 JSON 数据
       users_list = json.loads(data_json)  # 将 JSON 数据转化为 Python 数据
       return users_list  # 函数返回至 Python 数据
-  
+
   # 3.写数据（修改）
   # 将新 Python 数据 user_list 转换成 JSON 数据，并写入数据库文件
   def write_data(users_list):
@@ -2283,7 +2282,7 @@ async function sendMessage() {
       with open(USERS_PATH, "w") as f:  # 打开文件
           f.write(data_json)  # 写入 JSON 数据
           print("----数据写入成功！")
-  
+
   # 4.登录
   def login():
       name = input("请输入用户名：")
@@ -2297,7 +2296,7 @@ async function sendMessage() {
       if msg == "失败":
           print("----登录失败！")
       return msg
-  
+
   # 5.注册（在数据库中增加用户）
   def reg():
       name = input("请输入新用户名：")
@@ -2307,7 +2306,7 @@ async function sendMessage() {
       users_list.append(user_new)  # 将新用户添加到用户列表
       write_data(users_list)  # 将 Python 数据 users_list 转换成 JSON 数据并写入数据库文件，详见 write_data()
       print("-----新用户添加成功！")
-  
+
   if __name__ == '__main__':
       login()
   ```
@@ -2323,7 +2322,7 @@ async function sendMessage() {
   ```python
   import pymysql
   from pymysql.cursors import DictCursor
-  
+
   # 连接 MySQL 函数
   def conn_mysql():
       return pymysql.Connect(
@@ -2334,12 +2333,12 @@ async function sendMessage() {
           charset="utf8",
           database="db_test"
       )
-  
+
   # 断开 MySQL 函数
   def close_conn_mysql(conn, cursor):
       cursor.close()
       conn.close()
-  
+
   # 获取数据
   def get_data():
       conn = conn_mysql()
@@ -2348,13 +2347,13 @@ async function sendMessage() {
       result = cursor.fetchall()
       close_conn_mysql(conn, cursor)
       return result  # 返回获取结果
-  
+
   # 用户信息
   def user_info():
       print("用户信息：")
       for user in get_data():  # 使用 get_data() 的返回值
           print(f"用户名: {user['username']}, 密码: {user['password']}")
-  
+
   # 注册
   def register():
       while True:
@@ -2363,13 +2362,13 @@ async function sendMessage() {
               return
           password = input("请输入注册密码：")
           user = {"username": username, "password": password}
-  
+
           # 检查用户名是否已存在
           exists = any(user["username"] == user_exist["username"] for user_exist in get_data())
           if exists:
               print("用户名已存在，请重新输入！")
               continue
-  
+
           # 用户名不存在，执行插入操作
           conn = conn_mysql()
           cursor = conn.cursor(cursor=DictCursor)
@@ -2378,7 +2377,7 @@ async function sendMessage() {
           conn.commit()
           close_conn_mysql(conn, cursor)
           print("恭喜你，注册成功！")
-  
+
   # 登录
   def login():
       while True:
@@ -2391,7 +2390,7 @@ async function sendMessage() {
                   print("恭喜你，登录成功！")
                   return user_exist
           print("用户名或密码错误，请重新输入！")
-  
+
   def main():
       while True:
           if login():
@@ -2402,7 +2401,7 @@ async function sendMessage() {
                   print("3.查看用户信息")
                   print("4.退出")
                   choice = input("请选择业务编号：")
-  
+
                   mapping = {
                       "1": register,
                       "2": login,
@@ -2417,7 +2416,7 @@ async function sendMessage() {
                       print("输入错误，请重新选择！")
           else:
               return
-  
+
   if __name__ == '__main__':
       main()
   ```
@@ -2431,13 +2430,11 @@ async function sendMessage() {
 - **项目概述**：这是一个全栈 Web 应用项目，主要功能注册和登录，实现网页端与数据库的数据交互。
 - **文件来源**：后端文件循环逻辑来自于项目 Login And Sign Up 的 List 数据库（新版）
 - **环境搭建**
-
   - **前端**：使用 Java Script 的 React 框架搭建
   - **后端**：使用 Python 的 Flask 框架搭建
   - **数据库**：使用容器化的 MySQL
 
 - **项目功能**
-
   - 网页端可以通过后端连接 MySQL 登录、注册、获取用户信息
   - 网页端有操作反馈，显示在 Message 区
   - 登录以后实现跳转到 Home 页面
@@ -2456,10 +2453,10 @@ async function sendMessage() {
   from flask_cors import CORS
   import pymysql
   from pymysql.cursors import DictCursor
-  
+
   app = Flask(__name__)
   CORS(app)  # 允许所有域的跨域请求，即允许前端的 3000 端口访问后端的 5000 端口
-  
+
   # 连接 MySQL 函数
   def conn_mysql():
       return pymysql.Connect(
@@ -2470,12 +2467,12 @@ async function sendMessage() {
           charset="utf8",
           database="db_test"
       )
-  
+
   # 断开 MySQL 函数
   def close_conn_mysql(conn, cursor):
       cursor.close()
       conn.close()
-  
+
   # 获取数据
   def get_data():
       conn = conn_mysql()
@@ -2484,22 +2481,22 @@ async function sendMessage() {
       result = cursor.fetchall()
       close_conn_mysql(conn, cursor)
       return result  # 返回获取结果
-  
+
   # 注册
   @app.route('/register', methods=['POST'])
   def register():
       data = request.json
       username = data.get('username')
       password = data.get('password')
-  
+
       if not username or not password:
           return jsonify({'message': '用户名或密码不能为空'})
-  
+
       users = get_data()
       for user in users:
           if user['username'] == username:
               return jsonify({'message': '用户名已存在'})
-  
+
       conn = conn_mysql()
       cursor = conn.cursor(cursor=DictCursor)
       sql = "insert into tb_test(username, password) values(%s, %s)"
@@ -2507,31 +2504,31 @@ async function sendMessage() {
       conn.commit()
       close_conn_mysql(conn, cursor)
       return jsonify({'message': '注册成功'})
-  
+
   # 登录
   @app.route('/login', methods=['POST'])
   def login():
       data = request.json
       username = data.get('username')
       password = data.get('password')
-  
+
       if not username or not password:
           return jsonify({'message': '用户名或密码不能为空'})
-  
+
       users = get_data()
       # print(users)
       for user in users:
           if username == user['username'] and password == user['password']:
               return jsonify({'message': '登录成功', 'user': user})
-  
+
       return jsonify({'message': '用户名或密码错误'})
-  
+
   # 查看用户信息
   @app.route('/user_info', methods=['GET'])
   def user_info():
       users = get_data()
       return jsonify({'users': users})
-  
+
   if __name__ == '__main__':
       app.run(debug=True)
   ```
@@ -2567,7 +2564,7 @@ async function sendMessage() {
   import Button from "@mui/material/Button";
   import IconButton from "@mui/material/IconButton";
   import MenuIcon from "@mui/icons-material/Menu";
-  
+
   // 此处的 Appbar 即主程序文件 App.js 中的 <Appbar />
   export default function Appbar() {
     return (
@@ -2606,13 +2603,13 @@ async function sendMessage() {
   import React, { useState } from "react";
   import axios from "axios";
   import { TextField, Button, Container } from "@mui/material";
-  
+
   const Login = ({ onLogin }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const [error, setError] = useState("");
-  
+
     const handleRegister = async () => {
       try {
         const response = await axios.post("http://localhost:5000/register", {
@@ -2629,7 +2626,7 @@ async function sendMessage() {
         setError("注册失败，请稍后重试");
       }
     };
-  
+
     const handleLogin = async () => {
       try {
         const response = await axios.post("http://localhost:5000/login", {
@@ -2646,7 +2643,7 @@ async function sendMessage() {
         setError("登录失败，请稍后重试");
       }
     };
-  
+
     return (
       <Container>
         <h1>用户登录</h1>
@@ -2677,7 +2674,7 @@ async function sendMessage() {
       </Container>
     );
   };
-  
+
   export default Login;
   ```
 
@@ -2695,18 +2692,18 @@ async function sendMessage() {
     ListItem,
     ListItemText,
   } from "@mui/material";
-  
+
   const Home = () => {
     const [userInfo, setUserInfo] = useState([]);
     const [error, setError] = useState("");
     const [showUserInfo, setShowUserInfo] = useState(false);
-  
+
     useEffect(() => {
       if (showUserInfo) {
         fetchUserInfo();
       }
     }, [showUserInfo]);
-  
+
     const fetchUserInfo = async () => {
       try {
         const response = await axios.get("http://localhost:5000/user_info");
@@ -2716,7 +2713,7 @@ async function sendMessage() {
         setError("获取用户信息失败，请稍后重试");
       }
     };
-  
+
     return (
       <Container>
         <h1>欢迎来到主页</h1>
@@ -2742,7 +2739,7 @@ async function sendMessage() {
       </Container>
     );
   };
-  
+
   export default Home;
   ```
 
@@ -2761,14 +2758,14 @@ async function sendMessage() {
   } from "react-router-dom";
   import Login from "./components/Login";
   import Home from "./components/Home";
-  
+
   const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
     const handleLoginSuccess = () => {
       setIsLoggedIn(true);
     };
-  
+
     return (
       <Router>
         <Routes>
@@ -2791,7 +2788,7 @@ async function sendMessage() {
       </Router>
     );
   };
-  
+
   export default App;
   ```
 
@@ -2812,7 +2809,7 @@ async function sendMessage() {
     <React.StrictMode>
       <Appbar />
       <App />
-    </React.StrictMode>
+    </React.StrictMode>,
   );
 
   reportWebVitals();
@@ -2822,9 +2819,10 @@ async function sendMessage() {
 
   ```css
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
-      "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
-      "Helvetica Neue", sans-serif;
+    font-family:
+      -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     margin: 0;
@@ -2832,8 +2830,8 @@ async function sendMessage() {
   }
 
   code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
+    font-family:
+      source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
   }
   ```
 
@@ -2850,7 +2848,6 @@ async function sendMessage() {
 - **来源**：独立项目
 
 - **文件**：
-
   - **后端**：`app.py`
   - **数据库**：SQLite
   - **前端**：`index.html` `header.html` `login.html` `register.html` `user-profile.html`
@@ -2858,7 +2855,6 @@ async function sendMessage() {
 - **概述**：这是一个练习项目，后端采用 Flask 框架，数据库使用 SQLite，前端没有使用框架。
 
 - **功能**：
-
   - 每个页面都有公共的页眉。
 
   - 真实注册和登录。
@@ -2868,14 +2864,12 @@ async function sendMessage() {
   - 可以退出登录，切换登录状态。
 
 - **存储**
-
   - 代码存储在 Git 托管平台：前后端合并存储 `login-flask-sqlite-html`
   - 无镜像存储在 DockerHub
 
 ## 创建过程
 
 - 使用模板文件构建项目目录；
-
   - 自动创建虚拟环境
   - 自动在虚拟环境安装 flask
   - 自动构建项目目录
@@ -3350,7 +3344,6 @@ async function sendMessage() {
 - **来源**：[`Python` > `Flask 框架`](../code-language/python/python.md#Flask 框架)；
 
 - **文件**：
-
   - **后端**：`app.py`
   - **数据库**：使用 `.txt` 记事本代替
   - **前端**：`index.html` `login.html` `register.html`
@@ -3358,7 +3351,6 @@ async function sendMessage() {
 - **概述**：这是一个没有前端框架和数据库的 Flask 项目，旨在练习 Flask 最基本的用法；
 
 - **存储**
-
   - 代码存储在 Git 托管平台：前后端合并存储 `login-flask-txt-html`
   - 无镜像存储在 DockerHub
 
@@ -3416,7 +3408,6 @@ async function sendMessage() {
   ```
 
 - 在 `templates` 文件夹创建前端文件 `index.html`、`register.html` 和 `login.html`；
-
   - **`index.html`**
 
     ```html
@@ -3505,21 +3496,21 @@ async function sendMessage() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>登录</title>
       </head>
-    
+
       <body>
         <h1>登录页面</h1>
-    
+
         <!-- 登录表单 -->
         <form action="#" method="POST">
           <label for="user">用户名:</label>
           <input type="text" id="user" name="user" required /><br /><br />
-    
+
           <label for="pwd">密码:</label>
           <input type="password" id="pwd" name="pwd" required /><br /><br />
-    
+
           <button type="submit">登录</button>
         </form>
-    
+
         <a href="/">返回首页</a>
       </body>
     </html>
@@ -3528,7 +3519,6 @@ async function sendMessage() {
 - 运行项目，手动进入主页：http://127.0.0.1:5000；
 
 - 注册页面，提交信息以后：
-
   - 程序自动在项目根目录创建一个 `users.txt` 文件，并将用户提交信息存储在文件中；
   - 页面自动跳转至登录页面。
 
@@ -3585,10 +3575,10 @@ async function sendMessage() {
 
   ```java
   package com.jerrycodes.studentsystem.model;
-  
+
   import com.jerrycodes.studentsystem.repository.StudentRepository;
   import jakarta.persistence.*;
-  
+
   @Entity
   public class Student {
       @Id
@@ -3601,13 +3591,13 @@ async function sendMessage() {
 
       // 类的实例对象：Alt + Insert - Constructor - int.int
       public Student() {}
-    
+
       // 为删除学生而写
       public Student(String name, String address) {
           this.name = name;
           this.address = address;
       }
-    
+
       // 类的方法：Alt + Insert - Getter and Setter - int.int, name:String, address:String
       public int getId() {
           return id;
@@ -3684,33 +3674,33 @@ async function sendMessage() {
 
   ```java
   package com.jerrycodes.studentsystem.service;
-  
+
   import com.jerrycodes.studentsystem.model.Student;
   import com.jerrycodes.studentsystem.repository.StudentRepository;
   import org.springframework.beans.factory.annotation.Autowired;
   import org.springframework.stereotype.Service;
   import com.jerrycodes.studentsystem.exception.StudentNotFoundException;
-  
+
   import java.util.List;
-  
+
   @Service
   public class StudentServicelmpl implements StudentService{
       // 连接数据库
       @Autowired
       private StudentRepository studentRepository;
-  
+
       // 保存，Alt + Insert - Override Methods... - SaveStudent(student:Student):Student
       @Override
       public Student saveStudent(Student student) {
           return studentRepository.save(student);
       }
-  
+
       // 获取：Alt + Insert - Override Methods... - getALLStudents():List<Student>
       @Override
       public List<Student> getAllStudents() {
           return studentRepository.findAll();
       }
-  
+
       @Override
       public void deleteStudent(int studentId) {
           studentRepository.deleteById(studentId);
@@ -3735,12 +3725,12 @@ async function sendMessage() {
 
   ```java
   package com.jerrycodes.studentsystem.controller;
-  
+
   import com.jerrycodes.studentsystem.model.Student;
   import com.jerrycodes.studentsystem.service.StudentService;
   import org.springframework.beans.factory.annotation.Autowired;
   import org.springframework.web.bind.annotation.*;
-  
+
   import java.util.List;
 
 
@@ -3756,12 +3746,12 @@ async function sendMessage() {
           studentService.saveStudent(student);
           return "New student is added";
       }
-    
+
       @GetMapping("/getAll")
       public List<Student> getAllStudents(){
           return studentService.getAllStudents();
       }
-    
+
       @DeleteMapping("/delete/{studentId}")
       public String delete(@PathVariable int studentId){
           studentService.deleteStudent(studentId);
@@ -3856,7 +3846,6 @@ async function sendMessage() {
 ### 部署应用
 
 - 使用 Argo CD 在集群中部署
-
   - 一直连接不到 MySQL
   - Pod 一直重建
 
@@ -3942,7 +3931,6 @@ async function sendMessage() {
 ### 具体步骤
 
 - 创建 React 项目，具体方法详见 React
-
   - 创建 React APP
   - 安装 Material-UI 和 Material Icons
   - 创建组件文件 `Appbar.js` 和 `Student.js`
@@ -4165,7 +4153,6 @@ async function sendMessage() {
 - 生成静态文件夹
 
 - 通过 GitLab Pipeline 生成 Image
-
   - .gitlab-ci.yml
 
     ```yaml
@@ -4201,7 +4188,6 @@ async function sendMessage() {
     ```
 
 - 使用 Argo CD 在集群中部署
-
   - application.yaml
 
     ```yaml
@@ -4303,7 +4289,6 @@ async function sendMessage() {
   ```
 
 - pvc-pod-demo.yaml
-
   - [GKE 中动态预配 PersistentVolume](https://cloud.google.com/kubernetes-engine/docs/concepts/persistent-volumes?hl=zh-CN)
   - [运行一个单实例有状态应用](https://kubernetes.io/zh-cn/docs/tasks/run-application/run-single-instance-stateful-application/)
   - 结合以上两点自己生成此 YAML 文件
@@ -4357,7 +4342,7 @@ async function sendMessage() {
         volumeMounts:
           - mountPath: "/usr/share/nginx/html"
             name: pvc-demo-vol
-  
+
   ---
   apiVersion: v1
   kind: Service

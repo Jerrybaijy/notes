@@ -2,7 +2,6 @@
 title: openclaw
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - ai
   - openclaw
@@ -61,8 +60,8 @@ npm rm -g openclaw
 - 全局目录：`C:\Users\jerry\.openclaw\skills\`
 - 工作区目录：`C:\Users\jerry\.openclaw\workspace\skills\`
 
-| 来源       | 优先级   | 用途                       | 升级时       |
-| ---------- | -------- | -------------------------- | ------------ |
+| 来源       | 优先级   | 用途                       | 升级时        |
+| ---------- | -------- | -------------------------- | ------------- |
 | 系统自带   | **最低** | OpenClaw 内置技能          | ⚠️ 可能被覆盖 |
 | 全局技能   | **中**   | 用户全局安装的技能         | ✅ 保留       |
 | 工作区技能 | **最高** | 项目专属技能、开发中的技能 | ✅ 保留       |
@@ -109,8 +108,6 @@ npm rm -g openclaw
   Approved telegram sender *******
   ```
 
-  
-
 # 浏览器插件
 
 ```bash
@@ -120,4 +117,3 @@ openclaw browser extension install
 # OPENCLAW_GATEWAY_TOKEN
 openclaw configure --section gateway
 ```
-

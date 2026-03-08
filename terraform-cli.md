@@ -2,7 +2,6 @@
 title: terraform-cli
 author: Jerry.Baijy
 tags:
-  - 应用科学
   - it
   - cloud
   - iac
@@ -43,6 +42,7 @@ terraform version
 [Tab 键自动补全](https://developer.hashicorp.com/terraform/cli/commands#shell-tab-completion)
 
 在 `/c/Users/jerry/.bashrc` 文件中添加如下内容，重启终端生效。
+
 - 例：输入 `terrform pl`，然后按 `Tab` 会补全至 `terrform plan`。
 - 注：如果有多个子命令符合条件，连按两次 `Tab` 会返回全部可用子命令。
 
@@ -85,8 +85,8 @@ terraform init [options]
 
 当执行 `terraform init` 后，Terraform 会根据 `.tf` 文件进行初始化工作，会在配置根目录出现：
 
-- `.terraform`：本地缓存目录，详见 [`.terraform`](<terraform-configuration-language.md#`.terraform`>)。
-- `.terraform.lock.hcl`：依赖锁定文件，详见 [`.terraform.lock.hcl`](<terraform-configuration-language.md#`.terraform.lock.hcl`>)。
+- `.terraform`：本地缓存目录，详见 [`.terraform`](terraform-configuration-language.md#`.terraform`)。
+- `.terraform.lock.hcl`：依赖锁定文件，详见 [`.terraform.lock.hcl`](terraform-configuration-language.md#`.terraform.lock.hcl`)。
 
 修改 provider 配置以后，需要执行：
 
@@ -111,8 +111,8 @@ terraform apply
 
 当执行 `terraform apply` 后，会在配置根目录出现：
 
-- `terraform.tfstate`：状态文件，详见 [`terraform.tfstate`](<terraform-configuration-language.md#`terraform.tfstate`>)。
-- `terraform.tfstate.backup`：状态备份文件，详见 [`terraform.tfstate.backup`](<terraform-configuration-language.md#`terraform.tfstate.backup`>)。
+- `terraform.tfstate`：状态文件，详见 [`terraform.tfstate`](terraform-configuration-language.md#`terraform.tfstate`)。
+- `terraform.tfstate.backup`：状态备份文件，详见 [`terraform.tfstate.backup`](terraform-configuration-language.md#`terraform.tfstate.backup`)。
 
 部署特定对象：
 
@@ -149,7 +149,6 @@ terraform destroy -target=google_container_cluster.primary
 - 在删除命名空间后，如果想再次部署应用，需要重新执行 `terraform apply` 以恢复 KSA，否则后端会部署失败。
 
 - 清理资源步骤
-
   - 卸载应用
 
     ```bash
@@ -174,7 +173,6 @@ terraform destroy -target=google_container_cluster.primary
   > Error: context deadline exceeded
   >
   > 此时 app-ns 命名空间的状态会变为 Terminating
-
   - 执行 `kubectl delete ns argocd` 和 `kubectl delete ns my-ns`
   - 重复执行 `terraform appy`，直到 terraform 提示 no changes。
   - 执行 `terraform destroy`，第一次执行可能还会出错。
