@@ -898,3 +898,78 @@ GitBash 执行 `ls -l ~/.openclaw/skills` 查看结果
 ```bash
 ln -s "/d/projects/antigravity-browser-claw/browser-claw-scraper" "~/.openclaw/skills/browser-claw-scraper"
 ```
+
+## Win11 右键菜单
+
+### Win10 经典菜单
+
+Windows 11 默认右键菜单需要点击“显示更多选项”的二级菜单，才能显示出全部菜单。如果想恢复 Windows 10 风格的经典右键菜单，在 PowerShell 中执行以下命令：
+
+```powershell
+# 恢复 Windows 10 风格的经典右键菜单
+reg add "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /f /ve
+# 重启资源管理器生效
+taskkill /f /im explorer.exe ; start explorer.exe
+```
+
+如果想恢复至 Windows 11 风格右键菜单，在 PowerShell 中执行以下命令：
+
+```powershell
+reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" /f
+```
+
+### 删除右键菜单项
+
+可以通过两种方法删除右键菜单：
+
+- 通过 [ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager/releases) (网盘有备份)
+- 手动删除注册表
+
+以下是如何通过删除相应注册表，删除相应右键菜单项。
+
+同一个软件，对于在不同位置的右键菜单项，有不同的注册表：
+
+- 只对**文件**生效：
+
+  ```
+  HKEY_CLASSES_ROOT\*\shell
+  HKEY_CLASSES_ROOT\*\shellex\ContextMenuHandlers
+  ```
+
+- 只对**文件夹**生效：
+
+  ```
+  HKEY_CLASSES_ROOT\Directory\shell
+  HKEY_CLASSES_ROOT\Directory\shellex\ContextMenuHandlers
+  ```
+
+- 对**桌面空白处**右键生效：
+
+  ```
+  HKEY_CLASSES_ROOT\DesktopBackground\shell
+  ```
+
+删除对应的注册表文件夹即可：
+
+- 系统自带：
+
+  ```
+  # ...
+  ```
+
+- 第三方软件：
+
+  ```
+  # 搜狗文件粉碎
+  sgshellext
+  
+  # 百度云盘
+  YunShellExt
+  ```
+
+如果不认识这一项，全局搜索该 ID
+
+1. 复制这串代码（带大括号）：`{596AB062-B4D2-4215-9F74-E9109B0A8153}`。
+2. 导航到注册表最顶端的 `HKEY_CLASSES_ROOT\CLSID`。
+3. 按 `Ctrl + F` 粘贴这串代码进行搜索。
+4. 找到后，展开它下面的 `InprocServer32` 子项，右侧会显示它关联的具体 **.dll 文件路径**。通过路径（比如在哪个软件的文件夹里）你就能瞬间锁定它的真身。
