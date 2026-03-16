@@ -394,6 +394,20 @@ echo "dist/" >> .gitignore
 echo ".DS_Store" >> .gitignore
 ```
 
+## 误提交文件
+
+当把某个文件误提交到远程仓库时，可以用以下方式修复：
+
+- 在本地把该文件移出
+
+  ```bash
+  git rm --cached <my-file>
+  ```
+
+- 把 `<my-file>` 加入 `.gitignore` 中
+
+- 正常添加、提交、推送。
+
 # Git LFS
 
 Git LFS（Large File Storage）是 Git 的扩展，用于版本控制大文件（如图片、视频、音频等）或二进制文件。Git LFS 将大文件存储在外部的专用存储服务器上，而不是将它们存储在 Git 仓库中。这样可以显著减少 Git 仓库的体积，并提高克隆和拉取操作的速度。

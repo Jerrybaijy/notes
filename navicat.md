@@ -34,3 +34,27 @@ tags:
 
 - **创建 Table**
   - 在已创建的 Database 目录下，右键点击 `表` > `新建表`
+
+## SSH 连接远程数据库
+
+此部分记录对方的数据库端口未对外开放时，如何连接。
+
+- 开启 SSH 隧道，并进行端口转发
+
+  ```bash
+  ssh -L 5433:127.0.0.1:5432 svg@117.62.22.167
+  ```
+
+- 以运行在 Docker 中的 `PostgreSQL + pgvector` 为例
+
+- 配置 Navicat
+
+  <img src="assets/image-20260316131222288.png" alt="image-20260316131222288" style="zoom: 50%;" />
+
+请打开 Navicat，点击 **“新建连接”** -> **“PostgreSQL”**，然后按照以下参数填写：
+
+- **主机**：`localhost` 或 `127.0.0.1`
+- **端口**：**`5433`**（注意：必须是你 SSH 命令中 `-L` 后面的第一个端口）
+- **初始数据库**：`postgres`
+- **用户名**：`postgres`
+- **密码**：(填写你在服务器 `.env` 文件中看到的 `POSTGRES_PASSWORD`)

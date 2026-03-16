@@ -27,64 +27,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "java.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "java"
-            }
-          },
-          {
-            "id": "44b4f6f7e18c0c94",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "javascript.md",
-                "mode": "preview",
-                "source": true
-              },
-              "icon": "lucide-file",
-              "title": "javascript"
-            }
-          },
-          {
-            "id": "d98002f41e009c4f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "code-general.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "code-general"
-            }
-          },
-          {
-            "id": "01382fa365c1bc2e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "windows.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "windows"
-            }
-          },
-          {
-            "id": "88f89e3257d06fba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "git.md",
                 "mode": "preview",
                 "source": true,
@@ -93,9 +35,39 @@
               "icon": "lucide-file",
               "title": "git"
             }
+          },
+          {
+            "id": "01382fa365c1bc2e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "openssh.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "openssh"
+            }
+          },
+          {
+            "id": "88f89e3257d06fba",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "react.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "react"
+            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -127,7 +99,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "sqlite",
+                "query": "ssh",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -162,7 +134,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": ""
+                "searchQuery": "ai"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -246,18 +218,23 @@
   },
   "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
+    "assets/image-20260316131222288.png",
+    "assets/image-20260316131115678.png",
     "windows.md",
+    "pinecone.md",
     "git.md",
-    "code-general.md",
+    "software.md",
+    "python.md",
     "java.md",
+    "react.md",
     "javascript.md",
+    "code-general.md",
     "win-scoop.md",
     "win-powershell.md",
     "win-terminal.md",
     "win-power-toys.md",
     "win-chocolatey.md",
     "assets/image-20260309010054253.png",
-    "software.md",
     "excel.md",
     "word.md",
     "ppt.md",
@@ -269,22 +246,17 @@
     "todo-gcp.md",
     "todo-fullstack.md",
     "clawhub.md",
-    "python.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",
     "apex.md",
     "http.md",
-    "ollama.md",
-    "备忘.md",
-    "script.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
     "assets/regions-zones.svg",
     "assets/image-20251218161108633.png",
-    "assets/image-20251218161021572.png",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",
     "其它格式未转换/简历/Jinyu Bai.docx",

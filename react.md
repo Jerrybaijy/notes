@@ -37,7 +37,7 @@ React 推荐多种创建项目的方法：
   - 前端只需要与后端 API 通信，不需要 Next.js 的全栈功能
   - 适用于前后端分离项目
 
-本 Quick Start 记录 Vite 方法的基本实现。
+本 Quick Start 记录使用 Vite 脚手架的基本实现。
 
 ## 环境依赖
 
@@ -48,13 +48,21 @@ Node.js 已安装，npm 更新至最新版，详见 [node.js](node-js.md) 笔记
 ```bash
 cd $PROJECT_dir
 npm create vite@latest $FRONTEND_DIR -- --template react
+
+# 在 frontend 目录创建 React + JavaScript 项目
 npm create vite@latest frontend -- --template react
+
+# 在当前目录创建 React + JavaScript 项目
+npm create vite@latest . -- --template react
+
+# 在 frontend 目录创建 React + TypeScript 项目
+npm create vite@latest frontend -- --template react-ts
 ```
 
-这会初始化 React 项目结构
+这会初始化 React 项目结构（React + JavaScript 项目）
 
 ```
-$FRONTEND_DIR
+frontend/
 │
 ├── node_modules/          # NPM 依赖包安装目录
 ├── public/                # 静态资源目录，包含无需打包的文件
@@ -203,7 +211,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # Create React App
 
-自 2025 年 2 月 14 日起，React 官方将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具。此部分内容仅作为学习留存，以备旧项目再次再次使用。
+自 2025 年 2 月 14 日起，React 官方将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具。此部分内容仅作为学习留存，以备旧项目再次使用。
 
 ## 基本流程
 
@@ -324,14 +332,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   import Appbar from "./components/Appbar";
   // 引入 Student.js 文件
   import Student from "./components/Student";
-
+  
   // APP 主函数
   function App() {
     return (
       <div className="App">
         {/* 调用 Appbar.js 中的 Appbar 函数 */}
         <Appbar />
-
+  
         {/* 调用 Student.js 中的 Student 函数 */}
         <Student />
       </div>
@@ -357,14 +365,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   } from "react-router-dom";
   import Login from "./components/Login";
   import Home from "./components/Home";
-
+  
   const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+  
     const handleLoginSuccess = () => {
       setIsLoggedIn(true);
     };
-
+  
     return (
       <Router>
         <Routes>
@@ -387,7 +395,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
       </Router>
     );
   };
-
+  
   export default App;
   ```
 
