@@ -303,11 +303,96 @@ git branch -d my-branch
 git push origin -d my-branch
 ```
 
-# 版本控制
+# Add
+
+## `git add`
+
+`add` 用于把工作区的内容添加到暂存区。
 
 ```bash
-# 追溯
-git reset --hard SHA # SHA哈希值
+git add <files>
+git add .
+```
+
+# Commit
+
+## `git commit`
+
+`commit` 用于把暂存区的内容提交到本地仓库。
+
+```bash
+git commit -m "<commit-message>"
+```
+
+## `git reset`
+
+`reset` 用于回滚至某个 `commit`，彻底删除该 `commit` 之后的所有 `commit`。
+
+```bash
+# 回滚
+git reset --hard <commit-SHA>
+git push -f
+```
+
+### `git reset` 参数对照表
+
+如果远程仓库已经有过之后的 `commit`，那么再推送时必须强推。
+
+| **参数**             | **暂存区 (Index)**               | **工作区 (Working Dir)**       | **安全程度**    | **适用场景**                                  |
+| -------------------- | -------------------------------- | ------------------------------ | --------------- | --------------------------------------------- |
+| **`--soft`**         | **保留**（原有的改动仍在暂存区） | **保留**（不受影响）           | 高              | 想重新编写 Commit Message，或合并多个小提交。 |
+| **`--mixed`** (默认) | **重置**（原有暂存内容被移出）   | **保留**（改动回到未暂存状态） | 中              | 撤销了 `git add`，想重新挑选文件进行提交。    |
+| **`--hard`**         | **重置**（清空）                 | **重置**（清空，代码物理删除） | **极低 (危险)** | 彻底放弃所有本地改动，强制回退到某个版本。    |
+
+## `git revert`
+
+`revert` 用于撤销一个 `commit`。
+
+### 撤销一个提交
+
+撤销之前的某个提交的更改，但不影响其后续提交。
+
+```bash
+git revert <commit-SHA> --no-edit
+
+git revert 3e628ee4 --no-edit
+git push
+```
+
+![image-20260317175452416](assets/image-20260317175452416.png)
+
+- **撤销**：分析报告
+- **保留**：
+  - test
+  - 暂时放弃此版，原因在 README 的个人说明中
+- **新建提交**：Revert "分析报告"
+
+### 撤销多个提交
+
+```bash
+git revert -n <commit-SHA1>^..<commit-SHA3>
+git revert -n 3e628ee4^..425b9500
+# -n: --no-commit, 它会把所有撤销带来的代码改动直接放在你的暂存区，而不会自动创建提交。
+
+git commit -m "Revert 分析报告 + 暂时放弃此版，原因在 README 的个人说明中 + test"
+git push
+```
+
+![image-20260317182646614](assets/image-20260317182646614.png)
+
+## 回到提交点
+
+用于临时回去看代码
+
+```bash
+git checkout <commit-SHA>
+```
+
+还可以以此为终点创建新分支
+
+```bash
+git checkout <commit-SHA>
+git switch -c <branch>
 ```
 
 # 文件

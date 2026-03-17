@@ -15,10 +15,26 @@
               "state": {
                 "file": "0000-to-do.md",
                 "mode": "preview",
-                "source": true
+                "source": true,
+                "backlinks": false
               },
               "icon": "lucide-file",
               "title": "0000-to-do"
+            }
+          },
+          {
+            "id": "67d0275c8f87b638",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "python.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "python"
             }
           },
           {
@@ -99,7 +115,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ssh",
+                "query": "python",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -141,7 +157,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
@@ -216,15 +232,19 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "f8997bab5318f5c3",
   "lastOpenFiles": [
+    "assets/image-20260317182646614.png",
+    "assets/image-20260317175452416.png",
+    "python.md",
+    "0000-to-do.md",
+    "git.md",
+    "openssh.md",
     "assets/image-20260316131222288.png",
     "assets/image-20260316131115678.png",
     "windows.md",
     "pinecone.md",
-    "git.md",
     "software.md",
-    "python.md",
     "java.md",
     "react.md",
     "javascript.md",
@@ -249,14 +269,10 @@
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",
-    "apex.md",
-    "http.md",
     "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
-    "assets/regions-zones.svg",
-    "assets/image-20251218161108633.png",
     "其它格式未转换/简历/白金玉-简历.docx",
     "其它格式未转换/简历/白金玉-简历-AI评测.docx",
     "其它格式未转换/简历/Jinyu Bai.docx",
