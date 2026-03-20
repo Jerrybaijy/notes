@@ -53,18 +53,48 @@
             }
           },
           {
-            "id": "01382fa365c1bc2e",
+            "id": "b1b7b997491ff9c2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "openssh.md",
+                "file": "software.md",
                 "mode": "preview",
-                "source": false,
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "openssh"
+              "title": "software"
+            }
+          },
+          {
+            "id": "6925bf0d1e9df46b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "chrome.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "chrome"
+            }
+          },
+          {
+            "id": "7a93142c2863957a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "bootstrap.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "bootstrap"
             }
           },
           {
@@ -83,7 +113,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -115,7 +145,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "python",
+                "query": "tag:#library",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -132,13 +162,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "git.md",
+                "file": "puppeteer.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "git 的大纲"
+              "title": "puppeteer 的大纲"
             }
           },
           {
@@ -150,14 +180,13 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "ai"
+                "searchQuery": "li"
               },
               "icon": "lucide-tags",
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 2
+        ]
       }
     ],
     "direction": "horizontal",
@@ -177,7 +206,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git.md",
+                "file": "puppeteer.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -187,7 +216,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "git 的反向链接列表"
+              "title": "puppeteer 的反向链接列表"
             }
           },
           {
@@ -218,8 +247,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
-    "collapsed": true
+    "width": 300.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -232,19 +260,22 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "bootstrap.md",
+    "puppeteer.md",
+    "chrome.md",
+    "software.md",
+    "git.md",
     "assets/image-20260317182646614.png",
     "assets/image-20260317175452416.png",
     "python.md",
     "0000-to-do.md",
-    "git.md",
     "openssh.md",
     "assets/image-20260316131222288.png",
     "assets/image-20260316131115678.png",
     "windows.md",
     "pinecone.md",
-    "software.md",
     "java.md",
     "react.md",
     "javascript.md",
@@ -264,12 +295,9 @@
     "openclaw.md",
     "shell.md",
     "todo-gcp.md",
-    "todo-fullstack.md",
-    "clawhub.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",
-    "assets/mdn-url-all.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
