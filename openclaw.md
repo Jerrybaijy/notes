@@ -110,6 +110,26 @@ npm rm -g openclaw
   Approved telegram sender *******
   ```
 
+# 工作空间
+
+工作空间 `~/.openclaw/workplace/` 是 OpenClaw 的"家"，主要有这些作用：
+
+```
+C:\Users\jerry\.openclaw\workspace\
+├── .openclaw/                    # OpenClaw 运行时状态
+├── memory/                       # 记忆目录
+│   └── 2026-03-20.md             # 每日记忆日志
+├── outputs/                      # 输出目录（个人创建）
+├── skills/                       # 自定义技能（个人创建）
+├── AGENTS.md                     # 工作空间指南（行为准则）
+├── BOOTSTRAP.md                  # 启动指南（首次运行）
+├── HEARTBEAT.md                  # 心跳任务配置
+├── IDENTITY.md                   # Agent 身份定义
+├── SOUL.md                       # Agent 人格定义
+├── TOOLS.md                      # 工具本地笔记
+└── USER.md                       # User 信息
+```
+
 # 浏览器插件
 
 ```bash
@@ -152,13 +172,16 @@ openclaw browser --browser-profile user snapshot --format ai
 - 这个网页有一系列简历列表，有多个候选人的基本信息
 - 你点击第二个候选人的姓名，就会打开他的简历弹窗
 - 如果你检测到了这个弹窗，请告诉我一声，然后继续工作。
-- 你研究一下，网站这个简历弹窗时怎么工作的，它是怎么把信息展示在里面的。
-- 你把研究成果，以 markdown 格式存入 `./resumes` 目录
+- 把简历弹窗的完整简历信息拿回来，以 json 格式存入 `./outputs/resumes/` 目录
 ```
 
 ```
 - 前端渲染是“懒加载”的（元素不在视口就不绘制 Canvas），在你点开简历弹窗以后，需要将简历页面从上到下缓慢滚动到底部，强迫页面将所有简历信息都绘制一遍，从而确保沙箱脚本能收窄抓取到所有的文字数据。滚动的核心方法在 `./resumes/content-script.ts`（在第 24 行左右开始）。
 - Convas 劫持的方法在 `./resumes/sandbox.ts 文件。
 - 这两个文件是我以前开发的浏览器插件中的文件，现在拿出来给你参考。
+```
+
+```
+通过 user profile 浏览器打开 https://www.zhipin.com/web/chat/recommend
 ```
 

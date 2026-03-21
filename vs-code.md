@@ -573,3 +573,30 @@ h6::before {
   - 或者按 `Ctrl + Shift + P` 打开命令面板；输入并选择 `Python: Select Interpreter`；
 - 选择你创建的虚拟环境中的 Python 解释器，通常路径会是 `./venv/Scripts/python.exe`；
 - 打开项目目录中的 Python 文件时，在 VSCode 右下角状态栏会看到，当前选择的 Python 解释器应该是你刚才选择的虚拟环境。
+
+## 子目录虚拟环境识别
+
+### 问题现象
+
+在采用多模块（如包含 backend、dashboard、extension）开发的项目架构中，如果在其子模块目录（如 `backend`）内独立创建了 Python 虚拟环境（如 `.venv`），并在根目录（如 `green-assistant-003`）级别打开 VS Code，VS Code 的 Python 插件通常不会自动将其识别为当前工作项目的环境。
+
+这样势必导致在编辑 Python 源码时，由于使用了外部的全局解释器，Linter 检查器（如 Pyre、Pylance）会产生大面积的如 `Could not find import of XXX` 的误报型红色警告。
+
+### 解决方案
+
+摒弃依赖 IDE 不确定的自动探针策略，转为以项目级别的局域配置来强制圈设上下文解析路径，这种方案对任何新接手的协作者都是一劳永逸的。
+
+在项目根目录主动创建固化的 `.vscode/settings.json` 配置文件。强行指派解释器所在的微观路径：
+
+```json
+{
+    "python.defaultInterpreterPath": "d:\\projects\\green-assistant-003\\backend\\.venv\\Scripts\\python.exe",
+    "python.analysis.extraPaths": [
+        "d:\\projects\\green-assistant-003\\backend"
+    ]
+}
+```
+
+配置一旦写入，VS Code 会在秒级内加载该 JSON，接管 `.venv` 内部的资源字典，从根源上平息代码编辑器内的无关报错下划线。
+
+**注意**：设置完以后要将 `.vscode` 目录加入 Git 忽略。
