@@ -388,10 +388,15 @@ git push
 git checkout <commit-SHA>
 ```
 
-还可以以此为终点创建新分支
+看完代码，回到某个分支
+
+```
+git switch <branch>
+```
+
+看完代码，此为终点创建新分支
 
 ```bash
-git checkout <commit-SHA>
 git switch -c <branch>
 ```
 
