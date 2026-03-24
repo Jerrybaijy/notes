@@ -98,7 +98,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 5
       }
     ],
     "direction": "vertical"
@@ -191,7 +191,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git.md",
+                "file": "openclaw.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -201,7 +201,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "git 的反向链接列表"
+              "title": "openclaw 的反向链接列表"
             }
           },
           {
@@ -245,10 +245,10 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "88f89e3257d06fba",
   "lastOpenFiles": [
-    "openclaw.md",
     "git.md",
+    "openclaw.md",
     "react.md",
     "bootstrap.md",
     "puppeteer.md",
