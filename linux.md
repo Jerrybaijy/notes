@@ -288,17 +288,17 @@ GRUB 的工作过程大致如下：
   ```
   # 启动 Ubuntu
   Ubuntu
-
+  
   # 选择 Ubuntu 其它内核
   Advanced options for Ubuntu
-
+  
   # 启动内存检测
   Memory test (memtest86+x64.efi)
   Memory test (memtest86+x64.efi, serial console)
-
+  
   # 启动 Windows 引导加载程序
   Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
-
+  
   # 进入固件
   UEFI Firmware Settings
   ```
@@ -385,12 +385,15 @@ GRUB 的工作过程大致如下：
   ```bash
   # 查看当前用户
   whoami
-
+  
   # 创建用户
-  sudo adduser $NEW_USER
-
+  sudo useradd -m jerry
+  
+  # 设置密码
+  sudo passwd jerry
+  
   # 切换用户
-  su - $USER
+  su - jerry
   ```
 
 # 包管理工具

@@ -126,9 +126,15 @@ tags:
   git -v
   ```
 
-## Debian
+## Linux
 
-- `sudo apt-get install git`
+```bash
+# Debian
+sudo apt-get install git
+
+# RHEL
+sudo dnf install git
+```
 
 ## 配置
 
@@ -369,12 +375,15 @@ git push
 
 ### 撤销多个提交
 
+> [!NOTE]
+> 左开右闭，即不会撤销 `<commit-SHA1>`
+
 ```bash
 git revert -n <commit-SHA1>^..<commit-SHA3>
 git revert -n 3e628ee4^..425b9500
 # -n: --no-commit, 它会把所有撤销带来的代码改动直接放在你的暂存区，而不会自动创建提交。
 
-git commit -m "Revert 分析报告 + 暂时放弃此版，原因在 README 的个人说明中 + test"
+git commit -m "Revert 暂时放弃此版，原因在 README 的个人说明中 + test"
 git push
 ```
 

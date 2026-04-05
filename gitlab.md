@@ -62,6 +62,14 @@ GitLab 网页创建 Code Repo
 - 名称随意（尽可能写项目名称）
 - 按需勾选权限，如 OCI 制品，就勾选 `read_registry` 和 `write_registry` 权限
 - 日期尽可能调整到最长（一年）
+- 角色选择 `owner`
 - `Create project access token`
 - 请务必保存生成的 token，它只显示一次！
 - 用户名为 `jerrybai`
+
+## 登录
+
+```bash
+docker login registry.gitlab.com -u jerrybai -p <令牌Password>
+```
+

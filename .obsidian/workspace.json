@@ -23,21 +23,6 @@
             }
           },
           {
-            "id": "67d0275c8f87b638",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "python.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "python"
-            }
-          },
-          {
             "id": "f8997bab5318f5c3",
             "type": "leaf",
             "state": {
@@ -81,24 +66,9 @@
               "icon": "lucide-file",
               "title": "chrome"
             }
-          },
-          {
-            "id": "88f89e3257d06fba",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "openclaw.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "openclaw"
-            }
           }
         ],
-        "currentTab": 5
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -130,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#library",
+                "query": "端口",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -147,13 +117,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "puppeteer.md",
+                "file": "git.md",
                 "followCursor": true,
                 "showSearch": true,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "puppeteer 的大纲"
+              "title": "git 的大纲"
             }
           },
           {
@@ -191,7 +161,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "openclaw.md",
+                "file": "git.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -201,7 +171,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "openclaw 的反向链接列表"
+              "title": "git 的反向链接列表"
             }
           },
           {
@@ -245,20 +215,21 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "88f89e3257d06fba",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
-    "git.md",
+    "network.md",
+    "python.md",
+    "chrome.md",
+    "openssh.md",
     "openclaw.md",
+    "git.md",
     "react.md",
     "bootstrap.md",
     "puppeteer.md",
-    "chrome.md",
     "software.md",
     "assets/image-20260317182646614.png",
     "assets/image-20260317175452416.png",
-    "python.md",
     "0000-to-do.md",
-    "openssh.md",
     "assets/image-20260316131222288.png",
     "assets/image-20260316131115678.png",
     "windows.md",
@@ -279,7 +250,6 @@
     "assets/image-20260308094623249.png",
     "民族史.md",
     "shell.md",
-    "todo-gcp.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",

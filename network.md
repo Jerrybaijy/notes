@@ -123,6 +123,18 @@ netstat -ano | findstr :$PORT
 
 ## FAQ
 
+### 查询被占用端口
+
+```bash
+# 加 sudo 查的更完整
+
+# 查被占用的所有
+sudo ss -tunlp
+
+# 查 80
+sudo ss -tunlp | grep :80
+```
+
 ### 停止占用端口
 
 ```bash
