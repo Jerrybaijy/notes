@@ -543,19 +543,22 @@ docker compose version
 # 所有操作都在 docker-compose.yml 目录中进行
 # ----------------------------------------
 
+# 显示指定 docker-compose 文件
+docker compose -f <docker-compose-file> <其它命令>
+
 # 后台启动容器
-docker-compose up -d
+docker compose up -d
 
 # 构建镜像（当 build 配置变更时）
-docker-compose build
+docker compose build
 
 # 移除容器（加 -v 同时删除数据卷）
-docker-compose down
+docker compose down
 
 # 查看所有服务日志
-docker-compose logs -f
+docker compose logs -f
 # 查看特定服务日志
-docker-compose logs -f $SERVICE_NAME
+docker compose logs -f $SERVICE_NAME
 ```
 
 ## Compose 文件
@@ -726,7 +729,7 @@ networks:
 
   ```bash
   cd todo-fullstack-gitops
-  docker-compose up -d
+  docker compose up -d
   ```
 
 - 访问应用（以 React 为例）：http://localhost
@@ -737,12 +740,12 @@ networks:
 
   ```bash
   cd todo-fullstack-gitops
-  docker-compose down
+  docker compose down
   ```
 
 ## 部署应用
 
-在只有镜像（无源代码）情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker-compose up -d` 命令，即可启动容器化应用。
+在只有镜像（无源代码）情况下，在本地或云服务器上，只需要有 `.env` 和 `docker-compose.yml`，执行 `docker compose up -d` 命令，即可启动容器化应用。
 
 > 源自 [Todo Fullstack](todo-fullstack.md) 项目。
 
@@ -798,7 +801,7 @@ networks:
 
   ```bash
   cd todos-remote
-  docker-compose up -d
+  docker compose up -d
   ```
 
 - 访问应用（以 React 为例）：http://localhost
@@ -807,7 +810,7 @@ networks:
 
   ```bash
   cd todos-remote
-  docker-compose down
+  docker compose down
   ```
 
 # Docker Hub

@@ -38,37 +38,52 @@
             }
           },
           {
-            "id": "b1b7b997491ff9c2",
+            "id": "bec9d29a0ac88f54",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "software.md",
+                "file": "docker.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "software"
+              "title": "docker"
             }
           },
           {
-            "id": "6925bf0d1e9df46b",
+            "id": "3fbd5570f113c00e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "chrome.md",
+                "file": "green-assistant.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "chrome"
+              "title": "green-assistant"
+            }
+          },
+          {
+            "id": "36fcd15439587888",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "todo-gcp.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "todo-gcp"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -145,7 +160,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 219.5
+    "width": 215.5
   },
   "right": {
     "id": "9d47538a58fd4ff6",
@@ -161,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "git.md",
+                "file": "docker.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -171,7 +186,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "git 的反向链接列表"
+              "title": "docker 的反向链接列表"
             }
           },
           {
@@ -217,12 +232,15 @@
   },
   "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "todo-gcp.md",
+    "docker.md",
+    "green-assistant.md",
+    "git.md",
     "network.md",
     "python.md",
     "chrome.md",
     "openssh.md",
     "openclaw.md",
-    "git.md",
     "react.md",
     "bootstrap.md",
     "puppeteer.md",
@@ -245,11 +263,8 @@
     "assets/image-20260309010054253.png",
     "excel.md",
     "word.md",
-    "ppt.md",
     "assets/image-20260308094729070.png",
     "assets/image-20260308094623249.png",
-    "民族史.md",
-    "shell.md",
     "assets/image-20260301203648402.png",
     "assets/image-20260301201142072.png",
     "assets/image-20260301201107031.png",
