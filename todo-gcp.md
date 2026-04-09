@@ -170,7 +170,7 @@ todo-gcp/
 ├── .env                    # 环境变量（未推送至代码仓库）
 ├── .env.example            # 环境变量示例文件
 ├── .gitignore              # Git 忽略文件配置
-├── .gitlab-ci.yml          # GitLab CI/CD 配置
+├── cloudbuild.yml          # Google Cloudbuild 配置
 ├── docker-compose.yml      # Docker Compose 配置
 └── README.md               # 项目说明文档
 ```

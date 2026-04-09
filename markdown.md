@@ -1214,7 +1214,7 @@ Second Term
 
 Emoji 表情属于 Markdown 的**扩展语法**。
 
-> [表情符号简码列表](https://gist.github.com/rxaviers/7360908)
+> [表情符号简码列表](https://github.com/ikatyang/emoji-cheat-sheet/blob/github-actions-auto-update/README.md)
 
 **语法**：在**表情符号短代码**前后各加 1 个**冒号**。
 
