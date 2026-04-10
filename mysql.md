@@ -9,7 +9,7 @@ tags:
 
 # MySQL
 
-MySQL 是一个关系型数据库管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 使用 C 和 C++ 编写，使用标准的 SQL 语言操作数据库，支持多线程，是最流行的关系型数据库管理系统之一。
+[**MySQL**](https://www.mysql.com/cn/) 是一个[关系型数据库](it-basics.md#数据库类型)管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 使用 C 和 C++ 编写，使用标准的 SQL 语言操作数据库，支持多线程，是最流行的关系型数据库管理系统之一。
 
 ## MySQL 环境搭建
 
