@@ -33,3 +33,31 @@ cat green_assistant_backup.sql | docker exec -i ga-postgres psql -U postgres -d 
 docker compose up -d
 ```
 
+
+
+
+
+本地docker
+
+```bash
+# 导出
+docker exec ga-postgres-local pg_dump -U postgres green_assistant > processed_backup_candidates_1.sql
+
+docker compose -f docker-compose-local.yml down -v
+docker compose -f docker-compose-local.yml up -d db
+
+cat processed_backup_candidates_1.sql | docker exec -i ga-postgres-local psql -U postgres -d green_assistant
+
+docker compose -f docker-compose-local.yml up -d
+```
+
+```
+cat green_assistant_backup.sql | docker exec -i ga-postgres-local psql -U postgres -d green_assistant
+```
+
+云
+
+```
+cat processed_backup_candidates_1.sql | docker exec -i ga-postgres psql -U postgres -d green_assistant
+```
+
