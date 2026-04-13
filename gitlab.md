@@ -73,7 +73,3 @@ GitLab 网页创建 Code Repo
 docker login registry.gitlab.com -u jerrybai -p <令牌Password>
 ```
 
-```
-docker login registry.gitlab.com -u jerrybai -p glpat-_cV7CD6vjAt6hyxGgWkM9mM6MQpvOjEKdTptMGU3Mw8.01.170mqjz77
-```
-
