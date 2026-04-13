@@ -218,6 +218,8 @@
   },
   "active": "c6618d5ca34eb393",
   "lastOpenFiles": [
+    "green-assistant.md",
+    "network.md",
     "git.md",
     "it-basics.md",
     "win-terminal.md",
@@ -225,9 +227,7 @@
     "postgresql.md",
     "todo-gcp.md",
     "cloudflare-tunnel.md",
-    "network.md",
     "bom.md",
-    "green-assistant.md",
     "winscp.md",
     "docker.md",
     "python.md",

@@ -392,6 +392,9 @@ GRUB 的工作过程大致如下：
   # 设置密码
   sudo passwd jerry
   
+  # 将 jerry 添加到 sudo 组
+  usermod -aG sudo jerry
+  
   # 切换用户
   su - jerry
   ```
@@ -622,3 +625,21 @@ grep "^I" test.txt
   ```bash
   gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
   ```
+
+## 用户 Shell 环境设置
+
+用户登录后，命令行提示符只有一个 `$`，没有其它信息，是因为该用户默认的 Shell 环境为 sh。
+
+- **检查当前 Shell**：如果显示的是 `/bin/sh`，说明 Shell 环境为 sh
+
+  ```bash
+  echo $SHELL
+  ```
+
+- **永久更改 Shell**：
+
+  ```bash
+  chsh -s /bin/bash jerry
+  ```
+
+- 再次检查当前 Shell，如果显示的是 `/bin/bash`，说明 Shell 环境为 bash
