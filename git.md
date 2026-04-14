@@ -165,8 +165,13 @@ sudo dnf install git
 - 应设置网络代理代理
 
   ```bash
+  # 原 VPN
   git config --global http.proxy http://127.0.0.1:9788
   git config --global https.proxy https://127.0.0.1:9788
+  
+  # v2ray
+  git config --global http.proxy http://127.0.0.1:10808
+  git config --global https.proxy http://127.0.0.1:10808
   ```
 
   **说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。

@@ -5,6 +5,7 @@ tags:
   - it
   - it-basics
   - web
+  - network
 ---
 
 # TCP/IP 四层模型
@@ -301,3 +302,15 @@ HTTP 与 HTTPS 的直观对比：
 - `netstat` / `ss`：查看端口占用
 - `tcpdump` / `Wireshark`：抓包分析
 - `dig` / `nslookup`：DNS 解析查询
+
+# VPN
+
+## VPN 工具
+
+- [V2Ray](v2ray.md)
+- Shadowsocks（SS）
+
+## Cloudflare 免费 VPN 自建
+
+- [零度解说 YouTube](https://www.youtube.com/watch?v=chcFg878840)
+- [零度解说博客](https://www.freedidi.com/23618.html) 
