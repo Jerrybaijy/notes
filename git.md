@@ -167,16 +167,14 @@ sudo dnf install git
   ```bash
   # 原 VPN
   git config --global http.proxy http://127.0.0.1:9788
-  git config --global https.proxy https://127.0.0.1:9788
+  git config --global https.proxy http://127.0.0.1:9788
   
   # v2ray
   git config --global http.proxy http://127.0.0.1:10808
   git config --global https.proxy http://127.0.0.1:10808
   ```
 
-  **说明**：将 `proxy.example.com:8080` 换成代理商提供的地址和端口。
-
-  ![image-20241214215306498](assets/image-20241214215306498.png)
+  **说明**：配置以后可能需要重启 VPN。
 
 - 查看配置
 
