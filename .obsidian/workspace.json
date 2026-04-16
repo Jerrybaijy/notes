@@ -58,13 +58,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "network.md",
+                "file": "docker.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "network"
+              "title": "docker"
             }
           },
           {
@@ -115,7 +115,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "powerto",
+                "query": "tun",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -231,10 +231,13 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "c6618d5ca34eb393",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
-    "v2ray.md",
+    "assets/image-20260416174411115.png",
+    "assets/image-20260416174201888.png",
+    "assets/image-20260416174049793.png",
     "network.md",
+    "v2ray.md",
     "green-assistant.md",
     "git.md",
     "it-basics.md",
@@ -262,13 +265,10 @@
     "windows.md",
     "pinecone.md",
     "java.md",
-    "javascript.md",
     "assets/image-20260309010054253.png",
     "assets/image-20260308094729070.png",
     "assets/image-20260308094623249.png",
     "assets/image-20260301203648402.png",
-    "assets/image-20260301201142072.png",
-    "assets/image-20260301201107031.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
