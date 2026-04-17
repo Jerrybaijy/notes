@@ -5,6 +5,7 @@ tags:
   - it
   - it-basics
   - web
+  - cloudflare
 ```
 
 # Cloudflare Tunnel
