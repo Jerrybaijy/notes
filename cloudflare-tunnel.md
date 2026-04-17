@@ -54,6 +54,9 @@ nohup cloudflared tunnel --url http://localhost:8081 > tunnel.log 2>&1 &
 
 # 查看当前分配的随机域名
 grep -o 'https://.*\.trycloudflare\.com' tunnel.log
+
+# 如果想重新启动，应先杀掉旧的隧道进程，然后重新启动
+pkill -f cloudflared
 ```
 
 > [!Warning]
