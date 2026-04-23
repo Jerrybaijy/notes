@@ -2,7 +2,7 @@
 title: win-chocolatey
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - 包管理工具
   - windows
 ---

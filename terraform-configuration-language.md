@@ -2,7 +2,7 @@
 title: terraform-configuration-language
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - iac
   - terraform
   - code-language

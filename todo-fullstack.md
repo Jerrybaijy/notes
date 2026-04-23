@@ -2,7 +2,7 @@
 title: todo-fullstack
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - projects
   - react
   - flask

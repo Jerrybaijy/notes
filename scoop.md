@@ -2,8 +2,8 @@
 title: win-scoop
 author: Jerry.Baijy
 tags:
-  - it
-  - 包管理工具
+  - dev
+  - package-managers
   - windows
 ---
 

@@ -2,7 +2,7 @@
 title: gcp-repositories
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
   - cloud-computing

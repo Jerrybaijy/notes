@@ -2,7 +2,7 @@
 title: hcl
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - iac
   - terraform
 ---

@@ -2,7 +2,7 @@
 title: trailhead-sample-intermediate
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - salesforce
 ---

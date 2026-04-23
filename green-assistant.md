@@ -2,7 +2,7 @@
 title: green-assistant
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - projects
   - react
   - fastapi

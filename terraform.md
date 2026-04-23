@@ -2,7 +2,7 @@
 title: terraform
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud
   - iac
   - terraform

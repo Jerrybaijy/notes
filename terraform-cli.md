@@ -2,7 +2,7 @@
 title: terraform-cli
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud
   - iac
   - terraform

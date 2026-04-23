@@ -2,7 +2,7 @@
 title: gitlab-ci-cd-yaml
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
   - gitlab

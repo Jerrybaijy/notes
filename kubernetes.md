@@ -2,7 +2,7 @@
 title: kubernetes
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - dev-ops
   - k8s

@@ -2,7 +2,7 @@
 title: cloud-computing
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud-computing
 ---
 

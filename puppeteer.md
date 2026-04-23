@@ -2,7 +2,7 @@
 title: puppeteer
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - frontend
   - library
   - browser

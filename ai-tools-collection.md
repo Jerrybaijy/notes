@@ -2,7 +2,7 @@
 title: ai-tools-collection
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
 ---
 

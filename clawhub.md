@@ -2,7 +2,7 @@
 title: clawhub
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
   - openclaw
 ---

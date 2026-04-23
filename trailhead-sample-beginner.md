@@ -2,7 +2,7 @@
 title: trailhead-sample-beginner
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - salesforce
 ---

@@ -2,7 +2,7 @@
 title: html
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - html
   - code-language
   - frontend

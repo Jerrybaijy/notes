@@ -2,7 +2,7 @@
 title: gcp-cloud-sql
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud-computing
   - gcp
   - cloud-sql

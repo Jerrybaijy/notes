@@ -2,7 +2,7 @@
 title: prettier
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - software
   - plugins

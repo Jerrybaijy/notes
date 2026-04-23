@@ -2,7 +2,7 @@
 title: todo-gcp
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - projects
   - react
   - flask

@@ -2,7 +2,7 @@
 title: shell
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - it-basics
   - code-language
   - script

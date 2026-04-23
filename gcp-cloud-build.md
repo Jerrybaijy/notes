@@ -2,7 +2,7 @@
 title: gcp-cloud-build
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
   - cloud-computing

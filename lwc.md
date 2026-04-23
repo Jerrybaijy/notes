@@ -2,7 +2,7 @@
 title: lwc
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - salesforce
 ---

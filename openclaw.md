@@ -2,7 +2,7 @@
 title: openclaw
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
   - openclaw
 ---

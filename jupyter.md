@@ -2,7 +2,7 @@
 title: jupyter
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - python
   - software
 ---

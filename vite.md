@@ -2,7 +2,7 @@
 title: frontend
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web
   - frontend
   - vite

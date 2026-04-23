@@ -2,7 +2,7 @@
 title: gcp-project
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud-computing
   - gcp
   - gcp-project

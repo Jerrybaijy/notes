@@ -2,7 +2,7 @@
 title: win-power-toys
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - windows
 ---

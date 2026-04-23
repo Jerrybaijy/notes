@@ -2,7 +2,7 @@
 title: sql
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - database
   - code-language
   - web

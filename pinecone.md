@@ -2,7 +2,7 @@
 title: pinecone
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - database
   - vector-database
   - ai

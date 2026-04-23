@@ -2,7 +2,7 @@
 title: script
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - it-basics
   - script
 ---

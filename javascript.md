@@ -2,7 +2,7 @@
 title: javascript
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - javascript
   - code-language
   - frontend

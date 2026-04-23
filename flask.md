@@ -2,7 +2,7 @@
 title: python
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - python
   - framework

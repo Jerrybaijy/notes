@@ -2,7 +2,7 @@
 title: mermaid
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - chart
 ---

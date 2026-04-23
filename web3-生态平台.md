@@ -2,7 +2,7 @@
 title: web3-生态平台
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web3
 ---
 

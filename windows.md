@@ -2,7 +2,7 @@
 title: windows
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - os
   - windows
 ---
@@ -21,7 +21,7 @@ tags:
 ## 包管理器
 
 - **winget**：Windows 原生，和手动安装软件的区别就是不用一直点下一步，静默安装。
-- [**scoop**](win-scoop.md)
+- [**Scoop**](scoop.md)
   - 社区维护
   - **不污染系统**：默认安装在用户目录（`~/scoop`）绿色版本便携，不产生注册表，卸载干净。
   - 专注于开发者工具。

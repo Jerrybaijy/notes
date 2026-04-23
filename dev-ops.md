@@ -2,7 +2,7 @@
 title: dev-ops
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
 ---

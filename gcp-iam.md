@@ -2,7 +2,7 @@
 title: gcp-iam
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud-computing
   - gcp
 ---

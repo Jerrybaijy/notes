@@ -2,7 +2,7 @@
 title: linux
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - os
 ---
 

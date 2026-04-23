@@ -2,7 +2,7 @@
 title: win-terminal
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - windows
   - terminal

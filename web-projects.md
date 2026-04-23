@@ -2,7 +2,7 @@
 title: web-projects
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web
   - projects
 ---

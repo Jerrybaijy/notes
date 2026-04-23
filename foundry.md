@@ -2,7 +2,7 @@
 title: foundry
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - solidity
   - code-language
   - web3

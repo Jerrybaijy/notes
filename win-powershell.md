@@ -2,7 +2,7 @@
 title: win-powershell
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - windows
 ---
 

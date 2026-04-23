@@ -2,7 +2,7 @@
 title: chrome
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - google
   - browser
@@ -37,6 +37,7 @@ tags:
 - **复制受保护的文本**：自由复制
 - **篡改猴**
 - **迅雷下载支持**
+- **Export Tabs URLs**：批量复制标签页网址
 
 # Experiments
 

@@ -2,7 +2,7 @@
 title: navicat
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - databese
 ---

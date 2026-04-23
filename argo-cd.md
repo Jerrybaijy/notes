@@ -2,7 +2,7 @@
 title: argo-cd
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - dev-ops
   - git-ops

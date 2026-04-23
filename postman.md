@@ -2,7 +2,7 @@
 title: postman
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web
   - software
   - api

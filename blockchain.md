@@ -2,7 +2,7 @@
 title: blockchain
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web3
 ---
 

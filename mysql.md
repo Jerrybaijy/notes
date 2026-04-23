@@ -2,7 +2,7 @@
 title: mysql
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - databese
 ---

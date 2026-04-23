@@ -2,7 +2,7 @@
 title: langchain
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
   - ai-agent
   - framework

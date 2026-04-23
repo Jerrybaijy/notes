@@ -2,7 +2,7 @@
 title: gitlab-container-registry
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
   - gitlab

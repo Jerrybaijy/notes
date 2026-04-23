@@ -2,7 +2,7 @@
 title: v2ray
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - network
 ---
 

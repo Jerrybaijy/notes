@@ -2,7 +2,7 @@
 title: gcp-gcloud-cli
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - cloud-computing
   - gcp

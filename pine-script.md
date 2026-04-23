@@ -2,7 +2,7 @@
 title: pine-script
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - 交易
 ---

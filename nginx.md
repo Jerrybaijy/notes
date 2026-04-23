@@ -2,7 +2,7 @@
 title: nginx
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - web
   - nginx
 ---

@@ -2,7 +2,7 @@
 title: ai-agent
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
   - ai-agent
 ---

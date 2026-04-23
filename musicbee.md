@@ -2,7 +2,7 @@
 title: musicbee
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - music
 ---

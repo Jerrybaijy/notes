@@ -2,7 +2,7 @@
 title: it-basics
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - it-basics
 ---
 

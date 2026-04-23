@@ -2,7 +2,7 @@
 title: gcp-artifact-registry
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - ci-cd
   - registry

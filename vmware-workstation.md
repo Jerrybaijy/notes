@@ -2,7 +2,7 @@
 title: vmware-workstation
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - vm
 ---

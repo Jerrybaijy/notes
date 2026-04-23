@@ -2,7 +2,7 @@
 title: gcp
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - dev-ops
   - cloud-computing
   - gcp

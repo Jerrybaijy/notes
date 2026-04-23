@@ -2,7 +2,7 @@
 title: git
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - dev-ops
   - web
@@ -230,6 +230,14 @@ git remote rm origin
 ## Branch 基础
 
 安装 Git 时，有选项选择本地仓库默认分支为 main。
+
+```
+main        # 主分支，稳定版本
+develop     # 开发主分支
+feature/*   # 功能分支
+release/*   # 发布分支
+hotfix/*    # 热修复分支
+```
 
 ```bash
 # 查看分支

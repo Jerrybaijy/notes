@@ -2,7 +2,7 @@
 title: ollama
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - ai
 ---
 

@@ -2,7 +2,7 @@
 title: helm
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - dev-ops
   - k8s

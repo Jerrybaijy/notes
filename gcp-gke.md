@@ -2,7 +2,7 @@
 title: gcp-gke
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - cloud-computing
   - gcp
   - gke

@@ -2,7 +2,7 @@
 title: json
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - config
   - web

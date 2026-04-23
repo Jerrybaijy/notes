@@ -2,7 +2,7 @@
 title: bootstrap
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - frontend
   - library
   - web

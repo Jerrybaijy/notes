@@ -2,7 +2,7 @@
 title: css
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - css
   - code-language
   - frontend

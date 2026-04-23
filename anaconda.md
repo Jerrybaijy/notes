@@ -2,7 +2,7 @@
 title: anaconda
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - ai
   - ai-agent

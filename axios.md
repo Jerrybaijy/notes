@@ -2,7 +2,7 @@
 title: axios
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
   - http
   - node-js

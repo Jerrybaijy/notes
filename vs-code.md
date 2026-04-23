@@ -2,7 +2,7 @@
 title: vs-code
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - code-language
   - software
 ---
@@ -37,6 +37,8 @@ tags:
 | ==代码== |  |
 | 代码格式化（自己修改） | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Z</kbd> |
 | 使用 Emmet 缩写包围 （自己修改） | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>A</kbd> |
+| 代码换行 | <kbd>Alt</kbd> + <kbd>↑</kbd> \| <kbd>↓</kbd> |
+| 将选中代码行数输入到 Agent 对话框 | <kbd>Ctrl</kbd> + <kbd>L</kbd> |
 | ==终端== |  |
 | 打开内置终端 | <kbd>Ctrl</kbd> + <kbd>~</kbd> |
 
@@ -599,4 +601,4 @@ h6::before {
 
 配置一旦写入，VS Code 会在秒级内加载该 JSON，接管 `.venv` 内部的资源字典，从根源上平息代码编辑器内的无关报错下划线。
 
-**注意**：设置完以后要将 `.vscode` 目录加入 Git 忽略。
+**注意**：设置完以后要将 `.vscode` 目录加入 Git 忽略。

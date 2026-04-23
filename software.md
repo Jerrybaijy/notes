@@ -2,7 +2,7 @@
 title: software
 author: Jerry.Baijy
 tags:
-  - it
+  - dev
   - software
 ---
 
