@@ -111,8 +111,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -186,7 +185,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "f8997bab5318f5c3",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
     "pyenv.md",
     "pdm.md",

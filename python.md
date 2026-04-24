@@ -67,6 +67,8 @@ tags:
 ### Python 工具
 
 - [pyenv](pyenv.md)：Python 版本管理
+  - 只负责安装，在项目中现已使用 [pdm](pdm.md) 指定 Python 版本。
+
 - [pdm](pdm.md)：项目管理、虚拟环境管理...
 - [pip](pip.md)：依赖包管理
 - [pipx](pipx.md)：CLI 工具管理
