@@ -70,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "pdm",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -185,17 +185,20 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "f8997bab5318f5c3",
   "lastOpenFiles": [
-    "pyenv.md",
     "pdm.md",
+    "alembic.md",
+    "loguru.md",
+    "python.md",
+    "flask.md",
+    "code-general.md",
+    "pyenv.md",
     "pip.md",
     "node-js.md",
     "scoop.md",
     "windows.md",
     "pipx.md",
-    "python.md",
-    "code-general.md",
     "todo-fullstack.md",
     "git.md",
     "docker.md",
@@ -213,9 +216,6 @@
     "assets/image-20260416174411115.png",
     "assets/image-20260416174201888.png",
     "assets/image-20260416174049793.png",
-    "network.md",
-    "green-assistant.md",
-    "it-basics.md",
     "assets/image-20260317182646614.png",
     "assets/image-20260317175452416.png",
     "assets/image-20260316131222288.png",
