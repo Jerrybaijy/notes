@@ -46,8 +46,7 @@ Node.js 已安装，npm 更新至最新版，详见 [node.js](node-js.md) 笔记
 ## 创建项目
 
 ```bash
-cd $PROJECT_dir
-npm create vite@latest $FRONTEND_DIR -- --template react
+cd <my-project>
 
 # 在 frontend 目录创建 React + JavaScript 项目
 npm create vite@latest frontend -- --template react
@@ -67,8 +66,8 @@ frontend/
 ├── node_modules/          # NPM 依赖包安装目录
 ├── public/                # 静态资源目录，包含无需打包的文件
 ├── src/                   # 源代码目录
-│   ├── App.css            # App 主组件的样式文件
-│   ├── App.jsx            # App 主组件文件
+│   ├── App.css            # App 根组件的样式文件
+│   ├── App.jsx            # App 根组件文件
 │   ├── assets/            # 资源文件目录
 │   │   └── react.svg      # React 图标文件
 │   ├── index.css          # 全局样式文件
@@ -93,7 +92,7 @@ frontend/
 - 生成 / 更新 `package-lock.json`（锁定版本，保证所有人环境一致）
 
 ```bash
-cd $FRONTEND_DIR
+cd frontend
 npm install
 ```
 
@@ -101,14 +100,14 @@ npm install
 
 ### `App.jsx`
 
-应用主组件 `src/App.jsx`，编写逻辑方法等。
+应用根组件 `src/App.jsx`，编写逻辑方法等。
 
 ```jsx
 import { useState } from "react";
 import "./App.css";
 
 function App() {
-  // 主组件内容
+  // 根组件内容
 }
 
 export default App;
@@ -116,7 +115,7 @@ export default App;
 
 ### `main.jsx`
 
-应用入口文件 `src/main.jsx`，引入主组件 `App.jsx`
+应用入口文件 `src/main.jsx`，引入根组件 `App.jsx`
 
 ```jsx
 import { StrictMode } from "react";
@@ -154,7 +153,7 @@ createRoot(document.getElementById("root")).render(
 ## 启动开发服务器
 
 ```bash
-cd $FRONTEND_DIR
+cd frontend
 npm run dev
 ```
 
@@ -165,7 +164,7 @@ npm run dev
 **静态资源包**可以预览在生产环境是否能运行。
 
 ```bash
-cd $FRONTEND_DIR
+cd frontend
 npm run build
 ```
 

@@ -361,6 +361,17 @@ git push -f
 | **`--mixed`** (默认) | **重置**（原有暂存内容被移出）   | **保留**（改动回到未暂存状态） | 中              | 撤销了 `git add`，想重新挑选文件进行提交。    |
 | **`--hard`**         | **重置**（清空）                 | **重置**（清空，代码物理删除） | **极低 (危险)** | 彻底放弃所有本地改动，强制回退到某个版本。    |
 
+撤销提交，但保留代码：
+
+- 提交没了
+- 改动还在暂存区
+- 可以直接重新提交
+
+```bash
+git reset --soft HEAD~1
+git commit -m "新的提交说明"
+```
+
 ## `git revert`
 
 `revert` 用于撤销一个 `commit`。
@@ -405,7 +416,7 @@ git push
 用于临时回去看代码
 
 ```bash
-git checkout <commit-SHA>
+git switch --detach <commit-SHA>
 ```
 
 看完代码，回到某个分支
@@ -414,10 +425,19 @@ git checkout <commit-SHA>
 git switch <branch>
 ```
 
-看完代码，此为终点创建新分支
+看完代码，以此为终点创建新分支
 
 ```bash
 git switch -c <branch>
+```
+
+## 提交日志
+
+[`log`](https://git-scm.com/docs/git-log/zh_HANS-CN) 用于显示提交日志。
+
+```bash
+# 一行展示一条提交记录，展示 <number> 条
+git log --oneline -<number>
 ```
 
 # 文件
