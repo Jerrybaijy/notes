@@ -398,6 +398,191 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   export default App;
   ```
 
+# React Router 布局方案：Children vs Outlet
+
+## 概述
+
+在 React Router v6+ 项目中，实现布局组件有两种方式：**Children Props** 和 **Outlet**。
+
+## 工作原理
+
+### 前置条件
+
+无论使用哪种方式，都需要在应用根组件包裹 `<BrowserRouter>`：
+
+```react
+// main.tsx - 应用入口
+import { BrowserRouter } from "react-router-dom";
+
+createRoot(document.getElementById("root")!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>,
+);
+```
+
+### Children 方式
+
+通过 React 的 `children` prop 传递内容，是标准的 React 组件组合模式。
+
+**AppLayout.tsx - 接收 children 作为 prop**
+
+```tsx
+// 无需特殊导入，children 是 React 内置 prop
+
+interface AppLayoutProps {
+  children: React.ReactNode;  // 通过 props 传递内容
+}
+
+const AppLayout = ({ children, ... }) => {
+  return (
+    <>
+      <Header />
+      <main>
+        {children}  {/* 直接渲染传入的子组件 */}
+      </main>
+    </>
+  );
+};
+```
+
+**App.tsx - 将路由组件作为 children 传递**
+
+```tsx
+import { Routes, Route } from "react-router-dom";
+
+<AppLayout>
+  <Routes>
+    <Route path="/home" element={<Home />} />
+    <Route path="/projects" element={<Projects />} />
+  </Routes>
+</AppLayout>
+```
+
+### Outlet 方式
+
+使用 React Router 提供的 `<Outlet />` 组件作为路由出口，自动渲染匹配的子路由。
+
+**AppLayout.tsx - 使用 Outlet 作为路由出口**
+
+```tsx
+import { Outlet } from "react-router-dom";
+
+const AppLayout = () => {
+  return (
+    <>
+      <Header />
+      <main>
+        <Outlet />  {/* 自动渲染匹配的子路由 */}
+      </main>
+    </>
+  );
+};
+```
+
+**App.tsx - 使用嵌套路由结构**
+
+```tsx
+import { Routes, Route } from "react-router-dom";
+
+<Routes>
+  <Route path="/" element={<AppLayout />}>
+    <Route path="home" element={<Home />} />
+    <Route path="projects" element={<Projects />} />
+  </Route>
+</Routes>
+```
+
+## 核心区别
+
+### 渲染行为
+
+| 特性               | Children                 | Outlet             |
+| ------------------ | ------------------------ | ------------------ |
+| **布局组件重渲染** | ❌ 每次路由切换都重新渲染 | ✅ 布局组件保持不变 |
+| **Header 重渲染**  | ❌ 每次路由切换都重新渲染 | ✅ 不重新渲染       |
+| **子组件状态保持** | ❌ 路由切换时状态丢失     | ✅ 状态可以保持     |
+| **性能表现**       | 较差（整树重建）         | 更好（局部更新）   |
+
+### 路由切换流程
+
+从 `/projects` 切换到 `/candidates` 时：
+
+**Children 方式：**
+
+```
+1. App 组件重新渲染
+2. AppLayout 重新渲染（包括 Header）
+3. Projects 卸载（状态丢失）
+4. Candidates 挂载
+```
+
+**Outlet 方式：**
+
+```
+1. App 组件重新渲染
+2. AppLayout 不重新渲染
+3. Header 不重新渲染
+4. Projects 卸载
+5. Candidates 挂载（仅 main 区域变化）
+```
+
+## 适用场景
+
+### 使用 Children
+
+- 非路由相关的组件组合（Modal、Tooltip 等）
+- 动态内容传递
+- 简单的 HOC 模式
+- 不涉及路由切换的场景
+
+```tsx
+const Modal = ({ children, onClose }) => (
+  <div className="modal">
+    {children}
+  </div>
+);
+```
+
+### 使用 Outlet
+
+- 路由布局组件（含导航栏、侧边栏）
+- 嵌套路由结构
+- 需要保持父组件状态
+- 性能敏感场景
+
+```tsx
+const DashboardLayout = () => (
+  <div>
+    <Sidebar />
+    <main><Outlet /></main>
+  </div>
+);
+```
+
+## 总结
+
+### 核心要点
+
+✅ **路由布局用 Outlet**
+
+- 性能更好，避免不必要重渲染
+- 状态更稳定
+- 符合 React Router 设计理念
+
+✅ **非路由场景用 Children**
+
+- 更灵活的内容传递
+- 简单的组件组合
+
+## 附录：相关资源
+
+- [React Router v6 官方文档 - Outlet](https://reactrouter.com/en/main/components/outlet)
+- [React Router v6 嵌套路由指南](https://reactrouter.com/en/main/start/tutorial#nested-routes)
+- [React 性能优化最佳实践](https://react.dev/learn/render-and-commit)
+
 # `vite.config.js`
 
 Vite 跨域代理 `vite.config.js`，用于直接本地运行（**非容器化部署**）时的前后端通信。

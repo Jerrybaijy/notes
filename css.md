@@ -2448,7 +2448,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 - `display: grid;`：设置布局方式为网格布局
 - `grid-template-columns`：设置列轨道的数量和大小。
   - 此例中的 `200px` 是一个绝对大小。
-  - 绝对大小、`fr`、`repeat()`  可混合写。
+  - 绝对大小、`fr`、`repeat()`  可混合写。
 
 #### fr 单位
 
@@ -2774,7 +2774,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - 通过 `display: grid;` 将 `item-1` 网格项再设为网格布局。
-- 网格项 `item-1`  内部的三个子元素都变为它的网格项。
+- 网格项 `item-1`  内部的三个子元素都变为它的网格项。
 
 ### 其它属性
 
@@ -3177,19 +3177,19 @@ p {
       width: 60%;
       margin-right: auto;
     }
-
+    
     /* 水平居中 */
     .example {
       width: 60%;
       margin: auto;
     }
-
+    
     /* 水平靠左 */
     .example {
       width: 60%;
       margin-left: auto;
     }
-
+    
     /* 行内元素显示为块级并居中 */
     .example {
       width: 60%;
@@ -3221,6 +3221,60 @@ p {
 
 - 网页中，内容和屏幕边缘往往都有一定距离，而不是紧贴屏幕边缘
 - 这可以通过设置 `<body>` 的 `padding` 实现
+
+# 样式最佳实践
+
+## Tailwind CSS
+
+Tailwind 是一种 **Utility-First（功能类优先）** 的框架。
+
+1. **预定义系统**：Tailwind 提供了一套完整的、标准化的低级设计类（如 `bg-blue-500`, `p-4`）。
+2. **按需扫描**：在构建时，Tailwind 会扫描你代码中（`.tsx`, `.html` 等）出现过的所有类名。
+3. **生成 CSS**：它只将你用到的类名编译进最终的生成的 CSS 文件中，没用到的类名会被剔除。
+
+**React 组件：`Button.tsx`**
+
+你不需要编写任何额外的 CSS 文件，直接在类名中描述样式。
+
+```tsx
+export default function Button() {
+  return (
+    <button className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition">
+      Click Me
+    </button>
+  );
+}
+```
+
+## CSS Modules
+
+**CSS Modules** 不是一种新语言，而是一个由构建工具（如 Vite, Webpack）提供的**转换机制**。
+
+1. **开发者编写**：在 `.module.css` 文件中编写普通的类名（如 `.button`）。
+2. **构建转换**：打包工具读取该文件，将类名重命名为一个全局唯一的哈希字符串（如 `.Button_button__a7x12`）。
+3. **映射引用**：在 JS/TS 中，你会得到一个对象，Key 是你写的原始类名，Value 是生成的唯一哈希类名。
+
+**样式文件：`Button.module.css`**
+
+```css
+.primary {
+  background: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+```
+
+**React 组件：`Button.tsx`**
+
+```tsx
+import styles from './Button.module.css';
+
+export default function Button() {
+  // styles.primary 的值实际上是 "_primary_z123_5" 这样的字符串
+  return <button className={styles.primary}>Click Me</button>;
+}
+```
 
 # 案例留存
 
