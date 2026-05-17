@@ -58,13 +58,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "电子产品.md",
+                "file": "windows.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "电子产品"
+              "title": "windows"
             }
           }
         ],
@@ -100,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "无界鼠标",
+                "query": "ContextMenuManager",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -162,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "电子产品.md",
+                "file": "windows.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +172,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "电子产品 的反向链接列表"
+              "title": "windows 的反向链接列表"
             }
           },
           {
@@ -218,6 +218,7 @@
   },
   "active": "f6bcfd2206890649",
   "lastOpenFiles": [
+    "电子产品.md",
     "assets/image-20260518020026148.png",
     "assets/image-20260517224410486.png",
     "css.md",
@@ -253,7 +254,6 @@
     "assets/image-20260316131222288.png",
     "assets/image-20260316131115678.png",
     "assets/image-20260309010054253.png",
-    "assets/image-20260308094729070.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",

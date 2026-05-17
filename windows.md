@@ -922,7 +922,7 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
 
 可以通过两种方法删除右键菜单：
 
-- 通过 [ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager/releases) (网盘有备份)
+- 通过 [ContextMenuManager](https://github.com/BluePointLilac/ContextMenuManager/releases) (网盘有备份，以管理员身份运行)
 - 手动删除注册表
 
 以下是如何通过删除相应注册表，删除相应右键菜单项。
