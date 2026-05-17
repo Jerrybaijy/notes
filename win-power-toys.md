@@ -57,7 +57,7 @@ tags:
 
 [FancyZones](https://learn.microsoft.com/zh-cn/windows/powertoys/fancyzones) 用于自定义窗口布局，使用 `` Win + Shift + ` `` 激活编辑布局方式。
 
-拖动窗口时按住 `Shift` 会出现待转区域，将拖放至相应窗口即可。
+拖动窗口时按住 `Shift` 会出现待转区域，将拖放至相应窗口即可。
 
 # 输入和输出
 
@@ -67,11 +67,16 @@ tags:
 
 ## 无界鼠标
 
-[无界鼠标](https://learn.microsoft.com/zh-cn/windows/powertoys/mouse-without-borders)用于在一台计算机控制其它计算机。
+[无界鼠标](https://learn.microsoft.com/zh-cn/windows/powertoys/mouse-without-borders)用于在不同计算机之间切换鼠标和键盘。
+
+> [!Tip]
+> 有时跨屏左右方向不理想，在 `鼠标行为` 中切换几次“鼠标经过最后一台计算机时，将其移回第一台计算机”
 
 在本机填入其它计算机的**安全密钥**和**设备名称**，点击 `连接`。
 
 ![image-20260309010054253](assets/image-20260309010054253.png)
+
+![image-20260518020026148](assets/image-20260518020026148.png)
 
 # 文件管理
 
