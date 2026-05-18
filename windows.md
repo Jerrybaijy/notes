@@ -670,6 +670,26 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
   wsl -l
   ```
 
+# 远程桌面连接
+
+## Overview
+
+
+
+## Quickstart
+
+<img src="assets/image-20260518224241544.png" alt="image-20260518224241544" style="zoom:50%;" />
+
+**计算机(C:)**：远程计算机的地址，可以是以下之一：
+
+- **IP地址**：
+  - 局域网：`192.168.1.100`
+  - 公网：`49.7.231.109:35622`
+- **计算机名**：如 `DESKTOP-ABC123`或 `server.company.com`
+- **完整主机名**：如 `computer.fabrikam.com`
+
+**用户名 **：远程计算机上的**账户名**（如 `Administrator`或您的微软账户）
+
 # FAQ
 
 ## 无法访问 Windows APP 文件夹

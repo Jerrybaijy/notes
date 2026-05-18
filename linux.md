@@ -498,67 +498,6 @@ apt show <package_name>
 - **APT / DPKG (Debian / Ubuntu)**：这些传统的包管理工具更依赖于操作系统的软件仓库和软件源，包通常不包含依赖，依赖库必须单独处理。
 - **Snap**：相比之下，Snap 包包含所有必需的依赖，并且是跨发行版的兼容格式。Snap 的安装、更新和沙箱化提供了更高的便捷性和安全性，但可能在性能上有所牺牲。
 
-# Vim
-
-**Vi**（Vi IMproved）是 Unix 系统上最早的文本编辑器之一，**Vim**（Vi IMproved）是 Vi 的增强版。
-
-## Basics
-
-```bash
-# show version
-vi / vim
-# open / create file
-vim $FILE
-# into insert mode
-i
-# back to command mode
-`Esc`
-# exit
-:q
-# save and exit
-:wq
-```
-
-## Command mode
-
-- Default enter into command mode.
-
-  ![image-20240406160608629](assets/image-20240406160608629.png)
-
-- `Esc`: Back to command mode
-
-- `dd`: Cut cursor line. `2dd`: Cut cursor and next line
-
-- `yy`: Copy cursor line. `2yy`: Copy cursor and next line
-
-- `p`: Paste at next line of cursor. `2p`: Paste at next line of cursor 2 times
-
-- `Ctrl + F`: Page Up. `Ctrl + U`: Page Up Half.
-
-- `Ctrl + B`: Page Down. `Ctrl + D`: Page Down Half.
-
-## Insert mode
-
-- Into insert mode
-  - `i`: before cursor
-  - `I`: line beginning
-  - `a`: after cursor
-  - `A`: line end
-  - `o`: next new line
-  - `O`: previous new line
-
-- Edit
-  - `^`: jump to line beginning
-  - `$`: jump to line end
-
-## Last line mode
-
-- `:`: Into last line mode
-- `:q`: exit
-- `:wq`: save and exit
-- `:set nu`: show line number
-- `:set nonu`: close line number
-
 # `grep`
 
 [`grep`](https://www.gnu.org/software/grep/manual/grep.html) 工具用于打印包含与一个或多个模式匹配的行。
@@ -643,3 +582,73 @@ grep "^I" test.txt
   ```
 
 - 再次检查当前 Shell，如果显示的是 `/bin/bash`，说明 Shell 环境为 bash
+
+## 命令提示符设置
+
+- 用户登录后，命令提示符是纯文本，无颜色。
+
+  <img src="assets/image-20260518152350834.png" alt="image-20260518152350834" style="zoom:50%;" />
+
+- 需要修改 `~/.bashrc` 中的 `PS1` 变量。
+
+- 使用 nano 打开 `~/.bashrc` 文件，在文件末尾添加以下几行：
+
+  ```bash
+  PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
+  ```
+
+- 让配置立刻生效
+
+  ```bash
+  source /root/.bashrc
+  ```
+
+
+## 查看系统信息
+
+执行以下命令，生成报告文件 `system_config.txt`：
+
+```bash
+{
+    echo "==================== 服务器硬件综合报告 ===================="
+    echo "生成时间: $(date)"
+    echo -e "\n[1] 系统与虚拟化平台"
+    echo "主机名: $(hostname)"
+    echo "操作系统: $(grep PRETTY_NAME /etc/os-release | cut -d= -f2 | tr -d '"')"
+    echo "内核版本: $(uname -r)"
+    echo "架构: $(uname -m)"
+    echo "虚拟化类型: $(systemd-detect-virt 2>/dev/null || echo 'Unknown/Physical')"
+
+    echo -e "\n[2] CPU 信息"
+    echo "CPU 型号: $(grep "model name" /proc/cpuinfo | head -1 | cut -d: -f2 | xargs)"
+    echo "物理核心数: $(grep "physical id" /proc/cpuinfo | sort -u | wc -l)"
+    echo "逻辑核心数/线程数: $(nproc)"
+    echo "CPU 频率: $(grep "cpu MHz" /proc/cpuinfo | head -1 | awk '{print $4" MHz"}')"
+
+    echo -e "\n[3] 内存信息"
+    free -h | awk 'NR==1{print "       "$0} NR==2{print "Total: "$2 " Used: "$3 " Free: "$4}'
+
+    echo -e "\n[4] 磁盘与存储"
+    echo "磁盘分区与大小:"
+    lsblk -o NAME,SIZE,TYPE,MOUNTPOINT | grep -v loop
+    echo -e "\n文件系统使用情况:"
+    df -h --output=source,fstype,size,used,avail,pcent,target | grep -v tmpfs
+
+    echo -e "\n[5] 网络信息"
+    echo "网卡接口与IP地址:"
+    ip -o addr show | awk '{print $2": "$4}' | grep -v "127.0.0.1"
+    echo -e "\n网络带宽（需安装工具，此处显示网卡速率）:"
+    for iface in $(ls /sys/class/net/ | grep -v lo); do
+        speed=$(cat /sys/class/net/$iface/speed 2>/dev/null)
+        [ -n "$speed" ] && echo "  $iface: ${speed}Mbps" || echo "  $iface: 未知/虚拟网卡"
+    done
+
+} > system_config.txt
+```
+
+查看报告文件：
+
+```bash
+cat system_config.txt
+```
+

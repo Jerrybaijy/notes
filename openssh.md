@@ -95,6 +95,14 @@ cat ~/.ssh/id_ed25519.pub
 
 - 这会公钥内容添加至服务器的 `~/.ssh/authorized_keys` 文件（如果没有此文件会自动创建）。
 
+  ```
+  # 免密连接服务器
+  ssh <user>@<server>
+  
+  # 查看自己的公钥是否添加到服务器
+  cat ~/.ssh/authorized_keys
+  ```
+
 - 将指定的其他人的公钥添加到服务器
 
   ```bash
