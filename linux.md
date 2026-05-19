@@ -581,28 +581,47 @@ grep "^I" test.txt
   chsh -s /bin/bash jerry
   ```
 
-- 再次检查当前 Shell，如果显示的是 `/bin/bash`，说明 Shell 环境为 bash
+- 退出终端，重新登录。
+
+- 再次检查当前 Shell，如果显示的是 `/bin/bash`，说明 Shell 环境为 bash。
 
 ## 命令提示符设置
 
-- 用户登录后，命令提示符是纯文本，无颜色。
+- 用户登录后，命令提示符是默认黑色。
 
   <img src="assets/image-20260518152350834.png" alt="image-20260518152350834" style="zoom:50%;" />
 
 - 需要修改 `~/.bashrc` 中的 `PS1` 变量。
 
-- 使用 nano 打开 `~/.bashrc` 文件，在文件末尾添加以下几行：
+- 使用 nano 修改 `~/.bashrc` 文件，将这一行取消注释：
 
-  ```bash
-  PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
+  ```shell
+  #force_color_prompt=yes
   ```
 
 - 让配置立刻生效
 
   ```bash
-  source /root/.bashrc
+  source ~/.bashrc
   ```
 
+- 如果想修改颜色
+
+  修改第一个分支中的 PS1：
+
+  ```shell
+  if [ "$color_prompt" = yes ]; then
+      PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+  else
+      PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+  fi
+  ```
+
+  可以修改为：
+
+  ```shell
+  PS1='\[\e[32m\]\u@\h\[\e[0m\]:\[\e[34m\]\w\[\e[0m\]\$ '
+  ```
 
 ## 查看系统信息
 

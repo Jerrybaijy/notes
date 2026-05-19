@@ -123,3 +123,39 @@ Host 34.96.174.31
   ServerAliveInterval 30
   ServerAliveCountMax 6
 ```
+
+## 远程主机标识已更改
+
+当远程主机标识已更改（比如重装系统），使用密钥连接远程主机时，会出现如下错误：
+
+```
+jerry@PC-Jerry-2 MINGW64 ~
+$ ssh root@47.115.210.245
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ED25519 key sent by the remote host is
+SHA256:tdHQdzhKytoWTrCVy13NAf3H7yC8M6T7vg/akR1tcqc.
+Please contact your system administrator.
+Add correct host key in /c/Users/jerry/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /c/Users/jerry/.ssh/known_hosts:16
+Host key for 47.115.210.245 has changed and you have requested strict checking.
+Host key verification failed.
+```
+
+这可能是由于服务器系统重装、SSH服务重新配置或服务器迁移导致的正常情况。您需要更新您本地计算机上存储的旧的主机密钥。根据错误信息，具体的操作步骤如下：
+
+- 定位并删除旧的密钥记录
+
+  错误信息指出有问题的ECDSA密钥位于您本地文件 `/c/Users/jerry/.ssh/known_hosts` 中的第 16 行。
+
+  这个命令会自动从 `known_hosts`文件中移除IP地址 `47.115.210.245` 对应的所有密钥。
+
+  ```bash
+  ssh-keygen -R 47.115.210.245
+  ```
+
+- 删除以后，[重新连接](#登录服务器)即可。
