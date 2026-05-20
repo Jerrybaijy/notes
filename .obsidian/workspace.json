@@ -43,13 +43,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "pdm.md",
+                "file": "docker.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "pdm"
+              "title": "docker"
             }
           }
         ],
@@ -85,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "远程桌面",
+                "query": "linux",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -126,7 +126,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -146,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "pdm.md",
+                "file": "docker.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -156,7 +157,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "pdm 的反向链接列表"
+              "title": "docker 的反向链接列表"
             }
           },
           {
@@ -200,12 +201,12 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
+    "pdm.md",
     "assets/image-20260518224241544.png",
     "nano.md",
     "vim.md",
-    "pdm.md",
     "pipx.md",
     "prettier.md",
     "react.md",
@@ -237,7 +238,6 @@
     "assets/image-20260317182646614.png",
     "assets/image-20260317175452416.png",
     "assets/image-20260316131222288.png",
-    "assets/image-20260316131115678.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
