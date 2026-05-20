@@ -126,8 +126,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -201,8 +200,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "5284e43311fafb83",
   "lastOpenFiles": [
+    "win-terminal.md",
+    "win-微软拼音.md",
+    "docker.md",
     "pdm.md",
     "assets/image-20260518224241544.png",
     "nano.md",
@@ -230,8 +232,6 @@
     "node-js.md",
     "scoop.md",
     "todo-fullstack.md",
-    "docker.md",
-    "n8n.md",
     "assets/image-20260416174411115.png",
     "assets/image-20260416174201888.png",
     "assets/image-20260416174049793.png",

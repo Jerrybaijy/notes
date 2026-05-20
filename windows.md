@@ -9,6 +9,8 @@ tags:
 
 # Windows 基础
 
+> [Windows Docs](https://support.microsoft.com/zh-cn/windows)
+
 ## 路径
 
 - **目录结构**：`C:\Users\jerry`
