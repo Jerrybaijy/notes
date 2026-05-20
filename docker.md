@@ -276,6 +276,9 @@ docker rm $(docker ps -aq)
   ```bash
   # 查看容器日志
   docker logs [OPTIONS] $CONTAINER
+  # 实时查看容器日志
+  docker logs -f $CONTAINER
+  
   # 检查容器详细信息
   docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
   ```
