@@ -154,10 +154,7 @@ sudo dnf install git
   git config --global --list
   ```
 
-- 登录
-  - 第一次 push，系统会要求输入平台用户名和密码。
-  - GitLab 可以用户名密码登录。
-  - GitHub 需使用令牌登录，详见 GitHub。
+- 登录：第一次 push，系统会弹出 GitHub 和 GitLab 网页要求登陆授权。
 
 ## 网络代理
 
@@ -590,7 +587,7 @@ To add an exception for this directory, call:
         git config --global --add safe.directory D:/projects/my-project
 ```
 
-在 **任意位置** 运行以下命令即可解决：
+在 **任意位置** 运行以下命令即可解决所有仓库的wen'ti：
 
 ```bash
 git config --global --add safe.directory "*"
