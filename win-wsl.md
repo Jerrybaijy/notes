@@ -70,7 +70,7 @@ tags:
 
 - 安装成功以后会先设置 Linux 用户名和密码
 
-- 然后自动进入 Linux 系统，执行 `exit` 命令退出 Linux 系统。
+- 然后自动进入 Linux 系统，执行 `exit` 命令退出 Linux 系统。
 
 - 查看已安装的 Linux 分发版
 
@@ -78,13 +78,15 @@ tags:
     wsl -l -v
     ```
 
-- 重启终端，Windows Terminal 下拉菜单会自动出现 `Ubuntu-24.04` 选项。
+- 重启终端，Windows Terminal 下拉菜单会自动出现 `Ubuntu-24.04` 选项。
 
-## WSL 网络配置
+## 网络配置
+
+- 此方法确实可以解决问题，等再次安装时，尝试只[修改主机 DNS](<windows.md#修改 DNS>)，尝试是否能解决问题。
 
 - 安装 Linux 分发版以后，[查看主机网卡](<windows.md#查看网卡>)，会自动创建一个 `vEthernet (WSL (Hyper-V firewall))` 虚拟网卡。
 
-- 当停止 Linux 后，主机网络会出现 DNS 异常，此时需要配置 WSL 的网络模式为 `Mirrored` 模式。
+- 当停止 Linux 后，主机网络会出现 DNS 异常，此时需要配置 WSL 的网络模式为 `Mirrored` 模式。
 
     - 运行 WSL Settings：`网络` > `网络模式`：切换为 `Mirrored`
 
@@ -97,7 +99,9 @@ tags:
 
     - 重启 WSL 和 Linux 生效。
 
-    - 此模式会镜像主机网络的 DNS 和网络代理。
+- 之前的虚拟网卡可能会变成 `vEthernet (FSE HostVnic)`
+
+    ![image-20260603213156921](assets/image-20260603213156921.png)
 
 # 基本命令
 

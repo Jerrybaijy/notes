@@ -7,44 +7,44 @@ tags:
   - dev-ops
 ---
 
-# Docker
+# Overview
 
 Docker 是一个开源的平台，用于开发、交付和运行应用程序。它使用容器技术，通过将应用程序及其依赖项打包到一个容器中，提供了轻量级、可移植和自包含的环境。
 
 > [Docker Docs](https://docs.docker.com/)
 
-## 安装 Docker
+# Install
 
-### Windows 环境
+## Windows 环境
+
+### 前提条件
+
+- [WSL 和 Linux 发行版已安装](win-wsl.md#Install)
+
+### 安装 Docker Desktop
 
 - [官网下载 Docker Desktop 安装包](https://www.docker.com/products/docker-desktop/) 并安装。
 
-- **WSL**：
-  - Docker Desktop 安装过程中会引导安装 WSL 2，然后重启。
-
     ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
 
-  - 重启以后会自动弹出命令行窗口，安装 WSL 2。
+- 安装完成后会重启系统
 
-  - 如果安装过程没有引导安装 WSL 2，可参考 `Windows` > `WSL`
-
-- **Linux**
-  - Microsoft Store 安装 Ubuntu。
-  - 运行 Ubuntu 直到正常使用。
-
-- 运行 Docker Desktop。
-
-- 验证安装。
+- 验证安装
 
   ```bash
   docker -v
   ```
 
-- 接下来可以在终端中操作 Docker。
+- 运行 Docker Desktop，然后在终端中操作 Docker。
 
-### Linux 环境
+### 网络配置
 
-#### Ubuntu
+- 安装 Docker Desktop 后，[查看主机网卡](<windows.md#查看网卡>)，会自动创建一个 `vEthernet (Default Switch)` 虚拟网卡。
+- 如果修改此虚拟网卡 DNS，重启电脑会恢复空白，所以[修改主机 DNS](<windows.md#修改 DNS>)。
+
+## Linux 环境
+
+### Ubuntu
 
 官方安装，带 docker compose
 
@@ -73,7 +73,7 @@ docker -v
 docker
 ```
 
-#### 包管理器安装
+### 包管理器安装
 
 - 直接使用包管理器进行安装
 
@@ -132,7 +132,7 @@ docker
   docker login
   ```
 
-#### 官方脚本安装
+### 官方脚本安装
 
 - curl 工具已安装
 - 下载 Docker 安装脚本并执行脚本
@@ -144,7 +144,7 @@ docker
 
 - 初始配置详见包管理器安装
 
-## 基本实现
+# Quickstart
 
 1. 本地已安装并启动登录 Docker
 2. 创建项目
@@ -161,7 +161,7 @@ docker
    - 从本地 image 运行容器
    - 从镜像仓库拉取 image 运行容器
 
-## Docker 管理
+# Docker 管理
 
 ```bash
 # 查看 Docker 版本信息
