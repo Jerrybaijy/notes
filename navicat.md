@@ -9,7 +9,7 @@ tags:
 
 # Navicat Premium Lite
 
-**Navicat Premium Lite** 是 Navicat 的轻量版数据库管理工具，主要用于数据库管理和开发。
+**Navicat Premium Lite** 是 Navicat 的**免费**轻量版数据库管理工具，主要用于数据库管理和开发。
 
 - **环境搭建**：[中文官网下载安装包](https://www.navicat.com.cn/download/navicat-premium-lite)
 - 在连接容器化数据库时，记得将容器化数据库端口映射到本地。
