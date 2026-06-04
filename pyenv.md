@@ -28,26 +28,31 @@ tags:
   Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
   ```
 
-- 重启终端，在 GitBash 中运行 `pyenv --version` 以检查安装是否成功。
+- 重启终端，在 GitBash 中运行一下命令检查安装是否成功。
+
+    ```bash
+    pyenv --version
+    ```
 
 
-# 使用
+# Quickstart
 
-- 运行 `pyenv install <version>` 以安装受支持的版本
+- 安装指定版本 python
 
   ```bash
+  pyenv install <version>
   pyenv install 3.13.7
   ```
 
   安装路径：`C:\Users\jerry\.pyenv\pyenv-win\versions`
 
-- 如果想设置全局 python 版本：
+- 设置全局 python 版本
 
   ```bash
-  # 查看
-  pyenv global
   # 设置
   pyenv global 3.13.7
+  # 查看
+  pyenv global
   ```
 
 - 如果只希望在一个**特定项目文件夹**中使用 **Python 3.13.7**，请进入该文件夹并执行以下命令：
@@ -93,7 +98,7 @@ pyenv uninstall <version>
 
 关闭 Windows 的 Python App 执行别名：
 
-- 设置 > 应用 > 高级应用设置 > 应用执行别名
+- `设置` > `应用` > `高级应用设置` > `应用执行别名`
 - 把下面两个关掉：
   - `python.exe`
   - `python3.exe`

@@ -102,6 +102,11 @@ tags:
 
 # 环境搭建
 
+## 旧系统
+
+- 取消 Typora 激活
+- 备份微软输入法用户自定义短语
+
 ## BIOS 设置
 
 - Windows 8 以前选原始类型，Windows 10 以后选 UEFI。
