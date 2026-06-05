@@ -38,6 +38,7 @@ tags:
 - **篡改猴**
 - **迅雷下载支持**
 - **Export Tabs URLs**：批量复制标签页网址
+- **Anti Anti Debug**：绕过网页的"反调试"保护
 
 # Experiments
 

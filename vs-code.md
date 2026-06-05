@@ -380,7 +380,7 @@ Prettier 等格式化工具控制**格式化时**的 Tab 宽度。
 - `vscode-icons`：文件图标
 - `Auto Rename Tag`：自动同步更改 HTML 或 XML 标签对的标签名
 - `Python`：支持 Python
-- `Black`：Python 格式化（首选）
+- `Black Formatter`：Python 格式化（首选）
 
 ## HashiCorp Terraform
 
@@ -441,7 +441,7 @@ Terraform 插件，含格式化。
 - `IntelliCode API Usage Examples`：比 `IntelliCode` 更厉害
 - `Jinja`：为 Jinja2 模板语言提供语法高亮和自动完成支持
 - `Python`：支持 Python
-- `Black`：Python 格式化（首选）
+- `Black Formatter`：Python 格式化（首选）
 - `autopep8`：Python 格式化（备用）
 - `SQLite Viewer`：在 VSCode 中查看 SQLite 数据库
 - `Prettier`：代码格式化

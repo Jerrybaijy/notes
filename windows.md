@@ -1025,8 +1025,8 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
 - 双击 `以太网` 网卡 > `属性` > 双击 `Internet 协议版本 4 (TCP/IPv4)`
 
     ```
-    114.114.114.114
-    223.5.5.5
+    114.114.114.114（国内）
+    8.8.8.8（谷歌）
     ```
 
     ![image-20260603223741378](assets/image-20260603223741378.png)

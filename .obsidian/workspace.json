@@ -66,9 +66,24 @@
               "icon": "lucide-file",
               "title": "gitlab"
             }
+          },
+          {
+            "id": "e0fe1038283b23e0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "vs-code.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "vs-code"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -100,7 +115,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "navicat",
+                "query": "pip",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -162,7 +177,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "gitlab.md",
+                "file": "vs-code.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -172,7 +187,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "gitlab 的反向链接列表"
+              "title": "vs-code 的反向链接列表"
             }
           },
           {
@@ -216,8 +231,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "e0fe1038283b23e0",
   "lastOpenFiles": [
+    "python.md",
+    "vs-code.md",
+    "gitlab.md",
     "green-assistant.md",
     "win-wsl.md",
     "pyenv.md",
@@ -228,7 +246,6 @@
     "assets/image-20260603212048989.png",
     "assets/image-20260603210305502.png",
     "code-general.md",
-    "python.md",
     "network.md",
     "win-terminal.md",
     "win-微软拼音.md",
@@ -250,8 +267,6 @@
     "assets/image-20260517224410486.png",
     "css.md",
     "alembic.md",
-    "loguru.md",
-    "flask.md",
     "assets/image-20260416174411115.png",
     "assets/image-20260416174201888.png",
     "其它格式未转换/windows-terminal/settings.json",

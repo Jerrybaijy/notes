@@ -11,13 +11,13 @@
   "workbench.colorCustomizations": {
     "[GitHub Light]": {
       "scrollbarSlider.background": "#a0a0a0aa", // 滚动条背景色
-      "scrollbarSlider.hoverBackground": "#7a7a7aaa" // 悬停滚动条背景色
+      "scrollbarSlider.hoverBackground": "#7a7a7aaa", // 悬停滚动条背景色
     },
     "[GitHub Dark Dimmed]": {
       "editor.background": "#2d333b", // 编辑器背景色
       "scrollbarSlider.background": "#575757aa", // 滚动条背景色
-      "scrollbarSlider.hoverBackground": "#7a7a7aaa" // 悬停滚动条背景色
-    }
+      "scrollbarSlider.hoverBackground": "#7a7a7aaa", // 悬停滚动条背景色
+    },
   },
 
   // -------------------------# 编辑器-------------------------
@@ -52,22 +52,12 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "off",
-      "other": "off"
-    }
+      "other": "off",
+    },
   },
   "[python]": {
     "editor.tabSize": 4, // 默认 1 个 Tab 的宽度为 4 个空格
-    "editor.defaultFormatter": "mikoz.black-py" // Python 默认格式化工具
-  },
-  "[terraform]": {
-    "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
-  },
-  "[terraform-vars]": {
-    "editor.defaultFormatter": "hashicorp.terraform", // HCL 默认格式化工具
-    "editor.formatOnSave": true,
-    "editor.tabSize": 2
+    "editor.defaultFormatter": "ms-python.black-formatter", // Python 默认格式化工具
   },
 
   // -------------------------# 窗口-------------------------
@@ -80,8 +70,8 @@
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.profiles.windows": {
     "Git Bash": {
-      "path": "C:\\Program Files\\Git\\bin\\bash.exe"
-    }
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
+    },
   },
 
   // -------------------------# Git-------------------------
@@ -99,18 +89,18 @@
   "liveServer.settings.donotVerifyTags": true, // 禁用 Live Server 在启动时对 HTML 标签的验证
   "liveServer.settings.donotShowInfoMsg": true, // 禁用 Live Server 在运行时弹出的各种信息通知
 
-  // ---------------## multi-command，为了实现 Markdown 一键硬换行---------------
+  // ---------------## multi-command---------------
   "multiCommand.commands": [
     {
       "command": "multiCommand.markdownHardBreak",
       "sequence": [
         {
           "command": "type",
-          "args": { "text": "  " } // 插入两个空格
+          "args": { "text": "  " }, // 插入两个空格
         },
-        "editor.action.insertLineAfter" // 换行
-      ]
-    }
+        "editor.action.insertLineAfter", // 换行
+      ],
+    },
   ],
   // -------------------------# 以下为系统自动创建-------------------------
   "[dockercompose]": {
@@ -120,13 +110,12 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true
+      "strings": true,
     },
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
+    "editor.defaultFormatter": "redhat.vscode-yaml",
   },
   "docker.extension.enableComposeLanguageServer": false,
-  "python.createEnvironment.trigger": "off",
 }
