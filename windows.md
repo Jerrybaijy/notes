@@ -106,6 +106,7 @@ tags:
 
 - 取消 Typora 激活
 - 备份微软输入法用户自定义短语
+- 导出 Hyper-V 虚拟机
 
 ## BIOS 设置
 
@@ -624,59 +625,6 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 - **Steam**：Wallpaper Engine 依赖
 - **Wallpaper Engine**：动态壁纸
 
-# WSL
-
-**WSL（Windows Subsystem for Linux）** 是微软为 Windows 系统提供的一种工具，使用户可以在 Windows 上直接运行 Linux 的用户空间环境。
-
-## WSL 环境搭建
-
-### 启用 WSL
-
-- 右键点击开始菜单，选择 `Windows PowerShell（管理员）` 或 `命令提示符（管理员）`。
-- 启用 WSL
-
-  ```powershell
-  dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
-  ```
-
-- 启用虚拟机平台功能
-
-  ```powershell
-  dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
-  ```
-
-- 重启计算机
-
-  ```powershell
-  restart-computer
-  ```
-
-### 安装 WSL 2
-
-- 下载并安装 WSL 2 Linux 内核更新包：[WSL 2 Linux 内核更新包](https://aka.ms/wsl2kernel)
-- 设置 WSL 默认版本为 2
-
-  ```powershell
-  wsl --set-default-version 2
-  ```
-
-- 至此，WSL 搭建完毕，接下来可以继续安装 Linux 应用或 Linux 发行版。
-
-## WSL 基础
-
-- **基础命令**
-
-  ```bash
-  # 运行 WSL
-  wsl.exe
-  
-  # 升级 WSL
-  wsl.exe --update
-  
-  # 查看已安装的 Linux 应用或分发版本
-  wsl -l
-  ```
-
 # 远程桌面连接
 
 ## Overview
@@ -1030,3 +978,12 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
     ```
 
     ![image-20260603223741378](assets/image-20260603223741378.png)
+
+## 启用或关闭 Windows 功能
+
+- **在开始菜单中打开**：搜索“启用或关闭 Windows 功能”单击打开
+- **在控制面版中打开**：`控制面板` > `程序` > `程序和功能` > `启用或关闭 Windows 功能`
+
+## Windows Hello
+
+关闭 Windows Hello：`设置` > `账户` > `登录选项` > `为了提高安全性，仅允许对此设备上的 Microsoft 账户使用 Windows Hello 登录(推荐)`

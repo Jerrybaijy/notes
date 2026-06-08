@@ -7,15 +7,13 @@ tags:
   - vm
 ---
 
-# 名词解释
+# Overview
 
-- **宿主机**：指电脑正常的系统
-- **客户机**：指虚拟的系统
-- **虚拟机**：指 `Vmware workstation`
+的[虚拟机平台](virtual-machine.md)
 
-# 环境搭建
+# Install
 
-- [官网下载 `Vmware workstation`](https://www.vmware.com/products/desktop-hypervisor/workstation-and-fusion)
+- [官网下载 `Vmware workstation`](https://support.broadcom.com/group/ecx/productdownloads?subfamily=VMware%20Workstation%20Pro&freeDownloads=true)
 - 主板最好开启 `CSM` 功能，否则 `Linux` 可能进不去系统。
 - 以下是从网上找的 VMware Workstation Pro 密钥
   - 17 秘钥：`MC60H-DWHD5-H80U9-6V85M-8280D`
