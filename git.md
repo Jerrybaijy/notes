@@ -224,7 +224,7 @@ git remote rm origin
 
 # Branch
 
-## Branch 基础
+## Branch 名称
 
 安装 Git 时，有选项选择本地仓库默认分支为 main。
 
@@ -237,17 +237,39 @@ hotfix/*    # 热修复分支
 ```
 
 ```bash
+# 重命名目前分支
+git branch -m my-branch
+```
+
+## 查看 Branch
+
+```bash
 # 查看分支
 git branch
+# 查看远程分支
+git branch -r
+# 查看本地分支和远程分支的跟踪关系
+git branch -vv
+```
 
+## 创建 Branch
+
+```bash
 # 创建分支
 git branch my-branch
 
+# 在当前分支基础上，创建并切换至 my-branch 分支
+git switch -c my-branch
+
+# 在远程 my-branch 分支基础上，创建并切换至 my-branch 分支
+git switch -c my-branch origin/my-branch
+```
+
+## 合并 Branch
+
+```bash
 # 合并分支
 git merge my-branch
-
-# 重命名目前分支
-git branch -m my-branch
 ```
 
 ## 切换 Branch
@@ -264,11 +286,6 @@ git branch # main
 
 # 创建并切换至 my-branch 分支
 git switch -c my-branch
-
-# 添加、提交、关联推送
-git add .
-git commit -m "初始化 my-branch 分支"
-git push -u origin my-branch
 ```
 
 ### `checkout` 和 `switch`

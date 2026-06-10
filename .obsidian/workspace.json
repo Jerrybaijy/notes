@@ -28,13 +28,13 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "windows.md",
+                "file": "pyenv.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "windows"
+              "title": "pyenv"
             }
           }
         ],
@@ -70,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "powers",
+                "query": "tag:#linux",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -105,7 +105,7 @@
                 "sortOrder": "alphabetical",
                 "useHierarchy": false,
                 "showSearch": true,
-                "searchQuery": "python"
+                "searchQuery": "linux"
               },
               "icon": "lucide-tags",
               "title": "标签"
@@ -131,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "windows.md",
+                "file": "pyenv.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +141,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "windows 的反向链接列表"
+              "title": "pyenv 的反向链接列表"
             }
           },
           {
@@ -187,42 +187,43 @@
   },
   "active": "99e94e1558439bc0",
   "lastOpenFiles": [
+    "winscp.md",
+    "todo-gcp.md",
+    "software.md",
+    "shell.md",
+    "script.md",
+    "scoop.md",
+    "salesforce.md",
+    "regex.md",
+    "README.md",
+    "react.md",
+    "python.md",
+    "pyenv.md",
+    "puppeteer.md",
+    "projects.md",
+    "pine-script.md",
+    "navicat.md",
+    "mermaid.md",
+    "medical-chatbot-full-stack.md",
+    "markdown.md",
+    "lwc.md",
+    "loguru.md",
+    "linux.md",
+    "latex.md",
+    "kubernetes.md",
+    "jupyter.md",
+    "jquery.md",
     "其它格式未转换/微软拼音自定义短语.dat",
-    "openclaw.md",
-    "win-hyper-v.md",
-    "virtual-machine.md",
-    "vmware-workstation.md",
     "assets/image-20260608055229168.png",
     "assets/image-20260608054938886.png",
     "assets/image-20260608054800981.png",
     "assets/image-20260608054616141.png",
     "assets/image-20260608054451586.png",
     "assets/image-20260606162743215.png",
-    "win-power-toys.md",
-    "docker.md",
-    "gitlab.md",
-    "vs-code.md",
-    "python.md",
-    "green-assistant.md",
-    "win-wsl.md",
-    "pyenv.md",
     "assets/image-20260603223741378.png",
-    "windows.md",
     "assets/image-20260603213156921.png",
     "assets/image-20260603212048989.png",
     "assets/image-20260603210305502.png",
-    "code-general.md",
-    "network.md",
-    "win-terminal.md",
-    "win-微软拼音.md",
-    "pdm.md",
-    "nano.md",
-    "vim.md",
-    "pipx.md",
-    "prettier.md",
-    "react.md",
-    "linux.md",
-    "git.md",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
@@ -232,7 +233,6 @@
     "其它格式未转换/简历/Andyshao_CV_Splunk_202404.docx",
     "其它格式未转换/简历",
     "其它格式未转换/obsidian-themes/标题实验.css",
-    "其它格式未转换/obsidian-themes/user-test.css",
     "未命名 1.canvas",
     "未命名.canvas"
   ]
