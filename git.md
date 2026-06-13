@@ -454,6 +454,22 @@ git switch -c <branch>
 git log --oneline -<number>
 ```
 
+## `git rebase`
+
+`rebase`（变基）用于重新寻找基准点，把当前分支“嫁接”到另一个分支的最新提交后面。
+
+```
+C3 --- C4 (dev 分支最新位置)
+     /
+C1 - C2
+     \
+      C5 --- C6 (my-branch)
+```
+
+```
+C1 - C2 - C3 - C4 (dev) - C5' - C6' (my-branch)
+```
+
 # 文件
 
 ## 撤销文件
