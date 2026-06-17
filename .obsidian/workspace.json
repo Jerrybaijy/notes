@@ -185,8 +185,11 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "99e94e1558439bc0",
+  "active": "41ee2b4044d6b4de",
   "lastOpenFiles": [
+    "assets/image-20260617201850668.png",
+    "musicbee.md",
+    "pyenv.md",
     "winscp.md",
     "todo-gcp.md",
     "software.md",
@@ -198,7 +201,6 @@
     "README.md",
     "react.md",
     "python.md",
-    "pyenv.md",
     "puppeteer.md",
     "projects.md",
     "pine-script.md",
@@ -211,8 +213,6 @@
     "linux.md",
     "latex.md",
     "kubernetes.md",
-    "jupyter.md",
-    "jquery.md",
     "其它格式未转换/微软拼音自定义短语.dat",
     "assets/image-20260608055229168.png",
     "assets/image-20260608054938886.png",
