@@ -458,6 +458,11 @@ git log --oneline -<number>
 
 `rebase`（变基）用于重新寻找基准点，把当前分支“嫁接”到另一个分支的最新提交后面。
 
+```bash
+# 在 my-branch 分支上 rebase dev
+git rebase dev
+```
+
 ```
 C3 --- C4 (dev 分支最新位置)
      /
