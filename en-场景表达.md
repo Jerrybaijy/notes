@@ -2,7 +2,6 @@
 title: en-场景表达
 author: Jerry.Baijy
 tags:
-  - 人文学科
   - 语言学
   - 英语
 ---

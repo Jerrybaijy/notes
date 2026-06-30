@@ -2,7 +2,6 @@
 title: en-形近词
 author: Jerry.Baijy
 tags:
-  - 人文学科
   - 语言学
   - 英语
 ---
