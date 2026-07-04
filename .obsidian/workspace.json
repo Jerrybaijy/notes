@@ -53,67 +53,22 @@
             }
           },
           {
-            "id": "0b6660cc8f07d0c7",
+            "id": "76ac02d89b75407a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "伯邑考.md",
+                "file": "中华民国.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "伯邑考"
-            }
-          },
-          {
-            "id": "6fc54000ea41a394",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "周幽王.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "周幽王"
-            }
-          },
-          {
-            "id": "6eebf87978080502",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "周武王.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "周武王"
-            }
-          },
-          {
-            "id": "56291eb27e46b7bd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "蒋介石.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "蒋介石"
+              "title": "中华民国"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -145,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#人物",
+                "query": "宁汉合流",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -186,7 +141,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -206,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "蒋介石.md",
+                "file": "中华民国.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -216,7 +172,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "蒋介石 的反向链接列表"
+              "title": "中华民国 的反向链接列表"
             }
           },
           {
@@ -260,14 +216,15 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "56291eb27e46b7bd",
+  "active": "76ac02d89b75407a",
   "lastOpenFiles": [
+    "周文王.md",
+    "蒋介石.md",
+    "周公旦.md",
     "姜子牙.md",
     "周武王.md",
-    "周公旦.md",
     "周幽王.md",
     "伯邑考.md",
-    "周文王.md",
     "周厉王.md",
     "周平王.md",
     "周朝.md",
@@ -287,7 +244,6 @@
     "少典.md",
     "阪泉之战.md",
     "黄帝.md",
-    "炎帝.md",
     "assets/image-20260617201850668.png",
     "其它格式未转换/微软拼音自定义短语.dat",
     "assets/image-20260608055229168.png",
