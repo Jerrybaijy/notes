@@ -36,7 +36,7 @@ tags:
 | :---: | :---: |
 | ==系统== |  |
 | 开发者工具 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> |
-| 查找替换 | <kbd>Ctrl</kbd> + <kbd>H</kbd> |
+| 查找替换（编辑模式） | <kbd>Ctrl</kbd> + <kbd>H</kbd> |
 
 # 主题
 
