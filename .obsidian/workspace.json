@@ -13,32 +13,107 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "0000-to-do.md",
+                "file": "秦朝.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "0000-to-do"
+              "title": "秦朝"
             }
           },
           {
-            "id": "595b5692615b5796",
+            "id": "8f5791daebadecd5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中华民国政府.md",
+                "file": "南北朝.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中华民国政府"
+              "title": "南北朝"
+            }
+          },
+          {
+            "id": "e039622b41f1de35",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "隋朝.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "隋朝"
+            }
+          },
+          {
+            "id": "7f51a0ab0fcc0f77",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "唐朝.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "唐朝"
+            }
+          },
+          {
+            "id": "2f580fb9f2344f28",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "武周.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "武周"
+            }
+          },
+          {
+            "id": "2854c078cd2c179a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "武则天.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "武则天"
+            }
+          },
+          {
+            "id": "2d4d973ba81db8d5",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中国历史主线.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中国历史主线"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -70,7 +145,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "国民政府",
+                "query": "tag:武周 tag:中国历史主线 tag:朝代",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -111,7 +186,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -131,7 +207,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "中华民国政府.md",
+                "file": "武周.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +217,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "中华民国政府 的反向链接列表"
+              "title": "武周 的反向链接列表"
             }
           },
           {
@@ -150,12 +226,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "docker.md",
+                "file": "武周.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "docker 的出链列表"
+              "title": "武周 的出链列表"
             }
           },
           {
@@ -167,8 +243,19 @@
               "icon": "lucide-bookmark",
               "title": "书签"
             }
+          },
+          {
+            "id": "5ceb80ed0f65867f",
+            "type": "leaf",
+            "state": {
+              "type": "find-replace-view",
+              "state": {},
+              "icon": "replace",
+              "title": "Find-n-Replace"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -182,37 +269,39 @@
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": true,
-      "command-palette:打开命令面板": false
+      "command-palette:打开命令面板": false,
+      "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "41ee2b4044d6b4de",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "中华民国临时政府.md",
-    "中华民国.md",
-    "卫大仑交易法.md",
-    "中华民国临时约法.md",
     "中国历史主线.md",
-    "software.md",
-    "周文王.md",
-    "蒋介石.md",
-    "周公旦.md",
-    "姜子牙.md",
-    "周武王.md",
-    "周幽王.md",
-    "伯邑考.md",
-    "周厉王.md",
-    "周平王.md",
+    "中国历史支线.md",
+    "武则天.md",
+    "武周.md",
+    "唐朝.md",
+    "五代十国.md",
+    "隋朝.md",
+    "南北朝.md",
+    "秦朝.md",
+    "中国历史主线朝代.md",
+    "0000-to-do.md",
+    "朝鲜半岛.md",
+    "三国.md",
+    "中华民国.md",
+    "五胡十六国.md",
+    "晋朝.md",
+    "汉朝.md",
+    "汉匈战争.md",
+    "扶苏.md",
+    "秦国.md",
+    "赵国.md",
+    "战国时期.md",
+    "春秋时期.md",
     "周朝.md",
-    "商朝.md",
-    "禹.md",
-    "武庚.md",
-    "商纣王.md",
-    "商汤.md",
-    "比干.md",
-    "妲己.md",
-    "封神演义.md",
-    "嫦娥.md",
-    "后羿 (神话人物).md",
+    "秦昭襄王.md",
+    "李鸿章.md",
+    "assets/ZH-秦国地图260BCE.jpg",
     "assets/image-20260617201850668.png",
     "其它格式未转换/微软拼音自定义短语.dat",
     "assets/image-20260608055229168.png",
@@ -223,7 +312,6 @@
     "assets/image-20260606162743215.png",
     "assets/image-20260603223741378.png",
     "assets/image-20260603213156921.png",
-    "assets/image-20260603212048989.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
