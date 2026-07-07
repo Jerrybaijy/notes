@@ -8,52 +8,22 @@
         "type": "tabs",
         "children": [
           {
-            "id": "ac421873c70934db",
+            "id": "2d4d973ba81db8d5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "秦朝.md",
-                "mode": "preview",
+                "file": "武则天.md",
+                "mode": "source",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "秦朝"
+              "title": "武则天"
             }
           },
           {
-            "id": "8f5791daebadecd5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "南北朝.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "南北朝"
-            }
-          },
-          {
-            "id": "e039622b41f1de35",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "隋朝.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "隋朝"
-            }
-          },
-          {
-            "id": "7f51a0ab0fcc0f77",
+            "id": "d2de0195615d170b",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -68,52 +38,52 @@
             }
           },
           {
-            "id": "2f580fb9f2344f28",
+            "id": "3b3fc92c6bfd7007",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "武周.md",
+                "file": "光绪帝.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "武周"
+              "title": "光绪帝"
             }
           },
           {
-            "id": "2854c078cd2c179a",
+            "id": "420453ca204d73a6",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "武则天.md",
+                "file": "慈禧太后.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "武则天"
+              "title": "慈禧太后"
             }
           },
           {
-            "id": "2d4d973ba81db8d5",
+            "id": "4a5d06b9e3bbbf50",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中国历史主线.md",
+                "file": "清朝.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中国历史主线"
+              "title": "清朝"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -145,7 +115,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:武周 tag:中国历史主线 tag:朝代",
+                "query": " tag:君王",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -186,8 +156,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -207,7 +176,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "武周.md",
+                "file": "慈禧太后.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -217,7 +186,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "武周 的反向链接列表"
+              "title": "慈禧太后 的反向链接列表"
             }
           },
           {
@@ -254,8 +223,7 @@
               "title": "Find-n-Replace"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
@@ -273,34 +241,36 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "420453ca204d73a6",
   "lastOpenFiles": [
-    "中国历史主线.md",
-    "中国历史支线.md",
-    "武则天.md",
-    "武周.md",
+    "光绪帝.md",
+    "慈禧太后.md",
     "唐朝.md",
+    "清朝.md",
+    "武则天.md",
+    "蒋介石.md",
+    "周公旦.md",
+    "中国历史主线.md",
+    "北洋军阀.md",
+    "assets/40px-Flag_of_the_Soviet_Union_(1924).svg.png",
+    "assets/40px-Flag_of_the_Soviet_Union_(1924).svg-1783402336439-1.png",
+    "北洋.md",
+    "北洋政府.md",
+    "朝鲜半岛.md",
+    "武周.md",
+    "中国历史支线.md",
     "五代十国.md",
     "隋朝.md",
     "南北朝.md",
     "秦朝.md",
     "中国历史主线朝代.md",
     "0000-to-do.md",
-    "朝鲜半岛.md",
     "三国.md",
     "中华民国.md",
     "五胡十六国.md",
     "晋朝.md",
     "汉朝.md",
     "汉匈战争.md",
-    "扶苏.md",
-    "秦国.md",
-    "赵国.md",
-    "战国时期.md",
-    "春秋时期.md",
-    "周朝.md",
-    "秦昭襄王.md",
-    "李鸿章.md",
     "assets/ZH-秦国地图260BCE.jpg",
     "assets/image-20260617201850668.png",
     "其它格式未转换/微软拼音自定义短语.dat",
@@ -310,8 +280,6 @@
     "assets/image-20260608054616141.png",
     "assets/image-20260608054451586.png",
     "assets/image-20260606162743215.png",
-    "assets/image-20260603223741378.png",
-    "assets/image-20260603213156921.png",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
     "其它格式未转换/新建文件夹",
