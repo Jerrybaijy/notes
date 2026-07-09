@@ -8,36 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "2d4d973ba81db8d5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "武则天.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "武则天"
-            }
-          },
-          {
-            "id": "d2de0195615d170b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "唐朝.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "唐朝"
-            }
-          },
-          {
             "id": "4a5d06b9e3bbbf50",
             "type": "leaf",
             "state": {
@@ -53,67 +23,37 @@
             }
           },
           {
-            "id": "4a01f9fe668fc134",
+            "id": "bfbe3c97ec78667d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "后金.md",
+                "file": "民族史.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "后金"
+              "title": "民族史"
             }
           },
           {
-            "id": "1f58684f3152a7c3",
+            "id": "5f018c1a0f16442d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "努尔哈赤.md",
+                "file": "满族.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "努尔哈赤"
-            }
-          },
-          {
-            "id": "d21bfd58e3883535",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "皇太极.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "皇太极"
-            }
-          },
-          {
-            "id": "41d6febf723dbb0f",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "光绪帝.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "光绪帝"
+              "title": "满族"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -145,7 +85,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#君王  ",
+                "query": "tag:中国历史支线 tag:朝代",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -186,8 +126,7 @@
               "title": "标签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -207,7 +146,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "光绪帝.md",
+                "file": "满族.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -217,7 +156,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "光绪帝 的反向链接列表"
+              "title": "满族 的反向链接列表"
             }
           },
           {
@@ -272,14 +211,28 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "41d6febf723dbb0f",
+  "active": "5f018c1a0f16442d",
   "lastOpenFiles": [
-    "皇太极.md",
-    "努尔哈赤.md",
-    "后金.md",
+    "金朝.md",
+    "满族.md",
+    "契丹.md",
+    "辽朝.md",
+    "西夏.md",
+    "北辽.md",
+    "西北辽.md",
+    "西辽.md",
+    "东辽.md",
+    "民族史.md",
+    "宋朝.md",
+    "武周.md",
+    "五代十国.md",
+    "靖康之变.md",
     "清朝.md",
-    "慈禧太后.md",
+    "后金.md",
+    "努尔哈赤.md",
+    "皇太极.md",
     "光绪帝.md",
+    "慈禧太后.md",
     "唐朝.md",
     "武则天.md",
     "蒋介石.md",
@@ -288,20 +241,6 @@
     "北洋军阀.md",
     "assets/40px-Flag_of_the_Soviet_Union_(1924).svg.png",
     "assets/40px-Flag_of_the_Soviet_Union_(1924).svg-1783402336439-1.png",
-    "北洋.md",
-    "北洋政府.md",
-    "朝鲜半岛.md",
-    "武周.md",
-    "中国历史支线.md",
-    "五代十国.md",
-    "隋朝.md",
-    "南北朝.md",
-    "秦朝.md",
-    "中国历史主线朝代.md",
-    "0000-to-do.md",
-    "三国.md",
-    "中华民国.md",
-    "五胡十六国.md",
     "assets/ZH-秦国地图260BCE.jpg",
     "assets/image-20260617201850668.png",
     "其它格式未转换/微软拼音自定义短语.dat",
