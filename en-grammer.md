@@ -23,14 +23,10 @@ tags:
 ## 名词分类
 
 - 普通名词
-
-  - 可数名词
-
-    - 个体名词：表示作为个体而存在的人或事物：boy book week dream
+  - 可数名词 -个体名词：表示作为个体而存在的人或事物：boy book week dream
     - 集体名词：表示若干个人和事物的总称：family committee police data
 
   - 不可数名词
-
     - 物质名词：表示物质、材料的总称：air sand
     - 抽象名词：表示性质、行为、状态、情感等抽象概念的名称：peace freedom fun
 
@@ -58,7 +54,6 @@ tags:
 **不规则变化**：
 
 - **改变内部元音**
-
   - man → men 男人
   - woman → women 女人
   - foot → feet 脚
@@ -67,7 +62,6 @@ tags:
   - mouse → mice 老鼠（注意此处 s 变 c）
 
 - **单复数同形**
-
   - sheep 绵羊
   - deer 鹿
   - Chinese 中国人
@@ -81,7 +75,6 @@ tags:
   - head 头（牲畜数量）
 
 - **同一名词，不同意义**
-
   - **work**
 
     a work by Mark 一部马克的作品  
@@ -376,7 +369,7 @@ Some friends **of my brother's** will join us.
 - **形容词性物主代词置于名词之前，作定语。**
 
   In the winter of 1891, a certain college had some trouble with **its** boy students.  
-  在 1891 年冬季，某所大学的男学生遇到了一些麻烦。
+  在1891年冬季，某所大学的男学生遇到了一些麻烦。
 
 ### 名词性物主代词
 
@@ -728,7 +721,7 @@ Tom works even harder than before.
 - **no more than = only**：仅仅，不超过
 
   The winner is no more than 10 years old.  
-  这个获胜者年仅 10 岁。
+  这个获胜者年仅10岁。
 
 - **The + 比较级 ... , the + 比较级 ...**：越...越...
 
@@ -748,7 +741,6 @@ Tom works even harder than before.
 原级比较并非严格意义的比较级，只是拿两者作一个对比，形容词用原级。
 
 - **和...一样**：as...as...
-
   - 肯定形式：as...as...
 
     She is **as tall as** her brother. 她和她哥哥一样高。
@@ -963,7 +955,7 @@ nowhere 什么地方都不
 
 - **the + 形容词：**指代一类人或事物
 
-  the young 年轻人  
+  the young年轻人  
   the unknown 未知的事物
 
 - **the + 姓氏复数：**表全家人或夫妇俩
@@ -1010,7 +1002,7 @@ nowhere 什么地方都不
 
 ## 动词基本形态
 
-**实义动词有 5 种基本形态**：
+**实义动词有5种基本形态**：
 
 <!-- prettier-ignore -->
 | 形态名称 | 以 do 为例 |  功能  |
@@ -1302,7 +1294,6 @@ She is singing now. 她正在唱歌。
   我问他是否能来安装我的电视机。
 
 - 过去将来时的其它用法同一般将来时
-
   - 把 am/is/are 改成 was/were。
   - 把 shall/will 改成 should/would。
 
@@ -1326,7 +1317,7 @@ She is singing now. 她正在唱歌。
 - 表示截止到过去的某个时刻，已经完成的动作或事情。
 
   By the end of yesterday, we had received over 1,000 letters from all over the world.  
-  到昨天为止，我们已经收到了来自世界各地的 1,000 多封信。
+  到昨天为止，我们已经收到了来自世界各地的1,000多封信。
 
 - **had hardly done...when...did...** 和 **no sooner had...done...than...did...** 表示“一...就...”；当 hardly 位于句首时，主句部分倒装。
 
@@ -1404,7 +1395,6 @@ She is singing now. 她正在唱歌。
 - 表示时态、语态、进行时态等
 - 例如：**am**，**is**，**are**，**was**，**were**，**being**，**been**
 - 用法：
-
   - **进行时态**：She **is** reading.（她在读书。）
   - **被动语态**：The book **was** read.（这本书被读。）
 
@@ -1413,7 +1403,6 @@ She is singing now. 她正在唱歌。
 - 表示疑问句、否定句、强调等
 - 例如：**do**，**does**，**did**
 - 用法：
-
   - **构成疑问句**：**Do** you like it?（你喜欢吗？）
   - **构成否定句**：I **do not** know him.（我不认识他。）
   - **构成强调句**：I **do** like it!（我真的喜欢它！）
@@ -1423,7 +1412,6 @@ She is singing now. 她正在唱歌。
 - 用于构成完成时态
 - 例如：**have**，**has**，**had**，**having**
 - 用法：
-
   - **现在完成时**：I **have** eaten.（我已经吃过了。）
   - **过去完成时**：She **had** finished her homework.（她已经做完作业。）
 
@@ -1483,7 +1471,6 @@ She is singing now. 她正在唱歌。
 
 - **意为“必须...”**：对于 must 的提问，否定回答用 needn't 或 don't have to，因为否定形式 musn't 表示禁止。
 - **must 和 have to**
-
   - must 意为“必须”，侧重说话人的主观意志。
   - have to 意为“不得不”，侧重客观需要。
 
@@ -1502,13 +1489,11 @@ She is singing now. 她正在唱歌。
 
 - **意为“需要...”**
 - **作为情态动词**：常用于否定句和疑问句中
-
   - **否定句**：needn't do
   - **疑问句**：Need I do...?
   - 对于 need 引起的提问，肯定回答用 must，否定回答用 needn't。
 
 - **作为实义动词**
-
   - **need sth.**：需要...
   - **need to do**：需要做...
   - **didn't need to do**：不需要做...
@@ -1518,12 +1503,10 @@ She is singing now. 她正在唱歌。
 
 - **意为“敢...”**
 - **作情态动词**：常用于否定句和疑问句中
-
   - **否定句**：daren't do
   - **疑问句**：Dare he do...?
 
 - **作为实义动词**
-
   - **dare to do**：敢做...
   - **didn't dare to do**：不敢做...
 
@@ -1674,7 +1657,6 @@ She is singing now. 她正在唱歌。
 ### 从量上判断
 
 - **可数名词和不可数名词**
-
   - **可数名词单数或不可数名词作主语，谓语动词使用单数形式。**
 
     Percy has made great progress in Chinese.  
@@ -1703,7 +1685,6 @@ She is singing now. 她正在唱歌。
   我们每个人都有一个奖章。
 
 - **more than 的主谓一致**
-
   - **“more than one + 单数名词”或“many a + 单数名词”作主语，谓语动词用单数。**
 
     More than one student was injured in the accident.  
@@ -1738,7 +1719,6 @@ She is singing now. 她正在唱歌。
   这个科学家兼教授已经对这项研究作出了巨大的贡献。
 
 - **不定式、动词-ing 形式和名词性从句作主语。**
-
   - **正常情况，谓语动词用单数。**
 
     Swimming in rivers in summer is a good sport.  
@@ -1755,7 +1735,6 @@ She is singing now. 她正在唱歌。
   我们需要的是更多的钱,但是他们需要的是书。
 
 - **就近一致**
-
   - **由 or、nor、either...or...、neither...nor...、not only...but also...、not...but... 等连接并列主语时，谓语动词常和离它最近的主语在人称和数上保持一致。**
 
     Marilyn or you are to blame for the fault.  

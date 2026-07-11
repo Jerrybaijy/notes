@@ -51,7 +51,6 @@ polis（n. 城邦；政治）
   disabled adj. 残疾的
 
 - **句型**
-
   - **be able to do sth. 有能力做某事**
 
     You must be able to speak French for this job.  
@@ -90,7 +89,6 @@ polis（n. 城邦；政治）
 ## about
 
 - **关于（某人或物）**
-
   - about ab./sth.：表示“关于某事/某人”
 
     The book is **about** ancient history.  
@@ -149,11 +147,10 @@ polis（n. 城邦；政治）
   attend v. 出席
 
 - **句型**
-
   - **be absent from 从...缺席**
 
     He had been absent 95 times from class and had six failing grades for the year.  
-    今年他逃了 95 次课，6 门功课不及格。
+    今年他逃了95次课，6门功课不及格。
 
   - **absent oneself from 缺席**
 
@@ -172,7 +169,6 @@ polis（n. 城邦；政治）
   absorber n. 吸收器；减震器
 
 - **句型**
-
   - **be absorbed in doing sth. 专心做某事**
 
     He is absorbed in reading.  
@@ -216,7 +212,6 @@ polis（n. 城邦；政治）
   inaccessible adj. 无法使用的，无法进入的
 
 - **句型**
-
   - **have access to... 有（使用/接近）...的权利**
 
     The students have access to these books.  
@@ -240,11 +235,10 @@ polis（n. 城邦；政治）
   accountant n. 会计
 
 - **句型**
-
   - **account for = make up 占比**
 
     Online sales account for 30% of total revenue.  
-    在线销售占总收入的 30%。
+    在线销售占总收入的30%。
 
   - **account for = explain 解释**
 
@@ -317,7 +311,6 @@ polis（n. 城邦；政治）
   actually adv. 实际上
 
 - **句型**
-
   - **take action 采取行动**
 
     Immediate action should be taken to stop the spreading of the fire.  
@@ -356,7 +349,6 @@ polis（n. 城邦；政治）
   addition n. 增加；加法
 
 - **句型**
-
   - **add...to... 把...加到...里**
 
     Many new words are added to the new edition of the dictionary.  
@@ -411,7 +403,6 @@ polis（n. 城邦；政治）
   advice n. 建议
 
 - **句型**
-
   - **advise 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**
 
     I advise that you (should) get a haircut before your interview.  
@@ -444,7 +435,6 @@ polis（n. 城邦；政治）
   effect n. 作用，影响
 
 - **句型**
-
   - **affect**
 
     The bad weather affected her health.  
@@ -473,7 +463,6 @@ polis（n. 城邦；政治）
   关于“花费”，详见 **辨析词 | 花费**
 
 - **vt. “花费得起（金钱）”或“承担得起（某种代价）”**
-
   - **常用于 be able to 或 can 之后**
   - **can afford 钱/sth.**
 
@@ -517,7 +506,6 @@ polis（n. 城邦；政治）
   scared adj. 恐惧的
 
 - **句型**
-
   - **be afraid to do sth. 因为害怕而不敢做某事**
 
     She’s afraid to jump.  
@@ -624,11 +612,11 @@ They were all dressed as clowns.
 - **表方位，在"较小的"地方（方位）**
 
   at the village 在那个村庄  
-  at 105 Green Street 在格林大街 105 号
+  at 105 Green Street 在格林大街105号
 
 - **表示具体时间、时刻、年龄**
 
-  at 10 o'clock 在 10 点  
+  at 10 o'clock 在10点  
   at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/晚上/午夜  
   at six / at the age of six 在六岁时  
   at that moment 在那一刻
@@ -658,7 +646,6 @@ They were all dressed as clowns.
   beneficial adj. 有益的
 
 - **句型**
-
   - **benefit sb./sth. 对…有益**
 
     The changes will benefit everyone.  
@@ -738,7 +725,6 @@ They were all dressed as clowns.
   n. 联系；联系人
 
 - **句型**
-
   - **contact sb. 联系某人**
 
     Please contact me tomorrow.  
@@ -776,11 +762,10 @@ They were all dressed as clowns.
   关于“花费”，详见 **辨析词 | 花费**
 
 - **vt. 花费**
-
   - **sth. cost sb. 金钱/代价.**
 
     The meal cost us about £40.  
-    这顿饭花了我们约 40 英镑。
+    这顿饭花了我们约40英镑。
 
     That one mistake almost cost him his life.  
     那一个差错几乎使他丧命。
@@ -793,7 +778,7 @@ They were all dressed as clowns.
 - **n. 花销**
 
   A new computer system has been installed at a cost of £80 000.  
-  新的计算机系统已安装，费用为 8 万英镑。
+  新的计算机系统已安装，费用为8万英镑。
 
 ## cross
 
@@ -807,7 +792,6 @@ They were all dressed as clowns.
   across adv. 表动向，从表面穿过（马路，桥，河...），详见 **辨析词 | 动向**
 
 - **句型**
-
   - **cross sp. = go across sp. 穿过...**
 
     The cat crossed the road.  
@@ -863,7 +847,6 @@ They were all dressed as clowns.
   difference n. 差异
 
 - **句型**
-
   - **differ from = be different from 与...不同**
 
     This product differs from the old version.  
@@ -905,7 +888,6 @@ They were all dressed as clowns.
   difficultly adv. 困难地
 
 - **句型**
-
   - **It is difficult to do sth. 做某事很难**
 
     It is difficult to learn a new language.  
@@ -939,7 +921,6 @@ They were all dressed as clowns.
   pass n. 及格
 
 - **v. 失败；未完成；不及格**
-
   - **fail to do sth. = fail in (doing) sth.**：失败
 
     She failed to attend the meeting.  
@@ -976,7 +957,6 @@ They were all dressed as clowns.
   near adj. adv. 近
 
 - **句型**
-
   - **be far from sp. 离...远**
   - **as/so far as I know 据我所知**
   - **as/so far as I am concerned 我认为**
@@ -1001,7 +981,6 @@ They were all dressed as clowns.
   remember v. 记得（用法同 forget）
 
 - **句型**
-
   - **forget to do sth. 忘记去做...**
 
     I'll never forget meeting my school headmaster for the first time.  
@@ -1097,7 +1076,7 @@ They were all dressed as clowns.
 - **prep. 在...之后（时间）**
 
   He will be back from abroad in three days.  
-  他 3 天后从国外回来。
+  他3天后从国外回来。
 
 ## increase
 
@@ -1112,7 +1091,6 @@ They were all dressed as clowns.
   decrease v. n. 减少；减小（decrease 用法同 increase）
 
 - **句型**
-
   - **increase in... 在某方面增长**
 
     There has been an increase in sales this year.  
@@ -1124,15 +1102,15 @@ They were all dressed as clowns.
   - **increase to + 数值，增加到多少**
 
     The temperature increased to 40°C.  
-    温度升高到了 40 度。
+    温度升高到了40度。
 
     The temperature increased from 10℃ to 40°C.  
-    温度从 10 度升高到 40 度。
+    温度从10度升高到40度。
 
   - **increase by + 数值，增加了多少**
 
     The price increased by 10%.  
-    价格上涨了 10%。
+    价格上涨了10%。
 
 ## inform
 
@@ -1146,7 +1124,6 @@ They were all dressed as clowns.
   informer n. 通知者；告密者
 
 - **句型**
-
   - **inform sb. of sth. 通知某人某事**
 
     I informed my boss of the change of schedule.  
@@ -1179,7 +1156,6 @@ They were all dressed as clowns.
   nearly adv. 将近，几乎
 
 - **句型**
-
   - **be near to sp. 离...近**
 
     The park is near to our school.  
@@ -1200,7 +1176,7 @@ They were all dressed as clowns.
   - **nearly adv. 几乎**
 
     This blue srar sapphire is worth nearly six hundred thousand dollars.  
-    这颗蓝宝石的价值将近 60 万美元。
+    这颗蓝宝石的价值将近60万美元。
 
 # O
 
@@ -1243,19 +1219,18 @@ They were all dressed as clowns.
   关于“花费”，详见 **辨析词 | 花费**
 
 - **v. 支付（金钱）**
-
   - **sb. pay (钱) for sth.**
 
     I'll pay for the tickets.  
     我来买票。
 
     I paid $10 for the ticket.  
-    我为这张票付了 10 美元。
+    我为这张票付了10美元。
 
   - **sb. pay sb. 钱**
 
     He paid the waiter $50.  
-    他给服务员 50 美元。
+    他给服务员50美元。
 
   - **sb. pay to do sth.**
 
@@ -1338,7 +1313,6 @@ port（n. 港口；携带）
   rise vi. 上升
 
 - **句型**
-
   - **raise vt. 举起**
 
     Raise your hands.  
@@ -1372,7 +1346,6 @@ port（n. 港口；携带）
   与 different 相反
 
 - **句型**
-
   - **be the same as 与...相同**
 
     His trousers are the same as mine.  
@@ -1411,7 +1384,6 @@ port（n. 港口；携带）
   similarity n. 相似处
 
 - **句型**
-
   - **be similar to 与...相似**
 
     My story is similar to yours.  
@@ -1463,11 +1435,10 @@ port（n. 港口；携带）
   关于“花费”，详见 **辨析词 | 花费**
 
 - **v. 花费（时间、金钱、精力）**
-
   - **sb. spend 时间/金钱/精力 on sth.**
 
     She **spent** £100 **on** a new dress.  
-    她花 100 英镑买了一条新连衣裙。
+    她花100英镑买了一条新连衣裙。
 
   - **sb. spend 时间/金钱/精力 (in) doing sth.**
 
@@ -1480,16 +1451,15 @@ port（n. 港口；携带）
     到假期结束时，我已经花光了自己所有的钱。
 
 - **v. （在某处）度过（一段时间）**
-
   - **sb. spend 时间 + 地点状语**
 
     We're going to spend three days in the country.  
-    我们打算去乡下待三天。（新概念 1-67）
+    我们打算去乡下待三天。（新概念1-67）
 
 - **n. 花销**
 
   The average spend at the cafe is £10 a head.  
-  在咖啡馆的人均消费是 10 英镑。
+  在咖啡馆的人均消费是10英镑。
 
 ## stress
 
@@ -1537,7 +1507,6 @@ port（n. 港口；携带）
   suggestion n. 建议
 
 - **句型**
-
   - **suggest 后接宾语从句时，从句谓语用虚拟语气，即：should + do，其中 should 可省略。**
 
     I suggest they (should) repeat the experiments and see for themselves.  
@@ -1568,7 +1537,6 @@ port（n. 港口；携带）
   关于“花费”，详见 **辨析词 | 花费**
 
 - **v. 携带**
-
   - **take sth. to sp.**：带走
 
     Take this letter to the post office.  
@@ -1580,11 +1548,10 @@ port（n. 港口；携带）
     我下公共汽车时忘了拿包。
 
 - **v. 花费（时间）**
-
   - **It takes sb. 时间 to do sth.**
 
     It took me 3 hours to finish the report.  
-    我花了 3 个小时完成报告。
+    我花了3个小时完成报告。
 
 ## telephone
 
@@ -1608,7 +1575,6 @@ port（n. 港口；携带）
   thinking n. 思索；见解，想法
 
 - **句型**
-
   - **宾语从句**
 
     如果接否定形式的宾语从句，否定形式转移到 think 上，类似的动词还有 suppose，believe，hope，expect 等。  
@@ -1670,7 +1636,6 @@ port（n. 港口；携带）
   adj. 习惯于...的
 
 - **句型**
-
   - **be used to do sth. 被用来做某事**
 
     Water is used to produce electitity.  
@@ -1714,7 +1679,6 @@ port（n. 港口；携带）
   street n. 街
 
 - **n. 路**
-
   - **the way to**：通往...的路
 
     Can you tell me the way to King Street?  
@@ -1738,7 +1702,7 @@ port（n. 港口；携带）
 - **be worth + sth./doing sth.**：值得
 
   The watch is worth 500 dollars.  
-  这块表值 500 美元。
+  这块表值500美元。
 
   This book is worth reading.  
   这本书值得一读。

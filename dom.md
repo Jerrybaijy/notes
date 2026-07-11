@@ -399,7 +399,7 @@ button.addEventListener("click", () => {
   alert("按钮被点击了！");
 });
 
-// 3 秒后自动触发 "click" 事件
+// 3秒后自动触发 "click" 事件
 setTimeout(() => {
   button.dispatchEvent(new Event("click"));
 }, 9000);

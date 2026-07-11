@@ -98,7 +98,7 @@ cat ~/.ssh/id_ed25519.pub
   ```
   # 免密连接服务器
   ssh <user>@<server>
-  
+
   # 查看自己的公钥是否添加到服务器
   cat ~/.ssh/authorized_keys
   ```
@@ -109,8 +109,6 @@ cat ~/.ssh/id_ed25519.pub
   ssh-copy-id -f -i <public_secret_file> <user>@<server>
   ssh-copy-id -f -i ./id_rsa.pub jerry@114.55.65.143
   ```
-
-  
 
 # FAQ
 
@@ -150,7 +148,7 @@ Host key verification failed.
 
 - 定位并删除旧的密钥记录
 
-  错误信息指出有问题的ECDSA密钥位于您本地文件 `/c/Users/jerry/.ssh/known_hosts` 中的第 16 行。
+  错误信息指出有问题的ECDSA密钥位于您本地文件 `/c/Users/jerry/.ssh/known_hosts` 中的第16行。
 
   这个命令会自动从 `known_hosts`文件中移除IP地址 `47.115.210.245` 对应的所有密钥。
 

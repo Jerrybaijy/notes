@@ -176,7 +176,7 @@ openclaw browser --browser-profile user snapshot --format ai
 ```
 
 ```
-- 前端渲染是“懒加载”的（元素不在视口就不绘制 Canvas），在你点开简历弹窗以后，需要将简历页面从上到下缓慢滚动到底部，强迫页面将所有简历信息都绘制一遍，从而确保沙箱脚本能收窄抓取到所有的文字数据。滚动的核心方法在 `./resumes/content-script.ts`（在第 24 行左右开始）。
+- 前端渲染是“懒加载”的（元素不在视口就不绘制 Canvas），在你点开简历弹窗以后，需要将简历页面从上到下缓慢滚动到底部，强迫页面将所有简历信息都绘制一遍，从而确保沙箱脚本能收窄抓取到所有的文字数据。滚动的核心方法在 `./resumes/content-script.ts`（在第24行左右开始）。
 - Convas 劫持的方法在 `./resumes/sandbox.ts 文件。
 - 这两个文件是我以前开发的浏览器插件中的文件，现在拿出来给你参考。
 ```
@@ -184,4 +184,3 @@ openclaw browser --browser-profile user snapshot --format ai
 ```
 通过 user profile 浏览器打开 https://www.zhipin.com/web/chat/recommend
 ```
-

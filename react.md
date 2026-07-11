@@ -210,7 +210,7 @@ CMD ["nginx", "-g", "daemon off;"]
 
 # Create React App
 
-自 2025 年 2 月 14 日起，React 官方将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具。此部分内容仅作为学习留存，以备旧项目再次使用。
+自2025年2月14日起，React 官方将正式弃用 [Create React App](https://create-react-app.dev/) 作为新应用的推荐工具。此部分内容仅作为学习留存，以备旧项目再次使用。
 
 ## 基本流程
 
@@ -331,14 +331,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   import Appbar from "./components/Appbar";
   // 引入 Student.js 文件
   import Student from "./components/Student";
-  
+
   // APP 主函数
   function App() {
     return (
       <div className="App">
         {/* 调用 Appbar.js 中的 Appbar 函数 */}
         <Appbar />
-  
+
         {/* 调用 Student.js 中的 Student 函数 */}
         <Student />
       </div>
@@ -364,14 +364,14 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
   } from "react-router-dom";
   import Login from "./components/Login";
   import Home from "./components/Home";
-  
+
   const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-  
+
     const handleLoginSuccess = () => {
       setIsLoggedIn(true);
     };
-  
+
     return (
       <Router>
         <Routes>
@@ -394,7 +394,7 @@ Material-UI 是一个流行的 React UI 组件库，它基于 Google 的 Materia
       </Router>
     );
   };
-  
+
   export default App;
   ```
 
@@ -458,7 +458,7 @@ import { Routes, Route } from "react-router-dom";
     <Route path="/home" element={<Home />} />
     <Route path="/projects" element={<Projects />} />
   </Routes>
-</AppLayout>
+</AppLayout>;
 ```
 
 ### Outlet 方式
@@ -475,7 +475,7 @@ const AppLayout = () => {
     <>
       <Header />
       <main>
-        <Outlet />  {/* 自动渲染匹配的子路由 */}
+        <Outlet /> {/* 自动渲染匹配的子路由 */}
       </main>
     </>
   );
@@ -492,19 +492,19 @@ import { Routes, Route } from "react-router-dom";
     <Route path="home" element={<Home />} />
     <Route path="projects" element={<Projects />} />
   </Route>
-</Routes>
+</Routes>;
 ```
 
 ## 核心区别
 
 ### 渲染行为
 
-| 特性               | Children                 | Outlet             |
-| ------------------ | ------------------------ | ------------------ |
+| 特性               | Children                  | Outlet              |
+| ------------------ | ------------------------- | ------------------- |
 | **布局组件重渲染** | ❌ 每次路由切换都重新渲染 | ✅ 布局组件保持不变 |
 | **Header 重渲染**  | ❌ 每次路由切换都重新渲染 | ✅ 不重新渲染       |
 | **子组件状态保持** | ❌ 路由切换时状态丢失     | ✅ 状态可以保持     |
-| **性能表现**       | 较差（整树重建）         | 更好（局部更新）   |
+| **性能表现**       | 较差（整树重建）          | 更好（局部更新）    |
 
 ### 路由切换流程
 
@@ -540,9 +540,7 @@ import { Routes, Route } from "react-router-dom";
 
 ```tsx
 const Modal = ({ children, onClose }) => (
-  <div className="modal">
-    {children}
-  </div>
+  <div className="modal">{children}</div>
 );
 ```
 
@@ -557,7 +555,9 @@ const Modal = ({ children, onClose }) => (
 const DashboardLayout = () => (
   <div>
     <Sidebar />
-    <main><Outlet /></main>
+    <main>
+      <Outlet />
+    </main>
   </div>
 );
 ```

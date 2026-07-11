@@ -136,40 +136,40 @@ publish_chart:
   variables:
     # Docker 版本号
     DOCKER_VERSION: 24.0.5
-  
+
     # 告诉 Docker 使用 overlay2 驱动，性能更好
     DOCKER_DRIVER: overlay2
-  
+
     # 禁用 TLS 证书生成，防止 dind 连接报错
     DOCKER_TLS_CERTDIR: ""
-  
+
     # 镜像名称前缀，$DOCKER_HUB_USER 是 GitLab 里配置的环境变量
     IMAGE_PREFIX: $DOCKER_HUB_USER
-  
+
     # 项目名称
     PROJECT_NAME: my-project
-  
+
     # 后端和前端名称
     BACKEND_NAME: backend
     FRONTEND_NAME: frontend
-  
+
     # 后端和前端目录
     BACKEND_DIR: backend
     FRONTEND_DIR: frontend
-  
+
   # 定义阶段
   stages:
     - build
-  
+
   # 使用 Docker-in-Docker 服务，允许在容器里运行 docker 命令
   services:
     - docker:$DOCKER_VERSION-dind
-  
+
   # 登录 Docker Hub
   before_script:
     # 使用 stdin 输入密码，更加安全
     - echo "$DOCKER_HUB_TOKEN" | docker login -u "$DOCKER_HUB_USER" --password-stdin
-  
+
   # 构建后端镜像
   build_backend:
     stage: build
@@ -177,10 +177,10 @@ publish_chart:
     script:
       # 进入后端目录
       - cd $BACKEND_DIR
-  
+
       # 使用双标签构建：既有版本号（用于回溯），也有 latest（用于生产）
       - docker build -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA -t $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest .
-  
+
       # 推送到 Docker Hub
       - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:$CI_COMMIT_SHORT_SHA
       - docker push $IMAGE_PREFIX/$PROJECT_NAME-$BACKEND_NAME:latest
@@ -188,7 +188,7 @@ publish_chart:
       # 只有当 $BACKEND_NAME 目录下有文件变化时，才运行此 Job
       - changes:
           - $BACKEND_DIR/**/*
-  
+
   # 构建前端镜像
   build_frontend:
     stage: build
@@ -370,18 +370,17 @@ variables:
   BACKEND_IMAGE_BASE: "$CI_REGISTRY_IMAGE/backend"
   DASHBOARD_IMAGE_BASE: "$CI_REGISTRY_IMAGE/dashboard"
 
-# 任务 1：独立构建后端镜像
+# 任务1：独立构建后端镜像
 build_backend:
   # ...
   script:
     - echo "Starting Backend build for commit $CI_COMMIT_SHORT_SHA..."
     # 双标签构建
     - docker build -t "$BACKEND_IMAGE_BASE:latest" -t "$BACKEND_IMAGE_BASE:$CI_COMMIT_SHORT_SHA" ./backend
-    
+
     # 推送 latest 标签
     - docker push "$BACKEND_IMAGE_BASE:latest"
-    
+
     # 推送 $CI_COMMIT_SHORT_SHA 标签
     - docker push "$BACKEND_IMAGE_BASE:$CI_COMMIT_SHORT_SHA"
 ```
-

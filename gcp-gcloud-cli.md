@@ -85,7 +85,7 @@ tags:
   ./google-cloud-sdk/bin/gcloud init
   ```
 
-  - 选择第 2 项：Log in with a new account
+  - 选择第2项：Log in with a new account
   - 点击输出的网址，跳转到网页获取 authorization code，并粘贴回至 bash
   - 选择项目，目前项目为 true-oasis-418914
   - 选择默认区域：上次选 [48] asia-east2-b

@@ -134,7 +134,7 @@ tags:
 
 - 此方法是在原系统为**已激活**的 “Win7 专业版” 或 “Win10 专业版” 基础上重新做全新系统
 - 准备
-  - 网盘下载 “Windows10 多版本官方” ISO 文件
+  - 网盘下载 “Windows 10 多版本官方” ISO 文件
   - Typora 取消激活
 
 - 双击进入 ISO 文件，进入 sources 文件夹，双击 setup.exe 运行安装程序
@@ -172,17 +172,17 @@ tags:
 
 ### 家庭升专业
 
-- Windows10 家庭版升级到 Windows10 专业版
+- Windows 10 家庭版升级到 Windows 10 专业版
   - 开始开始—设置—更新和安全—激活—更改产品秘钥—输入：
   - TPYNC-4J6KF-4B4GP-2HD89-7XMP6
   - W269N-WFGWX-YVC9B-4J6C9-T83GX
   - 更新至专业版
   - 然后使用激活工具激活
 
-- Windows7 升级到 Windows10
-  - 此种方法为官方升级方案，新 Windows10 系统为正版 Windows10 系统。
-  - 新系统想用什么版本（比如旗舰版），原 Windows7 系统就必须为哪个版本，并且激活期限与原系统相同。
-  - 微软官网下载 `Windows10更新助手`，按照引导更新系统即可。
+- Windows 7 升级到 Windows 10
+  - 此种方法为官方升级方案，新 Windows 10 系统为正版 Windows 10 系统。
+  - 新系统想用什么版本（比如旗舰版），原 Windows 7 系统就必须为哪个版本，并且激活期限与原系统相同。
+  - 微软官网下载 `Windows 10更新助手`，按照引导更新系统即可。
 
 ### win 10 激活
 
@@ -340,7 +340,7 @@ KMS 是一种通过本地服务器管理激活的方式，通常用于企业环�
   - 密钥为：[微软官方产品密钥（半年）专业版](https://learn.microsoft.com/zh-cn/windows-server/get-started/kms-client-activation-keys?tabs=server2025%2Cwindows1110ltsc%2Cversion1803%2Cwindows81)
   - KMS 服务器为非官方
 
-- **时效**：每台计算机在初次安装 Windows 后，会尝试联系公司内部的 KMS 服务器进行激活。激活成功后，计算机会获得一个激活授权，通常有效期为 180 天。为了继续保持激活状态，设备需要每 180 天重新向 KMS 服务器进行“续期”。
+- **时效**：每台计算机在初次安装 Windows 后，会尝试联系公司内部的 KMS 服务器进行激活。激活成功后，计算机会获得一个激活授权，通常有效期为180天。为了继续保持激活状态，设备需要每180天重新向 KMS 服务器进行“续期”。
 
 - **重装系统**：KMS 支持重装系统后继续激活。只要重装后的系统能够重新连接到 KMS 服务器，它就会重新激活。如果 KMS 服务器能够识别该设备的许可信息并成功进行验证，那么系统会重新激活。
 
@@ -498,13 +498,13 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 ## 激活码激活
 
 - [网上下载](https://www.123pan.com/s/XYTUVv-4ejLH.html) Office 的 ISO 文件，或者网盘下载。
-  - cn_office_professional_plus_2019_x86_x64_dvd_5e5be643.iso（Office 专业增强版 2019）
+  - cn_office_professional_plus_2019_x86_x64_dvd_5e5be643.iso（Office 专业增强版2019）
 
 - 直接双击安装 Office
 - 安装完成以后，在开始菜单里打开一个 word，输入激活码即可激活。
-  - Office 专业增强版 2019 秘钥：XT9KH-CNYTP-MGJXH-3B7GW-RYBCT，拼多多 12 元购买，本台式机无限重装。
+  - Office 专业增强版2019秘钥：XT9KH-CNYTP-MGJXH-3B7GW-RYBCT，拼多多12元购买，本台式机无限重装。
 
-- 如果激活没成功，出现以前激活的版本，比如 2016，应 Office Tool Plus 工具卸载清理，然后电话激活。
+- 如果激活没成功，出现以前激活的版本，比如2016，应 Office Tool Plus 工具卸载清理，然后电话激活。
 
 ## [Office Tool Plus](https://otp.landian.vip/zh-cn/) 工具
 
@@ -519,7 +519,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
   ![image-20231211123717950](assets/image-20231211123717950.png)
 
-- 点击“开始部署”，下载及安装 Office，全自动安装，2MB/S 网速下耗时大概 2 小时。
+- 点击“开始部署”，下载及安装 Office，全自动安装，2MB/S 网速下耗时大概2小时。
 
 ## 电话激活
 
@@ -629,8 +629,6 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
 ## Overview
 
-
-
 ## Quickstart
 
 <img src="assets/image-20260518224241544.png" alt="image-20260518224241544" style="zoom:50%;" />
@@ -713,7 +711,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
 ## 删除顽固文件
 
-- 文件夹里有个大小为 0、类型为“文件”的文件，系统提示找不到，无法删除
+- 文件夹里有个大小为0、类型为“文件”的文件，系统提示找不到，无法删除
 - 新建一个记事本，输入以下内容
 
   ```
@@ -817,7 +815,7 @@ VK7JG-NPHTM-C97JM-9MPGT-3V66T
 
   <img src="assets/image-20250226145534766.png" alt="image-20250226145534766" style="zoom:50%;" />
 
-- 重启出现英文页面后，按界面提示点按 4 次 F3 键则表示同意关闭，等待电脑启动后完成操作。
+- 重启出现英文页面后，按界面提示点按4次 F3 键则表示同意关闭，等待电脑启动后完成操作。
 
   <img src="assets/image-20250226145656773.png" alt="image-20250226145656773" style="zoom:50%;" />
 
@@ -937,7 +935,7 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
   ```
   # 搜狗文件粉碎
   sgshellext
-  
+
   # 百度云盘
   YunShellExt
   ```
@@ -953,12 +951,12 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
 
 - 大部分电脑默认开启
 - 查看方法
-    - 打开 `任务管理器`
-    - 切换到 `性能` 选项卡的 `CPU` 选项卡
-    - 虚拟化：已启用
+  - 打开 `任务管理器`
+  - 切换到 `性能` 选项卡的 `CPU` 选项卡
+  - 虚拟化：已启用
 - 如果显示未开启，进入 BIOS 设置：
-    - Intel 平台：VMX
-    - AMD 平台：AMD-V
+  - Intel 平台：VMX
+  - AMD 平台：AMD-V
 
 ## 查看网卡
 
@@ -970,14 +968,14 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
 
 - `控制面板` > `网络和 Internet` > `网络和共享中心` > `更改适配器配置`
 
-- 双击 `以太网` 网卡 > `属性` > 双击 `Internet 协议版本 4 (TCP/IPv4)`
+- 双击 `以太网` 网卡 > `属性` > 双击 `Internet 协议版本4 (TCP/IPv4)`
 
-    ```
-    114.114.114.114（国内）
-    8.8.8.8（谷歌）
-    ```
+  ```
+  114.114.114.114（国内）
+  8.8.8.8（谷歌）
+  ```
 
-    ![image-20260603223741378](assets/image-20260603223741378.png)
+  ![image-20260603223741378](assets/image-20260603223741378.png)
 
 ## 启用或关闭 Windows 功能
 

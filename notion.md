@@ -9,7 +9,7 @@ tags:
 
 # 关于 Notion 的使用体验
 
-2025 年 9 月末开始，受 Notion 数据库吸引，开始试用 Notion。
+2025年9月末开始，受 Notion 数据库吸引，开始试用 Notion。
 
 有以下优点：
 
@@ -190,7 +190,6 @@ Notion 中的**[数据库](https://www.notion.com/zh-cn/help/category/databases)
   - 链接到页面：链接到现有页面
   - 链接到数据源的视图：将现有数据源的视图添加到此页面
 - @：提及
-
   - 人员
   - 日期
   - 提醒
@@ -198,7 +197,6 @@ Notion 中的**[数据库](https://www.notion.com/zh-cn/help/category/databases)
   - 数据源
 
 - 公式
-
   - 行内公式
   - 公式区块
 

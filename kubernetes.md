@@ -505,7 +505,7 @@ spec:
   type: LoadBalancer # 如本地访问服务类型为 ClusterIP
   ports: # 服务监听的端口列表
     - port: 80 # 公网端口 80
-      targetPort: 8080 # Pod 端口 8080
+      targetPort: 8080 # Pod 端口8080
 ```
 
 ## port
@@ -730,7 +730,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 kubeadm join <master-node-ip>:<master-node-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
-保存此输出命令，因为在步骤 8 中需要它来将工作器节点连接到群集。
+保存此输出命令，因为在步骤8中需要它来将工作器节点连接到群集。
 
 ## 在主节点上设置 kubectl
 
@@ -770,7 +770,7 @@ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documen
 sudo kubeadm join <master-node-ip>:<master-node-port> --token <token> --discovery-token-ca-cert-hash sha256:<hash>
 ```
 
-在这里，您必须将 **<master-node-ip>**、**<master-node-port>**、**<token>** 和 **<hash>** 替换为您在步骤 5 结束时保存的值。
+在这里，您必须将 **<master-node-ip>**、**<master-node-port>**、**<token>** 和 **<hash>** 替换为您在步骤5结束时保存的值。
 
 ## 验证集群状态
 

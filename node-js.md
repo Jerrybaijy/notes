@@ -10,7 +10,7 @@ tags:
 
 # Overview
 
-[**Node.js**](https://nodejs.org/zh-cn) 是一个开源、跨平台的 JavaScript 运行时环境，能够在服务器端运行 JavaScript。它最初由 Ryan Dahl 于 2009 年创建，并且使用了 Google 的 **V8 JavaScript 引擎**，该引擎最初是用于 Chrome 浏览器的，用于将 JavaScript 代码编译成高效的机器代码。Node.js 的核心优势在于它的非阻塞、事件驱动架构，使得它在构建高性能的网络应用时非常高效。
+[**Node.js**](https://nodejs.org/zh-cn) 是一个开源、跨平台的 JavaScript 运行时环境，能够在服务器端运行 JavaScript。它最初由 Ryan Dahl 于2009年创建，并且使用了 Google 的 **V8 JavaScript 引擎**，该引擎最初是用于 Chrome 浏览器的，用于将 JavaScript 代码编译成高效的机器代码。Node.js 的核心优势在于它的非阻塞、事件驱动架构，使得它在构建高性能的网络应用时非常高效。
 
 ## npm
 

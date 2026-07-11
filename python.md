@@ -10,13 +10,13 @@ tags:
 
 **参考**：
 
-> [我要自学网：燎原《Python 编程入门 2021 新版教程》](https://www.51zxw.net/List.aspx?cid=929)
+> [我要自学网：燎原《Python 编程入门2021 新版教程》](https://www.51zxw.net/List.aspx?cid=929)
 >
 > [B 站：银角大王-武沛齐《精品 Python 全套教程》](https://www.bilibili.com/video/BV1zd4y1y7px/?spm_id_from=333.337.search-card.all.click&vd_source=02dd98cfbf740b256dca0ec3e66776e6)
 
 # Python 基础
 
-[**Python**](https://docs.python.org/zh-cn/3/) 的 3.0 版本，常被称为 Python 3000，或简称 Py3k。相对于 Python 的早期版本，这是一个较大的升级。为了不带入过多的累赘，Python 3.0 在设计的时候没有考虑向下兼容。
+[**Python**](https://docs.python.org/zh-cn/3/) 的3.0版本，常被称为 Python 3000，或简称 Py3k。相对于 Python 的早期版本，这是一个较大的升级。为了不带入过多的累赘，Python 3.0 在设计的时候没有考虑向下兼容。
 
 ## 环境搭建
 
@@ -220,7 +220,7 @@ PyCharm 有商业版和社区版两个版本。
 #### 安装
 
 - [官网下载社区免费版 `PyCharm Community Edition`](https://www.jetbrains.com/pycharm/download/?section=windows)
-- 勾选如图 2 项
+- 勾选如图2项
 
   <img src="assets/image-20231026230614766.png" alt="图片1" style="width:50%;" />
 
@@ -239,7 +239,7 @@ PyCharm 有商业版和社区版两个版本。
 
 - 由于存在环境变量配置，插件安装之后，需要重启电脑才会生效。
 - 重启后，在博客内获取激活码；
-- 最后一次获取到的是（本次激活有效期至 2025.08.）：
+- 最后一次获取到的是（本次激活有效期至2025.08.）：
 
   ```
   # Pycharm
@@ -362,16 +362,16 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
 - IDE `settings.json` 设置
 
-    ```json
-    {
-      "[python]": {
-        "editor.tabSize": 4, // 默认 1 个 Tab 的宽度为 4 个空格
-        "editor.defaultFormatter": "ms-python.black-formatter", // Python 默认格式化工具
-      }
+  ```json
+  {
+    "[python]": {
+      "editor.tabSize": 4, // 默认1个 Tab 的宽度为4个空格
+      "editor.defaultFormatter": "ms-python.black-formatter" // Python 默认格式化工具
     }
-    ```
+  }
+  ```
 
-- 
+-
 
 ## 代码规范
 
@@ -379,7 +379,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 - **缩进**：敏感
   - Python 最具特色的就是使用缩进来表示代码块，不需要使用大括号 **`{}`** 。
   - 缩进的空格数是可变的，但是同一个代码块的语句必须包含相同的缩进空格数。
-  - 最佳 4 个空格。
+  - 最佳4个空格。
 
 - **分号**：每行代码结束不使用分号
 
@@ -409,7 +409,7 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
   它通常包含有关类、方法或字段的详细信息。
   例如，描述类的作用或方法的功能。
   """
-  
+
   # 这是一个单行注释，描述下面的方法。
   def main():
       """
@@ -418,9 +418,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
       多行注释第三行
       这里是对下面的输出代码块的解释。
       """
-  
+
       print("Hello World")
-  
+
   # 调用 main 方法
   main()
   ```
@@ -553,9 +553,9 @@ Sublime- Text 是一个用 C++ 和 Python 开发的跨平台文本编辑器。�
 
   ```python
   # format 函数拼接
-  s1 = "hello!{}{}{}".format("张三","李四",666)  # 可拼接 int 类型 666
+  s1 = "hello!{}{}{}".format("张三","李四",666)  # 可拼接 int 类型666
   print(s1)  # hello!张三李四666
-  
+
   # 使用 % 拼接
   s1 = "hello!%s%s%s"%("张三", "李四", 666)
   print(s1)  # hello!张三李四666
@@ -619,31 +619,31 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   # 其它公共功能：...
-  
+
   lst = ["中国", ["上海", "北京", "深圳"], 123]
   strr = " ad min.123 "
-  
+
   len(strr)  # 获取长度
-  
+
   strr[0]  # 索引
-  
+
   lst[0][1]  # 多级索引
-  
+
   strr[0:6:2]  # 切片
-  
+
   if "中国" in strr:  # in 包含
       pass
-  
+
   strr.replace("a", "A")  # 替换
-  
+
   strr.split(".", 1)  # 切割
-  
+
   strr.strip()  # 去除空格/换行
-  
+
   strr.upper()  # 转大写
-  
+
   strr.startswith("a")  # 判断开头
-  
+
   strr.isdecimal()  # 判断数字
   ```
 
@@ -711,7 +711,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   strr = "中国联通"
   res = "中国" in strr
   print(res)  # True
-  
+
   # use
   if "中国" in strr:
       pass
@@ -736,13 +736,13 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   # 切割后会得到一个列表
-  
+
   strr = "马化腾,40,XXXX@qq.com"
   res1 = strr.split(",")  # 把所有序列都切割，分别放入子字符串，逗号是切割标识依据
   res2 = strr.split(".")  # "."为切割标识
   res3 = strr.split(",", 1)  # 从左到右，保留几个单独子字符串，剩余放进另一个子字符串
   res4 = strr.rsplit(",", 1)  # 从右到左，保留几个单独元素，剩余放进另一个子字符串
-  
+
   print(res1)  # ['马化腾', '40', 'XXXX@qq.com']
   print(res1[1])  # 40  # 拿到单独一个元素
   print(res2)  # ['马化腾,40,XXXX@qq', 'com']
@@ -867,14 +867,14 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   data = "中国江西联通中国"
-  
+
   # 第一个匹配项
   print(data.find("国"))  # 1
   print(type(data.find("国")))  # <class 'int'>
-  
+
   # 最后一个匹配项
   print(data.rfind("国"))  # 7
-  
+
   # 错误的匹配项
   print(data.rfind("海"))  # -1
   ```
@@ -906,21 +906,21 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   lst = [1, 2, 3, 4]
-  
+
   lst[0] = 5  # 修改
-  
+
   lst.append(5)  # 追加
-  
+
   lst.insert(1, "北京")  # 插入
-  
+
   lst.remove(1)  # 删除
-  
+
   lst.clear()  # 清空
-  
+
   lst.reverse()  # 反转
-  
+
   sorted(lst)  # 排序
-  
+
   strr = "_".join(lst)  # join 连接
   ```
 
@@ -945,7 +945,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   print(lst)  # [1, 2, 3, 4, 5, 6]
   ```
 
-- **说明**：`append()` 方法每次只能追加 1 个元素
+- **说明**：`append()` 方法每次只能追加1个元素
 
 ### 列表插入元素 `insert`
 
@@ -953,11 +953,11 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   lst = [1, 2, 3, 4]
-  lst.insert(0, 5)  # 在第0索引号，插入 5
+  lst.insert(0, 5)  # 在第0索引号，插入5
   print(lst)  # [5, 1, 2, 3, 4]
   ```
 
-- **说明**：`insert()` 方法每次只能插入 1 个元素
+- **说明**：`insert()` 方法每次只能插入1个元素
 
 ### 列表删除元素 `remove`
 
@@ -969,7 +969,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   print(lst)  # [2, 3, 4]
   ```
 
-- **说明**：`remove()` 方法每次只能删除 1 个元素
+- **说明**：`remove()` 方法每次只能删除1个元素
 
 ### 列表清空 `clear`
 
@@ -1012,10 +1012,10 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   list_name = ["2.提升", "1.基础", "10.总结", "3.高阶"]
-  
+
   # 排序依据key  key值为lambda表达式：将前面的数字转整型作为返回值
   list_sorted = sorted(list_name, key = lambda x: int(x.split(".")[0]))
-  
+
   print(list_sorted)  # ['1.基础', '2.提升', '3.高阶', '10.总结']  否则正常排序10应在2前面
   ```
 
@@ -1098,13 +1098,13 @@ Python 中有**基础数据类型**和**集合数据类型**。
   ```python
   st1 = {1, 2, 3, 4, 5, 6}
   st2 = {7, 8, 9, 4, 5, 6}
-  
+
   # 获取交集，不能用加号
   print(st1 & st2)  # {4, 5, 6}
-  
+
   # 获取并集
   print(st1 | st2)  # {1, 2, 3, 4, 5, 6, 7, 8, 9}
-  
+
   # 获取差集
   print(st1 - st2)  # {1, 2, 3}
   ```
@@ -1132,21 +1132,21 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   dict_a = {"name": "ZhangSan", "age": 18, "hobby": "playBall"}
-  
+
   value = dict_a.get("name")  # 获取值
-  
+
   dict_a["hobby"] = "reading"  # 修改值
-  
+
   dict_a["gender"] = "male"  # 增加元素，就是给一个原本不存在的键赋值
-  
+
   dict_a.pop("hobby")  # 删除元素
-  
+
   for key in dict_a.keys():  # 获取所有键
       print(key)
-  
+
   for value in dict_a.values():  # 获取所有值
       print(value)
-  
+
   for key, value in dict_a.items():  # 获取所有键和值
       print(key, value)
   ```
@@ -1191,7 +1191,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### 删除元素 `pop`
 
-- **语法 1**：`$DICT.pop("$KEY")`
+- **语法1**：`$DICT.pop("$KEY")`
 
   ```python
   dict_a = {"name": "ZhangSan", "age": 18, "hobby": "playBall"}
@@ -1199,7 +1199,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   print(dict_a)  # {'name': 'ZhangSan', 'age': 18}
   ```
 
-- **语法 2**：`del $DICT["$KEY"]`
+- **语法2**：`del $DICT["$KEY"]`
 
   ```python
   dict_a = {"name": "ZhangSan", "age": 18, "hobby": "playBall"}
@@ -1299,7 +1299,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   data1 = int("123")
   print(data1)  # 123
   print(type(data1))  # <class 'int'>
-  
+
   # 将浮点型转换成整型
   data2 = int(3.14)
   print(data2)  # 3
@@ -1315,7 +1315,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   data1 = float("3.14")
   print(data1)  # 3.14
   print(type(data1))  # <class 'float'>
-  
+
   # 将整型转换成浮点型
   data2 = float(3)
   print(data2)  # 3.0
@@ -1382,7 +1382,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### 求平均值
 
-- 用户输入任意 5 个数，for 循环求他们的平均值
+- 用户输入任意5个数，for 循环求他们的平均值
 
   ```python
   total = 0
@@ -1410,7 +1410,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### 折纸厚度
 
-- 一张纸的厚度大约是 0.08mm，对折多少次之后能达到珠穆朗玛峰的高度（8848 米）?
+- 一张纸的厚度大约是 0.08mm，对折多少次之后能达到珠穆朗玛峰的高度（8848米）?
 
   ```python
   p = 0.08
@@ -1435,7 +1435,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### 百钱买百鸡
 
-- 5 文钱可以买一只公鸡，3 文钱可以买一只母鸡，1 文钱可以买 3 只雏鸡。现在用 100 文钱买 100 只鸡，那么各有公鸡、母鸡、雏鸡多少只？
+- 5文钱可以买一只公鸡，3文钱可以买一只母鸡，1文钱可以买3只雏鸡。现在用100文钱买100只鸡，那么各有公鸡、母鸡、雏鸡多少只？
 
   ```python
   for g in range(0, 21):
@@ -1459,8 +1459,8 @@ Python 中有**基础数据类型**和**集合数据类型**。
   - **`%=`**：求余赋值
   - **`//=`**：取整除赋值
   - Python 中没有以下复合赋值运算符
-    - **`++`**：自增，即在自身的基础加 1
-    - **`--`**：自减，即在自身的基础减 1
+    - **`++`**：自增，即在自身的基础加1
+    - **`--`**：自减，即在自身的基础减1
     - **`%=`**：求余赋值
     - **`??=`**：空赋值
     - `<<=`：左移赋值
@@ -1470,7 +1470,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 - **解构赋值运算符**
 
   ```python
-  a, b, c = 1, 2, 3  # 将值 1, 2, 3 分别赋给 a, b, c
+  a, b, c = 1, 2, 3  # 将值1, 2, 3分别赋给 a, b, c
   print(a, b, c)  # 输出: 1 2 3
   ```
 
@@ -1488,7 +1488,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   a = 11
-  a += 3  # 在 a 的基础上再加 3 ，相当于 a = a + 3
+  a += 3  # 在 a 的基础上再加3 ，相当于 a = a + 3
   print(a)  # 14
   ```
 
@@ -1549,10 +1549,10 @@ Python 中有**基础数据类型**和**集合数据类型**。
   ```python
   x = 10
   y = 5
-  
+
   # 如果 x 大于 y，返回 "x is greater", 否则返回 "y is greater"
   result = "x is greater" if x > y else "y is greater"
-  
+
   print(result)  # 输出: x is greater
   ```
 
@@ -1642,7 +1642,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
   ```python
   score = 85
-  
+
   if score >= 90:
       print("优秀！")
   elif score >= 80:
@@ -1761,7 +1761,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   ```python
   password1 = "123"
   password2 = "abc"
-  
+
   pwd1 = input("请输入第一道密码：")
   if pwd1 == password1:
       print("第一道密码输入正确！")
@@ -1776,7 +1776,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
 
 ### 商品管理系统
 
-- 为一家超市开发一个简易的收银系统（以 3-5 种商品为例）
+- 为一家超市开发一个简易的收银系统（以3-5种商品为例）
 
   ```
   使用变量保存：商品编号 商品价格 商品名字
@@ -1788,22 +1788,22 @@ Python 中有**基础数据类型**和**集合数据类型**。
   num1 = "1001"
   price1 = 7
   name1 = "苹果"
-  
+
   num2 = "1002"
   price2 = 4
   name2 = "香蕉"
-  
+
   num3 = "1003"
   price3 = 5
   name3 = "梨子"
-  
+
   # 提前声明变量保存需要的商品价格和名称
   num = input("请输入商品编号：")
   count = int(input("请输入商品数量："))
-  
+
   price = 0
   name = ""
-  
+
   if num == num1:
       price = price1
       name = name1
@@ -1870,14 +1870,14 @@ Python 中有**基础数据类型**和**集合数据类型**。
 - `range 序列`：生成一个 a 到 b 的序列，左闭右开。
 - **语法**：`range (结束值) | (开始值, 结束值, 步长)`
   - 包含开始值，不包含结束值，即左闭右开；
-  - 步长可省略，默认为 1，步长不可为 0。
+  - 步长可省略，默认为1，步长不可为0。
 
   ```python
   for i in range(10):
       print(i)  # 依次打印从0到9
-  
+
   for i in range(10):
-      print("Hello world!")  # 依次输出 10 次 Hello world!
+      print("Hello world!")  # 依次输出10次 Hello world!
   ```
 
 - **扩展**：利用遍历序列和索引，从而达到遍历可迭代对象的目的
@@ -1899,7 +1899,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
       ("一等奖", 1, "马尔代夫"),
       ("特等奖", 1, "一套房")
   ]
-  
+
   for title, count, detail in reward_list:  # 元素可写成 (title, count, detail)
       print(title)  # 三等奖  二等奖  一等奖  特等奖
       print(title, count)  # 三等奖 5  二等奖 3  一等奖 1  特等奖 1
@@ -1948,7 +1948,7 @@ Python 中有**基础数据类型**和**集合数据类型**。
   lst2 = [21, 13, 243, 4, 54, 6]
   lst3 = [23, 545, 465, 65, 6565, 76]
   lst4 = [lst1, lst2, lst3]
-  
+
   for lstx in lst4:
       for a in lstx:
           print(a)  # 获取结果为：前3个列表的各个值
@@ -2258,17 +2258,17 @@ print(person.age)   # 输出：25
   v1 = 1  # 全局变量
   v2 = 2  # 全局变量
   v3 = 3  # 全局变量
-  
+
   def func():
       v2 = 3  # 与全局变量同名的局部变量
       global v3  # 通过global，将局部变量 v3 改为全局变量
-      v3 = 4  # 通过global，将全局变量 v3 的值改为 4
+      v3 = 4  # 通过global，将全局变量 v3 的值改为4
       v4 = 4  # 局部变量
       print(v1)  # 1  获取全局变量 v1 的值
       print(v2)  # 3  优先获取局部变量 v2 的值
       print(v3)  # 4  获取全局变量 v3 的新值
       print(v4)  # 4  取局部变量 v4 的值
-  
+
   func()  # 1 3 4 4
   print(v1)  # 1  获取全局变量 v1 的值
   print(v2)  # 2  获取全局变量 v2 的值
@@ -2337,7 +2337,7 @@ print(person.age)   # 输出：25
 
   ```python
   goods = ["电脑", "手机", "汽车"]
-  for index, item in enumerate(goods, 1):  # index序号  1：从1号开始
+  for index, item in enumerate(goods, 1):  # index序号1：从1号开始
       print(index, item)  # 依次打印1 电脑  2 手机  3 汽车
   ```
 
@@ -2354,7 +2354,7 @@ print(person.age)   # 输出：25
   tuple([1, 2, 3])  # (1, 2, 3)  转元组
   dict([('a', 1), ('b', 2), ('c', 3)])  # {'a': 1, 'b': 2, 'c': 3}  转字典
   set([1, 4, 2, 4, 3, 5])  # {1, 2, 3, 4, 5}  转集合
-  
+
   iter(iterable)  # 返回一个可迭代的对象。 iter([1,2,3]) > <list_iterator object at 0x0000000003813B00>
   enumerate(iterable) : 返回一个枚举对象。
   bin(int) : 转换为2进制。 bin(1024) > '0b10000000000'
@@ -2362,7 +2362,7 @@ print(person.age)   # 输出：25
   hex(int) : 转换为16进制。hex(1024) > '0x400'
   chr(int) : 转换数字为相应ASCI码字符。 chr(65) > 'A'
   ord(str) : 转换ASCI字符为相应的数字。 ord('A') > 65
-  
+
   all([0, 11, 22])  # False  检测列表中元素是否全部是True
   any([0, 11, 22])  # True  检测列表中元素是否有True
   bin(90)  # 0b1011010  十进制转二进制
@@ -2483,7 +2483,7 @@ print(person.age)   # 输出：25
     - 推荐用法
       - from 同级文件夹.文件夹2…文件夹n import 模块名
       - 使用：模块名.函数名()
-    
+
     - 另一用法，繁琐
       - import 同级文件夹.文件夹2…文件夹n.模块名
       - 使用：同级文件夹.文件夹2…文件夹n.模块名.函数名()
@@ -2502,14 +2502,14 @@ print(person.age)   # 输出：25
   - 每个模块中都有一个__name__内部变量
     - 当运行此模块时，__name__ = "__main__"
     - 当导入此模块时，__name__ = "模块名"
-  
+
   当直接执行当前文件时才运行接下来的语句，如果引用当前文件到另一个文件，那么在另一个文件中不执行当前文件接下来的语句。一般放在项目主函数中。
   ```
 
   ```python
   def run():
       print("程序启动")
-  
+
   if __name__ == 'main':
       run()
   ```
@@ -2560,7 +2560,7 @@ print(person.age)   # 输出：25
 
 ### time 时间处理
 
-- **获取时间戳**：表示当前时间距离 1970 年元旦 0 时的秒数
+- **获取时间戳**：表示当前时间距离1970年元旦0时的秒数
 
   ```python
   import time
@@ -2623,12 +2623,12 @@ print(person.age)   # 输出：25
 
   ```python
   from datetime import datetime
-  
+
   start_string = "2023-10-18 08:10:08"
   start_date = datetime.strptime(start_string, "%Y-%m-%d %H:%M:%S")
   end_string = "2024-06-18 16:15:15"
   end_date = datetime.strptime(end_string, "%Y-%m-%d %H:%M:%S")
-  
+
   time_delta = end_date - start_date  # 两个时间的差
   print(time_delta)  # 244 days, 8:05:07
   print(type(time_delta))  # <class 'datetime.timedelta'>
@@ -2657,7 +2657,7 @@ print(person.age)   # 输出：25
 
   ```python
   from datetime import datetime
-  
+
   time_string = "2023-10-18 11:06:11"
   time_date = datetime.strptime(time_string, "%Y-%m-%d %H:%M:%S")
   print(time_date)  # 2023-10-18 11:06:11
@@ -2681,7 +2681,7 @@ print(person.age)   # 输出：25
   ```python
   from datetime import datetime
   import time
-  
+
   time_date = datetime.fromtimestamp(time.time())
   print(time_date)  # 2023-10-18 11:06:11
   print(type(time_date))  # <class 'datetime.datetime'>
@@ -2726,11 +2726,11 @@ print(person.age)   # 输出：25
 
   ```python
   import os
-  
+
   base_dir = os.path.dirname(os.path.abspath(__file__))
   print(base_dir)  # E:\文件\工作\程序员\python\Python笔记2
   print(type(base_dir))  # <class 'str'>
-  
+
   file_path = os.path.join(base_dir, "a1.txt")  # 获取到当前具体文件的绝对路径
   ```
 
@@ -2760,7 +2760,7 @@ print(person.age)   # 输出：25
 
   ```python
   import os
-  
+
   base_dir = os.path.dirname(os.path.abspath(__file__))
   folder_path = os.path.join(base_dir, " xx/xx/xx ")
   if not os.path.exists(folder_path):
@@ -2773,13 +2773,13 @@ print(person.age)   # 输出：25
 
   ```python
   # 爬取网页并存入本地 html 文件
-  
+
   from urllib import request
-  
+
   url = "http://www.baidu.com"  # 注意 https: 和 http:
   data = request.urlopen(url).read()  # data 为变量，发送请求并读取数据
   print(data.decode())  # decode()解码：将二进制转换成字符，此行可以没有
-  
+
   with open(r"8888.html", "wb") as f:  # f 为变量，创建一个文件，等待写入
       f.write(data)  # 将 data 获取到的数据写到 f 中
   ```
@@ -2840,7 +2840,7 @@ print(person.age)   # 输出：25
 
   ```python
   import json
-  
+
   data_python = {"user": "张三", "pwd": "123", "num": 100}  # Python 格式的字典
   data_json = json.dumps(data_python, ensure_ascii = False)  # 将 Python 格式转换成 JSON 格式
   print(data_json)  # {"user": "张三", "pwd": "123", "num": 100}, 但注意这是一个字符串。
@@ -2858,7 +2858,7 @@ print(person.age)   # 输出：25
 
   ```python
   import json
-  
+
   data_json = '{"user": "张三", "pwd": "123", "num": 100}'  # JSON 格式的字符串
   data_python = json.loads(data_json)  # 将 JSON 格式转换成 Python 格式
   print(data_python)  # {'user': '张三', 'pwd': '123', 'num': 100}
@@ -2890,16 +2890,16 @@ print(person.age)   # 输出：25
 
   ```python
   import hashlib
-  
+
   # 输入
   user = input("请输入用户名：")
   pwd = input("请输入密码：")
-  
+
   # 加密密码
   obj = hashlib.md5("88888".encode('utf-8')) # 加盐
   obj.update(pwd.encode('utf-8'))  # 括号里必须是字节
   pwd_md5 = obj.hexdigest()
-  
+
   # 写入文件
   with open("db.txt", 'a', encoding = 'utf-8') as f:
       line = f"{user}-{pwd_md5}\n"
@@ -2913,19 +2913,19 @@ print(person.age)   # 输出：25
 
   ```python
   from argon2 import PasswordHasher
-  
+
   # 1.定义密码
   password = "my_secure_password"
-  
+
   # 2.加密
   ph = PasswordHasher()  # 创建密码哈希器对象
   hashed_password = ph.hash(password)  # 哈希密码
-  
+
   # 3.验证密码
-  
+
   # 从数据库获取用户数据 user，密码的字段为 password
   # 假设前端 POST 的密码为 password
-  
+
   try:  # 使用 try...except...finally 进行异常处理
       ph = PasswordHasher()  # 创建密码哈希器对象
       ph.verify(user['password'], password)  # 验证密码
@@ -2956,16 +2956,16 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
 
 ## flask-cors 允许跨域
 
-在默认情况下，浏览器会阻止跨源的 HTTP 请求，以保护用户的安全和隐私。因此，当你在 localhost 的端口 3000 上运行的前端应用尝试向 localhost 的端口 5000 上运行的后端应用发送请求时，由于跨域限制，浏览器会拒绝这些请求。要解决这个问题，你需要在后端应用中配置 CORS，允许来自前端应用的跨源请求。在 Flask 中，你可以使用 flask_cors 库来处理跨域请求。请注意，这样配置会允许来自任何域的跨源请求，因此在生产环境中应谨慎使用，最好限制允许的来源。
+在默认情况下，浏览器会阻止跨源的 HTTP 请求，以保护用户的安全和隐私。因此，当你在 localhost 的端口3000上运行的前端应用尝试向 localhost 的端口5000上运行的后端应用发送请求时，由于跨域限制，浏览器会拒绝这些请求。要解决这个问题，你需要在后端应用中配置 CORS，允许来自前端应用的跨源请求。在 Flask 中，你可以使用 flask_cors 库来处理跨域请求。请注意，这样配置会允许来自任何域的跨源请求，因此在生产环境中应谨慎使用，最好限制允许的来源。
 
 - 应用
 
   ```python
   from flask import Flask
   from flask_cors import CORS
-  
+
   app = Flask(__name__)
-  CORS(app)  # 允许所有域的跨域请求，即允许前端的 3000 端口访问后端的 5000 端口
+  CORS(app)  # 允许所有域的跨域请求，即允许前端的3000端口访问后端的5000端口
   ```
 
 # 对象
@@ -2983,7 +2983,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
       "age": 25,        # 定义 age 属性
       "introduce": lambda: print(f"My name is {person['name']}, and I am {person['age']} years old.")  # 定义方法
   }
-  
+
   # 调用方法
   person["introduce"]()  # 输出: My name is Alice, and I am 25 years old.
   ```
@@ -2999,15 +2999,15 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
       def __init__(self, name, age):
           self.name = name  # 初始化 name 属性
           self.age = age    # 初始化 age 属性
-  
+
       # 定义方法
       def introduce(self):
           print(f"My name is {self.name}, and I am {self.age} years old.")
-  
+
   # 创建对象
   person1 = Person("Alice", 25)
   person2 = Person("Bob", 30)
-  
+
   # 调用方法
   person1.introduce()  # 输出: My name is Alice, and I am 25 years old.
   person2.introduce()  # 输出: My name is Bob, and I am 30 years old.
@@ -3046,7 +3046,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
   # 编写一个银行卡类
   # 属性：银行名称，卡号，密码，姓名，余额
   # 方法：登录，存款
-  
+
   # 定义类
   class Card():
       # 构造函数
@@ -3056,7 +3056,7 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
           self.pwd = pwd  # 初始化 pwd 属性
           self.user = user  # 初始化 user 属性
           self.balance = balance  # 初始化 balance 属性
-  
+
       # 定义方法
       def longin(self):
           unum = input("请输入卡号：")
@@ -3067,17 +3067,17 @@ socket 是对 TCP/IP 协议的封装，socket 本身是一个调用接口（API�
           else:
               print("验证失败！")
               return None
-  
+
       def deposit(self):
           if self.longin():  # 类的内部可以调用其它函数
               money = float(input("请输入存款金额："))
               self.balance += money
               print("存款成功！存入", money, "元！余额", self.balance, "元！")
-  
+
   # 创建对象
   c1 = Card("1001", "123", "张三", 0)
   c2 = Card("1002", "123", "张三", 0)
-  
+
   # 调用方法
   c1.deposit()
   c2.deposit()
@@ -3202,6 +3202,7 @@ session.close()   # 关闭会话，在 sqlalchemy 中，只需要关闭会话即
 ```
 
 **在以上代码中**：
+
 - **`create_engine()`**：创建数据库引擎，用于连接到数据库。
 - **`declarative_base()`**：用于创建基础类，所有的映射类都应该继承自这个基类。
 - **`sessionmaker()`**：创建会话工厂，生成用于与数据库交互的会话对象（`Session`）。
@@ -3280,11 +3281,11 @@ if __name__ == '__main__':
   from sqlalchemy.orm import sessionmaker
   from sqlalchemy.ext.declarative import declarative_base
   from argon2 import PasswordHasher
-  
+
   # 创建数据库引擎，连接 MySQL 数据库
   DATABASE_URI = 'mysql+pymysql://username:password@localhost:3306/my_database'
   engine = create_engine(DATABASE_URI, echo=True)
-  
+
   # 其余同基础函数模板
   ```
 
@@ -3418,7 +3419,7 @@ if __name__ == '__main__':
     # 假设 username 和 password 是用户从表单提交的输入
     username = request.form['username']
     password = request.form['password']
-    
+
     # 使用参数化查询来避免 SQL 注入
     cursor.execute("SELECT * FROM users WHERE username = ? AND password = ?", (username, password))
     ```
@@ -3433,7 +3434,7 @@ if __name__ == '__main__':
   # 1.引入 pymysql 和 DictCursor
   import pymysql
   from pymysql.cursors import DictCursor
-  
+
   # 2.连接 MySQL 服务器
   # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
   conn = pymysql.Connect(
@@ -3446,7 +3447,7 @@ if __name__ == '__main__':
   )
   print("MySQL 已连接.....")
   cursor = conn.cursor(cursor=DictCursor)
-  
+
   # 3.文件处理
   # 关于文件处理，详见：处理 TXT 文件
   while True:
@@ -3455,14 +3456,14 @@ if __name__ == '__main__':
           break
       password = input("请输入密码：")
       phone = input("请输入手机号：")
-  
+
       # 4.执行 sql
       # 关于执行 sql，详见 Operate MySQL
       sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
       cursor.execute(sql, [username, password, phone])
       conn.commit()
       print("添加数据成功！")
-  
+
   # 5.关闭游标对象和连接
   cursor.close()
   conn.close()
@@ -3477,9 +3478,9 @@ if __name__ == '__main__':
   # users.txt
   # 开头多个换行
   zhangsansan,123,19999999999
-  
+
   lisisi,123,18888888888
-  
+
   wangwuwu,123,16666666666
   # 结尾多个换行
   ```
@@ -3488,7 +3489,7 @@ if __name__ == '__main__':
   # 1.引入 pymysql 和 DictCursor
   import pymysql
   from pymysql.cursors import DictCursor
-  
+
   # 2.连接 MySQL 服务器
   # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
   # 确保已创建 users.txt 文件（zhangsan,123,19999999999...）
@@ -3502,27 +3503,27 @@ if __name__ == '__main__':
   )
   print("MySQL 已连接.....")
   cursor = conn.cursor(cursor=DictCursor)
-  
+
   # 3.文件处理
   # 确保已创建 users.txt 文件（zhangsan,123,19999999999...）
   # 关于文件处理，详见：处理 TXT 文件
   with open('users.txt', 'r', encoding='utf-8') as f:
       data = f.read().strip()
-  
+
   lst = data.split("\n")
   for line in lst:
       if not line:
           continue
       # ['zhangsansan', '123', '19999999999'] for 循环3次，分别得到3个列表
       list_new = line.split(",")
-  
+
       # 4.执行sql
       # 关于执行 sql，详见操作 MySQL
       sql = "insert into tb_test(username, password, mobile) values(%s, %s, %s)"
       cursor.execute(sql, list_new)
       conn.commit()
       print("导入数据成功！")
-  
+
   # 5.关闭游标对象和连接
   cursor.close()
   conn.close()
@@ -3537,7 +3538,7 @@ if __name__ == '__main__':
   # 1.引入 pymysql 和 DictCursor
   import pymysql
   from pymysql.cursors import DictCursor
-  
+
   # 2.连接 MySQL 服务器
   # 确保已创建数据库 db_test 和数据表 tb_test (四列：id, username, password, mobile)
   conn = pymysql.Connect(
@@ -3550,19 +3551,19 @@ if __name__ == '__main__':
   )
   print("MySQL 已连接.....")
   cursor = conn.cursor(cursor=DictCursor)
-  
+
   # 3.执行sql
   # 关于执行 sql，详见操作 MySQL
   sql = "select id, username, password, mobile from tb_test"
   cursor.execute(sql)
   user_list = cursor.fetchall()  # [{},{}...]
-  
+
   # 4.关闭游标对象和连接
   cursor.close()
   conn.close()
   print("获取数据成功！")
   print("MySQL 已断开连接！")
-  
+
   # 5.文件处理
   for user in user_list:
       line = f"{user['username']}, {user['password']}, {user['mobile']}\n"
@@ -3605,19 +3606,19 @@ if __name__ == '__main__':
 
   ```python
   import sqlite3
-  
+
   # 连接数据库
   def conn_db():
       conn = sqlite3.connect('users.db')
       conn.row_factory = sqlite3.Row
       print("数据库连接成功！")
       return conn
-  
+
   # 断开数据库
   def close_db(conn, cursor):
       cursor.close()
       conn.close()
-  
+
   # 创建 Table
   def create_tb():
       conn = conn_db()
@@ -3636,25 +3637,25 @@ if __name__ == '__main__':
           print(f"创建表失败，错误信息: {e}")
       finally:
           close_db(conn, cursor)
-  
+
   # 插入用户
   def insert_user(username, password):
       conn = conn_db()
       cursor = conn.cursor()
-  
+
       try:
           cursor.execute('''
               INSERT INTO tb_users (username, password)
               VALUES (?, ?)
           ''', (username, password))
-  
+
           conn.commit()
           print(f"用户 {username} 插入成功！")
       except sqlite3.IntegrityError as e:
           print(f"插入失败，错误信息: {e}")
       finally:
           close_db(conn, cursor)
-  
+
   # 运行主程序
   if __name__ == '__main__':
       create_tb()
@@ -3842,7 +3843,7 @@ myproject/                   # 项目根目录
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Django Example</title>
       </head>
-    
+
       <body>
         <h1>Hello, {{ name }}!</h1>
         <ul>
@@ -3896,7 +3897,7 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
     ```
     >进入项目目录
     >python manage.py runserver
-    
+
     关闭：Ctrl + c
     ```
 
@@ -3974,10 +3975,10 @@ Django 是一个用于构建 Web 应用程序的高级 Python Web 框架。它�
 
   ```python
   # urls.py
-  
+
   from django.urls import path
   from app01 import views
-  
+
   urlpatterns = [
       # 访问xxx/xxx/路径，执行home函数
       path('xxx/xxx/', views.home),
@@ -4012,19 +4013,19 @@ html 模板就是存放 html 文件的文件夹
       return render(request, 'home.html')
   ```
 
-- 位置 1，推荐
+- 位置1，推荐
   - 确保 app01 已注册
   - Django 去 settings.py 文件中 INSTALLED_APPS（已注册的所有 app）依次寻找 templates 模板
   - 在 app01 里创建 templates 文件夹，里面创建名为 home 的 html 文件
 
-- 位置 2，不推荐
+- 位置2，不推荐
   - Django 优先去 settings.py 文件中 TEMPLATES -> 'DIRS': [], 寻找 templates 模板
   - 在项目根目录创建 templates 文件夹，里面创建名为 home 的 html 文件
 
   ```
   settings.py配置
   import os
-  
+
   -> TEMPLATES -> 'DIRS': [os.path.join(BASE_DIR, 'templates'),],
   ```
 
@@ -4111,7 +4112,7 @@ html 模板就是存放 html 文件的文件夹
 ### 静态资源位置
 
 - 存储位置思路与 html 模板相同
-- 位置 1 推荐
+- 位置1推荐
   - 确保 app 已注册
   - Django 去 settings.py 文件中 INSTALLED_APPS（已注册的所有 app）依次寻找 templates 模板
   - 在 app01 里创建 templates 文件夹，里面创建名为 static 的文件夹
@@ -4126,14 +4127,14 @@ html 模板就是存放 html 文件的文件夹
           - plugins  放插件
     ```
 
-- 位置 2 不推荐
+- 位置2不推荐
   - Django 优先去 settings.py 文件中 TEMPLATES -> 'DIRS': [], 寻找 templates 模板
   - 在项目根目录创建 templates 文件夹，里面创建名为 static 的文件夹
 
     ```
     settings.py添加
     import os
-    
+
     STATICFILES_DIRS = (
       os.path.join(BASE_DIR, 'static'),
     )
@@ -4155,7 +4156,7 @@ html 模板就是存放 html 文件的文件夹
   ```html
   <!-- 顶部引入static文件夹 -->
   {% load static %}
-  
+
   <!DOCTYPE html>
   <html lang="en">
     <head>
@@ -4170,7 +4171,7 @@ html 模板就是存放 html 文件的文件夹
     <body>
       <!-- 引入图片同理 -->
       <img src="{% static 'images/demo1.png' %}" />
-  
+
       <a class="btn btn-danger">删除</a>
     </body>
   </html>
@@ -4219,7 +4220,7 @@ html 模板就是存放 html 文件的文件夹
 
       # 2.2返回一个html页面 + 数据渲染
       return render(request, "login.html")
-    
+
       # 2.3返回一个重定向
       return redirect("http://www.baidu.com")
   ```
@@ -4366,7 +4367,7 @@ html 模板就是存放 html 文件的文件夹
   python manage.py migrate
   ```
 
-  - 方法 2
+  - 方法2
     - Pycharm --> 工具 --> 运行 manage.py 任务（Ctrl+Alt+R）
     - 先后输入执行 makemigrations 和 migrate
 
@@ -4426,13 +4427,13 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.shortcuts import HttpResponse
-  
+
   def demo(request):
       from app01 import models
-  
+
       # 增加数据
       models.UserInfo.objects.create(username = "root", password = "123", age = 19)
-  
+
       return HttpResponse("测试")
       # 访问demo页面就会触发增加数据行
       # 刷新并查看数据表得以验证已经增加数据
@@ -4445,13 +4446,13 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.shortcuts import HttpResponse
-  
+
   def demo(request):
       from app01 import models
-  
+
       # 删除数据行
       models.UserInfo.objects.filter(age = 20, username = "root").delete()
-  
+
       return HttpResponse("测试")
       # 访问demo页面就会触发删除age = 20且username = "root"的数据行
       # 刷新并查看数据表得以验证已经删除数据
@@ -4469,13 +4470,13 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.shortcuts import HttpResponse
-  
+
   def demo(request):
       from app01 import models
-  
+
       # 删除数据列
       models.UserInfo.objects.all().update(username = "zhangsan", age = 90)
-  
+
       return HttpResponse("测试")
       # 访问demo页面就会触发修改所有username都是zhangsan，所有的age都是90
       # 刷新并查看数据表得以验证已经修改数据列
@@ -4488,13 +4489,13 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.shortcuts import HttpResponse
-  
+
   def demo(request):
       from app01 import models
-  
+
       # 修改数据
       models.UserInfo.objects.filter(id = 2).update(username = "lisi", age = 80)
-  
+
       return HttpResponse("测试")
       # 访问demo页面就会触发将id = 2的username修改为lisi，age修改为80
       # 刷新并查看数据表得以验证已经修改数据
@@ -4507,21 +4508,21 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.shortcuts import HttpResponse
-  
+
   def demo(request):
       from app01 import models
-  
+
       # 查询并接收数据
       res = models.UserInfo.objects.filter(username="zhangsan", age=90)
       print(res)  # QuerySet类型：[obj1, obj2]
-  
+
       # 遍历
       for obj in res:
           print(obj.id, obj.username, obj.password, obj.age)
           # 3 zhangsan 123 90
-  
+
       return HttpResponse("测试")
-  
+
   # 访问demo页面就会触发查询username = "zhangsan"且age = 90的数据行
   ```
 
@@ -4650,24 +4651,24 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   from django.db import models
-  
+
   # app01_Admin
   class Admin(models.Model):
       """管理员表"""
-  
+
       username = models.CharField(verbose_name="用户名", max_length=16)
       password = models.CharField(verbose_name="密码", max_length=64)
-  
+
   # app01_DepartMent
   class DepartMent(models.Model):
       """部门表"""
-  
+
       title = models.CharField(verbose_name="标题", max_length=16)
-  
+
   # app01_AssetSet
   class AssetSet(models.Model):
       """资产表"""
-  
+
       name = models.CharField(verbose_name="名称", max_length=32)
       price = models.IntegerField(verbose_name="价格")
       category = models.SmallIntegerField(
@@ -4689,7 +4690,7 @@ html 模板就是存放 html 文件的文件夹
 
 ### 用户登录
 
-- 手动创建 2 个管理员
+- 手动创建2个管理员
 - 为了赶进度，停止本案例的学习。B 站
 
 # Python 脚本
@@ -4708,13 +4709,13 @@ html 模板就是存放 html 文件的文件夹
 
   ```python
   import requests
-  
+
   # 抓包获取音乐的链接
   url = "$URL"
-  
+
   # get()向服务器发送get请求  .content获取二进制数据（.text 获取文本数据）
   data = requests.get(url).content
-  
+
   # 写入到本地
   with open(r"E:\labs\以后的以后.mp4", "wb") as f:
       f.write(data)

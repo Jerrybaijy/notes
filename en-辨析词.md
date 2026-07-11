@@ -16,7 +16,7 @@ tags:
 
 at 表示**具体时间**、周末、时刻、年龄：
 
-- at 10 o'clock 在 10 点
+- at 10 o'clock 在10点
 - at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/夜里/午夜
 - at six / at the age of six 在六岁时
 - at that moment 在那一刻
@@ -26,7 +26,7 @@ at 表示**具体时间**、周末、时刻、年龄：
 
 on 表示**具体某一天**或特定某一天的早中晚：
 
-- on May 1st 在 5 月 1 日
+- on May 1st 在5月1日
 - on Monday 在星期一
 - on New Year's Day 在新年那天
 - on my birthday 在我生日那天
@@ -37,9 +37,9 @@ on 表示**具体某一天**或特定某一天的早中晚：
 in 表示**较长的时间段**（朝代、世纪、年代、年份，季节，月份等）或泛指的早中晚：
 
 - in the Tang Dynasty 在唐朝
-- in the 21st century 在 21 世纪
-- in the 1990s/1990's 在 20 世纪 90 年代
-- in 2025 在 2025 年
+- in the 21st century 在21世纪
+- in the 1990s/1990's 在20世纪90年代
+- in 2025 在2025年
 - in spring 在春季
 - in January 在一月
 - in the morning/afternoon/evening (具体某一天早中晚用 on：on Friday morning)
@@ -147,7 +147,7 @@ We will stay in Tokyo **for a week**. (一般将来时)
 - **before + 时间点/从句：表示“在...时间点之前”，强调动作，通常用于一般时、过去时和完成时；与 after 相反**
 
   I went to bed **before 11 p.m.**  
-  我在晚上 11 点之前上床睡觉了。
+  我在晚上11点之前上床睡觉了。
 
   We had sailed four days and four nights **before we saw land**.  
   我们航行了四天四夜才看到陆地。
@@ -158,11 +158,10 @@ We will stay in Tokyo **for a week**. (一般将来时)
   两个小时前他给我打电话了。
 
 - **by：表示“在...时间点之前”，强调截止时间（含截止时间），通常用于将来时和完成时。**
-
   - **by + 时间点**
 
     I will finish the report **by 5 p.m.**  
-    我将在下午 5 点之前完成报告。
+    我将在下午5点之前完成报告。
 
   - **by the time + 从句**
 
@@ -172,7 +171,7 @@ We will stay in Tokyo **for a week**. (一般将来时)
 - **within + 时间段：表示“在...时间段之内”，与 in 相反。**
 
   He finished the job **within 10 minutes**.  
-  他在 10 分钟内完成了工作。
+  他在10分钟内完成了工作。
 
 ## 在...之后
 
@@ -197,15 +196,14 @@ after，later 和 in 都表示“在...之后”，具体用法如下：
 - **after + 时间段：表示“在...时间段之后”，通常位于句尾，用于过去时**
 
   He came back after 10 minutes.  
-  他在 10 分钟后回来了。
+  他在10分钟后回来了。
 
 - **in + 时间段：表示“从现在起，在...时间段之后”，通常位于句尾，用于将来时和完成时；与 within 相反**
 
   He will be back from abroad in three days.  
-  他 3 天后从国外回来。
+  他3天后从国外回来。
 
 - **past**
-
   - **in the past：表示“在过去”，作为状语，通常用于过去时；与 in the future 相反。**
 
     In the past, trains were pulled by steam engines.  
@@ -214,7 +212,7 @@ after，later 和 in 都表示“在...之后”，具体用法如下：
   - **in the past + 时间段：表示“在过去多长时间里”，作为状语，通常用于现在完成时。**
 
     He has made rapid progress in the past three months.  
-    在过去的 3 个月里他进步很快。
+    在过去的3个月里他进步很快。
 
 ## 在...期间
 
@@ -240,7 +238,7 @@ during，through 和 over 都表示“在...期间”，具体区别如下：
 - **from... to/till/...：表示“从...时候到...时候”，通常用于一般时态或将来时态中。**
 
   I work **from** 9 a.m. **to** 5 p.m. (一般现在时)  
-  我从早上 9 点工作到下午 5 点。
+  我从早上9点工作到下午5点。
 
   The class will run **from** September **to** December. (一般将来时)  
   课程从九月持续到十二月。
@@ -248,7 +246,7 @@ during，through 和 over 都表示“在...期间”，具体区别如下：
 - **since + 时间点/从句：表示“自从...时候起”，通常用于现在完成时。**
 
   I have lived here **since 2010**. (接时间点)  
-  我从 2010 年起一直住在这里。
+  我从2010年起一直住在这里。
 
   She has been working here **since she graduated**. (接从句)  
   她从毕业起就在这里工作了。
@@ -259,7 +257,6 @@ during，through 和 over 都表示“在...期间”，具体区别如下：
 ## 直到...时候
 
 - **till 和 untill**
-
   - 都表示“直到 ...时候”，某个动作/状态一直持续到某个时间点为止。
   - 作为介词：till/untill + 时间点
   - 作为连词：till/untill + 从句
@@ -267,7 +264,7 @@ during，through 和 over 都表示“在...期间”，具体区别如下：
 - **肯定形式：till/untill + 时间点 / 从句**
 
   I’ll wait **till/untill** 6 o’clock.  
-  我会一直等到 6 点。
+  我会一直等到6点。
 
   Stay here **till/untill** I come back.  
   你在这待着，直到我回来为止。
@@ -316,7 +313,7 @@ Each/Every time I was in trouble, he would come to help me.
 - **at**：在较小的地方
 
   at the village 在那个村庄  
-  at 105 Green Street 在格林大街 105 号
+  at 105 Green Street 在格林大街105号
 
 - **in**：在较大的地方
 
@@ -345,16 +342,13 @@ Each/Every time I was in trouble, he would come to help me.
 
 - **on**：指在与物体表面相接触的上面。
 - **above**：指水平位置在某物之上，和 below 相反。
-
   - The sun rose above the horizon.
   - The jet flew above the clouds.
 
 - **over**：指在某物正上方，和 under 相反；
-
   - A bridge over the river
 
 - **aboard**：在(船、飞机、公共汽车、火车等)上
-
   - aboard the plane
   - go aboard 上船
 
@@ -430,7 +424,6 @@ Each/Every time I was in trouble, he would come to help me.
   I wrote the letter **with** a pen. 我用钢笔写信。
 
 - **by**
-
   - **通过某种方式**
 
     She learned Spanish by practicing every day.  
@@ -458,7 +451,7 @@ Each/Every time I was in trouble, he would come to help me.
   in English 用英语  
   in blue ink 用蓝墨水
 
-at seventy miles an hour 以每小时 70 英里的速度
+at seventy miles an hour 以每小时70英里的速度
 
 # 动向
 
@@ -476,7 +469,6 @@ at seventy miles an hour 以每小时 70 英里的速度
 - **穿过**
 
   ![image-20240415175515902](assets/image-20240415175515902.png)
-
   - **across**：从表面穿过（马路，桥，河...）
 
     There's a way across the fields.
@@ -514,7 +506,6 @@ at seventy miles an hour 以每小时 70 英里的速度
 ## 行为对象
 
 - 区分
-
   - to 强调**动作的方向**，通常是“把某物/行为传递给某人”
   - at 强调**行为的方向**，如果强调动作的方向可能含有恶意。
 
@@ -547,25 +538,21 @@ at seventy miles an hour 以每小时 70 英里的速度
 ## 人
 
 - **person**
-
   - 指单一的个体，通常用于强调某个具体的个人。
   - 可数名词，表示单数形式。
   - 通常不说 two persons，而说 two people。
 
 - **people**
-
   - 通常是 "person" 的复数形式，指多个个体，也可以表示某个群体或民族。
   - 不可数名词时表示"人类"（指代整体的人类群体）；可数名词时表示“多个个体”。
   - 通常不说 one people，而说 one person。
 
 - **human**
-
   - 通常指人类这个物种
   - 作为名词（指人类）：all humans，所有人类
   - 作为形容词（形容与人类有关的事物）:a basic human need
 
 - **human being**
-
   - 通常用于强调个体的人类，常见于较为正式或哲学性的话题，比 person 更正式。
   - 作为单数名词表示单独的人类个体：Every human being，每个人。
   - 作为复数名词表示人类整体：The rights of human beings ，人类的权利。
@@ -613,7 +600,6 @@ at seventy miles an hour 以每小时 70 英里的速度
 ## 花费
 
 - **spend**
-
   - 花费（金钱、时间、精力），主语是人。
   - 句型：详见 **词汇 | spend**
 
@@ -621,7 +607,6 @@ at seventy miles an hour 以每小时 70 英里的速度
     sb. spend 时间/金钱 (in) doing sth.
 
 - **cost**
-
   - 花费（金钱、代价），主语是物。
   - 句型：详见 **词汇 | cost**
 
@@ -629,14 +614,12 @@ at seventy miles an hour 以每小时 70 英里的速度
     sth. cost 金钱
 
 - **take**
-
   - 花费（金钱），主语是 it 或物。
   - 句型：详见 **词汇 | take**
 
     It takes sb. 时间 to do sth.
 
 - **pay**
-
   - 花费（金钱），强调付款动作，主语是人。
   - 句型：详见 **词汇 | pay**
 
@@ -645,7 +628,6 @@ at seventy miles an hour 以每小时 70 英里的速度
     sb. pay to do sth.
 
 - **afford**
-
   - “花费得起（金钱）”或“承担得起（某种代价）”，主语是人。
   - 句型：详见 **词汇 | afford**
 

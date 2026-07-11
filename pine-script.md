@@ -33,7 +33,7 @@ fastLength = input.int(9, "快线周期")
 ```
 
 - `input.int(...)`：允许你在图表里自定义参数。
-- 快线（短期均线）的周期是 9。
+- 快线（短期均线）的周期是9。
 
 ```pine
 plot(fastMA, color=color.orange, title="快线")

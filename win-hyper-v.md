@@ -46,7 +46,7 @@ Windows 系统开启 Hyper-V 之后，无论是 Windows 系统本身，还是 WS
 
     <img src="assets/image-20260608054451586.png" alt="image-20260608054451586" style="zoom: 40%;" />
 
-- `指定代数`：Windows 11 系统选择 `第二代`
+- `指定代数`：Windows11 系统选择 `第二代`
 
     <img src="assets/image-20260608054616141.png" alt="image-20260608054616141" style="zoom: 50%;" />
 
@@ -58,7 +58,7 @@ Windows 系统开启 Hyper-V 之后，无论是 Windows 系统本身，还是 WS
 
     <img src="assets/image-20260608054938886.png" alt="image-20260608054938886" style="zoom:50%;" />
 
-- 如果是Windows 11 系统，需开启虚拟机 TPM
+- 如果是Windows11 系统，需开启虚拟机 TPM
 
     <img src="assets/image-20260608055229168.png" alt="image-20260608055229168" style="zoom:33%;" />
 

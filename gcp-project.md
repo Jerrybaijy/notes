@@ -139,7 +139,7 @@ gcloud projects create project-jerry-111111 \
 
 本部分笔记在之前创建项目时没有指定依赖 API，待重新实验以后应加入。
 
-由于 billing account 连接次数限制（12.26 左右），一个月以后再重试！
+由于 billing account 连接次数限制（12.26左右），一个月以后再重试！
 
 ### 准备工作
 

@@ -12,7 +12,7 @@ tags:
 
 - 这是一个软件学习笔记的合集。
 - 不是特别多的笔记内容都集中在这一个笔记中。
-- 每个 1 级标题都是一个软件，以首字母排序。
+- 每个1级标题都是一个软件，以首字母排序。
   - 实验
 
 ## Task list
@@ -33,8 +33,8 @@ tags:
   - [ ] server
   - [ ] nslookup
 
-- 2925 邮箱
-  - 2925 邮箱是一个可以无限接收的邮箱，用于反复注册。
+- 2925邮箱
+  - 2925邮箱是一个可以无限接收的邮箱，用于反复注册。
   - 比如注册的邮箱账号是 example@2925.com。
   - 那么任何发送到 `example + 任意字符@2925.com` （如 example001@2925.com）的邮件，都会发送到 example@2925.com 邮箱里。
 
@@ -405,10 +405,10 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   ```bash
   # 查看 document
   db.$COLLECTION_NAME.find()
-  
+
   # 操作第一个 document 用'~One'
   # 操作所有 document 用'~Many'
-  
+
   # 创建 Collection / document
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
   # 修改 document
@@ -433,7 +433,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 | %genre% | 流派 |
 | %comment% | 备注 |
 | %track% | 音轨 |
-| %year% | 年 |
+| %year% |年 |
 | %_total% | xx/xx 曲目编号字段中的曲目总数 |
 
 # MyDockFinder
@@ -691,13 +691,13 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
   ```sql
   -- 退出 SQLite 交互界面
   .exit
-  
+
   -- 查看所有数据库
   .database
-  
+
   -- 查看数据库中的所有表
   .tables
-  
+
   -- 查看某个表的结构
   .schema tbl1
   ```
@@ -851,7 +851,7 @@ YouTube 是 Google 旗下的全球最大的视频网站。
 | 快捷键查询 | <kbd>?</kbd> |
 | 减速播放 | <kbd><</kbd> |
 | 加速播放 | <kbd>></kbd> |
-| 快速跳转至播放进度的 0% ~ 90% | <kbd>0</kbd> ~ <kbd>9</kbd> |
+| 快速跳转至播放进度的0% ~ 90% | <kbd>0</kbd> ~ <kbd>9</kbd> |
 | 全屏模式 | <kbd>F</kbd> |
 | 迷你模式 | <kbd>I</kbd> |
 | 字幕 | <kbd>C</kbd> |

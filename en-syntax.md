@@ -265,7 +265,6 @@ gift 是直接宾语，me 是间接宾语。
 **部分倒装**（Partial Inversion）就是把**助动词**、**情态动词**或 **be 动词**提前，其它部分保持原样。
 
 - **部分倒装原则**
-
   - 把**助动词**、**情态动词**或 **be 动词**移至主语之前，谓语的其他部分仍保留在主语的后面。
   - 如果谓语部分无上述三种动词，则需借助 do、did、does 来“帮助”它构成倒装句。
   - 主从复合句中主句倒装，从句不倒装。
@@ -276,7 +275,6 @@ gift 是直接宾语，me 是间接宾语。
   疑问句：Are you happy?
 
 - **否定副词位于句首**
-
   - **Not only...but also**：不仅...而且...
 
     **Not only do** sharing bicycles provide great convenience for people to travel, **but also** they can ease traffic pressure.  
@@ -291,7 +289,7 @@ gift 是直接宾语，me 是间接宾语。
   - **Not until...**：直到...才...
 
     Not until 1911 was the first kind of the vitamins identified.  
-    直到 1911 年才发现了第一种维生素。
+    直到1911年才发现了第一种维生素。
 
   - **其它否定副词**：Never，Seldom / Rarely
 
@@ -342,7 +340,6 @@ gift 是直接宾语，me 是间接宾语。
 ### 基本形式
 
 - **It is/was + 被强调部分 + that/who 其他成分**：意为“就是...”
-
   - it 作为形式主语，没有单三变化，无论被强调的是单数还是复数。
   - is/was 有时态的变化。
   - 只有一般现在时和一般过去时。
@@ -358,7 +355,7 @@ gift 是直接宾语，me 是间接宾语。
   我们在校门口遇到的人就是他。
 
   Was it in 1939 that the Second World War broke out? (一般疑问句，强调状语)  
-  二战是在 1939 年爆发的么？
+  二战是在1939年爆发的么？
 
   Who was it that broke the window? (特殊疑问句，强调主语)  
   是谁把窗户打碎的？
@@ -372,7 +369,7 @@ gift 是直接宾语，me 是间接宾语。
 
   **not until...that...**：意为“直到...才...”  
   It was not until ten o'clock that he went to bed.  
-  直到 10 点他才上床睡觉。
+  直到10点他才上床睡觉。
 
   It was nearly midnight when I got home.  
   我到家时快午夜了。
@@ -386,7 +383,6 @@ gift 是直接宾语，me 是间接宾语。
 ### 强调谓语
 
 - **do + 动词原形**：意为“确实做了...”
-
   - do 有单三和时态的变化
   - 只有一般现在时和一般过去时
   - 只有肯定形式
@@ -519,7 +515,6 @@ I'll forever cherish the days **when I studied abroad**.
   when，where，why
 
 - **省略关系词**：在限制性定语从句中，以下情况可省略关系词。
-
   - **关系词在从句中作宾语时，可省略。**
 
     I know the girl (whom/that) you met yesterday.
@@ -616,7 +611,6 @@ My sister, **who is wearing a red dress**, is a teacher.
 - **引导词**：when, while, as, as soon as, once, whenever, before, after, since, till, until 等
 - 详见 **表达 | 时间**
 - **例句**：
-
   - I will call you **when I arrive**.
   - **While she was cooking**, the phone rang.
   - **As soon as the rain stops**, we will leave.
@@ -626,7 +620,6 @@ My sister, **who is wearing a red dress**, is a teacher.
 - **功能**：说明动作发生的地点
 - **引导词**：where, anywhere, everywhere, wherever 等
 - **例句**：
-
   - Put the book **where you found it**.
   - **Wherever you go**, I will follow you.
 
@@ -668,7 +661,6 @@ My sister, **who is wearing a red dress**, is a teacher.
 - **引导词**：because, as, since, now that, in that, considering that 等
 - 详见 **表达 | 原因**
 - **例句**
-
   - She cried **because she lost her keys**.
   - **Since it's raining**, we should stay indoors.
 
@@ -729,7 +721,6 @@ My sister, **who is wearing a red dress**, is a teacher.
   玛丽不想起床，担心可能吵醒她的宝宝。
 
 - **in case**
-
   - **in case that + 从句：以防...**
 
     Take your raincoat in case it should rain/it rains.  

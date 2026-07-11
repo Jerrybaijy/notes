@@ -100,7 +100,7 @@ VS Code 的 `settings.json` 支持 `JSONC` 模式。
 ```json
 // 仅修改 Python 语言的设置
 "[python]": {
-  // 默认 1 个 Tab 的宽度为 4 个空格
+  // 默认1个 Tab 的宽度为4个空格
   "editor.tabSize": 4
 }
 ```
@@ -285,7 +285,7 @@ VS Code 控制**动态输入时**的 Tab 宽度，即软件状态栏显示的空
 "editor.detectIndentation": false, // 禁止 VSCode 自动检测文件的缩进方式
 "editor.insertSpaces": true, // 输入 Tab 时，使用空格替代制表符
 "editor.indentSize": "tabSize", // 引用 tabSize 的值来确定每次缩进使用多少个空格
-"editor.tabSize": 2, // 默认 1 个 Tab 的宽度为 2 个空格
+"editor.tabSize": 2, // 默认1个 Tab 的宽度为2个空格
 ```
 
 ### Prettier
@@ -592,10 +592,8 @@ h6::before {
 
 ```json
 {
-    "python.defaultInterpreterPath": "d:\\projects\\green-assistant-003\\backend\\.venv\\Scripts\\python.exe",
-    "python.analysis.extraPaths": [
-        "d:\\projects\\green-assistant-003\\backend"
-    ]
+  "python.defaultInterpreterPath": "d:\\projects\\green-assistant-003\\backend\\.venv\\Scripts\\python.exe",
+  "python.analysis.extraPaths": ["d:\\projects\\green-assistant-003\\backend"]
 }
 ```
 

@@ -10,7 +10,7 @@ tags:
 
 # Overview
 
-[Chrome](https://www.google.com/chrome/) 是由 Google 开发的一款免费、跨平台的网页浏览器，自 2008 年发布以来，已成为全球市场占有率最高的浏览器。
+[Chrome](https://www.google.com/chrome/) 是由 Google 开发的一款免费、跨平台的网页浏览器，自2008年发布以来，已成为全球市场占有率最高的浏览器。
 
 # 快捷键
 

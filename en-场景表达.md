@@ -51,17 +51,17 @@ Very well.
 关于表示时间介词和冠词的辨析，详见 **辨析 | 时间**
 
 - in the Tang Dynasty 在唐朝
-- in the 21st century 在 21 世纪
-- in the 1990s/1990's 在 20 世纪 90 年代
-- in 2025 在 2025 年
+- in the 21st century 在21世纪
+- in the 1990s/1990's 在20世纪90年代
+- in 2025 在2025年
 - in spring 在春季
 - in January 在一月
-- on May 1st 在 5 月 1 日
+- on May 1st 在5月1日
 - on Monday 在星期一
 - on Chrildren's Day 在儿童节
 - on the Spring Festival 在春节
 - in the morning/afternoon/evening 在早晨/下午/晚上
-- on the morning of May 1st 在 5 月 1 日的早晨
+- on the morning of May 1st 在5月1日的早晨
 - on Monday morning 在星期一的早晨
 - at daybreak/noon/dusk/night/midnight 在黎明/中午/黄昏/夜里/午夜
 
@@ -156,9 +156,9 @@ on time 准时
 
 in time 及时
 
-The clock is **ten minutes slow**. 钟**慢 10 分钟**。
+The clock is **ten minutes slow**. 钟**慢10分钟**。
 
-five hours' time = five hours 5 小时的时间
+five hours' time = five hours 5小时的时间
 
 the other day 几天前
 
@@ -315,20 +315,17 @@ How long does the exam **last**? 考试持续了多长时间？
 # 动向
 
 - 到达
-
   - arrive at / in sp.
   - reach sp.
   - get to sp.
 
 - 去
-
   - go to sp.
 
   - leave for sp. 前往某地
   - frome...to... 从...去...
 
 - 回
-
   - return from sp. 从某地返回
 
   - return to sp. 返回某地
@@ -413,7 +410,7 @@ miss the train 误车
 two return tickets to London 两张返回伦敦的票
 
 We want to **catch the eight nineteen to London**.  
-我们要**乘 8 点 19 到伦敦的车**。
+我们要**乘8点19到伦敦的车**。
 
 # 其它未整理
 
@@ -439,7 +436,7 @@ We want to **catch the eight nineteen to London**.
 
   书面 schedule a meeting 口语 set up a meeting
 
-## 100 个句型
+## 100个句型
 
 - 100 important syntax
 
@@ -476,7 +473,6 @@ reduce vt. 减少
 - **nothing**：强调内容，只指物
 
 - **none**：强调数量，可指人 / 物
-
   - none of + 复数可数名词，谓语可单可复
   - none of + 不可数名词，谓语必单数
 
@@ -562,7 +558,7 @@ reduce vt. 减少
   我的包上有个拉链。
 
   I **have got** 3 dallors.  
-  我有 3 美元。
+  我有3美元。
 
   I **have got** a headack.  
   我头疼。

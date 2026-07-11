@@ -325,7 +325,7 @@ resource "google_cloudbuild_trigger" "gitlab_trigger" {
   location        = google_cloudbuildv2_repository.my_repo.location
   service_account = google_service_account.cloudbuild_worker.id
 
-  # 使用第 2 代连接 (v2 repository)
+  # 使用第2代连接 (v2 repository)
   repository_event_config {
     repository = google_cloudbuildv2_repository.my_repo.id
     push {

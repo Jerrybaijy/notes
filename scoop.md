@@ -27,22 +27,22 @@ Scoop 的设计哲学是**“轻量、绿色、非侵入式”**。
 
 - 以**非管理员**身份打开 Powershell：
 
-    ```powershell
-    # PowerShell 临时授权
-    Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+  ```powershell
+  # PowerShell 临时授权
+  Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
 
-    # 安装
-    irm get.scoop.sh | iex
-    ```
+  # 安装
+  irm get.scoop.sh | iex
+  ```
 
 - 重启终端
 
-    ```bash
-    # 查看版本
-    scoop --version
-    # 查看已安装软件
-    scoop list
-    ```
+  ```bash
+  # 查看版本
+  scoop --version
+  # 查看已安装软件
+  scoop list
+  ```
 
 # Uninstall
 
@@ -71,7 +71,7 @@ rm -rf ~/scoop
 
 # Bucket
 
-建议你的 Scoop 桶组合保持在 3-4 个即可，太多会影响 `scoop search` 的速度：
+建议你的 Scoop 桶组合保持在3-4个即可，太多会影响 `scoop search` 的速度：
 
 1. **`main`**: 核心开发工具（默认已装）。
 2. **`extras`**: 国外桌面软件。

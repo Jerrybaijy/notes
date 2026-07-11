@@ -84,13 +84,13 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 - **[多页版](https://html.spec.whatwg.org/multipage/)**：分多个页面显示，自己默认使用该版。
 
 - **[开发者版](https://html.spec.whatwg.org/dev/)**：与多页版相比，此版删除了只有浏览器供应商才需要知道的信息。
-- **[官方中文版 1](https://whatwg-cn.github.io/html/)**：单页显示。
-- **[官方中文版 2](https://htmlspecs.com/)**：单页显示。
+- **[官方中文版1](https://whatwg-cn.github.io/html/)**：单页显示。
+- **[官方中文版2](https://htmlspecs.com/)**：单页显示。
 
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写，但新版本的 (X)HTML 要求使用小写属性。
-- **缩进**：不敏感，通常缩进 2 个空格。
+- **缩进**：不敏感，通常缩进2个空格。
 - **分号**：行尾不加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
@@ -120,7 +120,7 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 
 ### 元素基础
 
-HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前[符合要求的元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计 115 个。
+HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#剖析一个_html_元素)组成，这些元素可以用来包围不同部分的内容，使其以某种方式呈现或者工作。目前[符合要求的元素](https://html.spec.whatwg.org/multipage/indices.html#elements-3)共计115个。
 
 ![image-20231205005652176](assets/image-20231205005652176.png)
 
@@ -2390,7 +2390,7 @@ mark {
   - `name` 用于给这个地图命名，方便与 `<img>` 元素关联。
 - `<area>` 用于在 `<map>` 内部定义**可点击的链接区域**。
   - `shape`：定义区域形状（`rect` 矩形, `circle` 圓形, `poly` 多边形）。
-  - `coords`： 定义区域的**坐标**（左上角为 0 点，根据 `shape` 的值不同，坐标数量和含义不同）。
+  - `coords`： 定义区域的**坐标**（左上角为0点，根据 `shape` 的值不同，坐标数量和含义不同）。
   - `href`：定义点击该区域后跳转的目标 URL。
 - `<img>` 提供一个图片
   - `usemap="#primary"`：关联 `<map>` 的 `name="primary"`。
@@ -3721,10 +3721,10 @@ Tell us your story: <textarea name="story" rows="5" cols="33"></textarea>
 
 ### 其它属性
 
-- [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#cols)：控件可见文本的列数，默认为 20。
+- [`cols`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#cols)：控件可见文本的列数，默认为20。
 - [`disabled`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Attributes/disabled)：表禁用，详见 [`disabled`](#`disabled`)。
 - [`name`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/select#name)：属性值作为数据提交时键值对的**键**，详见 [`name`](#name)。
-- [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#rows)：控件可见文本的行数，默认为 2。
+- [`rows`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#rows)：控件可见文本的行数，默认为2。
 - [更多...](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/textarea#属性)
 
 # 交互

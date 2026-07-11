@@ -250,7 +250,7 @@ Solidity 中不存在“未定义”或“空”值的概念， 但新声明的�
 
 `int` / `uint`：分别表示**有符号**和**无符号**的整型变量。 可以在 uint 或 int 后面添加位数，以指定 uint 和 int 类型所存储的 bit 位大小。
 
-- 位数可以从 8 到 256，而且必须是 8 的倍数。
+- 位数可以从8到256，而且必须是8的倍数。
 - `int` 和 `uint` 分别是 `int256` 和 `uint256` 的别名。
 
 ```solidity
@@ -268,7 +268,7 @@ uint127 d; //这不是有效的，因为127不是8的倍数。
 
 地址（address）是以太坊区块链上账户或智能合约的唯一标识符。
 
-地址占 20 个字节，一个字节有 8 个 bit ,所以地址共有 160 个 _bit_，一个字节需要两个十六进制数表示，所以需要 40 个十六进制数表示一个地址。
+地址占20个字节，一个字节有8个 bit ,所以地址共有160个 _bit_，一个字节需要两个十六进制数表示，所以需要40个十六进制数表示一个地址。
 
 ```solidity
 //定义
@@ -341,7 +341,7 @@ mapping(address => uint) balance;
 balance[address(0x123)] = 10;///这将为地址 0x123 分配一个新值
 
 // 改
-balance[address(0x123)] = 20;//这将把值从 10 更新为 20
+balance[address(0x123)] = 20;//这将把值从 10 更新为20
 
 // 查
 uint b = balance[address(0x123)];
@@ -350,7 +350,7 @@ uint b = balance[address(0x123)];
 delete balance[address(0x123)];
 ```
 
-如果要查询的键不存在，则会返回这个值类型的默认值。 例如 uint 的默认值是 0，bool 的默认值是 false 。
+如果要查询的键不存在，则会返回这个值类型的默认值。 例如 uint 的默认值是0，bool 的默认值是 false 。
 
 删除实际上等同于将该值指定为默认值。因此，在执行删除操作后，仍然可以通过访问相应键的方式来获取该元素的值，只不过该值现在是**默认值**而已。
 
@@ -450,9 +450,9 @@ enum Season {
 }
 ```
 
-枚举类型中的每个**枚举值**将被映射为一个**整数值**，枚举类型是以 uint8 存储的（即 0-255），所以一个枚举类型最多可以定义 256 个值，分别对应到 uint8 的 0-255 。
+枚举类型中的每个**枚举值**将被映射为一个**整数值**，枚举类型是以 uint8 存储的（即0-255），所以一个枚举类型最多可以定义256个值，分别对应到 uint8 的 0-255 。
 
-在上面的例子中，**Spring** 的整数值为 0，**Summer** 的整数值为 1，**Autumn** 的整数值为 2，**Winter** 的整数值为 3。
+在上面的例子中，**Spring** 的整数值为0，**Summer** 的整数值为1，**Autumn** 的整数值为2，**Winter** 的整数值为3。
 
 **给枚举类型的变量赋值**
 
@@ -462,7 +462,7 @@ enum Season {
 
 ```solidity
 // 赋值给枚举类型变量
-// season1 是一个 Season 枚举类型变量，实际上赋给 season1 的值是 Spring 对应的整数值 0，而不是 Spring
+// season1 是一个 Season 枚举类型变量，实际上赋给 season1 的值是 Spring 对应的整数值0，而不是 Spring
 Season season1 = Season.Spring;
 
 // 枚举类型可以与整数进行显式转换，但不能进行隐式转换。
@@ -484,7 +484,7 @@ Season season4 = type(Season).max;
 
 # 数据位置
 
-每种引用类型都有一个数据位置，指明变量值应该存储在哪里。Solidity 提供 3 种类型的数据位置：**storage**、**memory** 和 **calldata**。
+每种引用类型都有一个数据位置，指明变量值应该存储在哪里。Solidity 提供3种类型的数据位置：**storage**、**memory** 和 **calldata**。
 
 <!-- prettier-ignore -->
 | 数据位置 | 作用范围 | 是否可变 |
@@ -703,7 +703,7 @@ deposit{value: 5}();
 
 ```solidity
 address payable recipient = payable(0x123...);
-recipient.transfer(1 ether); // 转账 1 ETH
+recipient.transfer(1 ether); // 转账1 ETH
 ```
 
 # 控制结构
@@ -932,7 +932,7 @@ contract A {
 **`targetAddress.call{value: amount}(abiEncodedData)` 是一次低级调用**：
 
 - `targetAddress`：是目标合约的地址，是一个 _address_ 类型变量。
-- `{value: amount}`：表示附带发送 `amount` 个 wei 的以太币，这是一个可选参数。
+- `{value: amount}`：表示附带发送 `amount`个 wei 的以太币，这是一个可选参数。
 - `abiEncodedData`：是目标合约函数的 ABI 编码数据（通过 abi.encodeWithSignature 或者 abi.encodeWithSelector 编码），通过这个数据，决定调用目标合约的哪个函数。
 
 **它返回一个包含两个元素的元组 `(bool, bytes memory)`**：
@@ -1418,7 +1418,7 @@ if (条件表达式) revert 错误类型;
 
 ## assert
 
-assert 语句应用于检查一些被认为永远不应该发生的情况（例如除数为 0）。
+assert 语句应用于检查一些被认为永远不应该发生的情况（例如除数为0）。
 
 ```solidity
 //确认a 和 b在任何情况下都相等

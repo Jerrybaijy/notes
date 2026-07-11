@@ -190,7 +190,7 @@ Java 是一种静态类型语言，在声明变量时，必须先指定其数据
 
 ## char
 
-- **char**：16 位无符号整数，用于表示单个字符，采用 Unicode 编码，能表示世界上大部分语言的字符，值用单引号括起来。
+- **char**：16位无符号整数，用于表示单个字符，采用 Unicode 编码，能表示世界上大部分语言的字符，值用单引号括起来。
 - 使用单引号 `'` 标记字符。
 
 ## boolean
@@ -652,7 +652,7 @@ System.out.println(address[0]); // 北京
 ```java
 String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
 System.out.println(address[0]); // 北京
-address[0] = "西安"; // 修改索引号为 0 的元素
+address[0] = "西安"; // 修改索引号为0的元素
 System.out.println(address[0]); // 西安
 ```
 

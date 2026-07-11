@@ -9,7 +9,7 @@ tags:
 
 # Overview
 
-[PowerToys](https://learn.microsoft.com/zh-cn/windows/powertoys/) 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows 11，目标是帮助**提高工作效率、优化操作体验**。
+[PowerToys](https://learn.microsoft.com/zh-cn/windows/powertoys/) 是微软官方出品的一套**增强型系统工具合集**，适用于 Windows 10 和 Windows11，目标是帮助**提高工作效率、优化操作体验**。
 
 [**安装方法**](https://learn.microsoft.com/zh-cn/windows/powertoys/install?tabs=gh%2Cextract-094)：
 

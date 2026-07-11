@@ -29,7 +29,7 @@ tags:
 
   <img src="assets/image-20250215041011255.png" alt="image-20250215041011255" style="zoom: 50%;" />
 
-- 这里即使是 Win 11 也不要选择 Win 11，会给 U 盘的使用造成麻烦。
+- 这里即使是 Win11 也不要选择 Win11，会给 U 盘的使用造成麻烦。
 
   <img src="assets/image-20250215041254403.png" alt="image-20250215041254403" style="zoom: 50%;" />
 
@@ -248,7 +248,7 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 # 虚拟嵌套
 
-- 当想在虚拟机 Windows 11 中运行 Docker 时，涉及到虚拟嵌套。
+- 当想在虚拟机 Windows11 中运行 Docker 时，涉及到虚拟嵌套。
 - `编辑虚拟机设置` > `处理器` > 开启 `虚拟化 Interl VT-x/EPT 或 AMD-V/RVI(V)`
 
   <img src="assets/image-20250225120444161.png" alt="image-20250225120444161" style="zoom:50%;" />

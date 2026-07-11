@@ -31,7 +31,7 @@ tags:
 ## 代码规范
 
 - **大小写**：敏感
-- **缩进**：不敏感，通常缩进 2 个空格。
+- **缩进**：不敏感，通常缩进2个空格。
 - **分号**：行尾加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
@@ -178,7 +178,7 @@ console.log(age); // 20
 
 ## 原始值
 
-[**原始值**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#原始值)，除了 `Object` 以外，所有的类型都定义了[不可变的](https://developer.mozilla.org/zh-CN/docs/Glossary/Immutable)、在语言最底层直接表示的值。我们将这些类型的值称为**原始值**，一共 7 种。
+[**原始值**](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Data_structures#原始值)，除了 `Object` 以外，所有的类型都定义了[不可变的](https://developer.mozilla.org/zh-CN/docs/Glossary/Immutable)、在语言最底层直接表示的值。我们将这些类型的值称为**原始值**，一共7种。
 
 - **`number`**：数字
 - **`bigInt`**：大整数
@@ -206,12 +206,12 @@ console.log(age); // 20
 
 **八进制**：
 
-- 在数字开头加上 0，表示八进制数，八进制数由 0~7 组成，逢 8 进位。
+- 在数字开头加上0，表示八进制数，八进制数由0~7组成，逢8进位。
 
   ```javascript
   let num1 = 07;
   console.log(num1); // 7
-  
+
   let num2 = 010;
   console.log(num2); // 8
   ```
@@ -239,10 +239,10 @@ console.log(Number.MIN_VALUE); // 5e-324
 
 ### 特殊值
 
-`number` 有 3 个特殊值：
+`number` 有3个特殊值：
 
 - `Infinity` ：无穷大；
-  - 大于或等于 2 的 1024 次方的数值，JS 无法表示，会返回 `Infinity`。
+  - 大于或等于2的1024次方的数值，JS 无法表示，会返回 `Infinity`。
 
 - `-Infinity` ：无穷小；
 - `NaN` ：非数字（Not a Number）；
@@ -331,7 +331,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ### 转换成字符串
 
-- **语法 1**：`String(ITEM)`，调用函数，显式转换。
+- **语法1**：`String(ITEM)`，调用函数，显式转换。
 
   ```javascript
   let data = true;
@@ -341,27 +341,27 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   console.log(typeof res); // string
   ```
 
-- **语法 2**：`ITEM.toString()`，调用方法，显式转换。
+- **语法2**：`ITEM.toString()`，调用方法，显式转换。
   - `null` 和 `undefined` 没有 `toString()` 方法
   - `ITEM` 可以是数组
 
   ```javascript
   let data = true;
   res = data.toString();
-  
+
   console.log(res); // true
   console.log(typeof res); // string
   ```
 
-- **<span id="string-addition">语法 3</span>**：`ITEM + String`，字符串加法，隐式转换。
+- **<span id="string-addition">语法3</span>**：`ITEM + String`，字符串加法，隐式转换。
 
   ```javascript
   // ITEM也许可以是任意数据类型
-  
-  let res1 = 10 + "5"; // 将数字 10 转为字符串 "10"
+
+  let res1 = 10 + "5"; // 将数字10转为字符串 "10"
   console.log(res1); // 105
   console.log(typeof res1); // string
-  
+
   let res2 = true + ""; // 将布尔值 true 自动转换为字符串 "true"
   console.log(res2); // true
   console.log(typeof res2); // string
@@ -369,7 +369,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ### 转换成数字
 
-- **语法 1**：`Number(ITEM)`，调用函数，显式转换。
+- **语法1**：`Number(ITEM)`，调用函数，显式转换。
 
   ```javascript
   const str = "5";
@@ -379,13 +379,13 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   console.log(typeof res); // number
   ```
 
-- **语法 2**：`+ITEM`，算术加法运算符，隐式转换。
+- **语法2**：`+ITEM`，算术加法运算符，隐式转换。
 
   ```javascript
   // ITEM也许可以是任意数据类型
 
   let data1 = "5";
-  let res1 = +data1; // 将字符串 "5" 转换为数字 5
+  let res1 = +data1; // 将字符串 "5" 转换为数字5
   console.log(res1); // 5
   console.log(typeof res1); // number
 
@@ -414,7 +414,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 
 ### 转换成布尔值
 
-- **语法 1**：`Boolean(ITEM)`，调用函数，显式转换。
+- **语法1**：`Boolean(ITEM)`，调用函数，显式转换。
 
   ```javascript
   // ITEM也许可以是任意数据类型
@@ -430,7 +430,7 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
   console.log(typeof res2); // boolean
   ```
 
-- **语法 2**：`!ITEM`，逻辑非，隐式转换。
+- **语法2**：`!ITEM`，逻辑非，隐式转换。
 
   ```javascript
   // ITEM也许可以是任意数据类型
@@ -484,11 +484,11 @@ JS 是一门**弱类型语言**，对数据类型要求没那么严格，如果�
 JavaScript 是一门弱类型语言，当进行数学运算时，会对非数值类型进行隐式转换（字符串加法例外）：
 
 ```javascript
-10 + "5"; // "105"，数字 10 转为字符串 "10"
-10 - "5"; // 5，字符串 "5" 转为数字 5
-10 + true; // 11，布尔值 true 转为数字 1
-10 + false; // 10，布尔值 false 转为数字 0
-10 + null; // 10，空值 null 转为数字 0
+10 + "5"; // "105"，数字10转为字符串 "10"
+10 - "5"; // 5，字符串 "5" 转为数字5
+10 + true; // 11，布尔值 true 转为数字1
+10 + false; // 10，布尔值 false 转为数字0
+10 + null; // 10，空值 null 转为数字0
 10 + NaN; // NaN，number 类型的特殊值 NaN 与任何数据类型相加都等于 NaN
 ```
 
@@ -504,7 +504,7 @@ JavaScript 是一门弱类型语言，当进行数学运算时，会对非数值
 JavaScript 中的[一元正值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_plus)操作符会将非数值类型的操作数转换为数值；[一元负值](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Unary_negation)同理。
 
 ```javascript
-+"5" + // 5，字符串 "5" 转为数字 5
++"5" + // 5，字符串 "5" 转为数字5
   function (val) {
     return val;
   } + // NaN
@@ -1144,7 +1144,7 @@ function outside(x) {
   return inside;
 }
 
-const fnInside = outside(3); // fnInside 是 x 为 3 的 'inside' 函数
+const fnInside = outside(3); // fnInside 是 x 为3的 'inside' 函数
 console.log(fnInside(5)); // 8
 console.log(outside(3)(5)); // 8
 ```
@@ -1169,7 +1169,7 @@ const foo = function bar() {
 - `arguments.callee()`
 - `foo()`
 
-**示例**：定义一个函数，如果传入的参数是 1，则返回 1；如果传入的数字是 1 以上的数字，则返回参数 + 函数调用上一项。
+**示例**：定义一个函数，如果传入的参数是1，则返回1；如果传入的数字是1以上的数字，则返回参数 + 函数调用上一项。
 
 ```javascript
 function fun(a) {
@@ -1759,14 +1759,14 @@ console.log(res); // [1, 5, '9', 40, '80', 200, '700']
 ```javascript
 // 插入
 let arr1 = [1, 2, 3, 4];
-let res1 = arr1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入 5, 6, 7, 8
+let res1 = arr1.splice(0, 0, 5, 6, 7, 8); // 从第0索引号删除0个，插入5, 6, 7, 8
 console.log(arr1); // [5, 6, 7, 8, 1, 2, 3, 4]
 console.log(res1); // []  // 返回被删除元素组成的数组
 console.log(typeof res1); // object
 
 // 替换
 let arr2 = [1, 2, 3, 4];
-let res2 = arr2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入 22, 33
+let res2 = arr2.splice(1, 2, 22, 33); // 从第1索引号删除2个元素，并插入22, 33
 console.log(arr2); // [1, 22, 33, 4]
 console.log(res2); // [2, 3]  // 返回被删除元素组成的数组
 console.log(typeof res2); // object
@@ -2214,7 +2214,7 @@ console.log(typeof arr); // object
     const handlers = new Map();
     const send = (type, payload) => {
       const event = new CustomEvent(BRIDGE_EVENT_NAME, {
-        detail: { type, payload, _from: "sandbox" }
+        detail: { type, payload, _from: "sandbox" },
       });
       document.dispatchEvent(event);
     };
@@ -2231,7 +2231,7 @@ console.log(typeof arr); // object
           const handler = handlers.get(data.type);
           if (handler) handler(data.payload);
         });
-      }
+      },
     };
   }
 
@@ -2241,7 +2241,7 @@ console.log(typeof arr); // object
   function formatResumeContent() {
     const points = Array.from(capturedPoints.values());
     console.log("[Hunter Sandbox] Formatting total points:", points.length);
-    
+
     // 排序：先 Y 后 X
     points.sort((a, b) => {
       if (Math.abs(a.y - b.y) < 8) {
@@ -2263,9 +2263,9 @@ console.log(typeof arr); // object
       } else if (p.x - lastX > 15) {
         result += "  ";
       }
-      
+
       result += p.text;
-      lastX = p.x + (p.text.length * 10);
+      lastX = p.x + p.text.length * 10;
       lastY = p.y;
     }
 
@@ -2278,7 +2278,7 @@ console.log(typeof arr); // object
       ["项目经历", "\n【项目经历】"],
       ["项目经验", "\n【项目经验】"],
       ["资格证书", "\n【资格证书】"],
-      ["专业技能", "\n【专业技能】"]
+      ["专业技能", "\n【专业技能】"],
     ];
 
     let fullText = result.split("为妥善保护")[0].split("您可以直接")[0];
@@ -2297,7 +2297,7 @@ console.log(typeof arr); // object
       const content = formatResumeContent();
       bridge.send("__get_boss_canvas_resume_content_2__", {
         content,
-        resumePlatformKey: payload.resumePlatformKey
+        resumePlatformKey: payload.resumePlatformKey,
       });
     });
 
@@ -2320,21 +2320,21 @@ console.log(typeof arr); // object
         const context = originalGetContext.call(this, type, options);
         if (type === "2d" && context && !hijackedContexts.has(context)) {
           hijackedContexts.add(context);
-          
+
           // 修改原始 fillText 方法
           context.fillText = function (text, x, y, maxWidth) {
             if (typeof text === "string" && text.trim().length > 0) {
               const gridY = Math.round(y);
               const gridX = Math.round(x);
               const key = `${gridY}_${gridX}_${text}`;
-              
+
               // 将被劫持的内容存入容器
               if (!capturedPoints.has(key)) {
                 capturedPoints.set(key, {
                   text: text.trim(),
                   x,
                   y,
-                  timestamp: Date.now()
+                  timestamp: Date.now(),
                 });
               }
             }
@@ -2346,7 +2346,8 @@ console.log(typeof arr); // object
         // 返回 context 对象
         return context;
       };
-      HTMLCanvasElement.prototype.getContext.toString = () => originalGetContext.toString();
+      HTMLCanvasElement.prototype.getContext.toString = () =>
+        originalGetContext.toString();
 
       console.log("[Hunter Sandbox] Hijack initialized");
     } catch (err) {
@@ -2354,10 +2355,13 @@ console.log(typeof arr); // object
     }
   }
 
-  if (location.href.includes("zhipin.com") || location.href.includes("frame/c-resume")) {
+  if (
+    location.href.includes("zhipin.com") ||
+    location.href.includes("frame/c-resume")
+  ) {
     initHijack();
   }
 })();
 ```
 
-## 
+##

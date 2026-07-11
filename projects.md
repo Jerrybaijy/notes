@@ -104,8 +104,8 @@ tags:
           self.y = 500
           self.img = pygame.image.load(r"feiji/hero1.png")  # 玩家图片
           self.bulletList = []  # 玩家子弹列表
-          self.moveLeftState = 0  # 0不移动  1移动
-          self.moveRightState = 0  # 0不移动  1移动
+          self.moveLeftState = 0  # 0不移动1移动
+          self.moveRightState = 0  # 0不移动1移动
 
       def display(self):
           # 当前对象所在的screen属性下，调blit函数
@@ -251,13 +251,13 @@ tags:
 ## 项目概述
 
 - 这是一个 Python 练习，旨在练习控制结构；
-- 模拟 3 张银行卡，1001，1002，1003，分别设置密码和余额（使用列表嵌套字典的方式）；
+- 模拟3张银行卡，1001，1002，1003，分别设置密码和余额（使用列表嵌套字典的方式）；
 - 提示用户输入银行卡和密码，遍历每张卡的信息验证是否成功；
 - 如果用户输入正确
   - 提示让用户选择取款，存款还是退出，并提示余额多少；
 - 输入错误
   - 重新输入卡号密码；
-  - 错误 3 次即锁卡，程序结束；
+  - 错误3次即锁卡，程序结束；
 
 ## 具体步骤
 
@@ -269,7 +269,7 @@ tags:
   card3 = {"姓名": "王五", "卡号": "333", "密码": "333", "余额": 30000}
   cardslist = [card1, card2, card3]
   count = 0  # 记录输入错误的次数
-  msg = 0  # 记录登录状态 0失败 1成功！
+  msg = 0  # 记录登录状态0失败1成功！
 
   # 登录业务
   while 1 == 1:  # 输入账号和密码的无限循环
@@ -670,7 +670,7 @@ A 不仅监视存储库更改，还会监视集群中的更改，双方任意一
 
 ## 项目概述
 
-- **概述**：这是一个从 0 到 1 的 AI Agent 开发及部署项目。
+- **概述**：这是一个从0到1的 AI Agent 开发及部署项目。
 - **来源**：自己搭建
 - **功能**：在一个博客网页中加入一个聊天模型
 - **技术栈**：Flask，Langchain
@@ -838,7 +838,7 @@ if __name__ == '__main__':
     <div class="main-content">
       <div class="post">
         <h2>🎉 欢迎来到我的 AI 博客！</h2>
-        <p class="meta">发布于 2025年11月6日</p>
+        <p class="meta">发布于2025年11月6日</p>
         <p>
           本文介绍如何将一个强大的 AI
           聊天助手嵌入到您的个人博客中。请注意右下角的蓝色图标！点击它可以召唤
@@ -849,7 +849,7 @@ if __name__ == '__main__':
 
       <div class="post">
         <h2>Python 的未来：异步编程</h2>
-        <p class="meta">发布于 2025年10月15日</p>
+        <p class="meta">发布于2025年10月15日</p>
         <p>
           Python
           异步编程（Asyncio）是构建高性能网络应用的关键。它允许单个线程处理数千个并发连接，非常适合
@@ -861,7 +861,7 @@ if __name__ == '__main__':
 
       <div class="post">
         <h2>深入理解 LangChain</h2>
-        <p class="meta">发布于 2025年9月1日</p>
+        <p class="meta">发布于2025年9月1日</p>
         <p>
           LangChain 框架旨在帮助开发人员构建由大型语言模型驱动的应用。我们使用的
           `langchain-google-genai` 模块就是其中的一部分。它简化了与 Gemini
@@ -1388,7 +1388,7 @@ async function sendMessage() {
 
 ## 项目概述
 
-- **来源**：[我要自学网燎原《Python 编程入门 2021 新版教程》第十六章：综合训练-基于数据库的超市管理系统](https://www.51zxw.net/Show.aspx?cid=929&id=110570)
+- **来源**：[我要自学网燎原《Python 编程入门2021 新版教程》第十六章：综合训练-基于数据库的超市管理系统](https://www.51zxw.net/Show.aspx?cid=929&id=110570)
 - **概述**：这是一个商品管理系统的 Python 脚本，旨在练习函数的调用和 MySQL 的使用
 
 ## 创建过程
@@ -1802,7 +1802,7 @@ async function sendMessage() {
 
 ## 项目概述
 
-- **来源**：[我要自学网燎原《Python 编程入门 2021 新版教程》第十一章：综合训练-迷你图书馆](https://www.51zxw.net/Show.aspx?cid=929&id=110528)
+- **来源**：[我要自学网燎原《Python 编程入门2021 新版教程》第十一章：综合训练-迷你图书馆](https://www.51zxw.net/Show.aspx?cid=929&id=110528)
 - **概述**：这是一个迷你图书馆借阅系统的 Python 脚本，旨在练习函数的调用
 - **说明**
   - 自己添加了循环 Login 功能
@@ -2108,7 +2108,7 @@ async function sendMessage() {
               if username == user_exist["username"] and password == user_exist["password"]:
                   print("恭喜你，登录成功！")
                   msg = 1  # 登录成功
-                  return msg  # 返回 1，传回主函数，登录成功
+                  return msg  # 返回1，传回主函数，登录成功
           print("用户名密码错误，请重新输入！")
           # 此步骤是以下三行的简写
           # if msg == 0:
@@ -2120,7 +2120,7 @@ async function sendMessage() {
 
   def main():
       while True:
-          if login() == 1:  # 如果 login() 传回 1 代表登录成功
+          if login() == 1:  # 如果 login() 传回1代表登录成功
               while True:
                   print("-----业务选择------")
                   print("1.注册")
@@ -2455,7 +2455,7 @@ async function sendMessage() {
   from pymysql.cursors import DictCursor
 
   app = Flask(__name__)
-  CORS(app)  # 允许所有域的跨域请求，即允许前端的 3000 端口访问后端的 5000 端口
+  CORS(app)  # 允许所有域的跨域请求，即允许前端的3000端口访问后端的5000端口
 
   # 连接 MySQL 函数
   def conn_mysql():

@@ -97,7 +97,7 @@ kubectl apply -f my-app.yaml
 # 查看应用服务
 kubectl get svc -n my-ns
 
-# 将前端服务 80 端口到本地 8081 端口
+# 将前端服务80端口到本地8081端口
 kubectl port-forward svc/frontend 8081:80 -n my-ns
 ```
 

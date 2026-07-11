@@ -262,7 +262,7 @@ tags:
 | dynasty | 朝代 |
 | century | 世纪 |
 | decade /ˈdekeɪd/ | 十年 |
-| year | 年 |
+| year |年 |
 | season | 季节 |
 | month | 月 |
 | week | 星期 |
@@ -684,7 +684,7 @@ tags:
 | :---: | :---: |
 | hungry<br>thirsty | 饿的<br>渴的 |
 | healthy / well<br>ill | 健康的<br>生病的 |
-| young<br>old | 年轻的<br>老的 |
+| young<br>old |年轻的<br>老的 |
 | happy<br>angry | 高兴的<br>生气的 |
 | quiet<br>naughty | 安静的<br>淘气的 |
 | sleepy | 困的 |

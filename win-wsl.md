@@ -21,7 +21,7 @@ tags:
 ## 前提条件
 
 - Windows 10 版本 2004 及更高版本（内部版本 19041 及更高版本）或 Windows 11
-    - 较旧的 Windows 版本或 Windows Server Core 参照[旧版 WSL 的手动安装步骤](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)
+  - 较旧的 Windows 版本或 Windows Server Core 参照[旧版 WSL 的手动安装步骤](https://learn.microsoft.com/zh-cn/windows/wsl/install-manual)
 - [开启 CPU 虚拟化](<windows.md#开启 CPU 虚拟化>)
 
 ## Install
@@ -30,43 +30,43 @@ tags:
 
 - 如遇网络问题可多试几次
 
-    > [!TIP]
-    > 开启科学上网，可大大加快下载速度。
+  > [!TIP]
+  > 开启科学上网，可大大加快下载速度。
 
 ### 安装 WSL
 
 - 安装 WSL
 
-    ```bash
-    wsl --install
-    ```
+  ```bash
+  wsl --install
+  ```
 
 - 重启系统生效
 
 - 查看 WSL 版本
 
-    ```bash
-    wsl -v
-    ```
+  ```bash
+  wsl -v
+  ```
 
 - 安装 WSL 后，软件列表会出现两个图标：
-    - WSL
-    - WSL Settings
+  - WSL
+  - WSL Settings
 
 ### 安装 Linux 分发版
 
 - 查看可用的 Linux 分发版
 
-    ```bash
-    wsl --list --online
-    ```
+  ```bash
+  wsl --list --online
+  ```
 
 - 安装指定的 Linux 分发版
 
-    ```bash
-    wsl --install [Distro]
-    wsl --install Ubuntu-24.04
-    ```
+  ```bash
+  wsl --install [Distro]
+  wsl --install Ubuntu-24.04
+  ```
 
 - 安装成功以后会先设置 Linux 用户名和密码
 
@@ -74,9 +74,9 @@ tags:
 
 - 查看已安装的 Linux 分发版
 
-    ```bash
-    wsl -l -v
-    ```
+  ```bash
+  wsl -l -v
+  ```
 
 - 重启终端，Windows Terminal 下拉菜单会自动出现 `Ubuntu-24.04` 选项。
 
@@ -84,24 +84,23 @@ tags:
 
 - 此方法确实可以解决问题，等再次安装时，尝试只[修改主机 DNS](<windows.md#修改 DNS>)，尝试是否能解决问题。
 
-- 安装 Linux 分发版以后，[查看主机网卡](<windows.md#查看网卡>)，会自动创建一个 `vEthernet (WSL (Hyper-V firewall))` 虚拟网卡。
+- 安装 Linux 分发版以后，[查看主机网卡](windows.md#查看网卡)，会自动创建一个 `vEthernet (WSL (Hyper-V firewall))` 虚拟网卡。
 
 - 当停止 Linux 后，主机网络会出现 DNS 异常，此时需要配置 WSL 的网络模式为 `Mirrored` 模式。
+  - 运行 WSL Settings：`网络` > `网络模式`：切换为 `Mirrored`
 
-    - 运行 WSL Settings：`网络` > `网络模式`：切换为 `Mirrored`
+  - 或者在 `~` 目录下创建 `.wslconfig` 文件
 
-    - 或者在 `~` 目录下创建 `.wslconfig` 文件
+    ```
+    [wsl2]
+    networkingMode=mirrored
+    ```
 
-        ```
-        [wsl2]
-        networkingMode=mirrored
-        ```
-
-    - 重启 WSL 和 Linux 生效。
+  - 重启 WSL 和 Linux 生效。
 
 - 之前的虚拟网卡可能会变成 `vEthernet (FSE HostVnic)`
 
-    ![image-20260603213156921](assets/image-20260603213156921.png)
+  ![image-20260603213156921](assets/image-20260603213156921.png)
 
 # 基本命令
 
@@ -128,4 +127,3 @@ wsl --status
 # 关机
 wsl --shutdown
 ```
-

@@ -11,7 +11,7 @@ tags:
 
 <img src="assets/image-20251029210729119.png" alt="image-20251029210729119" style="zoom:50%;" />
 
-- **概述**：这是一个从 0 到 1 的 AI Agent 开发及部署项目。
+- **概述**：这是一个从0到1的 AI Agent 开发及部署项目。
 - **来源**：YouTube 博主 [Build a Complete Medical Chatbot with LLMs, LangChain, Pinecone, Flask & AWS](https://www.youtube.com/watch?v=KnoVFU0yCUc&list=PLkz_y24mlSJa5JQCRA519psvRqTMqxvMv&index=13)
 - **功能**：AI Agent 根据给定的 PDF 文件，回答问题。
 - **技术栈**：Langchain、Pinecone、Flask、AWS

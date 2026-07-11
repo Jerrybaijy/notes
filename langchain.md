@@ -861,12 +861,12 @@ class LoggingMiddleware(AgentMiddleware):
     它负责在模型调用前后打印日志信息。
     """
 
-    # 钩子 1: 在模型调用之前触发
+    # 钩子1: 在模型调用之前触发
     def before_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
         print(f"状态中包含 {len(state['messages'])} 条消息。")
         return None
 
-    # 钩子 2: 在模型调用之后触发
+    # 钩子2: 在模型调用之后触发
     def after_model(self, state: AgentState, runtime: Runtime) -> dict[str, Any] | None:
         last_message_content = state['messages'][-1].content
         print(f"模型已返回（部分内容）: {last_message_content[:30]}...")

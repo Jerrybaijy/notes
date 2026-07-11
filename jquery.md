@@ -146,7 +146,7 @@ jQuery 是一个快速、轻量级、跨浏览器的 JavaScript 库，它简化�
   let data = tag.text();
 
   // 更改标签内容
-  tag.text("666"); // tag 标签变量  666 更改内容
+  tag.text("666"); // tag 标签变量666更改内容
 
   // 获取输入框内容text/password
   let data = tag.val();

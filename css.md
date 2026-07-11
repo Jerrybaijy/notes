@@ -26,7 +26,7 @@ tags:
 ## 代码风格
 
 - **大小写**：不敏感，通常全小写。
-- **缩进**：不敏感，通常缩进 2 个空格。
+- **缩进**：不敏感，通常缩进2个空格。
 - **分号**：行尾加 `;`
 - **空白行**：不敏感
 - **换行**：不敏感
@@ -204,7 +204,7 @@ CSS [属性](https://developer.mozilla.org/en-US/docs/Web/CSS/Properties)用于�
 
 ## 四值语法
 
-**四值语法**是某个属性的*属性值*，可以是 `1-4` 个值；此部分是自己总结。
+**四值语法**是某个属性的*属性值*，可以是 `1-4`个值；此部分是自己总结。
 
 - **一个值**：该值将应用于**四条边**。
 - **两个值**：第一个值应用于 `top` 和 `bottom`，第二个值应用于 `left` 和 `right`。
@@ -1778,7 +1778,7 @@ h4 {
 `display` 属性有六种取值类型：
 
 - [`<display-outside>`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/display-outside)
-  - [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的 100%。将这种元素称为**块级元素**。
+  - [`block`](https://drafts.csswg.org/css-display/#valdef-display-block)：以块的形式显示，通常新起一行，默认宽度会占据父元素的100%。将这种元素称为**块级元素**。
   - [`inline`](https://drafts.csswg.org/css-display/#valdef-display-inline)：在同一行上显示，不会新起一行，只占据它所包含内容的宽度。将这种元素称为**行内元素**。
   - `run-in`
   - `inline` 和 `block` 在非流式布局中，会失去它们原有的特性，统一变成其它布局特性。
@@ -2448,7 +2448,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 - `display: grid;`：设置布局方式为网格布局
 - `grid-template-columns`：设置列轨道的数量和大小。
   - 此例中的 `200px` 是一个绝对大小。
-  - 绝对大小、`fr`、`repeat()`  可混合写。
+  - 绝对大小、`fr`、`repeat()` 可混合写。
 
 #### fr 单位
 
@@ -2525,7 +2525,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - `display: grid;`：设置布局方式为网格布局
-- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复 3 个 `fr`。
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
 
 ### `grid-column`
 
@@ -2593,7 +2593,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 网格布局会为我们创建编号的网格线来让我们来定位每一个网格元素。例如下面这个三列两行的网格中，就拥有四条纵向的网格线。
 
-网格线的编号顺序取决于文章的书写模式。在从左至右书写的语言中，编号为 1 的网格线位于最左边。在从右至左书写的语言中，编号为 1 的网格线位于最右边。
+网格线的编号顺序取决于文章的书写模式。在从左至右书写的语言中，编号为1的网格线位于最左边。在从右至左书写的语言中，编号为1的网格线位于最右边。
 
 <img src="assets/image-20251018133402315.png" alt="image-20251018133402315" style="zoom:50%;" />
 
@@ -2647,7 +2647,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - `display: grid;`：设置布局方式为网格布局
-- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复 3 个 `fr`。
+- `grid-template-columns`：设置列轨道的数量和大小，`repeat(3, 1fr)` 表示重复3个 `fr`。
 - `grid-column-start`：设置网格项的列起始网格线编号
 - `grid-column-end`：设置网格项的列终止网格线编号
 - `grid-row-start`：设置网格项的行起始网格线编号
@@ -2774,7 +2774,7 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 **在以上示例中**：
 
 - 通过 `display: grid;` 将 `item-1` 网格项再设为网格布局。
-- 网格项 `item-1`  内部的三个子元素都变为它的网格项。
+- 网格项 `item-1` 内部的三个子元素都变为它的网格项。
 
 ### 其它属性
 
@@ -3177,19 +3177,19 @@ p {
       width: 60%;
       margin-right: auto;
     }
-    
+
     /* 水平居中 */
     .example {
       width: 60%;
       margin: auto;
     }
-    
+
     /* 水平靠左 */
     .example {
       width: 60%;
       margin-left: auto;
     }
-    
+
     /* 行内元素显示为块级并居中 */
     .example {
       width: 60%;
@@ -3268,7 +3268,7 @@ export default function Button() {
 **React 组件：`Button.tsx`**
 
 ```tsx
-import styles from './Button.module.css';
+import styles from "./Button.module.css";
 
 export default function Button() {
   // styles.primary 的值实际上是 "_primary_z123_5" 这样的字符串
