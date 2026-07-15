@@ -9,6 +9,7 @@ tags:
   - cloud-computing
   - gcp
   - artifact-registry
+  - google
 ---
 
 # Overview

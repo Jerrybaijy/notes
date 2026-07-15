@@ -3,19 +3,19 @@ title: mysql
 author: Jerry.Baijy
 tags:
   - dev
-  - software
-  - databese
+  - db
+  - sql
 ---
 
-# MySQL
+# Overview
 
 [**MySQL**](https://www.mysql.com/cn/) 是一个[关系型数据库](it-basics.md#数据库类型)管理系统，由瑞典 MySQL AB 公司开发，属于 Oracle 旗下产品。MySQL 使用 C 和 C++ 编写，使用标准的 SQL 语言操作数据库，支持多线程，是最流行的关系型数据库管理系统之一。
 
-## MySQL 环境搭建
+# Install
 
-### Windows MySQL
+## Windows MySQL
 
-#### 安装
+### 安装
 
 - 尽量使用容器化的 MySQL；
 
@@ -58,7 +58,7 @@ tags:
   mysql -u root -p
   ```
 
-#### 卸载
+### 卸载
 
 - 详见《我要自学网 Python 课程》软件安装包说明；
 - 必须先停止 MySQL 服务！！
@@ -82,7 +82,7 @@ tags:
 - 完全卸载了以后就可以正常重新安装了；
 - 如想彻底删除，记得删除安装时自己配置的系统环境变量；
 
-### 容器化 MySQL
+## 容器化 MySQL
 
 - Docker 已运行。
 
@@ -125,9 +125,9 @@ tags:
     mysql>
     ```
 
-### Minikube 中的 MySQL
+## Minikube 中的 MySQL
 
-#### `mysql.yaml`
+### `mysql.yaml`
 
 ```yaml
 apiVersion: v1
@@ -224,7 +224,7 @@ spec:
   clusterIP: None
 ```
 
-#### 本地访问
+### 本地访问
 
 将 MySQL 服务端口转发至本地，其余同理
 
@@ -232,18 +232,18 @@ spec:
 kubectl port-forward service/$SERVICE_NAME 3306:3306 -n $NAMESPACE
 ```
 
-### XAMPP
+## XAMPP
 
-使用 XAMPP 可以模拟一个 MySQL 数据库，详见 [XAMPP 笔记](software.md#xampp)。
+使用 [XAMPP](xampp.md) 可以模拟一个 MySQL 数据库。
 
-## MySQL 交互方式
+# MySQL 交互方式
 
 - **命令行客户端**：`mysql`
 - **编程语言客户端**：如 Python 的 `pymysql`
 - **ORM**：如 Python 的 `sqlalchemy`
 - **GUI 工具**：如 `Navicat`
 
-## MySQL 基础
+# MySQL 基础
 
 - **语法规范**
   - MySQL 遵循 [SQL](../../code-language/sql/sql.md) 标准语法。
@@ -281,7 +281,7 @@ kubectl port-forward service/$SERVICE_NAME 3306:3306 -n $NAMESPACE
   set names 'utf8';
   ```
 
-## MySQL 命令样板
+# MySQL 命令样板
 
 - **创建 Database**
 
@@ -299,8 +299,8 @@ kubectl port-forward service/$SERVICE_NAME 3306:3306 -n $NAMESPACE
   ) DEFAULT CHARSET=utf8;
   ```
 
-## 解决办法
+# FAQ
 
-### 忘记密码
+## 忘记密码
 
-- 关于忘记密码，需先进入无授权模式，改完之后再切换回正常模式。
+关于忘记密码，需先进入无授权模式，改完之后再切换回正常模式。

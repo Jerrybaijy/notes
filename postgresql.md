@@ -3,8 +3,8 @@ title: postgresql
 author: Jerry.Baijy
 tags:
   - dev
-  - software
-  - databese
+  - db
+  - sql
 ---
 
 # Overview

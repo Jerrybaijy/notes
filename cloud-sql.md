@@ -6,6 +6,7 @@ tags:
   - cloud-computing
   - gcp
   - cloud-sql
+  - google
 ---
 
 # Overview

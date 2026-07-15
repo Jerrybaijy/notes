@@ -4,7 +4,7 @@ author: Jerry.Baijy
 tags:
   - dev
   - software
-  - databese
+  - db
 ---
 
 # Navicat Premium Lite

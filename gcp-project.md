@@ -6,6 +6,7 @@ tags:
   - cloud-computing
   - gcp
   - gcp-project
+  - google
 ---
 
 # Overview

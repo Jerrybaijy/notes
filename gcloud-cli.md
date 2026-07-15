@@ -7,6 +7,7 @@ tags:
   - cloud-computing
   - gcp
   - cli
+  - google
 ---
 
 # Overview

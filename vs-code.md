@@ -564,7 +564,7 @@ h6::before {
 
 ## Emmet
 
-**Emmet** 可通过**缩写语法**快速生成 HTML 和 CSS 代码片段，详见 [`software | Emmet`](software.md#emmet) 笔记。
+[**Emmet**](emmet.md) 可通过**缩写语法**快速生成 HTML 和 CSS 代码片段。
 
 ## 选择解释器虚拟环境
 

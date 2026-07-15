@@ -6,6 +6,7 @@ tags:
   - dev-ops
   - cloud-computing
   - gcp
+  - google
 ---
 
 # Overview
