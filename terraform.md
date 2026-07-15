@@ -33,7 +33,7 @@ tags:
 - [设置 GCP](https://developer.hashicorp.com/terraform/tutorials/gcp-get-started/google-cloud-platform-build#set-up-gcp)：
   - 完成 [GCP 准备工作](gcp.md#准备工作)
   - [创建 GCP Project](<gcp-project.md#创建 GCP 项目>)
-  - [为 Terraform 授权](gcp-gcloud-cli.md#为其它应用授权)
+  - [为 Terraform 授权](gcloud-cli.md#为其它应用授权)
 
     ```bash
     gcloud auth application-default login
@@ -179,7 +179,7 @@ terraform apply
 
 ## 更新 `kubectl` 配置
 
-使用 Terraform 部署 GKE 资源后要[更新 `kubectl` 配置](<gcp-gke.md#更新 `kubectl` 配置>)。
+使用 Terraform 部署 GKE 资源后要[更新 `kubectl` 配置](<gke.md#更新 `kubectl` 配置>)。
 
 ```bash
 gcloud container clusters get-credentials todo-cluster \

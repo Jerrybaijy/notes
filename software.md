@@ -15,7 +15,7 @@ tags:
 - 每个1级标题都是一个软件，以首字母排序。
   - 实验
 
-## Task list
+## Todo List
 
 - **Daily**
   - [ ] slack dev-misc
@@ -40,7 +40,7 @@ tags:
 
 # AnythingLLM
 
-**AnythingLLM** 是一个 **本地部署的知识库管理和 AI 助手**，可以让大语言模型（LLM）与本地文件、笔记、文档等数据进行交互。它支持 **Ollama、GPT-4、Claude** 等多个 LLM 作为后端，可以用来搭建一个 **私人 AI 助手**，从本地知识库中查找信息并回答问题。
+[**AnythingLLM**](https://anythingllm.com/) 是一个 **本地部署的知识库管理和 AI 助手**，可以让大语言模型（LLM）与本地文件、笔记、文档等数据进行交互。它支持 **Ollama、GPT-4、Claude** 等多个 LLM 作为后端，可以用来搭建一个 **私人 AI 助手**，从本地知识库中查找信息并回答问题。
 
 ## 环境搭建
 
@@ -51,22 +51,9 @@ tags:
 
 - 拉倒最底部，点击 `Update Workspace`。
 
-# Deepseek
-
-## 环境搭建
-
-- 确保 Ollama 已安装
-- 安装 Deepseek
-
-  ```bash
-  ollama run deepseek-r1:1.5b
-  ```
-
-- 在 UI 界面添加 Deepseek 大模型，如 AnythingLLM 和 Page Assist。
-
 # DiskGenius
 
-DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
+[**DiskGenius**](https://www.diskgenius.com/) 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 - 磁盘分区
 - 数据恢复
@@ -75,7 +62,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 # Emmet
 
-[**Emmet**](https://emmet.io/) 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 Emmet。如今，它已经成为许多主流编辑器（如 VS Code）的内置工具。
+[**Emmet**](https://emmet.io/) 是一款用于提高 Web 开发效率的工具，它可以通过简短的缩写语法快速生成 HTML 和 CSS 代码片段。它最初由 Sergey Chikuyonok 开发，前身是 **Zen Coding**，后更名为 **Emmet**。如今，它已经成为许多主流编辑器（如 VS Code）的内置工具。
 
 - **使用**：`缩写 | Tap` 或 `缩写 | Enter`
 - **基础语法规则**
@@ -136,18 +123,18 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 # Everything
 
-**Everything** 是一款由 Voidtools 开发的 Windows 文件搜索工具，它最大的特点就是**搜索速度极快**，基本上能做到“输入即结果”。
+[**Everything**](https://www.voidtools.com/zh-cn/) 是一款由 Voidtools 开发的 Windows 文件搜索工具，它最大的特点就是**搜索速度极快**，基本上能做到“输入即结果”。
 
 - [官网下载 Everything](https://www.voidtools.com/zh-cn/)
 - 印象中可用于批量修改文件名，但最后一次不会用了，也许是记错了。
 
 # Grafana
 
-**Grafana** 是一款开源的数据可视化与监控平台，能将来自 Prometheus、MySQL、Elasticsearch 等多种数据源的数据，转化为美观、可交互的仪表盘（Dashboard），广泛用于应用性能监控（APM）、系统资源监控、业务数据可视化等场景。
+[**Grafana**](https://grafana.com/) 是一款开源的数据可视化与监控平台，能将来自 Prometheus、MySQL、Elasticsearch 等多种数据源的数据，转化为美观、可交互的仪表盘（Dashboard），广泛用于应用性能监控（APM）、系统资源监控、业务数据可视化等场景。
 
 # MDN
 
-[**MDN**](https://developer.mozilla.org/zh-CN/) (**M**ozilla **D**eveloper **N**etwork)，全称 **MDN Web Docs**，是一个为 Web 开发者提供权威的、开放的、免费的技术文档网站。
+[**MDN**](https://developer.mozilla.org/zh-CN/) (Mozilla Developer Network)，全称 **MDN Web Docs**，是一个为 Web 开发者提供权威的、开放的、免费的技术文档网站。
 
 最初由 **Mozilla 基金会**（也就是开发 Firefox 浏览器的组织）创建和维护，后来，MDN 的发展不再仅仅依赖 Mozilla，而是由 **MDN Web Docs 社区** 维护，并且由 **Mozilla、谷歌、微软、三星等公司**共同支持。
 
@@ -282,7 +269,7 @@ DiskGenius 是一款功能强大的磁盘管理工具。主要有以下功能：
 
 # MongoDB
 
-MongoDB 是一种非关系型数据库管理系统（NoSQL），使用的是 **文档导向模型**，以 BSON（Binary JSON，二进制 JSON）格式展示数据。
+[**MongoDB**](https://www.mongodb.com/) 是一种非关系型数据库管理系统（NoSQL），使用的是 **文档导向模型**，以 BSON（Binary JSON，二进制 JSON）格式展示数据。
 
 ## 环境搭建
 
@@ -405,10 +392,10 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
   ```bash
   # 查看 document
   db.$COLLECTION_NAME.find()
-
+  
   # 操作第一个 document 用'~One'
   # 操作所有 document 用'~Many'
-
+  
   # 创建 Collection / document
   db.$COLLECTION_NAME.insertOne({$KEY1:"$VALUE1"},{$KEY2:"$VALUE2"},...)
   # 修改 document
@@ -421,7 +408,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 # Mp3tag
 
-[Mp3tag](https://www.mp3tag.de/en/) 是一个音乐标签管理工具。
+[**Mp3tag**](https://www.mp3tag.de/en/) 是一个音乐标签管理工具。
 
 <!-- prettier-ignore -->
 | 变量 | 描述 |
@@ -438,7 +425,7 @@ MongoDB 中的 `document` 类似于 MySQL 中的 `row`，所有数据以 `docume
 
 # MyDockFinder
 
-MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyFinder 和 MyDock。
+[**MyDockFinder**](https://www.mydockfinder.com/) 是一款 Windows 平台上的桌面管理工具，可以设置 MyFinder 和 MyDock。
 
 ![image-20250111184147133](assets/image-20250111184147133.png)
 
@@ -455,7 +442,7 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
 
 # Pandoc
 
-**Pandoc** 是一个文档转换工具，支持多种文档格式之间的转换。
+[**Pandoc**](https://pandoc.org/) 是一个文档转换工具，支持多种文档格式之间的转换。
 
 ## 环境搭建
 
@@ -500,7 +487,7 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
 
 # Podman
 
-- **Podman** 是一个用于管理容器的工具，类似于 Docker。
+[**Podman**](https://podman.io/) 是一个用于管理容器的工具，类似于 Docker。
 
 ## 环境搭建
 
@@ -518,7 +505,7 @@ MyDockFinder 是一款 Windows 平台上的桌面管理工具，可以设置 MyF
 
 # Prometheus
 
-Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开发。它专为云环境而设计，可以动态发现目标，并收集它们的度量指标，存储这些指标，并提供基于这些指标的警报功能。
+[**Prometheus**](https://prometheus.io/) 是一个开源的监控和警报工具，最初由 Sound Cloud 开发。它专为云环境而设计，可以动态发现目标，并收集它们的度量指标，存储这些指标，并提供基于这些指标的警报功能。
 
 ## Basics
 
@@ -566,9 +553,9 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
   docker start grafana prometheus twas_metrics
   ```
 
-# [Rainmeter](https://www.rainmeter.net/)
+# Rainmeter
 
-**Rainmeter** 是一款非常流行的桌面定制软件，主要用于在 Windows 系统上创建并显示动态桌面小部件（Widgets）或皮肤（Skins）。
+[**Rainmeter**](https://www.rainmeter.net/) 是一款非常流行的桌面定制软件，主要用于在 Windows 系统上创建并显示动态桌面小部件（Widgets）或皮肤（Skins）。
 
 ## 环境搭建
 
@@ -586,7 +573,7 @@ Prometheus 是一个开源的监控和警报工具，最初由 Sound Cloud 开�
 
 # Rufus
 
-Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像文件（例如操作系统安装盘镜像）写入 U 盘，制作启动 U 盘，类似与 Windows 的 U 盘介质。
+[**Rufus**](https://rufus.ie/zh/) 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像文件（例如操作系统安装盘镜像）写入 U 盘，制作启动 U 盘，类似与 Windows 的 U 盘介质。
 
 ## 特点
 
@@ -636,7 +623,7 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
 
 # SQLite
 
-**SQLite** 是一个轻量级的关系型数据库管理系统（RDBMS），它的主要特点是：
+[**SQLite**](https://sqlite.org/) 是一个轻量级的关系型数据库管理系统（RDBMS），它的主要特点是：
 
 - **嵌入式**：直接内嵌在应用里，无需安装。
 - **无需安装**：因为 SQLite 是一个库而非服务器，它直接访问数据库文件，所以无需额外的安装配置。
@@ -691,13 +678,13 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
   ```sql
   -- 退出 SQLite 交互界面
   .exit
-
+  
   -- 查看所有数据库
   .database
-
+  
   -- 查看数据库中的所有表
   .tables
-
+  
   -- 查看某个表的结构
   .schema tbl1
   ```
@@ -745,7 +732,7 @@ Rufus 是一款轻量级、开源的工具。它可以帮助用户将 ISO 镜像
 
 # Trae
 
-TRAE 是由字节跳动推出的一款 IDE。它不仅仅是在传统编辑器上增加 AI 功能，而是从底层开始就以 AI 为核心构建的。
+[**TRAE**](https://www.trae.ai/) 是由字节跳动推出的一款 IDE。它不仅仅是在传统编辑器上增加 AI 功能，而是从底层开始就以 AI 为核心构建的。
 
 - Chat：使用**自然语言**与 AI 交互
 - Builder：使用**内置工具**借助 AI 自动开发
@@ -753,15 +740,15 @@ TRAE 是由字节跳动推出的一款 IDE。它不仅仅是在传统编辑器�
 
 > [Trae 文档](https://docs.trae.cn/ide/what-is-trae?_lang=zh)
 
-# [TranslucentTB](https://translucenttb.com/)
+# TranslucentTB
 
-**TranslucentTB** 是一款免费的 Windows 桌面工具，主要用于自定义 Windows 任务栏的外观，特别是实现任务栏的透明效果。
+[**TranslucentTB**](https://translucenttb.com/) 是一款免费的 Windows 桌面工具，主要用于自定义 Windows 任务栏的外观，特别是实现任务栏的透明效果。
 
 # Ventoy
 
 ## Ventoy 基础
 
-Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘。与传统的方式不同，Ventoy 不需要你为每个操作系统或工具单独创建启动盘，而是只需将 ISO 文件复制到 USB 驱动器，然后通过 Ventoy 启动这些 ISO 文件。
+[**Ventoy**](https://www.ventoy.net/cn/index.html) 是一个开源的工具，主要用于创建多重引导 USB 启动盘。与传统的方式不同，Ventoy 不需要你为每个操作系统或工具单独创建启动盘，而是只需将 ISO 文件复制到 USB 驱动器，然后通过 Ventoy 启动这些 ISO 文件。
 
 ## 制作 Ventoy U 盘
 
@@ -792,7 +779,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 # Wallpaper Engine
 
-**Wallpaper Engine** 是一款非常流行的桌面壁纸管理工具。
+[**Wallpaper Engine**](https://www.wallpaperengine.io/zh-hans) 是一款非常流行的桌面壁纸管理工具。
 
 ## 环境搭建
 
@@ -807,7 +794,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 # Wiki
 
-**Wiki** 是一种可通过浏览器访问并由用户协同编辑其内容的网站。包括[维基百科](https://zh.wikipedia.org/wiki/Wikipedia:首页)、[维基词典](https://zh.wiktionary.org/wiki/Wiktionary:首页)、[维基教科书](https://zh.wikibooks.org/wiki/Wikibooks:首页)、[维基语录](https://zh.wikiquote.org/wiki/Wikiquote:首页)、[维基共享资源](https://commons.wikimedia.org/wiki/首页)、[维基新闻](https://zh.wikinews.org/zh-cn/Wikinews:首页)、[维基文库](https://zh.wikisource.org/zh-hans/Wikisource:首页)、[维基物种](https://species.wikimedia.org/wiki/首页)、[维基数据](https://www.wikidata.org/wiki/Wikidata:Introduction/zh)、[维基导游](https://zh.wikivoyage.org/wiki/首页)及[元维基](https://meta.wikimedia.org/wiki/Main_Page/zh)。
+[**Wiki**](https://www.wikipedia.org/) 是一种可通过浏览器访问并由用户协同编辑其内容的网站。包括[维基百科](https://zh.wikipedia.org/wiki/Wikipedia:首页)、[维基词典](https://zh.wiktionary.org/wiki/Wiktionary:首页)、[维基教科书](https://zh.wikibooks.org/wiki/Wikibooks:首页)、[维基语录](https://zh.wikiquote.org/wiki/Wikiquote:首页)、[维基共享资源](https://commons.wikimedia.org/wiki/首页)、[维基新闻](https://zh.wikinews.org/zh-cn/Wikinews:首页)、[维基文库](https://zh.wikisource.org/zh-hans/Wikisource:首页)、[维基物种](https://species.wikimedia.org/wiki/首页)、[维基数据](https://www.wikidata.org/wiki/Wikidata:Introduction/zh)、[维基导游](https://zh.wikivoyage.org/wiki/首页)及[元维基](https://meta.wikimedia.org/wiki/Main_Page/zh)。
 
 ## 维基百科
 
@@ -821,7 +808,7 @@ Ventoy 是一个开源的工具，主要用于创建多重引导 USB 启动盘�
 
 # XAMPP
 
-XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运行 Web 服务器环境。XAMPP 包含了 Apache HTTP 服务器、MySQL 数据库、PHP 和 Perl 等工具，以及一些其他必要的组件，使用户能够在本地计算机上轻松地搭建和运行 Web 应用程序。
+[**XAMPP**](https://www.apachefriends.org/) 是一个流行的免费开源的跨平台软件包，用于搭建和运行 Web 服务器环境。XAMPP 包含了 Apache HTTP 服务器、MySQL 数据库、PHP 和 Perl 等工具，以及一些其他必要的组件，使用户能够在本地计算机上轻松地搭建和运行 Web 应用程序。
 
 ## 使用方法
 
@@ -837,11 +824,13 @@ XAMPP 是一个流行的免费开源的跨平台软件包，用于搭建和运�
 
 # Xmind
 
-Xmind 是一个思维导图工具。
+[**Xmind**](https://xmind.com/) 是一个思维导图工具。
+
+[**Xmind 中文版**](https://xmind.cn/)
 
 # YouTube
 
-YouTube 是 Google 旗下的全球最大的视频网站。
+[**YouTube**](https://www.youtube.com/) 是 Google 旗下的全球最大的视频网站。
 
 ## 快捷键
 

@@ -2766,7 +2766,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 
 ## 创建 Cloud SQL 实例
 
-创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Quick Start>)。
+创建 Cloud SQL 实例并完成初始化，详见 [Cloud SQL 笔记](<cloud-sql.md#Quick Start>)。
 
 ## 安装 Argo CD
 
@@ -2791,7 +2791,7 @@ kubectl apply -f chart-app.yaml
 
 - 访问前端：http://$EXTERNAL-IP
 
-- 如有调试需要，可本地连接 Cloud SQL，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#连接 Cloud SQL (白名单)>)。
+- 如有调试需要，可本地连接 Cloud SQL，详见 [Cloud SQL 笔记](<cloud-sql.md#连接 Cloud SQL (白名单)>)。
 
 ## 销毁资源
 
@@ -3935,7 +3935,7 @@ kubectl config use-context gke_project-60addf72-be9c-4c26-8db_asia-east2_todo-cl
 
 - 访问前端：http://$EXTERNAL-IP
 
-- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<gcp-cloud-sql.md#Cloud SQL Auth>)。
+- 本地连接 Cloud SQL 的方式有变化，需在本地电脑使用 Cloud SQL Auth 代理，详见 [Cloud SQL 笔记](<cloud-sql.md#Cloud SQL Auth>)。
 
 ## 销毁资源
 

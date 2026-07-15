@@ -27,7 +27,7 @@ tags:
 
 - [将 Repositories 关联到 GitLab 和创建 Trigger](gcp-repositories.md#GitLab)
 
-- [创建 Docker Repository](<gcp-artifact-registry.md#创建 Docker Repository>)
+- [创建 Docker Repository](<artifact-registry.md#创建 Docker Repository>)
 
 - 给 Trigger 的 GSA 添加角色
 

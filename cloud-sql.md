@@ -76,7 +76,7 @@ gcloud sql instances list
 
 ## 使用 `gcloud` 创建 Cloud SQL
 
-详见 [Quick Start](<gcp-cloud-sql.md#Quick Start>)
+详见 [Quick Start](<cloud-sql.md#Quick Start>)
 
 ## 使用 Terraform 创建 Cloud SQL
 
@@ -459,7 +459,7 @@ GKE 节点公网 IP 加入到白名单以后，GKE 中的 Pod 可通过 Cloud SQ
 
 详见 [Todo Fullstack](<todo-fullstack.md#Chart + Argo CD + GCP + Terraform 部署>) 项目
 
-- 在 GKE 中[启用 Workload Identity](<gcp-iam.md#Workload Identity>)
+- 在 GKE 中[启用 Workload Identity](<iam.md#Workload Identity>)
 - 在后端添加 cloud-sql-proxy 容器
 
 ### 允许 GSA 访问 Cloud SQL

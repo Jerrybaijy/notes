@@ -3,7 +3,7 @@ title: win-chocolatey
 author: Jerry.Baijy
 tags:
   - dev
-  - 包管理工具
+  - package-managers
   - windows
 ---
 

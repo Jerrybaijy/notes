@@ -136,7 +136,7 @@ tags:
 
 ## 为 Gcloud CLI 授权
 
-[安装 Gcloud CLI](gcp-gcloud-cli.md#Install) 以后，执行 `gcloud init` 命令。
+[安装 Gcloud CLI](gcloud-cli.md#Install) 以后，执行 `gcloud init` 命令。
 
 ## 为 Kubectl 授权
 

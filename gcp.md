@@ -35,7 +35,7 @@ Google Cloud 为您提供了三种与服务和资源[交互的基本方式](http
 ## 准备工作
 
 - 注册 Google 账号并开通结算
-- [安装并配置 Google Cloud CLI](gcp-gcloud-cli.md#Install)
+- [安装并配置 Google Cloud CLI](gcloud-cli.md#Install)
 
 ## 创建 GCP Project
 

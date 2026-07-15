@@ -27,7 +27,7 @@ tags:
   - 社区维护
   - **不污染系统**：默认安装在用户目录（`~/scoop`）绿色版本便携，不产生注册表，卸载干净。
   - 专注于开发者工具。
-- [**Chocolatey**](win-chocolatey.md)：社区维护，历史最悠久。
+- [**Chocolatey**](chocolatey.md)：社区维护，历史最悠久。
 
 # 快捷键
 
@@ -935,7 +935,7 @@ reg delete "HKCU\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}" 
   ```
   # 搜狗文件粉碎
   sgshellext
-
+  
   # 百度云盘
   YunShellExt
   ```

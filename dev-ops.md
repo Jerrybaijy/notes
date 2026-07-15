@@ -140,7 +140,7 @@ oci://registry-1.docker.io/jerrybaijy
 - [GitLab](<gitlab.md#Code Repo>)
 - Bitbucket
 - Google
-  - [Repositories](gcp-cloud-build.md#Repositories) (链接到其它代码托管平台)
+  - [Repositories](cloud-build.md#Repositories) (链接到其它代码托管平台)
   - Cloud Source Repositories (新用户停用)
   - Secure Source Manager（$1000/月）
 - AWS CodeCommit

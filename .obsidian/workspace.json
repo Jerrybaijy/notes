@@ -23,67 +23,22 @@
             }
           },
           {
-            "id": "bfbe3c97ec78667d",
+            "id": "7b00fdb6f3459ccb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "民族史.md",
+                "file": "gcp-repositories.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "民族史"
-            }
-          },
-          {
-            "id": "4853b2956eca87e8",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "胡人.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "胡人"
-            }
-          },
-          {
-            "id": "cee01e6c827d1abb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "东胡.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "东胡"
-            }
-          },
-          {
-            "id": "5706f9295e7bc4d4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "乌桓.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "乌桓"
+              "title": "gcp-repositories"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -115,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:民族",
+                "query": "tag:#gcp",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -156,7 +111,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -176,7 +132,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "乌桓.md",
+                "file": "gcp-repositories.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -186,7 +142,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "乌桓 的反向链接列表"
+              "title": "gcp-repositories 的反向链接列表"
             }
           },
           {
@@ -241,23 +197,37 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "5706f9295e7bc4d4",
+  "active": "7b00fdb6f3459ccb",
   "lastOpenFiles": [
-    "东胡.md",
-    "乌桓.md",
-    "蒙古族.md",
-    "契丹.md",
-    "胡人.md",
+    "gcp-project.md",
+    "iam.md",
+    "gcp.md",
+    "gcloud-cli.md",
+    "gce.md",
+    "gke.md",
+    "cloud-sql.md",
+    "cloud-build.md",
+    "artifact-registry.md",
+    "windows.md",
+    "wsl.md",
+    "windows-terminal.md",
+    "docker.md",
+    "git.md",
+    "powershell.md",
+    "power-toys.md",
+    "hyper-v.md",
+    "scoop.md",
+    "chocolatey.md",
+    "微软拼音.md",
+    "汉匈战争.md",
+    "阿拉伯帝国.md",
+    "assets/阿拉伯帝国扩张.gif",
+    "阿拉伯世界.md",
+    "阿拉伯人.md",
     "中国历史主线.md",
-    "民族史.md",
-    "元朝.md",
-    "党项.md",
-    "满族.md",
-    "子婴.md",
-    "typora.md",
+    "辽朝.md",
     "assets/五代十国前期形势.png",
     "assets/五代十国后期形势.png",
-    "晋朝.md",
     "assets/明朝疆域.png",
     "assets/清朝疆域.jpg",
     "assets/元朝疆域.png",
@@ -265,20 +235,6 @@
     "assets/北宋疆域.png",
     "assets/唐朝疆域.png",
     "assets/隋朝疆域.png",
-    "assets/西晋疆域.png",
-    "扶苏.md",
-    "北元.md",
-    "todo-gcp.md",
-    "后金.md",
-    "汉朝.md",
-    "渤海国.md",
-    "蒙古帝国.md",
-    "努尔哈赤.md",
-    "清朝.md",
-    "金朝.md",
-    "皇太极.md",
-    "西夏.md",
-    "西辽.md",
     "其它格式未转换/微软拼音自定义短语.dat",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",

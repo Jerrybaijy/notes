@@ -132,8 +132,8 @@ gcloud container clusters delete my-cluster --region=asia-east2
 
 - [Terraform 安装](terraform-cli.md#Install)已完成
 - GCP 项目已创建并关联结算账号
-- [安装和配置 Google Cloud CLI](gcp-gcloud-cli.md#Install)
-- [Kubectl 已安装并完成配置](<gcp-gke.md#Quick Start>)
+- [安装和配置 Google Cloud CLI](gcloud-cli.md#Install)
+- [Kubectl 已安装并完成配置](<gke.md#Quick Start>)
 
 ### 创建 Terraform 目录
 

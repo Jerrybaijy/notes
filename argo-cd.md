@@ -180,7 +180,7 @@ Argo CD 有[多种安装方式](https://argo-cd.readthedocs.io/en/stable/operato
 
 ### 准备工作
 
-建立在[使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)的基础上
+建立在[使用 Terraform 配置 GKE 集群](<gke.md#使用 Terraform 创建 GKE 集群>)的基础上
 
 ### `main.tf`
 
@@ -879,10 +879,10 @@ Argo CD 允许用户自定义目标集群中所需状态的[**同步方式**](ht
 建立在以下的基础上：
 
 - [使用 Terraform 连接到 GitLab](<gcp-repositories.md#使用 Terraform 连接到 GitLab>)
-- [使用 Terraform 创建 Docker Repository](<gcp-artifact-registry.md#使用 Terraform 创建 Docker Repository>)
+- [使用 Terraform 创建 Docker Repository](<artifact-registry.md#使用 Terraform 创建 Docker Repository>)
 - 完成 Cloud Build 将 image 和 chart 推送至 GAR
-- [使用 Terraform 配置 GKE 集群](<gcp-gke.md#使用 Terraform 创建 GKE 集群>)
-- [使用 Terraform 配置 Cloud SQL](<gcp-cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
+- [使用 Terraform 配置 GKE 集群](<gke.md#使用 Terraform 创建 GKE 集群>)
+- [使用 Terraform 配置 Cloud SQL](<cloud-sql.md#使用 Terraform 创建 Cloud SQL>)
 - [使用 Terraform 配置 Argo CD](<argo-cd.md#使用 Terraform 安装 Argo CD>)
 
 ### 创建 `my-app` 模块目录

@@ -16,4 +16,4 @@ tags:
 # 虚拟机平台
 
 - [Vmware workstation](vmware-workstation.md)
-- [Hyper-V](win-hyper-v.md)
+- [Hyper-V](hyper-v.md)

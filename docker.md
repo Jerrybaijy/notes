@@ -19,7 +19,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 ### 前提条件
 
-- [WSL 和 Linux 发行版已安装](win-wsl.md#Install)
+- [WSL 和 Linux 发行版已安装](wsl.md#Install)
 
 ### 安装 Docker Desktop
 
