@@ -5,6 +5,8 @@ tags:
   - dev
   - software
   - dev-ops
+  - vm
+  - container
 ---
 
 # Overview

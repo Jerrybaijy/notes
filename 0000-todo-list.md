@@ -22,9 +22,17 @@ tags: -个人
   - [ ] Cloud Run
   - [ ] Argo CD 无法拉取 GAR 中的 chart
 - [ ] **其它**
+- [ ] **待学习**
+    - [ ] **Shell Script**
+        - [ ] Windows
+        - [ ] Linux
 
-顶顶顶 22.5
+    - [ ] **System**
+        - [ ] ssh linux
+        - [ ] rdp windows
 
-```
-3000端口
-```
+    - [ ] **Network**
+        - [ ] domain name、IP、DNS
+        - [ ] server
+        - [ ] nslookup
+

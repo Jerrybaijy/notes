@@ -6,6 +6,7 @@ tags:
   - software
   - 计算机基础
   - 硬盘
+  - 运维工具
 ---
 
 # Overview
