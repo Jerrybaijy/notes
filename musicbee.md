@@ -2,9 +2,9 @@
 title: musicbee
 author: Jerry.Baijy
 tags:
-  - dev
   - software
   - music
+  - musicbee
 ---
 
 # Overview
