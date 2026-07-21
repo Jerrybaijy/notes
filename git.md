@@ -114,7 +114,7 @@ tags:
 
 - 最好先安装 Windows Terminal
 
-- 官网下载安装包：**[64-bit Git for Windows Setup](https://git-scm.com/downloads/win)**
+- 官网下载安装包：[**64-bit Git for Windows Setup**](https://git-scm.com/downloads/win)
 
 - 安装时依次注意
   - 尽量选择默认的 C 盘安装位置，否则 Windows Terminal 需要额外[特殊配置](windows-terminal.md#添加终端)。
@@ -166,7 +166,7 @@ sudo dnf install git
   # 原 VPN
   git config --global http.proxy http://127.0.0.1:9788
   git config --global https.proxy http://127.0.0.1:9788
-  
+
   # v2ray
   git config --global http.proxy http://127.0.0.1:10808
   git config --global https.proxy http://127.0.0.1:10808
@@ -631,4 +631,3 @@ To add an exception for this directory, call:
 ```bash
 git config --global --add safe.directory "*"
 ```
-

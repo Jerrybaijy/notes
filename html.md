@@ -77,15 +77,15 @@ HTML 文件通常会以 `.htm` 或 `.html` 为扩展名。用户可以从 [Web �
 >   </ul>
 > </details>
 
-**[WHATWG](https://html.spec.whatwg.org/) 中 HTML 官方文档不同版本的含义**：
+[**WHATWG**](https://html.spec.whatwg.org/) 中 HTML 官方文档不同版本的含义：
 
-- **[单页版](https://html.spec.whatwg.org/)**：单页显示。
+- [**单页版**](https://html.spec.whatwg.org/)：单页显示。
 
-- **[多页版](https://html.spec.whatwg.org/multipage/)**：分多个页面显示，自己默认使用该版。
+- [**多页版**](https://html.spec.whatwg.org/multipage/)：分多个页面显示，自己默认使用该版。
 
-- **[开发者版](https://html.spec.whatwg.org/dev/)**：与多页版相比，此版删除了只有浏览器供应商才需要知道的信息。
-- **[官方中文版1](https://whatwg-cn.github.io/html/)**：单页显示。
-- **[官方中文版2](https://htmlspecs.com/)**：单页显示。
+- [**开发者版**](https://html.spec.whatwg.org/dev/)：与多页版相比，此版删除了只有浏览器供应商才需要知道的信息。
+- [**官方中文版1**](https://whatwg-cn.github.io/html/)：单页显示。
+- [**官方中文版2**](https://htmlspecs.com/)：单页显示。
 
 ## 代码风格
 
@@ -126,10 +126,10 @@ HTML 由一系列的[**元素**](https://developer.mozilla.org/zh-CN/docs/Learn_
 
 **元素的主要部分有**：
 
-- **[开始标签](https://html.spec.whatwg.org/multipage/syntax.html#start-tags)**（Opening tag）：`<元素名称>` （本例为 `<p>`），表示元素从这里开始起作用。
-- **[结束标签](https://html.spec.whatwg.org/multipage/syntax.html#end-tags)**（Closing tag）：`</元素名称>` （本例为 `</p>`），表示元素的结尾。
+- [**开始标签**](https://html.spec.whatwg.org/multipage/syntax.html#start-tags)（Opening tag）：`<元素名称>` （本例为 `<p>`），表示元素从这里开始起作用。
+- [**结束标签**](https://html.spec.whatwg.org/multipage/syntax.html#end-tags)（Closing tag）：`</元素名称>` （本例为 `</p>`），表示元素的结尾。
 - **元素内容**（Content）：元素的内容，本例为 `My cat is veru grumpy`。
-- **[元素](https://developer.mozilla.org/zh-CN/docs/Glossary/Element)**（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。
+- [**元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Element)（Element）：开始标签、结束标签与内容相结合，便是一个完整的元素。
 
 ### 元素嵌套
 
@@ -172,7 +172,7 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 
 ![image-20231205010242559](assets/image-20231205010242559.png)
 
-**[属性](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#属性)（Attribute）的说明**：
+[**属性**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Core/Structuring_content/Basic_HTML_syntax#属性)（Attribute）的说明：
 
 - **属性**：存在于开始标签内
 - **属性名称**：本例为 `class`
@@ -3303,9 +3303,9 @@ HTML 中的表单和按钮是与网站用户进行交互的强大工具。它们
 
 [`method`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/form#method) 属性用于指定表单数据提交时使用的 [_HTTP 请求方法_](http.md/#请求方法 "http | 请求方法")。
 
-- **[GET](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)**：
+- [**GET**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/GET)：
   - 当使用 `GET` 方法提交表单时，表单数据会附加在 URL 的末尾（query string），并以键值对的形式出现。这种方式适合用于获取数据，但不适合包含敏感信息，因为数据会明文显示在 URL 中。GET 方法通常用于数据检索，而不涉及对服务器上数据的修改。
-- **[POST](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)**：
+- [**POST**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Methods/POST)：
   - 表单数据会包含在表单体内然后发送给服务器。
   - 使用 `POST` 方法提交表单时，表单数据会包含在表单体内，而不会显示在 URL 中。这种方式更适合用于提交敏感信息和对服务器上数据进行修改。POST 方法通常用于表单提交，文件上传等需要传输大量数据或包含敏感信息的场景。传递文件必须使用 `POST` 形式传递。
 - `dialog`

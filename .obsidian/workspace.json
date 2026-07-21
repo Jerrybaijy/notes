@@ -145,7 +145,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "正则",
+                "query": "excel",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -186,7 +186,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -272,7 +273,7 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "fbb22e01de215d79",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
     "obsidian-community-plugins.md",
     "css.md",

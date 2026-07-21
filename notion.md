@@ -32,7 +32,7 @@ tags:
 
 # Notion
 
-**[Notion](https://www.notion.com/zh-cn)**是一款集成了笔记、知识库、数据表格、看板、日历等多种能力于一体的应用程序，它既可供个人使用，也可以与他人进行跨平台协作。
+[**Notion**](https://www.notion.com/zh-cn)是一款集成了笔记、知识库、数据表格、看板、日历等多种能力于一体的应用程序，它既可供个人使用，也可以与他人进行跨平台协作。
 
 > [官方文档](https://www.notion.com/zh-cn/help/reference)
 >
@@ -104,11 +104,11 @@ tags:
 
 ## 数据库概述
 
-Notion 中的**[数据库](https://www.notion.com/zh-cn/help/category/databases)**是**页面的集合**，可分为[行内数据库](https://www.notion.com/zh-cn/help/intro-to-databases#inline-databases)和[整页数据库](https://www.notion.com/zh-cn/help/intro-to-databases#full-page-databases)。
+Notion 中的[**数据库**](https://www.notion.com/zh-cn/help/category/databases)是**页面的集合**，可分为[行内数据库](https://www.notion.com/zh-cn/help/intro-to-databases#inline-databases)和[整页数据库](https://www.notion.com/zh-cn/help/intro-to-databases#full-page-databases)。
 
 ## 视图
 
-**[数据库视图](https://www.notion.com/zh-cn/help/views-filters-and-sorts)**类似于**数据源**的镜像，它的数据源于**数据源**，但外观呈现自己的视图。
+[**数据库视图**](https://www.notion.com/zh-cn/help/views-filters-and-sorts)类似于**数据源**的镜像，它的数据源于**数据源**，但外观呈现自己的视图。
 
 - [表格视图](https://www.notion.so/help/tables?_gl=1*19klslx*_gcl_au*MzYxNzAxMzguMTc1ODk4MDUwMw..*_ga*ODYzMTE4NjI0LjE3NTg5ODA1MDQ.*_ga_9ZJ8CB186L*czE3NTkwNjY2MTEkbzckZzEkdDE3NTkwNjkwNzkkajU5JGwwJGgw)
 - [看板视图](https://www.notion.so/help/boards?_gl=1*1b66tpu*_gcl_au*MzYxNzAxMzguMTc1ODk4MDUwMw..*_ga*ODYzMTE4NjI0LjE3NTg5ODA1MDQ.*_ga_9ZJ8CB186L*czE3NTkwNjY2MTEkbzckZzEkdDE3NTkwNjk0MTkkajQxJGwwJGgw)
@@ -129,13 +129,13 @@ Notion 中的**[数据库](https://www.notion.com/zh-cn/help/category/databases)
 
 ## 属性
 
-**[数据库属性](https://www.notion.com/zh-cn/help/database-properties)**就是表格中的**列字段**。
+[**数据库属性**](https://www.notion.com/zh-cn/help/database-properties)就是表格中的**列字段**。
 
 ### 汇总
 
 ### 关联关系
 
-**[关联关系](https://www.notion.com/zh-cn/help/relations-and-rollups)**是数据库的一个属性，它将两个数据库的 `名称` 属性建立关系。
+[**关联关系**](https://www.notion.com/zh-cn/help/relations-and-rollups)是数据库的一个属性，它将两个数据库的 `名称` 属性建立关系。
 
 方法：
 
@@ -157,7 +157,7 @@ Notion 中的**[数据库](https://www.notion.com/zh-cn/help/category/databases)
 
 ### 函数
 
-**[Formula 公式](https://www.notion.com/zh-cn/help/formulas)**
+[**Formula 公式**](https://www.notion.com/zh-cn/help/formulas)
 
 ## 表单
 

@@ -53,11 +53,11 @@ flowchart TD
 
 ## 图表破坏
 
-人们应该小心使用**[某些词或符号](https://mermaid.js.org/intro/syntax-reference.html#diagram-breaking)**，它们可能会破坏图表。这些词或符号很少，并且通常只影响特定类型的图表。
+人们应该小心使用[**某些词或符号**](https://mermaid.js.org/intro/syntax-reference.html#diagram-breaking)，它们可能会破坏图表。这些词或符号很少，并且通常只影响特定类型的图表。
 
 ## 主题
 
-**[主题](https://docs.min2k.com/zh/mermaid/config/theming.html)**可以在**站点级别**或**单个 Mermaid 图表**上进行自定义。对于站点级别的自定义主题，使用 `initialize` 调用。对于单个图表的自定义主题，使用 `init` 指令。以下仅记录单个图表自定义主题的方法。
+[**主题**](https://docs.min2k.com/zh/mermaid/config/theming.html)可以在**站点级别**或**单个 Mermaid 图表**上进行自定义。对于站点级别的自定义主题，使用 `initialize` 调用。对于单个图表的自定义主题，使用 `init` 指令。以下仅记录单个图表自定义主题的方法。
 
 ### 图表特定主题
 
@@ -109,7 +109,7 @@ graph LR
 
 ### 配置概述
 
-**[配置](https://mermaid.js.org/config/configuration.html)**，Mermaid 启动时，会提取配置来确定用于图表的一个配置。配置有三个来源：
+[**配置**](https://mermaid.js.org/config/configuration.html)，Mermaid 启动时，会提取配置来确定用于图表的一个配置。配置有三个来源：
 
 - 默认配置
 
@@ -123,7 +123,7 @@ graph LR
 
 ### Frontmatter 配置
 
-**[Frontmatter 配置](https://mermaid.js.org/config/configuration.html#frontmatter-config)**是图表顶部的 YAML 块，整个 mermaid 配置（安全配置除外）都可以在 frontmatter 中覆盖。
+[**Frontmatter 配置**](https://mermaid.js.org/config/configuration.html#frontmatter-config)是图表顶部的 YAML 块，整个 mermaid 配置（安全配置除外）都可以在 frontmatter 中覆盖。
 
 ```
 ---
@@ -216,7 +216,7 @@ xychart-beta
 
 ## XY 图表配置
 
-**[XY 图表配置](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)**可以在 **Frontmatter** 中进行。
+[**XY 图表配置**](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)可以在 **Frontmatter** 中进行。
 
 ```
 ---
@@ -241,7 +241,7 @@ xychart-beta
 
 ### 图表配置
 
-**[图表配置](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)**：即 `config` 中的 `xyChart` 属性
+[**图表配置**](https://mermaid.js.org/syntax/xyChart.html#chart-configurations)：即 `config` 中的 `xyChart` 属性
 
 ```
 ---
@@ -292,7 +292,7 @@ xychart-beta
 
 ### 坐标轴配置
 
-**[坐标轴配置](https://mermaid.js.org/syntax/xyChart.html#axisconfig)**：即 `xyChart` 中的 `xAxis` 和 `yAxis` 属性，默认值为 `AxisConfig`。
+[**坐标轴配置**](https://mermaid.js.org/syntax/xyChart.html#axisconfig)：即 `xyChart` 中的 `xAxis` 和 `yAxis` 属性，默认值为 `AxisConfig`。
 
 修改坐标轴属性，即用相应的属性声明代替 `AxisConfig`。
 
@@ -348,7 +348,7 @@ xychart-beta
 
 ### 主题变量
 
-**[主题变量](https://mermaid.js.org/syntax/xyChart.html#chart-theme-variables)**：即 `config` 中的 `themeVariables` 属性
+[**主题变量**](https://mermaid.js.org/syntax/xyChart.html#chart-theme-variables)：即 `config` 中的 `themeVariables` 属性
 
 ```
 ---
@@ -446,13 +446,13 @@ gantt
 > ```
 
 - `开始时间`：除第一个以外，其余都可省略，默认为上一个任务的结束时间。
-- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。
+- 使用冒号 `:` 将**任务名**与其[**元数据**](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)分开。
 
 ## 甘特图元数据
 
 ### 甘特图元数据语法
 
-- 使用冒号 `:` 将**任务名**与其**[元数据](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)**分开。 `任务名: 元数据项`
+- 使用冒号 `:` 将**任务名**与其[**元数据**](https://docs.min2k.com/zh/mermaid/syntax/gantt.html#语法)分开。 `任务名: 元数据项`
 - 如果指定**单个**元数据项，则确定任务结束时间。
   - 它可以是：`特定的日期/时间` | `持续时间`，如 `2025-09-26` | `15d`
   - 如果指定的是 `持续时间`，则将其添加到任务的开始日期以确定任务的结束日期，同时考虑任何排除项。
@@ -669,7 +669,7 @@ gantt
 
 ## 流程图概述
 
-**[流程图](https://docs.min2k.com/zh/mermaid/syntax/flowchart.html)**由**节点**和**连线**组成。
+[**流程图**](https://docs.min2k.com/zh/mermaid/syntax/flowchart.html)由**节点**和**连线**组成。
 
 ```
 %% 声明图表类型和方向

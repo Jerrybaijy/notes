@@ -224,7 +224,7 @@ tags:
 
 ## Day.js
 
-**[Day.js](https://day.js.org/docs/en/display/format)** 是一个轻量级的 **JavaScript 日期处理库**，用于处理日期和时间的格式。如 `YYYY` 表示四位数的年份。
+[**Day.js**](https://day.js.org/docs/en/display/format) 是一个轻量级的 **JavaScript 日期处理库**，用于处理日期和时间的格式。如 `YYYY` 表示四位数的年份。
 
 **常用示例**：
 
@@ -243,7 +243,7 @@ tags:
 
 ## d3-time-format
 
-**[d3-time-format](https://d3js.org/d3-time-format#locale_format)** 是 D3.js 的一个**独立模块**，专门用于日期和时间的解析与格式化。
+[**d3-time-format**](https://d3js.org/d3-time-format#locale_format) 是 D3.js 的一个**独立模块**，专门用于日期和时间的解析与格式化。
 
 它和 `dayjs`、`moment.js` 类似，但更偏向于**数据可视化场景**（比如时间轴、坐标轴刻度标签）。
 

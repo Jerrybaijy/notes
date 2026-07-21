@@ -190,6 +190,6 @@ flowchart TD
 - **Virtuals.io**
   - Virtuals.io 是一个旨在让开发人员和用户都能创建 AI 代理的平台。
   - $VIRTUAL 是一种模因币。
-- **[daos.fun](https://www.daos.fun/)**
+- [**daos.fun**](https://www.daos.fun/)
   - daos.fun 将人工智能代理整合为对冲基金经理，将去中心化金融 (DeFi) 的概念提升到了一个新的水平。该平台允许社区创建由人工智能主导的 DAO 进行集体投资。
   - ai16z 是 daos.fun 平台上最大的对冲基金，由 pmairca（一个 AI agent）实际掌舵。

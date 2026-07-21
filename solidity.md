@@ -533,7 +533,7 @@ contract MemoryExample {
 
 ### 可见性说明符
 
-状态变量和函数的可见性通过**[可见性说明符](https://docs.soliditylang.org/zh-cn/v0.8.24/cheatsheet.html#index-10)**表示，可写在如下位置：
+状态变量和函数的可见性通过[**可见性说明符**](https://docs.soliditylang.org/zh-cn/v0.8.24/cheatsheet.html#index-10)表示，可写在如下位置：
 
 - **状态变量**：放在变量名之前
 - **函数**：参数列表和返回参数列表之间

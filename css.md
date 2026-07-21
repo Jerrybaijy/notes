@@ -792,7 +792,7 @@ span::after {
 
 ### 其它伪元素
 
-- **[伪元素索引](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#字母索引)**
+- [**伪元素索引**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Pseudo-elements#字母索引)
 - [**`::placeholder`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::placeholder)：占位文本
 - [**`::first-line`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/::first-line)：第一行
 - 更多...
@@ -1982,15 +1982,15 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 **属性值**：
 
-- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)**：
+- [**`start`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#start)：
 
   <img src="assets/image-20251018170602349.png" alt="image-20251018170602349" style="zoom:50%;" />
 
-- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)**：
+- [**`end`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#end)：
 
   <img src="assets/image-20251018170541057.png" alt="image-20251018170541057" style="zoom:50%;" />
 
-- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)**：
+- [**`center`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/align-items#center)：
 
   <img src="assets/image-20251018170505157.png" alt="image-20251018170505157" style="zoom:50%;" />
 
@@ -2244,27 +2244,27 @@ CSS 新规范中，`display` 属性被拆解成两个主要部分：`display: <d
 
 **属性值**：
 
-- **[`start`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)**：从轴首排列
+- [**`start`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#start)：从轴首排列
 
   <img src="assets/image-20251018172154170.png" alt="image-20251018172154170" style="zoom:50%;" />
 
-- **[`end`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)**：从轴尾排列
+- [**`end`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#end)：从轴尾排列
 
   <img src="assets/image-20251018172218622.png" alt="image-20251018172218622" style="zoom:50%;" />
 
-- **[`center`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)**：以主轴中心点为中心排列
+- [**`center`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#center)：以主轴中心点为中心排列
 
   <img src="assets/image-20251018172247616.png" alt="image-20251018172247616" style="zoom:50%;" />
 
-- **[`space-between`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)**：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
+- [**`space-between`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-between)：所有**子元素之间**空间相等，第一个子元素在行首，最后一个在行尾。
 
   <img src="assets/image-20251018172317503.png" alt="image-20251018172317503" style="zoom:50%;" />
 
-- **[`space-around`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)**：所有**子元素两侧**空间相等
+- [**`space-around`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-around)：所有**子元素两侧**空间相等
 
   <img src="assets/image-20251018172418759.png" alt="image-20251018172418759" style="zoom:50%;" />
 
-- **[`space-evenly`](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)**：剩余所有空间都相等
+- [**`space-evenly`**](https://developer.mozilla.org/zh-CN/docs/Web/CSS/justify-content#space-evenly)：剩余所有空间都相等
 
   <img src="assets/image-20251018172454085.png" alt="image-20251018172454085" style="zoom:50%;" />
 

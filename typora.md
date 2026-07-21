@@ -11,7 +11,7 @@ tags:
 
 ## Typora 概述
 
-**[Typora](https://typora.io/)** 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 _所见即所得_ 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
+[**Typora**](https://typora.io/) 是一款 Markdown 编辑器，结合了 Markdown 编辑和实时预览功能。Typora 采用 _所见即所得_ 模式，意味着你在编辑 Markdown 文件时，实时看到渲染后的效果。
 
 **Typora 资源**：
 
@@ -228,7 +228,7 @@ Typora 支持使用 HTML 注释的方法对内容注释，在 Typora 中可见�
 
 ### 样式定制
 
-- **[常用样式定制](https://support.typoraio.cn/Add-Custom-CSS/#common-style-customization)**：列举了很多定制样式的方法
+- [**常用样式定制**](https://support.typoraio.cn/Add-Custom-CSS/#common-style-customization)：列举了很多定制样式的方法
   - [字体](https://support.typoraio.cn/Custom-Font/)
   - [排版](https://support.typoraio.cn/Typeset/)
   - [背景](https://support.typoraio.cn/Backgound/)

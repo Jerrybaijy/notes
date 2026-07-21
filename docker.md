@@ -27,7 +27,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 - [官网下载 Docker Desktop 安装包](https://www.docker.com/products/docker-desktop/) 并安装。
 
-    ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
+  ![55cee271ebb4c963da2e03fc945ad30](assets/55cee271ebb4c963da2e03fc945ad30.png)
 
 - 安装完成后会重启系统
 
@@ -41,7 +41,7 @@ Docker 是一个开源的平台，用于开发、交付和运行应用程序。�
 
 ### 网络配置
 
-- 安装 Docker Desktop 后，[查看主机网卡](<windows.md#查看网卡>)，会自动创建一个 `vEthernet (Default Switch)` 虚拟网卡。
+- 安装 Docker Desktop 后，[查看主机网卡](windows.md#查看网卡)，会自动创建一个 `vEthernet (Default Switch)` 虚拟网卡。
 - 如果修改此虚拟网卡 DNS，重启电脑会恢复空白，所以[修改主机 DNS](<windows.md#修改 DNS>)。
 
 ## Linux 环境
@@ -280,7 +280,7 @@ docker rm $(docker ps -aq)
   docker logs [OPTIONS] $CONTAINER
   # 实时查看容器日志
   docker logs -f $CONTAINER
-  
+
   # 检查容器详细信息
   docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
   ```
@@ -321,7 +321,7 @@ docker network inspect $NETWORK_NAME
 
 - [**-c (--change)**](https://docs.docker.com/reference/cli/docker/container/commit/#change)：将 Dockerfile 指令应用于创建的镜像
 
-- **[-d (--detach)](https://docs.docker.com/reference/cli/docker/container/run/#detach)**：在后台运行容器，不占用终端
+- [**-d (--detach)**](https://docs.docker.com/reference/cli/docker/container/run/#detach)：在后台运行容器，不占用终端
 
 - [**-e (--env ; --env-file)**](https://docs.docker.com/reference/cli/docker/container/run/#env)：设置环境变量
 
@@ -462,7 +462,7 @@ WORKDIR /app
     RUN go mod init hello-app
     COPY *.go ./
     RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-    
+
     FROM gcr.io/distroless/base-debian11
     WORKDIR /
     COPY --from=builder /hello-app /hello-app
