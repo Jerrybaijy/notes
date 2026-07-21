@@ -5,13 +5,16 @@ tags:
   - software
   - note-editor
   - markdown
+  - obsidian
 ---
 
 # Obsidian
 
 [**Obsidian**](https://obsidian.md/) 是一个 Markdown 笔记工具。目前用它作为 Typora 的辅助。
 
-## 特点
+> [Obsidian Docs](https://obsidian.md/zh/help/)
+
+## 优点
 
 - 图谱：没觉得有啥用
 - 数据库：没研究
@@ -37,6 +40,19 @@ tags:
 | ==系统== |  |
 | 开发者工具 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> |
 | 查找替换（编辑模式） | <kbd>Ctrl</kbd> + <kbd>H</kbd> |
+| 全局搜索 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd> |
+
+# 全局搜索
+
+[**全局搜索**](https://obsidian.md/zh/help/plugins/search)是一个[核心插件](obsidian-community-plugins.md)，可以通过搜索词和运算符在 Obsidian 仓库中查找数据，从而缩小结果范围。
+
+## 基本搜索
+
+- 默认情况下，可以在左侧边栏中找到搜索按钮。
+- 快捷键：<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
+- **搜索选中文本**：如果你在编辑器中选中了文本，然后通过快捷键打开搜索，搜索会显示所选文本的搜索结果。
+
+## 
 
 # 主题
 
@@ -72,7 +88,6 @@ tags:
   /* -------------------其它部分----------------- */
   ```
 
-  
 
 ## 主题变量
 
@@ -89,44 +104,3 @@ tags:
 --code-property: #a5d6ff;
 --code-function: #a5d6ff;
 ```
-
-# Plugins
-
-## Plugins Quick Start
-
-- 插件分为官方插件和第三方插件，以下是第三方插件的安装方法。
-- `设置` > `第三方插件`
-- 关闭 `安全模式`
-- 搜索插件，安装，启用。
-- 优秀插接件：
-  - Tag Wrangler：元数据标签管理
-
-## Tag Wrangler
-
-Tag Wrangler 是一个元数据标签管理工具。
-
-右键单击标签进行重命名。
-
-## Show Whitespace
-
-可显示不可见字符的样式，比如行首的前导空格。
-
-- 打开 `Show all whitespace` 选项
-
-- 在自己的 CSS 片段中添加以下规则，以覆盖插件的默认样式。
-
-  ```css
-  body {
-    /* 针对 Show Whitespace 插件 */
-    /* 覆盖行尾软换行样式为 ↲ */
-    --line-end: "↲" !important;
-    /* 覆盖行尾硬换行样式为 ↓ */
-    --line-break: "↓" !important;
-  }
-  ```
-
-
-## Find-n-Replace
-
-- 可批量替换库中所有文件的相同内容
-- 操作不可撤销
