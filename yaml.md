@@ -86,7 +86,7 @@ YAML Front Matter 必须是文件中的第一部分，并设置在三段虚线�
 
 ## 批量修改 Tag
 
-使用 Obsidian 的 [Tag Wrangler](<obsidian.md#Tag Wrangler>)  插件批量修改标签
+使用 Obsidian 的 [Tag Wrangler](<obsidian-community-plugins.md#Tag Wrangler>)  插件批量修改标签
 
 ## 批量删除 Tag
 

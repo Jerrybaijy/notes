@@ -1821,7 +1821,7 @@ function greet() {
 
 #### 语法
 
-[`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)（**\*h**ypertext **ref**erence\*，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
+[`href`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/a#href)（**h**ypertext **ref**erence，超文本引用）用于超链接所指向的 URL。跳转目标可以是绝对路径、相对路径、锚点、电话号、E-mail、JS 代码和文件等。
 
 ```html
 <p>You can reach Michael at:</p>
