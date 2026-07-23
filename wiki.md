@@ -20,3 +20,4 @@ tags:
 - **主题示例**：`https://zh.wikipedia.org/wiki/Portal:主题名`
 - **主题**：`Portal:主题名`
 - **模板**：`Template:模板名`
+- **特定前缀**：https://zh.wikipedia.org/wiki/Special%3APrefixIndex

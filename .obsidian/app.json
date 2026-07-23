@@ -14,5 +14,6 @@
   "livePreview": false,
   "readableLineLength": false,
   "tabSize": 2,
-  "spellcheck": false
+  "spellcheck": false,
+  "newLinkFormat": "shortest"
 }

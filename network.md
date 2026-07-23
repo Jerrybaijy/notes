@@ -245,6 +245,8 @@ curl ifconfig.me
 
 # URL
 
+## URL
+
 [**URL**](https://developer.mozilla.org/zh-CN/docs/Learn_web_development/Howto/Web_mechanics/What_is_a_URL)（Uniform Resource Locator，统一资源定位符，俗称“网址”）是因特网中的唯一资源的地址。
 
 ![mdn-url-all](assets/mdn-url-all.png)
@@ -254,6 +256,24 @@ curl ifconfig.me
 ```
 [协议类型]://[域名]:[端口号]/[文件路径]?[参数]#[片段标识符]
 ```
+
+## 复制技巧
+
+浏览器（以及网络标准）在处理 URL 时，**非 ASCII 字符**（如中文）在后台会被自动进行 **URL 百分号编码**，如把 `https://zh.wikipedia.org/wiki/君主` 编码成 `https://zh.wikipedia.org/wiki/%E5%90%9B%E4%B8%BB`，可以通过手动设置书签页的方式复制到原始 URL。
+
+1. 在浏览器中新建书签页，`网址` 填入以下代码：
+
+    ```javascript
+    // 只能防止转换
+    javascript:(() => {navigator.clipboard.writeText(decodeURI(document.location.href))})()
+    ```
+
+    ```javascript
+    // 即可以防止转换，还可以把繁体字转换为简体字
+    javascript:(async()=>{let s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/opencc-js@1.0.5/dist/umd/full.js';document.head.appendChild(s);await new Promise(r=>s.onload=r);let c=OpenCC.Converter({from:'tw',to:'cn'});navigator.clipboard.writeText(c(decodeURI(location.href)))})()
+    ```
+
+2. 在目标网页点击该书签，原始 URL 会被自动复制到剪贴板。
 
 # HTTP
 
