@@ -28,17 +28,47 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "蒙古可汗.md",
+                "file": "蒙古帝国.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "蒙古可汗"
+              "title": "蒙古帝国"
+            }
+          },
+          {
+            "id": "e0cbba52a40a4e09",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "蒙古族.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "蒙古族"
+            }
+          },
+          {
+            "id": "5157b3b2afd0fc84",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "蒙古四大汗国.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "蒙古四大汗国"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -198,13 +228,25 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "25752b8ea6c8f738",
+  "active": "e0cbba52a40a4e09",
   "lastOpenFiles": [
+    "蒙古帝国.md",
+    "蒙古四大汗国.md",
+    "assets/蒙古四大汗国.png",
+    "后金.md",
+    "汉朝.md",
+    "高句丽.md",
+    "扶余国.md",
+    "渤海国.md",
+    "北元.md",
+    "北辽.md",
+    "明朝.md",
+    "西辽.md",
+    "蒙古可汗.md",
     "assets/蒙古高原（1903）.jpg",
     "成吉思汗.md",
     "忽必烈.md",
     "涿鹿之战.md",
-    "蒙古可汗.md",
     "颛顼.md",
     "炎帝.md",
     "太昊.md",
@@ -215,17 +257,6 @@
     "盘古.md",
     "女娲.md",
     "洛神.md",
-    "黄帝.md",
-    "后羿 (神话人物).md",
-    "伏羲.md",
-    "帝喾.md",
-    "嫦娥.md",
-    "阪泉之战.md",
-    "尧.md",
-    "伯邑考.md",
-    "比干.md",
-    "孙中山.md",
-    "蒋介石.md",
     "assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg",
     "assets/北元疆域图.png",
     "assets/lucide-search.svg",
@@ -234,8 +265,6 @@
     "assets/阿拉伯帝国扩张.gif",
     "assets/五代十国前期形势.png",
     "assets/五代十国后期形势.png",
-    "assets/明朝疆域.png",
-    "assets/清朝疆域.jpg",
     "其它格式未转换/微软拼音自定义短语.dat",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
