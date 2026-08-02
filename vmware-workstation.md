@@ -129,10 +129,27 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 ## 在 Windows 中安装
 
+### Windows 通用安装
+
 - Windows 客户机系统已安装完成
-- **挂载光驱**：点击虚拟机界面的 `虚拟机`，安装 VMware Tools，下方有提示
+- **挂载光驱**：
+    - 点击虚拟机界面的 `虚拟机`，安装 VMware Tools，下方有提示
+    - 新版 VMware 不再随软件自带 VMware Tools，需按官方提示下载（个人网盘有备份）
+    - 下载之后需把 iso 文件挂载到虚拟机光驱。
 - 然后进客户机，我的电脑，光盘那个磁盘就是，双击安装
-- 安装完成弹出 CD
+    - 如果客户机安装的是 Windows XP 系统
+- 安装完成后把光驱设置回物理光驱
+
+### 在 Windows XP 中的特殊情况
+
+#### 3D 加速
+
+- 对于 Windows XP 系统，安装完 VMware Tools 重启后，可能黑屏，需要关闭 3D 加速。
+- `编辑虚拟机设置` > `硬件` > `显示` > 关闭 `加速 3D 图形`
+
+#### 拖拽文件
+
+在 Windows XP 中安装 安装 VMware Tools 以后，不能在客户机和主机之间拖拽文件，但可以复制粘贴。
 
 ## 在 Mac OS 中安装
 
@@ -193,6 +210,14 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
   ```bash
   sudo reboot
   ```
+
+# 快捷键
+
+<!-- prettier-ignore -->
+| 操作 | 快捷键 |
+| :---: | :---: |
+| 释放鼠标 | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> |
+| 打开任务管理器 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>Insert</kbd> |
 
 # 共享宿主机文件
 
@@ -259,3 +284,12 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
 - 此时应在主机中关闭 `基于虚拟化的安全性`，详见 `Windows` > `基于虚拟化的安全性`。
 - 正常开启 CPU 虚拟化即可。
+
+# FAQ
+
+## 释放鼠标
+
+新版 VMware 在默认情况下，当把鼠标移动到屏幕边缘时，鼠标会切换到宿主机系统，可以通过以下方式关闭该功能：
+
+- `编辑` > `首选项` > `输入` > 取消 `自动抓取和取消抓取鼠标`
+- 设置完以后，如果想切换到宿主机，应该按 `Ctrl + Alt` 键。

@@ -28,92 +28,47 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "蒙古帝国.md",
+                "file": "中国国民党.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "蒙古帝国"
+              "title": "中国国民党"
             }
           },
           {
-            "id": "e0cbba52a40a4e09",
+            "id": "d0ee4a8a8f0600a7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "蒙古族.md",
+                "file": "中国共产党.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "蒙古族"
+              "title": "中国共产党"
             }
           },
           {
-            "id": "99ad9594e53e7147",
+            "id": "046918487b81716e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "漠南蒙古.md",
+                "file": "皇太极.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "漠南蒙古"
-            }
-          },
-          {
-            "id": "5157b3b2afd0fc84",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "蒙古四大汗国.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "蒙古四大汗国"
-            }
-          },
-          {
-            "id": "1734406fd62b62f4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "蒙古高原.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "蒙古高原"
-            }
-          },
-          {
-            "id": "41bcbef4e38f9e95",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "戈壁沙漠.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "戈壁沙漠"
+              "title": "皇太极"
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -145,7 +100,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "蒙古族",
+                "query": "周朝",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -186,7 +141,8 @@
               "title": "标签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -206,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "漠南蒙古.md",
+                "file": "中国国民党.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -216,7 +172,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "漠南蒙古 的反向链接列表"
+              "title": "中国国民党 的反向链接列表"
             }
           },
           {
@@ -271,21 +227,25 @@
       "find-n-replace:Find-n-Replace": false
     }
   },
-  "active": "99ad9594e53e7147",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "assets/漠南蒙古.jpg",
-    "蒙古族.md",
-    "漠南蒙古.md",
+    "中国共产党.md",
+    "中国国民党.md",
+    "皇太极.md",
     "戈壁沙漠.md",
-    "assets/大漠.png",
     "蒙古高原.md",
     "蒙古四大汗国.md",
+    "漠南蒙古.md",
+    "蒙古族.md",
+    "vs-code.md",
+    "蒙古帝国.md",
+    "assets/漠南蒙古.jpg",
+    "assets/大漠.png",
     "契丹.md",
     "回鹘.md",
     "css.md",
     "assets/250px-Chinggis_Khaan_statue_Complex.jpg",
     "assets/250px-Chinggis_Khaan_statue_Complex-1785031874099-1.jpg",
-    "蒙古帝国.md",
     "assets/蒙古四大汗国.png",
     "后金.md",
     "汉朝.md",
@@ -301,14 +261,10 @@
     "成吉思汗.md",
     "忽必烈.md",
     "涿鹿之战.md",
-    "颛顼.md",
-    "炎帝.md",
-    "太昊.md",
     "assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg",
     "assets/北元疆域图.png",
     "assets/lucide-search.svg",
     "assets/lucide-search-1784637546244-1.svg",
-    "assets/中国历史上各朝代疆域的演变.gif",
     "其它格式未转换/微软拼音自定义短语.dat",
     "其它格式未转换/windows-terminal/settings.json",
     "其它格式未转换/windows-terminal",
