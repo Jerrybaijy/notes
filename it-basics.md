@@ -86,7 +86,7 @@ tags:
   ```python
   data = "这是第一行！\n这是第二行！"  # \n换行符
   print(data)
-
+  
   # 这是第一行！
   # 这是第二行！
   ```
@@ -99,11 +99,6 @@ tags:
   data = "你是谁？\t离我远一点！"  # \t制表符
   print(data2)  # 你是谁？    离我远一点！
   ```
-
-## Unicode 字符
-
-- **Unicode 字符** `\u` 用于表示一个 Unicode 字符，后面跟上字符的 Unicode 编码。
-- 例如，`\u0041` 表示字符 `A`。
 
 ## 其它转义字符
 
@@ -182,6 +177,10 @@ tags:
 
 # Unicode 字符
 
+**Unicode 字符** `\u` 用于表示一个 Unicode 字符，后面跟上字符的 Unicode 编码。
+
+- 例如，`\u0041` 表示字符 `A`。
+
 ## 全角和半角
 
 [全角和半角](https://zh.wikipedia.org/wiki/全角和半角)是文字的两种显示形式，“全角”指文字字身长宽比为一比一的正方形，而“半角”为宽度为全角一半的文字。
@@ -211,7 +210,7 @@ tags:
 | － | Full-width Hyphen-Minus<br />全角连字符-减号 | U+FF0D | 汉字宽度 | **全角**模式的**减号键** | **中文排版**的连接符或减号<br /><small title="专业排版使用 U+2212 码减号">[注]</small> | 硫化－催化反应 |
 | − | Minus Sigh<br />减号（专业） | U+2212 |  | — | **专业排版**中的减号或负号 | x − y = 5 |
 | – | En dash<br />短破折号 | U+2013 | N的宽度 | `Alt + 0150`<br /><small title="小键盘">[注]</small> | 英文范围 | 1990–2000 |
-| — | Em dash<br />破折号 | U+2014 | M的宽度 | `Alt + 0150`<br /><small title="小键盘">[注]</small> <small title="传统破折号（Shift + -）的一半">[注]</small> | 中文范围；<br />转折语气、插入语 | 266年—420年 |
+| — | Em dash<br />破折号 | U+2014 | M的宽度 | `Alt + 0151`<br /><small title="小键盘">[注]</small> <small title="传统破折号（Shift + -）的一半">[注]</small> | 中文范围；<br />转折语气、插入语 | 266年—420年 |
 
 # 时间处理
 
