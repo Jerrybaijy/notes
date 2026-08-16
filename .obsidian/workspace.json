@@ -23,21 +23,6 @@
             }
           },
           {
-            "id": "2c8c140c7a5ba26c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国共产党-政府.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中国共产党-政府"
-            }
-          },
-          {
             "id": "314e4d9fd56fd5d9",
             "type": "leaf",
             "state": {
@@ -53,127 +38,67 @@
             }
           },
           {
-            "id": "4b10bf5987cf1ab3",
+            "id": "b46e33365ee26c51",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "it-basics.md",
+                "file": "中国人民解放军.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "it-basics"
+              "title": "中国人民解放军"
             }
           },
           {
-            "id": "d0ee4a8a8f0600a7",
+            "id": "22e9fa4bdad3d1e2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中国共产党.md",
+                "file": "汉匈战争.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中国共产党"
+              "title": "汉匈战争"
             }
           },
           {
-            "id": "2e50b830687b6247",
+            "id": "c9ce39ade2cebe65",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "第一次国共合作.md",
+                "file": "甲午战争.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "第一次国共合作"
+              "title": "甲午战争"
             }
           },
           {
-            "id": "498625453b496fec",
+            "id": "2ba57cf2bee37b27",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "postman.md",
+                "file": "叶挺.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "postman"
-            }
-          },
-          {
-            "id": "f4e1238f83f0f1a1",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "anythingllm.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "anythingllm"
-            }
-          },
-          {
-            "id": "d9d95a9bd25d4847",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "第一次国共内战.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "第一次国共内战"
-            }
-          },
-          {
-            "id": "f177b0da68bc2363",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "第二次国共合作.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "第二次国共合作"
-            }
-          },
-          {
-            "id": "fc010d2938aa477d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "第二次国共内战.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "第二次国共内战"
+              "title": "叶挺"
             }
           }
         ],
-        "currentTab": 7
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -207,7 +132,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:it",
+                "query": "朝鲜",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -269,7 +194,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "anythingllm.md",
+                "file": "甲午战争.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -288,12 +213,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "蒙古帝国.md",
+                "file": "甲午战争.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "蒙古帝国 的出链列表"
+              "title": "出链"
             }
           },
           {
@@ -304,16 +229,6 @@
               "state": {},
               "icon": "lucide-bookmark",
               "title": "书签"
-            }
-          },
-          {
-            "id": "5ceb80ed0f65867f",
-            "type": "leaf",
-            "state": {
-              "type": "find-replace-view",
-              "state": {},
-              "icon": "lucide-ghost",
-              "title": "find-replace-view"
             }
           }
         ]
@@ -336,34 +251,34 @@
   },
   "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "postman.md",
+    "汉匈战争.md",
+    "甲午战争.md",
+    "第二次国共内战.md",
+    "第二次国共合作.md",
+    "涿鹿之战.md",
+    "长平之战.md",
+    "南昌起义.md",
+    "阪泉之战.md",
+    "叶挺独立团.md",
+    "中国人民解放军.md",
+    "叶挺.md",
+    "孙中山.md",
+    "中国共产党.md",
+    "中国国民党-政府.md",
+    "中国工农革命军.md",
+    "中国工农红军.md",
+    "八路军.md",
+    "新四军.md",
+    "中国共产党-军事.md",
     "第一次国共合作.md",
+    "postman.md",
+    "anythingllm.md",
+    "第一次国共内战.md",
     "中华人民共和国-军事.md",
     "中华人民共和国.md",
-    "中国共产党.md",
     "中国共产党-政府.md",
-    "中国国民党-政府.md",
-    "it-basics.md",
-    "中国共产党-最高领导人.md",
-    "中国共产党-军事.md",
-    "中国国民党.md",
-    "中华民国.md",
-    "第二次国共内战.md",
-    "第一次国共内战.md",
-    "第二次国共合作.md",
-    "蒋介石.md",
-    "皇太极.md",
-    "戈壁沙漠.md",
-    "蒙古高原.md",
-    "蒙古四大汗国.md",
-    "漠南蒙古.md",
-    "蒙古族.md",
-    "vs-code.md",
-    "蒙古帝国.md",
     "assets/漠南蒙古.jpg",
     "assets/大漠.png",
-    "契丹.md",
-    "回鹘.md",
     "assets/250px-Chinggis_Khaan_statue_Complex.jpg",
     "assets/250px-Chinggis_Khaan_statue_Complex-1785031874099-1.jpg",
     "assets/蒙古四大汗国.png",
