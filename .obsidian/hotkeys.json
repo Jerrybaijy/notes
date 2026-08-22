@@ -106,5 +106,20 @@
       ],
       "key": "O"
     }
+  ],
+  "app:open-help": [],
+  "command-palette:open": [
+    {
+      "modifiers": [],
+      "key": "F1"
+    }
+  ],
+  "switcher:open": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "P"
+    }
   ]
 }

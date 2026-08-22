@@ -34,13 +34,23 @@ tags:
 
 # 快捷键
 
+## 自定义快捷键
+
+[**自定义快捷键**](https://obsidian.md/zh/help/hotkeys)是 Obsidian 命令的可自定义键盘快捷方式。
+
 <!-- prettier-ignore -->
-| 操作 | obsidian 快捷键 |
+| 操作 | [Obsidian 快捷键](https://obsidian.md/zh/help/editing-shortcuts) |
 | :---: | :---: |
 | ==系统== |  |
 | 开发者工具 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>I</kbd> |
 | 查找替换（编辑模式） | <kbd>Ctrl</kbd> + <kbd>H</kbd> |
-| 全局搜索 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd> |
+| 全局搜索 | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd> |
+| 快速打开（个人设定） | <kbd>Ctrl</kbd> + <kbd>P</kbd> |
+| 命令面板（个人设定） | <kbd>F1</kbd> |
+
+## 系统快捷键
+
+[**系统快捷键**](https://obsidian.md/zh/help/editing-shortcuts)由操作系统或 Obsidian 所基于的框架提供，无法在 Obsidian 内自定义。
 
 # 核心插件
 
@@ -51,7 +61,7 @@ tags:
 ### 基本搜索
 
 - 默认情况下，可以在左侧边栏中找到搜索按钮。
-- 快捷键：<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>H</kbd>
+- 快捷键：<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>F</kbd>
 - **搜索选中文本**：如果你在编辑器中选中了文本，然后通过快捷键打开搜索，搜索会显示所选文本的搜索结果。
 
 ### 搜索词

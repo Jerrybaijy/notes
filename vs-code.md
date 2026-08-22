@@ -29,7 +29,7 @@ tags:
 | ==软件配置== |  |
 | 设置<br />（注意与搜狗输入法冲突） | <kbd>Ctrl</kbd> + <kbd>,</kbd> |
 | 打开命令面板 | <kbd>F1</kbd> |
-| 操作 | <kbd>?</kbd> + <kbd>?</kbd> |
+| 快速打开 | <kbd>Ctrl</kbd> + <kbd>P</kbd> |
 | ==光标== |  |
 | 选择下一个匹配项，并添加多光标 | <kbd>Ctrl</kbd> + <kbd>D</kbd> |
 | 取消最近添加的匹配项和多光标 | <kbd>Ctrl</kbd> + <kbd>U</kbd> |
