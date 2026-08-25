@@ -23,89 +23,14 @@
             }
           },
           {
-            "id": "6454e99919e68c5e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "尼布楚条约.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "尼布楚条约"
-            }
-          },
-          {
-            "id": "5c04dc037ab6dbe3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "蒙古族.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "蒙古族"
-            }
-          },
-          {
-            "id": "2343da688404d417",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "准格尔部.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "准格尔部"
-            }
-          },
-          {
-            "id": "18a2bd630c06df66",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "北辽.md",
-                "mode": "source",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "北辽"
-            }
-          },
-          {
-            "id": "c2fd56fd2b0afc32",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "准噶尔汗国.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "准噶尔汗国"
-            }
-          },
-          {
-            "id": "edf88865412c4b1f",
+            "id": "41654e9cd5fbe79f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "孙中山.md",
                 "mode": "preview",
-                "source": false,
+                "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
@@ -113,18 +38,93 @@
             }
           },
           {
-            "id": "39ab971585344a3f",
+            "id": "aa598f2f27e60315",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中国国民党.md",
+                "file": "蒋介石.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中国国民党"
+              "title": "蒋介石"
+            }
+          },
+          {
+            "id": "64e1e33dfb1b07bc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "毛泽东.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "毛泽东"
+            }
+          },
+          {
+            "id": "3626f6415a352b64",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中共中央总书记.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中共中央总书记"
+            }
+          },
+          {
+            "id": "386006a07c9198fe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中共中央军委主席.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中共中央军委主席"
+            }
+          },
+          {
+            "id": "71eca36de13c148b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中央军委主席.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中央军委主席"
+            }
+          },
+          {
+            "id": "6871db86e420ea16",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "国家中央军委主席.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "国家中央军委主席"
             }
           }
         ],
@@ -162,7 +162,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "中国历史支线",
+                "query": "蒋介石",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -223,7 +223,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "中国国民党.md",
+                "file": "国家中央军委主席.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -277,10 +277,22 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "39ab971585344a3f",
+  "active": "6871db86e420ea16",
   "lastOpenFiles": [
-    "孙中山.md",
+    "中共中央军委主席.md",
+    "国家中央军委主席.md",
+    "中央军委主席.md",
+    "中共中央总书记.md",
+    "毛泽东.md",
+    "蒋介石.md",
+    "黄兴.md",
     "清朝.md",
+    "孙中山.md",
+    "袁世凯.md",
+    "武昌起义.md",
+    "鄂军都督府.md",
+    "辛亥革命.md",
+    "中国国民党.md",
     "准噶尔汗国.md",
     "assets/准噶尔汗国.png",
     "北辽.md",
@@ -289,22 +301,11 @@
     "尼布楚条约.md",
     "南京临时政府.md",
     "中华民国-政府.md",
-    "鄂军都督府.md",
     "中国国民党-政府.md",
-    "辛亥革命.md",
     "南昌起义.md",
     "prettier.md",
     "中国-历史.md",
     "中国-朝代.md",
-    "中国-名称.md",
-    "甲午战争.md",
-    "中国工农红军.md",
-    "红四军.md",
-    "岑春煊.md",
-    "护法军政府.md",
-    "政党.md",
-    "中国共产党.md",
-    "中国人民解放军.md",
     "assets/漠南蒙古.jpg",
     "assets/大漠.png",
     "assets/250px-Chinggis_Khaan_statue_Complex.jpg",
