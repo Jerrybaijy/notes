@@ -248,7 +248,7 @@ docker pull jerrybaijy/my-image:1.0
 
 # Container
 
-[容器](https://docs.docker.com/reference/cli/docker/container/)
+[`docker container`](https://docs.docker.com/reference/cli/docker/container/) 命令用于管理 containers。
 
 ## 容器命令
 
@@ -276,13 +276,25 @@ docker rm $(docker ps -aq)
 - **其它命令**
 
   ```bash
+  # 检查容器详细信息
+  docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
+  ```
+
+- **打印日志**
+
+  ```bash
   # 查看容器日志
   docker logs [OPTIONS] $CONTAINER
   # 实时查看容器日志
   docker logs -f $CONTAINER
-
-  # 检查容器详细信息
-  docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
+  
+  # 查看指定时间日志（通过在时间末尾加标识，指定是哪种时区；如果不加标识，默认为宿主机系统的时区）
+  # 按宿主机系统的时间查看
+  docker logs --since "2026-08-26T21:30:00" --until "2026-08-26T22:30:00" $CONTAINER
+  # 按格林威治时间查看（格林威治时间，结尾加 Z）
+  docker logs --since "2026-08-26T13:30:00Z" --until "2026-08-26T14:30:00Z" $CONTAINER
+  # 按北京时间查看（北京时间，结尾加 +08:00）
+  docker logs --since "2026-08-26T21:30:00+08:00" --until "2026-08-26T22:30:00+08:00" $CONTAINER
   ```
 
 - **进入容器执行**
@@ -462,7 +474,7 @@ WORKDIR /app
     RUN go mod init hello-app
     COPY *.go ./
     RUN CGO_ENABLED=0 GOOS=linux go build -o /hello-app
-
+    
     FROM gcr.io/distroless/base-debian11
     WORKDIR /
     COPY --from=builder /hello-app /hello-app
