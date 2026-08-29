@@ -87,7 +87,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "二次护法",
+                "query": "袁世凯",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -204,7 +204,7 @@
       "command-palette:打开命令面板": false
     }
   },
-  "active": "78ef90a8386d2c44",
+  "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
     "孙中山.md",
     "中国国民党.md",
