@@ -87,7 +87,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "袁世凯",
+                "query": "汪精卫",
                 "matchingCase": false,
                 "explainSearch": true,
                 "collapseAll": true,
@@ -206,8 +206,11 @@
   },
   "active": "25752b8ea6c8f738",
   "lastOpenFiles": [
-    "孙中山.md",
+    "musicbee.md",
+    "mp3-tag.md",
+    "音乐整理.md",
     "中国国民党.md",
+    "孙中山.md",
     "清朝.md",
     "国民政府.md",
     "汪精卫国民政府.md",
@@ -229,9 +232,6 @@
     "李鸿章.md",
     "岑春煊.md",
     "中国-朝代.md",
-    "蒋介石.md",
-    "毛泽东.md",
-    "中共中央总书记.md",
     "assets/准噶尔汗国.png",
     "assets/漠南蒙古.jpg",
     "assets/大漠.png",

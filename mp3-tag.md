@@ -2,7 +2,6 @@
 title: mp3-tag
 author: Jerry.Baijy
 tags:
-  - dev
   - software
   - music
   - music-tools

@@ -4,6 +4,7 @@ author: Jerry.Baijy
 tags:
   - software
   - music
+  - music-tools
   - musicbee
 ---
 
