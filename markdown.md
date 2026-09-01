@@ -509,19 +509,19 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
   <!-- Markdown 格式 -->
 
   这是一个基本链接：[Markdown 语法](https://markdown.com.cn)
-  这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "关于链接的解释")
+  这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "悬停链接的解释")
 
   <!-- HTML 格式 -->
 
   这是一个基本链接：<a href="https://markdown.com.cn">Markdown 语法</a>
-  这是一个悬停带解释的链接：<a href="https://markdown.com.cn" title="关于链接的解释">Markdown 语法</a>
+  这是一个悬停带解释的链接：<a href="https://markdown.com.cn" title="悬停链接的解释">Markdown 语法</a>
   ```
 
 - **渲染效果**
 
   > 这是一个基本链接：[Markdown 语法](https://markdown.com.cn)。
   >
-  > 这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "关于链接的解释")。
+  > 这是一个悬停带解释的链接：[Markdown 语法](https://markdown.com.cn "悬停链接的解释")。
 
 ## 引用链接
 
@@ -622,6 +622,10 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 为了消除 Markdown 在不同解析器下的歧义，[CommonMark 规范](https://spec.commonmark.org/0.31.2/#links)规定，链接目标如果包含空格，则必须用尖括号 `< >` 包裹。
 
 > 例如：[Cloud SQL 笔记](<cloud-sql.md#Quick Start>)
+
+悬停链接的解释不应放在尖括号里。
+
+> 例如：[Cloud SQL 笔记](<cloud-sql.md#Quick Start> "悬停链接的解释")
 
 ### 锚点冲突
 
