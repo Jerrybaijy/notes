@@ -1,58 +1,133 @@
 {
   "main": {
-    "id": "b1ca3ee5b2374eca",
+    "id": "cfb7b5b050a7947a",
     "type": "split",
     "children": [
       {
-        "id": "a511d0daad12990e",
+        "id": "b4c2992a8f916b8e",
         "type": "tabs",
         "children": [
           {
-            "id": "ba59858e2118b8cf",
+            "id": "f072d732c3da9a1c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "清朝.md",
+                "file": "中国-朝代.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "清朝"
+              "title": "中国-朝代"
             }
           },
           {
-            "id": "45cc08667bd05238",
+            "id": "aaa3a7b93eb63b0b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "宋教仁.md",
+                "file": "中华民国政府.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "宋教仁"
+              "title": "中华民国政府"
+            }
+          },
+          {
+            "id": "bf11b37d1ba75016",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中华民国临时政府.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中华民国临时政府"
+            }
+          },
+          {
+            "id": "84f8cf637a743054",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "北京临时政府.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "北京临时政府"
+            }
+          },
+          {
+            "id": "e84fddeaa6c20bd8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "南京临时政府.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "南京临时政府"
+            }
+          },
+          {
+            "id": "a6def1b2d60f79e0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中华民国大总统.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中华民国大总统"
+            }
+          },
+          {
+            "id": "8ce73222cd223dbb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中华民国临时大总统.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中华民国临时大总统"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "8f626eebf19529c4",
+    "id": "b1ffee63c02384a9",
     "type": "split",
     "children": [
       {
-        "id": "bc24c81ed4302da3",
+        "id": "753d9b479e30cfae",
         "type": "tabs",
         "children": [
           {
-            "id": "41ee2b4044d6b4de",
+            "id": "2f92bd4dc34c8cf8",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -67,14 +142,14 @@
             }
           },
           {
-            "id": "25752b8ea6c8f738",
+            "id": "bfc498f9be144ff1",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "markdown",
+                "query": "中华民国",
                 "matchingCase": false,
-                "explainSearch": true,
+                "explainSearch": false,
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
@@ -84,89 +159,14 @@
             }
           },
           {
-            "id": "399d7728f549ca1a",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "第一次国共合作.md",
-                "followCursor": true,
-                "showSearch": true,
-                "searchQuery": ""
-              },
-              "icon": "lucide-list",
-              "title": "大纲"
-            }
-          },
-          {
-            "id": "72b02655792079c5",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "alphabetical",
-                "useHierarchy": false,
-                "showSearch": true,
-                "searchQuery": ""
-              },
-              "icon": "lucide-tags",
-              "title": "标签"
-            }
-          }
-        ],
-        "currentTab": 1
-      }
-    ],
-    "direction": "horizontal",
-    "width": 215.5
-  },
-  "right": {
-    "id": "9d47538a58fd4ff6",
-    "type": "split",
-    "children": [
-      {
-        "id": "6c16570efff4e0ea",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "b258db04226d1214",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "清朝.md",
-                "collapseAll": true,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-coming-in",
-              "title": "反向链接"
-            }
-          },
-          {
-            "id": "caba1b44275696ee",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "甲午战争.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              },
-              "icon": "links-going-out",
-              "title": "出链"
-            }
-          },
-          {
-            "id": "4c3d2f622dbb5b1e",
+            "id": "496378f122dc3f23",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
-              "state": {},
+              "state": {
+                "showSearch": false,
+                "searchQuery": ""
+              },
               "icon": "lucide-bookmark",
               "title": "书签"
             }
@@ -175,69 +175,120 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300.5,
+    "width": 300
+  },
+  "right": {
+    "id": "a739715b971c52fa",
+    "type": "split",
+    "children": [
+      {
+        "id": "62a33fb08a00b26c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f6bde7147728ce31",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "中华民国政府.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": false
+              },
+              "icon": "links-coming-in",
+              "title": "反向链接"
+            }
+          },
+          {
+            "id": "c983d4a3cb18c207",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "中华民国政府.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "出链"
+            }
+          },
+          {
+            "id": "4d9367af626fa802",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "6c1cb2f59852be3e",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "中国国民党.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
     "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
-      "bases:新建数据库": false,
       "switcher:打开快速切换": false,
       "graph:查看关系图谱": false,
       "canvas:新建白板": false,
       "daily-notes:打开/创建今天的日记": false,
-      "templates:插入模板": true,
-      "command-palette:打开命令面板": false
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
     }
   },
-  "active": "45cc08667bd05238",
+  "active": "8ce73222cd223dbb",
   "lastOpenFiles": [
-    "黄兴.md",
-    "国民党 (1912年).md",
-    "中国同盟会.md",
-    "中国国民党.md",
-    "宋教仁.md",
-    "兴中会.md",
-    "中华革命党.md",
-    "宋教仁遇刺案.md",
-    "杨度.md",
-    "广州国民政府 (1931年).md",
-    "assets/战国形势图（前350年）（繁）.png",
-    "assets/战国（前280年）（繁）.png",
-    "广州国民政府 (1925年).md",
-    "赵秉钧.md",
-    "孙中山.md",
-    "musicbee.md",
-    "mp3-tag.md",
-    "音乐整理.md",
-    "清朝.md",
-    "国民政府.md",
-    "汪精卫国民政府.md",
-    "南京国民政府.md",
-    "北平国民政府.md",
-    "武汉国民政府.md",
-    "中华民国陆海军大元帅大本营.md",
-    "广州中华民国政府.md",
-    "中国国民党-政府.md",
+    "中华民国临时政府.md",
+    "中华民国临时大总统.md",
+    "北京临时政府.md",
     "南京临时政府.md",
-    "assets/准噶尔汗国.png",
-    "assets/漠南蒙古.jpg",
-    "assets/大漠.png",
-    "assets/250px-Chinggis_Khaan_statue_Complex.jpg",
-    "assets/250px-Chinggis_Khaan_statue_Complex-1785031874099-1.jpg",
-    "assets/蒙古四大汗国.png",
-    "assets/蒙古高原（1903）.jpg",
-    "assets/1121645553b3bb884e333a7e2271ec97_kix.im3gqi7i1ify.jpeg",
-    "其它格式未转换/微软拼音自定义短语.dat",
-    "其它格式未转换/windows-terminal/settings.json",
-    "其它格式未转换/windows-terminal",
-    "其它格式未转换/新建文件夹",
-    "其它格式未转换/简历/白金玉-简历.docx",
-    "其它格式未转换/简历/白金玉-简历-AI评测.docx",
-    "其它格式未转换/简历/Jinyu Bai.docx",
-    "其它格式未转换/简历/Andyshao_CV_Splunk_202404.docx",
-    "其它格式未转换/简历",
-    "其它格式未转换/obsidian-themes/标题实验.css",
-    "未命名 1.canvas",
-    "未命名.canvas"
+    "中华民国大总统.md",
+    "中华民国政府.md",
+    "中华民国国家元首.md",
+    "中华民国总统.md",
+    "国民政府主席.md",
+    "陈其美.md",
+    "中华革命党.md",
+    "中共中央总书记.md",
+    "梁启超.md",
+    "蔡锷.md",
+    "护国战争.md",
+    "袁世凯.md",
+    "二次革命.md",
+    "中国-朝代.md",
+    "中国国民党.md",
+    "国民党 (1912年).md",
+    "朝鲜半岛.md",
+    "第一次国共合作.md"
   ]
 }
