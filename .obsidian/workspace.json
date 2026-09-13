@@ -1,163 +1,42 @@
 {
   "main": {
-    "id": "cfb7b5b050a7947a",
+    "id": "debd0b5f227ce12e",
     "type": "split",
     "children": [
       {
-        "id": "b4c2992a8f916b8e",
+        "id": "e0ebf997ae619c30",
         "type": "tabs",
         "children": [
           {
-            "id": "00768c17abf4b826",
+            "id": "0697317453a1e5a9",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中共中央总书记.md",
+                "file": "中国抗日战争.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中共中央总书记"
-            }
-          },
-          {
-            "id": "cf827d2d02eabbb5",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中共中央总书记.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中共中央总书记"
-            }
-          },
-          {
-            "id": "e7e86b5a5d192b98",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中共中央主要负责人.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中共中央主要负责人"
-            }
-          },
-          {
-            "id": "b474ba3c008fd816",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国共产党最高领导人.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中国共产党最高领导人"
-            }
-          },
-          {
-            "id": "81f1cb44d9c458cb",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国国民党.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中国国民党"
-            }
-          },
-          {
-            "id": "125b9381d76c7d0c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国国民党清党.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中国国民党清党"
-            }
-          },
-          {
-            "id": "96644bfffb5257c3",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中国共产党.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中国共产党"
-            }
-          },
-          {
-            "id": "f513555903b22f3a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "南昌起义.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "南昌起义"
-            }
-          },
-          {
-            "id": "01df5657d662f909",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中央苏区反围剿战争.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中央苏区反围剿战争"
+              "title": "中国抗日战争"
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "b1ffee63c02384a9",
+    "id": "5dda72503ccb1411",
     "type": "split",
     "children": [
       {
-        "id": "753d9b479e30cfae",
+        "id": "86828bfc01a2de04",
         "type": "tabs",
         "children": [
           {
-            "id": "2f92bd4dc34c8cf8",
+            "id": "abb9041113c72e20",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -172,12 +51,12 @@
             }
           },
           {
-            "id": "bfc498f9be144ff1",
+            "id": "b7f8989d35ed3ef0",
             "type": "leaf",
             "state": {
               "type": "search",
               "state": {
-                "query": "遵义会议",
+                "query": "第二次世界大战",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -189,7 +68,7 @@
             }
           },
           {
-            "id": "496378f122dc3f23",
+            "id": "0653ac5e62a18fae",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -201,47 +80,44 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
   "right": {
-    "id": "a739715b971c52fa",
+    "id": "17aebc33b8b8077b",
     "type": "split",
     "children": [
       {
-        "id": "62a33fb08a00b26c",
+        "id": "863d3e44f3a5c640",
         "type": "tabs",
         "children": [
           {
-            "id": "f6bde7147728ce31",
+            "id": "7d0595c7a4ece0b9",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "中国国民党.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
-                "unlinkedCollapsed": false
+                "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
               "title": "反向链接"
             }
           },
           {
-            "id": "c983d4a3cb18c207",
+            "id": "ac252a5c257162b4",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "陈其美.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -250,7 +126,7 @@
             }
           },
           {
-            "id": "4d9367af626fa802",
+            "id": "ac47a2ea63fb9f4d",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -265,12 +141,11 @@
             }
           },
           {
-            "id": "6c1cb2f59852be3e",
+            "id": "6a47c2de0616ba86",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "中国国民党.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -297,38 +172,27 @@
       "bases:新建数据库": false
     }
   },
-  "active": "bfc498f9be144ff1",
+  "active": "0697317453a1e5a9",
   "lastOpenFiles": [
-    "中共中央主要负责人.md",
-    "中国共产党最高领导人.md",
-    "中共中央总书记.md",
-    "00临时.md",
-    "澳门.md",
-    "中央苏区反围剿战争.md",
-    "assets/250px-Lianjiang_Academy_-_Former_site_of_Pingchuan_High_School.jpgutm_source=zh.wikipedia.jpeg",
-    "assets/250px-Lianjiang_Academy_-_Former_site_of_Pingchuan_High_School.jpgutm_source=zh.wikipedia-1789128671878-1.org&utm_campaign=parser&utm_content=thumbnail",
-    "assets/40px-Disambig_gray.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Disambig_gray.svg.pngutm_source=zh.wikipedia-1789128671878-2.org&utm_campaign=parser&utm_content=thumbnail",
-    "南昌起义.md",
-    "中国共产党.md",
-    "中国国民党.md",
-    "中国国民党清党.md",
-    "广州中华民国政府.md",
-    "七一五事变.md",
-    "四一二事件.md",
-    "第一次国共合作.md",
-    "中国国民党主席.md",
-    "蒋介石.md",
-    "其它格式未转换/生椒辣酱.xlsx",
-    "廖仲恺.md",
-    "中山舰事件.md",
-    "国民革命军东征.md",
-    "六一六事变.md",
-    "中国朝代.md",
-    "中国名称.md",
-    "中国历史.md",
-    "二十四史.md",
-    "中国共产党政府.md",
-    "中国国民党政府.md"
+    "世界历史.md",
+    "一般命令第一号.md",
+    "第二次世界大战.md",
+    "亚洲.md",
+    "日本.md",
+    "中华人民共和国.md",
+    "高句丽.md",
+    "中国抗日战争.md",
+    "十字军东征.md",
+    "阿拉伯世界.md",
+    "阿拉伯人.md",
+    "阿拉伯帝国.md",
+    "准噶尔汗国.md",
+    "五胡十六国.md",
+    "五代十国.md",
+    "三皇五帝.md",
+    "三国.md",
+    "南北朝.md",
+    "中华民国.md",
+    "台湾.md"
   ]
 }
