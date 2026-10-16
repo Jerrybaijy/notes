@@ -248,7 +248,7 @@ docker pull jerrybaijy/my-image:1.0
 
 # Container
 
-[`docker container`](https://docs.docker.com/reference/cli/docker/container/) 命令用于管理 containers。
+[`docker container`](https://docs.docker.com/reference/cli/docker/container/) 命令用于管理 containers。
 
 ## 容器命令
 
@@ -278,6 +278,9 @@ docker rm $(docker ps -aq)
   ```bash
   # 检查容器详细信息
   docker inspect [OPTIONS] $CONTAINER [CONTAINER...]
+  
+  # 查看容器启动时间
+  docker inspect --format='{{.State.StartedAt}}' $CONTAINER | xargs -I {} date -d "{}" "+%Y-%m-%d %H:%M:%S"
   ```
 
 - **打印日志**
