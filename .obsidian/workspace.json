@@ -23,22 +23,97 @@
             }
           },
           {
-            "id": "1c78eff50ab5a530",
+            "id": "87b96b2950841689",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "ai-tools-collection.md",
+                "file": "南昌起义.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "ai-tools-collection"
+              "title": "南昌起义"
+            }
+          },
+          {
+            "id": "fc5790ea9400a16e",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "中国共产党.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "中国共产党"
+            }
+          },
+          {
+            "id": "8ed29f57a48a56e1",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "长征.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "长征"
+            }
+          },
+          {
+            "id": "7a7d2f558a59dac4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "毛泽东.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "毛泽东"
+            }
+          },
+          {
+            "id": "8c69822f61df8dcc",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "博古.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "博古"
+            }
+          },
+          {
+            "id": "55f57afec19a35d4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "孙中山.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "孙中山"
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 6
       }
     ],
     "direction": "vertical"
@@ -72,7 +147,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "git",
+                "query": "党魁",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -117,6 +192,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "孙中山.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,6 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "长征.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -175,8 +252,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -191,6 +267,14 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
+    "博古.md",
+    "毛泽东.md",
+    "长征.md",
+    "南昌起义.md",
+    "中国共产党.md",
+    "assets/中华苏维埃势力变化图.svg",
+    "ai-tools-collection.md",
+    "中国共产党最高领导人.md",
     "中国抗日战争.md",
     "食谱.md",
     "酱.md",
@@ -210,13 +294,6 @@
     "高句丽.md",
     "十字军东征.md",
     "阿拉伯世界.md",
-    "阿拉伯人.md",
-    "阿拉伯帝国.md",
-    "准噶尔汗国.md",
-    "五胡十六国.md",
-    "五代十国.md",
-    "三皇五帝.md",
-    "三国.md",
-    "南北朝.md"
+    "阿拉伯人.md"
   ]
 }
