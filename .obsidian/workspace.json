@@ -4,116 +4,116 @@
     "type": "split",
     "children": [
       {
-        "id": "e0ebf997ae619c30",
+        "id": "dd66a9e03dde568a",
         "type": "tabs",
         "children": [
           {
-            "id": "0697317453a1e5a9",
+            "id": "7611cb6cdc22086a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中国抗日战争.md",
+                "file": "中华民国.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中国抗日战争"
+              "title": "中华民国"
             }
           },
           {
-            "id": "87b96b2950841689",
+            "id": "b4c470fb049cf224",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "南昌起义.md",
+                "file": "胡塞武装.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "南昌起义"
+              "title": "胡塞武装"
             }
           },
           {
-            "id": "fc5790ea9400a16e",
+            "id": "9db29389272c7529",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "中国共产党.md",
+                "file": "巴解.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "中国共产党"
+              "title": "巴解"
             }
           },
           {
-            "id": "8ed29f57a48a56e1",
+            "id": "afb01cc89b0d81ed",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "长征.md",
+                "file": "法塔赫.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "长征"
+              "title": "法塔赫"
             }
           },
           {
-            "id": "7a7d2f558a59dac4",
+            "id": "b12d89172f7be444",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "毛泽东.md",
+                "file": "哈马斯.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "毛泽东"
+              "title": "哈马斯"
             }
           },
           {
-            "id": "8c69822f61df8dcc",
+            "id": "a33718af1ac3fca7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "博古.md",
+                "file": "巴勒斯坦.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "博古"
+              "title": "巴勒斯坦"
             }
           },
           {
-            "id": "55f57afec19a35d4",
+            "id": "2f7b8c4dd009309f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "孙中山.md",
+                "file": "世界历史.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "孙中山"
+              "title": "世界历史"
             }
           }
         ],
-        "currentTab": 6
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -147,7 +147,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "党魁",
+                "query": "伊斯兰国家",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -192,7 +192,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "孙中山.md",
+                "file": "胡塞武装.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -211,7 +211,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "长征.md",
+                "file": "胡塞武装.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -240,6 +240,7 @@
             "state": {
               "type": "outline",
               "state": {
+                "file": "胡塞武装.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -267,33 +268,35 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "博古.md",
-    "毛泽东.md",
-    "长征.md",
-    "南昌起义.md",
+    "巴勒斯坦.md",
+    "哈马斯.md",
+    "法塔赫.md",
     "中国共产党.md",
-    "assets/中华苏维埃势力变化图.svg",
-    "ai-tools-collection.md",
-    "中国共产党最高领导人.md",
-    "中国抗日战争.md",
-    "食谱.md",
-    "酱.md",
-    "世界地理.md",
-    "刘德华.md",
-    "黄兴.md",
-    "大洋.md",
-    "assets/Continental_models-zh.gif",
-    "大洲.md",
-    "note-tags.md",
+    "巴解.md",
+    "胡塞武装.md",
+    "利比亚.md",
     "世界历史.md",
-    "一般命令第一号.md",
-    "第二次世界大战.md",
-    "亚洲.md",
-    "日本.md",
-    "中华人民共和国.md",
-    "高句丽.md",
-    "十字军东征.md",
-    "阿拉伯世界.md",
-    "阿拉伯人.md"
+    "宗教.md",
+    "印度.md",
+    "也门.md",
+    "土耳其.md",
+    "中华民国.md",
+    "中山舰事件.md",
+    "中东.md",
+    "阿拉伯半岛.md",
+    "耶路撒冷.md",
+    "巴勒斯坦地区.md",
+    "波斯湾.md",
+    "第五次中东战争.md",
+    "第一次中东战争.md",
+    "第三次中东战争.md",
+    "第二次中东战争.md",
+    "中东战争.md",
+    "第二次国共内战.md",
+    "第四次中东战争.md",
+    "assets/以色列和阿拉伯联盟成员.svg",
+    "assets/四渡赤水.png",
+    "assets/中华苏维埃势力变化图.svg",
+    "assets/Continental_models-zh.gif"
   ]
 }
