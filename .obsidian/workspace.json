@@ -13,36 +13,6 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "世界历史.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "世界历史"
-            }
-          },
-          {
-            "id": "387c3a2be51d1e88",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "朝鲜族.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "朝鲜族"
-            }
-          },
-          {
-            "id": "60830ec0095f9df7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
                 "file": "犹太人.md",
                 "mode": "preview",
                 "source": true,
@@ -51,39 +21,8 @@
               "icon": "lucide-file",
               "title": "犹太人"
             }
-          },
-          {
-            "id": "7deba5514ba0a99a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "亚述.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "亚述"
-            }
-          },
-          {
-            "id": "bd396e9d2dcf8678",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴比伦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴比伦"
-            }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -117,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "两河文明",
+                "query": "tag:#历史",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -141,8 +80,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -162,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "巴比伦.md",
+                "file": "犹太人.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -181,7 +119,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "胡塞武装.md",
+                "file": "犹太人.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -236,11 +174,20 @@
       "bases:新建数据库": false
     }
   },
-  "active": "b7f8989d35ed3ef0",
+  "active": "2f7b8c4dd009309f",
   "lastOpenFiles": [
-    "亚述.md",
-    "巴比伦.md",
+    "佛教.md",
+    "伊斯兰教.md",
+    "基督教.md",
+    "犹太教.md",
+    "宗教集合.md",
+    "宗教.md",
+    "亚伯拉罕诸教.md",
     "犹太人.md",
+    "中东.md",
+    "世界历史.md",
+    "巴比伦.md",
+    "亚述.md",
     "扶余国.md",
     "二十四史.md",
     "朝鲜半岛.md",
@@ -255,8 +202,6 @@
     "以色列.md",
     "文明.md",
     "两河文明.md",
-    "世界历史.md",
-    "四大文明古国.md",
     "assets/20px-Flag_of_Switzerland.svg.pngutm_source=zh.wikipedia.png",
     "assets/20px-Star_of_David.svg.pngutm_source=zh.wikipedia.png",
     "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia.png",
@@ -276,13 +221,6 @@
     "assets/40px-Flag_of_Turkey.svg.pngutm_source=zh.wikipedia-1792663885201-55.org&utm_campaign=parser&utm_content=thumbnail",
     "assets/40px-Flag_of_Uruguay.svg.pngutm_source=zh.wikipedia-1792663885201-54.org&utm_campaign=parser&utm_content=thumbnail",
     "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia-1792663885201-53.org&utm_campaign=parser&utm_content=thumbnail",
-    "assets/40px-Flag_of_Italy.svg.pngutm_source=zh.wikipedia-1792663885201-51.org&utm_campaign=parser&utm_content=thumbnail",
-    "朝鲜族.md",
-    "意大利.md",
-    "满族.md",
-    "希腊.md",
-    "伊朗.md",
-    "亚洲.md",
-    "中东.md"
+    "assets/40px-Flag_of_Italy.svg.pngutm_source=zh.wikipedia-1792663885201-51.org&utm_campaign=parser&utm_content=thumbnail"
   ]
 }
