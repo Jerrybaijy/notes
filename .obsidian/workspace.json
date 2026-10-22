@@ -8,96 +8,6 @@
         "type": "tabs",
         "children": [
           {
-            "id": "7611cb6cdc22086a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "中华民国.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "中华民国"
-            }
-          },
-          {
-            "id": "b4c470fb049cf224",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "胡塞武装.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "胡塞武装"
-            }
-          },
-          {
-            "id": "9db29389272c7529",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴解.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴解"
-            }
-          },
-          {
-            "id": "afb01cc89b0d81ed",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "法塔赫.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "法塔赫"
-            }
-          },
-          {
-            "id": "b12d89172f7be444",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "哈马斯.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "哈马斯"
-            }
-          },
-          {
-            "id": "a33718af1ac3fca7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴勒斯坦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴勒斯坦"
-            }
-          },
-          {
             "id": "2f7b8c4dd009309f",
             "type": "leaf",
             "state": {
@@ -111,9 +21,69 @@
               "icon": "lucide-file",
               "title": "世界历史"
             }
+          },
+          {
+            "id": "387c3a2be51d1e88",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "朝鲜族.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "朝鲜族"
+            }
+          },
+          {
+            "id": "60830ec0095f9df7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "犹太人.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "犹太人"
+            }
+          },
+          {
+            "id": "7deba5514ba0a99a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "亚述.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "亚述"
+            }
+          },
+          {
+            "id": "bd396e9d2dcf8678",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴比伦.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴比伦"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -147,7 +117,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "伊斯兰国家",
+                "query": "两河文明",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -192,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "胡塞武装.md",
+                "file": "巴比伦.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -268,35 +238,51 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "巴勒斯坦.md",
-    "哈马斯.md",
-    "法塔赫.md",
-    "中国共产党.md",
-    "巴解.md",
-    "胡塞武装.md",
-    "利比亚.md",
-    "世界历史.md",
-    "宗教.md",
-    "印度.md",
-    "也门.md",
-    "土耳其.md",
-    "中华民国.md",
-    "中山舰事件.md",
-    "中东.md",
-    "阿拉伯半岛.md",
-    "耶路撒冷.md",
+    "亚述.md",
+    "巴比伦.md",
+    "犹太人.md",
+    "扶余国.md",
+    "二十四史.md",
+    "朝鲜半岛.md",
+    "伯邑考.md",
+    "比干.md",
+    "埃及.md",
     "巴勒斯坦地区.md",
-    "波斯湾.md",
-    "第五次中东战争.md",
-    "第一次中东战争.md",
-    "第三次中东战争.md",
-    "第二次中东战争.md",
-    "中东战争.md",
-    "第二次国共内战.md",
-    "第四次中东战争.md",
-    "assets/以色列和阿拉伯联盟成员.svg",
-    "assets/四渡赤水.png",
-    "assets/中华苏维埃势力变化图.svg",
-    "assets/Continental_models-zh.gif"
+    "巴勒斯坦.md",
+    "阿富汗.md",
+    "文明摇篮.md",
+    "两河流域.md",
+    "以色列.md",
+    "文明.md",
+    "两河文明.md",
+    "世界历史.md",
+    "四大文明古国.md",
+    "assets/20px-Flag_of_Switzerland.svg.pngutm_source=zh.wikipedia.png",
+    "assets/20px-Star_of_David.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Turkey.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Uruguay.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Italy.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Belgium_(civil).svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_the_Netherlands.svg.pngutm_source=zh.wikipedia.png",
+    "assets/40px-Flag_of_Mexico.svg.pngutm_source=zh.wikipedia.png",
+    "assets/60px-Noam_Chomsky_portrait_2017_retouched.jpgutm_source=zh.wikipedia-1792663885201-19.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/60px-Hahn_and_Meitner_in_1912_(cropped).jpgutm_source=zh.wikipedia-1792663885201-18.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/60px-Portrait_of_David_Ricardo_by_Thomas_Phillips.jpgutm_source=zh.wikipedia-1792663885201-21.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/20px-Flag_of_Switzerland.svg.pngutm_source=zh.wikipedia-1792663885201-52.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/20px-Star_of_David.svg.pngutm_source=zh.wikipedia-1792663885201-57.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia-1792663885201-56.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/40px-Flag_of_Turkey.svg.pngutm_source=zh.wikipedia-1792663885201-55.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/40px-Flag_of_Uruguay.svg.pngutm_source=zh.wikipedia-1792663885201-54.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia-1792663885201-53.org&utm_campaign=parser&utm_content=thumbnail",
+    "assets/40px-Flag_of_Italy.svg.pngutm_source=zh.wikipedia-1792663885201-51.org&utm_campaign=parser&utm_content=thumbnail",
+    "朝鲜族.md",
+    "意大利.md",
+    "满族.md",
+    "希腊.md",
+    "伊朗.md",
+    "亚洲.md",
+    "中东.md"
   ]
 }
