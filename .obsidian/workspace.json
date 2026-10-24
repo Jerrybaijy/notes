@@ -23,82 +23,67 @@
             }
           },
           {
-            "id": "e44f8f5b173562bf",
+            "id": "d974a3294418793b",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "基督教.md",
+                "file": "伊斯兰教.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "基督教"
+              "title": "伊斯兰教"
             }
           },
           {
-            "id": "3b2954cb18e80a9b",
+            "id": "34e943409d773f62",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "天主教.md",
+                "file": "穆罕默德.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "天主教"
+              "title": "穆罕默德"
             }
           },
           {
-            "id": "ce96e0b348b4a6fe",
+            "id": "dd9857d8f33d4a50",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "东正教.md",
+                "file": "释迦摩尼.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "东正教"
+              "title": "释迦摩尼"
             }
           },
           {
-            "id": "574efa31a6c649a6",
+            "id": "2502b07776ecdb68",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "新教.md",
+                "file": "亚伯拉罕.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "新教"
-            }
-          },
-          {
-            "id": "40ec6fc555020c6e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "圣经.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "圣经"
+              "title": "亚伯拉罕"
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -132,7 +117,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "基督教",
+                "query": "耶稣",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -177,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "天主教.md",
+                "file": "亚伯拉罕.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -253,32 +238,32 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "犹太人.md",
-    "圣经.md",
-    "新教.md",
-    "基督教.md",
-    "东正教.md",
-    "天主教.md",
-    "耶稣.md",
-    "佛教.md",
-    "伊斯兰教.md",
-    "犹太教.md",
-    "宗教集合.md",
-    "宗教.md",
+    "其它格式未转换/耶稣家谱/~$耶稣家谱.xlsx",
     "亚伯拉罕诸教.md",
-    "中东.md",
-    "世界历史.md",
-    "巴比伦.md",
-    "亚述.md",
-    "扶余国.md",
-    "二十四史.md",
-    "朝鲜半岛.md",
-    "伯邑考.md",
-    "比干.md",
-    "埃及.md",
-    "巴勒斯坦地区.md",
+    "亚伯拉罕.md",
+    "伊斯兰教.md",
     "巴勒斯坦.md",
-    "阿富汗.md",
+    "释迦摩尼.md",
+    "穆罕默德.md",
+    "伊斯兰教派.md",
+    "逊尼派.md",
+    "基地组织.md",
+    "塔利班.md",
+    "伊斯兰国.md",
+    "真主党.md",
+    "伊斯兰合作组织.md",
+    "穆斯林兄弟会.md",
+    "穆斯林世界.md",
+    "耶稣.md",
+    "古兰经.md",
+    "圣经.md",
+    "天主教.md",
+    "胡塞武装.md",
+    "巴解.md",
+    "什叶派.md",
+    "基督教.md",
+    "伊斯兰恐怖主义.md",
+    "阿拉伯世界.md",
     "assets/20px-Flag_of_Switzerland.svg.pngutm_source=zh.wikipedia.png",
     "assets/20px-Star_of_David.svg.pngutm_source=zh.wikipedia.png",
     "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia.png",
