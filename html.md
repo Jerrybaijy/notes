@@ -145,7 +145,7 @@ WHATWG 将 HTML 的元素分成[六种类型](https://html.spec.whatwg.org/multi
 
 #### 空元素
 
-[**空元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)（void element），是**不能**存在子节点（例如内嵌的元素或者文本节点）的元素。空元素只有开始标签，没有结束标签，即**自闭合标签**`。
+[**空元素**](https://developer.mozilla.org/zh-CN/docs/Glossary/Void_element)（void element），是**不能**存在子节点（例如内嵌的元素或者文本节点）的元素。空元素只有开始标签，没有结束标签，即**自闭合标签**。
 
 [`<area>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/area)、[ `<base>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/base)、
 
@@ -1944,7 +1944,7 @@ function greet() {
 
 ## `<br>`
 
-**换行** [`<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/br) 用于在文本中生成一个换行符（回车），将 `<br>` 之后的文本从下一行开始渲染，是空元素。
+**换行** [`<br>`](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Reference/Elements/br) 用于在文本中生成一个换行符（回车），将 `<br>` 之后的文本从下一行开始渲染，是**空元素**。
 
 ```html
 <p>这是第一行<br />这是第二行</p>
