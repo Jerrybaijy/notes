@@ -117,7 +117,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "耶稣",
+                "query": "typor",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -238,17 +238,21 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "其它格式未转换/耶稣家谱/A3BF1200",
-    "其它格式未转换/耶稣家谱/84B11200",
-    "其它格式未转换/耶稣家谱/78BC0200",
-    "其它格式未转换/耶稣家谱/B77C0200",
-    "其它格式未转换/耶稣家谱/61EB0200",
-    "其它格式未转换/耶稣家谱/9E1A0200",
-    "其它格式未转换/耶稣家谱/BCD90200",
-    "其它格式未转换/耶稣家谱/7E01B100",
-    "其它格式未转换/耶稣家谱/F060B100",
-    "其它格式未转换/耶稣家谱/D3ACA100",
-    "其它格式未转换/耶稣家谱/AC2C8100",
+    "其它格式未转换/typora/typora-configs/conf.user.json",
+    "其它格式未转换/typora/typora-configs/conf.default.json",
+    "其它格式未转换/typora/typora-configs",
+    "其它格式未转换/typora/新建文件夹",
+    "其它格式未转换/typora/typora-themes/github-night/SFMonoSemibold.woff",
+    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-Regular.woff",
+    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-Italic.woff",
+    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-ExtraBoldItalic.woff",
+    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-ExtraBold.woff",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.woff2",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.woff",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.svg",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800italic.svg",
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800.svg",
     "耶稣.md",
     "耶稣的谱系.md",
     "html.md",
@@ -279,10 +283,6 @@
     "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia.png",
     "assets/40px-Flag_of_Turkey.svg.pngutm_source=zh.wikipedia.png",
     "assets/40px-Flag_of_Uruguay.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Italy.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Belgium_(civil).svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_the_Netherlands.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Mexico.svg.pngutm_source=zh.wikipedia.png"
+    "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia.png"
   ]
 }

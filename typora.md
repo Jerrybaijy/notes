@@ -101,8 +101,8 @@ tags:
 
 ## 快捷键设定
 
-- **文件 | 偏好设置** > **通用** > **打开高级设置**
-- 打开 `conf.user.json`。如果没有该文件，参照 `conf.default.json` 创建一个。
+- 修改[高级设置](#高级设置)中 `config.user.json` 文件的 `keyBinding` 字段。
+
 - 在 `keyBinding` 项下添加快捷键的设置，如 `"Always on Top": "Ctrl+Shift+P"`。
 
   ```json
@@ -112,6 +112,8 @@ tags:
   ```
 
 - 重启生效
+
+    
 
 # Markdown
 
@@ -1087,6 +1089,56 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.ty
   - 空标签和带有 `display: none` 样式的元素
 
 - 并非所有 HTML 标签/样式都能导出为其他格式。
+
+# 高级设置
+
+[高级设置](https://support.typora.io/Advance-Config/)：有些设置在偏好设置面板中隐藏，并存储在 `config.user.json` 配置文件中。
+
+- **文件 | 偏好设置** > **通用** > **打开高级设置**
+- 打开 `conf.user.json`。如果没有该文件，参照 `conf.default.json` 创建一个，该文件支持注释。
+- 修改配置以后，重启 Typora 生效。
+- `conf.default.json` 和 `conf.user.json` 在个人笔记仓库中有备份。
+
+**字段备份**：
+
+```json
+/** For advanced users. */
+{
+  "defaultFontFamily": {
+    "standard": null, //String - Defaults to "Times New Roman".
+    "serif": null, // String - Defaults to "Times New Roman".
+    "sansSerif": null, // String - Defaults to "Arial".
+    "monospace": null // String - Defaults to "Courier New".
+  },
+  "autoHideMenuBar": false, //Boolean - Auto hide the menu bar unless the `Alt` key is pressed. Default is false.
+
+  // Array - Search Service user can access from context menu after a range of text is selected. Each item is formatted as [caption, url]
+  "searchService": [
+    ["Search with Google", "https://google.com/search?q=%s"]
+  ],
+
+  // Custom key binding, which will override the default ones.
+  // see https://support.typora.io/Shortcut-Keys/#windows--linux for detail
+  "keyBinding": {
+    // for example: 
+    // "Always on Top": "Ctrl+Shift+P"
+    // All other options are the menu items 'text label' displayed from each typora menu
+    "Add Row Above": "Ctrl+Shift+U",
+    "Add Row Below": "Ctrl+Shift+D",
+    "Add Column Before": "Ctrl+Shift+L",
+    "Add Column After": "Ctrl+Shift+R",
+    "Delete Column": "Ctrl+Shift+Delete",
+    // 为了使用 Ctrl+Shift+D
+    "Delete Word": "",
+    // 为了使用 Ctrl+Shift+L
+    "Toggle Sidebar": ""
+  },
+
+  "monocolorEmoji": false, //default false. Only work for Windows
+  "maxFetchCountOnFileList": 500,
+  "flags": [] // default [], append Chrome launch flags, e.g: [["disable-gpu"], ["host-rules", "MAP * 127.0.0.1"]]
+}
+```
 
 # 其它
 
