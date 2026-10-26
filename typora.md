@@ -1140,6 +1140,35 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.ty
 }
 ```
 
+# Typora Plugin
+
+[Typora_plugin](https://github.com/obgnail/typora_plugin) 是一个第三方 Typora 功能增强工具包，它通过注入代码的方式为 Typora 补全了多标签页、章节折叠、右侧文档大纲、书签管理、Markmap 思维导图等大量高级功能。
+
+> [Docs](https://github.com/obgnail/typora_plugin/blob/master/README-cn.md)
+
+> [!WARNING]
+>
+> 上次安装以后，每次打开 Typora 时，都会出现一个**无法写入**的错误弹窗，影响使用体验。
+
+## 安装
+
+- [下载源码压缩包](https://github.com/obgnail/typora_plugin/releases)（已保存至个人网盘），解压并复制 `plugin` 文件夹。
+- 打开 Typora 安装目录，找到包含 `window.html` 的文件夹 `C:\Program Files\Typora\resources`。
+- 粘贴 `plugin` 文件夹。
+- 打开 `plugin/bin`，以管理员身份运行 `install_windows.ps1` 或 `install_windows_amd_x64.exe`。
+- 若弹窗显示 `Plugin installed successfully`，安装成功。
+    - 成功以后，会把 `C:\Program Files\Typora\resources` 目录下的 `window.html` 文件自动备份为 `window.html.back`，然后在 `window.html` 中写入一行执行脚本的代码。
+- 启动 Typora，正文区右键，可见插件菜单。
+
+## 卸载
+
+- 正常卸载：右键使用 powershell 运行 `uninstall_windows.ps1` 可卸载，但上次没有卸载成功，窗口闪退，可能是权限问题。
+- 非正常卸载：删除安装时已经被修改过的 `window.html`，把自动备份的 `window.html.back` 改名为 `window.html`，删除复制进来的 `plugin` 目录。
+
+## 其它
+
+- [安装故障排除指南](https://github.com/obgnail/typora_plugin/issues/847)
+
 # 其它
 
 ## 帮助
