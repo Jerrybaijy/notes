@@ -8,18 +8,33 @@
         "type": "tabs",
         "children": [
           {
-            "id": "797dbb74f63c6b03",
+            "id": "fabf1acaf3a2a2fd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "耶稣的谱系.md",
+                "file": "世界历史.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "耶稣的谱系"
+              "title": "世界历史"
+            }
+          },
+          {
+            "id": "4eb2edd394aa27b4",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "000临时.md",
+                "mode": "preview",
+                "source": false,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "000临时"
             }
           }
         ]
@@ -56,7 +71,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "typora",
+                "query": "阿卡德",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -101,7 +116,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "耶稣的谱系.md",
+                "file": "世界历史.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +135,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "耶稣的谱系.md",
+                "file": "世界历史.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -158,8 +173,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -178,6 +192,30 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
+    "000临时.md",
+    "亚述.md",
+    "新亚述帝国.md",
+    "亚述人.md",
+    "世界历史.md",
+    "阿卡德帝国.md",
+    "阿卡德人.md",
+    "中东.md",
+    "希腊.md",
+    "network.md",
+    "assets/中亚述.jpg",
+    "assets/早亚述.jpg",
+    "assets/亚述.svg",
+    "assets/新亚述.jpg",
+    "assets/亚述巴尼拔时代的新亚述帝国.svg",
+    "以色列.md",
+    "两河.md",
+    "美索不达米亚文明.md",
+    "两河流域.md",
+    "巴比伦.md",
+    "秦朝.md",
+    "犹太人.md",
+    "assets/阿卡德帝国疆域.png",
+    "耶稣的谱系.md",
     "其它格式未转换/typora/typora-插件备份/README.md",
     "其它格式未转换/typora/typora-插件备份/新建 Markdown File.md",
     "其它格式未转换/typora/typora-插件备份/window.html",
@@ -185,7 +223,6 @@
     "其它格式未转换/typora/typora-插件备份",
     "其它格式未转换/typora/新建文件夹",
     "耶稣.md",
-    "耶稣的谱系.md",
     "其它格式未转换/typora/typora-configs/conf.user.json",
     "其它格式未转换/typora/typora-configs/conf.default.json",
     "其它格式未转换/typora/typora-configs",
@@ -200,29 +237,6 @@
     "000000耶稣临时.md",
     "新建 Markdown File.md",
     "00000000.md",
-    "记笔记.md",
-    "亚伯拉罕.md",
-    "犹太人.md",
-    "伊斯兰教.md",
-    "亚伯拉罕诸教.md",
-    "巴勒斯坦.md",
-    "释迦摩尼.md",
-    "穆罕默德.md",
-    "伊斯兰教派.md",
-    "逊尼派.md",
-    "基地组织.md",
-    "塔利班.md",
-    "伊斯兰国.md",
-    "真主党.md",
-    "伊斯兰合作组织.md",
-    "穆斯林兄弟会.md",
-    "穆斯林世界.md",
-    "古兰经.md",
-    "assets/20px-Flag_of_Switzerland.svg.pngutm_source=zh.wikipedia.png",
-    "assets/20px-Star_of_David.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Sweden.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Turkey.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Uruguay.svg.pngutm_source=zh.wikipedia.png",
-    "assets/40px-Flag_of_Chile.svg.pngutm_source=zh.wikipedia.png"
+    "记笔记.md"
   ]
 }
