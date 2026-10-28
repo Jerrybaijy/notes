@@ -21,21 +21,6 @@
               "icon": "lucide-file",
               "title": "世界历史"
             }
-          },
-          {
-            "id": "4eb2edd394aa27b4",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "000临时.md",
-                "mode": "preview",
-                "source": false,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "000临时"
-            }
           }
         ]
       }
@@ -71,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "阿卡德",
+                "query": "埃及",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -95,8 +80,7 @@
               "title": "书签"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -190,14 +174,22 @@
       "bases:新建数据库": false
     }
   },
-  "active": "b7f8989d35ed3ef0",
+  "active": "fabf1acaf3a2a2fd",
   "lastOpenFiles": [
+    "埃及.md",
+    "早王朝时期 (埃及).md",
+    "埃及第一王朝.md",
+    "中国国民党政府.md",
+    "古埃及.md",
+    "帝国.md",
+    "国家.md",
+    "国家元首.md",
+    "阿卡德帝国.md",
+    "世界历史.md",
     "000临时.md",
     "亚述.md",
     "新亚述帝国.md",
     "亚述人.md",
-    "世界历史.md",
-    "阿卡德帝国.md",
     "阿卡德人.md",
     "中东.md",
     "希腊.md",
@@ -216,13 +208,10 @@
     "犹太人.md",
     "assets/阿卡德帝国疆域.png",
     "耶稣的谱系.md",
-    "其它格式未转换/typora/typora-插件备份/README.md",
-    "其它格式未转换/typora/typora-插件备份/新建 Markdown File.md",
     "其它格式未转换/typora/typora-插件备份/window.html",
     "其它格式未转换/typora/typora-插件备份/window.html.bak",
     "其它格式未转换/typora/typora-插件备份",
     "其它格式未转换/typora/新建文件夹",
-    "耶稣.md",
     "其它格式未转换/typora/typora-configs/conf.user.json",
     "其它格式未转换/typora/typora-configs/conf.default.json",
     "其它格式未转换/typora/typora-configs",
@@ -232,11 +221,6 @@
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg",
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.svg",
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800italic.svg",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800.svg",
-    "html.md",
-    "000000耶稣临时.md",
-    "新建 Markdown File.md",
-    "00000000.md",
-    "记笔记.md"
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800.svg"
   ]
 }
