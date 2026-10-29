@@ -21,8 +21,144 @@
               "icon": "lucide-file",
               "title": "世界历史"
             }
+          },
+          {
+            "id": "9e70bd89e13ea180",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "以色列.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "以色列"
+            }
+          },
+          {
+            "id": "dab2cb9469fe4e23",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "以色列.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "以色列"
+            }
+          },
+          {
+            "id": "63061e76cdde19c7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴勒斯坦地区.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴勒斯坦地区"
+            }
+          },
+          {
+            "id": "183fecf617744fb6",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "联合国大会第181号决议.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "联合国大会第181号决议"
+            }
+          },
+          {
+            "id": "6f230773eb33696b",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴勒斯坦.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴勒斯坦"
+            }
+          },
+          {
+            "id": "7d5d3777386b405c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴勒斯坦.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴勒斯坦"
+            }
+          },
+          {
+            "id": "cff618bf2131a16a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "犹太人.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "犹太人"
+            }
+          },
+          {
+            "id": "421e64e74a248492",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴勒斯坦.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴勒斯坦"
+            }
+          },
+          {
+            "id": "f20f42063542c28a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "巴勒斯坦.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "巴勒斯坦"
+            }
           }
-        ]
+        ],
+        "currentTab": 8
       }
     ],
     "direction": "vertical"
@@ -56,7 +192,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "埃及",
+                "query": "181",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -80,7 +216,8 @@
               "title": "书签"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -100,7 +237,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "世界历史.md",
+                "file": "巴勒斯坦.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -174,8 +311,22 @@
       "bases:新建数据库": false
     }
   },
-  "active": "fabf1acaf3a2a2fd",
+  "active": "421e64e74a248492",
   "lastOpenFiles": [
+    "北元.md",
+    "巴勒斯坦地区.md",
+    "巴勒斯坦.md",
+    "以色列.md",
+    "犹太人.md",
+    "联合国大会第181号决议.md",
+    "assets/联合国大会第181号决议.png",
+    "第四次中东战争.md",
+    "第三次中东战争.md",
+    "以色列联合王国.md",
+    "北国以色列.md",
+    "犹大王国.md",
+    "世界历史.md",
+    "ga_backend_logs.md",
     "埃及.md",
     "早王朝时期 (埃及).md",
     "埃及第一王朝.md",
@@ -185,29 +336,16 @@
     "国家.md",
     "国家元首.md",
     "阿卡德帝国.md",
-    "世界历史.md",
     "000临时.md",
     "亚述.md",
     "新亚述帝国.md",
     "亚述人.md",
-    "阿卡德人.md",
-    "中东.md",
-    "希腊.md",
-    "network.md",
     "assets/中亚述.jpg",
     "assets/早亚述.jpg",
     "assets/亚述.svg",
     "assets/新亚述.jpg",
     "assets/亚述巴尼拔时代的新亚述帝国.svg",
-    "以色列.md",
-    "两河.md",
-    "美索不达米亚文明.md",
-    "两河流域.md",
-    "巴比伦.md",
-    "秦朝.md",
-    "犹太人.md",
     "assets/阿卡德帝国疆域.png",
-    "耶稣的谱系.md",
     "其它格式未转换/typora/typora-插件备份/window.html",
     "其它格式未转换/typora/typora-插件备份/window.html.bak",
     "其它格式未转换/typora/typora-插件备份",
@@ -220,7 +358,6 @@
     "其它格式未转换/typora/typora-themes/github-night/NunitoSans-Italic.woff",
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg",
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.svg",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800italic.svg",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800.svg"
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800italic.svg"
   ]
 }

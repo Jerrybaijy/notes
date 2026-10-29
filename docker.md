@@ -298,6 +298,9 @@ docker rm $(docker ps -aq)
   docker logs --since "2026-08-26T13:30:00Z" --until "2026-08-26T14:30:00Z" $CONTAINER
   # 按北京时间查看（北京时间，结尾加 +08:00）
   docker logs --since "2026-08-26T21:30:00+08:00" --until "2026-08-26T22:30:00+08:00" $CONTAINER
+  
+  # 把指定时间的日志存储在文件中
+  docker logs --since "2026-08-26T21:30:00+08:00" --until "2026-08-26T22:30:00+08:00" $CONTAINER > $FILE_NAME.txt 2>&1
   ```
 
 - **进入容器执行**
