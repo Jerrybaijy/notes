@@ -59,37 +59,35 @@ tags:
 >  </li>
 > </ul>
 > </details>
->
->
-> <details>
-> <summary>
->  <a
->    href="https://developer.mozilla.org/zh-CN/docs/MDN"
->    alt="MDN Web 文档项目"
+><details>
+><summary>
+> <a
+> href="https://developer.mozilla.org/zh-CN/docs/MDN"
+>  alt="MDN Web 文档项目"
 >    title="MDN Web 文档项目"
->    >MDN Web 文档项目</a
->  >：文档项目主页面
+>       >MDN Web 文档项目</a
+>     >：文档项目主页面
 > </summary>
 > <ul>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials"
+> <li>
+> <a
+>    href="https://developer.mozilla.org/zh-CN/docs/MDN/Tutorials"
 >      alt="Web 开发教程"
 >      title="Web 开发教程"
 >      >Web 开发教程</a
->    >：面向纯新手的教程
->  </li>
->  <li>
->    <a
->      href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
+>       >：面向纯新手的教程
+>    </li>
+> <li>
+>  <a
+>    href="https://developer.mozilla.org/zh-CN/docs/Web/CSS"
 >      alt="Web 开发者指南"
 >      title="Web 开发者指南"
 >      >Web 开发者指南</a
->    >：最简单的新手指导
->  </li>
+>       >：最简单的新手指导
+>    </li>
 > </ul>
-> </details>
->
+>  </details>
+> 
 > [学习 Web 开发](https://developer.mozilla.org/zh-CN/docs/Learn_web_development "学习 Web 开发")
 >
 > [MDN Web 文档术语表](https://developer.mozilla.org/zh-CN/docs/Glossary "MDN Web 文档术语表")：Web 相关术语的定义

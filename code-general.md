@@ -206,7 +206,7 @@ tags:
       def new_func():
           print(456)
       return new_func
-
+  
   v1 = func()  # 123
   v1()  # 456
   ```
@@ -258,7 +258,7 @@ tags:
     // 这里是函数体的代码块
     console.log("Hello, " + name + "!");
   }
-
+  
   greet("Alice"); // 调用函数，执行代码块
   ```
 
@@ -272,7 +272,7 @@ tags:
     let localVar = "I am local!";
     console.log(localVar); // 可以在代码块内访问
   }
-
+  
   console.log(localVar); // 无法在代码块外访问，会报错
   ```
 
@@ -348,10 +348,10 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
   ```bash
   # 对 example.js 文件格式化
   prettier --write example.js
-
+  
   # 对 src 目录下的所有 JS 文件格式化
   prettier --write src/**/*.js
-
+  
   # npm 会去 package.json 文件的 scripts 字段里查找名为 prettier 的脚本，然后执行该脚本对应的命令
   npm run prettier
   ```
@@ -366,7 +366,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
     "editor.formatOnSave": true,
     // 指定默认的格式化程序为 Prettier
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-
+  
     // Prettier 相关配置
     "prettier.printWidth": 80, // 每行代码的最大字符数，默认为80
     "prettier.tabWidth": 2, // 缩进的空格数，默认为2
@@ -377,7 +377,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
     "prettier.bracketSpacing": true, // 对象字面量中括号之间是否有空格，默认为 true
     "prettier.jsxBracketSameLine": false, // JSX 标签的右括号是否放在同一行，默认为 false
     "prettier.arrowParens": "always", // 箭头函数参数是否使用括号，可选值有 "always"、"avoid"，默认为 "always"
-
+  
     // 针对特定语言的格式化配置
     "[javascript]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -415,11 +415,11 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
   ```json
   {
     // 其他配置
-
+  
     "devDependencies": {
       // 安装 prettier 依赖
       "prettier": "^3.4.2"
-
+  
       // 其他依赖
     },
     "scripts": {
@@ -427,10 +427,10 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
       "prettier": "prettier --write \"**/*.{css,html,js,mjs,json,md,yaml,yml}\"",
       // 验证格式化
       "prettier:verify": "prettier --check \"**/*.{css,html,js,mjs,json,md,yaml,yml}\""
-
+  
       // 其他脚本命令
     }
-
+  
     // 其他配置
   }
   ```
@@ -469,6 +469,78 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
 
 - **文件夹**：`<folder_name>/`
 - **排除例外**：`!`
+
+# 转义字符
+
+**转义字符**（escape character）是在计算机中用于处理特殊字符的字符，通常是反斜杠（`\`）。它的作用是使得某些具有特殊意义的字符可以作为普通字符使用，或者是为了表示一些难以直接输入的字符（如换行符、制表符等）。
+
+转义字符主要有以下几个用途：
+
+- **避免冲突**：一些字符在编程或文本处理中有特定的含义，直接使用这些字符可能会产生冲突或错误。通过转义字符，可以避免这些冲突。例如，在代码字符串中直接使用引号会让程序误解字符串的开始和结束，使用 `\"` 可以避免这种误解。
+- **表示不可见字符**：某些字符如换行符、制表符等通常不可见，但在程序中却非常重要。使用转义字符可以让这些不可见字符变得可操作。
+- **输入特殊符号**：有些符号（如反斜杠、引号、以及一些控制字符）直接输入时可能会出错或无法显示，转义字符提供了一种可靠的方式来表示它们。
+
+## 反斜杠
+
+- **反斜杠** `\` 是最常见的转义字符，它用来让下一个字符失去其特殊功能。
+
+    ```python
+    strr1 = "Hello world!"
+    print(strr1)  # Hello world!
+    
+    strr2 = "\"Hello,world!\""
+    print(strr2)  # "Hello,world!"
+    ```
+
+- **说明**：反斜杠本身也需要通过转义来表示。在某些编程语言中，表示一个反斜杠字符本身时需要写成 `\\`。
+
+## 取消转义
+
+- 某些字符串中掺杂转义字符，比如路径、网址等，此时需要取消转义。
+
+- **`\` 方式取消**
+
+    ```python
+    # 两个“\”代表双重转义=不转义
+    strr = "E:\\labs\\test"
+    print(strr)   # E:\labs\test
+    ```
+
+- **`r` 方式取消**
+
+    ```python
+    # 路径中的 \l 和 \t 都是转义字符
+    strr = r"E:\labs\test"
+    print(strr)  # E:\labs\test
+    ```
+
+## 换行符
+
+- 换行符 `\n` 可以实现一个字符串分两行输出
+
+    ```python
+    data = "这是第一行！\n这是第二行！"  # \n换行符
+    print(data)
+    
+    # 这是第一行！
+    # 这是第二行！
+    ```
+
+## 制表符
+
+- **制表符** `\t` 可以实现字符串中相邻两个字符距离远一些
+
+    ```python
+    data = "你是谁？\t离我远一点！"  # \t制表符
+    print(data2)  # 你是谁？    离我远一点！
+    ```
+
+## 其它转义字符
+
+- 回车符 `\r`
+- 换页符 `\f`
+- 垂直制表符 `\v`
+- 响铃符 `\a`
 
 # 数据类型
 
@@ -511,7 +583,7 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
   ```java
   boolean a = true;   // 真
   boolean b = false;  // 假
-
+  
   System.out.println(5 > 3);  // 输出：true
   System.out.println(6 < 2);  // 输出：false
   ```
@@ -842,58 +914,55 @@ Prettier 是一款流行的代码格式化工具，主要对如下语言进行�
   - 某些语言的原始数据类型（如数字、字符串）是不可变的，容器（如列表、数组、字典、集合）是可变的。
   - 某些语言（如 C/C++）的普通变量和对象默认可变，只有通过 `const` 关键字创建的变量和对象是不可变的。
 
-# 公共方法
+# 索引
 
-## 索引
+## 索引基础
 
 索引是用于标识和访问数据结构中特定元素位置的一种机制。
 
 - 支持索引的数据类型每个元素都有一个**索引号**（又称**下标**）。
 - 有的语言有逆序索引，下标从-1开始，比如 Python。
-- 索引示例
 
-  ```java
-  // 索引号：            0       1      2       3      4
-  String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
-  System.out.println(address[0]); // 北京
-  ```
+```java
+// 索引号：            0       1      2       3      4
+String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
+System.out.println(address[0]); // 北京
+```
 
-**索引应用：**
+## 获取元素
 
-- 获取元素
+```java
+String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
+System.out.println(address[0]); // 北京
+```
 
-  ```java
-  String[] address = {"北京", "上海", "广州", "深圳", "杭州"};
-  System.out.println(address[0]); // 北京
-  ```
+## 修改元素
 
-- 修改元素
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+System.out.println(address[0]); // 北京
+address[0] = "西安"; // 修改索引号为0的元素
+System.out.println(address[0]); // 西安
+```
 
-  ```java
-  String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
-  System.out.println(address[0]); // 北京
-  address[0] = "西安"; // 修改索引号为0的元素
-  System.out.println(address[0]); // 西安
-  ```
+## 多级索引
 
-- 多级索引
+```java
+String[][] addressArray = {
+    { "北京", "上海", "广州" },
+    { "深圳", "杭州" }
+};
+System.out.println(addressArray[0][0]); // 北京
+```
 
-  ```java
-  String[][] addressArray = {
-      { "北京", "上海", "广州" },
-      { "深圳", "杭州" }
-  };
-  System.out.println(addressArray[0][0]); // 北京
-  ```
+## 利用索引思想遍历
 
-- 利用索引思想遍历
-
-  ```java
-  String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
-  for (int i = 0; i < address.length; i++) {
-      System.out.println(address[i]); // 依次输出每个城市
-  }
-  ```
+```java
+String[] address = { "北京", "上海", "广州", "深圳", "杭州" };
+for (int i = 0; i < address.length; i++) {
+    System.out.println(address[i]); // 依次输出每个城市
+}
+```
 
 # 运算符
 
@@ -1359,24 +1428,24 @@ for (初始化变量; 条件表达式; 更新表达式) {
   ```python
   def register():
       print("运行注册程序")
-
+  
   def login():
       print("运行登录程序")
-
+  
   def user_info():
       print("运行查看用户信息程序")
-
+  
   # 将函数放入字典
   mapping = {
       "1": register,
       "2": login,
       "3": user_info
   }
-
+  
   print("1.注册")
   print("2.登录")
   print("3.查看用户信息")
-
+  
   choice = input("请选择业务编号：")
   func = mapping.get(choice)  # func 将变为 register/login/user_info
   if func:
@@ -1422,11 +1491,11 @@ for (初始化变量; 条件表达式; 更新表达式) {
   ```python
   def func(*args):  # 在形参前面加*，可传多个参数
       return args  # 返回参数
-
+  
   res = func(45, "hj")  # 传两个参数
   print(res)  # (45, 'hj')  得到元组
   print(type(res))  # <class 'tuple'>
-
+  
   res2 = func()  # 不传参数得到空元组
   print(res2)  # () 得到空元组
   print(type(res2))  # <class 'tuple'>
@@ -1437,11 +1506,11 @@ for (初始化变量; 条件表达式; 更新表达式) {
   ```python
   def func(**kwargs):  # 在形参前面加**，可传多个赋值参数
       return kwargs  # 返回参数
-
+  
   res = func(v1 = 1, v2 = 2)  # 传两个赋值参数
   print(res)  # {'v1': 1, 'v2': 2}  得到字典
   print(type(res))  # <class 'dict'>
-
+  
   res2 = func()  # 不传参数
   print(res2)  # {}  得到空字典
   print(type(res2))  # <class 'dict'>
@@ -1452,12 +1521,12 @@ for (初始化变量; 条件表达式; 更新表达式) {
   ```python
   def func(*args, **kwargs):  # 混合动态形参
       return args, kwargs  # 返回参数
-
+  
   res = func(11, 22, v1 = 1, v2 = 2)
   print(res)  # ((11, 22), {'v1': 1, 'v2': 2})  得到元组
   print(type(res))  # <class 'tuple'>
   print(res[0])  # (11, 22)  索引元组
-
+  
   res2 = func()
   print(res2)  # ((), {})  不传参数得到以空元祖和空字典为元素的元组
   print(type(res2))  # <class 'tuple'>
@@ -1490,7 +1559,7 @@ for (初始化变量; 条件表达式; 更新表达式) {
       b = 22
       c = 33
       return a, b, c
-
+  
   r1, r2, r3 = func2()  # 把返回值分别赋值给r1, r2, r3
   print(r1, r2, r3)  # 11 22 33
   print(r1)  # 11
@@ -1575,7 +1644,7 @@ let person2 = new Person("李四", 22);
       while num < limit:
           yield num
           num += 1
-
+  
   obj = func(1000)
   for item in obj:
       print(item)
@@ -1601,10 +1670,10 @@ let person2 = new Person("李四", 22);
   def func():  # 源函数
       print(123)
       return 999
-
+  
   v1 = func()  # 依次打印before 123 after
   # 此处的func()实际就是inner()，用v1接收inner()的返回值
-
+  
   print(v1)  # 999
   # 结果：func()在inner()内执行，执行前后添加其它操作
   ```
@@ -1650,7 +1719,7 @@ let person2 = new Person("李四", 22);
       'mch_id': '15260',
       'trade': 'ff'
   }
-
+  
   result = "&".join(["{}={}".format(key, dict[key]) for key in sorted(dict.keys())])
   print(result)  # app_id=wx55&mch_id=15260&refund=123&sign_type=MD5&trade=ff
   ```

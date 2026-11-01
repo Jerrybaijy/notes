@@ -23,142 +23,52 @@
             }
           },
           {
-            "id": "9e70bd89e13ea180",
+            "id": "1fd71ab5da18c673",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "以色列.md",
+                "file": "it-basics.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "以色列"
+              "title": "it-basics"
             }
           },
           {
-            "id": "dab2cb9469fe4e23",
+            "id": "d1516498379f560e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "以色列.md",
+                "file": "regex.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "以色列"
+              "title": "regex"
             }
           },
           {
-            "id": "63061e76cdde19c7",
+            "id": "8747cd235eb0e209",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "巴勒斯坦地区.md",
+                "file": "code-general.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "巴勒斯坦地区"
-            }
-          },
-          {
-            "id": "183fecf617744fb6",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "联合国大会第181号决议.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "联合国大会第181号决议"
-            }
-          },
-          {
-            "id": "6f230773eb33696b",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴勒斯坦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴勒斯坦"
-            }
-          },
-          {
-            "id": "7d5d3777386b405c",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴勒斯坦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴勒斯坦"
-            }
-          },
-          {
-            "id": "cff618bf2131a16a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "犹太人.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "犹太人"
-            }
-          },
-          {
-            "id": "421e64e74a248492",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴勒斯坦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴勒斯坦"
-            }
-          },
-          {
-            "id": "f20f42063542c28a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "巴勒斯坦.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "巴勒斯坦"
+              "title": "code-general"
             }
           }
         ],
-        "currentTab": 8
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -192,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "181",
+                "query": "code-ge",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -221,7 +131,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 234.16668701171875
   },
   "right": {
     "id": "17aebc33b8b8077b",
@@ -237,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "巴勒斯坦.md",
+                "file": "it-basics.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -256,7 +166,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "世界历史.md",
+                "file": "it-basics.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -298,7 +208,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 208.833251953125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -311,11 +221,22 @@
       "bases:新建数据库": false
     }
   },
-  "active": "421e64e74a248492",
+  "active": "1fd71ab5da18c673",
   "lastOpenFiles": [
+    "regex.md",
+    "it-basics.md",
+    "code-general.md",
+    "excel.md",
+    "database.md",
+    "mysql.md",
+    "script.md",
+    "shell.md",
+    "network.md",
+    "世界历史.md",
+    "巴勒斯坦.md",
+    "test.md",
     "北元.md",
     "巴勒斯坦地区.md",
-    "巴勒斯坦.md",
     "以色列.md",
     "犹太人.md",
     "联合国大会第181号决议.md",
@@ -325,21 +246,10 @@
     "以色列联合王国.md",
     "北国以色列.md",
     "犹大王国.md",
-    "世界历史.md",
     "ga_backend_logs.md",
     "埃及.md",
     "早王朝时期 (埃及).md",
     "埃及第一王朝.md",
-    "中国国民党政府.md",
-    "古埃及.md",
-    "帝国.md",
-    "国家.md",
-    "国家元首.md",
-    "阿卡德帝国.md",
-    "000临时.md",
-    "亚述.md",
-    "新亚述帝国.md",
-    "亚述人.md",
     "assets/中亚述.jpg",
     "assets/早亚述.jpg",
     "assets/亚述.svg",

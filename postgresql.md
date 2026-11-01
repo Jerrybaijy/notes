@@ -9,7 +9,7 @@ tags:
 
 # Overview
 
-[**PostgreSQL**](https://www.postgresql.org/) 是一个[关系型数据库](it-basics.md#数据库类型)管理系统。
+[**PostgreSQL**](https://www.postgresql.org/) 是一个[关系型数据库](database.md#关系型数据库)管理系统。
 
 # 备份与恢复
 

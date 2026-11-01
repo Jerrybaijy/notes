@@ -3753,17 +3753,136 @@ Tell us your story: <textarea name="story" rows="5" cols="33"></textarea>
 ```
 
 > <details>
-> <summary>古埃及</summary>
-> <p>
-> <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a> 前3150年–前2686年
-> </p>
-> <p>
-> <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a> 前2686年–前2181年
-> </p>
-> <p>
-> <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a> 前2181年–前2055年
-> </p>
-> <p>更多...</p>
+>   <summary>古埃及</summary>
+>   <p>
+>     <a href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)">早王朝时期</a>
+>     前3150年–前2686年
+>   </p>
+>   <p>
+>     <a href="https://zh.wikipedia.org/wiki/古王国时期">古王国时期</a>
+>     前2686年–前2181年
+>   </p>
+>   <p>
+>     <a href="https://zh.wikipedia.org/wiki/第一中间时期">第一中间时期</a>
+>     前2181年–前2055年
+>   </p>
+>   <p>更多...</p>
+> </details>
+
+**嵌套**：`<details>` 元素可以嵌套使用，并通过内联样式控制缩进距离
+
+```html
+<details>
+  <summary>
+    <a
+      href="https://zh.wikipedia.org/wiki/前王朝时期"
+      alt="前王朝时期"
+      title="前王朝时期"
+      >前王朝时期</a
+    >
+  </summary>
+</details>
+<details>
+  <summary>
+    <a
+      href="https://zh.wikipedia.org/wiki/古埃及"
+      alt="古埃及"
+      title="古埃及"
+      color="red"
+      >古埃及</a
+    >
+  </summary>
+  <details style="margin-left: 20px">
+    <summary>
+      <a
+        href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)"
+        alt="早王朝时期"
+        title="早王朝时期"
+        >早王朝时期</a
+      >
+    </summary>
+    <p style="margin-left: 30px">
+      <a
+        href="https://zh.wikipedia.org/wiki/埃及第一王朝"
+        alt="埃及第一王朝"
+        title="埃及第一王朝"
+        >埃及第一王朝</a
+      ><br />
+      <a
+        href="https://zh.wikipedia.org/wiki/埃及第二王朝"
+        alt="埃及第二王朝"
+        title="埃及第二王朝"
+        >埃及第二王朝</a
+      >
+    </p>
+  </details>
+</details>
+<details>
+  <summary>
+    <a
+      href="https://zh.wikipedia.org/wiki/埃及现代史"
+      alt="现代埃及"
+      title="现代埃及"
+      >现代埃及</a
+    >
+  </summary>
+</details>
+```
+
+> <details>
+>   <summary>
+>     <a
+>       href="https://zh.wikipedia.org/wiki/前王朝时期"
+>       alt="前王朝时期"
+>       title="前王朝时期"
+>       >前王朝时期</a
+>     >
+>   </summary>
+> </details>
+> <details>
+>   <summary>
+>     <a
+>       href="https://zh.wikipedia.org/wiki/古埃及"
+>       alt="古埃及"
+>       title="古埃及"
+>       color="red"
+>       >古埃及</a
+>     >
+>   </summary>
+>   <details style="margin-left: 20px">
+>     <summary>
+>       <a
+>         href="https://zh.wikipedia.org/wiki/早王朝時期_(埃及)"
+>         alt="早王朝时期"
+>         title="早王朝时期"
+>         >早王朝时期</a
+>       >
+>     </summary>
+>     <p style="margin-left: 30px">
+>       <a
+>         href="https://zh.wikipedia.org/wiki/埃及第一王朝"
+>         alt="埃及第一王朝"
+>         title="埃及第一王朝"
+>         >埃及第一王朝</a
+>       ><br />
+>       <a
+>         href="https://zh.wikipedia.org/wiki/埃及第二王朝"
+>         alt="埃及第二王朝"
+>         title="埃及第二王朝"
+>         >埃及第二王朝</a
+>       >
+>     </p>
+>   </details>
+> </details>
+> <details>
+>   <summary>
+>     <a
+>       href="https://zh.wikipedia.org/wiki/埃及现代史"
+>       alt="现代埃及"
+>       title="现代埃及"
+>       >现代埃及</a
+>     >
+>   </summary>
 > </details>
 
 ## `<summary>`
