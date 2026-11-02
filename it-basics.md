@@ -117,6 +117,23 @@ tags:
 
 - `Shift + Space`
 
+# 查找与替换
+
+## 查找
+
+可使用[正则表达式](regex.md)进行条件查找。
+
+## 替换
+
+使用占位符 `$n` 引用[正则表达式](regex.md)条件查找中对应的捕获的分组。
+
+> [正则表达式中的替换](https://code.visualstudio.com/docs/editing/codebasics?referrer=vsc-search#_case-changing-in-regex-replace)
+
+- 正则查找：`(\d{4})-(\d{1})-`
+- 替换：`$1-0$2-`
+- `$1` 代表 `(\d{4})`
+- `$1` 代表 `(\d{1})`
+
 # 时间处理
 
 ## 时间戳

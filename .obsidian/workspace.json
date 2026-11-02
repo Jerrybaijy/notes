@@ -21,54 +21,8 @@
               "icon": "lucide-file",
               "title": "世界历史"
             }
-          },
-          {
-            "id": "1fd71ab5da18c673",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "it-basics.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "it-basics"
-            }
-          },
-          {
-            "id": "d1516498379f560e",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "regex.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "regex"
-            }
-          },
-          {
-            "id": "8747cd235eb0e209",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "code-general.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "code-general"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -102,7 +56,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "code-ge",
+                "query": "pingcode",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -147,7 +101,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "it-basics.md",
+                "file": "世界历史.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -221,18 +175,18 @@
       "bases:新建数据库": false
     }
   },
-  "active": "1fd71ab5da18c673",
+  "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "regex.md",
     "it-basics.md",
     "code-general.md",
+    "regex.md",
+    "世界历史.md",
     "excel.md",
     "database.md",
     "mysql.md",
     "script.md",
     "shell.md",
     "network.md",
-    "世界历史.md",
     "巴勒斯坦.md",
     "test.md",
     "北元.md",
