@@ -37,7 +37,7 @@ openclaw configure --section default_model
 # Linux/MacOS
 curl -fsSL https://openclaw.ai/install.sh | bash
 
-# Windows PowerShell (管理员)
+# Windows PowerShell (管理员，科学shang'w)
 iwr -useb https://openclaw.ai/install.ps1 | iex
 ```
 

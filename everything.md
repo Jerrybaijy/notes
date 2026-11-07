@@ -16,6 +16,14 @@ tags:
 
 [官网下载 Everything](https://www.voidtools.com/zh-cn/)
 
+# Quickstart
+
+第一次运行时，要把磁盘加入到数据库，等待几十秒建立索引完成。
+
+`工具` > `选项`
+
+<img src="assets/image-20261107130915663.png" alt="image-20261107130915663" style="zoom: 50%;" />
+
 # 其它
 
 印象中可用于批量修改文件名，但最后一次不会用了，也许是记错了。

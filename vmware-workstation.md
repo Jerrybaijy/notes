@@ -248,9 +248,11 @@ VMware Tools 是 Vmware workstation 的一组实用程序：
 
   <img src="assets/image-20250219190955471.png" alt="image-20250219190955471" style="zoom:50%;" />
 
-- 主机代理软件开启 `网卡模式`
+- 主机代理软件开启 `网卡模式` 或 `TUN 模式`
 
   <img src="assets/image-20250219190817621.png" alt="image-20250219190817621" style="zoom: 67%;" />
+
+  <img src="assets/image-20261107122502629.png" alt="image-20261107122502629" style="zoom: 38%;" />
 
 - 开启 `网卡模式` 之后需要重启 `VMware`。
 

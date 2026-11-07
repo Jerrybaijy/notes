@@ -13,16 +13,32 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "世界历史.md",
+                "file": "alembic.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "世界历史"
+              "title": "alembic"
+            }
+          },
+          {
+            "id": "449af002c783c524",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "browser-skill.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "browser-skill"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -56,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "pingcode",
+                "query": "skill",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -101,7 +117,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "世界历史.md",
+                "file": "claude-code.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -120,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "it-basics.md",
+                "file": "browser-skill.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -158,7 +174,8 @@
               "title": "大纲"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -175,17 +192,29 @@
       "bases:新建数据库": false
     }
   },
-  "active": "b7f8989d35ed3ef0",
+  "active": "449af002c783c524",
   "lastOpenFiles": [
+    "shell.md",
+    "assets/image-20261107130915663.png",
+    "assets/image-20261107122502629.png",
+    "browser-skill.md",
+    "alembic.md",
+    "世界历史.md",
+    "ai-tools-collection.md",
+    "claude-code.md",
+    "workbuddy.md",
+    "codebuddy-cli.md",
+    "gcloud-cli.md",
+    "其它格式未转换/微软拼音自定义短语.dat",
+    "其它格式未转换/ChsPinyinUDL.dat",
+    "clawhub.md",
     "it-basics.md",
     "code-general.md",
     "regex.md",
-    "世界历史.md",
     "excel.md",
     "database.md",
     "mysql.md",
     "script.md",
-    "shell.md",
     "network.md",
     "巴勒斯坦.md",
     "test.md",
@@ -195,15 +224,6 @@
     "犹太人.md",
     "联合国大会第181号决议.md",
     "assets/联合国大会第181号决议.png",
-    "第四次中东战争.md",
-    "第三次中东战争.md",
-    "以色列联合王国.md",
-    "北国以色列.md",
-    "犹大王国.md",
-    "ga_backend_logs.md",
-    "埃及.md",
-    "早王朝时期 (埃及).md",
-    "埃及第一王朝.md",
     "assets/中亚述.jpg",
     "assets/早亚述.jpg",
     "assets/亚述.svg",
@@ -218,10 +238,6 @@
     "其它格式未转换/typora/typora-configs/conf.default.json",
     "其它格式未转换/typora/typora-configs",
     "其它格式未转换/typora/typora-themes/github-night/SFMonoSemibold.woff",
-    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-Regular.woff",
-    "其它格式未转换/typora/typora-themes/github-night/NunitoSans-Italic.woff",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-italic.svg",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-800italic.svg"
+    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg"
   ]
 }
