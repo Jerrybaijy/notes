@@ -72,7 +72,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "skill",
+                "query": "claude",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -192,7 +192,7 @@
       "bases:新建数据库": false
     }
   },
-  "active": "449af002c783c524",
+  "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
     "shell.md",
     "assets/image-20261107130915663.png",

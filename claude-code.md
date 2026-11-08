@@ -158,7 +158,13 @@ ccr code
 |         切换交互模式          | <kbd>Alt</kbd> + <kbd>M</kbd> |
 | 将 IDE 中的选中行发送到输入框 | <kbd>Alt</kbd> + <kbd>K</kbd> |
 
-# 技巧
+# 配置
+
+## 用户级配置
+
+`C:\Users\jerry\.claude\settings.json`
+
+# 记忆
 
 ## 用户级记忆
 

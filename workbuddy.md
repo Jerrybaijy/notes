@@ -14,6 +14,8 @@ tags:
 > [WorkBuddy 桌面版 Docs](https://www.workbuddy.cn/docs/workbuddy/Overview)
 >
 > [WorkBuddy 网页版](https://www.workbuddy.cn/app)
+>
+> [WorkBuddy 开放平台 Docs](https://open.workbuddy.cn/docs)
 
 # CLI
 

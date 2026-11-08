@@ -11,13 +11,13 @@
   "workbench.colorCustomizations": {
     "[GitHub Light]": {
       "scrollbarSlider.background": "#a0a0a0aa", // 滚动条背景色
-      "scrollbarSlider.hoverBackground": "#7a7a7aaa", // 悬停滚动条背景色
+      "scrollbarSlider.hoverBackground": "#7a7a7aaa" // 悬停滚动条背景色
     },
     "[GitHub Dark Dimmed]": {
       "editor.background": "#2d333b", // 编辑器背景色
       "scrollbarSlider.background": "#575757aa", // 滚动条背景色
-      "scrollbarSlider.hoverBackground": "#7a7a7aaa", // 悬停滚动条背景色
-    },
+      "scrollbarSlider.hoverBackground": "#7a7a7aaa" // 悬停滚动条背景色
+    }
   },
 
   // -------------------------# 编辑器-------------------------
@@ -52,12 +52,12 @@
     "editor.quickSuggestions": {
       "comments": "off",
       "strings": "off",
-      "other": "off",
-    },
+      "other": "off"
+    }
   },
   "[python]": {
     "editor.tabSize": 4, // 默认 1 个 Tab 的宽度为 4 个空格
-    "editor.defaultFormatter": "ms-python.black-formatter", // Python 默认格式化工具
+    "editor.defaultFormatter": "ms-python.black-formatter" // Python 默认格式化工具
   },
 
   // -------------------------# 窗口-------------------------
@@ -70,8 +70,8 @@
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.profiles.windows": {
     "Git Bash": {
-      "path": "C:\\Program Files\\Git\\bin\\bash.exe",
-    },
+      "path": "C:\\Program Files\\Git\\bin\\bash.exe"
+    }
   },
 
   // -------------------------# Git-------------------------
@@ -96,11 +96,11 @@
       "sequence": [
         {
           "command": "type",
-          "args": { "text": "  " }, // 插入两个空格
+          "args": { "text": "  " } // 插入两个空格
         },
-        "editor.action.insertLineAfter", // 换行
-      ],
-    },
+        "editor.action.insertLineAfter" // 换行
+      ]
+    }
   ],
   // -------------------------# 以下为系统自动创建-------------------------
   "[dockercompose]": {
@@ -110,12 +110,12 @@
     "editor.quickSuggestions": {
       "other": true,
       "comments": false,
-      "strings": true,
+      "strings": true
     },
-    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "[github-actions-workflow]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml",
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
   "docker.extension.enableComposeLanguageServer": false,
   "claudeCode.preferredLocation": "panel",
@@ -123,40 +123,40 @@
   "claudeCode.environmentVariables": [
     {
       "name": "ANTHROPIC_BASE_URL",
-      "value": "https://api.minimaxi.com/anthropic",
+      "value": "https://api.minimaxi.com/anthropic"
     },
     {
       "name": "ANTHROPIC_AUTH_TOKEN",
-      "value": "sk-cp-qWzTKmh08QyN0xsWeRJ0j-J2Tqz8OInp7dhA39wI1ibRXoEgZp83-ko4i3sUNNSxdLJu4FnAfp7igRqTIzpv-bbyJVouQHx6yHqwNXGCRuC2WnMnvTRHMVQ",
+      "value": "<minimax-api-key>"
     },
     {
       "name": "API_TIMEOUT_MS",
-      "value": "3000000",
+      "value": "3000000"
     },
     {
       "name": "CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC",
-      "value": "1",
+      "value": "1"
     },
     {
       "name": "ANTHROPIC_MODEL",
-      "value": "MiniMax-M3",
+      "value": "MiniMax-M3"
     },
     {
       "name": "ANTHROPIC_DEFAULT_SONNET_MODEL",
-      "value": "MiniMax-M3",
+      "value": "MiniMax-M3"
     },
     {
       "name": "ANTHROPIC_DEFAULT_OPUS_MODEL",
-      "value": "MiniMax-M3",
+      "value": "MiniMax-M3"
     },
     {
       "name": "ANTHROPIC_DEFAULT_HAIKU_MODEL",
-      "value": "MiniMax-M3",
+      "value": "MiniMax-M3"
     },
     {
       "name": "CLAUDE_CODE_AUTO_COMPACT_WINDOW",
-      "value": "512000",
-    },
+      "value": "512000"
+    }
   ],
-  "editor.hover.showLongLineWarning": false,
+  "editor.hover.showLongLineWarning": false
 }
