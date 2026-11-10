@@ -9,11 +9,13 @@ tags:
 
 # Overview
 
-[**WorkBuddy**](https://www.workbuddy.cn/) 是一个以办公自动化为主的 [AI Agent](ai-agnet.md)。
+[**WorkBuddy**](https://www.workbuddy.cn/) 是一个以办公自动化为主的 [AI Agent](ai-agent.md)。
 
-> [WorkBuddy 桌面版 Docs](https://www.workbuddy.cn/docs/workbuddy/Overview)
+> [WorkBuddy Docs](https://www.workbuddy.cn/docs/workbuddy/Overview)
 >
 > [WorkBuddy 网页版](https://www.workbuddy.cn/app)
+>
+> [WorkBuddy 开放平台](https://open.workbuddy.cn/)
 >
 > [WorkBuddy 开放平台 Docs](https://open.workbuddy.cn/docs)
 

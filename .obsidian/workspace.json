@@ -36,6 +36,36 @@
               "icon": "lucide-file",
               "title": "browser-skill"
             }
+          },
+          {
+            "id": "c68dceef9bf0356d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "agent-skill.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "agent-skill"
+            }
+          },
+          {
+            "id": "b693268df1fd7801",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "claude-code.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "claude-code"
+            }
           }
         ],
         "currentTab": 1
@@ -72,7 +102,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "claude",
+                "query": "workb",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -117,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "claude-code.md",
+                "file": "browser-skill.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -136,7 +166,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "browser-skill.md",
+                "file": "claude-code.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -174,8 +204,7 @@
               "title": "大纲"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -194,14 +223,23 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
+    "agent-skill.md",
+    "claude-code.md",
+    "其它格式未转换/claude-code/README.md",
+    "其它格式未转换/claude-code/CLAUDE.md",
+    "其它格式未转换/claude-code/settings.json",
+    "其它格式未转换/claude-code",
+    "其它格式未转换/新建文件夹",
+    "code-general.md",
     "shell.md",
+    "ai-agent.md",
+    "anaconda.md",
+    "browser-skill.md",
     "assets/image-20261107130915663.png",
     "assets/image-20261107122502629.png",
-    "browser-skill.md",
     "alembic.md",
     "世界历史.md",
     "ai-tools-collection.md",
-    "claude-code.md",
     "workbuddy.md",
     "codebuddy-cli.md",
     "gcloud-cli.md",
@@ -209,7 +247,6 @@
     "其它格式未转换/ChsPinyinUDL.dat",
     "clawhub.md",
     "it-basics.md",
-    "code-general.md",
     "regex.md",
     "excel.md",
     "database.md",
@@ -219,10 +256,6 @@
     "巴勒斯坦.md",
     "test.md",
     "北元.md",
-    "巴勒斯坦地区.md",
-    "以色列.md",
-    "犹太人.md",
-    "联合国大会第181号决议.md",
     "assets/联合国大会第181号决议.png",
     "assets/中亚述.jpg",
     "assets/早亚述.jpg",
@@ -235,9 +268,6 @@
     "其它格式未转换/typora/typora-插件备份",
     "其它格式未转换/typora/新建文件夹",
     "其它格式未转换/typora/typora-configs/conf.user.json",
-    "其它格式未转换/typora/typora-configs/conf.default.json",
-    "其它格式未转换/typora/typora-configs",
-    "其它格式未转换/typora/typora-themes/github-night/SFMonoSemibold.woff",
     "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg"
   ]
 }

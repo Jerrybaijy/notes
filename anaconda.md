@@ -5,7 +5,7 @@ tags:
   - dev
   - software
   - ai
-  - ai-agent
+  - agent
 ---
 
 # Anaconda

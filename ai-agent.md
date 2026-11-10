@@ -4,7 +4,7 @@ author: Jerry.Baijy
 tags:
   - dev
   - ai
-  - ai-agent
+  - agent
 ---
 
 # AI Agent
@@ -193,3 +193,7 @@ flowchart TD
 - [**daos.fun**](https://www.daos.fun/)
   - daos.fun 将人工智能代理整合为对冲基金经理，将去中心化金融 (DeFi) 的概念提升到了一个新的水平。该平台允许社区创建由人工智能主导的 DAO 进行集体投资。
   - ai16z 是 daos.fun 平台上最大的对冲基金，由 pmairca（一个 AI agent）实际掌舵。
+
+# 相关条目
+
+- [Skill](agent-skill.md)

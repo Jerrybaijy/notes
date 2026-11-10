@@ -506,13 +506,20 @@ git clean -fd
 git clean -nfx
 ```
 
-# `.gitignore`
+# Ignore
 
-`.gitignore` 文件是版本控制中的 Ignore 配置文件。通常，这些文件包括编译生成的文件、临时文件、日志文件、依赖库等，因为它们不应该被提交到版本库中，或者它们可以通过其他途径重新生成。创建一个 `.gitignore` 文件可以帮助确保你的代码仓库保持整洁，只包含必要的文件。
+Ignore 的位置：
+
+- 用户级：`C:\Users\jerry\.config\git\ignore`
+- 项目级：`.gitignore`，`my-project/.gitignore`
+
+## `.gitignore`
+
+`.gitignore` 文件是 Git 的项目级 [ignore](code-general.md#Ignore) 配置文件，正常情况放置于项目根目录中。
 
 ## 语法
 
-- 大致语法同 ignore 语法，详见：code-general.md > 忽略规则
+- 大致语法同 [ignore](code-general.md#Ignore) 语法。
 - `.gitignore` 有一些默认的忽略规则，比如会自动忽略一些与版本控制相关的临时文件和目录，如 `.git` 目录本身
 
 ## 模板

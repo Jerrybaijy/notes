@@ -6,7 +6,7 @@ tags:
   - database
   - vector-database
   - ai
-  - ai-agent
+  - agent
 ---
 
 # Pinecone

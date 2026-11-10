@@ -126,6 +126,8 @@ irm https://claude.ai/install.ps1 | iex
 
 # CLI
 
+> [CLI Reference](https://code.claude.com/docs/zh-CN/cli-reference)
+
 ```bash
 # 查看版本
 claude -v
@@ -138,7 +140,13 @@ claude
 
 # 启动并调用 API
 ccr code
+```
 
+# Commands
+
+> [Commands Reference](https://code.claude.com/docs/zh-CN/commands)
+
+```bash
 # 通读全文
 /init
 
@@ -147,6 +155,10 @@ ccr code
 
 # 清除之前对话内容
 /clear
+
+# 查看当前上下文使用情况
+/context
+/context all
 ```
 
 # 快捷键
@@ -158,17 +170,33 @@ ccr code
 |         切换交互模式          | <kbd>Alt</kbd> + <kbd>M</kbd> |
 | 将 IDE 中的选中行发送到输入框 | <kbd>Alt</kbd> + <kbd>K</kbd> |
 
-# 配置
+# `CLAUDE.md`
 
-## 用户级配置
+[`CLAUDE.md`](https://code.claude.com/docs/zh-CN/memory) 是 Claude Code 的记忆文件。
 
-`C:\Users\jerry\.claude\settings.json`
+> [选择 CLAUDE.md 文件的位置](https://code.claude.com/docs/zh-CN/memory#choose-where-to-put-claude-md-files)
 
-# 记忆
+- 企业级：`C:\Program Files\ClaudeCode\CLAUDE.md`
+- 用户级： `~/.claude/CLAUDE.md`
+- 项目级：
+    - `my-project/.claude/CLAUDE.md`
+    - `C:\Users\jerry\.claude\projects\d--projects-green-assistant-003\memory`，agent 自动生成。
+- 本地级：`my-project/.claude/CLAUDE.local.md`
+    - 不提交进仓库，如果是 Claude Code 自动创建，它会把 `**/.claude/CLAUDE.local.md` 加入 Git 的用户级 ignore 文件。
 
-## 用户级记忆
+# `settings.json`
 
-`C:\Users\jerry\.claude\CLAUDE.md`
+[`settings.json`](https://code.claude.com/docs/zh-CN/settings) 是 Claude Code 的配置文件。
+
+> [设置文件及其影响范围](https://code.claude.com/docs/zh-CN/settings)
+
+- 企业级
+- 用户级：`~/.claude/settings.json`
+- 项目级：`my-project/.claude/settings.json`
+- 本地级：`my-project/.claude/settings.local.json`
+    - 不提交进仓库，如果是 Claude Code 自动创建，它会把 `**/.claude/settings.local.json` 加入 Git 的用户级 ignore 文件。
+
+> [配置字段](https://code.claude.com/docs/zh-CN/settings-reference#settings-index)
 
 # 其它
 

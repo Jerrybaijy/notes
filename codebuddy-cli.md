@@ -15,6 +15,8 @@ tags:
 > [CodeBuddy CLI Docs](https://www.workbuddy.cn/docs/cli/overview)
 >
 > [CodeBuddy CLI Reference](https://www.workbuddy.cn/docs/cli/reference)
+>
+> [斜杠命令](https://www.workbuddy.cn/docs/cli/slash-commands)
 
 # Install
 
