@@ -3,7 +3,7 @@ title: openssh
 author: Jerry.Baijy
 tags:
   - dev
-  - it-basics
+  - computer
 ---
 
 # Overview

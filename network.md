@@ -3,21 +3,25 @@ title: network
 author: Jerry.Baijy
 tags:
   - dev
-  - it-basics
+  - computer
   - web
   - network
 ---
+
+# Overview
+
+Network 是[计算机基础](computer)的一部分。
 
 # TCP/IP 四层模型
 
 TCP/IP 模型是现代互联网通信的基础。它将复杂的网络通信过程划分为四个逻辑层，每一层都负责特定的功能，并为其上一层提供服务。
 
-| **层级** | **名称**                        | **主要功能**                                                 | **常见协议**              |
-| :------: | ------------------------------- | ------------------------------------------------------------ | ------------------------- |
-|  **4**   | **应用层 (Application)**        | 直接为用户的应用程序提供服务，规定数据传输的格式。           | HTTP, FTP, DNS, SMTP, SSH |
-|  **3**   | **传输层 (Transport)**          | 负责端到端（进程到进程）的通信，确保数据传输的可靠性或效率。 | TCP, UDP                  |
-|  **2**   | **网络层 (Internet)**           | 负责数据包在网络中的路由选择和转发（逻辑寻址）。             | IP (IPv4/IPv6), ICMP, ARP |
-|  **1**   | **网络接口层 (Network Access)** | 负责物理传输，包括物理介质、硬件地址（MAC）和数据帧封装。    | Ethernet, Wi-Fi, PPP      |
+| **层级** | **名称**                        | **主要功能**                                                 | **常见协议**                         |
+| :------: | ------------------------------- | ------------------------------------------------------------ | ------------------------------------ |
+|  **4**   | **应用层 (Application)**        | 直接为用户的应用程序提供服务，规定数据传输的格式。           | [HTTP](http.md), FTP, DNS, SMTP, SSH |
+|  **3**   | **传输层 (Transport)**          | 负责端到端（进程到进程）的通信，确保数据传输的可靠性或效率。 | TCP, UDP                             |
+|  **2**   | **网络层 (Internet)**           | 负责数据包在网络中的路由选择和转发（逻辑寻址）。             | IP (IPv4/IPv6), ICMP, ARP            |
+|  **1**   | **网络接口层 (Network Access)** | 负责物理传输，包括物理介质、硬件地址（MAC）和数据帧封装。    | Ethernet, Wi-Fi, PPP                 |
 
 ## 网络接口层 (Network Access Layer)
 
@@ -275,22 +279,6 @@ curl ifconfig.me
 
 2. 在目标网页点击该书签，原始 URL 会被自动复制到剪贴板。
 
-# HTTP
-
-[**HTTP**](https://developer.mozilla.org/zh-CN/docs/Web/HTTP)（HyperText Transfer Protocol，超文本传输协议）是一个用于传输超媒体文档（例如 HTML）的应用层协议。
-
-**HTTPS**（HyperText Transfer Protocol Secure，超文本传输安全协议）是 HTTP 协议的加密版本。它通过在 HTTP 和 TCP 之间引入一个加密层（[SSL](https://developer.mozilla.org/zh-CN/docs/Glossary/SSL) 或 [TLS](https://developer.mozilla.org/zh-CN/docs/Glossary/TLS)）来实现安全通信。
-
-HTTP 与 HTTPS 的直观对比：
-
-| **特性**     | **HTTP**           | **HTTPS**                         |
-| ------------ | ------------------ | --------------------------------- |
-| **安全性**   | 明文，不安全       | 加密，安全                        |
-| **默认端口** | 80                 | 443                               |
-| **证书**     | 不需要             | 需要从 CA 购买或申请              |
-| **SEO 排名** | 较低               | 搜索引擎（如 Google）会优先收录   |
-| **性能**     | 稍快（无握手开销） | 现代技术下几乎无感（有 TLS 优化） |
-
 # TCP
 
 **TCP**（Transmission Control Protocol，传输控制协议）位于传输层。它确保数据**准确无误、按顺序**地送达。
@@ -355,3 +343,7 @@ HTTP 与 HTTPS 的直观对比：
 103.31.4.203:443#US|官方优选|206ms
 104.17.180.58:443#US|官方优选|206ms
 ```
+
+# 相关条目
+
+- [HTTP](HTTP.md)

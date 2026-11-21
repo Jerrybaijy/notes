@@ -3,7 +3,7 @@ title: regex
 author: Jerry.Baijy
 tags:
   - dev
-  - it-basics
+  - computer
 ---
 
 # Overview
@@ -119,7 +119,7 @@ tags:
 |       `(?:)`        |      非捕获分组，只分组但不捕获      |     `(?:ab)+`     |                 |
 | `(?P<name>pattern)` | 命名分组，可通过分组名来引用分组[^1] | `(?P<year>\d{4})` |                 |
 
-[^1]:**捕获**：可以使捕获到的内容供后续**引用**，如[查找替换](it-basics.md#查找与替换)中的 `$1`。
+[^1]:**捕获**：可以使捕获到的内容供后续**引用**，如[查找替换](computer.md#查找与替换)中的 `$1`。
 
 # 选择和分支
 

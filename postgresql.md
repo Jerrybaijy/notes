@@ -13,12 +13,12 @@ tags:
 
 # 备份与恢复
 
-新旧数据库都是容器化应用，命令中的各参数根据实际情况而定、
+新旧数据库都是容器化应用，命令中的各参数根据实际情况而定。
 
 ```bash
 # 导出数据库为 sql 文件
 docker exec <container_name> pg_dump -U <username> <db_name> > <backup_file>
-docker exec ga-postgres pg_dump -U postgres green_assistant > ga_backup.sql
+docker exec ga-postgres pg_dump -U postgres green_assistant > ga_backup_1.sql
 
 # 停止云服务器后端服务（避免导入时有程序在连接数据库）
 docker compose stop backend

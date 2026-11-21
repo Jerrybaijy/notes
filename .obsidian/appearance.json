@@ -13,5 +13,6 @@
   "accentColor": "#adbac7",
   "baseFontSize": 18,
   "baseFontSizeAction": true,
-  "showViewHeader": true
+  "showViewHeader": true,
+  "showRibbon": true
 }

@@ -1157,13 +1157,13 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.ty
 - 粘贴 `plugin` 文件夹。
 - 打开 `plugin/bin`，以管理员身份运行 `install_windows.ps1` 或 `install_windows_amd_x64.exe`。
 - 若弹窗显示 `Plugin installed successfully`，安装成功。
-    - 成功以后，会把 `C:\Program Files\Typora\resources` 目录下的 `window.html` 文件自动备份为 `window.html.back`，然后在 `window.html` 中写入一行执行脚本的代码。
+    - 成功以后，会把 `C:\Program Files\Typora\resources` 目录下的 `window.html` 文件自动备份为 `window.html.back`，然后在 `window.html` 中写入一行执行脚本的代码。
 - 启动 Typora，正文区右键，可见插件菜单。
 
 ## 卸载
 
 - 正常卸载：右键使用 powershell 运行 `uninstall_windows.ps1` 可卸载，但上次没有卸载成功，窗口闪退，可能是权限问题。
-- 非正常卸载：删除安装时已经被修改过的 `window.html`，把自动备份的 `window.html.back` 改名为 `window.html`，删除复制进来的 `plugin` 目录。
+- 非正常卸载：删除安装时已经被修改过的 `window.html`，把自动备份的 `window.html.back` 改名为 `window.html`，删除复制进来的 `plugin` 目录。
 
 ## 其它
 
@@ -1188,7 +1188,18 @@ Typora 支持 Mermaid、Sequence 和 Flowchart 三种[图表](https://support.ty
 ## 锚点
 
 - Typora 标题自带锚点，`id="标题名"`。
-- Typora 中的锚点不要按 HTML 的规范格式化，要保留标题中的空格，否则无法跳转。
+
+- Typora 中的锚点不要按 [HTML 的规范](html.md#锚点)格式化，要保留标题中的空格，否则无法跳转。
+
+- Typora 在处理[锚点中的空格](markdown.md#锚点中的空格)时，不支持锚点中含有 `/`
+
+    ```markdown
+    <!-- 不支持锚点中有斜杠 -->
+    [应用层](<network.md#TCP/IP 四层模型>)
+    
+    <!-- 锚点中没有斜杠，也会跳转到有斜杠的锚点 -->
+    [应用层](<network.md#TCPIP 四层模型>)
+    ```
 
 ## 关于空行
 

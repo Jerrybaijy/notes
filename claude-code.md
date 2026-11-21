@@ -13,6 +13,10 @@ tags:
 
 > [Claude Code 文档](https://docs.claude.com/zh-CN/docs/claude-code/overview)
 >
+> [Claude Platform Docs](https://platform.claude.com/docs/zh-CN/home)
+>
+> [Claude Code 中文社区文档](https://claudecn.com/docs/)
+>
 > [CLI 参考](https://docs.claude.com/zh-CN/docs/claude-code/cli-reference)
 
 # Install
@@ -182,7 +186,7 @@ ccr code
     - `my-project/.claude/CLAUDE.md`
     - `C:\Users\jerry\.claude\projects\d--projects-green-assistant-003\memory`，agent 自动生成。
 - 本地级：`my-project/.claude/CLAUDE.local.md`
-    - 不提交进仓库，如果是 Claude Code 自动创建，它会把 `**/.claude/CLAUDE.local.md` 加入 Git 的用户级 ignore 文件。
+    - 不提交进仓库，如果是 Claude Code 自动创建，它会把 `**/.claude/CLAUDE.local.md` 加入 Git 的用户级 ignore 文件。
 
 # `settings.json`
 

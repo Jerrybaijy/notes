@@ -3,7 +3,7 @@ title: script
 author: Jerry.Baijy
 tags:
   - dev
-  - it-basics
+  - computer
   - script
 ---
 

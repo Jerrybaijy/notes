@@ -621,11 +621,17 @@ Markdown 支持两种样式的链接：*内联*和*引用*。都支持创建链�
 
 为了消除 Markdown 在不同解析器下的歧义，[CommonMark 规范](https://spec.commonmark.org/0.31.2/#links)规定，链接目标如果包含空格，则必须用尖括号 `< >` 包裹。
 
-> 例如：[Cloud SQL 笔记](<cloud-sql.md#Quick Start>)
+```markdown
+[Cloud SQL 笔记](<cloud-sql.md#Quick Start>)
+```
 
 悬停链接的解释不应放在尖括号里。
 
-> 例如：[Cloud SQL 笔记](<cloud-sql.md#Quick Start> "悬停链接的解释")
+```markdown
+[Cloud SQL 笔记](<cloud-sql.md#Quick Start> "悬停链接的解释")
+```
+
+不同编辑器对尖括号锚点中的 `/` 的支持有差异。
 
 ### 锚点冲突
 

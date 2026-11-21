@@ -3,6 +3,7 @@ title: win-powershell
 author: Jerry.Baijy
 tags:
   - dev
+  - cli
   - windows
 ---
 

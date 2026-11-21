@@ -32,3 +32,10 @@ WorkBuddy 内置多个运行环境：`设置` > `安全中心` > `内置运行�
 - Python
 - Git Bash
 
+# 记忆
+
+长期记忆：`C:\Users\jerry\.workbuddy\$user-***\MEMORY.md`
+
+# Skill
+
+[WorkBuddy 的 skill 规范](https://open.workbuddy.cn/docs/skill#技能基础结构)并没有被纳入 [Anthropic 开放规范客户端展示](https://agentskills.io/clients)中。

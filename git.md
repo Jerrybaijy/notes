@@ -346,6 +346,8 @@ git add <files>
 git add .
 ```
 
+撤销 `git add .`：`git `
+
 # Commit
 
 ## `git commit`

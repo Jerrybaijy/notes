@@ -8,48 +8,18 @@
         "type": "tabs",
         "children": [
           {
-            "id": "fabf1acaf3a2a2fd",
+            "id": "0890d80232cb6f67",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "alembic.md",
+                "file": "workbuddy.md",
                 "mode": "preview",
                 "source": true,
                 "backlinks": false
               },
               "icon": "lucide-file",
-              "title": "alembic"
-            }
-          },
-          {
-            "id": "449af002c783c524",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "browser-skill.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "browser-skill"
-            }
-          },
-          {
-            "id": "c68dceef9bf0356d",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "agent-skill.md",
-                "mode": "preview",
-                "source": true,
-                "backlinks": false
-              },
-              "icon": "lucide-file",
-              "title": "agent-skill"
+              "title": "workbuddy"
             }
           },
           {
@@ -66,9 +36,54 @@
               "icon": "lucide-file",
               "title": "claude-code"
             }
+          },
+          {
+            "id": "b158d60e36fa2c5d",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "network.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "network"
+            }
+          },
+          {
+            "id": "7a07bfd446670e92",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "http.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "http"
+            }
+          },
+          {
+            "id": "6a78d4ea1f0280c0",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "computer.md",
+                "mode": "preview",
+                "source": true,
+                "backlinks": false
+              },
+              "icon": "lucide-file",
+              "title": "computer"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -102,7 +117,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "workb",
+                "query": "typora",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
@@ -147,8 +162,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "browser-skill.md",
-                "collapseAll": false,
+                "file": "http.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -166,7 +181,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "claude-code.md",
+                "file": "shell.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
@@ -195,7 +210,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "胡塞武装.md",
+                "file": "http.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
@@ -208,7 +223,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 208.833251953125
+    "width": 300.83331298828125
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -223,51 +238,51 @@
   },
   "active": "b7f8989d35ed3ef0",
   "lastOpenFiles": [
-    "agent-skill.md",
+    "assets/request-headers.svg",
+    "assets/未确认 23208.crdownload",
+    "assets/response-headers.svg",
+    "assets/未确认 119159.crdownload",
+    "assets/http-message-anatomy.svg",
+    "assets/http-message-anatomy-1795217215955-1.svg",
+    "network.md",
+    "http.md",
+    "computer.md",
     "claude-code.md",
+    "assets/image-20261120152823326.png",
+    "assets/image-20261120152707546.png",
+    "projects.md",
+    "langchain.md",
+    "shell.md",
+    "linux.md",
+    "workbuddy.md",
+    "powershell.md",
+    "cli.md",
+    "musicbee.md",
+    "assets/image-20261113205258042.png",
+    "minimax.md",
+    "browser-skill.md",
+    "glm.md",
+    "anythingllm.md",
+    "agent-skill.md",
     "其它格式未转换/claude-code/README.md",
     "其它格式未转换/claude-code/CLAUDE.md",
     "其它格式未转换/claude-code/settings.json",
     "其它格式未转换/claude-code",
     "其它格式未转换/新建文件夹",
     "code-general.md",
-    "shell.md",
     "ai-agent.md",
     "anaconda.md",
-    "browser-skill.md",
     "assets/image-20261107130915663.png",
     "assets/image-20261107122502629.png",
     "alembic.md",
     "世界历史.md",
     "ai-tools-collection.md",
-    "workbuddy.md",
-    "codebuddy-cli.md",
-    "gcloud-cli.md",
     "其它格式未转换/微软拼音自定义短语.dat",
     "其它格式未转换/ChsPinyinUDL.dat",
-    "clawhub.md",
-    "it-basics.md",
-    "regex.md",
-    "excel.md",
-    "database.md",
-    "mysql.md",
-    "script.md",
-    "network.md",
-    "巴勒斯坦.md",
-    "test.md",
-    "北元.md",
     "assets/联合国大会第181号决议.png",
     "assets/中亚述.jpg",
-    "assets/早亚述.jpg",
-    "assets/亚述.svg",
-    "assets/新亚述.jpg",
-    "assets/亚述巴尼拔时代的新亚述帝国.svg",
-    "assets/阿卡德帝国疆域.png",
     "其它格式未转换/typora/typora-插件备份/window.html",
     "其它格式未转换/typora/typora-插件备份/window.html.bak",
-    "其它格式未转换/typora/typora-插件备份",
-    "其它格式未转换/typora/新建文件夹",
-    "其它格式未转换/typora/typora-configs/conf.user.json",
-    "其它格式未转换/typora/typora-themes/github-night/nunito-sans-v6-latin-ext_latin-regular.svg"
+    "其它格式未转换/typora/typora-插件备份"
   ]
 }

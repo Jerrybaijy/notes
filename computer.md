@@ -1,14 +1,14 @@
 ---
-title: it-basics
+title: computer
 author: Jerry.Baijy
 tags:
   - dev
-  - it-basics
+  - computer
 ---
 
 # GUI
 
-**GUI**（Graphical User Interface，图形用户界面） 是指通过图形元素（窗口、按钮、菜单、图标等）与计算机或软件交互的方式。与 **CLI（命令行界面）**不同，GUI 让用户可以使用鼠标、触摸屏或手势操作，而不需要输入命令行指令。
+**GUI**（Graphical User Interface，图形用户界面） 是指通过图形元素（窗口、按钮、菜单、图标等）与计算机或软件交互的方式。与 [**CLI**](cli.md)（命令行界面）不同，GUI 让用户可以使用鼠标、触摸屏或手势操作，而不需要输入命令行指令。
 
 ## GUI 实例
 
@@ -304,3 +304,5 @@ tags:
 **ReFS (Resilient File System)**：微软开发的一个用于 Windows Server 的文件系统，设计上注重数据完整性和修复能力。
 
 # 相关条目
+
+- [network](network.md)

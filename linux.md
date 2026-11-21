@@ -6,22 +6,26 @@ tags:
   - os
 ---
 
-# Linux 基础
+# Overview
 
 Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、多任务、支持多种处理器架构的操作系统。
 
-## 环境搭建
+> [菜鸟教程](https://www.runoob.com/linux/linux-tutorial.html)
+>
+> [Linux 命令 @菜鸟教程](https://www.runoob.com/linux/linux-command-manual.html)
 
-### 在 Windows 中安装
+# Install
 
-- 在 Windows 中搭建 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
+## 在 Windows 中安装
+
+- 在 Windows 中安装 Linux 有以下方法：虚拟机、WSL、Live CD/USB、远程服务器。
 - 接下来使用 WSL 方法。
 - 确保 WSL 已安装，详见 [`Windows` > `WSL`](../windows/windows.md#WSL)。
 - 在 Microsoft Store 中选择的 Linux 发行版，例如 "Ubuntu 20.04 LTS"。
 - 安装完成后，点击启动，设置用户名和密码。
   - **注意**：即使你输入密码，也不会在屏幕上显示，就像没输入一样。
 
-### 在物理机上安装
+## 在物理机上安装
 
 - [官网下载 Ubuntu Desktop 的 ISO 文件](https://ubuntu.com/download/desktop)，存入 Ventoy 启动 U 盘。
 - 从 BIOS 进入 U 盘启动，选择 Ubuntu。
@@ -50,7 +54,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 - 重启后即可进行初始设置。
 - 如果是双系统，可以在 Ubuntu 安装完成后，进行引导设置，详见 `Linux > 系统引导`。
 
-### 新系统配置
+## 新系统配置
 
 - VMware Tools
 - 系统更新
@@ -61,7 +65,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - VPN，Chrome，VSCode，Git，python，docker
 
-## Zsh
+# Zsh
 
 - Zsh（Z Shell）是一种命令行解释器，也是一种交互式的 Unix shell，它是 Bash 的替代品。
 - 安装 Zsh
@@ -113,7 +117,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
   p10k configure
   ```
 
-## 安装软件
+# 安装软件
 
 - 优先使用 `apt` 或 `snap` 在线安装
 
@@ -170,7 +174,7 @@ Linux 是一个开源的类 Unix 操作系统内核。它是一个多用户、�
 
 - 最后，使用 `dpkg` 离线安装本地 `deb` 包，手动处理依赖，手动更新升级。
 
-## 特殊目录
+# 特殊目录
 
 - Linux 目录的常用操作详见 `cli | 目录` 笔记
 - **Linux 目录结构**：`/Home/USER_NAME/...`
@@ -288,17 +292,17 @@ GRUB 的工作过程大致如下：
   ```
   # 启动 Ubuntu
   Ubuntu
-
+  
   # 选择 Ubuntu 其它内核
   Advanced options for Ubuntu
-
+  
   # 启动内存检测
   Memory test (memtest86+x64.efi)
   Memory test (memtest86+x64.efi, serial console)
-
+  
   # 启动 Windows 引导加载程序
   Windows Boot Manager (ondev/nvme0n1p1) # 启动 Windows
-
+  
   # 进入固件
   UEFI Firmware Settings
   ```
@@ -385,16 +389,16 @@ GRUB 的工作过程大致如下：
   ```bash
   # 查看当前用户
   whoami
-
+  
   # 创建用户
   sudo useradd -m jerry
-
+  
   # 设置密码
   sudo passwd jerry
-
+  
   # 将 jerry 添加到 sudo 组
   usermod -aG sudo jerry
-
+  
   # 切换用户
   su - jerry
   ```

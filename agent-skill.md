@@ -10,11 +10,21 @@ tags:
 
 # Overview
 
-[**Skill**](https://agentskills.io/) 是一种为 [Agent](ai-agent.md) 提供新能力的标准化的方式。
+[**Agent Skill**](https://agentskills.io/) 是一种轻量级、开放的格式，用于以专业知识和工作流程为 [AI Agent](ai-agent.md) 扩展能力。
 
+Agent Skill 最初由 Anthropic 开发，用于 Claude Platform，现作为开放标准。
+
+> [Agent Skills - Anthropic 开放规范](https://agentskills.io/)
+>
+> [Agent Skills - Claude Platform Docs](https://platform.claude.com/docs/zh-CN/agents-and-tools/agent-skills/overview)
+>
+> [Anthropic Skills - GitHub](https://github.com/anthropics/skills)：示例技能
+>
 > [WorkBuddy 开放文档](https://open.workbuddy.cn/docs/skill#技能基础结构)
 
 # 目录结构
+
+一个 skill 的目录包含 `SKILL.md` 和[**可选目录**](https://agentskills.io/specification#optional-directories)组成。
 
 ```markdown
 my-skill/
@@ -33,37 +43,32 @@ my-skill/
 
 # `SKILL.md`
 
-[SKILL.md](http://skill.md/) 使用 YAML frontmatter + Markdown 正文： 
+[`SKILL.md`](https://agentskills.io/specification#skill-md-format) 由 **YAML Front Matter** 和 **Body Content** 两部分组成。
+
+Agent 执行技能时会**完整读取 `SKILL.md` 作为上下文。
+
+## 最简示例
 
 ```markdown
 ---
 name: your-skill-name
-display_name: 展示名称
-display_name_en:切英文版展示名称
 description: 一句话描述技能能力
-description_zh: 简短中文介绍
-description_en: A Brief English Introduction
-examples_zh:
-- "案例 1"
-- "案例 2"
-- "案例 3"
-examples_en:
-- "example 1"
-- "exmaple 2"
-- "example 3"
 version: 1.0.0
-author: "合作方名称"
 ---
- 
+ 
 # 技能指令正文
- 
+ 
 当用户需要做 XX 时，按以下步骤执行：
 1. ...
 2. ...
 3. ...
 ```
 
-**Frontmatter 字段**：
+## YAML Front Matter
+
+> [!CAUTION]
+>
+> 此处的 [YAML Front Matter](<yaml.md#YAML Front Matter>) 字段是 [WorkBuddy 开放文档](https://open.workbuddy.cn/docs/skill#技能基础结构)的要求。
 
 | **字段**        | **必填** | **说明**                                             |
 | :-------------- | :------- | :--------------------------------------------------- |
@@ -79,26 +84,45 @@ author: "合作方名称"
 | examples_en     | 否       | skill 使用案例（英文版），展示在详情页【试试这样用】 |
 | author          | 是       | 合作方名称                                           |
 
+## Body Content
+
+[**Body Content**](https://agentskills.io/specification#body-content) 包含技能指令。没有格式限制。写任何帮助代理人有效完成任务的内容。
+
+## 其它说明
+
+Anthropic 建议，保持 `SKILL.md` 在 500 行以下，将详细参考资料转移到[可选目录](https://agentskills.io/specification#optional-directories)中。
+
 # `references`
 
-`references` 用于存放 `SKILL.md` 引用的补充知识文档，AI 执行技能时会读取这些文件作为上下文。
+[`references`](https://agentskills.io/specification#references/) 是 skill 的[可选目录](https://agentskills.io/specification#optional-directories)，用于存放 `SKILL.md` 引用的补充知识文档，Agent 执行技能时会**按需读取**这些文件作为上下文。
 
 适用场景：API 字段类型定义、协议规范、领域知识参考、示例数据等。
 
-使用方式：在 `SKILL.md` 中通过 `@references/xxx.md` 引用。
-
-示例：
-
-```markdown
+```
 references/
 ├── field-types.md           # 字段类型枚举和用法
 ├── api-endpoints.md         # API 接口文档
 └── best-practices.md        # 最佳实践指南
 ```
 
+## 使用方式
+
+### Anthropic
+
+```markdown
+See [the reference guide](references/REFERENCE.md) for details.
+
+Run the extraction script:
+scripts/extract.py
+```
+
+### WorkBuddy
+
+在 `SKILL.md` 中通过 `@references/xxx.md` 引用。
+
 # `scripts`
 
-`scripts` 用于存放技能执行中需要调用的脚本，AI 通过 Bash 工具执行。
+[`scripts`](https://agentskills.io/specification#scripts/) 是 skill 的[可选目录](https://agentskills.io/specification#optional-directories)，用于存放技能执行中需要调用的脚本，Agent 执行技能时会**按需读取**这些文件作为上下文。
 
 适用场景：调用外部 API、数据处理、批量操作、需要特定运行时的逻辑。
 
@@ -126,3 +150,15 @@ templates/
 └── capture-workflow.sh       # 数据采集工作流模板
 ```
 
+# 渐进披露
+
+Agent 逐步加载技能， 只有在任务需要时才会调入更多细节。
+
+- Agent 首先读取 `SKILL.md` 中的 YAML Front Matter，仅仅知道该技能何时可能相关。
+- 当你问到具体事情时，Agent 会把你的问题和 YAML Front Matter 对应起来，并把 `SKILL.md` 的 Body Content 加载到上下文中。
+- 只有在需要时才会加载 `references` 和 `scripts` 等[可选目录](https://agentskills.io/specification#optional-directories)中的其它细节文件。
+- 最后通过读取到的指令，完成用户的请求。
+
+# 相关条目
+
+- [`skills-ref`](https://github.com/agentskills/agentskills/tree/main/skills-ref)：验证 skill 是否符合 Anthropic 规范
