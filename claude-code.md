@@ -204,6 +204,46 @@ ccr code
 
 # 其它
 
+## 通用话术
+
+### 写记忆文件
+
+```
+把本轮整改类似的情况，写入以下文件，避免以后再犯错：
+- 通用的写入 C:\Users\jerry\.claude\CLAUDE.md
+- 本项目专属的写入 D:\projects\green-assistant-003\.claude\CLAUDE.md
+告诉我你的理解，写入的内容要简洁，给我看你要写的内容，等我明确说【开始执行】，你再写入文件。
+```
+
+### 多 Agent 对话
+
+```
+D:\projects\中转站\green-assistant-skill-大模型分离复核.md 是 WorkBuddy 关于本项目 skill 的大模型分离的复核文档（稍后 WorkBuddy 会创建此文档），你要判断它的评估是否准确合理，如果准确合理，就给我整改计划，待我明确说【开始执行】才能整改；如果不准确合理，那就反驳它。
+
+你先创建一个计划文档，命名为“green-assistant-skill-大模型分离计划.md”，存入 D:\projects\中转站
+
+以后每次它核实完，你做三件事：
+- 读 WorkBuddy 的复核文档 D:\projects\中转站\green-assistant-skill-大模型分离复核.md
+- 根据它的核实，自己判断它说的对不对，如果对，就按它的话合理再次整改，如果不对就反驳它
+- 把你的整改结果和对它说的话加入你自己的计划文档 D:\projects\中转站\green-assistant-skill-大模型分离计划.md
+- 整改的每件事都要有整改进度（比如是否完成）
+- 在整改过程中，如果发现计划以外的的事情确定要整改，也要把它加入到计划文档。
+你只能改你自己的文档，不能动它的
+```
+
+```
+D:\projects\中转站\green-assistant-skill-大模型分离计划.md 是 Claude Code 关于本项目 skill 的大模型分离的改造计划及整改情况，你要判断它的改造计划是否合理准确，以及已完成的整改效果怎样、是否有遗漏，如果不准确合理，那就反驳它。你所有想对 Claude Code 说的话都加入到你的复核文档中。
+
+你先创建一个复核文档，命名为“green-assistant-skill-大模型分离复核.md”，存入 D:\projects\中转站
+
+以后每次 Claude Code 整改完，你做三件事：
+- 读它的计划文档 D:\projects\中转站\green-assistant-skill-大模型分离计划.md
+- 核实 skill 有没有真的被改
+- 把你的核实加入你自己的复核文档 D:\projects\中转站\green-assistant-skill-冗余清理复核.md
+- 如果所有待整改项都已整改，及时告诉用户
+你只能改你自己的复核文档，不能动它的计划文档
+```
+
 ## Claude Code Router
 
 [Claude Code Router](https://github.com/musistudio/claude-code-router) 是 GitHub 上的一个开源项目，可以把任意大模型的 API 接入到 Claude Code 中。

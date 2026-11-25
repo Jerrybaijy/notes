@@ -117,7 +117,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "typora",
+                "query": "claude",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": true,
